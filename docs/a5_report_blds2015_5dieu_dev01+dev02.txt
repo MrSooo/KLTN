@@ -1,0 +1,33 @@
+A5 báo cáo kiểm tra: blds2015_5dieu
+file đã kiểm:
+  data/processed/a1_triples_blds2015_5dieu.jsonl
+  data/processed/a2_edges_blds2015_5dieu.jsonl
+  data/processed/a2_refs_blds2015_5dieu.jsonl
+  data/processed/a3_exceptions_blds2015_5dieu.jsonl
+  data/processed/a4_dev01+dev02_versions.jsonl
+
+== Bước 1: mã trùng ==
+[1a] số đơn vị (s có dòng type): 35, kỳ vọng 35 -> ĐẠT
+[1b] số Điều: 5, kỳ vọng 5 -> ĐẠT
+[1c] mỗi s có đúng một dòng type: 35 s -> ĐẠT
+[1d] mỗi cặp (s, p) một lần: 176 cặp -> ĐẠT
+
+== Bước 2: mỗi đơn vị đúng một cha ==
+[2a] Điều không có cha: 5 Điều -> ĐẠT
+[2b] Khoản và Điểm có đúng một cha: 30 đơn vị -> ĐẠT
+[2c] cha = mã con bỏ đoạn cuối: 30 cạnh part_of -> ĐẠT
+[2d] contains đối xứng với part_of: contains 30, part_of 30 -> ĐẠT
+[2e] số part_of = số đơn vị - số Điều: 30, kỳ vọng 35 - 5 = 30 -> ĐẠT
+[2f] cha tồn tại và đúng bậc: 30 cạnh part_of -> ĐẠT
+
+== Bước 3: cạnh trùng ==
+[3] bộ ba (s, p, o) lặp trong a2_edges + a2_refs + a3_exceptions: 64 bộ ba, 64 khác nhau, 0 bị lặp -> ĐẠT
+
+== Bước 4: lớp phiên bản của A4 ==
+[4a] (id, version) duy nhất và version liên tiếp 1, 2, 3: 37 dòng, 35 id -> ĐẠT
+[4b] previous_version = version - 1, version 1 thì null: 37 dòng -> ĐẠT
+[4c] khoảng hiệu lực [from, to) không chồng: 2 cặp version liên tiếp -> ĐẠT
+[4d] mọi mã của A1 còn trong versions: 35 mã A1, 35 id trong versions -> ĐẠT
+[4e] version 1 giữ nguyên nội dung A1: 106 trường ở 35 dòng version 1 -> ĐẠT
+
+KẾT LUẬN: ĐẠT

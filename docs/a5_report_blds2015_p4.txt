@@ -1,0 +1,25 @@
+A5 báo cáo kiểm tra: blds2015_p4
+file đã kiểm:
+  data/processed/a1_triples_blds2015_p4.jsonl
+  data/processed/a2_edges_blds2015_p4.jsonl
+  data/processed/a2_refs_blds2015_p4.jsonl
+  data/processed/a3_exceptions_blds2015_p4.jsonl
+
+== Bước 1: mã trùng ==
+[1a] số đơn vị (s có dòng type): 215, kỳ vọng 215 -> ĐẠT
+[1b] số Điều: 54, kỳ vọng 54 -> ĐẠT
+[1c] mỗi s có đúng một dòng type: 215 s -> ĐẠT
+[1d] mỗi cặp (s, p) một lần: 1099 cặp -> ĐẠT
+
+== Bước 2: mỗi đơn vị đúng một cha ==
+[2a] Điều không có cha: 54 Điều -> ĐẠT
+[2b] Khoản và Điểm có đúng một cha: 161 đơn vị -> ĐẠT
+[2c] cha = mã con bỏ đoạn cuối: 161 cạnh part_of -> ĐẠT
+[2d] contains đối xứng với part_of: contains 161, part_of 161 -> ĐẠT
+[2e] số part_of = số đơn vị - số Điều: 161, kỳ vọng 215 - 54 = 161 -> ĐẠT
+[2f] cha tồn tại và đúng bậc: 161 cạnh part_of -> ĐẠT
+
+== Bước 3: cạnh trùng ==
+[3] bộ ba (s, p, o) lặp trong a2_edges + a2_refs + a3_exceptions: 351 bộ ba, 351 khác nhau, 0 bị lặp -> ĐẠT
+
+KẾT LUẬN: ĐẠT

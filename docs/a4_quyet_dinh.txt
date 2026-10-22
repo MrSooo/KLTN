@@ -1,0 +1,170 @@
+A4: CÁC QUYẾT ĐỊNH CHỖ SPEC CHƯA GHI HOẶC CẦN LỆCH SPEC
+==========================================================
+Quy tắc chung của lần làm này: không hỏi lại, chỗ chưa ghi thì chọn cách đơn giản nhất và ghi ở đây.
+Mục A là chỗ LỆCH hoặc MỞ RỘNG so với chữ của spec (nên đọc trước). Mục B trở đi là chỗ spec im lặng.
+
+A. LỆCH / MỞ RỘNG SO VỚI CHỮ CỦA SPEC
+-------------------------------------
+A1. Tiêu đề Điều của chính văn bản sửa đổi.
+    Spec: dòng khớp r"^Điều \d+\b" thì bỏ qua. Code dùng r"^Điều \d+[a-z]?\s*\." (bắt buộc có dấu chấm sau số).
+    Lý do: với r"^Điều \d+\b", dòng "Điều 621 được bổ sung như sau:" (dạng R1 không hỗ trợ, spec nói phải LỖI) sẽ bị bỏ
+    qua âm thầm, vì nó cũng bắt đầu bằng "Điều 621". Tiêu đề thật ("Điều 1. Sửa đổi, bổ sung ...") luôn có dấu chấm.
+    Hệ quả: tiêu đề kiểu "Điều 1 Sửa đổi" (không chấm) không còn tự động được bỏ qua; nếu nó chứa từ khoá chỉ thị thì thành
+    dòng lạ (lỗi), nếu không thì vẫn bị bỏ qua với lý do "không phải chỉ thị".
+
+A2. Cạnh exception_of kiểu quy tắc 2 (except_list_pattern) và phạm vi "nguồn thuộc changed ∪ new".
+    Spec: so cạnh cho nguồn thuộc changed ∪ new. Quy tắc 2 của A3 có nguồn s = đơn vị CON, o = đơn vị CHA, chứng cứ là chữ
+    của CHA. Nếu so theo nguồn thuần tuý thì khi cha đổi chữ (thêm hoặc bớt "trừ ... sau đây:") các cạnh của những con chưa
+    đổi không bao giờ được add/close, đồ thị lệch mà không để lại dấu vết.
+    Code: một cạnh exception_of thuộc phạm vi so nếu s thuộc changed ∪ new, HOẶC (method = except_list_pattern và o thuộc
+    changed ∪ new). Với refers_to và quy tắc 1 (not_apply_pattern) giữ đúng như spec. Test: test_exception_list_edges_follow_
+    the_text_of_the_parent (cha đổi chữ, con mới dưới cha đang có "trừ", cha hết "trừ"). Với 8 văn bản dev kết quả không đổi
+    (file mẫu không có cha kiểu này).
+
+A3. Mention của cờ "chưa phủ" không phân biệt hoa thường.
+    Spec ghi r"\b(?:Điều|khoản|điểm)\s+(?:\d+[a-zđ]?|[a-zđ])(?!\w)" không kèm cờ. Code thêm re.I (A2 cũng không phân biệt hoa
+    thường), nếu không thì "Khoản 3a Điều 5" đầu câu lọt lưới. Các ví dụ của spec ("điểm chỉ", "khoản này") vẫn không khớp.
+    Danh sách số trần ("Điều 5 và 6", "các điều 5, 6") không bị bắt: regex chỉ bắt mention có từ khoá kèm đối số, "6" không
+    có từ khoá. Spec nhắc hiện tượng này nhưng regex đã cho thì không bắt được; không đoán thêm.
+
+A4. "Nếu hàm A2/A3 không chịu mã có hậu tố chữ ... loại các đơn vị có hậu tố".
+    Đã thử trực tiếp (test_suffix_codes_accepted_by_a2_a3_as_sources): A2 và A3 NHẬN mã hậu tố làm nguồn (cạnh ra đúng, kể cả
+    "Điều này"/"khoản này" trong Điều 621a và quy tắc 2). Chỗ A2 không nhận là mã hậu tố làm ĐÍCH: "Điều 621a" không ra cạnh,
+    "khoản 2a Điều 626" ra cạnh thô thành D626. Đó đúng là việc của cờ "chưa phủ", không phải của việc loại đơn vị.
+    Nên mặc định KHÔNG loại đơn vị nào, mục "Chưa tính cạnh (mã có hậu tố)" của báo cáo luôn có mặt và ghi "(không có: ...)".
+    Công tắc a4.A2A3_ACCEPT_SUFFIX = False bật chế độ loại (đơn vị có hậu tố bị loại khỏi tập đưa vào A2/A3, liệt kê ở mục đó,
+    cạnh cấu trúc contains/part_of vẫn ghi); có test cho cả hai chế độ. Một câu như "khoản 2a Điều 626, điểm đ khoản 1 Điều 650"
+    trong đơn vị changed/new còn có thể làm A2 báo ValueError (cấp không giảm liên tiếp): theo spec đó là lỗi của A4 (E_A2).
+
+A5. --doc-id và --effective-from có thể lặp lại, mỗi lần ứng một --amend theo thứ tự; nếu có thì số lần phải bằng số --amend,
+    không thì lỗi E_ARGS. Spec chỉ ghi "[--doc-id ID]" nhưng đồng thời cho nhiều --amend, mà một giá trị chung không dùng được
+    cho nhiều văn bản (ngày hiệu lực khác nhau, hai văn bản không thể cùng doc-id).
+
+B. NGÀY HIỆU LỰC, NHIỀU VĂN BẢN
+-------------------------------
+B1. Regex ngày áp trên toàn văn bản (kể cả trong nháy), không phân biệt hoa thường, đúng như spec. Ngày không hợp lệ
+    (31/02) là lỗi E_DATE_INVALID. Hai ngày khác nhau là lỗi kể cả khi có --effective-from. --effective-from khi văn bản không
+    có ngày: dùng cờ. Dạng cờ phải là YYYY-MM-DD (E_ARGS nếu khác).
+B2. Tên mặc định = các doc-id nối bằng "+" theo thứ tự trên dòng lệnh (không theo thứ tự ngày). Áp dụng thì sắp theo ngày.
+B3. Văn bản không có chỉ thị nào (chỉ có dòng bị bỏ qua) không phải lỗi: kết quả là không đổi gì, báo cáo liệt kê các dòng
+    bị bỏ qua. Spec không nói là lỗi nên không thêm.
+B4. Văn bản sửa đổi đọc bằng utf-8-sig (chịu được BOM đầu file), \r\n và \r được đổi thành \n. File đầu ra luôn LF, không BOM.
+
+C. NHẬN DẠNG CHỈ THỊ
+--------------------
+C1. Dòng chỉ thị phải kết thúc đúng ở "như sau:" (R1, R2, R4, dòng phạm vi R5). Nội dung trong nháy bắt đầu ở dòng kế tiếp;
+    "như sau: “..." trên cùng một dòng không được nhận (thành dòng lạ).
+C2. Chữ số/chữ trong N, P được hạ về chữ thường ("Điều 621A" = Điều 621a). Điểm phải nằm trong a1.DIEM_LETTERS (không f j w z).
+    "điểm P" không kèm khoản là lỗi (E_REFLIST): mã Điểm luôn nằm dưới Khoản.
+C3. "Bãi bỏ một số điều của Bộ luật ..." (tiêu đề chung) được kiểm TRƯỚC khung "Bãi bỏ <REFLIST>", nếu không nó thành lỗi
+    REFLIST. Khung R3 có mà danh sách không đọc được thì lỗi E_REFLIST, không thành "dòng lạ".
+C4. R3 với nhiều Ref tạo nhiều chỉ thị, mỗi Ref một directive_seq (nên bảng chỉ thị và directive_seq tính theo Ref). Chỉ thị
+    cụm từ có nhiều đích là MỘT chỉ thị (một seq), mỗi đích một cạnh amend_edges.
+C5. Chỉ thị cụm từ: quan hệ lấy theo dạng câu ("Thay thế ... bằng" = replaces, còn lại amends), không dò chữ "thay thế" trong
+    nội dung nháy. Cụm cũ rỗng, hoặc cụm chèn rỗng là lỗi E_PHRASE. Nháy thẳng trong dòng cụm từ được đổi thành nháy cong từng cặp.
+    Phạm vi (dòng "một số cụm từ tại ...") chỉ bị chấm dứt bởi một chỉ thị KHÔNG phải cụm từ hoặc dòng phạm vi mới; dòng
+    trống và dòng bị bỏ qua giữa chừng không chấm dứt. Chỉ thị cụm từ có "tại" riêng không dùng và không chấm dứt phạm vi.
+    Dòng cụm từ có thể kết thúc bằng chấm hoặc chấm phẩy (nhiều dấu cũng được).
+C6. "đánh số lại" / "trở thành" (không phân biệt hoa thường) chỉ được tìm trên các dòng NGOÀI nháy mà không khớp chỉ thị
+    (dòng lạ và dòng bị bỏ qua). Không tìm trong nội dung trong nháy (đó là chữ của luật, có thể có "trở thành" hợp lệ) và
+    không tìm trong dòng cụm từ đã khớp (cụm từ có thể chứa chữ đó).
+C7. Hàm móc normalize_unknown_line được gọi với dòng đã chuẩn hoá (còn số thứ tự đầu dòng) và chỉ cho dòng lạ. Chuỗi trả về
+    được chuẩn hoá lại, bỏ số thứ tự, rồi phải khớp một chỉ thị; chuỗi rỗng/không khớp là E_UNKNOWN_LINE. Nội dung trong nháy
+    của chỉ thị chuẩn vẫn lấy từ các dòng sau trong văn bản. Cột "dòng" của bảng chỉ thị ghi dòng gốc của văn bản.
+    Hàm được tra theo tên module khi gọi nên test gắn hàm giả bằng a4.normalize_unknown_line = ...
+
+D. NỘI DUNG TRONG NHÁY
+----------------------
+D1. Phần ngoài nháy trong vùng nội dung chỉ được là khoảng trắng, "." và ";" (E_BODY nếu khác), kể cả chữ nằm giữa hai đoạn
+    nháy. Dòng sau dấu đóng nháy cuối cùng được xử lý như dòng ngoài nháy bình thường (có thể là chỉ thị kế tiếp).
+    Đếm nháy: “ ” lồng bằng bộ đếm; nháy thẳng " không lồng, và bên trong nháy cong thì nháy thẳng là chữ thường (và ngược lại).
+    Nháy mở không đóng, hoặc không có nháy nào sau chỉ thị cần nội dung, là E_BODY.
+D2. R4 (đổi tên) là trường hợp riêng: chữ giữa hai nháy ("được sửa đổi thành") nằm ngoài nháy nhưng hợp lệ. Các dòng của vùng
+    được nối bằng dấu cách rồi khớp một trong hai dạng. Tiền tố "Điều N. " bỏ nếu có; nếu N khác số của chỉ thị thì E_BODY.
+    Tiêu đề cũ phải trùng tiêu đề hiện tại (E_HEADING), kiểm lúc áp dụng.
+D3. Cây nội dung: đúng một gốc (nhãn ngang hoặc cao hơn gốc là E_BODY). Con đầu của Điều phải là Khoản 1, con đầu của Khoản
+    phải là điểm a; sau đó liên tiếp (2, 2a, 2b, 3 ... / a, b, c, d, đ, e ...); sai là E_ORDER. Chỉ gốc Khoản/Điểm được bắt đầu
+    ở số/chữ bất kỳ. Khoản có hậu tố sau "2" phải là 2a rồi 2b (không nhảy chữ).
+D4. Dòng không nhãn: sau dòng trống thì thành đoạn mới của nút hiện tại; ngược lại nối bằng dấu cách vào phần chữ trước (heading
+    nếu Điều chưa có đoạn nào, ngược lại đoạn cuối; Khoản/Điểm chưa có đoạn thì thành đoạn đầu). "Nút hiện tại" là nút có nhãn
+    gần nhất, kể cả Điểm. Khác A1: A1 gắn đoạn sau Điểm vào Khoản. Chưa có test nào dùng chỗ khác biệt này.
+    Dòng không nhãn trước nhãn đầu tiên là E_BODY.
+D5. Khoản nhãn "N." mà rỗng chữ ("2." một mình) không được nhận là nhãn (regex của spec cần khoảng trắng sau dấu chấm).
+
+E. ÁP DỤNG
+----------
+E1. changed = mã có phiên bản mới (version >= 2, kể cả mở lại mã đã đóng); new = mã chưa từng có trong lịch sử. Một mã vừa new
+    vừa changed (tạo ở văn bản này, sửa ở văn bản sau) nằm ở cả hai. closed = mã bị đóng bởi bất kỳ văn bản nào. Kết quả nhiều
+    văn bản là hợp của các bước, không trừ nhau.
+E2. named_unchanged = mã được nêu (mọi mã khớp cây trong replace_unit; đích của chỉ thị cụm từ/đổi tên) mà cả lượt áp dụng
+    không tạo phiên bản mới cho nó. Đích cụm từ mà chỉ con cháu đổi vẫn là named_unchanged (chữ của chính nó không đổi).
+    Hợp qua các văn bản, không trừ changed của văn bản khác.
+E3. Hai chỉ thị cụm từ (trong cùng văn bản) cùng sửa một đơn vị: phiên bản tạo trong CHÍNH văn bản này được sửa tại chỗ, không
+    tạo thêm phiên bản [date, date) rỗng. Hệ quả: một văn bản tạo tối đa một phiên bản mới cho mỗi mã; new_version của các cạnh
+    amend cùng đích trùng nhau; directive_seq của phiên bản là chỉ thị đã tạo nó.
+E4. replace_unit với mã trong cây mới từng tồn tại nhưng đã đóng: mở lại thành phiên bản kế tiếp (version = cuối + 1,
+    previous_version = cuối), tính là changed. (insert_unit thì lỗi E_EXISTS theo spec.) Tránh trùng (id, version).
+E5. Cạnh amend_edges của replace_unit chỉ có đích là gốc cây; new_version là phiên bản mới của gốc nếu gốc có, không thì null
+    (con cháu đổi không thành cạnh riêng). Cạnh của chỉ thị cụm từ: mỗi đích được nêu một cạnh.
+E6. "vào sau M" của R2: M phải có trong lịch sử (kể cả đã đóng) vì là đơn vị anh em "có thật"; số mới phải xếp sau M theo
+    (số, hậu tố) hoặc thứ tự bảng chữ. Không yêu cầu số mới liền kề M, cũng không kiểm Khoản mới nối tiếp số Khoản hiện có.
+    Nếu không có "vào sau" thì không kiểm thứ tự.
+E7. Chồng lấn: so theo mã đích (bằng nhau hoặc tổ tiên của nhau), tính trước khi áp dụng. Đích của insert_unit là mã đơn vị mới
+    (nên "Bổ sung khoản 3 vào Điều 621" chồng với "Điều 621 được thay thế"). replace_doc có đích BLDS2015 nên chồng với mọi
+    chỉ thị khác. Hai đích chồng nhau trong cùng MỘT chỉ thị cụm từ cũng là lỗi (sẽ áp hai lần lên cùng chữ).
+E8. Chỉ thị cụm từ: so sánh phân biệt hoa thường; "Bỏ cụm từ" xoá mọi lần xuất hiện rồi gộp dấu cách thừa và cắt đầu cuối đoạn,
+    không sửa dấu câu sót lại (cụm cần xoá nên kèm dấu câu của nó, như luật thật). "Bổ sung cụm ... vào sau cụm ..." chèn sau
+    MỌI lần xuất hiện của cụm neo, thêm một dấu cách trừ khi cụm chèn bắt đầu bằng , ; . :. Đoạn rỗng sau khi xoá bị bỏ.
+    Cụm thay bằng chính nó thì không đổi chữ, không tạo phiên bản (đích thành named_unchanged).
+E9. So sánh chữ khi quyết định có tạo phiên bản: heading và danh sách đoạn (đã chuẩn hoá khoảng trắng như A1), nên chỉ khác ở
+    khoảng trắng thì không tạo phiên bản.
+E10. Thứ tự dòng trong versions.jsonl: theo mã, thứ tự mã xuất hiện lần đầu (văn bản gốc theo A1, mã mới theo thứ tự tạo), mỗi mã
+    các phiên bản tăng dần. previous_version là SỐ phiên bản trước (không phải id).
+
+F. CẠNH, CỜ, TẬP ẢNH HƯỞNG
+--------------------------
+F1. Chạy lại A2/A3 chỉ với text của đơn vị changed ∪ new (cộng text của cha có "sau đây:" để quy tắc 2 sinh cạnh cho con mới);
+    mọi đơn vị đang hiệu lực khác vẫn có mặt (không có text) làm đích và tổ tiên. KHÔNG chạy trên toàn bộ đơn vị đang hiệu lực
+    như spec ghi nguyên văn, vì a2.build_refs báo ValueError khi một đơn vị KHÔNG ĐỔI trỏ vào khoản đã đóng trong khi Điều
+    của nó còn (và a3 báo ValueError với "không áp dụng" trỏ vào đích đã đóng). Chạy toàn bộ thì mọi lần bãi bỏ một khoản có
+    người trỏ tới đều dừng với lỗi, không bao giờ ra được "cờ cạnh đứt". Với đơn vị changed/new, ValueError vẫn là lỗi của A4
+    (E_A2 / E_A3, thông báo của A2/A3 nêu mã đơn vị), đúng spec.
+F2. Cạnh gốc của đơn vị đã đóng không bị close trong edge_changes (spec chỉ cho nguồn thuộc changed ∪ new). So cạnh theo
+    (s, p, o), bỏ qua evidence/method: cụm dẫn chiếu đổi chữ nhưng vẫn trỏ cùng đích thì không tính là đổi. Thứ tự dòng edge_changes
+    của một văn bản: close trước, rồi add contains/part_of của mã mới (contains rồi part_of liền nhau), rồi add refers_to/exception_of.
+    contains/part_of của mã mở lại không add nếu cạnh đã có. Dòng contains/part_of không có evidence/method.
+F3. Cờ cạnh đứt tính MỖI VĂN BẢN sau khi áp: cạnh còn trong trạng thái cạnh (gốc chưa bị close + cạnh đã add), nguồn còn hiệu lực,
+    đích có phiên bản cuối đóng đúng ngày hiệu lực của văn bản đó. Cạnh đứt từ văn bản trước không lặp lại ở văn bản sau.
+F4. Tập ảnh hưởng tính MỘT lần cho cả lượt, U = changed ∪ closed của cả lượt, từ cạnh GỐC chưa bị close (không tính cạnh đã add:
+    đó là kết quả của chữ mới). Chỉ đơn vị còn hiệu lực ở cuối lượt mới có mặt. Lý do: "refers_to m" (nguồn trỏ tới m trong U);
+    "exception_of m" (đơn vị này là ngoại lệ của m); "exception_of_by m" (m trong U là ngoại lệ của đơn vị này). Mỗi đơn vị
+    lý do sắp xếp theo chữ cái; khoá sắp theo (số, hậu tố). File impact.json là chính dict đó.
+F5. Mention "chưa phủ" chỉ quét text của đơn vị (không quét heading); ngữ cảnh 40 ký tự mỗi bên (a2.CONTEXT_CHARS), xuống dòng
+    thành dấu cách. Chỉ quét đơn vị changed ∪ new còn hiệu lực sau lượt.
+
+G. GHI FILE, LỖI, SNAPSHOT
+--------------------------
+G1. Lỗi: chỉ ghi docs/a4_report_<name>.txt (mã lỗi, văn bản, dòng, mô tả). File dữ liệu của lần chạy trước (nếu có) KHÔNG bị xoá
+    hay ghi đè; chỉ lần chạy thành công mới ghi. Lỗi in cả ra stderr. Mã lỗi: E_ARGS E_BASE E_NO_DATE E_DATE_INVALID E_DATE_CONFLICT
+    E_DATE_FLAG E_SAME_DATE E_UNKNOWN_LINE E_UNSUPPORTED E_REFLIST E_SCOPE E_PHRASE E_BODY E_ORDER E_ROOT E_OVERLAP E_TARGET
+    E_EXISTS E_PARENT E_AFTER E_HEADING E_PHRASE_MISSING E_A2 E_A3 E_CODE.
+G2. Lỗi dùng sai tham số của argparse (thiếu --base, ...) thoát mã 2 theo argparse, không ghi báo cáo. Lỗi E_ARGS (số --doc-id
+    sai, ngày sai dạng) thoát mã 1 và ghi báo cáo.
+G3. Cần có file a1_triples/a2_edges/a2_refs/a3_exceptions của cùng stem với file gốc (đọc cạnh gốc từ các file này, không tính
+    lại); thiếu là E_BASE. Văn bản gốc nạp bằng a1.load_parsed (nên chỉ hai file đã khai báo trong a1.EXPECTED_DIEU).
+G4. Trong báo cáo đường dẫn văn bản sửa đổi ghi tương đối so với gốc dự án nếu nằm trong đó.
+G5. snapshot ghi stdout (nhị phân, LF, không BOM) nếu không có --out. Đoạn thêm của Khoản (parts[1:]) xuất ngay sau dòng nhãn,
+    TRƯỚC các Điểm (A1 mất vị trí gốc của đoạn sau Điểm, ví dụ Điều 643 K2, nên không khôi phục được). Điểm nhiều đoạn: đoạn thêm
+    là dòng ngay dưới dòng Điểm. Dòng Điểm có hai dấu cách cuối trừ dòng cuối nhóm, như file gốc. Snapshot trước ngày sớm nhất
+    giống TỪNG BYTE file gốc (có test). A1 không đọc lại được snapshot khi thiếu Điều (EXPECTED_DIEU đòi đủ 5 Điều) hoặc có hậu tố,
+    nên test đọc lại bằng A1 chỉ dùng văn bản 1 và 7.
+G6. Văn bản dev (data/dev_amend): văn bản 2 hiệu lực 2027-07-01, còn lại 2027-01-01 (nên văn bản 1 và 2 nạp liên tiếp được, văn bản 1 và
+    3 cùng ngày để thử lỗi). Nội dung trong nháy chép đúng chữ file mẫu cho phần không đổi.
+
+H. CHƯA LÀM / GIỚI HẠN ĐÃ BIẾT
+------------------------------
+H1. Không hỗ trợ: "được bổ sung như sau" (R1), đánh số lại, "trở thành", chỉ thị bổ sung/sửa nhiều đoạn trong một Điểm,
+    nháy lồng trong cụm từ R5, danh sách số trần ("Điều 5, 6"), điểm trực tiếp dưới Điều.
+H2. Quy tắc 2 của A3 cần cha còn text kết thúc bằng "sau đây:". Cha không đổi và con bị đóng: cạnh con → cha không bị close
+    (con đóng nên không còn là nguồn còn hiệu lực; theo F2).
+H3. Tầng khái niệm / quy tắc sẽ mở rộng impact_set sau (hàm đã tách riêng, nhận U và danh sách cạnh).
