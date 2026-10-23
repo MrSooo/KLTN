@@ -1,0 +1,35 @@
+A7 báo cáo đồ thị gộp: blds2015_p4 (p4_dev05_bai_bo_ds_2027-01-01)
+file đã đọc:
+  data/processed/a1_triples_blds2015_p4.jsonl
+  data/processed/a2_edges_blds2015_p4.jsonl
+  data/processed/a2_refs_blds2015_p4.jsonl
+  data/processed/a3_exceptions_blds2015_p4.jsonl
+  data/processed/a4_p4_dev05_bai_bo_ds_versions.jsonl
+  data/processed/a4_p4_dev05_bai_bo_ds_edge_changes.jsonl
+
+== Nút ==
+tổng 205 | theo loại {'dieu': 52, 'khoan': 106, 'diem': 42, 'dieu_kien': 5} | theo status {'ok': 201, 'duplicate': 4}
+
+== Cạnh ==
+tổng 337 | theo p {'contains': 148, 'part_of': 148, 'refers_to': 24, 'exception_of': 13, 'same_text_as': 4} | theo status {'ok': 336, 'dangling': 1}
+bộ ba đã gộp (0): (không có)
+nút bản sao text (4, bản sau -> canonical):
+  BLDS2015.D617.K2.c -> BLDS2015.D617.K1.d
+  BLDS2015.D618.K2.b -> BLDS2015.D618.K1.b
+  BLDS2015.D618.K2.c -> BLDS2015.D618.K1.c
+  BLDS2015.D637.K1 -> BLDS2015.D632.K1
+
+== Tại ngày 2027-01-01 ==
+dòng versions 215 | đơn vị đang hiệu lực 200 | edge_changes đã áp (không có)
+cạnh bị bỏ: {'structural': 26, 'source_closed': 1} (structural: contains/part_of có đầu đã đóng; source_closed: refers_to/exception_of có nguồn đã đóng)
+cạnh treo (1, nguồn còn hiệu lực, đích đã đóng):
+  BLDS2015.D653 refers_to BLDS2015.D651
+
+== Kiểm tra ==
+[7a] mã nút duy nhất, status nút hợp lệ: 205 nút -> ĐẠT
+[7b] cạnh ok có đủ hai đầu, cạnh treo có nguồn là nút và đích không phải nút: 337 cạnh -> ĐẠT
+[7c] không còn bộ ba (s, p, o) lặp: 337 cạnh, 0 bộ ba đã gộp khi dựng -> ĐẠT
+[7d] nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm: 4 nút duplicate -> ĐẠT
+[7e] mỗi Khoản/Điểm đúng một part_of tới cha đúng bậc, contains đối xứng: 148 cặp contains -> ĐẠT
+
+KẾT LUẬN: ĐẠT

@@ -1,0 +1,27 @@
+A7 báo cáo đồ thị gộp: blds2015_5dieu
+file đã đọc:
+  data/processed/a1_triples_blds2015_5dieu.jsonl
+  data/processed/a2_edges_blds2015_5dieu.jsonl
+  data/processed/a2_refs_blds2015_5dieu.jsonl
+  data/processed/a3_exceptions_blds2015_5dieu.jsonl
+  data/processed/a6_conditions_blds2015_5dieu.jsonl
+  data/processed/a6_exceptions_blds2015_5dieu.jsonl
+
+== Nút ==
+tổng 35 | theo loại {'dieu': 5, 'khoan': 14, 'diem': 16} | theo status {'ok': 35}
+
+== Cạnh ==
+tổng 64 | theo p {'contains': 30, 'part_of': 30, 'refers_to': 3, 'exception_of': 1} | theo status {'ok': 64}
+bộ ba đã gộp (0): (không có)
+nút bản sao text (0, bản sau -> canonical):
+  (không có)
+
+== Kiểm tra ==
+[7a] mã nút duy nhất, status nút hợp lệ: 35 nút -> ĐẠT
+[7b] cạnh ok có đủ hai đầu, cạnh treo có nguồn là nút và đích không phải nút: 64 cạnh -> ĐẠT
+[7c] không còn bộ ba (s, p, o) lặp: 64 cạnh, 0 bộ ba đã gộp khi dựng -> ĐẠT
+[7d] nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm: 0 nút duplicate -> ĐẠT
+[7e] mỗi Khoản/Điểm đúng một part_of tới cha đúng bậc, contains đối xứng: 30 cặp contains -> ĐẠT
+[7f] số nút, cạnh, nút bản sao khớp bảng EXPECTED: nút 35/35, cạnh 64/64, duplicate 0/0 -> ĐẠT
+
+KẾT LUẬN: ĐẠT

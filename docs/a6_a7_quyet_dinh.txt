@@ -1,0 +1,81 @@
+A6, A7: CÁC QUYẾT ĐỊNH CHỖ SPEC CHƯA GHI HOẶC CẦN LỆCH SPEC
+==========================================================
+Làm theo plan đã duyệt (ngoại lệ chung, đồ thị gộp, khử trùng lặp, nhãn cô lập, nạp A4 theo ngày). Mục A là chỗ user đã chọn
+(đọc trước). Mục B trở đi là chỗ tôi chọn mặc định khi plan chưa nói; sửa nếu không đúng.
+
+A. ĐÃ CHỐT VỚI USER
+--------------------
+A1. Ngoại lệ chung "..., trừ trường hợp X" thành NÚT ĐIỀU KIỆN riêng (file riêng, không đổi số A1/A2) và cạnh exception_of từ
+    nút điều kiện tới đơn vị quy tắc; câu giống nhau gộp một nút. Làm ở A6, không nới hai quy tắc của A3.
+A2. Đơn vị có text giống hệt KHÔNG gộp nút (mỗi đơn vị là một vị trí pháp lý có cha riêng; gộp sẽ phá "một cha" của A5).
+    Giữ nút, nút bản sau có status "duplicate" và cạnh same_text_as: bản sau -> canonical, canonical là đơn vị đứng đầu nhóm theo
+    thứ tự file. Nhóm 3 bản trở lên: các bản sau cùng trỏ về canonical.
+A3. Nhãn cô lập: "duplicate" (nút bản sao) và "dangling" (cạnh treo). Bộ ba trùng chính xác được gộp tự động (chuẩn hoá).
+A4. Đồ thị gộp là bước A7 mới, không sửa A1-A5. Nạp A4 theo ngày (--versions, --date) làm ở giai đoạn cuối.
+A5. Không mở rộng cú pháp A4 (xem docs/pham_vi_mo_rong.txt).
+
+B. A6: NGOẠI LỆ CHUNG
+---------------------
+B1. Trigger "trừ"/"ngoại trừ" thuộc A3 khi và chỉ khi text của đơn vị kết thúc bằng "sau đây:" (a3.find_exceptions, quy tắc 2). A6 dùng
+    đúng điều kiện đó để bỏ qua (mục "thuộc A3" của dòng tổng), nên không phải chạy A3 và dùng lại được ở chế độ theo ngày.
+    Trigger "không áp dụng" không phải việc của A6: ca không có cụm dẫn chiếu đứng ngay trước vẫn nằm ở a3_unhandled (p4 không có).
+B2. Mẫu bắt: (?:ngoại[ ]+)?trừ[ ]+trường[ ]+hợp, không phân biệt hoa thường, bắt đầu đúng tại vị trí của trigger. "ngoại trừ trường hợp"
+    được thêm cho đối xứng với EXCEPT_KINDS của A3; file thật có 0 ca, chỉ có test dựng tay.
+B3. Mệnh đề = phần text sau "trừ trường hợp" đến hết đoạn (không vượt qua dòng mới), bỏ khoảng trắng và . ; : , ở cuối. Mệnh đề có vế sau
+    (D646.K3: "..., thì phần di tặng cũng được dùng ...") vẫn là một mệnh đề. Evidence = từ chữ "trừ"/"ngoại" của cụm đến hết đoạn, nguyên văn
+    (còn dấu cuối), là đoạn con của text đơn vị.
+B4. Khoá gộp = a6.norm_text: gộp khoảng trắng, casefold, bỏ . ; : , và dấu cách cuối. Dùng chung cho nút điều kiện và cho same_text_as của A7.
+    Nút giữ mệnh đề nguyên văn (hoa/thường) của lần xuất hiện đầu.
+B5. Mã nút điều kiện BLDS2015.C_<8 ký tự đầu sha1(khoá)>, type "dieu_kien". Băm để mã không đổi khi tập câu đổi giữa các ngày hoặc phiên bản (đánh số
+    tuần tự sẽ đổi). Hai khoá khác nhau trùng mã: ValueError. Mã chỉ có hai đoạn nên a2.parent_of coi như Điều, nhưng nút này không đi qua A2.
+B6. Spec im lặng thì ValueError (CLI thoát 1, không ghi file, như A3): một đơn vị có nhiều hơn một "trừ trường hợp"; mệnh đề rỗng. Trigger "trừ" không
+    kèm "trường hợp" và text không kết thúc "sau đây:" thì vào unhandled (đơn vị, câu = toàn bộ text), file docs/a6_unhandled_<stem>.txt.
+B7. Số: p4 10 trigger trừ/ngoại trừ = thuộc A3 1 (D632) + đã xử lý 9 + unhandled 0; 5 nút, 9 cạnh. Mẫu: 0. Đếm độc lập "trừ trường hợp" trên md = 9.
+    Đơn vị A6 xử lý = đúng 9 đơn vị mà a3_unhandled_blds2015_p4.txt liệt kê (có test).
+
+C. A7: ĐỒ THỊ GỘP (TRẠNG THÁI GỐC)
+-----------------------------------
+C1. Nút: đơn vị từ a1_triples (type, number, heading, text, source_line; thiếu thì null) cộng nút điều kiện từ a6_conditions. Cột nút:
+    id, type, number, heading, text, source_line, status. Nút điều kiện có number, heading, source_line là null.
+C2. Cạnh: nối a2_edges, a2_refs, a3_exceptions, a6_exceptions theo thứ tự đó, gộp theo (s, p, o), giữ dòng đầu. Cột: s, p, o, evidence, method, status,
+    sources. evidence rỗng và method null khi file nguồn không có. Bộ ba bị gộp có thêm evidences (các evidence khác nhau, khác rỗng). sources liệt kê một
+    nhãn cho MỖI lần xuất hiện (cùng một file lặp thì nhãn lặp), nên len(sources) > 1 nghĩa là đã gộp. Dữ liệu thật hiện không có bộ ba trùng
+    (gộp chỉ được thử bằng dữ liệu dựng tay).
+C3. same_text_as nhóm theo (type, a6.norm_text(text)): Khoản không gộp với Điểm. Đơn vị không có text bị bỏ qua, nút điều kiện không tham gia. Cạnh:
+    evidence rỗng, method "exact_text", sources ["a7"]. Cạnh được thêm sau các cạnh nguồn, theo thứ tự nút bản sau. p4: 4 cặp (D617.K2.c -> D617.K1.d,
+    D618.K2.b -> D618.K1.b, D618.K2.c -> D618.K1.c, D637.K1 -> D632.K1).
+C4. Kiểm tự động (không đạt thì báo cáo vẫn ghi, file dữ liệu KHÔNG ghi, thoát 1): 7a mã nút duy nhất và status hợp lệ; 7b cạnh ok có đủ hai đầu, cạnh
+    treo có nguồn là nút và đích không phải nút; 7c không còn (s, p, o) lặp; 7d nút bản sao đúng một same_text_as tới đơn vị đầu nhóm (dựng lại nhóm từ
+    chính các nút); 7e mỗi Khoản/Điểm đúng một part_of (ok) tới cha là mã bỏ đoạn cuối và đúng bậc, contains đối xứng, Điều không có part_of;
+    7f (chỉ trạng thái gốc) số nút, cạnh, nút duplicate khớp bảng cứng a7.EXPECTED theo stem, stem lạ thì lỗi. 7e KHÔNG có trong plan, thêm vì nó là
+    chỗ bắt lỗi nếu cạnh add của A4 thiếu khi nạp theo ngày.
+C5. Số đối chiếu: p4 220 nút (215 + 5), 364 cạnh (161 + 161 + 25 + 4 + 9 + 4 same_text_as), 4 duplicate; mẫu 35 nút, 64 cạnh (60 + 3 + 1), 0 duplicate.
+    Bảng EXPECTED được test cộng lại độc lập (số dòng file nguồn, Counter riêng cho bản sao), không chỉ chép từ kết quả chạy.
+C6. File: data/processed/a7_<stem>_{nodes,edges}.jsonl và docs/a7_report_<stem>.txt. Báo cáo ghi cả khi KHÔNG ĐẠT.
+C7. A5 giữ nguyên, không đọc file A6/A7. Trùng cạnh trên các nguồn kể cả cạnh A6 do 7c của A7 kiểm.
+
+D. A7: THEO NGÀY (NẠP A4)
+--------------------------
+D1. --versions a4_<name>_versions.jsonl --date YYYY-MM-DD; tên file phải đúng dạng a4_<name>_versions.jsonl vì edge_changes lấy theo a4_<name>_edge_changes.jsonl
+    cùng thư mục. md phải là văn bản gốc của bộ A4: có mã A1 không có trong versions thì lỗi ("không phải của <stem>"). Ngày sai dạng: lỗi.
+D2. Nút = a4.active_rows tại T (from null hoặc <= T, to null hoặc > T), theo thứ tự dòng của file versions. Thêm cột version và effective_from;
+    source_line là null (file versions không có). Nút điều kiện và cạnh ngoại lệ chung tính lại bằng a6.find_general trên text đang hiệu lực; không đọc
+    file a6_*. Text mới có hai "trừ trường hợp" thì ValueError, CLI thoát 1 (lỗi dữ liệu, không đoán).
+D3. Cạnh = cạnh gốc (a2_edges, a2_refs, a3_exceptions) rồi áp các dòng edge_changes có at <= T theo thứ tự dòng (so chuỗi ngày). add: thêm (gộp nếu đã có).
+    close: bỏ; close một cạnh không có, hoặc op khác add/close: ValueError. at = T tính là đã hiệu lực (nửa khoảng [from, to) như A4).
+D4. Lọc theo hiệu lực sau khi áp: contains/part_of có một đầu không còn hiệu lực: bỏ ("structural" trong báo cáo). Cạnh ngữ nghĩa (mọi p khác) có nguồn không
+    còn hiệu lực: bỏ ("source_closed"; A4 F2 không close cạnh của đơn vị đã đóng). Cạnh ngữ nghĩa có nguồn còn hiệu lực mà đích không còn: giữ, status
+    "dangling". Đây là cờ cạnh đứt của A4 tính theo trạng thái tại T: với bộ A4 một văn bản, tập dangling tại ngày hiệu lực bằng đúng run.broken của A4 (có
+    test cho cả 8 văn bản dev trên p4). Nhiều văn bản thì dangling tại T có thể gồm cả cạnh đứt từ văn bản trước, A4 chỉ báo cạnh đứt của văn bản đang áp.
+D5. Canonical của nhóm bản sao là đơn vị đứng đầu theo thứ tự nút TẠI T. Nếu canonical bị đóng thì đơn vị bản sao kế tiếp thành canonical ở ngày đó
+    (cạnh same_text_as được tính lại mỗi ngày, không giữ từ ngày khác).
+D6. File: a7_<stem>_<name>_<date>_{nodes,edges}.jsonl và docs/a7_report_<stem>_<name>_<date>.txt. Không dùng bảng EXPECTED (kiểm 7a-7e). Văn bản thay cả bộ luật
+    (replace_doc) đóng mọi đơn vị nên đồ thị tại ngày đó rỗng, không phải lỗi.
+D7. Đã chạy: p4_dev05_bai_bo_ds tại 2027-01-01 cho 205 nút (215 - 15 + 5) và đúng 1 cạnh treo (D653 refers_to D651). Các bộ khác được test bằng thư mục tạm
+    (test_a7), không ghi thêm file vào data/processed.
+
+E. GIỚI HẠN ĐÃ BIẾT
+--------------------
+E1. Hợp nhất chỉ theo text giống hệt (sau norm_text), không theo nghĩa.
+E2. Ngoại lệ chung chỉ nhận dạng "trừ trường hợp"; các cách viết khác ("ngoại trừ" không kèm "trường hợp", "không áp dụng" thiếu cụm dẫn chiếu) vẫn ở unhandled.
+E3. Nút điều kiện chưa có thuộc tính nào ngoài text; chưa tách mệnh đề thành hành vi, chủ thể, điều kiện con (thuộc tầng khái niệm sau này).

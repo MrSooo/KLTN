@@ -1,0 +1,43 @@
+PHẠM VI HIỆN TẠI VÀ CÁC MỤC ĐỂ MỞ RỘNG SAU
+==========================================
+Ghi 2026-10-24 theo quyết định của user, cập nhật sau khi làm A6 và A7. Đối chiếu với spec "Xác định và Quản lý Liên kết Tri thức" và
+"Kiểm tra Đồ thị và Triệt tiêu Chồng chéo Dữ liệu".
+
+A. NGOÀI PHẠM VI HIỆN TẠI (sẽ mở rộng sau)
+-------------------------------------------
+A1. Kiểm soát xung đột chế tài.
+    Spec: "một hành vi bị gán song song hai chế tài đối kháng mà thiếu nút điều kiện phân tách".
+    Lý do bỏ: dữ liệu hiện có là Bộ luật Dân sự 2015 phần 4 (Điều 609-662, thừa kế), không có chế tài. Đồ thị chỉ có
+    đơn vị Điều / Khoản / Điểm, nút điều kiện (A6) và các cạnh contains, part_of, refers_to, exception_of, same_text_as, amends, replaces, repeals;
+    không có nút hành vi, nút chế tài, nút điều kiện phân tách, nên không có gì để quét.
+A2. Gắn nhãn cô lập hoặc chuẩn hoá cho nhánh MÂU THUẪN (vế "mâu thuẫn" của yêu cầu "tự động chuẩn hóa hoặc gắn nhãn cô
+    lập"). Phụ thuộc A1 vì chưa có loại mâu thuẫn nào được định nghĩa.
+A3. Mở rộng cú pháp văn bản sửa đổi của A4 (chưa hỗ trợ, hiện báo lỗi hoặc ghi vào báo cáo; làm khi có văn bản sửa đổi thật để thử, vì 8 văn bản dev đều do
+    tự soạn nên thêm cú pháp lúc này dễ đoán sai): chỉ thị "được bổ sung như sau"; danh sách số trần ("Điều 5, 6"); điểm trực tiếp dưới Điều;
+    "đánh số lại" / "trở thành"; nháy lồng trong chỉ thị cụm từ; sửa hoặc bổ sung nhiều đoạn trong một Điểm. Chi tiết: docs/a4_quyet_dinh.txt mục H1.
+
+B. KHI MỞ RỘNG (chưa quyết định, phải hỏi lại user trước khi làm)
+------------------------------------------------------------------
+B1. Cần dữ liệu có chế tài (luật nào) và một tầng khái niệm / quy tắc cho hành vi, chế tài, điều kiện. Chỗ chừa sẵn:
+    docs/a4_quyet_dinh.txt H3 (a4.impact_set tách riêng, nhận tập U và danh sách cạnh); nút điều kiện của A6 (type "dieu_kien") đã là một nút khái niệm sơ khai.
+B2. Chưa định nghĩa "đối kháng" (ví dụ phạt tiền và phạt tù cùng một hành vi?) và cách gắn nhãn cô lập cho mâu thuẫn (hiện nhãn status chỉ có
+    ok | duplicate | dangling).
+
+C. VẪN TRONG PHẠM VI, ĐÃ LÀM
+-----------------------------
+C1. Phát hiện trùng lặp chính xác: A5 bước 1 (mã trùng, (s, p) lặp) và bước 3 ((s, p, o) lặp giữa a2_edges, a2_refs, a3_exceptions). A5 chỉ báo cáo
+    và thoát mã 1.
+C2. Nhất quán cấu trúc: A5 bước 2 (mỗi đơn vị một cha) và bước 4 (phiên bản, khoảng hiệu lực không chồng), cờ cạnh đứt của A4.
+C3. Ngoại lệ chung (A6, 2026-10-24): 9 câu "..., trừ trường hợp X" của p4 thành 9 cạnh exception_of từ 5 nút điều kiện (5 câu "có thỏa thuận khác" chung một nút).
+    A3 vẫn đúng hai quy tắc, a3_unhandled_blds2015_p4.txt không đổi. Quyết định: docs/a6_a7_quyet_dinh.txt mục B.
+C4. Đồ thị gộp, khử trùng lặp, nhãn cô lập (A7, 2026-10-24): gộp bộ ba trùng tự động; nút bản sao text giống hệt gắn status "duplicate" và cạnh same_text_as
+    (p4: 4 cặp); cạnh treo gắn "dangling" khi nạp A4 theo ngày. Quyết định: docs/a6_a7_quyet_dinh.txt mục C, D.
+
+D. GIỚI HẠN ĐÃ BIẾT CỦA PHẦN ĐÃ LÀM
+------------------------------------
+D1. Hợp nhất chỉ theo text giống hệt (sau khi gộp khoảng trắng, casefold, bỏ dấu cuối), không theo nghĩa. Nút bản sao vẫn là nút riêng, không có nút
+    gộp (có chủ đích, để giữ quy tắc một cha).
+D2. Ngoại lệ chung chỉ nhận dạng "trừ trường hợp". "Không áp dụng" thiếu cụm dẫn chiếu đứng ngay trước (p4 không có ca nào) vẫn nằm ở a3_unhandled; "trừ" không
+    kèm "trường hợp" nằm ở a6_unhandled (p4 không có ca nào).
+D3. A5 không đọc file A6, A7. A7 tự kiểm 7a-7f trên đồ thị gộp.
+D4. Dữ liệu thật hiện không có bộ ba trùng chính xác (A5 xác nhận 0), nên việc gộp bộ ba chỉ được thử bằng dữ liệu dựng tay.
