@@ -1,4 +1,4 @@
-"""Chạy lại toàn bộ A1→A7 trên hai file nguồn và 8 văn bản dev, rồi chạy 7 bộ test. Dùng làm hồi quy cho mỗi bước sửa.
+"""Chạy lại toàn bộ A1→A7 trên hai file nguồn và 8 văn bản dev, rồi chạy các bộ test. Dùng làm hồi quy cho mỗi bước sửa.
 
 Chạy: python -I src/run_all.py            (cần Python >= 3.10)
       python -I src/run_all.py --no-tests
@@ -19,7 +19,7 @@ DEV = ["dev01_bai_bo_khoan", "dev02_sua_khoan", "dev03_thay_dieu", "dev04_bo_sun
 SNAPSHOT_DATES = {"dev02_sua_khoan": ["2027-07-01"], "dev01+dev02": ["2027-01-01", "2027-07-01"]}  # còn lại: 2027-01-01
 A5_VERSIONS = [("5dieu", "dev01+dev02"), ("5dieu", "dev04_bo_sung"), ("p4", "dev01_full")]
 A7_AT_DATE = [("p4", "p4_dev05_bai_bo_ds", "2027-01-01")]
-TESTS = [f"test_a{i}.py" for i in range(1, 8)]
+TESTS = [f"test_a{i}.py" for i in range(1, 8)] + ["test_eval_gold.py"]
 
 
 def run(*args):
