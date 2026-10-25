@@ -223,7 +223,7 @@ Kế hoạch: `plan_sua_a1_a7.md`. Nhánh `sua-theo-review`. Mỗi bước chạ
 | F-09 | 2.5 | `209cd9d` | Đã sửa: Chương XXI–XXIV (thêm tiêu đề XXI vào raw), cây văn bản > Chương > Điều > Khoản > Điểm; A4 gán Chương cho Điều mới. Chưa có Phần, Mục | p4: +4 nút, +116 cạnh; số dòng raw +2 |
 | F-06 | 3.1 | `f2440d6` | Một phần: nhãn `duplicate` đổi thành `same_text` (trùng chữ). Khử trùng lặp thực thể đúng nghĩa thuộc sổ khái niệm của đề cương, chưa làm | Đổi nhãn |
 | F-17 | 3.2a | `f4cefd8` | Khung: mẫu 11 Điều theo quy tắc, `eval_gold.py`. Chờ người gán; chưa có số precision/recall | Không đổi |
-| F-15, F-16 | 3.2b, 3.3 | (commit Pha 3) | Bộ kiểm thử ngoài 19 câu nguyên văn Luật 85/2025/QH15; A4 có tầng chuẩn hoá LLM có kiểm (hướng C, `--llm`). `--llm off`: 9 đúng, 10 dừng có lỗi, 0 sai. Chưa chạy live | Không đổi (mặc định off) |
+| F-15, F-16 | 3.2b, 3.3 | `bd93cce` | Bộ kiểm thử ngoài 19 câu nguyên văn Luật 85/2025/QH15; A4 có tầng chuẩn hoá LLM có kiểm (hướng C, `--llm`). `--llm off`: 9 đúng, 10 dừng có lỗi, 0 sai. Chưa chạy live | Không đổi (mặc định off) |
 
 Đánh giá lại các mục ở §1 sau Pha 1 và Pha 2 (mục không nêu thì giữ nguyên):
 
