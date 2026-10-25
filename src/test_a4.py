@@ -305,6 +305,31 @@ def test_skipped_lines_are_listed_not_errors():
     assert len(parsed.directives) == 1
 
 
+# Dạng bị động / "hết hiệu lực" / "thay bằng": trước đây bị bỏ qua êm (review F-03), nay là dòng lạ.
+LOOKS_LIKE_DIRECTIVE = [
+    "Khoản 2 Điều 621 được bãi bỏ.",
+    "Điều 621 bị bãi bỏ.",
+    "Khoản 2 Điều 621 hết hiệu lực kể từ ngày 01 tháng 01 năm 2027.",
+    "Các Điều 621 và 626 hết hiệu lực.",
+    "Sửa cụm từ “người thừa kế” thành “người hưởng thừa kế” tại Điều 621.",
+    "Cụm từ “người thừa kế” tại Điều 621 được thay bằng cụm từ “người hưởng thừa kế”.",
+    "Bộ luật Dân sự số 91/2015/QH13 hết hiệu lực kể từ ngày Luật này có hiệu lực.",
+]
+
+
+def test_lines_that_look_like_directives_are_unknown_not_skipped():
+    for line in LOOKS_LIKE_DIRECTIVE:
+        e = raises("E_UNKNOWN_LINE", parse_body, f"Bãi bỏ khoản 2 Điều 650.\n\n{line}")
+        assert e.line_no == 5 and e.line == line, (line, e.line_no, e.line)
+
+
+def test_line_with_reference_but_no_action_word_is_still_skipped():
+    line = "Hợp đồng giao kết theo khoản 1 Điều 621 trước ngày Luật này có hiệu lực thì tiếp tục được thực hiện."
+    parsed = parse_body(f"Bãi bỏ khoản 2 Điều 621.\n\n{line}")
+    assert {l: r for _, l, r in parsed.skipped}[line] == "không phải chỉ thị"
+    assert len(parsed.directives) == 1
+
+
 # ---- (2) áp từng văn bản dev: kỳ vọng viết tay ----
 
 K1 = c("D621.K1", "D621.K1.a", "D621.K1.b", "D621.K1.c", "D621.K1.d")
@@ -682,6 +707,11 @@ def test_series_later_document_sees_state_after_earlier_one():
 def test_error_unknown_line_without_hook():
     r = apply_cli_error("E_UNKNOWN_LINE", [amend_text("Khoản 2 Điều 621 được thay thế bằng quy định mới.")])
     assert "dòng: 3: Khoản 2 Điều 621 được thay thế bằng quy định mới." in r
+
+
+def test_error_no_directive():
+    raises("E_NO_DIRECTIVE", parse_body, "Ghi chú không liên quan.")
+    apply_cli_error("E_NO_DIRECTIVE", [amend_text("Ghi chú không liên quan.")])
 
 
 def test_error_target_missing_and_closed():

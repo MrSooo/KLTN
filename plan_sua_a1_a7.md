@@ -13,7 +13,7 @@ Ngày lập: 2026-10-25. Gốc: commit `b82c925`. Mỗi bước ghi: finding, fi
 
 ## 1. Các câu hỏi cần bạn quyết (chặn Pha 2 và 3)
 
-Đây là §6 của review; mỗi câu có đề xuất mặc định để plan chạy được nếu bạn đồng ý.
+Đây là §6 của review. **Đã chốt 2026-10-25: Q1–Q4 theo đề xuất mặc định.** Q5: BLDS 2015 chưa có văn bản sửa đổi nào nên không có cặp thật; bộ kiểm thử ngoài của A4 là văn bản **giả lập**, cách làm ở 3.2.
 
 | Câu | Đề xuất mặc định | Ảnh hưởng nếu chọn khác |
 |---|---|---|
@@ -89,7 +89,8 @@ Thứ tự theo độ lan: các bước ít ảnh hưởng trước, A1 sau cùn
 | # | Việc | Theo | Ghi chú |
 |---|---|---|---|
 | 3.1 | Đổi `duplicate` → `same_text` (A7 `NODE_STATUS`, báo cáo, test, `a6_a7_quyet_dinh.txt`) | Q1(a) | Một commit riêng, chỉ đổi tên |
-| 3.2 | Bộ kiểm thử ngoài + đáp án gán tay: `data/gold/` (khoảng 10 Điều do người gán), `src/eval_gold.py` tính precision/recall cho `refers_to`, `exception_of` | Q5, F-16, F-17 | Người gán **không** được nhìn đầu ra của pipeline trước |
+| 3.2a | Đáp án gán tay cho liên kết (không cần văn bản sửa đổi): `data/gold/` (khoảng 10 Điều của p4 do người gán), `src/eval_gold.py` tính precision/recall cho `refers_to`, `exception_of` | F-17 | Người gán **không** được nhìn đầu ra của pipeline trước |
+| 3.2b | Văn bản sửa đổi giả lập nhưng **mượn câu thật**: chép nguyên văn câu chỉ thị từ các luật sửa đổi thật (luật khác, ví dụ Luật sửa đổi Luật Thi hành án dân sự 2014), chỉ đổi số Điều/khoản sang BLDS, **không sửa câu cho vừa parser**. Ghi nguồn từng câu. Kết quả mong đợi: mỗi câu hoặc áp đúng, hoặc dừng lỗi; không câu nào bị bỏ qua êm | Q5, F-16 | Giảm tính vòng tròn so với 8 văn bản dev; vẫn không thay được cặp thật, ghi rõ là giới hạn |
 | 3.3 | Mở rộng văn phạm A4: danh sách khoản/điểm hỗn hợp, khoản tương đối, chèn nhiều Điều, dạng bị động, "hết hiệu lực" thành `repeals`, hiệu lực tách theo Điều | Q2 = tổng quát, F-15 | Chỉ làm khi có văn bản thật ở 3.2 làm mẫu |
 | 3.4 | Đăng ký văn bản thay `EXPECTED_DIEU`/`DOC_PREFIX`/bảng `EXPECTED` theo tên file | Q2 = tổng quát, F-14, F-22 | |
 | 3.5 | Việc nhỏ: F-19 (giữ vị trí đoạn sau danh sách Điểm), F-20, F-21 | | F-20, F-21 có thể chỉ ghi lại |

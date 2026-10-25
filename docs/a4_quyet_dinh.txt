@@ -72,6 +72,12 @@ C7. Hàm móc normalize_unknown_line được gọi với dòng đã chuẩn ho�
     được chuẩn hoá lại, bỏ số thứ tự, rồi phải khớp một chỉ thị; chuỗi rỗng/không khớp là E_UNKNOWN_LINE. Nội dung trong nháy
     của chỉ thị chuẩn vẫn lấy từ các dòng sau trong văn bản. Cột "dòng" của bảng chỉ thị ghi dòng gốc của văn bản.
     Hàm được tra theo tên module khi gọi nên test gắn hàm giả bằng a4.normalize_unknown_line = ...
+C8. (2026-10-25, review F-03) Dòng ngoài nháy không khớp chỉ thị là dòng lạ, không được bỏ qua, nếu có "bãi bỏ" hoặc
+    "hết hiệu lực" (không phân biệt hoa thường), hoặc có cả từ hành động (sửa, bổ sung, thay, bỏ: nguyên từ) lẫn tham chiếu
+    cấu trúc (Điều/khoản/điểm + số hoặc chữ). Trước đây các dạng bị động ("Khoản 2 Điều 5 được bãi bỏ."), "hết hiệu lực",
+    "được thay bằng" bị ghi "không phải chỉ thị" và văn bản nạp thành công mà không áp gì. Cái giá: điều khoản chuyển tiếp
+    có các từ đó cũng thành dòng lạ (fail-closed); dòng có tham chiếu mà không có từ hành động vẫn bị bỏ qua như cũ.
+    Văn bản không có chỉ thị nào sau khi parse là lỗi E_NO_DIRECTIVE.
 
 D. NỘI DUNG TRONG NHÁY
 ----------------------
@@ -147,7 +153,7 @@ G. GHI FILE, LỖI, SNAPSHOT
 G1. Lỗi: chỉ ghi docs/a4_report_<name>.txt (mã lỗi, văn bản, dòng, mô tả). File dữ liệu của lần chạy trước (nếu có) KHÔNG bị xoá
     hay ghi đè; chỉ lần chạy thành công mới ghi. Lỗi in cả ra stderr. Mã lỗi: E_ARGS E_BASE E_NO_DATE E_DATE_INVALID E_DATE_CONFLICT
     E_DATE_FLAG E_SAME_DATE E_UNKNOWN_LINE E_UNSUPPORTED E_REFLIST E_SCOPE E_PHRASE E_BODY E_ORDER E_ROOT E_OVERLAP E_TARGET
-    E_EXISTS E_PARENT E_AFTER E_HEADING E_PHRASE_MISSING E_A2 E_A3 E_CODE.
+    E_EXISTS E_PARENT E_AFTER E_HEADING E_PHRASE_MISSING E_A2 E_A3 E_CODE E_NO_DIRECTIVE.
 G2. Lỗi dùng sai tham số của argparse (thiếu --base, ...) thoát mã 2 theo argparse, không ghi báo cáo. Lỗi E_ARGS (số --doc-id
     sai, ngày sai dạng) thoát mã 1 và ghi báo cáo.
 G3. Cần có file a1_triples/a2_edges/a2_refs/a3_exceptions của cùng stem với file gốc (đọc cạnh gốc từ các file này, không tính

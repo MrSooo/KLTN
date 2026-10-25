@@ -413,6 +413,10 @@ RE_SCOPE = re.compile(r"^(?:Sửa đổi, bổ sung|Sửa đổi|Bổ sung) mộ
 RE_OWN_DIEU = re.compile(r"^Điều \d+[a-z]?\s*\.")  # tiêu đề Điều của chính văn bản sửa đổi (có dấu chấm sau số)
 RE_TITLE = re.compile(r"^(Sửa đổi|Bổ sung|Bãi bỏ)[^.]* một số điều của .+:?$")
 RE_WORDS = re.compile(r"được sửa đổi|được thay thế|được bổ sung|Sửa đổi|Bổ sung|Bãi bỏ|Thay thế|Bỏ cụm|Thay cụm|thay thế")
+# Dòng không khớp RE_WORDS nhưng vẫn có dáng chỉ thị (bị động, "hết hiệu lực", "thay bằng") là dòng lạ, không bị bỏ qua (C8).
+RE_ACTION = re.compile(r"(?<!\w)(?:sửa|bổ sung|thay|bỏ)(?!\w)", re.I)
+RE_ACTION_ALONE = re.compile(r"(?<!\w)(?:bãi bỏ|hết hiệu lực)(?!\w)", re.I)  # không cần kèm tham chiếu (cấp văn bản)
+RE_STRUCT_REF = re.compile(r"(?<!\w)(?:điều|khoản|điểm)[ ]+(?:\d+[a-zđ]?|[a-zđ])(?!\w)", re.I)
 RE_UNSUPPORTED = re.compile(r"đánh số lại|trở thành", re.I)
 
 
@@ -481,6 +485,8 @@ def skip_reason(line):
         return "tiêu đề Điều của văn bản sửa đổi"
     if RE_TITLE.match(line):
         return "tiêu đề chung"
+    if RE_ACTION_ALONE.search(line) or (RE_ACTION.search(line) and RE_STRUCT_REF.search(line)):
+        return None
     if not RE_WORDS.search(line):
         return "không phải chỉ thị"
     return None
@@ -653,6 +659,8 @@ def parse_amendment(text):
             e.line_no = e.line_no or no
             e.line = e.line or raw
             raise
+    if not directives:
+        raise A4Error("E_NO_DIRECTIVE", "văn bản sửa đổi không có chỉ thị nào")
     return Parsed(directives, skipped)
 
 
