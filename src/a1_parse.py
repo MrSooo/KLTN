@@ -33,6 +33,9 @@ RE_KHOAN = re.compile(r"^\*\*(\d+)\\?\.\*\*\s*(.*)$")
 RE_DIEM = re.compile(rf"^- \*\*([{DIEM_LETTERS}])\)\*\*\s*(.*)$")
 RE_RULE = re.compile(r"^-{3,}$")
 RE_HEADING = re.compile(r"^#{1,2}(\s|$)")  # chỉ # và ## mới được bỏ qua; ### phải là Điều
+# Tiêu đề Chương (review F-09): "## Chương XXII – THỪA KẾ THEO DI CHÚC". Khớp trước RE_HEADING; # và ## khác vẫn bị bỏ qua.
+RE_CHUONG = re.compile(r"^## Chương ([IVXLCDM]+) [–-] (.+)$")
+CHUONG_TYPE = "chuong"
 
 # Dòng gốc của para mà bắt đầu bằng các tiền tố này thì rất có thể là Khoản/Điểm/tiêu đề sai định dạng.
 SUSPECT_PREFIXES = ("- ", "**", "#")
@@ -43,7 +46,7 @@ SKIP_HEADING = "tiêu đề #/##"
 
 
 class Token(NamedTuple):
-    kind: str     # dieu | khoan | diem | para
+    kind: str     # chuong | dieu | khoan | diem | para
     label: str    # số điều / số khoản / chữ điểm; "" với para
     text: str     # phần chữ đã làm sạch
     line_no: int  # số dòng trong file nguồn (từ 1), khớp với step 1
@@ -95,7 +98,7 @@ def tokenize(text):
 
     for line_no, raw in enumerate(lines, 1):
         line = normalize(raw)
-        for kind, regex in (("dieu", RE_DIEU), ("khoan", RE_KHOAN), ("diem", RE_DIEM)):
+        for kind, regex in (("chuong", RE_CHUONG), ("dieu", RE_DIEU), ("khoan", RE_KHOAN), ("diem", RE_DIEM)):
             m = regex.match(line)  # khớp mẫu đầu tiên thì dừng
             if m:
                 tokens.append(Token(kind, m.group(1), clean_text(m.group(2)), line_no))
@@ -120,11 +123,12 @@ def tokenize(text):
 @dataclass
 class Unit:
     id: str
-    type: str            # dieu | khoan | diem
-    number: str          # nhãn gốc: "621", "1", "a" / "đ"
-    heading: str | None  # chỉ Điều có
+    type: str            # chuong | dieu | khoan | diem
+    number: str          # nhãn gốc: "XXII", "621", "1", "a" / "đ"
+    heading: str | None  # chỉ Chương và Điều có
     parts: list          # list[str] các đoạn chữ; ghép bằng "\n" khi ghi ra
     source_line: int     # dòng của nhãn trong file nguồn
+    chuong: str | None = None  # chỉ Điều: mã Chương chứa nó (None nếu file không có Chương)
 
 
 class ParseError(NamedTuple):
@@ -133,9 +137,10 @@ class ParseError(NamedTuple):
 
 
 class Parsed(NamedTuple):
-    units: list   # list[Unit], theo thứ tự xuất hiện trong file
+    units: list   # list[Unit] Điều / Khoản / Điểm, theo thứ tự xuất hiện trong file (A4 lập phiên bản trên đúng tập này)
     errors: list  # list[ParseError]; sau khi parse xong phải rỗng
     notes: list   # list[str]: para đứng ngay sau một Điểm, ghi vào a1_notes.txt
+    chapters: tuple = ()  # Unit type chuong theo thứ tự; không lập phiên bản (cú pháp sửa đổi không chạm tới Chương)
 
 
 def diem_code(label):
@@ -149,9 +154,9 @@ def parse(tokens, expected_dieu):
     expected_dieu: dãy số Điều mong đợi theo thứ tự. Mọi lỗi được thu vào `errors`, parser vẫn đi
     tiếp; sau lỗi, bộ đếm được đồng bộ lại theo số thực tế để lỗi không lan sang các dòng sau.
     """
-    units, errors, notes = [], [], []
+    units, errors, notes, chapters = [], [], [], []
     expected_dieu = list(expected_dieu)
-    dieu = khoan = None  # Điều / Khoản hiện tại
+    chuong = dieu = khoan = None  # Chương / Điều / Khoản hiện tại
     n_dieu = 0           # số phần tử expected_dieu đã dùng
     khoan_no = 0         # số Khoản gần nhất trong Điều hiện tại
     diem_idx = -1        # chỉ số trong DIEM_LETTERS của chữ Điểm gần nhất trong Khoản hiện tại
@@ -162,7 +167,14 @@ def parse(tokens, expected_dieu):
     for i, t in enumerate(tokens):
         prev = tokens[i - 1] if i else None
 
-        if t.kind == "dieu":
+        if t.kind == "chuong":
+            if any(c.number == t.label for c in chapters):
+                err(t, f"Chương {t.label} lặp")
+            chuong = Unit(f"{DOC_PREFIX}.C{t.label}", CHUONG_TYPE, t.label, t.text, [], t.line_no)
+            chapters.append(chuong)
+            dieu = khoan = None
+
+        elif t.kind == "dieu":
             number = int(t.label)
             want = expected_dieu[n_dieu] if n_dieu < len(expected_dieu) else None
             if number == want:
@@ -172,7 +184,7 @@ def parse(tokens, expected_dieu):
                     else f"Điều {number}, mong đợi Điều {want}")
                 rest = expected_dieu[n_dieu:]
                 n_dieu += rest.index(number) + 1 if number in rest else 1
-            dieu = Unit(f"{DOC_PREFIX}.D{t.label}", "dieu", t.label, t.text, [], t.line_no)
+            dieu = Unit(f"{DOC_PREFIX}.D{t.label}", "dieu", t.label, t.text, [], t.line_no, chuong.id if chuong else None)
             units.append(dieu)
             khoan, khoan_no, diem_idx = None, 0, -1
 
@@ -214,7 +226,10 @@ def parse(tokens, expected_dieu):
     if n_dieu < len(expected_dieu):
         last = tokens[-1].line_no if tokens else 0
         errors.append(ParseError(last, f"hết file nhưng còn thiếu Điều: {expected_dieu[n_dieu:]}"))
-    return Parsed(units, errors, notes)
+    if chapters:  # file có Chương thì mọi Điều phải thuộc một Chương (không đoán Chương cho Điều đứng trước Chương đầu tiên)
+        errors += [ParseError(u.source_line, f"Điều {u.number} đứng trước Chương đầu tiên") for u in units
+                   if u.type == "dieu" and u.chuong is None]
+    return Parsed(units, errors, notes, tuple(chapters))
 
 
 def step1_check_data(path=SAMPLE):
@@ -288,14 +303,19 @@ def fail_if_errors(parsed):
     raise SystemExit(1)
 
 
-def to_triples(units):
-    """Mỗi đơn vị thành các bộ ba (s, p, o), p theo thứ tự: type, number, heading, text, version, source_line."""
+def to_triples(units, chapters=()):
+    """Mỗi đơn vị thành các bộ ba (s, p, o), p theo thứ tự: type, number, heading, chuong, text, version, source_line.
+
+    Chương xen vào theo vị trí trong file (ngay trước Điều đầu tiên của nó).
+    """
     triples = []
-    for u in units:
+    for u in sorted([*units, *chapters], key=lambda u: u.source_line):
         triples.append((u.id, "type", u.type))
         triples.append((u.id, "number", u.number))
-        if u.heading is not None:  # chỉ Điều
+        if u.heading is not None:  # Chương và Điều
             triples.append((u.id, "heading", u.heading))
+        if u.chuong is not None:  # chỉ Điều, khi file có Chương
+            triples.append((u.id, "chuong", u.chuong))
         if u.parts:
             triples.append((u.id, "text", "\n".join(u.parts)))
         triples.append((u.id, "version", 1))
@@ -352,7 +372,7 @@ def step4_write_triples(path=SAMPLE):
     """Step 4: ghi triples JSONL vào data/processed/. Từ chối ghi nếu còn lỗi parse."""
     _, parsed = load_parsed(path)
     fail_if_errors(parsed)
-    triples = to_triples(parsed.units)
+    triples = to_triples(parsed.units, parsed.chapters)
     out = triples_path(path)
     write_triples(triples, out)
     print("số đơn vị:", len(parsed.units), "| số triples:", len(triples))

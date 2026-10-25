@@ -58,11 +58,12 @@ class Expect(NamedTuple):
     duplicates: int
 
 
-# Số kỳ vọng của trạng thái gốc. p4: 215 đơn vị + 5 nút điều kiện + 1 nút văn bản gốc; 322 (A2a) + 25 (A2b) + 4 (A3) + 9 + 1 (A6) + 4 same_text_as.
-# Mẫu: 35 đơn vị + 1 nút văn bản; 60 + 3 + 1. Đã đối chiếu độc lập ở test_a7 (cộng số dòng của các file nguồn).
+# Số kỳ vọng của trạng thái gốc. p4: 215 đơn vị + 4 Chương + 5 nút điều kiện + 1 nút văn bản gốc; 430 (A2a, gồm 108 Điều-Chương)
+# + 25 (A2b) + 4 (A3) + 9 + 1 (A6) + 8 (văn bản-Chương) + 4 same_text_as. Mẫu (không có Chương): 35 đơn vị + 1 nút văn bản; 60 + 3 + 1
+# + 10 (văn bản-Điều). Đã đối chiếu độc lập ở test_a7 (cộng số dòng của các file nguồn).
 EXPECTED = {
-    "blds2015_5dieu": Expect(nodes=36, edges=64, duplicates=0),
-    "blds2015_p4": Expect(nodes=221, edges=365, duplicates=4),
+    "blds2015_5dieu": Expect(nodes=36, edges=74, duplicates=0),
+    "blds2015_p4": Expect(nodes=225, edges=481, duplicates=4),
 }
 
 
@@ -80,6 +81,16 @@ def doc_node(code, so_hieu=None, ten=None, co_quan=None, ngay_ban_hanh=None, hie
 def base_doc_node():
     d = a1.BASE_DOC
     return doc_node(d["id"], d["so_hieu"], d["ten"], d["co_quan"], d["ngay_ban_hanh"], d["hieu_luc"])
+
+
+def attach_to_doc(edge_set, nodes, doc_id):
+    """contains / part_of từ nút văn bản gốc tới mỗi Chương, và tới mỗi Điều chưa có cha (văn bản không có Chương), theo thứ tự
+    nút. Nhờ đó đồ thị là một cây văn bản > Chương > Điều > Khoản > Điểm (review F-09)."""
+    has_parent = {e["s"] for e in edge_set.edges.values() if e["p"] == "part_of"}
+    for n in nodes:
+        if n["type"] == a2.CHUONG or (n["type"] == "dieu" and n["id"] not in has_parent):
+            edge_set.add("a7", {"s": doc_id, "p": "contains", "o": n["id"], "evidence": ""})
+            edge_set.add("a7", {"s": n["id"], "p": "part_of", "o": doc_id, "evidence": ""})
 
 
 class EdgeSet:
@@ -186,7 +197,12 @@ def graph_base(src):
     for label in FULL_SOURCES:
         for _, r in rows[label]:
             edge_set.add(label, r)
-    return assemble(unit_nodes(rows["a1_triples"]), condition_nodes(rows["a6_conditions"]), edge_set, {}, [base_doc_node()]), paths
+    nodes = unit_nodes(rows["a1_triples"])
+    units = [n for n in nodes if n["type"] != a2.CHUONG]
+    chapters = [n for n in nodes if n["type"] == a2.CHUONG]
+    doc = base_doc_node()
+    attach_to_doc(edge_set, chapters + units, doc["id"])
+    return assemble(units, condition_nodes(rows["a6_conditions"]), edge_set, {}, chapters + [doc]), paths
 
 
 def edge_changes_path(versions, kind="edge_changes"):
@@ -233,7 +249,8 @@ def graph_at(src, versions, date):
     rows["a4_edge_changes"] = a5.load_rows(paths["a4_edge_changes"], CHANGE_KEYS)
     rows["a4_amend_edges"] = a5.load_rows(paths["a4_amend_edges"], AMEND_KEYS)
     all_ids = {r["id"] for r in version_rows}
-    stray = sorted({r["s"] for _, r in rows["a1_triples"]} - all_ids)
+    versioned = {r["s"] for _, r in rows["a1_triples"] if r["p"] == "type" and r["o"] in a5.TYPES}  # Chương không lập phiên bản
+    stray = sorted(versioned - all_ids)
     if stray:
         raise ValueError(f"{versions} không phải của {Path(src).stem}: mã A1 không có trong versions, ví dụ {stray[:3]}")
 
@@ -243,7 +260,10 @@ def graph_at(src, versions, date):
         n = node(r["id"], r["type"], r["number"], r["heading"], r["text"])
         n["version"], n["effective_from"] = r["version"], r["effective_from"]
         units.append(n)
-    active_ids = {n["id"] for n in units}
+    # Chương không lập phiên bản: có mặt từ ngày hiệu lực của văn bản gốc cho tới khi văn bản gốc bị thay cả (review F-09)
+    replaced = any(r["p"] == "replaces" and r["o"] == a4.DOC_PREFIX and r["effective_from"] <= date for _, r in rows["a4_amend_edges"])
+    chapters = [] if replaced or date < a4.BASE_EFFECTIVE else [n for n in unit_nodes(rows["a1_triples"]) if n["type"] == a2.CHUONG]
+    active_ids = {n["id"] for n in units + chapters}
 
     edge_set = EdgeSet()
     for label in BASE_SOURCES:
@@ -286,12 +306,13 @@ def graph_at(src, versions, date):
     for s, p, o, evidence, method in general.edges + general.ref_edges:
         edge_set.add("a6_exceptions", {"s": s, "p": p, "o": o, "evidence": evidence, "method": method})
     docs = [base_doc_node()]
+    attach_to_doc(edge_set, chapters + units, docs[0]["id"])
     docs += add_amend_edges(edge_set, rows["a4_amend_edges"], date, active_ids | {docs[0]["id"]}, paths["a4_amend_edges"])
     amend = [e for e in edge_set.edges.values() if e["p"] in AMEND_P]
     notes = {"date": date, "version_rows": len(version_rows), "active": len(units), "applied": dict(applied),
              "dropped": dict(dropped), "dangling": dangling, "amend": dict(collections.Counter(e["p"] for e in amend)),
              "historical": [(e["s"], e["p"], e["o"]) for e in amend if e["status"] == HISTORICAL]}
-    return assemble(units, conditions, edge_set, notes, docs), paths
+    return assemble(units, conditions, edge_set, notes, chapters + docs), paths
 
 
 # ---- kiểm tra ----
@@ -371,19 +392,29 @@ def check_graph(graph, expect=None):
         if n["status"] == DUPLICATE and n["id"] not in expected:
             p_d.append(f"{n['id']}: status duplicate nhưng không có đơn vị đứng trước cùng text")
 
-    # 7e: mỗi Khoản/Điểm đúng một part_of (ok) tới cha là mã bỏ đoạn cuối và đúng bậc; contains đối xứng; Điều không có part_of
+    # 7e: mỗi Khoản/Điểm đúng một part_of (ok) tới cha là mã bỏ đoạn cuối và đúng bậc; Điều đúng một part_of tới Chương (đồ thị có
+    # Chương) hoặc tới nút văn bản (không có Chương); Chương đúng một part_of tới nút văn bản; contains đối xứng. Đồ thị không có nút
+    # văn bản lẫn Chương (đồ thị dựng tay) thì Điều là gốc, không có part_of.
     p_e = []
     part_of = collections.defaultdict(list)
     for e in edges:
         if e["p"] == "part_of" and e["status"] == OK:
             part_of[e["s"]].append(e["o"])
+    has_chuong = any(n["type"] == a2.CHUONG for n in nodes)
+    has_doc = any(n["type"] == DOC_TYPE for n in nodes)
     for n in nodes:
-        if n["type"] not in a5.TYPES:
-            continue
         parents = part_of.get(n["id"], [])
-        if n["type"] == "dieu":
+        if n["type"] in ("dieu", a2.CHUONG):
+            want = a2.CHUONG if n["type"] == "dieu" and has_chuong else DOC_TYPE if has_doc else None
+            if want is None:
+                if parents:
+                    p_e.append(f"{n['id']}: đồ thị không có Chương lẫn nút văn bản nên Điều không có part_of, có {parents}")
+            elif len(parents) != 1 or parents[0] not in by_id or by_id[parents[0]]["type"] != want:
+                p_e.append(f"{n['id']}: part_of tới {parents}, cần đúng một nút {want}")
+            continue
+        if n["type"] not in a5.TYPES:
             if parents:
-                p_e.append(f"{n['id']}: là Điều nhưng có part_of tới {parents}")
+                p_e.append(f"{n['id']}: {n['type']} không được có part_of, có {parents}")
             continue
         want = n["id"].rsplit(".", 1)[0]
         if parents != [want]:
@@ -403,7 +434,7 @@ def check_graph(graph, expect=None):
         a5.Check("7b", "cạnh ok có đủ hai đầu, cạnh treo / historical có nguồn là nút và đích không phải nút", f"{len(edges)} cạnh", p_b),
         a5.Check("7c", "không còn bộ ba (s, p, o) lặp", f"{len(edges)} cạnh, {len(graph.merged)} bộ ba đã gộp khi dựng", p_c),
         a5.Check("7d", "nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm", f"{n_dup} nút duplicate", p_d),
-        a5.Check("7e", "mỗi Khoản/Điểm đúng một part_of tới cha đúng bậc, contains đối xứng", f"{len(contains)} cặp contains", p_e),
+        a5.Check("7e", "mỗi Chương/Điều/Khoản/Điểm đúng một part_of tới cha đúng bậc, contains đối xứng", f"{len(contains)} cặp contains", p_e),
     ]
     if expect is not None:
         n_edges = len(edges)
@@ -476,9 +507,11 @@ def format_report(stem, tag, paths, graph, checks):
     L.append(f"nút bản sao text ({len(dups)}, bản sau -> canonical):")
     L += [f"  {e['s']} -> {e['o']}" for e in dups] or ["  (không có)"]
     skip = boilerplate(graph.nodes)
+    semantic = [e for e in graph.edges if e["p"] not in STRUCTURAL]
     L += ["", "== Liên thông =="]
-    L.append(f"thành phần liên thông: {components(graph.nodes, graph.edges)} | bỏ {len(skip)} nút điều kiện chung chung "
-             f"({'/'.join(a6.BOILERPLATE_KINDS)}): {components(graph.nodes, graph.edges, skip)} (chưa tính chính các nút đó)")
+    L.append(f"thành phần liên thông: {components(graph.nodes, graph.edges)} | chỉ theo cạnh ngữ nghĩa (bỏ contains/part_of): "
+             f"{components(graph.nodes, semantic)} | bỏ thêm {len(skip)} nút điều kiện chung chung ({'/'.join(a6.BOILERPLATE_KINDS)}): "
+             f"{components(graph.nodes, semantic, skip)} (chưa tính chính các nút đó)")
     notes = graph.notes
     if notes:
         L += ["", f"== Tại ngày {notes['date']} =="]

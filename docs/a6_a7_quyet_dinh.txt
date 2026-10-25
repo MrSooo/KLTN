@@ -71,7 +71,8 @@ C4. Kiểm tự động (không đạt thì báo cáo vẫn ghi, file dữ liệ
     refers_to ∪ exception_of vì "D619 refers_to D652" cùng "D652 exception_of D619" (quy tắc dẫn chiếu tới ngoại lệ của nó) là vòng hợp lệ.
     Phạm vi "mâu thuẫn hình thức" đã kiểm: vòng exception_of (7g), sửa/bãi bỏ đơn vị đã đóng (A4 E_TARGET), hai chỉ thị chồng đích (A4 E_OVERLAP),
     cạnh tới đơn vị đã đóng (cờ cạnh đứt A4, dangling A7). Chưa kiểm: xung đột chế tài (docs/pham_vi_mo_rong.txt A1).
-C5. Số đối chiếu: p4 221 nút (215 + 5 + 1 văn bản, D8), 365 cạnh (161 + 161 + 25 + 4 + 9 + 1 + 4 same_text_as; +1 từ B8), 4 duplicate; mẫu 36 nút (35 + 1 văn bản), 64 cạnh (60 + 3 + 1), 0 duplicate.
+C5. Số đối chiếu: p4 225 nút (215 + 4 Chương + 5 + 1 văn bản; D8, D9), 481 cạnh (430 A2a gồm 108 Điều-Chương + 25 + 4 + 9 + 1 (B8) + 8 văn bản-Chương + 4
+    same_text_as), 4 duplicate; mẫu 36 nút (35 + 1 văn bản), 74 cạnh (60 + 3 + 1 + 10 văn bản-Điều), 0 duplicate.
     Bảng EXPECTED được test cộng lại độc lập (số dòng file nguồn, Counter riêng cho bản sao), không chỉ chép từ kết quả chạy.
 C6. File: data/processed/a7_<stem>_{nodes,edges}.jsonl và docs/a7_report_<stem>.txt. Báo cáo ghi cả khi KHÔNG ĐẠT.
 C7. A5 giữ nguyên, không đọc file A6/A7. Trùng cạnh trên các nguồn kể cả cạnh A6 do 7c của A7 kiểm.
@@ -101,6 +102,14 @@ D8. (2026-10-25, review F-07, F-18) Nút văn bản type van_ban, cột thêm co
     status historical, 7b chỉ cho historical ở cạnh cập nhật có nguồn là nút và đích không phải nút; nguồn cạnh cập nhật phải là van_ban.
     Thay cả văn bản (dev08): cạnh dev08 replaces BLDS2015 tới nút văn bản gốc, ok. Ở trạng thái gốc nút văn bản chưa có cạnh (thêm part_of
     từ Chương ở bước 2.5 của plan). Quan hệ cấp văn bản khác (sửa một phần, hết hiệu lực một phần) chưa có: A4 không sinh.
+D9. (2026-10-25, review F-09) Chương: A1 nhận "## Chương <La Mã> – <tên>" thành đơn vị type chuong (mã BLDS2015.C<La Mã>, heading là tên),
+    Điều có bộ ba chuong; file có Chương mà Điều đứng trước Chương đầu tiên là lỗi parse. data/raw/blds2015_p4.md được thêm dòng
+    "## Chương XXI – QUY ĐỊNH CHUNG" trên Điều 609 (Điều 609-623; các dòng phía sau lệch +2). A2 sinh contains/part_of Chương-Điều.
+    A7 thêm contains/part_of từ nút văn bản gốc tới mỗi Chương, hoặc tới mỗi Điều khi văn bản không có Chương (file mẫu): đồ thị là một
+    cây văn bản > Chương > Điều > Khoản > Điểm. 7e: Điều đúng một part_of tới Chương (đồ thị có Chương) hoặc tới văn bản (không có),
+    Chương đúng một part_of tới văn bản; đồ thị không có cả hai (dựng tay) thì Điều là gốc. Theo ngày: Chương không lập phiên bản, có mặt
+    từ ngày hiệu lực văn bản gốc tới khi văn bản gốc bị thay cả; Điều mới lấy Chương từ A4 (docs/a4_quyet_dinh.txt B6).
+    Vì cây nối mọi đơn vị, mục "Liên thông" của báo cáo thêm số thành phần chỉ theo cạnh ngữ nghĩa (p4: 187; bỏ thêm nút chung chung: 191).
 D7. Đã chạy: p4_dev05_bai_bo_ds tại 2027-01-01 cho 205 nút (215 - 15 + 5) và đúng 1 cạnh treo (D653 refers_to D651). Các bộ khác được test bằng thư mục tạm
     (test_a7), không ghi thêm file vào data/processed.
 

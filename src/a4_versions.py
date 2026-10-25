@@ -715,6 +715,7 @@ class Store:
 
     def __init__(self):
         self.versions = {}
+        self.chuong = {}  # mã Điều -> mã Chương (rỗng nếu văn bản gốc không có Chương); Chương không lập phiên bản
 
     def cur(self, code):
         vs = self.versions.get(code)
@@ -896,6 +897,10 @@ def apply_insert_unit(store, step, d):
             raise A4Error("E_AFTER", f"'vào sau' trỏ {d.after} không phải đơn vị có thật")
         if seg_key(code.split(".")[-1]) <= seg_key(d.after.split(".")[-1]):
             raise A4Error("E_AFTER", f"{code} không xếp sau {d.after} theo thứ tự (số, hậu tố)")
+    if parent is None and store.chuong:  # Điều mới trong văn bản có Chương: thuộc Chương của Điều nó đứng sau (review F-09)
+        if d.after is None:
+            raise A4Error("E_PARENT", f"văn bản gốc có Chương: Điều mới {code} cần 'vào sau Điều …' để biết thuộc Chương nào")
+        store.chuong[code] = store.chuong[d.after]
     for c, node in flatten(d.tree, code):
         if c in store.versions:
             raise A4Error("E_EXISTS", f"{c} đã từng tồn tại, không chèn lại được")
@@ -1039,8 +1044,8 @@ def recompute_edges(store, state, step, S):
         if k not in new_rows:
             rows.append(_edge_row("close", k, state.edges[k], date))
             del state.edges[k]
-    for c in step.new:  # contains / part_of cho mã mới, suy từ mã
-        parent = parent_code(c)
+    for c in step.new:  # contains / part_of cho mã mới: Khoản/Điểm suy từ mã, Điều lấy Chương đã gán khi chèn
+        parent = parent_code(c) or store.chuong.get(c)
         if parent is None:
             continue
         for key in ((parent, CONTAINS, c), (c, PART_OF, parent)):
@@ -1137,6 +1142,8 @@ def load_base(base):
     for u in parsed.units:
         store.versions[u.id] = [Version(u.id, 1, u.type, u.number, u.heading, list(u.parts),
                                         effective_from=BASE_EFFECTIVE, source_doc=DOC_PREFIX)]
+        if u.chuong:
+            store.chuong[u.id] = u.chuong
     return store
 
 

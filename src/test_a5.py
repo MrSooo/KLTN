@@ -25,10 +25,11 @@ FILES = [("mẫu", SAMPLE_FILE), ("đầy đủ", FULL_FILE)]  # luôn mẫu tr�
 D, K, A = "X.D1", "X.D1.K1", "X.D1.K1.a"
 
 # Số kỳ vọng đếm độc lập với a5_checks: type và part_of bằng grep trên file jsonl, Điều bằng "### Điều" trong md.
-UNITS = {SAMPLE_FILE: 35, FULL_FILE: 215}
+UNITS = {SAMPLE_FILE: 35, FULL_FILE: 215}   # Điều + Khoản + Điểm
 DIEU = {SAMPLE_FILE: 5, FULL_FILE: 54}
-PART_OF = {SAMPLE_FILE: 30, FULL_FILE: 161}
-POOLED = {SAMPLE_FILE: 60 + 3 + 1, FULL_FILE: 322 + 25 + 4}  # a2_edges + a2_refs + a3_exceptions, số đã ghi ở A2/A3
+CHUONG = {SAMPLE_FILE: 0, FULL_FILE: 4}     # review F-09: p4 có 4 tiêu đề "## Chương"
+PART_OF = {SAMPLE_FILE: 30, FULL_FILE: 161 + 54}  # p4: Khoản/Điểm + mỗi Điều một part_of tới Chương
+POOLED = {SAMPLE_FILE: 60 + 3 + 1, FULL_FILE: 430 + 25 + 4}  # a2_edges + a2_refs + a3_exceptions, số đã ghi ở A2/A3
 
 
 def rows(*triples):
@@ -58,7 +59,8 @@ def codes(triples, expect=EXPECT):
 
 def parents(triples, edges, expect=EXPECT):
     _, unit_types = a5.check_codes(triples, expect)
-    return {c.id: c for c in a5.check_parents(unit_types, edges, expect)}
+    dieu_chuong = {r["s"]: r["o"] for _, r in triples if r["p"] == "chuong"}
+    return {c.id: c for c in a5.check_parents(unit_types, edges, expect, dieu_chuong)}
 
 
 def bad_ids(by_id):
@@ -113,7 +115,26 @@ def test_step1_wrong_unit_and_dieu_counts():
 
 def test_step2_dieu_with_parent():
     by_id = parents(mini_triples(), mini_edges((D, "part_of", "X")))
-    assert "2a" in bad_ids(by_id) and by_id["2a"].problems == ["X.D1: là Điều nhưng có part_of tới X"]
+    assert "2a" in bad_ids(by_id) and by_id["2a"].problems == ["X.D1: Điều có 1 part_of (X), cần 0 (văn bản không có Chương)"]
+
+
+def test_step2_chapters():
+    """Review F-09: văn bản có Chương thì Điều có đúng một part_of tới Chương ghi ở dòng chuong; Chương không có cha."""
+    C = "X.CI"
+    triples = mini_triples((C, "type", "chuong"), (C, "number", "I"), (D, "chuong", C))
+    expect = a5.Expect(units=3, dieu=1, chuong=1)
+    good = mini_edges((C, "contains", D), (D, "part_of", C))
+    assert bad_ids(parents(triples, good, expect)) == []
+    assert codes(triples, expect)["1e"].problems == [] and codes(triples)["1e"].problems == ["có 1 Chương, cần 0"]
+    by_id = parents(triples, mini_edges(), expect)  # thiếu cạnh Điều-Chương
+    assert by_id["2a"].problems == ["X.D1: Điều có 0 part_of, cần 1 (văn bản có Chương)"], by_id["2a"].problems
+    wrong = [(i, r) for i, r in triples if r["p"] != "chuong"] + rows((D, "chuong", "X.CII"))
+    assert any("cha theo mã là X.CII" in p for p in parents(wrong, good, expect)["2c"].problems)
+    to_khoan = mini_edges((K, "contains", D), (D, "part_of", K))
+    assert any("cần chuong" in p for p in parents(rows(*[(r["s"], r["p"], r["o"]) for _, r in triples if r["p"] != "chuong"],
+                                                         (D, "chuong", K)), to_khoan, expect)["2f"].problems)
+    chapter_parent = good + rows((C, "part_of", D))
+    assert any("là Chương nhưng có part_of" in p for p in parents(triples, chapter_parent, expect)["2a"].problems)
 
 
 def test_step2_khoan_without_parent():
@@ -174,9 +195,9 @@ def test_step2_part_of_count():
 
 
 def test_step2_unknown_type_and_part_of_from_non_unit():
-    triples = rows((D, "type", "dieu"), (K, "type", "chuong"))
+    triples = rows((D, "type", "dieu"), (K, "type", "muc"))
     by_id = parents(triples, rows((K, "part_of", D), ("X.D9.K1", "part_of", "X.D9")), a5.Expect(units=2, dieu=1))
-    assert "type 'chuong' không phải" in by_id["2b"].problems[0]
+    assert "type 'muc' không phải" in by_id["2b"].problems[0]
     assert "X.D9.K1: có part_of nhưng không có dòng type" in by_id["2b"].problems[1]
 
 
@@ -421,7 +442,7 @@ def test_run_clean_exit_0_and_report_written():
     with tempfile.TemporaryDirectory() as tmp, Env(tmp, mini_triples(), mini_edges()) as env:
         code, out, report = env.run()
     assert code == 0 and out.startswith(report) and report.endswith("\nKẾT LUẬN: ĐẠT\n")
-    assert report.count("-> ĐẠT") == 11 and "không trùng" not in report  # 1a-1d (4) + 2a-2f (6) + 3 (1)
+    assert report.count("-> ĐẠT") == 12 and "không trùng" not in report  # 1a-1e (5) + 2a-2f (6) + 3 (1)
     assert "[4a]" not in report  # không --versions thì không có bước 4
 
 
@@ -481,7 +502,7 @@ def test_run_with_versions_clean():
         code, _, report = env.run("--versions", str(env.tmp / "v.jsonl"))
     assert code == 0 and report.endswith("\nKẾT LUẬN: ĐẠT\n")
     assert "== Bước 4: lớp phiên bản của A4 ==" in report and all(f"[{i}]" in report for i in ("4a", "4b", "4c", "4d", "4e", "4f"))
-    assert report.count("-> ĐẠT") == 17  # 1a-1d (4) + 2a-2f (6) + 3 (1) + 4a-4f (6)
+    assert report.count("-> ĐẠT") == 18  # 1a-1e (5) + 2a-2f (6) + 3 (1) + 4a-4f (6)
     assert "v.jsonl" in report.split("== Bước 1")[0]  # file versions có trong danh sách file đã kiểm
 
 
@@ -538,14 +559,17 @@ def test_files_on_disk():
     """Số kỳ vọng đếm độc lập: type/part_of bằng dòng thô của jsonl, Điều bằng '### Điều' trong md."""
     for label, md in FILES:
         triples, edges = a2.triples_path(md), a2.edges_path(md)
-        assert sum(1 for l in raw_lines(triples) if '"p": "type"' in l) == UNITS[md], label
+        assert sum(1 for l in raw_lines(triples) if '"p": "type"' in l) == UNITS[md] + CHUONG[md], label
         assert sum(1 for l in raw_lines(md) if l.startswith("### Điều")) == DIEU[md], label
+        assert sum(1 for l in raw_lines(md) if l.startswith("## Chương")) == CHUONG[md], label
         assert sum(1 for l in raw_lines(edges) if '"p": "part_of"' in l) == PART_OF[md], label
-        assert a5.EXPECTED[md.stem] == a5.Expect(UNITS[md], DIEU[md]), label  # bảng cứng khớp số đếm độc lập
-        checks, unit_types = a5.check_codes(a5.load_rows(triples), a5.EXPECTED[md.stem])
-        checks += a5.check_parents(unit_types, a5.load_rows(edges), a5.EXPECTED[md.stem])
+        assert a5.EXPECTED[md.stem] == a5.Expect(UNITS[md], DIEU[md], CHUONG[md]), label  # bảng cứng khớp số đếm độc lập
+        a1_rows = a5.load_rows(triples)
+        checks, unit_types = a5.check_codes(a1_rows, a5.EXPECTED[md.stem])
+        checks += a5.check_parents(unit_types, a5.load_rows(edges), a5.EXPECTED[md.stem],
+                                   {r["s"]: r["o"] for _, r in a1_rows if r["p"] == "chuong"})
         assert [(c.id, c.problems) for c in checks if c.problems] == [], label
-        assert len(unit_types) == UNITS[md] and sum(1 for t in unit_types.values() if t == "dieu") == DIEU[md], label
+        assert len(unit_types) == UNITS[md] + CHUONG[md] and sum(1 for t in unit_types.values() if t == "dieu") == DIEU[md], label
 
 
 def test_pooled_triples_on_disk():
@@ -566,11 +590,12 @@ def test_versions_on_disk():
         assert sum(1 for l in raw_lines(path) if l.strip()) == n_lines, name
         a1_rows, version_rows = a5.load_rows(a2.triples_path(md)), a5.load_rows(path, a5.VERSION_KEYS)
         _, unit_types = a5.check_codes(a1_rows, a5.EXPECTED[md.stem])
-        checks = a5.check_versions(set(unit_types), version_rows) + [a5.check_version1_content(a1_rows, version_rows),
-                                                                      a5.check_base_dates(set(unit_types), version_rows)]
+        versioned = {u for u, t in unit_types.items() if t in a5.TYPES}  # Chương không lập phiên bản
+        checks = a5.check_versions(versioned, version_rows) + [a5.check_version1_content(a1_rows, version_rows),
+                                                               a5.check_base_dates(versioned, version_rows)]
         assert [(c.id, c.problems) for c in checks if c.problems] == [], name
         assert checks[-2].id == "4e" and checks[-2].summary.endswith(f"ở {UNITS[md]} dòng version 1"), name  # so đủ mọi đơn vị A1, không rỗng
-        assert len(unit_types) == UNITS[md], name
+        assert len(versioned) == UNITS[md], name
 
 
 def test_reports_on_disk():

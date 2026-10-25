@@ -8,18 +8,19 @@ file đã kiểm:
 == Bước 1: mã trùng ==
 [1a] số đơn vị (s có dòng type): 215, kỳ vọng 215 -> ĐẠT
 [1b] số Điều: 54, kỳ vọng 54 -> ĐẠT
-[1c] mỗi s có đúng một dòng type: 215 s -> ĐẠT
-[1d] mỗi cặp (s, p) một lần: 1099 cặp -> ĐẠT
+[1c] mỗi s có đúng một dòng type: 219 s -> ĐẠT
+[1d] mỗi cặp (s, p) một lần: 1173 cặp -> ĐẠT
+[1e] số Chương: 4, kỳ vọng 4 -> ĐẠT
 
 == Bước 2: mỗi đơn vị đúng một cha ==
-[2a] Điều không có cha: 54 Điều -> ĐẠT
+[2a] Điều có một cha là Chương nếu văn bản có Chương, không có cha nếu không; Chương không có cha: 54 Điều, 4 Chương -> ĐẠT
 [2b] Khoản và Điểm có đúng một cha: 161 đơn vị -> ĐẠT
-[2c] cha = mã con bỏ đoạn cuối: 161 cạnh part_of -> ĐẠT
-[2d] contains đối xứng với part_of: contains 161, part_of 161 -> ĐẠT
-[2e] số part_of = số đơn vị - số Điều: 161, kỳ vọng 215 - 54 = 161 -> ĐẠT
-[2f] cha tồn tại và đúng bậc: 161 cạnh part_of -> ĐẠT
+[2c] cha = mã con bỏ đoạn cuối (Điều: Chương ghi ở dòng chuong): 215 cạnh part_of -> ĐẠT
+[2d] contains đối xứng với part_of: contains 215, part_of 215 -> ĐẠT
+[2e] số part_of = số đơn vị - số Điều (+ số Điều nếu có Chương): 215, kỳ vọng 215 -> ĐẠT
+[2f] cha tồn tại và đúng bậc: 215 cạnh part_of -> ĐẠT
 
 == Bước 3: cạnh trùng ==
-[3] bộ ba (s, p, o) lặp trong a2_edges + a2_refs + a3_exceptions: 351 bộ ba, 351 khác nhau, 0 bị lặp -> ĐẠT
+[3] bộ ba (s, p, o) lặp trong a2_edges + a2_refs + a3_exceptions: 459 bộ ba, 459 khác nhau, 0 bị lặp -> ĐẠT
 
 KẾT LUẬN: ĐẠT

@@ -757,6 +757,19 @@ def test_error_missing_date_and_conflicting_dates():
         assert cli("apply", "--base", SAMPLE_FILE, "--amend", write(tmp, "x.md", same_date_twice))[0] == 0
 
 
+def test_new_dieu_takes_the_chapter_of_the_dieu_before_it():
+    """Review F-09: văn bản gốc có Chương (p4) thì Điều mới thuộc Chương của Điều đứng ngay trước nó."""
+    full = ROOT / "data" / "raw" / "blds2015_p4.md"
+    run = a4.apply_series(full, [dev(4)])  # "Bổ sung Điều 621a vào sau Điều 621"; Điều 621 thuộc Chương XXI
+    adds = {(r["s"], r["p"], r["o"]) for r in run.edge_changes if r["op"] == "add"}
+    assert {(P + "CXXI", "contains", P + "D621a"), (P + "D621a", "part_of", P + "CXXI")} <= adds, adds
+    assert run.store.chuong[P + "D621a"] == P + "CXXI"
+    apply_cli_error("E_PARENT", [amend_text("Bổ sung Điều 663 như sau:\n\n“Điều 663. Tên”")], base=full)
+    # văn bản gốc không có Chương (file mẫu): Điều mới không cần "vào sau", không có cạnh tới Chương
+    run = a4.apply_series(SAMPLE_FILE, [dev(4)])
+    assert run.store.chuong == {} and not any(".C" in s for s, _, _ in {(r["s"], r["p"], r["o"]) for r in run.edge_changes})
+
+
 def test_error_effective_date_not_after_base_and_base_doc_id():
     """Review F-08: văn bản sửa đổi phải có hiệu lực SAU ngày hiệu lực của văn bản gốc; doc-id không được trùng mã văn bản gốc."""
     for date in ("01 tháng 6 năm 2016", "01 tháng 01 năm 2017"):

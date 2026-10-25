@@ -21,9 +21,14 @@ SAMPLE_FILE = ROOT / "data" / "sample" / "blds2015_5dieu.md"
 FULL_FILE = ROOT / "data" / "raw" / "blds2015_p4.md"
 FILES = [("mẫu", SAMPLE_FILE), ("đầy đủ", FULL_FILE)]  # luôn mẫu trước
 
-# Số cạnh mỗi loại (contains, part_of đều bằng nhau): Khoản + Điểm, không tính Điều.
-REFERENCE = {SAMPLE_FILE: 30, FULL_FILE: 161}
-REFERENCE_TOTAL = {SAMPLE_FILE: 60, FULL_FILE: 322}
+# Số cạnh mỗi loại (contains, part_of đều bằng nhau): Khoản + Điểm, cộng Điều nếu file có Chương (p4: 161 + 54; review F-09).
+REFERENCE = {SAMPLE_FILE: 30, FULL_FILE: 215}
+REFERENCE_TOTAL = {SAMPLE_FILE: 60, FULL_FILE: 430}
+
+
+def expected_parent_count(u, has_chuong):
+    """Số cha mong đợi: Khoản/Điểm 1; Điều 1 nếu file có Chương, 0 nếu không; Chương 0."""
+    return int(has_chuong) if u["type"] == "dieu" else 0 if u["type"] == "chuong" else 1
 
 # Bước 2. Tổng số từ khoá điều/khoản/điểm (101 và 11) đã đếm bằng tìm chuỗi con trên text, không qua find_refs.
 # Số cụm và bảng hình dạng khoá kết quả đã xem trực tiếp: từng cụm đối chiếu với ngữ cảnh 40 ký tự mỗi bên.
@@ -94,15 +99,19 @@ def test_counts_match_reference():
 
 
 def test_counts_match_independent_recount():
-    """Số cạnh mỗi loại == số Khoản + số Điểm, đếm bằng hai đường không đi qua a2: dòng của md gốc và type trong triples."""
+    """Số cạnh mỗi loại == số Khoản + số Điểm (+ số Điều nếu có Chương), đếm bằng hai đường không đi qua a2: dòng của md gốc
+    và type trong triples."""
     for name, path in FILES:
         khoan, diem = md_counts(path)
         types = triples_type_counts(path)
         assert (khoan, diem) == (types["khoan"], types["diem"]), f"file {name}: md {(khoan, diem)}, triples {dict(types)}"
+        md_chuong = len(re.findall(r"^## Chương ", path.read_text(encoding="utf-8"), re.M))
+        assert md_chuong == types["chuong"], f"file {name}: md {md_chuong} Chương, triples {types['chuong']}"
+        want = khoan + diem + (types["dieu"] if md_chuong else 0)
         edges = build(path)[1]
         per_pred = collections.Counter(p for _, p, _ in edges)
-        assert per_pred["contains"] == per_pred["part_of"] == khoan + diem, f"file {name}: {dict(per_pred)}"
-        assert khoan + diem == REFERENCE[path], f"file {name}: Khoản + Điểm = {khoan + diem}"
+        assert per_pred["contains"] == per_pred["part_of"] == want, f"file {name}: {dict(per_pred)}"
+        assert want == REFERENCE[path], f"file {name}: Khoản + Điểm (+ Điều) = {want}"
 
 
 def test_check_clean_on_real_data():
@@ -112,19 +121,20 @@ def test_check_clean_on_real_data():
 
 
 def test_parent_types_via_type_attribute():
-    """Dùng thuộc tính type của A1 (không dùng mã): cha của Khoản là Điều, cha của Điểm là Khoản, Điều không có cha."""
+    """Dùng thuộc tính type của A1 (không dùng mã): cha của Khoản là Điều, cha của Điểm là Khoản, cha của Điều là Chương nếu file
+    có Chương (không có thì Điều không có cha), Chương không có cha."""
     for name, path in FILES:
         units, edges = build(path)
+        has_chuong = any(u["type"] == "chuong" for u in units.values())
         parents = collections.defaultdict(list)
         for s, p, o in edges:
             if p == "contains":
                 parents[o].append(s)
         for code, u in units.items():
-            if u["type"] == "dieu":
-                assert code not in parents, f"file {name}: {code} là Điều nhưng có cha"
+            assert len(parents[code]) == expected_parent_count(u, has_chuong), f"file {name}: {code} có cha {parents[code]}"
+            if not parents[code]:
                 continue
-            assert len(parents[code]) == 1, f"file {name}: {code} có cha {parents[code]}"
-            want = {"khoan": "dieu", "diem": "khoan"}[u["type"]]
+            want = {"khoan": "dieu", "diem": "khoan", "dieu": "chuong"}[u["type"]]
             assert units[parents[code][0]]["type"] == want, f"file {name}: {code} ({u['type']}) có cha type {units[parents[code][0]]['type']}"
 
 
@@ -135,20 +145,36 @@ def test_direct_only_no_transitive():
         for s, p, o in edges:
             if p == "contains":
                 assert not (units[s]["type"] == "dieu" and units[o]["type"] == "diem"), f"file {name}: {s} -> {o} bắc cầu"
+        has_chuong = any(u["type"] == "chuong" for u in units.values())
         out = collections.Counter(s for s, p, _ in edges if p == "part_of")
         for code, u in units.items():
-            assert out[code] == (0 if u["type"] == "dieu" else 1), f"file {name}: {code} có {out[code]} part_of"
+            assert out[code] == expected_parent_count(u, has_chuong), f"file {name}: {code} có {out[code]} part_of"
 
 
 def test_edge_order_per_child():
     for name, path in FILES:
         units, edges = build(path)
-        children = [c for c, u in units.items() if u["type"] != "dieu"]  # thứ tự trong file triples
+        has_chuong = any(u["type"] == "chuong" for u in units.values())
+        children = [c for c, u in units.items() if expected_parent_count(u, has_chuong)]  # thứ tự trong file triples
         assert len(edges) == 2 * len(children)
         for i, child in enumerate(children):
             contains, part_of = edges[2 * i], edges[2 * i + 1]
             assert contains[1] == "contains" and contains[2] == child, f"file {name}: {contains}"
             assert part_of == (child, "part_of", contains[0]), f"file {name}: {part_of}"
+
+
+def test_chapter_edges_and_checks():
+    """Review F-09: Điều có thuộc tính chuong thì cha là Chương đó; check_edges bắt Điều không Chương khi văn bản có Chương."""
+    units = {"X.CI": {"type": "chuong", "number": "I", "source_line": 1},
+             "X.D1": {"type": "dieu", "number": "1", "source_line": 2, "chuong": "X.CI"},
+             "X.D1.K1": {"type": "khoan", "number": "1", "source_line": 3}}
+    edges = a2.build_edges(units)
+    assert edges == [("X.CI", "contains", "X.D1"), ("X.D1", "part_of", "X.CI"), ("X.D1", "contains", "X.D1.K1"), ("X.D1.K1", "part_of", "X.D1")]
+    assert a2.check_edges(units, edges) == []
+    units["X.D2"] = {"type": "dieu", "number": "2", "source_line": 4}  # thiếu chuong
+    assert any("X.D2 (type dieu) có 0 cha, mong đợi 1" in e for e in a2.check_edges(units, a2.build_edges(units)))
+    units["X.D2"]["chuong"] = "X.D1"  # "Chương" trỏ vào một Điều
+    assert any("mong đợi cha type chuong" in e for e in a2.check_edges(units, a2.build_edges(units)))
 
 
 def test_check_catches_corrupted_data():

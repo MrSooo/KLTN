@@ -48,6 +48,10 @@ B1. Regex ngày áp trên toàn văn bản (kể cả trong nháy), không phân
 B2. Tên mặc định = các doc-id nối bằng "+" theo thứ tự trên dòng lệnh (không theo thứ tự ngày). Áp dụng thì sắp theo ngày.
 B3. (Đổi 2026-10-25, review F-03; xem C8) Văn bản không có chỉ thị nào (chỉ có dòng bị bỏ qua) là lỗi E_NO_DIRECTIVE.
     Trước đây không phải lỗi, nên một văn bản sửa đổi viết theo dạng parser không nhận được "nạp thành công" mà không đổi gì.
+B6. (2026-10-25, review F-09) Văn bản gốc có Chương (p4): Chương không lập phiên bản (A4 chỉ lập phiên bản Điều/Khoản/Điểm, cú pháp
+    sửa đổi không chạm tới Chương). Store.chuong giữ Điều -> Chương. Điều mới chèn bằng "Bổ sung Điều N vào sau Điều M" thuộc Chương của
+    M, kèm cạnh add contains/part_of Chương-Điều trong edge_changes; không có "vào sau" thì E_PARENT. Văn bản gốc không có Chương (mẫu):
+    như cũ. Snapshot vẫn không in tiêu đề Chương (như trước, A1 không đưa # / ## vào đơn vị).
 B5. (2026-10-25, review F-08) Phiên bản 1 của mọi đơn vị gốc có effective_from = a1.BASE_DOC["hieu_luc"] (BLDS 2015: 2017-01-01)
     và source_doc = mã văn bản gốc (BLDS2015), thay vì null; snapshot trước ngày đó rỗng. Văn bản sửa đổi có ngày hiệu lực
     không SAU ngày đó là lỗi E_DATE_BEFORE_BASE (trùng ngày cũng lỗi, vì phiên bản 1 sẽ có khoảng [d, d) rỗng). doc-id trùng mã

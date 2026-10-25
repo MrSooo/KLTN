@@ -10,13 +10,14 @@ file đã kiểm:
 [1b] số Điều: 5, kỳ vọng 5 -> ĐẠT
 [1c] mỗi s có đúng một dòng type: 35 s -> ĐẠT
 [1d] mỗi cặp (s, p) một lần: 176 cặp -> ĐẠT
+[1e] số Chương: 0, kỳ vọng 0 -> ĐẠT
 
 == Bước 2: mỗi đơn vị đúng một cha ==
-[2a] Điều không có cha: 5 Điều -> ĐẠT
+[2a] Điều có một cha là Chương nếu văn bản có Chương, không có cha nếu không; Chương không có cha: 5 Điều, 0 Chương -> ĐẠT
 [2b] Khoản và Điểm có đúng một cha: 30 đơn vị -> ĐẠT
-[2c] cha = mã con bỏ đoạn cuối: 30 cạnh part_of -> ĐẠT
+[2c] cha = mã con bỏ đoạn cuối (Điều: Chương ghi ở dòng chuong): 30 cạnh part_of -> ĐẠT
 [2d] contains đối xứng với part_of: contains 30, part_of 30 -> ĐẠT
-[2e] số part_of = số đơn vị - số Điều: 30, kỳ vọng 35 - 5 = 30 -> ĐẠT
+[2e] số part_of = số đơn vị - số Điều (+ số Điều nếu có Chương): 30, kỳ vọng 30 -> ĐẠT
 [2f] cha tồn tại và đúng bậc: 30 cạnh part_of -> ĐẠT
 
 == Bước 3: cạnh trùng ==

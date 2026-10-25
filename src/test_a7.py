@@ -28,7 +28,7 @@ FILES = [("mẫu", SAMPLE_FILE), ("đầy đủ", FULL_FILE)]  # luôn mẫu tr�
 P = "BLDS2015."
 
 # Số kỳ vọng (nút, cạnh, nút duplicate): cộng độc lập ở test_files_match_independent_counts, không lấy từ a7.EXPECTED.
-REFERENCE = {SAMPLE_FILE: (36, 64, 0), FULL_FILE: (221, 365, 4)}
+REFERENCE = {SAMPLE_FILE: (36, 74, 0), FULL_FILE: (225, 481, 4)}
 DUPLICATE_PAIRS = [(P + a, P + b) for a, b in (("D617.K2.c", "D617.K1.d"), ("D618.K2.b", "D618.K1.b"),
                                                ("D618.K2.c", "D618.K1.c"), ("D637.K1", "D632.K1"))]
 
@@ -215,7 +215,19 @@ def test_check_graph_catches_each_kind_of_problem():
     assert any("không có part_of ngược" in p for p in problems_of(a7.check_graph(broken(edges=no_part)), "7e"))
     wrong_parent = [dict(e) if not (e["p"] == "part_of" and e["s"] == "X.D1.K1") else dict(e, o="X.D2") for e in good.edges]
     assert any("cần ['X.D1']" in p for p in problems_of(a7.check_graph(broken(edges=wrong_parent)), "7e"))
-    assert any("là Điều nhưng có part_of" in p for p in problems_of(a7.check_graph(with_edges(edge("X.D2", "part_of", "X.D1"))), "7e"))
+    assert any("nên Điều không có part_of" in p for p in problems_of(a7.check_graph(with_edges(edge("X.D2", "part_of", "X.D1"))), "7e"))
+    # 7e có Chương và nút văn bản (review F-09): Điều phải nằm dưới Chương, Chương dưới văn bản
+    doc, ch = a7.doc_node("VB"), a7.node("X.CI", "chuong", "I", "Chương một")
+    tree = [edge("VB", "contains", "X.CI"), edge("X.CI", "part_of", "VB"), edge("X.CI", "contains", "X.D1"), edge("X.D1", "part_of", "X.CI"),
+            edge("X.CI", "contains", "X.D2"), edge("X.D2", "part_of", "X.CI")]
+    full = a7.Graph(good.nodes + [ch, doc], good.edges + tree, [], {})
+    assert problems_of(a7.check_graph(full), "7e") == []
+    d2_under_doc = good.edges + tree[:4] + [edge("VB", "contains", "X.D2"), edge("X.D2", "part_of", "VB")]
+    assert any("X.D2: part_of tới ['VB'], cần đúng một nút chuong" in p
+               for p in problems_of(a7.check_graph(full._replace(edges=d2_under_doc)), "7e"))
+    chapter_orphan = good.edges + tree[2:]  # bỏ cặp văn bản-Chương
+    assert any("X.CI: part_of tới [], cần đúng một nút van_ban" in p
+               for p in problems_of(a7.check_graph(full._replace(edges=chapter_orphan)), "7e"))
     # 7f
     assert len(problems_of(a7.check_graph(good, a7.Expect(nodes=1, edges=1, duplicates=0)), "7f")) == 3
 
@@ -238,7 +250,9 @@ def test_files_match_independent_counts():
         groups = collections.Counter((types[s], t.casefold().rstrip(".;:, ")) for s, t in texts.items())
         n_dup = sum(c - 1 for c in groups.values())
         n_edges = sum(count_lines(p) for p in (a2.edges_path(path), a2.refs_path(path), a3.exceptions_path(path), a6.exceptions_path(path)))
-        want = (len(types) + len(cond_ids) + 1, n_edges + n_dup, n_dup)  # + 1 nút văn bản gốc
+        n_chuong, n_dieu = sum(t == "chuong" for t in types.values()), sum(t == "dieu" for t in types.values())
+        n_attach = 2 * (n_chuong or n_dieu)  # văn bản gốc contains/part_of mỗi Chương, hoặc mỗi Điều nếu không có Chương
+        want = (len(types) + len(cond_ids) + 1, n_edges + n_attach + n_dup, n_dup)  # + 1 nút văn bản gốc
         assert want == REFERENCE[path], f"file {name}: cộng độc lập {want}, bảng {REFERENCE[path]}"
         got = (len(graph.nodes), len(graph.edges), sum(1 for n in graph.nodes if n["status"] == "duplicate"))
         assert got == want, f"file {name}: đồ thị {got}, cộng độc lập {want}"
@@ -291,7 +305,7 @@ def test_base_cli_writes_files_and_exit_codes():
             assert a7.main([str(FULL_FILE)]) == 0
         names = sorted(p.name for p in Path(tmp).iterdir())
         assert names == ["a7_blds2015_p4_edges.jsonl", "a7_blds2015_p4_nodes.jsonl", "a7_report_blds2015_p4.txt"], names
-        assert "nút 221/221, cạnh 365/365, duplicate 4/4" in out.getvalue()
+        assert "nút 225/225, cạnh 481/481, duplicate 4/4" in out.getvalue()
     # stem chưa có trong EXPECTED: thoát với lỗi, không ghi gì
     with tempfile.TemporaryDirectory() as tmp:
         with patched(a7, OUT_DIR=Path(tmp), DOCS_DIR=Path(tmp)):
@@ -537,7 +551,7 @@ def test_dev05_closes_units_and_flags_the_broken_reference():
         run, versions = a4_run(tmp, FULL_FILE, [DEV_DIR / "dev05_bai_bo_ds.md"], "d5")
         g, _ = a7.graph_at(FULL_FILE, versions, "2027-01-01")
     assert len(run.closed) == 15
-    assert len(g.nodes) == 215 - 15 + 5 + 2 == 207  # + nút văn bản gốc và dev05
+    assert len(g.nodes) == 215 - 15 + 5 + 4 + 2 == 211  # + 4 Chương, nút văn bản gốc và dev05
     assert {x for x in run.closed} & {n["id"] for n in g.nodes} == set()
     assert g.notes["dangling"] == [(P + "D653", "refers_to", P + "D651")], g.notes["dangling"]
     assert {(s, p, o) for _, s, p, o, _ in run.broken} == set(g.notes["dangling"]), "cạnh treo tại T phải bằng cờ cạnh đứt của A4"
@@ -568,6 +582,8 @@ def test_dev04_new_units_are_nodes_with_structural_edges():
     ids = {n["id"] for n in g.nodes}
     assert set(run.new) <= ids
     assert all(n["version"] == 1 and n["effective_from"] == run.docs[0].date for n in g.nodes if n["id"] in run.new)
+    assert (P + "D621a", "part_of", P + "CXXI", "ok") in triples(g)  # Điều mới vào Chương của Điều 621 (review F-09)
+    assert [n["id"] for n in g.nodes if n["type"] == "chuong"] == [P + c for c in ("CXXI", "CXXII", "CXXIII", "CXXIV")]
 
 
 def test_dev01_dev02_two_dates():
@@ -577,8 +593,9 @@ def test_dev01_dev02_two_dates():
         second, _ = a7.graph_at(FULL_FILE, versions, "2027-07-01")
     for g in (first, second):
         assert P + "D621.K2" not in {n["id"] for n in g.nodes}, "dev01 bãi bỏ D621.K2"
-        assert len([n for n in g.nodes if n["type"] != a7.DOC_TYPE]) == 215 - 1 + 5
-        assert [e for e in g.edges if e["p"] == "contains"].__len__() == 160 and g.notes["dangling"] == []
+        assert len([n for n in g.nodes if n["type"] not in (a7.DOC_TYPE, "chuong")]) == 215 - 1 + 5
+        # Khoản/Điểm 160 + Điều-Chương 54 + văn bản-Chương 4
+        assert [e for e in g.edges if e["p"] == "contains"].__len__() == 160 + 54 + 4 and g.notes["dangling"] == []
         assert a5.failures(a7.check_graph(g)) == 0
     version_of = lambda g: next(n["version"] for n in g.nodes if n["id"] == P + "D621.K1")
     assert (version_of(first), version_of(second)) == (1, 2)
@@ -590,7 +607,7 @@ def test_dev08_replace_whole_document_gives_an_empty_graph():
         run, versions = a4_run(tmp, FULL_FILE, [DEV_DIR / "dev08_thay_van_ban.md"], "d8")
         before, _ = a7.graph_at(FULL_FILE, versions, "2026-12-31")
         after, _ = a7.graph_at(FULL_FILE, versions, run.docs[0].date)
-    assert len(before.nodes) == 221
+    assert len(before.nodes) == 225
     # không còn đơn vị nào; chỉ còn hai nút văn bản và cạnh "dev08 replaces BLDS2015" (đích là nút văn bản gốc nên ok)
     assert [n["id"] for n in after.nodes] == [a4.DOC_PREFIX, "dev08_thay_van_ban"] and after.notes["dangling"] == []
     assert triples(after) == [("dev08_thay_van_ban", "replaces", a4.DOC_PREFIX, "ok")], triples(after)

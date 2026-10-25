@@ -1,4 +1,4 @@
-"""A2a: cạnh cấu trúc contains / part_of giữa Điều > Khoản > Điểm.
+"""A2a: cạnh cấu trúc contains / part_of giữa Chương > Điều > Khoản > Điểm (Chương chỉ khi file nguồn có tiêu đề Chương).
 
 Chỉ đọc triples của A1 (data/processed/a1_triples_<stem>.jsonl), không import a1_parse: nếu A1 đánh mã sai thì
 lỗi hiện ra ở đây thay vì bị che, vì cha được suy từ chuỗi mã còn kiểm tra dùng thuộc tính type của A1.
@@ -22,10 +22,11 @@ PROCESSED_DIR = ROOT / "data" / "processed"
 
 # Loại của cha mà mỗi loại con phải có. Nguồn là thuộc tính type của A1, độc lập với chuỗi mã.
 PARENT_TYPE = {"khoan": "dieu", "diem": "khoan"}
+CHUONG = "chuong"  # Điều có thuộc tính chuong (mã Chương, review F-09) thì cha của nó là Chương đó, không suy từ mã
 
-# Thuộc tính của đơn vị mà hàm nạp giữ lại (text có thể vắng); heading, version không dùng ở A2a.
+# Thuộc tính của đơn vị mà hàm nạp giữ lại (text, chuong có thể vắng); heading, version không dùng ở A2a.
 REQUIRED_ATTRS = ("type", "number", "source_line")
-KEPT_ATTRS = REQUIRED_ATTRS + ("text",)
+KEPT_ATTRS = REQUIRED_ATTRS + ("text", CHUONG)
 
 
 def triples_path(src):
@@ -73,11 +74,12 @@ def parent_of(code):
 def build_edges(units):
     """Mỗi cặp cha-con trực tiếp thành 2 cạnh (s, p, o): (cha, contains, con) rồi (con, part_of, cha).
 
-    Duyệt theo thứ tự đơn vị trong file triples; hai cạnh của cùng một con nằm liền nhau.
+    Duyệt theo thứ tự đơn vị trong file triples; hai cạnh của cùng một con nằm liền nhau. Cha của Khoản/Điểm suy từ mã;
+    cha của Điều là thuộc tính chuong (không có thì Điều là gốc); Chương là gốc.
     """
     edges = []
-    for code in units:
-        parent = parent_of(code)
+    for code, u in units.items():
+        parent = u.get(CHUONG) if u["type"] == "dieu" else None if u["type"] == CHUONG else parent_of(code)
         if parent is None:
             continue
         edges.append((parent, "contains", code))
@@ -100,7 +102,7 @@ def check_edges(units, edges):
         if missing:
             errors.append(f"contains {s} -> {o}: không có trong tập đơn vị: {missing}")
             continue
-        want = PARENT_TYPE.get(units[o]["type"])
+        want = CHUONG if units[o]["type"] == "dieu" else PARENT_TYPE.get(units[o]["type"])
         if units[s]["type"] != want:
             errors.append(f"{o} (type {units[o]['type']}) có cha {s} (type {units[s]['type']}), "
                           f"mong đợi cha type {want}")
@@ -108,13 +110,14 @@ def check_edges(units, edges):
         errors.append(f"contains và part_of không đối xứng: chỉ có contains {sorted(set(contains) - set(part_of))}, "
                       f"chỉ có part_of {sorted(set(part_of) - set(contains))}")
 
-    # mỗi đơn vị không phải Điều có đúng một cha, Điều không có cha
+    # Khoản/Điểm có đúng một cha; Điều có một cha nếu văn bản có Chương, không có nếu không; Chương không có cha
+    has_chuong = any(u["type"] == CHUONG for u in units.values())
     n_parents = collections.Counter(o for _, o in contains)
     for code, u in units.items():
-        want = 0 if u["type"] == "dieu" else 1
+        want = int(has_chuong) if u["type"] == "dieu" else 0 if u["type"] == CHUONG else 1
         if n_parents[code] != want:
             errors.append(f"{code} (type {u['type']}) có {n_parents[code]} cha, mong đợi {want}")
-    n_children = sum(1 for u in units.values() if u["type"] != "dieu")
+    n_children = sum(1 for u in units.values() if u["type"] != CHUONG and (u["type"] != "dieu" or has_chuong))
     if len(contains) != n_children:
         errors.append(f"số contains = {len(contains)}, số đơn vị type khác dieu = {n_children}")
     return errors

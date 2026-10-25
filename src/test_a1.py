@@ -19,12 +19,12 @@ FULL_FILE = a1.ROOT / "data" / "raw" / "blds2015_p4.md"
 FILES = [("mẫu", SAMPLE_FILE), ("đầy đủ", FULL_FILE)]  # luôn mẫu trước
 
 # Số đơn vị và số triples để đối chiếu (đã đếm lại độc lập bằng grep/awk, không qua parser).
-REFERENCE = {SAMPLE_FILE: (35, 176), FULL_FILE: (215, 1099)}
+REFERENCE = {SAMPLE_FILE: (35, 176), FULL_FILE: (215, 1173)}  # p4: 1099 + 54 dòng chuong của Điều + 4 Chương x 5 dòng
 
 # Số (Khoản, Điểm) của từng Điều trong 5 điều mẫu, đếm trực tiếp từ file mẫu.
 SAMPLE_TABLE = {"621": (2, 4), "626": (5, 0), "644": (2, 2), "650": (2, 7), "651": (3, 3)}
 
-PREDICATES = {"type", "number", "heading", "text", "version", "source_line"}  # không có effective_from
+PREDICATES = {"type", "number", "heading", "chuong", "text", "version", "source_line"}  # không có effective_from
 
 
 @functools.cache
@@ -71,7 +71,7 @@ def test_reference_counts():
     for name, path in FILES:
         parsed = load(path)[1]
         want_units, want_triples = REFERENCE[path]
-        got = (len(parsed.units), len(a1.to_triples(parsed.units)))
+        got = (len(parsed.units), len(a1.to_triples(parsed.units, parsed.chapters)))
         assert got == (want_units, want_triples), f"file {name}: (đơn vị, triples) = {got}, cần {(want_units, want_triples)}"
 
 
@@ -117,7 +117,7 @@ def test_words_conserved_vs_raw():
 
 def test_notes():
     parsed = load(FULL_FILE)[1]
-    assert parsed.notes == ["Điều 643, Khoản 2, dòng 301"], parsed.notes
+    assert parsed.notes == ["Điều 643, Khoản 2, dòng 303"], parsed.notes
     with tempfile.TemporaryDirectory() as tmp:
         out = Path(tmp) / "a1_notes.txt"
         a1.write_notes(parsed.notes, out)
@@ -132,13 +132,38 @@ def test_para_placement_in_full_file():
 
     Nguồn chuẩn là chính file blds2015_p4.md (đã chốt), nên không đối chiếu thêm với bản luật gốc. Test này khoá
     kết quả của quy tắc nối para (para vào Khoản hiện tại); các chỗ 631 Khoản 3, 643 Khoản 2, 645 Khoản 1 đã
-    được xem trực tiếp trên p4.md (dòng 196-198, 296-301, 320-324).
+    được xem trực tiếp trên p4.md (dòng 198-200, 298-303, 322-326; +2 từ khi thêm tiêu đề Chương XXI ở dòng 3).
     """
     units = {u.id: u for u in load(FULL_FILE)[1].units}
     multi = {i: len(u.parts) for i, u in units.items() if u.type == "khoan" and len(u.parts) > 1}
     assert multi == {"BLDS2015.D631.K3": 2, "BLDS2015.D643.K2": 2, "BLDS2015.D645.K1": 3}, multi
     # Điểm cuối của 643 Khoản 2 không bị nhận đoạn chữ của Khoản
     assert len(units["BLDS2015.D643.K2.b"].parts) == 1
+
+
+def test_chapters_of_full_file():
+    """Review F-09: 4 Chương của p4, mỗi Điều thuộc đúng Chương của nó (đối chiếu dãy Điều của từng Chương trong BLDS 2015)."""
+    parsed = load(FULL_FILE)[1]
+    assert [(c.id, c.number, c.heading, c.source_line) for c in parsed.chapters] == [
+        ("BLDS2015.CXXI", "XXI", "QUY ĐỊNH CHUNG", 3), ("BLDS2015.CXXII", "XXII", "THỪA KẾ THEO DI CHÚC", 124),
+        ("BLDS2015.CXXIII", "XXIII", "THỪA KẾ THEO PHÁP LUẬT", 358), ("BLDS2015.CXXIV", "XXIV", "THANH TOÁN VÀ PHÂN CHIA DI SẢN", 413)]
+    ranges = {"BLDS2015.CXXI": (609, 623), "BLDS2015.CXXII": (624, 648), "BLDS2015.CXXIII": (649, 655), "BLDS2015.CXXIV": (656, 662)}
+    for u in parsed.units:
+        if u.type == "dieu":
+            lo, hi = ranges[u.chuong]
+            assert lo <= int(u.number) <= hi, (u.id, u.chuong)
+        else:
+            assert u.chuong is None, u.id
+    assert load(SAMPLE_FILE)[1].chapters == ()  # file mẫu không có Chương: Điều là gốc
+    # triples: Chương xen vào ngay trước Điều đầu tiên của nó
+    subjects = list(dict.fromkeys(s for s, _, _ in a1.to_triples(parsed.units, parsed.chapters)))
+    assert subjects[:2] == ["BLDS2015.CXXI", "BLDS2015.D609"] and subjects.index("BLDS2015.CXXII") == subjects.index("BLDS2015.D624") - 1
+
+
+def test_dieu_before_first_chapter_and_repeated_chapter_are_errors():
+    text = "### Điều 1\\. A\n\n## Chương I – MỘT\n\n### Điều 2\\. B\n\n## Chương I – LẶP\n"
+    parsed = a1.parse(a1.tokenize(text).tokens, [1, 2])
+    assert [e.reason for e in parsed.errors] == ["Chương I lặp", "Điều 1 đứng trước Chương đầu tiên"], parsed.errors
 
 
 def test_jsonl_written_correctly():
@@ -165,6 +190,7 @@ def test_jsonl_written_correctly():
             preds = [r["p"] for r in by_s[u.id]]
             assert len(preds) == len(set(preds)), f"{u.id}: predicate lặp"
             assert ("heading" in preds) == (u.type == "dieu"), f"{u.id}: heading"
+            assert ("chuong" in preds) == (u.type == "dieu" and bool(parsed.chapters)), f"{u.id}: chuong"
             assert ("text" in preds) == bool(u.parts), f"{u.id}: text"
             o = {r["p"]: r["o"] for r in by_s[u.id]}
             assert o["version"] == 1 and isinstance(o["version"], int)
