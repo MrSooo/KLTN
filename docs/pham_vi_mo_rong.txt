@@ -12,7 +12,8 @@ A1. Kiểm soát xung đột chế tài.
     không có nút hành vi, nút chế tài, nút điều kiện phân tách, nên không có gì để quét.
 A2. Gắn nhãn cô lập hoặc chuẩn hoá cho nhánh MÂU THUẪN (vế "mâu thuẫn" của yêu cầu "tự động chuẩn hóa hoặc gắn nhãn cô
     lập"). Phụ thuộc A1 vì chưa có loại mâu thuẫn nào được định nghĩa.
-A3. Mở rộng cú pháp văn bản sửa đổi của A4 (chưa hỗ trợ, hiện báo lỗi hoặc ghi vào báo cáo; làm khi có văn bản sửa đổi thật để thử, vì 8 văn bản dev đều do
+A3. (Cập nhật 2026-10-25: thay bằng tầng chuẩn hoá LLM có kiểm, docs/a4_quyet_dinh.txt mục I; không mở rộng văn phạm theo từng
+    mẫu câu nữa.) Mở rộng cú pháp văn bản sửa đổi của A4 (chưa hỗ trợ, hiện báo lỗi hoặc ghi vào báo cáo; làm khi có văn bản sửa đổi thật để thử, vì 8 văn bản dev đều do
     tự soạn nên thêm cú pháp lúc này dễ đoán sai): chỉ thị "được bổ sung như sau"; danh sách số trần ("Điều 5, 6"); điểm trực tiếp dưới Điều;
     "đánh số lại" / "trở thành"; nháy lồng trong chỉ thị cụm từ; sửa hoặc bổ sung nhiều đoạn trong một Điểm. Chi tiết: docs/a4_quyet_dinh.txt mục H1.
 

@@ -13,7 +13,7 @@ Ngày lập: 2026-10-25. Gốc: commit `b82c925`. Mỗi bước ghi: finding, fi
 
 ## 1. Các câu hỏi cần bạn quyết (chặn Pha 2 và 3)
 
-Đây là §6 của review. **Đã chốt 2026-10-25: Q1–Q4 theo đề xuất mặc định.** Q5: BLDS 2015 chưa có văn bản sửa đổi nào nên không có cặp thật; bộ kiểm thử ngoài của A4 là văn bản **giả lập**, cách làm ở 3.2.
+Đây là §6 của review. **Đã chốt 2026-10-25: Q1–Q4 theo đề xuất mặc định; A4 theo hướng C (LLM có kiểm), mô hình Claude Sonnet 5.5, ngân sách khoảng 500k đ/tháng.** Q5: BLDS 2015 chưa có văn bản sửa đổi nào nên không có cặp thật; bộ kiểm thử ngoài của A4 là văn bản **giả lập**, cách làm ở 3.2.
 
 | Câu | Đề xuất mặc định | Ảnh hưởng nếu chọn khác |
 |---|---|---|
@@ -86,14 +86,28 @@ Thứ tự theo độ lan: các bước ít ảnh hưởng trước, A1 sau cùn
 
 ## 4. Pha 3: hướng đi và độ tin cậy
 
-| # | Việc | Theo | Ghi chú |
-|---|---|---|---|
-| 3.1 | Đổi `duplicate` → `same_text` (A7 `NODE_STATUS`, báo cáo, test, `a6_a7_quyet_dinh.txt`) | Q1(a) | Một commit riêng, chỉ đổi tên |
-| 3.2a | Đáp án gán tay cho liên kết (không cần văn bản sửa đổi): `data/gold/` (khoảng 10 Điều của p4 do người gán), `src/eval_gold.py` tính precision/recall cho `refers_to`, `exception_of` | F-17 | Người gán **không** được nhìn đầu ra của pipeline trước |
-| 3.2b | Văn bản sửa đổi giả lập nhưng **mượn câu thật**: chép nguyên văn câu chỉ thị từ các luật sửa đổi thật (luật khác, ví dụ Luật sửa đổi Luật Thi hành án dân sự 2014), chỉ đổi số Điều/khoản sang BLDS, **không sửa câu cho vừa parser**. Ghi nguồn từng câu. Kết quả mong đợi: mỗi câu hoặc áp đúng, hoặc dừng lỗi; không câu nào bị bỏ qua êm | Q5, F-16 | Giảm tính vòng tròn so với 8 văn bản dev; vẫn không thay được cặp thật, ghi rõ là giới hạn |
-| 3.3 | Mở rộng văn phạm A4: danh sách khoản/điểm hỗn hợp, khoản tương đối, chèn nhiều Điều, dạng bị động, "hết hiệu lực" thành `repeals`, hiệu lực tách theo Điều | Q2 = tổng quát, F-15 | Chỉ làm khi có văn bản thật ở 3.2 làm mẫu |
-| 3.4 | Đăng ký văn bản thay `EXPECTED_DIEU`/`DOC_PREFIX`/bảng `EXPECTED` theo tên file | Q2 = tổng quát, F-14, F-22 | |
-| 3.5 | Việc nhỏ: F-19 (giữ vị trí đoạn sau danh sách Điểm), F-20, F-21 | | F-20, F-21 có thể chỉ ghi lại |
+Cập nhật 2026-10-25 sau khi đối chiếu `DRAFT_Proposal_v5.docx` (đề cương luận văn, hướng neuro-symbolic). **Phạm vi hiện tại: chỉ dựng đồ thị tri thức (KG)**; các bước sau KG ở mục 4b chưa làm.
+
+| # | Việc | Trạng thái |
+|---|---|---|
+| 3.1 | Đổi `duplicate` → `same_text` | Đã làm. Ghi chú: "khử trùng lặp thực thể" đúng nghĩa của đề cương nằm ở sổ khái niệm (mục 4b), không ở A7 |
+| 3.2a | Khung đáp án gán tay: mẫu 11 Điều theo quy tắc, `src/eval_gold.py` tính precision/recall | Đã làm phần khung; **chờ học viên hỗ trợ gán** `data/gold/gold_blds2015_p4.tsv` (đề cương Tầng 2). Còn thiếu: cột loại ngoại lệ (phản bác / vô hiệu hoá) |
+| 3.2b | Bộ kiểm thử ngoài cho A4: 19 câu chỉ thị nguyên văn của Luật 85/2025/QH15 (Công báo), chỉ đổi số hiệu / cụm từ / nội dung sang BLDS; `src/eval_ext_amend.py` | Đã làm. `--llm off`: 9 đường nhanh, 10 dừng có lỗi, 0 áp sai. Không thay được bộ sửa đổi giả định của học viên hỗ trợ (đề cương Nội dung 4) |
+| 3.3 | ~~Mở rộng văn phạm A4 theo từng mẫu câu~~ → **thay bằng hướng C**: tầng chuẩn hoá khối bằng LLM (Claude Sonnet 5.5) có kiểm ký hiệu, `--llm off/replay/live` | Đã làm code và test (proposer/client giả). **Chưa chạy live**: cần API key; ước tính chi phí cho 10 ca cần LLM vài nghìn đồng. Thiết kế: `docs/a4_quyet_dinh.txt` mục I |
+| 3.4 | Đăng ký văn bản thay hằng số theo tên file | Bỏ (Q2: chỉ BLDS 2015) |
+| 3.5 | F-19, F-20, F-21 | Chỉ ghi lại là giới hạn |
+
+### 4b. Khoảng trống so với đề cương (chưa làm, ngoài phạm vi KG hiện tại)
+
+| Đề cương | Hiện trạng pipeline |
+|---|---|
+| Nội dung 1: mẫu câu tìm ứng viên quan hệ, **LLM phân loại** dẫn chiếu / ngoại lệ, ngoại lệ **phản bác / vô hiệu hoá** | Chỉ có mẫu câu (A2, A3, A6); chưa có bước phân loại |
+| Nội dung 1: quan hệ ngầm (khoản 1 Điều 621 với Điều 626) do LLM đề xuất, bộ quét kiểm | Chưa có; F-05 ghi 29 đơn vị "Trường hợp …" chưa phân loại |
+| Nội dung 1: sổ khái niệm (vị từ khái niệm pháp lý, vị từ đầu vào) và đồ thị khái niệm | Chưa có; đây là tầng khử trùng lặp thực thể (F-06 phương án b) |
+| Nội dung 1: quy tắc gắn với điều khoản nguồn; chỉ trích lại điều có chữ thay đổi | Chưa có quy tắc; A4 đã có tập changed/new và tập ảnh hưởng để làm việc này |
+| Nội dung 2: bộ quét trên **quy tắc** (không bao giờ kích hoạt, trùng, đứt, vòng chặn, cặp mâu thuẫn), LLM tự sửa tối đa 2 vòng, cô lập | A5/A7 mới quét ở mức đồ thị (trùng, đứt, vòng `exception_of`) |
+| Nội dung 3: biên dịch sang s(CASP), hỏi đáp có giải thích | Chưa có |
+| Nội dung 4: bộ tình huống có nhãn độ sâu ngoại lệ, cặp đối chứng, bộ sửa đổi giả định do học viên hỗ trợ soạn | Chưa có; `data/ext_amend/` có thể đưa học viên hỗ trợ làm mẫu cách viết |
 
 ## 5. Hoàn tất mỗi bước
 

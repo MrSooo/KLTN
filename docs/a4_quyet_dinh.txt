@@ -182,3 +182,32 @@ H1. Không hỗ trợ: "được bổ sung như sau" (R1), đánh số lại, "t
 H2. Quy tắc 2 của A3 cần cha còn text kết thúc bằng "sau đây:". Cha không đổi và con bị đóng: cạnh con → cha không bị close
     (con đóng nên không còn là nguồn còn hiệu lực; theo F2).
 H3. Tầng khái niệm / quy tắc sẽ mở rộng impact_set sau (hàm đã tách riêng, nhận U và danh sách cạnh).
+
+I. TẦNG CHUẨN HOÁ KHỐI BẰNG LLM (hướng C, 2026-10-25; đề cương: LLM chỉ ở bước cần hiểu ngôn ngữ)
+--------------------------------------------------------------------------------------------------
+I1. Hai đường. Đường nhanh: văn phạm chuẩn R1-R6 như cũ, không gọi LLM. Đường LLM: chỉ khi một dòng gây lỗi thuộc LLM_TRIGGERS
+    (E_UNKNOWN_LINE: dòng lạ; E_REFLIST: khung câu nhận được mà danh sách đích nằm ngoài văn phạm) VÀ chạy với --llm replay|live.
+    Mặc định --llm off: hành vi như trước (lỗi), nên mọi đầu ra của 8 văn bản dev không đổi.
+I2. Khối = dòng gây lỗi + các dòng sau tới dòng ngoài nháy kế tiếp mở một mục đánh số ("N. "), tiêu đề Điều của văn bản sửa đổi,
+    hoặc câu hiệu lực. Nhờ vậy dòng phạm vi ("một số khoản của Điều X như sau:") đi cùng các chỉ thị con a), b) và nội dung trong nháy.
+I3. LLM (a4_llm.ClaudeProposer, mô hình claude-sonnet-5-5, effort medium, đầu ra JSON theo lược đồ cố định, fallbacks "default")
+    chỉ ĐỀ XUẤT: danh sách chỉ thị {op, quan_he, dich [{dieu, khoan, diem}], vao_sau, noi_dung, kieu_cum, cum_cu, cum_moi}, hoặc
+    khong_xu_ly_duoc kèm lý do (khi đó E_LLM, không áp gì). Không có op thay cả văn bản (R6 chỉ qua đường nhanh).
+I4. Cổng ký hiệu: mỗi chỉ thị được dựng lại thành dòng chuẩn R1-R5 kèm nội dung trong nháy (render_canonical) rồi parse bằng chính
+    văn phạm chuẩn (_parse_lines, không cho gọi LLM lồng). Sau đó ba phép kiểm (check_block):
+    V1 phủ số hiệu: tập (cấp, nhãn) của mọi Điều/khoản/điểm nhắc ngoài nháy trong khối = tập (cấp, nhãn) của mọi đích và "vào sau".
+       Giới hạn: so theo tập, nên hoán vị Điều giữa hai đích cùng câu ("khoản 1 Điều 16, khoản 2 Điều 46") không bị V1 bắt; với
+       replace_unit / insert_unit thì E_ROOT của văn phạm chuẩn (gốc nội dung phải khớp đích) bắt phần lớn ca đó.
+    V2 nội dung nguyên văn: nối các noi_dung (replace_unit, insert_unit, rename_heading) = nối chữ trong các cặp nháy mở ở đầu dòng của
+       khối, so sau khi gộp khoảng trắng. LLM chỉ được tách, không được viết.
+    V3 cụm từ nguyên văn: cum_cu, cum_moi phải là chữ của một cặp nháy nằm giữa dòng trong khối.
+    Các kiểm của bước áp dụng (E_TARGET, E_EXISTS, E_PHRASE_MISSING, E_OVERLAP, ...) chạy như với chỉ thị của đường nhanh.
+I5. Sửa lỗi: lỗi parse hoặc V1-V3 được gửi lại cho LLM (kèm đề xuất trước), tối đa LLM_ROUNDS = 3 lần đề xuất (1 + 2 vòng sửa như
+    Nội dung 2 của đề cương). Hết lượt: E_LLM, cả văn bản không được áp (cô lập), báo cáo ghi khối và lỗi. Lỗi ở bước áp dụng không
+    được gửi lại (chưa làm).
+I6. Tái lập: mỗi lần gọi lưu data/llm_cache/a4/<khoá>.json (khoá = sha256 của mô hình, PROMPT_VERSION, chữ khối, phản hồi), gồm đầu
+    vào, đầu ra, mô hình thực chạy, request id, số token. replay chỉ đọc file đó (thiếu: E_LLM_CACHE); live gọi API khi thiếu. Test
+    dùng proposer / client giả. Chỉ thị qua LLM có via = "llm"; báo cáo có mục "Khối chuẩn hoá bằng LLM" (khối, số lần đề xuất, mô
+    hình, khoá, các dòng chuẩn) khi có khối như vậy.
+I7. Đo: bộ kiểm thử ngoài data/ext_amend/cases_blds2015_p4.json (19 câu chỉ thị nguyên văn của Luật 85/2025/QH15, chỉ đổi số hiệu,
+    cụm từ, nội dung sang BLDS), chạy bằng src/eval_ext_amend.py. Với --llm off: 9 qua đường nhanh, 10 dừng có lỗi, 0 áp sai.

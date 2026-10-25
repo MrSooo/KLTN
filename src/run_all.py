@@ -19,7 +19,7 @@ DEV = ["dev01_bai_bo_khoan", "dev02_sua_khoan", "dev03_thay_dieu", "dev04_bo_sun
 SNAPSHOT_DATES = {"dev02_sua_khoan": ["2027-07-01"], "dev01+dev02": ["2027-01-01", "2027-07-01"]}  # còn lại: 2027-01-01
 A5_VERSIONS = [("5dieu", "dev01+dev02"), ("5dieu", "dev04_bo_sung"), ("p4", "dev01_full")]
 A7_AT_DATE = [("p4", "p4_dev05_bai_bo_ds", "2027-01-01")]
-TESTS = [f"test_a{i}.py" for i in range(1, 8)] + ["test_eval_gold.py"]
+TESTS = [f"test_a{i}.py" for i in range(1, 8)] + ["test_a4_llm.py", "test_eval_gold.py", "test_eval_ext_amend.py"]
 
 
 def run(*args):
@@ -61,6 +61,7 @@ def pipeline():
         run("src/a5_checks.py", BASES[base], "--versions", f"data/processed/a4_{name}_versions.jsonl")
     for base, name, date in A7_AT_DATE:
         run("src/a7_graph.py", BASES[base], "--versions", f"data/processed/a4_{name}_versions.jsonl", "--date", date)
+    run("src/eval_ext_amend.py", "--llm", "off")  # bộ kiểm thử ngoài, không gọi LLM; chế độ replay chạy riêng khi đã có kết quả lưu
 
 
 def tests():
