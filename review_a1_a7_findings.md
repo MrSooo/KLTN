@@ -215,7 +215,7 @@ Kế hoạch: `plan_sua_a1_a7.md`. Nhánh `sua-theo-review`. Mỗi bước chạ
 |---|---|---|---|---|
 | F-03 | 1.1 | `8986981` | Đã sửa: dòng bị động / "hết hiệu lực" / "thay bằng" là `E_UNKNOWN_LINE`; văn bản 0 chỉ thị là `E_NO_DIRECTIVE` | Không đổi |
 | F-01, F-02 | 1.2 | `dba1ff1` | Đã sửa: tên văn bản khác → `unresolved` với đích `external:<tên>`; "<Luật/Nghị định> này", khoảng, số trần, hậu tố → dừng | Không đổi |
-| F-04, F-05 | 1.3 | (commit bước 1.3) | Đã sửa: "Trừ trường hợp X, …" đầu đoạn cắt ở dấu phẩy; "không được áp dụng" → `a6_unhandled`. Ngoại lệ ngầm vẫn chưa nhận dạng | Không đổi |
+| F-04, F-05 | 1.3 | `e7fd737` | Đã sửa: "Trừ trường hợp X, …" đầu đoạn cắt ở dấu phẩy; "không được áp dụng" → `a6_unhandled`. Ngoại lệ ngầm vẫn chưa nhận dạng | Không đổi |
 
 ## Phụ lục: cách tái hiện
 
