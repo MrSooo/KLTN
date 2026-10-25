@@ -14,6 +14,10 @@ PROCESSED_DIR = ROOT / "data" / "processed"
 
 DOC_PREFIX = "BLDS2015"  # tiền tố id: BLDS2015.D621.K1.a (Điểm đ viết thành dd: BLDS2015.D1.K1.dd)
 
+# Văn bản gốc (review F-08). A4 lấy hieu_luc làm effective_from của phiên bản 1 và DOC_PREFIX làm source_doc; A7 dựng nút văn bản từ đây.
+BASE_DOC = {"id": DOC_PREFIX, "ten": "Bộ luật Dân sự", "so_hieu": "91/2015/QH13", "co_quan": "Quốc hội",
+            "ngay_ban_hanh": "2015-11-24", "hieu_luc": "2017-01-01"}
+
 # Dãy số Điều mong đợi của từng file nguồn, theo thứ tự xuất hiện.
 EXPECTED_DIEU = {
     "blds2015_5dieu.md": [621, 626, 644, 650, 651],

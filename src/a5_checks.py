@@ -19,6 +19,8 @@
     (cam kết "không xoá nút", Q19). Đơn vị chỉ có trong versions (thêm bởi văn bản sửa đổi) không bị báo.
     4e: dòng version 1 của mỗi mã A1 giữ nguyên type, number, heading, text của A1: so bằng ==, không chuẩn hoá khoảng trắng,
     chỉ so trường mà A1 có dòng tương ứng; mã chỉ có ở một bên thì bỏ qua (4d lo phần thiếu).
+    4f: mọi dòng version 1 của mã A1 có cùng một effective_from và source_doc khác null (ngày hiệu lực và mã văn bản gốc), mọi
+    dòng khác có effective_from sau ngày đó (review F-08).
 
 Số kỳ vọng nằm ở bảng EXPECTED theo stem (đã đối chiếu độc lập bằng grep trên md); stem không có trong bảng thì báo lỗi.
 Thoát 1 nếu bước nào có vi phạm, hoặc đầu vào lỗi (thiếu file, JSON hỏng, thiếu khoá, stem lạ); các bước luôn chạy hết
@@ -290,6 +292,28 @@ def check_version1_content(a1_rows, version_rows):
     return Check("4e", "version 1 giữ nguyên nội dung A1", f"{fields_compared} trường ở {rows_compared} dòng version 1", problems)
 
 
+def check_base_dates(a1_ids, version_rows):
+    """Bước 4f. Mọi dòng version 1 của mã A1 có cùng một effective_from khác null và cùng một source_doc khác null (văn bản gốc);
+    mọi dòng khác bắt đầu sau ngày đó (so chuỗi YYYY-MM-DD). Không đối chiếu với giá trị cụ thể của A1/A4, chỉ nhất quán trong file."""
+    base = [r for _, r in version_rows if r["version"] == 1 and r["id"] in a1_ids]
+    starts = collections.Counter(r["effective_from"] for r in base)
+    docs = collections.Counter(r.get("source_doc") for r in base)
+    problems = []
+    if None in starts:
+        problems.append(f"{starts[None]} dòng version 1 của mã A1 có effective_from null")
+    if None in docs:
+        problems.append(f"{docs[None]} dòng version 1 của mã A1 có source_doc null")
+    if len(starts) > 1 or len(docs) > 1:
+        problems.append(f"version 1 của mã A1 không cùng một ngày / văn bản: {dict(starts)} {dict(docs)}")
+    start = next(iter(starts)) if len(starts) == 1 else None
+    if start:
+        problems += [f"{r['id']} version {r['version']}: effective_from {r['effective_from']!r} không sau ngày hiệu lực gốc {start}"
+                     for _, r in version_rows if not (r["version"] == 1 and r["id"] in a1_ids)
+                     and not (isinstance(r["effective_from"], str) and r["effective_from"] > start)]
+    return Check("4f", "version 1 có ngày hiệu lực và văn bản gốc, sửa đổi bắt đầu sau ngày đó",
+                 f"{len(base)} dòng gốc, ngày gốc {start}, văn bản gốc {next(iter(docs)) if len(docs) == 1 else None}", problems)
+
+
 STEP_TITLES = {"1": "Bước 1: mã trùng", "2": "Bước 2: mỗi đơn vị đúng một cha", "3": "Bước 3: cạnh trùng",
                "4": "Bước 4: lớp phiên bản của A4"}
 
@@ -352,6 +376,7 @@ def run(src, versions=None):
     if versions is not None:
         checks += check_versions(set(unit_types), rows["a4_versions"])
         checks.append(check_version1_content(rows["a1_triples"], rows["a4_versions"]))
+        checks.append(check_base_dates(set(unit_types), rows["a4_versions"]))
     text = format_report(stem, paths, checks)
     print(text, end="")
     write_text(text, report_path(src, versions))

@@ -477,7 +477,17 @@ def test_before_every_effective_date_the_graph_is_the_base():
     drop = ("version", "effective_from", "source_line")
     assert [{k: v for k, v in n.items() if k not in drop} for n in at.nodes] == [{k: v for k, v in n.items() if k not in drop} for n in base.nodes]
     assert at.edges == base.edges, "cạnh trước mọi ngày hiệu lực phải đúng đồ thị gốc, kể cả thứ tự và sources"
-    assert all(n["version"] == 1 and n["effective_from"] is None for n in at.nodes if n["type"] != a6.COND_TYPE)
+    assert all(n["version"] == 1 and n["effective_from"] == a4.BASE_EFFECTIVE for n in at.nodes if n["type"] != a6.COND_TYPE)
+
+
+def test_before_the_base_takes_effect_there_are_no_units():
+    """Review F-08: trước ngày hiệu lực của văn bản gốc (01/01/2017) không đơn vị nào đang hiệu lực."""
+    with tempfile.TemporaryDirectory() as tmp:
+        _, versions = a4_run(tmp, FULL_FILE, [DEV_DIR / "dev05_bai_bo_ds.md"], "d5")
+        before, _ = a7.graph_at(FULL_FILE, versions, "2016-12-31")
+        first, _ = a7.graph_at(FULL_FILE, versions, a4.BASE_EFFECTIVE)
+    assert before.nodes == [] and before.edges == [] and a5.failures(a7.check_graph(before)) == 0
+    assert len([n for n in first.nodes if n["type"] != a6.COND_TYPE]) == 215
 
 
 def test_dev05_closes_units_and_flags_the_broken_reference():

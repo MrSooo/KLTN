@@ -46,8 +46,12 @@ B1. Regex ngày áp trên toàn văn bản (kể cả trong nháy), không phân
     (31/02) là lỗi E_DATE_INVALID. Hai ngày khác nhau là lỗi kể cả khi có --effective-from. --effective-from khi văn bản không
     có ngày: dùng cờ. Dạng cờ phải là YYYY-MM-DD (E_ARGS nếu khác).
 B2. Tên mặc định = các doc-id nối bằng "+" theo thứ tự trên dòng lệnh (không theo thứ tự ngày). Áp dụng thì sắp theo ngày.
-B3. Văn bản không có chỉ thị nào (chỉ có dòng bị bỏ qua) không phải lỗi: kết quả là không đổi gì, báo cáo liệt kê các dòng
-    bị bỏ qua. Spec không nói là lỗi nên không thêm.
+B3. (Đổi 2026-10-25, review F-03; xem C8) Văn bản không có chỉ thị nào (chỉ có dòng bị bỏ qua) là lỗi E_NO_DIRECTIVE.
+    Trước đây không phải lỗi, nên một văn bản sửa đổi viết theo dạng parser không nhận được "nạp thành công" mà không đổi gì.
+B5. (2026-10-25, review F-08) Phiên bản 1 của mọi đơn vị gốc có effective_from = a1.BASE_DOC["hieu_luc"] (BLDS 2015: 2017-01-01)
+    và source_doc = mã văn bản gốc (BLDS2015), thay vì null; snapshot trước ngày đó rỗng. Văn bản sửa đổi có ngày hiệu lực
+    không SAU ngày đó là lỗi E_DATE_BEFORE_BASE (trùng ngày cũng lỗi, vì phiên bản 1 sẽ có khoảng [d, d) rỗng). doc-id trùng mã
+    văn bản gốc là E_ARGS. Metadata văn bản gốc (tên, số hiệu 91/2015/QH13, cơ quan, ngày ban hành 2015-11-24) nằm ở a1.BASE_DOC.
 B4. Văn bản sửa đổi đọc bằng utf-8-sig (chịu được BOM đầu file), \r\n và \r được đổi thành \n. File đầu ra luôn LF, không BOM.
 
 C. NHẬN DẠNG CHỈ THỊ
@@ -153,7 +157,7 @@ G. GHI FILE, LỖI, SNAPSHOT
 G1. Lỗi: chỉ ghi docs/a4_report_<name>.txt (mã lỗi, văn bản, dòng, mô tả). File dữ liệu của lần chạy trước (nếu có) KHÔNG bị xoá
     hay ghi đè; chỉ lần chạy thành công mới ghi. Lỗi in cả ra stderr. Mã lỗi: E_ARGS E_BASE E_NO_DATE E_DATE_INVALID E_DATE_CONFLICT
     E_DATE_FLAG E_SAME_DATE E_UNKNOWN_LINE E_UNSUPPORTED E_REFLIST E_SCOPE E_PHRASE E_BODY E_ORDER E_ROOT E_OVERLAP E_TARGET
-    E_EXISTS E_PARENT E_AFTER E_HEADING E_PHRASE_MISSING E_A2 E_A3 E_CODE E_NO_DIRECTIVE.
+    E_EXISTS E_PARENT E_AFTER E_HEADING E_PHRASE_MISSING E_A2 E_A3 E_CODE E_NO_DIRECTIVE E_DATE_BEFORE_BASE.
 G2. Lỗi dùng sai tham số của argparse (thiếu --base, ...) thoát mã 2 theo argparse, không ghi báo cáo. Lỗi E_ARGS (số --doc-id
     sai, ngày sai dạng) thoát mã 1 và ghi báo cáo.
 G3. Cần có file a1_triples/a2_edges/a2_refs/a3_exceptions của cùng stem với file gốc (đọc cạnh gốc từ các file này, không tính

@@ -2,7 +2,7 @@
 
 Chạy: python -I src/test_a5.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
 Chạy a5_checks.py cho cả hai file trước (python -I src/a5_checks.py <file md>), test_reports_on_disk đọc báo cáo đã ghi.
-Bước 4 (4a-4e): chạy a4_versions.py apply cho dev01+dev02, dev04_bo_sung (mẫu) và dev01_full (p4), rồi a5_checks.py <md> --versions
+Bước 4 (4a-4f): chạy a4_versions.py apply cho dev01+dev02, dev04_bo_sung (mẫu) và dev01_full (p4), rồi a5_checks.py <md> --versions
 <file> cho từng bộ; test_versions_on_disk đọc file versions, test_reports_on_disk đọc báo cáo bước 4 đã ghi (xem VERSIONS_ON_DISK).
 """
 import contextlib
@@ -218,15 +218,33 @@ def vrows(*specs):
         row = dict(zip(a5.VERSION_KEYS, spec[:5]))
         row.update({f: None for f in a5.CONTENT_FIELDS})
         row.update(CONTENT.get(row["id"], {}))
+        row["source_doc"] = BASE_DOC_ID  # 4f chỉ cần version 1 của mã A1 có chung một source_doc khác null
         row.update(spec[5] if len(spec) > 5 else {})
         out.append((i, row))
     return out
 
 
+BASE_DOC_ID, BASE_DATE = "X", "2017-01-01"
+
+
 def mini_versions(*extra):
-    """D và A một version; K hai version, version 1 đóng đúng ngày version 2 mở (nửa khoảng nên chạm nhau là hợp lệ)."""
-    return vrows((D, 1, None, None, None), (K, 1, None, None, "2027-01-01"),
-                 (K, 2, 1, "2027-01-01", None, {"text": "Nội dung khoản sau sửa đổi"}), (A, 1, None, None, None), *extra)
+    """D và A một version; K hai version, version 1 đóng đúng ngày version 2 mở (nửa khoảng nên chạm nhau là hợp lệ).
+    Version 1 bắt đầu từ ngày hiệu lực gốc BASE_DATE như A4 ghi."""
+    return vrows((D, 1, None, BASE_DATE, None), (K, 1, None, BASE_DATE, "2027-01-01"),
+                 (K, 2, 1, "2027-01-01", None, {"text": "Nội dung khoản sau sửa đổi"}), (A, 1, None, BASE_DATE, None), *extra)
+
+
+def test_step4f_base_dates():
+    assert a5.check_base_dates({D, K, A}, mini_versions()).problems == []
+    # mã chỉ có trong versions (thêm bởi sửa đổi) là "dòng khác": phải bắt đầu sau ngày gốc
+    assert a5.check_base_dates({D, K, A}, mini_versions(("X.D1a", 1, None, "2027-01-01", None))).problems == []
+    late = a5.check_base_dates({D, K, A}, mini_versions(("X.D1a", 1, None, BASE_DATE, None))).problems
+    assert late == [f"X.D1a version 1: effective_from '{BASE_DATE}' không sau ngày hiệu lực gốc {BASE_DATE}"], late
+    old = vrows((D, 1, None, None, None), (K, 1, None, BASE_DATE, None), (A, 1, None, BASE_DATE, None))
+    problems = a5.check_base_dates({D, K, A}, old).problems
+    assert any("effective_from null" in p for p in problems) and any("không cùng" in p for p in problems), problems
+    no_doc = vrows(*[(c, 1, None, BASE_DATE, None, {"source_doc": None}) for c in (D, K, A)])
+    assert any("source_doc null" in p for p in a5.check_base_dates({D, K, A}, no_doc).problems)
 
 
 def content_triples():
@@ -462,8 +480,8 @@ def test_run_with_versions_clean():
     with tempfile.TemporaryDirectory() as tmp, Env(tmp, mini_triples(), mini_edges(), versions=mini_versions()) as env:
         code, _, report = env.run("--versions", str(env.tmp / "v.jsonl"))
     assert code == 0 and report.endswith("\nKẾT LUẬN: ĐẠT\n")
-    assert "== Bước 4: lớp phiên bản của A4 ==" in report and all(f"[{i}]" in report for i in ("4a", "4b", "4c", "4d", "4e"))
-    assert report.count("-> ĐẠT") == 16  # 1a-1d (4) + 2a-2f (6) + 3 (1) + 4a-4e (5)
+    assert "== Bước 4: lớp phiên bản của A4 ==" in report and all(f"[{i}]" in report for i in ("4a", "4b", "4c", "4d", "4e", "4f"))
+    assert report.count("-> ĐẠT") == 17  # 1a-1d (4) + 2a-2f (6) + 3 (1) + 4a-4f (6)
     assert "v.jsonl" in report.split("== Bước 1")[0]  # file versions có trong danh sách file đã kiểm
 
 
@@ -548,9 +566,10 @@ def test_versions_on_disk():
         assert sum(1 for l in raw_lines(path) if l.strip()) == n_lines, name
         a1_rows, version_rows = a5.load_rows(a2.triples_path(md)), a5.load_rows(path, a5.VERSION_KEYS)
         _, unit_types = a5.check_codes(a1_rows, a5.EXPECTED[md.stem])
-        checks = a5.check_versions(set(unit_types), version_rows) + [a5.check_version1_content(a1_rows, version_rows)]
+        checks = a5.check_versions(set(unit_types), version_rows) + [a5.check_version1_content(a1_rows, version_rows),
+                                                                      a5.check_base_dates(set(unit_types), version_rows)]
         assert [(c.id, c.problems) for c in checks if c.problems] == [], name
-        assert checks[-1].id == "4e" and checks[-1].summary.endswith(f"ở {UNITS[md]} dòng version 1"), name  # so đủ mọi đơn vị A1, không rỗng
+        assert checks[-2].id == "4e" and checks[-2].summary.endswith(f"ở {UNITS[md]} dòng version 1"), name  # so đủ mọi đơn vị A1, không rỗng
         assert len(unit_types) == UNITS[md], name
 
 

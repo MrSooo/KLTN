@@ -374,7 +374,7 @@ def test_dev01_repeal_khoan_2_dieu_621():
     assert [(r["s"], r["p"], r["o"], r["directive_seq"], r["effective_from"], r["new_version"]) for r in run.amend_edges] == [
         (DEV_FILES[1], "repeals", P + "D621.K2", 1, DATE, None)]
     (k2,) = versions_of(run, P + "D621.K2")
-    assert (k2["version"], k2["effective_from"], k2["effective_to"]) == (1, None, DATE)
+    assert (k2["version"], k2["effective_from"], k2["effective_to"]) == (1, a4.BASE_EFFECTIVE, DATE)
     assert len(run.version_rows()) == 35 and all(r["version"] == 1 for r in run.version_rows())
     assert run.edge_changes == [] and run.broken == [] and run.impact == {}      # không đơn vị changed/new; không ai trỏ vào K2
     assert scan_broken([P + "D621.K2"]) == [] and scan_impact({P + "D621.K2"}, {P + "D621.K2"}) == {}
@@ -385,10 +385,10 @@ def test_dev02_sua_khoan_1_dieu_621():
     for code, new_text in ((P + "D621.K1", "Những người sau đây không được quyền hưởng di sản theo quy định của pháp luật:"),
                            (P + "D621.K1.b", "Người vi phạm nghiêm trọng nghĩa vụ nuôi dưỡng, chăm sóc người để lại di sản;")):
         v1, v2 = versions_of(run, code)
-        assert (v1["version"], v1["effective_from"], v1["effective_to"], v1["previous_version"]) == (1, None, "2027-07-01", None)
+        assert (v1["version"], v1["effective_from"], v1["effective_to"], v1["previous_version"]) == (1, a4.BASE_EFFECTIVE, "2027-07-01", None)
         assert (v2["version"], v2["effective_from"], v2["effective_to"], v2["previous_version"]) == (2, "2027-07-01", None, 1)
         assert (v2["source_doc"], v2["directive_seq"], v2["text"]) == (DEV_FILES[2], 1, new_text)
-        assert v1["source_doc"] is None and v1["directive_seq"] is None
+        assert v1["source_doc"] == a4.DOC_PREFIX and v1["directive_seq"] is None
     for code in K1[1:4:2] + c("D621.K1.d"):                                       # a, c, d giữ nguyên, chỉ một phiên bản
         (v,) = versions_of(run, code)
         assert v["version"] == 1 and v["effective_to"] is None
@@ -495,18 +495,18 @@ def test_dev08_thay_the_ca_van_ban():
 
 
 def test_base_rows_match_a1_triples():
-    """Dòng gốc (version 1, source_doc null) khớp từng chữ với triples của A1, với mọi văn bản dev."""
+    """Dòng gốc (version 1, source_doc là mã văn bản gốc) khớp từng chữ với triples của A1, với mọi văn bản dev."""
     with open(IN_DIR / f"a1_triples_{STEM}.jsonl", encoding="utf-8") as f:
         triples = {}
         for r in map(json.loads, f):
             triples.setdefault(r["s"], {})[r["p"]] = r["o"]
     for n in DEV_FILES:
-        base = [r for r in run_dev(n).version_rows() if r["source_doc"] is None]
+        base = [r for r in run_dev(n).version_rows() if r["source_doc"] == a4.DOC_PREFIX]
         assert len(base) == 35
         for r in base:
             t = triples[r["id"]]
             assert (r["type"], r["number"], r["heading"], r["text"]) == (t["type"], t["number"], t.get("heading"), t.get("text")), r["id"]
-            assert (r["version"], r["effective_from"], r["previous_version"], r["directive_seq"]) == (1, None, None, None)
+            assert (r["version"], r["effective_from"], r["previous_version"], r["directive_seq"]) == (1, a4.BASE_EFFECTIVE, None, None)
 
 
 # ---- cờ cạnh đứt và tập ảnh hưởng với đích có người trỏ tới (văn bản dựng tay) ----
@@ -755,6 +755,16 @@ def test_error_missing_date_and_conflicting_dates():
     same_date_twice = amend_text("Bãi bỏ khoản 2 Điều 621.") + "Điều này có hiệu lực từ ngày 1 tháng 1 năm 2027.\n"
     with sandbox() as tmp:                              # hai khớp trùng ngày tính là một ngày: không lỗi
         assert cli("apply", "--base", SAMPLE_FILE, "--amend", write(tmp, "x.md", same_date_twice))[0] == 0
+
+
+def test_error_effective_date_not_after_base_and_base_doc_id():
+    """Review F-08: văn bản sửa đổi phải có hiệu lực SAU ngày hiệu lực của văn bản gốc; doc-id không được trùng mã văn bản gốc."""
+    for date in ("01 tháng 6 năm 2016", "01 tháng 01 năm 2017"):
+        apply_cli_error("E_DATE_BEFORE_BASE", [amend_text("Bãi bỏ khoản 2 Điều 621.", date=date)])
+    raises("E_ARGS", a4.apply_series, SAMPLE_FILE, [(dev(1), a4.DOC_PREFIX)])
+    with sandbox() as tmp:                              # ngày ngay sau ngày gốc: hợp lệ
+        assert cli("apply", "--base", SAMPLE_FILE, "--amend",
+                   write(tmp, "x.md", amend_text("Bãi bỏ khoản 2 Điều 621.", date="02 tháng 01 năm 2017")))[0] == 0
 
 
 def write(tmp, name, text):

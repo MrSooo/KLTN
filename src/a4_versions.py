@@ -10,6 +10,7 @@ apply: nạp văn bản gốc (a1.load_parsed) và cạnh gốc của A2/A3 (ch�
 snapshot: đơn vị đang hiệu lực tại ngày T, xuất Markdown cùng quy ước với file BLDS gốc (stdout hoặc --out).
 
 Hiệu lực là nửa khoảng [effective_from, effective_to): đang hiệu lực tại T nếu (from null hoặc <= T) và (to null hoặc > T).
+Phiên bản 1 của đơn vị gốc bắt đầu từ ngày hiệu lực của văn bản gốc (a1.BASE_DOC); văn bản sửa đổi phải có hiệu lực sau ngày đó.
 Mọi quyết định chỗ spec chưa nói nằm trong docs/a4_quyet_dinh.txt.
 """
 import argparse
@@ -33,6 +34,7 @@ IN_DIR = a2.PROCESSED_DIR     # file A1/A2/A3 đã sinh, chỉ đọc
 OUT_DIR = a2.PROCESSED_DIR    # file dữ liệu A4 (test đổi sang thư mục tạm)
 DOCS_DIR = ROOT / "docs"
 DOC_PREFIX = a1.DOC_PREFIX
+BASE_EFFECTIVE = a1.BASE_DOC["hieu_luc"]  # effective_from của phiên bản 1; văn bản sửa đổi phải có hiệu lực sau ngày này
 
 # A2/A3 nhận mã có hậu tố chữ làm nguồn (đã thử, khoá bằng test_a2_a3_accept_suffix_codes). Đặt False thì đơn vị
 # có hậu tố bị loại khỏi tập đưa vào A2/A3 và được liệt kê ở mục "chưa tính cạnh (mã có hậu tố)" của báo cáo.
@@ -1133,7 +1135,8 @@ def load_base(base):
         raise A4Error("E_BASE", f"văn bản gốc {base} còn lỗi parse A1: {parsed.errors[:3]}")
     store = Store()
     for u in parsed.units:
-        store.versions[u.id] = [Version(u.id, 1, u.type, u.number, u.heading, list(u.parts))]
+        store.versions[u.id] = [Version(u.id, 1, u.type, u.number, u.heading, list(u.parts),
+                                        effective_from=BASE_EFFECTIVE, source_doc=DOC_PREFIX)]
     return store
 
 
@@ -1163,6 +1166,11 @@ def apply_series(base, amends, name=None):
         except A4Error as e:
             e.doc = e.doc or doc_id
             raise
+        if date <= BASE_EFFECTIVE:
+            raise A4Error("E_DATE_BEFORE_BASE", f"ngày hiệu lực {date} không sau ngày hiệu lực {BASE_EFFECTIVE} của văn bản gốc",
+                          doc=doc_id)
+        if doc_id == DOC_PREFIX:
+            raise A4Error("E_ARGS", f"doc-id {doc_id!r} trùng mã văn bản gốc", doc=doc_id)
         docs.append(Doc(doc_id, _display_path(spec.path), date, parsed.directives, parsed.skipped))
     by_date = collections.defaultdict(list)
     for d in docs:
