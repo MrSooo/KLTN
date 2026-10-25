@@ -9,7 +9,7 @@ file đã đọc:
   data/processed/a4_p4_dev05_bai_bo_ds_amend_edges.jsonl
 
 == Nút ==
-tổng 211 | theo loại {'dieu': 52, 'khoan': 106, 'diem': 42, 'dieu_kien': 5, 'chuong': 4, 'van_ban': 2} | theo status {'ok': 207, 'duplicate': 4}
+tổng 211 | theo loại {'dieu': 52, 'khoan': 106, 'diem': 42, 'dieu_kien': 5, 'chuong': 4, 'van_ban': 2} | theo status {'ok': 207, 'same_text': 4}
 
 == Cạnh ==
 tổng 454 | theo p {'contains': 204, 'part_of': 204, 'refers_to': 24, 'exception_of': 14, 'repeals': 4, 'same_text_as': 4} | theo status {'ok': 449, 'dangling': 1, 'historical': 4}
@@ -38,7 +38,7 @@ cạnh cập nhật từ nút văn bản: {'repeals': 4}; historical (4, đích 
 [7a] mã nút duy nhất, status nút hợp lệ: 211 nút -> ĐẠT
 [7b] cạnh ok có đủ hai đầu, cạnh treo / historical có nguồn là nút và đích không phải nút: 454 cạnh -> ĐẠT
 [7c] không còn bộ ba (s, p, o) lặp: 454 cạnh, 0 bộ ba đã gộp khi dựng -> ĐẠT
-[7d] nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm: 4 nút duplicate -> ĐẠT
+[7d] nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm: 4 nút same_text -> ĐẠT
 [7e] mỗi Chương/Điều/Khoản/Điểm đúng một part_of tới cha đúng bậc, contains đối xứng: 204 cặp contains -> ĐẠT
 [7g] không có vòng exception_of: 14 cạnh exception_of; vòng refers_to (chỉ ghi): không có -> ĐẠT
 

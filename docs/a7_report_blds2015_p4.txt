@@ -8,7 +8,7 @@ file đã đọc:
   data/processed/a6_exceptions_blds2015_p4.jsonl
 
 == Nút ==
-tổng 225 | theo loại {'dieu': 54, 'khoan': 115, 'diem': 46, 'dieu_kien': 5, 'chuong': 4, 'van_ban': 1} | theo status {'ok': 221, 'duplicate': 4}
+tổng 225 | theo loại {'dieu': 54, 'khoan': 115, 'diem': 46, 'dieu_kien': 5, 'chuong': 4, 'van_ban': 1} | theo status {'ok': 221, 'same_text': 4}
 
 == Cạnh ==
 tổng 481 | theo p {'contains': 219, 'part_of': 219, 'refers_to': 25, 'exception_of': 14, 'same_text_as': 4} | theo status {'ok': 481}
@@ -26,9 +26,9 @@ thành phần liên thông: 1 | chỉ theo cạnh ngữ nghĩa (bỏ contains/pa
 [7a] mã nút duy nhất, status nút hợp lệ: 225 nút -> ĐẠT
 [7b] cạnh ok có đủ hai đầu, cạnh treo / historical có nguồn là nút và đích không phải nút: 481 cạnh -> ĐẠT
 [7c] không còn bộ ba (s, p, o) lặp: 481 cạnh, 0 bộ ba đã gộp khi dựng -> ĐẠT
-[7d] nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm: 4 nút duplicate -> ĐẠT
+[7d] nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm: 4 nút same_text -> ĐẠT
 [7e] mỗi Chương/Điều/Khoản/Điểm đúng một part_of tới cha đúng bậc, contains đối xứng: 219 cặp contains -> ĐẠT
-[7f] số nút, cạnh, nút bản sao khớp bảng EXPECTED: nút 225/225, cạnh 481/481, duplicate 4/4 -> ĐẠT
+[7f] số nút, cạnh, nút bản sao khớp bảng EXPECTED: nút 225/225, cạnh 481/481, same_text 4/4 -> ĐẠT
 [7g] không có vòng exception_of: 14 cạnh exception_of; vòng refers_to (chỉ ghi): không có -> ĐẠT
 
 KẾT LUẬN: ĐẠT

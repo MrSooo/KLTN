@@ -27,9 +27,9 @@ DEV_DIR = ROOT / "data" / "dev_amend"
 FILES = [("mẫu", SAMPLE_FILE), ("đầy đủ", FULL_FILE)]  # luôn mẫu trước
 P = "BLDS2015."
 
-# Số kỳ vọng (nút, cạnh, nút duplicate): cộng độc lập ở test_files_match_independent_counts, không lấy từ a7.EXPECTED.
+# Số kỳ vọng (nút, cạnh, nút same_text): cộng độc lập ở test_files_match_independent_counts, không lấy từ a7.EXPECTED.
 REFERENCE = {SAMPLE_FILE: (36, 74, 0), FULL_FILE: (225, 481, 4)}
-DUPLICATE_PAIRS = [(P + a, P + b) for a, b in (("D617.K2.c", "D617.K1.d"), ("D618.K2.b", "D618.K1.b"),
+SAME_TEXT_PAIRS = [(P + a, P + b) for a, b in (("D617.K2.c", "D617.K1.d"), ("D618.K2.b", "D618.K1.b"),
                                                ("D618.K2.c", "D618.K1.c"), ("D637.K1", "D632.K1"))]
 
 
@@ -92,15 +92,15 @@ def test_edgeset_keeps_first_seen_order_and_remove():
 
 # ---- bản sao text ----
 
-def test_duplicate_pair_and_triple_group_point_to_first():
+def test_same_text_pair_and_triple_group_point_to_first():
     units = [unit("X.D1", "dieu"), unit("X.D1.K1", "khoan"), unit("X.D1.K1.a", "diem", "Được hưởng thù lao."),
              unit("X.D1.K1.b", "diem", "được hưởng  thù lao;"), unit("X.D1.K1.c", "diem", "Khác hẳn."),
              unit("X.D1.K1.d", "diem", "ĐƯỢC HƯỞNG THÙ LAO")]
     g = graph_of(units)
     assert [(e["s"], e["o"], e["method"]) for e in g.edges if e["p"] == a7.SAME_TEXT] == [
         ("X.D1.K1.b", "X.D1.K1.a", a7.SAME_METHOD), ("X.D1.K1.d", "X.D1.K1.a", a7.SAME_METHOD)]
-    assert {n["id"]: n["status"] for n in g.nodes} == {"X.D1": "ok", "X.D1.K1": "ok", "X.D1.K1.a": "ok", "X.D1.K1.b": "duplicate",
-                                                       "X.D1.K1.c": "ok", "X.D1.K1.d": "duplicate"}
+    assert {n["id"]: n["status"] for n in g.nodes} == {"X.D1": "ok", "X.D1.K1": "ok", "X.D1.K1.a": "ok", "X.D1.K1.b": "same_text",
+                                                       "X.D1.K1.c": "ok", "X.D1.K1.d": "same_text"}
 
 
 def test_same_text_of_different_type_is_not_grouped():
@@ -145,7 +145,7 @@ def test_check_graph_is_clean_on_a_mini_graph():
     units = [unit("X.D1", "dieu"), unit("X.D1.K1", "khoan", "A."), unit("X.D1.K1.a", "diem", "B."), unit("X.D2", "dieu"),
              unit("X.D2.K1", "khoan", "A.")]
     g = graph_of(units, structural(units) + [edge("X.D2.K1", "refers_to", "X.D1.K1")])
-    checks = a7.check_graph(g, a7.Expect(nodes=5, edges=len(g.edges), duplicates=1))
+    checks = a7.check_graph(g, a7.Expect(nodes=5, edges=len(g.edges), same_text=1))
     assert a5.failures(checks) == 0, [(c.id, c.problems) for c in checks]
     assert [c.id for c in checks] == ["7a", "7b", "7c", "7d", "7e", "7f", "7g"]
     assert [c.id for c in a7.check_graph(g)] == ["7a", "7b", "7c", "7d", "7e", "7g"]  # không có expect thì bỏ 7f
@@ -207,7 +207,7 @@ def test_check_graph_catches_each_kind_of_problem():
     assert any("cần ['X.D1.K1']" in p for p in problems_of(a7.check_graph(broken(edges=wrong_target)), "7d"))
     assert any("không phải bản sau" in p for p in problems_of(a7.check_graph(with_edges(edge("X.D2", a7.SAME_TEXT, "X.D1"))), "7d"))
     phantom = [dict(n) for n in good.nodes]
-    phantom[0]["status"] = a7.DUPLICATE
+    phantom[0]["status"] = a7.TEXT_COPY
     assert any("không có đơn vị đứng trước" in p for p in problems_of(a7.check_graph(broken(nodes=phantom)), "7d"))
     # 7e: thiếu part_of, cha sai, contains lẻ
     no_part = [e for e in good.edges if not (e["p"] == "part_of" and e["s"] == "X.D1.K1")]
@@ -229,7 +229,7 @@ def test_check_graph_catches_each_kind_of_problem():
     assert any("X.CI: part_of tới [], cần đúng một nút van_ban" in p
                for p in problems_of(a7.check_graph(full._replace(edges=chapter_orphan)), "7e"))
     # 7f
-    assert len(problems_of(a7.check_graph(good, a7.Expect(nodes=1, edges=1, duplicates=0)), "7f")) == 3
+    assert len(problems_of(a7.check_graph(good, a7.Expect(nodes=1, edges=1, same_text=0)), "7f")) == 3
 
 
 # ---- trạng thái gốc, trên file thật ----
@@ -240,7 +240,7 @@ def count_lines(path):
 
 
 def test_files_match_independent_counts():
-    """Cộng số dòng của file nguồn và đếm bản sao bằng Counter riêng, không qua EdgeSet / mark_duplicates / a7.EXPECTED."""
+    """Cộng số dòng của file nguồn và đếm bản sao bằng Counter riêng, không qua EdgeSet / mark_same_text / a7.EXPECTED."""
     for name, path in FILES:
         graph, _ = a7.graph_base(path)
         a1 = [json.loads(line) for line in a2.triples_path(path).read_text(encoding="utf-8").split("\n") if line]
@@ -254,7 +254,7 @@ def test_files_match_independent_counts():
         n_attach = 2 * (n_chuong or n_dieu)  # văn bản gốc contains/part_of mỗi Chương, hoặc mỗi Điều nếu không có Chương
         want = (len(types) + len(cond_ids) + 1, n_edges + n_attach + n_dup, n_dup)  # + 1 nút văn bản gốc
         assert want == REFERENCE[path], f"file {name}: cộng độc lập {want}, bảng {REFERENCE[path]}"
-        got = (len(graph.nodes), len(graph.edges), sum(1 for n in graph.nodes if n["status"] == "duplicate"))
+        got = (len(graph.nodes), len(graph.edges), sum(1 for n in graph.nodes if n["status"] == "same_text"))
         assert got == want, f"file {name}: đồ thị {got}, cộng độc lập {want}"
         assert a7.EXPECTED[path.stem] == a7.Expect(*REFERENCE[path]), f"file {name}: EXPECTED lệch bảng test"
 
@@ -266,7 +266,7 @@ def test_files_graph_content():
         assert graph.merged == [], f"file {name}: dữ liệu thật không có bộ ba trùng"
         assert all(e["status"] == "ok" for e in graph.edges) and all(len(e["sources"]) == 1 for e in graph.edges)
         pairs = [(e["s"], e["o"]) for e in graph.edges if e["p"] == a7.SAME_TEXT]
-        assert pairs == (DUPLICATE_PAIRS if path == FULL_FILE else []), f"file {name}: {pairs}"
+        assert pairs == (SAME_TEXT_PAIRS if path == FULL_FILE else []), f"file {name}: {pairs}"
         # mọi cạnh nguồn vào đồ thị nguyên vẹn: (s, p, o, evidence, method) khớp file gốc
         for label, rows_path in (("a2_edges", a2.edges_path(path)), ("a2_refs", a2.refs_path(path)),
                                  ("a3_exceptions", a3.exceptions_path(path)), ("a6_exceptions", a6.exceptions_path(path))):
@@ -305,7 +305,7 @@ def test_base_cli_writes_files_and_exit_codes():
             assert a7.main([str(FULL_FILE)]) == 0
         names = sorted(p.name for p in Path(tmp).iterdir())
         assert names == ["a7_blds2015_p4_edges.jsonl", "a7_blds2015_p4_nodes.jsonl", "a7_report_blds2015_p4.txt"], names
-        assert "nút 225/225, cạnh 481/481, duplicate 4/4" in out.getvalue()
+        assert "nút 225/225, cạnh 481/481, same_text 4/4" in out.getvalue()
     # stem chưa có trong EXPECTED: thoát với lỗi, không ghi gì
     with tempfile.TemporaryDirectory() as tmp:
         with patched(a7, OUT_DIR=Path(tmp), DOCS_DIR=Path(tmp)):
@@ -318,7 +318,7 @@ def test_base_cli_writes_files_and_exit_codes():
         assert list(Path(tmp).iterdir()) == []
     # kiểm 7f không đạt: ghi báo cáo, thoát 1, không ghi file dữ liệu
     with tempfile.TemporaryDirectory() as tmp:
-        wrong = dict(a7.EXPECTED, blds2015_5dieu=a7.Expect(nodes=1, edges=1, duplicates=0))
+        wrong = dict(a7.EXPECTED, blds2015_5dieu=a7.Expect(nodes=1, edges=1, same_text=0))
         with patched(a7, OUT_DIR=Path(tmp), DOCS_DIR=Path(tmp), EXPECTED=wrong), \
                 contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
             assert a7.main([str(SAMPLE_FILE)]) == 1

@@ -8,9 +8,10 @@ A. ĐÃ CHỐT VỚI USER
 A1. Ngoại lệ chung "..., trừ trường hợp X" thành NÚT ĐIỀU KIỆN riêng (file riêng, không đổi số A1/A2) và cạnh exception_of từ
     nút điều kiện tới đơn vị quy tắc; câu giống nhau gộp một nút. Làm ở A6, không nới hai quy tắc của A3.
 A2. Đơn vị có text giống hệt KHÔNG gộp nút (mỗi đơn vị là một vị trí pháp lý có cha riêng; gộp sẽ phá "một cha" của A5).
-    Giữ nút, nút bản sau có status "duplicate" và cạnh same_text_as: bản sau -> canonical, canonical là đơn vị đứng đầu nhóm theo
+    Giữ nút, nút bản sau có status "same_text" (trước 2026-10-25 là "duplicate") và cạnh same_text_as: bản sau -> canonical, canonical là đơn vị đứng đầu nhóm theo
     thứ tự file. Nhóm 3 bản trở lên: các bản sau cùng trỏ về canonical.
-A3. Nhãn cô lập: "duplicate" (nút bản sao) và "dangling" (cạnh treo). Bộ ba trùng chính xác được gộp tự động (chuẩn hoá).
+A3. Nhãn cô lập: "same_text" (nút trùng chữ; đổi tên từ "duplicate" ngày 2026-10-25, review F-06: 4 cặp của p4 đều là trùng chữ có
+    chủ đích pháp lý, không phải dư thừa, nên tên "duplicate" dễ đọc nhầm) và "dangling" (cạnh treo). Bộ ba trùng chính xác được gộp tự động (chuẩn hoá).
 A4. Đồ thị gộp là bước A7 mới, không sửa A1-A5. Nạp A4 theo ngày (--versions, --date) làm ở giai đoạn cuối.
 A5. Không mở rộng cú pháp A4 (xem docs/pham_vi_mo_rong.txt).
 
@@ -64,7 +65,7 @@ C3. same_text_as nhóm theo (type, a6.norm_text(text)): Khoản không gộp v�
 C4. Kiểm tự động (không đạt thì báo cáo vẫn ghi, file dữ liệu KHÔNG ghi, thoát 1): 7a mã nút duy nhất và status hợp lệ; 7b cạnh ok có đủ hai đầu, cạnh
     treo có nguồn là nút và đích không phải nút; 7c không còn (s, p, o) lặp; 7d nút bản sao đúng một same_text_as tới đơn vị đầu nhóm (dựng lại nhóm từ
     chính các nút); 7e mỗi Khoản/Điểm đúng một part_of (ok) tới cha là mã bỏ đoạn cuối và đúng bậc, contains đối xứng, Điều không có part_of;
-    7f (chỉ trạng thái gốc) số nút, cạnh, nút duplicate khớp bảng cứng a7.EXPECTED theo stem, stem lạ thì lỗi. 7e KHÔNG có trong plan, thêm vì nó là
+    7f (chỉ trạng thái gốc) số nút, cạnh, nút same_text khớp bảng cứng a7.EXPECTED theo stem, stem lạ thì lỗi. 7e KHÔNG có trong plan, thêm vì nó là
     chỗ bắt lỗi nếu cạnh add của A4 thiếu khi nạp theo ngày.
     (2026-10-25, review F-12) 7g (cả hai chế độ): không có vòng trong exception_of (A ngoại lệ của B và B, trực tiếp hoặc bắc cầu, ngoại lệ của A).
     Vòng refers_to chỉ được ghi trong dòng tóm tắt của 7g, không tính lỗi: hai đơn vị dẫn chiếu qua lại là hợp lệ. Không kiểm trên hợp
@@ -72,7 +73,7 @@ C4. Kiểm tự động (không đạt thì báo cáo vẫn ghi, file dữ liệ
     Phạm vi "mâu thuẫn hình thức" đã kiểm: vòng exception_of (7g), sửa/bãi bỏ đơn vị đã đóng (A4 E_TARGET), hai chỉ thị chồng đích (A4 E_OVERLAP),
     cạnh tới đơn vị đã đóng (cờ cạnh đứt A4, dangling A7). Chưa kiểm: xung đột chế tài (docs/pham_vi_mo_rong.txt A1).
 C5. Số đối chiếu: p4 225 nút (215 + 4 Chương + 5 + 1 văn bản; D8, D9), 481 cạnh (430 A2a gồm 108 Điều-Chương + 25 + 4 + 9 + 1 (B8) + 8 văn bản-Chương + 4
-    same_text_as), 4 duplicate; mẫu 36 nút (35 + 1 văn bản), 74 cạnh (60 + 3 + 1 + 10 văn bản-Điều), 0 duplicate.
+    same_text_as), 4 same_text; mẫu 36 nút (35 + 1 văn bản), 74 cạnh (60 + 3 + 1 + 10 văn bản-Điều), 0 same_text.
     Bảng EXPECTED được test cộng lại độc lập (số dòng file nguồn, Counter riêng cho bản sao), không chỉ chép từ kết quả chạy.
 C6. File: data/processed/a7_<stem>_{nodes,edges}.jsonl và docs/a7_report_<stem>.txt. Báo cáo ghi cả khi KHÔNG ĐẠT.
 C7. A5 giữ nguyên, không đọc file A6/A7. Trùng cạnh trên các nguồn kể cả cạnh A6 do 7c của A7 kiểm.

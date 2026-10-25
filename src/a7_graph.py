@@ -10,7 +10,7 @@ Tại một ngày: python -I src/a7_graph.py <file md nguồn> --versions data/p
 
 Việc làm:
   Gộp bộ ba: cạnh cùng (s, p, o) từ các file thành một cạnh (giữ dòng đầu, sources liệt kê nơi xuất hiện, evidences khi gộp).
-  Bản sao text: đơn vị có text giống hệt (cùng type, a6.norm_text) với một đơn vị đứng trước: nút status "duplicate" và cạnh
+  Bản sao text: đơn vị có text giống hệt (cùng type, a6.norm_text) với một đơn vị đứng trước: nút status "same_text" (trùng chữ, không phải dư thừa: review F-06) và cạnh
     same_text_as (bản sau -> canonical = đơn vị đứng đầu nhóm). Không gộp nút: mỗi đơn vị là một vị trí pháp lý có cha riêng.
   Cạnh treo (chỉ có khi nạp A4): refers_to / exception_of có nguồn còn hiệu lực mà đích không còn: giữ, status "dangling".
   Nút văn bản (type van_ban): văn bản gốc (a1.BASE_DOC) ở cả hai chế độ; khi nạp A4 thêm mỗi văn bản sửa đổi có hiệu lực <= T,
@@ -37,8 +37,8 @@ import a6_general_exceptions as a6
 OUT_DIR = a2.PROCESSED_DIR  # test đổi sang thư mục tạm
 DOCS_DIR = a2.ROOT / "docs"
 
-OK, DUPLICATE, DANGLING, HISTORICAL = "ok", "duplicate", "dangling", "historical"
-NODE_STATUS = (OK, DUPLICATE)
+OK, TEXT_COPY, DANGLING, HISTORICAL = "ok", "same_text", "dangling", "historical"
+NODE_STATUS = (OK, TEXT_COPY)
 EDGE_STATUS = (OK, DANGLING, HISTORICAL)
 DOC_TYPE = "van_ban"
 AMEND_P = ("amends", "replaces", "repeals")  # cạnh văn bản sửa đổi -> đích (a4_<name>_amend_edges), review F-07
@@ -55,15 +55,15 @@ CHANGE_KEYS = ("op", "s", "p", "o", "at")                       # khoá bắt bu
 class Expect(NamedTuple):
     nodes: int
     edges: int
-    duplicates: int
+    same_text: int  # số nút status same_text
 
 
 # Số kỳ vọng của trạng thái gốc. p4: 215 đơn vị + 4 Chương + 5 nút điều kiện + 1 nút văn bản gốc; 430 (A2a, gồm 108 Điều-Chương)
 # + 25 (A2b) + 4 (A3) + 9 + 1 (A6) + 8 (văn bản-Chương) + 4 same_text_as. Mẫu (không có Chương): 35 đơn vị + 1 nút văn bản; 60 + 3 + 1
 # + 10 (văn bản-Điều). Đã đối chiếu độc lập ở test_a7 (cộng số dòng của các file nguồn).
 EXPECTED = {
-    "blds2015_5dieu": Expect(nodes=36, edges=74, duplicates=0),
-    "blds2015_p4": Expect(nodes=225, edges=481, duplicates=4),
+    "blds2015_5dieu": Expect(nodes=36, edges=74, same_text=0),
+    "blds2015_p4": Expect(nodes=225, edges=481, same_text=4),
 }
 
 
@@ -131,8 +131,8 @@ class Graph(NamedTuple):
     notes: dict    # thống kê thêm cho báo cáo (chế độ theo ngày)
 
 
-def mark_duplicates(nodes):
-    """Gán status duplicate cho đơn vị có text giống hệt (cùng type, a6.norm_text) một đơn vị đứng trước.
+def mark_same_text(nodes):
+    """Gán status same_text cho đơn vị có text giống hệt (cùng type, a6.norm_text) một đơn vị đứng trước.
 
     Trả về [(bản sau, canonical)] theo thứ tự nút; canonical là đơn vị đầu nhóm theo thứ tự nút. Đơn vị không có text bị bỏ qua,
     nút điều kiện không tham gia (đã gộp theo khoá khi sinh ra).
@@ -143,7 +143,7 @@ def mark_duplicates(nodes):
             continue
         canonical = first.setdefault((n["type"], a6.norm_text(n["text"])), n["id"])
         if canonical != n["id"]:
-            n["status"] = DUPLICATE
+            n["status"] = TEXT_COPY
             pairs.append((n["id"], canonical))
     return pairs
 
@@ -151,7 +151,7 @@ def mark_duplicates(nodes):
 def assemble(units, conditions, edge_set, notes, docs=()):
     """Nút (đơn vị, nút điều kiện, rồi nút văn bản), đánh dấu bản sao và thêm cạnh same_text_as vào edge_set, trả về Graph."""
     nodes = units + conditions + list(docs)
-    for dup, canonical in mark_duplicates(nodes):
+    for dup, canonical in mark_same_text(nodes):
         edge_set.add("a7", {"s": dup, "p": SAME_TEXT, "o": canonical, "evidence": "", "method": SAME_METHOD})
     return Graph(nodes, edge_set.rows(), edge_set.merged(), notes)
 
@@ -381,7 +381,7 @@ def check_graph(graph, expect=None):
             out_edges[e["s"]].append(e)
     for dup, canonical in expected.items():
         got = [e["o"] for e in out_edges.get(dup, [])]
-        if by_id[dup]["status"] != DUPLICATE:
+        if by_id[dup]["status"] != TEXT_COPY:
             p_d.append(f"{dup}: text giống {canonical} nhưng status {by_id[dup]['status']!r}")
         if got != [canonical]:
             p_d.append(f"{dup}: same_text_as tới {got}, cần [{canonical!r}]")
@@ -389,8 +389,8 @@ def check_graph(graph, expect=None):
         if s not in expected:
             p_d.append(f"{s}: có same_text_as nhưng không phải bản sau của nhóm text giống hệt")
     for n in nodes:
-        if n["status"] == DUPLICATE and n["id"] not in expected:
-            p_d.append(f"{n['id']}: status duplicate nhưng không có đơn vị đứng trước cùng text")
+        if n["status"] == TEXT_COPY and n["id"] not in expected:
+            p_d.append(f"{n['id']}: status same_text nhưng không có đơn vị đứng trước cùng text")
 
     # 7e: mỗi Khoản/Điểm đúng một part_of (ok) tới cha là mã bỏ đoạn cuối và đúng bậc; Điều đúng một part_of tới Chương (đồ thị có
     # Chương) hoặc tới nút văn bản (không có Chương); Chương đúng một part_of tới nút văn bản; contains đối xứng. Đồ thị không có nút
@@ -428,21 +428,21 @@ def check_graph(graph, expect=None):
     p_e += [f"contains {a} → {b} không có part_of ngược" for a, b in sorted(contains - reverse)]
     p_e += [f"part_of {b} → {a} không có contains ngược" for a, b in sorted(reverse - contains)]
 
-    n_dup = sum(1 for n in nodes if n["status"] == DUPLICATE)
+    n_dup = sum(1 for n in nodes if n["status"] == TEXT_COPY)
     checks = [
         a5.Check("7a", "mã nút duy nhất, status nút hợp lệ", f"{len(nodes)} nút", p_a),
         a5.Check("7b", "cạnh ok có đủ hai đầu, cạnh treo / historical có nguồn là nút và đích không phải nút", f"{len(edges)} cạnh", p_b),
         a5.Check("7c", "không còn bộ ba (s, p, o) lặp", f"{len(edges)} cạnh, {len(graph.merged)} bộ ba đã gộp khi dựng", p_c),
-        a5.Check("7d", "nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm", f"{n_dup} nút duplicate", p_d),
+        a5.Check("7d", "nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm", f"{n_dup} nút same_text", p_d),
         a5.Check("7e", "mỗi Chương/Điều/Khoản/Điểm đúng một part_of tới cha đúng bậc, contains đối xứng", f"{len(contains)} cặp contains", p_e),
     ]
     if expect is not None:
         n_edges = len(edges)
         p_f = [f"có {got} {what}, cần {want}" for what, got, want in
-               (("nút", len(nodes), expect.nodes), ("cạnh", n_edges, expect.edges), ("nút duplicate", n_dup, expect.duplicates))
+               (("nút", len(nodes), expect.nodes), ("cạnh", n_edges, expect.edges), ("nút same_text", n_dup, expect.same_text))
                if got != want]
         checks.append(a5.Check("7f", "số nút, cạnh, nút bản sao khớp bảng EXPECTED",
-                               f"nút {len(nodes)}/{expect.nodes}, cạnh {n_edges}/{expect.edges}, duplicate {n_dup}/{expect.duplicates}", p_f))
+                               f"nút {len(nodes)}/{expect.nodes}, cạnh {n_edges}/{expect.edges}, same_text {n_dup}/{expect.same_text}", p_f))
 
     # 7g: A là ngoại lệ của B và B (bắc cầu) là ngoại lệ của A là mâu thuẫn. Vòng refers_to (hai đơn vị dẫn chiếu qua lại) và vòng
     # trộn refers_to với exception_of (quy tắc dẫn chiếu tới ngoại lệ của chính nó) là hợp lệ: chỉ ghi, không tính lỗi.

@@ -21,7 +21,7 @@ B. KHI MỞ RỘNG (chưa quyết định, phải hỏi lại user trước khi 
 B1. Cần dữ liệu có chế tài (luật nào) và một tầng khái niệm / quy tắc cho hành vi, chế tài, điều kiện. Chỗ chừa sẵn:
     docs/a4_quyet_dinh.txt H3 (a4.impact_set tách riêng, nhận tập U và danh sách cạnh); nút điều kiện của A6 (type "dieu_kien") đã là một nút khái niệm sơ khai.
 B2. Chưa định nghĩa "đối kháng" (ví dụ phạt tiền và phạt tù cùng một hành vi?) và cách gắn nhãn cô lập cho mâu thuẫn (hiện nhãn status chỉ có
-    ok | duplicate | dangling).
+    ok | same_text | dangling | historical).
 
 C. VẪN TRONG PHẠM VI, ĐÃ LÀM
 -----------------------------
@@ -31,12 +31,13 @@ C2. Nhất quán cấu trúc: A5 bước 2 (mỗi đơn vị một cha) và bư�
 C3. Ngoại lệ chung (A6, 2026-10-24): 9 câu "..., trừ trường hợp X" của p4 thành 9 cạnh exception_of từ 5 nút điều kiện (5 câu "có thỏa thuận khác" chung một nút).
     (2026-10-25) Thêm 1 cạnh D652 exception_of D619 từ dẫn chiếu trong mệnh đề, và kind cho nút điều kiện: docs/a6_a7_quyet_dinh.txt B8.
     A3 vẫn đúng hai quy tắc, a3_unhandled_blds2015_p4.txt không đổi. Quyết định: docs/a6_a7_quyet_dinh.txt mục B.
-C4. Đồ thị gộp, khử trùng lặp, nhãn cô lập (A7, 2026-10-24): gộp bộ ba trùng tự động; nút bản sao text giống hệt gắn status "duplicate" và cạnh same_text_as
+C4. Đồ thị gộp, khử trùng lặp, nhãn cô lập (A7, 2026-10-24): gộp bộ ba trùng tự động; nút bản sao text giống hệt gắn status "same_text" (tên cũ "duplicate", đổi 2026-10-25) và cạnh same_text_as
     (p4: 4 cặp); cạnh treo gắn "dangling" khi nạp A4 theo ngày. Quyết định: docs/a6_a7_quyet_dinh.txt mục C, D.
 
 D. GIỚI HẠN ĐÃ BIẾT CỦA PHẦN ĐÃ LÀM
 ------------------------------------
-D1. Hợp nhất chỉ theo text giống hệt (sau khi gộp khoảng trắng, casefold, bỏ dấu cuối), không theo nghĩa. Nút bản sao vẫn là nút riêng, không có nút
+D1. (Quyết định 2026-10-25, review F-06, chọn (a)) "Khử trùng lặp thực thể" ở đồ án này là trùng chữ, không làm tầng khái niệm.
+    Hợp nhất chỉ theo text giống hệt (sau khi gộp khoảng trắng, casefold, bỏ dấu cuối), không theo nghĩa. Nút bản sao vẫn là nút riêng, không có nút
     gộp (có chủ đích, để giữ quy tắc một cha).
 D2. Ngoại lệ chung chỉ nhận dạng "trừ trường hợp". "Không áp dụng" thiếu cụm dẫn chiếu đứng ngay trước (p4 không có ca nào) vẫn nằm ở a3_unhandled; "trừ" không
     kèm "trường hợp" nằm ở a6_unhandled (p4 không có ca nào).
