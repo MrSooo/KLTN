@@ -6,12 +6,13 @@ file đã đọc:
   data/processed/a3_exceptions_blds2015_p4.jsonl
   data/processed/a4_p4_dev05_bai_bo_ds_versions.jsonl
   data/processed/a4_p4_dev05_bai_bo_ds_edge_changes.jsonl
+  data/processed/a4_p4_dev05_bai_bo_ds_amend_edges.jsonl
 
 == Nút ==
-tổng 205 | theo loại {'dieu': 52, 'khoan': 106, 'diem': 42, 'dieu_kien': 5} | theo status {'ok': 201, 'duplicate': 4}
+tổng 207 | theo loại {'dieu': 52, 'khoan': 106, 'diem': 42, 'dieu_kien': 5, 'van_ban': 2} | theo status {'ok': 203, 'duplicate': 4}
 
 == Cạnh ==
-tổng 338 | theo p {'contains': 148, 'part_of': 148, 'refers_to': 24, 'exception_of': 14, 'same_text_as': 4} | theo status {'ok': 337, 'dangling': 1}
+tổng 342 | theo p {'contains': 148, 'part_of': 148, 'refers_to': 24, 'exception_of': 14, 'repeals': 4, 'same_text_as': 4} | theo status {'ok': 337, 'dangling': 1, 'historical': 4}
 bộ ba đã gộp (0): (không có)
 nút bản sao text (4, bản sau -> canonical):
   BLDS2015.D617.K2.c -> BLDS2015.D617.K1.d
@@ -20,18 +21,23 @@ nút bản sao text (4, bản sau -> canonical):
   BLDS2015.D637.K1 -> BLDS2015.D632.K1
 
 == Liên thông ==
-thành phần liên thông: 37 | bỏ 2 nút điều kiện chung chung (tuy_nghi/dan_chieu_mo): 39 (chưa tính chính các nút đó)
+thành phần liên thông: 39 | bỏ 2 nút điều kiện chung chung (tuy_nghi/dan_chieu_mo): 41 (chưa tính chính các nút đó)
 
 == Tại ngày 2027-01-01 ==
 dòng versions 215 | đơn vị đang hiệu lực 200 | edge_changes đã áp (không có)
 cạnh bị bỏ: {'structural': 26, 'source_closed': 1} (structural: contains/part_of có đầu đã đóng; source_closed: refers_to/exception_of có nguồn đã đóng)
 cạnh treo (1, nguồn còn hiệu lực, đích đã đóng):
   BLDS2015.D653 refers_to BLDS2015.D651
+cạnh cập nhật từ nút văn bản: {'repeals': 4}; historical (4, đích không còn hiệu lực):
+  dev05_bai_bo_ds repeals BLDS2015.D621.K2
+  dev05_bai_bo_ds repeals BLDS2015.D650.K1.a
+  dev05_bai_bo_ds repeals BLDS2015.D626
+  dev05_bai_bo_ds repeals BLDS2015.D651
 
 == Kiểm tra ==
-[7a] mã nút duy nhất, status nút hợp lệ: 205 nút -> ĐẠT
-[7b] cạnh ok có đủ hai đầu, cạnh treo có nguồn là nút và đích không phải nút: 338 cạnh -> ĐẠT
-[7c] không còn bộ ba (s, p, o) lặp: 338 cạnh, 0 bộ ba đã gộp khi dựng -> ĐẠT
+[7a] mã nút duy nhất, status nút hợp lệ: 207 nút -> ĐẠT
+[7b] cạnh ok có đủ hai đầu, cạnh treo / historical có nguồn là nút và đích không phải nút: 342 cạnh -> ĐẠT
+[7c] không còn bộ ba (s, p, o) lặp: 342 cạnh, 0 bộ ba đã gộp khi dựng -> ĐẠT
 [7d] nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm: 4 nút duplicate -> ĐẠT
 [7e] mỗi Khoản/Điểm đúng một part_of tới cha đúng bậc, contains đối xứng: 148 cặp contains -> ĐẠT
 [7g] không có vòng exception_of: 14 cạnh exception_of; vòng refers_to (chỉ ghi): không có -> ĐẠT

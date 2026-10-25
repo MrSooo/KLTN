@@ -28,7 +28,7 @@ FILES = [("mẫu", SAMPLE_FILE), ("đầy đủ", FULL_FILE)]  # luôn mẫu tr�
 P = "BLDS2015."
 
 # Số kỳ vọng (nút, cạnh, nút duplicate): cộng độc lập ở test_files_match_independent_counts, không lấy từ a7.EXPECTED.
-REFERENCE = {SAMPLE_FILE: (35, 64, 0), FULL_FILE: (220, 365, 4)}
+REFERENCE = {SAMPLE_FILE: (36, 64, 0), FULL_FILE: (221, 365, 4)}
 DUPLICATE_PAIRS = [(P + a, P + b) for a, b in (("D617.K2.c", "D617.K1.d"), ("D618.K2.b", "D618.K1.b"),
                                                ("D618.K2.c", "D618.K1.c"), ("D637.K1", "D632.K1"))]
 
@@ -238,7 +238,7 @@ def test_files_match_independent_counts():
         groups = collections.Counter((types[s], t.casefold().rstrip(".;:, ")) for s, t in texts.items())
         n_dup = sum(c - 1 for c in groups.values())
         n_edges = sum(count_lines(p) for p in (a2.edges_path(path), a2.refs_path(path), a3.exceptions_path(path), a6.exceptions_path(path)))
-        want = (len(types) + len(cond_ids), n_edges + n_dup, n_dup)
+        want = (len(types) + len(cond_ids) + 1, n_edges + n_dup, n_dup)  # + 1 nút văn bản gốc
         assert want == REFERENCE[path], f"file {name}: cộng độc lập {want}, bảng {REFERENCE[path]}"
         got = (len(graph.nodes), len(graph.edges), sum(1 for n in graph.nodes if n["status"] == "duplicate"))
         assert got == want, f"file {name}: đồ thị {got}, cộng độc lập {want}"
@@ -278,7 +278,9 @@ def test_files_on_disk():
         edges = [json.loads(line) for line in a7.edges_path(stem).read_text(encoding="utf-8").split("\n") if line]
         assert nodes == graph.nodes and edges == graph.edges, f"file {name}: khác dựng lại"
         cols = ["id", "type", "number", "heading", "text", "source_line", "status"]
-        assert all(list(n) == cols + (["kind"] if n["type"] == "dieu_kien" else []) for n in nodes)
+        extra = {"dieu_kien": ["kind"], a7.DOC_TYPE: ["co_quan", "ngay_ban_hanh", "hieu_luc"]}
+        assert all(list(n) == cols + extra.get(n["type"], []) for n in nodes)
+        assert [n for n in nodes if n["type"] == a7.DOC_TYPE] == [a7.base_doc_node()], f"file {name}: nút văn bản gốc"
         assert all(list(e)[:7] == ["s", "p", "o", "evidence", "method", "status", "sources"] for e in edges)
         assert a7.report_path(stem).read_text(encoding="utf-8").rstrip().endswith("KẾT LUẬN: ĐẠT"), f"file {name}: báo cáo"
 
@@ -289,7 +291,7 @@ def test_base_cli_writes_files_and_exit_codes():
             assert a7.main([str(FULL_FILE)]) == 0
         names = sorted(p.name for p in Path(tmp).iterdir())
         assert names == ["a7_blds2015_p4_edges.jsonl", "a7_blds2015_p4_nodes.jsonl", "a7_report_blds2015_p4.txt"], names
-        assert "nút 220/220, cạnh 365/365, duplicate 4/4" in out.getvalue()
+        assert "nút 221/221, cạnh 365/365, duplicate 4/4" in out.getvalue()
     # stem chưa có trong EXPECTED: thoát với lỗi, không ghi gì
     with tempfile.TemporaryDirectory() as tmp:
         with patched(a7, OUT_DIR=Path(tmp), DOCS_DIR=Path(tmp)):
@@ -339,8 +341,8 @@ def vrow(code, version, type_, text, frm=None, to=None):
             "source_doc": None, "directive_seq": None}
 
 
-def mini_world(tmp, changes=None):
-    """Ghi file A1-A3 và a4_mini_{versions,edge_changes} của stem "mini" vào tmp; trả về đường dẫn file versions."""
+def mini_world(tmp, changes=None, amend=()):
+    """Ghi file A1-A3 và a4_x_{versions,edge_changes,amend_edges} của stem "mini" vào tmp; trả về đường dẫn file versions."""
     tmp = Path(tmp)
     a1 = []
     for code, (t, text) in MINI_UNITS.items():
@@ -366,6 +368,7 @@ def mini_world(tmp, changes=None):
                    {"op": "add", "s": "X.D1.K2", "p": "refers_to", "o": "X.D1.K1", "at": "2027-06-01", "evidence": "khoản 1"}]
     (tmp / "a4_x_versions.jsonl").write_text(jl(versions), encoding="utf-8")
     (tmp / "a4_x_edge_changes.jsonl").write_text(jl(changes), encoding="utf-8")
+    (tmp / "a4_x_amend_edges.jsonl").write_text(jl(list(amend)), encoding="utf-8")
     return tmp / "a4_x_versions.jsonl"
 
 
@@ -383,7 +386,7 @@ def triples(graph, only=None):
 
 def test_mini_before_any_change_is_the_base():
     g = mini_graph("2026-12-31")
-    assert [n["id"] for n in g.nodes if n["type"] != a6.COND_TYPE] == ["X.D1", "X.D1.K1", "X.D1.K2", "X.D2"]
+    assert [n["id"] for n in g.nodes if n["type"] in a5.TYPES] == ["X.D1", "X.D1.K1", "X.D1.K2", "X.D2"]
     assert triples(g, ("refers_to", "exception_of")) == [
         ("X.D1.K1", "refers_to", "X.D2", "ok"), ("X.D1.K2", "refers_to", "X.D2", "ok"), ("X.D2", "refers_to", "X.D1", "ok"),
         ("X.D1.K2", "exception_of", "X.D1.K1", "ok")]
@@ -393,7 +396,7 @@ def test_mini_before_any_change_is_the_base():
 
 def test_mini_edge_changes_apply_on_their_date():
     g = mini_graph("2027-01-01")  # chính ngày hiệu lực: close và add đã có hiệu lực
-    assert [(n["id"], n["version"]) for n in g.nodes if n["type"] != a6.COND_TYPE] == [
+    assert [(n["id"], n["version"]) for n in g.nodes if n["type"] in a5.TYPES] == [
         ("X.D1", 1), ("X.D1.K1", 2), ("X.D1.K2", 1), ("X.D2", 1), ("X.D3", 1)]
     assert triples(g, ("refers_to",)) == [("X.D1.K2", "refers_to", "X.D2", "ok"), ("X.D2", "refers_to", "X.D1", "ok"),
                                           ("X.D1.K1", "refers_to", "X.D3", "ok")], triples(g, ("refers_to",))
@@ -404,7 +407,7 @@ def test_mini_edge_changes_apply_on_their_date():
 
 def test_mini_dangling_and_source_closed_after_unit_is_closed():
     g = mini_graph("2027-03-01")  # D2 hết hiệu lực đúng ngày này (to = 2027-03-01 nên đã đóng tại T)
-    assert [n["id"] for n in g.nodes if n["type"] != a6.COND_TYPE] == ["X.D1", "X.D1.K1", "X.D1.K2", "X.D3"]
+    assert [n["id"] for n in g.nodes if n["type"] in a5.TYPES] == ["X.D1", "X.D1.K1", "X.D1.K2", "X.D3"]
     assert g.notes["dangling"] == [("X.D1.K2", "refers_to", "X.D2")], g.notes["dangling"]
     assert ("X.D1.K2", "refers_to", "X.D2", "dangling") in triples(g)
     assert g.notes["dropped"] == {"source_closed": 1}, g.notes["dropped"]  # D2 refers_to D1: nguồn đã đóng
@@ -459,10 +462,11 @@ def test_versions_file_name_must_match_pattern():
 # ---- theo ngày: kết quả A4 thật ----
 
 def a4_run(tmp, base, docs, name):
-    """Chạy a4.apply_series (không ghi gì vào đĩa của dự án) rồi ghi versions và edge_changes vào tmp; trả về (run, đường dẫn versions)."""
+    """Chạy a4.apply_series (không ghi gì vào đĩa của dự án) rồi ghi versions, edge_changes, amend_edges vào tmp; trả về (run, đường dẫn versions)."""
     run = a4.apply_series(base, [str(d) for d in docs], name)
     a4.write_jsonl(run.version_rows(), Path(tmp) / f"a4_{name}_versions.jsonl")
     a4.write_jsonl(run.edge_changes, Path(tmp) / f"a4_{name}_edge_changes.jsonl")
+    a4.write_jsonl(run.amend_edges, Path(tmp) / f"a4_{name}_amend_edges.jsonl")
     return run, Path(tmp) / f"a4_{name}_versions.jsonl"
 
 
@@ -477,7 +481,7 @@ def test_before_every_effective_date_the_graph_is_the_base():
     drop = ("version", "effective_from", "source_line")
     assert [{k: v for k, v in n.items() if k not in drop} for n in at.nodes] == [{k: v for k, v in n.items() if k not in drop} for n in base.nodes]
     assert at.edges == base.edges, "cạnh trước mọi ngày hiệu lực phải đúng đồ thị gốc, kể cả thứ tự và sources"
-    assert all(n["version"] == 1 and n["effective_from"] == a4.BASE_EFFECTIVE for n in at.nodes if n["type"] != a6.COND_TYPE)
+    assert all(n["version"] == 1 and n["effective_from"] == a4.BASE_EFFECTIVE for n in at.nodes if n["type"] in a5.TYPES)
 
 
 def test_before_the_base_takes_effect_there_are_no_units():
@@ -486,8 +490,46 @@ def test_before_the_base_takes_effect_there_are_no_units():
         _, versions = a4_run(tmp, FULL_FILE, [DEV_DIR / "dev05_bai_bo_ds.md"], "d5")
         before, _ = a7.graph_at(FULL_FILE, versions, "2016-12-31")
         first, _ = a7.graph_at(FULL_FILE, versions, a4.BASE_EFFECTIVE)
-    assert before.nodes == [] and before.edges == [] and a5.failures(a7.check_graph(before)) == 0
-    assert len([n for n in first.nodes if n["type"] != a6.COND_TYPE]) == 215
+    assert before.nodes == [a7.base_doc_node()] and before.edges == [] and a5.failures(a7.check_graph(before)) == 0
+    assert len([n for n in first.nodes if n["type"] in a5.TYPES]) == 215
+
+
+def test_amend_edges_and_document_nodes():
+    """Review F-07: văn bản sửa đổi là nút; amends/replaces/repeals vào đồ thị, đích đã đóng thì historical."""
+    graphs = {}
+    with tempfile.TemporaryDirectory() as tmp:
+        for doc, name in (("dev05_bai_bo_ds", "d5"), ("dev04_bo_sung", "d4"), ("dev06_cum_tu", "d6")):
+            run, versions = a4_run(tmp, FULL_FILE, [DEV_DIR / f"{doc}.md"], name)
+            graphs[doc] = (run, a7.graph_at(FULL_FILE, versions, "2027-01-01")[0], a7.graph_at(FULL_FILE, versions, "2026-12-31")[0])
+    run, g, before = graphs["dev05_bai_bo_ds"]
+    docs = [n for n in g.nodes if n["type"] == a7.DOC_TYPE]
+    assert [(n["id"], n["hieu_luc"]) for n in docs] == [(a4.DOC_PREFIX, a4.BASE_EFFECTIVE), ("dev05_bai_bo_ds", "2027-01-01")]
+    assert triples(g, a7.AMEND_P) == [("dev05_bai_bo_ds", "repeals", P + c, a7.HISTORICAL) for c in ("D621.K2", "D650.K1.a", "D626", "D651")]
+    assert g.notes["amend"] == {"repeals": 4} and len(g.notes["historical"]) == 4
+    assert triples(before, a7.AMEND_P) == [] and [n["id"] for n in before.nodes if n["type"] == a7.DOC_TYPE] == [a4.DOC_PREFIX]
+    # bổ sung đơn vị mới: đích là nút nên ok; truy vấn "văn bản nào sửa D621" đi được trên đồ thị
+    _, g4, _ = graphs["dev04_bo_sung"]
+    assert triples(g4, a7.AMEND_P) == [("dev04_bo_sung", "amends", P + c, "ok") for c in ("D621a", "D621.K3", "D650.K1.dd")]
+    # hai chỉ thị cùng (văn bản, p, đích) thành một cạnh, giữ cả hai chỉ thị
+    _, g6, _ = graphs["dev06_cum_tu"]
+    e = next(e for e in g6.edges if (e["s"], e["p"], e["o"]) == ("dev06_cum_tu", "replaces", P + "D650.K1"))
+    assert e["directives"] == [{"directive_seq": 4, "new_version": 2}, {"directive_seq": 6, "new_version": 2}], e
+    assert e["status"] == "ok" and e["effective_from"] == "2027-01-01" and g6.merged == []
+    for _, graph, _ in graphs.values():
+        assert a5.failures(a7.check_graph(graph)) == 0
+
+
+def test_check_7b_amend_edges():
+    units = [unit("X.D1", "dieu", "A.")]
+    doc = a7.doc_node("VB1", hieu_luc="2027-01-01")
+    ok = graph_of(units, [edge("VB1", "repeals", "X.D9")], [])
+    g = a7.Graph(ok.nodes + [doc], [dict(ok.edges[0], status=a7.HISTORICAL)], [], {})
+    assert problems_of(a7.check_graph(g), "7b") == []
+    assert any("historical" in p for p in problems_of(a7.check_graph(g._replace(edges=[dict(g.edges[0], o="X.D1")])), "7b"))
+    assert any("historical" in p for p in problems_of(a7.check_graph(g._replace(edges=[dict(g.edges[0], p="refers_to")])), "7b"))
+    assert any("cạnh treo" in p for p in problems_of(a7.check_graph(g._replace(edges=[dict(g.edges[0], status=a7.DANGLING)])), "7b"))
+    from_unit = dict(edge("X.D1", "amends", "VB1"))
+    assert any("nút văn bản" in p for p in problems_of(a7.check_graph(g._replace(edges=[from_unit])), "7b"))
 
 
 def test_dev05_closes_units_and_flags_the_broken_reference():
@@ -495,7 +537,7 @@ def test_dev05_closes_units_and_flags_the_broken_reference():
         run, versions = a4_run(tmp, FULL_FILE, [DEV_DIR / "dev05_bai_bo_ds.md"], "d5")
         g, _ = a7.graph_at(FULL_FILE, versions, "2027-01-01")
     assert len(run.closed) == 15
-    assert len(g.nodes) == 215 - 15 + 5 == 205
+    assert len(g.nodes) == 215 - 15 + 5 + 2 == 207  # + nút văn bản gốc và dev05
     assert {x for x in run.closed} & {n["id"] for n in g.nodes} == set()
     assert g.notes["dangling"] == [(P + "D653", "refers_to", P + "D651")], g.notes["dangling"]
     assert {(s, p, o) for _, s, p, o, _ in run.broken} == set(g.notes["dangling"]), "cạnh treo tại T phải bằng cờ cạnh đứt của A4"
@@ -509,7 +551,7 @@ def test_every_dev_document_gives_a_consistent_graph_and_matches_a4_flags():
             date = run.docs[0].date
             g, _ = a7.graph_at(FULL_FILE, versions, date)
         assert a5.failures(a7.check_graph(g)) == 0, (doc.name, [(c.id, c.problems[:2]) for c in a7.check_graph(g) if c.problems])
-        units = [n for n in g.nodes if n["type"] != a6.COND_TYPE]
+        units = [n for n in g.nodes if n["type"] in a5.TYPES]
         assert len(units) == 215 + len(run.new) - len(run.closed), doc.name
         assert {(s, p, o) for _, s, p, o, _ in run.broken} == set(g.notes["dangling"]), doc.name
         for code in run.new:  # đơn vị mới kèm contains/part_of đúng cha
@@ -535,7 +577,7 @@ def test_dev01_dev02_two_dates():
         second, _ = a7.graph_at(FULL_FILE, versions, "2027-07-01")
     for g in (first, second):
         assert P + "D621.K2" not in {n["id"] for n in g.nodes}, "dev01 bãi bỏ D621.K2"
-        assert len(g.nodes) == 215 - 1 + 5
+        assert len([n for n in g.nodes if n["type"] != a7.DOC_TYPE]) == 215 - 1 + 5
         assert [e for e in g.edges if e["p"] == "contains"].__len__() == 160 and g.notes["dangling"] == []
         assert a5.failures(a7.check_graph(g)) == 0
     version_of = lambda g: next(n["version"] for n in g.nodes if n["id"] == P + "D621.K1")
@@ -548,8 +590,10 @@ def test_dev08_replace_whole_document_gives_an_empty_graph():
         run, versions = a4_run(tmp, FULL_FILE, [DEV_DIR / "dev08_thay_van_ban.md"], "d8")
         before, _ = a7.graph_at(FULL_FILE, versions, "2026-12-31")
         after, _ = a7.graph_at(FULL_FILE, versions, run.docs[0].date)
-    assert len(before.nodes) == 220
-    assert after.nodes == [] and after.edges == [] and after.notes["dangling"] == []
+    assert len(before.nodes) == 221
+    # không còn đơn vị nào; chỉ còn hai nút văn bản và cạnh "dev08 replaces BLDS2015" (đích là nút văn bản gốc nên ok)
+    assert [n["id"] for n in after.nodes] == [a4.DOC_PREFIX, "dev08_thay_van_ban"] and after.notes["dangling"] == []
+    assert triples(after) == [("dev08_thay_van_ban", "replaces", a4.DOC_PREFIX, "ok")], triples(after)
     assert a5.failures(a7.check_graph(after)) == 0
 
 

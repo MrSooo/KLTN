@@ -71,7 +71,7 @@ C4. Kiểm tự động (không đạt thì báo cáo vẫn ghi, file dữ liệ
     refers_to ∪ exception_of vì "D619 refers_to D652" cùng "D652 exception_of D619" (quy tắc dẫn chiếu tới ngoại lệ của nó) là vòng hợp lệ.
     Phạm vi "mâu thuẫn hình thức" đã kiểm: vòng exception_of (7g), sửa/bãi bỏ đơn vị đã đóng (A4 E_TARGET), hai chỉ thị chồng đích (A4 E_OVERLAP),
     cạnh tới đơn vị đã đóng (cờ cạnh đứt A4, dangling A7). Chưa kiểm: xung đột chế tài (docs/pham_vi_mo_rong.txt A1).
-C5. Số đối chiếu: p4 220 nút (215 + 5), 365 cạnh (161 + 161 + 25 + 4 + 9 + 1 + 4 same_text_as; +1 từ B8), 4 duplicate; mẫu 35 nút, 64 cạnh (60 + 3 + 1), 0 duplicate.
+C5. Số đối chiếu: p4 221 nút (215 + 5 + 1 văn bản, D8), 365 cạnh (161 + 161 + 25 + 4 + 9 + 1 + 4 same_text_as; +1 từ B8), 4 duplicate; mẫu 36 nút (35 + 1 văn bản), 64 cạnh (60 + 3 + 1), 0 duplicate.
     Bảng EXPECTED được test cộng lại độc lập (số dòng file nguồn, Counter riêng cho bản sao), không chỉ chép từ kết quả chạy.
 C6. File: data/processed/a7_<stem>_{nodes,edges}.jsonl và docs/a7_report_<stem>.txt. Báo cáo ghi cả khi KHÔNG ĐẠT.
 C7. A5 giữ nguyên, không đọc file A6/A7. Trùng cạnh trên các nguồn kể cả cạnh A6 do 7c của A7 kiểm.
@@ -93,6 +93,14 @@ D5. Canonical của nhóm bản sao là đơn vị đứng đầu theo thứ t�
     (cạnh same_text_as được tính lại mỗi ngày, không giữ từ ngày khác).
 D6. File: a7_<stem>_<name>_<date>_{nodes,edges}.jsonl và docs/a7_report_<stem>_<name>_<date>.txt. Không dùng bảng EXPECTED (kiểm 7a-7e). Văn bản thay cả bộ luật
     (replace_doc) đóng mọi đơn vị nên đồ thị tại ngày đó rỗng, không phải lỗi.
+D8. (2026-10-25, review F-07, F-18) Nút văn bản type van_ban, cột thêm co_quan, ngay_ban_hanh, hieu_luc (number = số hiệu, heading = tên).
+    Văn bản gốc từ a1.BASE_DOC, có ở cả trạng thái gốc (p4 221 nút, mẫu 36) và theo ngày (kể cả trước 01/01/2017: văn bản đã ban hành).
+    Theo ngày: đọc thêm a4_<name>_amend_edges.jsonl (bắt buộc, thiếu thì lỗi); dòng có effective_from <= T sinh nút văn bản sửa đổi
+    (id = doc-id, chỉ có hieu_luc) và một cạnh cho mỗi (văn bản, p, đích), method a4_directive, cột effective_from và directives
+    [{directive_seq, new_version}] (dev06 có hai chỉ thị replaces cùng D650.K1). Đích là nút tại T: ok; không còn (bị bãi bỏ, bị thay):
+    status historical, 7b chỉ cho historical ở cạnh cập nhật có nguồn là nút và đích không phải nút; nguồn cạnh cập nhật phải là van_ban.
+    Thay cả văn bản (dev08): cạnh dev08 replaces BLDS2015 tới nút văn bản gốc, ok. Ở trạng thái gốc nút văn bản chưa có cạnh (thêm part_of
+    từ Chương ở bước 2.5 của plan). Quan hệ cấp văn bản khác (sửa một phần, hết hiệu lực một phần) chưa có: A4 không sinh.
 D7. Đã chạy: p4_dev05_bai_bo_ds tại 2027-01-01 cho 205 nút (215 - 15 + 5) và đúng 1 cạnh treo (D653 refers_to D651). Các bộ khác được test bằng thư mục tạm
     (test_a7), không ghi thêm file vào data/processed.
 
