@@ -125,6 +125,39 @@ def test_leading_clause_stops_at_first_comma():
         raise AssertionError("đầu đoạn mà không có dấu phẩy phải ValueError")
 
 
+def test_condition_kinds():
+    """Review F-11: phân loại nút điều kiện; p4 có đúng một nút tuỳ nghi và một nút dẫn chiếu mở."""
+    for clause, kind in [("có thỏa thuận khác", "tuy_nghi"), ("Các bên có thoả thuận khác", "tuy_nghi"),
+                         ("pháp luật có quy định khác", "dan_chieu_mo"), ("luật có quy định khác", "dan_chieu_mo"),
+                         ("có thỏa thuận khác về thời hạn", "cu_the"), ("thừa kế thế vị theo quy định tại Điều 652", "cu_the")]:
+        assert a6.condition_kind(clause) == kind, (clause, a6.condition_kind(clause))
+    kinds = sorted(a6.condition_kind(c) for _, c in a6.find_general(load(FULL_FILE)).nodes)
+    assert kinds == ["cu_the", "cu_the", "cu_the", "dan_chieu_mo", "tuy_nghi"], kinds
+
+
+def test_reference_inside_clause_gives_exception_edge_from_the_target():
+    """Review F-10: 'trừ trường hợp thừa kế thế vị theo quy định tại Điều 652' -> D652 exception_of D619 (p4: cạnh duy nhất loại này)."""
+    r = a6.find_general(load(FULL_FILE))
+    assert r.ref_edges == [(P + "D652", "exception_of", P + "D619",
+                            "trừ trường hợp thừa kế thế vị theo quy định tại Điều 652 của Bộ luật này.", a6.METHOD_REF)], r.ref_edges
+    assert a6.find_general(load(SAMPLE_FILE)).ref_edges == []
+    # đích chưa nạp, đích là chính đơn vị, và dẫn chiếu ra văn bản khác: không ra cạnh
+    units = mini_units({"X.D1": ("dieu", None), "X.D1.K1": ("khoan", "A."),
+                        "X.D1.K2": ("khoan", "B, trừ trường hợp quy định tại khoản 1 Điều này hoặc theo Điều 7.")})
+    r = a6.find_general(units)
+    assert [(s, o) for s, _, o, _, _ in r.ref_edges] == [("X.D1.K1", "X.D1.K2")], r.ref_edges
+    assert a6.check_general(units, r) == []
+    r = general_of({"X.D1": ("dieu", "A, trừ trường hợp quy định tại Điều 1."),
+                    "X.D2": ("dieu", "B, trừ trường hợp theo Điều 1 của Luật Đất đai.")})
+    assert r.ref_edges == [], r.ref_edges
+    # check_general bắt cạnh dẫn chiếu không ăn khớp với cạnh ngoại lệ chung
+    units = mini_units({"X.D1": ("dieu", "A, trừ trường hợp quy định tại Điều 2."), "X.D2": ("dieu", "B.")})
+    good = a6.find_general(units)
+    assert a6.check_general(units, good) == [] and len(good.ref_edges) == 1
+    assert any("evidence" in e for e in a6.check_general(units, good._replace(ref_edges=[("X.D2", "exception_of", "X.D1", "khác", a6.METHOD_REF)])))
+    assert any("trùng" in e for e in a6.check_general(units, good._replace(ref_edges=good.ref_edges * 2)))
+
+
 def test_khong_duoc_ap_dung_is_unhandled_not_lost():
     """Review F-05: "không được áp dụng" không phải trigger của A2/A3 nhưng phải hiện ra ở unhandled của A6."""
     text = "Quy định này không được áp dụng cho người chưa thành niên."
@@ -237,11 +270,11 @@ def test_files_on_disk():
             assert on_disk.exists(), f"file {name}: chưa có {on_disk}, chạy a6_general_exceptions.py trước"
         rows = [json.loads(line) for line in a6.conditions_path(path).read_text(encoding="utf-8").split("\n") if line]
         assert all(list(x) == ["s", "p", "o"] for x in rows), f"file {name}: sai khoá nút"
-        assert [(x["s"], x["p"], x["o"]) for x in rows] == [(c, p, o) for c, clause in r.nodes
-                                                           for p, o in (("type", "dieu_kien"), ("text", clause))], f"file {name}: nút"
+        assert [(x["s"], x["p"], x["o"]) for x in rows] == [(c, p, o) for c, clause in r.nodes for p, o in
+                                                           (("type", "dieu_kien"), ("text", clause), ("kind", a6.condition_kind(clause)))], f"file {name}: nút"
         rows = [json.loads(line) for line in a6.exceptions_path(path).read_text(encoding="utf-8").split("\n") if line]
         assert all(list(x) == ["s", "p", "o", "evidence", "method"] for x in rows), f"file {name}: sai khoá cạnh"
-        assert [(x["s"], x["p"], x["o"], x["evidence"], x["method"]) for x in rows] == r.edges, f"file {name}: cạnh"
+        assert [(x["s"], x["p"], x["o"], x["evidence"], x["method"]) for x in rows] == r.edges + r.ref_edges, f"file {name}: cạnh"
         lines = a6.unhandled_path(path).read_text(encoding="utf-8").split("\n")
         assert [tuple(x.split("\t")) for x in lines[:-1]] == r.unhandled and lines[-1] == "", f"file {name}: unhandled"
         a3_rows = [json.loads(line) for line in a3.exceptions_path(path).read_text(encoding="utf-8").split("\n") if line]
@@ -286,7 +319,8 @@ def test_cli_writes_all_three_files_when_clean():
     assert code == 0, code
     cond = a6.condition_id("X", "có thỏa thuận khác")
     assert files["c.jsonl"] == (json.dumps({"s": cond, "p": "type", "o": "dieu_kien"}, ensure_ascii=False) + "\n"
-                                + json.dumps({"s": cond, "p": "text", "o": "có thỏa thuận khác"}, ensure_ascii=False) + "\n")
+                                + json.dumps({"s": cond, "p": "text", "o": "có thỏa thuận khác"}, ensure_ascii=False) + "\n"
+                                + json.dumps({"s": cond, "p": "kind", "o": "tuy_nghi"}, ensure_ascii=False) + "\n")
     assert [(json.loads(x)["s"], json.loads(x)["o"]) for x in files["e.jsonl"].split("\n") if x] == [(cond, "X.D1"), (cond, "X.D2")]
     assert files["u.txt"] == "X.D3\tTrừ người C.\n"
     assert "trigger trừ/ngoại trừ: 3 = thuộc A3 0 + đã xử lý 2 + unhandled 1" in out and "nút điều kiện: 1" in out and "cạnh exception_of: 2" in out, out

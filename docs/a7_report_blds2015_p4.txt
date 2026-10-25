@@ -11,7 +11,7 @@ file đã đọc:
 tổng 220 | theo loại {'dieu': 54, 'khoan': 115, 'diem': 46, 'dieu_kien': 5} | theo status {'ok': 216, 'duplicate': 4}
 
 == Cạnh ==
-tổng 364 | theo p {'contains': 161, 'part_of': 161, 'refers_to': 25, 'exception_of': 13, 'same_text_as': 4} | theo status {'ok': 364}
+tổng 365 | theo p {'contains': 161, 'part_of': 161, 'refers_to': 25, 'exception_of': 14, 'same_text_as': 4} | theo status {'ok': 365}
 bộ ba đã gộp (0): (không có)
 nút bản sao text (4, bản sau -> canonical):
   BLDS2015.D617.K2.c -> BLDS2015.D617.K1.d
@@ -19,13 +19,16 @@ nút bản sao text (4, bản sau -> canonical):
   BLDS2015.D618.K2.c -> BLDS2015.D618.K1.c
   BLDS2015.D637.K1 -> BLDS2015.D632.K1
 
+== Liên thông ==
+thành phần liên thông: 38 | bỏ 2 nút điều kiện chung chung (tuy_nghi/dan_chieu_mo): 40 (chưa tính chính các nút đó)
+
 == Kiểm tra ==
 [7a] mã nút duy nhất, status nút hợp lệ: 220 nút -> ĐẠT
-[7b] cạnh ok có đủ hai đầu, cạnh treo có nguồn là nút và đích không phải nút: 364 cạnh -> ĐẠT
-[7c] không còn bộ ba (s, p, o) lặp: 364 cạnh, 0 bộ ba đã gộp khi dựng -> ĐẠT
+[7b] cạnh ok có đủ hai đầu, cạnh treo có nguồn là nút và đích không phải nút: 365 cạnh -> ĐẠT
+[7c] không còn bộ ba (s, p, o) lặp: 365 cạnh, 0 bộ ba đã gộp khi dựng -> ĐẠT
 [7d] nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm: 4 nút duplicate -> ĐẠT
 [7e] mỗi Khoản/Điểm đúng một part_of tới cha đúng bậc, contains đối xứng: 161 cặp contains -> ĐẠT
-[7f] số nút, cạnh, nút bản sao khớp bảng EXPECTED: nút 220/220, cạnh 364/364, duplicate 4/4 -> ĐẠT
-[7g] không có vòng exception_of: 13 cạnh exception_of; vòng refers_to (chỉ ghi): không có -> ĐẠT
+[7f] số nút, cạnh, nút bản sao khớp bảng EXPECTED: nút 220/220, cạnh 365/365, duplicate 4/4 -> ĐẠT
+[7g] không có vòng exception_of: 14 cạnh exception_of; vòng refers_to (chỉ ghi): không có -> ĐẠT
 
 KẾT LUẬN: ĐẠT

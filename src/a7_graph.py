@@ -51,16 +51,18 @@ class Expect(NamedTuple):
     duplicates: int
 
 
-# Số kỳ vọng của trạng thái gốc. p4: 215 đơn vị + 5 nút điều kiện; 322 (A2a) + 25 (A2b) + 4 (A3) + 9 (A6) + 4 same_text_as.
+# Số kỳ vọng của trạng thái gốc. p4: 215 đơn vị + 5 nút điều kiện; 322 (A2a) + 25 (A2b) + 4 (A3) + 9 + 1 (A6) + 4 same_text_as.
 # Mẫu: 35 đơn vị; 60 + 3 + 1. Đã đối chiếu độc lập ở test_a7 (cộng số dòng của các file nguồn).
 EXPECTED = {
     "blds2015_5dieu": Expect(nodes=35, edges=64, duplicates=0),
-    "blds2015_p4": Expect(nodes=220, edges=364, duplicates=4),
+    "blds2015_p4": Expect(nodes=220, edges=365, duplicates=4),
 }
 
 
-def node(code, type_, number=None, heading=None, text=None, source_line=None):
-    return {"id": code, "type": type_, "number": number, "heading": heading, "text": text, "source_line": source_line, "status": OK}
+def node(code, type_, number=None, heading=None, text=None, source_line=None, kind=None):
+    """Dòng nút. kind chỉ có ở nút điều kiện (a6.condition_kind) nên chỉ thêm khoá khi có giá trị."""
+    out = {"id": code, "type": type_, "number": number, "heading": heading, "text": text, "source_line": source_line, "status": OK}
+    return {**out, "kind": kind} if kind else out
 
 
 class EdgeSet:
@@ -142,15 +144,15 @@ def unit_nodes(triple_rows):
 
 
 def condition_nodes(triple_rows):
-    """Nút điều kiện từ a6_conditions (bộ ba type, text theo từng s)."""
+    """Nút điều kiện từ a6_conditions (bộ ba type, text, kind theo từng s)."""
     attrs = {}
     for _, r in triple_rows:
         attrs.setdefault(r["s"], {}).setdefault(r["p"], r["o"])
     out = []
     for code, a in attrs.items():
-        if "type" not in a or "text" not in a:
-            raise ValueError(f"{code}: nút điều kiện thiếu type hoặc text")
-        out.append(node(code, a["type"], text=a["text"]))
+        if "type" not in a or "text" not in a or "kind" not in a:
+            raise ValueError(f"{code}: nút điều kiện thiếu type, text hoặc kind")
+        out.append(node(code, a["type"], text=a["text"], kind=a["kind"]))
     return out
 
 
@@ -236,8 +238,8 @@ def graph_at(src, versions, date):
     view = {n["id"]: {"type": n["type"], "number": n["number"], "source_line": 0, **({"text": n["text"]} if n["text"] else {})}
             for n in units}
     general = a6.find_general(view)  # ValueError nếu text mới có hai "trừ trường hợp": lỗi của dữ liệu, không đoán
-    conditions = [node(c, a6.COND_TYPE, text=clause) for c, clause in general.nodes]
-    for s, p, o, evidence, method in general.edges:
+    conditions = [node(c, a6.COND_TYPE, text=clause, kind=a6.condition_kind(clause)) for c, clause in general.nodes]
+    for s, p, o, evidence, method in general.edges + general.ref_edges:
         edge_set.add("a6_exceptions", {"s": s, "p": p, "o": o, "evidence": evidence, "method": method})
     notes = {"date": date, "version_rows": len(version_rows), "active": len(units), "applied": dict(applied),
              "dropped": dict(dropped), "dangling": dangling}
@@ -371,6 +373,26 @@ def check_graph(graph, expect=None):
 
 # ---- báo cáo, ghi file ----
 
+def components(nodes, edges, skip=()):
+    """Số thành phần liên thông (vô hướng) trên các nút không thuộc skip, chỉ dùng cạnh có hai đầu là nút đó."""
+    parent = {n["id"]: n["id"] for n in nodes if n["id"] not in skip}
+
+    def root(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    for e in edges:
+        if e["s"] in parent and e["o"] in parent:
+            parent[root(e["s"])] = root(e["o"])
+    return len({root(x) for x in parent})
+
+
+def boilerplate(nodes):
+    """Mã nút điều kiện chung chung (a6.BOILERPLATE_KINDS): không coi là cầu nối khi xét liên thông."""
+    return {n["id"] for n in nodes if n.get("kind") in a6.BOILERPLATE_KINDS}
+
 def tag_of(versions, date):
     return f"{a5.versions_name(versions)}_{date}"
 
@@ -400,6 +422,10 @@ def format_report(stem, tag, paths, graph, checks):
     dups = [e for e in graph.edges if e["p"] == SAME_TEXT]
     L.append(f"nút bản sao text ({len(dups)}, bản sau -> canonical):")
     L += [f"  {e['s']} -> {e['o']}" for e in dups] or ["  (không có)"]
+    skip = boilerplate(graph.nodes)
+    L += ["", "== Liên thông =="]
+    L.append(f"thành phần liên thông: {components(graph.nodes, graph.edges)} | bỏ {len(skip)} nút điều kiện chung chung "
+             f"({'/'.join(a6.BOILERPLATE_KINDS)}): {components(graph.nodes, graph.edges, skip)} (chưa tính chính các nút đó)")
     notes = graph.notes
     if notes:
         L += ["", f"== Tại ngày {notes['date']} =="]

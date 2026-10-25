@@ -37,11 +37,23 @@ B6. Spec im lặng thì ValueError (CLI thoát 1, không ghi file, như A3): m�
     trigger trừ/ngoại trừ + số "không được áp dụng" = thuộc A3 + đã xử lý + unhandled. p4 không có ca nào.
 B7. Số: p4 10 trigger trừ/ngoại trừ = thuộc A3 1 (D632) + đã xử lý 9 + unhandled 0; 5 nút, 9 cạnh. Mẫu: 0. Đếm độc lập "trừ trường hợp" trên md = 9.
     Đơn vị A6 xử lý = đúng 9 đơn vị mà a3_unhandled_blds2015_p4.txt liệt kê (có test).
+B8. (2026-10-25, review F-10, F-11) Mệnh đề có cụm dẫn chiếu (a2.find_refs trên mệnh đề, a2.group_targets với nguồn là đơn vị) tới đơn vị T có
+    trong tập, T khác đơn vị: thêm cạnh T exception_of đơn vị, method general_except_ref, evidence như cạnh ngoại lệ chung của câu đó. Nằm ở
+    General.ref_edges (không lẫn vào edges, để phép đếm "mỗi cụm trừ trường hợp một cạnh" giữ nguyên) và được ghi sau edges trong a6_exceptions.
+    Dẫn chiếu ra văn bản khác (a2.tail_of) và đích chưa nạp bị bỏ. p4: đúng 1 cạnh, D652 exception_of D619 (thừa kế thế vị là ngoại lệ của
+    D619). Đi cùng D619 refers_to D652 có sẵn: vòng trộn hợp lệ, xem C4 (7g).
+    Nút điều kiện có thêm bộ ba kind (a6.condition_kind trên norm_text): tuy_nghi ("(các bên) có thỏa/thoả thuận khác"), dan_chieu_mo
+    ("pháp luật | luật | luật khác | bộ luật này (có liên quan) có quy định khác"), còn lại cu_the. Khớp toàn bộ mệnh đề, nên "có thỏa thuận
+    khác về thời hạn" là cu_the. p4: 1 tuy_nghi (5 đơn vị, 3 Điều), 1 dan_chieu_mo, 3 cu_the.
+    Chưa làm (cần gán tay): tách mệnh đề thành điều kiện và hệ quả (D646.K3 "… thì phần di tặng cũng được dùng …"); phạm vi vế của ngoại lệ
+    (D617.K1.a: ngoại lệ chỉ áp cho vế "thu hồi tài sản" nhưng cạnh gắn vào cả Điểm).
 
 C. A7: ĐỒ THỊ GỘP (TRẠNG THÁI GỐC)
 -----------------------------------
 C1. Nút: đơn vị từ a1_triples (type, number, heading, text, source_line; thiếu thì null) cộng nút điều kiện từ a6_conditions. Cột nút:
-    id, type, number, heading, text, source_line, status. Nút điều kiện có number, heading, source_line là null.
+    id, type, number, heading, text, source_line, status. Nút điều kiện có number, heading, source_line là null, và thêm cột kind (B8; chỉ
+    nút điều kiện có cột này). Báo cáo có mục "Liên thông": số thành phần liên thông, và số đó khi bỏ nút kind tuy_nghi/dan_chieu_mo (p4: 38
+    và 40; nút "có thỏa thuận khác" nối D615, D659, D662 vốn không liên quan).
 C2. Cạnh: nối a2_edges, a2_refs, a3_exceptions, a6_exceptions theo thứ tự đó, gộp theo (s, p, o), giữ dòng đầu. Cột: s, p, o, evidence, method, status,
     sources. evidence rỗng và method null khi file nguồn không có. Bộ ba bị gộp có thêm evidences (các evidence khác nhau, khác rỗng). sources liệt kê một
     nhãn cho MỖI lần xuất hiện (cùng một file lặp thì nhãn lặp), nên len(sources) > 1 nghĩa là đã gộp. Dữ liệu thật hiện không có bộ ba trùng
@@ -59,7 +71,7 @@ C4. Kiểm tự động (không đạt thì báo cáo vẫn ghi, file dữ liệ
     refers_to ∪ exception_of vì "D619 refers_to D652" cùng "D652 exception_of D619" (quy tắc dẫn chiếu tới ngoại lệ của nó) là vòng hợp lệ.
     Phạm vi "mâu thuẫn hình thức" đã kiểm: vòng exception_of (7g), sửa/bãi bỏ đơn vị đã đóng (A4 E_TARGET), hai chỉ thị chồng đích (A4 E_OVERLAP),
     cạnh tới đơn vị đã đóng (cờ cạnh đứt A4, dangling A7). Chưa kiểm: xung đột chế tài (docs/pham_vi_mo_rong.txt A1).
-C5. Số đối chiếu: p4 220 nút (215 + 5), 364 cạnh (161 + 161 + 25 + 4 + 9 + 4 same_text_as), 4 duplicate; mẫu 35 nút, 64 cạnh (60 + 3 + 1), 0 duplicate.
+C5. Số đối chiếu: p4 220 nút (215 + 5), 365 cạnh (161 + 161 + 25 + 4 + 9 + 1 + 4 same_text_as; +1 từ B8), 4 duplicate; mẫu 35 nút, 64 cạnh (60 + 3 + 1), 0 duplicate.
     Bảng EXPECTED được test cộng lại độc lập (số dòng file nguồn, Counter riêng cho bản sao), không chỉ chép từ kết quả chạy.
 C6. File: data/processed/a7_<stem>_{nodes,edges}.jsonl và docs/a7_report_<stem>.txt. Báo cáo ghi cả khi KHÔNG ĐẠT.
 C7. A5 giữ nguyên, không đọc file A6/A7. Trùng cạnh trên các nguồn kể cả cạnh A6 do 7c của A7 kiểm.
@@ -89,4 +101,4 @@ E. GIỚI HẠN ĐÃ BIẾT
 E1. Hợp nhất chỉ theo text giống hệt (sau norm_text), không theo nghĩa.
 E2. Ngoại lệ chung chỉ nhận dạng "trừ trường hợp"; các cách viết khác ("ngoại trừ" không kèm "trường hợp", "không áp dụng" thiếu cụm dẫn chiếu, "không được áp dụng") vẫn ở unhandled. Ngoại lệ ngầm
     ("Trường hợp … thì …" ghi đè quy tắc chung) không được nhận dạng; p4 có 29 đơn vị mở đầu bằng "Trường hợp", chưa phân loại.
-E3. Nút điều kiện chưa có thuộc tính nào ngoài text; chưa tách mệnh đề thành hành vi, chủ thể, điều kiện con (thuộc tầng khái niệm sau này).
+E3. Nút điều kiện chỉ có text và kind (B8); chưa tách mệnh đề thành hành vi, chủ thể, điều kiện con (thuộc tầng khái niệm sau này).

@@ -29,6 +29,7 @@ C1. Phát hiện trùng lặp chính xác: A5 bước 1 (mã trùng, (s, p) lặ
     và thoát mã 1.
 C2. Nhất quán cấu trúc: A5 bước 2 (mỗi đơn vị một cha) và bước 4 (phiên bản, khoảng hiệu lực không chồng), cờ cạnh đứt của A4.
 C3. Ngoại lệ chung (A6, 2026-10-24): 9 câu "..., trừ trường hợp X" của p4 thành 9 cạnh exception_of từ 5 nút điều kiện (5 câu "có thỏa thuận khác" chung một nút).
+    (2026-10-25) Thêm 1 cạnh D652 exception_of D619 từ dẫn chiếu trong mệnh đề, và kind cho nút điều kiện: docs/a6_a7_quyet_dinh.txt B8.
     A3 vẫn đúng hai quy tắc, a3_unhandled_blds2015_p4.txt không đổi. Quyết định: docs/a6_a7_quyet_dinh.txt mục B.
 C4. Đồ thị gộp, khử trùng lặp, nhãn cô lập (A7, 2026-10-24): gộp bộ ba trùng tự động; nút bản sao text giống hệt gắn status "duplicate" và cạnh same_text_as
     (p4: 4 cặp); cạnh treo gắn "dangling" khi nạp A4 theo ngày. Quyết định: docs/a6_a7_quyet_dinh.txt mục C, D.

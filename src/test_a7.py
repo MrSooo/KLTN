@@ -28,7 +28,7 @@ FILES = [("mẫu", SAMPLE_FILE), ("đầy đủ", FULL_FILE)]  # luôn mẫu tr�
 P = "BLDS2015."
 
 # Số kỳ vọng (nút, cạnh, nút duplicate): cộng độc lập ở test_files_match_independent_counts, không lấy từ a7.EXPECTED.
-REFERENCE = {SAMPLE_FILE: (35, 64, 0), FULL_FILE: (220, 364, 4)}
+REFERENCE = {SAMPLE_FILE: (35, 64, 0), FULL_FILE: (220, 365, 4)}
 DUPLICATE_PAIRS = [(P + a, P + b) for a, b in (("D617.K2.c", "D617.K1.d"), ("D618.K2.b", "D618.K1.b"),
                                                ("D618.K2.c", "D618.K1.c"), ("D637.K1", "D632.K1"))]
 
@@ -277,7 +277,8 @@ def test_files_on_disk():
         nodes = [json.loads(line) for line in a7.nodes_path(stem).read_text(encoding="utf-8").split("\n") if line]
         edges = [json.loads(line) for line in a7.edges_path(stem).read_text(encoding="utf-8").split("\n") if line]
         assert nodes == graph.nodes and edges == graph.edges, f"file {name}: khác dựng lại"
-        assert all(list(n) == ["id", "type", "number", "heading", "text", "source_line", "status"] for n in nodes)
+        cols = ["id", "type", "number", "heading", "text", "source_line", "status"]
+        assert all(list(n) == cols + (["kind"] if n["type"] == "dieu_kien" else []) for n in nodes)
         assert all(list(e)[:7] == ["s", "p", "o", "evidence", "method", "status", "sources"] for e in edges)
         assert a7.report_path(stem).read_text(encoding="utf-8").rstrip().endswith("KẾT LUẬN: ĐẠT"), f"file {name}: báo cáo"
 
@@ -288,7 +289,7 @@ def test_base_cli_writes_files_and_exit_codes():
             assert a7.main([str(FULL_FILE)]) == 0
         names = sorted(p.name for p in Path(tmp).iterdir())
         assert names == ["a7_blds2015_p4_edges.jsonl", "a7_blds2015_p4_nodes.jsonl", "a7_report_blds2015_p4.txt"], names
-        assert "nút 220/220, cạnh 364/364, duplicate 4/4" in out.getvalue()
+        assert "nút 220/220, cạnh 365/365, duplicate 4/4" in out.getvalue()
     # stem chưa có trong EXPECTED: thoát với lỗi, không ghi gì
     with tempfile.TemporaryDirectory() as tmp:
         with patched(a7, OUT_DIR=Path(tmp), DOCS_DIR=Path(tmp)):

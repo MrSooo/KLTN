@@ -8,7 +8,9 @@ Chiều cạnh giống A3: s là phần ngoại lệ (nút điều kiện), o l�
 
   Mẫu: (ngoại )trừ trường hợp <mệnh đề>. Mệnh đề chạy đến hết đoạn (không vượt qua dòng mới), bỏ . ; : , ở cuối. Nếu
     "trừ trường hợp" đứng đầu đoạn ("Trừ trường hợp X, quy tắc") thì mệnh đề dừng ở dấu phẩy đầu tiên.
-  Nút điều kiện: một nút cho mỗi khoá gộp (norm_text của mệnh đề), mã BLDS2015.C_<8 ký tự đầu của sha1(khoá)>, type "dieu_kien".
+  Nút điều kiện: một nút cho mỗi khoá gộp (norm_text của mệnh đề), mã BLDS2015.C_<8 ký tự đầu của sha1(khoá)>, type "dieu_kien",
+    kind tuy_nghi | dan_chieu_mo | cu_the (condition_kind).
+  Mệnh đề có dẫn chiếu tới đơn vị T có trong tập: thêm cạnh T exception_of đơn vị, method general_except_ref (T là quy tắc ngoại lệ).
   Trigger "trừ" mà text không kết thúc "sau đây:" nhưng không đi kèm "trường hợp" là unhandled (mã đơn vị và câu). Mỗi
     "không được áp dụng" (không trigger nào bắt) cũng là unhandled.
   Hai "trừ trường hợp" trong một đơn vị, mệnh đề rỗng, hoặc "trừ trường hợp" đầu đoạn mà đoạn không có dấu phẩy: ValueError
@@ -32,7 +34,18 @@ import a3_exceptions as a3
 
 PREDICATE = a3.PREDICATE
 METHOD = "general_except_pattern"
+METHOD_REF = "general_except_ref"  # cạnh từ đơn vị được dẫn chiếu trong mệnh đề tới đơn vị mang ngoại lệ (review F-10)
 COND_TYPE = "dieu_kien"
+
+# Loại nút điều kiện (review F-11), so trên norm_text của mệnh đề. "Có thỏa thuận khác" là quy phạm tuỳ nghi (tôn trọng thoả thuận của
+# các bên), "pháp luật có quy định khác" là dẫn chiếu mở tới văn bản chưa xác định; hai loại này là câu chung chung, một nút nối nhiều
+# Điều không liên quan, nên đi đường qua chúng không phải quan hệ thật. Mệnh đề không khớp là điều kiện cụ thể.
+KIND_DISCRETIONARY, KIND_OPEN_REF, KIND_SPECIFIC = "tuy_nghi", "dan_chieu_mo", "cu_the"
+BOILERPLATE_KINDS = (KIND_DISCRETIONARY, KIND_OPEN_REF)
+KIND_PATTERNS = [
+    (KIND_DISCRETIONARY, re.compile(r"(?:các bên )?có th(?:ỏa|oả) thuận khác")),
+    (KIND_OPEN_REF, re.compile(r"(?:pháp luật|luật|luật khác|bộ luật này)(?: có liên quan)? có quy định khác")),
+]
 ID_HEX = 8  # số ký tự hex của sha1 trong mã nút điều kiện
 
 # Khớp tại vị trí của một trigger "trừ"/"ngoại trừ" của a2.TRIGGER_RE; chỉ nối bằng dấu cách nên không vắt qua dòng mới.
@@ -61,6 +74,11 @@ def norm_text(s):
     return re.sub(r"[ .;:,]+$", "", s)
 
 
+def condition_kind(clause):
+    key = norm_text(clause)
+    return next((kind for kind, rx in KIND_PATTERNS if rx.fullmatch(key)), KIND_SPECIFIC)
+
+
 def condition_id(prefix, key):
     """Mã nút điều kiện từ khoá gộp; băm nên ổn định giữa các ngày và phiên bản (đánh số tuần tự sẽ đổi khi tập câu đổi)."""
     return f"{prefix}.C_{hashlib.sha1(key.encode('utf-8')).hexdigest()[:ID_HEX]}"
@@ -72,6 +90,7 @@ class General(NamedTuple):
     handled: list    # [(đơn vị, trigger nguyên văn)] mỗi trigger đã sinh cạnh
     unhandled: list  # [(đơn vị, câu)] trigger "trừ" không rơi vào A3 hay A6, và mỗi "không được áp dụng"; câu là toàn bộ text
     skipped: list    # [(đơn vị, trigger nguyên văn)] trigger "trừ" thuộc A3 (text kết thúc "sau đây:")
+    ref_edges: list  # [(đích dẫn chiếu, "exception_of", o, evidence, METHOD_REF)] đích của dẫn chiếu nằm trong mệnh đề, có trong units
 
 
 def find_general(units):
@@ -81,7 +100,7 @@ def find_general(units):
     Chỗ spec không nói thì ValueError: một đơn vị có nhiều hơn một "trừ trường hợp", hoặc mệnh đề rỗng sau khi bỏ dấu cuối;
     "trừ trường hợp" đứng đầu đoạn mà đoạn không có dấu phẩy; hai khoá khác nhau trùng mã băm.
     """
-    nodes, edges, handled, unhandled, skipped = {}, [], [], [], []
+    nodes, edges, handled, unhandled, skipped, ref_edges = {}, [], [], [], [], []
     keys = {}  # mã nút -> khoá, để bắt hai khoá khác nhau trùng mã
     for code, u in units.items():
         text = u.get("text")
@@ -113,9 +132,25 @@ def find_general(units):
             if keys.setdefault(cond, key) != key:
                 raise ValueError(f"{code}: hai khoá khác nhau cùng mã băm {cond}: {keys[cond]!r} và {key!r}")
             nodes.setdefault(cond, clause)
-            edges.append((cond, PREDICATE, code, text[m.start():g.end() + len(paragraph)], METHOD))
+            evidence = text[m.start():g.end() + len(paragraph)]
+            edges.append((cond, PREDICATE, code, evidence, METHOD))
             handled.append((code, m.group(0)))
-    return General(list(nodes.items()), edges, handled, unhandled, skipped)
+            ref_edges += [(t, PREDICATE, code, evidence, METHOD_REF) for t in clause_targets(code, clause, units)]
+    return General(list(nodes.items()), edges, handled, unhandled, skipped, ref_edges)
+
+
+def clause_targets(code, clause, units):
+    """Đích (có trong units) của các cụm dẫn chiếu trong mệnh đề, giải như A2 với nguồn là code; dẫn chiếu ra ngoài bị bỏ.
+
+    "trừ trường hợp thừa kế thế vị theo quy định tại Điều 652" -> [D652]: Điều 652 là quy tắc ngoại lệ của đơn vị code.
+    """
+    view = {code: {**units[code], "text": clause}}
+    out = []
+    for ref in a2.find_refs(view)[0]:
+        if a2.tail_of(ref, view):
+            continue
+        out += [t for t in a2.group_targets(code, ref.phrase, units) if t in units and t != code and t not in out]
+    return out
 
 
 def check_general(units, result):
@@ -153,6 +188,17 @@ def check_general(units, result):
             errors.append(f"{s} -> {o}: evidence phải bắt đầu bằng 'trừ trường hợp': {evidence!r}")
     used = {s for s, _, _, _, _ in result.edges}
     errors += [f"nút {c} không có cạnh nào" for c in node_ids if c not in used]
+    general_evidence = {(o, evidence) for _, _, o, evidence, _ in result.edges}
+    for key, n in collections.Counter((s, p, o) for s, p, o, _, _ in result.edges + result.ref_edges).items():
+        if n > 1 and any((s, p, o) == key for s, p, o, _, _ in result.ref_edges):
+            errors.append(f"cạnh dẫn chiếu trùng {n} lần: {key}")
+    for s, p, o, evidence, method in result.ref_edges:
+        if p != PREDICATE or method != METHOD_REF:
+            errors.append(f"{s} -> {o}: cạnh dẫn chiếu phải là {PREDICATE!r} với method {METHOD_REF!r}, có {p!r} {method!r}")
+        if s not in units or o not in units or s == o:
+            errors.append(f"{s} -> {o}: cạnh dẫn chiếu phải nối hai đơn vị khác nhau có trong tập")
+        if (o, evidence) not in general_evidence:
+            errors.append(f"{s} -> {o}: evidence {evidence!r} không phải evidence của một cạnh ngoại lệ chung tới {o}")
 
     n_except = sum(1 for t in a2.find_triggers(units) if a3.kind_of(t.phrase) in a3.EXCEPT_KINDS)
     n_not_allowed = sum(len(NOT_ALLOWED_RE.findall(u.get("text") or "")) for u in units.values())
@@ -169,12 +215,12 @@ def check_general(units, result):
 
 
 def write_conditions(nodes, path):
-    """Ghi JSONL bộ ba {"s","p","o"} của nút điều kiện: type rồi text."""
+    """Ghi JSONL bộ ba {"s","p","o"} của nút điều kiện: type, text rồi kind."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         for cond, clause in nodes:
-            for p, o in (("type", COND_TYPE), ("text", clause)):
+            for p, o in (("type", COND_TYPE), ("text", clause), ("kind", condition_kind(clause))):
                 f.write(json.dumps({"s": cond, "p": p, "o": o}, ensure_ascii=False) + "\n")
 
 
@@ -205,16 +251,16 @@ def run(src):
         raise SystemExit(f"LỖI: {e}")
     a2.fail_if_errors(check_general(units, result))
 
-    for s, _, o, evidence, _ in result.edges:
+    for s, _, o, evidence, _ in result.edges + result.ref_edges:
         print(f"{s} → {o} | {evidence}")
     for code, sentence in result.unhandled:
         print(f"unhandled {code}: {sentence}")
     n_except = len(result.skipped) + len(result.handled) + len(result.unhandled)
     print("số đơn vị:", len(units), f"| trigger trừ/ngoại trừ: {n_except} = thuộc A3 {len(result.skipped)} + đã xử lý "
           f"{len(result.handled)} + unhandled {len(result.unhandled)}", "| nút điều kiện:", len(result.nodes),
-          "| cạnh exception_of:", len(result.edges))
+          "| cạnh exception_of:", len(result.edges), "| cạnh exception_of từ dẫn chiếu trong mệnh đề:", len(result.ref_edges))
     write_conditions(result.nodes, conditions_path(src))
-    write_exceptions(result.edges, exceptions_path(src))
+    write_exceptions(result.edges + result.ref_edges, exceptions_path(src))
     write_unhandled(result.unhandled, unhandled_path(src))
     print("đã ghi", conditions_path(src))
     print("đã ghi", exceptions_path(src))
