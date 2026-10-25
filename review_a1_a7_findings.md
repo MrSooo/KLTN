@@ -216,6 +216,21 @@ Kế hoạch: `plan_sua_a1_a7.md`. Nhánh `sua-theo-review`. Mỗi bước chạ
 | F-03 | 1.1 | `8986981` | Đã sửa: dòng bị động / "hết hiệu lực" / "thay bằng" là `E_UNKNOWN_LINE`; văn bản 0 chỉ thị là `E_NO_DIRECTIVE` | Không đổi |
 | F-01, F-02 | 1.2 | `dba1ff1` | Đã sửa: tên văn bản khác → `unresolved` với đích `external:<tên>`; "<Luật/Nghị định> này", khoảng, số trần, hậu tố → dừng | Không đổi |
 | F-04, F-05 | 1.3 | `e7fd737` | Đã sửa: "Trừ trường hợp X, …" đầu đoạn cắt ở dấu phẩy; "không được áp dụng" → `a6_unhandled`. Ngoại lệ ngầm vẫn chưa nhận dạng | Không đổi |
+| F-12 | 2.1 | `d8941a9` | Đã sửa: A7 kiểm 7g không có vòng `exception_of`; vòng `refers_to` chỉ ghi (hợp lệ) | Báo cáo A7 thêm dòng 7g |
+| F-10, F-11 | 2.2 | `66a29b0` | Một phần: thêm `D652 exception_of D619` (method `general_except_ref`); nút điều kiện có `kind` (tuy_nghi / dan_chieu_mo / cu_the); báo cáo liên thông khi bỏ nút chung chung. Chưa: tách điều kiện / hệ quả (D646.K3), phạm vi vế (D617.K1.a) | +1 cạnh, +cột `kind` |
+| F-08 | 2.3 | `874af35` | Đã sửa: `a1.BASE_DOC` (91/2015/QH13, ban hành 2015-11-24, hiệu lực 2017-01-01); phiên bản 1 có `effective_from`, `source_doc`; sửa đổi không sau ngày gốc là `E_DATE_BEFORE_BASE`; A5 kiểm 4f | Mọi file versions |
+| F-07, F-18 | 2.4 | `c8ba817` | Một phần: A7 theo ngày có nút văn bản và cạnh `amends/replaces/repeals` (đích đã đóng: `historical`). Quan hệ cấp văn bản khác (sửa / hết hiệu lực một phần) vẫn chưa có vì A4 không sinh | +nút văn bản |
+| F-09 | 2.5 | `209cd9d` | Đã sửa: Chương XXI–XXIV (thêm tiêu đề XXI vào raw), cây văn bản > Chương > Điều > Khoản > Điểm; A4 gán Chương cho Điều mới. Chưa có Phần, Mục | p4: +4 nút, +116 cạnh; số dòng raw +2 |
+
+Đánh giá lại các mục ở §1 sau Pha 1 và Pha 2 (mục không nêu thì giữ nguyên):
+
+| # | Trước | Sau | Lý do |
+|---|---|---|---|
+| 1 | Đạt (tối thiểu) | **Đạt** | Có cây văn bản > Chương > Điều > Khoản > Điểm và kiểm tự động (A5 2a–2f, A7 7e) |
+| 2 | Một phần | Một phần | Không còn ra cạnh sai im lặng (F-01, F-02 dừng hoặc ghi `external`), nhưng vẫn chưa nhận khoảng, danh sách số trần, hậu tố |
+| 3 | Một phần | Một phần | F-04, F-05 hết fail-open; F-10 làm được ca có dẫn chiếu; ngoại lệ ngầm và phạm vi vế vẫn chưa |
+| 4 | Một phần | Một phần | F-03, F-07 đã sửa; văn phạm chỉ thị vẫn hẹp (F-15) |
+| 8 | Một phần | Một phần | Thêm kiểm vòng 7g và nhãn `historical`; `duplicate` chờ bước 3.1 |
 
 ## Phụ lục: cách tái hiện
 
