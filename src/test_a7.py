@@ -147,8 +147,29 @@ def test_check_graph_is_clean_on_a_mini_graph():
     g = graph_of(units, structural(units) + [edge("X.D2.K1", "refers_to", "X.D1.K1")])
     checks = a7.check_graph(g, a7.Expect(nodes=5, edges=len(g.edges), duplicates=1))
     assert a5.failures(checks) == 0, [(c.id, c.problems) for c in checks]
-    assert [c.id for c in checks] == ["7a", "7b", "7c", "7d", "7e", "7f"]
-    assert [c.id for c in a7.check_graph(g)] == ["7a", "7b", "7c", "7d", "7e"]  # không có expect thì bỏ 7f
+    assert [c.id for c in checks] == ["7a", "7b", "7c", "7d", "7e", "7f", "7g"]
+    assert [c.id for c in a7.check_graph(g)] == ["7a", "7b", "7c", "7d", "7e", "7g"]  # không có expect thì bỏ 7f
+
+
+def test_find_cycle():
+    E = lambda *pairs, p="exception_of": [edge(s, p, o) for s, o in pairs]
+    assert a7.find_cycle(E(("A", "B"), ("B", "C")), "exception_of") is None
+    assert a7.find_cycle(E(("A", "B"), ("B", "A")), "exception_of") == ["A", "B", "A"]
+    assert a7.find_cycle(E(("X", "A"), ("A", "B"), ("B", "C"), ("C", "A")), "exception_of") == ["A", "B", "C", "A"]
+    assert a7.find_cycle(E(("A", "A")), "exception_of") == ["A", "A"]
+    assert a7.find_cycle(E(("A", "B"), ("B", "A"), p="refers_to"), "exception_of") is None  # chỉ xét đúng predicate
+    # nhánh đã duyệt xong không bị coi là vòng (kim cương A→B, A→C, B→D, C→D)
+    assert a7.find_cycle(E(("A", "B"), ("A", "C"), ("B", "D"), ("C", "D")), "exception_of") is None
+
+
+def test_check_7g_exception_cycle_fails_refers_to_cycle_is_only_noted():
+    units = [unit("X.D1", "dieu", "A."), unit("X.D2", "dieu", "B.")]
+    mixed = graph_of(units, [edge("X.D1", "refers_to", "X.D2"), edge("X.D2", "exception_of", "X.D1"),
+                             edge("X.D2", "refers_to", "X.D1")])
+    c7g = [c for c in a7.check_graph(mixed) if c.id == "7g"][0]
+    assert c7g.problems == [] and "X.D1 → X.D2 → X.D1" in c7g.summary, c7g
+    loop = graph_of(units, [edge("X.D1", "exception_of", "X.D2"), edge("X.D2", "exception_of", "X.D1")])
+    assert problems_of(a7.check_graph(loop), "7g") == ["vòng exception_of: X.D1 → X.D2 → X.D1"]
 
 
 def test_check_graph_catches_each_kind_of_problem():

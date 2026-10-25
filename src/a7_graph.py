@@ -246,8 +246,33 @@ def graph_at(src, versions, date):
 
 # ---- kiểm tra ----
 
+def find_cycle(edges, p):
+    """Một vòng [a, b, ..., a] trong các cạnh có predicate p (duyệt theo thứ tự cạnh), hoặc None. DFS lặp, không đệ quy."""
+    succ = collections.defaultdict(list)
+    for e in edges:
+        if e["p"] == p:
+            succ[e["s"]].append(e["o"])
+    state = {}  # 1 đang trên đường đi, 2 đã xong
+    for root in list(succ):
+        if root in state:
+            continue
+        state[root], stack, path = 1, [iter(succ[root])], [root]
+        while stack:
+            v = next(stack[-1], None)
+            if v is None:
+                state[path.pop()] = 2
+                stack.pop()
+            elif state.get(v) == 1:
+                return path[path.index(v):] + [v]
+            elif v not in state:
+                state[v] = 1
+                stack.append(iter(succ.get(v, [])))
+                path.append(v)
+    return None
+
+
 def check_graph(graph, expect=None):
-    """Các Check 7a-7f trên Graph. expect (Expect) chỉ có ở trạng thái gốc; không có thì bỏ qua 7f."""
+    """Các Check 7a-7g trên Graph. expect (Expect) chỉ có ở trạng thái gốc; không có thì bỏ qua 7f."""
     nodes, edges = graph.nodes, graph.edges
     by_id = {n["id"]: n for n in nodes}
 
@@ -332,6 +357,15 @@ def check_graph(graph, expect=None):
                if got != want]
         checks.append(a5.Check("7f", "số nút, cạnh, nút bản sao khớp bảng EXPECTED",
                                f"nút {len(nodes)}/{expect.nodes}, cạnh {n_edges}/{expect.edges}, duplicate {n_dup}/{expect.duplicates}", p_f))
+
+    # 7g: A là ngoại lệ của B và B (bắc cầu) là ngoại lệ của A là mâu thuẫn. Vòng refers_to (hai đơn vị dẫn chiếu qua lại) và vòng
+    # trộn refers_to với exception_of (quy tắc dẫn chiếu tới ngoại lệ của chính nó) là hợp lệ: chỉ ghi, không tính lỗi.
+    cycle = find_cycle(edges, a3.PREDICATE)
+    ref_cycle = find_cycle(edges, "refers_to")
+    checks.append(a5.Check("7g", "không có vòng exception_of",
+                           f"{sum(e['p'] == a3.PREDICATE for e in edges)} cạnh exception_of; vòng refers_to (chỉ ghi): "
+                           + (" → ".join(ref_cycle) if ref_cycle else "không có"),
+                           [f"vòng exception_of: {' → '.join(cycle)}"] if cycle else []))
     return checks
 
 

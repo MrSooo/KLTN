@@ -54,6 +54,11 @@ C4. Kiểm tự động (không đạt thì báo cáo vẫn ghi, file dữ liệ
     chính các nút); 7e mỗi Khoản/Điểm đúng một part_of (ok) tới cha là mã bỏ đoạn cuối và đúng bậc, contains đối xứng, Điều không có part_of;
     7f (chỉ trạng thái gốc) số nút, cạnh, nút duplicate khớp bảng cứng a7.EXPECTED theo stem, stem lạ thì lỗi. 7e KHÔNG có trong plan, thêm vì nó là
     chỗ bắt lỗi nếu cạnh add của A4 thiếu khi nạp theo ngày.
+    (2026-10-25, review F-12) 7g (cả hai chế độ): không có vòng trong exception_of (A ngoại lệ của B và B, trực tiếp hoặc bắc cầu, ngoại lệ của A).
+    Vòng refers_to chỉ được ghi trong dòng tóm tắt của 7g, không tính lỗi: hai đơn vị dẫn chiếu qua lại là hợp lệ. Không kiểm trên hợp
+    refers_to ∪ exception_of vì "D619 refers_to D652" cùng "D652 exception_of D619" (quy tắc dẫn chiếu tới ngoại lệ của nó) là vòng hợp lệ.
+    Phạm vi "mâu thuẫn hình thức" đã kiểm: vòng exception_of (7g), sửa/bãi bỏ đơn vị đã đóng (A4 E_TARGET), hai chỉ thị chồng đích (A4 E_OVERLAP),
+    cạnh tới đơn vị đã đóng (cờ cạnh đứt A4, dangling A7). Chưa kiểm: xung đột chế tài (docs/pham_vi_mo_rong.txt A1).
 C5. Số đối chiếu: p4 220 nút (215 + 5), 364 cạnh (161 + 161 + 25 + 4 + 9 + 4 same_text_as), 4 duplicate; mẫu 35 nút, 64 cạnh (60 + 3 + 1), 0 duplicate.
     Bảng EXPECTED được test cộng lại độc lập (số dòng file nguồn, Counter riêng cho bản sao), không chỉ chép từ kết quả chạy.
 C6. File: data/processed/a7_<stem>_{nodes,edges}.jsonl và docs/a7_report_<stem>.txt. Báo cáo ghi cả khi KHÔNG ĐẠT.
