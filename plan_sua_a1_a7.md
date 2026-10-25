@@ -40,7 +40,7 @@ Kỳ vọng chung: p4 và 5dieu **không có** ca nào trong pha này (review §
 - `a2_edges.py`, trong `find_refs` / `build_refs`, xét đoạn chữ ngay sau mỗi cụm:
   - **Ra ngoài:** khớp ` của (Luật|Bộ luật|Nghị định|Thông tư|Pháp lệnh) …` mà không phải "Bộ luật này", hoặc ` (Luật|Nghị định|Thông tư|Pháp lệnh) này` → không tạo cạnh, ghi vào `unresolved` với cột lý do `external` (để phân biệt với "Điều chưa nạp"). Đuôi "của <tên lạ>" không nhận dạng được → `ValueError`.
   - **Dừng (fail-closed):** cụm theo sau bởi ` đến (Điều|khoản|điểm)`, bởi `(, | và | hoặc )\d+` (danh sách số trần), hoặc từ khoá + `\d+[a-zđ]` (hậu tố "5a", "2a") → `ValueError` "chưa có quy tắc".
-  - `write_unresolved`: thêm cột lý do. Đây là thay đổi định dạng `docs/a2_unresolved_*.txt` duy nhất được phép trong pha này (2 dòng của p4 thêm lý do `dieu_chua_nap`).
+  - **Đã làm khác đi một chút:** không thêm cột lý do; dẫn chiếu ra ngoài ghi vào `unresolved` với đích `external:<tên văn bản>`, nên định dạng `a2_unresolved_*.txt` giữ nguyên. "<Luật|Nghị định> này" thì dừng (văn bản đang xử lý là Bộ luật), không coi là ra ngoài. Mặc định `build_refs` dừng khi có từ khoá + số ngoài mọi cụm; A4 gọi với `allow_uncovered=True` vì đã có mục "Chưa phủ".
 - `test_a2.py`: 3 câu F-01 → `external`; 4 câu F-02 → `ValueError`; hai ca đang fail-closed giữ nguyên.
 
 ### 1.3 A6: mệnh đề ngoại lệ đứng đầu câu, trigger thiếu (F-04, F-05)

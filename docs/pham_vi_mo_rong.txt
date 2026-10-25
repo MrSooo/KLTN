@@ -41,3 +41,8 @@ D2. Ngoại lệ chung chỉ nhận dạng "trừ trường hợp". "Không áp 
     kèm "trường hợp" nằm ở a6_unhandled (p4 không có ca nào).
 D3. A5 không đọc file A6, A7. A7 tự kiểm 7a-7f trên đồ thị gộp.
 D4. Dữ liệu thật hiện không có bộ ba trùng chính xác (A5 xác nhận 0), nên việc gộp bộ ba chỉ được thử bằng dữ liệu dựng tay.
+D5. (2026-10-25, review F-01, F-02) Dẫn chiếu của A2 chỉ cho văn bản đang xử lý là một Bộ luật. Cụm theo sau bởi tên văn bản khác
+    ("Điều 5 của Luật Đất đai") ghi vào a2_unresolved với đích "external:<tên văn bản>", không tạo cạnh. Dừng bằng lỗi (không đoán):
+    "<Luật|Nghị định|…> này" (không phải Bộ luật), "của <thứ không nhận ra>", khoảng "từ … đến …", danh sách số trần sau cụm
+    ("các điều 5, 6 và 7", "khoản 1, 2 Điều 5"), từ khoá kèm số không thuộc cụm nào ("Điều 5a", "khoản 2a"). A4 gọi
+    a2.build_refs(..., allow_uncovered=True) vì A4 đã liệt kê loại cuối ở mục "Chưa phủ". p4 và 5dieu không có ca nào nên đầu ra không đổi.

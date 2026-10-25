@@ -553,6 +553,45 @@ def test_missing_target_in_loaded_dieu_is_error_not_unresolved():
     assert any("D616" in e for e in a2.check_refs(units, [], [("BLDS2015.D617.K1", "khoản 9 Điều 616", "BLDS2015.D616.K9")]))
 
 
+TAIL_BASE = {"BLDS2015.D5": ("dieu", None), "BLDS2015.D6": ("dieu", None), "BLDS2015.D7": ("dieu", None),
+             "BLDS2015.D8": ("dieu", None), "BLDS2015.D9": ("dieu", None)}
+
+
+def test_external_refs_are_unresolved_not_edges():
+    """Review F-01: cụm theo sau bởi tên văn bản khác không thành cạnh tới Điều cùng số của Bộ luật."""
+    cases = [("theo quy định tại Điều 5 của Luật Đất đai.", "Điều 5", "Luật Đất đai"),
+             ("theo khoản 2 Điều 5 Nghị định số 01/2021/NĐ-CP và Điều 6 của Bộ luật này", "khoản 2 Điều 5", "Nghị định số 01/2021/NĐ-CP"),
+             ("theo Điều 5 của Bộ luật dân sự năm 2005;", "Điều 5", "Bộ luật dân sự năm 2005")]
+    for text, phrase, doc in cases:
+        units = mini_units({**TAIL_BASE, "BLDS2015.D9.K1": ("khoan", text)})
+        edges, unresolved = a2.build_refs(units)
+        assert unresolved == [("BLDS2015.D9.K1", phrase, a2.EXTERNAL + doc)], (text, unresolved)
+        assert all(o != "BLDS2015.D5" for _, _, o, _ in edges), (text, edges)
+        assert a2.check_refs(units, edges, unresolved) == []
+    # "Bộ luật này" không cần "của" vẫn là chính văn bản
+    units = mini_units({**TAIL_BASE, "BLDS2015.D9.K1": ("khoan", "theo Điều 5 Bộ luật này")})
+    assert a2.build_refs(units) == ([("BLDS2015.D9.K1", "refers_to", "BLDS2015.D5", "Điều 5")], [])
+
+
+def test_unsupported_tails_and_uncovered_numbers_stop():
+    """Review F-01, F-02: dạng trước đây cho cạnh thiếu hoặc sai mà không báo, nay dừng bằng ValueError."""
+    for text, why in [("theo Điều 5 của Luật này", "không phải văn bản đang xử lý"),
+                      ("theo Điều 5 Nghị định này", "không phải văn bản đang xử lý"),
+                      ("theo Điều 5 của hợp đồng", "đuôi 'của …'"),
+                      ("từ Điều 5 đến Điều 8", "khoảng"),
+                      ("các điều 5, 6 và 7", "danh sách số trần"),
+                      ("theo khoản 1, 2 Điều 5", "danh sách số trần"),
+                      ("theo khoản 2a Điều 5", "không thuộc cụm nào"),
+                      ("theo Điều 5a", "không thuộc cụm nào")]:
+        units = mini_units({**TAIL_BASE, "BLDS2015.D9.K1": ("khoan", text)})
+        try:
+            a2.build_refs(units)
+        except ValueError as e:
+            assert why in str(e), (text, str(e))
+            continue
+        raise AssertionError(f"{text!r}: phải báo lỗi")
+
+
 def test_cli_stops_and_writes_nothing_on_missing_target():
     units = mini_units({"BLDS2015.D616": ("dieu", None), "BLDS2015.D616.K1": ("khoan", None),
                         "BLDS2015.D617": ("dieu", "theo khoản 9 Điều 616 của Bộ luật này")})

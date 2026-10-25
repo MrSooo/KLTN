@@ -180,6 +180,7 @@ class Ref(NamedTuple):
     phrase: str   # cụm nguyên văn
     shape: str    # hình dạng: số thành N, chữ điểm thành X
     context: str  # CONTEXT_CHARS ký tự mỗi bên của cụm
+    end: int      # vị trí ngay sau cụm trong text, để xét đuôi (tail_of)
 
 
 class Excluded(NamedTuple):
@@ -211,7 +212,7 @@ def find_refs(units):
         for m in CHAIN_RE.finditer(text):
             spans.append(m.span())
             context = text[max(0, m.start() - CONTEXT_CHARS):m.end() + CONTEXT_CHARS]
-            refs.append(Ref(code, m.group(0), shape_of(m.group(0)), context))
+            refs.append(Ref(code, m.group(0), shape_of(m.group(0)), context, m.end()))
         for m in KEYWORD_RE.finditer(text):
             total += 1
             if not any(a <= m.start() < b for a, b in spans):
@@ -331,15 +332,66 @@ def dieu_of(code):
     return ".".join(code.split(".")[:2])
 
 
-def build_refs(units):
+# Đuôi ngay sau một cụm (review F-01, F-02). Văn bản đang xử lý là Bộ luật: "Bộ luật này" là chính nó (CHAIN_RE đã nuốt
+# "của Bộ luật này"); tên một văn bản khác là dẫn chiếu ra ngoài; "<loại khác> này" và "của <thứ khác>" chưa có quy tắc.
+DOC_KINDS = r"(?:Hiến pháp|Bộ luật|Luật|Pháp lệnh|Nghị quyết|Nghị định|Quyết định|Thông tư)"
+SELF_DOC = "bộ luật này"
+EXTERNAL = "external:"  # tiền tố của cột đích trong unresolved khi cụm trỏ ra văn bản khác
+TAIL_THIS_RE = re.compile(rf"[ ]+(?:của[ ]+)?({DOC_KINDS}[ ]+này)(?!\w)", re.I)
+TAIL_DOC_RE = re.compile(rf"[ ]+(?:của[ ]+)?({DOC_KINDS}(?!\w)(?:(?![ ]+(?:và|hoặc)[ ]+)[^,.;:\n])*)", re.I)
+TAIL_OF_RE = re.compile(r"[ ]+của(?!\w)", re.I)
+TAIL_RANGE_RE = re.compile(r"[ ]+đến[ ]+(?:điều|khoản|điểm)(?!\w)", re.I)
+TAIL_BARE_RE = re.compile(r"(?:,[ ]*|[ ]+(?:và|hoặc)[ ]+)\d+(?!\w)")
+
+
+def tail_of(ref, units):
+    """Tên văn bản khác nếu cụm trỏ ra ngoài, None nếu cụm thuộc văn bản đang xử lý. Đuôi chưa có quy tắc thì ValueError."""
+    def bad(why):
+        return ValueError(f"{ref.unit}: {why}: {ref.phrase!r}")
+
+    tail = units[ref.unit]["text"][ref.end:]
+    if TAIL_RANGE_RE.match(tail):
+        raise bad("khoảng 'từ … đến …' chưa có quy tắc")
+    if TAIL_BARE_RE.match(tail):
+        raise bad("danh sách số trần sau cụm chưa có quy tắc")
+    m = TAIL_THIS_RE.match(tail)
+    if m:
+        if m.group(1).casefold() == SELF_DOC:
+            return None
+        raise bad(f"'{m.group(1)}' không phải văn bản đang xử lý (Bộ luật)")
+    m = TAIL_DOC_RE.match(tail)
+    if m:
+        return m.group(1).strip()
+    if TAIL_OF_RE.match(tail):
+        raise bad("đuôi 'của …' không nhận ra văn bản")
+    return None
+
+
+def uncovered(units):
+    """Từ khoá điều/khoản/điểm kèm số mà không thuộc cụm nào ('Điều 5a', 'khoản 2a', số trần sau cụm): [Excluded]."""
+    return [e for e in find_refs(units)[1] if e.after[:1].isdigit()]
+
+
+def build_refs(units, allow_uncovered=False):
     """Từ các cụm dẫn chiếu thành (edges, unresolved), theo thứ tự cụm trong file triples rồi thứ tự đích trong cụm.
 
     edges: (s, "refers_to", o, evidence): s là đơn vị chứa cụm, o là đích có trong units, evidence là cụm nguyên văn.
-    unresolved: (s, cụm nguyên văn, đích); không tạo cạnh. Chỉ dành cho đích mà Điều của nó chưa được nạp.
-    Đích không có trong units mà Điều của nó có (ví dụ 'khoản 9 Điều 616' khi D616 chỉ có K1-K3) thì báo lỗi.
+    unresolved: (s, cụm nguyên văn, đích); không tạo cạnh. Dành cho đích mà Điều của nó chưa được nạp, và cho cụm trỏ ra văn
+    bản khác (đích là EXTERNAL + tên văn bản, ví dụ 'external:Luật Đất đai').
+    Đích không có trong units mà Điều của nó có (ví dụ 'khoản 9 Điều 616' khi D616 chỉ có K1-K3) thì báo lỗi. Đuôi chưa có quy
+    tắc (tail_of) và từ khoá kèm số nằm ngoài mọi cụm (uncovered) cũng báo lỗi, trừ khi allow_uncovered (A4 tự liệt kê chúng ở
+    mục "Chưa phủ").
     """
+    if not allow_uncovered:
+        missed = uncovered(units)
+        if missed:
+            raise ValueError(f"từ khoá kèm số không thuộc cụm nào, chưa có quy tắc: {[(e.unit, e.keyword + ' ' + e.after) for e in missed]}")
     edges, unresolved = [], []
     for ref in find_refs(units)[0]:
+        external = tail_of(ref, units)
+        if external:
+            unresolved.append((ref.unit, ref.phrase, EXTERNAL + external))
+            continue
         for target in group_targets(ref.unit, ref.phrase, units):
             if target in units:
                 edges.append((ref.unit, "refers_to", target, ref.phrase))
@@ -367,7 +419,10 @@ def check_refs(units, edges, unresolved):
         elif not evidence or evidence not in units[s].get("text", ""):
             errors.append(f"{s} -> {o}: evidence {evidence!r} không nằm trong text của {s}")
     for s, phrase, target in unresolved:
-        if target in units:
+        if target.startswith(EXTERNAL):
+            if target == EXTERNAL:
+                errors.append(f"{s}: {phrase!r} trỏ ra ngoài nhưng không có tên văn bản")
+        elif target in units:
             errors.append(f"{s}: {phrase!r} ghi unresolved nhưng {target} có trong tập đơn vị")
         elif dieu_of(target) in units:
             errors.append(f"{s}: {phrase!r} ghi unresolved nhưng {dieu_of(target)} (Điều của đích {target}) có trong tập đơn vị")

@@ -1013,7 +1013,8 @@ def recompute_edges(store, state, step, S):
     listy = {parent_code(c) for c in S_set if parent_code(c) and (store.cur(parent_code(c)).text or "").endswith(a3.LIST_END)}
     try:
         view = edge_view(store, S_set, skip)
-        new_refs = [(s, p, o, ev) for s, p, o, ev in a2.build_refs(view)[0] if s in S_set]
+        # mention kèm số ngoài mọi cụm (ví dụ 'Điều 621a') không chặn A4: nó được liệt kê ở mục "Chưa phủ" (F5)
+        new_refs = [(s, p, o, ev) for s, p, o, ev in a2.build_refs(view, allow_uncovered=True)[0] if s in S_set]
     except ValueError as e:
         raise A4Error("E_A2", str(e))
     try:

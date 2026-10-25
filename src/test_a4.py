@@ -912,9 +912,16 @@ def test_suffix_codes_accepted_by_a2_a3_as_sources():
     assert refs == [("X.D5a.K2", "refers_to", "X.D5a.K1", "Khoản 1 Điều này"), ("X.D5a.K2", "refers_to", "X.D5.K1", "khoản 1 Điều 5")]
     exc, handled, unhandled = a3.find_exceptions(units, a2.build_edges(units))
     assert [(s, o, m) for s, _, o, _, m in exc] == [("X.D5a.K2", "X.D5a.K1", a3.NOT_APPLY), ("X.D5a.K3.a", "X.D5a.K3", a3.EXCEPT_LIST)]
-    # đích có hậu tố thì A2 không nhận: không cạnh nào ra (đó là lý do có cờ "chưa phủ")
+    # đích có hậu tố thì A2 không nhận: không cạnh nào ra (đó là lý do có cờ "chưa phủ"); A4 gọi với allow_uncovered=True,
+    # còn mặc định của A2 là dừng (review F-02)
     units["X.D5.K1"]["text"] = "theo Điều 5a của Bộ luật này"
-    assert a2.build_refs(units)[0] == refs[:2]
+    assert a2.build_refs(units, allow_uncovered=True)[0] == refs[:2]
+    try:
+        a2.build_refs(units)
+    except ValueError as e:
+        assert "Điều 5a" in str(e), e
+    else:
+        raise AssertionError("A2 mặc định phải dừng với 'Điều 5a'")
 
 
 def test_exclude_suffix_mode_reports_units_and_skips_edges():
