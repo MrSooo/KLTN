@@ -24,12 +24,17 @@ B2. Mẫu bắt: (?:ngoại[ ]+)?trừ[ ]+trường[ ]+hợp, không phân biệ
 B3. Mệnh đề = phần text sau "trừ trường hợp" đến hết đoạn (không vượt qua dòng mới), bỏ khoảng trắng và . ; : , ở cuối. Mệnh đề có vế sau
     (D646.K3: "..., thì phần di tặng cũng được dùng ...") vẫn là một mệnh đề. Evidence = từ chữ "trừ"/"ngoại" của cụm đến hết đoạn, nguyên văn
     (còn dấu cuối), là đoạn con của text đơn vị.
+    (2026-10-25, review F-04) "trừ trường hợp" đứng đầu đoạn ("Trừ trường hợp pháp luật có quy định khác, người thừa kế phải ..."): mệnh đề dừng
+    ở dấu phẩy đầu tiên và evidence dừng ở dấu phẩy đó, vì phần sau là quy tắc chính. Không có dấu phẩy thì ValueError. p4 không có ca nào.
 B4. Khoá gộp = a6.norm_text: gộp khoảng trắng, casefold, bỏ . ; : , và dấu cách cuối. Dùng chung cho nút điều kiện và cho same_text_as của A7.
     Nút giữ mệnh đề nguyên văn (hoa/thường) của lần xuất hiện đầu.
 B5. Mã nút điều kiện BLDS2015.C_<8 ký tự đầu sha1(khoá)>, type "dieu_kien". Băm để mã không đổi khi tập câu đổi giữa các ngày hoặc phiên bản (đánh số
     tuần tự sẽ đổi). Hai khoá khác nhau trùng mã: ValueError. Mã chỉ có hai đoạn nên a2.parent_of coi như Điều, nhưng nút này không đi qua A2.
 B6. Spec im lặng thì ValueError (CLI thoát 1, không ghi file, như A3): một đơn vị có nhiều hơn một "trừ trường hợp"; mệnh đề rỗng. Trigger "trừ" không
     kèm "trường hợp" và text không kết thúc "sau đây:" thì vào unhandled (đơn vị, câu = toàn bộ text), file docs/a6_unhandled_<stem>.txt.
+    (2026-10-25, review F-05) Mỗi "không được áp dụng" cũng vào unhandled (kể cả đơn vị kết thúc "sau đây:"): a2.TRIGGER_RE không bắt nó nên
+    trước đây nó không hiện ở đâu. A6 quét riêng bằng NOT_ALLOWED_RE, không sửa TRIGGER_RE (A3 dùng chung). Phép đếm của check_general thành
+    trigger trừ/ngoại trừ + số "không được áp dụng" = thuộc A3 + đã xử lý + unhandled. p4 không có ca nào.
 B7. Số: p4 10 trigger trừ/ngoại trừ = thuộc A3 1 (D632) + đã xử lý 9 + unhandled 0; 5 nút, 9 cạnh. Mẫu: 0. Đếm độc lập "trừ trường hợp" trên md = 9.
     Đơn vị A6 xử lý = đúng 9 đơn vị mà a3_unhandled_blds2015_p4.txt liệt kê (có test).
 
@@ -77,5 +82,6 @@ D7. Đã chạy: p4_dev05_bai_bo_ds tại 2027-01-01 cho 205 nút (215 - 15 + 5)
 E. GIỚI HẠN ĐÃ BIẾT
 --------------------
 E1. Hợp nhất chỉ theo text giống hệt (sau norm_text), không theo nghĩa.
-E2. Ngoại lệ chung chỉ nhận dạng "trừ trường hợp"; các cách viết khác ("ngoại trừ" không kèm "trường hợp", "không áp dụng" thiếu cụm dẫn chiếu) vẫn ở unhandled.
+E2. Ngoại lệ chung chỉ nhận dạng "trừ trường hợp"; các cách viết khác ("ngoại trừ" không kèm "trường hợp", "không áp dụng" thiếu cụm dẫn chiếu, "không được áp dụng") vẫn ở unhandled. Ngoại lệ ngầm
+    ("Trường hợp … thì …" ghi đè quy tắc chung) không được nhận dạng; p4 có 29 đơn vị mở đầu bằng "Trường hợp", chưa phân loại.
 E3. Nút điều kiện chưa có thuộc tính nào ngoài text; chưa tách mệnh đề thành hành vi, chủ thể, điều kiện con (thuộc tầng khái niệm sau này).

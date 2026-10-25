@@ -6,10 +6,13 @@
         data/processed/a6_exceptions_<stem>.jsonl (s, p, o, evidence, method), docs/a6_unhandled_<stem>.txt.
 Chiều cạnh giống A3: s là phần ngoại lệ (nút điều kiện), o là đơn vị quy tắc bị ngoại trừ.
 
-  Mẫu: (ngoại )trừ trường hợp <mệnh đề>. Mệnh đề chạy đến hết đoạn (không vượt qua dòng mới), bỏ . ; : , ở cuối.
+  Mẫu: (ngoại )trừ trường hợp <mệnh đề>. Mệnh đề chạy đến hết đoạn (không vượt qua dòng mới), bỏ . ; : , ở cuối. Nếu
+    "trừ trường hợp" đứng đầu đoạn ("Trừ trường hợp X, quy tắc") thì mệnh đề dừng ở dấu phẩy đầu tiên.
   Nút điều kiện: một nút cho mỗi khoá gộp (norm_text của mệnh đề), mã BLDS2015.C_<8 ký tự đầu của sha1(khoá)>, type "dieu_kien".
-  Trigger "trừ" mà text không kết thúc "sau đây:" nhưng không đi kèm "trường hợp" là unhandled (mã đơn vị và câu).
-  Hai "trừ trường hợp" trong một đơn vị, hoặc mệnh đề rỗng: ValueError (spec không nói cách xử lý, không đoán).
+  Trigger "trừ" mà text không kết thúc "sau đây:" nhưng không đi kèm "trường hợp" là unhandled (mã đơn vị và câu). Mỗi
+    "không được áp dụng" (không trigger nào bắt) cũng là unhandled.
+  Hai "trừ trường hợp" trong một đơn vị, mệnh đề rỗng, hoặc "trừ trường hợp" đầu đoạn mà đoạn không có dấu phẩy: ValueError
+    (spec không nói cách xử lý, không đoán).
   Trigger "không áp dụng" không phải việc của A6.
 
 Chạy: python -I src/a6_general_exceptions.py <file md nguồn>   (bắt buộc truyền path, không có mặc định)
@@ -34,6 +37,9 @@ ID_HEX = 8  # số ký tự hex của sha1 trong mã nút điều kiện
 
 # Khớp tại vị trí của một trigger "trừ"/"ngoại trừ" của a2.TRIGGER_RE; chỉ nối bằng dấu cách nên không vắt qua dòng mới.
 GENERAL_RE = re.compile(r"(?:ngoại[ ]+)?trừ[ ]+trường[ ]+hợp(?!\w)", re.I)
+# Cách viết ngoại lệ mà a2.TRIGGER_RE không bắt ("không áp dụng" có "được" ở giữa): không trigger nào của A3/A6 thấy nó,
+# nên A6 tự quét và đưa vào unhandled để nó hiện ra thay vì mất (review F-05). Không sửa TRIGGER_RE vì A3 dùng chung.
+NOT_ALLOWED_RE = re.compile(r"(?<!\w)không[ ]+được[ ]+áp[ ]+dụng(?!\w)", re.I)
 
 
 def conditions_path(src):
@@ -64,15 +70,16 @@ class General(NamedTuple):
     nodes: list      # [(mã nút, mệnh đề)] theo thứ tự xuất hiện đầu tiên, mệnh đề nguyên văn (đã bỏ dấu cuối) của lần đầu
     edges: list      # [(s, "exception_of", o, evidence, METHOD)] theo thứ tự đơn vị rồi thứ tự trigger
     handled: list    # [(đơn vị, trigger nguyên văn)] mỗi trigger đã sinh cạnh
-    unhandled: list  # [(đơn vị, câu)] trigger "trừ" không rơi vào A3 hay A6; câu là toàn bộ text của đơn vị
+    unhandled: list  # [(đơn vị, câu)] trigger "trừ" không rơi vào A3 hay A6, và mỗi "không được áp dụng"; câu là toàn bộ text
     skipped: list    # [(đơn vị, trigger nguyên văn)] trigger "trừ" thuộc A3 (text kết thúc "sau đây:")
 
 
 def find_general(units):
     """Duyệt đơn vị theo thứ tự trong triples rồi trigger theo thứ tự trong text, trả về General.
 
+    "Trừ trường hợp X, quy tắc" (đứng đầu đoạn): mệnh đề dừng ở dấu phẩy đầu tiên, vì phần sau là quy tắc chính (review F-04).
     Chỗ spec không nói thì ValueError: một đơn vị có nhiều hơn một "trừ trường hợp", hoặc mệnh đề rỗng sau khi bỏ dấu cuối;
-    hai khoá khác nhau trùng mã băm.
+    "trừ trường hợp" đứng đầu đoạn mà đoạn không có dấu phẩy; hai khoá khác nhau trùng mã băm.
     """
     nodes, edges, handled, unhandled, skipped = {}, [], [], [], []
     keys = {}  # mã nút -> khoá, để bắt hai khoá khác nhau trùng mã
@@ -80,6 +87,7 @@ def find_general(units):
         text = u.get("text")
         if not text:
             continue
+        unhandled += [(code, text) for _ in NOT_ALLOWED_RE.finditer(text)]
         hits = [m for m in a2.TRIGGER_RE.finditer(text) if a3.kind_of(m.group(0)) in a3.EXCEPT_KINDS]
         if text.endswith(a3.LIST_END):  # quy tắc 2 của A3 nhận mọi trigger trừ trong đơn vị này
             skipped += [(code, m.group(0)) for m in hits]
@@ -93,6 +101,10 @@ def find_general(units):
                 unhandled.append((code, text))
                 continue
             paragraph = text[g.end():].split("\n")[0]
+            if m.start() == 0 or text[m.start() - 1] == "\n":
+                if "," not in paragraph:
+                    raise ValueError(f"{code}: 'trừ trường hợp' đứng đầu đoạn mà không có dấu phẩy, chưa có quy tắc: {text!r}")
+                paragraph = paragraph[:paragraph.index(",") + 1]
             clause = re.sub(r"[ .;:,]+$", "", paragraph.strip())
             if not clause:
                 raise ValueError(f"{code}: mệnh đề rỗng sau 'trừ trường hợp': {text!r}")
@@ -143,10 +155,11 @@ def check_general(units, result):
     errors += [f"nút {c} không có cạnh nào" for c in node_ids if c not in used]
 
     n_except = sum(1 for t in a2.find_triggers(units) if a3.kind_of(t.phrase) in a3.EXCEPT_KINDS)
+    n_not_allowed = sum(len(NOT_ALLOWED_RE.findall(u.get("text") or "")) for u in units.values())
     done = len(result.skipped) + len(result.handled) + len(result.unhandled)
-    if done != n_except:
-        errors.append(f"số trigger trừ/ngoại trừ = {n_except}, thuộc A3 {len(result.skipped)} + đã xử lý {len(result.handled)} "
-                      f"+ unhandled {len(result.unhandled)}")
+    if done != n_except + n_not_allowed:
+        errors.append(f"số trigger trừ/ngoại trừ = {n_except} + không được áp dụng = {n_not_allowed}, thuộc A3 {len(result.skipped)} "
+                      f"+ đã xử lý {len(result.handled)} + unhandled {len(result.unhandled)}")
     for code, sentence in result.unhandled:
         if code not in units or sentence != units[code].get("text"):
             errors.append(f"unhandled {code}: câu không phải text của đơn vị")

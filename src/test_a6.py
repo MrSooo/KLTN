@@ -106,6 +106,38 @@ def test_khong_ap_dung_is_not_a6_territory():
     assert r.nodes == [] and r.edges == [] and r.handled == [] and r.unhandled == [] and r.skipped == [], r
 
 
+def test_leading_clause_stops_at_first_comma():
+    """Review F-04: "Trừ trường hợp X, quy tắc" không được nuốt quy tắc chính vào mệnh đề."""
+    full = {c: clause for c, clause in a6.find_general(load(FULL_FILE)).nodes}
+    for text, clause in [("Trừ trường hợp pháp luật có quy định khác, người thừa kế phải thực hiện nghĩa vụ tài sản của người chết.",
+                          "pháp luật có quy định khác"),
+                         ("Quy tắc chung.\nTrừ trường hợp có thỏa thuận khác, di sản được chia đều.", "có thỏa thuận khác")]:
+        r = general_of({P + "D1": ("dieu", text)})
+        assert [c for _, c in r.nodes] == [clause], (text, r.nodes)
+        assert r.nodes[0][0] in full, "phải trùng mã với nút cùng mệnh đề của p4"
+        assert r.edges[0][3] == f"Trừ trường hợp {clause}," and r.edges[0][3] in text, r.edges
+        assert a6.check_general(mini_units({P + "D1": ("dieu", text)}), r) == []
+    try:
+        general_of({"X.D1": ("dieu", "Trừ trường hợp có thỏa thuận khác thì di sản được chia đều.")})
+    except ValueError as e:
+        assert "dấu phẩy" in str(e), e
+    else:
+        raise AssertionError("đầu đoạn mà không có dấu phẩy phải ValueError")
+
+
+def test_khong_duoc_ap_dung_is_unhandled_not_lost():
+    """Review F-05: "không được áp dụng" không phải trigger của A2/A3 nhưng phải hiện ra ở unhandled của A6."""
+    text = "Quy định này không được áp dụng cho người chưa thành niên."
+    units = mini_units({"X.D1": ("dieu", text)})
+    r = a6.find_general(units)
+    assert r.nodes == [] and r.edges == [] and r.unhandled == [("X.D1", text)], r
+    assert a6.check_general(units, r) == []
+    # kể cả trong đơn vị kết thúc "sau đây:" (A3 chỉ nhận trigger "trừ")
+    text = "Không được áp dụng, trừ những người sau đây:"
+    r = general_of({"X.D1": ("dieu", text), "X.D1.K1": ("khoan", "Người A.")})
+    assert r.unhandled == [("X.D1", text)] and r.skipped == [("X.D1", "trừ")], r
+
+
 def test_clause_stops_at_end_of_paragraph():
     text = "Quy tắc A, trừ trường hợp có thỏa thuận khác.\nĐoạn hai nói về việc khác."
     r = general_of({"X.D1": ("dieu", text)})

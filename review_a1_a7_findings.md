@@ -207,6 +207,16 @@ Chỉ so được với từ khoá. Muốn trả lời "bao nhiêu phần trăm 
 4. **F-12:** ghi rõ phạm vi "mâu thuẫn hình thức" (không có chế tài) hay làm thêm kiểm vòng và kiểm đơn vị-bị-bãi-bỏ?
 5. Bạn có sẵn một luật sửa đổi thật (kèm luật gốc) để dùng làm bộ kiểm thử bên ngoài không?
 
+## 7. Theo dõi sửa
+
+Kế hoạch: `plan_sua_a1_a7.md`. Nhánh `sua-theo-review`. Mỗi bước chạy `src/run_all.py` (pipeline + 7 bộ test) trước khi commit.
+
+| Finding | Bước | Commit | Trạng thái | Đầu ra p4/5dieu |
+|---|---|---|---|---|
+| F-03 | 1.1 | `8986981` | Đã sửa: dòng bị động / "hết hiệu lực" / "thay bằng" là `E_UNKNOWN_LINE`; văn bản 0 chỉ thị là `E_NO_DIRECTIVE` | Không đổi |
+| F-01, F-02 | 1.2 | `dba1ff1` | Đã sửa: tên văn bản khác → `unresolved` với đích `external:<tên>`; "<Luật/Nghị định> này", khoảng, số trần, hậu tố → dừng | Không đổi |
+| F-04, F-05 | 1.3 | (commit bước 1.3) | Đã sửa: "Trừ trường hợp X, …" đầu đoạn cắt ở dấu phẩy; "không được áp dụng" → `a6_unhandled`. Ngoại lệ ngầm vẫn chưa nhận dạng | Không đổi |
+
 ## Phụ lục: cách tái hiện
 
 Mọi lệnh chạy trong thư mục dự án, dùng `python -I` với **Python ≥ 3.10** (code dùng `str | None` trong dataclass/NamedTuple và `Path.write_text(newline=...)`; `__pycache__` của repo là 3.14). Với `python3` 3.9 của macOS, `test_a1`, `test_a4`, `test_a7` dừng ngay khi import.
