@@ -3,7 +3,7 @@
 Đầu vào: triples của A1 (a2.read_units). Không đọc file A3: A3 chỉ nhận một trigger "trừ"/"ngoại trừ" khi text kết thúc bằng
 "sau đây:" (quy tắc 2, a3.find_exceptions), nên mọi trigger "trừ" còn lại là phần của A6 hoặc unhandled của A6.
 Đầu ra: data/processed/a6/a6_conditions_<stem>.jsonl (bộ ba s,p,o của nút điều kiện: type, text),
-        data/processed/a6/a6_exceptions_<stem>.jsonl (s, p, o, evidence, method), docs/a6_unhandled_<stem>.txt.
+        data/processed/a6/a6_exceptions_<stem>.jsonl (s, p, o, evidence, method), docs/bao_cao_chay/a6/a6_unhandled_<stem>.txt.
 Chiều cạnh giống A3: s là phần ngoại lệ (nút điều kiện), o là đơn vị quy tắc bị ngoại trừ.
 
   Mẫu: (ngoại )trừ trường hợp <mệnh đề>. Mệnh đề chạy đến hết đoạn (không vượt qua dòng mới), bỏ . ; : , ở cuối. Nếu
@@ -65,7 +65,7 @@ def exceptions_path(src):
 
 def unhandled_path(src):
     """Mỗi file nguồn một file unhandled, để chạy file này không ghi đè file kia."""
-    return a2.ROOT / "docs" / f"a6_unhandled_{Path(src).stem}.txt"
+    return a2.ROOT / "docs" / "bao_cao_chay" / "a6" / f"a6_unhandled_{Path(src).stem}.txt"
 
 
 def norm_text(s):

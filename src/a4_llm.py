@@ -1,17 +1,24 @@
-"""A4-C: đề xuất chuẩn hoá khối chỉ thị sửa đổi bằng Claude, có lưu kết quả để chạy lại tất định.
+"""A4-C: đề xuất chuẩn hoá khối chỉ thị sửa đổi bằng LLM (Claude hoặc Gemini), có lưu kết quả để chạy lại tất định.
 
-Chỉ module này gọi API. Nó KHÔNG import a4_versions: a4_versions.normalize_block gọi ClaudeProposer.propose(khối, phản hồi), rồi tự
-dựng dòng chuẩn, parse bằng văn phạm chuẩn và kiểm V1-V3 (xem a4_versions). Đề xuất không qua kiểm thì không được áp.
+Chỉ module này gọi API. Nó KHÔNG import a4_versions: a4_versions.normalize_block gọi <Proposer>.propose(khối, phản hồi), rồi tự
+dựng dòng chuẩn, parse bằng văn phạm chuẩn và kiểm V1-V3 (xem a4_versions). Đề xuất không qua kiểm thì không được áp, nên đổi nhà
+cung cấp không làm lỏng kiểm tra: chỉ phần gọi API (`_call`) khác nhau, prompt, lược đồ JSON và cách lưu dùng chung.
 
-Chế độ (cờ --llm của a4_versions.py apply):
+Nhà cung cấp (cờ --provider của a4_versions.py apply, mặc định claude):
+  claude  ClaudeProposer, cần ANTHROPIC_API_KEY và gói anthropic
+  gemini  GeminiProposer, cần GEMINI_API_KEY (khoá miễn phí từ Google AI Studio) và gói google-genai
+Chế độ (cờ --llm):
   replay  chỉ đọc kết quả đã lưu trong data/llm_cache/a4/<khoá>.json; thiếu thì lỗi E_LLM_CACHE (không gọi mạng)
-  live    như replay, thiếu thì gọi API rồi lưu (cần ANTHROPIC_API_KEY; chạy bằng .venv/bin/python vì cần gói anthropic)
-Khoá = sha256 của (mô hình, PROMPT_VERSION, chữ của khối, phản hồi của vòng trước), nên đổi prompt thì đổi PROMPT_VERSION.
-File lưu gồm đầu vào, đầu ra JSON, mô hình thực chạy, request id và số token, để tính chi phí và tái lập.
+  live    như replay, thiếu thì gọi API rồi lưu (chạy bằng .venv/bin/python vì cần gói của nhà cung cấp)
+Khoá = sha256 của (mô hình, PROMPT_VERSION, chữ của khối, phản hồi của vòng trước), nên đổi prompt thì đổi PROMPT_VERSION, và kết quả
+của hai nhà cung cấp không lẫn nhau (tên mô hình nằm trong khoá). Mỗi kết quả được ghi ngay sau khi gọi xong, nên chạy lại sau khi
+hết hạn mức chỉ gọi tiếp các khối còn thiếu.
+File lưu gồm đầu vào, đầu ra JSON, nhà cung cấp, mô hình thực chạy, request id và số token, để tính chi phí và tái lập.
 """
 import datetime
 import hashlib
 import json
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -21,6 +28,13 @@ PROMPT_VERSION = "a4c-1"
 MAX_TOKENS = 16000
 EFFORT = "medium"
 FALLBACK_BETA = "server-side-fallback-2026-07-01"  # từ chối do bộ phân loại an toàn thì chạy lại trên mô hình dự phòng mặc định
+
+GEMINI_MODEL = "gemini-3.6-flash"  # bản ổn định, nằm trong gói miễn phí (kiểm trang giá của AI Studio 2026-11-03); đổi bằng --model
+GEMINI_MAX_TOKENS = 32000  # số token "suy nghĩ" của Gemini tính vào hạn mức đầu ra, nên rộng hơn MAX_TOKENS của Claude
+GEMINI_RETRY_CODES = (429, 500, 503)  # 429 hết hạn mức theo phút, 500/503 máy chủ bận
+GEMINI_ATTEMPTS = 3
+GEMINI_WAIT_SECONDS = 20  # chờ 20s, 40s, ... giữa các lần thử; gói miễn phí giới hạn số yêu cầu mỗi phút
+PROVIDERS = ("claude", "gemini")
 
 _NULLABLE_STR = {"anyOf": [{"type": "string"}, {"type": "null"}]}
 _TARGET = {"type": "object", "additionalProperties": False, "required": ["dieu", "khoan", "diem"],
@@ -106,13 +120,17 @@ def user_message(block_text, feedback):
     return text
 
 
-class ClaudeProposer:
-    """propose(chữ khối, phản hồi) -> (dict JSON theo SCHEMA, meta). client chỉ để test gắn client giả."""
+class _CachedProposer:
+    """propose(chữ khối, phản hồi) -> (dict JSON theo SCHEMA, meta). Phần đọc/ghi kết quả đã lưu dùng chung cho mọi nhà cung cấp;
+    lớp con chỉ viết _call (gọi API một lần, trả bản ghi để lưu). client chỉ để test gắn client giả."""
 
-    def __init__(self, mode, cache_dir=None, model=MODEL, client=None):
+    provider = None
+    default_model = None
+
+    def __init__(self, mode, cache_dir=None, model=None, client=None):
         if mode not in ("replay", "live"):
             raise ValueError(f"mode phải là replay hoặc live, có {mode!r}")
-        self.mode, self.model, self.client = mode, model, client
+        self.mode, self.model, self.client = mode, model or self.default_model, client
         self.cache_dir = Path(cache_dir) if cache_dir is not None else CACHE_DIR  # đọc lúc tạo để test đổi được CACHE_DIR
         self.calls = 0  # số lần gọi API thật trong lần chạy này
 
@@ -126,8 +144,25 @@ class ClaudeProposer:
             raise ProposerError("E_LLM_CACHE", f"chưa có kết quả đã lưu cho khối (khoá {key}); chạy lại với --llm live")
         record = self._call(block_text, feedback)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps({"key": key, **record}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        path.write_text(json.dumps({"key": key, "provider": self.provider, **record}, ensure_ascii=False, indent=1) + "\n",
+                        encoding="utf-8")
         return record["output"], {"model": record["model"], "key": key, "cached": False}
+
+    def _call(self, block_text, feedback):
+        raise NotImplementedError
+
+
+def _parse_json_output(text):
+    """Đầu ra của mô hình -> dict; không phải JSON thì E_LLM_SHAPE (chưa lưu gì)."""
+    try:
+        return json.loads(text)
+    except (json.JSONDecodeError, TypeError) as e:
+        raise ProposerError("E_LLM_SHAPE", f"đầu ra không phải JSON: {e}")
+
+
+class ClaudeProposer(_CachedProposer):
+    provider = "claude"
+    default_model = MODEL
 
     def _call(self, block_text, feedback):
         try:
@@ -160,10 +195,7 @@ class ClaudeProposer:
         if response.stop_reason == "max_tokens":
             raise ProposerError("E_LLM", f"đầu ra bị cắt ở max_tokens={MAX_TOKENS}")
         text = "".join(b.text for b in response.content if b.type == "text")
-        try:
-            output = json.loads(text)
-        except json.JSONDecodeError as e:
-            raise ProposerError("E_LLM_SHAPE", f"đầu ra không phải JSON: {e}")
+        output = _parse_json_output(text)
         usage = response.usage
         return {"model": response.model, "requested_model": self.model, "prompt_version": PROMPT_VERSION,
                 "created": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
@@ -171,3 +203,89 @@ class ClaudeProposer:
                 "output": output,
                 "usage": {k: getattr(usage, k, None) for k in ("input_tokens", "output_tokens",
                                                                "cache_creation_input_tokens", "cache_read_input_tokens")}}
+
+
+def _gemini_error_types():
+    """(lỗi API có .code, lỗi mạng) của SDK; không cài SDK thì rỗng (test thay hàm này khi cần thử đường lỗi)."""
+    try:
+        from google.genai import errors
+        import httpx
+    except ImportError:
+        return (), ()
+    return errors.APIError, httpx.HTTPError
+
+
+class GeminiProposer(_CachedProposer):
+    """Cùng prompt và lược đồ với Claude. Khoá API lấy từ GEMINI_API_KEY (hoặc GOOGLE_API_KEY) do chính SDK đọc.
+    sleep chỉ để test thay hàm chờ giữa các lần thử lại."""
+
+    provider = "gemini"
+    default_model = GEMINI_MODEL
+
+    def __init__(self, mode, cache_dir=None, model=None, client=None, sleep=time.sleep):
+        super().__init__(mode, cache_dir, model, client)
+        self.sleep = sleep
+
+    def _client(self):
+        if self.client is not None:
+            return self.client
+        try:
+            from google import genai  # chỉ cần ở chế độ live
+        except ImportError:
+            raise ProposerError("E_LLM_API", "chưa cài gói google-genai; chạy: .venv/Scripts/python.exe -m pip install google-genai")
+        try:
+            self.client = genai.Client()
+        except ValueError as e:  # SDK báo thiếu khoá
+            raise ProposerError("E_LLM_API", f"chưa có khoá Gemini; đặt biến môi trường GEMINI_API_KEY ({e})")
+        return self.client
+
+    def _generate(self, client, block_text, feedback):
+        """Một lần gọi, thử lại khi hết hạn mức theo phút hoặc máy chủ bận; lỗi khác thì dừng ngay."""
+        api_error, net_error = _gemini_error_types()
+        config ={"system_instruction": SYSTEM_PROMPT, "response_mime_type": "application/json",
+                  "response_json_schema": SCHEMA, "max_output_tokens": GEMINI_MAX_TOKENS}
+        for attempt in range(1, GEMINI_ATTEMPTS + 1):
+            try:
+                return client.models.generate_content(model=self.model, contents=user_message(block_text, feedback), config=config)
+            except api_error as e:
+                code = getattr(e, "code", None)
+                if code in GEMINI_RETRY_CODES and attempt < GEMINI_ATTEMPTS:
+                    self.sleep(GEMINI_WAIT_SECONDS * attempt)
+                    continue
+                hint = " (hết hạn mức: đợi rồi chạy lại, các khối đã lưu không bị gọi lại)" if code == 429 else ""
+                raise ProposerError("E_LLM_API", f"API trả lỗi {code}: {getattr(e, 'message', e)}{hint}")
+            except net_error as e:
+                raise ProposerError("E_LLM_API", f"không kết nối được API: {e}")
+
+    def _call(self, block_text, feedback):
+        response = self._generate(self._client(), block_text, feedback)
+        self.calls += 1
+        block = getattr(getattr(response, "prompt_feedback", None), "block_reason", None)
+        if block:
+            raise ProposerError("E_LLM", f"mô hình từ chối (prompt bị chặn, block_reason {getattr(block, 'name', block)})")
+        candidates = getattr(response, "candidates", None) or []
+        if not candidates:
+            raise ProposerError("E_LLM", "mô hình không trả ứng viên nào")
+        finish = getattr(candidates[0].finish_reason, "name", str(candidates[0].finish_reason))
+        if finish == "MAX_TOKENS":
+            raise ProposerError("E_LLM", f"đầu ra bị cắt ở max_output_tokens={GEMINI_MAX_TOKENS}")
+        if finish != "STOP":
+            raise ProposerError("E_LLM", f"mô hình dừng với finish_reason {finish}")
+        output = _parse_json_output(response.text)
+        usage = getattr(response, "usage_metadata", None)
+        return {"model": getattr(response, "model_version", None) or self.model, "requested_model": self.model,
+                "prompt_version": PROMPT_VERSION,
+                "created": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
+                "request_id": getattr(response, "response_id", None), "block": block_text, "feedback": feedback,
+                "output": output,
+                "usage": {k: getattr(usage, k, None) for k in ("prompt_token_count", "candidates_token_count", "thoughts_token_count",
+                                                               "cached_content_token_count", "total_token_count")}}
+
+
+def make_proposer(mode, provider="claude", model=None):
+    """Chọn lớp theo --provider; model None thì dùng mô hình mặc định của nhà cung cấp."""
+    if provider == "claude":
+        return ClaudeProposer(mode, model=model)
+    if provider == "gemini":
+        return GeminiProposer(mode, model=model)
+    raise ValueError(f"provider phải là một trong {PROVIDERS}, có {provider!r}")

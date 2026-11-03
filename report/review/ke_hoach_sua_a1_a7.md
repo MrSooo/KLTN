@@ -34,7 +34,7 @@ Kỳ vọng chung: p4 và 5dieu **không có** ca nào trong pha này (review §
   - Kiểm cấp văn bản: `parse_amendment` ra 0 chỉ thị thì `A4Error("E_NO_DIRECTIVE", …)`.
   - Dòng ngày hiệu lực ("Luật này có hiệu lực thi hành từ ngày…") không có `Điều N` nên không bị bắt nhầm; vẫn phải xác nhận trên 8 văn bản dev.
 - `test_a4.py`: 6 câu của F-03 → `E_UNKNOWN_LINE`; văn bản chỉ có dòng hiệu lực → `E_NO_DIRECTIVE`; một dòng chuyển tiếp không có tham chiếu cấu trúc vẫn bị bỏ qua.
-- `docs/a4_quyet_dinh.txt`: thêm quyết định cho hai mã lỗi mới.
+- `docs/quyet_dinh/a4_quyet_dinh.txt`: thêm quyết định cho hai mã lỗi mới.
 
 ### 1.2 A2: dẫn chiếu ra ngoài, danh sách, khoảng, hậu tố (F-01, F-02)
 - `a2_edges.py`, trong `find_refs` / `build_refs`, xét đoạn chữ ngay sau mỗi cụm:
@@ -75,7 +75,7 @@ Thứ tự theo độ lan: các bước ít ảnh hưởng trước, A1 sau cùn
 - Đọc `a4_<name>_amend_edges.jsonl`, thêm cạnh `amends|replaces|repeals` với `directive_seq`, `effective_from`, `new_version`. Đích đã bị đóng tại T (ví dụ khoản bị bãi bỏ) không còn là nút, nên cạnh mang status mới `historical`, và `[7b]` chấp nhận status này. `replace_doc` thành cạnh văn bản → văn bản.
 - Chế độ gốc: chỉ thêm nút văn bản `BLDS2015`, và Điều nối tới nó qua `part_of` ở bước 2.5.
 - `test_a7.py`: dev05 tại 2027-01-01 có 4 cạnh `repeals`; dev08 có cạnh văn bản → văn bản.
-- `docs/a6_a7_quyet_dinh.txt`: quyết định về `historical`.
+- `docs/quyet_dinh/a6_a7_quyet_dinh.txt`: quyết định về `historical`.
 
 ### 2.5 Phân cấp trên Điều (F-09), lan rộng nhất, làm cuối
 - A1: `## Chương …` thành nút `chuong` (`BLDS2015.CXXII`); Điều thuộc chương gần nhất phía trên. 15 Điều đầu (609–623) đứng trước Chương XXII mà raw thiếu tiêu đề chương: **thêm `## Chương XXI – QUY ĐỊNH CHUNG` vào raw** ngay trên `### Điều 609`, trong cùng commit với bước này. Không thêm thì A5 phải cho phép "Điều không có chương", làm yếu kiểm tra `[2]`/`[7e]`. Dòng thêm làm lệch `source_line` của mọi dòng phía sau; test nào ghi cứng số dòng (ví dụ D643 dòng 301 của F-19) phải cập nhật. Dòng `#` là tiêu đề file, không phải đơn vị pháp lý: vẫn bỏ qua. Nếu bỏ hẳn bước 2.5 thì cũng **không** thêm dòng này.
@@ -93,7 +93,7 @@ Cập nhật 2026-10-25 sau khi đối chiếu `DRAFT_Proposal_v5.docx` (đề c
 | 3.1 | Đổi `duplicate` → `same_text` | Đã làm. Ghi chú: "khử trùng lặp thực thể" đúng nghĩa của đề cương nằm ở sổ khái niệm (mục 4b), không ở A7 |
 | 3.2a | Khung đáp án gán tay: mẫu 11 Điều theo quy tắc, `tests/eval_gold.py` tính precision/recall | Đã làm phần khung; **chờ học viên hỗ trợ gán** `data/gold/gold_blds2015_p4.tsv` (đề cương Tầng 2). Còn thiếu: cột loại ngoại lệ (phản bác / vô hiệu hoá) |
 | 3.2b | Bộ kiểm thử ngoài cho A4: 19 câu chỉ thị nguyên văn của Luật 85/2025/QH15 (Công báo), chỉ đổi số hiệu / cụm từ / nội dung sang BLDS; `tests/eval_ext_amend.py` | Đã làm. `--llm off`: 9 đường nhanh, 10 dừng có lỗi, 0 áp sai. Không thay được bộ sửa đổi giả định của học viên hỗ trợ (đề cương Nội dung 4) |
-| 3.3 | ~~Mở rộng văn phạm A4 theo từng mẫu câu~~ → **thay bằng hướng C**: tầng chuẩn hoá khối bằng LLM (Claude Sonnet 5.5) có kiểm ký hiệu, `--llm off/replay/live` | Đã làm code và test (proposer/client giả). **Chưa chạy live**: cần API key; ước tính chi phí cho 10 ca cần LLM vài nghìn đồng. Thiết kế: `docs/a4_quyet_dinh.txt` mục I |
+| 3.3 | ~~Mở rộng văn phạm A4 theo từng mẫu câu~~ → **thay bằng hướng C**: tầng chuẩn hoá khối bằng LLM (Claude Sonnet 5.5) có kiểm ký hiệu, `--llm off/replay/live` | Đã làm code và test (proposer/client giả). **Chưa chạy live**: cần API key; ước tính chi phí cho 10 ca cần LLM vài nghìn đồng. Thiết kế: `docs/quyet_dinh/a4_quyet_dinh.txt` mục I |
 | 3.4 | Đăng ký văn bản thay hằng số theo tên file | Bỏ (Q2: chỉ BLDS 2015) |
 | 3.5 | F-19, F-20, F-21 | Chỉ ghi lại là giới hạn |
 

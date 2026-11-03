@@ -2,17 +2,18 @@
 
 Chạy: python -I src/a4_versions.py apply --base <md gốc> --amend DOC [--amend DOC2 ...]
                                   [--effective-from YYYY-MM-DD] [--doc-id ID] [--name NAME] [--llm off|replay|live]
+                                  [--provider claude|gemini] [--model MODEL]
       python -I src/a4_versions.py snapshot --name NAME --date YYYY-MM-DD [--out PATH]
 
 apply: nạp văn bản gốc (a1.load_parsed) và cạnh gốc của A2/A3 (chỉ đọc), áp từng văn bản sửa đổi theo ngày hiệu lực.
   Không lỗi: ghi data/processed/a4/<name>/a4_<name>_{versions,amend_edges,edge_changes}.jsonl, a4_<name>_{changed,impact}.json
-  và docs/a4_report_<name>.txt, thoát 0. Có lỗi (bất kỳ kiểm nào): chỉ ghi docs/a4_report_<name>.txt, thoát 1.
+  và docs/bao_cao_chay/a4/a4_report_<name>.txt, thoát 0. Có lỗi (bất kỳ kiểm nào): chỉ ghi báo cáo đó, thoát 1.
 --llm: dòng lạ mặc định là lỗi; replay/live cho khối chứa nó qua tầng chuẩn hoá (normalize_block, a4_llm.py; quyết định I1-I6).
 snapshot: đơn vị đang hiệu lực tại ngày T, xuất Markdown cùng quy ước với file BLDS gốc (stdout hoặc --out).
 
 Hiệu lực là nửa khoảng [effective_from, effective_to): đang hiệu lực tại T nếu (from null hoặc <= T) và (to null hoặc > T).
 Phiên bản 1 của đơn vị gốc bắt đầu từ ngày hiệu lực của văn bản gốc (a1.BASE_DOC); văn bản sửa đổi phải có hiệu lực sau ngày đó.
-Mọi quyết định chỗ spec chưa nói nằm trong docs/a4_quyet_dinh.txt.
+Mọi quyết định chỗ spec chưa nói nằm trong docs/quyet_dinh/a4_quyet_dinh.txt.
 """
 import argparse
 import collections
@@ -33,7 +34,7 @@ import a3_exceptions as a3
 ROOT = a1.ROOT
 IN_DIR = a2.PROCESSED_DIR     # thư mục gốc chứa a1/, a2/, a3/ đã sinh, chỉ đọc
 OUT_DIR = a2.PROCESSED_DIR / "a4"  # file dữ liệu A4, mỗi văn bản một thư mục con (test đổi sang thư mục tạm)
-DOCS_DIR = ROOT / "docs"
+DOCS_DIR = ROOT / "docs" / "bao_cao_chay" / "a4"  # thư mục con nằm trong hằng để test đổi DOCS_DIR sang thư mục tạm vẫn đúng
 DOC_PREFIX = a1.DOC_PREFIX
 BASE_EFFECTIVE = a1.BASE_DOC["hieu_luc"]  # effective_from của phiên bản 1; văn bản sửa đổi phải có hiệu lực sau ngày này
 
@@ -1562,7 +1563,7 @@ def cmd_apply(args):
         BLOCK_PROPOSER = None
     else:
         import a4_llm
-        BLOCK_PROPOSER = a4_llm.ClaudeProposer(args.llm)
+        BLOCK_PROPOSER = a4_llm.make_proposer(args.llm, args.provider, args.model)
     try:
         return _cmd_apply(args)
     finally:
@@ -1604,6 +1605,9 @@ def main(argv=None):
     ap_apply.add_argument("--name", help="tên bộ kết quả (mặc định: các doc-id nối bằng '+')")
     ap_apply.add_argument("--llm", choices=("off", "replay", "live"), default="off",
                           help="dòng lạ: off = lỗi (mặc định); replay = chuẩn hoá bằng kết quả LLM đã lưu; live = gọi API khi chưa có")
+    ap_apply.add_argument("--provider", choices=("claude", "gemini"), default="claude",
+                          help="nhà cung cấp LLM khi --llm replay|live (mặc định claude); gemini dùng GEMINI_API_KEY")
+    ap_apply.add_argument("--model", help="mô hình, mặc định theo nhà cung cấp (a4_llm.MODEL / a4_llm.GEMINI_MODEL)")
     ap_snap = sub.add_parser("snapshot", help="xuất Markdown trạng thái đang hiệu lực tại một ngày")
     ap_snap.add_argument("--name", required=True)
     ap_snap.add_argument("--date", required=True, help="YYYY-MM-DD")

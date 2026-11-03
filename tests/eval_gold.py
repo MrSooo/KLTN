@@ -13,7 +13,7 @@ của pipeline, để mẫu không thiên về chỗ pipeline làm tốt.
   ngam: 1 nếu là ngoại lệ ngầm (không có từ "trừ", "không áp dụng": ví dụ "Trường hợp … thì …" ghi đè quy tắc chung), để
     tách recall phần tường minh. Trống = 0.
 Phạm vi chấm: refers_to có s thuộc mẫu; exception_of có o thuộc mẫu. Dòng đáp án ngoài phạm vi bị bỏ và liệt kê.
-Báo cáo: docs/gold_report_<stem>.txt. Thoát 1 nếu chưa gán xong hoặc đáp án lỗi định dạng.
+Báo cáo: docs/bao_cao_chay/eval/gold_report_<stem>.txt. Thoát 1 nếu chưa gán xong hoặc đáp án lỗi định dạng.
 """
 import argparse
 import collections
@@ -28,6 +28,7 @@ import a6_general_exceptions as a6
 import a7_graph as a7
 
 GOLD_DIR = a2.ROOT / "data" / "gold"
+REPORT_DIR = a2.ROOT / "docs" / "bao_cao_chay" / "eval"  # báo cáo đánh giá nằm riêng, không lẫn với báo cáo của bước a7
 SAMPLE_FIRST, SAMPLE_STEP = 609, 5
 SCORED = ("refers_to", "exception_of")
 PREDICATES = SCORED + ("refers_to_external",)
@@ -45,7 +46,7 @@ def units_path(src):
 
 
 def report_path(src):
-    return a7.DOCS_DIR / f"gold_report_{Path(src).stem}.txt"
+    return REPORT_DIR / f"gold_report_{Path(src).stem}.txt"
 
 
 def sample_dieu(nodes):

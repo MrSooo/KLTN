@@ -1,6 +1,7 @@
 """Bộ kiểm thử ngoài của A4: câu chỉ thị thật của Luật 85/2025/QH15, đổi số hiệu sang BLDS 2015 phần thừa kế (plan bước 3.2b).
 
-Chạy: python -I tests/eval_ext_amend.py [--llm off|replay|live]   (mặc định replay; live cần .venv/bin/python và ANTHROPIC_API_KEY)
+Chạy: python -I tests/eval_ext_amend.py [--llm off|replay|live] [--provider claude|gemini] [--model MODEL]
+(mặc định replay + claude; live cần .venv/Scripts/python.exe và ANTHROPIC_API_KEY, hoặc GEMINI_API_KEY nếu --provider gemini)
 
 Mỗi ca trong data/ext_amend/cases_blds2015_p4.json là một văn bản sửa đổi riêng: phần đầu chuẩn + các dòng van_ban_bld (giữ khung câu
 của cau_goc, chỉ đổi số hiệu, cụm từ, nội dung trong nháy) + câu hiệu lực. Áp lên blds2015_p4 bằng a4.apply_series rồi so (op, đích)
@@ -9,7 +10,7 @@ với mong_doi. Kết quả mỗi ca:
   llm       đúng, có chỉ thị qua tầng chuẩn hoá
   dung_loi  A4 dừng với mã lỗi (fail-closed: không áp gì)
   SAI       chạy xong nhưng (op, đích) khác mong đợi: lỗi nghiêm trọng (fail-open)
-Báo cáo: docs/ext_amend_report_<mode>.txt. Thoát 1 nếu có ca SAI.
+Báo cáo: docs/bao_cao_chay/eval/ext_amend_report_<mode>.txt. Thoát 1 nếu có ca SAI.
 """
 import argparse
 import collections
@@ -25,6 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = ROOT / "data" / "raw" / "blds2015_p4.md"
 CASES = ROOT / "data" / "ext_amend" / "cases_blds2015_p4.json"
 SOURCE = ROOT / "data" / "ext_amend" / "nguon_luat_85_2025_QH15.txt"
+REPORT_DIR = ROOT / "docs" / "bao_cao_chay" / "eval"  # báo cáo đánh giá nằm riêng, không lẫn với báo cáo của bước a4
 HEAD = "Điều 1. Sửa đổi, bổ sung một số điều của Bộ luật Dân sự số 91/2015/QH13"
 TAIL = ["Điều 2. Hiệu lực thi hành", "Luật này có hiệu lực thi hành từ ngày 01 tháng 01 năm 2027."]
 OUTCOMES = ("ky_hieu", "llm", "dung_loi", "SAI")
@@ -61,13 +63,13 @@ def run_case(case):
     return via, (f"số lần đề xuất {rounds}" if rounds else ""), got
 
 
-def evaluate(mode):
+def evaluate(mode, provider="claude", model=None):
     saved = a4.BLOCK_PROPOSER
     if mode == "off":
         a4.BLOCK_PROPOSER = None
     else:
         import a4_llm
-        a4.BLOCK_PROPOSER = a4_llm.ClaudeProposer(mode)
+        a4.BLOCK_PROPOSER = a4_llm.make_proposer(mode, provider, model)
     try:
         return [(c, *run_case(c)) for c in load_cases()]
     finally:
@@ -76,9 +78,10 @@ def evaluate(mode):
         evaluate.api_calls = calls
 
 
-def format_report(mode, results):
+def format_report(mode, results, provider="claude"):
     count = collections.Counter(r for _, r, _, _ in results)
-    L = [f"Bộ kiểm thử ngoài của A4 (chế độ --llm {mode})",
+    shown = f"--llm {mode}" + (f" --provider {provider}" if mode != "off" and provider != "claude" else "")
+    L = [f"Bộ kiểm thử ngoài của A4 (chế độ {shown})",
          f"nguồn câu gốc: {SOURCE.relative_to(ROOT)} (Luật 85/2025/QH15, Công báo số 953 + 954 ngày 21/07/2025)",
          f"ca: {len(results)} | " + " | ".join(f"{k} {count.get(k, 0)}" for k in OUTCOMES) +
          f" | gọi API lần này: {getattr(evaluate, 'api_calls', 0)}", ""]
@@ -91,11 +94,14 @@ def format_report(mode, results):
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--llm", choices=("off", "replay", "live"), default="replay")
+    ap.add_argument("--provider", choices=("claude", "gemini"), default="claude")
+    ap.add_argument("--model", help="mô hình, mặc định theo nhà cung cấp")
     args = ap.parse_args(argv)
-    results = evaluate(args.llm)
-    text = format_report(args.llm, results)
+    results = evaluate(args.llm, args.provider, args.model)
+    text = format_report(args.llm, results, args.provider)
     print(text, end="")
-    out = a4.DOCS_DIR / f"ext_amend_report_{args.llm}.txt"
+    suffix = "" if args.llm == "off" or args.provider == "claude" else f"_{args.provider}"  # báo cáo Claude giữ tên cũ
+    out = REPORT_DIR / f"ext_amend_report_{args.llm}{suffix}.txt"
     a4.write_text(text, out)
     print("đã ghi", out)
     return 1 if any(r == "SAI" for _, r, _, _ in results) else 0

@@ -5,7 +5,7 @@ lỗi hiện ra ở đây thay vì bị che, vì cha được suy từ chuỗi m
 
 Chạy: python -I src/a2_edges.py <file md nguồn>          (bắt buộc truyền path, không có mặc định)
       python -I src/a2_edges.py <file md nguồn> --refs   (Bước 2: chỉ in dẫn chiếu và bảng hình dạng, không ghi file)
-      python -I src/a2_edges.py <file md nguồn> --refers-to   (A2b: ghi a2_refs_<stem>.jsonl và docs/a2_unresolved_<stem>.txt)
+      python -I src/a2_edges.py <file md nguồn> --refers-to   (A2b: ghi a2_refs_<stem>.jsonl và docs/bao_cao_chay/a2/a2_unresolved_<stem>.txt)
       python -I src/a2_edges.py <file md nguồn> --triggers   (A3 bước 1: chỉ in cụm trừ / ngoại trừ / không áp dụng, không ghi file)
 """
 import argparse
@@ -267,7 +267,7 @@ def refs_path(src):
 
 def unresolved_path(src):
     """Mỗi file nguồn một file unresolved, để chạy file này không ghi đè file kia."""
-    return ROOT / "docs" / f"a2_unresolved_{Path(src).stem}.txt"
+    return ROOT / "docs" / "bao_cao_chay" / "a2" / f"a2_unresolved_{Path(src).stem}.txt"
 
 
 def code_segment(level, arg):
@@ -538,7 +538,7 @@ def main(argv=None):
     mode.add_argument("--refs", action="store_true",
                       help="Bước 2: chỉ in danh sách dẫn chiếu và bảng hình dạng, không ghi file nào")
     mode.add_argument("--refers-to", action="store_true",
-                      help="A2b: dựng cạnh refers_to, ghi a2_refs_<stem>.jsonl và docs/a2_unresolved_<stem>.txt")
+                      help="A2b: dựng cạnh refers_to, ghi a2_refs_<stem>.jsonl và docs/bao_cao_chay/a2/a2_unresolved_<stem>.txt")
     mode.add_argument("--triggers", action="store_true",
                       help="A3 bước 1: chỉ in cụm trừ / ngoại trừ / không áp dụng và bảng 6 từ đứng sau, không ghi file nào")
     args = ap.parse_args(argv)

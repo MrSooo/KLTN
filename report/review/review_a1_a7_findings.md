@@ -209,7 +209,7 @@ Chỉ so được với từ khoá. Muốn trả lời "bao nhiêu phần trăm 
 
 ## 7. Theo dõi sửa
 
-Kế hoạch: `plan_sua_a1_a7.md`. Nhánh `sua-theo-review`. Mỗi bước chạy `src/run_all.py` (pipeline + 7 bộ test) trước khi commit.
+Kế hoạch: `ke_hoach_sua_a1_a7.md`. Nhánh `sua-theo-review`. Mỗi bước chạy `src/run_all.py` (pipeline + 7 bộ test) trước khi commit.
 
 | Finding | Bước | Commit | Trạng thái | Đầu ra p4/5dieu |
 |---|---|---|---|---|

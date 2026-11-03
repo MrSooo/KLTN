@@ -1,6 +1,6 @@
-"""Dựng TONG_HOP_CONG_VIEC.html từ TONG_HOP_CONG_VIEC.md.
+"""Dựng report/tong_hop/tong_hop_cong_viec.html từ report/tong_hop/tong_hop_cong_viec.md.
 
-Chạy: python -X utf8 -I utils/render_report.py [md] [html]   (mặc định hai file ở gốc dự án)
+Chạy: python -X utf8 -I utils/render_report.py [md] [html]   (mặc định hai file trong report/tong_hop/)
 
 Chỉ dùng thư viện chuẩn. Chỉ hiểu phần Markdown mà báo cáo dùng: tiêu đề # đến ####, đoạn,
 danh sách gạch đầu dòng / đánh số lồng nhau, bảng, khối mã ```, đường kẻ ---, **đậm**, *nghiêng*,
@@ -350,7 +350,7 @@ def render(md_text):
 
 
 def main(argv):
-    md_path = Path(argv[1]) if len(argv) > 1 else ROOT / "TONG_HOP_CONG_VIEC.md"
+    md_path = Path(argv[1]) if len(argv) > 1 else ROOT / "report" / "tong_hop" / "tong_hop_cong_viec.md"
     out_path = Path(argv[2]) if len(argv) > 2 else md_path.with_suffix(".html")
     page = render(md_path.read_text(encoding="utf-8"))
     out_path.write_text(page, encoding="utf-8", newline="\n")

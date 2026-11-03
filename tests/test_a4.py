@@ -860,7 +860,7 @@ def test_error_report_content_and_no_stale_files():
 
 def test_script_runs_isolated_and_exits_1_on_error():
     name = "_test_a4_subprocess"
-    report = ROOT / "docs" / f"a4_report_{name}.txt"
+    report = ROOT / "docs" / "bao_cao_chay" / "a4" / f"a4_report_{name}.txt"
     with tempfile.TemporaryDirectory() as tmp:
         bad = Path(tmp) / "bad.md"
         bad.write_text(amend_text("Bãi bỏ khoản 9 Điều 621."), encoding="utf-8")

@@ -2,7 +2,7 @@
 
 Đầu vào: a1_triples_<stem>.jsonl, a2_edges_<stem>.jsonl, a2_refs_<stem>.jsonl, a3_exceptions_<stem>.jsonl.
 Đọc thẳng từng dòng JSON, không qua a2.load_units / a2.parent_of, để phép kiểm độc lập với code đã sinh các file đó.
-Đầu ra: docs/a5_report_<stem>.txt (ghi cả khi mọi thứ đạt), cùng nội dung in ra màn hình.
+Đầu ra: docs/bao_cao_chay/a5/a5_report_<stem>.txt (ghi cả khi mọi thứ đạt), cùng nội dung in ra màn hình.
 
   Bước 1, mã trùng (a1_triples). 1a: số s có dòng type bằng số đơn vị kỳ vọng. 1b: số Điều bằng số kỳ vọng.
     1c: mỗi s có đúng một dòng type. 1d: mỗi cặp (s, p) xuất hiện đúng một lần.
@@ -30,7 +30,7 @@ Thoát 1 nếu bước nào có vi phạm, hoặc đầu vào lỗi (thiếu fil
 trước khi thoát. Cạnh trùng làm thoát 1 vì bàn giao ghi "không có cạnh trùng" là yêu cầu.
 
 Chạy: python -I src/a5_checks.py <file md nguồn> [--versions PATH]   (bắt buộc truyền path md, chỉ dùng để suy stem)
-Báo cáo: docs/a5_report_<stem>.txt; có --versions thì docs/a5_report_<stem>_<name>.txt, <name> lấy từ a4_<name>_versions.jsonl
+Báo cáo: docs/bao_cao_chay/a5/a5_report_<stem>.txt; có --versions thì .../a5_report_<stem>_<name>.txt, <name> lấy từ a4_<name>_versions.jsonl
 (tên file không đúng dạng đó thì dùng tên file bỏ đuôi), để các lần chạy khác nhau không đè nhau và không đè báo cáo bước 1-3.
 """
 import argparse
@@ -84,7 +84,7 @@ def versions_name(versions):
 
 def report_path(src, versions=None):
     suffix = f"_{versions_name(versions)}" if versions is not None else ""
-    return a2.ROOT / "docs" / f"a5_report_{Path(src).stem}{suffix}.txt"
+    return a2.ROOT / "docs" / "bao_cao_chay" / "a5" / f"a5_report_{Path(src).stem}{suffix}.txt"
 
 
 def load_rows(path, keys=TRIPLE_KEYS):

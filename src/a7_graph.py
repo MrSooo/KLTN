@@ -2,11 +2,11 @@
 
 Trạng thái gốc: python -I src/a7_graph.py <file md nguồn>
   Đọc a1_triples, a2_edges, a2_refs, a3_exceptions, a6_conditions, a6_exceptions của stem. Ghi data/processed/a7/a7_<stem>_{nodes,edges}.jsonl
-  và docs/a7_report_<stem>.txt.
+  và docs/bao_cao_chay/a7/a7_report_<stem>.txt.
 Tại một ngày: python -I src/a7_graph.py <file md nguồn> --versions data/processed/a4/<name>/a4_<name>_versions.jsonl --date YYYY-MM-DD
   Nút là đơn vị đang hiệu lực tại T (a4.active_rows). Cạnh là cạnh gốc cộng add trừ close của a4_<name>_edge_changes.jsonl có at <= T,
   rồi lọc theo hiệu lực. Nút điều kiện và cạnh ngoại lệ chung tính lại bằng a6.find_general trên text đang hiệu lực. Ghi
-  a7_<stem>_<name>_<date>_{nodes,edges}.jsonl và docs/a7_report_<stem>_<name>_<date>.txt. md phải là văn bản gốc của bộ A4 đó.
+  a7_<stem>_<name>_<date>_{nodes,edges}.jsonl và docs/bao_cao_chay/a7/a7_report_<stem>_<name>_<date>.txt. md phải là văn bản gốc của bộ A4 đó.
 
 Việc làm:
   Gộp bộ ba: cạnh cùng (s, p, o) từ các file thành một cạnh (giữ dòng đầu, sources liệt kê nơi xuất hiện, evidences khi gộp).
@@ -17,7 +17,7 @@ Việc làm:
     với cạnh amends / replaces / repeals từ a4_<name>_amend_edges.jsonl; đích không còn hiệu lực thì cạnh có status "historical".
     Cạnh có nguồn đã đóng, hoặc contains/part_of có một đầu đã đóng, không thuộc đồ thị tại T nên bị bỏ (báo cáo ghi số lượng).
 Báo cáo ghi cả khi có lỗi; file dữ liệu chỉ ghi khi mọi kiểm tra đạt. Thoát 1 nếu có kiểm tra không đạt hoặc đầu vào lỗi.
-Mọi quyết định chỗ spec chưa nói nằm trong docs/a6_a7_quyet_dinh.txt.
+Mọi quyết định chỗ spec chưa nói nằm trong docs/quyet_dinh/a6_a7_quyet_dinh.txt.
 """
 import argparse
 import collections
@@ -35,7 +35,7 @@ import a5_checks as a5
 import a6_general_exceptions as a6
 
 OUT_DIR = a2.PROCESSED_DIR / "a7"  # test đổi sang thư mục tạm
-DOCS_DIR = a2.ROOT / "docs"
+DOCS_DIR = a2.ROOT / "docs" / "bao_cao_chay" / "a7"  # thư mục con nằm trong hằng để test đổi DOCS_DIR sang thư mục tạm vẫn đúng
 
 OK, TEXT_COPY, DANGLING, HISTORICAL = "ok", "same_text", "dangling", "historical"
 NODE_STATUS = (OK, TEXT_COPY)

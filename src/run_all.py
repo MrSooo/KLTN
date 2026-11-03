@@ -5,10 +5,10 @@ Chạy: python -I src/run_all.py            (cần Python >= 3.10; chỉ các b�
       python -I src/run_all.py --tests    (thêm bộ kiểm thử ngoài và các bộ test)
       python -I src/run_all.py --a8 --tests
 
-Dữ liệu ghi vào data/processed/<bước>/ (a1/ … a8/; A4 chia thêm theo tên văn bản sửa đổi); báo cáo chữ ghi vào docs/.
+Dữ liệu ghi vào data/processed/<bước>/ (a1/ … a8/; A4 chia thêm theo tên văn bản sửa đổi); báo cáo chữ ghi vào docs/bao_cao_chay/<bước>/ (a1/ … a7/, eval/).
 Mỗi bước in một dòng: tên bước ghi trước, rồi OK (kèm số giây) hoặc LỖI khi bước xong; không in từng lệnh con. Bước lỗi thì in lệnh hoặc
 bộ test lỗi cùng đầu ra của nó rồi thoát 1, các bước sau không chạy (riêng bước test chạy hết các bộ rồi mới báo). Sau khi chạy,
-`git diff --stat data/ docs/` cho biết bước sửa vừa rồi đổi những đầu ra nào.
+`git diff --stat data/ docs/bao_cao_chay/` cho biết bước sửa vừa rồi đổi những đầu ra nào.
 """
 import argparse
 import subprocess

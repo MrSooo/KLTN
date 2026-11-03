@@ -345,7 +345,7 @@ def triples_path(src):
 
 def notes_path(src):
     """Mỗi file nguồn một file notes, để chạy file này không ghi đè notes của file kia."""
-    return ROOT / "docs" / f"a1_notes_{Path(src).stem}.txt"
+    return ROOT / "docs" / "bao_cao_chay" / "a1" / f"a1_notes_{Path(src).stem}.txt"
 
 
 def step3_parse(path=SAMPLE):

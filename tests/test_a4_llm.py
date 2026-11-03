@@ -250,6 +250,167 @@ def test_proposer_refusal_and_truncation_are_errors_and_not_cached():
             assert list(Path(tmp).iterdir()) == []
 
 
+# ---- a4_llm.GeminiProposer với client giả ----
+
+class FakeGeminiClient:
+    """Đủ cho GeminiProposer._call: client.models.generate_content(**kw) trả đối tượng có text, candidates, usage_metadata...
+    Mỗi phần tử của `script` là một phản hồi (SimpleNamespace) hoặc một ngoại lệ để ném."""
+
+    def __init__(self, *script):
+        self.kwargs, self.script = [], list(script)
+        self.models = SimpleNamespace(generate_content=self.generate_content)
+
+    def generate_content(self, **kw):
+        self.kwargs.append(kw)
+        item = self.script.pop(0)
+        if isinstance(item, Exception):
+            raise item
+        return item
+
+
+def gemini_reply(output=MULTI_OK, finish="STOP", text=None, block_reason=None, candidates=True):
+    usage = SimpleNamespace(prompt_token_count=1200, candidates_token_count=300, thoughts_token_count=50,
+                            cached_content_token_count=0, total_token_count=1550)
+    cands = [SimpleNamespace(finish_reason=SimpleNamespace(name=finish))] if candidates else None
+    return SimpleNamespace(text=json.dumps(output, ensure_ascii=False) if text is None else text, candidates=cands,
+                           prompt_feedback=SimpleNamespace(block_reason=SimpleNamespace(name=block_reason)) if block_reason else None,
+                           model_version="gemini-3.6-flash-001", response_id="resp_test", usage_metadata=usage)
+
+
+class FakeApiError(Exception):
+    """Thay errors.APIError của SDK: chỉ cần .code và .message."""
+
+    def __init__(self, code, message="lỗi giả"):
+        super().__init__(message)
+        self.code, self.message = code, message
+
+
+@contextlib.contextmanager
+def fake_gemini_errors():
+    saved = a4_llm._gemini_error_types
+    a4_llm._gemini_error_types = lambda: (FakeApiError, ConnectionError)
+    try:
+        yield
+    finally:
+        a4_llm._gemini_error_types = saved
+
+
+def gemini(tmp, client, sleeps=None):
+    return a4_llm.GeminiProposer("live", cache_dir=tmp, client=client, sleep=(sleeps.append if sleeps is not None else lambda s: None))
+
+
+def test_gemini_live_writes_cache_and_replay_reads_it():
+    with tempfile.TemporaryDirectory() as tmp:
+        client = FakeGeminiClient(gemini_reply())
+        live = gemini(tmp, client)
+        out, meta = live.propose("khối A")
+        assert out == MULTI_OK and meta["cached"] is False and live.calls == 1 and meta["model"] == "gemini-3.6-flash-001"
+        kw = client.kwargs[0]
+        assert kw["model"] == a4_llm.GEMINI_MODEL and "khối A" in kw["contents"]
+        cfg = kw["config"]
+        assert cfg["response_mime_type"] == "application/json" and cfg["response_json_schema"] is a4_llm.SCHEMA
+        assert cfg["system_instruction"] == a4_llm.SYSTEM_PROMPT and cfg["max_output_tokens"] == a4_llm.GEMINI_MAX_TOKENS
+        saved = json.loads((Path(tmp) / f"{meta['key']}.json").read_text(encoding="utf-8"))
+        assert saved["provider"] == "gemini" and saved["request_id"] == "resp_test" and saved["usage"]["prompt_token_count"] == 1200
+        assert saved["requested_model"] == a4_llm.GEMINI_MODEL and saved["prompt_version"] == a4_llm.PROMPT_VERSION
+        # lần sau cùng khối: đọc lại, không gọi API; replay đọc được, khối khác thì E_LLM_CACHE
+        assert live.propose("khối A")[1]["cached"] is True and live.calls == 1
+        replay = a4_llm.GeminiProposer("replay", cache_dir=tmp)
+        assert replay.propose("khối A")[0] == MULTI_OK
+        try:
+            replay.propose("khối B")
+        except a4_llm.ProposerError as e:
+            assert e.code == "E_LLM_CACHE"
+        else:
+            raise AssertionError("replay thiếu kết quả phải lỗi")
+        # cùng khối, khác nhà cung cấp: khoá khác nhau nên cache không lẫn
+        assert a4_llm.cache_key(a4_llm.GEMINI_MODEL, "khối A", None) != a4_llm.cache_key(a4_llm.MODEL, "khối A", None)
+
+
+def test_gemini_bad_replies_are_errors_and_not_cached():
+    cases = [(gemini_reply(finish="MAX_TOKENS"), "E_LLM"), (gemini_reply(finish="SAFETY"), "E_LLM"),
+             (gemini_reply(block_reason="PROHIBITED_CONTENT", candidates=False), "E_LLM"), (gemini_reply(candidates=False), "E_LLM"),
+             (gemini_reply(text="không phải JSON"), "E_LLM_SHAPE"), (gemini_reply(text=""), "E_LLM_SHAPE")]
+    for reply, code in cases:
+        with tempfile.TemporaryDirectory() as tmp:
+            try:
+                gemini(tmp, FakeGeminiClient(reply)).propose("khối A")
+            except a4_llm.ProposerError as e:
+                assert e.code == code, (e.code, code)
+            else:
+                raise AssertionError("phải lỗi")
+            assert list(Path(tmp).iterdir()) == []
+
+
+def test_gemini_retries_rate_limit_then_succeeds():
+    with tempfile.TemporaryDirectory() as tmp, fake_gemini_errors():
+        sleeps = []
+        client = FakeGeminiClient(FakeApiError(429), FakeApiError(503), gemini_reply())
+        out, meta = gemini(tmp, client, sleeps).propose("khối A")
+        assert out == MULTI_OK and len(client.kwargs) == 3 and sleeps == [a4_llm.GEMINI_WAIT_SECONDS, 2 * a4_llm.GEMINI_WAIT_SECONDS]
+
+
+def test_gemini_gives_up_after_attempts_and_does_not_retry_other_errors():
+    with fake_gemini_errors():
+        with tempfile.TemporaryDirectory() as tmp:
+            sleeps = []
+            client = FakeGeminiClient(*[FakeApiError(429)] * a4_llm.GEMINI_ATTEMPTS)
+            try:
+                gemini(tmp, client, sleeps).propose("khối A")
+            except a4_llm.ProposerError as e:
+                assert e.code == "E_LLM_API" and "429" in str(e) and "hết hạn mức" in str(e)
+            else:
+                raise AssertionError("hết lượt thử phải lỗi")
+            assert len(client.kwargs) == a4_llm.GEMINI_ATTEMPTS and len(sleeps) == a4_llm.GEMINI_ATTEMPTS - 1
+            assert list(Path(tmp).iterdir()) == []
+        for err, text in ((FakeApiError(400, "khoá sai"), "khoá sai"), (ConnectionError("mất mạng"), "mất mạng")):
+            with tempfile.TemporaryDirectory() as tmp:
+                sleeps = []
+                client = FakeGeminiClient(err)
+                try:
+                    gemini(tmp, client, sleeps).propose("khối A")
+                except a4_llm.ProposerError as e:
+                    assert e.code == "E_LLM_API" and text in str(e)
+                else:
+                    raise AssertionError("lỗi không thử lại được phải dừng ngay")
+                assert len(client.kwargs) == 1 and sleeps == []
+
+
+def test_make_proposer_picks_provider_and_model():
+    c = a4_llm.make_proposer("replay")
+    assert isinstance(c, a4_llm.ClaudeProposer) and c.model == a4_llm.MODEL
+    g = a4_llm.make_proposer("replay", "gemini")
+    assert isinstance(g, a4_llm.GeminiProposer) and g.model == a4_llm.GEMINI_MODEL
+    assert a4_llm.make_proposer("replay", "gemini", "gemini-3.8-flash").model == "gemini-3.8-flash"
+    assert a4_llm.make_proposer("live", "claude", "claude-opus-5-5").model == "claude-opus-5-5"
+    try:
+        a4_llm.make_proposer("replay", "gpt")
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("provider lạ phải lỗi")
+
+
+def test_cli_gemini_replay_without_cache_fails_closed():
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = Path(tmp)
+        amend = tmp / "x.md"
+        amend.write_text(HEAD + MULTI + TAIL, encoding="utf-8")
+        saved = a4_llm.CACHE_DIR, a4.OUT_DIR, a4.DOCS_DIR
+        a4_llm.CACHE_DIR, a4.OUT_DIR, a4.DOCS_DIR = tmp / "cache", tmp, tmp
+        try:
+            with contextlib.redirect_stderr(io.StringIO()) as err, contextlib.redirect_stdout(io.StringIO()):
+                try:
+                    a4.main(["apply", "--base", str(FULL_FILE), "--amend", str(amend), "--llm", "replay", "--provider", "gemini"])
+                except SystemExit as e:
+                    assert e.code == 1
+                else:
+                    raise AssertionError("phải thoát 1")
+        finally:
+            a4_llm.CACHE_DIR, a4.OUT_DIR, a4.DOCS_DIR = saved
+        assert "E_LLM_CACHE" in err.getvalue() and a4.BLOCK_PROPOSER is None
+
+
 def test_cli_replay_without_cache_fails_closed():
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)

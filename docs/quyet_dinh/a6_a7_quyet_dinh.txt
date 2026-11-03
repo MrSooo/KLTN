@@ -13,7 +13,7 @@ A2. Đơn vị có text giống hệt KHÔNG gộp nút (mỗi đơn vị là m�
 A3. Nhãn cô lập: "same_text" (nút trùng chữ; đổi tên từ "duplicate" ngày 2026-10-25, review F-06: 4 cặp của p4 đều là trùng chữ có
     chủ đích pháp lý, không phải dư thừa, nên tên "duplicate" dễ đọc nhầm) và "dangling" (cạnh treo). Bộ ba trùng chính xác được gộp tự động (chuẩn hoá).
 A4. Đồ thị gộp là bước A7 mới, không sửa A1-A5. Nạp A4 theo ngày (--versions, --date) làm ở giai đoạn cuối.
-A5. Không mở rộng cú pháp A4 (xem docs/pham_vi_mo_rong.txt).
+A5. Không mở rộng cú pháp A4 (xem docs/quyet_dinh/pham_vi_mo_rong.txt).
 
 B. A6: NGOẠI LỆ CHUNG
 ---------------------
@@ -32,7 +32,7 @@ B4. Khoá gộp = a6.norm_text: gộp khoảng trắng, casefold, bỏ . ; : , v
 B5. Mã nút điều kiện BLDS2015.C_<8 ký tự đầu sha1(khoá)>, type "dieu_kien". Băm để mã không đổi khi tập câu đổi giữa các ngày hoặc phiên bản (đánh số
     tuần tự sẽ đổi). Hai khoá khác nhau trùng mã: ValueError. Mã chỉ có hai đoạn nên a2.parent_of coi như Điều, nhưng nút này không đi qua A2.
 B6. Spec im lặng thì ValueError (CLI thoát 1, không ghi file, như A3): một đơn vị có nhiều hơn một "trừ trường hợp"; mệnh đề rỗng. Trigger "trừ" không
-    kèm "trường hợp" và text không kết thúc "sau đây:" thì vào unhandled (đơn vị, câu = toàn bộ text), file docs/a6_unhandled_<stem>.txt.
+    kèm "trường hợp" và text không kết thúc "sau đây:" thì vào unhandled (đơn vị, câu = toàn bộ text), file docs/bao_cao_chay/a6/a6_unhandled_<stem>.txt.
     (2026-10-25, review F-05) Mỗi "không được áp dụng" cũng vào unhandled (kể cả đơn vị kết thúc "sau đây:"): a2.TRIGGER_RE không bắt nó nên
     trước đây nó không hiện ở đâu. A6 quét riêng bằng NOT_ALLOWED_RE, không sửa TRIGGER_RE (A3 dùng chung). Phép đếm của check_general thành
     trigger trừ/ngoại trừ + số "không được áp dụng" = thuộc A3 + đã xử lý + unhandled. p4 không có ca nào.
@@ -71,11 +71,11 @@ C4. Kiểm tự động (không đạt thì báo cáo vẫn ghi, file dữ liệ
     Vòng refers_to chỉ được ghi trong dòng tóm tắt của 7g, không tính lỗi: hai đơn vị dẫn chiếu qua lại là hợp lệ. Không kiểm trên hợp
     refers_to ∪ exception_of vì "D619 refers_to D652" cùng "D652 exception_of D619" (quy tắc dẫn chiếu tới ngoại lệ của nó) là vòng hợp lệ.
     Phạm vi "mâu thuẫn hình thức" đã kiểm: vòng exception_of (7g), sửa/bãi bỏ đơn vị đã đóng (A4 E_TARGET), hai chỉ thị chồng đích (A4 E_OVERLAP),
-    cạnh tới đơn vị đã đóng (cờ cạnh đứt A4, dangling A7). Chưa kiểm: xung đột chế tài (docs/pham_vi_mo_rong.txt A1).
+    cạnh tới đơn vị đã đóng (cờ cạnh đứt A4, dangling A7). Chưa kiểm: xung đột chế tài (docs/quyet_dinh/pham_vi_mo_rong.txt A1).
 C5. Số đối chiếu: p4 225 nút (215 + 4 Chương + 5 + 1 văn bản; D8, D9), 481 cạnh (430 A2a gồm 108 Điều-Chương + 25 + 4 + 9 + 1 (B8) + 8 văn bản-Chương + 4
     same_text_as), 4 same_text; mẫu 36 nút (35 + 1 văn bản), 74 cạnh (60 + 3 + 1 + 10 văn bản-Điều), 0 same_text.
     Bảng EXPECTED được test cộng lại độc lập (số dòng file nguồn, Counter riêng cho bản sao), không chỉ chép từ kết quả chạy.
-C6. File: data/processed/a7/a7_<stem>_{nodes,edges}.jsonl và docs/a7_report_<stem>.txt. Báo cáo ghi cả khi KHÔNG ĐẠT.
+C6. File: data/processed/a7/a7_<stem>_{nodes,edges}.jsonl và docs/bao_cao_chay/a7/a7_report_<stem>.txt. Báo cáo ghi cả khi KHÔNG ĐẠT.
 C7. A5 giữ nguyên, không đọc file A6/A7. Trùng cạnh trên các nguồn kể cả cạnh A6 do 7c của A7 kiểm.
 
 D. A7: THEO NGÀY (NẠP A4)
@@ -93,7 +93,7 @@ D4. Lọc theo hiệu lực sau khi áp: contains/part_of có một đầu khôn
     test cho cả 8 văn bản dev trên p4). Nhiều văn bản thì dangling tại T có thể gồm cả cạnh đứt từ văn bản trước, A4 chỉ báo cạnh đứt của văn bản đang áp.
 D5. Canonical của nhóm bản sao là đơn vị đứng đầu theo thứ tự nút TẠI T. Nếu canonical bị đóng thì đơn vị bản sao kế tiếp thành canonical ở ngày đó
     (cạnh same_text_as được tính lại mỗi ngày, không giữ từ ngày khác).
-D6. File: a7_<stem>_<name>_<date>_{nodes,edges}.jsonl và docs/a7_report_<stem>_<name>_<date>.txt. Không dùng bảng EXPECTED (kiểm 7a-7e). Văn bản thay cả bộ luật
+D6. File: a7_<stem>_<name>_<date>_{nodes,edges}.jsonl và docs/bao_cao_chay/a7/a7_report_<stem>_<name>_<date>.txt. Không dùng bảng EXPECTED (kiểm 7a-7e). Văn bản thay cả bộ luật
     (replace_doc) đóng mọi đơn vị nên đồ thị tại ngày đó rỗng, không phải lỗi.
 D8. (2026-10-25, review F-07, F-18) Nút văn bản type van_ban, cột thêm co_quan, ngay_ban_hanh, hieu_luc (number = số hiệu, heading = tên).
     Văn bản gốc từ a1.BASE_DOC, có ở cả trạng thái gốc (p4 221 nút, mẫu 36) và theo ngày (kể cả trước 01/01/2017: văn bản đã ban hành).
@@ -109,7 +109,7 @@ D9. (2026-10-25, review F-09) Chương: A1 nhận "## Chương <La Mã> – <tê
     A7 thêm contains/part_of từ nút văn bản gốc tới mỗi Chương, hoặc tới mỗi Điều khi văn bản không có Chương (file mẫu): đồ thị là một
     cây văn bản > Chương > Điều > Khoản > Điểm. 7e: Điều đúng một part_of tới Chương (đồ thị có Chương) hoặc tới văn bản (không có),
     Chương đúng một part_of tới văn bản; đồ thị không có cả hai (dựng tay) thì Điều là gốc. Theo ngày: Chương không lập phiên bản, có mặt
-    từ ngày hiệu lực văn bản gốc tới khi văn bản gốc bị thay cả; Điều mới lấy Chương từ A4 (docs/a4_quyet_dinh.txt B6).
+    từ ngày hiệu lực văn bản gốc tới khi văn bản gốc bị thay cả; Điều mới lấy Chương từ A4 (docs/quyet_dinh/a4_quyet_dinh.txt B6).
     Vì cây nối mọi đơn vị, mục "Liên thông" của báo cáo thêm số thành phần chỉ theo cạnh ngữ nghĩa (p4: 187; bỏ thêm nút chung chung: 191).
 D7. Đã chạy: p4_dev05_bai_bo_ds tại 2027-01-01 cho 205 nút (215 - 15 + 5) và đúng 1 cạnh treo (D653 refers_to D651). Các bộ khác được test bằng thư mục tạm
     (test_a7), không ghi thêm file vào data/processed.

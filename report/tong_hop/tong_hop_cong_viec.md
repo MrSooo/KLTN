@@ -135,7 +135,7 @@ Tên bước không trùng thứ tự chạy. Thứ tự thật trong `src/run_a
 2. **Chạy bằng `python -I src/<file>.py <đường dẫn md>`.** Cờ `-I` (isolated) để Python không nhặt module lạ trong thư mục hiện tại. Tên file kết quả suy từ tên file md (ví dụ `blds2015_p4`), nên hai nguồn không ghi đè nhau.
 3. **Chỉ ghi khi sạch.** Mỗi bước chạy hàm kiểm trước. Có lỗi thì in ra stderr, thoát mã 1 và **không ghi file dữ liệu**. A4 và A7 vẫn ghi file báo cáo lỗi để đọc.
 4. **Mỗi cạnh mang bằng chứng.** Cạnh có `evidence` (đoạn nguyên văn của luật) và `method` (quy tắc đã sinh ra nó). Bước kiểm xác nhận `evidence` nằm đúng trong text của đơn vị nguồn, nên có thể truy từ cạnh về câu gốc.
-5. **Chưa có quy tắc thì dừng, không đoán** (`ValueError`, hoặc `A4Error` kèm mã lỗi). Chỗ spec chưa nói được ghi vào `docs/a4_quyet_dinh.txt`, `docs/a6_a7_quyet_dinh.txt`, `utils/a8/a8_quyet_dinh.txt`.
+5. **Chưa có quy tắc thì dừng, không đoán** (`ValueError`, hoặc `A4Error` kèm mã lỗi). Chỗ spec chưa nói được ghi vào `docs/quyet_dinh/a4_quyet_dinh.txt`, `docs/quyet_dinh/a6_a7_quyet_dinh.txt`, `utils/a8/a8_quyet_dinh.txt`.
 6. **Dữ liệu trung gian là JSON Lines**: mỗi dòng một JSON, UTF-8, xuống dòng LF, không BOM. Nhờ vậy `git diff` đọc được và so hai lần chạy được.
 
 ### 4.1 Các file dữ liệu và định dạng
@@ -156,11 +156,11 @@ Tên bước không trùng thứ tự chạy. Thứ tự thật trong `src/run_a
 | `a7_<stem>_edges.jsonl` | A7 | cạnh `{s, p, o, evidence, method, status, sources}` | `D617.K2.c` `same_text_as` `D617.K1.d`, method `exact_text` |
 | `a8_<stem>.html` | A8 | một trang HTML tự chứa (không phải JSON Lines) | |
 
-Các báo cáo đọc được bằng mắt nằm ở `docs/`: `a1_notes_*`, `a2_unresolved_*`, `a3_unhandled_*`, `a6_unhandled_*`, `a4_report_*`, `a5_report_*`, `a7_report_*`.
+Các báo cáo đọc được bằng mắt nằm ở `docs/bao_cao_chay/<bước>/`: `a1_notes_*`, `a2_unresolved_*`, `a3_unhandled_*`, `a6_unhandled_*`, `a4_report_*`, `a5_report_*`, `a7_report_*`.
 
 ### A1: Tách văn bản (`src/a1_parse.py`)
 
-- **Vào/ra.** Vào: `data/raw/blds2015_p4.md`. Ra: `a1_triples_blds2015_p4.jsonl` (1.173 bộ ba) và `docs/a1_notes_blds2015_p4.txt`.
+- **Vào/ra.** Vào: `data/raw/blds2015_p4.md`. Ra: `a1_triples_blds2015_p4.jsonl` (1.173 bộ ba) và `docs/bao_cao_chay/a1/a1_notes_blds2015_p4.txt`.
 - **Cách làm.** Chạy được từng bước riêng bằng `-s 1` đến `-s 4`.
   1. *Nhìn dữ liệu thô.* In từng dòng bằng `repr()`, quét ký tự lạ (control, format, khoảng trắng đặc biệt), BOM, `\r`, tab và khoảng trắng cuối dòng. Mục đích là thấy chữ ẩn trước khi viết regex.
   2. *Phân loại từng dòng (`tokenize`).* Mỗi dòng khớp đúng một mẫu, thử theo thứ tự Chương, Điều, Khoản, Điểm:
@@ -183,7 +183,7 @@ Các báo cáo đọc được bằng mắt nằm ở `docs/`: `a1_notes_*`, `a2
 
 ### A2: Cạnh cấu trúc và dẫn chiếu (`src/a2_edges.py`)
 
-- **Vào/ra.** Vào: `a1_triples`. Ra: `a2_edges_*.jsonl` (430 cạnh), `a2_refs_*.jsonl` (25 cạnh), `docs/a2_unresolved_*.txt` (2 dòng).
+- **Vào/ra.** Vào: `a1_triples`. Ra: `a2_edges_*.jsonl` (430 cạnh), `a2_refs_*.jsonl` (25 cạnh), `docs/bao_cao_chay/a2/a2_unresolved_*.txt` (2 dòng).
 - **Độc lập với A1.** A2 không import `a1_parse`, chỉ đọc file bộ ba. Cha của Khoản/Điểm được suy từ chuỗi mã (bỏ đoạn cuối), còn kiểm tra dùng thuộc tính `type` do A1 ghi. Nếu A1 đánh mã sai thì hai nguồn này mâu thuẫn và lỗi hiện ra ở đây.
 - **A2a, cạnh cấu trúc.**
   - Cha của Khoản/Điểm là mã bỏ đoạn cuối. Cha của Điều là thuộc tính `chuong`. Chương không có cha.
@@ -218,7 +218,7 @@ Các báo cáo đọc được bằng mắt nằm ở `docs/`: `a1_notes_*`, `a2
 
 ### A3: Ngoại lệ tường minh (`src/a3_exceptions.py`)
 
-- **Vào/ra.** Vào: bộ ba của A1 và cạnh `contains` của A2a (tính lại trong bộ nhớ). Ra: `a3_exceptions_*.jsonl` (4 cạnh) và `docs/a3_unhandled_*.txt` (9 dòng).
+- **Vào/ra.** Vào: bộ ba của A1 và cạnh `contains` của A2a (tính lại trong bộ nhớ). Ra: `a3_exceptions_*.jsonl` (4 cạnh) và `docs/bao_cao_chay/a3/a3_unhandled_*.txt` (9 dòng).
 - **Từ kích hoạt (trigger).** Một regex duy nhất bắt `ngoại trừ`, `trừ` hoặc `không áp dụng`, có ranh giới từ nên "trừng", "trừu" không khớp. Chữ "ngoại trừ" tính một cụm. Trong p4 có **11** trigger: 10 chữ "trừ" và 1 "không áp dụng".
 - **Chỉ có hai quy tắc, không có bộ khớp tổng quát.** Chiều cạnh: `s` là phần ngoại lệ, `o` là quy tắc bị ngoại trừ.
   1. **`not_apply_pattern`.** Đơn vị U chứa "không áp dụng" và có một cụm dẫn chiếu đứng **ngay trước** nó (chỉ cách dấu cách). Khi đó `s = U`, và `o` là từng đích của cụm. Evidence là từ đầu cụm đến hết "không áp dụng".
@@ -232,7 +232,7 @@ Các báo cáo đọc được bằng mắt nằm ở `docs/`: `a1_notes_*`, `a2
 
 ### A6: Ngoại lệ chung "trừ trường hợp" (`src/a6_general_exceptions.py`)
 
-- **Vào/ra.** Vào: bộ ba của A1 (A6 không đọc kết quả A3). Ra: `a6_conditions_*.jsonl` (5 nút, 15 dòng), `a6_exceptions_*.jsonl` (10 cạnh), `docs/a6_unhandled_*.txt` (rỗng).
+- **Vào/ra.** Vào: bộ ba của A1 (A6 không đọc kết quả A3). Ra: `a6_conditions_*.jsonl` (5 nút, 15 dòng), `a6_exceptions_*.jsonl` (10 cạnh), `docs/bao_cao_chay/a6/a6_unhandled_*.txt` (rỗng).
 - **Phân việc với A3.** Trigger "trừ" thuộc A3 khi và chỉ khi text của đơn vị kết thúc bằng "sau đây:". A6 dùng đúng điều kiện này để bỏ qua các đơn vị đó, nên không cần chạy A3, và A7 tái dùng được khi dựng đồ thị theo ngày.
 - **Cách làm.**
   1. Tại vị trí trigger "trừ" (hoặc "ngoại trừ"), nhận mẫu `(ngoại )trừ trường hợp`.
@@ -251,7 +251,7 @@ Các báo cáo đọc được bằng mắt nằm ở `docs/`: `a1_notes_*`, `a2
 
 Đây là bước phức tạp nhất, khoảng 1.600 dòng code.
 
-- **Vào/ra.** Lệnh `apply --base <md gốc> --amend <văn bản> [--amend ...] [--effective-from] [--doc-id] [--name] [--llm off|replay|live]`. Vào: file md gốc (nạp bằng `a1.load_parsed`), cạnh gốc `a2_edges`, `a2_refs`, `a3_exceptions` (chỉ đọc), và một hay nhiều văn bản sửa đổi. Ra: `a4_<name>_versions.jsonl`, `_amend_edges.jsonl`, `_edge_changes.jsonl`, `_changed.json`, `_impact.json` và `docs/a4_report_<name>.txt`. Lệnh `snapshot --name --date` in luật như đang có hiệu lực tại một ngày, dạng Markdown cùng quy ước với file gốc.
+- **Vào/ra.** Lệnh `apply --base <md gốc> --amend <văn bản> [--amend ...] [--effective-from] [--doc-id] [--name] [--llm off|replay|live]`. Vào: file md gốc (nạp bằng `a1.load_parsed`), cạnh gốc `a2_edges`, `a2_refs`, `a3_exceptions` (chỉ đọc), và một hay nhiều văn bản sửa đổi. Ra: `a4_<name>_versions.jsonl`, `_amend_edges.jsonl`, `_edge_changes.jsonl`, `_changed.json`, `_impact.json` và `docs/bao_cao_chay/a4/a4_report_<name>.txt`. Lệnh `snapshot --name --date` in luật như đang có hiệu lực tại một ngày, dạng Markdown cùng quy ước với file gốc.
 - **Mô hình dữ liệu.**
   - Mỗi đơn vị có danh sách `Version`. Hiệu lực là **nửa khoảng** `[effective_from, effective_to)`: đang hiệu lực tại ngày T nếu (`from` rỗng hoặc ≤ T) và (`to` rỗng hoặc > T).
   - Phiên bản 1 của đơn vị gốc có `effective_from = 2017-01-01`, `source_doc = BLDS2015`.
@@ -301,12 +301,12 @@ Các báo cáo đọc được bằng mắt nằm ở `docs/`: `a1_notes_*`, `a2
   | Áp dụng | `E_OVERLAP`, `E_TARGET`, `E_EXISTS`, `E_PARENT`, `E_AFTER`, `E_HEADING`, `E_PHRASE_MISSING`, `E_A2`, `E_A3` |
   | Tầng LLM (mục 7) | `E_LLM`, `E_LLM_SHAPE`, `E_LLM_CACHE`, `E_LLM_API` |
 
-  **Gặp lỗi thì cả lượt không được áp**, không có chuyện áp một nửa. Chỉ ghi `docs/a4_report_<name>.txt` (mã lỗi, văn bản, số dòng, mô tả) và thoát mã 1. File dữ liệu của lần chạy thành công trước không bị xoá hay ghi đè.
+  **Gặp lỗi thì cả lượt không được áp**, không có chuyện áp một nửa. Chỉ ghi `docs/bao_cao_chay/a4/a4_report_<name>.txt` (mã lỗi, văn bản, số dòng, mô tả) và thoát mã 1. File dữ liệu của lần chạy thành công trước không bị xoá hay ghi đè.
 - **Giới hạn.** Văn phạm chưa hỗ trợ "được bổ sung như sau", "đánh số lại"/"trở thành", nháy lồng trong cụm từ, danh sách số trần ("Điều 5, 6"), điểm đứng trực tiếp dưới Điều. Một số dạng trong đó được tầng LLM của mục 7 xử lý.
 
 ### A5: Kiểm tra độc lập (`src/a5_checks.py`)
 
-- **Vào/ra.** Vào: `a1_triples`, `a2_edges`, `a2_refs`, `a3_exceptions` và (với `--versions`) `a4_<name>_versions.jsonl`. Ra: `docs/a5_report_<stem>.txt`, ghi cả khi mọi thứ đạt.
+- **Vào/ra.** Vào: `a1_triples`, `a2_edges`, `a2_refs`, `a3_exceptions` và (với `--versions`) `a4_<name>_versions.jsonl`. Ra: `docs/bao_cao_chay/a5/a5_report_<stem>.txt`, ghi cả khi mọi thứ đạt.
 - **Độc lập với bước trước.** A5 đọc thẳng từng dòng JSON, không dùng `a2.load_units` hay `a2.parent_of`, nên nếu hai hàm này sai thì A5 vẫn thấy. Số kỳ vọng nằm trong bảng `EXPECTED` theo stem (p4: 215 đơn vị, 54 Điều, 4 Chương), đã đối chiếu độc lập bằng `grep` trên file md.
 - **Các phép kiểm.**
   - *Bước 1, mã không trùng.* 1a: số đơn vị bằng số kỳ vọng. 1b: số Điều. 1c: mỗi mã có đúng một dòng `type`. 1d: mỗi cặp (mã, thuộc tính) xuất hiện một lần. 1e: số Chương.
@@ -319,7 +319,7 @@ Các báo cáo đọc được bằng mắt nằm ở `docs/`: `a1_notes_*`, `a2
 
 ### A7: Gộp thành một đồ thị (`src/a7_graph.py`)
 
-- **Vào/ra.** Chế độ gốc: vào `a1_triples`, `a2_edges`, `a2_refs`, `a3_exceptions`, `a6_conditions`, `a6_exceptions`; ra `a7_<stem>_nodes.jsonl`, `a7_<stem>_edges.jsonl`, `docs/a7_report_<stem>.txt`. Chế độ theo ngày (`--versions <a4_..._versions.jsonl> --date YYYY-MM-DD`): thêm `edge_changes` và `amend_edges` của A4; tên file thêm `<name>_<date>`.
+- **Vào/ra.** Chế độ gốc: vào `a1_triples`, `a2_edges`, `a2_refs`, `a3_exceptions`, `a6_conditions`, `a6_exceptions`; ra `a7_<stem>_nodes.jsonl`, `a7_<stem>_edges.jsonl`, `docs/bao_cao_chay/a7/a7_report_<stem>.txt`. Chế độ theo ngày (`--versions <a4_..._versions.jsonl> --date YYYY-MM-DD`): thêm `edge_changes` và `amend_edges` của A4; tên file thêm `<name>_<date>`.
 - **Chế độ gốc, các việc làm.**
   1. **Nút:** đơn vị từ `a1_triples` (kể cả Chương), nút điều kiện từ `a6_conditions` (có thêm cột `kind`), và nút văn bản BLDS 2015 (`type = van_ban`, số hiệu, ngày ban hành, ngày hiệu lực lấy từ `a1.BASE_DOC`).
   2. **Cạnh:** nối bốn file cạnh theo thứ tự `a2_edges`, `a2_refs`, `a3_exceptions`, `a6_exceptions`, **gộp theo bộ ba `(s, p, o)`** (lớp `EdgeSet`): giữ dòng đầu; cột `sources` ghi một nhãn cho mỗi lần xuất hiện nên `len(sources) > 1` nghĩa là đã gộp; evidence khác nhau được cất vào `evidences`. Với p4: 0 bộ ba bị gộp.
@@ -414,7 +414,7 @@ Sau khi xong A1 đến A7, mọi test đều đạt, và lượt báo cáo trư�
 - thử đầu vào chương trình chưa từng gặp;
 - tách riêng lỗi "dừng và báo" với lỗi "im lặng làm sai".
 
-Kết quả là **22 vấn đề** (F-01 đến F-22). Đánh giá lại 8 yêu cầu: lúc đầu chỉ 2 đạt và 5 đạt một phần. Lượt báo cáo trước đã **lạc quan quá mức**. Chi tiết nằm trong `review_a1_a7_findings.md`.
+Kết quả là **22 vấn đề** (F-01 đến F-22). Đánh giá lại 8 yêu cầu: lúc đầu chỉ 2 đạt và 5 đạt một phần. Lượt báo cáo trước đã **lạc quan quá mức**. Chi tiết nằm trong `report/review/review_a1_a7_findings.md`.
 
 ### 6.2. Đã sửa gì, giải thích dễ hiểu
 
@@ -452,7 +452,7 @@ Với dữ liệu BLDS hiện có, pha này **không làm thay đổi kết qu�
 
 ### 6.3. Chi tiết kỹ thuật từng Pha
 
-**Cách làm chung cho mọi bước sửa.** Mỗi bước là một commit riêng. Trước khi commit chạy `src/run_all.py` (chạy lại cả pipeline rồi các bộ test: 7 bộ lúc bắt đầu, 10 bộ hiện nay vì có thêm test của tầng LLM và hai bộ chấm điểm), sau đó `git diff --stat data/ docs/` cho biết bước đó đã đổi những file kết quả nào. Mỗi bước ghi trước "đầu ra nào được phép đổi"; file nào đổi ngoài dự kiến là dấu hiệu lỗi. Mỗi bước còn cập nhật file `quyet_dinh` tương ứng và bảng theo dõi trong `review_a1_a7_findings.md`.
+**Cách làm chung cho mọi bước sửa.** Mỗi bước là một commit riêng. Trước khi commit chạy `src/run_all.py` (chạy lại cả pipeline rồi các bộ test: 7 bộ lúc bắt đầu, 10 bộ hiện nay vì có thêm test của tầng LLM và hai bộ chấm điểm), sau đó `git diff --stat data/ docs/` cho biết bước đó đã đổi những file kết quả nào. Mỗi bước ghi trước "đầu ra nào được phép đổi"; file nào đổi ngoài dự kiến là dấu hiệu lỗi. Mỗi bước còn cập nhật file `quyet_dinh` tương ứng và bảng theo dõi trong `report/review/review_a1_a7_findings.md`.
 
 #### Pha 0: Chuẩn bị (commit `ed9314f`)
 
@@ -460,7 +460,7 @@ Với dữ liệu BLDS hiện có, pha này **không làm thay đổi kết qu�
 |---|---|
 | Thống nhất Python | Từ **3.10 trở lên** (code dùng kiểu `str \| None` trong `dataclass` và `NamedTuple`). `run_all.py` kiểm phiên bản và dừng nếu thấp hơn. Với Python 3.9, `test_a1`, `test_a4`, `test_a7` dừng ngay khi nạp module |
 | Dọn git | Thêm `.gitignore` cho `__pycache__/`, bỏ các file `.pyc` đã lỡ commit |
-| Lưu bằng chứng | Commit `review_a1_a7_findings.md` và `plan_sua_a1_a7.md` trước khi sửa code |
+| Lưu bằng chứng | Commit `report/review/review_a1_a7_findings.md` và `report/review/ke_hoach_sua_a1_a7.md` trước khi sửa code |
 | `src/run_all.py` | Một script chạy lại **toàn bộ** pipeline trên 2 nguồn và 8 văn bản dev (xem mục 8.2), rồi chạy test. Dùng làm bộ **hồi quy** cho mọi bước sau |
 
 #### Pha 1: Đổi "im lặng làm sai" thành "dừng và báo"
@@ -521,7 +521,7 @@ Thứ tự theo độ lan: bước ít ảnh hưởng làm trước, bước đ�
 - *Chỗ làm:* `tests/eval_gold.py`.
 - *Mẫu:* các Điều **609, 614, 619, ..., 659** (cách nhau 5), tức 11 Điều. Chọn bằng quy tắc cố định chứ không theo kết quả của pipeline, để mẫu không thiên về chỗ pipeline làm tốt.
 - *Cách chạy:* `--template` sinh `data/gold/units_<stem>.md` (để người gán đọc) và `gold_<stem>.tsv` trống, không ghi đè file đã có. Người gán điền các cột `p`, `s`, `o`, `ngam`, `ghi_chu` rồi đổi dòng đầu thành `# trang_thai: da_gan`; chưa gán xong thì lệnh chấm từ chối chạy.
-- *Cách chấm:* so cạnh `refers_to` (nguồn thuộc mẫu) và `exception_of` (đích thuộc mẫu) của A7 với đáp án; tách riêng recall của ngoại lệ **ngầm** (cột `ngam = 1`). Nguồn ngoại lệ có thể viết bằng mệnh đề trong dấu nháy, so với nút điều kiện qua `a6.norm_text`. Báo cáo: `docs/gold_report_<stem>.txt`.
+- *Cách chấm:* so cạnh `refers_to` (nguồn thuộc mẫu) và `exception_of` (đích thuộc mẫu) của A7 với đáp án; tách riêng recall của ngoại lệ **ngầm** (cột `ngam = 1`). Nguồn ngoại lệ có thể viết bằng mệnh đề trong dấu nháy, so với nút điều kiện qua `a6.norm_text`. Báo cáo: `docs/bao_cao_chay/eval/gold_report_<stem>.txt`.
 - *Trạng thái:* **chờ người gán đáp án**, nên chưa có số.
 - *Test:* `test_sample_rule`, `test_score_precision_recall_and_implicit`, `test_read_gold_status_and_format_errors`.
 
@@ -721,14 +721,15 @@ Test cho thấy *code làm đúng điều người viết nghĩ*. Test không ch
 | `tests/eval_gold.py` | Chấm precision/recall so với đáp án gán tay |
 | `tests/eval_ext_amend.py` | Chạy bộ thử 19 câu sửa đổi thật |
 | `utils/a8/` | Phần phụ, không thuộc 7 bước chính: trang xem đồ thị (A8). `a8_viz.py` và `a8_template.html` đọc đồ thị A7 và ghi một file HTML vào `data/processed/a8/`; `vendor/cytoscape.min.js` là thư viện Cytoscape.js 3.30.2 (MIT), nhúng vào trang để mở offline |
-| `utils/render_report.py` | Dựng `TONG_HOP_CONG_VIEC.html` từ file `.md` này |
+| `utils/render_report.py` | Dựng `tong_hop_cong_viec.html` từ file `.md` này |
 | `data/processed/` | Mọi file kết quả, chia thư mục con theo bước: `a1/` đến `a8/`; riêng A4 chia thêm theo tên văn bản sửa đổi (`a4/<tên>/`). Đồ thị nằm ở `a7/a7_blds2015_p4_nodes.jsonl` và `a7/a7_blds2015_p4_edges.jsonl`; trang xem đồ thị là `a8/a8_blds2015_p4.html` |
 | `data/llm_cache/a4/` | Kết quả LLM đã lưu để chạy lại tất định. **Chưa tồn tại** vì chưa chạy `--llm live` |
 | `data/gold/` | Mẫu để gán đáp án (chờ người gán) |
-| `docs/a*_report_*.txt` | Báo cáo của từng bước |
-| `docs/a4_quyet_dinh.txt`, `docs/a6_a7_quyet_dinh.txt`, `utils/a8/a8_quyet_dinh.txt`, `docs/pham_vi_mo_rong.txt` | Mọi quyết định thiết kế và phạm vi, kèm lý do |
-| `review_a1_a7_findings.md` | Báo cáo rà soát 22 vấn đề và bảng theo dõi đã sửa |
-| `plan_sua_a1_a7.md` | Kế hoạch sửa và các khoảng trống so với đề cương |
+| `docs/bao_cao_chay/a*/a*_report_*.txt` | Báo cáo của từng bước |
+| `docs/quyet_dinh/a4_quyet_dinh.txt`, `docs/quyet_dinh/a6_a7_quyet_dinh.txt`, `utils/a8/a8_quyet_dinh.txt`, `docs/quyet_dinh/pham_vi_mo_rong.txt` | Mọi quyết định thiết kế và phạm vi, kèm lý do |
+| `report/tong_hop/tong_hop_cong_viec.md`, `report/tong_hop/tong_hop_cong_viec.html` | Báo cáo tổng hợp này (bản HTML dựng từ bản `.md` bằng `utils/render_report.py`) |
+| `report/review/review_a1_a7_findings.md` | Báo cáo rà soát 22 vấn đề và bảng theo dõi đã sửa |
+| `report/review/ke_hoach_sua_a1_a7.md` | Kế hoạch sửa và các khoảng trống so với đề cương |
 
 **Chạy lại toàn bộ** (cần Python 3.10 trở lên):
 
