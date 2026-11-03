@@ -1,6 +1,6 @@
 """A3: kiểm tra cạnh exception_of (hai quy tắc tường minh) trên ví dụ dựng tay, file mẫu rồi file đầy đủ.
 
-Chạy: python -I src/test_a3.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy: python -I tests/test_a3.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
 Chạy a3_exceptions.py cho cả hai file trước (python -I src/a3_exceptions.py <file md>), test_files_on_disk đọc file đã ghi.
 """
 import collections
@@ -12,7 +12,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # -I không tự thêm thư mục script
 import a2_edges as a2
 import a3_exceptions as a3
 

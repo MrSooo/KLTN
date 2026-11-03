@@ -3,7 +3,8 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 import a6_general_exceptions as a6
 import eval_gold as eg
 

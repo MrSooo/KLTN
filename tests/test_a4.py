@@ -1,7 +1,7 @@
 """A4: kiểm tra cơ chế cập nhật có phiên bản trên file mẫu 5 Điều và 8 văn bản dev trong data/dev_amend.
 
-Chạy: python -I src/test_a4.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
-Cần a1_parse, a2_edges, a3_exceptions đã chạy cho data/sample/blds2015_5dieu.md (file cạnh gốc trong data/processed).
+Chạy: python -I tests/test_a4.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Cần a1_parse, a2_edges, a3_exceptions đã chạy cho data/sample/blds2015_5dieu.md (file cạnh gốc trong data/processed/a1, a2, a3).
 Mọi kỳ vọng ở các test (2), (3), (4), (6) được viết tay trong file này, hoặc quét độc lập từ file cạnh gốc / file md gốc,
 không suy ra từ hàm của a4_versions. Test ghi file chỉ ghi vào thư mục tạm (a4.OUT_DIR / a4.DOCS_DIR được đổi trong sandbox()).
 """
@@ -13,7 +13,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # -I không tự thêm thư mục script
 import a1_parse as a1
 import a2_edges as a2
 import a3_exceptions as a3
@@ -94,7 +94,7 @@ def raises(code, fn, *args):
 
 
 def data_files(tmp):
-    return sorted(p.name for p in Path(tmp).iterdir() if p.name.startswith("a4_") and not p.name.startswith("a4_report_"))
+    return sorted(p.relative_to(tmp).as_posix() for p in Path(tmp).rglob("a4_*") if p.is_file() and not p.name.startswith("a4_report_"))
 
 
 def apply_cli_error(code, texts, *flags, base=SAMPLE_FILE):
@@ -121,13 +121,13 @@ def apply_cli_error(code, texts, *flags, base=SAMPLE_FILE):
 def base_edges():
     rows = []
     for name in (f"a2_edges_{STEM}.jsonl", f"a2_refs_{STEM}.jsonl", f"a3_exceptions_{STEM}.jsonl"):
-        with open(IN_DIR / name, encoding="utf-8") as f:
+        with open(IN_DIR / name[:2] / name, encoding="utf-8") as f:
             rows += [json.loads(line) for line in f if line.strip()]
     return rows
 
 
 def base_ids():
-    with open(IN_DIR / f"a1_triples_{STEM}.jsonl", encoding="utf-8") as f:
+    with open(IN_DIR / "a1" / f"a1_triples_{STEM}.jsonl", encoding="utf-8") as f:
         return [r["s"] for r in map(json.loads, f) if r["p"] == "type"]
 
 
@@ -496,7 +496,7 @@ def test_dev08_thay_the_ca_van_ban():
 
 def test_base_rows_match_a1_triples():
     """Dòng gốc (version 1, source_doc là mã văn bản gốc) khớp từng chữ với triples của A1, với mọi văn bản dev."""
-    with open(IN_DIR / f"a1_triples_{STEM}.jsonl", encoding="utf-8") as f:
+    with open(IN_DIR / "a1" / f"a1_triples_{STEM}.jsonl", encoding="utf-8") as f:
         triples = {}
         for r in map(json.loads, f):
             triples.setdefault(r["s"], {})[r["p"]] = r["o"]
@@ -815,7 +815,7 @@ def test_error_effective_from_flag():
         assert cli("apply", "--base", SAMPLE_FILE, "--amend", write(tmp, "a.md", text), "--effective-from", "2027-01-01")[0] == 0
         no_date = write(tmp, "b.md", amend_text("Bãi bỏ khoản 2 Điều 621.", date=None))
         assert cli("apply", "--base", SAMPLE_FILE, "--amend", no_date, "--effective-from", "2028-03-04", "--name", "flagonly")[0] == 0
-        assert json.loads((a4.OUT_DIR / "a4_flagonly_amend_edges.jsonl").read_text(encoding="utf-8"))["effective_from"] == "2028-03-04"
+        assert json.loads((a4.OUT_DIR / "flagonly" / "a4_flagonly_amend_edges.jsonl").read_text(encoding="utf-8"))["effective_from"] == "2028-03-04"
     apply_cli_error("E_ARGS", [text], "--effective-from", "01/01/2027")
 
 
@@ -845,13 +845,14 @@ def test_error_scope_body_order_and_headings():
 
 def test_error_report_content_and_no_stale_files():
     with sandbox() as tmp:
-        (tmp / "a4_dev_versions.jsonl").write_text("cũ\n", encoding="utf-8")                  # file của lần chạy trước không bị đụng
+        (tmp / "dev").mkdir()
+        (tmp / "dev" / "a4_dev_versions.jsonl").write_text("cũ\n", encoding="utf-8")                  # file của lần chạy trước không bị đụng
         p = tmp / "bad.md"
         p.write_text(amend_text("Bãi bỏ khoản 9 Điều 621."), encoding="utf-8")
         code, _, err = cli("apply", "--base", SAMPLE_FILE, "--amend", p, "--name", "dev")
         assert code == 1 and "E_TARGET" in err
-        assert (tmp / "a4_dev_versions.jsonl").read_text(encoding="utf-8") == "cũ\n"
-        assert not (tmp / "a4_dev_changed.json").exists()
+        assert (tmp / "dev" / "a4_dev_versions.jsonl").read_text(encoding="utf-8") == "cũ\n"
+        assert not (tmp / "dev" / "a4_dev_changed.json").exists()
         report = (tmp / "a4_report_dev.txt").read_text(encoding="utf-8")
         assert report.splitlines()[:5] == ["A4 LỖI: dev", "mã lỗi: E_TARGET", "văn bản: bad", "dòng: 3: Bãi bỏ khoản 9 Điều 621.",
                                            "mô tả: đích BLDS2015.D621.K9 không tồn tại"]
@@ -867,7 +868,7 @@ def test_script_runs_isolated_and_exits_1_on_error():
             r = subprocess.run([sys.executable, "-I", str(ROOT / "src" / "a4_versions.py"), "apply", "--base", str(SAMPLE_FILE),
                                 "--amend", str(bad), "--name", name], capture_output=True, text=True, encoding="utf-8")
             assert r.returncode == 1 and "E_TARGET" in r.stderr, (r.returncode, r.stderr)
-            assert report.exists() and not list((ROOT / "data" / "processed").glob(f"a4_{name}_*"))
+            assert report.exists() and not (ROOT / "data" / "processed" / "a4" / name).exists()
         finally:
             report.unlink(missing_ok=True)
 
@@ -1027,21 +1028,21 @@ def test_cli_writes_all_files_with_conventions():
         code, out, _ = cli("apply", "--base", SAMPLE_FILE, "--amend", dev(2))
         assert code == 0, out
         name = DEV_FILES[2]
-        assert data_files(tmp) == sorted(f"a4_{name}_{k}" for k in ("amend_edges.jsonl", "changed.json", "edge_changes.jsonl", "impact.json", "versions.jsonl"))
+        assert data_files(tmp) == sorted(f"{name}/a4_{name}_{k}" for k in ("amend_edges.jsonl", "changed.json", "edge_changes.jsonl", "impact.json", "versions.jsonl"))
         assert (tmp / f"a4_report_{name}.txt").exists()
-        for p in tmp.iterdir():
+        for p in (q for q in tmp.rglob("*") if q.is_file()):
             raw = p.read_bytes()
             assert not raw.startswith(b"\xef\xbb\xbf") and b"\r" not in raw and b"\\u" not in raw, p.name
             assert raw == b"" or (raw.endswith(b"\n") and not raw.endswith(b"\n\n")), p.name    # jsonl rỗng khi không có dòng nào
-        rows = [json.loads(line) for line in (tmp / f"a4_{name}_versions.jsonl").read_text(encoding="utf-8").split("\n") if line]
+        rows = [json.loads(line) for line in (tmp / name / f"a4_{name}_versions.jsonl").read_text(encoding="utf-8").split("\n") if line]
         assert all(list(r) == ["id", "version", "type", "number", "heading", "text", "effective_from", "effective_to",
                                "previous_version", "source_doc", "directive_seq"] for r in rows)
         assert (len(rows), sum(1 for r in rows if r["heading"] is not None)) == (37, 5)
-        edge = json.loads((tmp / f"a4_{name}_amend_edges.jsonl").read_text(encoding="utf-8"))
+        edge = json.loads((tmp / name / f"a4_{name}_amend_edges.jsonl").read_text(encoding="utf-8"))
         assert list(edge) == ["s", "p", "o", "directive_seq", "effective_from", "new_version"]
-        assert json.loads((tmp / f"a4_{name}_changed.json").read_text(encoding="utf-8")) == {
+        assert json.loads((tmp / name / f"a4_{name}_changed.json").read_text(encoding="utf-8")) == {
             "changed": c("D621.K1", "D621.K1.b"), "new": [], "closed": [], "named_unchanged": c("D621.K1.a", "D621.K1.c", "D621.K1.d")}
-        assert json.loads((tmp / f"a4_{name}_impact.json").read_text(encoding="utf-8")) == {
+        assert json.loads((tmp / name / f"a4_{name}_impact.json").read_text(encoding="utf-8")) == {
             P + "D621.K2": ["refers_to " + P + "D621.K1"], P + "D644.K2": ["refers_to " + P + "D621.K1"]}
         report = (tmp / f"a4_report_{name}.txt").read_text(encoding="utf-8")
         for title in ("Bảng chỉ thị", "Thay đổi", "Cờ cạnh đứt", "Tập ảnh hưởng", "Dòng bị bỏ qua", "A3 chưa xử lý", "Chưa phủ", "Chưa tính cạnh"):
@@ -1056,16 +1057,16 @@ def test_cli_writes_all_files_with_conventions():
 def test_cli_doc_id_name_and_arg_counts():
     with sandbox() as tmp:
         assert cli("apply", "--base", SAMPLE_FILE, "--amend", dev(1), "--doc-id", "LUAT-1", "--name", "n1")[0] == 0
-        edge = json.loads((tmp / "a4_n1_amend_edges.jsonl").read_text(encoding="utf-8"))
+        edge = json.loads((tmp / "n1" / "a4_n1_amend_edges.jsonl").read_text(encoding="utf-8"))
         assert edge["s"] == "LUAT-1"
         assert cli("apply", "--base", SAMPLE_FILE, "--amend", dev(1), "--amend", dev(2), "--doc-id", "only-one")[0] == 1
     with sandbox() as tmp:
         assert cli("apply", "--base", SAMPLE_FILE, "--amend", dev(1), "--amend", dev(2))[0] == 0
-        assert (tmp / f"a4_{DEV_FILES[1]}+{DEV_FILES[2]}_versions.jsonl").exists()
+        assert (tmp / f"{DEV_FILES[1]}+{DEV_FILES[2]}" / f"a4_{DEV_FILES[1]}+{DEV_FILES[2]}_versions.jsonl").exists()
 
 
 def test_base_files_are_not_modified():
-    paths = [IN_DIR / f"{k}_{STEM}.jsonl" for k in ("a1_triples", "a2_edges", "a2_refs", "a3_exceptions")] + [SAMPLE_FILE]
+    paths = [IN_DIR / k[:2] / f"{k}_{STEM}.jsonl" for k in ("a1_triples", "a2_edges", "a2_refs", "a3_exceptions")] + [SAMPLE_FILE]
     before = {p: p.read_bytes() for p in paths}
     for n in DEV_FILES:
         run_dev(n)

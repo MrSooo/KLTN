@@ -1,9 +1,9 @@
 """A7: đồ thị gộp (nodes + edges jsonl) từ A1-A3, A6 hoặc từ kết quả A4 tại một ngày; khử trùng lặp, gắn nhãn cô lập, kiểm tra.
 
 Trạng thái gốc: python -I src/a7_graph.py <file md nguồn>
-  Đọc a1_triples, a2_edges, a2_refs, a3_exceptions, a6_conditions, a6_exceptions của stem. Ghi data/processed/a7_<stem>_{nodes,edges}.jsonl
+  Đọc a1_triples, a2_edges, a2_refs, a3_exceptions, a6_conditions, a6_exceptions của stem. Ghi data/processed/a7/a7_<stem>_{nodes,edges}.jsonl
   và docs/a7_report_<stem>.txt.
-Tại một ngày: python -I src/a7_graph.py <file md nguồn> --versions data/processed/a4_<name>_versions.jsonl --date YYYY-MM-DD
+Tại một ngày: python -I src/a7_graph.py <file md nguồn> --versions data/processed/a4/<name>/a4_<name>_versions.jsonl --date YYYY-MM-DD
   Nút là đơn vị đang hiệu lực tại T (a4.active_rows). Cạnh là cạnh gốc cộng add trừ close của a4_<name>_edge_changes.jsonl có at <= T,
   rồi lọc theo hiệu lực. Nút điều kiện và cạnh ngoại lệ chung tính lại bằng a6.find_general trên text đang hiệu lực. Ghi
   a7_<stem>_<name>_<date>_{nodes,edges}.jsonl và docs/a7_report_<stem>_<name>_<date>.txt. md phải là văn bản gốc của bộ A4 đó.
@@ -34,7 +34,7 @@ import a4_versions as a4
 import a5_checks as a5
 import a6_general_exceptions as a6
 
-OUT_DIR = a2.PROCESSED_DIR  # test đổi sang thư mục tạm
+OUT_DIR = a2.PROCESSED_DIR / "a7"  # test đổi sang thư mục tạm
 DOCS_DIR = a2.ROOT / "docs"
 
 OK, TEXT_COPY, DANGLING, HISTORICAL = "ok", "same_text", "dangling", "historical"

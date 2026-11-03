@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,.10); --wash: rgba(11,11,11,.05);
+  --refers: #2a78d6; --except: #eb6834; --same: #1baf7a; --critical: #d03b3b;
+  --n-van_ban: #0b0b0b; --t-van_ban: #ffffff;
+  --n-chuong: #52514e; --t-chuong: #ffffff;
+  --n-dieu: #c3c2b7; --t-dieu: #0b0b0b;
+  --n-khoan: #e1e0d9; --t-khoan: #0b0b0b;
+  --n-diem: #f0efec; --t-diem: #52514e;
+  --n-dieu_kien: #eb6834; --t-dieu_kien: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,.10); --wash: rgba(255,255,255,.06);
+    --refers: #3987e5; --except: #d95926; --same: #199e70; --critical: #d03b3b;
+    --n-van_ban: #f0efec; --t-van_ban: #0b0b0b;
+    --n-chuong: #c3c2b7; --t-chuong: #0b0b0b;
+    --n-dieu: #5f5e59; --t-dieu: #ffffff;
+    --n-khoan: #383835; --t-khoan: #f0efec;
+    --n-diem: #2c2c2a; --t-diem: #c3c2b7;
+    --n-dieu_kien: #d95926; --t-dieu_kien: #ffffff;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,.10); --wash: rgba(255,255,255,.06);
+  --refers: #3987e5; --except: #d95926; --same: #199e70; --critical: #d03b3b;
+  --n-van_ban: #f0efec; --t-van_ban: #0b0b0b;
+  --n-chuong: #c3c2b7; --t-chuong: #0b0b0b;
+  --n-dieu: #5f5e59; --t-dieu: #ffffff;
+  --n-khoan: #383835; --t-khoan: #f0efec;
+  --n-diem: #2c2c2a; --t-diem: #c3c2b7;
+  --n-dieu_kien: #d95926; --t-dieu_kien: #ffffff;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; display: flex; flex-direction: column; background: var(--page); color: var(--ink);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+button, input { font: inherit; color: inherit; }
+header { padding: 12px 16px 8px; background: var(--surface); border-bottom: 1px solid var(--grid); }
+.title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; }
+.title h1 { margin: 0; font-size: 16px; font-weight: 600; }
+.title .stats { color: var(--ink2); font-size: 13px; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 8px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px 3px 6px; border: 1px solid var(--grid);
+  border-radius: 999px; background: var(--surface); cursor: pointer; user-select: none; font-size: 13px; }
+.chip:hover { background: var(--wash); }
+.chip input { margin: 0; accent-color: var(--ink2); }
+.chip svg { display: block; }
+.chip .n { color: var(--muted); font-variant-numeric: tabular-nums; }
+.chip.off { color: var(--muted); }
+.chip.off svg { opacity: .35; }
+.legend { color: var(--ink2); font-size: 12px; gap: 6px 12px; }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.sw { width: 16px; height: 10px; border-radius: 3px; border: 1px solid var(--axis); display: inline-block; }
+.sw.dash { border-style: dashed; background: transparent; }
+.sw.c { width: 12px; height: 12px; border-radius: 50%; }
+.kidlist { display: flex; flex-wrap: wrap; gap: 4px; }
+.kidlist .btn { padding: 1px 8px; font-size: 12px; }
+.search { position: relative; margin-left: auto; }
+.search input { width: 260px; max-width: 100%; padding: 5px 9px; border: 1px solid var(--axis); border-radius: 8px; background: var(--surface); }
+.search input:focus { outline: 2px solid var(--refers); outline-offset: 1px; }
+.hits { position: absolute; z-index: 20; top: 100%; right: 0; width: 360px; max-width: 90vw; margin-top: 4px; padding: 4px;
+  background: var(--surface); border: 1px solid var(--axis); border-radius: 8px; box-shadow: 0 6px 18px var(--ring); }
+.hits[hidden] { display: none; }
+.hit { display: block; width: 100%; text-align: left; padding: 5px 8px; border: 0; border-radius: 6px; background: none; cursor: pointer; }
+.hit:hover, .hit.on { background: var(--wash); }
+.hit b { font-weight: 600; }
+.hit small { display: block; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.btn { padding: 4px 10px; border: 1px solid var(--axis); border-radius: 8px; background: var(--surface); cursor: pointer; font-size: 13px; }
+.btn:hover { background: var(--wash); }
+main { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 380px; }
+#cy { position: relative; min-width: 0; background: var(--surface); }
+aside { min-width: 0; display: flex; flex-direction: column; border-left: 1px solid var(--grid); background: var(--surface); }
+.tabs { display: flex; border-bottom: 1px solid var(--grid); }
+.tab { flex: 1; padding: 9px 8px; border: 0; border-bottom: 2px solid transparent; background: none; cursor: pointer; color: var(--ink2); }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); font-weight: 600; }
+.pane { flex: 1; min-height: 0; overflow: auto; padding: 12px 14px 18px; }
+.pane[hidden] { display: none; }
+.pane h2 { margin: 0 0 2px; font-size: 15px; font-weight: 600; }
+.pane h3 { margin: 16px 0 6px; font-size: 12px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--ink2); }
+.badge { display: inline-block; padding: 1px 8px; margin: 0 4px 6px 0; border-radius: 999px; border: 1px solid var(--axis); color: var(--ink2); font-size: 12px; }
+.badge.crit { color: var(--critical); border-color: var(--critical); }
+.mono { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 12px; color: var(--ink2); word-break: break-all; }
+.text { white-space: pre-wrap; margin: 8px 0 0; padding: 8px 10px; background: var(--page); border-radius: 8px; max-height: 40vh; overflow: auto; }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 8px 0 0; font-size: 13px; }
+.kv dt { color: var(--muted); } .kv dd { margin: 0; }
+.rel { display: block; width: 100%; text-align: left; padding: 6px 8px; margin: 0 0 4px; border: 1px solid var(--grid); border-radius: 8px;
+  background: none; cursor: pointer; }
+.rel:hover { background: var(--wash); }
+.rel .lead { display: flex; align-items: center; gap: 6px; }
+.rel .ev { display: block; margin-top: 3px; color: var(--ink2); font-size: 12px; font-style: italic; }
+.empty { color: var(--muted); }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th { text-align: left; font-weight: 600; color: var(--ink2); padding: 4px 6px; border-bottom: 1px solid var(--axis); position: sticky; top: -12px; background: var(--surface); }
+td.rl { white-space: nowrap; color: var(--ink2); }
+td .ev { margin-top: 2px; color: var(--ink2); font-style: italic; }
+td { padding: 5px 6px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+tbody tr { cursor: pointer; } tbody tr:hover { background: var(--wash); }
+#tip { position: fixed; z-index: 30; pointer-events: none; max-width: 340px; padding: 7px 10px; border-radius: 8px; font-size: 12px;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--axis); box-shadow: 0 6px 18px var(--ring); }
+#tip[hidden] { display: none; }
+#tip b { display: block; font-size: 13px; margin-bottom: 2px; }
+#tip span { color: var(--ink2); }
+.hint { color: var(--muted); font-size: 12px; }
+@media (max-width: 900px) {
+  main { grid-template-columns: 1fr; grid-template-rows: 60% 40%; }
+  aside { border-left: 0; border-top: 1px solid var(--grid); }
+  .search { margin-left: 0; width: 100%; } .search input { width: 100%; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="title"><h1 id="ttl"></h1><span class="stats" id="stats"></span></div>
+  <div class="row" id="chips"></div>
+  <div class="row legend" id="legend"></div>
+  <div class="row">
+    <button class="btn" id="b-fit" type="button">Vừa khung</button>
+    <button class="btn" id="b-relayout" type="button" title="Bỏ mọi ghim và xếp lại từ đầu">Xếp lại</button>
+    <span class="hint">Kéo một nút để ghim, bấm đúp để thả · cuộn để phóng to (khoản, điểm hiện nhãn khi đủ gần) · di chuột để xem nhanh</span>
+    <div class="search">
+      <input id="q" type="search" placeholder="Tìm: số Điều, mã, từ khoá…" autocomplete="off" aria-label="Tìm nút">
+      <div class="hits" id="hits" hidden></div>
+    </div>
+  </div>
+</header>
+<main>
+  <div id="cy" role="img" aria-label="Đồ thị; bảng cạnh ở thẻ bên phải có cùng nội dung dạng chữ"></div>
+  <aside>
+    <div class="tabs" role="tablist">
+      <button class="tab" id="tab-detail" role="tab" aria-selected="true" type="button">Chi tiết</button>
+      <button class="tab" id="tab-table" role="tab" aria-selected="false" type="button">Bảng cạnh</button>
+    </div>
+    <div class="pane" id="pane-detail" role="tabpanel"></div>
+    <div class="pane" id="pane-table" role="tabpanel" hidden></div>
+  </aside>
+</main>
+<div id="tip" hidden></div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>__CYTOSCAPE__</script>
+
+<script>
+(() => {
+'use strict';
+const DATA = JSON.parse(document.getElementById('data').textContent);
+const META = DATA.meta;
+const hash = new URLSearchParams(location.hash.slice(1));   // #sel=id&z=1.6  #tab=table  #theme=light|dark  #struct=0  #hover=id  (mở sẵn một trạng thái)
+if (hash.get('theme') === 'light' || hash.get('theme') === 'dark') document.documentElement.dataset.theme = hash.get('theme');
+const FONT = 'system-ui, -apple-system, "Segoe UI", sans-serif';
+const SIZE = { van_ban: 40, chuong: 30, dieu: 20, khoan: 12, diem: 9, dieu_kien: 24, da_dong: 16 };   // đường kính nút tròn theo bậc
+const TYPE_VI = { van_ban: 'Văn bản', chuong: 'Chương', dieu: 'Điều', khoan: 'Khoản', diem: 'Điểm',
+  dieu_kien: 'Điều kiện ngoại lệ', da_dong: 'Đơn vị đã đóng' };
+const SHORT = { refers_to: 'dẫn chiếu', exception_of: 'ngoại lệ', same_text_as: 'trùng chữ', amends: 'sửa đổi', replaces: 'thay thế', repeals: 'bãi bỏ' };
+const KIND_VI = { cu_the: 'cụ thể', tuy_nghi: 'tuỳ nghi (thoả thuận khác)', dan_chieu_mo: 'dẫn chiếu mở (pháp luật quy định khác)' };
+const STATUS_VI = { same_text: 'trùng chữ với một đơn vị khác', closed: 'đã đóng (không còn hiệu lực tại ngày này)' };
+const EDGE_STATUS_VI = { ok: '', dangling: 'treo: đích đã đóng', historical: 'đã đóng: đích không còn hiệu lực' };
+// p -> nhóm vẽ; vi: đọc xuôi (s p o), rev: đọc ngược (o được p bởi s)
+const SEM = {
+  refers_to: { group: 'refers', vi: 'dẫn chiếu tới', rev: 'được dẫn chiếu bởi' },
+  exception_of: { group: 'except', vi: 'là ngoại lệ của', rev: 'có ngoại lệ' },
+  same_text_as: { group: 'same', vi: 'trùng chữ với', rev: 'có bản trùng chữ' },
+  amends: { group: 'amend', vi: 'sửa đổi', rev: 'bị sửa đổi bởi' },
+  replaces: { group: 'amend', vi: 'thay thế', rev: 'bị thay thế bởi' },
+  repeals: { group: 'amend', vi: 'bãi bỏ', rev: 'bị bãi bỏ bởi' },
+};
+const GROUPS = [
+  { id: 'refers', label: 'dẫn chiếu', color: '--refers', arrow: 'triangle', dash: '' },
+  { id: 'except', label: 'ngoại lệ', color: '--except', arrow: 'tee', dash: '' },
+  { id: 'same', label: 'trùng chữ', color: '--same', arrow: 'none', dash: '4 3' },
+  { id: 'amend', label: 'văn bản sửa đổi', color: '--ink', arrow: 'triangle', dash: '' },
+  { id: 'struct', label: 'chứa / thuộc', color: '--axis', arrow: 'none', dash: '', structural: true },
+];
+const css = k => getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+const fold = s => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase();
+const clip = (s, n) => { s = (s || '').replace(/\s+/g, ' ').trim(); return s.length > n ? s.slice(0, n - 1) + '…' : s; };
+
+function el(tag, props, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(props || {})) {
+    if (k === 'class') e.className = v;
+    else if (k === 'text') e.textContent = v;
+    else if (k.startsWith('on')) e.addEventListener(k.slice(2), v);
+    else if (v !== false && v != null) e.setAttribute(k, v);
+  }
+  for (const c of kids.flat(Infinity)) { if (c == null || c === false) continue; e.append(c.nodeType ? c : document.createTextNode(String(c))); }
+  return e;
+}
+
+// ---------- mô hình ----------
+const byId = new Map(DATA.nodes.map(n => [n.id, n]));
+const kids = new Map();
+for (const n of DATA.nodes) if (n.parent && byId.has(n.parent)) { if (!kids.has(n.parent)) kids.set(n.parent, []); kids.get(n.parent).push(n.id); }
+const parentOf = id => { const p = byId.get(id).parent; return p && byId.has(p) ? p : null; };
+const sem = DATA.edges.map((e, i) => ({ ...e, i, group: SEM[e.p].group }));
+const incident = new Map();
+for (const e of sem) for (const end of [e.s, e.o]) { if (!incident.has(end)) incident.set(end, []); incident.get(end).push(e); }
+const treeLinks = DATA.nodes.filter(n => parentOf(n.id)).map(n => ({ s: parentOf(n.id), o: n.id }));
+
+function viId(id) {   // BLDS2015.D617.K1.dd -> Điều 617 khoản 1 điểm đ
+  const out = [];
+  for (const p of id.split('.').slice(1)) {
+    if (/^D\d/.test(p)) out.push('Điều ' + p.slice(1));
+    else if (/^K\d/.test(p)) out.push('khoản ' + p.slice(1));
+    else if (/^C[IVXL]+$/.test(p)) out.push('Chương ' + p.slice(1));
+    else out.push('điểm ' + (p === 'dd' ? 'đ' : p));
+  }
+  return out.join(' ') || id;
+}
+const compact = id => id.split('.').slice(1).map(p => /^D\d/.test(p) ? 'Đ' + p.slice(1) : /^C[IVXL]+$/.test(p) ? 'Ch.' + p.slice(1) : p === 'dd' ? 'đ' : p).join('.') || id;
+function shortLabel(n) {
+  switch (n.type) {
+    case 'van_ban': return n.number || n.id;
+    case 'chuong': return 'Ch.' + n.number;
+    case 'dieu': return 'Đ' + n.number;
+    case 'khoan': return 'K' + n.number;
+    case 'diem': return n.number;
+    case 'dieu_kien': return clip(n.text, 24);
+    default: return compact(n.id) + ' ✕';
+  }
+}
+function longLabel(n) {
+  if (n.type === 'chuong' || n.type === 'dieu') return shortLabel(n) + ' · ' + clip(n.heading, 34);
+  if (n.type === 'khoan' || n.type === 'diem') return compact(n.id) + ' ' + clip(n.text, 40);
+  return shortLabel(n);
+}
+for (const n of DATA.nodes) n._k = fold([n.id, viId(n.id), n.heading, n.text, n.number].join(' '));
+
+// ---------- mô phỏng lực ----------
+// Vị trí đầu là cây tròn đồng tâm (xác định, không ngẫu nhiên) rồi lực đẩy / lò xo / hút về tâm tinh chỉnh; cùng dữ liệu thì cùng hình.
+const sims = DATA.nodes.map(n => ({ id: n.id, r: SIZE[n.type] / 2, ch: -(40 + SIZE[n.type] * 5), x: 0, y: 0, vx: 0, vy: 0, fixed: false, fx: 0, fy: 0, moved: false }));
+const simOf = new Map(sims.map(s => [s.id, s]));
+const DIST = { chuong: 120, dieu: 80, khoan: 46, diem: 34 };   // độ dài mong muốn của cạnh cha-con, theo bậc của con
+const links = [
+  ...treeLinks.map(l => ({ s: simOf.get(l.s), t: simOf.get(l.o), dist: DIST[byId.get(l.o).type] || 60, w: 1 })),
+  ...sem.map(e => ({ s: simOf.get(e.s), t: simOf.get(e.o), dist: 140, w: 0.3 })),
+];
+{
+  const deg = new Map();
+  for (const l of links) { deg.set(l.s, (deg.get(l.s) || 0) + 1); deg.set(l.t, (deg.get(l.t) || 0) + 1); }
+  for (const l of links) { const a = deg.get(l.s), b = deg.get(l.t); l.k = l.w / Math.min(a, b); l.bias = a / (a + b); }
+}
+function seed() {
+  const w = new Map();
+  const weigh = id => { const ks = kids.get(id) || []; const v = ks.length ? ks.reduce((a, k) => a + weigh(k), 0) : 1; w.set(id, v); return v; };
+  const roots = DATA.nodes.filter(n => !parentOf(n.id) && kids.has(n.id)).map(n => n.id);
+  roots.forEach(weigh);
+  const total = roots.reduce((a, r) => a + w.get(r), 0);
+  const R = 110;
+  const place = (id, a1, a2, d) => {
+    const s = simOf.get(id), am = (a1 + a2) / 2;
+    s.x = d * R * Math.cos(am); s.y = d * R * Math.sin(am);
+    let cur = a1;
+    for (const k of kids.get(id) || []) { const span = (a2 - a1) * w.get(k) / w.get(id); place(k, cur, cur + span, d + 1); cur += span; }
+  };
+  let a0 = 0;
+  for (const r of roots) { const span = 2 * Math.PI * w.get(r) / total; place(r, a0, a0 + span, roots.length > 1 ? 1 : 0); a0 += span; }
+  let i = 0;   // nút ngoài cây: gần trung bình các nút nó nối tới, lệch ra ngoài một đoạn
+  const rest = DATA.nodes.filter(n => !w.has(n.id));
+  for (const n of rest) {
+    const ends = (incident.get(n.id) || []).map(e => simOf.get(e.s === n.id ? e.o : e.s)).filter(s => w.has(s.id));
+    const mx = ends.length ? ends.reduce((a, s) => a + s.x, 0) / ends.length : 0, my = ends.length ? ends.reduce((a, s) => a + s.y, 0) / ends.length : 0;
+    const ang = Math.atan2(my, mx) + (i++ % 7) * 0.05, len = Math.hypot(mx, my) + 160;
+    const s = simOf.get(n.id); s.x = len * Math.cos(ang); s.y = len * Math.sin(ang);
+  }
+  for (const s of sims) { s.vx = s.vy = 0; s.fixed = false; s.moved = false; }
+}
+let alpha = 1, running = false;
+const ALPHA_MIN = 0.002, DECAY = 1 - Math.pow(ALPHA_MIN, 1 / 300), MAXD2 = 480 * 480, GRAVITY = 0.035;
+function tick() {
+  alpha -= alpha * DECAY;
+  for (const l of links) {
+    const s = l.s, t = l.t;
+    let dx = t.x + t.vx - s.x - s.vx, dy = t.y + t.vy - s.y - s.vy;
+    const d = Math.hypot(dx, dy) || 1e-6, f = (d - l.dist) / d * alpha * l.k;
+    dx *= f; dy *= f;
+    t.vx -= dx * l.bias; t.vy -= dy * l.bias; s.vx += dx * (1 - l.bias); s.vy += dy * (1 - l.bias);
+  }
+  for (let i = 0; i < sims.length; i++) {
+    const a = sims[i];
+    for (let j = i + 1; j < sims.length; j++) {
+      const b = sims[j];
+      let dx = b.x - a.x, dy = b.y - a.y, d2 = dx * dx + dy * dy;
+      if (d2 > MAXD2) continue;
+      if (d2 < 1e-6) { dx = (i % 2 ? 1 : -1) * 0.01 * (j % 5 + 1); dy = (j % 2 ? 1 : -1) * 0.01 * (i % 5 + 1); d2 = dx * dx + dy * dy; }
+      const wa = b.ch * alpha / d2, wb = a.ch * alpha / d2;
+      a.vx += dx * wa; a.vy += dy * wa; b.vx -= dx * wb; b.vy -= dy * wb;
+      const min = a.r + b.r + 3;
+      if (d2 < min * min) {   // hai vòng tròn chạm nhau: đẩy tách ra
+        const d = Math.sqrt(d2), push = (min - d) / d * 0.35;
+        a.vx -= dx * push; a.vy -= dy * push; b.vx += dx * push; b.vy += dy * push;
+      }
+    }
+  }
+  for (const s of sims) {
+    if (s.fixed) { s.x = s.fx; s.y = s.fy; s.vx = s.vy = 0; continue; }
+    s.vx -= s.x * GRAVITY * alpha; s.vy -= s.y * GRAVITY * alpha;
+    s.vx *= 0.6; s.vy *= 0.6;
+    s.x += s.vx; s.y += s.vy;
+  }
+}
+function settle() { alpha = 1; for (let i = 0; i < 320; i++) tick(); alpha = 0; }
+
+// ---------- đồ thị ----------
+function styleSheet() {
+  const ink = css('--ink'), surface = css('--surface');
+  const s = [
+    { selector: 'node', style: { shape: 'ellipse', width: 'data(size)', height: 'data(size)', 'background-color': css('--n-khoan'), 'border-width': 1, 'border-color': css('--axis'),
+      label: 'data(short)', 'font-family': FONT, 'font-size': 10, color: css('--ink2'), 'text-valign': 'bottom', 'text-halign': 'center', 'text-margin-y': 3,
+      'text-background-color': surface, 'text-background-opacity': 0.75, 'text-background-padding': 1, 'min-zoomed-font-size': 7, 'z-index': 10, 'z-index-compare': 'manual',
+      'underlay-color': ink, 'underlay-opacity': 0, 'underlay-padding': 4, 'text-wrap': 'ellipsis', 'text-max-width': 150 } },
+    { selector: 'node[type="khoan"], node[type="diem"]', style: { 'font-size': 9, 'min-zoomed-font-size': 11 } },
+    { selector: 'node[type="khoan"][rel], node[type="diem"][rel]', style: { 'min-zoomed-font-size': 6 } },
+    { selector: 'node[type="dieu_kien"]', style: { 'border-color': css('--except'), color: css('--ink'), 'font-size': 9.5 } },
+    { selector: 'node[type="da_dong"]', style: { 'background-opacity': 0, 'border-style': 'dashed', 'border-width': 1.5, 'border-color': css('--critical') } },
+    { selector: 'node[status="same_text"]', style: { 'border-style': 'dashed', 'border-width': 2.5, 'border-color': css('--same') } },
+    { selector: 'node[rel]', style: { 'border-width': 2.5, 'border-color': ink } },
+    { selector: 'node[rel][status="same_text"]', style: { 'border-color': css('--same') } },
+    { selector: 'node.long, node.long2', style: { label: 'data(long)' } },
+    { selector: 'node.pinned', style: { 'underlay-opacity': 0.16 } },
+    { selector: 'node:selected', style: { 'border-width': 4, 'border-color': css('--refers'), 'border-style': 'solid' } },
+    { selector: 'node.hl', style: { 'border-width': 3, 'border-color': ink } },
+    { selector: '.dim', style: { opacity: 0.12, 'text-opacity': 0 } },
+    { selector: '.off', style: { display: 'none' } },
+    { selector: 'edge', style: { 'curve-style': 'bezier', width: 'data(wd)', 'line-color': ink, 'target-arrow-color': ink, 'target-arrow-shape': 'none', 'arrow-scale': 0.9,
+      opacity: 0.8, label: 'data(lbl)', 'font-family': FONT, 'font-size': 9.5, color: css('--ink2'), 'text-background-color': surface, 'text-background-opacity': 0.92,
+      'text-background-padding': 2, 'text-rotation': 'autorotate', 'overlay-padding': 5, 'z-index': 5, 'z-index-compare': 'manual' } },
+    { selector: 'edge[kind="tree"]', style: { 'curve-style': 'straight', width: 1, 'line-color': css('--axis'), label: '', events: 'no', opacity: 0.9, 'z-index': 1 } },
+    { selector: 'edge[group="refers"]', style: { 'line-color': css('--refers'), 'target-arrow-color': css('--refers'), 'target-arrow-shape': 'triangle' } },
+    { selector: 'edge[group="except"]', style: { 'line-color': css('--except'), 'target-arrow-color': css('--except'), 'target-arrow-shape': 'tee' } },
+    { selector: 'edge[group="same"]', style: { 'line-color': css('--same'), 'line-style': 'dashed', 'line-dash-pattern': [4, 3] } },
+    { selector: 'edge[group="amend"]', style: { 'target-arrow-shape': 'triangle' } },
+    { selector: 'edge[status="historical"]', style: { 'line-style': 'dotted' } },
+    { selector: 'edge[status="dangling"]', style: { 'line-color': css('--critical'), 'target-arrow-color': css('--critical'), 'line-style': 'dashed', 'line-dash-pattern': [5, 3], color: css('--critical') } },
+    { selector: 'edge.hl', style: { opacity: 1, width: 2.6, 'z-index': 9 } },
+    { selector: 'edge:selected', style: { opacity: 1, width: 3.2, 'overlay-opacity': 0.14, 'overlay-color': ink } },
+  ];
+  for (const t of ['van_ban', 'chuong', 'dieu', 'khoan', 'diem', 'dieu_kien'])
+    s.splice(1, 0, { selector: `node[type="${t}"]`, style: { 'background-color': css('--n-' + t) } });
+  return s;
+}
+seed(); settle();
+const cy = cytoscape({ container: document.getElementById('cy'), elements: [], style: styleSheet(), minZoom: 0.1, maxZoom: 4, boxSelectionEnabled: false });
+cy.batch(() => {
+  for (const n of DATA.nodes) {
+    const s = simOf.get(n.id);
+    const rel = incident.has(n.id);   // khoản / điểm có quan hệ ngữ nghĩa mang mã đầy đủ ngay từ đầu, còn lại chỉ hiện nhãn ngắn khi phóng to
+    cy.add({ group: 'nodes', data: { id: n.id, type: n.type, status: n.status, size: SIZE[n.type], short: rel && (n.type === 'khoan' || n.type === 'diem') ? compact(n.id) : shortLabel(n), long: longLabel(n), ...(rel ? { rel: 1 } : {}) },
+      position: { x: s.x, y: s.y } });
+  }
+  for (const l of treeLinks) cy.add({ group: 'edges', data: { id: 't:' + l.o, source: l.s, target: l.o, kind: 'tree', group: 'struct', wd: 1, lbl: '' } });
+  for (const e of sem) {
+    let lbl = e.group === 'amend' ? SEM[e.p].vi : '';
+    if (e.status === 'dangling') lbl = '⚠ treo';
+    const ed = cy.add({ group: 'edges', data: { id: 's' + e.i, source: e.s, target: e.o, kind: 'sem', p: e.p, group: e.group, status: e.status, wd: 2, lbl } });
+    ed.scratch('row', e);
+  }
+});
+const cyNode = new Map(cy.nodes().map(n => [n.id(), n]));
+const simOfNode = id => simOf.get(id);
+
+function applyPositions() {
+  cy.batch(() => { for (const s of sims) if (!s.fixed) cyNode.get(s.id).position({ x: s.x, y: s.y }); });
+}
+function frame() {
+  tick(); tick();
+  applyPositions();
+  if (alpha > ALPHA_MIN) requestAnimationFrame(frame); else running = false;
+}
+function kick(a) { alpha = Math.max(alpha, a); if (!running) { running = true; requestAnimationFrame(frame); } }
+function fitAll(animate) {
+  const eles = cy.elements().not('.off');
+  if (animate === false) cy.fit(eles, 40); else cy.animate({ fit: { eles, padding: 40 } }, { duration: 250 });
+}
+function relayout() {
+  cy.nodes().removeClass('pinned');
+  seed(); settle(); applyPositions(); fitAll(false);
+}
+
+cy.on('grab', 'node', ev => { const s = simOf.get(ev.target.id()); s.fixed = true; s.moved = false; s.fx = s.x; s.fy = s.y; kick(0.3); });
+cy.on('drag', 'node', ev => { const s = simOf.get(ev.target.id()), p = ev.target.position(); s.fx = s.x = p.x; s.fy = s.y = p.y; s.moved = true; kick(0.3); });
+cy.on('free', 'node', ev => { const s = simOf.get(ev.target.id()); if (s.moved) ev.target.addClass('pinned'); else s.fixed = false; });
+cy.on('dbltap', 'node', ev => { const s = simOf.get(ev.target.id()); s.fixed = false; ev.target.removeClass('pinned'); kick(0.3); });
+
+let longOn = false, long2On = false;   // phóng to dần thì nhãn dài dần: Chương / Điều từ 1,5; Khoản / Điểm từ 2,4
+cy.on('zoom', () => {
+  const z = cy.zoom(), on = z >= 1.5, on2 = z >= 2.4;
+  if (on !== longOn) { longOn = on; cy.nodes('[type="chuong"], [type="dieu"]').toggleClass('long', on); }
+  if (on2 !== long2On) { long2On = on2; cy.nodes('[type="khoan"], [type="diem"]').toggleClass('long2', on2); }
+});
+
+// ---------- chip lọc / chú giải ----------
+function lineKey(g) {
+  const ns = 'http://www.w3.org/2000/svg', color = `var(${g.color})`;
+  const svg = document.createElementNS(ns, 'svg');
+  svg.setAttribute('width', 34); svg.setAttribute('height', 12); svg.setAttribute('viewBox', '0 0 34 12'); svg.setAttribute('aria-hidden', 'true');
+  const line = document.createElementNS(ns, 'line');
+  for (const [k, v] of Object.entries({ x1: 1, y1: 6, x2: g.arrow === 'none' ? 33 : 26, y2: 6, stroke: color, 'stroke-width': g.structural ? 1.5 : 2 })) line.setAttribute(k, v);
+  if (g.dash) line.setAttribute('stroke-dasharray', g.dash);
+  svg.append(line);
+  if (g.arrow === 'triangle') { const p = document.createElementNS(ns, 'polygon'); p.setAttribute('points', '33,6 25,2 25,10'); p.setAttribute('fill', color); svg.append(p); }
+  if (g.arrow === 'tee') { const t = document.createElementNS(ns, 'line'); for (const [k, v] of Object.entries({ x1: 30, y1: 1, x2: 30, y2: 11, stroke: color, 'stroke-width': 2.5 })) t.setAttribute(k, v); svg.append(t); }
+  return svg;
+}
+const active = new Set(GROUPS.map(g => g.id));
+if (hash.get('struct') === '0') active.delete('struct');
+function applyFilter() {
+  cy.edges().forEach(e => e.toggleClass('off', !active.has(e.data('group'))));
+}
+function buildChips() {
+  const box = document.getElementById('chips');
+  for (const g of GROUPS) {
+    const n = g.structural ? treeLinks.length : sem.filter(e => e.group === g.id).length;
+    if (!n) continue;
+    const cb = el('input', { type: 'checkbox' });
+    cb.checked = active.has(g.id);
+    const chip = el('label', { class: 'chip' + (cb.checked ? '' : ' off'), title: 'Bật / tắt loại cạnh này' }, cb, lineKey(g), el('span', { text: g.label }), el('span', { class: 'n', text: String(n) }));
+    cb.addEventListener('change', () => { cb.checked ? active.add(g.id) : active.delete(g.id); chip.classList.toggle('off', !cb.checked); applyFilter(); buildTable(); });
+    box.append(chip);
+  }
+  const lg = document.getElementById('legend');
+  const sw = (style, label, cls) => el('span', null, el('i', { class: 'sw c' + (cls ? ' ' + cls : ''), style }), label);
+  lg.append(sw('background:var(--n-van_ban)', 'Văn bản'), sw('background:var(--n-chuong)', 'Chương'), sw('background:var(--n-dieu)', 'Điều'),
+    sw('background:var(--n-khoan)', 'Khoản'), sw('background:var(--n-diem)', 'Điểm'));
+  if (DATA.nodes.some(n => n.type === 'dieu_kien')) lg.append(sw('background:var(--n-dieu_kien);border-color:var(--except)', 'Điều kiện ngoại lệ'));
+  lg.append(sw('border:2.5px solid var(--ink);background:var(--n-khoan)', 'Viền đậm: có quan hệ ngữ nghĩa'));
+  if (DATA.nodes.some(n => n.status === 'same_text')) lg.append(sw('border-color:var(--same);border-width:2.5px', 'Trùng chữ', 'dash'));
+  if (DATA.nodes.some(n => n.type === 'da_dong')) lg.append(sw('border-color:var(--critical)', 'Đã đóng', 'dash'));
+  if (sem.some(e => e.status === 'dangling')) lg.append(el('span', { style: 'color:var(--critical)' }, '⚠ cạnh treo: đích đã đóng'));
+}
+
+// ---------- khung chi tiết ----------
+const detail = document.getElementById('pane-detail');
+const groupOf = e => GROUPS.find(g => g.id === e.group);
+function relButton(e, id) {
+  const out = e.s === id, other = out ? e.o : e.s, meta = SEM[e.p];
+  return el('button', { class: 'rel', type: 'button', onclick: () => showEdge(e) },
+    el('span', { class: 'lead' }, lineKey(groupOf(e)), el('span', null, `${out ? meta.vi : meta.rev} `, el('b', { text: viId(other) }))),
+    e.status !== 'ok' ? el('span', { class: 'badge crit', text: EDGE_STATUS_VI[e.status] }) : null,
+    e.evidence ? el('span', { class: 'ev', text: '“' + clip(e.evidence, 160) + '”' }) : null);
+}
+function showNode(id) {
+  const n = byId.get(id), box = detail;
+  box.replaceChildren();
+  box.append(el('h2', { text: viId(id) }),
+    el('div', null, el('span', { class: 'badge', text: TYPE_VI[n.type] }),
+      STATUS_VI[n.status] ? el('span', { class: 'badge' + (n.status === 'closed' ? ' crit' : ''), text: STATUS_VI[n.status] }) : null,
+      n.kind ? el('span', { class: 'badge', text: 'loại: ' + (KIND_VI[n.kind] || n.kind) }) : null),
+    el('div', { class: 'mono', text: n.id }));
+  if (n.heading) box.append(el('p', { text: n.heading, style: 'margin:8px 0 0;font-weight:600' }));
+  const kv = [['Số hiệu', n.type === 'van_ban' ? n.number : null], ['Cơ quan', n.co_quan], ['Ngày ban hành', n.ngay_ban_hanh], ['Hiệu lực từ', n.hieu_luc],
+    ['Phiên bản', n.version], ['Hiệu lực từ ngày', n.effective_from], ['Dòng trong file nguồn', n.source_line]].filter(([, v]) => v != null);
+  if (kv.length) box.append(el('dl', { class: 'kv' }, kv.map(([k, v]) => [el('dt', { text: k }), el('dd', { text: String(v) })])));
+  if (n.text) box.append(el('div', { class: 'text', text: n.text }));
+  box.append(el('p', null, el('button', { class: 'btn', type: 'button', onclick: () => focusNeighbors(id) }, 'Phóng vào láng giềng')));
+  const par = parentOf(id), ks = kids.get(id) || [];
+  if (par) box.append(el('h3', { text: 'Thuộc' }), el('div', { class: 'kidlist' }, el('button', { class: 'btn', type: 'button', onclick: () => goTo(par), text: viId(par) })));
+  if (ks.length) box.append(el('h3', { text: `Gồm ${ks.length} đơn vị con` }),
+    el('div', { class: 'kidlist' }, ks.slice(0, 30).map(k => el('button', { class: 'btn', type: 'button', onclick: () => goTo(k), text: compact(k).split('.').pop() })), ks.length > 30 ? el('span', { class: 'hint', text: `… và ${ks.length - 30} đơn vị nữa` }) : null));
+  const inc = incident.get(id) || [];
+  box.append(el('h3', { text: `Quan hệ ngữ nghĩa (${inc.length})` }));
+  if (!inc.length) box.append(el('p', { class: 'empty', text: 'Nút này không có cạnh ngữ nghĩa.' }));
+  inc.forEach(e => box.append(relButton(e, id)));
+  showTab('detail');
+}
+function showEdge(e) {
+  const meta = SEM[e.p], box = detail;
+  box.replaceChildren();
+  const go = id => el('button', { class: 'rel', type: 'button', onclick: () => goTo(id) },
+    el('b', { text: viId(id) }), byId.get(id) && byId.get(id).text ? el('span', { class: 'ev', text: clip(byId.get(id).text, 140) }) : null);
+  box.append(el('h2', { text: `${viId(e.s)} ${meta.vi} ${viId(e.o)}` }),
+    el('div', null, el('span', { class: 'badge', text: e.p }), e.status !== 'ok' ? el('span', { class: 'badge crit', text: EDGE_STATUS_VI[e.status] }) : null),
+    el('h3', { text: 'Từ' }), go(e.s), el('h3', { text: 'Tới' }), go(e.o));
+  if (e.evidence) box.append(el('h3', { text: 'Chứng cứ trong văn bản' }), el('div', { class: 'text', text: e.evidence }));
+  const kv = [['Cách tìm ra', e.method], ['Nguồn dữ liệu', (e.sources || []).join(', ')]].filter(([, v]) => v);
+  if (kv.length) box.append(el('dl', { class: 'kv' }, kv.map(([k, v]) => [el('dt', { text: k }), el('dd', { text: String(v) })])));
+  if (e.evidences && e.evidences.length > 1) box.append(el('h3', { text: 'Các chứng cứ khác' }), e.evidences.map(t => el('div', { class: 'text', text: t })));
+  cy.elements().unselect();
+  cy.getElementById('s' + e.i).select();
+  showTab('detail');
+}
+function select(id) {
+  cy.elements().unselect();
+  cyNode.get(id).select();
+  showNode(id);
+}
+function centerOn(id, zoom, instant) {
+  const p = cyNode.get(id).position(), z = zoom || Math.max(cy.zoom(), 1.2), c = document.getElementById('cy');
+  const to = { zoom: z, pan: { x: c.clientWidth / 2 - p.x * z, y: c.clientHeight / 2 - p.y * z } };
+  if (instant) cy.viewport(to); else cy.animate(to, { duration: 300 });
+}
+function goTo(id) { select(id); centerOn(id, Math.max(cy.zoom(), 1.6)); }
+function focusNeighbors(id) { const n = cyNode.get(id); cy.animate({ fit: { eles: n.closedNeighborhood().not('.off'), padding: 70 } }, { duration: 300 }); }
+function fitTo(ids) {
+  const eles = cy.collection();
+  ids.forEach(id => eles.merge(cyNode.get(id)));
+  cy.animate({ fit: { eles, padding: 120 } }, { duration: 300 });
+}
+
+// ---------- bảng cạnh (bản chữ của đồ thị) ----------
+function buildTable() {
+  const pane = document.getElementById('pane-table');
+  const rows = sem.filter(e => active.has(e.group));
+  const tbody = el('tbody');
+  rows.forEach(e => {
+    const note = e.status !== 'ok' ? EDGE_STATUS_VI[e.status] : clip(e.evidence, 100);
+    tbody.append(el('tr', { tabindex: 0, onclick: () => { showEdge(e); fitTo([e.s, e.o]); }, onkeydown: ev => { if (ev.key === 'Enter') ev.currentTarget.click(); } },
+      el('td', { text: viId(e.s) }),
+      el('td', { class: 'rl' }, lineKey(groupOf(e)), el('div', { text: SHORT[e.p] })),
+      el('td', null, el('div', { text: viId(e.o) }), note ? el('div', { class: 'ev', text: note }) : null)));
+  });
+  pane.replaceChildren(el('p', { class: 'hint', text: `${rows.length} cạnh ngữ nghĩa (theo các loại đang bật). Bấm một dòng để tới cạnh đó.` }),
+    el('table', null, el('thead', null, el('tr', null, ['Từ', 'Quan hệ', 'Tới'].map(h => el('th', { text: h })))), tbody));
+}
+function showTab(t) {
+  for (const k of ['detail', 'table']) {
+    document.getElementById('tab-' + k).setAttribute('aria-selected', String(k === t));
+    document.getElementById('pane-' + k).hidden = k !== t;
+  }
+}
+
+// ---------- tìm kiếm ----------
+const q = document.getElementById('q'), hitsBox = document.getElementById('hits');
+let hits = [], hi = -1;
+function search() {
+  const toks = fold(q.value).split(/\s+/).filter(Boolean);
+  hits = toks.length ? DATA.nodes.filter(n => toks.every(t => n._k.includes(t))).slice(0, 12) : [];
+  hi = hits.length ? 0 : -1;
+  hitsBox.replaceChildren(...hits.map((n, i) => el('button', { class: 'hit' + (i === hi ? ' on' : ''), type: 'button', onclick: () => pick(n.id) },
+    el('b', { text: viId(n.id) }), el('small', { text: n.heading || clip(n.text, 90) }))));
+  if (toks.length && !hits.length) hitsBox.replaceChildren(el('div', { class: 'empty', style: 'padding:6px 8px', text: 'Không có kết quả' }));
+  hitsBox.hidden = !toks.length;
+}
+function pick(id) { hitsBox.hidden = true; goTo(id); }
+q.addEventListener('input', search);
+q.addEventListener('keydown', ev => {
+  if (ev.key === 'Enter' && hits[hi]) pick(hits[hi].id);
+  else if (ev.key === 'Escape') hitsBox.hidden = true;
+  else if (ev.key === 'ArrowDown' || ev.key === 'ArrowUp') {
+    ev.preventDefault();
+    hi = (hi + (ev.key === 'ArrowDown' ? 1 : -1) + hits.length) % Math.max(hits.length, 1);
+    [...hitsBox.children].forEach((c, i) => c.classList.toggle('on', i === hi));
+  }
+});
+document.addEventListener('click', ev => { if (!ev.target.closest('.search')) hitsBox.hidden = true; });
+
+// ---------- tương tác trên đồ thị ----------
+const tip = document.getElementById('tip');
+const placeTip = ev => { const e = ev.originalEvent; if (!e) return; tip.style.left = Math.min(e.clientX + 14, innerWidth - 360) + 'px'; tip.style.top = Math.min(e.clientY + 14, innerHeight - 120) + 'px'; };
+function hoverNode(n) {
+  const d = byId.get(n.id());
+  const near = n.closedNeighborhood().not('.off');
+  cy.elements().difference(near).addClass('dim');
+  near.edges().addClass('hl'); n.addClass('hl');
+  tip.replaceChildren(el('b', { text: viId(d.id) + (d.heading ? ' — ' + d.heading : '') }), el('span', { text: clip(d.text, 200) }));
+  tip.hidden = false;
+}
+cy.on('tap', 'node', ev => select(ev.target.id()));
+cy.on('tap', 'edge[kind="sem"]', ev => showEdge(ev.target.scratch('row')));
+cy.on('tap', ev => { if (ev.target === cy) cy.elements().unselect(); });
+cy.on('mouseover', 'node', ev => hoverNode(ev.target));
+cy.on('mousemove', 'node', placeTip);
+cy.on('mouseout', 'node', () => { cy.elements().removeClass('dim hl'); tip.hidden = true; });
+cy.on('mouseover', 'edge[kind="sem"]', ev => {
+  const m = ev.target.scratch('row');
+  tip.replaceChildren(el('b', { text: `${viId(m.s)} ${SEM[m.p].vi} ${viId(m.o)}` }), el('span', { text: clip(m.evidence, 200) }));
+  tip.hidden = false;
+});
+cy.on('mousemove', 'edge', placeTip);
+cy.on('mouseout', 'edge', () => { tip.hidden = true; });
+
+document.getElementById('b-fit').addEventListener('click', () => fitAll());
+document.getElementById('b-relayout').addEventListener('click', relayout);
+document.getElementById('tab-detail').addEventListener('click', () => showTab('detail'));
+document.getElementById('tab-table').addEventListener('click', () => showTab('table'));
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => cy.style(styleSheet()));
+
+// ---------- khởi động ----------
+document.getElementById('ttl').textContent = document.title;
+document.getElementById('stats').textContent =
+  `${DATA.nodes.length} nút · ${treeLinks.length + sem.length} cạnh (${treeLinks.length} cấu trúc + ${sem.length} ngữ nghĩa)`;
+buildChips(); buildTable(); applyFilter();
+cy.fit(cy.elements().not('.off'), 40);
+if (hash.get('sel') && byId.has(hash.get('sel'))) { select(hash.get('sel')); centerOn(hash.get('sel'), Number(hash.get('z')) || 1.6, true); }
+else detail.append(el('p', { class: 'empty', text: 'Bấm một nút tròn để xem chi tiết. Kéo để ghim, bấm đúp để thả. Cuộn để phóng to.' }));
+if (hash.get('tab') === 'table') showTab('table');
+if (hash.get('hover') && byId.has(hash.get('hover'))) hoverNode(cyNode.get(hash.get('hover')));
+window.__kg = { cy, goTo, sims, tick, relayout };   // để kiểm tra bằng trình duyệt không giao diện
+})();
+</script>
+</body>
+</html>

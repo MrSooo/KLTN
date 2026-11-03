@@ -7,7 +7,7 @@ import tempfile
 from pathlib import Path
 from types import SimpleNamespace
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # -I không tự thêm thư mục script
 import a4_llm
 import a4_versions as a4
 

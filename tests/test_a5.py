@@ -1,6 +1,6 @@
 """A5: kiểm tra bốn phép kiểm (1-3 trên A1-A3, 4 trên A4 khi có --versions) bằng dữ liệu dựng tay có bơm lỗi, rồi trên file thật.
 
-Chạy: python -I src/test_a5.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy: python -I tests/test_a5.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
 Chạy a5_checks.py cho cả hai file trước (python -I src/a5_checks.py <file md>), test_reports_on_disk đọc báo cáo đã ghi.
 Bước 4 (4a-4f): chạy a4_versions.py apply cho dev01+dev02, dev04_bo_sung (mẫu) và dev01_full (p4), rồi a5_checks.py <md> --versions
 <file> cho từng bộ; test_versions_on_disk đọc file versions, test_reports_on_disk đọc báo cáo bước 4 đã ghi (xem VERSIONS_ON_DISK).
@@ -13,7 +13,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # -I không tự thêm thư mục script
 import a2_edges as a2
 import a3_exceptions as a3
 import a5_checks as a5
@@ -549,7 +549,7 @@ VERSIONS_ON_DISK = [(SAMPLE_FILE, "dev01+dev02", 37), (SAMPLE_FILE, "dev04_bo_su
 
 
 def versions_file(name):
-    return a2.PROCESSED_DIR / f"a4_{name}_versions.jsonl"
+    return a2.PROCESSED_DIR / "a4" / name / f"a4_{name}_versions.jsonl"
 
 def raw_lines(path):
     return path.read_text(encoding="utf-8").split("\n")
@@ -612,7 +612,7 @@ def test_reports_on_disk():
         assert path.exists(), f"{name}: chưa có {path}; chạy python -I src/a5_checks.py {md} --versions {versions_file(name)}"
         text = path.read_text(encoding="utf-8")
         assert f"A5 báo cáo kiểm tra: {md.stem}" in text and "[4d]" in text and "[4e]" in text and text.endswith("\nKẾT LUẬN: ĐẠT\n"), name
-        assert f"data/processed/a4_{name}_versions.jsonl" in text, name  # đường dẫn tương đối, không dính đường dẫn máy
+        assert f"data/processed/a4/{name}/a4_{name}_versions.jsonl" in text, name  # đường dẫn tương đối, không dính đường dẫn máy
 
 
 def main():

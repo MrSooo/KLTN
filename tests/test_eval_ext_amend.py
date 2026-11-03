@@ -3,7 +3,8 @@ import collections
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 import eval_ext_amend as ev
 
 # Kết quả khoá ở chế độ off (không LLM): ca nào văn phạm chuẩn nhận được, ca nào dừng.

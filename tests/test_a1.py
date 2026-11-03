@@ -1,6 +1,6 @@
 """Chặng 3: kiểm tra đầu ra của a1_parse trên file mẫu rồi file đầy đủ.
 
-Chạy: python -I src/test_a1.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy: python -I tests/test_a1.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
 """
 import collections
 import functools
@@ -11,7 +11,7 @@ import tempfile
 import unicodedata
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # -I không tự thêm thư mục script
 import a1_parse as a1
 
 SAMPLE_FILE = a1.ROOT / "data" / "sample" / "blds2015_5dieu.md"

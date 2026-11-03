@@ -210,4 +210,4 @@ I6. Tái lập: mỗi lần gọi lưu data/llm_cache/a4/<khoá>.json (khoá = s
     dùng proposer / client giả. Chỉ thị qua LLM có via = "llm"; báo cáo có mục "Khối chuẩn hoá bằng LLM" (khối, số lần đề xuất, mô
     hình, khoá, các dòng chuẩn) khi có khối như vậy.
 I7. Đo: bộ kiểm thử ngoài data/ext_amend/cases_blds2015_p4.json (19 câu chỉ thị nguyên văn của Luật 85/2025/QH15, chỉ đổi số hiệu,
-    cụm từ, nội dung sang BLDS), chạy bằng src/eval_ext_amend.py. Với --llm off: 9 qua đường nhanh, 10 dừng có lỗi, 0 áp sai.
+    cụm từ, nội dung sang BLDS), chạy bằng tests/eval_ext_amend.py. Với --llm off: 9 qua đường nhanh, 10 dừng có lỗi, 0 áp sai.

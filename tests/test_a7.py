@@ -1,6 +1,6 @@
 """A7: kiểm tra đồ thị gộp: gộp bộ ba, bản sao text, cạnh treo, kiểm 7a-7f, ghi file, trạng thái gốc rồi theo ngày (nạp A4).
 
-Chạy: python -I src/test_a7.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy: python -I tests/test_a7.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
 Chạy a6_general_exceptions.py rồi a7_graph.py cho cả hai file trước (python -I src/<file>.py <file md>); test_files_on_disk đọc file đã ghi.
 Các test theo ngày tự chạy a4.apply_series vào thư mục tạm, không cần file a4_* trên đĩa.
 """
@@ -12,7 +12,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # -I không tự thêm thư mục script
 import a2_edges as a2
 import a3_exceptions as a3
 import a4_versions as a4
@@ -363,12 +363,14 @@ def mini_world(tmp, changes=None, amend=()):
         a1 += [{"s": code, "p": "type", "o": t}, {"s": code, "p": "number", "o": code.rsplit(".", 1)[-1]}]
         a1.append({"s": code, "p": "text", "o": text})
     e = lambda s, p, o, ev="": {"s": s, "p": p, "o": o, "evidence": ev}
-    (tmp / "a1_triples_mini.jsonl").write_text(jl(a1), encoding="utf-8")
-    (tmp / "a2_edges_mini.jsonl").write_text(jl([e("X.D1", "contains", "X.D1.K1"), e("X.D1.K1", "part_of", "X.D1"),
+    for step in ("a1", "a2", "a3"):
+        (tmp / step).mkdir(exist_ok=True)
+    (tmp / "a1" / "a1_triples_mini.jsonl").write_text(jl(a1), encoding="utf-8")
+    (tmp / "a2" / "a2_edges_mini.jsonl").write_text(jl([e("X.D1", "contains", "X.D1.K1"), e("X.D1.K1", "part_of", "X.D1"),
                                                  e("X.D1", "contains", "X.D1.K2"), e("X.D1.K2", "part_of", "X.D1")]), encoding="utf-8")
-    (tmp / "a2_refs_mini.jsonl").write_text(jl([e("X.D1.K1", "refers_to", "X.D2", "Điều 2"), e("X.D1.K2", "refers_to", "X.D2", "Điều 2"),
+    (tmp / "a2" / "a2_refs_mini.jsonl").write_text(jl([e("X.D1.K1", "refers_to", "X.D2", "Điều 2"), e("X.D1.K2", "refers_to", "X.D2", "Điều 2"),
                                                 e("X.D2", "refers_to", "X.D1", "Điều 1")]), encoding="utf-8")
-    (tmp / "a3_exceptions_mini.jsonl").write_text(jl([{**e("X.D1.K2", "exception_of", "X.D1.K1", "x"), "method": "not_apply_pattern"}]),
+    (tmp / "a3" / "a3_exceptions_mini.jsonl").write_text(jl([{**e("X.D1.K2", "exception_of", "X.D1.K1", "x"), "method": "not_apply_pattern"}]),
                                                   encoding="utf-8")
     versions = [vrow("X.D1", 1, "dieu", "Quy tắc chung."),
                 vrow("X.D1.K1", 1, "khoan", MINI_UNITS["X.D1.K1"][1], None, "2027-01-01"),

@@ -1,7 +1,7 @@
 """A3: cạnh exception_of tường minh, chỉ hai quy tắc riêng (không có bộ khớp tổng quát).
 
 Đầu vào: triples của A1 (a2.read_units) và cạnh contains của A2a (a2.build_edges).
-Đầu ra: data/processed/a3_exceptions_<stem>.jsonl (s, p, o, evidence, method) và docs/a3_unhandled_<stem>.txt.
+Đầu ra: data/processed/a3/a3_exceptions_<stem>.jsonl (s, p, o, evidence, method) và docs/a3_unhandled_<stem>.txt.
 Chiều cạnh: s là phần ngoại lệ, o là quy tắc bị ngoại trừ.
 
   Quy tắc 1, not_apply_pattern: đơn vị U có "không áp dụng". Nếu cụm dẫn chiếu (a2.CHAIN_RE) đứng NGAY trước nó, chỉ
@@ -35,7 +35,7 @@ LIST_END = "sau đây:"
 
 
 def exceptions_path(src):
-    return a2.PROCESSED_DIR / f"a3_exceptions_{Path(src).stem}.jsonl"
+    return a2.PROCESSED_DIR / "a3" / f"a3_exceptions_{Path(src).stem}.jsonl"
 
 
 def unhandled_path(src):

@@ -10,7 +10,7 @@ from typing import NamedTuple
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLE = ROOT / "data" / "raw" / "blds2015_p4.md"
-PROCESSED_DIR = ROOT / "data" / "processed"
+PROCESSED_DIR = ROOT / "data" / "processed"  # mỗi bước ghi vào thư mục con riêng: a1/, a2/, ..., a8/
 
 DOC_PREFIX = "BLDS2015"  # tiền tố id: BLDS2015.D621.K1.a (Điểm đ viết thành dd: BLDS2015.D1.K1.dd)
 
@@ -340,7 +340,7 @@ def write_notes(notes, path):
 
 
 def triples_path(src):
-    return PROCESSED_DIR / f"a1_triples_{Path(src).stem}.jsonl"
+    return PROCESSED_DIR / "a1" / f"a1_triples_{Path(src).stem}.jsonl"
 
 
 def notes_path(src):
@@ -369,7 +369,7 @@ def step3_parse(path=SAMPLE):
 
 
 def step4_write_triples(path=SAMPLE):
-    """Step 4: ghi triples JSONL vào data/processed/. Từ chối ghi nếu còn lỗi parse."""
+    """Step 4: ghi triples JSONL vào data/processed/a1/. Từ chối ghi nếu còn lỗi parse."""
     _, parsed = load_parsed(path)
     fail_if_errors(parsed)
     triples = to_triples(parsed.units, parsed.chapters)

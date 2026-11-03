@@ -91,8 +91,8 @@ Cập nhật 2026-10-25 sau khi đối chiếu `DRAFT_Proposal_v5.docx` (đề c
 | # | Việc | Trạng thái |
 |---|---|---|
 | 3.1 | Đổi `duplicate` → `same_text` | Đã làm. Ghi chú: "khử trùng lặp thực thể" đúng nghĩa của đề cương nằm ở sổ khái niệm (mục 4b), không ở A7 |
-| 3.2a | Khung đáp án gán tay: mẫu 11 Điều theo quy tắc, `src/eval_gold.py` tính precision/recall | Đã làm phần khung; **chờ học viên hỗ trợ gán** `data/gold/gold_blds2015_p4.tsv` (đề cương Tầng 2). Còn thiếu: cột loại ngoại lệ (phản bác / vô hiệu hoá) |
-| 3.2b | Bộ kiểm thử ngoài cho A4: 19 câu chỉ thị nguyên văn của Luật 85/2025/QH15 (Công báo), chỉ đổi số hiệu / cụm từ / nội dung sang BLDS; `src/eval_ext_amend.py` | Đã làm. `--llm off`: 9 đường nhanh, 10 dừng có lỗi, 0 áp sai. Không thay được bộ sửa đổi giả định của học viên hỗ trợ (đề cương Nội dung 4) |
+| 3.2a | Khung đáp án gán tay: mẫu 11 Điều theo quy tắc, `tests/eval_gold.py` tính precision/recall | Đã làm phần khung; **chờ học viên hỗ trợ gán** `data/gold/gold_blds2015_p4.tsv` (đề cương Tầng 2). Còn thiếu: cột loại ngoại lệ (phản bác / vô hiệu hoá) |
+| 3.2b | Bộ kiểm thử ngoài cho A4: 19 câu chỉ thị nguyên văn của Luật 85/2025/QH15 (Công báo), chỉ đổi số hiệu / cụm từ / nội dung sang BLDS; `tests/eval_ext_amend.py` | Đã làm. `--llm off`: 9 đường nhanh, 10 dừng có lỗi, 0 áp sai. Không thay được bộ sửa đổi giả định của học viên hỗ trợ (đề cương Nội dung 4) |
 | 3.3 | ~~Mở rộng văn phạm A4 theo từng mẫu câu~~ → **thay bằng hướng C**: tầng chuẩn hoá khối bằng LLM (Claude Sonnet 5.5) có kiểm ký hiệu, `--llm off/replay/live` | Đã làm code và test (proposer/client giả). **Chưa chạy live**: cần API key; ước tính chi phí cho 10 ca cần LLM vài nghìn đồng. Thiết kế: `docs/a4_quyet_dinh.txt` mục I |
 | 3.4 | Đăng ký văn bản thay hằng số theo tên file | Bỏ (Q2: chỉ BLDS 2015) |
 | 3.5 | F-19, F-20, F-21 | Chỉ ghi lại là giới hạn |

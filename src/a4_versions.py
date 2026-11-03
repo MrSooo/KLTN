@@ -5,7 +5,7 @@ Chạy: python -I src/a4_versions.py apply --base <md gốc> --amend DOC [--amen
       python -I src/a4_versions.py snapshot --name NAME --date YYYY-MM-DD [--out PATH]
 
 apply: nạp văn bản gốc (a1.load_parsed) và cạnh gốc của A2/A3 (chỉ đọc), áp từng văn bản sửa đổi theo ngày hiệu lực.
-  Không lỗi: ghi data/processed/a4_<name>_{versions,amend_edges,edge_changes}.jsonl, a4_<name>_{changed,impact}.json
+  Không lỗi: ghi data/processed/a4/<name>/a4_<name>_{versions,amend_edges,edge_changes}.jsonl, a4_<name>_{changed,impact}.json
   và docs/a4_report_<name>.txt, thoát 0. Có lỗi (bất kỳ kiểm nào): chỉ ghi docs/a4_report_<name>.txt, thoát 1.
 --llm: dòng lạ mặc định là lỗi; replay/live cho khối chứa nó qua tầng chuẩn hoá (normalize_block, a4_llm.py; quyết định I1-I6).
 snapshot: đơn vị đang hiệu lực tại ngày T, xuất Markdown cùng quy ước với file BLDS gốc (stdout hoặc --out).
@@ -31,8 +31,8 @@ import a2_edges as a2
 import a3_exceptions as a3
 
 ROOT = a1.ROOT
-IN_DIR = a2.PROCESSED_DIR     # file A1/A2/A3 đã sinh, chỉ đọc
-OUT_DIR = a2.PROCESSED_DIR    # file dữ liệu A4 (test đổi sang thư mục tạm)
+IN_DIR = a2.PROCESSED_DIR     # thư mục gốc chứa a1/, a2/, a3/ đã sinh, chỉ đọc
+OUT_DIR = a2.PROCESSED_DIR / "a4"  # file dữ liệu A4, mỗi văn bản một thư mục con (test đổi sang thư mục tạm)
 DOCS_DIR = ROOT / "docs"
 DOC_PREFIX = a1.DOC_PREFIX
 BASE_EFFECTIVE = a1.BASE_DOC["hieu_luc"]  # effective_from của phiên bản 1; văn bản sửa đổi phải có hiệu lực sau ngày này
@@ -1010,7 +1010,7 @@ def read_jsonl(path):
 
 def load_base_edges(stem):
     """Cạnh gốc: contains/part_of (A2a), refers_to (A2b), exception_of (A3), chỉ đọc."""
-    paths = [IN_DIR / f"a2_edges_{stem}.jsonl", IN_DIR / f"a2_refs_{stem}.jsonl", IN_DIR / f"a3_exceptions_{stem}.jsonl"]
+    paths = [IN_DIR / "a2" / f"a2_edges_{stem}.jsonl", IN_DIR / "a2" / f"a2_refs_{stem}.jsonl", IN_DIR / "a3" / f"a3_exceptions_{stem}.jsonl"]
     rows = []
     for p in paths:
         if not p.exists():
@@ -1432,7 +1432,7 @@ def apply_series(base, amends, name=None):
 # ---- ghi file, báo cáo ----
 
 def path_of(name, kind, ext="jsonl"):
-    return OUT_DIR / f"a4_{name}_{kind}.{ext}"
+    return OUT_DIR / name / f"a4_{name}_{kind}.{ext}"
 
 
 def report_path(name):

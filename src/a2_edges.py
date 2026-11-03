@@ -1,6 +1,6 @@
 """A2a: cạnh cấu trúc contains / part_of giữa Chương > Điều > Khoản > Điểm (Chương chỉ khi file nguồn có tiêu đề Chương).
 
-Chỉ đọc triples của A1 (data/processed/a1_triples_<stem>.jsonl), không import a1_parse: nếu A1 đánh mã sai thì
+Chỉ đọc triples của A1 (data/processed/a1/a1_triples_<stem>.jsonl), không import a1_parse: nếu A1 đánh mã sai thì
 lỗi hiện ra ở đây thay vì bị che, vì cha được suy từ chuỗi mã còn kiểm tra dùng thuộc tính type của A1.
 
 Chạy: python -I src/a2_edges.py <file md nguồn>          (bắt buộc truyền path, không có mặc định)
@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import NamedTuple
 
 ROOT = Path(__file__).resolve().parent.parent
-PROCESSED_DIR = ROOT / "data" / "processed"
+PROCESSED_DIR = ROOT / "data" / "processed"  # mỗi bước ghi vào thư mục con riêng: a1/, a2/, ..., a8/
 
 # Loại của cha mà mỗi loại con phải có. Nguồn là thuộc tính type của A1, độc lập với chuỗi mã.
 PARENT_TYPE = {"khoan": "dieu", "diem": "khoan"}
@@ -30,11 +30,11 @@ KEPT_ATTRS = REQUIRED_ATTRS + ("text", CHUONG)
 
 
 def triples_path(src):
-    return PROCESSED_DIR / f"a1_triples_{Path(src).stem}.jsonl"
+    return PROCESSED_DIR / "a1" / f"a1_triples_{Path(src).stem}.jsonl"
 
 
 def edges_path(src):
-    return PROCESSED_DIR / f"a2_edges_{Path(src).stem}.jsonl"
+    return PROCESSED_DIR / "a2" / f"a2_edges_{Path(src).stem}.jsonl"
 
 
 def load_units(path):
@@ -262,7 +262,7 @@ LEVEL_TYPE = ("dieu", "khoan", "diem")      # thuộc tính type của A1 theo c
 
 
 def refs_path(src):
-    return PROCESSED_DIR / f"a2_refs_{Path(src).stem}.jsonl"
+    return PROCESSED_DIR / "a2" / f"a2_refs_{Path(src).stem}.jsonl"
 
 
 def unresolved_path(src):

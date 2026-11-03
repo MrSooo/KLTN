@@ -1,7 +1,7 @@
 """Đo precision / recall của cạnh refers_to và exception_of so với đáp án do người gán (review F-17, plan bước 3.2a).
 
-Chạy: python -I src/eval_gold.py <file md nguồn> --template   (sinh bảng đơn vị và file đáp án trống; không ghi đè file đã có)
-      python -I src/eval_gold.py <file md nguồn>              (chấm; cần đã chạy A7 và đã gán xong file đáp án)
+Chạy: python -I tests/eval_gold.py <file md nguồn> --template   (sinh bảng đơn vị và file đáp án trống; không ghi đè file đã có)
+      python -I tests/eval_gold.py <file md nguồn>              (chấm; cần đã chạy A7 và đã gán xong file đáp án)
 
 Mẫu: các Điều có số chia 5 dư (609 mod 5), tức 609, 614, ..., 659 (SAMPLE_STEP). Chọn theo quy tắc cố định, không theo kết quả
 của pipeline, để mẫu không thiên về chỗ pipeline làm tốt.
@@ -21,7 +21,7 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # -I không tự thêm thư mục script
 import a1_parse as a1
 import a2_edges as a2
 import a6_general_exceptions as a6
@@ -169,7 +169,7 @@ def write_template(src):
     if not units_path(src).exists():
         L = [f"# Đơn vị của mẫu gán tay ({Path(src).stem})", "",
              "Đọc từng đơn vị và ghi vào file gold_*.tsv cùng thư mục MỌI dẫn chiếu và MỌI ngoại lệ mà bạn thấy, kể cả ngoại lệ",
-             "ngầm. Đừng mở file kết quả của pipeline (data/processed/a2_refs_*, a6_*, a7_*) trước khi gán xong.", ""]
+             "ngầm. Đừng mở file kết quả của pipeline (data/processed/a2/a2_refs_*, a6/, a7/) trước khi gán xong.", ""]
         for n in nodes:
             if n["type"] in ("dieu", "khoan", "diem") and a2.dieu_of(n["id"]) in dieu:
                 head = f"Điều {n['number']}. {n['heading']}" if n["type"] == "dieu" else ""
@@ -181,7 +181,7 @@ def write_template(src):
         units_path(src).write_text("\n".join(L) + "\n", encoding="utf-8")
         written.append(units_path(src))
     if not gold_path(src).exists():
-        L = [TODO, "# Đổi dòng trên thành '# trang_thai: da_gan' khi gán xong. Cách ghi: xem docstring src/eval_gold.py.",
+        L = [TODO, "# Đổi dòng trên thành '# trang_thai: da_gan' khi gán xong. Cách ghi: xem docstring tests/eval_gold.py.",
              "# Ví dụ (xoá đi):  refers_to<TAB>D617.K1<TAB>D616.K1<TAB><TAB>",
              '#                  exception_of<TAB>"có thỏa thuận khác"<TAB>D615.K1<TAB><TAB>',
              "\t".join(COLUMNS)]

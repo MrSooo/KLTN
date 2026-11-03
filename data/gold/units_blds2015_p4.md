@@ -1,7 +1,7 @@
 # Đơn vị của mẫu gán tay (blds2015_p4)
 
 Đọc từng đơn vị và ghi vào file gold_*.tsv cùng thư mục MỌI dẫn chiếu và MỌI ngoại lệ mà bạn thấy, kể cả ngoại lệ
-ngầm. Đừng mở file kết quả của pipeline (data/processed/a2_refs_*, a6_*, a7_*) trước khi gán xong.
+ngầm. Đừng mở file kết quả của pipeline (data/processed/a2/a2_refs_*, a6/, a7/) trước khi gán xong.
 
 - `D609` Điều 609. Quyền thừa kế
   > Cá nhân có quyền lập di chúc để định đoạt tài sản của mình; để lại tài sản của mình cho người thừa kế theo pháp luật; hưởng di sản theo di chúc hoặc theo pháp luật.

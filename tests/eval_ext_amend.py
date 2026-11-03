@@ -1,6 +1,6 @@
 """Bộ kiểm thử ngoài của A4: câu chỉ thị thật của Luật 85/2025/QH15, đổi số hiệu sang BLDS 2015 phần thừa kế (plan bước 3.2b).
 
-Chạy: python -I src/eval_ext_amend.py [--llm off|replay|live]   (mặc định replay; live cần .venv/bin/python và ANTHROPIC_API_KEY)
+Chạy: python -I tests/eval_ext_amend.py [--llm off|replay|live]   (mặc định replay; live cần .venv/bin/python và ANTHROPIC_API_KEY)
 
 Mỗi ca trong data/ext_amend/cases_blds2015_p4.json là một văn bản sửa đổi riêng: phần đầu chuẩn + các dòng van_ban_bld (giữ khung câu
 của cau_goc, chỉ đổi số hiệu, cụm từ, nội dung trong nháy) + câu hiệu lực. Áp lên blds2015_p4 bằng a4.apply_series rồi so (op, đích)
@@ -18,7 +18,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # -I không tự thêm thư mục script
 import a4_versions as a4
 
 ROOT = Path(__file__).resolve().parent.parent
