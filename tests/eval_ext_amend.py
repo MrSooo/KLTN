@@ -82,7 +82,7 @@ def format_report(mode, results, provider="claude"):
     count = collections.Counter(r for _, r, _, _ in results)
     shown = f"--llm {mode}" + (f" --provider {provider}" if mode != "off" and provider != "claude" else "")
     L = [f"Bộ kiểm thử ngoài của A4 (chế độ {shown})",
-         f"nguồn câu gốc: {SOURCE.relative_to(ROOT)} (Luật 85/2025/QH15, Công báo số 953 + 954 ngày 21/07/2025)",
+         f"nguồn câu gốc: {SOURCE.relative_to(ROOT).as_posix()} (Luật 85/2025/QH15, Công báo số 953 + 954 ngày 21/07/2025)",
          f"ca: {len(results)} | " + " | ".join(f"{k} {count.get(k, 0)}" for k in OUTCOMES) +
          f" | gọi API lần này: {getattr(evaluate, 'api_calls', 0)}", ""]
     for case, outcome, detail, _ in results:
