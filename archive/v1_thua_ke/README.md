@@ -2,7 +2,7 @@
 
 Dọn ngày 07/11/2026 để chuyển sang Bộ luật Lao động (nhánh `v2-lao-dong`). Mọi thứ ở đây giữ **nguyên đường dẫn gốc** (ví dụ `data/raw/blds2015_p4.md` nằm ở `archive/v1_thua_ke/data/raw/blds2015_p4.md`), nên khôi phục chỉ cần `git mv` ngược lại.
 
-## Đã archive (205 file)
+## Đã archive (209 file, không tính README này)
 | Mục | Số file | Vì sao |
 |---|---|---|
 | `data/raw/blds2015_p4.md`, `data/sample/`, `data/dev_amend/`, `data/ext_amend/`, `data/gold/` | 14 | dữ liệu đầu vào của lĩnh vực cũ |
@@ -11,10 +11,13 @@ Dọn ngày 07/11/2026 để chuyển sang Bộ luật Lao động (nhánh `v2-l
 | `docs/bao_cao_chay/` | 37 | báo cáo chữ do code sinh khi chạy trên dữ liệu cũ |
 | `docs/quyet_dinh/pham_vi_mo_rong.txt` | 1 | lập luận "BLDS không có chế tài", không còn đúng với luật lao động |
 | `report/tong_hop/` | 3 | báo cáo tổng hợp cho thầy về v1 (md, html, bảng tổng quan) |
-| `plan/kien_thuc/phep_thu_do_phu_dan_chieu_2026-10-09.md` | 1 | phép đo độ phủ dẫn chiếu riêng cho Điều 609-662 |
 | `plan/de_cuong/`, `plan/ke_hoach/` | 3 | đề cương nộp trường, kế hoạch hoàn thành, kế hoạch tăng tốc: đã hết hiệu lực theo `KeHoach_KB_LaoDong_Agent_2026-11-06` mục 0 |
+| `plan/kien_thuc/` | 2 | `phep_thu_do_phu_dan_chieu` (phép đo độ phủ dẫn chiếu Điều 609-662), `giai_thich_khai_niem` (giải thích phương pháp, ví dụ thừa kế) |
+| `plan/thiet_ke/` | 3 | `huong_dan_so_khai_niem_r1r4`, `ban_giao_bat_dau_lam` (định nghĩa bước B-D, C1-C4, bộ quét), `so_quyet_dinh` |
 
-**Cố ý KHÔNG archive** (còn dùng cho v2): `src/`, `tests/`, `utils/` (code sẽ refactor tại chỗ), `docs/quyet_dinh/a4_*` và `a6_a7_*` (mô tả hành vi code), `report/review/` và `report/ky_thuat/`, `plan/thiet_ke/` (R1-R4, định nghĩa bước B-D, bộ quét), `plan/kien_thuc/giai_thich_khai_niem.md` (giải thích phương pháp, ví dụ thừa kế nhưng khái niệm dùng chung).
+Tổng 209 file đã chuyển bằng `git mv` (205 ngày 07/11 đợt 1, 4 file đợt 2). **Đọc khi tới bước cần:** plan mới (L7-L9) nhắc R1-R4, C1-C4, "bộ quét 5 loại lỗi", "kế hoạch cũ"; các định nghĩa đó nằm ở `plan/thiet_ke/` và `plan/de_cuong/` trong thư mục này. Chỉ đọc, rồi viết bản cho lao động ở ngoài archive.
+
+**Cố ý KHÔNG archive** (mô tả code còn ở `src/`, sẽ dọn ví dụ v1 dần theo từng bước L): `src/`, `tests/`, `utils/`, `docs/quyet_dinh/a4_*` và `a6_a7_*`, `docs/ref/KetQua_*`, `report/review/`, `report/ky_thuat/`.
 
 ## Khôi phục
 - Một mục: `git mv archive/v1_thua_ke/<đường dẫn> <đường dẫn>`.
