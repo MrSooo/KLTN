@@ -65,6 +65,7 @@ Quy ước dữ liệu: id dạng `<doc_id>.D154.K8a.b` (hậu tố chữ như `
 ## 5. Việc đang dở (user cập nhật tay)
 
 - Nhánh `v2-lao-dong` (tách từ `refactor` tại `25c65e6`). Đã dọn v1 vào `archive/v1_thua_ke/`, nạp `data/raw/labor/`, đặt plan chuẩn ở `plan/ke_hoach/`. **Chưa bắt đầu L0.**
+- **Đổi máy / phiên mới không có memory: đọc `docs/ban_giao_2026-11-07.md` trước** (cách dựng lại, thứ không nằm trong git, quyết định đã chốt, việc kế tiếp).
 - Không có hạn cứng "12/2026". Ưu tiên làm từng bước, duyệt kỹ, không đốt cháy giai đoạn.
 - Đã chốt 07/11: `docs/llm_config.md` (model nhẹ: chính `gemini-3.5-flash-lite`, kiểm độc lập `gemini-3.8-flash`); `KhaoSat` đặt bản cắt; heldout đã xoá khỏi repo; thư mục staging `NEW_UPDATE/` đã dọn.
 - **Còn sót v1 có chủ đích, dọn dần theo từng bước L (quy tắc 10):** tên và hằng BLDS trong `src/`, `tests/` (kể cả `eval_gold.py`, `eval_ext_amend.py` và test của chúng, vốn gắn dữ liệu v1) và `utils/` (xử lý ở L0); ví dụ v1 trong `docs/quyet_dinh/a4_*`, `a6_a7_*`, `docs/ref/KetQua_*`, `report/ky_thuat/`, `report/review/`.
