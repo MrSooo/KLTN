@@ -1,0 +1,55 @@
+{
+ "key": "d7306b5adc88aee2a3f7",
+ "provider": "gemini",
+ "model": "gemini-3.6-flash",
+ "requested_model": "gemini-3.6-flash",
+ "prompt_version": "a4c-1",
+ "created": "2026-11-04T12:02:11+00:00",
+ "request_id": "sR7rar-9JNH03LUPua-BuQI",
+ "block": "1. Sửa đổi, bổ sung điểm a khoản 1 và điểm b khoản 2 Điều 617 như sau:\na) Sửa đổi, bổ sung điểm a khoản 1 như sau:\n“a) Nội dung mới (giả định);”.\nb) Sửa đổi, bổ sung điểm b khoản 2 như sau:\n“b) Nội dung mới (giả định);”.",
+ "feedback": null,
+ "output": {
+  "chi_thi": [
+   {
+    "op": "replace_unit",
+    "quan_he": "amends",
+    "dich": [
+     {
+      "dieu": "617",
+      "khoan": "1",
+      "diem": "a"
+     }
+    ],
+    "vao_sau": null,
+    "noi_dung": "a) Nội dung mới (giả định);",
+    "kieu_cum": null,
+    "cum_cu": null,
+    "cum_moi": null
+   },
+   {
+    "op": "replace_unit",
+    "quan_he": "amends",
+    "dich": [
+     {
+      "dieu": "617",
+      "khoan": "2",
+      "diem": "b"
+     }
+    ],
+    "vao_sau": null,
+    "noi_dung": "b) Nội dung mới (giả định);",
+    "kieu_cum": null,
+    "cum_cu": null,
+    "cum_moi": null
+   }
+  ],
+  "khong_xu_ly_duoc": null
+ },
+ "usage": {
+  "prompt_token_count": 1035,
+  "candidates_token_count": 166,
+  "thoughts_token_count": 705,
+  "cached_content_token_count": null,
+  "total_token_count": 1906
+ }
+}

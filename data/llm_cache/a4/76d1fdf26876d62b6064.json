@@ -1,0 +1,55 @@
+{
+ "key": "76d1fdf26876d62b6064",
+ "provider": "gemini",
+ "model": "gemini-3.6-flash",
+ "requested_model": "gemini-3.6-flash",
+ "prompt_version": "a4c-1",
+ "created": "2026-11-04T12:00:47+00:00",
+ "request_id": "ZR7rau7SH-nj694P5eTb0Ac",
+ "block": "9. Sửa đổi, bổ sung tên Điều và khoản 1 Điều 644 như sau:\na) Sửa đổi, bổ sung tên Điều như sau:\n“Điều 644. Tên mới (giả định)”;\nb) Sửa đổi, bổ sung khoản 1 Điều 644 như sau:\n“1. Nội dung mới (giả định):\na) Ý thứ nhất;\nb) Ý thứ hai.”.",
+ "feedback": null,
+ "output": {
+  "chi_thi": [
+   {
+    "op": "rename_heading",
+    "quan_he": "amends",
+    "dich": [
+     {
+      "dieu": "644",
+      "khoan": null,
+      "diem": null
+     }
+    ],
+    "vao_sau": null,
+    "noi_dung": "Điều 644. Tên mới (giả định)",
+    "kieu_cum": null,
+    "cum_cu": null,
+    "cum_moi": null
+   },
+   {
+    "op": "replace_unit",
+    "quan_he": "amends",
+    "dich": [
+     {
+      "dieu": "644",
+      "khoan": "1",
+      "diem": null
+     }
+    ],
+    "vao_sau": null,
+    "noi_dung": "1. Nội dung mới (giả định):\na) Ý thứ nhất;\nb) Ý thứ hai.",
+    "kieu_cum": null,
+    "cum_cu": null,
+    "cum_moi": null
+   }
+  ],
+  "khong_xu_ly_duoc": null
+ },
+ "usage": {
+  "prompt_token_count": 1047,
+  "candidates_token_count": 182,
+  "thoughts_token_count": 976,
+  "cached_content_token_count": null,
+  "total_token_count": 2205
+ }
+}

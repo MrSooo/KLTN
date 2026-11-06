@@ -1,0 +1,59 @@
+{
+ "key": "3b52ded3267841d9785d",
+ "provider": "gemini",
+ "model": "gemini-3.6-flash",
+ "requested_model": "gemini-3.6-flash",
+ "prompt_version": "a4c-1",
+ "created": "2026-11-04T12:03:01+00:00",
+ "request_id": "8R7ras-yI67VqfkPstCb6AE",
+ "block": "6. Sửa đổi, bổ sung một số khoản của Điều 643 như sau:\na) Bổ sung khoản 4a vào sau khoản 4 như sau:\n“4a. Nội dung mới (giả định).”.\nb) Sửa đổi, bổ sung khoản 5 như sau:\n“5. Nội dung mới (giả định).”.",
+ "feedback": null,
+ "output": {
+  "chi_thi": [
+   {
+    "op": "insert_unit",
+    "quan_he": "amends",
+    "dich": [
+     {
+      "dieu": "643",
+      "khoan": "4a",
+      "diem": null
+     }
+    ],
+    "vao_sau": {
+     "dieu": "643",
+     "khoan": "4",
+     "diem": null
+    },
+    "noi_dung": "4a. Nội dung mới (giả định).",
+    "kieu_cum": null,
+    "cum_cu": null,
+    "cum_moi": null
+   },
+   {
+    "op": "replace_unit",
+    "quan_he": "amends",
+    "dich": [
+     {
+      "dieu": "643",
+      "khoan": "5",
+      "diem": null
+     }
+    ],
+    "vao_sau": null,
+    "noi_dung": "5. Nội dung mới (giả định).",
+    "kieu_cum": null,
+    "cum_cu": null,
+    "cum_moi": null
+   }
+  ],
+  "khong_xu_ly_duoc": null
+ },
+ "usage": {
+  "prompt_token_count": 1028,
+  "candidates_token_count": 183,
+  "thoughts_token_count": 412,
+  "cached_content_token_count": null,
+  "total_token_count": 1623
+ }
+}

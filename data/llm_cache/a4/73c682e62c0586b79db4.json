@@ -1,0 +1,49 @@
+{
+ "key": "73c682e62c0586b79db4",
+ "provider": "gemini",
+ "model": "gemini-3.6-flash",
+ "requested_model": "gemini-3.6-flash",
+ "prompt_version": "a4c-1",
+ "created": "2026-11-04T12:00:37+00:00",
+ "request_id": "Xx7rao27E-Tu694PmrCmgQ4",
+ "block": "31. Thay thế cụm từ “từ chối nhận di sản” bằng cụm từ “khước từ di sản” tại khoản 1 và khoản 3 Điều 620, Điều 622.",
+ "feedback": null,
+ "output": {
+  "chi_thi": [
+   {
+    "op": "phrase",
+    "quan_he": "replaces",
+    "dich": [
+     {
+      "dieu": "620",
+      "khoan": "1",
+      "diem": null
+     },
+     {
+      "dieu": "620",
+      "khoan": "3",
+      "diem": null
+     },
+     {
+      "dieu": "622",
+      "khoan": null,
+      "diem": null
+     }
+    ],
+    "vao_sau": null,
+    "noi_dung": null,
+    "kieu_cum": "replace",
+    "cum_cu": "từ chối nhận di sản",
+    "cum_moi": "khước từ di sản"
+   }
+  ],
+  "khong_xu_ly_duoc": null
+ },
+ "usage": {
+  "prompt_token_count": 996,
+  "candidates_token_count": 125,
+  "thoughts_token_count": 550,
+  "cached_content_token_count": null,
+  "total_token_count": 1671
+ }
+}

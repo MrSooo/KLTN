@@ -1,0 +1,55 @@
+{
+ "key": "dcd9cc4b33e2622a5607",
+ "provider": "gemini",
+ "model": "gemini-3.6-flash",
+ "requested_model": "gemini-3.6-flash",
+ "prompt_version": "a4c-1",
+ "created": "2026-11-04T12:02:20+00:00",
+ "request_id": "xB7rao3rF5C03LUP0PqHsAw",
+ "block": "2. Sửa đổi, bổ sung điểm c và điểm d khoản 1 Điều 631 như sau:\n“c) Nội dung mới (giả định);\nd) Nội dung điểm d mới (giả định).”.",
+ "feedback": null,
+ "output": {
+  "chi_thi": [
+   {
+    "op": "replace_unit",
+    "quan_he": "amends",
+    "dich": [
+     {
+      "dieu": "631",
+      "khoan": "1",
+      "diem": "c"
+     }
+    ],
+    "vao_sau": null,
+    "noi_dung": "c) Nội dung mới (giả định);",
+    "kieu_cum": null,
+    "cum_cu": null,
+    "cum_moi": null
+   },
+   {
+    "op": "replace_unit",
+    "quan_he": "amends",
+    "dich": [
+     {
+      "dieu": "631",
+      "khoan": "1",
+      "diem": "d"
+     }
+    ],
+    "vao_sau": null,
+    "noi_dung": "d) Nội dung điểm d mới (giả định).",
+    "kieu_cum": null,
+    "cum_cu": null,
+    "cum_moi": null
+   }
+  ],
+  "khong_xu_ly_duoc": null
+ },
+ "usage": {
+  "prompt_token_count": 998,
+  "candidates_token_count": 168,
+  "thoughts_token_count": 1066,
+  "cached_content_token_count": null,
+  "total_token_count": 2232
+ }
+}

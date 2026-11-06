@@ -1,0 +1,55 @@
+{
+ "key": "e61353f5f8b203fa1dc0",
+ "provider": "gemini",
+ "model": "gemini-3.6-flash",
+ "requested_model": "gemini-3.6-flash",
+ "prompt_version": "a4c-1",
+ "created": "2026-11-04T12:02:31+00:00",
+ "request_id": "zR7raoWpHuWFz7sPgYHxwQ8",
+ "block": "4. Sửa đổi, bổ sung, thay thế cụm từ tại một số khoản của Điều 620 như sau:\na) Thay thế cụm từ “từ chối nhận di sản” bằng cụm từ “khước từ di sản” tại khoản 2;\nb) Sửa đổi, bổ sung khoản 3 như sau:\n“3. Nội dung mới (giả định).”.",
+ "feedback": null,
+ "output": {
+  "chi_thi": [
+   {
+    "op": "phrase",
+    "quan_he": "replaces",
+    "dich": [
+     {
+      "dieu": "620",
+      "khoan": "2",
+      "diem": null
+     }
+    ],
+    "vao_sau": null,
+    "noi_dung": null,
+    "kieu_cum": "replace",
+    "cum_cu": "từ chối nhận di sản",
+    "cum_moi": "khước từ di sản"
+   },
+   {
+    "op": "replace_unit",
+    "quan_he": "amends",
+    "dich": [
+     {
+      "dieu": "620",
+      "khoan": "3",
+      "diem": null
+     }
+    ],
+    "vao_sau": null,
+    "noi_dung": "3. Nội dung mới (giả định).",
+    "kieu_cum": null,
+    "cum_cu": null,
+    "cum_moi": null
+   }
+  ],
+  "khong_xu_ly_duoc": null
+ },
+ "usage": {
+  "prompt_token_count": 1036,
+  "candidates_token_count": 165,
+  "thoughts_token_count": 438,
+  "cached_content_token_count": null,
+  "total_token_count": 1639
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "key": "6741508d2d86d5305c05",
+ "provider": "gemini",
+ "model": "gemini-3.6-flash",
+ "requested_model": "gemini-3.6-flash",
+ "prompt_version": "a4c-1",
+ "created": "2026-11-04T11:58:34+00:00",
+ "request_id": "4x3rauixMefv694P5JesyQc",
+ "block": "10. Sửa đổi, bổ sung, bãi bỏ một số khoản của Điều 658 như sau:\na) Sửa đổi, bổ sung khoản 6 như sau:\n“6. Nội dung mới (giả định):\na) Ý thứ nhất;\nb) Ý thứ hai.\nĐoạn tiếp theo (giả định).”.\nb) Bãi bỏ khoản 7.",
+ "feedback": null,
+ "output": {
+  "chi_thi": [
+   {
+    "op": "replace_unit",
+    "quan_he": "amends",
+    "dich": [
+     {
+      "dieu": "658",
+      "khoan": "6",
+      "diem": null
+     }
+    ],
+    "vao_sau": null,
+    "noi_dung": "6. Nội dung mới (giả định):\na) Ý thứ nhất;\nb) Ý thứ hai.\nĐoạn tiếp theo (giả định).",
+    "kieu_cum": null,
+    "cum_cu": null,
+    "cum_moi": null
+   },
+   {
+    "op": "repeal_unit",
+    "quan_he": "amends",
+    "dich": [
+     {
+      "dieu": "658",
+      "khoan": "7",
+      "diem": null
+     }
+    ],
+    "vao_sau": null,
+    "noi_dung": null,
+    "kieu_cum": null,
+    "cum_cu": null,
+    "cum_moi": null
+   }
+  ],
+  "khong_xu_ly_duoc": null
+ },
+ "usage": {
+  "prompt_token_count": 1036,
+  "candidates_token_count": 181,
+  "thoughts_token_count": 343,
+  "cached_content_token_count": null,
+  "total_token_count": 1560
+ }
+}
