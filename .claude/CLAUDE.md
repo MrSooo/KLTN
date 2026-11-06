@@ -16,7 +16,9 @@ Mục tiêu của user là **hiểu và kiểm soát được mình đang làm g
 
 ## 2. Dự án là gì
 
-Pipeline biến Bộ luật Dân sự 2015 (phần 4, Điều 609-662) thành đồ thị tri thức, có cập nhật theo phiên bản khi có văn bản sửa đổi. Đồ án tốt nghiệp; báo cáo cho thầy ở `report/tong_hop/tong_hop_cong_viec.md`.
+Pipeline biến Bộ luật Lao động 45/2019 (bản gốc) và các văn bản dưới luật (nghị định, thông tư, nghị quyết, bản hợp nhất) thành cơ sở tri thức **thích nghi theo ngày hiệu lực**: mỗi văn bản là một sự kiện nạp, tạo phiên bản mới và đóng phiên bản cũ. Đồ án tốt nghiệp. **Plan chuẩn:** `plan/ke_hoach/ke_hoach_kb_laodong_agent_2026-11-06.md` (bước L0-L11). Bản v1 (Bộ luật Dân sự 2015 phần 4, thừa kế) đã đóng băng ở commit `25c65e6` và nằm trong `archive/v1_thua_ke/` (xem README ở đó).
+
+Bảng dưới là **code v1 (bước A)**, đang được refactor tại chỗ theo plan: L1 mở rộng A1, L2 mở rộng A2, L5 là A3/A6 cho mọi văn bản, L6 mở rộng A4 (phần lõi của đợt này). L3, L4, L7-L11 là bước mới.
 
 | Bước | File | Việc |
 |---|---|---|
@@ -29,34 +31,39 @@ Pipeline biến Bộ luật Dân sự 2015 (phần 4, Điều 609-662) thành đ
 | A7 | `src/a7_graph.py` | đồ thị gộp |
 | A8 | `utils/a8/` | trang HTML xem đồ thị (tùy chọn, không thuộc báo cáo A1-A7) |
 
-Thư mục: `src/` (a1..a7 + `run_all.py`), `tests/` (mọi `test_*.py` và `eval_*.py`), `utils/` (A8, `render_report.py`), `data/` (`raw`, `sample`, `dev_amend`, `ext_amend`, `gold`, `processed/<bước>/`), `docs/`, `report/`, `plan/` (xem dưới). Đừng dựng lại `.work/` hay `result/` (đã bỏ).
+Thư mục: `src/` (a1..a7 + `run_all.py`), `tests/` (mọi `test_*.py` và `eval_*.py`), `utils/` (A8, `render_report.py`), `data/` (`raw/labor/{base,dev,manifest.csv}`, `processed/<bước>/` do code tạo), `docs/`, `report/`, `plan/`, `archive/v1_thua_ke/` (v1, xem dưới). Đừng dựng lại `.work/` hay `result/` (đã bỏ).
 
-Bố cục tài liệu (tên file chữ thường, `snake_case`; bước mới B trở đi theo cùng cấu trúc):
-- `docs/quyet_dinh/`: quyết định kỹ thuật và phạm vi, viết tay (`a4_quyet_dinh.txt`, `a6_a7_quyet_dinh.txt`, `pham_vi_mo_rong.txt`).
-- `docs/bao_cao_chay/<bước>/` (`a1/ … a7/`, `eval/`): báo cáo chữ do code sinh ra mỗi lần chạy, không sửa tay.
-- `report/`: `tong_hop/` (báo cáo tổng hợp cho thầy, md và html), `ky_thuat/` (giải thích code A1-A7), `review/` (rà soát và kế hoạch sửa A1-A7).
-- `plan/`: tài liệu hoạch định chép từ project web, theo nhóm `de_cuong/`, `ke_hoach/`, `thiet_ke/`, `kien_thuc/`. Không sửa nội dung; đường dẫn dạng `claude/…` trong đó là của project web.
+Bố cục tài liệu (tên file chữ thường, `snake_case`; bước mới theo cùng cấu trúc):
+- `docs/quyet_dinh/`: quyết định kỹ thuật, viết tay (`a4_quyet_dinh.txt`, `a6_a7_quyet_dinh.txt` mô tả hành vi code; bước mới thêm file cùng kiểu).
+- `docs/bao_cao_chay/<bước>/`: báo cáo chữ do code sinh ra mỗi lần chạy, không sửa tay. Thư mục này **không còn** trong cây (bản v1 ở archive); code sẽ tạo lại khi chạy bước tương ứng.
+- `docs/ref/`: tài liệu tham khảo plan trỏ tới (`KetQua_A1_A4`, `KetQua_A5`: bản cũ 22-23/10, chỉ lấy quy ước và giới hạn đã ghi; số liệu, đường dẫn, mã `BLDS2015` trong đó là của v1). `docs/llm_config.md`: model, temperature, ngày khoá (xem mục 4).
+- `report/`: `ky_thuat/` (giải thích code A1-A7 của v1), `review/` (rà soát và kế hoạch sửa A1-A7, các lỗi fail-open cần sửa khi refactor). `tong_hop/` (báo cáo cho thầy) sẽ viết lại cho v2; bản v1 ở archive.
+- `plan/`: tài liệu hoạch định chép từ project web: `ke_hoach/` (plan chuẩn), `thiet_ke/` (R1-R4, định nghĩa bước B-D và bộ quét, sổ quyết định), `kien_thuc/` (giải thích phương pháp, ví dụ thừa kế). Không sửa nội dung; đường dẫn dạng `claude/…` trong đó là của project web. Plan cũ ở `archive/v1_thua_ke/plan/`.
 
-Quy ước dữ liệu: id dạng `BLDS2015.D621.K1.a` (Điểm `đ` viết thành `dd` trong id). Hai nguồn: mẫu `data/sample/blds2015_5dieu.md` và đầy đủ `data/raw/blds2015_p4.md`. Mỗi bước đầu ra là đầu vào của bước sau và có số đếm đối chiếu cứng (`EXPECTED` trong A5/A7), nên một giả định sai âm thầm sẽ lan xuống các bước sau.
+Quy ước dữ liệu: id dạng `<doc_id>.D154.K8a.b` (hậu tố chữ như `D2a`, `K8a` là bình thường; Điểm `đ` viết thành `dd` trong id; phụ lục `<doc_id>.PL1.M2.R15`). `doc_id` = tên file trong `data/raw/labor/` (ví dụ `BLLD_45-2019`, `ND_145-2020`). Thông tin văn bản (số hiệu, ngày, số Điều) đọc từ `manifest.csv` (UTF-8 có BOM, đọc bằng `utf-8-sig`), không chép cứng vào code. Mỗi bước đầu ra là đầu vào của bước sau và có số đối chiếu cứng, nên một giả định sai âm thầm sẽ lan xuống các bước sau.
+
+**Heldout:** nhóm văn bản dùng để đo, plan yêu cầu để ngoài repo. **Không mở, không đọc, không ghi vào tài liệu hay memory** bất kỳ nội dung hay đường dẫn nào của nó cho đến khi user bảo bắt đầu đo. Chỉ `data/raw/labor/` (base + dev) được dùng khi dựng. Cột `quan_he` của manifest chỉ là mốc kiểm, không phải đầu vào của pipeline.
 
 ## 3. Quy ước kỹ thuật
 
 - **Chỉ dùng thư viện chuẩn của Python.** Ngoại lệ duy nhất: chế độ `--llm live` của A4 cần gói của nhà cung cấp (`anthropic` hoặc `google-genai`), cài trong `.venv` (đã nằm trong `.gitignore`), không cài vào Python hệ thống.
 - Chạy script: `python -I src/<file>.py <md>` (cờ `-I` để không nạp nhầm file cạnh script). Windows: Python của venv là `.venv\Scripts\python.exe`.
-- Test: `python -I tests/test_aN.py` (dòng cuối phải là `tổng test lỗi: 0`). Chạy cả pipeline: `python -I src/run_all.py` (mặc định 9 bước A1-A7); thêm `--a8` để dựng trang xem, `--tests` để chạy bộ kiểm thử ngoài và các bộ test.
-- Sau mỗi lần `run_all` trên Windows, `git status` hiện file M giả (khác LF/CRLF): `git restore docs/bao_cao_chay/a1/a1_notes_blds2015_p4.txt docs/bao_cao_chay/eval/ext_amend_report_off.txt`.
+- Test: `python -I tests/test_aN.py` (dòng cuối phải là `tổng test lỗi: 0`). Chạy cả pipeline: `python -I src/run_all.py`; thêm `--a8` để dựng trang xem, `--tests` để chạy bộ kiểm thử ngoài và các bộ test. **Hiện tại test, `run_all.py` (hằng `BASES`, `data/dev_amend/...`), bảng `EXPECTED` của A5/A7 và `utils/render_report.py` còn trỏ dữ liệu v1 đã archive nên lỗi có chủ đích cho đến L0.** Mốc "đã xanh" của v1: 287 test / 11 file (ghi ở `archive/v1_thua_ke/README.md`).
+- Máy đang `core.autocrlf=true`: sau khi chạy code, `git status` có thể hiện file M giả (khác LF/CRLF). Xem `git diff` trước, chỉ `git restore` khi chắc là giả. Dữ liệu `data/raw/labor/` là LF; code không được giả định `\r\n`.
 - Không nới quy tắc để bắt thêm ca. Dạng spec không nói thì báo lỗi dừng (fail-closed, thoát mã 1, không ghi file), không đoán.
 - Mỗi chỗ spec im lặng hoặc lệch spec phải có dòng trong `docs/quyet_dinh/a4_quyet_dinh.txt` hoặc `docs/quyet_dinh/a6_a7_quyet_dinh.txt`.
-- Báo cáo: sửa `report/tong_hop/tong_hop_cong_viec.md` rồi chạy `python -X utf8 -I utils/render_report.py` để sinh HTML. **Không sửa HTML bằng tay.** Số liệu trong báo cáo phải đối chiếu với code và đĩa, không chép từ báo cáo cũ. Mục 8.4 và 10 của báo cáo là lời khuyên nội bộ, không gửi nguyên bản cho thầy.
+- Báo cáo cho thầy: viết lại cho v2 ở `report/tong_hop/` (md), rồi `python -X utf8 -I utils/render_report.py` để sinh HTML (tiêu đề và đường dẫn mặc định của script còn của v1, sửa khi cần). **Không sửa HTML bằng tay.** Số liệu trong báo cáo phải đối chiếu với code và đĩa, không chép từ báo cáo cũ. Lời khuyên nội bộ không gửi nguyên bản cho thầy.
 
-## 4. Tầng LLM của A4
+## 4. Tầng LLM
 
-- Chỉ `src/a4_llm.py` gọi API. Đề xuất của LLM không được áp thẳng: máy dựng lại thành câu chuẩn, parse bằng văn phạm chuẩn và kiểm V1-V3; không qua kiểm thì bị loại. Đổi nhà cung cấp không được làm lỏng các kiểm tra này.
-- Cờ: `--llm off|replay|live`, `--provider claude|gemini`, `--model`. Mặc định `off`/`claude`, hành vi cũ không đổi. `replay` không gọi mạng; `live` mới gọi và lưu vào `data/llm_cache/a4/`.
-- Claude API đang vướng thanh toán nên đang thêm Gemini (khoá miễn phí từ Google AI Studio). Gói miễn phí có thể bị Google dùng nội dung để cải thiện sản phẩm: chỉ gửi văn bản luật công khai.
+- Hiện `src/a4_llm.py` là nơi duy nhất gọi API. Theo plan L0 sẽ thêm `src/llm_client.py` dùng chung (user đã chốt tên): đọc `docs/llm_config.md`, lưu phản hồi thô vào `data/llm_cache/`, đếm lượt theo ngày, chạm hạn mức thì dừng gọn. Khi làm xong thì sửa mục này.
+- Đề xuất của LLM không được áp thẳng: máy dựng lại thành câu chuẩn, parse bằng văn phạm chuẩn và kiểm V1-V3; không qua kiểm thì bị loại. Đổi nhà cung cấp hay model không được làm lỏng các kiểm tra này. Vai trò LLM (thầy xác định): đọc hiểu và đề xuất ngữ nghĩa, nên không cần model mạnh; mọi đề xuất đi qua cổng tự động (plan L7).
+- Cờ của A4: `--llm off|replay|live`, `--provider claude|gemini`, `--model`. Mặc định `off`/`claude`. `replay` không gọi mạng; `live` mới gọi. **Không chạy `--llm live` khi user chưa bảo** (tốn hạn mức). Cache v1 của A4 nằm ở `archive/v1_thua_ke/data/llm_cache/`.
+- Dùng Gemini (khoá miễn phí Google AI Studio, biến môi trường `GEMINI_API_KEY`; đã chạy live 04/11 với `gemini-3.6-flash`). Claude API vẫn vướng thanh toán. Gói miễn phí có thể bị Google dùng nội dung để cải thiện sản phẩm: chỉ gửi văn bản luật công khai.
 
 ## 5. Việc đang dở (user cập nhật tay)
 
-- Đã sửa, **chưa commit**: `src/a4_llm.py` (thêm `GeminiProposer`, `make_proposer`), `src/a4_versions.py` và `tests/eval_ext_amend.py` (cờ `--provider`, `--model`), `tests/test_a4_llm.py` (+6 test, 20/20 xanh bằng client giả).
-- **Chưa kiểm:** chưa gọi Gemini thật lần nào (chưa có key); chưa biết server có nhận `SCHEMA` (có `anyOf` + `null`, `additionalProperties`) hay không; chưa chạy `run_all.py`; báo cáo `tong_hop_cong_viec.md` (các dòng nói "chỉ gói `anthropic`", "14 test của `test_a4_llm.py`", tổng số test) chưa cập nhật.
-- Đã commit trước đó: `f90a060 Refactor`. Việc dời `TONG_HOP_*` sang `report/` đã `git add` (rename), chưa commit.
+- Nhánh `v2-lao-dong` (tách từ `refactor` tại `25c65e6`). Đã dọn v1 vào `archive/v1_thua_ke/`, nạp `data/raw/labor/`, đặt plan chuẩn ở `plan/ke_hoach/`. **Chưa bắt đầu L0.**
+- Không có hạn cứng "12/2026". Ưu tiên làm từng bước, duyệt kỹ, không đốt cháy giai đoạn.
+- Chờ user: duyệt `docs/llm_config.md` (nháp); chọn cách xử lý `KhaoSat_BLLD_ToanVan` (đặt nguyên hay cắt phần liên quan heldout) trước khi đặt vào `docs/ref/`; xác nhận xoá bản heldout còn trong thư mục staging `NEW_UPDATE/` (đã có bản y hệt ngoài repo).
+- Việc treo theo plan (mục 8): Phụ lục I.7 của NQ 66.16/2026; văn bản ngoài kho (NĐ 38/2022, NĐ 35/2022, TT 54/2015, BLLĐ 2012, Luật 64/2025); luật sửa đổi BLLĐ đang ở kỳ họp Quốc hội.
