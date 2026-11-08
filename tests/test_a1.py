@@ -1,226 +1,191 @@
-"""Chặng 3: kiểm tra đầu ra của a1_parse trên file mẫu rồi file đầy đủ.
-
-Chạy: python -I tests/test_a1.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
-"""
-import collections
-import functools
-import json
-import re
+"""Test A1 (L1): tách đơn vị, khối trích dẫn, phụ lục, chú thích, bảng lương, đầu văn bản; và cổng số Điều trên cả kho."""
 import sys
 import tempfile
 import unicodedata
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # -I không tự thêm thư mục script
-import a1_parse as a1
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+import _harness  # noqa: E402
+import a1_parse as a1  # noqa: E402
+import corpus  # noqa: E402
 
-SAMPLE_FILE = a1.ROOT / "data" / "sample" / "blds2015_5dieu.md"
-FULL_FILE = a1.ROOT / "data" / "raw" / "blds2015_p4.md"
-FILES = [("mẫu", SAMPLE_FILE), ("đầy đủ", FULL_FILE)]  # luôn mẫu trước
+BODY = """Chương I
+NHỮNG QUY ĐỊNH CHUNG
 
-# Số đơn vị và số triples để đối chiếu (đã đếm lại độc lập bằng grep/awk, không qua parser).
-REFERENCE = {SAMPLE_FILE: (35, 176), FULL_FILE: (215, 1173)}  # p4: 1099 + 54 dòng chuong của Điều + 4 Chương x 5 dòng
+Mục 1. GIAO KẾT HỢP ĐỒNG
 
-# Số (Khoản, Điểm) của từng Điều trong 5 điều mẫu, đếm trực tiếp từ file mẫu.
-SAMPLE_TABLE = {"621": (2, 4), "626": (5, 0), "644": (2, 2), "650": (2, 7), "651": (3, 3)}
+Điều 154. Các trường hợp người lao động nước ngoài không phải có giấy phép lao động
 
-PREDICATES = {"type", "number", "heading", "chuong", "text", "version", "source_line"}  # không có effective_from
+1. Là chủ sở hữu công ty.
 
+2. Di chuyển trong nội bộ doanh nghiệp.
 
-@functools.cache
-def load(path):
-    result, parsed = a1.load_parsed(path)
-    assert not parsed.errors, f"{path.name}: lỗi parse {parsed.errors}"
-    return result, parsed
+2a. Nhân lực công nghệ số.
 
+3. Trường hợp khác theo quy định của Chính phủ.
 
-def test_ids_unique():
-    for name, path in FILES:
-        ids = [u.id for u in load(path)[1].units]
-        dup = [i for i, n in collections.Counter(ids).items() if n > 1]
-        assert not dup, f"file {name}: mã trùng {dup}"
-        assert not any("đ" in i for i in ids), f"file {name}: mã còn chữ đ"
+Điều 155. Khoản và điểm
 
+1. Quy định như sau:
 
-def test_dd_does_not_collide_with_d():
-    md = ("### Điều 1\\. A\n**1\\.** K\n- **a)** a\n- **b)** b\n- **c)** c\n- **d)** d\n- **đ)** đ\n- **e)** e\n")
-    parsed = a1.parse(a1.tokenize(md).tokens, [1])
-    assert not parsed.errors, parsed.errors
-    ids = [u.id for u in parsed.units if u.type == "diem"]
-    assert len(ids) == len(set(ids)) == 6
-    assert "BLDS2015.D1.K1.d" in ids and "BLDS2015.D1.K1.dd" in ids
-    dd = next(u for u in parsed.units if u.id.endswith(".dd"))
-    assert dd.number == "đ"  # number vẫn là đ
+a) Điểm thứ nhất;
 
+b) Điểm thứ hai;
 
-def test_sample_table():
-    units = load(SAMPLE_FILE)[1].units
-    got = {}
-    for u in units:
-        if u.type == "dieu":
-            got[u.number] = [0, 0]
-        elif u.type == "khoan":
-            got[u.id.split(".")[1][1:]][0] += 1
-        else:
-            got[u.id.split(".")[1][1:]][1] += 1
-    got = {k: tuple(v) for k, v in got.items()}
-    assert got == SAMPLE_TABLE, f"(Khoản, Điểm) theo Điều: {got}, cần {SAMPLE_TABLE}"
+c) Điểm thứ ba;
+
+d) Điểm thứ tư;
+
+đ) Điểm năm;
+
+e) Điểm sáu.
+
+Trường hợp khác nữa.
+
+Điều 156. Điểm đứng thẳng dưới Điều
+
+a) Điểm một
+b) Điểm hai
+"""
 
 
-def test_reference_counts():
-    for name, path in FILES:
-        parsed = load(path)[1]
-        want_units, want_triples = REFERENCE[path]
-        got = (len(parsed.units), len(a1.to_triples(parsed.units, parsed.chapters)))
-        assert got == (want_units, want_triples), f"file {name}: (đơn vị, triples) = {got}, cần {(want_units, want_triples)}"
+def parse(text):
+    lines = [a1.normalize_line(l) for l in text.split("\n")]
+    return a1.Parser("DOC_X-2020", lines).run()
 
 
-def test_no_markdown_residue():
-    for name, path in FILES:
-        for u in load(path)[1].units:
-            for text in ([u.heading] if u.heading is not None else []) + u.parts:
-                bad = set(text) & set("\\*#")
-                assert not bad, f"file {name}: {u.id} còn {bad} trong {text[:60]!r}"
+def ids(p):
+    return {u.id: u for u in p.units}
 
 
-def raw_words(path):
-    """Vế 1: từ của file gốc, không đi qua tokenize, clean_text hay parse."""
-    words = collections.Counter()
-    with open(path, encoding="utf-8", newline="") as f:
-        for line in f.read().split("\n"):
-            if line.startswith(("# ", "## ", "---")):
-                continue
-            words.update(re.findall(r"\w+", unicodedata.normalize("NFC", line)))
-    return words
+def test_ids_with_suffix_and_dd():
+    p = parse(BODY)
+    u = ids(p)
+    for k in ("DOC_X-2020.CI", "DOC_X-2020.CI.M1", "DOC_X-2020.D154", "DOC_X-2020.D154.K2a", "DOC_X-2020.D155.K1.dd", "DOC_X-2020.D156.a"):
+        assert k in u, k
+    assert u["DOC_X-2020.D154"].parent == "DOC_X-2020.CI.M1"
+    assert u["DOC_X-2020.D155.K1.dd"].number == "đ"
+    assert u["DOC_X-2020.D156.a"].parent == "DOC_X-2020.D156", "điểm đứng thẳng dưới Điều"
+    assert not p.errors, p.errors
 
 
-def unit_words(units):
-    """Vế 2: từ của number, heading, parts của mọi đơn vị, cộng từ "Điều" cho mỗi Điều."""
-    words = collections.Counter()
-    for u in units:
-        for text in [u.number] + ([u.heading] if u.heading is not None else []) + u.parts:
-            words.update(re.findall(r"\w+", unicodedata.normalize("NFC", text)))
-        if u.type == "dieu":
-            words["Điều"] += 1
-    return words
+def test_para_after_diem_goes_to_khoan_with_note():
+    p = parse(BODY)
+    k1 = ids(p)["DOC_X-2020.D155.K1"]
+    assert k1.parts[-1] == "Trường hợp khác nữa." and p.notes
 
 
-def test_words_conserved_vs_raw():
-    """Multiset từ của file gốc == multiset từ của các đơn vị. Bắt từ bị mất, thừa hoặc đổi.
-
-    Không bắt được đoạn xếp sai Khoản: chuyển cả đoạn từ Khoản này sang Khoản khác vẫn giữ nguyên multiset.
-    """
-    for name, path in FILES:
-        raw, got = raw_words(path), unit_words(load(path)[1].units)
-        assert raw == got, f"file {name}: thiếu {dict(raw - got)}, thừa {dict(got - raw)}"
+def test_numbering_jump_is_reported():
+    p = parse("Điều 1. X\n\n1. Một.\n\n3. Ba.\n\nĐiều 5. Y\n")
+    reasons = [e.reason for e in p.errors]
+    assert any("Khoản 3 sau Khoản 1" in r for r in reasons) and any("Điều 5 sau Điều 1" in r for r in reasons)
 
 
-def test_notes():
-    parsed = load(FULL_FILE)[1]
-    assert parsed.notes == ["Điều 643, Khoản 2, dòng 303"], parsed.notes
-    with tempfile.TemporaryDirectory() as tmp:
-        out = Path(tmp) / "a1_notes.txt"
-        a1.write_notes(parsed.notes, out)
-        lines = out.read_text(encoding="utf-8").splitlines()
-    assert len(lines) == 1 and lines[0].startswith("Điều 643, Khoản 2,"), lines
-    # mỗi file nguồn một file notes: chạy file mẫu không ghi đè notes của file đầy đủ
-    assert a1.notes_path(SAMPLE_FILE) != a1.notes_path(FULL_FILE)
+def test_chuong_title_next_line_and_wrapped():
+    p = parse("Chương IV. HÀNH VI VI PHẠM\n\nVIỆT NAM ĐI LÀM VIỆC\n\nĐiều 1. X\n")
+    assert ids(p)["DOC_X-2020.CIV"].heading == "HÀNH VI VI PHẠM VIỆT NAM ĐI LÀM VIỆC"
+    p = parse("Chương I\nNHỮNG QUY ĐỊNH CHUNG\n\nĐiều 1. X\n")
+    assert ids(p)["DOC_X-2020.CI"].heading == "NHỮNG QUY ĐỊNH CHUNG"
 
 
-def test_para_placement_in_full_file():
-    """Đoạn chữ nằm sau Khoản (631 Khoản 3, 645 Khoản 1) và sau Điểm (643 Khoản 2) đều vào parts của Khoản.
-
-    Nguồn chuẩn là chính file blds2015_p4.md (đã chốt), nên không đối chiếu thêm với bản luật gốc. Test này khoá
-    kết quả của quy tắc nối para (para vào Khoản hiện tại); các chỗ 631 Khoản 3, 643 Khoản 2, 645 Khoản 1 đã
-    được xem trực tiếp trên p4.md (dòng 198-200, 298-303, 322-326; +2 từ khi thêm tiêu đề Chương XXI ở dòng 3).
-    """
-    units = {u.id: u for u in load(FULL_FILE)[1].units}
-    multi = {i: len(u.parts) for i, u in units.items() if u.type == "khoan" and len(u.parts) > 1}
-    assert multi == {"BLDS2015.D631.K3": 2, "BLDS2015.D643.K2": 2, "BLDS2015.D645.K1": 3}, multi
-    # Điểm cuối của 643 Khoản 2 không bị nhận đoạn chữ của Khoản
-    assert len(units["BLDS2015.D643.K2.b"].parts) == 1
+def test_number_with_dots_is_not_khoan():
+    p = parse("Điều 3. Mức\n\n1. Quy định:\n\n4.960.000\n\n23.800\n")
+    assert [u.id for u in p.units if u.type == "khoan"] == ["DOC_X-2020.D3.K1"]
+    assert "4.960.000" in ids(p)["DOC_X-2020.D3.K1"].text
 
 
-def test_chapters_of_full_file():
-    """Review F-09: 4 Chương của p4, mỗi Điều thuộc đúng Chương của nó (đối chiếu dãy Điều của từng Chương trong BLDS 2015)."""
-    parsed = load(FULL_FILE)[1]
-    assert [(c.id, c.number, c.heading, c.source_line) for c in parsed.chapters] == [
-        ("BLDS2015.CXXI", "XXI", "QUY ĐỊNH CHUNG", 3), ("BLDS2015.CXXII", "XXII", "THỪA KẾ THEO DI CHÚC", 124),
-        ("BLDS2015.CXXIII", "XXIII", "THỪA KẾ THEO PHÁP LUẬT", 358), ("BLDS2015.CXXIV", "XXIV", "THANH TOÁN VÀ PHÂN CHIA DI SẢN", 413)]
-    ranges = {"BLDS2015.CXXI": (609, 623), "BLDS2015.CXXII": (624, 648), "BLDS2015.CXXIII": (649, 655), "BLDS2015.CXXIV": (656, 662)}
-    for u in parsed.units:
-        if u.type == "dieu":
-            lo, hi = ranges[u.chuong]
-            assert lo <= int(u.number) <= hi, (u.id, u.chuong)
-        else:
-            assert u.chuong is None, u.id
-    assert load(SAMPLE_FILE)[1].chapters == ()  # file mẫu không có Chương: Điều là gốc
-    # triples: Chương xen vào ngay trước Điều đầu tiên của nó
-    subjects = list(dict.fromkeys(s for s, _, _ in a1.to_triples(parsed.units, parsed.chapters)))
-    assert subjects[:2] == ["BLDS2015.CXXI", "BLDS2015.D609"] and subjects.index("BLDS2015.CXXII") == subjects.index("BLDS2015.D624") - 1
+def test_payload_block_is_not_units():
+    txt = ("Điều 1. Sửa đổi\n\n1. Sửa đổi, bổ sung khoản 6 Điều 7 như sau:\n\n“6. Được cử sang Việt Nam.\n\na) Điểm trong khối.”.\n\n"
+           "2. Bãi bỏ khoản 4 Điều 13.\n")
+    p = parse(txt)
+    assert [x.payload_id for x in p.payloads] == ["DOC_X-2020.Q1"]
+    assert p.payloads[0].lead_unit == "DOC_X-2020.D1.K1" and len(p.payloads[0].lines) == 3
+    assert "DOC_X-2020.D1.K1.a" not in ids(p)
+    assert "DOC_X-2020.D1.K2" in ids(p)
 
 
-def test_dieu_before_first_chapter_and_repeated_chapter_are_errors():
-    text = "### Điều 1\\. A\n\n## Chương I – MỘT\n\n### Điều 2\\. B\n\n## Chương I – LẶP\n"
-    parsed = a1.parse(a1.tokenize(text).tokens, [1, 2])
-    assert [e.reason for e in parsed.errors] == ["Chương I lặp", "Điều 1 đứng trước Chương đầu tiên"], parsed.errors
+def test_unclosed_quote_is_an_error():
+    p = parse("Điều 1. X\n\n1. Như sau:\n\n“Không đóng nháy\n\nĐiều 2. Y\n")
+    assert any("không đóng" in e.reason for e in p.errors)
 
 
-def test_jsonl_written_correctly():
-    for name, path in FILES:
-        parsed = load(path)[1]
-        triples = a1.to_triples(parsed.units)
-        with tempfile.TemporaryDirectory() as tmp:
-            out = Path(tmp) / "t.jsonl"
-            a1.write_triples(triples, out)
-            raw = out.read_bytes()
-        assert not raw.startswith(b"\xef\xbb\xbf"), "có BOM"
-        assert b"\\u" not in raw, "còn escape \\u (ensure_ascii phải là False)"
-        assert b"\r" not in raw
-        rows = [json.loads(line) for line in raw.decode("utf-8").split("\n") if line]
-        assert all(list(r) == ["s", "p", "o"] for r in rows), f"file {name}: sai khóa"
-        assert [(r["s"], r["p"], r["o"]) for r in rows] == triples, f"file {name}: đọc lại không khớp"
-        assert {r["p"] for r in rows} <= PREDICATES, {r["p"] for r in rows} - PREDICATES
-
-        by_s = collections.defaultdict(list)
-        for r in rows:
-            by_s[r["s"]].append(r)
-        assert len(by_s) == len(parsed.units)
-        for u in parsed.units:
-            preds = [r["p"] for r in by_s[u.id]]
-            assert len(preds) == len(set(preds)), f"{u.id}: predicate lặp"
-            assert ("heading" in preds) == (u.type == "dieu"), f"{u.id}: heading"
-            assert ("chuong" in preds) == (u.type == "dieu" and bool(parsed.chapters)), f"{u.id}: chuong"
-            assert ("text" in preds) == bool(u.parts), f"{u.id}: text"
-            o = {r["p"]: r["o"] for r in by_s[u.id]}
-            assert o["version"] == 1 and isinstance(o["version"], int)
-            assert o["source_line"] == u.source_line and isinstance(o["source_line"], int)
-            assert o["number"] == u.number and o["type"] == u.type
-            if "text" in o:
-                assert o["text"] == "\n".join(u.parts)
+def test_footer_noi_nhan_is_dropped():
+    p = parse("Điều 1. X\n\n1. Nội dung.\n\nNơi nhận:\n- Thủ tướng;\n- Lưu: VT.\n\nTM. CHÍNH PHỦ\n")
+    assert ids(p)["DOC_X-2020.D1.K1"].parts == ["Nội dung."]
+    assert p.skipped["nơi nhận / chữ ký"] >= 3
 
 
-def main():
-    failed = 0
-    for fn_name, fn in list(globals().items()):
-        if fn_name.startswith("test_") and callable(fn):
-            try:
-                fn()
-                print("OK  ", fn_name)
-            except AssertionError as e:
-                failed += 1
-                print("FAIL", fn_name, "->", e)
-            except SystemExit as e:  # load_parsed thoát khi file có lỗi; chi tiết đã in ở stderr
-                failed += 1
-                print("FAIL", fn_name, "-> load_parsed thoát", repr(e.code), "(xem stderr)")
-            except Exception as e:
-                failed += 1
-                print("FAIL", fn_name, "->", type(e).__name__, e)
-    print("tổng test lỗi:", failed)
-    return failed
+def test_footnote_markers_and_zone():
+    p = parse("Điều 154. X\n\n8a.[2] Nhân lực chất lượng cao.\n\n[1] Luật số 71/2025/QH15 có căn cứ như sau:\n“Căn cứ”.\n"
+              "[2] Khoản này được bổ sung, có hiệu lực kể từ ngày 01 tháng 01 năm 2026.\n")
+    k = ids(p)["DOC_X-2020.D154.K8a"]
+    assert k.text == "Nhân lực chất lượng cao." and k.fn == [2]
+    assert [n for n, _ in p.footnotes] == [1, 2] and "01 tháng 01 năm 2026" in p.footnotes[1][1]
 
 
-if __name__ == "__main__":
-    sys.stdout.reconfigure(encoding="utf-8")
-    sys.stderr.reconfigure(encoding="utf-8")
-    raise SystemExit(1 if main() else 0)
+def test_appendix_outline_and_toc_dedupe():
+    txt = ("Điều 1. X\n\nPHỤ LỤC I\n\nPhụ lục I.1\nTiêu đề mục lục\n\nPhụ lục I.7\nCẮT GIẢM THỦ TỤC\n\nMục 1\n\nA. LĨNH VỰC CHO THUÊ LẠI\n\n"
+           "IX. Thời hạn giải quyết\nDòng nội dung một\n\nPhụ lục I.1\nTIÊU ĐỀ THẬT\nnội dung thật\n")
+    lines = [a1.normalize_line(l) for l in txt.split("\n")]
+    p = a1.Parser("D", lines).run()
+    p.parse_appendices({"I_7"})
+    u = {x.id: x for x in p.units}
+    assert "D.PLI_7.M1.LA.SIX" in u and u["D.PLI_7.M1.LA.SIX"].parent == "D.PLI_7.M1.LA"
+    assert u["D.PLI_1"].scope == "out_of_scope" and p.skipped["mục lục phụ lục"] >= 1
+    assert any(x.type == "pl_row" and x.text == "Dòng nội dung một" for x in p.units)
+
+
+def test_bare_phu_luc_and_kemtheo_implicit():
+    p = a1.Parser("D", ["Điều 1. X", "", "PHỤ LỤC", "Danh mục nghề", "(kèm theo Thông tư số 10)", "1. Dòng một"]).run()
+    p.parse_appendices(None)
+    assert any(x.type == "pl" and x.id == "D.PL_1" for x in p.units)
+    p = a1.Parser("D", ["Điều 1. X", "", "DANH MỤC NGHỀ NẶNG NHỌC", "(Kèm theo Thông tư số 11)", "", "I. KHAI THÁC", "dòng a"]).run()
+    p.parse_appendices(None)
+    assert any(x.type == "pl" for x in p.units) and any(x.type == "pl_row" for x in p.units)
+
+
+def test_wage_table_rebuilt():
+    u = a1.Unit("D.D3.K1", "khoan", "1", None, ["Quy định:", "Vùng", "Mức lương tối thiểu tháng (Đơn vị: đồng/tháng)",
+                                                "Mức lương tối thiểu giờ (Đơn vị: đồng/giờ)", "Vùng I", "4.960.000", "23.800",
+                                                "Vùng II", "4.410.000", "21.200"], 1)
+    t = a1.rebuild_wage_tables([u])
+    assert t[0]["rows"] == [{"vung": "I", "muc_thang": 4960000, "muc_gio": 23800}, {"vung": "II", "muc_thang": 4410000, "muc_gio": 21200}]
+
+
+def test_read_lines_handles_crlf_bom_and_nfc():
+    with tempfile.TemporaryDirectory() as d:
+        f = Path(d) / "x.txt"
+        f.write_bytes(("\ufeff" + unicodedata.normalize("NFD", "Điều 1. Ủy ban") + "\r\n\r\n1. Nội dung\r\n").encode("utf-8"))
+        lines, scan = a1.read_lines(f)
+    assert lines[0] == unicodedata.normalize("NFC", "Điều 1. Ủy ban") and scan["bom"] and scan["crlf"] == 3 and scan["dong_chua_nfc"] == 1
+
+
+def test_numbering_checks():
+    assert a1.next_number_ok(None, "5") and a1.next_number_ok("20", "20a") and a1.next_number_ok("20a", "20b") and a1.next_number_ok("20b", "21")
+    assert not a1.next_number_ok("20", "22") and not a1.next_number_ok("8", "8b")
+    assert a1.next_letter_ok("d", "đ") and a1.next_letter_ok("a", "a1") and not a1.next_letter_ok("a", "c")
+
+
+def test_all_documents_pass_gate():
+    docs = corpus.load_manifest()
+    assert len(docs) == 18
+    for d in docs.values():
+        parsed = a1.parse_document(d)
+        assert not parsed.errors, (d.doc_id, parsed.errors[:3])
+        assert sum(1 for u in parsed.units if u.type == "dieu") == d.so_dieu
+
+
+def test_header_flags():
+    docs = corpus.load_manifest()
+    flags = {d: a1.parse_document(docs[d]).header["flags"] for d in docs}
+    for d in ("TT_09-2020-BLDTBXH", "TT_10-2020-BLDTBXH", "TT_11-2020-BLDTBXH"):
+        assert "header_from_manifest" in flags[d]
+    assert flags["BLLD_45-2019"] == [] and flags["ND_28-2020"] == []
+
+
+def test_wage_table_nd74_vung_i():
+    t = a1.parse_document(corpus.load_manifest()["ND_74-2024"]).tables
+    assert t and t[0]["rows"][0] == {"vung": "I", "muc_thang": 4960000, "muc_gio": 23800}
+
+
+_harness.run(globals())

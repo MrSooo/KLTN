@@ -1,39 +1,14 @@
-"""A5: bốn phép kiểm (1-3 trên A1-A3, 4 trên A4 khi có --versions) trên file đã sinh, để chắc lớp văn bản không có chỗ trùng hay hở trước khi xây bước B. Không sinh dữ liệu mới.
+"""A5: kiểm tra độc lập các bước A1-A4, A6, L3, L4 trên cả kho; đối chiếu số đếm với đĩa và các mốc cổng của plan.
 
-Đầu vào: a1_triples_<stem>.jsonl, a2_edges_<stem>.jsonl, a2_refs_<stem>.jsonl, a3_exceptions_<stem>.jsonl.
-Đọc thẳng từng dòng JSON, không qua a2.load_units / a2.parent_of, để phép kiểm độc lập với code đã sinh các file đó.
-Đầu ra: docs/bao_cao_chay/a5/a5_report_<stem>.txt (ghi cả khi mọi thứ đạt), cùng nội dung in ra màn hình.
+Chạy: python -I src/a5_checks.py          (cần các bước trước đã chạy; thoát mã 1 nếu có vi phạm)
+Báo cáo: docs/bao_cao_chay/a5/a5_report.txt.
 
-  Bước 1, mã trùng (a1_triples). 1a: số s có dòng type bằng số đơn vị kỳ vọng. 1b: số Điều bằng số kỳ vọng.
-    1c: mỗi s có đúng một dòng type. 1d: mỗi cặp (s, p) xuất hiện đúng một lần.
-  Bước 1e: số Chương (type chuong) bằng số kỳ vọng.
-  Bước 2, mỗi đơn vị đúng một cha (a2_edges). 2a: Điều có đúng một part_of nếu văn bản có Chương, không có nếu không; Chương
-    không có part_of. 2b: Khoản và Điểm có đúng một part_of. 2c: cha = mã con bỏ đoạn cuối; cha của Điều = Chương ghi ở dòng
-    chuong của a1_triples. 2d: contains đối xứng với part_of. 2e: số part_of = số đơn vị - số Điều (+ số Điều nếu có Chương).
-    2f: cha là đơn vị có trong triples và đúng bậc ngay trên của con (Khoản → dieu, Điểm → khoan, Điều → chuong).
-    Chương không lập phiên bản nên bước 4 chỉ xét Điều/Khoản/Điểm (review F-09).
-  Bước 3, cạnh trùng: gom (s, p, o) của a2_edges, a2_refs, a3_exceptions; bộ ba nào xuất hiện nhiều hơn một lần là vi phạm,
-    ghi nơi xuất hiện và evidence. Evidence khác nhau vẫn là trùng, khoá chỉ là (s, p, o). Không sửa A2.
-
-  Bước 4, lớp phiên bản của A4 (chỉ khi truyền --versions; mỗi dòng a4_<name>_versions.jsonl là một phiên bản của một đơn vị).
-    4a: cặp (id, version) duy nhất, các version của một id là 1, 2, 3 liên tiếp. 4b: previous_version của version k là k-1,
-    version 1 thì null. 4c: khoảng hiệu lực [from, to) không chồng: có version k+1 thì version k phải có to và to <= from của
-    k+1 (version k+1 không có from cũng là sai); from < to khi cả hai có giá trị. 4d: mọi mã của A1 còn trong versions
-    (cam kết "không xoá nút", Q19). Đơn vị chỉ có trong versions (thêm bởi văn bản sửa đổi) không bị báo.
-    4e: dòng version 1 của mỗi mã A1 giữ nguyên type, number, heading, text của A1: so bằng ==, không chuẩn hoá khoảng trắng,
-    chỉ so trường mà A1 có dòng tương ứng; mã chỉ có ở một bên thì bỏ qua (4d lo phần thiếu).
-    4f: mọi dòng version 1 của mã A1 có cùng một effective_from và source_doc khác null (ngày hiệu lực và mã văn bản gốc), mọi
-    dòng khác có effective_from sau ngày đó (review F-08).
-
-Số kỳ vọng nằm ở bảng EXPECTED theo stem (đã đối chiếu độc lập bằng grep trên md); stem không có trong bảng thì báo lỗi.
-Thoát 1 nếu bước nào có vi phạm, hoặc đầu vào lỗi (thiếu file, JSON hỏng, thiếu khoá, stem lạ); các bước luôn chạy hết
-trước khi thoát. Cạnh trùng làm thoát 1 vì bàn giao ghi "không có cạnh trùng" là yêu cầu.
-
-Chạy: python -I src/a5_checks.py <file md nguồn> [--versions PATH]   (bắt buộc truyền path md, chỉ dùng để suy stem)
-Báo cáo: docs/bao_cao_chay/a5/a5_report_<stem>.txt; có --versions thì .../a5_report_<stem>_<name>.txt, <name> lấy từ a4_<name>_versions.jsonl
-(tên file không đúng dạng đó thì dùng tên file bỏ đuôi), để các lần chạy khác nhau không đè nhau và không đè báo cáo bước 1-3.
+Số đối chiếu cứng (EXPECTED) chỉ cho BLLĐ; nguồn độc lập với A1:
+  Điều: grep -c -E '^Điều [0-9]+\\.' data/raw/labor/base/BLLD_45-2019.txt            = 220 (khớp cột so_dieu_dem_duoc của manifest)
+  Khoản: grep -c -E '^[0-9]+[a-z]?\\. ' ...                                         = 645; trừ 7 dòng nằm trong 4 khối trích dẫn của Điều 219 = 638
+  Điểm:  grep -c -E '^[a-zđ][0-9]?\\) ' ...                                         = 287; trừ 20 dòng trong các khối đó             = 267
+Phép đếm thứ hai (independent_counts) quét file thô bằng bộ đếm nháy riêng, không dùng A1.
 """
-import argparse
 import collections
 import datetime
 import json
@@ -43,378 +18,177 @@ from pathlib import Path
 from typing import NamedTuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+import a1_parse as a1
 import a2_edges as a2
-import a3_exceptions as a3
-
-TYPES = ("dieu", "khoan", "diem")
-PARENT_TYPE = {"khoan": "dieu", "diem": "khoan"}  # bậc ngay trên của mỗi bậc con
-EDGE_SOURCES = ("a2_edges", "a2_refs", "a3_exceptions")  # thứ tự gom ở bước 3
-TRIPLE_KEYS = ("s", "p", "o")
-VERSION_KEYS = ("id", "version", "previous_version", "effective_from", "effective_to")
-DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
-CONTENT_FIELDS = ("type", "number", "heading", "text")  # trường nội dung A1 có thể có; không nằm trong VERSION_KEYS (không bắt buộc)
-SHOW_CHARS = 60  # số ký tự đầu của giá trị in trong dòng vi phạm 4e
+import a4_versions as a4
+import corpus
 
 
 class Expect(NamedTuple):
-    units: int       # Điều + Khoản + Điểm
     dieu: int
-    chuong: int = 0  # đơn vị type chuong (review F-09); 0 thì Điều là gốc
+    khoan: int
+    diem: int
 
 
-EXPECTED = {
-    "blds2015_5dieu": Expect(units=35, dieu=5),
-    "blds2015_p4": Expect(units=215, dieu=54, chuong=4),
-}
+EXPECTED = {"BLLD_45-2019": Expect(dieu=220, khoan=638, diem=267)}
+D = datetime.date
 
 
-class Check(NamedTuple):
-    id: str
-    title: str
-    summary: str
-    problems: list
-
-
-def versions_name(versions):
-    """<name> của a4_<name>_versions.jsonl; tên file không đúng dạng đó thì tên file bỏ đuôi."""
-    stem = Path(versions).stem
-    m = re.fullmatch(r"a4_(.+)_versions", stem)
-    return m.group(1) if m else stem
-
-
-def report_path(src, versions=None):
-    suffix = f"_{versions_name(versions)}" if versions is not None else ""
-    return a2.ROOT / "docs" / "bao_cao_chay" / "a5" / f"a5_report_{Path(src).stem}{suffix}.txt"
-
-
-def load_rows(path, keys=TRIPLE_KEYS):
-    """[(số dòng, dòng JSON)] của một file jsonl. Thiếu file, JSON hỏng hoặc thiếu một trong keys thì ValueError."""
-    path = Path(path)
-    if not path.exists():
-        raise ValueError(f"chưa có {path}; chạy bước sinh file này trước")
-    rows = []
-    with open(path, encoding="utf-8", newline="") as f:
-        for line_no, line in enumerate(f, 1):
-            if not line.strip():
-                continue
-            try:
-                row = json.loads(line)
-            except json.JSONDecodeError as e:
-                raise ValueError(f"{path}:{line_no}: JSON hỏng ({e})")
-            if not isinstance(row, dict) or not set(keys) <= row.keys():
-                raise ValueError(f"{path}:{line_no}: thiếu khoá {'/'.join(keys)}")
-            rows.append((line_no, row))
-    return rows
-
-
-def check_codes(triples, expect):
-    """Bước 1. Trả về (các Check 1a-1d, {đơn vị: type của dòng type đầu tiên}) để bước 2 dùng."""
-    subjects = {}                                   # s theo thứ tự xuất hiện
-    type_rows = collections.defaultdict(list)       # s -> [o của các dòng type]
-    pair_lines = collections.defaultdict(list)      # (s, p) -> [số dòng]
-    for line_no, r in triples:
-        subjects[r["s"]] = True
-        pair_lines[(r["s"], r["p"])].append(line_no)
-        if r["p"] == "type":
-            type_rows[r["s"]].append(r["o"])
-    unit_types = {s: v[0] for s, v in type_rows.items()}
-    n_units = sum(1 for t in unit_types.values() if t in TYPES)
-    n_dieu = sum(1 for t in unit_types.values() if t == "dieu")
-    n_chuong = sum(1 for t in unit_types.values() if t == a2.CHUONG)
-
-    one_type = []
-    for s in subjects:
-        n = len(type_rows.get(s, []))
-        if n != 1:
-            one_type.append(f"{s}: {n} dòng type" + (f" ({', '.join(type_rows[s])})" if n else ""))
-    repeated = [f"({s}, {p}) lặp ở dòng {', '.join(map(str, lines))}" for (s, p), lines in pair_lines.items() if len(lines) > 1]
-    checks = [
-        Check("1a", "số đơn vị (s có dòng type)", f"{n_units}, kỳ vọng {expect.units}",
-              [] if n_units == expect.units else [f"có {n_units} đơn vị, cần {expect.units}"]),
-        Check("1b", "số Điều", f"{n_dieu}, kỳ vọng {expect.dieu}",
-              [] if n_dieu == expect.dieu else [f"có {n_dieu} Điều, cần {expect.dieu}"]),
-        Check("1c", "mỗi s có đúng một dòng type", f"{len(subjects)} s", one_type),
-        Check("1d", "mỗi cặp (s, p) một lần", f"{len(pair_lines)} cặp", repeated),
-        Check("1e", "số Chương", f"{n_chuong}, kỳ vọng {expect.chuong}",
-              [] if n_chuong == expect.chuong else [f"có {n_chuong} Chương, cần {expect.chuong}"]),
-    ]
-    return checks, unit_types
-
-
-def check_parents(unit_types, edges, expect, dieu_chuong=None):
-    """Bước 2, theo cạnh contains / part_of của a2_edges. unit_types từ check_codes; dieu_chuong: {Điều: mã Chương} từ dòng
-    chuong của a1_triples (cha đúng của Điều, vì cha của Điều không suy được từ mã)."""
-    dieu_chuong = dieu_chuong or {}
-    has_chuong = any(t == a2.CHUONG for t in unit_types.values())
-    part_of = [(ln, r["s"], r["o"]) for ln, r in edges if r["p"] == "part_of"]
-    contains = [(ln, r["s"], r["o"]) for ln, r in edges if r["p"] == "contains"]
-    parents = collections.defaultdict(list)         # con -> [cha] theo part_of
-    for _, child, parent in part_of:
-        parents[child].append(parent)
-
-    dieu_parent = []
-    for c, t in unit_types.items():
-        ps = parents.get(c, [])
-        if t == "dieu" and len(ps) != int(has_chuong):
-            dieu_parent.append(f"{c}: Điều có {len(ps)} part_of" + (f" ({', '.join(ps)})" if ps else "") +
-                               f", cần {int(has_chuong)} (văn bản {'có' if has_chuong else 'không có'} Chương)")
-        elif t == a2.CHUONG and ps:
-            dieu_parent.append(f"{c}: là Chương nhưng có part_of tới {', '.join(ps)}")
-    one_parent = []
-    for c, t in unit_types.items():
-        if t not in TYPES + (a2.CHUONG,):
-            one_parent.append(f"{c}: type {t!r} không phải chuong/dieu/khoan/diem")
-        elif t in ("khoan", "diem") and len(parents.get(c, [])) != 1:
-            ps = parents.get(c, [])
-            one_parent.append(f"{c}: {len(ps)} part_of" + (f" ({', '.join(ps)})" if ps else ""))
-    one_parent += [f"{c}: có part_of nhưng không có dòng type (không là đơn vị)" for c in parents if c not in unit_types]
-
-    wrong_code = []
-    for line_no, child, parent in part_of:
-        want = dieu_chuong.get(child) if unit_types.get(child) == "dieu" else child.rsplit(".", 1)[0] if "." in child else None
-        if parent != want:
-            wrong_code.append(f"dòng {line_no}: {child} part_of {parent}, cha theo mã là {want}")
-
-    contains_set = {(a, b) for _, a, b in contains}
-    part_set = {(p, c) for _, c, p in part_of}      # đảo về dạng (cha, con) để so với contains
-    asym = [f"contains {a} → {b} không có part_of {b} → {a}" for a, b in sorted(contains_set - part_set)]
-    asym += [f"part_of {b} → {a} không có contains {a} → {b}" for a, b in sorted(part_set - contains_set)]
-
-    bad_parent = []
-    for _, child, parent in part_of:
-        if parent not in unit_types:
-            bad_parent.append(f"{child}: cha {parent} không phải đơn vị")
-        elif child in unit_types and unit_types[child] in PARENT_TYPE and unit_types[parent] != PARENT_TYPE[unit_types[child]]:
-            bad_parent.append(f"{child}: cha {parent} là {unit_types[parent]}, cần {PARENT_TYPE[unit_types[child]]}")
-        elif unit_types.get(child) == "dieu" and unit_types[parent] != a2.CHUONG:
-            bad_parent.append(f"{child}: cha {parent} là {unit_types[parent]}, cần {a2.CHUONG}")
-
-    want_count = expect.units - expect.dieu + (expect.dieu if expect.chuong else 0)
-    return [
-        Check("2a", "Điều có một cha là Chương nếu văn bản có Chương, không có cha nếu không; Chương không có cha",
-              f"{sum(1 for t in unit_types.values() if t == 'dieu')} Điều, {sum(1 for t in unit_types.values() if t == a2.CHUONG)} Chương", dieu_parent),
-        Check("2b", "Khoản và Điểm có đúng một cha", f"{sum(1 for t in unit_types.values() if t in ('khoan', 'diem'))} đơn vị", one_parent),
-        Check("2c", "cha = mã con bỏ đoạn cuối (Điều: Chương ghi ở dòng chuong)", f"{len(part_of)} cạnh part_of", wrong_code),
-        Check("2d", "contains đối xứng với part_of", f"contains {len(contains)}, part_of {len(part_of)}", asym),
-        Check("2e", "số part_of = số đơn vị - số Điều (+ số Điều nếu có Chương)", f"{len(part_of)}, kỳ vọng {want_count}",
-              [] if len(part_of) == want_count else [f"có {len(part_of)} part_of, cần {want_count}"]),
-        Check("2f", "cha tồn tại và đúng bậc", f"{len(part_of)} cạnh part_of", bad_parent),
-    ]
-
-
-def check_duplicate_edges(sources):
-    """Bước 3. sources: [(nhãn, rows)]. Gom (s, p, o) của tất cả file, báo bộ ba xuất hiện hơn một lần (kể cả giữa các file)."""
-    where = collections.defaultdict(list)           # (s, p, o) -> [(nhãn, số dòng, evidence)]
-    total = 0
-    for label, rows in sources:
-        for line_no, r in rows:
-            where[(r["s"], r["p"], r["o"])].append((label, line_no, r.get("evidence", "")))
-            total += 1
-    problems = []
-    for (s, p, o), found in where.items():
-        if len(found) > 1:
-            problems.append(f"{s}\t{p}\t{o}\t{len(found)} lần\t" + "; ".join(f'{lb}:{ln} "{ev}"' for lb, ln, ev in found))
-    return Check("3", "bộ ba (s, p, o) lặp trong " + " + ".join(label for label, _ in sources),
-                 f"{total} bộ ba, {len(where)} khác nhau, {len(problems)} bị lặp", problems)
-
-
-def parse_date(value, where, problems):
-    """Ngày YYYY-MM-DD hoặc None. Giá trị khác (không phải chuỗi đúng dạng, hoặc ngày không có thật) thì ghi vào problems."""
-    if value is None:
-        return None
-    try:
-        if isinstance(value, str) and DATE_RE.fullmatch(value):
-            return datetime.date.fromisoformat(value)
-    except ValueError:
-        pass
-    problems.append(f"{where}: ngày {value!r} không hợp lệ")
-    return None
-
-
-def check_versions(a1_ids, rows):
-    """Bước 4 trên các dòng của a4_<name>_versions.jsonl; a1_ids là mã đơn vị của A1."""
-    by_id = collections.defaultdict(dict)           # id -> {version: (số dòng, dòng đầu tiên)}
-    pair_lines = collections.defaultdict(list)      # (id, version) -> [số dòng]
-    not_int = []
-    for line_no, r in rows:
-        if isinstance(r["version"], int) and not isinstance(r["version"], bool):
-            pair_lines[(r["id"], r["version"])].append(line_no)
-            by_id[r["id"]].setdefault(r["version"], (line_no, r))
-        else:
-            not_int.append(f"dòng {line_no}: {r['id']} có version {r['version']!r} không phải số nguyên")
-
-    repeated = [f"({i}, version {v}) lặp ở dòng {', '.join(map(str, lines))}" for (i, v), lines in pair_lines.items() if len(lines) > 1]
-    gaps = []
-    for i, versions in by_id.items():
-        have = sorted(versions)
-        if have != list(range(1, len(have) + 1)):
-            gaps.append(f"{i}: các version {have}, cần {list(range(1, len(have) + 1))}")
-
-    broken_chain = []
-    for i, versions in by_id.items():
-        for v, (line_no, r) in sorted(versions.items()):
-            want = None if v == 1 else v - 1
-            if r["previous_version"] != want:
-                broken_chain.append(f"dòng {line_no}: {i} version {v}: previous_version {r['previous_version']!r}, cần {want!r}")
-
-    overlap, pairs = [], 0
-    for i, versions in by_id.items():
-        dates = {}                                  # version -> (from, to)
-        for v, (_, r) in sorted(versions.items()):
-            frm = parse_date(r["effective_from"], f"{i} version {v} effective_from", overlap)
-            to = parse_date(r["effective_to"], f"{i} version {v} effective_to", overlap)
-            if frm and to and not frm < to:
-                overlap.append(f"{i} version {v}: khoảng hiệu lực rỗng [{frm}, {to})")
-            dates[v] = (frm, to, r)
-        order = sorted(dates)
-        for k, nxt in zip(order, order[1:]):
-            pairs += 1
-            (_, to_k, r_k), (from_next, _, r_next) = dates[k], dates[nxt]
-            if r_next["effective_from"] is None:
-                overlap.append(f"{i}: version {nxt} không có effective_from")
-            if r_k["effective_to"] is None:
-                overlap.append(f"{i}: version {k} không có effective_to nhưng đã có version {nxt}")
-            if to_k and from_next and to_k > from_next:
-                overlap.append(f"{i}: version {k} hết hiệu lực {to_k} sau khi version {nxt} bắt đầu {from_next}")
-
-    in_versions = set(by_id) | {r["id"] for _, r in rows}
-    missing = [f"{i}: có trong A1 nhưng không còn trong versions" for i in sorted(a1_ids - in_versions)]
-    return [
-        Check("4a", "(id, version) duy nhất và version liên tiếp 1, 2, 3", f"{len(rows)} dòng, {len(by_id)} id", not_int + repeated + gaps),
-        Check("4b", "previous_version = version - 1, version 1 thì null", f"{len(rows)} dòng", broken_chain),
-        Check("4c", "khoảng hiệu lực [from, to) không chồng", f"{pairs} cặp version liên tiếp", overlap),
-        Check("4d", "mọi mã của A1 còn trong versions", f"{len(a1_ids)} mã A1, {len(in_versions)} id trong versions", missing),
-    ]
-
-
-def check_version1_content(a1_rows, version_rows):
-    """Bước 4e. Dòng version 1 của mỗi mã A1 phải có type, number, heading, text bằng (==) giá trị trong a1_triples.
-
-    Chỉ so trường mà A1 có dòng tương ứng. Mã không có trong versions (4d đã báo) hoặc chỉ có trong versions thì bỏ qua.
-    Trường versions thiếu khoá tính là None, nên khác giá trị A1. a1_rows: dòng a1_triples; version_rows: dòng versions.
-    """
-    a1 = {}                                         # s -> {trường: o}, giữ dòng đầu tiên của mỗi (s, p)
-    for _, r in a1_rows:
-        if r["p"] in CONTENT_FIELDS:
-            a1.setdefault(r["s"], {}).setdefault(r["p"], r["o"])
-    problems, rows_compared, fields_compared = [], 0, 0
-    for _, r in version_rows:
-        if r["version"] != 1 or r["id"] not in a1:
+def independent_counts(path):
+    """Đếm Điều / Khoản / Điểm trên file thô: bỏ dòng trong khối “...” (bắt đầu ở dòng mở nháy, kết thúc khi nháy cân bằng) và dừng
+    ở phụ lục đầu tiên. Cài đặt riêng, không dùng A1."""
+    n = collections.Counter()
+    depth = 0
+    for raw in open(path, encoding="utf-8").read().split("\n"):
+        line = raw.strip()
+        if depth > 0:
+            depth += line.count("“") - line.count("”")
             continue
-        rows_compared += 1
-        for field in CONTENT_FIELDS:
-            if field not in a1[r["id"]]:
-                continue
-            fields_compared += 1
-            want, got = a1[r["id"]][field], r.get(field)
-            if got != want:
-                problems.append(f"{r['id']}: {field} A1 '{str(want)[:SHOW_CHARS]}' khác version 1 '{str(got)[:SHOW_CHARS]}'")
-    return Check("4e", "version 1 giữ nguyên nội dung A1", f"{fields_compared} trường ở {rows_compared} dòng version 1", problems)
+        if line.startswith("“") and line.count("“") > line.count("”"):
+            depth = line.count("“") - line.count("”")
+            continue
+        if re.match(r"^(PHỤ LỤC|Phụ lục)\b", line):
+            break
+        if re.match(r"^Điều \d+[a-z]?\.", line):
+            n["dieu"] += 1
+        elif re.match(r"^\d+[a-z]?\. ", line):
+            n["khoan"] += 1
+        elif re.match(r"^[a-zđ]\d?\) ", line):
+            n["diem"] += 1
+    return n
 
 
-def check_base_dates(a1_ids, version_rows):
-    """Bước 4f. Mọi dòng version 1 của mã A1 có cùng một effective_from khác null và cùng một source_doc khác null (văn bản gốc);
-    mọi dòng khác bắt đầu sau ngày đó (so chuỗi YYYY-MM-DD). Không đối chiếu với giá trị cụ thể của A1/A4, chỉ nhất quán trong file."""
-    base = [r for _, r in version_rows if r["version"] == 1 and r["id"] in a1_ids]
-    starts = collections.Counter(r["effective_from"] for r in base)
-    docs = collections.Counter(r.get("source_doc") for r in base)
-    problems = []
-    if None in starts:
-        problems.append(f"{starts[None]} dòng version 1 của mã A1 có effective_from null")
-    if None in docs:
-        problems.append(f"{docs[None]} dòng version 1 của mã A1 có source_doc null")
-    if len(starts) > 1 or len(docs) > 1:
-        problems.append(f"version 1 của mã A1 không cùng một ngày / văn bản: {dict(starts)} {dict(docs)}")
-    start = next(iter(starts)) if len(starts) == 1 else None
-    if start:
-        problems += [f"{r['id']} version {r['version']}: effective_from {r['effective_from']!r} không sau ngày hiệu lực gốc {start}"
-                     for _, r in version_rows if not (r["version"] == 1 and r["id"] in a1_ids)
-                     and not (isinstance(r["effective_from"], str) and r["effective_from"] > start)]
-    return Check("4f", "version 1 có ngày hiệu lực và văn bản gốc, sửa đổi bắt đầu sau ngày đó",
-                 f"{len(base)} dòng gốc, ngày gốc {start}, văn bản gốc {next(iter(docs)) if len(docs) == 1 else None}", problems)
+def version_problems(by):
+    """Bất biến của phiên bản theo mã (by: {id: [dòng versions]}): số phiên bản liên tiếp, phiên bản kế chỉ có khi phiên bản trước đã
+    đóng, khoảng hiệu lực nửa mở không chồng nhau, from không sau to."""
+    p = []
+    for uid, vs in by.items():
+        for i, v in enumerate(vs):
+            if v["version"] != i + 1 or v["previous_version"] != (i if i else None):
+                p.append(f"{uid}: số phiên bản không liên tiếp")
+        for a_, b_ in zip(vs, vs[1:]):
+            if a_["effective_to"] is None:
+                p.append(f"{uid}: phiên bản {a_['version']} chưa đóng mà đã có phiên bản kế")
+            elif b_["effective_from"] is not None and b_["effective_from"] < a_["effective_to"]:
+                p.append(f"{uid}: khoảng hiệu lực v{a_['version']} / v{b_['version']} chồng nhau")
+        for v in vs:
+            if v["effective_from"] and v["effective_to"] and not v["effective_from"] <= v["effective_to"]:
+                p.append(f"{uid} v{v['version']}: effective_from sau effective_to")
+    return p
 
 
-STEP_TITLES = {"1": "Bước 1: mã trùng", "2": "Bước 2: mỗi đơn vị đúng một cha", "3": "Bước 3: cạnh trùng",
-               "4": "Bước 4: lớp phiên bản của A4"}
+def checks(docs):
+    """-> list[(nhãn, [vấn đề])]."""
+    out = []
+    all_units = a2.load_all_units(docs)
+    # A1
+    p = []
+    for d in docs.values():
+        units = all_units.get(d.doc_id)
+        if units is None:
+            p.append(f"{d.doc_id}: chưa có a1")
+            continue
+        ty = collections.Counter(u["type"] for u in units.values())
+        raw_dieu = sum(1 for l in open(d.path, encoding="utf-8") if re.match(r"^Điều \d+[a-z]?\.", l))
+        if not (ty["dieu"] == d.so_dieu):
+            p.append(f"{d.doc_id}: số Điều A1 {ty['dieu']} khác manifest {d.so_dieu}")
+        if raw_dieu < d.so_dieu:
+            p.append(f"{d.doc_id}: đếm thô {raw_dieu} ít hơn manifest {d.so_dieu}")
+        exp = EXPECTED.get(d.doc_id)
+        if exp:
+            ind = independent_counts(d.path)
+            for k in ("dieu", "khoan", "diem"):
+                if not (ty[k] == getattr(exp, k) == ind[k]):
+                    p.append(f"{d.doc_id}: {k} A1 {ty[k]}, EXPECTED {getattr(exp, k)}, đếm độc lập {ind[k]}")
+    out.append(("A1 số đơn vị = manifest / EXPECTED / đếm độc lập", p))
+    # A2
+    p = []
+    for d in docs.values():
+        units = all_units[d.doc_id]
+        edges = [(r["s"], r["p"], r["o"]) for r in a1.read_jsonl(a2.a2_dir() / f"a2_edges_{d.doc_id}.jsonl")]
+        p += [f"{d.doc_id}: {e}" for e in a2.check_structure(units, edges)]
+        refs = a1.read_jsonl(a2.a2_dir() / f"a2_refs_{d.doc_id}.jsonl")
+        for r in refs:
+            tdoc = r["o"].split(".")[0]
+            if r["o"] not in all_units.get(tdoc, {}):
+                p.append(f"{d.doc_id}: refers_to trỏ mã không tồn tại {r['o']}")
+            if r["evidence"] not in (units[r["s"]].get("text") or ""):
+                p.append(f"{d.doc_id}: evidence không nằm trong text của {r['s']}")
+    refs152 = a1.read_jsonl(a2.a2_dir() / "a2_refs_ND_152-2020.jsonl")
+    if not any(r["s"].startswith("ND_152-2020.D7") and r["o"].startswith("BLLD_45-2019.D154") for r in refs152):
+        p.append("mốc: ND_152.D7 không có refers_to tới BLLD.D154")
+    out.append(("A2 cấu trúc, refers_to (hai đầu tồn tại, evidence), mốc ND_152.D7→BLLD.D154", p))
+    # A3 + A6
+    p = []
+    ex = a1.read_jsonl(corpus.out_dir("a3") / "a3_exceptions_BLLD_45-2019.jsonl") + a1.read_jsonl(corpus.out_dir("a6") / "a6_exceptions_BLLD_45-2019.jsonl")
+    pairs = {(e["s"], e["o"]) for e in ex}
+    B = "BLLD_45-2019."
+    for s, o in [(B + "D154", B + "D151.K1.d"), (B + "D36.K1.b", B + "D37.K1"), (B + "D29", B + "D35.K2.a"), (B + "D97.K4", B + "D35.K2.b")]:
+        if (s, o) not in pairs:
+            p.append(f"mốc exception_of thiếu: {s} → {o}")
+    for d in docs.values():
+        for e in a1.read_jsonl(corpus.out_dir("a6") / f"a6_exceptions_{d.doc_id}.jsonl"):
+            if e["o"] not in all_units[d.doc_id]:
+                p.append(f"{d.doc_id}: exception_of trỏ mã không tồn tại {e['o']}")
+    out.append(("A3/A6 exception_of (mốc D154→D151.K1.d, D36.K1.b→D37.K1, D29/D97→D35)", p))
+    # L3
+    p = []
+    links = a1.read_jsonl(corpus.out_dir("l3") / "l3_links.jsonl")
+    for l in links:
+        tdoc = l["o"].split(".")[0]
+        if l["o"] not in all_units.get(tdoc, {}) and l["o"] not in docs:
+            p.append(f"L3: {l['p']} trỏ mã không tồn tại {l['o']}")
+    out.append(("L3 based_on / details trỏ đến nút có thật", p))
+    # L4
+    p = []
+    labels = {r["id"] for r in a1.read_jsonl(corpus.out_dir("l4") / "l4_labels.jsonl")}
+    for d in docs.values():
+        p += [f"L4: {k} chưa có nhãn" for k, u in all_units[d.doc_id].items() if u["type"] == "dieu" and k not in labels]
+    out.append(("L4 mọi Điều có nhãn", p))
+    # A4 / L6
+    p = []
+    rows = a4.load_versions()
+    by = collections.defaultdict(list)
+    for r in rows:
+        by[r["id"]].append(r)
+    p += version_problems(by)
+    for d in docs.values():  # không mất nút: mọi mã của A1 còn trong versions; phiên bản 1 giữ chữ của A1 (trừ bản hợp nhất)
+        if d.is_consolidation:
+            continue
+        for k, u in all_units[d.doc_id].items():
+            if k not in by:
+                p.append(f"{k}: mất khỏi versions")
+            elif by[k][0]["text"] != (u.get("text") or ""):
+                p.append(f"{k}: phiên bản 1 khác chữ của A1")
+    ids = set(by) | set(docs)
+    for e in a1.read_jsonl(a4.a4_dir() / "version_edges.jsonl"):
+        if e["o"] not in ids and not e["o"].startswith("external:"):
+            p.append(f"cạnh {e['p']} trỏ mã không tồn tại {e['o']}")
+        if e["s"] not in ids and not e["s"].startswith("external:"):
+            p.append(f"cạnh {e['p']} xuất phát từ mã không tồn tại {e['s']}")
+    out.append(("L6 phiên bản liên tiếp, khoảng hiệu lực không chồng, không mất nút, phiên bản 1 = chữ A1, cạnh hai đầu tồn tại", p))
+    return out
 
 
-def verdict(c):
-    return f"KHÔNG ĐẠT ({len(c.problems)})" if c.problems else "ĐẠT"
-
-
-def failures(checks):
-    return sum(len(c.problems) for c in checks)
-
-
-def display_path(path):
-    """Đường dẫn trong báo cáo: tương đối so với gốc dự án nếu nằm trong đó, để báo cáo không dính đường dẫn của máy."""
-    try:
-        return Path(path).resolve().relative_to(a2.ROOT).as_posix()
-    except ValueError:
-        return str(path)
-
-
-def format_report(stem, paths, checks):
-    L = [f"A5 báo cáo kiểm tra: {stem}", "file đã kiểm:"] + [f"  {display_path(p)}" for p in paths.values()]
-    step = None
-    for c in checks:
-        if c.id[0] != step:
-            step = c.id[0]
-            L += ["", f"== {STEP_TITLES[step]} =="]
-        L.append(f"[{c.id}] {c.title}: {c.summary} -> {verdict(c)}")
-        L += [f"    {p}" for p in c.problems]
-    bad = failures(checks)
-    L += ["", "KẾT LUẬN: " + (f"KHÔNG ĐẠT ({bad} chỗ sai)" if bad else "ĐẠT")]
-    return "\n".join(L) + "\n"
-
-
-def write_text(text, path):
-    path = Path(path)
+def main():
+    docs = corpus.load_manifest()
+    results = checks(docs)
+    lines, bad = ["A5 báo cáo"], 0
+    for name, problems in results:
+        lines.append(f"[{'OK' if not problems else 'LỖI'}] {name}")
+        lines += [f"    {x}" for x in problems[:15]]
+        if len(problems) > 15:
+            lines.append(f"    ... còn {len(problems) - 15} vấn đề")
+        bad += bool(problems)
+    lines.append(f"tổng kiểm lỗi: {bad}")
+    path = corpus.report_dir("a5") / "a5_report.txt"
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8", newline="\n") as f:
-        f.write(text)
-
-
-def run(src, versions=None):
-    """Chạy các bước (bước 4 chỉ khi có versions), in và ghi báo cáo, trả về mã thoát (0 đạt, 1 có vi phạm ở bất kỳ bước nào)."""
-    stem = Path(src).stem
-    expect = EXPECTED.get(stem)
-    if expect is None:
-        raise SystemExit(f"LỖI: chưa có số đối chiếu cho {stem!r} (bảng EXPECTED có: {', '.join(EXPECTED)})")
-    paths = {"a1_triples": a2.triples_path(src), "a2_edges": a2.edges_path(src),
-             "a2_refs": a2.refs_path(src), "a3_exceptions": a3.exceptions_path(src)}
-    try:
-        rows = {name: load_rows(p) for name, p in paths.items()}
-        if versions is not None:
-            paths["a4_versions"] = Path(versions)
-            rows["a4_versions"] = load_rows(versions, VERSION_KEYS)
-    except ValueError as e:
-        raise SystemExit(f"LỖI: {e}")
-    checks, unit_types = check_codes(rows["a1_triples"], expect)
-    dieu_chuong = {r["s"]: r["o"] for _, r in rows["a1_triples"] if r["p"] == a2.CHUONG}
-    checks += check_parents(unit_types, rows["a2_edges"], expect, dieu_chuong)
-    versioned = {s for s, t in unit_types.items() if t in TYPES}  # Chương không lập phiên bản
-    checks.append(check_duplicate_edges([(name, rows[name]) for name in EDGE_SOURCES]))
-    if versions is not None:
-        checks += check_versions(versioned, rows["a4_versions"])
-        checks.append(check_version1_content(rows["a1_triples"], rows["a4_versions"]))
-        checks.append(check_base_dates(versioned, rows["a4_versions"]))
-    text = format_report(stem, paths, checks)
-    print(text, end="")
-    write_text(text, report_path(src, versions))
-    print("đã ghi", report_path(src, versions))
-    return 1 if failures(checks) else 0
-
-
-def main(argv=None):
-    ap = argparse.ArgumentParser()
-    ap.add_argument("path", help="file md nguồn, dùng để suy stem của các file A1-A3")
-    ap.add_argument("--versions", help="a4_<name>_versions.jsonl; có thì chạy thêm bước 4 và ghi báo cáo riêng cho file này")
-    args = ap.parse_args(argv)
-    return run(args.path, args.versions)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
+    print("\n".join(lines))
+    raise SystemExit(1 if bad else 0)
 
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     sys.stderr.reconfigure(encoding="utf-8")
-    raise SystemExit(main())
+    main()

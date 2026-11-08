@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 .venv/
+# Đầu ra do code sinh (~26 MB), dựng lại bằng `python -I src/run_all.py --a8` (~5 giây, tất định). Báo cáo chữ ở docs/bao_cao_chay/ vẫn được theo dõi.
+# KHÔNG ignore data/llm_cache/: phản hồi LLM đã lưu là thứ để tính lại số liệu mà không gọi model.
+/data/processed/

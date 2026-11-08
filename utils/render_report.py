@@ -338,7 +338,7 @@ def render(md_text):
     return (
         '<!doctype html>\n<html lang="vi">\n<head>\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        "<title>Đồ thị tri thức BLDS 2015</title>\n" + FONTS + "\n<style>" + CSS + "</style>\n</head>\n<body>\n"
+        "<title>" + html.escape(title.replace("`", "").replace("**", "")) + "</title>\n" + FONTS + "\n<style>" + CSS + "</style>\n</head>\n<body>\n"
         '<div class="shell">\n<nav class="toc" aria-label="Mục lục"><details id="toc" open><summary>Mục lục</summary>'
         + "".join(toc_html) + "</details></nav>\n<main>\n"
         '<header class="top">' + ('<p class="kicker">Cập nhật %s</p>' % html.escape(kicker) if kicker else "")

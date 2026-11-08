@@ -1,0 +1,27 @@
+L3 báo cáo
+điều khoản giao chi tiết: 51 cụm ở 51 đơn vị; theo dạng {'A': 35, 'B': 10, 'D': 5, 'E': 1}; số Điều theo dạng {'A': 34, 'B': 8, 'D': 5, 'E': 1}
+(plan 8/11: A 39 cụm/37 Điều, B 10/8, C 2 trong A, D 5 Điều, E 1 Điều; tổng ~55 cụm/~50 Điều; đây là regex thô, chưa lọc ca không phải giao chi tiết)
+cạnh based_on: 10  details: 45  chờ đích: 18
+mốc cổng delegation_clauses:
+  đạt: BLLD.D91.K4 (dạng A)
+  đạt: D154.K1/K2/K9 (dạng B)
+  đạt: D142.K1 (dạng D)
+  đạt: D112 (dạng E)
+mốc cổng details / based_on:
+  đạt: ND_152 details D154.K1,K2,K9, D157, D150.K3
+  đạt: TT_10 details D21.K1-3, D73.K4, D142.K1
+  đạt: ND_135 details D169
+  đạt: TT_18 based_on ND_145.D68.K2
+  đạt: ND_74 details D91 (keyword_proposed, chưa qua LLM kiểm)
+văn bản không có based_on (header mất hoặc không nêu): ['ND_90-2019', 'ND_28-2020', 'TT_10-2020-BLDTBXH', 'TT_11-2020-BLDTBXH', 'TT_09-2020-BLDTBXH', 'TT_19-2023-BLDTBXH', 'NQ_66-16-2026']
+ghi chú:
+  ND_90-2019: không có details (Điều 1 không nêu điều, khoản đích)
+  ND_28-2020: không có details (Điều 1 không nêu điều, khoản đích)
+  TT_11-2020-BLDTBXH: không có details (Điều 1 không nêu điều, khoản đích)
+  ND_12-2022: không có details (Điều 1 không nêu điều, khoản đích)
+  TT_18-2021-BLDTBXH: không có details (Điều 1 không nêu điều, khoản đích)
+  ND_70-2023: không có details (Điều 1 không nêu điều, khoản đích)
+  TT_19-2023-BLDTBXH: không có details (Điều 1 không nêu điều, khoản đích)
+  ND_74-2024: Điều 1 không nêu số Điều của BLLĐ; đề xuất bằng từ khoá ['mức lương tối thiểu'] -> ['BLLD_45-2019.D91']
+  NQ_66-16-2026: không có details (Điều 1 không nêu điều, khoản đích)
+  ND_283-2026: không có details (Điều 1 không nêu điều, khoản đích)

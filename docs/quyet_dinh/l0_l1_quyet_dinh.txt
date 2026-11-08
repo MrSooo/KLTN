@@ -1,0 +1,55 @@
+L0, L1: CÁC QUYẾT ĐỊNH CHỖ SPEC IM LẶNG HOẶC LỆCH PLAN
+=====================================================
+Plan (plan/ke_hoach/...) là tham khảo; chỗ lệch theo source (CLAUDE.md §1.2). Mục A là chỗ LỆCH plan, đọc trước.
+
+A. LỆCH PLAN
+------------
+A1. Không dùng config/domain_labor.yaml. Thông tin văn bản đọc từ data/raw/labor/manifest.csv (utf-8-sig) trong src/corpus.py; cấp văn bản
+    (level), loại, cơ quan là bảng hằng trong corpus.py. Lý do: user chốt 07/11 "không thêm file cấu hình mới nếu chưa cần".
+    Quy tắc áp dụng riêng của L8b/L9 (NQ 66.16 Điều 19 khoản 3 ...) sẽ là hằng khi tới bước đó.
+A2. Wrapper LLM là src/llm_client.py (plan ghi llm.py). Đọc docs/llm_config.md, cache data/llm_cache/<tác vụ>/<khoá>.json, đếm lượt theo ngày
+    và theo vai (chinh / kiem) ở data/llm_cache/_usage.json, chạm hạn mức thì QuotaReached. Chưa gọi live lần nào (không có GEMINI_API_KEY).
+    src/a4_llm.py (tầng LLM cũ của A4, gắn dữ liệu v1) đã xoá; lịch sử còn ở git 25c65e6.
+A3. Báo cáo chữ ở docs/bao_cao_chay/<bước>/ (plan ghi docs/<mã>_report.txt). Không tạo nhánh git cho mỗi bước.
+A4. Số đối chiếu của A5 chỉ cho BLLĐ (EXPECTED ở a5_checks.py): Điều 220, Khoản 638, Điểm 267. Nguồn độc lập với A1: grep trên file thô cho
+    Điều 220 (= cột so_dieu_dem_duoc); Khoản 645 và Điểm 287 trừ 7 và 20 dòng nằm trong 4 khối trích dẫn của Điều 219 (khối đó là chữ của luật
+    khác, không phải đơn vị của BLLĐ). a5_checks.independent_counts đếm lại bằng bộ đếm nháy riêng và phải khớp.
+A5. Mốc cổng L1 "mọi dẫn chiếu vào phụ lục giải được": chỉ áp cho phụ lục có mặt trong kho. NQ 66.16 kèm 14 phụ lục của bộ ngành, chỉ Phụ
+    lục I.7 (cho thuê lại lao động, sửa quy định NĐ 145) thuộc phạm vi lao động nên được bóc chi tiết (corpus.PL_IN_SCOPE); 13 phụ lục còn lại
+    và Phụ lục II giữ một nút scope=out_of_scope để dẫn chiếu vẫn giải được. Dẫn chiếu tới phụ lục chưa có file nguồn (ND_145 "Phụ lục I
+    ban hành kèm theo Nghị định này" ...) thành unresolved có lý do, không phải lỗi.
+A6. Dữ liệu NQ_66-16-2026.txt đã đổi: bản chỉ-thân (126 dòng) thay bằng bản đầy đủ do user gửi 08/11 (66.16.txt), qua utils/chuan_hoa_van_ban.py
+    (CRLF -> LF, NFC, bỏ 6 dòng "## ", 42 dòng kẻ ngang "---", khối "Nơi nhận" của chính văn bản). Phần thân giống hệt bản cũ (kiểm bằng diff,
+    chỉ khác hai dòng gạch trang trí đầu văn bản vốn có trong bản cũ và bản mới). Cột ghi_chu của manifest đổi từ "THIẾU Phụ lục I.7" sang mô tả
+    bản đầy đủ. Bản gốc 66.16.txt ở thư mục gốc đã xoá sau khi kiểm bản mới.
+
+B. A1 (src/a1_parse.py), CHỖ SPEC IM LẶNG
+-----------------------------------------
+B1. Cấu trúc đọc: Chương > Mục > Điều > Khoản > Điểm. Kho không có Phần / Tiểu mục; gặp thì lỗi (không đoán). Điều không thuộc Mục thì cha là Chương;
+    không thuộc Chương thì không có cha trong thân (A7 nối tới nút văn bản).
+B2. Mã: <doc>.C<La Mã>.M<n>, .D<n>, .K<n>, điểm .a (đ viết dd; điểm có hậu tố số: .a1). Điều có điểm đứng thẳng dưới Điều (không Khoản, ND_283 Điều 1):
+    mã D1.a, cha là Điều. Hậu tố chữ (D20a, K8a) là bình thường; dấu chấm ngay sau số trong "8a.[2] ..." (văn bản hợp nhất) vẫn là Khoản.
+    "4.960.000" không phải Khoản vì sau dấu chấm không có khoảng trắng.
+B3. Đánh số phải liền: Điều n+1 hoặc hậu tố kế (20 -> 20a -> 20b -> 21); Khoản tương tự; Điểm theo bảng chữ (có đ, không có f j w z; a -> a1 -> a2). Nhảy số
+    là lỗi parse (thoát 1, không ghi file).
+B4. Tiêu đề Chương / Mục có thể nằm cùng dòng hoặc dòng viết hoa kế tiếp; tiêu đề dài bị xuống dòng thì nối các dòng viết hoa liền sau (ND_28 Chương IV).
+B5. ND_145 có hai "Chương XI" (nguồn lặp nhãn: dòng 1680 và 2142, lần sau là "Điều khoản thi hành"). Nhận có chủ đích (corpus.DUP_CHUONG_OK): mã lần sau
+    CXI_2, ghi vào notes. Mọi lỗi lặp khác vẫn là lỗi.
+B6. Khối trích dẫn “...” đứng sau câu dẫn hoặc mở nháy không đóng cùng dòng là payload (a1_payloads_<doc>.jsonl), không phải đơn vị của văn bản chứa nó.
+    Nháy cân bằng bằng bộ đếm “ ”. Nháy mở không đóng đến hết văn bản là lỗi parse.
+B7. Đoạn chữ không nhãn sau một Điểm gắn vào Khoản (ghi vào notes); gạch đầu dòng gắn vào đơn vị sâu nhất.
+B8. "Nơi nhận / chữ ký" bỏ khỏi đơn vị (đếm vào skipped). Chỉ bỏ ở thân văn bản, trước phụ lục đầu tiên: biểu mẫu trong phụ lục có "Nơi nhận" là nội dung mẫu.
+B9. Chú thích [n] của bản hợp nhất: gỡ dấu [n] khỏi chữ, ghi triple `footnote` trên đơn vị; vùng chú thích bắt đầu ở dòng "[1] ..." và dòng sau [n] (kể cả dòng
+    trông như khoản) là chữ của chú thích.
+B10. Phụ lục: chia theo dòng tiêu đề (Phụ lục I.7, PHỤ LỤC đứng một mình, hoặc dòng viết hoa đứng trước "(Kèm theo ...)" khi văn bản không có nhãn như TT_11, TT_19).
+    "(Kèm theo ...)" chỉ làm tiêu đề phụ lục trước phụ lục có nhãn đầu tiên. Khối chỉ có tiêu đề (<= 3 dòng) mà nhãn còn xuất hiện lại về sau là mục lục, bỏ.
+    Mã phụ lục: .PL<nhãn> với I.7 viết I_7; Mục .M<n>, "A. ..." .L<chữ>, "I. ..." .S<La Mã>, dòng .R<k>. Biểu mẫu "Mẫu số ..." chưa tách thành nút form.
+B11. Bảng lương vùng bị trải mỗi ô một dòng: ghép lại thành bảng (a1_tables_<doc>.jsonl) khi gặp đúng dạng "Vùng / Mức ... tháng / Mức ... giờ" rồi từng bộ ba. Đơn vị giữ
+    nguyên chữ gốc. Chỉ ND_74 trong dev có bảng này (mốc vùng I 4.960.000). Bảng của văn bản chưa có trong kho chưa kiểm được.
+B12. Đầu văn bản: số hiệu, ngày, căn cứ đọc bằng regex rồi so manifest; lệch thì cờ so_hieu_lech_manifest / ngay_ky_lech_manifest. TT_09, TT_10, TT_11 mất phần đầu
+    nên lấy từ manifest, cờ header_from_manifest; TT_09 / TT_10 còn cờ issued_uncertain (manifest ghi ngày ký có dấu "?", chưa chốt).
+
+C. CÒN HẠN CHẾ
+--------------
+C1. Dòng của bảng trong phụ lục (TT_11: 1985 dòng "TT | Tên nghề | Đặc điểm ...") là một đơn vị pl_row mỗi dòng, chưa tách cột.
+C2. A1 không tách "Mẫu số" thành nút form (plan L1 nói giữ một nút rỗng để cạnh sửa đổi có chỗ trỏ). Chỉ thị sửa mẫu biểu hiện ghi cờ form_directive_target_not_in_kb (L6).
