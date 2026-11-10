@@ -1,0 +1,29 @@
+PIPELINE MỚI: CÁC QUYẾT ĐỊNH (bắt đầu 10/11/2026)
+=================================================
+Plan (plan/ke_hoach/...) là tham khảo; chỗ lệch ghi ở đây (CLAUDE.md §1.2). Mục A là chỗ LỆCH plan và code cũ, đọc trước. Mọi quyết định do user chốt trong buổi thảo luận 10/11 nếu không ghi khác. Thiết kế chi tiết ở docs/pipeline_moi.md.
+
+A. LỆCH PLAN
+------------
+A1. Bỏ cách đánh số L0-L11 (và A1-A8, B, C, D). Tên bước mới là "giai đoạn.bước" (1.1, 1.2 ..., 2.1 ...).
+    Lý do: user thấy L-số rối, không hiểu vì sao bước này đứng trước bước kia (ví dụ L4 trước L6) nên không bảo vệ được từng bước.
+A2. Đổi thứ tự dựng. Plan: L6 (update) trước L7-L9 (khái niệm, ngoại lệ ngầm, quy tắc), L11 (tăng dần) cuối.
+    Mới: giai đoạn 1 dựng KB gốc đủ mọi lớp (cấu trúc, quan hệ pháp lý, khái niệm, ngoại lệ ngầm, quy tắc) và hỏi đáp trên chỉ BLLĐ; giai đoạn 2 là update engine, làm sau.
+    Lý do: khi văn bản dưới luật được nạp thì các lớp đã có sẵn để cập nhật. Khớp Thuật toán 1 của Method 09/11 dòng 7 ("trích lại khái niệm, ngoại lệ ngầm, quy tắc cho tập ảnh hưởng"), dòng này đòi tầng tri thức có trước.
+A3. "KB gốc" là chỉ BLLĐ (không phải BLLĐ cộng văn bản đang hiệu lực tại một ngày). Mô phỏng thực tế: luật ra trước, văn bản hướng dẫn ra sau thì KB mở rộng.
+A4. VBHN_125 là một văn bản nạp thường ở giai đoạn 2 (KB gốc là BLLĐ bản đầu, VBHN là một lần cập nhật nạp thêm). Trước đây xử lý riêng là loại "bản hợp nhất" (đối chiếu, gắn cờ 8 Điều lệch). Cách xử lý 8 Điều lệch ở khung mới chưa bàn.
+A5. Tìm câu chỉ thị: kết hợp. Regex trước; không thấy thì LLM đề xuất; đề xuất đi qua cổng symbolic rồi mới dùng. Mục tiêu cover càng nhiều càng tốt.
+    Chưa bàn: có còn dùng nhãn "hiệu lực-chuyển tiếp" của bước loại Điều làm nơi tìm chỉ thị hay không (code cũ chỉ tìm trong Điều có nhãn đó, l6_directives.py đọc l4_labels.jsonl).
+A6. Nguyên tắc: mỗi bước dùng LLM phải có kiểm lại bằng symbolic (regex, khớp đồ thị...). Hiện trạng code cũ chặt hơn nguyên tắc ở L4: cổng của L4 là model LLM thứ hai, chưa phải symbolic. Cần bàn cổng symbolic cho nhãn loại Điều.
+A7. s(CASP) giữ làm bộ suy luận (Method 3.5). User sẽ tự cài và biên dịch trên máy. Chưa cài; cần cho bước 1.8-1.9.
+A8. Code cũ trong src/ và plan cũ chỉ để tham khảo. Dựng lại pipeline xong thì archive src/ cũ như archive/v1_thua_ke/. CLAUDE.md quy tắc 10 và §2 sẽ cần sửa khi tới lúc (hỏi user trước).
+A9. Cách làm việc: user làm chủ, agent đề xuất, user quyết, advisor (nếu có) kiểm; thảo luận thiết kế trước, code sau, từng lớp một. Xem docs/tien_do.md.
+A10. Kết phiên: khi user nói "tạm dừng" thì agent cập nhật docs/tien_do.md (và file thiết kế, quyết định nếu đổi), rồi commit và push luôn lên nhánh đang làm (không --force).
+    Lý do: user làm trên nhiều máy (cả máy công ty), cần pull là làm tiếp được và không muốn quên push. Đây là sự cho phép lâu dài của user cho riêng lệnh "tạm dừng"; commit hay push ngoài lệnh này vẫn phải được bảo (CLAUDE.md §1.4).
+    Chỗ spec im lặng, agent tự chọn: nếu kiểm đỏ vẫn commit và push, nhưng ghi "đỏ" vào Trạng thái hiện tại và báo user.
+
+B. QUAN SÁT KỸ THUẬT (không phải quyết định)
+--------------------------------------------
+B1. l6_directives.py:127 và :480 đọc data/processed/l4/l4_labels.jsonl; chỉ tìm câu chỉ thị trong Điều nhãn effect_transition. Nên về dữ liệu L4 đứng trước L6 là đúng, nhưng nhãn L4 còn có việc thứ hai (chọn Điều trích quy tắc) mà L7-L9 chưa làm.
+B2. l4_classify.py import text_norm từ l6_versions: tiện ích dùng chung nằm nhầm module.
+B3. Theo ghi chú nội bộ của Method 09/11: nhãn cô lập (isolated) được gán ở L3, L4 nhưng không chỗ nào trong code lọc nó. CHƯA kiểm lại trong code.
+B4. Mốc quay lui: commit d83a4d4 trên nhánh v3_refactor; ngày 10/11 7 bộ test cho 'tổng test lỗi: 0'.
