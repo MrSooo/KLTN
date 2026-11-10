@@ -1,0 +1,181 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-08T18:59:13+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k1\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Bộ luật Lao động quy định tiêu chuẩn lao động; quyền, nghĩa vụ, trách nhiệm của người lao động, người sử dụng lao động, tổ chức đại diện người lao động tại cơ s\"\n},\n{\n\"k\": \"k2\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Đối tượng áp dụng\",\n\"doan_dau\": \"Người lao động, người học nghề, người tập nghề và người làm việc không có quan hệ lao động.\"\n},\n{\n\"k\": \"k3\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Chính sách của Nhà nước về lao động\",\n\"doan_dau\": \"Bảo đảm quyền và lợi ích hợp pháp, chính đáng của người lao động, người làm việc không có quan hệ lao động; khuyến khích những thỏa thuận bảo đảm cho người lao \"\n},\n{\n\"k\": \"k4\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền và nghĩa vụ của người lao động\",\n\"doan_dau\": \"Người lao động có các quyền sau đây:\"\n},\n{\n\"k\": \"k5\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền và nghĩa vụ của người sử dụng lao động\",\n\"doan_dau\": \"Người sử dụng lao động có các quyền sau đây:\"\n},\n{\n\"k\": \"k6\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Xây dựng quan hệ lao động\",\n\"doan_dau\": \"Quan hệ lao động được xác lập qua đối thoại, thương lượng, thỏa thuận theo nguyên tắc tự nguyện, thiện chí, bình đẳng, hợp tác, tôn trọng quyền và lợi ích hợp p\"\n},\n{\n\"k\": \"k7\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n\"doan_dau\": \"Phân biệt đối xử trong lao động.\"\n},\n{\n\"k\": \"k8\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Việc làm, giải quyết việc làm\",\n\"doan_dau\": \"Việc làm là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm.\"\n},\n{\n\"k\": \"k9\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền làm việc của người lao động\",\n\"doan_dau\": \"Được tự do lựa chọn việc làm, làm việc cho bất kỳ người sử dụng lao động nào và ở bất kỳ nơi nào mà pháp luật không cấm.\"\n},\n{\n\"k\": \"k10\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tuyển dụng lao động\",\n\"doan_dau\": \"Người sử dụng lao động có quyền trực tiếp hoặc thông qua tổ chức dịch vụ việc làm, doanh nghiệp hoạt động cho thuê lại lao động để tuyển dụng lao động theo nhu \"\n},\n{\n\"k\": \"k11\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trách nhiệm quản lý lao động của người sử dụng lao động\",\n\"doan_dau\": \"Lập, cập nhật, quản lý, sử dụng sổ quản lý lao động bằng bản giấy hoặc bản điện tử và xuất trình khi cơ quan nhà nước có thẩm quyền yêu cầu.\"\n},\n{\n\"k\": \"k12\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hợp đồng lao động\",\n\"doan_dau\": \"Hợp đồng lao động là sự thỏa thuận giữa người lao động và người sử dụng lao động về việc làm có trả công, tiền lương, điều kiện lao động, quyền và nghĩa vụ của \"\n},\n{\n\"k\": \"k13\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hình thức hợp đồng lao động\",\n\"doan_dau\": \"Hợp đồng lao động phải được giao kết bằng văn bản và được làm thành 02 bản, người lao động giữ 01 bản, người sử dụng lao động giữ 01 bản, trừ trường hợp quy địn\"\n},\n{\n\"k\": \"k14\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nguyên tắc giao kết hợp đồng lao động\",\n\"doan_dau\": \"Tự nguyện, bình đẳng, thiện chí, hợp tác và trung thực.\"\n},\n{\n\"k\": \"k15\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghĩa vụ cung cấp thông tin khi giao kết hợp đồng lao động\",\n\"doan_dau\": \"Người sử dụng lao động phải cung cấp thông tin trung thực cho người lao động về công việc, địa điểm làm việc, điều kiện làm việc, thời giờ làm việc, thời giờ ng\"\n},\n{\n\"k\": \"k16\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hành vi người sử dụng lao động không được làm khi giao kết, thực hiện hợp đồng lao động\",\n\"doan_dau\": \"Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động.\"\n},\n{\n\"k\": \"k17\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Giao kết nhiều hợp đồng lao động\",\n\"doan_dau\": \"Người lao động có thể giao kết nhiều hợp đồng lao động với nhiều người sử dụng lao động nhưng phải bảo đảm thực hiện đầy đủ các nội dung đã giao kết.\"\n},\n{\n\"k\": \"k18\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Loại hợp đồng lao động\",\n\"doan_dau\": \"Hợp đồng lao động phải được giao kết theo một trong các loại sau đây:\"\n},\n{\n\"k\": \"k19\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nội dung hợp đồng lao động\",\n\"doan_dau\": \"Hợp đồng lao động phải có những nội dung chủ yếu sau đây:\"\n},\n{\n\"k\": \"k20\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Phụ lục hợp đồng lao động\",\n\"doan_dau\": \"Phụ lục hợp đồng lao động là bộ phận của hợp đồng lao động và có hiệu lực như hợp đồng lao động.\"\n},\n{\n\"k\": \"k21\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thử việc\",\n\"doan_dau\": \"Người sử dụng lao động và người lao động có thể thỏa thuận nội dung thử việc ghi trong hợp đồng lao động hoặc thỏa thuận về thử việc bằng việc giao kết hợp đồng\"\n},\n{\n\"k\": \"k22\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thời gian thử việc\",\n\"doan_dau\": \"Thời gian thử việc do hai bên thỏa thuận căn cứ vào tính chất và mức độ phức tạp của công việc nhưng chỉ được thử việc một lần đối với một công việc và bảo đảm \"\n},\n{\n\"k\": \"k23\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tiền lương thử việc\",\n\"doan_dau\": \"Tiền lương của người lao động trong thời gian thử việc do hai bên thỏa thuận nhưng ít nhất phải bằng 85% mức lương của công việc đó.\"\n},\n{\n\"k\": \"k24\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Kết thúc thời gian thử việc\",\n\"doan_dau\": \"Khi kết thúc thời gian thử việc, người sử dụng lao động phải thông báo kết quả thử việc cho người lao động. Trường hợp thử việc đạt yêu cầu thì người sử dụng la\"\n},\n{\n\"k\": \"k25\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thực hiện công việc theo hợp đồng lao động\",\n\"doan_dau\": \"Công việc theo hợp đồng lao động phải do người lao động đã giao kết hợp đồng thực hiện. Địa điểm làm việc được thực hiện theo hợp đồng lao động, trừ trường hợp \"\n},\n{\n\"k\": \"k26\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Chuyển người lao động làm công việc khác so với hợp đồng lao động\",\n\"doan_dau\": \"Khi gặp khó khăn đột xuất do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, áp dụng biện pháp ngăn ngừa, khắc phục tai nạn lao động, bệnh nghề nghiệp, sự cố điện, nư\"\n},\n{\n\"k\": \"k27\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tạm hoãn thực hiện hợp đồng lao động\",\n\"doan_dau\": \"Các trường hợp tạm hoãn thực hiện hợp đồng lao động bao gồm:\"\n},\n{\n\"k\": \"k28\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nhận lại người lao động hết thời hạn tạm hoãn thực hiện hợp đồng lao động\",\n\"doan_dau\": \"Trong thời hạn 15 ngày kể từ ngày hết thời hạn tạm hoãn thực hiện hợp đồng lao động, người lao động phải có mặt tại nơi làm việc và người sử dụng lao động phải \"\n},\n{\n\"k\": \"k29\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Làm việc không trọn thời gian\",\n\"doan_dau\": \"Người lao động làm việc không trọn thời gian là người lao động có thời gian làm việc ngắn hơn so với thời gian làm việc bình thường theo ngày hoặc theo tuần hoặ\"\n},\n{\n\"k\": \"k30\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n\"doan_dau\": \"Hết hạn hợp đồng lao động, trừ trường hợp quy định tại khoản 4 Điều 177 của Bộ luật này.\"\n},\n{\n\"k\": \"k31\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người lao động\",\n\"doan_dau\": \"Người lao động có quyền đơn phương chấm dứt hợp đồng lao động nhưng phải báo trước cho người sử dụng lao động như sau:\"\n},\n{\n\"k\": \"k32\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"doan_dau\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây: Khi sức khỏe của người lao động bình phục thì người sử dụng lao \"\n},\n{\n\"k\": \"k33\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động\",\n\"doan_dau\": \"Người lao động ốm đau hoặc bị tai nạn, bệnh nghề nghiệp đang điều trị, điều dưỡng theo chỉ định của cơ sở khám bệnh, chữa bệnh có thẩm quyền, trừ trường hợp quy\"\n},\n{\n\"k\": \"k34\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hủy bỏ việc đơn phương chấm dứt hợp đồng lao động\",\n\"doan_dau\": \"Mỗi bên đều có quyền hủy bỏ việc đơn phương chấm dứt hợp đồng lao động trước khi hết thời hạn báo trước nhưng phải thông báo bằng văn bản và phải được bên kia đ\"\n},\n{\n\"k\": \"k35\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Đơn phương chấm dứt hợp đồng lao động trái pháp luật\",\n\"doan_dau\": \"Đơn phương chấm dứt hợp đồng lao động trái pháp luật là trường hợp chấm dứt hợp đồng lao động không đúng quy định tại các điều 35, 36 và 37 của Bộ luật này.\"\n},\n{\n\"k\": \"k36\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghĩa vụ của người lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật\",\n\"doan_dau\": \"Không được trợ cấp thôi việc.\"\n},\n{\n\"k\": \"k37\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật\",\n\"doan_dau\": \"Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp tro\"\n},\n{\n\"k\": \"k38\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n\"doan_dau\": \"Những trường hợp sau đây được coi là thay đổi cơ cấu, công nghệ:\"\n},\n{\n\"k\": \"k39\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghĩa vụ của người sử dụng lao động khi chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã\",\n\"doan_dau\": \"Trong trường hợp chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh n\"\n},\n{\n\"k\": \"k40\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Phương án sử dụng lao động\",\n\"doan_dau\": \"Phương án sử dụng lao động phải có những nội dung chủ yếu sau đây:\"\n}\n]",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "f8bwau7OJbzf694Pw_DMiQs",
+ "output": {
+  "labels": [
+   {
+    "k": "k1",
+    "label": "substantive"
+   },
+   {
+    "k": "k2",
+    "label": "substantive"
+   },
+   {
+    "k": "k3",
+    "label": "substantive"
+   },
+   {
+    "k": "k4",
+    "label": "substantive"
+   },
+   {
+    "k": "k5",
+    "label": "substantive"
+   },
+   {
+    "k": "k6",
+    "label": "substantive"
+   },
+   {
+    "k": "k7",
+    "label": "substantive"
+   },
+   {
+    "k": "k8",
+    "label": "definition"
+   },
+   {
+    "k": "k9",
+    "label": "substantive"
+   },
+   {
+    "k": "k10",
+    "label": "substantive"
+   },
+   {
+    "k": "k11",
+    "label": "substantive"
+   },
+   {
+    "k": "k12",
+    "label": "definition"
+   },
+   {
+    "k": "k13",
+    "label": "substantive"
+   },
+   {
+    "k": "k14",
+    "label": "substantive"
+   },
+   {
+    "k": "k15",
+    "label": "substantive"
+   },
+   {
+    "k": "k16",
+    "label": "substantive"
+   },
+   {
+    "k": "k17",
+    "label": "substantive"
+   },
+   {
+    "k": "k18",
+    "label": "substantive"
+   },
+   {
+    "k": "k19",
+    "label": "substantive"
+   },
+   {
+    "k": "k20",
+    "label": "substantive"
+   },
+   {
+    "k": "k21",
+    "label": "substantive"
+   },
+   {
+    "k": "k22",
+    "label": "substantive"
+   },
+   {
+    "k": "k23",
+    "label": "substantive"
+   },
+   {
+    "k": "k24",
+    "label": "substantive"
+   },
+   {
+    "k": "k25",
+    "label": "substantive"
+   },
+   {
+    "k": "k26",
+    "label": "substantive"
+   },
+   {
+    "k": "k27",
+    "label": "substantive"
+   },
+   {
+    "k": "k28",
+    "label": "substantive"
+   },
+   {
+    "k": "k29",
+    "label": "definition"
+   },
+   {
+    "k": "k30",
+    "label": "substantive"
+   },
+   {
+    "k": "k31",
+    "label": "substantive"
+   },
+   {
+    "k": "k32",
+    "label": "substantive"
+   },
+   {
+    "k": "k33",
+    "label": "substantive"
+   },
+   {
+    "k": "k34",
+    "label": "substantive"
+   },
+   {
+    "k": "k35",
+    "label": "definition"
+   },
+   {
+    "k": "k36",
+    "label": "substantive"
+   },
+   {
+    "k": "k37",
+    "label": "substantive"
+   },
+   {
+    "k": "k38",
+    "label": "substantive"
+   },
+   {
+    "k": "k39",
+    "label": "substantive"
+   },
+   {
+    "k": "k40",
+    "label": "substantive"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 3658,
+  "candidates_token_count": 1035,
+  "thoughts_token_count": null,
+  "total_token_count": 4693
+ }
+}

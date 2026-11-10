@@ -1,0 +1,181 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-08T18:59:21+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k81\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Mức lương tối thiểu\",\n\"doan_dau\": \"Mức lương tối thiểu là mức lương thấp nhất được trả cho người lao động làm công việc giản đơn nhất trong điều kiện lao động bình thường nhằm bảo đảm mức sống tố\"\n},\n{\n\"k\": \"k82\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hội đồng tiền lương quốc gia\",\n\"doan_dau\": \"Hội đồng tiền lương quốc gia là cơ quan tư vấn cho Chính phủ về mức lương tối thiểu và chính sách tiền lương đối với người lao động.\"\n},\n{\n\"k\": \"k83\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Xây dựng thang lương, bảng lương và định mức lao động\",\n\"doan_dau\": \"Người sử dụng lao động phải xây dựng thang lương, bảng lương và định mức lao động làm cơ sở để tuyển dụng, sử dụng lao động, thỏa thuận mức lương theo công việc\"\n},\n{\n\"k\": \"k84\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nguyên tắc trả lương\",\n\"doan_dau\": \"Người sử dụng lao động phải trả lương trực tiếp, đầy đủ, đúng hạn cho người lao động. Trường hợp người lao động không thể nhận lương trực tiếp thì người sử dụng\"\n},\n{\n\"k\": \"k85\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trả lương\",\n\"doan_dau\": \"Người sử dụng lao động trả lương cho người lao động căn cứ vào tiền lương đã thỏa thuận, năng suất lao động và chất lượng thực hiện công việc.\"\n},\n{\n\"k\": \"k86\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hình thức trả lương\",\n\"doan_dau\": \"Người sử dụng lao động và người lao động thỏa thuận về hình thức trả lương theo thời gian, sản phẩm hoặc khoán.\"\n},\n{\n\"k\": \"k87\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Kỳ hạn trả lương\",\n\"doan_dau\": \"Người lao động hưởng lương theo giờ, ngày, tuần thì được trả lương sau giờ, ngày, tuần làm việc hoặc được trả gộp do hai bên thỏa thuận nhưng không quá 15 ngày \"\n},\n{\n\"k\": \"k88\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tiền lương làm thêm giờ, làm việc vào ban đêm\",\n\"doan_dau\": \"Người lao động làm thêm giờ được trả lương tính theo đơn giá tiền lương hoặc tiền lương thực trả theo công việc đang làm như sau:\"\n},\n{\n\"k\": \"k89\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tiền lương ngừng việc\",\n\"doan_dau\": \"Trường hợp phải ngừng việc, người lao động được trả lương như sau:\"\n},\n{\n\"k\": \"k90\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trả lương thông qua người cai thầu\",\n\"doan_dau\": \"Nơi nào sử dụng người cai thầu hoặc người có vai trò trung gian tương tự thì người sử dụng lao động là chủ chính phải có danh sách và địa chỉ của những người nà\"\n},\n{\n\"k\": \"k91\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tạm ứng tiền lương\",\n\"doan_dau\": \"Người lao động được tạm ứng tiền lương theo điều kiện do hai bên thỏa thuận và không bị tính lãi.\"\n},\n{\n\"k\": \"k92\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Khấu trừ tiền lương\",\n\"doan_dau\": \"Người sử dụng lao động chỉ được khấu trừ tiền lương của người lao động để bồi thường thiệt hại do làm hư hỏng dụng cụ, thiết bị, tài sản của người sử dụng lao đ\"\n},\n{\n\"k\": \"k93\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Chế độ nâng lương, nâng bậc, phụ cấp, trợ cấp\",\n\"doan_dau\": \"Chế độ nâng lương, nâng bậc, phụ cấp, trợ cấp và các chế độ khuyến khích đối với người lao động được thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập t\"\n},\n{\n\"k\": \"k94\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thưởng\",\n\"doan_dau\": \"Thưởng là số tiền hoặc tài sản hoặc bằng các hình thức khác mà người sử dụng lao động thưởng cho người lao động căn cứ vào kết quả sản xuất, kinh doanh, mức độ \"\n},\n{\n\"k\": \"k95\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thời giờ làm việc bình thường\",\n\"doan_dau\": \"Thời giờ làm việc bình thường không quá 08 giờ trong 01 ngày và không quá 48 giờ trong 01 tuần.\"\n},\n{\n\"k\": \"k96\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Giờ làm việc ban đêm\",\n\"doan_dau\": \"Giờ làm việc ban đêm được tính từ 22 giờ đến 06 giờ sáng ngày hôm sau.\"\n},\n{\n\"k\": \"k97\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Làm thêm giờ\",\n\"doan_dau\": \"Thời gian làm thêm giờ là khoảng thời gian làm việc ngoài thời giờ làm việc bình thường theo quy định của pháp luật, thỏa ước lao động tập thể hoặc nội quy lao \"\n},\n{\n\"k\": \"k98\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Làm thêm giờ trong trường hợp đặc biệt\",\n\"doan_dau\": \"Người sử dụng lao động có quyền yêu cầu người lao động làm thêm giờ vào bất kỳ ngày nào mà không bị giới hạn về số giờ làm thêm theo quy định tại Điều 107 của B\"\n},\n{\n\"k\": \"k99\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghỉ trong giờ làm việc\",\n\"doan_dau\": \"Người lao động làm việc theo thời giờ làm việc quy định tại Điều 105 của Bộ luật này từ 06 giờ trở lên trong một ngày thì được nghỉ giữa giờ ít nhất 30 phút liê\"\n},\n{\n\"k\": \"k100\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghỉ chuyển ca\",\n\"doan_dau\": \"Người lao động làm việc theo ca được nghỉ ít nhất 12 giờ trước khi chuyển sang ca làm việc khác.\"\n},\n{\n\"k\": \"k101\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghỉ hằng tuần\",\n\"doan_dau\": \"Mỗi tuần, người lao động được nghỉ ít nhất 24 giờ liên tục. Trong trường hợp đặc biệt do chu kỳ lao động không thể nghỉ hằng tuần thì người sử dụng lao động có \"\n},\n{\n\"k\": \"k102\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghỉ lễ, tết\",\n\"doan_dau\": \"Người lao động được nghỉ làm việc, hưởng nguyên lương trong những ngày lễ, tết sau đây:\"\n},\n{\n\"k\": \"k103\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghỉ hằng năm\",\n\"doan_dau\": \"Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động thì được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động như sau:\"\n},\n{\n\"k\": \"k104\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Ngày nghỉ hằng năm tăng thêm theo thâm niên làm việc\",\n\"doan_dau\": \"Cứ đủ 05 năm làm việc cho một người sử dụng lao động thì số ngày nghỉ hằng năm của người lao động theo quy định tại khoản 1 Điều 113 của Bộ luật này được tăng t\"\n},\n{\n\"k\": \"k105\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghỉ việc riêng, nghỉ không hưởng lương\",\n\"doan_dau\": \"Người lao động được nghỉ việc riêng mà vẫn hưởng nguyên lương và phải thông báo với người sử dụng lao động trong trường hợp sau đây:\"\n},\n{\n\"k\": \"k106\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thời giờ làm việc, thời giờ nghỉ ngơi đối với người làm công việc có tính chất đặc biệt\",\n\"doan_dau\": \"Đối với các công việc có tính chất đặc biệt trong lĩnh vực vận tải đường bộ, đường sắt, đường thủy, đường hàng không; thăm dò, khai thác dầu khí trên biển; làm \"\n},\n{\n\"k\": \"k107\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Kỷ luật lao động\",\n\"doan_dau\": \"Kỷ luật lao động là những quy định về việc tuân theo thời gian, công nghệ và điều hành sản xuất, kinh doanh do người sử dụng lao động ban hành trong nội quy lao\"\n},\n{\n\"k\": \"k108\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nội quy lao động\",\n\"doan_dau\": \"Người sử dụng lao động phải ban hành nội quy lao động, nếu sử dụng từ 10 người lao động trở lên thì nội quy lao động phải bằng văn bản.\"\n},\n{\n\"k\": \"k109\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Đăng ký nội quy lao động\",\n\"doan_dau\": \"Người sử dụng lao động sử dụng từ 10 người lao động trở lên phải đăng ký nội quy lao động tại cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh nơi \"\n},\n{\n\"k\": \"k110\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"doan_dau\": \"Việc xử lý kỷ luật lao động được quy định như sau:\"\n},\n{\n\"k\": \"k111\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thời hiệu xử lý kỷ luật lao động\",\n\"doan_dau\": \"Thời hiệu xử lý kỷ luật lao động là 06 tháng kể từ ngày xảy ra hành vi vi phạm; trường hợp hành vi vi phạm liên quan trực tiếp đến tài chính, tài sản, tiết lộ b\"\n},\n{\n\"k\": \"k112\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hình thức xử lý kỷ luật lao động\",\n\"doan_dau\": \"Khiển trách.\"\n},\n{\n\"k\": \"k113\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Áp dụng hình thức xử lý kỷ luật sa thải\",\n\"doan_dau\": \"Hình thức xử lý kỷ luật sa thải được người sử dụng lao động áp dụng trong trường hợp sau đây:\"\n},\n{\n\"k\": \"k114\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Xóa kỷ luật, giảm thời hạn chấp hành kỷ luật lao động\",\n\"doan_dau\": \"Người lao động bị khiển trách sau 03 tháng hoặc bị xử lý kỷ luật kéo dài thời hạn nâng lương sau 06 tháng hoặc bị xử lý kỷ luật cách chức sau 03 năm kể từ ngày \"\n},\n{\n\"k\": \"k115\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Các hành vi bị nghiêm cấm khi xử lý kỷ luật lao động\",\n\"doan_dau\": \"Xâm phạm sức khỏe, danh dự, tính mạng, uy tín, nhân phẩm của người lao động.\"\n},\n{\n\"k\": \"k116\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tạm đình chỉ công việc\",\n\"doan_dau\": \"Người sử dụng lao động có quyền tạm đình chỉ công việc của người lao động khi vụ việc vi phạm có những tình tiết phức tạp nếu xét thấy để người lao động tiếp tụ\"\n},\n{\n\"k\": \"k117\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Bồi thường thiệt hại\",\n\"doan_dau\": \"Người lao động làm hư hỏng dụng cụ, thiết bị hoặc có hành vi khác gây thiệt hại tài sản của người sử dụng lao động thì phải bồi thường theo quy định của pháp lu\"\n},\n{\n\"k\": \"k118\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Xử lý bồi thường thiệt hại\",\n\"doan_dau\": \"Việc xem xét, quyết định mức bồi thường thiệt hại phải căn cứ vào lỗi, mức độ thiệt hại thực tế và hoàn cảnh thực tế gia đình, nhân thân và tài sản của người la\"\n},\n{\n\"k\": \"k119\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Khiếu nại về kỷ luật lao động, trách nhiệm vật chất\",\n\"doan_dau\": \"Người bị xử lý kỷ luật lao động, bị tạm đình chỉ công việc hoặc phải bồi thường theo chế độ trách nhiệm vật chất nếu thấy không thỏa đáng có quyền khiếu nại với\"\n},\n{\n\"k\": \"k120\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tuân thủ pháp luật về an toàn, vệ sinh lao động\",\n\"doan_dau\": \"Người sử dụng lao động, người lao động và cơ quan, tổ chức, cá nhân có liên quan đến lao động, sản xuất, kinh doanh phải thực hiện quy định của pháp luật về an \"\n}\n]",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "hsbwaub_LKTKqfkPkJGcmQs",
+ "output": {
+  "labels": [
+   {
+    "k": "k81",
+    "label": "definition"
+   },
+   {
+    "k": "k82",
+    "label": "authority"
+   },
+   {
+    "k": "k83",
+    "label": "substantive"
+   },
+   {
+    "k": "k84",
+    "label": "substantive"
+   },
+   {
+    "k": "k85",
+    "label": "substantive"
+   },
+   {
+    "k": "k86",
+    "label": "substantive"
+   },
+   {
+    "k": "k87",
+    "label": "substantive"
+   },
+   {
+    "k": "k88",
+    "label": "substantive"
+   },
+   {
+    "k": "k89",
+    "label": "substantive"
+   },
+   {
+    "k": "k90",
+    "label": "substantive"
+   },
+   {
+    "k": "k91",
+    "label": "substantive"
+   },
+   {
+    "k": "k92",
+    "label": "substantive"
+   },
+   {
+    "k": "k93",
+    "label": "substantive"
+   },
+   {
+    "k": "k94",
+    "label": "definition"
+   },
+   {
+    "k": "k95",
+    "label": "substantive"
+   },
+   {
+    "k": "k96",
+    "label": "definition"
+   },
+   {
+    "k": "k97",
+    "label": "definition"
+   },
+   {
+    "k": "k98",
+    "label": "substantive"
+   },
+   {
+    "k": "k99",
+    "label": "substantive"
+   },
+   {
+    "k": "k100",
+    "label": "substantive"
+   },
+   {
+    "k": "k101",
+    "label": "substantive"
+   },
+   {
+    "k": "k102",
+    "label": "substantive"
+   },
+   {
+    "k": "k103",
+    "label": "substantive"
+   },
+   {
+    "k": "k104",
+    "label": "substantive"
+   },
+   {
+    "k": "k105",
+    "label": "substantive"
+   },
+   {
+    "k": "k106",
+    "label": "substantive"
+   },
+   {
+    "k": "k107",
+    "label": "definition"
+   },
+   {
+    "k": "k108",
+    "label": "substantive"
+   },
+   {
+    "k": "k109",
+    "label": "procedural"
+   },
+   {
+    "k": "k110",
+    "label": "procedural"
+   },
+   {
+    "k": "k111",
+    "label": "substantive"
+   },
+   {
+    "k": "k112",
+    "label": "substantive"
+   },
+   {
+    "k": "k113",
+    "label": "substantive"
+   },
+   {
+    "k": "k114",
+    "label": "substantive"
+   },
+   {
+    "k": "k115",
+    "label": "substantive"
+   },
+   {
+    "k": "k116",
+    "label": "substantive"
+   },
+   {
+    "k": "k117",
+    "label": "substantive"
+   },
+   {
+    "k": "k118",
+    "label": "substantive"
+   },
+   {
+    "k": "k119",
+    "label": "substantive"
+   },
+   {
+    "k": "k120",
+    "label": "substantive"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 3681,
+  "candidates_token_count": 1061,
+  "thoughts_token_count": null,
+  "total_token_count": 4742
+ }
+}

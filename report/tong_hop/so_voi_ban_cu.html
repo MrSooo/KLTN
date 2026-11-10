@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Làm thêm gì so với bản trước (tóm tắt nhanh)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #f4f6f7; --surface: #ffffff; --ink: #15202b; --muted: #556270; --line: #d9e0e5;
+  --accent: #0a6c74; --accent-soft: #dff0f1; --code-bg: #e9eef1;
+  --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1519; --surface: #162027; --ink: #e6edf1; --muted: #9aa9b5; --line: #2a3944;
+    --accent: #4fc1c8; --accent-soft: #12373b; --code-bg: #1c2a33; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1519; --surface: #162027; --ink: #e6edf1; --muted: #9aa9b5; --line: #2a3944;
+  --accent: #4fc1c8; --accent-soft: #12373b; --code-bg: #1c2a33; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.7 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 24px 64px; -webkit-font-smoothing: antialiased;
+}
+.shell { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 40px; align-items: start; }
+@media (max-width: 900px) { .shell { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
+
+.toc { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; font-size: 14px; line-height: 1.45; }
+.toc summary { display: none; cursor: pointer; font-weight: 600; padding: 10px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
+.toc ol ol { margin: 0 0 6px 14px; }
+.toc a { display: block; padding: 5px 10px; border-radius: 6px; color: var(--muted); text-decoration: none; }
+.toc ol ol a { font-size: 13px; padding: 3px 10px; }
+.toc a:hover, .toc a:focus-visible { background: var(--accent-soft); color: var(--accent); outline: none; }
+.toc .num { font-family: var(--font-mono); font-size: 12px; margin-right: 6px; opacity: .8; }
+@media (max-width: 900px) {
+  .toc { position: static; max-height: none; }
+  .toc summary { display: block; }
+  .toc ol.top { margin-top: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+}
+
+main { min-width: 0; max-width: 860px; }
+header.top { padding-bottom: 24px; margin-bottom: 8px; border-bottom: 1px solid var(--line); }
+.kicker { font: 500 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
+h1 { font-size: clamp(26px, 4.4vw, 38px); line-height: 1.25; font-weight: 700; letter-spacing: -.01em; margin: 0 0 14px; text-wrap: balance; }
+header.top p { color: var(--muted); font-size: 15px; margin: 0 0 8px; }
+h2 { font-size: 24px; line-height: 1.3; font-weight: 700; margin: 56px 0 14px; text-wrap: balance; }
+h2 .num { font: 500 14px var(--font-mono); color: var(--accent); margin-right: 10px; vertical-align: 2px; }
+h3 { font-size: 18px; line-height: 1.4; font-weight: 600; margin: 34px 0 8px; text-wrap: balance; }
+h3 .tag { font: 500 13px var(--font-mono); background: var(--accent-soft); color: var(--accent); padding: 2px 8px; border-radius: 6px; margin-right: 8px; vertical-align: 2px; }
+h4 { font-size: 16px; line-height: 1.4; font-weight: 600; margin: 24px 0 6px; color: var(--accent); }
+section[id] { scroll-margin-top: 16px; }
+p { margin: 0 0 14px; }
+ul, ol { margin: 0 0 14px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+li > ul, li > ol, li > .tbl, li > pre { margin: 8px 0 10px; }
+li::marker { color: var(--muted); }
+strong { font-weight: 600; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 36px 0 0; }
+code { font-family: var(--font-mono); font-size: .86em; background: var(--code-bg); padding: 1px 6px; border-radius: 4px; word-break: break-word; }
+pre { font: 400 13px/1.55 var(--font-mono); background: var(--code-bg); padding: 14px 16px; border-radius: 8px; overflow-x: auto; margin: 0 0 16px; }
+pre code { background: none; padding: 0; font-size: inherit; word-break: normal; }
+.tbl { overflow-x: auto; margin: 0 0 20px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; line-height: 1.55; }
+th, td { text-align: left; vertical-align: top; padding: 9px 14px; border-bottom: 1px solid var(--line); }
+th { font: 600 12px/1.3 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); background: var(--bg); }
+tr:last-child td { border-bottom: 0; }
+td code { white-space: normal; }
+footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="toc" aria-label="Mục lục"><details id="toc" open><summary>Mục lục</summary><ol class="top"><li><a href="#s1"><span class="num">1</span>Đổi lĩnh vực, mở rộng dữ liệu</a></li><li><a href="#s2"><span class="num">2</span>Hiểu quan hệ giữa các văn bản</a></li><li><a href="#s3"><span class="num">3</span>Chỉ thị hiệu lực: bảng 26 loại</a></li><li><a href="#s4"><span class="num">4</span>Dùng LLM có kiểm soát</a></li><li><a href="#s5"><span class="num">5</span>Độ tin cậy và công cụ</a></li><li><a href="#chưa-làm">Chưa làm</a></li></ol></details></nav>
+<main>
+<header class="top"><h1>Làm thêm gì so với bản trước (tóm tắt nhanh)</h1><p><strong>Bản trước (v1):</strong> Bộ luật Dân sự 2015, phần thừa kế; 8 bước A1-A8. <strong>Bản hiện tại:</strong> Bộ luật Lao động 45/2019 cùng 17 văn bản dưới luật; các bước L0-L6, kiểm tra độc lập, đồ thị gộp và trang xem theo ngày.</p></header>
+<section id="s1"><h2><span class="num">1</span>Đổi lĩnh vực, mở rộng dữ liệu</h2>
+<ul><li>Từ luật thừa kế sang luật lao động; dữ liệu, mẫu câu và kiểm tra đều viết lại cho Bộ luật Lao động.</li><li>Từ một bộ luật sang một họ văn bản có thứ bậc: luật, nghị định, thông tư, nghị quyết, bản hợp nhất. Tổng 18 văn bản, 893 Điều, 10.202 đơn vị (tính cả bản hợp nhất, vốn lặp lại 220 Điều của Bộ luật).</li></ul>
+</section>
+<section id="s2"><h2><span class="num">2</span>Hiểu quan hệ giữa các văn bản</h2>
+<ul><li><strong>Điều khoản giao chi tiết (L3):</strong> 5 dạng (A-E). Tìm 51 chỗ Bộ luật giao cho văn bản dưới luật, nối văn bản hướng dẫn về đúng điều (10 cạnh căn cứ, 48 cạnh hướng dẫn). Văn bản không nêu số Điều thì LLM đề xuất và phải qua kiểm.</li><li><strong>Phân loại Điều (L4):</strong> 921 Điều và phụ lục có nhãn (nội dung chính, định nghĩa, thẩm quyền, thủ tục, chuyển tiếp hiệu lực, phụ lục).</li></ul>
+</section>
+<section id="s3"><h2><span class="num">3</span>Chỉ thị hiệu lực: bảng 26 loại</h2>
+<ul><li>Mẫu câu chỉ thị được dựng theo cách các nghị định, thông tư trong kho thực sự diễn đạt: sửa hoặc bổ sung "như sau", thay cụm từ, bãi bỏ, hết hiệu lực cả văn bản hoặc theo chủ đề, hiệu lực có điều kiện, có thời hạn, bản hợp nhất, ban hành theo luật cũ.</li><li>26 loại: <strong>17 có ca thật</strong> (kiểm trên 18 văn bản, đạt 15/15 mốc kiểm) và <strong>9 chưa có ca thật</strong> (đã cài, kiểm bằng ví dụ tự soạn, ghi rõ là chưa đo).</li><li>Câu chỉ thị lạ thì báo lỗi, không đoán (hiện 0 ca).</li><li>So bản hợp nhất với Bộ luật gốc: tìm ra 1 sửa đổi thật (Điều 154 khoản 8a, hiệu lực 01/01/2026) và 4 Điều có lỗi hoặc sai lệch chữ của chính bản hợp nhất (42, 87, 185, 220); 4 Điều này được gắn cờ, không tạo phiên bản.</li></ul>
+</section>
+<section id="s4"><h2><span class="num">4</span>Dùng LLM có kiểm soát</h2>
+<ul><li>Gemini chỉ đọc hiểu và đề xuất; một model khác kiểm độc lập. Đề xuất không được áp thẳng mà phải qua cổng kiểm của máy.</li><li>Mọi phản hồi lưu cache: chạy lại cho cùng kết quả, không tốn lượt.</li></ul>
+</section>
+<section id="s5"><h2><span class="num">5</span>Độ tin cậy và công cụ</h2>
+<ul><li>Bước kiểm độc lập (đếm lại bằng bộ đếm riêng): 6 nhóm, 0 lỗi. Chuỗi phiên bản (L6) chạy lại hai lần ra file giống hệt. 120 test.</li><li>Đồ thị gộp 9.364 nút, 2.721 cạnh ngữ nghĩa, kèm trang HTML xem đồ thị theo ngày (mở offline).</li><li>Chạy cả chuỗi bằng một lệnh.</li></ul>
+</section>
+<section id="chưa-làm"><h2>Chưa làm</h2>
+<ul><li>L7-L11: sổ khái niệm, ngoại lệ ngầm, trích quy tắc, trả lời câu hỏi, đo.</li><li>9 loại chỉ thị chưa có ca thật để đo.</li><li>129 dẫn chiếu còn chờ vì văn bản đích chưa có trong kho.</li></ul>
+</section>
+</main>
+</div>
+<script>if (matchMedia("(max-width: 900px)").matches) document.getElementById("toc").removeAttribute("open");</script>
+</body>
+</html>

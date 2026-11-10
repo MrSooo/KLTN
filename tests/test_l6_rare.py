@@ -10,7 +10,7 @@ from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
 import _harness  # noqa: E402
-import a4_versions as a4  # noqa: E402
+import l6_versions as l6v  # noqa: E402
 import l6_directives as l6  # noqa: E402
 import l6_rare as rare  # noqa: E402
 
@@ -20,12 +20,12 @@ NOW = D(2026, 1, 1)
 
 def store_with(*ids, doc="T"):
     """Store gồm các mã (loại suy từ đoạn cuối: D.. dieu, K.. khoan, còn lại diem), cha suy từ mã; hiệu lực từ 2021-01-01."""
-    s = a4.Store()
+    s = l6v.Store()
     for uid in ids:
         seg = uid.split(".")[-1]
         typ = "dieu" if seg.startswith("D") and uid.count(".") == 1 else "khoan" if seg.startswith("K") else "diem"
         parent = ".".join(uid.split(".")[:-1]) if uid.count(".") > 1 else None
-        s.add(a4.Ver(uid, 1, typ, seg.lstrip("DK"), None, f"chữ {seg}", parent, D(2021, 1, 1), None, None, "normal", None, doc))
+        s.add(l6v.Ver(uid, 1, typ, seg.lstrip("DK"), None, f"chữ {seg}", parent, D(2021, 1, 1), None, None, "normal", None, doc))
     return s
 
 
@@ -40,8 +40,8 @@ def fake_ctx(docs=None):
 # ---- 19: hồi tố ----
 
 def test_19_retroactive_sets_applies_from_but_keeps_effective_from():
-    s = a4.Store()
-    s.add(a4.Ver("NEW.D1", 1, "dieu", "1", None, "x", None, NOW, None, None, "normal", None, "NEW"))
+    s = l6v.Store()
+    s.add(l6v.Ver("NEW.D1", 1, "dieu", "1", None, "x", None, NOW, None, None, "normal", None, "NEW"))
     doc, ev = SimpleNamespace(doc_id="NEW"), fake_ev()
     assert rare.retroactive(s, doc, NOW, D(2025, 7, 1), "Nghị định này áp dụng từ ngày 01 tháng 7 năm 2025", ev) is True
     v = s.cur("NEW.D1")
@@ -49,8 +49,8 @@ def test_19_retroactive_sets_applies_from_but_keeps_effective_from():
 
 
 def test_19_retroactive_that_adds_liability_is_blocked():
-    s = a4.Store()
-    s.add(a4.Ver("NEW.D1", 1, "dieu", "1", None, "x", None, NOW, None, None, "normal", None, "NEW"))
+    s = l6v.Store()
+    s.add(l6v.Ver("NEW.D1", 1, "dieu", "1", None, "x", None, NOW, None, None, "normal", None, "NEW"))
     ev = fake_ev()
     ok = rare.retroactive(s, SimpleNamespace(doc_id="NEW"), NOW, D(2025, 7, 1), "áp dụng từ ngày 01/7/2025, đặt trách nhiệm pháp lý nặng hơn", ev)
     assert ok is False and s.cur("NEW.D1").applies_from is None and ev.flags["retroactive_blocked"] == 1
@@ -155,9 +155,9 @@ def test_22_renumber_sentence_pattern():
 # ---- 16: bãi bỏ một phần phụ lục ----
 
 def test_16_repeal_part_of_appendix_closes_only_that_part():
-    s = a4.Store()
+    s = l6v.Store()
     for uid, par in (("T.PLI_7", None), ("T.PLI_7.M1", "T.PLI_7"), ("T.PLI_7.M2", "T.PLI_7"), ("T.PLI_7.M2.R1", "T.PLI_7.M2")):
-        s.add(a4.Ver(uid, 1, "pl", "x", None, "t", par, D(2026, 4, 15), None, None, "normal", None, "T"))
+        s.add(l6v.Ver(uid, 1, "pl", "x", None, "t", par, D(2026, 4, 15), None, None, "normal", None, "T"))
     n = rare.repeal_appendix(s, "T", "Bãi bỏ Mục 2 Phụ lục I.7 ban hành kèm theo Nghị quyết số 66.16/2026/NQ-CP", D(2026, 7, 1), "NQ18", "NQ18.D4")
     assert n == 2 and s.cur("T.PLI_7.M2").effective_to == D(2026, 7, 1) and s.cur("T.PLI_7.M2.R1").effective_to == D(2026, 7, 1)
     assert s.cur("T.PLI_7.M1").effective_to is None and s.cur("T.PLI_7").effective_to is None
@@ -213,8 +213,8 @@ TRIGGER = "Nghị định quy định về chế độ phụ cấp thử nghiệ
 
 
 def pending_store():
-    s = a4.Store()
-    s.add(a4.Ver("LATE.D1", 1, "dieu", "1", None, "x", None, None, None, None, "pending_event", TRIGGER, "LATE"))
+    s = l6v.Store()
+    s.add(l6v.Ver("LATE.D1", 1, "dieu", "1", None, "x", None, None, None, None, "pending_event", TRIGGER, "LATE"))
     return s
 
 
@@ -251,21 +251,21 @@ def test_12_wrong_kind_missing_number_or_vague_description_stay_pending():
     ok_d1, body = "Thông tư này quy định về chế độ phụ cấp thử nghiệm", "Nghị định số 152/2020/NĐ-CP"
     assert not fires(fake_doc(loai="Thông tư"), fake_units("ND_901-2099", ok_d1, body)), "sai loại văn bản"
     assert not fires(fake_doc(), fake_units("ND_901-2099", "Nghị định này quy định về chế độ phụ cấp thử nghiệm")), "thiếu số hiệu"
-    s = a4.Store()
-    s.add(a4.Ver("LATE.D1", 1, "dieu", "1", None, "x", None, None, None, None, "pending_event", "Nghị định mới (152/2020/NĐ-CP)", "LATE"))
+    s = l6v.Store()
+    s.add(l6v.Ver("LATE.D1", 1, "dieu", "1", None, "x", None, None, None, None, "pending_event", "Nghị định mới (152/2020/NĐ-CP)", "LATE"))
     l6.check_triggers(fake_ctx(), s, fake_doc(), fake_units("ND_901-2099", "Nghị định mới", "152/2020/NĐ-CP"), D(2099, 1, 1), fake_ev())
     assert s.cur("LATE.D1").state == "pending_event", "mô tả quá ngắn thì không khớp"
 
 
 def test_12_description_split_ignores_parent_clause():
     t = "Nghị định sửa đổi, bổ sung một số điều của Nghị định số 189/2025/NĐ-CP ngày 01 tháng 7 năm 2025 của Chính phủ"
-    s = a4.Store()
-    s.add(a4.Ver("LATE.D1", 1, "dieu", "1", None, "x", None, None, None, None, "pending_event", t, "LATE"))
+    s = l6v.Store()
+    s.add(l6v.Ver("LATE.D1", 1, "dieu", "1", None, "x", None, None, None, None, "pending_event", t, "LATE"))
     doc = fake_doc("ND_903-2099")
     l6.check_triggers(fake_ctx(), s, doc, fake_units("ND_903-2099", "Sửa đổi, bổ sung một số điều của Nghị định số 189/2025/NĐ-CP"), D(2099, 1, 1), fake_ev())
     assert s.cur("LATE.D1").state == "normal"
-    s2 = a4.Store()
-    s2.add(a4.Ver("LATE.D1", 1, "dieu", "1", None, "x", None, None, None, None, "pending_event", t, "LATE"))
+    s2 = l6v.Store()
+    s2.add(l6v.Ver("LATE.D1", 1, "dieu", "1", None, "x", None, None, None, None, "pending_event", t, "LATE"))
     l6.check_triggers(fake_ctx(), s2, doc, fake_units("ND_903-2099", "Sửa đổi, bổ sung một số điều của Nghị định số 152/2020/NĐ-CP"), D(2099, 1, 1), fake_ev())
     assert s2.cur("LATE.D1").state == "pending_event", "cùng cụm 'sửa đổi, bổ sung một số điều' nhưng sửa văn bản khác"
 

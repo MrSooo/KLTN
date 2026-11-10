@@ -1,0 +1,181 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-08T18:59:45+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k321\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Giới hạn số giờ làm thêm\",\n\"doan_dau\": \"Tổng số giờ làm thêm không quá 50% số giờ làm việc bình thường trong 01 ngày khi làm thêm vào ngày làm việc bình thường, trừ trường hợp quy định tại khoản 2, kh\"\n},\n{\n\"k\": \"k322\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Các trường hợp được tổ chức làm thêm từ trên 200 giờ đến 300 giờ trong một năm\",\n\"doan_dau\": \"Ngoài các trường hợp quy định tại các điểm a, điểm b, điểm c, điểm d khoản 3 Điều 107 của Bộ luật Lao động, các trường hợp sau đây được tổ chức làm thêm từ trên\"\n},\n{\n\"k\": \"k323\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thông báo về việc tổ chức làm thêm từ trên 200 giờ đến 300 giờ trong một năm\",\n\"doan_dau\": \"Khi tổ chức làm thêm từ trên 200 giờ đến 300 giờ trong một năm, người sử dụng lao động phải thông báo cho Sở Lao động - Thương binh và Xã hội tại các nơi sau:\"\n},\n{\n\"k\": \"k324\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Ca làm việc và tổ chức làm việc theo ca\",\n\"doan_dau\": \"Ca làm việc là khoảng thời gian làm việc của người lao động từ khi bắt đầu nhận nhiệm vụ cho đến khi kết thúc và bàn giao nhiệm vụ cho người khác, bao gồm cả th\"\n},\n{\n\"k\": \"k325\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nghỉ trong giờ làm việc\",\n\"doan_dau\": \"Thời gian nghỉ giữa giờ ít nhất 45 phút liên tục theo quy định tại khoản 1 Điều 109 của Bộ luật Lao động được áp dụng đối với người lao động làm việc từ 06 giờ \"\n},\n{\n\"k\": \"k326\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời gian được coi là thời gian làm việc để tính số ngày nghỉ hằng năm của người lao động\",\n\"doan_dau\": \"Thời gian học nghề, tập nghề theo quy định tại Điều 61 của Bộ luật Lao động nếu sau khi hết thời gian học nghề, tập nghề mà người lao động làm việc cho người sử\"\n},\n{\n\"k\": \"k327\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Cách tính ngày nghỉ hằng năm trong một số trường hợp đặc biệt\",\n\"doan_dau\": \"Số ngày nghỉ hằng năm của người lao động làm việc chưa đủ 12 tháng theo quy định tại khoản 2 Điều 113 của Bộ luật Lao động được tính như sau: lấy số ngày nghỉ h\"\n},\n{\n\"k\": \"k328\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tiền tàu xe, tiền lương trong thời gian đi đường, tiền lương ngày nghỉ hằng năm và các ngày nghỉ có hưởng lương khác\",\n\"doan_dau\": \"Tiền tàu xe, tiền lương những ngày đi đường ngoài ngày nghỉ hằng năm theo khoản 6 Điều 113 của Bộ luật Lao động do hai bên thỏa thuận.\"\n},\n{\n\"k\": \"k329\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Một số công việc có tính chất đặc biệt về thời giờ làm việc, thời giờ nghỉ ngơi\",\n\"doan_dau\": \"Ngoài các công việc có tính chất đặc biệt quy định tại Điều 116 của Bộ luật Lao động, các công việc có tính chất đặc biệt về thời giờ làm việc, thời giờ nghỉ ng\"\n},\n{\n\"k\": \"k330\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nội quy lao động\",\n\"doan_dau\": \"Nội quy lao động tại Điều 118 của Bộ luật Lao động được quy định như sau:\"\n},\n{\n\"k\": \"k331\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời hiệu xử lý bồi thường thiệt hại\",\n\"doan_dau\": \"Thời hiệu xử lý bồi thường thiệt hại tại khoản 2 Điều 130 của Bộ luật Lao động được quy định như sau:\"\n},\n{\n\"k\": \"k332\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Khiếu nại về kỷ luật lao động, trách nhiệm vật chất\",\n\"doan_dau\": \"Người bị xử lý kỷ luật lao động, bị tạm đình chỉ công việc hoặc phải bồi thường theo chế độ trách nhiệm vật chất nếu thấy không thỏa đáng thì có quyền khiếu nại\"\n},\n{\n\"k\": \"k333\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Người sử dụng lao động có sử dụng nhiều lao động nữ\",\n\"doan_dau\": \"Người sử dụng lao động có sử dụng nhiều lao động nữ là người sử dụng lao động thuộc một trong các trường hợp sau đây:\"\n},\n{\n\"k\": \"k334\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nơi có nhiều lao động\",\n\"doan_dau\": \"Nơi có nhiều lao động được xác định như sau:\"\n},\n{\n\"k\": \"k335\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Phòng vắt, trữ sữa mẹ\",\n\"doan_dau\": \"Phòng vắt, trữ sữa mẹ là một không gian riêng tư, không phải buồng tắm hay buồng vệ sinh; có nguồn điện, nước, bàn, ghế, tủ lạnh bảo đảm vệ sinh, quạt hoặc điều\"\n},\n{\n\"k\": \"k336\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nhà trẻ, lớp mẫu giáo\",\n\"doan_dau\": \"Nhà trẻ, lớp mẫu giáo là cơ sở giáo dục mầm non theo quy định tại Điều 26 của Luật Giáo dục, gồm:\"\n},\n{\n\"k\": \"k337\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Quyền làm việc bình đẳng của người lao động, thực hiện các biện pháp bảo đảm bình đẳng giới\",\n\"doan_dau\": \"Quyền bình đẳng của người lao động:\"\n},\n{\n\"k\": \"k338\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tăng cường phúc lợi và cải thiện điều kiện làm việc\",\n\"doan_dau\": \"Người sử dụng lao động bảo đảm có đủ buồng tắm, buồng vệ sinh phù hợp tại nơi làm việc theo quy định của Bộ Y tế.\"\n},\n{\n\"k\": \"k339\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Chăm sóc sức khỏe đối với lao động nữ\",\n\"doan_dau\": \"Khi khám sức khỏe định kỳ, lao động nữ được khám chuyên khoa phụ sản theo danh mục khám chuyên khoa phụ sản do Bộ Y tế ban hành.\"\n},\n{\n\"k\": \"k340\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tổ chức nhà trẻ, lớp mẫu giáo ở nơi có nhiều lao động\",\n\"doan_dau\": \"Ủy ban nhân dân cấp tỉnh có trách nhiệm:\"\n},\n{\n\"k\": \"k341\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Giúp đỡ, hỗ trợ của người sử dụng lao động về chi phí gửi trẻ, mẫu giáo cho người lao động\",\n\"doan_dau\": \"Căn cứ điều kiện cụ thể, người sử dụng lao động xây dựng phương án, kế hoạch giúp đỡ, hỗ trợ một phần chi phí gửi trẻ tại nhà trẻ, lớp mẫu giáo đối với người la\"\n},\n{\n\"k\": \"k342\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Chính sách hỗ trợ người sử dụng lao động\",\n\"doan_dau\": \"Người sử dụng lao động đầu tư xây dựng nhà trẻ, lớp mẫu giáo, cơ sở y tế, công trình văn hóa và các công trình phúc lợi khác bảo đảm các điều kiện về quy mô, ti\"\n},\n{\n\"k\": \"k343\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Quấy rối tình dục tại nơi làm việc\",\n\"doan_dau\": \"Quấy rối tình dục quy định tại khoản 9 Điều 3 của Bộ luật Lao động có thể xảy ra dưới dạng trao đổi như đề nghị, yêu cầu, gợi ý, đe dọa, ép buộc đổi quan hệ tìn\"\n},\n{\n\"k\": \"k344\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Quy định của người sử dụng lao động về phòng, chống quấy rối tình dục tại nơi làm việc\",\n\"doan_dau\": \"Quy định của người sử dụng lao động về phòng, chống quấy rối tình dục trong nội quy lao động hoặc bằng phụ lục ban hành kèm theo nội quy lao động, bao gồm các n\"\n},\n{\n\"k\": \"k345\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm, nghĩa vụ phòng, chống quấy rối tình dục tại nơi làm việc\",\n\"doan_dau\": \"Người sử dụng lao động có nghĩa vụ:\"\n},\n{\n\"k\": \"k346\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Lao động là người giúp việc gia đình\",\n\"doan_dau\": \"Lao động là người giúp việc gia đình là người lao động theo quy định tại khoản 1 Điều 3 của Bộ luật Lao động có giao kết hợp đồng lao động bằng văn bản để làm n\"\n},\n{\n\"k\": \"k347\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Một số quy định riêng đối với lao động là người giúp việc gia đình\",\n\"doan_dau\": \"Quy định về hình thức hợp đồng lao động theo Điều 14 và khoản 1 Điều 162; nghĩa vụ cung cấp thông tin khi giao kết hợp đồng lao động theo Điều 16; nội dung hợp \"\n},\n{\n\"k\": \"k348\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nghĩa vụ của người sử dụng lao động, người lao động\",\n\"doan_dau\": \"Thực hiện các nghĩa vụ theo quy định tại các Điều 163, 164 và 165 của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k349\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm quản lý lao động là người giúp việc gia đình\",\n\"doan_dau\": \"Ủy ban nhân dân cấp tỉnh chỉ đạo Sở Lao động - Thương binh và Xã hội: Hướng dẫn Phòng Lao động - Thương binh và Xã hội thực hiện tuyên truyền, phổ biến quy định\"\n},\n{\n\"k\": \"k350\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tiêu chuẩn hòa giải viên lao động\",\n\"doan_dau\": \"Là công dân Việt Nam, có năng lực hành vi dân sự đầy đủ theo quy định của Bộ luật Dân sự, có sức khỏe và phẩm chất đạo đức tốt.\"\n},\n{\n\"k\": \"k351\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Miễn nhiệm hòa giải viên lao động\",\n\"doan_dau\": \"Hòa giải viên lao động miễn nhiệm khi thuộc một trong các trường hợp sau:\"\n},\n{\n\"k\": \"k352\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Chế độ, điều kiện hoạt động của hòa giải viên lao động\",\n\"doan_dau\": \"Hòa giải viên lao động được hưởng các chế độ: Ủy ban nhân dân cấp tỉnh có thể xem xét, trình Hội đồng nhân dân cùng cấp quyết định áp dụng mức bồi dưỡng cao hơn\"\n},\n{\n\"k\": \"k353\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Quản lý hòa giải viên lao động\",\n\"doan_dau\": \"Bộ Lao động - Thương binh và Xã hội:\"\n},\n{\n\"k\": \"k354\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tiêu chuẩn, điều kiện trọng tài viên lao động\",\n\"doan_dau\": \"Là công dân Việt Nam, có năng lực hành vi dân sự đầy đủ theo quy định của Bộ luật Dân sự, có sức khỏe và phẩm chất đạo đức tốt, có uy tín, công tâm.\"\n},\n{\n\"k\": \"k355\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Bổ nhiệm trọng tài viên lao động\",\n\"doan_dau\": \"Căn cứ số lượng trọng tài viên lao động của Hội đồng trọng tài lao động quy định tại khoản 2 Điều 185 của Bộ luật Lao động và tiêu chuẩn, điều kiện trọng tài vi\"\n},\n{\n\"k\": \"k356\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Miễn nhiệm trọng tài viên lao động\",\n\"doan_dau\": \"Trọng tài viên lao động miễn nhiệm khi thuộc một trong các trường hợp sau:\"\n},\n{\n\"k\": \"k357\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thành lập Hội đồng trọng tài lao động\",\n\"doan_dau\": \"Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định thành lập Hội đồng trọng tài lao động với nhiệm kỳ 05 năm, bao gồm các trọng tài viên lao động được bổ nhiệm theo q\"\n},\n{\n\"k\": \"k358\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thành lập và hoạt động của Ban trọng tài lao động\",\n\"doan_dau\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp lao động theo quy định tại các điểm a, b và c khoản 2 Điều 101 Nghị định này,\"\n},\n{\n\"k\": \"k359\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Chế độ, điều kiện hoạt động của trọng tài viên lao động, Hội đồng trọng tài lao động\",\n\"doan_dau\": \"Trọng tài viên lao động được hưởng các chế độ: Ủy ban nhân dân cấp tỉnh có thể xem xét, trình Hội đồng nhân dân cùng cấp quyết định áp dụng mức bồi dưỡng cao hơ\"\n},\n{\n\"k\": \"k360\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Quản lý nhà nước đối với trọng tài viên lao động, Hội đồng trọng tài lao động\",\n\"doan_dau\": \"Bộ Lao động - Thương binh và Xã hội:\"\n}\n]",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "nsbwaqOMKLGzz7sP1PXU0Q0",
+ "output": {
+  "labels": [
+   {
+    "k": "k321",
+    "label": "substantive"
+   },
+   {
+    "k": "k322",
+    "label": "substantive"
+   },
+   {
+    "k": "k323",
+    "label": "procedural"
+   },
+   {
+    "k": "k324",
+    "label": "definition"
+   },
+   {
+    "k": "k325",
+    "label": "substantive"
+   },
+   {
+    "k": "k326",
+    "label": "substantive"
+   },
+   {
+    "k": "k327",
+    "label": "substantive"
+   },
+   {
+    "k": "k328",
+    "label": "substantive"
+   },
+   {
+    "k": "k329",
+    "label": "substantive"
+   },
+   {
+    "k": "k330",
+    "label": "substantive"
+   },
+   {
+    "k": "k331",
+    "label": "substantive"
+   },
+   {
+    "k": "k332",
+    "label": "substantive"
+   },
+   {
+    "k": "k333",
+    "label": "substantive"
+   },
+   {
+    "k": "k334",
+    "label": "substantive"
+   },
+   {
+    "k": "k335",
+    "label": "definition"
+   },
+   {
+    "k": "k336",
+    "label": "definition"
+   },
+   {
+    "k": "k337",
+    "label": "substantive"
+   },
+   {
+    "k": "k338",
+    "label": "substantive"
+   },
+   {
+    "k": "k339",
+    "label": "substantive"
+   },
+   {
+    "k": "k340",
+    "label": "authority"
+   },
+   {
+    "k": "k341",
+    "label": "substantive"
+   },
+   {
+    "k": "k342",
+    "label": "substantive"
+   },
+   {
+    "k": "k343",
+    "label": "substantive"
+   },
+   {
+    "k": "k344",
+    "label": "substantive"
+   },
+   {
+    "k": "k345",
+    "label": "substantive"
+   },
+   {
+    "k": "k346",
+    "label": "definition"
+   },
+   {
+    "k": "k347",
+    "label": "substantive"
+   },
+   {
+    "k": "k348",
+    "label": "substantive"
+   },
+   {
+    "k": "k349",
+    "label": "authority"
+   },
+   {
+    "k": "k350",
+    "label": "substantive"
+   },
+   {
+    "k": "k351",
+    "label": "substantive"
+   },
+   {
+    "k": "k352",
+    "label": "substantive"
+   },
+   {
+    "k": "k353",
+    "label": "authority"
+   },
+   {
+    "k": "k354",
+    "label": "substantive"
+   },
+   {
+    "k": "k355",
+    "label": "procedural"
+   },
+   {
+    "k": "k356",
+    "label": "substantive"
+   },
+   {
+    "k": "k357",
+    "label": "authority"
+   },
+   {
+    "k": "k358",
+    "label": "procedural"
+   },
+   {
+    "k": "k359",
+    "label": "substantive"
+   },
+   {
+    "k": "k360",
+    "label": "authority"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 4013,
+  "candidates_token_count": 1074,
+  "thoughts_token_count": null,
+  "total_token_count": 5087
+ }
+}

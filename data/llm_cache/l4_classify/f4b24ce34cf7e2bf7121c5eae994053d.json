@@ -1,0 +1,181 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-08T18:59:56+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k441\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Nghị định này quy định về người lao động nước ngoài làm việc tại Việt Nam theo các điều, khoản sau đây của Bộ luật Lao động: Điều kiện, trình tự, thủ tục cấp, c\"\n},\n{\n\"k\": \"k442\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Đối tượng áp dụng\",\n\"doan_dau\": \"Người lao động nước ngoài làm việc tại Việt Nam (sau đây viết tắt là người lao động nước ngoài) là công dân nước ngoài vào làm việc tại các vị trí công việc quy\"\n},\n{\n\"k\": \"k443\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vị trí công việc của người lao động nước ngoài làm việc tại Việt Nam\",\n\"doan_dau\": \"Nhà quản lý là người quản lý doanh nghiệp theo quy định tại khoản 24 Điều 4 Luật Doanh nghiệp hoặc là người đứng đầu, cấp phó của người đứng đầu của cơ quan, tổ\"\n},\n{\n\"k\": \"k444\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Hợp pháp hóa lãnh sự và chứng thực các giấy tờ\",\n\"doan_dau\": \"Các giấy tờ trong hồ sơ cấp, cấp lại, gia hạn giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động đối với người lao động nước ngoài nếu \"\n},\n{\n\"k\": \"k445\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Quy định về giao dịch điện tử trong cấp, cấp lại, gia hạn giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Người sử dụng lao động nộp hồ sơ đề nghị cấp, cấp lại, gia hạn giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động đối với người lao độn\"\n},\n{\n\"k\": \"k446\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Thuộc một trong các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k447\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động theo thời hạn của một trong các trường hợp quy định tại Điều 21 Nghị định này nhưng không quá 02 \"\n},\n{\n\"k\": \"k448\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trường hợp cấp lại giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Giấy xác nhận không thuộc diện cấp giấy phép lao động còn thời hạn bị mất hoặc bị hư hỏng không sử dụng được.\"\n},\n{\n\"k\": \"k449\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời hạn của giấy xác nhận không thuộc diện cấp giấy phép lao động được cấp lại\",\n\"doan_dau\": \"Thời hạn của giấy xác nhận không thuộc diện cấp giấy phép lao động được cấp lại bằng thời hạn của giấy xác nhận không thuộc diện cấp giấy phép lao động đã được \"\n},\n{\n\"k\": \"k450\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời hạn của giấy xác nhận không thuộc diện cấp giấy phép lao động được gia hạn\",\n\"doan_dau\": \"Thời hạn của giấy xác nhận không thuộc diện cấp giấy phép lao động được gia hạn theo thời hạn của một trong các trường hợp quy định tại Điều 21 Nghị định này nh\"\n},\n{\n\"k\": \"k451\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n\"doan_dau\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý quy định tại khoản 1 Điều 3 Nghị định này là một trong các giấy tờ sau:\"\n},\n{\n\"k\": \"k452\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời hạn của giấy phép lao động, giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Thời hạn của giấy phép lao động, giấy xác nhận không thuộc diện cấp giấy phép lao động được cấp theo thời hạn của một trong các trường hợp sau đây nhưng không q\"\n},\n{\n\"k\": \"k453\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Các trường hợp cấp lại giấy phép lao động\",\n\"doan_dau\": \"Giấy phép lao động còn thời hạn bị mất hoặc bị hư hỏng không sử dụng được.\"\n},\n{\n\"k\": \"k454\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời hạn của giấy phép lao động được gia hạn\",\n\"doan_dau\": \"Thời hạn của giấy phép lao động được gia hạn theo thời hạn của một trong các trường hợp quy định tại Điều 21 Nghị định này nhưng chỉ được gia hạn một lần với th\"\n},\n{\n\"k\": \"k455\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trường hợp bị thu hồi giấy phép lao động\",\n\"doan_dau\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k456\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trường hợp bị thu hồi giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Làm việc không đúng với nội dung trong giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp.\"\n},\n{\n\"k\": \"k457\",\n\"loai_van_ban\": \"Văn bản hợp nhất\",\n\"tieu_de\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n\"doan_dau\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây: Những nội dung phải do thành viên quyết định theo đa số bao gồm thông \"\n},\n{\n\"k\": \"k458\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Nghị quyết này quy định việc cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh.\"\n},\n{\n\"k\": \"k459\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Nguyên tắc cắt giảm, đơn giản hóa, quy định liên quan đến hoạt động sản xuất, kinh doanh\",\n\"doan_dau\": \"Việc cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh phải bảo đảm tạo thuận lợi cho tổ chức, cá nhân, tạo lập m\"\n},\n{\n\"k\": \"k460\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Công an\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Công an theo quy định tại Phụ lục \"\n},\n{\n\"k\": \"k461\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Công Thương\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Công Thương theo quy định tại Phụ \"\n},\n{\n\"k\": \"k462\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Giáo dục và Đào tạo\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Giáo dục và Đào tạo theo quy định \"\n},\n{\n\"k\": \"k463\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Khoa học và Công nghệ\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Khoa học và Công nghệ theo quy địn\"\n},\n{\n\"k\": \"k464\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Nông nghiệp và Môi trường\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Nông nghiệp và Môi trường theo quy\"\n},\n{\n\"k\": \"k465\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Ngoại giao\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Ngoại giao theo quy định tại Phụ l\"\n},\n{\n\"k\": \"k466\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Nội vụ\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Nội vụ theo quy định tại Phụ lục I\"\n},\n{\n\"k\": \"k467\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Quốc phòng\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Quốc phòng theo quy định tại Phụ l\"\n},\n{\n\"k\": \"k468\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Tài chính\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Tài chính theo quy định tại Phụ lụ\"\n},\n{\n\"k\": \"k469\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Tư pháp\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Tư pháp theo quy định tại Phụ lục \"\n},\n{\n\"k\": \"k470\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Xây dựng\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Xây dựng theo quy định tại Phụ lục\"\n},\n{\n\"k\": \"k471\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Văn hóa, Thể thao và Du lịch\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Văn hóa, Thể thao và Du lịch theo \"\n},\n{\n\"k\": \"k472\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Y tế\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Bộ Y tế theo quy định tại Phụ lục I.1\"\n},\n{\n\"k\": \"k473\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Ngân hàng Nhà nước Việt Nam\",\n\"doan_dau\": \"Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên quan đến hoạt động sản xuất, kinh doanh thuộc phạm vi quản lý của Ngân hàng Nhà nước Việt Nam theo quy \"\n},\n{\n\"k\": \"k474\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Tổ chức thi hành\",\n\"doan_dau\": \"Bộ trưởng, Thủ trưởng cơ quan ngang bộ:\"\n},\n{\n\"k\": \"k475\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Nghị định này quy định về hành vi vi phạm hành chính, hình thức xử phạt, mức xử phạt, biện pháp khắc phục hậu quả đối với hành vi vi phạm hành chính, thẩm quyền\"\n},\n{\n\"k\": \"k476\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Hình thức xử phạt, biện pháp khắc phục hậu quả, thời hiệu xử phạt vi phạm hành chính, quy định về hành vi vi phạm hành chính đã kết thúc, hành vi vi phạm hành chính đang thực hiện\",\n\"doan_dau\": \"Tổ chức, cá nhân có hành vi vi phạm hành chính trong lĩnh vực lao động, bảo hiểm xã hội, người lao động Việt Nam đi làm việc ở nước ngoài theo hợp đồng thì bị x\"\n},\n{\n\"k\": \"k477\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Chuyển hồ sơ vụ vi phạm có dấu hiệu tội phạm\",\n\"doan_dau\": \"Thủ tục xử phạt vi phạm trong lĩnh vực lao động, bảo hiểm xã hội, người lao động Việt Nam đi làm việc ở nước ngoài theo hợp đồng thực hiện theo quy định của Luậ\"\n},\n{\n\"k\": \"k478\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Lập biên bản vi phạm hành chính đối với hành vi vi phạm quy định tại khoản 2 Điều 53 của Nghị định này\",\n\"doan_dau\": \"Chủ tịch Ủy ban nhân dân, Cục trưởng Cục Quản lý lao động ngoài nước, Giám đốc Sở Nội vụ, người có thẩm quyền xử phạt của Công an nhân dân, người đứng đầu cơ qu\"\n},\n{\n\"k\": \"k479\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Xử lý vi phạm hành chính trên môi trường điện tử\",\n\"doan_dau\": \"Việc xử lý vi phạm hành chính trong lĩnh vực lao động, bảo hiểm xã hội, người lao động Việt Nam đi làm việc ở nước ngoài theo hợp đồng trên môi trường điện tử đ\"\n},\n{\n\"k\": \"k480\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Mức phạt tiền và nguyên tắc áp dụng đối với hành vi vi phạm hành chính nhiều lần\",\n\"doan_dau\": \"Mức phạt tiền quy định đối với các hành vi vi phạm hành chính quy định tại Chương II, Chương III và Chương IV của Nghị định này là mức phạt đối với cá nhân; trừ\"\n}\n]",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "qsbwaumOK4fv4-EPg76l2Q8",
+ "output": {
+  "labels": [
+   {
+    "k": "k441",
+    "label": "substantive"
+   },
+   {
+    "k": "k442",
+    "label": "substantive"
+   },
+   {
+    "k": "k443",
+    "label": "definition"
+   },
+   {
+    "k": "k444",
+    "label": "substantive"
+   },
+   {
+    "k": "k445",
+    "label": "procedural"
+   },
+   {
+    "k": "k446",
+    "label": "substantive"
+   },
+   {
+    "k": "k447",
+    "label": "substantive"
+   },
+   {
+    "k": "k448",
+    "label": "substantive"
+   },
+   {
+    "k": "k449",
+    "label": "substantive"
+   },
+   {
+    "k": "k450",
+    "label": "substantive"
+   },
+   {
+    "k": "k451",
+    "label": "substantive"
+   },
+   {
+    "k": "k452",
+    "label": "substantive"
+   },
+   {
+    "k": "k453",
+    "label": "substantive"
+   },
+   {
+    "k": "k454",
+    "label": "substantive"
+   },
+   {
+    "k": "k455",
+    "label": "substantive"
+   },
+   {
+    "k": "k456",
+    "label": "substantive"
+   },
+   {
+    "k": "k457",
+    "label": "substantive"
+   },
+   {
+    "k": "k458",
+    "label": "substantive"
+   },
+   {
+    "k": "k459",
+    "label": "substantive"
+   },
+   {
+    "k": "k460",
+    "label": "substantive"
+   },
+   {
+    "k": "k461",
+    "label": "substantive"
+   },
+   {
+    "k": "k462",
+    "label": "substantive"
+   },
+   {
+    "k": "k463",
+    "label": "substantive"
+   },
+   {
+    "k": "k464",
+    "label": "substantive"
+   },
+   {
+    "k": "k465",
+    "label": "substantive"
+   },
+   {
+    "k": "k466",
+    "label": "substantive"
+   },
+   {
+    "k": "k467",
+    "label": "substantive"
+   },
+   {
+    "k": "k468",
+    "label": "substantive"
+   },
+   {
+    "k": "k469",
+    "label": "substantive"
+   },
+   {
+    "k": "k470",
+    "label": "substantive"
+   },
+   {
+    "k": "k471",
+    "label": "substantive"
+   },
+   {
+    "k": "k472",
+    "label": "substantive"
+   },
+   {
+    "k": "k473",
+    "label": "substantive"
+   },
+   {
+    "k": "k474",
+    "label": "authority"
+   },
+   {
+    "k": "k475",
+    "label": "substantive"
+   },
+   {
+    "k": "k476",
+    "label": "substantive"
+   },
+   {
+    "k": "k477",
+    "label": "procedural"
+   },
+   {
+    "k": "k478",
+    "label": "procedural"
+   },
+   {
+    "k": "k479",
+    "label": "procedural"
+   },
+   {
+    "k": "k480",
+    "label": "substantive"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 4543,
+  "candidates_token_count": 520,
+  "thoughts_token_count": null,
+  "total_token_count": 5063
+ }
+}

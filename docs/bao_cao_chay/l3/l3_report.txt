@@ -1,7 +1,8 @@
 L3 báo cáo
+LLM: --llm live; gọi API lần này: 1; đọc từ cache: 7; hôm nay đã dùng {chinh: 17, kiem: 6}
 điều khoản giao chi tiết: 51 cụm ở 51 đơn vị; theo dạng {'A': 35, 'B': 10, 'D': 5, 'E': 1}; số Điều theo dạng {'A': 34, 'B': 8, 'D': 5, 'E': 1}
 (plan 8/11: A 39 cụm/37 Điều, B 10/8, C 2 trong A, D 5 Điều, E 1 Điều; tổng ~55 cụm/~50 Điều; đây là regex thô, chưa lọc ca không phải giao chi tiết)
-cạnh based_on: 10  details: 45  chờ đích: 18
+cạnh based_on: 10  details: 48  chờ đích: 18
 mốc cổng delegation_clauses:
   đạt: BLLD.D91.K4 (dạng A)
   đạt: D154.K1/K2/K9 (dạng B)
@@ -12,16 +13,18 @@ mốc cổng details / based_on:
   đạt: TT_10 details D21.K1-3, D73.K4, D142.K1
   đạt: ND_135 details D169
   đạt: TT_18 based_on ND_145.D68.K2
-  đạt: ND_74 details D91 (keyword_proposed, chưa qua LLM kiểm)
+  đạt: ND_74 details D91 (GIỮ: hai model và từ khoá đồng ý)
 văn bản không có based_on (header mất hoặc không nêu): ['ND_90-2019', 'ND_28-2020', 'TT_10-2020-BLDTBXH', 'TT_11-2020-BLDTBXH', 'TT_09-2020-BLDTBXH', 'TT_19-2023-BLDTBXH', 'NQ_66-16-2026']
 ghi chú:
   ND_90-2019: không có details (Điều 1 không nêu điều, khoản đích)
   ND_28-2020: không có details (Điều 1 không nêu điều, khoản đích)
   TT_11-2020-BLDTBXH: không có details (Điều 1 không nêu điều, khoản đích)
-  ND_12-2022: không có details (Điều 1 không nêu điều, khoản đích)
+  ND_12-2022: LLM chinh=[] kiem=[]; giữ [], cô lập []
+  ND_12-2022: không có details (LLM không đề xuất điều khoản nào (và từ khoá không có ứng viên))
   TT_18-2021-BLDTBXH: không có details (Điều 1 không nêu điều, khoản đích)
-  ND_70-2023: không có details (Điều 1 không nêu điều, khoản đích)
+  ND_70-2023: LLM chinh=['BLLD_45-2019.D150', 'BLLD_45-2019.D154', 'BLLD_45-2019.D154', 'BLLD_45-2019.D154', 'BLLD_45-2019.D157'] kiem=['BLLD_45-2019.D150', 'BLLD_45-2019.D154', 'BLLD_45-2019.D154', 'BLLD_45-2019.D154', 'BLLD_45-2019.D157']; giữ [], cô lập ['BLLD_45-2019.D150', 'BLLD_45-2019.D154', 'BLLD_45-2019.D157']
   TT_19-2023-BLDTBXH: không có details (Điều 1 không nêu điều, khoản đích)
-  ND_74-2024: Điều 1 không nêu số Điều của BLLĐ; đề xuất bằng từ khoá ['mức lương tối thiểu'] -> ['BLLD_45-2019.D91']
+  ND_74-2024: LLM chinh=['BLLD_45-2019.D91'] kiem=['BLLD_45-2019.D91']; giữ ['BLLD_45-2019.D91'], cô lập []
   NQ_66-16-2026: không có details (Điều 1 không nêu điều, khoản đích)
-  ND_283-2026: không có details (Điều 1 không nêu điều, khoản đích)
+  ND_283-2026: LLM chinh=[] kiem=[]; giữ [], cô lập []
+  ND_283-2026: không có details (LLM không đề xuất điều khoản nào (và từ khoá không có ứng viên))

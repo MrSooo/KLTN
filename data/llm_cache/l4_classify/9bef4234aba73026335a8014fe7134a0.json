@@ -1,0 +1,181 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-08T18:59:40+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k281\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Người lao động thuê lại\",\n\"doan_dau\": \"Người lao động thuê lại là người lao động có năng lực hành vi dân sự đầy đủ, được doanh nghiệp cho thuê lại tuyển dụng và giao kết hợp đồng lao động, sau đó chu\"\n},\n{\n\"k\": \"k282\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Ký quỹ và sử dụng tiền ký quỹ\",\n\"doan_dau\": \"Doanh nghiệp thực hiện ký quỹ theo mức quy định tại khoản 2 Điều 21 Nghị định này tại ngân hàng thương mại của Việt Nam hoặc chi nhánh ngân hàng nước ngoài thàn\"\n},\n{\n\"k\": \"k283\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nộp tiền ký quỹ\",\n\"doan_dau\": \"Doanh nghiệp cho thuê lại thực hiện nộp tiền ký quỹ theo quy định của ngân hàng nhận ký quỹ và tuân thủ quy định của pháp luật. Doanh nghiệp cho thuê lại được h\"\n},\n{\n\"k\": \"k284\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Quản lý tiền ký quỹ\",\n\"doan_dau\": \"Ngân hàng nhận ký quỹ có trách nhiệm phong tỏa toàn bộ số tiền ký quỹ của doanh nghiệp cho thuê lại, quản lý tiền ký quỹ theo quy định của pháp luật về ký quỹ.\"\n},\n{\n\"k\": \"k285\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Rút tiền ký quỹ\",\n\"doan_dau\": \"Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ khi doanh nghiệp thuộc một \"\n},\n{\n\"k\": \"k286\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại\",\n\"doan_dau\": \"Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở La\"\n},\n{\n\"k\": \"k287\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nộp bổ sung tiền ký quỹ\",\n\"doan_dau\": \"Trong thời hạn 30 ngày kể từ ngày rút tiền ký quỹ để thanh toán đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều 18 và Điều 19 Nghị định này, d\"\n},\n{\n\"k\": \"k288\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Điều kiện cấp giấy phép\",\n\"doan_dau\": \"Người đại diện theo pháp luật của doanh nghiệp thực hiện hoạt động cho thuê lại lao động phải bảo đảm điều kiện:\"\n},\n{\n\"k\": \"k289\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Giấy phép hoạt động cho thuê lại lao động\",\n\"doan_dau\": \"Giấy phép hoạt động cho thuê lại lao động in trên giấy bìa cứng có kích thước khổ A4 (21 cm x 29,7 cm); mặt trước ghi nội dung của giấy phép trên nền trắng có h\"\n},\n{\n\"k\": \"k290\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Gia hạn giấy phép\",\n\"doan_dau\": \"Doanh nghiệp được gia hạn giấy phép phải bảo đảm các quy định sau đây:\"\n},\n{\n\"k\": \"k291\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Cấp lại giấy phép\",\n\"doan_dau\": \"Doanh nghiệp cho thuê lại đề nghị Chủ tịch Ủy ban nhân dân cấp tỉnh cấp lại giấy phép trong các trường hợp sau đây:\"\n},\n{\n\"k\": \"k292\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thu hồi giấy phép\",\n\"doan_dau\": \"Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:\"\n},\n{\n\"k\": \"k293\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm của doanh nghiệp cho thuê lại trong trường hợp bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép\",\n\"doan_dau\": \"Trong thời hạn 15 ngày làm việc kể từ ngày nhận được văn bản của Chủ tịch Ủy ban nhân dân cấp tỉnh về việc không gia hạn hoặc không cấp lại hoặc thu hồi giấy ph\"\n},\n{\n\"k\": \"k294\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Danh mục công việc được thực hiện cho thuê lại lao động\",\n\"doan_dau\": \"Danh mục công việc được thực hiện cho thuê lại lao động được quy định tại Phụ lục II ban hành kèm theo Nghị định này.\"\n},\n{\n\"k\": \"k295\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm của doanh nghiệp cho thuê lại\",\n\"doan_dau\": \"Niêm yết công khai bản chính giấy phép tại trụ sở chính và bản sao được chứng thực từ bản chính giấy phép tại các chi nhánh, văn phòng đại diện (nếu có) của doa\"\n},\n{\n\"k\": \"k296\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm của ngân hàng nhận ký quỹ\",\n\"doan_dau\": \"Thực hiện đúng các quy định về mở tài khoản ký quỹ, nộp tiền ký quỹ, sử dụng tài khoản ký quỹ của doanh nghiệp cho thuê lại và các quy định liên quan đến tài kh\"\n},\n{\n\"k\": \"k297\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm của Chủ tịch Ủy ban nhân dân cấp tỉnh\",\n\"doan_dau\": \"Gửi thông báo về việc cấp, gia hạn, cấp lại, thu hồi giấy phép tới Bộ Lao động - Thương binh và Xã hội trong thời hạn 05 ngày làm việc kể từ ngày cấp, gia hạn, \"\n},\n{\n\"k\": \"k298\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm của Ngân hàng Nhà nước Việt Nam\",\n\"doan_dau\": \"Thực hiện việc thanh tra, kiểm tra, giám sát các ngân hàng nhận ký quỹ về việc nộp, quản lý tiền ký quỹ của các doanh nghiệp cho thuê lại theo quy định của pháp\"\n},\n{\n\"k\": \"k299\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm tổ chức đối thoại tại nơi làm việc\",\n\"doan_dau\": \"Người sử dụng lao động có trách nhiệm phối hợp với tổ chức đại diện người lao động tại cơ sở (nếu có) để tổ chức đối thoại tại nơi làm việc theo quy định tại kh\"\n},\n{\n\"k\": \"k300\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Số lượng, thành phần tham gia đối thoại\",\n\"doan_dau\": \"Số lượng, thành phần tham gia đối thoại tại khoản 2 Điều 63 của Bộ luật Lao động được quy định như sau:\"\n},\n{\n\"k\": \"k301\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tổ chức đối thoại định kỳ tại nơi làm việc\",\n\"doan_dau\": \"Người sử dụng lao động có trách nhiệm phối hợp với tổ chức đại diện người lao động tại cơ sở, nhóm đại diện đối thoại của người lao động tổ chức đối thoại định \"\n},\n{\n\"k\": \"k302\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tổ chức đối thoại khi có yêu cầu của một hoặc các bên\",\n\"doan_dau\": \"Việc tổ chức đối thoại khi có yêu cầu của một hoặc các bên được tiến hành khi nội dung yêu cầu đối thoại của bên đề nghị đối thoại bảo đảm các điều kiện sau:\"\n},\n{\n\"k\": \"k303\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tổ chức đối thoại khi có vụ việc\",\n\"doan_dau\": \"Đối với vụ việc người sử dụng lao động phải tham khảo, trao đổi ý kiến với tổ chức đại diện người lao động tại cơ sở về quy chế đánh giá mức độ hoàn thành công \"\n},\n{\n\"k\": \"k304\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nguyên tắc thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc\",\n\"doan_dau\": \"Thiện chí, hợp tác, trung thực, bình đẳng, công khai và minh bạch.\"\n},\n{\n\"k\": \"k305\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nội dung, hình thức người sử dụng lao động phải công khai\",\n\"doan_dau\": \"Người sử dụng lao động phải công khai với người lao động những nội dung sau:\"\n},\n{\n\"k\": \"k306\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nội dung, hình thức người lao động được tham gia ý kiến\",\n\"doan_dau\": \"Người lao động được tham gia ý kiến về những nội dung sau:\"\n},\n{\n\"k\": \"k307\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nội dung, hình thức người lao động được quyết định\",\n\"doan_dau\": \"Người lao động được quyết định những nội dung sau:\"\n},\n{\n\"k\": \"k308\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nội dung, hình thức người lao động được kiểm tra, giám sát\",\n\"doan_dau\": \"Người lao động được kiểm tra, giám sát những nội dung sau:\"\n},\n{\n\"k\": \"k309\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Hội nghị người lao động\",\n\"doan_dau\": \"Hội nghị người lao động do người sử dụng lao động phối hợp với tổ chức đại diện người lao động tại cơ sở (nếu có) và nhóm đại diện đối thoại của người lao động \"\n},\n{\n\"k\": \"k310\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm ban hành quy chế dân chủ ở cơ sở tại nơi làm việc\",\n\"doan_dau\": \"Người sử dụng lao động có trách nhiệm ban hành quy chế dân chủ ở cơ sở tại nơi làm việc để thực hiện các nội dung quy định về đối thoại tại nơi làm việc và thực\"\n},\n{\n\"k\": \"k311\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Chức năng của Hội đồng tiền lương quốc gia\",\n\"doan_dau\": \"Hội đồng tiền lương quốc gia do Thủ tướng Chính phủ quyết định thành lập theo quy định tại khoản 2 Điều 92 của Bộ luật Lao động để thực hiện chức năng tư vấn ch\"\n},\n{\n\"k\": \"k312\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Cơ cấu tổ chức của Hội đồng tiền lương quốc gia\",\n\"doan_dau\": \"Hội đồng tiền lương quốc gia có 17 thành viên, bao gồm: 05 thành viên đại diện của Bộ Lao động - Thương binh và Xã hội; 05 thành viên đại diện của Tổng Liên đoà\"\n},\n{\n\"k\": \"k313\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Hoạt động của Hội đồng tiền lương quốc gia\",\n\"doan_dau\": \"Hội đồng tiền lương quốc gia hoạt động tập thể thông qua các phiên họp dưới sự điều hành của Chủ tịch Hội đồng; thảo luận dân chủ, công khai; quyết định dựa trê\"\n},\n{\n\"k\": \"k314\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm thực hiện về thành lập và hoạt động của Hội đồng tiền lương quốc gia\",\n\"doan_dau\": \"Chủ tịch Tổng Liên đoàn Lao động Việt Nam, Chủ tịch Phòng Thương mại và Công nghiệp Việt Nam, Chủ tịch Liên minh Hợp tác xã Việt Nam, Chủ tịch Hiệp hội doanh ng\"\n},\n{\n\"k\": \"k315\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Hình thức trả lương\",\n\"doan_dau\": \"Hình thức trả lương theo Điều 96 của Bộ luật Lao động được quy định cụ thể như sau:\"\n},\n{\n\"k\": \"k316\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tiền lương làm thêm giờ\",\n\"doan_dau\": \"Tiền lương làm thêm giờ theo khoản 1 Điều 98 của Bộ luật Lao động được quy định như sau:\"\n},\n{\n\"k\": \"k317\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tiền lương làm việc vào ban đêm\",\n\"doan_dau\": \"Tiền lương làm việc vào ban đêm theo khoản 2 Điều 98 của Bộ luật Lao động, được tính theo công thức sau:\"\n},\n{\n\"k\": \"k318\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tiền lương làm thêm giờ vào ban đêm\",\n\"doan_dau\": \"Người lao động làm thêm giờ vào ban đêm theo khoản 3 Điều 98 của Bộ luật Lao động, được hưởng tiền lương tính theo công thức sau:\"\n},\n{\n\"k\": \"k319\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời giờ được tính vào thời giờ làm việc được hưởng lương\",\n\"doan_dau\": \"Nghỉ giữa giờ quy định khoản 2 Điều 64 Nghị định này.\"\n},\n{\n\"k\": \"k320\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Sự đồng ý của người lao động khi làm thêm giờ\",\n\"doan_dau\": \"Trừ các trường hợp quy định tại Điều 108 của Bộ luật Lao động, các trường hợp khác khi tổ chức làm thêm giờ, người sử dụng lao động phải được sự đồng ý của ngườ\"\n}\n]",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "msbwatSXLLb7jNAP48GbwQY",
+ "output": {
+  "labels": [
+   {
+    "k": "k281",
+    "label": "definition"
+   },
+   {
+    "k": "k282",
+    "label": "substantive"
+   },
+   {
+    "k": "k283",
+    "label": "substantive"
+   },
+   {
+    "k": "k284",
+    "label": "authority"
+   },
+   {
+    "k": "k285",
+    "label": "procedural"
+   },
+   {
+    "k": "k286",
+    "label": "procedural"
+   },
+   {
+    "k": "k287",
+    "label": "substantive"
+   },
+   {
+    "k": "k288",
+    "label": "substantive"
+   },
+   {
+    "k": "k289",
+    "label": "substantive"
+   },
+   {
+    "k": "k290",
+    "label": "substantive"
+   },
+   {
+    "k": "k291",
+    "label": "procedural"
+   },
+   {
+    "k": "k292",
+    "label": "substantive"
+   },
+   {
+    "k": "k293",
+    "label": "substantive"
+   },
+   {
+    "k": "k294",
+    "label": "substantive"
+   },
+   {
+    "k": "k295",
+    "label": "substantive"
+   },
+   {
+    "k": "k296",
+    "label": "authority"
+   },
+   {
+    "k": "k297",
+    "label": "authority"
+   },
+   {
+    "k": "k298",
+    "label": "authority"
+   },
+   {
+    "k": "k299",
+    "label": "substantive"
+   },
+   {
+    "k": "k300",
+    "label": "substantive"
+   },
+   {
+    "k": "k301",
+    "label": "substantive"
+   },
+   {
+    "k": "k302",
+    "label": "substantive"
+   },
+   {
+    "k": "k303",
+    "label": "substantive"
+   },
+   {
+    "k": "k304",
+    "label": "substantive"
+   },
+   {
+    "k": "k305",
+    "label": "substantive"
+   },
+   {
+    "k": "k306",
+    "label": "substantive"
+   },
+   {
+    "k": "k307",
+    "label": "substantive"
+   },
+   {
+    "k": "k308",
+    "label": "substantive"
+   },
+   {
+    "k": "k309",
+    "label": "substantive"
+   },
+   {
+    "k": "k310",
+    "label": "substantive"
+   },
+   {
+    "k": "k311",
+    "label": "authority"
+   },
+   {
+    "k": "k312",
+    "label": "substantive"
+   },
+   {
+    "k": "k313",
+    "label": "substantive"
+   },
+   {
+    "k": "k314",
+    "label": "authority"
+   },
+   {
+    "k": "k315",
+    "label": "substantive"
+   },
+   {
+    "k": "k316",
+    "label": "substantive"
+   },
+   {
+    "k": "k317",
+    "label": "substantive"
+   },
+   {
+    "k": "k318",
+    "label": "substantive"
+   },
+   {
+    "k": "k319",
+    "label": "substantive"
+   },
+   {
+    "k": "k320",
+    "label": "substantive"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 3865,
+  "candidates_token_count": 1078,
+  "thoughts_token_count": null,
+  "total_token_count": 4943
+ }
+}

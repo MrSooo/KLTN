@@ -1,0 +1,181 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-08T18:59:37+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k241\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về lập hồ sơ để hưởng chế độ bảo hiểm xã hội, bảo hiểm thất nghiệp\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 2.000.000 đồng đối với người lao động có một trong các hành vi vi phạm sau đây:\"\n},\n{\n\"k\": \"k242\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm các quy định khác về bảo hiểm xã hội, bảo hiểm thất nghiệp\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 2.000.000 đồng khi vi phạm với mỗi người lao động nhưng tối đa không quá 75.000.000 đồng đối với người sử dụng lao động có hành \"\n},\n{\n\"k\": \"k243\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm điều kiện hoạt động của doanh nghiệp hoạt động dịch vụ đưa người lao động đi làm việc ở nước ngoài (sau đây viết tắt là doanh nghiệp dịch vụ)\",\n\"doan_dau\": \"Phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng đối với doanh nghiệp dịch vụ có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k244\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về đăng ký hợp đồng, báo cáo việc đưa người lao động đi làm việc ở nước ngoài\",\n\"doan_dau\": \"Phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng đối với hành vi không báo cáo định kỳ, đột xuất hoặc báo cáo không trung thực về hoạt động đưa người lao động Vi\"\n},\n{\n\"k\": \"k245\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về tuyển chọn, ký kết và thanh lý hợp đồng\",\n\"doan_dau\": \"Phạt tiền từ 20.000.000 đồng đến 40.000.000 đồng đối với doanh nghiệp dịch vụ có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k246\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về bồi dưỡng kỹ năng nghề, ngoại ngữ, kiến thức cần thiết cho người lao động\",\n\"doan_dau\": \"Phạt tiền từ 2.000.000 đồng đến 5.000.000 đồng đối với doanh nghiệp, tổ chức có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k247\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về thu, nộp, quản lý, sử dụng tiền môi giới, tiền ký quỹ, tiền dịch vụ và các khoản tiền thu của người lao động; đóng Quỹ hỗ trợ việc làm ngoài nước\",\n\"doan_dau\": \"Phạt tiền từ 10.000.000 đồng đến 20.000.000 đồng đối với doanh nghiệp dịch vụ khi có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k248\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về tổ chức đưa người lao động đi làm việc ở nước ngoài và quản lý người lao động ở ngoài nước\",\n\"doan_dau\": \"Phạt tiền từ 20.000.000 đồng đến 40.000.000 đồng đối với một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k249\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm của người lao động đi làm việc ở nước ngoài và một số đối tượng liên quan khác\",\n\"doan_dau\": \"Phạt tiền từ 2.000.000 đồng đến 5.000.000 đồng đối với người lao động có hành vi không đăng ký hợp đồng cá nhân tại cơ quan nhà nước có thẩm quyền theo quy định\"\n},\n{\n\"k\": \"k250\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm hướng dẫn và thi hành\",\n\"doan_dau\": \"Bộ trưởng Bộ Lao động - Thương binh và Xã hội có trách nhiệm hướng dẫn, kiểm tra việc thi hành Nghị định này.\"\n},\n{\n\"k\": \"k251\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Nghị định này quy định chi tiết Điều 169 của Bộ luật Lao động về tuổi nghỉ hưu.\"\n},\n{\n\"k\": \"k252\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Đối tượng áp dụng\",\n\"doan_dau\": \"Người lao động và người sử dụng lao động quy định tại các khoản 1, 2 và 3 Điều 2 của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k253\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời điểm nghỉ hưu và thời điểm hưởng chế độ hưu trí\",\n\"doan_dau\": \"Thời điểm nghỉ hưu là kết thúc ngày cuối cùng của tháng đủ tuổi nghỉ hưu theo quy định. Đối với trường hợp người lao động tiếp tục làm việc sau khi đã đủ tuổi n\"\n},\n{\n\"k\": \"k254\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tuổi nghỉ hưu trong điều kiện lao động bình thường\",\n\"doan_dau\": \"Tuổi nghỉ hưu của người lao động trong điều kiện lao động bình thường theo khoản 2 Điều 169 của Bộ luật Lao động được quy định cụ thể như sau:\"\n},\n{\n\"k\": \"k255\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nghỉ hưu ở tuổi thấp hơn tuổi nghỉ hưu trong điều kiện lao động bình thường\",\n\"doan_dau\": \"Nghỉ hưu ở tuổi thấp hơn tuổi nghỉ hưu trong điều kiện lao động bình thường của người lao động theo khoản 3 Điều 169 của Bộ luật Lao động được quy định cụ thể n\"\n},\n{\n\"k\": \"k256\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nghỉ hưu ở tuổi cao hơn tuổi nghỉ hưu trong điều kiện lao động bình thường\",\n\"doan_dau\": \"Nghỉ hưu ở tuổi cao hơn tuổi nghỉ hưu trong điều kiện lao động bình thường của người lao động theo khoản 4 Điều 169 của Bộ luật Lao động được quy định cụ thể nh\"\n},\n{\n\"k\": \"k257\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm hướng dẫn thi hành\",\n\"doan_dau\": \"Các Bộ trưởng, Thủ trưởng cơ quan ngang Bộ, Thủ trưởng cơ quan thuộc Chính phủ, Chủ tịch Ủy ban nhân dân tỉnh, thành phố trực thuộc Trung ương chịu trách nhiệm \"\n},\n{\n\"k\": \"k258\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Thông tư này quy định chi tiết và hướng dẫn thi hành một số điều, khoản sau đây của Bộ luật Lao động:\"\n},\n{\n\"k\": \"k259\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Đối tượng áp dụng\",\n\"doan_dau\": \"Người lao động, người sử dụng lao động theo khoản 1, khoản 2 và khoản 3 Điều 2 của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k260\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Nội dung chủ yếu của hợp đồng lao động\",\n\"doan_dau\": \"Nội dung chủ yếu phải có của hợp đồng lao động theo khoản 1 Điều 21 của Bộ luật Lao động được quy định như sau:\"\n},\n{\n\"k\": \"k261\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Bảo vệ bí mật kinh doanh, bí mật công nghệ\",\n\"doan_dau\": \"Khi người lao động làm việc có liên quan trực tiếp đến bí mật kinh doanh, bí mật công nghệ theo quy định của pháp luật thì người sử dụng lao động có quyền thỏa \"\n},\n{\n\"k\": \"k262\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Nội dung chủ yếu của hợp đồng lao động trong lĩnh vực nông nghiệp, lâm nghiệp, ngư nghiệp, diêm nghiệp\",\n\"doan_dau\": \"Hợp đồng lao động đối với người lao động làm việc trong lĩnh vực nông nghiệp, lâm nghiệp, ngư nghiệp, diêm nghiệp bao gồm các nội dung chủ yếu của hợp đồng lao \"\n},\n{\n\"k\": \"k263\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Thành lập Hội đồng thương lượng tập thể\",\n\"doan_dau\": \"Khi có nhu cầu thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể, trên cơ sở đồng thuận, người sử dụng lao động và các\"\n},\n{\n\"k\": \"k264\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Chức năng của Hội đồng thương lượng tập thể\",\n\"doan_dau\": \"Hội đồng thương lượng tập thể có chức năng tổ chức cho đại diện của các bên tiến hành thương lượng tập thể theo quy định của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k265\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Hoạt động của Hội đồng thương lượng tập thể\",\n\"doan_dau\": \"Hội đồng thương lượng tập thể làm việc thông qua các phiên họp.\"\n},\n{\n\"k\": \"k266\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Danh mục nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con\",\n\"doan_dau\": \"Danh mục nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con được ban hành tại Phụ lục kèm theo Thông tư này, bao gồm:\"\n},\n{\n\"k\": \"k267\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Trách nhiệm của người sử dụng lao động và người lao động trong việc thực hiện danh mục nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con\",\n\"doan_dau\": \"Người sử dụng lao động có trách nhiệm:\"\n},\n{\n\"k\": \"k268\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Nghị định này quy định chi tiết và hướng dẫn thi hành một số nội dung về điều kiện lao động và quan hệ lao động theo các điều, khoản sau đây của Bộ luật Lao độn\"\n},\n{\n\"k\": \"k269\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Đối tượng áp dụng\",\n\"doan_dau\": \"Người lao động, người học nghề, tập nghề theo khoản 1 Điều 2 của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k270\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Sổ quản lý lao động\",\n\"doan_dau\": \"Việc lập, cập nhật, quản lý, sử dụng sổ quản lý lao động tại khoản 1 Điều 12 của Bộ luật Lao động được quy định như sau:\"\n},\n{\n\"k\": \"k271\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Báo cáo sử dụng lao động\",\n\"doan_dau\": \"Việc khai trình sử dụng lao động, định kỳ báo cáo tình hình thay đổi về lao động tại khoản 2 Điều 12 của Bộ luật Lao động được quy định như sau:\"\n},\n{\n\"k\": \"k272\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nội dung hợp đồng lao động đối với người lao động được thuê làm giám đốc trong doanh nghiệp do Nhà nước nắm giữ 100% vốn điều lệ hoặc Nhà nước nắm giữ trên 50% vốn điều lệ hoặc tổng số cổ phần có quyền biểu quyết\",\n\"doan_dau\": \"Hợp đồng lao động đối với người lao động được thuê làm giám đốc trong doanh nghiệp do Nhà nước nắm giữ 100% vốn điều lệ hoặc Nhà nước nắm giữ trên 50% vốn điều \"\n},\n{\n\"k\": \"k273\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nội dung hợp đồng lao động đối với người lao động được thuê làm giám đốc trong doanh nghiệp do Nhà nước nắm giữ từ 50% vốn điều lệ hoặc tổng số cổ phần có quyền biểu quyết trở xuống\",\n\"doan_dau\": \"Nội dung hợp đồng lao động đối với người lao động được thuê làm giám đốc trong doanh nghiệp do Nhà nước nắm giữ từ 50% vốn điều lệ hoặc tổng số cổ phần có quyền\"\n},\n{\n\"k\": \"k274\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời hạn báo trước khi đơn phương chấm dứt hợp đồng lao động đối với một số ngành, nghề, công việc đặc thù\",\n\"doan_dau\": \"Ngành, nghề, công việc đặc thù và thời hạn báo trước khi đơn phương chấm dứt hợp đồng lao động quy định tại điểm d khoản 1 Điều 35 và điểm d khoản 2 Điều 36 của\"\n},\n{\n\"k\": \"k275\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trợ cấp thôi việc, trợ cấp mất việc làm\",\n\"doan_dau\": \"Người sử dụng lao động có trách nhiệm chi trả trợ cấp thôi việc theo quy định tại Điều 46 của Bộ luật Lao động đối với người lao động đã làm việc thường xuyên c\"\n},\n{\n\"k\": \"k276\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Xử lý hợp đồng lao động vô hiệu từng phần\",\n\"doan_dau\": \"Việc xử lý hợp đồng lao động vô hiệu từng phần tại khoản 1 Điều 51 của Bộ luật Lao động được quy định như sau:\"\n},\n{\n\"k\": \"k277\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Xử lý hợp đồng lao động vô hiệu toàn bộ do người giao kết không đúng thẩm quyền hoặc vi phạm nguyên tắc giao kết hợp đồng lao động\",\n\"doan_dau\": \"Khi hợp đồng lao động bị tuyên bố vô hiệu toàn bộ, người lao động và người sử dụng lao động ký lại hợp đồng lao động theo đúng quy định của pháp luật.\"\n},\n{\n\"k\": \"k278\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Xử lý hợp đồng lao động vô hiệu toàn bộ do toàn bộ nội dung của hợp đồng lao động vi phạm pháp luật hoặc công việc đã giao kết trong hợp đồng lao động là công việc mà pháp luật cấm\",\n\"doan_dau\": \"Khi hợp đồng lao động bị tuyên bố vô hiệu toàn bộ, người lao động và người sử dụng lao động giao kết hợp đồng lao động mới theo đúng quy định của pháp luật.\"\n},\n{\n\"k\": \"k279\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Doanh nghiệp cho thuê lại lao động\",\n\"doan_dau\": \"Doanh nghiệp cho thuê lại lao động là doanh nghiệp được thành lập theo quy định của Luật Doanh nghiệp, được cấp giấy phép hoạt động cho thuê lại lao động, có tu\"\n},\n{\n\"k\": \"k280\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Bên thuê lại lao động\",\n\"doan_dau\": \"Bên thuê lại lao động là doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình và cá nhân có năng lực hành vi dân sự đầy đủ, có sử dụng người lao động thuê lạ\"\n}\n]",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "lsbwasevKr233LUPmKin2Qo",
+ "output": {
+  "labels": [
+   {
+    "k": "k241",
+    "label": "substantive"
+   },
+   {
+    "k": "k242",
+    "label": "substantive"
+   },
+   {
+    "k": "k243",
+    "label": "substantive"
+   },
+   {
+    "k": "k244",
+    "label": "substantive"
+   },
+   {
+    "k": "k245",
+    "label": "substantive"
+   },
+   {
+    "k": "k246",
+    "label": "substantive"
+   },
+   {
+    "k": "k247",
+    "label": "substantive"
+   },
+   {
+    "k": "k248",
+    "label": "substantive"
+   },
+   {
+    "k": "k249",
+    "label": "substantive"
+   },
+   {
+    "k": "k250",
+    "label": "authority"
+   },
+   {
+    "k": "k251",
+    "label": "substantive"
+   },
+   {
+    "k": "k252",
+    "label": "substantive"
+   },
+   {
+    "k": "k253",
+    "label": "substantive"
+   },
+   {
+    "k": "k254",
+    "label": "substantive"
+   },
+   {
+    "k": "k255",
+    "label": "substantive"
+   },
+   {
+    "k": "k256",
+    "label": "substantive"
+   },
+   {
+    "k": "k257",
+    "label": "authority"
+   },
+   {
+    "k": "k258",
+    "label": "substantive"
+   },
+   {
+    "k": "k259",
+    "label": "substantive"
+   },
+   {
+    "k": "k260",
+    "label": "substantive"
+   },
+   {
+    "k": "k261",
+    "label": "substantive"
+   },
+   {
+    "k": "k262",
+    "label": "substantive"
+   },
+   {
+    "k": "k263",
+    "label": "procedural"
+   },
+   {
+    "k": "k264",
+    "label": "authority"
+   },
+   {
+    "k": "k265",
+    "label": "procedural"
+   },
+   {
+    "k": "k266",
+    "label": "substantive"
+   },
+   {
+    "k": "k267",
+    "label": "substantive"
+   },
+   {
+    "k": "k268",
+    "label": "substantive"
+   },
+   {
+    "k": "k269",
+    "label": "substantive"
+   },
+   {
+    "k": "k270",
+    "label": "procedural"
+   },
+   {
+    "k": "k271",
+    "label": "procedural"
+   },
+   {
+    "k": "k272",
+    "label": "substantive"
+   },
+   {
+    "k": "k273",
+    "label": "substantive"
+   },
+   {
+    "k": "k274",
+    "label": "substantive"
+   },
+   {
+    "k": "k275",
+    "label": "substantive"
+   },
+   {
+    "k": "k276",
+    "label": "substantive"
+   },
+   {
+    "k": "k277",
+    "label": "substantive"
+   },
+   {
+    "k": "k278",
+    "label": "substantive"
+   },
+   {
+    "k": "k279",
+    "label": "definition"
+   },
+   {
+    "k": "k280",
+    "label": "definition"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 4300,
+  "candidates_token_count": 1082,
+  "thoughts_token_count": null,
+  "total_token_count": 5382
+ }
+}

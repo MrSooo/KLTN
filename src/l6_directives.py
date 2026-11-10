@@ -1,4 +1,4 @@
-"""L6: đọc chỉ thị từ chữ của văn bản mới nạp và áp vào kho phiên bản (a4_versions.Store).
+"""L6: đọc chỉ thị từ chữ của văn bản mới nạp và áp vào kho phiên bản (l6_versions.Store).
 
 Mỗi văn bản là một sự kiện (apply_event). Pipeline tự đọc câu chỉ thị, KHÔNG dùng cột quan_he/ghi_chu của manifest. Các loại đã cài:
   1,2 sửa / bổ sung đơn vị "như sau:" có khối trích dẫn (payload) | 3 thay / bỏ cụm từ nhiều đích | 4 bãi bỏ đơn vị
@@ -6,7 +6,7 @@ Mỗi văn bản là một sự kiện (apply_event). Pipeline tự đọc câu 
   10 hết hiệu lực theo chủ đề | 11 hiệu lực có điều kiện (pending_event) | 13,14 hiệu lực có thời hạn + overrides
   15 cập nhật cấp luật qua bản hợp nhất | 18 văn bản ban hành theo luật cũ (chỉ ghi cờ). Các loại 9 (chuyển tiếp) giữ thành đơn vị.
 Câu chỉ thị không thuộc loại nào: ghi unknown_directive, KHÔNG đoán, KHÔNG áp. Đề xuất theo chủ đề mang cờ topic_by_chapter / topic_uncertain.
-Quyết định chỗ spec im lặng: docs/quyet_dinh/l6_quyet_dinh.txt.
+Quyết định chỗ spec im lặng: docs/quyet_dinh/l6_checks_graph_viewer_quyet_dinh.txt.
 """
 import collections
 import datetime
@@ -16,14 +16,14 @@ from pathlib import Path
 from typing import NamedTuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import a1_parse as a1
-import a2_edges as a2
-import a4_versions as a4
+import l1_parse as l1
+import l2_edges as l2
+import l6_versions as l6v
 import corpus
 
 OPEN_Q, CLOSE_Q = "“", "”"
 RE_DATE = re.compile(r"ngày\s+(\d{1,2})\s+tháng\s+(\d{1,2})\s+năm\s+(\d{4})", re.I)
-KIND = a2.KINDS
+KIND = l2.KINDS
 RE_SELF_EFF = re.compile(rf"^{KIND}[ ]+này[ ]+có[ ]+hiệu[ ]+lực(?:[ ]+thi[ ]+hành)?(?:[ ]+kể)?[ ]+từ[ ]+ngày", re.I)
 RE_TOPIC = re.compile(r"^Nội dung về (?P<topic>.+?) quy định tại (?P<doc>.+?) hết hiệu lực", re.I)
 RE_COND = re.compile(rf"^(?P<targets>.+?)[ ]+(?:của[ ]+{KIND}[ ]+này[ ]+)?có[ ]+hiệu[ ]+lực(?:[ ]+thi[ ]+hành)?[ ]+kể[ ]+từ[ ]+ngày[ ]+"
@@ -44,7 +44,7 @@ def dates_in(text):
 
 
 def child_id(parent, node):
-    return f"{parent}.K{node.number}" if node.kind == "khoan" else f"{parent}.{a1.diem_code(node.number)}"
+    return f"{parent}.K{node.number}" if node.kind == "khoan" else f"{parent}.{l1.diem_code(node.number)}"
 
 
 # ---- payload: khối trích dẫn thành cây đơn vị ----
@@ -70,21 +70,21 @@ def parse_payload(lines, default=None):
     text = re.sub(r"[”\"]\s*[.;,]*\s*$", "", text.rstrip())
     roots, stack = [], []
     for raw in text.split("\n"):
-        line = a1.normalize_line(raw)
+        line = l1.normalize_line(raw)
         if not line:
             continue
-        m, kind = a1.RE_DIEU.match(line), "dieu"
+        m, kind = l1.RE_DIEU.match(line), "dieu"
         node = None
         if m:
             node = Node("dieu", m[1], m[2])
         else:
-            m = a1.RE_KHOAN.match(line)
+            m = l1.RE_KHOAN.match(line)
             if m:
                 node = Node("khoan", m[1])
                 if m[2]:
                     node.parts.append(m[2])
             else:
-                m = a1.RE_DIEM.match(line)
+                m = l1.RE_DIEM.match(line)
                 if m:
                     node = Node("diem", m[1])
                     if m[2]:
@@ -117,18 +117,18 @@ class Context:
 
     @classmethod
     def build(cls, docs):
-        units = {d: a1.load_units(d) for d in docs}
+        units = {d: l1.load_units(d) for d in docs}
         payloads = {}
         for d in docs:
             by = collections.defaultdict(list)
-            for p in a1.load_payloads(d):
+            for p in l1.load_payloads(d):
                 by[p["lead_unit"]].append(p)
             payloads[d] = by
-        labels = {r["id"]: r for r in a1.read_jsonl(corpus.out_dir("l4") / "l4_labels.jsonl")}
-        footnotes = {d: {r["n"]: r["text"] for r in a1.read_jsonl(a1.a1_dir() / f"a1_footnotes_{d}.jsonl")} for d in docs}
+        labels = {r["id"]: r for r in l1.read_jsonl(corpus.out_dir("l4") / "l4_labels.jsonl")}
+        footnotes = {d: {r["n"]: r["text"] for r in l1.read_jsonl(l1.l1_dir() / f"l1_footnotes_{d}.jsonl")} for d in docs}
         l3_path = corpus.out_dir("l3") / "l3_links.jsonl"
-        links = a1.read_jsonl(l3_path) if l3_path.exists() else []
-        return cls(docs, units, payloads, labels, footnotes, a2.Resolver(docs, a2.load_headers()), links)
+        links = l1.read_jsonl(l3_path) if l3_path.exists() else []
+        return cls(docs, units, payloads, labels, footnotes, l2.Resolver(docs, l2.load_headers()), links)
 
 
 class Ev:
@@ -144,7 +144,7 @@ class Ev:
         self.notes = []
 
     def row(self, store_size):
-        return {"doc_id": self.doc.doc_id, "effective_date": a4.iso(self.doc.ngay_hieu_luc), "actions": self.actions,
+        return {"doc_id": self.doc.doc_id, "effective_date": l6v.iso(self.doc.ngay_hieu_luc), "actions": self.actions,
                 "units_touched": sorted(self.touched), "units_new": len(self.new), "units_closed": len(self.closed),
                 "flags": dict(self.flags), "unknown_directive": self.unknown, "consolidation_discrepancy": sorted(set(self.discrepancy)),
                 "pending_event_units": self.pending_event, "triggered": self.triggered, "notes": self.notes, "llm_calls": 0}
@@ -159,10 +159,10 @@ def unit_children(units, uid):
 def find_doc_tail(text):
     """Đuôi văn bản (không phải 'X này') trong text: 'của Nghị định số ...' hoặc ngay sau một cụm điều/khoản."""
     for m in re.finditer(rf"[ ]+(?:của|tại)(?=[ ]+{KIND})", text):
-        t = a2.parse_tail(text, m.start())
+        t = l2.parse_tail(text, m.start())
         if t is not None and not t.self_ref:
             return t
-    for ref in a2.find_refs("x", text):
+    for ref in l2.find_refs("x", text):
         if ref.tail is not None and not ref.tail.self_ref:
             return ref.tail
     return None
@@ -183,10 +183,10 @@ def directive_doc(units, uid):
 def targets_of(ctx, units, uid, text, doc_id):
     """Mã đích trong văn bản doc_id của mọi cụm điều/khoản/điểm trong text. -> (list mã, list lý do lỗi)."""
     out, errs = [], []
-    for ref in a2.find_refs(uid, text):
+    for ref in l2.find_refs(uid, text):
         if ref.pl is not None or ref.tail is not None and ref.tail.self_ref:
             continue
-        ids, why = a2.chain_targets(uid, ref.items, {}, doc_id)
+        ids, why = l2.chain_targets(uid, ref.items, {}, doc_id)
         if why:
             errs.append(f"{ref.phrase!r}: {why}")
         else:
@@ -201,13 +201,13 @@ def apply_node(store, tid, node, eff, source, directive, ev, parent_id, replace_
     cur = store.cur(tid)
     text = node.text
     if cur is None:
-        store.add(a4.Ver(tid, 1, node.kind, node.number, node.heading, text, parent_id, eff, None, None, "normal", None, source, None, None,
+        store.add(l6v.Ver(tid, 1, node.kind, node.number, node.heading, text, parent_id, eff, None, None, "normal", None, source, None, None,
                          ["inserted", *flags], directive))
         ev.new.add(tid)
     elif cur.effective_to is not None and cur.effective_to <= eff:
         store.new_version(tid, eff, source, text, node.heading, ["reopened", *flags], directive)  # mở lại mã đã đóng
         ev.touched.add(tid)
-    elif a4.text_norm(cur.text) != a4.text_norm(text) or (node.kind == "dieu" and a4.text_norm(cur.heading or "") != a4.text_norm(node.heading or "")):
+    elif l6v.text_norm(cur.text) != l6v.text_norm(text) or (node.kind == "dieu" and l6v.text_norm(cur.heading or "") != l6v.text_norm(node.heading or "")):
         store.new_version(tid, eff, source, text, node.heading if node.kind == "dieu" else None, flags, directive)
         ev.touched.add(tid)
     new_ids = set()
@@ -228,7 +228,7 @@ def _flex(phrase):
     """Mẫu regex khớp cụm bất kể khoảng trắng và kiểu đặt dấu thanh (ủy/uỷ, hòa/hoà)."""
     pat = re.escape(phrase.strip())
     pat = re.sub(r"(?:\\ )+", r"\\s+", pat)
-    for a, b in a4._TONE:  # mỗi cặp kiểu dấu thanh thành nhóm chọn một (không phân biệt hoa thường)
+    for a, b in l6v._TONE:  # mỗi cặp kiểu dấu thanh thành nhóm chọn một (không phân biệt hoa thường)
         pat = re.sub(f"{a}|{b}", f"(?:{a}|{b})", pat, flags=re.I)
     return pat
 
@@ -268,7 +268,7 @@ def apply_event(ctx, store, doc):
         consolidation_compare(ctx, store, doc, units, eff, ev)
     else:
         term_end, early = own_effective(ctx, doc, units, eff, ev)
-        a4.add_doc_units(store, doc, units, eff, term_end)
+        l6v.add_doc_units(store, doc, units, eff, term_end)
         ev.new.update(units)
         ev.actions.append(f"nạp {len(units)} đơn vị, hiệu lực từ {eff.isoformat()}" + (f" đến hết {(term_end - datetime.timedelta(days=1)).isoformat()}" if term_end else ""))
         if ctx.resolver.blld_year(doc) == 2012:
@@ -312,10 +312,10 @@ def own_effective(ctx, doc, units, eff, ev):
 def amending(ctx, store, doc, units, eff, ev):
     for uid, u in units.items():
         text = u.get("text") or ""
-        if u["type"] not in ("dieu", "khoan", "diem") or not text or not a2.is_directive(text):
+        if u["type"] not in ("dieu", "khoan", "diem") or not text or not l2.is_directive(text):
             continue
         first = text.split("\n")[0]
-        kids = [k for k in unit_children(units, uid) if a2.is_directive(units[k].get("text") or "")]
+        kids = [k for k in unit_children(units, uid) if l2.is_directive(units[k].get("text") or "")]
         payload = ctx.payloads[doc.doc_id].get(uid)
         tail = directive_doc(units, uid)
         res = ctx.resolver.resolve(tail, doc) if tail else None
@@ -357,7 +357,7 @@ def _target_doc(ctx, store, doc, tail, res, uid, ev, edge_kind, first, eff, targ
         return res[1]
     number = res[1] if res[0] == "pending" else ctx.docs[res[1]].so_hieu
     store.pending.append({"source": uid, "edge": edge_kind, "target_number": number, "target_name": tail.name if tail else None,
-                          "target_units": target_text, "text": first[:200], "effective": a4.iso(eff)})
+                          "target_units": target_text, "text": first[:200], "effective": l6v.iso(eff)})
     ev.flags["pending_target_doc"] += 1
     return None
 
@@ -480,7 +480,7 @@ def effect_statements(ctx, store, doc, units, eff, ev):
         if ctx.labels.get(dieu, {}).get("label") != "effect_transition":
             continue
         text = u["text"].replace("\n", " ")
-        if a2.is_directive(text) or RE_SELF_EFF.match(text) and not RE_EXPIRE.search(text):
+        if l2.is_directive(text) or RE_SELF_EFF.match(text) and not RE_EXPIRE.search(text):
             continue
         m = RE_TOPIC.match(text)
         if m:
@@ -524,17 +524,17 @@ def repeal_docs(ctx, store, doc, uid, units, u, text, eff, ev):
 def repeal_one(ctx, store, doc, uid, text, when, ev):
     head = text.split(" hết hiệu lực")[0]
     if re.match(r"^(?:các[ ]+)?(?:điều|khoản|điểm|mục|phụ lục)\b", head, re.I):  # đơn vị của văn bản khác
-        number = next(iter(re.findall(a2.NUMBER_RE, text)), None)
-        target = ctx.resolver.by_number.get(a2.norm_number(number)) if number else None
-        store.pending.append({"source": uid, "edge": "repeals", "target_number": a2.norm_number(number) if number else None, "target_name": None,
-                              "target_units": head[:120], "text": text[:200], "effective": a4.iso(when)})
+        number = next(iter(re.findall(l2.NUMBER_RE, text)), None)
+        target = ctx.resolver.by_number.get(l2.norm_number(number)) if number else None
+        store.pending.append({"source": uid, "edge": "repeals", "target_number": l2.norm_number(number) if number else None, "target_name": None,
+                              "target_units": head[:120], "text": text[:200], "effective": l6v.iso(when)})
         ev.flags["pending_unit_repeal"] += 1
         return
     numbers = []
     for seg in re.split(r";\s*", head):
-        mm = re.match(rf"^{KIND}[ ]+số[ ]+({a2.NUMBER_RE})", seg.strip())
+        mm = re.match(rf"^{KIND}[ ]+số[ ]+({l2.NUMBER_RE})", seg.strip())
         if mm:
-            numbers.append(a2.norm_number(mm[1]))
+            numbers.append(l2.norm_number(mm[1]))
     if not numbers:
         ctx.unknown.append((doc.doc_id, uid, text[:120], "hết hiệu lực nhưng không đọc được số hiệu văn bản"))
         ev.unknown.append({"unit": uid, "text": text[:160], "reason": "không đọc được số hiệu"})
@@ -550,7 +550,7 @@ def repeal_one(ctx, store, doc, uid, text, when, ev):
             ev.actions.append(f"{uid} replaces {tdoc} ({n} đơn vị đóng từ {when.isoformat()})")
         else:
             store.pending.append({"source": uid, "edge": "replaces", "target_number": number, "target_name": None, "target_units": "",
-                                  "text": text[:200], "effective": a4.iso(when)})
+                                  "text": text[:200], "effective": l6v.iso(when)})
             store.add_edge(uid, "replaces", f"external:{number}", text[:200], doc.doc_id, when, flags=["target_outside_kb"])
             ev.flags["pending_target_doc"] += 1
 
@@ -558,11 +558,11 @@ def repeal_one(ctx, store, doc, uid, text, when, ev):
 def topic_expire(ctx, store, doc, uid, text, m, eff, ev):
     """Loại 10: hết hiệu lực một phần theo chủ đề, không theo số điều. Chia theo tiêu đề Chương (regex, không LLM): Chương có tiêu đề
     chứa chủ đề -> đóng; Chương chung (quy định chung, điều khoản thi hành) -> suspended + cờ; còn lại giữ nguyên hiệu lực."""
-    number = next(iter(re.findall(a2.NUMBER_RE, m["doc"])), None)
-    tdoc = ctx.resolver.by_number.get(a2.norm_number(number)) if number else None
+    number = next(iter(re.findall(l2.NUMBER_RE, m["doc"])), None)
+    tdoc = ctx.resolver.by_number.get(l2.norm_number(number)) if number else None
     if not tdoc or not any(store.exists(k) for k in ctx.units[tdoc]):
         store.pending.append({"source": uid, "edge": "expires_by_topic", "target_number": number, "target_name": None, "target_units": m["topic"],
-                              "text": text[:200], "effective": a4.iso(eff)})
+                              "text": text[:200], "effective": l6v.iso(eff)})
         return
     key = re.sub(r"^(?:người[ ]+)?", "", m["topic"].split(" làm việc")[0].strip().casefold())
     tunits = ctx.units[tdoc]
@@ -599,10 +599,10 @@ def _under(units, k, ancestor):
 def conditional(ctx, store, doc, uid, units, m, eff, ev):
     """Loại 11: đơn vị chỉ có hiệu lực khi một văn bản khác có hiệu lực -> pending_event, lưu nguyên văn sự kiện."""
     ids, errs = targets_of(ctx, units, uid, m["targets"] + " của Nghị định này", doc.doc_id)
-    refs = [r for r in a2.find_refs(uid, m["targets"]) if r.pl is None]
+    refs = [r for r in l2.find_refs(uid, m["targets"]) if r.pl is None]
     targets = []
     for ref in refs:
-        t, why = a2.chain_targets(uid, ref.items, units, doc.doc_id)
+        t, why = l2.chain_targets(uid, ref.items, units, doc.doc_id)
         if why:
             raise ValueError(f"hiệu lực có điều kiện, đích không đọc được: {why}")
         targets += t
@@ -634,12 +634,12 @@ def trigger_matches(trigger, doc, units):
     kind = re.match(KIND, trigger or "")
     if not kind or kind[0] != doc.loai:
         return False
-    numbers = {a2.norm_number(n) for n in re.findall(a2.NUMBER_RE, trigger)}
-    body = a2.norm_number(" ".join((u.get("text") or "") + " " + (u.get("heading") or "") for u in units.values()))
+    numbers = {l2.norm_number(n) for n in re.findall(l2.NUMBER_RE, trigger)}
+    body = l2.norm_number(" ".join((u.get("text") or "") + " " + (u.get("heading") or "") for u in units.values()))
     if not numbers or not all(n in body for n in numbers):
         return False
-    description = a4.text_norm(re.split(rf"\(| của {KIND}", trigger[kind.end():])[0])
-    d1 = a4.text_norm(" ".join((u.get("heading") or "") + " " + (u.get("text") or "") for k, u in units.items()
+    description = l6v.text_norm(re.split(rf"\(| của {KIND}", trigger[kind.end():])[0])
+    d1 = l6v.text_norm(" ".join((u.get("heading") or "") + " " + (u.get("text") or "") for k, u in units.items()
                                 if k == f"{doc.doc_id}.D1" or k.startswith(f"{doc.doc_id}.D1.")))
     return len(description) >= MIN_DESCRIPTION and description in d1
 
@@ -665,28 +665,28 @@ def supplements(ctx, store, doc, units, eff, ev):
         m = re.match(r"^Bổ sung (Danh mục .+)$", u.get("heading") or "", re.I)
         if not m:
             continue
-        key = a4.text_norm(m[1])[:60]
+        key = l6v.text_norm(m[1])[:60]
         mine = next((k for k, v in units.items() if v["type"] == "pl"), None)
         cands = [k for d, us in ctx.units.items() if d != doc.doc_id for k, v in us.items()
-                 if v["type"] == "pl" and store.exists(k) and key in a4.text_norm(v.get("heading") or "")]
+                 if v["type"] == "pl" and store.exists(k) and key in l6v.text_norm(v.get("heading") or "")]
         if mine is None or len(cands) != 1:
             ctx.unknown.append((doc.doc_id, uid, u["heading"][:120], f"bổ sung danh mục: {len(cands)} phụ lục khớp, cần đúng 1"))
             ev.unknown.append({"unit": uid, "text": u["heading"][:160]})
             continue
         tgt = cands[0]
-        old_norm = {a4.text_norm(store.cur(k).text) for k in store.descendants(tgt) if store.cur(k).type == "pl_row"}
+        old_norm = {l6v.text_norm(store.cur(k).text) for k in store.descendants(tgt) if store.cur(k).type == "pl_row"}
         n_new = n_dup = 0
         base_n = sum(1 for k in store.children[tgt] if store.cur(k).type == "pl_row")
         for k in store.descendants(mine):
             v = store.cur(k)
             if v.type != "pl_row":
                 continue
-            if a4.text_norm(v.text) in old_norm:
+            if l6v.text_norm(v.text) in old_norm:
                 n_dup += 1
                 continue
             base_n += 1
             nid = f"{tgt}.R{base_n}"
-            store.add(a4.Ver(nid, 1, "pl_row", str(base_n), None, v.text, tgt, eff, None, None, "normal", None, doc.doc_id, None, None,
+            store.add(l6v.Ver(nid, 1, "pl_row", str(base_n), None, v.text, tgt, eff, None, None, "normal", None, doc.doc_id, None, None,
                              ["supplement_row"], uid))
             ev.new.add(nid)
             store.add_edge(k, "supplements_list", nid, v.text[:120], doc.doc_id, eff)
@@ -705,15 +705,15 @@ def overrides(ctx, store, doc, units, eff, term_end, ev):
         if u["type"] != "pl_muc" or not any(uid.startswith(f"{doc.doc_id}.PL{lab}.") for lab in scope):
             continue
         heading = u.get("heading") or ""
-        for ref in a2.find_refs(uid, heading):
-            r = a2.resolve_ref(doc, uid, {}, ref, ctx.units, ctx.resolver, set(ctx.units))
+        for ref in l2.find_refs(uid, heading):
+            r = l2.resolve_ref(doc, uid, {}, ref, ctx.units, ctx.resolver, set(ctx.units))
             for t in r.targets:
                 if t.split(".")[0] == doc.doc_id:
                     continue
-                store.add_edge(uid, "overrides", t, ref.phrase[:200], doc.doc_id, eff, flags=["interval"], valid_from=a4.iso(eff),
-                               valid_to=a4.iso(term_end))
+                store.add_edge(uid, "overrides", t, ref.phrase[:200], doc.doc_id, eff, flags=["interval"], valid_from=l6v.iso(eff),
+                               valid_to=l6v.iso(term_end))
                 n += 1
-    ev.actions.append(f"overrides: {n} cạnh trong [{eff.isoformat()}, {a4.iso(term_end)})")
+    ev.actions.append(f"overrides: {n} cạnh trong [{eff.isoformat()}, {l6v.iso(term_end)})")
 
 
 # ---- bản hợp nhất (loại 15) ----
@@ -732,8 +732,8 @@ def line_only_dieu(store, doc, vunits, base):
         v_ids = [base + k[len(doc.doc_id):] for k in vunits if k == vid or k.startswith(vid + ".")]
         if set(b_ids) != set(v_ids):
             continue
-        b_chars = collections.Counter(re.sub(r"\W", "", "".join(a4.text_norm(store.cur(x).text) for x in b_ids)))
-        v_chars = collections.Counter(re.sub(r"\W", "", "".join(a4.text_norm(vunits[doc.doc_id + x[len(base):]].get("text") or "") for x in v_ids)))
+        b_chars = collections.Counter(re.sub(r"\W", "", "".join(l6v.text_norm(store.cur(x).text) for x in b_ids)))
+        v_chars = collections.Counter(re.sub(r"\W", "", "".join(l6v.text_norm(vunits[doc.doc_id + x[len(base):]].get("text") or "") for x in v_ids)))
         if b_chars == v_chars:
             out.add(bid)
     return out
@@ -754,12 +754,12 @@ def consolidation_compare(ctx, store, doc, vunits, eff, ev):
         seen_base.add(bid)
         notes = [fn.get(n, "") for n in vu.get("footnote", [])]
         when = next((d for t in notes for d in dates_in(t.split("có hiệu lực", 1)[-1])[:1] if "có hiệu lực" in t), None)
-        law = next((a2.norm_number(n) for t in notes for n in re.findall(a2.NUMBER_RE, t)), None)
+        law = next((l2.norm_number(n) for t in notes for n in re.findall(l2.NUMBER_RE, t)), None)
         cur = store.cur(bid)
         if cur is None:
             if when:
                 parent = vu.get("parent") and base + vu["parent"][len(doc.doc_id):]
-                store.add(a4.Ver(bid, 1, vu["type"], vu["number"], vu.get("heading"), vu.get("text") or "", parent, when, None, None, "normal",
+                store.add(l6v.Ver(bid, 1, vu["type"], vu["number"], vu.get("heading"), vu.get("text") or "", parent, when, None, None, "normal",
                                  None, doc.doc_id, None, None, ["from_consolidation"], None, list(vu.get("footnote", []))))
                 ev.new.add(bid)
                 stats["unit_moi"] += 1
@@ -768,8 +768,8 @@ def consolidation_compare(ctx, store, doc, vunits, eff, ev):
                 ev.discrepancy.append(bid)
                 stats["moi_khong_chu_thich"] += 1
             continue
-        same = (a4.text_norm(cur.text) == a4.text_norm(vu.get("text") or "")
-                and (vu["type"] != "dieu" or a4.text_norm(cur.heading or "") == a4.text_norm(vu.get("heading") or "")))
+        same = (l6v.text_norm(cur.text) == l6v.text_norm(vu.get("text") or "")
+                and (vu["type"] != "dieu" or l6v.text_norm(cur.heading or "") == l6v.text_norm(vu.get("heading") or "")))
         if same:
             stats["giong_sau_chuan_hoa"] += 1
         elif when:
@@ -796,7 +796,7 @@ def consolidation_compare(ctx, store, doc, vunits, eff, ev):
 
 def write_report(ctx, store, events, as_of):
     gates = dev_gates(ctx, store, as_of)
-    out = ["A4/L6 báo cáo", f"ngày as_of: {as_of.isoformat()}  đơn vị: {len(store.vers)}  phiên bản: {sum(len(v) for v in store.vers.values())}  "
+    out = ["L6 báo cáo", f"ngày as_of: {as_of.isoformat()}  đơn vị: {len(store.vers)}  phiên bản: {sum(len(v) for v in store.vers.values())}  "
            f"cạnh cập nhật: {len(store.edges)} {dict(collections.Counter(e['p'] for e in store.edges))}  quan hệ chờ đích: {len(store.pending)}"]
     out.append("sự kiện theo thứ tự nạp:")
     for ev in events:
@@ -808,7 +808,7 @@ def write_report(ctx, store, events, as_of):
     out += [f"  {d} {u}: {why}" for d, u, why in ctx.unmatched]
     out.append("mốc cổng dev:")
     out += [f"  {'đạt' if ok else 'KHÔNG đạt'}: {name}" + (f" ({info})" if info else "") for name, ok, info in gates]
-    path = corpus.report_dir("a4") / "a4_report.txt"
+    path = corpus.report_dir("l6") / "l6_report.txt"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(out) + "\n", encoding="utf-8", newline="\n")
     print("\n".join(out))

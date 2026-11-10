@@ -1,0 +1,181 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-08T18:59:49+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k361\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Danh mục nơi sử dụng lao động không được đình công\",\n\"doan_dau\": \"Ban hành Danh mục nơi sử dụng lao động không được đình công gồm những doanh nghiệp, bộ phận doanh nghiệp mà việc đình công có thể đe dọa đến quốc phòng, an ninh\"\n},\n{\n\"k\": \"k362\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Giải quyết tranh chấp lao động cá nhân, tranh chấp lao động tập thể về quyền tại nơi sử dụng lao động không được đình công\",\n\"doan_dau\": \"Tranh chấp lao động cá nhân được giải quyết theo quy định tại các Điều 187, 188, 189 và 190 của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k363\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Giải quyết tranh chấp lao động tập thể về lợi ích tại nơi sử dụng lao động không được đình công\",\n\"doan_dau\": \"Tranh chấp lao động tập thể về lợi ích phải được giải quyết thông qua thủ tục hòa giải của hòa giải viên lao động trước khi yêu cầu Hội đồng trọng tài lao động \"\n},\n{\n\"k\": \"k364\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Giải quyết tranh chấp liên quan đến quyền thương lượng tập thể tại nơi sử dụng lao động không được đình công\",\n\"doan_dau\": \"Tranh chấp giữa các bên liên quan đến quyền thương lượng tập thể tại nơi sử dụng lao động không được đình công được thực hiện theo quy định của Chính phủ về giả\"\n},\n{\n\"k\": \"k365\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Các trường hợp hoãn, ngừng đình công\",\n\"doan_dau\": \"Hoãn đình công là việc Chủ tịch Ủy ban nhân dân cấp tỉnh ra quyết định lùi thời điểm bắt đầu cuộc đình công đã ấn định trong quyết định đình công của tổ chức đạ\"\n},\n{\n\"k\": \"k366\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Giải quyết quyền lợi của người lao động khi hoãn, ngừng đình công\",\n\"doan_dau\": \"Trong thời gian thực hiện quyết định hoãn, ngừng đình công theo yêu cầu của Chủ tịch Ủy ban nhân dân cấp tỉnh, Sở Lao động - Thương binh và Xã hội, Phòng Lao độ\"\n},\n{\n\"k\": \"k367\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Quyền, trách nhiệm của người lao động khi ngừng đình công\",\n\"doan_dau\": \"Sau khi Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định về việc ngừng đình công, người lao động phải trở lại làm việc và được trả lương.\"\n},\n{\n\"k\": \"k368\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Nghị định này quy định về người lao động nước ngoài làm việc tại Việt Nam và tuyển dụng, quản lý người lao động Việt Nam làm việc cho tổ chức, cá nhân nước ngoà\"\n},\n{\n\"k\": \"k369\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Đối tượng áp dụng\",\n\"doan_dau\": \"Lao động là công dân nước ngoài vào làm việc tại Việt Nam (sau đây viết tắt là người lao động nước ngoài) theo các hình thức sau đây:\"\n},\n{\n\"k\": \"k370\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Sử dụng người lao động nước ngoài\",\n\"doan_dau\": \"Xác định nhu cầu sử dụng người lao động nước ngoài Trong quá trình thực hiện nếu thay đổi nhu cầu sử dụng người lao động nước ngoài thì người sử dụng lao động p\"\n},\n{\n\"k\": \"k371\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Sử dụng người lao động nước ngoài của nhà thầu\",\n\"doan_dau\": \"Trước khi tuyển người lao động nước ngoài, nhà thầu có trách nhiệm kê khai số lượng, trình độ, năng lực chuyên môn, kinh nghiệm của người lao động nước ngoài cầ\"\n},\n{\n\"k\": \"k372\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Báo cáo sử dụng người lao động nước ngoài\",\n\"doan_dau\": \"Trước ngày 05 tháng 7 và ngày 05 tháng 01 của năm sau, người sử dụng lao động nước ngoài báo cáo 6 tháng đầu năm và hằng năm về tình hình sử dụng người lao động\"\n},\n{\n\"k\": \"k373\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\"\n},\n{\n\"k\": \"k374\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội có thẩm quyền xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao\"\n},\n{\n\"k\": \"k375\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời hạn của giấy phép lao động\",\n\"doan_dau\": \"Thời hạn của giấy phép lao động được cấp theo thời hạn của một trong các trường hợp sau đây nhưng không quá 02 năm:\"\n},\n{\n\"k\": \"k376\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Các trường hợp cấp lại giấy phép lao động\",\n\"doan_dau\": \"Giấy phép lao động còn thời hạn bị mất.\"\n},\n{\n\"k\": \"k377\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời hạn của giấy phép lao động được cấp lại\",\n\"doan_dau\": \"Thời hạn của giấy phép lao động được cấp lại bằng thời hạn của giấy phép lao động đã được cấp trừ đi thời gian người lao động nước ngoài đã làm việc tính đến th\"\n},\n{\n\"k\": \"k378\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Điều kiện được gia hạn giấy phép lao động\",\n\"doan_dau\": \"Giấy phép lao động đã được cấp còn thời hạn ít nhất 05 ngày nhưng không quá 45 ngày.\"\n},\n{\n\"k\": \"k379\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời hạn của giấy phép lao động được gia hạn\",\n\"doan_dau\": \"Thời hạn của giấy phép lao động được gia hạn theo thời hạn của một trong các trường hợp quy định tại Điều 10 Nghị định này nhưng chỉ được gia hạn một lần với th\"\n},\n{\n\"k\": \"k380\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n\"doan_dau\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 1, 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k381\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm của người lao động Việt Nam khi làm việc cho tổ chức, cá nhân nước ngoài\",\n\"doan_dau\": \"Tuân thủ pháp luật về lao động của Việt Nam.\"\n},\n{\n\"k\": \"k382\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm của tổ chức, cá nhân nước ngoài tại Việt Nam khi sử dụng người lao động Việt Nam\",\n\"doan_dau\": \"Thực hiện đúng quy định của Bộ luật Lao động và các quy định hiện hành.\"\n},\n{\n\"k\": \"k383\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm của tổ chức dịch vụ việc làm, doanh nghiệp cho thuê lại lao động\",\n\"doan_dau\": \"Trước ngày 15 tháng 12 hằng năm hoặc đột xuất khi có yêu cầu, tổ chức dịch vụ việc làm, doanh nghiệp cho thuê lại lao động báo cáo tình hình cung ứng người lao \"\n},\n{\n\"k\": \"k384\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Danh mục nghề, công việc nặng nhọc, độc hại, nguy hiểm và nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm\",\n\"doan_dau\": \"Ban hành kèm theo Thông tư này Danh mục nghề, công việc nặng nhọc, độc hại, nguy hiểm và nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm.\"\n},\n{\n\"k\": \"k385\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Thông tư này quy định chi tiết và hướng dẫn thi hành một số điều, khoản sau đây của Bộ luật Lao động về lao động chưa thành niên:\"\n},\n{\n\"k\": \"k386\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Đối tượng áp dụng\",\n\"doan_dau\": \"Người sử dụng lao động.\"\n},\n{\n\"k\": \"k387\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Điều kiện sử dụng người chưa đủ 15 tuổi làm việc\",\n\"doan_dau\": \"Người sử dụng lao động phải tuân thủ Điều 145 của Bộ luật Lao động khi sử dụng người chưa đủ 15 tuổi làm việc, với các quy định cụ thể sau:\"\n},\n{\n\"k\": \"k388\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Giao kết hợp đồng lao động để sử dụng người chưa đủ 15 tuổi làm việc\",\n\"doan_dau\": \"Người giao kết hợp đồng lao động bên phía người sử dụng lao động thực hiện theo quy định tại khoản 3 Điều 18 của Bộ luật Lao động và đáp ứng các điều kiện sau:\"\n},\n{\n\"k\": \"k389\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Danh mục công việc nhẹ người từ đủ 13 tuổi đến chưa đủ 15 tuổi được làm\",\n\"doan_dau\": \"Ban hành kèm theo Thông tư này Phụ lục II - Danh mục công việc nhẹ người từ đủ 13 tuổi đến chưa đủ 15 tuổi được làm.\"\n},\n{\n\"k\": \"k390\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Danh mục công việc, nơi làm việc gây tổn hại đến sự phát triển thể lực, trí lực, nhân cách của người chưa thành niên\",\n\"doan_dau\": \"Ban hành kèm theo Thông tư này Phụ lục III - Danh mục công việc gây tổn hại đến sự phát triển thể lực, trí lực, nhân cách của người chưa thành niên theo quy địn\"\n},\n{\n\"k\": \"k391\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Danh mục nghề, công việc người từ đủ 15 tuổi đến chưa đủ 18 tuổi có thể được làm thêm giờ, làm việc vào ban đêm\",\n\"doan_dau\": \"Ban hành kèm theo Thông tư này Phụ lục V - Danh mục nghề, công việc người từ đủ 15 tuổi đến chưa đủ 18 tuổi có thể được làm thêm giờ, làm việc vào ban đêm.\"\n},\n{\n\"k\": \"k392\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Trách nhiệm của người sử dụng lao động\",\n\"doan_dau\": \"Lập Sổ theo dõi tình hình sử dụng lao động chưa thành niên theo Mẫu số 06 tại Phụ lục I ban hành kèm theo Thông tư này và thường xuyên cập nhật thông tin vào Sổ\"\n},\n{\n\"k\": \"k393\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Nghị định này quy định về hành vi vi phạm, hình thức xử phạt, mức xử phạt, biện pháp khắc phục hậu quả, đối tượng xử phạt, thẩm quyền xử phạt, thẩm quyền lập bi\"\n},\n{\n\"k\": \"k394\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Đối tượng áp dụng\",\n\"doan_dau\": \"Người sử dụng lao động, người lao động và các cá nhân, tổ chức khác có hành vi vi phạm hành chính trong lĩnh vực lao động, bảo hiểm xã hội, người lao động Việt \"\n},\n{\n\"k\": \"k395\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Hình thức xử phạt\",\n\"doan_dau\": \"Tổ chức, cá nhân có hành vi vi phạm hành chính trong lĩnh vực lao động, bảo hiểm xã hội, người lao động Việt Nam đi làm việc ở nước ngoài theo hợp đồng thì bị x\"\n},\n{\n\"k\": \"k396\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thời hiệu xử phạt vi phạm hành chính\",\n\"doan_dau\": \"Thời hiệu xử phạt vi phạm hành chính trong lĩnh vực lao động, bảo hiểm xã hội, người lao động Việt Nam đi làm việc ở nước ngoài theo hợp đồng thực hiện theo quy\"\n},\n{\n\"k\": \"k397\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Mức phạt tiền, thẩm quyền xử phạt và nguyên tắc áp dụng đối với hành vi vi phạm hành chính nhiều lần\",\n\"doan_dau\": \"Mức phạt tiền quy định đối với các hành vi vi phạm quy định tại Chương II, Chương III và Chương IV Nghị định này là mức phạt đối với cá nhân, trừ trường hợp quy\"\n},\n{\n\"k\": \"k398\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về dịch vụ việc làm\",\n\"doan_dau\": \"Phạt tiền từ 500.000 đồng đến 1.000.000 đồng đối với doanh nghiệp hoạt động dịch vụ việc làm có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k399\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm về tuyển dụng, quản lý lao động\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng đối với người sử dụng lao động khi có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k400\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về giao kết hợp đồng lao động\",\n\"doan_dau\": \"Phạt tiền đối với người sử dụng lao động khi có một trong các hành vi: giao kết hợp đồng lao động không bằng văn bản với người lao động làm công việc có thời hạ\"\n}\n]",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "osbwav2WKbbdqfkPic3YyAQ",
+ "output": {
+  "labels": [
+   {
+    "k": "k361",
+    "label": "substantive"
+   },
+   {
+    "k": "k362",
+    "label": "substantive"
+   },
+   {
+    "k": "k363",
+    "label": "substantive"
+   },
+   {
+    "k": "k364",
+    "label": "substantive"
+   },
+   {
+    "k": "k365",
+    "label": "definition"
+   },
+   {
+    "k": "k366",
+    "label": "substantive"
+   },
+   {
+    "k": "k367",
+    "label": "substantive"
+   },
+   {
+    "k": "k368",
+    "label": "substantive"
+   },
+   {
+    "k": "k369",
+    "label": "substantive"
+   },
+   {
+    "k": "k370",
+    "label": "substantive"
+   },
+   {
+    "k": "k371",
+    "label": "substantive"
+   },
+   {
+    "k": "k372",
+    "label": "substantive"
+   },
+   {
+    "k": "k373",
+    "label": "substantive"
+   },
+   {
+    "k": "k374",
+    "label": "authority"
+   },
+   {
+    "k": "k375",
+    "label": "substantive"
+   },
+   {
+    "k": "k376",
+    "label": "substantive"
+   },
+   {
+    "k": "k377",
+    "label": "substantive"
+   },
+   {
+    "k": "k378",
+    "label": "substantive"
+   },
+   {
+    "k": "k379",
+    "label": "substantive"
+   },
+   {
+    "k": "k380",
+    "label": "substantive"
+   },
+   {
+    "k": "k381",
+    "label": "substantive"
+   },
+   {
+    "k": "k382",
+    "label": "substantive"
+   },
+   {
+    "k": "k383",
+    "label": "substantive"
+   },
+   {
+    "k": "k384",
+    "label": "substantive"
+   },
+   {
+    "k": "k385",
+    "label": "substantive"
+   },
+   {
+    "k": "k386",
+    "label": "substantive"
+   },
+   {
+    "k": "k387",
+    "label": "substantive"
+   },
+   {
+    "k": "k388",
+    "label": "substantive"
+   },
+   {
+    "k": "k389",
+    "label": "substantive"
+   },
+   {
+    "k": "k390",
+    "label": "substantive"
+   },
+   {
+    "k": "k391",
+    "label": "substantive"
+   },
+   {
+    "k": "k392",
+    "label": "substantive"
+   },
+   {
+    "k": "k393",
+    "label": "substantive"
+   },
+   {
+    "k": "k394",
+    "label": "substantive"
+   },
+   {
+    "k": "k395",
+    "label": "substantive"
+   },
+   {
+    "k": "k396",
+    "label": "substantive"
+   },
+   {
+    "k": "k397",
+    "label": "substantive"
+   },
+   {
+    "k": "k398",
+    "label": "substantive"
+   },
+   {
+    "k": "k399",
+    "label": "substantive"
+   },
+   {
+    "k": "k400",
+    "label": "substantive"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 4092,
+  "candidates_token_count": 1088,
+  "thoughts_token_count": null,
+  "total_token_count": 5180
+ }
+}

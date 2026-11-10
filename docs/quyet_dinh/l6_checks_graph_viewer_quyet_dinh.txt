@@ -1,0 +1,88 @@
+L6 (l6_versions.py, l6_directives.py, l6_rare.py), checks, graph, viewer: CÁC QUYẾT ĐỊNH CHỖ SPEC IM LẶNG HOẶC LỆCH PLAN
+===========================================================================================================
+Mục A là chỗ LỆCH plan, đọc trước. Mục E là việc CHƯA làm hoặc CHƯA kiểm.
+
+A. LỆCH PLAN
+------------
+A1. Loại 10 (hết hiệu lực theo chủ đề, ND_219 Điều 35 khoản 2): plan nói LLM đề xuất danh sách đơn vị. Đã làm bằng regex trên tiêu đề Chương (user duyệt 09/11; chưa gọi LLM):
+    Chương có tiêu đề chứa chủ đề -> đóng tại ngày hiệu lực; Chương chung (tiêu đề "quy định chung", "điều khoản thi hành", "điều khoản chuyển tiếp") -> state suspended + cờ
+    topic_uncertain (đúng nguyên tắc plan "đơn vị không chắc thì suspended, không đóng hẳn"); Chương khác giữ nguyên. Kết quả ND_152: Chương II (người lao động nước ngoài)
+    đóng từ 2025-08-07 (134 đơn vị expired), Chương III (người Việt Nam làm cho tổ chức nước ngoài) giữ in_force (49), Chương I và IV suspended (91: phạm vi, đối tượng, giải
+    thích từ ngữ, hiệu lực của cả hai mảng nên không tự quyết). Cạnh expires_by_topic mang cờ topic_by_chapter. Điều này khớp cổng dev của plan (Điều 7 khoản 8 đóng từ 07/8/2025,
+    phần người Việt Nam vẫn hiệu lực) nhưng 91 đơn vị suspended còn chờ lượt LLM / quyết định.
+A2. NQ_66-16: effective_to = 2027-03-01 (khoảng nửa mở [from, to)), tương ứng "đến hết ngày 28/02/2027" trong Điều 19 khoản 1. Cổng plan viết "15/4/2026-28/02/2027": cùng nghĩa.
+A3. Chuẩn hoá chữ khi so phiên bản (l6_versions.text_norm): NFC, casefold, kiểu đặt dấu thanh (hòa/hoà, ủy/uỷ), bỏ [n], thống nhất gạch (- – —), BỎ MỌI KHOẢNG TRẮNG (xử lý dính chữ
+    "ngàyhoặc" và khoảng trắng sau nháy), bỏ dấu câu cuối. Rộng hơn quy tắc plan L6 (plan chỉ nêu NFC, khoảng trắng, ủy/uỷ, dấu chấm cuối, [n]) vì plan chưa bao hết 8 Điều lệch
+    BLLĐ <-> VBHN_125; user duyệt 08/11 ("khoá so sánh bỏ khoảng trắng/hoa-thường/kiểu gạch"). Hệ quả: hai chữ chỉ khác khoảng trắng hoặc hoa/thường coi là một; chữ khác ở số
+    ("điều 189" và "điều 89") vẫn khác (có test).
+A4. Bản hợp nhất (loại 15): VBHN_125 KHÔNG tạo nút riêng; chỉ so từng đơn vị với BLLĐ gốc và tạo phiên bản / đơn vị mới trên BLLĐ. Kết quả: 1115 đơn vị giống sau chuẩn hoá;
+    Điều 154 khoản 8a là đơn vị MỚI thật, hiệu lực 2026-01-01 lấy từ chú thích [2] (KHÔNG lấy ngày ký bản hợp nhất 27/8/2025), mang cờ from_consolidation, footnote [2]; 4 đơn vị chỉ khác
+    chỗ ngắt dòng (Điều 174.K1, 64.K2 ...: cùng tập đơn vị, cùng bộ chữ và số) không phải sửa đổi; cờ consolidation_discrepancy (không tạo phiên bản) cho: Điều 185 khoản 4 ("189" thành "89", lỗi
+    bản hợp nhất), Điều 220 khoản 3 (bản hợp nhất cắt câu cuối), Điều 42 khoản 2 và hai điểm a, b (bản hợp nhất mất đánh dấu điểm, điểm bị dồn vào dòng khoản), Điều 87.
+    ĐIỀU 87 LÀ PHÁT HIỆN MỚI, KHÔNG có trong danh sách 8 Điều của docs/ban_giao_2026-11-07.md: ở bản hợp nhất, dòng tiêu đề và nội dung dính thành một dòng
+    ("Điều 87. Thẩm quyền ... vô hiệu Tòa án nhân dân có quyền ..."), nên đơn vị rỗng và tiêu đề dài. Danh sách bàn giao (154, 185, 42, 73, 125, 143, 219, 220): 73, 125, 143, 219 hết lệch nhờ mục A3 ở trên (chuẩn hoá chữ);
+    154 là sửa đổi thật; 185, 42, 220 gắn cờ; 87 gắn cờ. Cổng plan "các đơn vị khác của BLLĐ không đổi phiên bản" đạt.
+A5. Loại 12, 16, 19-26 (kho không có ca thật hoặc chỉ có ở heldout): cài ở src/l6_rare.py, kiểm bằng ví dụ tự soạn ở tests/test_l6_rare.py (22 test). Không có ca thật nào để đo, đúng như plan ghi.
+A6. Loại 8 (bổ sung danh mục, TT_19 -> TT_11): TT_19 không nêu số hiệu TT_11, nên khớp qua tên danh mục: tiêu đề Điều "Bổ sung Danh mục ..." so với tiêu đề phụ lục của văn bản đã nạp
+    bằng text_norm; cần ĐÚNG MỘT phụ lục khớp, không thì unknown_directive (không đoán). Kết quả 170 dòng mới từ 2024-02-15, dòng cũ không đổi phiên bản, cạnh supplements_list.
+A7. viewer (trang xem) lệch quyết định v1 "hiện đủ mọi nút" (không giữ được ở 9.364 nút): mặc định mức Điều (~700 nút), bấm đúp Điều / phụ lục để mở Khoản, Điểm, dòng; lọc theo văn bản; một trang có
+    ô chọn ngày dùng khoảng hiệu lực nhúng sẵn trong dữ liệu (đổi ngày không dựng lại file). Bố cục: cose của Cytoscape (đi kèm thư viện), thay bố cục lực tự viết của v1. user duyệt 09/11.
+
+B. MÔ HÌNH PHIÊN BẢN (l6_versions.py)
+-------------------------------------
+B1. Hiệu lực là nửa khoảng [effective_from, effective_to): đang hiệu lực tại T nếu from <= T < to (null là không giới hạn). Văn bản ghi "đến hết ngày X" thì effective_to = X + 1 ngày.
+    Không xoá nút: đóng phiên bản bằng effective_to.
+B2. state ∈ normal | pending_event | suspended; pending_event và suspended không bao giờ in_force. status (suy ra tại as_of = ngày hiệu lực của sự kiện cuối, 2026-09-10): in_force | expired |
+    pending_event | suspended | not_yet.
+B3. Thứ tự sự kiện: theo ngày hiệu lực, cùng ngày theo ngày ban hành rồi doc_id. BLLĐ gốc nạp trước, không là sự kiện. ND_90 (hiệu lực 2020-01-01) và ND_28 (2020-04-15) có hiệu lực trước BLLĐ 2019: nạp
+    bình thường, cờ law_2012_era_document (loại 18), không nối vào số Điều BLLĐ 2019.
+B4. Hai chỉ thị cùng sự kiện cùng sửa một đơn vị: sửa tại chỗ phiên bản đã tạo trong sự kiện đó (không tạo phiên bản [d, d) rỗng).
+B5. Khối trích dẫn thành cây Điều/Khoản/Điểm. Khối KHÔNG nhãn (ND_70 "khoản 7 Điều 17": chỉ có chữ) là chữ của đơn vị đích duy nhất. Con cũ không còn trong khối thì bị đóng (cờ removed_by_replace).
+    "Sửa đổi tên khoản 8 Điều 9" chỉ đổi chữ khoản, không đóng con. Bổ sung vào mã đã có hoặc cha không tồn tại là lỗi, không đoán.
+B6. Thay cụm từ: khớp mềm (khoảng trắng, dấu thanh, hoa/thường); cụm không thấy trong đích ghi vào "đích / cụm không khớp", không làm lỗi cả bước. Hai chỉ thị cụm từ nhiều đích là một chỉ thị.
+B7. Chỉ thị sửa Mẫu số / Phụ lục của văn bản bị sửa (ND_70: 8 chỉ thị về Mẫu số của ND_152): ND_152 không có phụ lục hay mẫu trong kho nên không áp được. Ghi cờ form_directive_target_not_in_kb, không lỗi.
+B8. Hết hiệu lực cả văn bản (loại 5): đóng cả cây đơn vị tại ngày nêu trong câu (hoặc ngày hiệu lực văn bản mới), cạnh replaces. Đích ngoài kho: quan hệ chờ đích + cạnh tới external:<số hiệu>. Một đơn vị chứa
+    cả câu hiệu lực lẫn câu hết hiệu lực (ND_90 Điều 6 khoản 1) được tách theo câu. Annulled (loại 24): câu "bị hủy bỏ / bãi bỏ vì / do trái ..." đóng như loại 5 và gắn cờ annulled.
+B9. Hiệu lực có điều kiện (loại 11): đơn vị đích thành pending_event, effective_from = null, trigger = nguyên văn mô tả sự kiện, cạnh pending_on. ND_283 Điều 66 khoản 2 (D61.K2, D63.K11) và khoản 3
+    (D7.K2.e, g, h, D14) ở trạng thái đó đến hết chuỗi dev. Kích hoạt (loại 12), l6_directives.trigger_matches: văn bản mới nạp khớp khi ĐỦ BA điều kiện: (1) cùng loại văn bản với câu mô tả ("Nghị định ..."),
+    (2) mọi số hiệu mô tả nêu đều có trong chữ của nó, (3) cụm mô tả chính văn bản kích hoạt (sau từ chỉ loại, trước "(" hoặc "của <loại> số ...") nằm trong Điều 1 của nó và dài >= 12 ký tự sau chuẩn hoá.
+    Khớp -> normal từ ngày hiệu lực văn bản đó, cạnh triggers. Bản đầu chỉ kiểm điều kiện (1)+(2): ND_219 Điều 35 trích đúng hai số hiệu (152/2020, 70/2023) mà mô tả của ND_283 Điều 66 khoản 3 trích, nên
+    nạp sau sẽ kích hoạt nhầm. Đã siết thêm (3), có ca âm trên dữ liệu thật (ND_219, ND_70, ND_152, ND_145 nạp muộn không kích hoạt) và ca âm hư cấu. Hạn chế: thất bại an toàn (đơn vị vẫn chờ); văn bản
+    thật mà Điều 1 diễn đạt khác câu mô tả sẽ KHÔNG khớp và phải nhờ lượt LLM (plan: "regex số hiệu/tên trước, LLM sau"), chưa chạy. Chưa có ca dương trên dữ liệu thật trong dev (ND_283 là sự kiện cuối).
+B10. Hiệu lực có thời hạn và áp dụng thay (loại 13, 14): cạnh ends_when_replaced từ câu "quy định tương ứng trong Nghị quyết này hết hiệu lực" (Điều 19 khoản 2); cạnh overrides từ mục của phụ lục I.7
+    (phạm vi lao động) tới các Điều của văn bản khác nêu trong tiêu đề mục, khoảng [2026-04-15, 2027-03-01). 6 cạnh. Tiêu đề mục I.7 nêu Điều 24-28 của ND_145 (cho thuê lại lao động); plan nhắc Điều 21-28,
+    phần Điều 21-23 chưa tìm thấy trong I.7 nên chưa nối.
+B11. Loại 25: văn bản được hướng dẫn (đích của details / based_on) bị đổi (có phiên bản mới hoặc bị đóng) -> cạnh + cờ parent_changed từ văn bản hướng dẫn, KHÔNG đóng văn bản hướng dẫn (Luật 64 Điều 57 khoản 2).
+    Chuỗi dev hiện không phát sinh cạnh nào (kiểm bằng fixture). Loại 26: cờ + cạnh possible_replacement khi văn bản mới cùng loại và cùng tên (bỏ số, năm, ngoặc) với văn bản cũ CHƯA đóng; không tự đóng.
+    Chuỗi dev không phát sinh (ND_12, ND_283 chạy sau khi văn bản cũ đã bị đóng bằng điều hiệu lực rõ). PHỤ THUỘC METADATA: loại 26 so tên bằng cột ten_ngan của manifest (tên do học viên đặt), không phải tiêu đề
+    trong chữ văn bản (L1 chưa lưu tiêu đề văn bản). Plan: "hiệu lực tính từ chữ, không từ metadata" áp cho hiệu lực; tên chỉ dùng để gợi ý, không đóng gì, nhưng vẫn là phụ thuộc cần ghi.
+B14. Nguồn ngày của từng sự kiện: ngày hiệu lực lấy từ manifest rồi ĐỐI CHIẾU với câu "<loại> này có hiệu lực ... từ ngày ..." trong chữ (own_effective). Kết quả trên 16 văn bản dưới luật (không tính BLLĐ gốc
+    và bản hợp nhất): cả 16 đều có câu đó, 0 văn bản lệch giữa chữ và manifest. VBHN_125 lấy ngày từng đơn vị từ chú thích, không từ manifest. Loại 18 (law_2012_era_document) dùng cùng quy tắc "Căn cứ" với L2
+    (ctx.resolver.blld_year == 2012): ND_90, ND_28.
+B12. Loại 19 (hồi tố): câu "<loại> này ... áp dụng từ ngày D" với D < ngày hiệu lực đặt applies_from; nếu câu nêu "trách nhiệm pháp lý mới / nặng hơn" thì KHÔNG áp, cờ retroactive_blocked (Luật 64 Điều 55 khoản 2). Loại 21:
+    "Tạm ngưng hiệu lực ... kể từ ngày D1 [đến hết ngày D2]" -> suspended từ D1, trở lại normal từ D2 + 1 (có test); không D2 thì mở. Loại 22: "... được đánh số lại thành ..." / "trở thành": mã cũ đóng, mã mới mở với chữ cũ,
+    cạnh renumbered_to; mã mới đã có hoặc mã cũ không còn là lỗi. Loại 20 (đính chính): lưu chữ trước và sau vào corrections.jsonl, cạnh corrects, KHÔNG tạo phiên bản pháp lý.
+B13. Chạy lại cả chuỗi hai lần ra file giống hệt (versions, version_edges, pending_links; có test). Quan hệ chờ đích L6 ghi data/processed/l6/pending_links.jsonl, tách khỏi pending_links.jsonl của L2.
+
+C. checks (src/checks.py)
+------------------------
+C1. Kiểm độc lập các bước: L1 (số đơn vị = manifest = EXPECTED = đếm độc lập, chỉ BLLĐ có EXPECTED), L2 (cấu trúc, hai đầu refers_to tồn tại, evidence nằm trong text nguồn, mốc ND_152.D7 -> BLLD.D154), L5 tường minh/L5 chung (mốc exception_of;
+    hai đầu tồn tại), L3 (đích có thật), L4 (mọi Điều có nhãn), L6 (số phiên bản liên tiếp, khoảng không chồng, không mất nút, phiên bản 1 = chữ của L1, hai đầu cạnh tồn tại). version_problems có test với dữ liệu hỏng cố ý.
+
+D. graph (src/graph.py)
+-----------------------
+D1. Nút: 18 văn bản, đơn vị (từ versions.jsonl, mỗi nút giữ danh sách [từ, đến, state, version]), nút điều kiện (L5 chung), nút external:<số hiệu>. Cạnh ngữ nghĩa: refers_to, exception_of, based_on, details, và mọi cạnh của L6. Cạnh cấu trúc
+    không ghi (cha ở khoá parent). Cạnh của VBHN_125 không đưa vào (bản hợp nhất không có nút đơn vị riêng; nó chỉ tạo phiên bản trên BLLĐ).
+D2. Nút không bao giờ bị xoá: đơn vị hết hiệu lực vẫn có nút, trang xem mờ theo ngày. Văn bản bị thay có khoảng hiệu lực kết thúc theo cạnh replaces.
+
+E. CHƯA LÀM / CHƯA KIỂM
+-----------------------
+E1. LLM chưa chạy lần nào (không có GEMINI_API_KEY trong shell của Claude; hạn mức live đã được duyệt tối đa ~60 lượt chính + 10 lượt kiểm, chưa dùng). Hệ quả: ND_74 -> Điều 91 chưa qua lượt kiểm độc lập (mục A4 ở l2_l3_l4_l5),
+    742 Điều L4 chưa phân loại bằng LLM, loại 10 chỉ có bản regex, kích hoạt pending_event chỉ bằng regex.
+E2. Một chỉ thị đọc được nhưng không khớp đích, còn lại sau cùng: ND_70 Điều 1 khoản 14 điểm c "Bãi bỏ điểm a khoản 6a Điều 30" (ND_152): ND_152 Điều 30 có khoản 6 (điểm a-i) nhưng KHÔNG có khoản 6a. Có thể ND_70 tham chiếu sai hoặc
+    ND_152 trong kho khác bản; không đoán, ghi vào báo cáo.
+E3. Trang xem (viewer): kiểm bằng Edge không giao diện (đếm nút theo ngày và theo văn bản qua tham số # của URL; ảnh chụp trạng thái mặc định). Demo giấy phép lao động ĐÃ chứng minh trong trang: ngày 2025-06-01 có ND_152 Điều 7 khoản 8 và không có khoản 13 (và điểm a) của ND_219; ngày 2025-10-01 ngược lại; BLLĐ Điều 151 khoản 1 điểm d và Điều 154 khoản 9 có ở cả hai ngày. CHƯA thử tương tác chuột (bấm, bấm đúp mở Khoản/Điểm, tìm kiếm Enter) và CHƯA kiểm
+    độ tương phản màu sáng/tối. Trang ~4,7 MB, dựng ~5 giây.
+E4. Chưa làm: L11 (chạy tăng dần theo tập ảnh hưởng và --rebuild); heldout chưa nạp và không được mở. Fixture của loại 12 dùng mã văn bản hư cấu (ND_901-2099 ...), không dùng mã nào của heldout.
+    L7-L10 (sổ khái niệm, s(CASP), hỏi đáp) ngoài phạm vi đợt này.
+E5. Mốc cổng ND_74 -> Điều 91 (L3) và 742 Điều L4 chờ LLM: xem l2_l3_l4_l5 mục A4, A5.

@@ -1,0 +1,181 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-08T18:59:52+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k401\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về thực hiện hợp đồng lao động\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng đối với người sử dụng lao động có hành vi tạm thời chuyển người lao động làm công việc khác so với hợp đồng lao đ\"\n},\n{\n\"k\": \"k402\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về sửa đổi, bổ sung, chấm dứt hợp đồng lao động\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng đối với người sử dụng lao động có hành vi không thông báo bằng văn bản cho người lao động về việc chấm dứt hợp đồ\"\n},\n{\n\"k\": \"k403\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về cho thuê lại lao động\",\n\"doan_dau\": \"Phạt tiền từ 3.000.000 đồng đến 5.000.000 đồng đối với bên thuê lại lao động có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k404\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về đào tạo, bồi dưỡng, nâng cao trình độ kỹ năng nghề\",\n\"doan_dau\": \"Phạt tiền đối với người sử dụng lao động có một trong các hành vi: không đào tạo cho người lao động trước khi chuyển người lao động sang làm nghề khác cho mình;\"\n},\n{\n\"k\": \"k405\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về đối thoại tại nơi làm việc\",\n\"doan_dau\": \"Phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng đối với người sử dụng lao động có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k406\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về thương lượng tập thể, thỏa ước lao động tập thể\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng đối với người sử dụng lao động có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k407\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về tiền lương\",\n\"doan_dau\": \"Phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng đối với người sử dụng lao động có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k408\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về kỷ luật lao động, trách nhiệm vật chất\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng đối với người sử dụng lao động không thông báo nội quy lao động đến toàn bộ người lao động hoặc không niêm yết nh\"\n},\n{\n\"k\": \"k409\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về phòng ngừa tai nạn lao động, bệnh nghề nghiệp\",\n\"doan_dau\": \"Phạt tiền từ 500.000 đồng đến 1.000.000 đồng đối với người lao động có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k410\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về trách nhiệm của người sử dụng lao động đối với tai nạn lao động, bệnh nghề nghiệp\",\n\"doan_dau\": \"Phạt tiền từ 2.000.000 đồng đến 4.000.000 đồng khi vi phạm đối với mỗi người lao động nhưng tối đa không quá 75.000.000 đồng đối với người sử dụng lao động có m\"\n},\n{\n\"k\": \"k411\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về sử dụng máy, thiết bị có yêu cầu nghiêm ngặt về an toàn, vệ sinh lao động\",\n\"doan_dau\": \"Phạt tiền đối với hành vi vi phạm quy định về sử dụng các loại máy, thiết bị, vật tư có yêu cầu nghiêm ngặt về an toàn lao động như sau:\"\n},\n{\n\"k\": \"k412\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về quan trắc môi trường lao động\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 2.000.000 đồng đối với tổ chức hoạt động quan trắc môi trường lao động có một trong các hành vi sau: không thực hiện báo cáo kết\"\n},\n{\n\"k\": \"k413\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về lao động nữ và bảo đảm bình đẳng giới\",\n\"doan_dau\": \"Phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng đối với người sử dụng lao động khi có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k414\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về người lao động cao tuổi, người khuyết tật\",\n\"doan_dau\": \"Phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng khi vi phạm với mỗi người lao động đối với người sử dụng lao động có một trong các hành vi:\"\n},\n{\n\"k\": \"k415\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về người nước ngoài làm việc tại Việt Nam\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng đối với người sử dụng lao động khi vi phạm một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k416\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm của tổ chức, cá nhân nước ngoài tại Việt Nam khi tuyển dụng, sử dụng người lao động Việt Nam làm việc cho tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng khi có hành vi sử dụng người lao động Việt Nam nhưng không báo cáo hoặc báo cáo không đúng nội dung hoặc báo cáo \"\n},\n{\n\"k\": \"k417\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về giải quyết tranh chấp lao động\",\n\"doan_dau\": \"Phạt cảnh cáo đối với người lao động có hành vi tham gia đình công sau khi có quyết định hoãn hoặc ngừng đình công của Chủ tịch Ủy ban nhân dân cấp tỉnh.\"\n},\n{\n\"k\": \"k418\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về bảo đảm thực hiện quyền của tổ chức đại diện người lao động tại cơ sở\",\n\"doan_dau\": \"Phạt tiền từ 3.000.000 đồng đến 5.000.000 đồng đối với người sử dụng lao động có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k419\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về phân biệt đối xử vì lý do thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n\"doan_dau\": \"Phạt tiền từ 15.000.000 đồng đến 30.000.000 đồng đối với người sử dụng lao động có hành vi phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của \"\n},\n{\n\"k\": \"k420\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về sử dụng các biện pháp kinh tế hoặc các biện pháp khác gây bất lợi đối với tổ chức và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n\"doan_dau\": \"Phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng đối với người sử dụng lao động có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k421\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm của doanh nghiệp hoạt động dịch vụ đưa người lao động Việt Nam đi làm việc ở nước ngoài theo hợp đồng (sau đây viết tắt là doanh nghiệp dịch vụ)\",\n\"doan_dau\": \"Phạt tiền từ 10.000.000 đồng đến 15.000.000 đồng khi có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k422\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về đưa người lao động Việt Nam đi làm việc ở nước ngoài của doanh nghiệp trúng thầu, nhận thầu công trình, dự án ở nước ngoài\",\n\"doan_dau\": \"Phạt tiền từ 3.000.000 đồng đến 5.000.000 đồng khi có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k423\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về đưa người lao động Việt Nam đi làm việc ở nước ngoài của tổ chức, cá nhân Việt Nam đầu tư ra nước ngoài\",\n\"doan_dau\": \"Phạt tiền từ 500.000 đồng đến 1.500.000 đồng khi có hành vi không báo cáo định kỳ hằng năm theo quy định hoặc không báo cáo đột xuất về tình hình thực hiện đưa \"\n},\n{\n\"k\": \"k424\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm của doanh nghiệp Việt Nam đưa người lao động Việt Nam đi đào tạo, nâng cao trình độ, kỹ năng nghề ở nước ngoài\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng khi có hành vi không báo cáo về tình hình thực hiện đưa người lao động đi đào tạo, nâng cao trình độ, kỹ năng ngh\"\n},\n{\n\"k\": \"k425\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm của người lao động Việt Nam đi làm việc ở nước ngoài và một số đối tượng liên quan khác\",\n\"doan_dau\": \"Phạt tiền từ 80.000.000 đồng đến 100.000.000 đồng đối với người lao động có hành vi tự ý ở lại nước ngoài trái pháp luật sau khi chấm dứt hợp đồng lao động hoặc\"\n},\n{\n\"k\": \"k426\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Giao quyền xử phạt\",\n\"doan_dau\": \"Người có thẩm quyền xử phạt quy định tại Điều 48; khoản 2, 3 Điều 49; các điều 50, 51, 52, 53, 54, 55 và 56 Nghị định này có thể giao cho cấp phó thực hiện thẩm\"\n},\n{\n\"k\": \"k427\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thi hành các hình thức xử phạt vi phạm hành chính\",\n\"doan_dau\": \"Việc thi hành các hình thức xử phạt vi phạm hành chính trong lĩnh vực lao động, bảo hiểm xã hội, người lao động Việt Nam đi làm việc ở nước ngoài theo hợp đồng \"\n},\n{\n\"k\": \"k428\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thi hành các biện pháp khắc phục hậu quả\",\n\"doan_dau\": \"Việc thi hành các biện pháp khắc phục hậu quả quy định trong Nghị định này được áp dụng theo quy định của Luật Xử lý vi phạm hành chính và các văn bản hướng dẫn\"\n},\n{\n\"k\": \"k429\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Thông tư này quy định việc xây dựng kế hoạch và tổ chức thực hiện thời giờ làm việc, thời giờ nghỉ ngơi đối với người lao động làm công việc sản xuất có tính th\"\n},\n{\n\"k\": \"k430\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Đối tượng áp dụng\",\n\"doan_dau\": \"Người lao động làm việc theo chế độ hợp đồng lao động xác định thời hạn có thời hạn từ đủ 12 tháng đến 36 tháng và hợp đồng lao động không xác định thời hạn làm\"\n},\n{\n\"k\": \"k431\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Quỹ thời giờ làm việc tiêu chuẩn trong năm\",\n\"doan_dau\": \"TQ = [TN - (Tt + Tp + TL)] x tn (giờ) Trong đó: - TQ: Quỹ thời giờ làm việc tiêu chuẩn trong năm của người lao động; - TN: Số ngày trong năm tính theo năm dương\"\n},\n{\n\"k\": \"k432\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Lập kế hoạch xác định số giờ làm việc tiêu chuẩn hằng ngày\",\n\"doan_dau\": \"Hằng năm, căn cứ vào quỹ thời giờ làm việc tiêu chuẩn trong năm (TQ) đã tính theo hướng dẫn tại Điều 3 Thông tư này, người sử dụng lao động lập kế hoạch xác địn\"\n},\n{\n\"k\": \"k433\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Nguyên tắc sử dụng quỹ thời giờ làm việc tiêu chuẩn\",\n\"doan_dau\": \"Trong năm, tổng số giờ làm việc tiêu chuẩn được lập kế hoạch xác định theo hướng dẫn tại Điều 4 Thông tư này (gồm cả thời giờ nghỉ ngơi trong ngày được tính là \"\n},\n{\n\"k\": \"k434\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Giới hạn giờ làm việc tiêu chuẩn hằng ngày và giờ làm thêm\",\n\"doan_dau\": \"Tổng số giờ làm việc tiêu chuẩn và số giờ làm thêm trong một ngày không quá 12 giờ.\"\n},\n{\n\"k\": \"k435\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Thời giờ nghỉ ngơi\",\n\"doan_dau\": \"Hằng tuần, người lao động được nghỉ ít nhất một ngày (24 giờ liên tục). Trong những tháng thời vụ hoặc phải gấp rút gia công hàng xuất khẩu theo đơn đặt hàng, n\"\n},\n{\n\"k\": \"k436\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Trách nhiệm của người sử dụng lao động\",\n\"doan_dau\": \"Căn cứ vào kế hoạch sản xuất, kinh doanh, hằng năm chủ động quyết định áp dụng chế độ thời giờ làm việc, thời giờ nghỉ ngơi bình thường theo quy định của Bộ luậ\"\n},\n{\n\"k\": \"k437\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Nghị định này quy định mức lương tối thiểu tháng và mức lương tối thiểu giờ áp dụng đối với người lao động làm việc theo hợp đồng lao động.\"\n},\n{\n\"k\": \"k438\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Đối tượng áp dụng\",\n\"doan_dau\": \"Người lao động làm việc theo hợp đồng lao động theo quy định của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k439\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Mức lương tối thiểu\",\n\"doan_dau\": \"Quy định mức lương tối thiểu tháng và mức lương tối thiểu giờ đối với người lao động làm việc cho người sử dụng lao động theo vùng như sau: Vùng Mức lương tối t\"\n},\n{\n\"k\": \"k440\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Áp dụng mức lương tối thiểu\",\n\"doan_dau\": \"Mức lương tối thiểu tháng là mức lương thấp nhất làm cơ sở để thỏa thuận và trả lương đối với người lao động áp dụng hình thức trả lương theo tháng, bảo đảm mức\"\n}\n]",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "psbwaq2CKICz694P76W1sAM",
+ "output": {
+  "labels": [
+   {
+    "k": "k401",
+    "label": "substantive"
+   },
+   {
+    "k": "k402",
+    "label": "substantive"
+   },
+   {
+    "k": "k403",
+    "label": "substantive"
+   },
+   {
+    "k": "k404",
+    "label": "substantive"
+   },
+   {
+    "k": "k405",
+    "label": "substantive"
+   },
+   {
+    "k": "k406",
+    "label": "substantive"
+   },
+   {
+    "k": "k407",
+    "label": "substantive"
+   },
+   {
+    "k": "k408",
+    "label": "substantive"
+   },
+   {
+    "k": "k409",
+    "label": "substantive"
+   },
+   {
+    "k": "k410",
+    "label": "substantive"
+   },
+   {
+    "k": "k411",
+    "label": "substantive"
+   },
+   {
+    "k": "k412",
+    "label": "substantive"
+   },
+   {
+    "k": "k413",
+    "label": "substantive"
+   },
+   {
+    "k": "k414",
+    "label": "substantive"
+   },
+   {
+    "k": "k415",
+    "label": "substantive"
+   },
+   {
+    "k": "k416",
+    "label": "substantive"
+   },
+   {
+    "k": "k417",
+    "label": "substantive"
+   },
+   {
+    "k": "k418",
+    "label": "substantive"
+   },
+   {
+    "k": "k419",
+    "label": "substantive"
+   },
+   {
+    "k": "k420",
+    "label": "substantive"
+   },
+   {
+    "k": "k421",
+    "label": "substantive"
+   },
+   {
+    "k": "k422",
+    "label": "substantive"
+   },
+   {
+    "k": "k423",
+    "label": "substantive"
+   },
+   {
+    "k": "k424",
+    "label": "substantive"
+   },
+   {
+    "k": "k425",
+    "label": "substantive"
+   },
+   {
+    "k": "k426",
+    "label": "authority"
+   },
+   {
+    "k": "k427",
+    "label": "procedural"
+   },
+   {
+    "k": "k428",
+    "label": "procedural"
+   },
+   {
+    "k": "k429",
+    "label": "substantive"
+   },
+   {
+    "k": "k430",
+    "label": "substantive"
+   },
+   {
+    "k": "k431",
+    "label": "substantive"
+   },
+   {
+    "k": "k432",
+    "label": "procedural"
+   },
+   {
+    "k": "k433",
+    "label": "substantive"
+   },
+   {
+    "k": "k434",
+    "label": "substantive"
+   },
+   {
+    "k": "k435",
+    "label": "substantive"
+   },
+   {
+    "k": "k436",
+    "label": "authority"
+   },
+   {
+    "k": "k437",
+    "label": "substantive"
+   },
+   {
+    "k": "k438",
+    "label": "substantive"
+   },
+   {
+    "k": "k439",
+    "label": "substantive"
+   },
+   {
+    "k": "k440",
+    "label": "definition"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 4506,
+  "candidates_token_count": 1086,
+  "thoughts_token_count": null,
+  "total_token_count": 5592
+ }
+}

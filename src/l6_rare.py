@@ -9,7 +9,7 @@ không làm gì (không đoán). Gọi từ l6_directives: apply_rare (quét m�
   20 đính chính (NĐ 78 Điều 9)         -> correct: giữ cả hai chữ, cạnh `corrects`, KHÔNG tạo phiên bản pháp lý
   21 tạm ngưng / đình chỉ (Luật 64 Điều 56) -> suspend: state suspended trong khoảng; hết khoảng thì về normal; không ngày kết thúc thì mở
   22 đánh số lại ("... trở thành ...")    -> renumber: mã cũ đóng, mã mới mở với chữ cũ, cạnh `renumbered_to`
-  23 danh sách số trần ("Điều 5, 6 và 8") -> đã xử lý ở a2.find_refs / chain_targets
+  23 danh sách số trần ("Điều 5, 6 và 8") -> đã xử lý ở l2.find_refs / chain_targets
   24 văn bản bị bãi bỏ vì trái luật       -> repeal_one gắn cờ annulled
   25 văn bản được hướng dẫn bị sửa        -> parent_changed: cờ + cạnh, KHÔNG tự đóng văn bản hướng dẫn (Luật 64 Điều 57 khoản 2)
   26 thay cả văn bản cùng tên không có điều hiệu lực -> possible_replacement: cờ + cạnh, không tự đóng (LLM đề xuất ở plan, chưa gọi)
@@ -20,8 +20,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import a2_edges as a2
-import a4_versions as a4
+import l2_edges as l2
+import l6_versions as l6v
 import l6_directives as l6
 
 RE_RETRO = re.compile(r"(?:áp dụng|có hiệu lực)(?: trở lại)?[ ]+từ[ ]+ngày[ ]+(?P<d>\d{1,2}[ ]+tháng[ ]+\d{1,2}[ ]+năm[ ]+\d{4})", re.I)
@@ -66,7 +66,7 @@ def correct(store, tid, corrected_text, eff, source, directive):
     if cur is None:
         raise ValueError(f"đính chính mã không tồn tại: {tid}")
     store.corrections.append({"id": tid, "version": cur.version, "text_before": cur.text, "text_after": corrected_text, "source_event": source,
-                              "effective": a4.iso(eff), "directive": directive})
+                              "effective": l6v.iso(eff), "directive": directive})
     cur.flags.append("corrected")
     store.add_edge(directive, "corrects", tid, corrected_text[:160], source, eff)
 
@@ -81,7 +81,7 @@ def suspend(store, tid, start, end, source, directive):
         store.new_version(x, start, source, None, None, ["suspended_by_directive"], directive, "suspended", f"tạm ngưng từ {start.isoformat()}")
         if end is not None:
             store.new_version(x, end, source, text, None, ["suspension_ended"], directive)
-    store.add_edge(directive, "suspends", tid, "", source, start, valid_from=a4.iso(start), valid_to=a4.iso(end))
+    store.add_edge(directive, "suspends", tid, "", source, start, valid_from=l6v.iso(start), valid_to=l6v.iso(end))
 
 
 def renumber(store, old_id, new_id, eff, source, directive):
@@ -92,7 +92,7 @@ def renumber(store, old_id, new_id, eff, source, directive):
     if store.exists(new_id):
         raise ValueError(f"mã mới đã tồn tại: {new_id}")
     store.close_tree(old_id, eff, source, ["renumbered"])
-    store.add(a4.Ver(new_id, 1, cur.type, new_id.split(".")[-1].lstrip("DK"), cur.heading, cur.text, cur.parent, eff, None, None, "normal", None,
+    store.add(l6v.Ver(new_id, 1, cur.type, new_id.split(".")[-1].lstrip("DK"), cur.heading, cur.text, cur.parent, eff, None, None, "normal", None,
                      source, None, None, ["renumbered_from"], directive))
     store.add_edge(old_id, "renumbered_to", new_id, "", source, eff)
 
@@ -140,7 +140,7 @@ def apply_rare(ctx, store, doc, units, eff, ev):
         text = (u.get("text") or "").replace("\n", " ")
         if u["type"] not in ("dieu", "khoan", "diem") or not text:
             continue
-        if re.match(rf"^{a2.KINDS}[ ]+này", text, re.I):  # chỉ câu tự nói về hiệu lực / áp dụng của chính văn bản
+        if re.match(rf"^{l2.KINDS}[ ]+này", text, re.I):  # chỉ câu tự nói về hiệu lực / áp dụng của chính văn bản
             earlier = [d for d in (_date(m["d"]) for m in RE_RETRO.finditer(text)) if d and d < eff]
             if earlier:
                 retroactive(store, doc, eff, min(earlier), text, ev)

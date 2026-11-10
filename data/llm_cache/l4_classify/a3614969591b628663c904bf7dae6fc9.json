@@ -1,0 +1,181 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-08T18:59:24+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k121\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Chương trình an toàn, vệ sinh lao động\",\n\"doan_dau\": \"Chính phủ quyết định Chương trình quốc gia về an toàn, vệ sinh lao động.\"\n},\n{\n\"k\": \"k122\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Bảo đảm an toàn, vệ sinh lao động tại nơi làm việc\",\n\"doan_dau\": \"Người sử dụng lao động có trách nhiệm thực hiện đầy đủ các giải pháp nhằm bảo đảm an toàn, vệ sinh lao động tại nơi làm việc.\"\n},\n{\n\"k\": \"k123\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Chính sách của Nhà nước\",\n\"doan_dau\": \"Bảo đảm quyền bình đẳng của lao động nữ, lao động nam, thực hiện các biện pháp bảo đảm bình đẳng giới và phòng, chống quấy rối tình dục tại nơi làm việc.\"\n},\n{\n\"k\": \"k124\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trách nhiệm của người sử dụng lao động\",\n\"doan_dau\": \"Bảo đảm thực hiện bình đẳng giới và các biện pháp thúc đẩy bình đẳng giới trong tuyển dụng, bố trí, sắp xếp việc làm, đào tạo, thời giờ làm việc, thời giờ nghỉ \"\n},\n{\n\"k\": \"k125\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Bảo vệ thai sản\",\n\"doan_dau\": \"Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa trong trường hợp sau đây:\"\n},\n{\n\"k\": \"k126\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền đơn phương chấm dứt, tạm hoãn hợp đồng lao động của lao động nữ mang thai\",\n\"doan_dau\": \"Lao động nữ mang thai nếu có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi thì có quyền đơn phươ\"\n},\n{\n\"k\": \"k127\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghỉ thai sản\",\n\"doan_dau\": \"Lao động nữ được nghỉ thai sản trước và sau khi sinh con là 06 tháng; thời gian nghỉ trước khi sinh không quá 02 tháng. Trường hợp lao động nữ sinh đôi trở lên \"\n},\n{\n\"k\": \"k128\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Bảo đảm việc làm cho lao động nghỉ thai sản\",\n\"doan_dau\": \"Lao động được bảo đảm việc làm cũ khi trở lại làm việc sau khi nghỉ hết thời gian theo quy định tại các khoản 1, 3 và 5 Điều 139 của Bộ luật này mà không bị cắt\"\n},\n{\n\"k\": \"k129\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trợ cấp trong thời gian chăm sóc con ốm đau, thai sản và thực hiện các biện pháp tránh thai\",\n\"doan_dau\": \"Thời gian nghỉ việc khi chăm sóc con dưới 07 tuổi ốm đau, khám thai, sẩy thai, nạo, hút thai, thai chết lưu, phá thai bệnh lý, thực hiện các biện pháp tránh tha\"\n},\n{\n\"k\": \"k130\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con\",\n\"doan_dau\": \"Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành danh mục nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con.\"\n},\n{\n\"k\": \"k131\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Lao động chưa thành niên\",\n\"doan_dau\": \"Lao động chưa thành niên là người lao động chưa đủ 18 tuổi.\"\n},\n{\n\"k\": \"k132\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nguyên tắc sử dụng lao động chưa thành niên\",\n\"doan_dau\": \"Lao động chưa thành niên chỉ được làm công việc phù hợp với sức khỏe để bảo đảm sự phát triển thể lực, trí lực, nhân cách.\"\n},\n{\n\"k\": \"k133\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Sử dụng người chưa đủ 15 tuổi làm việc\",\n\"doan_dau\": \"Khi sử dụng người chưa đủ 15 tuổi làm việc, người sử dụng lao động phải tuân theo quy định sau đây:\"\n},\n{\n\"k\": \"k134\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thời giờ làm việc của người chưa thành niên\",\n\"doan_dau\": \"Thời giờ làm việc của người chưa đủ 15 tuổi không được quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần; không được làm thêm giờ, làm việc vào ban đêm.\"\n},\n{\n\"k\": \"k135\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"doan_dau\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm các công việc sau đây:\"\n},\n{\n\"k\": \"k136\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Người lao động cao tuổi\",\n\"doan_dau\": \"Người lao động cao tuổi là người tiếp tục lao động sau độ tuổi theo quy định tại khoản 2 Điều 169 của Bộ luật này.\"\n},\n{\n\"k\": \"k137\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Sử dụng người lao động cao tuổi\",\n\"doan_dau\": \"Khi sử dụng người lao động cao tuổi, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn.\"\n},\n{\n\"k\": \"k138\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"doan_dau\": \"Nhà nước khuyến khích doanh nghiệp, cơ quan, tổ chức, cá nhân tìm kiếm và mở rộng thị trường lao động để đưa người lao động Việt Nam đi làm việc ở nước ngoài. N\"\n},\n{\n\"k\": \"k139\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"doan_dau\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\"\n},\n{\n\"k\": \"k140\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Điều kiện tuyển dụng, sử dụng người lao động nước ngoài làm việc tại Việt Nam\",\n\"doan_dau\": \"Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu chỉ được tuyển dụng người lao động nước ngoài vào làm vị trí công việc quản lý, điều hành, chuyên gia và lao đ\"\n},\n{\n\"k\": \"k141\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trách nhiệm của người sử dụng lao động và người lao động nước ngoài\",\n\"doan_dau\": \"Người lao động nước ngoài phải xuất trình giấy phép lao động khi có yêu cầu của cơ quan nhà nước có thẩm quyền.\"\n},\n{\n\"k\": \"k142\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ.\"\n},\n{\n\"k\": \"k143\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thời hạn của giấy phép lao động\",\n\"doan_dau\": \"Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm.\"\n},\n{\n\"k\": \"k144\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"doan_dau\": \"Giấy phép lao động hết thời hạn.\"\n},\n{\n\"k\": \"k145\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Cấp, cấp lại, gia hạn, thu hồi giấy phép lao động, giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Chính phủ quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động đối v\"\n},\n{\n\"k\": \"k146\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Chính sách của Nhà nước đối với lao động là người khuyết tật\",\n\"doan_dau\": \"Nhà nước bảo trợ quyền lao động, tự tạo việc làm của người lao động là người khuyết tật; có chính sách khuyến khích, ưu đãi phù hợp đối với người sử dụng lao độ\"\n},\n{\n\"k\": \"k147\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Sử dụng lao động là người khuyết tật\",\n\"doan_dau\": \"Người sử dụng lao động phải bảo đảm về điều kiện lao động, công cụ lao động, an toàn, vệ sinh lao động và tổ chức khám sức khỏe định kỳ phù hợp với người lao độ\"\n},\n{\n\"k\": \"k148\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Các hành vi bị nghiêm cấm khi sử dụng lao động là người khuyết tật\",\n\"doan_dau\": \"Sử dụng người lao động là người khuyết tật nhẹ suy giảm khả năng lao động từ 51% trở lên, khuyết tật nặng hoặc khuyết tật đặc biệt nặng làm thêm giờ, làm việc v\"\n},\n{\n\"k\": \"k149\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Lao động là người giúp việc gia đình\",\n\"doan_dau\": \"Lao động là người giúp việc gia đình là người lao động làm thường xuyên các công việc trong gia đình của một hoặc nhiều hộ gia đình. Các công việc trong gia đìn\"\n},\n{\n\"k\": \"k150\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hợp đồng lao động đối với lao động là người giúp việc gia đình\",\n\"doan_dau\": \"Người sử dụng lao động phải giao kết hợp đồng lao động bằng văn bản với lao động là người giúp việc gia đình.\"\n},\n{\n\"k\": \"k151\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghĩa vụ của người sử dụng lao động khi sử dụng lao động là người giúp việc gia đình\",\n\"doan_dau\": \"Thực hiện đầy đủ thỏa thuận đã giao kết trong hợp đồng lao động.\"\n},\n{\n\"k\": \"k152\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghĩa vụ của lao động là người giúp việc gia đình\",\n\"doan_dau\": \"Thực hiện đầy đủ thỏa thuận đã giao kết trong hợp đồng lao động.\"\n},\n{\n\"k\": \"k153\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động\",\n\"doan_dau\": \"Ngược đãi, quấy rối tình dục, cưỡng bức lao động, dùng vũ lực đối với lao động là người giúp việc gia đình.\"\n},\n{\n\"k\": \"k154\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Người lao động làm việc trong lĩnh vực nghệ thuật, thể dục, thể thao, hàng hải, hàng không\",\n\"doan_dau\": \"Người lao động làm việc trong lĩnh vực nghệ thuật, thể dục, thể thao, hàng hải, hàng không được áp dụng một số chế độ phù hợp về đào tạo, bồi dưỡng, nâng cao tr\"\n},\n{\n\"k\": \"k155\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Người lao động nhận công việc về làm tại nhà\",\n\"doan_dau\": \"Người lao động có thể thỏa thuận với người sử dụng lao động để nhận việc về làm tại nhà.\"\n},\n{\n\"k\": \"k156\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tham gia bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp\",\n\"doan_dau\": \"Người sử dụng lao động, người lao động phải tham gia bảo hiểm xã hội bắt buộc, bảo hiểm y tế, bảo hiểm thất nghiệp; người lao động được hưởng các chế độ theo qu\"\n},\n{\n\"k\": \"k157\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tuổi nghỉ hưu\",\n\"doan_dau\": \"Người lao động bảo đảm điều kiện về thời gian đóng bảo hiểm xã hội theo quy định của pháp luật về bảo hiểm xã hội được hưởng lương hưu khi đủ tuổi nghỉ hưu.\"\n},\n{\n\"k\": \"k158\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền thành lập, gia nhập và tham gia hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n\"doan_dau\": \"Người lao động có quyền thành lập, gia nhập và hoạt động công đoàn theo quy định của Luật Công đoàn.\"\n},\n{\n\"k\": \"k159\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam\",\n\"doan_dau\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam được thành lập ở các cơ quan, tổ chức, đơn vị, doanh nghiệp.\"\n},\n{\n\"k\": \"k160\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp\",\n\"doan_dau\": \"Tổ chức của người lao động tại doanh nghiệp được thành lập và hoạt động hợp pháp sau khi cơ quan nhà nước có thẩm quyền cấp đăng ký. Tổ chức của người lao động \"\n}\n]",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "isbwasi7LP7MqfkP-IaAiQI",
+ "output": {
+  "labels": [
+   {
+    "k": "k121",
+    "label": "substantive"
+   },
+   {
+    "k": "k122",
+    "label": "substantive"
+   },
+   {
+    "k": "k123",
+    "label": "substantive"
+   },
+   {
+    "k": "k124",
+    "label": "substantive"
+   },
+   {
+    "k": "k125",
+    "label": "substantive"
+   },
+   {
+    "k": "k126",
+    "label": "substantive"
+   },
+   {
+    "k": "k127",
+    "label": "substantive"
+   },
+   {
+    "k": "k128",
+    "label": "substantive"
+   },
+   {
+    "k": "k129",
+    "label": "substantive"
+   },
+   {
+    "k": "k130",
+    "label": "authority"
+   },
+   {
+    "k": "k131",
+    "label": "definition"
+   },
+   {
+    "k": "k132",
+    "label": "substantive"
+   },
+   {
+    "k": "k133",
+    "label": "substantive"
+   },
+   {
+    "k": "k134",
+    "label": "substantive"
+   },
+   {
+    "k": "k135",
+    "label": "substantive"
+   },
+   {
+    "k": "k136",
+    "label": "definition"
+   },
+   {
+    "k": "k137",
+    "label": "substantive"
+   },
+   {
+    "k": "k138",
+    "label": "substantive"
+   },
+   {
+    "k": "k139",
+    "label": "substantive"
+   },
+   {
+    "k": "k140",
+    "label": "substantive"
+   },
+   {
+    "k": "k141",
+    "label": "substantive"
+   },
+   {
+    "k": "k142",
+    "label": "substantive"
+   },
+   {
+    "k": "k143",
+    "label": "substantive"
+   },
+   {
+    "k": "k144",
+    "label": "substantive"
+   },
+   {
+    "k": "k145",
+    "label": "procedural"
+   },
+   {
+    "k": "k146",
+    "label": "substantive"
+   },
+   {
+    "k": "k147",
+    "label": "substantive"
+   },
+   {
+    "k": "k148",
+    "label": "substantive"
+   },
+   {
+    "k": "k149",
+    "label": "definition"
+   },
+   {
+    "k": "k150",
+    "label": "substantive"
+   },
+   {
+    "k": "k151",
+    "label": "substantive"
+   },
+   {
+    "k": "k152",
+    "label": "substantive"
+   },
+   {
+    "k": "k153",
+    "label": "substantive"
+   },
+   {
+    "k": "k154",
+    "label": "substantive"
+   },
+   {
+    "k": "k155",
+    "label": "substantive"
+   },
+   {
+    "k": "k156",
+    "label": "substantive"
+   },
+   {
+    "k": "k157",
+    "label": "substantive"
+   },
+   {
+    "k": "k158",
+    "label": "substantive"
+   },
+   {
+    "k": "k159",
+    "label": "substantive"
+   },
+   {
+    "k": "k160",
+    "label": "substantive"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 3894,
+  "candidates_token_count": 1084,
+  "thoughts_token_count": null,
+  "total_token_count": 4978
+ }
+}

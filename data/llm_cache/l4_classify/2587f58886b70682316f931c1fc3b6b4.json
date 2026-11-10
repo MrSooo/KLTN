@@ -1,0 +1,181 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-08T18:59:17+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k41\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thông báo chấm dứt hợp đồng lao động\",\n\"doan_dau\": \"Người sử dụng lao động phải thông báo bằng văn bản cho người lao động về việc chấm dứt hợp đồng lao động khi hợp đồng lao động chấm dứt theo quy định của Bộ luậ\"\n},\n{\n\"k\": \"k42\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trợ cấp thôi việc\",\n\"doan_dau\": \"Khi hợp đồng lao động chấm dứt theo quy định tại các khoản 1, 2, 3, 4, 6, 7, 9 và 10 Điều 34 của Bộ luật này thì người sử dụng lao động có trách nhiệm trả trợ c\"\n},\n{\n\"k\": \"k43\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trợ cấp mất việc làm\",\n\"doan_dau\": \"Người sử dụng lao động trả trợ cấp mất việc làm cho người lao động đã làm việc thường xuyên cho mình từ đủ 12 tháng trở lên mà bị mất việc làm theo quy định tại\"\n},\n{\n\"k\": \"k44\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trách nhiệm khi chấm dứt hợp đồng lao động\",\n\"doan_dau\": \"Trong thời hạn 14 ngày làm việc kể từ ngày chấm dứt hợp đồng lao động, hai bên có trách nhiệm thanh toán đầy đủ các khoản tiền có liên quan đến quyền lợi của mỗ\"\n},\n{\n\"k\": \"k45\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hợp đồng lao động vô hiệu\",\n\"doan_dau\": \"Hợp đồng lao động vô hiệu toàn bộ trong trường hợp sau đây:\"\n},\n{\n\"k\": \"k46\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Xử lý hợp đồng lao động vô hiệu\",\n\"doan_dau\": \"Khi hợp đồng lao động bị tuyên bố vô hiệu từng phần thì xử lý như sau:\"\n},\n{\n\"k\": \"k47\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Cho thuê lại lao động\",\n\"doan_dau\": \"Cho thuê lại lao động là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động, sau đó người lao đ\"\n},\n{\n\"k\": \"k48\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n\"doan_dau\": \"Thời hạn cho thuê lại lao động đối với người lao động tối đa là 12 tháng.\"\n},\n{\n\"k\": \"k49\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Doanh nghiệp cho thuê lại lao động\",\n\"doan_dau\": \"Doanh nghiệp cho thuê lại lao động phải ký quỹ và được cấp Giấy phép hoạt động cho thuê lại lao động.\"\n},\n{\n\"k\": \"k50\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hợp đồng cho thuê lại lao động\",\n\"doan_dau\": \"Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động phải ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản\"\n},\n{\n\"k\": \"k51\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động\",\n\"doan_dau\": \"Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:\"\n},\n{\n\"k\": \"k52\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n\"doan_dau\": \"Thông báo, hướng dẫn cho người lao động thuê lại biết nội quy lao động và các quy chế khác của mình.\"\n},\n{\n\"k\": \"k53\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"doan_dau\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\"\n},\n{\n\"k\": \"k54\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Đào tạo nghề nghiệp và phát triển kỹ năng nghề\",\n\"doan_dau\": \"Người lao động được tự do lựa chọn đào tạo nghề nghiệp, tham gia đánh giá, công nhận kỹ năng nghề quốc gia, phát triển năng lực nghề nghiệp phù hợp với nhu cầu \"\n},\n{\n\"k\": \"k55\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trách nhiệm của người sử dụng lao động về đào tạo, bồi dưỡng, nâng cao trình độ, kỹ năng nghề\",\n\"doan_dau\": \"Người sử dụng lao động xây dựng kế hoạch hằng năm và dành kinh phí cho việc đào tạo, bồi dưỡng, nâng cao trình độ, kỹ năng nghề, phát triển kỹ năng nghề cho ngư\"\n},\n{\n\"k\": \"k56\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n\"doan_dau\": \"Học nghề để làm việc cho người sử dụng lao động là việc người sử dụng lao động tuyển người vào để đào tạo nghề nghiệp tại nơi làm việc. Thời gian học nghề theo \"\n},\n{\n\"k\": \"k57\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hợp đồng đào tạo nghề giữa người sử dụng lao động, người lao động và chi phí đào tạo nghề\",\n\"doan_dau\": \"Hai bên phải ký kết hợp đồng đào tạo nghề trong trường hợp người lao động được đào tạo nâng cao trình độ, kỹ năng nghề, đào tạo lại ở trong nước hoặc nước ngoài\"\n},\n{\n\"k\": \"k58\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tổ chức đối thoại tại nơi làm việc\",\n\"doan_dau\": \"Đối thoại tại nơi làm việc là việc chia sẻ thông tin, tham khảo, thảo luận, trao đổi ý kiến giữa người sử dụng lao động với người lao động hoặc tổ chức đại diện\"\n},\n{\n\"k\": \"k59\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nội dung đối thoại tại nơi làm việc\",\n\"doan_dau\": \"Nội dung đối thoại bắt buộc theo quy định tại điểm c khoản 2 Điều 63 của Bộ luật này.\"\n},\n{\n\"k\": \"k60\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thương lượng tập thể\",\n\"doan_dau\": \"Thương lượng tập thể là việc đàm phán, thỏa thuận giữa một bên là một hoặc nhiều tổ chức đại diện người lao động với một bên là một hoặc nhiều người sử dụng lao\"\n},\n{\n\"k\": \"k61\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nguyên tắc thương lượng tập thể\",\n\"doan_dau\": \"Thương lượng tập thể được tiến hành theo nguyên tắc tự nguyện, hợp tác, thiện chí, bình đẳng, công khai và minh bạch.\"\n},\n{\n\"k\": \"k62\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nội dung thương lượng tập thể\",\n\"doan_dau\": \"Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:\"\n},\n{\n\"k\": \"k63\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền thương lượng tập thể của tổ chức đại diện người lao động tại cơ sở trong doanh nghiệp\",\n\"doan_dau\": \"Tổ chức đại diện người lao động tại cơ sở có quyền yêu cầu thương lượng tập thể khi đạt tỷ lệ thành viên tối thiểu trên tổng số người lao động trong doanh nghiệ\"\n},\n{\n\"k\": \"k64\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Đại diện thương lượng tập thể tại doanh nghiệp\",\n\"doan_dau\": \"Số lượng người tham gia thương lượng tập thể của mỗi bên do các bên thỏa thuận.\"\n},\n{\n\"k\": \"k65\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thương lượng tập thể không thành\",\n\"doan_dau\": \"Thương lượng tập thể không thành thuộc một trong các trường hợp sau đây:\"\n},\n{\n\"k\": \"k66\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thương lượng tập thể ngành, thương lượng tập thể có nhiều doanh nghiệp tham gia\",\n\"doan_dau\": \"Nguyên tắc, nội dung thương lượng tập thể ngành, thương lượng tập thể có nhiều doanh nghiệp tham gia thực hiện theo quy định tại Điều 66 và Điều 67 của Bộ luật \"\n},\n{\n\"k\": \"k67\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể\",\n\"doan_dau\": \"Trên cơ sở đồng thuận, các bên thương lượng tập thể có nhiều doanh nghiệp tham gia có thể yêu cầu Ủy ban nhân dân cấp tỉnh nơi đặt trụ sở chính của các doanh ng\"\n},\n{\n\"k\": \"k68\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thỏa ước lao động tập thể\",\n\"doan_dau\": \"Thỏa ước lao động tập thể là thỏa thuận đạt được thông qua thương lượng tập thể và được các bên ký kết bằng văn bản. Thỏa ước lao động tập thể bao gồm thỏa ước \"\n},\n{\n\"k\": \"k69\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Lấy ý kiến và ký kết thỏa ước lao động tập thể\",\n\"doan_dau\": \"Đối với thỏa ước lao động tập thể doanh nghiệp, trước khi ký kết, dự thảo thỏa ước lao động tập thể đã được các bên đàm phán phải được lấy ý kiến của toàn bộ ng\"\n},\n{\n\"k\": \"k70\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Gửi thỏa ước lao động tập thể\",\n\"doan_dau\": \"Trong thời hạn 10 ngày kể từ ngày thỏa ước lao động tập thể được ký kết, người sử dụng lao động tham gia thỏa ước phải gửi 01 bản thỏa ước lao động tập thể đến \"\n},\n{\n\"k\": \"k71\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thực hiện thỏa ước lao động tập thể tại doanh nghiệp\",\n\"doan_dau\": \"Người sử dụng lao động, người lao động, bao gồm cả người lao động vào làm việc sau ngày thỏa ước lao động tập thể có hiệu lực, có nghĩa vụ thực hiện đầy đủ thỏa\"\n},\n{\n\"k\": \"k72\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thực hiện thỏa ước lao động tập thể doanh nghiệp trong trường hợp chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp\",\n\"doan_dau\": \"Trường hợp chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp \"\n},\n{\n\"k\": \"k73\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quan hệ giữa thỏa ước lao động tập thể doanh nghiệp, thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp\",\n\"doan_dau\": \"Trường hợp thỏa ước lao động tập thể doanh nghiệp, thỏa ước lao động tập thể có nhiều doanh nghiệp, thỏa ước lao động tập thể ngành quy định về quyền, nghĩa vụ \"\n},\n{\n\"k\": \"k74\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thỏa ước lao động tập thể hết hạn\",\n\"doan_dau\": \"Trong thời hạn 90 ngày trước ngày thỏa ước lao động tập thể hết hạn, các bên có thể thương lượng để kéo dài thời hạn của thỏa ước lao động tập thể hoặc ký kết t\"\n},\n{\n\"k\": \"k75\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Mở rộng phạm vi áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp\",\n\"doan_dau\": \"Khi một thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp có phạm vi áp dụng chiếm trên 75% người lao động hoặc trên 75% doan\"\n},\n{\n\"k\": \"k76\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Gia nhập và rút khỏi thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp\",\n\"doan_dau\": \"Doanh nghiệp có thể gia nhập thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp khi có sự đồng thuận của tất cả người sử dụng lao \"\n},\n{\n\"k\": \"k77\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thỏa ước lao động tập thể vô hiệu\",\n\"doan_dau\": \"Thỏa ước lao động tập thể vô hiệu từng phần khi một hoặc một số nội dung trong thỏa ước lao động tập thể vi phạm pháp luật.\"\n},\n{\n\"k\": \"k78\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Xử lý thỏa ước lao động tập thể vô hiệu\",\n\"doan_dau\": \"Khi thỏa ước lao động tập thể bị tuyên bố vô hiệu thì quyền, nghĩa vụ và lợi ích của các bên ghi trong thỏa ước lao động tập thể tương ứng với toàn bộ hoặc phần\"\n},\n{\n\"k\": \"k79\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Chi phí thương lượng, ký kết thỏa ước lao động tập thể\",\n\"doan_dau\": \"Mọi chi phí cho việc thương lượng, ký kết, sửa đổi, bổ sung, gửi và công bố thỏa ước lao động tập thể do phía người sử dụng lao động chi trả.\"\n},\n{\n\"k\": \"k80\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tiền lương\",\n\"doan_dau\": \"Tiền lương là số tiền mà người sử dụng lao động trả cho người lao động theo thỏa thuận để thực hiện công việc, bao gồm mức lương theo công việc hoặc chức danh, \"\n}\n]",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "gsbwapeVKLCj694Po87EqQM",
+ "output": {
+  "labels": [
+   {
+    "k": "k41",
+    "label": "substantive"
+   },
+   {
+    "k": "k42",
+    "label": "substantive"
+   },
+   {
+    "k": "k43",
+    "label": "substantive"
+   },
+   {
+    "k": "k44",
+    "label": "substantive"
+   },
+   {
+    "k": "k45",
+    "label": "substantive"
+   },
+   {
+    "k": "k46",
+    "label": "substantive"
+   },
+   {
+    "k": "k47",
+    "label": "definition"
+   },
+   {
+    "k": "k48",
+    "label": "substantive"
+   },
+   {
+    "k": "k49",
+    "label": "substantive"
+   },
+   {
+    "k": "k50",
+    "label": "substantive"
+   },
+   {
+    "k": "k51",
+    "label": "substantive"
+   },
+   {
+    "k": "k52",
+    "label": "substantive"
+   },
+   {
+    "k": "k53",
+    "label": "substantive"
+   },
+   {
+    "k": "k54",
+    "label": "substantive"
+   },
+   {
+    "k": "k55",
+    "label": "substantive"
+   },
+   {
+    "k": "k56",
+    "label": "substantive"
+   },
+   {
+    "k": "k57",
+    "label": "substantive"
+   },
+   {
+    "k": "k58",
+    "label": "definition"
+   },
+   {
+    "k": "k59",
+    "label": "substantive"
+   },
+   {
+    "k": "k60",
+    "label": "definition"
+   },
+   {
+    "k": "k61",
+    "label": "substantive"
+   },
+   {
+    "k": "k62",
+    "label": "substantive"
+   },
+   {
+    "k": "k63",
+    "label": "substantive"
+   },
+   {
+    "k": "k64",
+    "label": "substantive"
+   },
+   {
+    "k": "k65",
+    "label": "substantive"
+   },
+   {
+    "k": "k66",
+    "label": "substantive"
+   },
+   {
+    "k": "k67",
+    "label": "substantive"
+   },
+   {
+    "k": "k68",
+    "label": "definition"
+   },
+   {
+    "k": "k69",
+    "label": "substantive"
+   },
+   {
+    "k": "k70",
+    "label": "procedural"
+   },
+   {
+    "k": "k71",
+    "label": "substantive"
+   },
+   {
+    "k": "k72",
+    "label": "substantive"
+   },
+   {
+    "k": "k73",
+    "label": "substantive"
+   },
+   {
+    "k": "k74",
+    "label": "substantive"
+   },
+   {
+    "k": "k75",
+    "label": "substantive"
+   },
+   {
+    "k": "k76",
+    "label": "substantive"
+   },
+   {
+    "k": "k77",
+    "label": "substantive"
+   },
+   {
+    "k": "k78",
+    "label": "substantive"
+   },
+   {
+    "k": "k79",
+    "label": "substantive"
+   },
+   {
+    "k": "k80",
+    "label": "definition"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 3902,
+  "candidates_token_count": 1042,
+  "thoughts_token_count": null,
+  "total_token_count": 4944
+ }
+}

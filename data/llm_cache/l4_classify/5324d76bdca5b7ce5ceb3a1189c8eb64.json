@@ -1,0 +1,117 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-08T19:00:00+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k481\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về dịch vụ việc làm đối với tổ chức dịch vụ việc làm công\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng đối với tổ chức dịch vụ việc làm công có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k482\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về dịch vụ việc làm đối với doanh nghiệp hoạt động dịch vụ việc làm\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng đối với doanh nghiệp hoạt động dịch vụ việc làm có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k483\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về việc làm\",\n\"doan_dau\": \"Phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng đối với tổ chức, cá nhân có hành vi phân biệt đối xử trong việc làm khi không xuất phát từ yêu cầu đặc thù của c\"\n},\n{\n\"k\": \"k484\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về tuyển dụng, quản lý lao động\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng đối với người sử dụng lao động có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k485\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về đăng ký, điều chỉnh thông tin đăng ký lao động\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 2.000.000 đồng đối với người lao động thuộc đối tượng tham gia bảo hiểm xã hội bắt buộc có hành vi không cung cấp thông tin; cun\"\n},\n{\n\"k\": \"k486\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về người lao động nước ngoài làm việc tại Việt Nam\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng đối với người sử dụng lao động khi vi phạm một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k487\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về tuyển dụng, sử dụng, quản lý người lao động Việt Nam làm việc cho tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng đối với tổ chức, cá nhân nước ngoài tại Việt Nam khi có hành vi sử dụng người lao động Việt Nam nhưng không báo c\"\n},\n{\n\"k\": \"k488\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về đình công\",\n\"doan_dau\": \"Phạt cảnh cáo đối với người lao động có hành vi tham gia đình công sau khi có quyết định hoãn hoặc ngừng đình công của Chủ tịch Ủy ban nhân dân cấp tỉnh.\"\n},\n{\n\"k\": \"k489\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về các biện pháp đảm bảo an toàn, vệ sinh lao động\",\n\"doan_dau\": \"Phạt tiền đối với hành vi vi phạm quy định về các biện pháp đảm bảo an toàn, vệ sinh lao động nhưng chưa đến mức truy cứu trách nhiệm hình sự như sau:\"\n},\n{\n\"k\": \"k490\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về phòng ngừa tai nạn lao động, bệnh nghề nghiệp\",\n\"doan_dau\": \"Phạt tiền đối với hành vi vi phạm quy định về phòng ngừa tai nạn lao động, bệnh nghề nghiệp nhưng chưa đến mức truy cứu trách nhiệm hình sự như sau:\"\n},\n{\n\"k\": \"k491\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về trách nhiệm của người sử dụng lao động đối với tai nạn lao động, bệnh nghề nghiệp\",\n\"doan_dau\": \"Phạt tiền đối với hành vi vi phạm quy định về trách nhiệm của người sử dụng lao động đối với tai nạn lao động, bệnh nghề nghiệp nhưng chưa đến mức truy cứu trác\"\n},\n{\n\"k\": \"k492\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về sử dụng máy, thiết bị có yêu cầu nghiêm ngặt về an toàn, vệ sinh lao động\",\n\"doan_dau\": \"Phạt tiền đối với hành vi vi phạm quy định về sử dụng các loại máy, thiết bị, vật tư có yêu cầu nghiêm ngặt về an toàn lao động nhưng chưa đến mức truy cứu trác\"\n},\n{\n\"k\": \"k493\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về bảo đảm thực hiện quyền của tổ chức đại diện người lao động tại cơ sở và hoạt động công đoàn\",\n\"doan_dau\": \"Phạt tiền từ 3.000.000 đồng đến 5.000.000 đồng đối với người sử dụng lao động có một trong các hành vi sau đây:\"\n},\n{\n\"k\": \"k494\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về phân biệt đối xử vì lý do thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n\"doan_dau\": \"Phạt tiền từ 15.000.000 đồng đến 30.000.000 đồng đối với hành vi phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao\"\n},\n{\n\"k\": \"k495\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về đóng kinh phí công đoàn và quản lý, sử dụng kinh phí công đoàn\",\n\"doan_dau\": \"Phạt tiền với mức từ 12% đến dưới 15% tổng số tiền phải đóng kinh phí công đoàn tại thời điểm lập biên bản vi phạm hành chính nhưng tối đa không quá 75.000.000 \"\n},\n{\n\"k\": \"k496\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm về chậm đóng bảo hiểm xã hội bắt buộc\",\n\"doan_dau\": \"Phạt cảnh cáo đối với các hành vi quy định tại khoản 3 Điều này khi số tiền vi phạm tính tại thời điểm lập biên bản vi phạm hành chính dưới 400.000 đồng.\"\n},\n{\n\"k\": \"k497\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm về trốn đóng bảo hiểm xã hội bắt buộc\",\n\"doan_dau\": \"Phạt tiền đối với người sử dụng lao động có hành vi không đăng ký hoặc đăng ký không đầy đủ số người phải tham gia bảo hiểm xã hội bắt buộc sau thời hạn 60 ngày\"\n},\n{\n\"k\": \"k498\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm về chậm đóng bảo hiểm thất nghiệp\",\n\"doan_dau\": \"Phạt cảnh cáo đối với các hành vi quy định tại khoản 3 Điều này khi số tiền vi phạm tính tại thời điểm lập biên bản vi phạm hành chính dưới 400.000 đồng.\"\n},\n{\n\"k\": \"k499\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm về trốn đóng bảo hiểm thất nghiệp\",\n\"doan_dau\": \"Phạt tiền đối với người sử dụng lao động không đăng ký hoặc đăng ký không đầy đủ số người phải tham gia bảo hiểm thất nghiệp sau thời hạn 60 ngày kể từ ngày hết\"\n},\n{\n\"k\": \"k500\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm quy định về lập hồ sơ, hưởng chế độ bảo hiểm xã hội, bảo hiểm thất nghiệp\",\n\"doan_dau\": \"Phạt tiền từ 1.000.000 đồng đến 2.000.000 đồng đối với người lao động có một trong các hành vi vi phạm sau đây:\"\n},\n{\n\"k\": \"k501\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm các quy định khác về bảo hiểm xã hội, bảo hiểm thất nghiệp\",\n\"doan_dau\": \"Phạt tiền từ 300.000 đồng đến 500.000 đồng khi vi phạm với mỗi người lao động nhưng tối đa không quá 75.000.000 đồng đối với người sử dụng lao động có một trong\"\n},\n{\n\"k\": \"k502\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Vi phạm của người lao động Việt Nam đi làm việc ở nước ngoài và tổ chức, cá nhân liên quan khác\",\n\"doan_dau\": \"Phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng đối với người lao động đi làm việc ở nước ngoài theo hợp đồng lao động trực tiếp giao kết khi chưa có văn bản xá\"\n},\n{\n\"k\": \"k503\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nguyên tắc xác định và phân định thẩm quyền xử phạt\",\n\"doan_dau\": \"Thẩm quyền xử phạt vi phạm hành chính của những người có thẩm quyền quy định tại các Điều 55, 56, 57, 58, 59, 60, 61 và Điều 62 của Nghị định này là thẩm quyền \"\n},\n{\n\"k\": \"k504\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm hướng dẫn và thi hành\",\n\"doan_dau\": \"Bộ trưởng Bộ Nội vụ có trách nhiệm hướng dẫn việc thi hành Nghị định này.\"\n}\n]",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "rsbwat2oK6C0694P_feYwAM",
+ "output": {
+  "labels": [
+   {
+    "k": "k481",
+    "label": "substantive"
+   },
+   {
+    "k": "k482",
+    "label": "substantive"
+   },
+   {
+    "k": "k483",
+    "label": "substantive"
+   },
+   {
+    "k": "k484",
+    "label": "substantive"
+   },
+   {
+    "k": "k485",
+    "label": "substantive"
+   },
+   {
+    "k": "k486",
+    "label": "substantive"
+   },
+   {
+    "k": "k487",
+    "label": "substantive"
+   },
+   {
+    "k": "k488",
+    "label": "substantive"
+   },
+   {
+    "k": "k489",
+    "label": "substantive"
+   },
+   {
+    "k": "k490",
+    "label": "substantive"
+   },
+   {
+    "k": "k491",
+    "label": "substantive"
+   },
+   {
+    "k": "k492",
+    "label": "substantive"
+   },
+   {
+    "k": "k493",
+    "label": "substantive"
+   },
+   {
+    "k": "k494",
+    "label": "substantive"
+   },
+   {
+    "k": "k495",
+    "label": "substantive"
+   },
+   {
+    "k": "k496",
+    "label": "substantive"
+   },
+   {
+    "k": "k497",
+    "label": "substantive"
+   },
+   {
+    "k": "k498",
+    "label": "substantive"
+   },
+   {
+    "k": "k499",
+    "label": "substantive"
+   },
+   {
+    "k": "k500",
+    "label": "substantive"
+   },
+   {
+    "k": "k501",
+    "label": "substantive"
+   },
+   {
+    "k": "k502",
+    "label": "substantive"
+   },
+   {
+    "k": "k503",
+    "label": "authority"
+   },
+   {
+    "k": "k504",
+    "label": "effect_transition"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 2866,
+  "candidates_token_count": 658,
+  "thoughts_token_count": null,
+  "total_token_count": 3524
+ }
+}

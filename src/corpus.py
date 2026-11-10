@@ -1,6 +1,6 @@
 """Danh mục văn bản của kho lao động: đọc `data/raw/labor/manifest.csv`, không chép cứng thông tin văn bản vào code.
 
-Các bước A1-A8 lấy từ đây: đường dẫn file, số hiệu, ngày ban hành/hiệu lực, cấp văn bản, số Điều đối chiếu.
+Các bước L1-L6, checks, graph, viewer lấy từ đây: đường dẫn file, số hiệu, ngày ban hành/hiệu lực, cấp văn bản, số Điều đối chiếu.
 Cột `quan_he` và `ghi_chu` của manifest chỉ là mốc kiểm của học viên, KHÔNG phải đầu vào của pipeline: module này
 không đưa chúng vào Doc để không bước nào dùng nhầm.
 """

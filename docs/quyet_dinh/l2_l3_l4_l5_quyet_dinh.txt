@@ -8,24 +8,24 @@ A1. (L2) Chọn Bộ luật Lao động 2012 hay 2019 cho cụm "Bộ luật Lao
     thật phản bác: ND_28-2020 ký 01/03/2020 (sau mốc) nhưng căn cứ "Bộ luật Lao động ngày 18 tháng 6 năm 2012"; ND_135-2020 ký 18/11/2020 (trước hiệu lực 2021)
     nhưng căn cứ bản 2019. Quy tắc dùng: ngày trong dòng "Căn cứ Bộ luật Lao động ngày ..." của văn bản nguồn (< 20/11/2019 là 2012); thiếu dòng đó (TT_09/10/11
     mất đầu) thì theo ngày hiệu lực văn bản nguồn (>= 01/01/2021 là 2019). Bản 2012 ngoài kho: quan hệ chờ đích với số hiệu 10/2012/QH13 (số hiệu này lấy từ
-    hiểu biết ngoài repo, KHÔNG kiểm được trong kho). Test: tests/test_a2.py::test_resolver_blld_year_by_grounds_not_signing_date.
-A2. (L2) Plan bỏ hai cờ target_not_loaded / target_outside_corpus, thay bằng "quan hệ chờ đích". Đã làm đúng vậy: a2_pending_<doc>.jsonl và pending_links.jsonl
-    (nguồn, loại cạnh, số hiệu đích, mã đích, câu nguyên văn). Chưa có bước nối khi văn bản đích được nạp ở mức A2 tĩnh; L6 chạy ở mức sự kiện (a4_versions).
+    hiểu biết ngoài repo, KHÔNG kiểm được trong kho). Test: tests/test_l2.py::test_resolver_blld_year_by_grounds_not_signing_date.
+A2. (L2) Plan bỏ hai cờ target_not_loaded / target_outside_corpus, thay bằng "quan hệ chờ đích". Đã làm đúng vậy: l2_pending_<doc>.jsonl và pending_links.jsonl
+    (nguồn, loại cạnh, số hiệu đích, mã đích, câu nguyên văn). Chưa có bước nối khi văn bản đích được nạp ở mức L2 tĩnh; L6 chạy ở mức sự kiện (l6_versions).
 A3. (L3) Số điều khoản giao chi tiết đếm bằng regex thô trên BLLĐ: dạng A 35 cụm / 34 Điều, B 10 / 8, D 5 Điều (61, 142, 143, 146, 160), E 1 (Điều 112); tổng 51 cụm
     ở 51 đơn vị. Plan 8/11 nêu A 39/37 (và tổng ~55/~50). Chênh dạng A: 4 cụm / 3 Điều, CHƯA giải thích được (regex mình yêu cầu "quy định" đứng ngay sau
     chủ thể và không đứng trước "tại"; plan có thể đếm lỏng hơn). Mốc cổng (D91.K4, D154.K1/K2/K9, D142.K1, D112) đều đạt. Chưa lọc ca không phải giao chi tiết
     (plan nói ghi ca bị loại cùng lý do): D61.K4, D160.K2 khớp mẫu D nhưng ngữ nghĩa là điều kiện chứ không rõ là giao chi tiết.
 A4. (L3) ND_74 -> Điều 91 (văn bản không nêu số Điều) mới ở mức TỪ KHOÁ: cụm "mức lương tối thiểu" nằm trong tiêu đề Điều 91. Cạnh mang cờ keyword_proposed +
-    llm_check_pending, KHÔNG phải cạnh đã kiểm: plan yêu cầu thêm một lượt LLM độc lập (model khác) và chưa chạy vì không có GEMINI_API_KEY. A7 hiện vẫn vẽ cạnh này
+    llm_check_pending, KHÔNG phải cạnh đã kiểm: plan yêu cầu thêm một lượt LLM độc lập (model khác) và chưa chạy vì không có GEMINI_API_KEY. graph hiện vẫn vẽ cạnh này
     (kèm cờ). Nếu xem cạnh chưa qua kiểm là "cô lập" theo plan thì phải chặn ở L10; việc đó chưa làm.
 A5. (L4) Plan: "Điều chưa xếp được thì gom lô cho LLM". Chưa gọi LLM, nên 742/893 Điều (không khớp mẫu tiêu đề nào) giữ nhãn TẠM substantive (an toàn: không bỏ sót quy
-    tắc) với how=default_pending_llm và cờ llm_pending. Chỉ 151 Điều xếp được bằng regex. Nhãn "form" của plan chưa dùng (A1 không tách Mẫu số); thêm nhãn "appendix"
+    tắc) với how=default_pending_llm và cờ llm_pending. Chỉ 151 Điều xếp được bằng regex. Nhãn "form" của plan chưa dùng (L1 không tách Mẫu số); thêm nhãn "appendix"
     cho 28 phụ lục.
-A6. (L5) Plan: "dùng mẫu câu của A3/A6 cũ cho mọi văn bản". Đã giữ hai quy tắc của A3 và quy tắc "trừ trường hợp" của A6, nhưng viết lại cho dữ liệu thật và dùng
-    giải đích của A2 (kể cả sang văn bản khác). Plan nêu BLLĐ có "42 cụm ngoại lệ: 11 thoả thuận khác, 16 trong cùng điều hoặc luật khác, 15 dẫn chiếu"; A6 ra 30 nút
+A6. (L5) Plan: "dùng mẫu câu của A3/A6 cũ cho mọi văn bản". Đã giữ hai quy tắc của L5 tường minh và quy tắc "trừ trường hợp" của L5 chung, nhưng viết lại cho dữ liệu thật và dùng
+    giải đích của L2 (kể cả sang văn bản khác). Plan nêu BLLĐ có "42 cụm ngoại lệ: 11 thoả thuận khác, 16 trong cùng điều hoặc luật khác, 15 dẫn chiếu"; L5 chung ra 30 nút
     điều kiện (39 đơn vị) trên BLLĐ: 26 cu_the, 3 tuy_nghi, 1 dan_chieu_mo. Hai con số đếm theo đơn vị khác nhau, chưa đối chiếu cụm với cụm.
 
-B. L2 (src/a2_edges.py), CHỖ SPEC IM LẶNG
+B. L2 (src/l2_edges.py), CHỖ SPEC IM LẶNG
 -----------------------------------------
 B1. Cụm dẫn chiếu = chuỗi mục "từ khoá + đối số" (Điều/khoản: số có hậu tố chữ; điểm: chữ kèm số tuỳ chọn; "này" đứng riêng), danh sách cùng loại ("khoản 1, 2 và 3"),
     nối bằng dấu cách, phẩy, chấm phẩy, "và", "hoặc", "của". Đuôi văn bản ngay sau cụm: "của Bộ luật này", "Nghị định số 145/2020/NĐ-CP", "Bộ luật Lao động", "Luật ...".
@@ -33,12 +33,12 @@ B2. Một chuỗi tách thành nhiều dẫn chiếu khi cấp đi từ thô xu�
     hoặc mục Điều thứ hai sau chuỗi đã có mục thấp ("điểm e, g, h khoản 2 Điều 7 và Điều 14"). Viết lược "điểm h khoản 1 và điểm đ khoản 2 Điều này": Điều nêu ở dẫn chiếu cuối
     dùng chung cho dẫn chiếu trước. Đối số là danh sách chỉ được ở mục thấp nhất; mục cấp trên nhiều đối số, "điểm này", cụm kết thúc ở khoản/điểm không kèm Điều: unresolved.
 B3. Cụm đủ Điều/khoản nhưng KHÔNG nêu văn bản đích (Điều 1 "Phạm vi điều chỉnh" của ND_145: "theo khoản 3 Điều 12" là Điều 12 của BLLĐ, nêu ở câu dẫn) giữ unresolved, kèm lý
-    do; L3 dùng chính các đơn vị đó để tạo cạnh details. Không đoán đích ở A2.
+    do; L3 dùng chính các đơn vị đó để tạo cạnh details. Không đoán đích ở L2.
 B4. Dòng chỉ thị sửa đổi (động từ chỉ thị đi liền danh từ đích: "Sửa đổi, bổ sung khoản 6 ...", "Bãi bỏ điểm c ...", "Thay thế cụm từ ...", "Đính chính ...", "Tạm ngưng hiệu lực ...")
     KHÔNG sinh refers_to: dẫn chiếu trong đó trỏ vào văn bản bị sửa, việc của L6. Không nhận "Sửa chữa, làm sai lệch ...", "Thay đổi cơ cấu ..." (điều quy tắc bình thường).
     Đã kiểm trên 10.202 đơn vị: thêm các động từ Đính chính / Tạm ngưng / Đình chỉ không đổi dòng nào.
 B5. Nhiều cụm cùng trỏ một đích: giữ một cạnh, evidence là cụm đầu. Unresolved trùng (cùng đơn vị, cụm, lý do) ghi một lần.
-B6. Số liệu: refers_to 2348 (gồm 245 của VBHN_125; A7 không vẽ cạnh của bản hợp nhất nên báo 2103), chờ đích 129, unresolved 127 (lý do ở a2_unresolved_<doc>.jsonl).
+B6. Số liệu: refers_to 2348 (gồm 245 của VBHN_125; graph không vẽ cạnh của bản hợp nhất nên báo 2103), chờ đích 129, unresolved 127 (lý do ở l2_unresolved_<doc>.jsonl).
     Nguồn gốc con số: bản đo sớm cho 2313. Đã tách nguyên nhân bằng cách tháo riêng điều kiện tách "mục Điều thứ hai sau chuỗi đã có mục thấp" (B2): không có điều kiện ra đúng 2313, có điều kiện ra 2348,
     chênh +35 cạnh, 0 cạnh mất (ND_145 8, ND_12 4, ND_283 23). Mẫu kiểm chữ nguồn: ND_283 Điều 7 khoản 1 "...; khoản 6, 11 Điều 48; Điều 49; khoản 1, 2, ... Điều 50; ..." trước đó gộp "Điều 48" và
     "Điều 49" thành một nhóm cấp trên nhiều đối số nên rơi vào unresolved, nay tách đúng từng dẫn chiếu. Thêm động từ Đính chính / Tạm ngưng / Đình chỉ vào DIRECTIVE_RE không đổi dòng nào (đã so trên 10.202 đơn vị).
@@ -57,14 +57,32 @@ D1. Mẫu tiêu đề: Giải thích từ ngữ -> definition; Hiệu lực / ch
     "Trách nhiệm của <Bộ, cơ quan, Ủy ban, Sở, Chính phủ ...>", Trách nhiệm thi hành, Thẩm quyền, Nhiệm vụ ... -> authority; Hồ sơ / Trình tự / Thủ tục ... -> procedural.
     "Trách nhiệm khi chấm dứt hợp đồng lao động" KHÔNG phải authority (là nghĩa vụ của các bên): có test.
 
-E. L5 (src/a3_exceptions.py, src/a6_general_exceptions.py)
+E. L5 (src/l5_explicit_exceptions.py, src/l5_general_exceptions.py)
 ----------------------------------------------------------
-E1. A3 quy tắc 1 (cụm dẫn chiếu đứng NGAY trước "không áp dụng") và quy tắc 2 ("trừ" + text kết thúc "sau đây:", con trực tiếp là ngoại lệ) giữ nguyên ý. Không nới để bắt thêm ca:
-    ca ngoài hai quy tắc vào unhandled (A3: 251) và A6 nhận các trigger "trừ trường hợp"; còn lại (90 "không áp dụng" / "trừ" ngoài hai quy tắc, 5 đơn vị có hơn một
+E1. L5 tường minh quy tắc 1 (cụm dẫn chiếu đứng NGAY trước "không áp dụng") và quy tắc 2 ("trừ" + text kết thúc "sau đây:", con trực tiếp là ngoại lệ) giữ nguyên ý. Không nới để bắt thêm ca:
+    ca ngoài hai quy tắc vào unhandled (L5 tường minh: 251) và L5 chung nhận các trigger "trừ trường hợp"; còn lại (90 "không áp dụng" / "trừ" ngoài hai quy tắc, 5 đơn vị có hơn một
     "trừ trường hợp") giữ unhandled kèm lý do. Mọi trigger thuộc đúng một trạng thái (có test trên cả 18 văn bản).
-E2. A6: nút điều kiện đặt id <doc>.X<8 ký tự đầu sha1 của khoá chuẩn hoá>; câu giống nhau (gộp khoảng trắng, hoa/thường, bỏ . ; : , ở hai đầu) gộp một nút. kind: tuy_nghi
+E2. L5 chung: nút điều kiện đặt id <doc>.X<8 ký tự đầu sha1 của khoá chuẩn hoá>; câu giống nhau (gộp khoảng trắng, hoa/thường, bỏ . ; : , ở hai đầu) gộp một nút. kind: tuy_nghi
     ("(các bên) có thoả thuận khác"), dan_chieu_mo ("pháp luật có quy định khác"), cu_the (còn lại, khớp toàn bộ mệnh đề). Mệnh đề có cụm dẫn chiếu tới đơn vị T thì thêm cạnh
     T exception_of đơn vị (general_except_ref); T có thể ở văn bản khác. Trên BLLĐ: 30 nút (39 đơn vị), 59 cạnh.
 E3. Mốc cổng L5 theo chữ thật của BLLĐ: D154 -> D151.K1.d; D29 -> D35.K2.a; D97.K4 -> D35.K2.b; D36.K1.b -> D37.K1 (cạnh đi từ đơn vị được dẫn tới đơn vị chứa "trừ trường hợp", cùng chiều
-    với D154 -> D151.K1.d). Plan viết "D37 -> D36.K1.b" và "D35 -> D29, D97": ngược chiều với cách A6 đặt cạnh (s là phần ngoại lệ, o là quy tắc bị ngoại trừ), nên mốc kiểm đã
+    với D154 -> D151.K1.d). Plan viết "D37 -> D36.K1.b" và "D35 -> D29, D97": ngược chiều với cách L5 chung đặt cạnh (s là phần ngoại lệ, o là quy tắc bị ngoại trừ), nên mốc kiểm đã
     đảo cho khớp chiều đó, không phải đổi hành vi code.
+
+F. NHÁNH LLM CỦA L3 VÀ L4 (09/11, kiểm bằng API giả, CHƯA gọi live)
+-------------------------------------------------------------------
+F1. Cờ --llm off|replay|live ở run_all.py, l4_classify.py, l3_links.py. off (mặc định) và replay với cache rỗng cho đúng cùng kết quả (có test so băm l4_labels.jsonl). live mà không thấy GEMINI_API_KEY trong môi trường của process thì dừng
+    ngay (run_all dừng trước bước 1), không tốn lượt. Lỗi API khi live thì dừng với mã 1 và báo; các lô đã gọi xong nằm trong data/llm_cache/<tác vụ>/ nên chạy lại đọc từ cache.
+F2. L4: các Điều nhãn tạm (742) gom theo (tiêu đề, đoạn đầu 160 ký tự) còn 504 mục duy nhất (bản hợp nhất trùng BLLĐ chỉ hỏi một lần), lô 40 mục -> 13 lượt model chính. Đầu ra phải đúng lược đồ, đủ và không thừa mã, nhãn thuộc tập
+    {substantive, definition, effect_transition, procedural, authority}; lô sai bị loại cả lô (Điều giữ nhãn tạm, cờ llm_rejected trong báo cáo). Nhãn đẩy Điều RA KHỎI substantive (effect_transition, procedural, authority) chỉ
+    được nhận khi model kiểm (model khác, cùng đầu vào, không thấy kết quả của model chính) phân loại ra CÙNG nhãn; khác nhau hoặc chưa kiểm được (hết hạn mức, thiếu cache) thì trả về nhãn tạm với cờ llm_disagree / llm_unverified.
+    Lý do bất đối xứng: nhãn sai theo hướng này làm mất quy tắc của một điều có điều kiện thật (plan L4 "hỏng thì thấy gì"), còn nhãn sai ngược lại chỉ thêm một lần trích thừa. Prompt: PROMPT_VERSION l4-1; đổi prompt phải đổi phiên bản (khoá cache).
+F3. L3: chỉ cho văn bản cấp dưới luật có based_on BLLĐ 2019 mà regex không ra details tới BLLĐ (hiện ND_12, ND_283, ND_74) -> 3 lượt chính + 3 lượt kiểm. Hai lượt độc lập: cùng đầu vào (chữ Điều 1, tiêu đề các Điều, danh sách điều khoản giao chi tiết;
+    KHÔNG có gợi ý đích, có test), unit_id phải nằm trong danh sách được cho (ngoài danh sách thì loại cả lượt). Giữ cạnh details khi: model chính đề xuất Điều đó, model kiểm đề xuất độc lập cùng Điều, và kiểm từ khoá đạt (cụm danh từ chính
+    của phạm vi điều chỉnh nằm trong tiêu đề / chữ Điều đích). Trượt một trong ba thì ghi cạnh nhưng cờ isolated (plan: không dùng khi hỏi đáp; graph vẫn vẽ, kèm cờ). Đề xuất chỉ do từ khoá không bao giờ được giữ khi đã chạy LLM.
+    Khi LLM chưa có kết quả (off, replay thiếu cache, hết hạn mức) cạnh ND_74 -> Điều 91 vẫn ở mức từ khoá với cờ llm_check_pending như A4 ở trên. PROMPT_VERSION l3-1.
+F4. Phản hồi không hợp lệ KHÔNG được lưu vĩnh viễn: llm_client.ask nhận validate(output); phản hồi mới sai lược đồ / thiếu mã / ngoài danh sách đi vào <cache>/<tác vụ>/_rejected/ kèm lý do, VẪN tính lượt (API đã tốn), ném InvalidOutput (là ValueError, bước gọi bắt chung với lỗi kiểm của nó); lần chạy sau gọi lại. Phản hồi đã lưu mà nay không qua kiểm chặt hơn cũng được chuyển sang _rejected/ và coi như chưa có. Khoá cache băm cả chữ system và lược đồ (không chỉ PROMPT_VERSION), nên sửa prompt mà quên đổi phiên bản vẫn không dùng nhầm phản hồi cũ. Có test.
+F4b. Giãn nhịp: llm_client chờ đủ 60/rpm giây giữa hai lần gọi API của cùng vai (chinh 15 RPM, kiem 5 RPM); lượt đọc cache không chờ. Đầu ra không phải JSON là LLMError và không tính lượt.
+F5. L6 đọc câu chỉ thị hiệu lực chỉ từ Điều nhãn effect_transition, nên nhãn LLM chảy vào L6. Báo cáo L4 liệt kê các Điều do LLM đặt nhãn effect_transition để duyệt. Việc cho L6 chỉ tin nhãn regex tới khi duyệt là quyết định của user, chưa làm. Mốc cổng ND_74 -> Điều 91 ở L3 trượt/đạt tính cả cạnh isolated; báo cáo L3 ghi rõ cạnh đó GIỮ hay CÔ LẬP.
+F6. CHƯA kiểm với API thật: tên và hành vi lược đồ JSON (enum) của gemini-3.5-flash-lite và gemini-3.8-flash, ID model còn tồn tại (có src/llm_client.py --check-models), chất lượng nhãn. Ba điểm rủi ro nên đọc trong báo cáo sau lần live đầu:
+    số lô bị loại (lược đồ), số Điều trả về disagree (độ tin của model chính), và Điều 91 của ND_74 có được giữ hay không.

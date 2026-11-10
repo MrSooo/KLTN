@@ -1,0 +1,181 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "kiem",
+ "requested_model": "gemini-3.8-flash",
+ "created": "2026-11-08T19:04:12+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k70\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Gửi thỏa ước lao động tập thể\",\n\"doan_dau\": \"Trong thời hạn 10 ngày kể từ ngày thỏa ước lao động tập thể được ký kết, người sử dụng lao động tham gia thỏa ước phải gửi 01 bản thỏa ước lao động tập thể đến \"\n},\n{\n\"k\": \"k82\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hội đồng tiền lương quốc gia\",\n\"doan_dau\": \"Hội đồng tiền lương quốc gia là cơ quan tư vấn cho Chính phủ về mức lương tối thiểu và chính sách tiền lương đối với người lao động.\"\n},\n{\n\"k\": \"k109\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Đăng ký nội quy lao động\",\n\"doan_dau\": \"Người sử dụng lao động sử dụng từ 10 người lao động trở lên phải đăng ký nội quy lao động tại cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh nơi \"\n},\n{\n\"k\": \"k110\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"doan_dau\": \"Việc xử lý kỷ luật lao động được quy định như sau:\"\n},\n{\n\"k\": \"k130\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con\",\n\"doan_dau\": \"Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành danh mục nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con.\"\n},\n{\n\"k\": \"k145\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Cấp, cấp lại, gia hạn, thu hồi giấy phép lao động, giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Chính phủ quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động đối v\"\n},\n{\n\"k\": \"k170\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền của cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết tranh chấp lao động\",\n\"doan_dau\": \"Cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết tranh chấp lao động, trong phạm vi nhiệm vụ, quyền hạn của mình, có quyền yêu cầu các bên tranh chấp, cơ quan\"\n},\n{\n\"k\": \"k172\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hội đồng trọng tài lao động\",\n\"doan_dau\": \"Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định thành lập Hội đồng trọng tài lao động, bổ nhiệm Chủ tịch, thư ký và các trọng tài viên lao động của Hội đồng trọng \"\n},\n{\n\"k\": \"k185\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thông báo quyết định đóng cửa tạm thời nơi làm việc\",\n\"doan_dau\": \"Ít nhất 03 ngày làm việc trước ngày đóng cửa tạm thời nơi làm việc, người sử dụng lao động phải niêm yết công khai quyết định đóng cửa tạm thời nơi làm việc tại\"\n},\n{\n\"k\": \"k190\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyết định hoãn, ngừng đình công\",\n\"doan_dau\": \"Khi xét thấy cuộc đình công có nguy cơ gây thiệt hại nghiêm trọng cho nền kinh tế quốc dân, lợi ích công cộng, đe dọa đến quốc phòng, an ninh, trật tự công cộng\"\n},\n{\n\"k\": \"k191\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Xử lý cuộc đình công không đúng trình tự, thủ tục\",\n\"doan_dau\": \"Trong thời hạn 12 giờ kể từ khi nhận được thông báo về cuộc đình công không tuân theo quy định tại các điều 200, 201 và 202 của Bộ luật này, Chủ tịch Ủy ban nhâ\"\n},\n{\n\"k\": \"k192\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nội dung quản lý nhà nước về lao động\",\n\"doan_dau\": \"Ban hành và tổ chức thực hiện văn bản quy phạm pháp luật về lao động.\"\n},\n{\n\"k\": \"k193\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nội dung thanh tra lao động\",\n\"doan_dau\": \"Thanh tra việc chấp hành quy định của pháp luật về lao động.\"\n},\n{\n\"k\": \"k194\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thanh tra chuyên ngành về lao động\",\n\"doan_dau\": \"Thẩm quyền thanh tra chuyên ngành về lao động thực hiện theo quy định của Luật Thanh tra.\"\n},\n{\n\"k\": \"k195\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền của thanh tra lao động\",\n\"doan_dau\": \"Thanh tra lao động có quyền thanh tra, điều tra nơi thuộc đối tượng, phạm vi thanh tra được giao theo quyết định thanh tra. Khi thanh tra đột xuất theo quyết đị\"\n},\n{\n\"k\": \"k198\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Nghị định này quy định mức lương tối thiểu vùng áp dụng đối với người lao động làm việc theo hợp đồng lao động theo quy định của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k250\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm hướng dẫn và thi hành\",\n\"doan_dau\": \"Bộ trưởng Bộ Lao động - Thương binh và Xã hội có trách nhiệm hướng dẫn, kiểm tra việc thi hành Nghị định này.\"\n},\n{\n\"k\": \"k257\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm hướng dẫn thi hành\",\n\"doan_dau\": \"Các Bộ trưởng, Thủ trưởng cơ quan ngang Bộ, Thủ trưởng cơ quan thuộc Chính phủ, Chủ tịch Ủy ban nhân dân tỉnh, thành phố trực thuộc Trung ương chịu trách nhiệm \"\n},\n{\n\"k\": \"k263\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Thành lập Hội đồng thương lượng tập thể\",\n\"doan_dau\": \"Khi có nhu cầu thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể, trên cơ sở đồng thuận, người sử dụng lao động và các\"\n},\n{\n\"k\": \"k264\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Chức năng của Hội đồng thương lượng tập thể\",\n\"doan_dau\": \"Hội đồng thương lượng tập thể có chức năng tổ chức cho đại diện của các bên tiến hành thương lượng tập thể theo quy định của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k265\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Hoạt động của Hội đồng thương lượng tập thể\",\n\"doan_dau\": \"Hội đồng thương lượng tập thể làm việc thông qua các phiên họp.\"\n},\n{\n\"k\": \"k270\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Sổ quản lý lao động\",\n\"doan_dau\": \"Việc lập, cập nhật, quản lý, sử dụng sổ quản lý lao động tại khoản 1 Điều 12 của Bộ luật Lao động được quy định như sau:\"\n},\n{\n\"k\": \"k271\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Báo cáo sử dụng lao động\",\n\"doan_dau\": \"Việc khai trình sử dụng lao động, định kỳ báo cáo tình hình thay đổi về lao động tại khoản 2 Điều 12 của Bộ luật Lao động được quy định như sau:\"\n},\n{\n\"k\": \"k284\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Quản lý tiền ký quỹ\",\n\"doan_dau\": \"Ngân hàng nhận ký quỹ có trách nhiệm phong tỏa toàn bộ số tiền ký quỹ của doanh nghiệp cho thuê lại, quản lý tiền ký quỹ theo quy định của pháp luật về ký quỹ.\"\n},\n{\n\"k\": \"k285\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Rút tiền ký quỹ\",\n\"doan_dau\": \"Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ khi doanh nghiệp thuộc một \"\n},\n{\n\"k\": \"k286\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại\",\n\"doan_dau\": \"Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở La\"\n},\n{\n\"k\": \"k291\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Cấp lại giấy phép\",\n\"doan_dau\": \"Doanh nghiệp cho thuê lại đề nghị Chủ tịch Ủy ban nhân dân cấp tỉnh cấp lại giấy phép trong các trường hợp sau đây:\"\n},\n{\n\"k\": \"k296\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm của ngân hàng nhận ký quỹ\",\n\"doan_dau\": \"Thực hiện đúng các quy định về mở tài khoản ký quỹ, nộp tiền ký quỹ, sử dụng tài khoản ký quỹ của doanh nghiệp cho thuê lại và các quy định liên quan đến tài kh\"\n},\n{\n\"k\": \"k297\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm của Chủ tịch Ủy ban nhân dân cấp tỉnh\",\n\"doan_dau\": \"Gửi thông báo về việc cấp, gia hạn, cấp lại, thu hồi giấy phép tới Bộ Lao động - Thương binh và Xã hội trong thời hạn 05 ngày làm việc kể từ ngày cấp, gia hạn, \"\n},\n{\n\"k\": \"k298\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm của Ngân hàng Nhà nước Việt Nam\",\n\"doan_dau\": \"Thực hiện việc thanh tra, kiểm tra, giám sát các ngân hàng nhận ký quỹ về việc nộp, quản lý tiền ký quỹ của các doanh nghiệp cho thuê lại theo quy định của pháp\"\n},\n{\n\"k\": \"k311\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Chức năng của Hội đồng tiền lương quốc gia\",\n\"doan_dau\": \"Hội đồng tiền lương quốc gia do Thủ tướng Chính phủ quyết định thành lập theo quy định tại khoản 2 Điều 92 của Bộ luật Lao động để thực hiện chức năng tư vấn ch\"\n},\n{\n\"k\": \"k314\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm thực hiện về thành lập và hoạt động của Hội đồng tiền lương quốc gia\",\n\"doan_dau\": \"Chủ tịch Tổng Liên đoàn Lao động Việt Nam, Chủ tịch Phòng Thương mại và Công nghiệp Việt Nam, Chủ tịch Liên minh Hợp tác xã Việt Nam, Chủ tịch Hiệp hội doanh ng\"\n},\n{\n\"k\": \"k323\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thông báo về việc tổ chức làm thêm từ trên 200 giờ đến 300 giờ trong một năm\",\n\"doan_dau\": \"Khi tổ chức làm thêm từ trên 200 giờ đến 300 giờ trong một năm, người sử dụng lao động phải thông báo cho Sở Lao động - Thương binh và Xã hội tại các nơi sau:\"\n},\n{\n\"k\": \"k340\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Tổ chức nhà trẻ, lớp mẫu giáo ở nơi có nhiều lao động\",\n\"doan_dau\": \"Ủy ban nhân dân cấp tỉnh có trách nhiệm:\"\n},\n{\n\"k\": \"k349\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm quản lý lao động là người giúp việc gia đình\",\n\"doan_dau\": \"Ủy ban nhân dân cấp tỉnh chỉ đạo Sở Lao động - Thương binh và Xã hội: Hướng dẫn Phòng Lao động - Thương binh và Xã hội thực hiện tuyên truyền, phổ biến quy định\"\n},\n{\n\"k\": \"k353\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Quản lý hòa giải viên lao động\",\n\"doan_dau\": \"Bộ Lao động - Thương binh và Xã hội:\"\n},\n{\n\"k\": \"k355\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Bổ nhiệm trọng tài viên lao động\",\n\"doan_dau\": \"Căn cứ số lượng trọng tài viên lao động của Hội đồng trọng tài lao động quy định tại khoản 2 Điều 185 của Bộ luật Lao động và tiêu chuẩn, điều kiện trọng tài vi\"\n},\n{\n\"k\": \"k357\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thành lập Hội đồng trọng tài lao động\",\n\"doan_dau\": \"Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định thành lập Hội đồng trọng tài lao động với nhiệm kỳ 05 năm, bao gồm các trọng tài viên lao động được bổ nhiệm theo q\"\n},\n{\n\"k\": \"k358\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thành lập và hoạt động của Ban trọng tài lao động\",\n\"doan_dau\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp lao động theo quy định tại các điểm a, b và c khoản 2 Điều 101 Nghị định này,\"\n},\n{\n\"k\": \"k360\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Quản lý nhà nước đối với trọng tài viên lao động, Hội đồng trọng tài lao động\",\n\"doan_dau\": \"Bộ Lao động - Thương binh và Xã hội:\"\n}\n]",
+ "model": "gemini-3.8-flash",
+ "request_id": "sMbwauqDL_ru694PpKHi2Ac",
+ "output": {
+  "labels": [
+   {
+    "k": "k70",
+    "label": "substantive"
+   },
+   {
+    "k": "k82",
+    "label": "definition"
+   },
+   {
+    "k": "k109",
+    "label": "substantive"
+   },
+   {
+    "k": "k110",
+    "label": "substantive"
+   },
+   {
+    "k": "k130",
+    "label": "authority"
+   },
+   {
+    "k": "k145",
+    "label": "authority"
+   },
+   {
+    "k": "k170",
+    "label": "authority"
+   },
+   {
+    "k": "k172",
+    "label": "authority"
+   },
+   {
+    "k": "k185",
+    "label": "substantive"
+   },
+   {
+    "k": "k190",
+    "label": "authority"
+   },
+   {
+    "k": "k191",
+    "label": "authority"
+   },
+   {
+    "k": "k192",
+    "label": "authority"
+   },
+   {
+    "k": "k193",
+    "label": "authority"
+   },
+   {
+    "k": "k194",
+    "label": "authority"
+   },
+   {
+    "k": "k195",
+    "label": "authority"
+   },
+   {
+    "k": "k198",
+    "label": "substantive"
+   },
+   {
+    "k": "k250",
+    "label": "authority"
+   },
+   {
+    "k": "k257",
+    "label": "authority"
+   },
+   {
+    "k": "k263",
+    "label": "substantive"
+   },
+   {
+    "k": "k264",
+    "label": "authority"
+   },
+   {
+    "k": "k265",
+    "label": "procedural"
+   },
+   {
+    "k": "k270",
+    "label": "substantive"
+   },
+   {
+    "k": "k271",
+    "label": "substantive"
+   },
+   {
+    "k": "k284",
+    "label": "substantive"
+   },
+   {
+    "k": "k285",
+    "label": "substantive"
+   },
+   {
+    "k": "k286",
+    "label": "substantive"
+   },
+   {
+    "k": "k291",
+    "label": "substantive"
+   },
+   {
+    "k": "k296",
+    "label": "substantive"
+   },
+   {
+    "k": "k297",
+    "label": "authority"
+   },
+   {
+    "k": "k298",
+    "label": "authority"
+   },
+   {
+    "k": "k311",
+    "label": "authority"
+   },
+   {
+    "k": "k314",
+    "label": "authority"
+   },
+   {
+    "k": "k323",
+    "label": "substantive"
+   },
+   {
+    "k": "k340",
+    "label": "authority"
+   },
+   {
+    "k": "k349",
+    "label": "authority"
+   },
+   {
+    "k": "k353",
+    "label": "authority"
+   },
+   {
+    "k": "k355",
+    "label": "authority"
+   },
+   {
+    "k": "k357",
+    "label": "authority"
+   },
+   {
+    "k": "k358",
+    "label": "procedural"
+   },
+   {
+    "k": "k360",
+    "label": "authority"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 3892,
+  "candidates_token_count": 1042,
+  "thoughts_token_count": null,
+  "total_token_count": 4934
+ }
+}

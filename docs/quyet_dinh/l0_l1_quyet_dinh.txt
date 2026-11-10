@@ -11,9 +11,9 @@ A2. Wrapper LLM là src/llm_client.py (plan ghi llm.py). Đọc docs/llm_config.
     và theo vai (chinh / kiem) ở data/llm_cache/_usage.json, chạm hạn mức thì QuotaReached. Chưa gọi live lần nào (không có GEMINI_API_KEY).
     src/a4_llm.py (tầng LLM cũ của A4, gắn dữ liệu v1) đã xoá; lịch sử còn ở git 25c65e6.
 A3. Báo cáo chữ ở docs/bao_cao_chay/<bước>/ (plan ghi docs/<mã>_report.txt). Không tạo nhánh git cho mỗi bước.
-A4. Số đối chiếu của A5 chỉ cho BLLĐ (EXPECTED ở a5_checks.py): Điều 220, Khoản 638, Điểm 267. Nguồn độc lập với A1: grep trên file thô cho
+A4. Số đối chiếu của checks chỉ cho BLLĐ (EXPECTED ở checks.py): Điều 220, Khoản 638, Điểm 267. Nguồn độc lập với L1: grep trên file thô cho
     Điều 220 (= cột so_dieu_dem_duoc); Khoản 645 và Điểm 287 trừ 7 và 20 dòng nằm trong 4 khối trích dẫn của Điều 219 (khối đó là chữ của luật
-    khác, không phải đơn vị của BLLĐ). a5_checks.independent_counts đếm lại bằng bộ đếm nháy riêng và phải khớp.
+    khác, không phải đơn vị của BLLĐ). checks.independent_counts đếm lại bằng bộ đếm nháy riêng và phải khớp.
 A5. Mốc cổng L1 "mọi dẫn chiếu vào phụ lục giải được": chỉ áp cho phụ lục có mặt trong kho. NQ 66.16 kèm 14 phụ lục của bộ ngành, chỉ Phụ
     lục I.7 (cho thuê lại lao động, sửa quy định NĐ 145) thuộc phạm vi lao động nên được bóc chi tiết (corpus.PL_IN_SCOPE); 13 phụ lục còn lại
     và Phụ lục II giữ một nút scope=out_of_scope để dẫn chiếu vẫn giải được. Dẫn chiếu tới phụ lục chưa có file nguồn (ND_145 "Phụ lục I
@@ -22,11 +22,23 @@ A6. Dữ liệu NQ_66-16-2026.txt đã đổi: bản chỉ-thân (126 dòng) tha
     (CRLF -> LF, NFC, bỏ 6 dòng "## ", 42 dòng kẻ ngang "---", khối "Nơi nhận" của chính văn bản). Phần thân giống hệt bản cũ (kiểm bằng diff,
     chỉ khác hai dòng gạch trang trí đầu văn bản vốn có trong bản cũ và bản mới). Cột ghi_chu của manifest đổi từ "THIẾU Phụ lục I.7" sang mô tả
     bản đầy đủ. Bản gốc 66.16.txt ở thư mục gốc đã xoá sau khi kiểm bản mới.
+A7. Tên bước (09/11, user chốt "thống nhất một loại"): plan và v1 dùng A1-A8 xen L1-L11; nay bước theo plan dùng L-số, ba bước ngoài plan gọi theo việc
+    (checks, graph, viewer). L5 tách l5_explicit (A3) và l5_general (A6) để tên file, thư mục và giá trị `source` của cạnh không đè nhau. Đã đổi: tên file ở
+    src/, tests/, utils/viewer/; thư mục data/processed/<bước>/ và docs/bao_cao_chay/<bước>/; tiền tố tên file đầu ra (l1_triples_..., graph_nodes.jsonl,
+    viewer/do_thi.html); `source` của cạnh trong graph_edges (l2, l5_explicit, l5_general); cờ --a8 thành --viewer. KHÔNG đổi tên tác vụ cache (l4_classify,
+    l3_details), vì khoá cache có tên tác vụ. Kiểm: chạy lại ở chế độ replay, 301 file dữ liệu giống từng byte với bản trước khi đổi sau khi áp bảng đổi tên,
+    trừ chuỗi `reason` trong l5_*_unhandled ("của A3" thành "của L5 tường minh"); số liệu báo cáo giữ nguyên. Plan vẫn dùng tên cũ: bảng đối chiếu ở CLAUDE.md mục 2.
+A8. Log tiến độ LLM (09/11, user: "log timer để biết còn đang chạy, ít ít, đừng spam"): plan không nói. llm_client.Client nhận tham số log (mặc định None = im lặng, nên test không in gì);
+    L3 và L4 truyền llm_client.stderr_log. Ghi ra STDERR (stdout là báo cáo của bước). Chỉ lượt gọi API THẬT mới ghi: một dòng trước (kèm model, lượt hôm nay/hạn mức), một dòng sau (kèm giây,
+    token vào/ra); lượt đọc từ cache không ghi dòng nào (số lượt cache vẫn có trong báo cáo). Trong lúc chờ phản hồi: nhịp "vẫn đang chờ (Ns)" mỗi 30 giây (luồng nền, đồng hồ thật); lỗi 429/500/503
+    phải thử lại thì ghi mã lỗi và thời gian chờ. run_all chỉ cho stderr của hai bước LLM đi thẳng ra console, và chỉ khi --llm khác off; các bước khác vẫn gom cả stdout lẫn stderr. Hệ quả:
+    bước LLM lỗi thì traceback hiện ở console chứ không nằm trong StepError. Nguyên nhân phải làm vậy: trước đó run_all hứng đầu ra vào ống nên mọi dòng in của bước con bị giấu tới khi bước xong.
+    Chưa kiểm với API thật (mới thử bằng API giả); lần --llm live tới là lần kiểm đầu tiên.
 
-B. A1 (src/a1_parse.py), CHỖ SPEC IM LẶNG
+B. L1 (src/l1_parse.py), CHỖ SPEC IM LẶNG
 -----------------------------------------
 B1. Cấu trúc đọc: Chương > Mục > Điều > Khoản > Điểm. Kho không có Phần / Tiểu mục; gặp thì lỗi (không đoán). Điều không thuộc Mục thì cha là Chương;
-    không thuộc Chương thì không có cha trong thân (A7 nối tới nút văn bản).
+    không thuộc Chương thì không có cha trong thân (graph nối tới nút văn bản).
 B2. Mã: <doc>.C<La Mã>.M<n>, .D<n>, .K<n>, điểm .a (đ viết dd; điểm có hậu tố số: .a1). Điều có điểm đứng thẳng dưới Điều (không Khoản, ND_283 Điều 1):
     mã D1.a, cha là Điều. Hậu tố chữ (D20a, K8a) là bình thường; dấu chấm ngay sau số trong "8a.[2] ..." (văn bản hợp nhất) vẫn là Khoản.
     "4.960.000" không phải Khoản vì sau dấu chấm không có khoảng trắng.
@@ -35,7 +47,7 @@ B3. Đánh số phải liền: Điều n+1 hoặc hậu tố kế (20 -> 20a -> 
 B4. Tiêu đề Chương / Mục có thể nằm cùng dòng hoặc dòng viết hoa kế tiếp; tiêu đề dài bị xuống dòng thì nối các dòng viết hoa liền sau (ND_28 Chương IV).
 B5. ND_145 có hai "Chương XI" (nguồn lặp nhãn: dòng 1680 và 2142, lần sau là "Điều khoản thi hành"). Nhận có chủ đích (corpus.DUP_CHUONG_OK): mã lần sau
     CXI_2, ghi vào notes. Mọi lỗi lặp khác vẫn là lỗi.
-B6. Khối trích dẫn “...” đứng sau câu dẫn hoặc mở nháy không đóng cùng dòng là payload (a1_payloads_<doc>.jsonl), không phải đơn vị của văn bản chứa nó.
+B6. Khối trích dẫn “...” đứng sau câu dẫn hoặc mở nháy không đóng cùng dòng là payload (l1_payloads_<doc>.jsonl), không phải đơn vị của văn bản chứa nó.
     Nháy cân bằng bằng bộ đếm “ ”. Nháy mở không đóng đến hết văn bản là lỗi parse.
 B7. Đoạn chữ không nhãn sau một Điểm gắn vào Khoản (ghi vào notes); gạch đầu dòng gắn vào đơn vị sâu nhất.
 B8. "Nơi nhận / chữ ký" bỏ khỏi đơn vị (đếm vào skipped). Chỉ bỏ ở thân văn bản, trước phụ lục đầu tiên: biểu mẫu trong phụ lục có "Nơi nhận" là nội dung mẫu.
@@ -44,7 +56,7 @@ B9. Chú thích [n] của bản hợp nhất: gỡ dấu [n] khỏi chữ, ghi t
 B10. Phụ lục: chia theo dòng tiêu đề (Phụ lục I.7, PHỤ LỤC đứng một mình, hoặc dòng viết hoa đứng trước "(Kèm theo ...)" khi văn bản không có nhãn như TT_11, TT_19).
     "(Kèm theo ...)" chỉ làm tiêu đề phụ lục trước phụ lục có nhãn đầu tiên. Khối chỉ có tiêu đề (<= 3 dòng) mà nhãn còn xuất hiện lại về sau là mục lục, bỏ.
     Mã phụ lục: .PL<nhãn> với I.7 viết I_7; Mục .M<n>, "A. ..." .L<chữ>, "I. ..." .S<La Mã>, dòng .R<k>. Biểu mẫu "Mẫu số ..." chưa tách thành nút form.
-B11. Bảng lương vùng bị trải mỗi ô một dòng: ghép lại thành bảng (a1_tables_<doc>.jsonl) khi gặp đúng dạng "Vùng / Mức ... tháng / Mức ... giờ" rồi từng bộ ba. Đơn vị giữ
+B11. Bảng lương vùng bị trải mỗi ô một dòng: ghép lại thành bảng (l1_tables_<doc>.jsonl) khi gặp đúng dạng "Vùng / Mức ... tháng / Mức ... giờ" rồi từng bộ ba. Đơn vị giữ
     nguyên chữ gốc. Chỉ ND_74 trong dev có bảng này (mốc vùng I 4.960.000). Bảng của văn bản chưa có trong kho chưa kiểm được.
 B12. Đầu văn bản: số hiệu, ngày, căn cứ đọc bằng regex rồi so manifest; lệch thì cờ so_hieu_lech_manifest / ngay_ky_lech_manifest. TT_09, TT_10, TT_11 mất phần đầu
     nên lấy từ manifest, cờ header_from_manifest; TT_09 / TT_10 còn cờ issued_uncertain (manifest ghi ngày ký có dấu "?", chưa chốt).
@@ -52,4 +64,4 @@ B12. Đầu văn bản: số hiệu, ngày, căn cứ đọc bằng regex rồi 
 C. CÒN HẠN CHẾ
 --------------
 C1. Dòng của bảng trong phụ lục (TT_11: 1985 dòng "TT | Tên nghề | Đặc điểm ...") là một đơn vị pl_row mỗi dòng, chưa tách cột.
-C2. A1 không tách "Mẫu số" thành nút form (plan L1 nói giữ một nút rỗng để cạnh sửa đổi có chỗ trỏ). Chỉ thị sửa mẫu biểu hiện ghi cờ form_directive_target_not_in_kb (L6).
+C2. L1 không tách "Mẫu số" thành nút form (plan L1 nói giữ một nút rỗng để cạnh sửa đổi có chỗ trỏ). Chỉ thị sửa mẫu biểu hiện ghi cờ form_directive_target_not_in_kb (L6).

@@ -1,0 +1,73 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "kiem",
+ "requested_model": "gemini-3.8-flash",
+ "created": "2026-11-08T19:05:46+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k374\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội có thẩm quyền xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao\"\n},\n{\n\"k\": \"k426\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Giao quyền xử phạt\",\n\"doan_dau\": \"Người có thẩm quyền xử phạt quy định tại Điều 48; khoản 2, 3 Điều 49; các điều 50, 51, 52, 53, 54, 55 và 56 Nghị định này có thể giao cho cấp phó thực hiện thẩm\"\n},\n{\n\"k\": \"k427\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thi hành các hình thức xử phạt vi phạm hành chính\",\n\"doan_dau\": \"Việc thi hành các hình thức xử phạt vi phạm hành chính trong lĩnh vực lao động, bảo hiểm xã hội, người lao động Việt Nam đi làm việc ở nước ngoài theo hợp đồng \"\n},\n{\n\"k\": \"k428\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Thi hành các biện pháp khắc phục hậu quả\",\n\"doan_dau\": \"Việc thi hành các biện pháp khắc phục hậu quả quy định trong Nghị định này được áp dụng theo quy định của Luật Xử lý vi phạm hành chính và các văn bản hướng dẫn\"\n},\n{\n\"k\": \"k432\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Lập kế hoạch xác định số giờ làm việc tiêu chuẩn hằng ngày\",\n\"doan_dau\": \"Hằng năm, căn cứ vào quỹ thời giờ làm việc tiêu chuẩn trong năm (TQ) đã tính theo hướng dẫn tại Điều 3 Thông tư này, người sử dụng lao động lập kế hoạch xác địn\"\n},\n{\n\"k\": \"k436\",\n\"loai_van_ban\": \"Thông tư\",\n\"tieu_de\": \"Trách nhiệm của người sử dụng lao động\",\n\"doan_dau\": \"Căn cứ vào kế hoạch sản xuất, kinh doanh, hằng năm chủ động quyết định áp dụng chế độ thời giờ làm việc, thời giờ nghỉ ngơi bình thường theo quy định của Bộ luậ\"\n},\n{\n\"k\": \"k445\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Quy định về giao dịch điện tử trong cấp, cấp lại, gia hạn giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n\"doan_dau\": \"Người sử dụng lao động nộp hồ sơ đề nghị cấp, cấp lại, gia hạn giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động đối với người lao độn\"\n},\n{\n\"k\": \"k474\",\n\"loai_van_ban\": \"Nghị quyết CP\",\n\"tieu_de\": \"Tổ chức thi hành\",\n\"doan_dau\": \"Bộ trưởng, Thủ trưởng cơ quan ngang bộ:\"\n},\n{\n\"k\": \"k477\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Chuyển hồ sơ vụ vi phạm có dấu hiệu tội phạm\",\n\"doan_dau\": \"Thủ tục xử phạt vi phạm trong lĩnh vực lao động, bảo hiểm xã hội, người lao động Việt Nam đi làm việc ở nước ngoài theo hợp đồng thực hiện theo quy định của Luậ\"\n},\n{\n\"k\": \"k478\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Lập biên bản vi phạm hành chính đối với hành vi vi phạm quy định tại khoản 2 Điều 53 của Nghị định này\",\n\"doan_dau\": \"Chủ tịch Ủy ban nhân dân, Cục trưởng Cục Quản lý lao động ngoài nước, Giám đốc Sở Nội vụ, người có thẩm quyền xử phạt của Công an nhân dân, người đứng đầu cơ qu\"\n},\n{\n\"k\": \"k479\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Xử lý vi phạm hành chính trên môi trường điện tử\",\n\"doan_dau\": \"Việc xử lý vi phạm hành chính trong lĩnh vực lao động, bảo hiểm xã hội, người lao động Việt Nam đi làm việc ở nước ngoài theo hợp đồng trên môi trường điện tử đ\"\n},\n{\n\"k\": \"k503\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Nguyên tắc xác định và phân định thẩm quyền xử phạt\",\n\"doan_dau\": \"Thẩm quyền xử phạt vi phạm hành chính của những người có thẩm quyền quy định tại các Điều 55, 56, 57, 58, 59, 60, 61 và Điều 62 của Nghị định này là thẩm quyền \"\n},\n{\n\"k\": \"k504\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Trách nhiệm hướng dẫn và thi hành\",\n\"doan_dau\": \"Bộ trưởng Bộ Nội vụ có trách nhiệm hướng dẫn việc thi hành Nghị định này.\"\n}\n]",
+ "model": "gemini-3.8-flash",
+ "request_id": "rMfwauHvE83u694Pwa_n2As",
+ "output": {
+  "labels": [
+   {
+    "k": "k374",
+    "label": "procedural"
+   },
+   {
+    "k": "k426",
+    "label": "authority"
+   },
+   {
+    "k": "k427",
+    "label": "procedural"
+   },
+   {
+    "k": "k428",
+    "label": "procedural"
+   },
+   {
+    "k": "k432",
+    "label": "substantive"
+   },
+   {
+    "k": "k436",
+    "label": "substantive"
+   },
+   {
+    "k": "k445",
+    "label": "procedural"
+   },
+   {
+    "k": "k474",
+    "label": "authority"
+   },
+   {
+    "k": "k477",
+    "label": "procedural"
+   },
+   {
+    "k": "k478",
+    "label": "authority"
+   },
+   {
+    "k": "k479",
+    "label": "procedural"
+   },
+   {
+    "k": "k503",
+    "label": "authority"
+   },
+   {
+    "k": "k504",
+    "label": "authority"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 1563,
+  "candidates_token_count": 353,
+  "thoughts_token_count": 1878,
+  "total_token_count": 3794
+ }
+}

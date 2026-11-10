@@ -1,0 +1,181 @@
+{
+ "task": "l4_classify",
+ "prompt_version": "l4-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-08T18:59:29+00:00",
+ "system": "Bạn phân loại các Điều của văn bản pháp luật lao động Việt Nam (bộ luật, nghị định, thông tư) để quyết định Điều nào được dịch thành quy tắc.\nMỗi mục có: k (mã), loại văn bản, tiêu đề Điều, đoạn đầu của Điều. Với MỖI mục chọn đúng một nhãn:\n- substantive: Điều có điều kiện, quyền, nghĩa vụ, mức, thời hạn, ngoại lệ, chế tài mà từ đó trả lời được câu hỏi có/không về việc áp dụng pháp luật.\n- definition: Điều giải thích từ ngữ, định nghĩa khái niệm.\n- effect_transition: Điều về hiệu lực thi hành, quy định chuyển tiếp, bãi bỏ, sửa đổi bổ sung văn bản khác.\n- procedural: Điều chỉ nói hồ sơ, trình tự, thủ tục, biểu mẫu, không có điều kiện áp dụng thực chất.\n- authority: Điều chỉ nói trách nhiệm, nhiệm vụ, thẩm quyền của cơ quan, tổ chức nhà nước (không phải nghĩa vụ của người lao động / người sử dụng lao động).\nKhông chắc thì chọn substantive. Chỉ dựa vào tiêu đề và đoạn đầu được cho. Trả về JSON đúng lược đồ, đủ mọi mã k, mỗi mã một lần.",
+ "user": "[\n{\n\"k\": \"k161\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Ban lãnh đạo và thành viên tổ chức của người lao động tại doanh nghiệp\",\n\"doan_dau\": \"Tại thời điểm đăng ký, tổ chức của người lao động tại doanh nghiệp phải có số lượng tối thiểu thành viên là người lao động làm việc tại doanh nghiệp theo quy đị\"\n},\n{\n\"k\": \"k162\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n\"doan_dau\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây: Trong một tổ chức của người lao động tại doanh nghiệp không đồng thời \"\n},\n{\n\"k\": \"k163\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n\"doan_dau\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ ch\"\n},\n{\n\"k\": \"k164\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền của thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở\",\n\"doan_dau\": \"Thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở có quyền sau đây:\"\n},\n{\n\"k\": \"k165\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nghĩa vụ của người sử dụng lao động đối với tổ chức đại diện người lao động tại cơ sở\",\n\"doan_dau\": \"Không được cản trở, gây khó khăn khi người lao động tiến hành các hoạt động hợp pháp nhằm thành lập, gia nhập và tham gia các hoạt động của tổ chức đại diện ngư\"\n},\n{\n\"k\": \"k166\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền và nghĩa vụ của tổ chức đại diện người lao động tại cơ sở trong quan hệ lao động\",\n\"doan_dau\": \"Thương lượng tập thể với người sử dụng lao động theo quy định của Bộ luật này.\"\n},\n{\n\"k\": \"k167\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tranh chấp lao động\",\n\"doan_dau\": \"Tranh chấp lao động là tranh chấp về quyền và nghĩa vụ, lợi ích phát sinh giữa các bên trong quá trình xác lập, thực hiện hoặc chấm dứt quan hệ lao động; tranh \"\n},\n{\n\"k\": \"k168\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nguyên tắc giải quyết tranh chấp lao động\",\n\"doan_dau\": \"Tôn trọng quyền tự định đoạt thông qua thương lượng của các bên trong suốt quá trình giải quyết tranh chấp lao động.\"\n},\n{\n\"k\": \"k169\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền và nghĩa vụ của hai bên trong giải quyết tranh chấp lao động\",\n\"doan_dau\": \"Trong giải quyết tranh chấp lao động, các bên có quyền sau đây:\"\n},\n{\n\"k\": \"k170\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền của cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết tranh chấp lao động\",\n\"doan_dau\": \"Cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết tranh chấp lao động, trong phạm vi nhiệm vụ, quyền hạn của mình, có quyền yêu cầu các bên tranh chấp, cơ quan\"\n},\n{\n\"k\": \"k171\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hòa giải viên lao động\",\n\"doan_dau\": \"Hòa giải viên lao động là người do Chủ tịch Ủy ban nhân dân cấp tỉnh bổ nhiệm để hòa giải tranh chấp lao động, tranh chấp về hợp đồng đào tạo nghề; hỗ trợ phát \"\n},\n{\n\"k\": \"k172\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Hội đồng trọng tài lao động\",\n\"doan_dau\": \"Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định thành lập Hội đồng trọng tài lao động, bổ nhiệm Chủ tịch, thư ký và các trọng tài viên lao động của Hội đồng trọng \"\n},\n{\n\"k\": \"k173\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Cấm hành động đơn phương trong khi tranh chấp lao động đang được giải quyết\",\n\"doan_dau\": \"Khi tranh chấp lao động đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết trong thời hạn theo quy định của Bộ luật này thì không bên nào được hành độ\"\n},\n{\n\"k\": \"k174\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n\"doan_dau\": \"Trên cơ sở đồng thuận, các bên tranh chấp có quyền yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp trong trường hợp quy định tại khoản 7 Điều 188 của \"\n},\n{\n\"k\": \"k175\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thời hiệu yêu cầu giải quyết tranh chấp lao động cá nhân\",\n\"doan_dau\": \"Thời hiệu yêu cầu hòa giải viên lao động thực hiện hòa giải tranh chấp lao động cá nhân là 06 tháng kể từ ngày phát hiện ra hành vi mà bên tranh chấp cho rằng q\"\n},\n{\n\"k\": \"k176\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n\"doan_dau\": \"Trên cơ sở đồng thuận, các bên tranh chấp có quyền yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp trong trường hợp hòa giải không thành hoặc hết thời\"\n},\n{\n\"k\": \"k177\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thời hiệu yêu cầu giải quyết tranh chấp lao động tập thể về quyền\",\n\"doan_dau\": \"Thời hiệu yêu cầu hòa giải viên lao động thực hiện hòa giải tranh chấp lao động tập thể về quyền là 06 tháng kể từ ngày phát hiện ra hành vi mà bên tranh chấp c\"\n},\n{\n\"k\": \"k178\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Giải quyết tranh chấp lao động tập thể về lợi ích của Hội đồng trọng tài lao động\",\n\"doan_dau\": \"Trên cơ sở đồng thuận, các bên tranh chấp có quyền yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp trong trường hợp hòa giải không thành hoặc hết thời\"\n},\n{\n\"k\": \"k179\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Đình công\",\n\"doan_dau\": \"Đình công là sự ngừng việc tạm thời, tự nguyện và có tổ chức của người lao động nhằm đạt được yêu cầu trong quá trình giải quyết tranh chấp lao động và do tổ ch\"\n},\n{\n\"k\": \"k180\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trường hợp người lao động có quyền đình công\",\n\"doan_dau\": \"Tổ chức đại diện người lao động là bên tranh chấp lao động tập thể về lợi ích có quyền tiến hành thủ tục quy định tại các điều 200, 201 và 202 của Bộ luật này đ\"\n},\n{\n\"k\": \"k181\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Lấy ý kiến về đình công\",\n\"doan_dau\": \"Trước khi tiến hành đình công, tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công quy định tại Điều 198 của Bộ luật này có trách nhiệm lấy ý\"\n},\n{\n\"k\": \"k182\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n\"doan_dau\": \"Khi có trên 50% số người được lấy ý kiến đồng ý với nội dung lấy ý kiến đình công theo quy định tại khoản 2 Điều 201 của Bộ luật này thì tổ chức đại diện người \"\n},\n{\n\"k\": \"k183\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền của các bên trước và trong quá trình đình công\",\n\"doan_dau\": \"Tiếp tục thỏa thuận để giải quyết nội dung tranh chấp lao động tập thể hoặc cùng đề nghị hòa giải viên lao động, Hội đồng trọng tài lao động tiến hành hòa giải,\"\n},\n{\n\"k\": \"k184\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trường hợp đình công bất hợp pháp\",\n\"doan_dau\": \"Không thuộc trường hợp được đình công quy định tại Điều 199 của Bộ luật này.\"\n},\n{\n\"k\": \"k185\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thông báo quyết định đóng cửa tạm thời nơi làm việc\",\n\"doan_dau\": \"Ít nhất 03 ngày làm việc trước ngày đóng cửa tạm thời nơi làm việc, người sử dụng lao động phải niêm yết công khai quyết định đóng cửa tạm thời nơi làm việc tại\"\n},\n{\n\"k\": \"k186\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Trường hợp cấm đóng cửa tạm thời nơi làm việc\",\n\"doan_dau\": \"Trước 12 giờ so với thời điểm bắt đầu đình công ghi trong quyết định đình công.\"\n},\n{\n\"k\": \"k187\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Tiền lương và các quyền lợi hợp pháp khác của người lao động trong thời gian đình công\",\n\"doan_dau\": \"Người lao động không tham gia đình công nhưng phải ngừng việc vì lý do đình công thì được trả lương ngừng việc theo quy định tại khoản 2 Điều 99 của Bộ luật này\"\n},\n{\n\"k\": \"k188\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Các hành vi bị nghiêm cấm trước, trong và sau khi đình công\",\n\"doan_dau\": \"Cản trở việc thực hiện quyền đình công hoặc kích động, lôi kéo, ép buộc người lao động đình công; cản trở người lao động không tham gia đình công đi làm việc.\"\n},\n{\n\"k\": \"k189\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nơi sử dụng lao động không được đình công\",\n\"doan_dau\": \"Không được đình công ở nơi sử dụng lao động mà việc đình công có thể đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người.\"\n},\n{\n\"k\": \"k190\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyết định hoãn, ngừng đình công\",\n\"doan_dau\": \"Khi xét thấy cuộc đình công có nguy cơ gây thiệt hại nghiêm trọng cho nền kinh tế quốc dân, lợi ích công cộng, đe dọa đến quốc phòng, an ninh, trật tự công cộng\"\n},\n{\n\"k\": \"k191\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Xử lý cuộc đình công không đúng trình tự, thủ tục\",\n\"doan_dau\": \"Trong thời hạn 12 giờ kể từ khi nhận được thông báo về cuộc đình công không tuân theo quy định tại các điều 200, 201 và 202 của Bộ luật này, Chủ tịch Ủy ban nhâ\"\n},\n{\n\"k\": \"k192\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nội dung quản lý nhà nước về lao động\",\n\"doan_dau\": \"Ban hành và tổ chức thực hiện văn bản quy phạm pháp luật về lao động.\"\n},\n{\n\"k\": \"k193\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Nội dung thanh tra lao động\",\n\"doan_dau\": \"Thanh tra việc chấp hành quy định của pháp luật về lao động.\"\n},\n{\n\"k\": \"k194\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Thanh tra chuyên ngành về lao động\",\n\"doan_dau\": \"Thẩm quyền thanh tra chuyên ngành về lao động thực hiện theo quy định của Luật Thanh tra.\"\n},\n{\n\"k\": \"k195\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Quyền của thanh tra lao động\",\n\"doan_dau\": \"Thanh tra lao động có quyền thanh tra, điều tra nơi thuộc đối tượng, phạm vi thanh tra được giao theo quyết định thanh tra. Khi thanh tra đột xuất theo quyết đị\"\n},\n{\n\"k\": \"k196\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Xử lý vi phạm\",\n\"doan_dau\": \"Người nào có hành vi vi phạm quy định của Bộ luật này thì tùy theo tính chất, mức độ vi phạm mà bị xử lý kỷ luật, xử phạt vi phạm hành chính hoặc bị truy cứu tr\"\n},\n{\n\"k\": \"k197\",\n\"loai_van_ban\": \"Bộ luật\",\n\"tieu_de\": \"Miễn, giảm thủ tục đối với trường hợp sử dụng dưới 10 lao động\",\n\"doan_dau\": \"Người sử dụng lao động sử dụng dưới 10 người lao động thực hiện quy định của Bộ luật này nhưng được miễn, giảm một số thủ tục theo quy định của Chính phủ.\"\n},\n{\n\"k\": \"k198\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Phạm vi điều chỉnh\",\n\"doan_dau\": \"Nghị định này quy định mức lương tối thiểu vùng áp dụng đối với người lao động làm việc theo hợp đồng lao động theo quy định của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k199\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Đối tượng áp dụng\",\n\"doan_dau\": \"Người lao động làm việc theo chế độ hợp đồng lao động theo quy định của Bộ luật Lao động.\"\n},\n{\n\"k\": \"k200\",\n\"loai_van_ban\": \"Nghị định\",\n\"tieu_de\": \"Mức lương tối thiểu vùng\",\n\"doan_dau\": \"Quy định mức lương tối thiểu vùng áp dụng đối với người lao động làm việc ở doanh nghiệp như sau:\"\n}\n]",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "jsbwaoXcLPHU4-EPr7HPkAM",
+ "output": {
+  "labels": [
+   {
+    "k": "k161",
+    "label": "substantive"
+   },
+   {
+    "k": "k162",
+    "label": "substantive"
+   },
+   {
+    "k": "k163",
+    "label": "substantive"
+   },
+   {
+    "k": "k164",
+    "label": "substantive"
+   },
+   {
+    "k": "k165",
+    "label": "substantive"
+   },
+   {
+    "k": "k166",
+    "label": "substantive"
+   },
+   {
+    "k": "k167",
+    "label": "definition"
+   },
+   {
+    "k": "k168",
+    "label": "substantive"
+   },
+   {
+    "k": "k169",
+    "label": "substantive"
+   },
+   {
+    "k": "k170",
+    "label": "authority"
+   },
+   {
+    "k": "k171",
+    "label": "definition"
+   },
+   {
+    "k": "k172",
+    "label": "authority"
+   },
+   {
+    "k": "k173",
+    "label": "substantive"
+   },
+   {
+    "k": "k174",
+    "label": "substantive"
+   },
+   {
+    "k": "k175",
+    "label": "substantive"
+   },
+   {
+    "k": "k176",
+    "label": "substantive"
+   },
+   {
+    "k": "k177",
+    "label": "substantive"
+   },
+   {
+    "k": "k178",
+    "label": "substantive"
+   },
+   {
+    "k": "k179",
+    "label": "definition"
+   },
+   {
+    "k": "k180",
+    "label": "substantive"
+   },
+   {
+    "k": "k181",
+    "label": "substantive"
+   },
+   {
+    "k": "k182",
+    "label": "substantive"
+   },
+   {
+    "k": "k183",
+    "label": "substantive"
+   },
+   {
+    "k": "k184",
+    "label": "substantive"
+   },
+   {
+    "k": "k185",
+    "label": "procedural"
+   },
+   {
+    "k": "k186",
+    "label": "substantive"
+   },
+   {
+    "k": "k187",
+    "label": "substantive"
+   },
+   {
+    "k": "k188",
+    "label": "substantive"
+   },
+   {
+    "k": "k189",
+    "label": "substantive"
+   },
+   {
+    "k": "k190",
+    "label": "authority"
+   },
+   {
+    "k": "k191",
+    "label": "authority"
+   },
+   {
+    "k": "k192",
+    "label": "authority"
+   },
+   {
+    "k": "k193",
+    "label": "authority"
+   },
+   {
+    "k": "k194",
+    "label": "authority"
+   },
+   {
+    "k": "k195",
+    "label": "authority"
+   },
+   {
+    "k": "k196",
+    "label": "substantive"
+   },
+   {
+    "k": "k197",
+    "label": "substantive"
+   },
+   {
+    "k": "k198",
+    "label": "effect_transition"
+   },
+   {
+    "k": "k199",
+    "label": "substantive"
+   },
+   {
+    "k": "k200",
+    "label": "substantive"
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 3904,
+  "candidates_token_count": 1070,
+  "thoughts_token_count": null,
+  "total_token_count": 4974
+ }
+}
