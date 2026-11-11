@@ -5,7 +5,7 @@ Chạy: python -I src/run_all.py            (L1, L2, L4, L5 tường minh + chun
       python -I src/run_all.py --tests    (thêm mọi tests/test_*.py)
       python -I src/run_all.py --viewer --tests
 
-LLM (mặc định tắt): --llm off | replay | live, chỉ ảnh hưởng hai bước dùng LLM là L4 (phân loại Điều) và L3 (đề xuất cạnh details).
+LLM (mặc định tắt): --llm off | replay | live, chỉ ảnh hưởng một bước dùng LLM là L3 (đề xuất cạnh details). Bước loại Điều (article_type) không dùng LLM từ 11/11 (A14).
   off     không gọi gì (mặc định, kết quả tất định, cùng kết quả khi chưa có cache)
   replay  chỉ đọc phản hồi đã lưu ở data/llm_cache/, thiếu thì bước đó giữ kết quả như off (không chạm mạng)
   live    như replay, thiếu cache thì GỌI API THẬT (tốn hạn mức theo docs/llm_config.md). Cần biến môi trường GEMINI_API_KEY trong process này và
@@ -31,15 +31,16 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))  # -I không tự thêm thư mục script
 import llm_client  # noqa: E402
 
-LLM_SCRIPTS = ("src/l4_classify.py", "src/l3_links.py")  # chỉ hai bước này nhận --llm
+LLM_SCRIPTS = ("src/links.py",)  # chỉ bước này nhận --llm
 
 STEPS = [
-    ("L1 tách cấu trúc 18 văn bản", ["src/l1_parse.py", "--all"]),
-    ("L2 cạnh cấu trúc và dẫn chiếu", ["src/l2_edges.py", "--all"]),
-    ("L4 phân loại Điều", ["src/l4_classify.py"]),
-    ("L5 ngoại lệ tường minh", ["src/l5_explicit_exceptions.py", "--all"]),
-    ("L5 ngoại lệ chung", ["src/l5_general_exceptions.py", "--all"]),
-    ("L3 điều khoản giao chi tiết, based_on, details", ["src/l3_links.py"]),
+    ("L1 tách cấu trúc 18 văn bản", ["src/parse.py", "--all"]),
+    ("L2 cạnh cấu trúc và dẫn chiếu", ["src/refs.py", "--all"]),
+    ("L4 phân loại Điều", ["src/article_type.py"]),
+    ("L5 ngoại lệ tường minh", ["src/exceptions_explicit.py", "--all"]),
+    ("L5 ngoại lệ chung", ["src/exceptions_general.py", "--all"]),
+    ("1.3 điều khoản giao chi tiết", ["src/delegation.py"]),
+    ("2.2 nối văn bản: based_on, details", ["src/links.py"]),
     ("L6 phiên bản theo ngày hiệu lực", ["src/l6_versions.py"]),
     ("checks: kiểm tra độc lập", ["src/checks.py"]),
     ("graph: đồ thị gộp", ["src/graph.py"]),
@@ -100,7 +101,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--viewer", action="store_true", help="thêm viewer: dựng trang xem đồ thị")
     ap.add_argument("--tests", action="store_true", help="thêm mọi tests/test_*.py")
-    ap.add_argument("--llm", choices=("off", "replay", "live"), default="off", help="chế độ LLM cho L4 và L3 (xem đầu file); mặc định off")
+    ap.add_argument("--llm", choices=("off", "replay", "live"), default="off", help="chế độ LLM cho L3 (xem đầu file); mặc định off")
     args = ap.parse_args()
     if args.llm == "live":
         if not llm_client.key_is_set():

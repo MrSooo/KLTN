@@ -1,32 +1,28 @@
-"""L3: điều khoản giao chi tiết của luật và cạnh based_on / details của văn bản dưới luật.
+"""Bước 2.2: nối văn bản dưới luật với luật gốc: cạnh based_on (dòng "Căn cứ ..."), cạnh details (Điều 1 nêu điều, khoản được quy định chi tiết), và filled_by cho điều khoản giao.
 
-Chạy: python -I src/l3_links.py            (cả kho; cần l1, l2)
+Chạy: python -I src/links.py [--llm off|replay|live]    (cả kho; cần bước parse, refs và delegation)
 Đầu ra (data/processed/l3/):
-  delegation_clauses.jsonl  điều khoản của BLLĐ giao cấp dưới quy định chi tiết, 5 dạng A-E của plan
-                            {clause_id, unit_id, pattern, delegate, phrase, filled_by (văn bản dưới luật đã nối `details`, theo ngày hiệu lực)}
-  l3_links.jsonl            cạnh based_on / details: {s (doc_id), p, o (mã đơn vị hoặc doc_id), how, evidence, flags}
-  l3_pending.jsonl          based_on / details trỏ tới văn bản chưa có trong KB
-Báo cáo: docs/bao_cao_chay/l3/l3_report.txt (số theo dạng, mốc cổng, ca chưa nối).
+  l3_links.jsonl           cạnh based_on / details: {s (doc_id), p, o (mã đơn vị hoặc doc_id), evidence, how, flags}
+  l3_pending.jsonl         based_on / details trỏ tới văn bản chưa có trong KB
+  delegation_filled.jsonl  {clause_id, filled_by}: văn bản dưới luật đã nối details tới điều khoản giao đó, theo ngày hiệu lực (rỗng nếu chưa có)
+Báo cáo: docs/bao_cao_chay/l3/l3_report.txt (mốc cổng details / based_on, ca chưa nối).
 
-  Dạng A "Chính phủ / Bộ trưởng ... quy định ..." (gồm C "do Chính phủ quy định"); B "theo quy định của Chính phủ / Bộ trưởng";
-  D "Bộ trưởng ... ban hành" (danh mục, chương trình ... do Bộ trưởng ban hành); E "Thủ tướng Chính phủ quyết định". Số đếm là regex thô: ca không phải giao chi tiết
-  ghi ở báo cáo, không tự lọc.
   based_on: dòng "Căn cứ ..." của văn bản; cụm điều/khoản kèm văn bản thành cạnh tới đơn vị, tên văn bản thành cạnh tới văn bản.
   details: Điều 1 (Phạm vi điều chỉnh) nêu điều, khoản được quy định chi tiết; văn bản đích lấy từ cụm hoặc từ câu dẫn
     ("... sau đây của Bộ luật Lao động:"). Không nêu số Điều (ND_74) thì đề xuất bằng từ khoá: cụm danh từ chính của phạm vi phải nằm
-    trong tiêu đề hoặc chữ của đơn vị luật đích. Cạnh đề xuất mang cờ keyword_proposed + llm_check_pending: lượt LLM kiểm độc lập
-    (plan) chưa chạy nên chưa phải cạnh đã kiểm.
+    trong tiêu đề hoặc chữ của đơn vị luật đích; cạnh chỉ do từ khoá mang cờ keyword_proposed + llm_check_pending. Khi chạy --llm replay/live,
+    hai model độc lập kiểm (decide_llm): giữ khi cả hai model và từ khoá đồng ý, ngược lại gắn cờ isolated (giữ lại nhưng không dùng làm căn cứ).
+  Điều khoản giao (delegation_clauses.jsonl) do bước 1.3 (delegation.py) tạo từ chỉ BLLĐ; ở đây chỉ dùng các ca chắc (flags rỗng) làm danh mục đối chiếu.
 """
 import argparse
-import collections
 import json
 import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import l1_parse as l1
-import l2_edges as l2
+import parse as l1
+import refs as l2
 import corpus
 import llm_client
 
@@ -42,38 +38,6 @@ SCHEMA = {"type": "object", "additionalProperties": False, "required": ["targets
           "properties": {"targets": {"type": "array", "items": {
               "type": "object", "additionalProperties": False, "required": ["unit_id", "ly_do"],
               "properties": {"unit_id": {"type": "string"}, "ly_do": {"type": "string"}}}}}}
-
-DELEG_PATTERNS = [
-    ("A", re.compile(r"(?<!\w)(?:Chính phủ|Bộ trưởng(?:[ ]+[^\W\d_]+){0,10}?|Thủ tướng Chính phủ)[ ]+quy[ ]+định(?![ ]+tại)")),
-    ("B", re.compile(r"theo[ ]+quy[ ]+định[ ]+của[ ]+(?:Chính phủ|Bộ trưởng|Thủ tướng Chính phủ)")),
-    ("D", re.compile(r"Bộ[ ]+trưởng[^.;:]{0,100}?ban[ ]+hành", re.I)),
-    ("E", re.compile(r"Thủ[ ]+tướng[ ]+Chính[ ]+phủ[ ]+quyết[ ]+định")),
-]
-DO_RE = re.compile(r"do[ ]+$")  # "do Chính phủ quy định": dạng C, nằm trong A
-
-
-def delegate_of(phrase):
-    if "Thủ tướng" in phrase:
-        return "Thủ tướng"
-    return "Bộ trưởng" if "Bộ trưởng" in phrase else "Chính phủ"
-
-
-def find_delegation(units, doc_id):
-    """Các điều khoản giao chi tiết trong văn bản gốc, theo thứ tự đơn vị rồi vị trí trong text."""
-    clauses, counter = [], collections.Counter()
-    for uid, u in units.items():
-        if u["type"] not in ("dieu", "khoan", "diem") or not u.get("text"):
-            continue
-        text = u["text"]
-        for pattern, rx in DELEG_PATTERNS:
-            for m in rx.finditer(text):
-                counter[uid] += 1
-                short = uid.split(".", 1)[1].replace(".", "_")
-                is_c = pattern == "A" and DO_RE.search(text[:m.start()]) is not None
-                clauses.append({"clause_id": f"DC_{short}_{counter[uid]}", "unit_id": uid, "pattern": pattern,
-                                "subpattern": "C" if is_c else None, "delegate": delegate_of(m[0]), "phrase": m[0],
-                                "context": text[max(0, m.start() - 40):m.end() + 60], "filled_by": []})
-    return clauses
 
 
 # ---- based_on / details ----
@@ -171,7 +135,7 @@ def details_links(doc, units, all_units, resolver, available):
             for t in r.targets:
                 if t not in seen and t.split(".")[0] != doc.doc_id:
                     seen.add(t)
-                    links.append({"s": doc.doc_id, "p": "details", "o": t, "how": "regex", "evidence": ref.phrase, "via": uid, "flags": []})
+                    links.append({"s": doc.doc_id, "p": "details", "o": t, "how": "regex", "evidence": ref.phrase, "flags": []})
     return links, None if links else "Điều 1 không nêu điều, khoản đích"
 
 
@@ -181,10 +145,9 @@ def propose_by_keyword(doc, units, law_doc, law_units, clauses):
     text = " ".join((u.get("text") or "") for _, u in d1)
     phrases = key_phrases(text)
     out = []
-    for uid, hp, has_clause in keyword_candidates(phrases, law_units, clauses)[:1]:  # chỉ lấy ứng viên tốt nhất
+    for uid, *_ in keyword_candidates(phrases, law_units, clauses)[:1]:  # chỉ lấy ứng viên tốt nhất
         out.append({"s": doc.doc_id, "p": "details", "o": uid, "how": "keyword", "evidence": f"Điều 1: {text[:160]}",
-                    "flags": ["keyword_proposed", "llm_check_pending"],
-                    "check": {"keyword": hp, "in_heading": True, "has_delegation_clause": has_clause, "second_llm": "not_run"}})
+                    "flags": ["keyword_proposed", "llm_check_pending"]})
     return out, phrases
 
 
@@ -258,8 +221,7 @@ def decide_llm(doc, units, law_units, keyword_edges, llm):
         flags = ["llm_proposed"] if dieu in first else ["keyword_proposed"]
         if not ok:
             flags.append("isolated")
-        edges.append({"s": doc.doc_id, "p": "details", "o": dieu, "how": "llm" if dieu in first else "keyword", "evidence": f"Điều 1: {d1[:160]}", "flags": flags,
-                      "check": {"first_llm": dieu in first, "second_llm": "agree" if dieu in second else "no_agree", "keyword": hit}})
+        edges.append({"s": doc.doc_id, "p": "details", "o": dieu, "how": "llm" if dieu in first else "keyword", "evidence": f"Điều 1: {d1[:160]}", "flags": flags})
     return edges
 
 
@@ -274,7 +236,11 @@ def main(argv=None):
     headers = l2.load_headers()
     base = corpus.BASE_DOC_ID
     law_units = all_units[base]
-    clauses = find_delegation(law_units, base)
+    out = corpus.out_dir(L3_DIR_NAME)
+    if not (out / "delegation_clauses.jsonl").exists():
+        raise SystemExit("chưa có delegation_clauses.jsonl; chạy src/delegation.py trước")
+    all_clauses = l1.read_jsonl(out / "delegation_clauses.jsonl")
+    clauses = [c for c in all_clauses if not c["flags"]]  # danh mục đối chiếu chỉ gồm điều khoản giao CHẮC (tầng chặt); ca cờ loose chưa dùng để nối
     links, pending = [], []
     notes = []
     for doc in docs.values():
@@ -301,30 +267,24 @@ def main(argv=None):
             elif prop:
                 d += prop
                 why = None
-                notes.append(f"{doc.doc_id}: Điều 1 không nêu số Điều của BLLĐ; đề xuất bằng từ khoá {[p['check']['keyword'] for p in prop]} -> {[p['o'] for p in prop]}"
+                notes.append(f"{doc.doc_id}: Điều 1 không nêu số Điều của BLLĐ; đề xuất bằng từ khoá -> {[e['o'] for e in prop]}"
                              + (f" (LLM: {llm['note']})" if llm and llm["note"] else ""))
         links += b + d
         pending += p
         if why:
             notes.append(f"{doc.doc_id}: không có details ({why})")
-    # filled_by: văn bản đã nối details tới điều khoản (hoặc Điều chứa nó), theo ngày hiệu lực
+    # filled_by: văn bản đã nối details tới điều khoản (hoặc Điều chứa nó), theo ngày hiệu lực. Tính cho mọi điều khoản giao, kể cả ca cờ loose.
     eff = {d.doc_id: d.ngay_hieu_luc for d in docs.values()}
-    for c in clauses:
+    filled = []
+    for c in all_clauses:
         dieu = ".".join(c["unit_id"].split(".")[:2])
         by = {l["s"] for l in links if l["p"] == "details" and (l["o"] == c["unit_id"] or c["unit_id"].startswith(l["o"] + ".")
                                                                   or l["o"].startswith(dieu + "."))}
-        c["filled_by"] = sorted(by, key=lambda d: eff[d])
-    out = corpus.out_dir(L3_DIR_NAME)
-    l1.write_jsonl(out / "delegation_clauses.jsonl", clauses)
+        filled.append({"clause_id": c["clause_id"], "filled_by": sorted(by, key=lambda d: eff[d])})
+    l1.write_jsonl(out / "delegation_filled.jsonl", filled)
     l1.write_jsonl(out / "l3_links.jsonl", links)
     l1.write_jsonl(out / "l3_pending.jsonl", pending)
 
-    per_pat = collections.Counter(c["pattern"] for c in clauses)
-    dieu_pat = {p: len({c["unit_id"].split(".")[1] for c in clauses if c["pattern"] == p}) for p in per_pat}
-    units_with = {c["unit_id"] for c in clauses}
-    have = lambda u: u in units_with or any(x.startswith(u + ".") or u.startswith(x + ".") for x in units_with)
-    milestones = [("BLLD.D91.K4 (dạng A)", have("BLLD_45-2019.D91.K4")), ("D154.K1/K2/K9 (dạng B)", all(have(f"BLLD_45-2019.D154.K{k}") for k in (1, 2, 9))),
-                  ("D142.K1 (dạng D)", have("BLLD_45-2019.D142.K1")), ("D112 (dạng E)", have("BLLD_45-2019.D112"))]
     det = lambda s: {l["o"] for l in links if l["s"] == s and l["p"] == "details"}
     nd74 = [l for l in links if l["s"] == "ND_74-2024" and l["p"] == "details" and l["o"] == "BLLD_45-2019.D91"]
     nd74_status = ("không có cạnh" if not nd74 else "CÔ LẬP: không qua đủ ba điều kiện" if "isolated" in nd74[0]["flags"] else
@@ -341,17 +301,16 @@ def main(argv=None):
     llm_line = ("LLM: tắt (--llm off); cạnh đề xuất bằng từ khoá mang cờ llm_check_pending" if client is None else
                 f"LLM: --llm {args.llm}; gọi API lần này: {client.calls}; đọc từ cache: {client.hits}; hôm nay đã dùng "
                 f"{{chinh: {client.used_today('chinh')}, kiem: {client.used_today('kiem')}}}")
-    report = ["L3 báo cáo", llm_line, f"điều khoản giao chi tiết: {len(clauses)} cụm ở {len(units_with)} đơn vị; theo dạng {dict(per_pat)}; số Điều theo dạng {dieu_pat}",
-              f"(plan 8/11: A 39 cụm/37 Điều, B 10/8, C 2 trong A, D 5 Điều, E 1 Điều; tổng ~55 cụm/~50 Điều; đây là regex thô, chưa lọc ca không phải giao chi tiết)",
+    report = ["L3 báo cáo (bước 2.2: nối văn bản)", llm_line,
               f"cạnh based_on: {sum(1 for l in links if l['p'] == 'based_on')}  details: {sum(1 for l in links if l['p'] == 'details')}  chờ đích: {len(pending)}",
-              "mốc cổng delegation_clauses:"] + [f"  {'đạt' if ok else 'KHÔNG đạt'}: {name}" for name, ok in milestones] \
-        + ["mốc cổng details / based_on:"] + [f"  {'đạt' if ok else 'KHÔNG đạt'}: {name}" for name, ok in detail_marks] \
+              f"điều khoản giao dùng làm danh mục đối chiếu: {len(clauses)} (bỏ {len(all_clauses) - len(clauses)} ca cờ loose); đã có văn bản lấp: {sum(1 for f in filled if f['filled_by'])}",
+              "mốc cổng details / based_on:"] + [f"  {'đạt' if ok else 'KHÔNG đạt'}: {name}" for name, ok in detail_marks] \
         + [f"văn bản không có based_on (header mất hoặc không nêu): {no_based}", "ghi chú:"] + [f"  {n}" for n in notes]
     rp = corpus.report_dir(L3_DIR_NAME) / "l3_report.txt"
     rp.parent.mkdir(parents=True, exist_ok=True)
     rp.write_text("\n".join(report) + "\n", encoding="utf-8", newline="\n")
     print("\n".join(report))
-    if not all(ok for _, ok in milestones + detail_marks[:-1]):
+    if not all(ok for _, ok in detail_marks[:-1]):
         raise SystemExit(1)
 
 

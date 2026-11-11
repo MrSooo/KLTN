@@ -1,8 +1,8 @@
 """L5 tường minh: cạnh exception_of tường minh trong chữ, hai quy tắc riêng, chạy cho mọi văn bản.
 
-Chạy: python -I src/l5_explicit_exceptions.py <doc_id> | --all
+Chạy: python -I src/exceptions_explicit.py <doc_id> | --all
 Đầu vào: L1 (đơn vị) và L2 (cách giải dẫn chiếu, kể cả sang văn bản khác). Đầu ra (data/processed/l5_explicit/):
-  l5_explicit_exceptions_<doc_id>.jsonl  {s, p, o, evidence, method}; s là phần ngoại lệ, o là quy tắc bị ngoại trừ
+  l5_explicit_exceptions_<doc_id>.jsonl  {s, p, o, evidence, how, flags, rule}; rule là tên quy tắc bắt được ca này; s là phần ngoại lệ, o là quy tắc bị ngoại trừ
   l5_explicit_unhandled_<doc_id>.jsonl   trigger không rơi vào hai quy tắc (việc của L5 chung) hoặc rơi vào mà không giải được
   l5_explicit_pending_<doc_id>.jsonl     đích nằm ở văn bản chưa có trong KB (quan hệ chờ đích)
 
@@ -21,8 +21,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import l1_parse as l1
-import l2_edges as l2
+import parse as l1
+import refs as l2
 import corpus
 
 L5_EXPLICIT_DIR_NAME = "l5_explicit"
@@ -146,7 +146,7 @@ def run_doc(doc, docs, all_units, resolver, available):
     if not errors:
         d = l5_explicit_dir()
         l1.write_jsonl(d / f"l5_explicit_exceptions_{doc.doc_id}.jsonl",
-                       [{"s": s, "p": p, "o": o, "evidence": ev, "method": m} for s, p, o, ev, m in edges])
+                       [{"s": s, "p": p, "o": o, "evidence": ev, "how": "regex", "flags": [], "rule": m} for s, p, o, ev, m in edges])
         l1.write_jsonl(d / f"l5_explicit_unhandled_{doc.doc_id}.jsonl", unhandled)
         l1.write_jsonl(d / f"l5_explicit_pending_{doc.doc_id}.jsonl", pending)
     return edges, handled, unhandled, errors

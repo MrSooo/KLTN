@@ -1,7 +1,7 @@
 """L2: cạnh cấu trúc contains / part_of và cạnh dẫn chiếu refers_to trong và giữa các văn bản.
 
-Chạy: python -I src/l2_edges.py <doc_id>      một văn bản (cần l1 đã chạy cho văn bản đó và cho các văn bản nó trỏ tới)
-      python -I src/l2_edges.py --all         cả kho, ghi thêm data/processed/pending_links.jsonl
+Chạy: python -I src/refs.py <doc_id>      một văn bản (cần l1 đã chạy cho văn bản đó và cho các văn bản nó trỏ tới)
+      python -I src/refs.py --all         cả kho, ghi thêm data/processed/pending_links.jsonl
 
 Đầu ra (data/processed/l2/, mỗi văn bản một bộ):
   l2_edges_<doc_id>.jsonl       contains / part_of, cha lấy từ thuộc tính `parent` của L1
@@ -24,7 +24,7 @@ from pathlib import Path
 from typing import NamedTuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import l1_parse as l1
+import parse as l1
 import corpus
 
 L2_DIR_NAME = "l2"
@@ -452,9 +452,10 @@ def l2_dir():
 
 def write_outputs(doc, structure, result):
     d = l2_dir()
-    l1.write_jsonl(d / f"l2_edges_{doc.doc_id}.jsonl", [{"s": s, "p": p, "o": o, "evidence": ""} for s, p, o in structure])
+    # Khuôn cạnh chung (A12): {s, p, o, evidence, how, flags}. Cạnh cha-con không có câu bằng chứng (lấy từ thuộc tính `parent` của bước parse): how="parent".
+    l1.write_jsonl(d / f"l2_edges_{doc.doc_id}.jsonl", [{"s": s, "p": p, "o": o, "evidence": "", "how": "parent", "flags": []} for s, p, o in structure])
     l1.write_jsonl(d / f"l2_refs_{doc.doc_id}.jsonl",
-                   [{"s": s, "p": p, "o": o, "evidence": ev, "method": "regex"} for s, p, o, ev in result.edges])
+                   [{"s": s, "p": p, "o": o, "evidence": ev, "how": "regex", "flags": []} for s, p, o, ev in result.edges])
     l1.write_jsonl(d / f"l2_pending_{doc.doc_id}.jsonl", result.pending)
     l1.write_jsonl(d / f"l2_unresolved_{doc.doc_id}.jsonl", result.unresolved)
 
@@ -503,7 +504,7 @@ def main(argv=None):
     all_units = load_all_units(docs)
     missing = [d.doc_id for d in targets if d.doc_id not in all_units]
     if missing:
-        raise SystemExit(f"chưa có l1 của {missing}; chạy src/l1_parse.py trước")
+        raise SystemExit(f"chưa có l1 của {missing}; chạy src/parse.py trước")
     resolver = Resolver(docs, load_headers())
     available = set(all_units)  # L2 tĩnh: mọi văn bản trong kho coi là đã có; L6/L11 truyền tập đã nạp theo ngày
     bad, pending_all = [], []

@@ -18,8 +18,8 @@ from pathlib import Path
 from typing import NamedTuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import l1_parse as l1
-import l2_edges as l2
+import parse as l1
+import refs as l2
 import l6_versions as l6v
 import corpus
 

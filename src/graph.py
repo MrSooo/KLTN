@@ -18,7 +18,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import l1_parse as l1
+import parse as l1
 import l6_versions as l6v
 import corpus
 
@@ -75,9 +75,9 @@ def build():
         for r in l1.read_jsonl(corpus.out_dir("l2") / f"l2_refs_{d}.jsonl"):
             add(r["s"], "refers_to", r["o"], r["evidence"], "l2")
         for r in l1.read_jsonl(corpus.out_dir("l5_explicit") / f"l5_explicit_exceptions_{d}.jsonl"):
-            add(r["s"], "exception_of", r["o"], r["evidence"], "l5_explicit", method=r["method"])
+            add(r["s"], "exception_of", r["o"], r["evidence"], "l5_explicit", how=r["how"], rule=r["rule"])
         for r in l1.read_jsonl(corpus.out_dir("l5_general") / f"l5_general_exceptions_{d}.jsonl"):
-            add(r["s"], "exception_of", r["o"], r["evidence"], "l5_general", method=r["method"])
+            add(r["s"], "exception_of", r["o"], r["evidence"], "l5_general", how=r["how"], rule=r["rule"])
     for r in l1.read_jsonl(corpus.out_dir("l3") / "l3_links.jsonl"):
         add(r["s"], r["p"], r["o"], r["evidence"], "l3", flags=r.get("flags", []), how=r.get("how"))
     for e in ver_edges:

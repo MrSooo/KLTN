@@ -16,31 +16,17 @@ import argparse
 import collections
 import datetime
 import json
-import re
 import sys
-import unicodedata
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import l1_parse as l1
+import parse as l1
 import corpus
+import textutil
 
 L6_DIR_NAME = "l6"
 STATES = ("normal", "pending_event", "suspended")
-_TONE = (("òa", "oà"), ("óa", "oá"), ("ỏa", "oả"), ("õa", "oã"), ("ọa", "oạ"),
-         ("ùy", "uỳ"), ("úy", "uý"), ("ủy", "uỷ"), ("ũy", "uỹ"), ("ụy", "uỵ"))
-
-
-def text_norm(s):
-    """Khoá so sánh hai bản chữ: NFC, casefold, thống nhất kiểu đặt dấu thanh (hòa/hoà, ủy/uỷ), bỏ [n], thống nhất gạch, bỏ mọi
-    khoảng trắng (gồm dính chữ và khoảng trắng sau nháy), bỏ dấu câu cuối."""
-    s = unicodedata.normalize("NFC", s or "").casefold()
-    s = re.sub(r"\[\d+\]", "", s)
-    s = s.replace("–", "-").replace("—", "-").replace("−", "-")
-    for a, b in _TONE:
-        s = s.replace(a, b)
-    return re.sub(r"\s+", "", s).rstrip(".;:,")
 
 
 def iso(d):
@@ -86,7 +72,7 @@ class Ver:
         r = asdict(self)
         for k in ("effective_from", "effective_to", "applies_from"):
             r[k] = iso(getattr(self, k))
-        r["text_norm"] = text_norm(self.text)
+        r["text_norm"] = textutil.text_norm(self.text)
         r["status"] = self.status(as_of)
         return r
 

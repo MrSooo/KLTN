@@ -4,8 +4,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
 import _harness  # noqa: E402
-import l1_parse as l1  # noqa: E402
-import l2_edges as l2  # noqa: E402
+import parse as l1  # noqa: E402
+import refs as l2  # noqa: E402
 import corpus  # noqa: E402
 
 

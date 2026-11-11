@@ -4,13 +4,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
 import _harness  # noqa: E402
-import l1_parse as l1  # noqa: E402
-import l2_edges as l2  # noqa: E402
-import l5_explicit_exceptions as l5x  # noqa: E402
-import l5_general_exceptions as l5g  # noqa: E402
+import parse as l1  # noqa: E402
+import refs as l2  # noqa: E402
+import exceptions_explicit as l5x  # noqa: E402
+import exceptions_general as l5g  # noqa: E402
 import corpus  # noqa: E402
-import l3_links as l3  # noqa: E402
-import l4_classify as l4  # noqa: E402
+import links as l3  # noqa: E402
+import delegation  # noqa: E402
+import article_type as l4  # noqa: E402
 
 B = "BLLD_45-2019."
 
@@ -103,10 +104,21 @@ def test_l3_delegation_patterns():
              B + "D112": {"type": "dieu", "text": "Thủ tướng Chính phủ quyết định ngày nghỉ lễ."},
              B + "D107.K1": {"type": "khoan", "text": "do Chính phủ quy định."},
              B + "D5": {"type": "dieu", "text": "Quy định tại Điều 3 của Chính phủ."}}
-    cl = l3.find_delegation(units, "BLLD_45-2019")
+    cl = [c for c in delegation.find_delegation(units, "BLLD_45-2019") if not c["flags"]]  # tầng chặt
     pat = {c["unit_id"].split(".", 1)[1]: c["pattern"] for c in cl}
     assert pat == {"D91.K4": "A", "D154.K9": "B", "D142.K1": "D", "D112": "E", "D107.K1": "A"}
     assert [c["subpattern"] for c in cl if c["unit_id"].endswith("D107.K1")] == ["C"]
+
+
+def test_delegation_loose_tier_keeps_what_strict_tier_misses_and_never_duplicates():
+    units = {B + "D21.K5": {"type": "khoan", "text": "Bộ trưởng Bộ Lao động - Thương binh và Xã hội quy định chi tiết các khoản 1, 2 và 3 Điều này."},
+             B + "D91.K4": {"type": "khoan", "text": "Chính phủ quy định chi tiết Điều này."},
+             B + "D5": {"type": "dieu", "text": "Người lao động được nghỉ ngơi theo thỏa thuận."}}
+    cl = delegation.find_delegation(units, "BLLD_45-2019")
+    got = {c["unit_id"].split(".", 1)[1]: (c["pattern"], c["flags"], c["delegate"]) for c in cl}
+    # dấu gạch ngang làm dạng A (chặt) hụt, nên chỉ tầng lỏng bắt được và gắn cờ; ca chặt không bị bắt thêm lần nữa ở tầng lỏng; đơn vị không dính gì thì không có
+    assert got == {"D21.K5": ("loose", ["loose"], "Bộ trưởng"), "D91.K4": ("A", [], "Chính phủ")}
+    assert [c["clause_id"] for c in cl] == ["DC_D91_K4_1", "DC_D21_K5_1"], "ca chặt đứng trước, mã ca chặt không đổi"
 
 
 def test_l3_key_phrases_for_keyword_proposal():
@@ -146,10 +158,10 @@ def test_l4_classify_headings():
     assert c("Quy định chuyển tiếp") == ("effect_transition", "regex")
     assert c("Trách nhiệm của Bộ Lao động - Thương binh và Xã hội") == ("authority", "regex")
     assert c("Trách nhiệm thi hành") == ("authority", "regex")
-    assert c("Trách nhiệm khi chấm dứt hợp đồng lao động") == ("substantive", "default_pending_llm")
+    assert c("Trách nhiệm khi chấm dứt hợp đồng lao động") == ("substantive", "default")
     assert c("Hồ sơ đề nghị cấp giấy phép lao động") == ("procedural", "regex")
     assert c("Trình tự cấp lại giấy phép")[0] == "procedural"
-    assert c("Hợp đồng lao động vô hiệu") == ("substantive", "default_pending_llm")
+    assert c("Hợp đồng lao động vô hiệu") == ("substantive", "default")
 
 
 _harness.run(globals())

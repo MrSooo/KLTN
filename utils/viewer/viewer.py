@@ -15,7 +15,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent.parent / "src"))  # -I không tự thêm thư mục script
 import corpus
-from l1_parse import read_jsonl
+from parse import read_jsonl
 
 TEMPLATE = HERE / "template.html"
 CYTOSCAPE = HERE / "vendor" / "cytoscape.min.js"

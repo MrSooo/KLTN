@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import l2_edges as l2
+import refs as l2
 import l6_versions as l6v
 import l6_directives as l6
 

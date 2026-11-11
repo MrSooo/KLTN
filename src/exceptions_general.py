@@ -1,9 +1,9 @@
 """L5 chung: ngoại lệ chung "..., trừ trường hợp X" thành nút điều kiện và cạnh exception_of, chạy cho mọi văn bản.
 
-Chạy: python -I src/l5_general_exceptions.py <doc_id> | --all     (chạy sau L5 tường minh: nhận các trigger L5 tường minh để lại)
+Chạy: python -I src/exceptions_general.py <doc_id> | --all     (chạy sau L5 tường minh: nhận các trigger L5 tường minh để lại)
 Đầu ra (data/processed/l5_general/):
   l5_general_conditions_<doc_id>.jsonl  nút điều kiện {id, type=dieu_kien, kind, text, units}; câu giống nhau (khoá chuẩn hoá) gộp một nút
-  l5_general_exceptions_<doc_id>.jsonl  {s, p, o, evidence, method}: nút điều kiện exception_of đơn vị (general_except), và nếu mệnh đề dẫn
+  l5_general_exceptions_<doc_id>.jsonl  {s, p, o, evidence, how, flags, rule}: nút điều kiện exception_of đơn vị (general_except), và nếu mệnh đề dẫn
                                 chiếu tới đơn vị T thì T exception_of đơn vị (general_except_ref), T có thể ở văn bản khác
   l5_general_unhandled_<doc_id>.jsonl   trigger không phải "trừ trường hợp" và "không được áp dụng", kèm lý do
 
@@ -20,9 +20,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import l1_parse as l1
-import l2_edges as l2
-import l5_explicit_exceptions as l5x
+import parse as l1
+import refs as l2
+import exceptions_explicit as l5x
 import corpus
 
 L5_GENERAL_DIR_NAME = "l5_general"
@@ -101,7 +101,7 @@ def find_general(doc, units, all_units, resolver, available, l5_explicit_unhandl
         cid = condition_id(doc.doc_id, norm)
         node = nodes.setdefault(cid, {"id": cid, "type": "dieu_kien", "kind": condition_kind(norm), "text": clause, "units": []})
         node["units"].append(uid)
-        edges.append({"s": cid, "p": PREDICATE, "o": uid, "evidence": evidence, "method": GENERAL})
+        edges.append({"s": cid, "p": PREDICATE, "o": uid, "evidence": evidence, "how": "regex", "flags": [], "rule": GENERAL})
         seen = set()
         for ref in l2.find_refs(uid, clause):
             r = l2.resolve_ref(doc, uid, units, ref, all_units, resolver, available)
@@ -110,13 +110,13 @@ def find_general(doc, units, all_units, resolver, available, l5_explicit_unhandl
             for t in r.targets:
                 if t != uid and t not in seen:
                     seen.add(t)
-                    edges.append({"s": t, "p": PREDICATE, "o": uid, "evidence": evidence, "method": GENERAL_REF})
+                    edges.append({"s": t, "p": PREDICATE, "o": uid, "evidence": evidence, "how": "regex", "flags": [], "rule": GENERAL_REF})
     return nodes, edges, unhandled, pending
 
 
 def check_general(units, all_units, nodes, edges, unhandled, n_l5_explicit_unhandled):
     errors = []
-    keys = [(e["s"], e["o"], e["method"]) for e in edges]
+    keys = [(e["s"], e["o"], e["rule"]) for e in edges]
     for k, n in collections.Counter(keys).items():
         if n > 1:
             errors.append(f"cạnh trùng {n} lần: {k}")
@@ -124,9 +124,9 @@ def check_general(units, all_units, nodes, edges, unhandled, n_l5_explicit_unhan
         o = e["o"]
         if o not in units or e["evidence"] not in units[o]["text"]:
             errors.append(f"{e['s']} -> {o}: evidence không nằm trong text của {o}")
-        if e["method"] == GENERAL_REF and e["s"] not in all_units.get(e["s"].split(".")[0], {}):
+        if e["rule"] == GENERAL_REF and e["s"] not in all_units.get(e["s"].split(".")[0], {}):
             errors.append(f"{e['s']}: đích tham chiếu không tồn tại")
-        if e["method"] == GENERAL and e["s"] not in nodes:
+        if e["rule"] == GENERAL and e["s"] not in nodes:
             errors.append(f"{e['s']}: nút điều kiện không có")
     for cid, n in nodes.items():
         if not any(e["s"] == cid for e in edges):
@@ -149,7 +149,7 @@ def run_doc(doc, docs, all_units, resolver, available):
     kinds = collections.Counter(n["kind"] for n in nodes.values())
     n_general = sum(len(n["units"]) for n in nodes.values())
     report = [f"L5 chung báo cáo: {doc.doc_id}", f"trigger L5 tường minh để lại: {len(l5_explicit_unh)} = 'trừ trường hợp' đã xử lý {n_general} + unhandled {len(unhandled)}",
-              f"nút điều kiện: {len(nodes)} {dict(kinds)}  cạnh: {len(edges)} ({dict(collections.Counter(e['method'] for e in edges))})",
+              f"nút điều kiện: {len(nodes)} {dict(kinds)}  cạnh: {len(edges)} ({dict(collections.Counter(e['rule'] for e in edges))})",
               "unhandled theo lý do:"]
     report += [f"  {n:>3}  {r}" for r, n in collections.Counter(u["reason"] for u in unhandled).most_common()] or ["  (không có)"]
     report += [f"LỖI KIỂM: {e}" for e in errors]

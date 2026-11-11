@@ -16,9 +16,10 @@ from pathlib import Path
 from typing import NamedTuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import l1_parse as l1
-import l2_edges as l2
+import parse as l1
+import refs as l2
 import l6_versions as l6v
+import textutil
 import corpus
 
 OPEN_Q, CLOSE_Q = "“", "”"
@@ -207,7 +208,7 @@ def apply_node(store, tid, node, eff, source, directive, ev, parent_id, replace_
     elif cur.effective_to is not None and cur.effective_to <= eff:
         store.new_version(tid, eff, source, text, node.heading, ["reopened", *flags], directive)  # mở lại mã đã đóng
         ev.touched.add(tid)
-    elif l6v.text_norm(cur.text) != l6v.text_norm(text) or (node.kind == "dieu" and l6v.text_norm(cur.heading or "") != l6v.text_norm(node.heading or "")):
+    elif textutil.text_norm(cur.text) != textutil.text_norm(text) or (node.kind == "dieu" and textutil.text_norm(cur.heading or "") != textutil.text_norm(node.heading or "")):
         store.new_version(tid, eff, source, text, node.heading if node.kind == "dieu" else None, flags, directive)
         ev.touched.add(tid)
     new_ids = set()
@@ -228,7 +229,7 @@ def _flex(phrase):
     """Mẫu regex khớp cụm bất kể khoảng trắng và kiểu đặt dấu thanh (ủy/uỷ, hòa/hoà)."""
     pat = re.escape(phrase.strip())
     pat = re.sub(r"(?:\\ )+", r"\\s+", pat)
-    for a, b in l6v._TONE:  # mỗi cặp kiểu dấu thanh thành nhóm chọn một (không phân biệt hoa thường)
+    for a, b in textutil.TONE:  # mỗi cặp kiểu dấu thanh thành nhóm chọn một (không phân biệt hoa thường)
         pat = re.sub(f"{a}|{b}", f"(?:{a}|{b})", pat, flags=re.I)
     return pat
 
@@ -638,8 +639,8 @@ def trigger_matches(trigger, doc, units):
     body = l2.norm_number(" ".join((u.get("text") or "") + " " + (u.get("heading") or "") for u in units.values()))
     if not numbers or not all(n in body for n in numbers):
         return False
-    description = l6v.text_norm(re.split(rf"\(| của {KIND}", trigger[kind.end():])[0])
-    d1 = l6v.text_norm(" ".join((u.get("heading") or "") + " " + (u.get("text") or "") for k, u in units.items()
+    description = textutil.text_norm(re.split(rf"\(| của {KIND}", trigger[kind.end():])[0])
+    d1 = textutil.text_norm(" ".join((u.get("heading") or "") + " " + (u.get("text") or "") for k, u in units.items()
                                 if k == f"{doc.doc_id}.D1" or k.startswith(f"{doc.doc_id}.D1.")))
     return len(description) >= MIN_DESCRIPTION and description in d1
 
@@ -665,23 +666,23 @@ def supplements(ctx, store, doc, units, eff, ev):
         m = re.match(r"^Bổ sung (Danh mục .+)$", u.get("heading") or "", re.I)
         if not m:
             continue
-        key = l6v.text_norm(m[1])[:60]
+        key = textutil.text_norm(m[1])[:60]
         mine = next((k for k, v in units.items() if v["type"] == "pl"), None)
         cands = [k for d, us in ctx.units.items() if d != doc.doc_id for k, v in us.items()
-                 if v["type"] == "pl" and store.exists(k) and key in l6v.text_norm(v.get("heading") or "")]
+                 if v["type"] == "pl" and store.exists(k) and key in textutil.text_norm(v.get("heading") or "")]
         if mine is None or len(cands) != 1:
             ctx.unknown.append((doc.doc_id, uid, u["heading"][:120], f"bổ sung danh mục: {len(cands)} phụ lục khớp, cần đúng 1"))
             ev.unknown.append({"unit": uid, "text": u["heading"][:160]})
             continue
         tgt = cands[0]
-        old_norm = {l6v.text_norm(store.cur(k).text) for k in store.descendants(tgt) if store.cur(k).type == "pl_row"}
+        old_norm = {textutil.text_norm(store.cur(k).text) for k in store.descendants(tgt) if store.cur(k).type == "pl_row"}
         n_new = n_dup = 0
         base_n = sum(1 for k in store.children[tgt] if store.cur(k).type == "pl_row")
         for k in store.descendants(mine):
             v = store.cur(k)
             if v.type != "pl_row":
                 continue
-            if l6v.text_norm(v.text) in old_norm:
+            if textutil.text_norm(v.text) in old_norm:
                 n_dup += 1
                 continue
             base_n += 1
@@ -732,8 +733,8 @@ def line_only_dieu(store, doc, vunits, base):
         v_ids = [base + k[len(doc.doc_id):] for k in vunits if k == vid or k.startswith(vid + ".")]
         if set(b_ids) != set(v_ids):
             continue
-        b_chars = collections.Counter(re.sub(r"\W", "", "".join(l6v.text_norm(store.cur(x).text) for x in b_ids)))
-        v_chars = collections.Counter(re.sub(r"\W", "", "".join(l6v.text_norm(vunits[doc.doc_id + x[len(base):]].get("text") or "") for x in v_ids)))
+        b_chars = collections.Counter(re.sub(r"\W", "", "".join(textutil.text_norm(store.cur(x).text) for x in b_ids)))
+        v_chars = collections.Counter(re.sub(r"\W", "", "".join(textutil.text_norm(vunits[doc.doc_id + x[len(base):]].get("text") or "") for x in v_ids)))
         if b_chars == v_chars:
             out.add(bid)
     return out
@@ -768,8 +769,8 @@ def consolidation_compare(ctx, store, doc, vunits, eff, ev):
                 ev.discrepancy.append(bid)
                 stats["moi_khong_chu_thich"] += 1
             continue
-        same = (l6v.text_norm(cur.text) == l6v.text_norm(vu.get("text") or "")
-                and (vu["type"] != "dieu" or l6v.text_norm(cur.heading or "") == l6v.text_norm(vu.get("heading") or "")))
+        same = (textutil.text_norm(cur.text) == textutil.text_norm(vu.get("text") or "")
+                and (vu["type"] != "dieu" or textutil.text_norm(cur.heading or "") == textutil.text_norm(vu.get("heading") or "")))
         if same:
             stats["giong_sau_chuan_hoa"] += 1
         elif when:

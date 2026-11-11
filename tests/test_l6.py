@@ -8,6 +8,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
 import _harness  # noqa: E402
 import l6_versions as l6v  # noqa: E402
+import textutil  # noqa: E402
 import corpus  # noqa: E402
 import l6_directives as l6  # noqa: E402
 
@@ -44,7 +45,7 @@ def mini_store():
 # ---- chuẩn hoá chữ ----
 
 def test_text_norm_ignores_format_only_differences():
-    n = l6v.text_norm
+    n = textutil.text_norm
     assert n("Trung ương") == n("trung ương")
     assert n("trong ngàyhoặc") == n("trong ngày hoặc")
     assert n("thời gian - thời") == n("thời gian – thời")
@@ -178,7 +179,7 @@ def test_conditional_effect_pending_event():
 def test_pending_event_not_fired_by_documents_that_merely_cite_the_same_decrees():
     import copy
     import re
-    import l2_edges as l2
+    import refs as l2
     ctx, store, events, as_of = chain()
     trigger = store.cur("ND_283-2026.D7.K2.e").trigger
     numbers = {l2.norm_number(n) for n in re.findall(l2.NUMBER_RE, trigger)}

@@ -1,11 +1,11 @@
 """L1: tách một văn bản lao động (.txt) thành các đơn vị, đọc đầu văn bản và nội dung trích dẫn sửa đổi.
 
-Chạy: python -I src/l1_parse.py <doc_id | đường dẫn file>     một văn bản
-      python -I src/l1_parse.py --all                          cả kho (và ghi documents.jsonl)
+Chạy: python -I src/parse.py <doc_id | đường dẫn file>     một văn bản
+      python -I src/parse.py --all                          cả kho (và ghi documents.jsonl)
 
 Đầu vào: file .txt trong data/raw/labor/ (UTF-8, mỗi đoạn một dòng) + dòng manifest.csv của nó.
 Đầu ra (data/processed/l1/, mỗi văn bản một bộ):
-  l1_triples_<doc_id>.jsonl    bộ ba (s,p,o) của từng đơn vị: type, number, heading, parent, text, scope, version, source_line
+  l1_triples_<doc_id>.jsonl    bộ ba (s,p,o) của từng đơn vị: type, number, heading, parent, text, scope, footnote, source_line
   l1_payloads_<doc_id>.jsonl   mỗi khối trích dẫn “…” đứng sau câu dẫn (nội dung sửa đổi cho L6): không là đơn vị của văn bản chứa nó
   l1_tables_<doc_id>.jsonl     bảng đã ghép lại (bảng lương vùng bị trải từng ô một dòng)
   l1_footnotes_<doc_id>.jsonl  chú thích [n] cuối văn bản hợp nhất
@@ -574,7 +574,7 @@ def parse_document(doc):
 # ---- ghi / đọc ----
 
 def to_triples(units):
-    """Mỗi đơn vị thành các bộ ba (s,p,o), p theo thứ tự: type, number, heading, parent, scope, text, version, source_line."""
+    """Mỗi đơn vị thành các bộ ba (s,p,o), p theo thứ tự: type, number, heading, parent, scope, footnote, text, source_line."""
     triples = []
     for u in sorted(units, key=lambda u: (u.source_line, u.id)):
         triples.append((u.id, "type", u.type))
@@ -589,7 +589,6 @@ def to_triples(units):
             triples.append((u.id, "footnote", n))
         if u.parts:
             triples.append((u.id, "text", u.text))
-        triples.append((u.id, "version", 1))
         triples.append((u.id, "source_line", u.source_line))
     return triples
 
@@ -616,7 +615,7 @@ def triples_path(doc_id):
 
 
 def load_units(doc_id):
-    """Đọc lại l1_triples: {id: {type, number, heading, parent, text, scope, version, source_line}} theo thứ tự file."""
+    """Đọc lại l1_triples: {id: {type, number, heading, parent, text, scope, footnote, source_line}} theo thứ tự file."""
     units = collections.OrderedDict()
     for t in read_jsonl(triples_path(doc_id)):
         u = units.setdefault(t["s"], {"id": t["s"]})
