@@ -157,7 +157,7 @@ THẺ BƯỚC <số + tên>: <một câu: biến cái gì thành cái gì>   [gi
 4. Cách làm        các bước máy làm theo thứ tự; ví dụ khớp và KHÔNG khớp; có LLM không.
 5. Vì sao          thiếu thì hỏng gì; vì sao cách này, nêu cách khác và vì sao không chọn.
 6. Kiểm và số đo   máy kiểm gì; số đo trên dữ liệu thật (đo ở đâu); cái gì chưa kiểm được.
-7. Kiểm hiểu       câu hỏi cho người dùng, khoảng 10 câu cho cả một lớp (docs/kiem_hieu.md).
+7. Kiểm hiểu       câu hỏi cho người dùng, 10 câu cho MỖI bước (docs/kiem_hieu.md).
 ```
 Quy ước: thuật ngữ lần đầu có giải nghĩa ngay bên cạnh; mỗi con số ghi đo ở đâu; không viết tắt kiểu "dạng A, B, D" mà nêu từng dạng; ví dụ dòng ra rút gọn field lặp bằng "...". Thẻ của 1.1, 1.2, 1.4, 1.5 chưa viết theo khuôn này: nội dung tương đương đang nằm rải ở các mục "Cách làm", "Ví dụ" và "Giải thích field" bên dưới.
 
@@ -201,7 +201,7 @@ ca lỏng:    {"unit_id":"...D21.K5","pattern":"loose","delegate":"Bộ trưởn
 - Ra 51 ca chắc (A 35 gồm 2 ca C, B 10, D 5, E 1) và 5 ca lỏng. Theo agent đọc: 4 ca lỏng là chỗ giao thật (`D21.K5`, `D73.K4`, `D145.K4`, `D147.K3`), 1 ca nghi không (`D133.K1`: "Chính phủ quyết định Chương trình quốc gia ..."). Chưa ai xác nhận.
 - Chưa kiểm được: có câu giao nào cả hai regex đều không thấy không (không có đáp án chuẩn). 51 ca chắc vẫn có thể lẫn vài ca không phải giao chi tiết (regex thô).
 
-**7. Kiểm hiểu:** câu 6, 7, 8 của `docs/kiem_hieu.md`.
+**7. Kiểm hiểu:** 10 câu mục 1.3 của `docs/kiem_hieu.md` (1.3.1 đến 1.3.10).
 
 ## Giai đoạn 2: update engine, `Update(K, d)` cho mỗi ND/TT theo ngày hiệu lực
 Theo Thuật toán 1 của Method. VBHN_125 nạp như một văn bản thường.

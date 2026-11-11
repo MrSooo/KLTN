@@ -22,7 +22,7 @@ Mục tiêu của user là **hiểu và kiểm soát được mình đang làm g
     - Quyết định user đã chốt phải ghi NGAY vào `docs/quyet_dinh/` (user dặn "note kỹ kẻo quên").
     - Nói với user bằng **tên bước mới** (1.5, `exceptions`, ...), không dùng L-số (L5, L3...): user đã nói rõ họ coi như không biết code cũ làm gì, và bực khi bị gọi tên cũ.
     - Khi kể lại một bước, dùng khuôn "thẻ bước" ở `docs/pipeline_moi.md` (mục "Mẫu thẻ bước"): mô tả CHÍNH BƯỚC, có ví dụ dữ liệu thật và bảng field liệt kê hết các giá trị.
-    - **Sau thẻ bước của một lớp, hỏi user khoảng 10 câu kiểm hiểu** (bộ câu hỏi ở `docs/kiem_hieu.md`) (user tự trả lời, agent chấm và giải thích chỗ sai; ghi bước nào đã nắm vào `docs/tien_do.md`). User đề xuất 11/11 vì mục tiêu là họ bảo vệ được từng bước.
+    - **Sau thẻ bước, hỏi user 10 câu kiểm hiểu cho MỖI bước** (bộ câu hỏi ở `docs/kiem_hieu.md`; ý chính đáp án ở `docs/kiem_hieu_dap_an.md`, chỉ dành cho agent, không đưa trước) (user tự trả lời, agent chấm và giải thích chỗ sai; ghi bước nào đã nắm vào `docs/tien_do.md`). User đề xuất 11/11 vì mục tiêu là họ bảo vệ được từng bước.
     - Advisor để kiểm một đề xuất, không thay cho việc bàn với user.
 
 ## 2. Dự án là gì

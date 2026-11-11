@@ -8,7 +8,7 @@ Cập nhật lần cuối: **11/11/2026**, cuối ngày (người dùng nói "t�
 3. File này.
 4. `docs/pipeline_moi.md`: thiết kế pipeline, cách làm từng bước, ví dụ dữ liệu thật, giải thích field, mẫu "thẻ bước" và thẻ mẫu 1.3.
 5. `docs/quyet_dinh/pipeline_moi_quyet_dinh.txt`: quyết định đã chốt (mục A, A1 đến A20) và số đo, quan sát (mục B, B1 đến B10).
-6. `docs/kiem_hieu.md`: 10 câu kiểm hiểu lớp 1.1 đến 1.5 (người dùng trả lời, agent chấm).
+6. `docs/kiem_hieu.md` và `docs/kiem_hieu_dap_an.md`: bộ kiểm hiểu 1.1 đến 1.5 (10 câu mỗi bước, tổng 50 câu; đáp án ý chính chỉ dành cho agent chấm).
 7. Khi cần: `docs/tien_do_L0_L6.md` (lịch sử code cũ), `docs/quyet_dinh/l*_quyet_dinh.txt` (quyết định của code cũ), `plan/ke_hoach/` (plan tham khảo, không sửa), `plan/ke_hoach/method_vi_3_1_den_3_6_2026-11-09.md` (bản Method của luận, nguồn của mô hình K).
 
 ## Câu mở phiên và câu kết phiên (người dùng copy-paste)
@@ -36,17 +36,17 @@ Cập nhật lần cuối: **11/11/2026**, cuối ngày (người dùng nói "t�
 9. **Câu hỏi thiết kế còn mở** ở cuối mục "Câu hỏi thiết kế đang mở" của `docs/pipeline_moi.md` (câu 2 đến 8; câu 1 đã giải quyết bởi A14).
 
 ## Kiểm hiểu (người dùng bảo "khá hay, lưu lại" 11/11)
-Bộ 10 câu ở `docs/kiem_hieu.md`, kết quả đang ghi "chưa trả lời" cả 10. Người dùng chưa trả lời câu nào, kể cả ba câu thử cho thẻ 1.3 (ở đó là câu 6, 7, 8). Agent chấm, giải thích chỗ sai, rồi ghi kết quả vào cột cuối của bảng đó.
+Bộ 50 câu (10 câu mỗi bước 1.1 đến 1.5) ở `docs/kiem_hieu.md`; ý chính đáp án cho agent ở `docs/kiem_hieu_dap_an.md`. Kết quả đang ghi "chưa trả lời" cả 50 câu. Người dùng nói "kiểm 1.x" thì agent hỏi 10 câu của bước đó, chấm đúng/thiếu/sai, giải thích chỗ sai, rồi ghi kết quả và "mức nắm" (ngưỡng đề xuất: 8 trên 10 là đã nắm) vào bảng.
 
 ## Việc kế tiếp (theo thứ tự)
 1. Dựng lại và xác nhận xanh (README, mục "Dựng lại và kiểm").
-2. Người dùng trả lời 10 câu kiểm hiểu; agent chấm và ghi lại.
+2. Kiểm hiểu: người dùng nói "kiểm 1.x" (bước nào cũng được); agent hỏi 10 câu của bước đó, chấm và ghi lại.
 3. **Bàn bước 1.6 (sổ khái niệm)**, chưa code. Đọc mục 3.5 của Method trước. Làm đúng quy tắc 11: kể lại bước bằng thẻ, hỏi kiểm hiểu, rồi mới nhờ quyết. Nhớ đếm hạn mức LLM (model chính 500 lượt/ngày, model kiểm 20 lượt/ngày) cho 1.6 đến 1.8 trước khi cam kết "mọi bước LLM đều có model thứ hai kiểm".
 4. Kiểm s(CASP) trên máy này: `scasp --version`, `swipl --version`.
 5. Khi rảnh: viết thẻ 1.1, 1.2, 1.4, 1.5; rà `checks.py`.
 
 ## Chờ người dùng
-- Trả lời 10 câu kiểm hiểu.
+- Trả lời bộ kiểm hiểu (10 câu mỗi bước, 5 bước); nói "kiểm 1.x" để bắt đầu từ bước nào cũng được.
 - Restart VS Code ở máy chính rồi báo s(CASP) chạy được (người dùng nói chắc chắn đã cài; agent chưa thấy `scasp`, `swipl` trong PATH của phiên 11/11).
 - `.claude/CLAUDE.md` mục 5 ("Việc đang dở", phần người dùng tự cập nhật) còn trỏ tới tài liệu cũ (`docs/tien_do_L0_L6.md`, nhánh `v2-lao-dong`): agent chưa sửa; muốn thì bảo.
 - Xoá cache cũ `data/llm_cache/l4_classify/` và sửa `docs/llm_config.md`: cần người dùng bảo.
@@ -82,7 +82,7 @@ Bộ 10 câu ở `docs/kiem_hieu.md`, kết quả đang ghi "chưa trả lời" 
 - Code: S1 đổi tên 5 file và dời `text_norm` sang `textutil.py` (đầu ra giống hệt mốc, 301 file); S2 bỏ LLM khỏi 1.4 (A14; 93 trên 921 nhãn đổi, 39 `effect_transition` không đổi); S3 khuôn cạnh chung (A12); S4 tách `l3_links.py` thành `delegation.py` (1.3, có tầng lỏng `loose`) và `links.py` (2.2); bỏ `version` và `heading` (A16).
 - Lỗi tự gây, đã sửa: S3 để nhánh `--llm off` đọc field `check` đã bỏ (KeyError, lệnh dựng lại mặc định hỏng) mà chỉ kiểm bằng `replay`. Từ đó chạy cả hai chế độ mỗi lần.
 - Phát hiện: cổng phần dư của 1.2 đã có sẵn trong code cũ (0 sót); tầng 2 hoãn (B10); 4 ca điều khoản giao bị regex chặt bỏ sót vì dấu gạch ngang trong "Bộ Lao động - Thương binh và Xã hội".
-- Cách báo cáo: mẫu "thẻ bước" v2 (người dùng duyệt), bộ 10 câu kiểm hiểu, `README.md` làm điểm vào cho máy khác.
+- Cách báo cáo: mẫu "thẻ bước" v2 (người dùng duyệt), bộ 50 câu kiểm hiểu (10 mỗi bước), `README.md` làm điểm vào cho máy khác.
 - Đã kiểm trước commit: bản sao sạch các file `git add` sẽ lấy chạy xanh 12/12 ở `--llm off` và `replay`; đầu ra `replay` giống hệt cây làm việc.
 - Chưa kiểm: `checks.py` theo thiết kế mới; s(CASP) (agent chưa thấy trong PATH).
 

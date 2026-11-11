@@ -10,7 +10,7 @@ Người dùng sẽ dán đúng một câu: **"Đọc README.md và làm theo m�
 2. `docs/tien_do.md`: trạng thái chi tiết, danh sách nợ, nhật ký, quy trình khi người dùng nói "tạm dừng".
 3. `docs/pipeline_moi.md`: thiết kế pipeline (các bước 1.1 đến 2.7), cách làm từng bước, ví dụ dữ liệu thật, giải thích field.
 4. `docs/quyet_dinh/pipeline_moi_quyet_dinh.txt`: các quyết định đã chốt và lý do (mục A), số đo và quan sát (mục B).
-5. `docs/kiem_hieu.md`: 10 câu kiểm hiểu lớp 1.1 đến 1.5 (người dùng trả lời, agent chấm).
+5. `docs/kiem_hieu.md`: bộ kiểm hiểu 1.1 đến 1.5 (10 câu mỗi bước, tổng 50 câu; người dùng trả lời, agent chấm theo `docs/kiem_hieu_dap_an.md`).
 
 Chưa cần đọc: `plan/ke_hoach/` (plan cũ, chỉ tham khảo), `archive/` (bản v1 thừa kế, đóng băng), `docs/tien_do_L0_L6.md` (lịch sử code cũ). Tên bước kiểu L1, L5... là tên CŨ; người dùng không dùng, nói với họ bằng tên mới (1.5, `exceptions`).
 
@@ -22,7 +22,7 @@ Trạng thái: bước 1.1 đến 1.5 đã code xong và chạy xanh (12/12 bư�
 Làm theo thứ tự:
 1. **Dựng lại và xác nhận xanh** (mục dưới): phải ra `XONG: 12/12 bước`.
 2. **Kiểm s(CASP)** trên máy này: `scasp --version`, `swipl --version`. Người dùng nói đã cài ở máy chính; cần cho bước 1.8 và 1.9.
-3. **Kiểm hiểu:** người dùng trả lời 10 câu ở `docs/kiem_hieu.md`; agent chấm, giải thích chỗ sai, ghi kết quả vào bảng. Chưa đưa đáp án trước.
+3. **Kiểm hiểu:** người dùng nói "kiểm 1.x" thì agent hỏi 10 câu của bước đó (`docs/kiem_hieu.md`, tổng 50 câu cho 5 bước); chấm đúng/thiếu/sai theo `docs/kiem_hieu_dap_an.md` (chỉ dành cho agent, chưa đưa đáp án trước), giải thích chỗ sai, ghi kết quả và mức nắm vào bảng.
 4. **Bàn bước 1.6 (sổ khái niệm)**, chưa code: đọc mục 3.5 của Method (`plan/ke_hoach/method_vi_3_1_den_3_6_2026-11-09.md`), kể lại bước bằng "thẻ bước" (khuôn ở `docs/pipeline_moi.md`), hỏi kiểm hiểu, rồi mới nhờ người dùng quyết.
 5. Nợ còn lại (thẻ bước 1.1/1.2/1.4/1.5, rà `checks.py`, ...) ở `docs/tien_do.md`; không chặn việc bàn 1.6.
 
