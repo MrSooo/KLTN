@@ -50,6 +50,27 @@ def test_l5_explicit_rule1_needs_reference_right_before():
     assert [u["unit"] for u in unhandled] == [P + "D6"]
 
 
+def test_l5_trigger_ignores_non_exception_senses():
+    """A22: 'khấu trừ', 'loại trừ', 'giảm trừ', 'trừ đi' là phép trừ hoặc nghĩa khác, không phải trigger; 'trừ', 'ngoại trừ', 'không áp dụng' vẫn là."""
+    def trig(text):
+        return [m[0].lower() for _, m in l5x.find_triggers({"D.D1": {"id": "D.D1", "type": "dieu", "parent": None, "text": text}})]
+    assert trig("Người sử dụng lao động khấu trừ tiền lương của người lao động. Mức giảm trừ gia cảnh. Việc loại trừ hoặc ưu tiên. Trừ đi thời gian đã tham gia.") == []
+    assert trig("Áp dụng cho mọi người, trừ lĩnh vực nghệ thuật; ngoại trừ trường hợp khác; không áp dụng cho doanh nghiệp nhỏ") == ["trừ", "ngoại trừ", "không áp dụng"]
+
+
+def test_l5_explicit_rule2_needs_list_tail_not_midsentence_tru():
+    """A22: 'trừ' giữa câu rồi câu kết bằng 'theo một trong các mức sau đây:' thì các khoản con là mức phạt, không phải ngoại lệ; không tạo cạnh."""
+    P = "ND_152-2020."
+    docs = corpus.load_manifest()
+    resolver = l2.Resolver(docs, l2.load_headers())
+    for text in ["Phạt tiền khi có hành vi sửa đổi hợp đồng, trừ trường hợp kéo dài thời hạn; không thực hiện đúng quy định theo một trong các mức sau đây:",
+                 "Trừ các trường hợp quy định tại Điều 108, các trường hợp khác phải được sự đồng ý về các nội dung sau đây:"]:
+        units = {P + "D1": {"id": P + "D1", "type": "dieu", "parent": None, "text": text},
+                 P + "D1.a": {"id": P + "D1.a", "type": "diem", "parent": P + "D1", "text": "Mức một"}}
+        edges, handled, unhandled, pending = l5x.find_exceptions(docs["ND_152-2020"], units, {"ND_152-2020": units}, resolver, {"ND_152-2020"})
+        assert not edges and [u["unit"] for u in unhandled] == [P + "D1"], text
+
+
 def test_l5_explicit_skips_directive_lines():
     units = {"D.D1": {"id": "D.D1", "type": "dieu", "parent": None, "text": "Bãi bỏ khoản 2 Điều 5, trừ trường hợp khác"}}
     assert l5x.find_triggers(units) == []
@@ -162,6 +183,25 @@ def test_l4_classify_headings():
     assert c("Hồ sơ đề nghị cấp giấy phép lao động") == ("procedural", "regex")
     assert c("Trình tự cấp lại giấy phép")[0] == "procedural"
     assert c("Hợp đồng lao động vô hiệu") == ("substantive", "default")
+
+
+def test_l4_domain_headings_stay_substantive():
+    """A21: tiêu đề nói về hợp đồng/thỏa ước/nội quy (không phải về chính văn bản luật) không bị đẩy khỏi substantive."""
+    c = l4.classify_heading
+    for h in ["Hiệu lực của hợp đồng lao động", "Hiệu lực của nội quy lao động", "Hiệu lực và thời hạn của thỏa ước lao động tập thể",
+              "Sửa đổi, bổ sung hợp đồng lao động", "Sửa đổi, bổ sung thỏa ước lao động tập thể", "Thẩm quyền giao kết hợp đồng lao động"]:
+        assert c(h) == ("substantive", "default"), h
+
+
+def test_l4_real_effect_and_authority_headings_kept():
+    """A21: các tiêu đề thật của hiệu lực/sửa đổi/thẩm quyền vẫn đúng nhãn (nguồn của bước đọc chỉ thị 2.3 không được mất)."""
+    c = l4.classify_heading
+    for h in ["Hiệu lực", "Hiệu lực thi hành", "Hiệu lực và trách nhiệm thi hành", "Hiệu lực của Nghị định này", "Điều khoản thi hành",
+              "Sửa đổi, bổ sung một số điều của các luật có liên quan đến lao động", "Bãi bỏ một số quy định của Nghị định số 35/2022/NĐ-CP",
+              "Bổ sung Danh mục nghề, công việc nặng nhọc, độc hại, nguy hiểm", "Thay thế Phụ lục I"]:
+        assert c(h) == ("effect_transition", "regex"), h
+    for h in ["Thẩm quyền xử phạt của Thanh tra lao động", "Thẩm quyền tuyên bố hợp đồng lao động vô hiệu"]:
+        assert c(h) == ("authority", "regex"), h
 
 
 _harness.run(globals())

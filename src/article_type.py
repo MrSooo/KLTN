@@ -28,13 +28,23 @@ import corpus
 
 L4_DIR_NAME = "l4"
 
+# Danh từ chỉ đơn vị pháp luật hoặc văn bản. Đứng sau "Sửa đổi, bổ sung" hay "Hiệu lực của" thì tiêu đề nói về chính văn bản luật (chỉ thị
+# sửa đổi, hiệu lực của luật). Thiếu danh từ này ("Sửa đổi, bổ sung hợp đồng lao động", "Hiệu lực của nội quy lao động") thì đó là quy tắc
+# thường về hợp đồng, thỏa ước, nội quy: nếu xếp effect_transition thì Điều bị đẩy khỏi substantive và mất quy tắc (A21).
+_LEGAL_NOUN = (r"(?:điều|khoản|điểm|mục|chương|phụ[ ]+lục|danh[ ]+mục|quy[ ]+định|nghị[ ]+định|thông[ ]+tư|luật|bộ[ ]+luật|"
+               r"nghị[ ]+quyết|quyết[ ]+định|văn[ ]+bản)(?!\w)")
+
 RULES = [  # (nhãn, regex trên tiêu đề, theo thứ tự ưu tiên)
     ("definition", re.compile(r"^Giải thích từ ngữ", re.I)),
-    ("effect_transition", re.compile(r"^(?:Hiệu lực(?: thi hành)?|Quy định chuyển tiếp|Điều khoản chuyển tiếp|Điều khoản thi hành|Bãi bỏ|"
-                                      r"Sửa đổi, bổ sung|Sửa đổi|Bổ sung|Thay thế|Hết hiệu lực|Áp dụng pháp luật)", re.I)),
+    ("effect_transition", re.compile(
+        rf"^(?:Hiệu lực(?![ ]+của[ ]+(?!{_LEGAL_NOUN}))(?![ ]+và[ ]+thời[ ]+hạn)|"
+        r"Quy định chuyển tiếp|Điều khoản chuyển tiếp|Điều khoản thi hành|Bãi bỏ|Hết hiệu lực|Áp dụng pháp luật|"
+        rf"(?:Sửa đổi, bổ sung|Sửa đổi|Bổ sung|Thay thế)[ ]+(?:(?:một[ ]+số|các|toàn[ ]+bộ)[ ]+)?{_LEGAL_NOUN})", re.I)),
     # "Trách nhiệm" chỉ là authority khi chủ thể là cơ quan, tổ chức nhà nước; "Trách nhiệm khi chấm dứt hợp đồng lao động" là nghĩa vụ của các bên.
+    # "Thẩm quyền giao kết hợp đồng lao động" (ai được ký hợp đồng) là quy tắc của các bên, không phải thẩm quyền cơ quan; loại riêng.
+    # "Thẩm quyền tuyên bố ... vô hiệu" (Tòa án) vẫn là authority.
     ("authority", re.compile(r"^(?:Trách nhiệm của (?:các )?(?:Bộ|cơ quan|Ủy ban|Sở|Chính phủ|Thủ tướng|Tổng liên đoàn|UBND|tổ chức có thẩm quyền)|"
-                             r"Trách nhiệm (?:thi hành|quản lý nhà nước)|Thẩm quyền|Nhiệm vụ|Quyền hạn|Tổ chức thực hiện|Cơ quan)", re.I)),
+                             r"Trách nhiệm (?:thi hành|quản lý nhà nước)|Thẩm quyền(?![ ]+giao[ ]+kết)|Nhiệm vụ|Quyền hạn|Tổ chức thực hiện|Cơ quan)", re.I)),
     ("procedural", re.compile(r"^(?:Hồ sơ|Trình tự|Thủ tục|Cách thức|Tiếp nhận|Nộp hồ sơ|Thời hạn giải quyết|Quy trình)", re.I)),
 ]
 

@@ -58,6 +58,29 @@ def test_tail_kinds():
     assert l2.parse_tail("Điều 5 và Điều 6", len("Điều 5")) is None
 
 
+def test_tail_name_full_title_not_truncated():
+    """A23: tên văn bản không số hiệu lấy đủ các chữ liền nhau, kể cả chữ thường (trước đây 'Luật Bảo', 'Luật Xử')."""
+    assert l2.parse_tail("Điều 32 của Luật Bảo hiểm xã hội;", len("Điều 32")).name == "Luật Bảo hiểm xã hội"
+    assert l2.parse_tail("khoản 1 Điều 6 của Luật Xử lý vi phạm hành chính.", len("khoản 1 Điều 6")).name == "Luật Xử lý vi phạm hành chính"
+    assert l2.parse_tail("Điều 3 của Luật Công đoàn, hoặc", len("Điều 3")).name == "Luật Công đoàn"
+    assert l2.parse_tail("Điều 9 của Luật Doanh nghiệp không áp dụng", len("Điều 9")).name == "Luật Doanh nghiệp"
+    assert l2.parse_tail("Điều 9 của Luật Bảo hiểm xã hội nhưng chưa đến mức", len("Điều 9")).name == "Luật Bảo hiểm xã hội"
+    text = "Điều 4 của Luật An toàn, vệ sinh lao động và Điều 5"
+    t = l2.parse_tail(text, len("Điều 4"))
+    assert t.name == "Luật An toàn, vệ sinh lao động" and text[:t.end] == "Điều 4 của Luật An toàn, vệ sinh lao động"
+    assert l2.parse_tail("Điều 5 của Luật Người lao động Việt Nam đi làm việc ở nước ngoài", len("Điều 5")).name == "Luật Người lao động Việt Nam"
+
+
+def test_tail_name_must_be_contiguous():
+    """A23: chữ hoa đầu câu sau dấu chấm hoặc xuống dòng không dính vào tên ('Bộ luật Lao động Trường' trước đây); tên đã đủ thì không kéo dài."""
+    text = "Điều 5 của Bộ luật Lao động.\nTrường hợp khác"
+    t = l2.parse_tail(text, len("Điều 5"))
+    assert t.name == "Bộ luật Lao động" and text[:t.end] == "Điều 5 của Bộ luật Lao động"
+    text = "Điều 5 của Bộ luật Lao động thực hiện đúng"
+    t = l2.parse_tail(text, len("Điều 5"))
+    assert t.name == "Bộ luật Lao động" and text[:t.end] == "Điều 5 của Bộ luật Lao động"
+
+
 def test_phu_luc_refs():
     r = refs("theo quy định tại Phụ lục I.7 ban hành kèm theo Nghị quyết này")
     assert r[0].pl == "I_7" and r[0].tail.self_ref

@@ -27,7 +27,7 @@ Các bước 1.1 đến 1.5 phải viết theo "xử lý **một văn bản bấ
 | 1.3 Điều khoản giao | Δ | không (ở giai đoạn 1) | các mốc của bảng đối chiếu | `delegation.py` (cũ phần quét của `l3_links.py`) | **đã code 11/11 (S4)**: tách file, thêm tầng lỏng `loose` |
 | 1.4 Loại Điều | nhãn quyết định Điều nào được trích quy tắc | không (chốt 11/11, A14: bỏ LLM) | regex trên tiêu đề; Điều không khớp mặc định `substantive` | `article_type.py` (cũ `l4_classify.py`) | **đã code 11/11 (S2)** |
 | 1.5 Ngoại lệ tường minh | E: `exception_of` (cụm "trừ trường hợp ... tại Điều X") | không | các mốc 154→151.1.d, 37→36.1.b... | `exceptions_explicit.py`, `exceptions_general.py` (cũ `l5_*_exceptions.py`) | đã bàn; đổi tên xong (S1) |
-| 1.6 Sổ khái niệm | P | có (gạch cụm chủ thể, điều kiện, ngoại lệ, kết luận) | cụm phải là chuỗi con nguyên văn của đơn vị; một lượt trích độc lập kiểm lại | chưa có | chưa bàn |
+| 1.6 Sổ khái niệm | P | có (gạch cụm chủ thể, điều kiện, ngoại lệ, kết luận) | cụm phải nằm trong ngữ cảnh của đơn vị = tiêu đề Điều + chapeau khoản cha + chữ đơn vị (user chốt 12/11, A26); đối chiếu với đầu ra của 1.2 và 1.5; KHÔNG dùng model thứ hai kiểm (A25) | chưa có | **đang bàn 12/11** (thẻ ở mục "Mẫu thẻ bước", bản bàn, chưa code) |
 | 1.7 Ngoại lệ ngầm | E: `exception_of` giữa hai đơn vị cùng dùng một khái niệm | có (xét từng cặp) | có câu bằng chứng nguyên văn; hai đầu tồn tại; không tạo vòng | chưa có | chưa bàn |
 | 1.8 Quy tắc | R (quy tắc s(CASP)), quét lỗi, tự sửa tối đa 2 vòng | có | biên dịch được; chỉ dùng vị từ được phép; bộ quét lỗi; không qua thì cô lập | chưa có | chưa bàn |
 | 1.9 Hỏi đáp theo ngày | câu trả lời từ Π_τ | có (đổi câu hỏi thành dữ kiện) | chạy φ và ¬φ; bốn kết quả: kết luận được / bị bác / chưa đủ căn cứ / không trả lời (dính mục bị cô lập) | chưa có | chưa bàn |
@@ -159,7 +159,7 @@ THẺ BƯỚC <số + tên>: <một câu: biến cái gì thành cái gì>   [gi
 6. Kiểm và số đo   máy kiểm gì; số đo trên dữ liệu thật (đo ở đâu); cái gì chưa kiểm được.
 7. Kiểm hiểu       câu hỏi cho người dùng, 10 câu cho MỖI bước (docs/kiem_hieu.md).
 ```
-Quy ước: thuật ngữ lần đầu có giải nghĩa ngay bên cạnh; mỗi con số ghi đo ở đâu; không viết tắt kiểu "dạng A, B, D" mà nêu từng dạng; ví dụ dòng ra rút gọn field lặp bằng "...". Thẻ của 1.1, 1.2, 1.4, 1.5 chưa viết theo khuôn này: nội dung tương đương đang nằm rải ở các mục "Cách làm", "Ví dụ" và "Giải thích field" bên dưới.
+Quy ước: thuật ngữ lần đầu có giải nghĩa ngay bên cạnh; mỗi con số ghi đo ở đâu; không viết tắt kiểu "dạng A, B, D" mà nêu từng dạng; ví dụ dòng ra rút gọn field lặp bằng "...". Thẻ của cả năm bước 1.1 đến 1.5 đã viết theo khuôn này ở `docs/the_buoc_1_1_den_1_5.md` (12/11/2026); các mục "Cách làm", "Ví dụ" và "Giải thích field" ở trên là bản tóm tắt cũ của cùng nội dung.
 
 ### THẺ BƯỚC 1.3 `delegation`: tìm các chỗ luật giao cho cấp dưới quy định chi tiết [giai đoạn 1, sau 1.1 parse]
 **1. Nhận vào.** Chữ (`text`) của mọi Điều, khoản, điểm của BLLĐ (từ 1.1). Ví dụ: `D12.K3` "Chính phủ quy định chi tiết Điều này." · `D35.K1.d` "... được thực hiện theo quy định của Chính phủ." · `D21.K5` "Bộ trưởng Bộ Lao động - Thương binh và Xã hội quy định chi tiết các khoản 1, 2 và 3 Điều này."
@@ -203,6 +203,67 @@ ca lỏng:    {"unit_id":"...D21.K5","pattern":"loose","delegate":"Bộ trưởn
 
 **7. Kiểm hiểu:** 10 câu mục 1.3 của `docs/kiem_hieu.md` (1.3.1 đến 1.3.10).
 
+### THẺ BƯỚC 1.6 `concepts` (tên đề xuất): sổ khái niệm, gạch các cụm trong chữ luật rồi đặt tên chung cho chúng [giai đoạn 1, sau 1.4; BẢN BÀN 12/11, chưa code]
+Mọi ví dụ gạch cụm và tên vị từ dưới đây do agent làm TAY trên chữ thật của BLLĐ để minh hoạ; chưa có code nào chạy ra chúng, tên vị từ chỉ là minh hoạ.
+
+**1. Nhận vào.** Mọi đơn vị có chữ nằm dưới Điều nhãn `substantive` hoặc `definition` (từ 1.4). BLLĐ, đo 12/11: 881 đơn vị (591 khoản, 245 điểm, 45 Điều có chữ trực tiếp), tổng 151.598 ký tự (trung bình 172, dài nhất 899). Đi kèm mỗi đơn vị là "ngữ cảnh": tiêu đề Điều, và chữ khoản cha (chapeau) nếu là điểm. Vì sao cần: 245/245 điểm đều dựa vào chữ của khoản cha; và có khoản không tự mang chủ thể hay kết luận, chúng nằm ở tiêu đề Điều. Ví dụ:
+- `D14.K2`: "Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18, điểm a khoản 1 Điều 145 và khoản 1 Điều 162 của Bộ luật này."
+- `D154.K1`: "Là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ." Tiêu đề Điều 154: "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động".
+- `D151.K1.d`: "Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp, trừ trường hợp quy định tại Điều 154 của Bộ luật này." Chapeau `D151.K1`: "Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:"
+
+**2. Ra.** Hai file (đề xuất): bảng cụm (mỗi cụm một dòng) và sổ vị từ P (mỗi vị từ một dòng):
+```
+bảng cụm:  {"unit":"...D14.K2","span":"hợp đồng có thời hạn dưới 01 tháng","role":"dieu_kien","source":"own","predicate":"contract_term_under_1_month(C)","kind":"input"}
+           {"unit":"...D14.K2","span":"quy định tại khoản 2 Điều 18, điểm a khoản 1 Điều 145 và khoản 1 Điều 162 của Bộ luật này","role":"ngoai_le","source":"own","predicate":null,"kind":null}
+           {"unit":"...D154.K1","span":"không thuộc diện cấp giấy phép lao động","role":"ket_luan","source":"heading","predicate":"work_permit_exempt(W)","kind":"concept"}
+sổ vị từ:  {"predicate":"work_permit_exempt(W)","kind":"concept","anchors":["BLLD_45-2019.D154"],"aliases":["không thuộc diện cấp giấy phép lao động"],"used_in":["BLLD_45-2019.D151.K1.d"]}
+           {"predicate":"contract_term_under_1_month(C)","kind":"input","anchors":[],"aliases":["hợp đồng có thời hạn dưới 01 tháng"],"used_in":["BLLD_45-2019.D14.K2"]}
+cụm bị loại (không qua cổng): ghi riêng kèm lý do, không vào sổ.
+```
+
+**3. Bảng field** (minh hoạ).
+| Field | Nghĩa | Mọi giá trị có thể có |
+|---|---|---|
+| `role` | vai của cụm trong quy tắc | `chu_the` ai bị quy tắc nói tới ("Hai bên") · `dieu_kien` khi nào quy tắc áp dụng · `ngoai_le` trừ khi nào · `ket_luan` hệ quả (được, cấm, phải, hưởng ...) |
+| `source` | cụm lấy từ đâu của ngữ cảnh | `own` chữ chính đơn vị · `chapeau` chữ khoản cha (với điểm) · `heading` tiêu đề Điều |
+| `kind` | loại vị từ | `concept`: có đơn vị trong KB nêu khi nào cụm này đúng (neo vào đơn vị đó) · `input`: dữ kiện do người hỏi tự nêu, không có đơn vị nào định nghĩa |
+| `predicate` | tên vị từ kèm tham số theo vai | W người lao động, E người sử dụng lao động, C hợp đồng lao động, J nghề/công việc, G vùng, D ngày/mốc, A số tiền/số lượng |
+| `anchors`, `aliases`, `used_in` | đơn vị định nghĩa vị từ; các cách nói khác của cùng cụm; đơn vị dùng vị từ | danh sách |
+
+**4. Cách làm.**
+1. Máy đánh dấu từ báo hiệu bằng regex ("nếu", "khi", "trường hợp", "trừ", "không áp dụng", "phải", "được", "bị coi là"): chỗ nào có mà chưa có cụm thì báo.
+2. LLM (theo lô, đầu ra ép vào 4 vai) gạch các cụm nguyên văn từ đơn vị cùng ngữ cảnh. Chỉ gạch chữ có sẵn, không tự viết lại.
+3. Máy kiểm từng cụm qua các cổng ở mục 6; không qua thì loại.
+4. Phân loại `concept` hay `input`; đặt tên vị từ; mỗi khái niệm một tên (gộp chỉ khi cụm chuẩn hoá trùng nhau hoặc là bí danh đã ghi).
+5. Đối chiếu chéo với đầu ra đã có của 1.5 và 1.2 (xem mục 6). Số liệu trong bảng (mức lương vùng, danh mục nghề) KHÔNG qua LLM: dựng thẳng từ bảng của 1.1; BLLĐ không có bảng nên chưa dùng tới ở giai đoạn 1.
+Với `--llm off`: chỉ ra phần máy làm được (cụm `ngoai_le` lấy từ nút điều kiện của 1.5, cụm là dẫn chiếu đã giải của 1.2, dấu từ báo hiệu); không có cụm chủ thể, điều kiện, kết luận.
+
+**5. Vì sao.**
+- Cần bước này: quy tắc trích từ các Điều khác nhau chỉ nối được khi cùng dùng một tên vị từ. Ví dụ `D151.K1.d` đòi "có giấy phép lao động, trừ trường hợp Điều 154", và Điều 154 nói "không thuộc diện cấp giấy phép lao động": nếu hai chỗ đặt hai tên khác nhau thì 1.7 (ngoại lệ ngầm) và 1.8 (quy tắc) không biết chúng là một. Hỏng thì thấy: một khái niệm hai tên thì quy tắc không nối; khái niệm bị xếp nhầm `input` thì điều định nghĩa nó không bao giờ được dùng.
+- Dùng LLM ở đây (khác 1.1 đến 1.5): chữ luật tả điều kiện và hệ quả bằng văn xuôi, không có công thức cố định để regex bắt hết. Đổi lại LLM chỉ được gạch chữ có sẵn, và mọi cụm phải qua cổng máy.
+- KHÔNG dùng model thứ hai kiểm (A25): plan và Method 3.5 viết có, nhưng trái nguyên tắc "LLM không kiểm LLM". Cái mất: không còn lưới bắt cụm gạch sót hoặc sai vai ở bên trong một đơn vị. Cái được: mọi cổng đều chứng minh được bằng máy.
+
+**6. Kiểm và số đo** (cổng đề xuất; số đo là của đầu vào, chưa có số của đầu ra vì chưa code).
+| Cổng | Kiểm gì | Bắt được | Bỏ sót |
+|---|---|---|---|
+| G1 chuỗi con | cụm nằm nguyên văn trong ngữ cảnh của đơn vị (tiêu đề Điều + chapeau khoản cha + chữ đơn vị; user chốt 12/11, A26) | cụm bịa, viết lại, diễn giải | cụm đúng chữ nhưng sai vai, hoặc cắt thiếu |
+| G2 khuôn | `role` thuộc 4 vai; tên vị từ đúng dạng `ten(tham_so)`; tham số chỉ trong W E C J G D A | sai khuôn | sai nghĩa |
+| G3 phủ từ báo hiệu | mỗi lần xuất hiện từ báo hiệu thuộc hoặc kề một cụm | đơn vị hoặc chỗ bị bỏ sót hẳn | chỗ bị sót mà từ báo hiệu nằm trong một cụm khác |
+| G4 chéo với 1.5 | mỗi nút điều kiện `cu_the` của 1.5 (BLLĐ 26 nút) phải xuất hiện thành cụm `ngoai_le` của đơn vị. Ví dụ `D14.K2` và nút `Xe793d0fd` có đúng chữ "quy định tại khoản 2 Điều 18, điểm a khoản 1 Điều 145 và khoản 1 Điều 162 của Bộ luật này" | ngoại lệ bị LLM bỏ sót hoặc viết khác (độ phủ ngoại lệ, không cần LLM thứ hai) | ngoại lệ mà 1.5 cũng không thấy (dạng "trừ <danh từ>", xem nợ) |
+| G5 chéo với 1.2 | cụm là một dẫn chiếu đã giải của 1.2 thì neo `concept` thẳng vào đơn vị đích. `D151.K1.d` "trừ trường hợp quy định tại Điều 154" dẫn tới `D154`, tiêu đề là "không thuộc diện cấp giấy phép lao động" | neo sai, không cần LLM đoán | khái niệm không đi qua dẫn chiếu |
+| G6 đụng tên | không `input` nào trùng tên hay bí danh với một `concept` | hai nghĩa lẫn nhau | hai tên cho một nghĩa (đồng nghĩa) |
+- Hai kiểm của plan KHÔNG sống: (a) "mỗi `input` được ít nhất một quy tắc dùng": chỉ kiểm được ở 1.8 khi đã có quy tắc, chuyển sang đó; (b) "kiểm dữ kiện thô" (nếu người hỏi nêu thẳng X thì bỏ qua được điều luật nào không): thuần ngữ nghĩa, không có cổng máy.
+- Ràng buộc thực tế: agent không chạy được `--llm live` (không có khoá trong môi trường của agent), người dùng chạy; test và `--llm off` phải xanh không cần LLM (test dùng đầu ra LLM dựng sẵn).
+- Số đo đầu vào BLLĐ (12/11): 881 đơn vị có chữ; 456 đơn vị có ít nhất một từ báo hiệu theo đúng 8 từ trên (471 nếu thêm "không được", "có quyền", "thì"); gom 20 đến 30 đơn vị một lượt thì khoảng 30 đến 45 lượt (ước, chưa đo), vừa ngân sách 500 lượt/ngày.
+
+**7. Kiểm hiểu:** 10 câu mục 1.6 của `docs/kiem_hieu.md` (1.6.1 đến 1.6.10).
+
+**Việc cần user quyết trước khi code 1.6** (đề xuất của agent ghi đầu mỗi dòng):
+1. **ĐÃ CHỐT 12/11 (A26): (b)** Phạm vi "ngữ cảnh" của cổng G1: tiêu đề Điều + chapeau khoản cha + chữ đơn vị, mỗi cụm gắn nguồn `own/chapeau/heading`. (Các lựa chọn đã bỏ: (a) chỉ chữ của chính đơn vị; (c) gạch theo cả Điều.) (a) loại oan các cụm đúng vì 245/245 điểm và các khoản như `D154.K1` thiếu chủ thể hoặc kết luận.
+2. **ĐÃ CHỐT 12/11 (A25): bỏ hẳn, dùng G1 đến G6.** Thay cổng "model thứ hai": hay thêm lượt trích thứ hai cùng model chỉ để đo độ ổn định (không dùng để lọc).
+3. **ĐÃ CHỐT 12/11 (A26): bỏ, ghi nợ #12 (phần kiểm bằng máy dời sang 1.8).** Kiểm dữ kiện thô (R2 của plan): hay giữ làm gợi ý có cờ và phải gọi tên một đơn vị có thật.
+4. **CHƯA CHỐT.** Gộp tên đồng nghĩa; user loại phương án có người duyệt (12/11, A26), còn chọn giữa: không gộp / gộp khi có bằng chứng cấu trúc / LLM gộp thẳng. Phương án ban đầu của agent: **chỉ gộp khi cụm chuẩn hoá trùng nhau hoặc là bí danh đã ghi**, chấp nhận hai khái niệm đồng nghĩa có thể bị tách đôi (thấy ở 1.7 và 1.8, ghi nợ).
+
 ## Giai đoạn 2: update engine, `Update(K, d)` cho mỗi ND/TT theo ngày hiệu lực
 Theo Thuật toán 1 của Method. VBHN_125 nạp như một văn bản thường.
 
@@ -228,7 +289,7 @@ Pipeline mới, khi dựng xong phần tương ứng, phải ra lại các số 
 1. ~~Cổng symbolic cho nhãn loại Điều (1.4)~~ **Đã giải quyết 11/11 (A14):** bỏ LLM khỏi 1.4 nên không cần cổng.
 2. **Điều khoản giao chưa có văn bản lấp** (Điều 154 khoản 9 đang giao cho Chính phủ): nếu suy luận theo kiểu "không chứng minh được thì coi là sai", KB chỉ có BLLĐ sẽ trả "phải có giấy phép lao động" dù đáp án trung thực là "chưa đủ căn cứ". Cần quyết cách để Δ ảnh hưởng tới suy luận. Chưa bàn.
 3. **Câu hỏi cổng của giai đoạn 1:** ví dụ giấy phép lao động 45 ngày cần ND_152 và ND_219 nên không dùng được khi KB chỉ có BLLĐ. Cần chọn câu hỏi đo giai đoạn 1.
-4. **Hạn mức LLM:** model kiểm chỉ 20 lượt mỗi ngày (`docs/llm_config.md`). Chưa đếm số lượt cần cho 1.6-1.8 trên 220 Điều. Phải đếm trước khi cam kết "mọi bước LLM đều có model thứ hai kiểm".
+4. **Hạn mức LLM:** model chính 500 lượt/ngày (`docs/llm_config.md`). Đếm 12/11 cho 1.6: 881 đơn vị có chữ, khoảng 152 nghìn ký tự, gom lô thì vừa ngân sách. Model kiểm (20 lượt/ngày) không còn là điều kiện chặn: không dùng LLM kiểm LLM, mỗi bước LLM kiểm bằng cổng máy (A25). Chưa đếm cho 1.7, 1.8.
 5. **Bước 2.3 có còn cần nhãn "hiệu lực-chuyển tiếp" của 1.4 không**, hay chỉ regex trên động từ chỉ thị. Code cũ chỉ tìm chỉ thị trong Điều mang nhãn này.
 6. **Số bước lan truyền của N(·)** trong tập ảnh hưởng (Method đang ghi [CẦN XÁC MINH]).
 7. **Thứ tự mục của Method:** bài xếp 3.4 (update) trước 3.5 (tri thức), thứ tự dựng mới thì ngược lại. Đổi hay không là quyền user.

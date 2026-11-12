@@ -8,8 +8,12 @@ Chạy: python -I src/exceptions_explicit.py <doc_id> | --all
 
   Quy tắc 1, not_apply_pattern: đơn vị U có "không áp dụng" và một cụm dẫn chiếu đứng NGAY trước nó (chỉ cách dấu cách):
     mỗi đích của cụm là o, s = U. Evidence từ đầu cụm đến hết "không áp dụng".
-  Quy tắc 2, except_list_pattern: text của U có "trừ" (hoặc "ngoại trừ") và kết thúc bằng "sau đây:". Mỗi đơn vị con trực tiếp C
-    của U là s, o = U. Evidence là câu chứa "trừ" (= toàn bộ text của U).
+  Quy tắc 2, except_list_pattern: text của U kết thúc bằng một cụm "trừ ... sau đây:" liền nhau (từ "trừ" hoặc "ngoại trừ" đến "sau đây:"
+    không có dấu , ; . hay xuống dòng xen giữa), ví dụ "..., trừ các trường hợp sau đây:". Mỗi đơn vị con trực tiếp C của U là s,
+    o = U. Evidence là câu chứa "trừ" (= toàn bộ text của U). Vì sao chặt vậy: "trừ" nằm giữa câu rồi câu mới kết bằng "theo một trong
+    các mức sau đây:" thì danh sách con là mức phạt, không phải ngoại lệ (A22).
+
+Trigger không tính các nghĩa "trừ" không phải ngoại lệ đã thấy trong kho: "khấu trừ", "loại trừ", "giảm trừ" và "trừ đi" (phép trừ).
 
 Mọi trigger thuộc đúng một trong hai: đã xử lý (có cạnh) hoặc unhandled. Không nới quy tắc để bắt thêm ca: ca ngoài hai quy tắc là
 ngoại lệ chung (L5 chung) hoặc để nguyên. Dòng chỉ thị sửa đổi không xét (ngoại lệ trong đó thuộc văn bản bị sửa).
@@ -33,7 +37,9 @@ NOT_APPLY_KIND = "không áp dụng"
 EXCEPT_KINDS = ("trừ", "ngoại trừ")  # "ngoại trừ" là một cụm
 LIST_END = "sau đây:"
 # Ranh giới từ ở hai đầu nên "trừng" không khớp. Quét trái sang phải nên "ngoại trừ" thành một cụm.
-TRIGGER_RE = re.compile(r"(?<!\w)(?:ngoại[ ]+trừ|trừ|không[ ]+áp[ ]+dụng)(?!\w)", re.I)
+TRIGGER_RE = re.compile(r"(?<!\w)(?<!khấu )(?<!loại )(?<!giảm )(?:ngoại[ ]+trừ|trừ(?![ ]+đi(?!\w))|không[ ]+áp[ ]+dụng)(?!\w)", re.I)
+# Quy tắc 2: từ "trừ" tới cuối text là một cụm liền, kết bằng "sau đây:" (xem docstring).
+EXCEPT_LIST_TAIL_RE = re.compile(r"(?:ngoại[ ]+)?trừ[ ]+[^,;.:\n]*sau[ ]+đây:", re.I)
 TEXT_TYPES = ("dieu", "khoan", "diem")
 
 
@@ -87,7 +93,7 @@ def find_exceptions(doc, units, all_units, resolver, available):
                     else:
                         method = NOT_APPLY
                         new = [(uid, PREDICATE, t, evidence, method) for t in r.targets]
-            elif kind in EXCEPT_KINDS and text.endswith(LIST_END):
+            elif kind in EXCEPT_KINDS and text.endswith(LIST_END) and EXCEPT_LIST_TAIL_RE.fullmatch(text, m.start()):
                 if n_except > 1:
                     reason = f"{n_except} cụm trừ và text kết thúc bằng {LIST_END!r}"
                 elif not children[uid]:

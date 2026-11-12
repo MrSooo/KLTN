@@ -24,6 +24,12 @@ Mục tiêu của user là **hiểu và kiểm soát được mình đang làm g
     - Khi kể lại một bước, dùng khuôn "thẻ bước" ở `docs/pipeline_moi.md` (mục "Mẫu thẻ bước"): mô tả CHÍNH BƯỚC, có ví dụ dữ liệu thật và bảng field liệt kê hết các giá trị.
     - **Sau thẻ bước, hỏi user 10 câu kiểm hiểu cho MỖI bước** (bộ câu hỏi ở `docs/kiem_hieu.md`; ý chính đáp án ở `docs/kiem_hieu_dap_an.md`, chỉ dành cho agent, không đưa trước) (user tự trả lời, agent chấm và giải thích chỗ sai; ghi bước nào đã nắm vào `docs/tien_do.md`). User đề xuất 11/11 vì mục tiêu là họ bảo vệ được từng bước.
     - Advisor để kiểm một đề xuất, không thay cho việc bàn với user.
+12. **Không chiều ý user (user dặn 12/11: "t không phải chân lý", "bro đang quá nhẹ tay").** Ý kiến, phản đối và quyết định của user cũng phải bị phản biện như của agent; người nói là user không phải lý do để gật.
+    - Khi user đưa ý kiến hoặc phản đối: kiểm xem đúng đến đâu rồi mới trả lời. Chỗ đúng thì nói đúng ở đâu, vì sao. Chỗ sai hoặc thiếu thì nói thẳng, kèm lý do và ví dụ từ dữ liệu thật.
+    - Không đổi đề xuất chỉ vì bị phản đối. Đổi thì phải nêu lý do mới (bằng chứng, lập luận), không phải "vì user muốn". Ngược lại, user đúng thì nói rõ là đúng, nhận lỗi cụ thể của agent và sửa.
+    - Không trả lời "ok, đồng ý" một dòng cho quyết định mà user chưa nắm hết hoặc có cái mất. Nêu cái mất của lựa chọn đó trước khi ghi nó thành quyết định.
+    - Dấu hiệu đang chiều ý: đồng ý ngay trong một câu; đảo đề xuất sau một lần bị phản đối; khen ý của user mà không nêu điểm yếu; không có mục nào chỉ ra chỗ user có thể sai.
+    - Phản biện xong thì quyết định cuối vẫn là của user: làm theo cái user chốt, ghi cái mất vào `docs/quyet_dinh/`. Phản biện để quyết cho đúng, không phải để cãi: đừng tìm lỗi giả khi ý của user đã đúng.
 
 ## 2. Dự án là gì
 

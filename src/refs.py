@@ -53,7 +53,14 @@ KINDS = r"(?:Hiến pháp|Bộ luật|Luật|Pháp lệnh|Nghị quyết|Nghị 
 TAIL_KIND_RE = re.compile(rf"[ ]+(?:của[ ]+)?({KINDS})(?!\w)")
 NUMBER_RE = r"\d+(?:\.\d+)?/(?:\d{4}/)?[A-ZĐ][A-Za-zĐđ0-9\-]*"
 TAIL_NUM_RE = re.compile(rf"(?:[ ]+[^\W\d_]+){{0,6}}?[ ]+số[ ]+({NUMBER_RE})")
-NAME_STOP = {"quy", "này", "ngày", "của", "để", "thì", "mà", "là", "được", "có", "và", "hoặc", "về", "do", "theo", "trong", "khi"}
+# Tên văn bản không số hiệu ("Luật Bảo hiểm xã hội", "Bộ luật Lao động") gồm các chữ LIỀN NHAU sau loại văn bản, kể cả chữ thường; dừng ở dấu câu,
+# chữ số, hoặc từ dừng dưới đây (từ nối, từ đầu mệnh đề sau tên, từ khoá của một dẫn chiếu khác). Danh sách này viết tay theo chữ gặp trong kho (A23).
+NAME_STOP = {"quy", "này", "ngày", "của", "để", "thì", "mà", "là", "được", "có", "và", "hoặc", "về", "do", "theo", "trong", "khi",
+             "đi", "năm", "không", "như", "nhưng", "điều", "khoản", "điểm", "chương", "mục", "phụ", "luật", "nghị", "thông", "quyết"}
+NAME_MAX_WORDS = 8
+# Dấu phẩy thường là hết tên ("Luật Công đoàn, hoặc ..."), nên chỉ nhận tên có dấu phẩy bên trong khi nó nằm trong danh sách này (viết tay).
+LAW_NAMES_WITH_COMMA = ("An toàn, vệ sinh lao động",)
+NAME_WORD_RE = re.compile(r"[ ]+([^\W\d_][\w]*)")
 SELF_KIND = {"Bộ luật": ("bo_luat", "van_ban_hop_nhat"), "Luật": ("bo_luat", "van_ban_hop_nhat"), "Nghị định": ("nghi_dinh",),
              "Nghị quyết": ("nghi_quyet_cp",), "Thông tư": ("thong_tu",)}
 
@@ -190,13 +197,20 @@ def parse_tail(text, pos):
     mnum = TAIL_NUM_RE.match(rest)
     if mnum:
         return DocTail(kind, False, norm_number(mnum[1]), None, after + mnum.end())
-    words, end = [], after
-    for w in re.finditer(r"[ ]+([^\W\d_][\w]*)", rest):
-        if w[1].casefold() in NAME_STOP or len(words) >= 6 or not (w[1][0].isupper() or w[1].casefold() in ("an", "toàn", "vệ", "sinh", "lao", "động", "xã", "hội")):
+    if kind == "Luật":
+        for named in LAW_NAMES_WITH_COMMA:
+            if text.startswith(" " + named, after):
+                return DocTail(kind, False, None, f"{kind} {named}", after + 1 + len(named))
+    words, ends = [], []
+    while len(words) < NAME_MAX_WORDS:
+        w = NAME_WORD_RE.match(text, ends[-1] if ends else after)  # match (không finditer): từ kế phải LIỀN, không nhảy qua dấu câu hay xuống dòng
+        if not w or w[1].casefold() in NAME_STOP:
             break
         words.append(w[1])
-        end = after + w.end()
-    return DocTail(kind, False, None, " ".join([kind, *words]) if words else kind, end)
+        ends.append(w.end())
+    if kind == "Bộ luật" and words[:2] == ["Lao", "động"]:  # tên đã đủ; chữ hoa liền sau (nếu có) là đầu câu khác, không phải của tên
+        words, ends = words[:2], ends[:2]
+    return DocTail(kind, False, None, " ".join([kind, *words]) if words else kind, ends[-1] if ends else after)
 
 
 def find_refs(unit_id, text):
