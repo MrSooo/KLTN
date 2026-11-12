@@ -1,0 +1,118 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "chinh",
+ "requested_model": "gemini-3.5-flash-lite",
+ "created": "2026-11-12T16:26:06+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D3\",\n\"tieu_de_dieu\": \"Giải thích từ ngữ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D3.K1\",\n\"tieu_de_dieu\": \"Giải thích từ ngữ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\\nĐộ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D3.K2\",\n\"tieu_de_dieu\": \"Giải thích từ ngữ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người sử dụng lao động là doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình, cá nhân có thuê mướn, sử dụng người lao động làm việc cho mình theo thỏa thuận; trường hợp người sử dụng lao động là cá nhân thì phải có năng lực hành vi dân sự đầy đủ.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D3.K3\",\n\"tieu_de_dieu\": \"Giải thích từ ngữ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Tổ chức đại diện người lao động tại cơ sở là tổ chức được thành lập trên cơ sở tự nguyện của người lao động tại một đơn vị sử dụng lao động nhằm mục đích bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động trong quan hệ lao động thông qua thương lượng tập thể hoặc các hình thức khác theo quy định của pháp luật về lao động. Tổ chức đại diện người lao động tại cơ sở bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D3.K4\",\n\"tieu_de_dieu\": \"Giải thích từ ngữ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Tổ chức đại diện người sử dụng lao động là tổ chức được thành lập hợp pháp, đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động trong quan hệ lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D3.K5\",\n\"tieu_de_dieu\": \"Giải thích từ ngữ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Quan hệ lao động là quan hệ xã hội phát sinh trong việc thuê mướn, sử dụng lao động, trả lương giữa người lao động, người sử dụng lao động, các tổ chức đại diện của các bên, cơ quan nhà nước có thẩm quyền. Quan hệ lao động bao gồm quan hệ lao động cá nhân và quan hệ lao động tập thể.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D3.K6\",\n\"tieu_de_dieu\": \"Giải thích từ ngữ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người làm việc không có quan hệ lao động là người làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D3.K7\",\n\"tieu_de_dieu\": \"Giải thích từ ngữ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Cưỡng bức lao động là việc dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác để ép buộc người lao động phải làm việc trái ý muốn của họ.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D3.K8\",\n\"tieu_de_dieu\": \"Giải thích từ ngữ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Phân biệt đối xử trong lao động là hành vi phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp có tác động làm ảnh hưởng đến bình đẳng về cơ hội việc làm hoặc nghề nghiệp.\\nViệc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương thì không bị xem là phân biệt đối xử.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D3.K9\",\n\"tieu_de_dieu\": \"Giải thích từ ngữ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Quấy rối tình dục tại nơi làm việc là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận. Nơi làm việc là bất kỳ nơi nào mà người lao động thực tế làm việc theo thỏa thuận hoặc phân công của người sử dụng lao động.\"\n}\n]\n}",
+ "model": "gemini-3.5-flash-lite",
+ "request_id": "Oej1asfOLuXr694PxfHg2Ao",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D3",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D3.K1",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Độ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này",
+      "role": "ngoai_le",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D3.K2",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "trường hợp người sử dụng lao động là cá nhân",
+      "role": "dieu_kien",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "phải có năng lực hành vi dân sự đầy đủ",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D3.K3",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D3.K4",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D3.K5",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D3.K6",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D3.K7",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D3.K8",
+    "spans": [
+     {
+      "span": "Việc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "J"
+      ]
+     },
+     {
+      "span": "không bị xem là phân biệt đối xử",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D3.K9",
+    "spans": []
+   }
+  ]
+ },
+ "usage": {
+  "prompt_token_count": 1924,
+  "candidates_token_count": 775,
+  "thoughts_token_count": null,
+  "total_token_count": 2699
+ }
+}

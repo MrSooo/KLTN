@@ -1,0 +1,424 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-sonnet-5-5",
+ "created": "2026-11-12T17:04:38+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D147.K1\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm các công việc sau đây:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K1.a\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm các công việc sau đây:\",\n\"chu_don_vi\": \"Mang, vác, nâng các vật nặng vượt quá thể trạng của người chưa thành niên;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K1.b\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm các công việc sau đây:\",\n\"chu_don_vi\": \"Sản xuất, kinh doanh cồn, rượu, bia, thuốc lá, chất tác động đến tinh thần hoặc chất gây nghiện khác;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K1.c\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm các công việc sau đây:\",\n\"chu_don_vi\": \"Sản xuất, sử dụng hoặc vận chuyển hóa chất, khí gas, chất nổ;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K1.d\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm các công việc sau đây:\",\n\"chu_don_vi\": \"Bảo trì, bảo dưỡng thiết bị, máy móc;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K1.dd\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm các công việc sau đây:\",\n\"chu_don_vi\": \"Phá dỡ các công trình xây dựng;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K1.e\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm các công việc sau đây:\",\n\"chu_don_vi\": \"Nấu, thổi, đúc, cán, dập, hàn kim loại;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K1.g\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm các công việc sau đây:\",\n\"chu_don_vi\": \"Lặn biển, đánh bắt thủy, hải sản xa bờ;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K1.h\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm các công việc sau đây:\",\n\"chu_don_vi\": \"Công việc khác gây tổn hại đến sự phát triển thể lực, trí lực, nhân cách của người chưa thành niên.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K2\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm việc ở các nơi sau đây:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K2.a\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm việc ở các nơi sau đây:\",\n\"chu_don_vi\": \"Dưới nước, dưới lòng đất, trong hang động, trong đường hầm;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K2.b\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm việc ở các nơi sau đây:\",\n\"chu_don_vi\": \"Công trường xây dựng;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K2.c\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm việc ở các nơi sau đây:\",\n\"chu_don_vi\": \"Cơ sở giết mổ gia súc;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K2.d\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm việc ở các nơi sau đây:\",\n\"chu_don_vi\": \"Sòng bạc, quán bar, vũ trường, phòng hát karaoke, khách sạn, nhà nghỉ, cơ sở tắm hơi, cơ sở xoa bóp; điểm kinh doanh xổ số, dịch vụ trò chơi điện tử;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K2.dd\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm việc ở các nơi sau đây:\",\n\"chu_don_vi\": \"Nơi làm việc khác gây tổn hại đến sự phát triển thể lực, trí lực, nhân cách của người chưa thành niên.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D147.K3\",\n\"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Bộ trưởng Bộ Lao động - Thương binh và Xã hội quy định danh mục tại điểm h khoản 1 và điểm đ khoản 2 Điều này.\"\n}\n]\n}",
+ "model": "claude-sonnet-5-5",
+ "request_id": "req_011CgyPyPABfotNFVeoeYk8N",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D147.K1",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "làm các công việc sau đây",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K1.a",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Mang, vác, nâng các vật nặng vượt quá thể trạng của người chưa thành niên",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K1.b",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Sản xuất, kinh doanh cồn, rượu, bia, thuốc lá, chất tác động đến tinh thần hoặc chất gây nghiện khác",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K1.c",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Sản xuất, sử dụng hoặc vận chuyển hóa chất, khí gas, chất nổ",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K1.d",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Bảo trì, bảo dưỡng thiết bị, máy móc",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K1.dd",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Phá dỡ các công trình xây dựng",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K1.e",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Nấu, thổi, đúc, cán, dập, hàn kim loại",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K1.g",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Lặn biển, đánh bắt thủy, hải sản xa bờ",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K1.h",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Công việc khác gây tổn hại đến sự phát triển thể lực, trí lực, nhân cách của người chưa thành niên",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K2",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "làm việc ở các nơi sau đây",
+      "role": "dieu_kien",
+      "params": [
+       "G"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K2.a",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Dưới nước, dưới lòng đất, trong hang động, trong đường hầm",
+      "role": "dieu_kien",
+      "params": [
+       "G"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K2.b",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Công trường xây dựng",
+      "role": "dieu_kien",
+      "params": [
+       "G"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K2.c",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Cơ sở giết mổ gia súc",
+      "role": "dieu_kien",
+      "params": [
+       "G"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K2.d",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Sòng bạc, quán bar, vũ trường, phòng hát karaoke, khách sạn, nhà nghỉ, cơ sở tắm hơi, cơ sở xoa bóp; điểm kinh doanh xổ số, dịch vụ trò chơi điện tử",
+      "role": "dieu_kien",
+      "params": [
+       "G"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K2.dd",
+    "spans": [
+     {
+      "span": "Cấm sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Nơi làm việc khác gây tổn hại đến sự phát triển thể lực, trí lực, nhân cách của người chưa thành niên",
+      "role": "dieu_kien",
+      "params": [
+       "G"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D147.K3",
+    "spans": [
+     {
+      "span": "Bộ trưởng Bộ Lao động - Thương binh và Xã hội",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "quy định danh mục tại điểm h khoản 1 và điểm đ khoản 2 Điều này",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4837,
+  "output_tokens": 2699
+ }
+}

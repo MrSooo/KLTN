@@ -85,7 +85,7 @@ Mức nắm: chưa kiểm.
 | 1.5.6 | Các field `how`, `flags`, `rule` của một cạnh ngoại lệ để làm gì? Nêu các giá trị của `rule`. | chưa trả lời |
 | 1.5.7 | Vì sao các câu "trừ trường hợp" giống nhau dùng chung một nút? | chưa trả lời |
 | 1.5.8 | Một đơn vị có hai chỗ "trừ trường hợp" thì máy làm gì, và vì sao không đoán? | chưa trả lời |
-| 1.5.9 | BLLĐ có 0 cạnh tường minh nhưng 59 cạnh chung. Điều đó cho biết gì về cách luật viết ngoại lệ? | chưa trả lời |
+| 1.5.9 | BLLĐ có 0 cạnh tường minh nhưng 66 cạnh chung (59 trước A24, 12/11). Điều đó cho biết gì về cách luật viết ngoại lệ? | chưa trả lời |
 | 1.5.10 | Ngoại lệ ở 1.5 khác gì điều khoản giao ở 1.3? Bỏ sót ngoại lệ làm câu trả lời sai theo kiểu nào? | chưa trả lời |
 
 ## 1.6 `concepts`: sổ khái niệm (ĐANG BÀN 12/11, chưa code; thẻ ở `docs/pipeline_moi.md`)

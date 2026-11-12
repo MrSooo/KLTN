@@ -22,6 +22,7 @@ import parse as l1
 import refs as l2
 import l6_versions as l6v
 import corpus
+from textutil import text_norm
 
 
 class Expect(NamedTuple):
@@ -77,6 +78,18 @@ def version_problems(by):
     return p
 
 
+# Ca "trừ" BLLĐ mà 1.5 chưa xử lý, kèm lý do (12/11). Đổi danh sách này chỉ khi đã đọc ca mới/ca bị bớt.
+BLLD_UNHANDLED_KNOWN = {"D24.K3": "'không áp dụng' không kèm dẫn chiếu tới đơn vị bị loại trừ",
+                        "D188.K1": "ngoại lệ liệt kê ở các đơn vị con (đoạn kết thúc bằng dấu hai chấm)"}
+
+
+def residue_problems(got, known):
+    """[] nếu tập ca chưa xử lý đúng bằng danh sách đã biết; không thì một dòng nêu ca thừa và ca thiếu."""
+    if got == known:
+        return []
+    return [f"ca 'trừ' chưa xử lý của BLLĐ lệch danh sách đã biết: thừa {sorted(got - known)}, thiếu {sorted(known - got)}"]
+
+
 def checks(docs):
     """-> list[(nhãn, [vấn đề])]."""
     out = []
@@ -130,7 +143,52 @@ def checks(docs):
         for e in l1.read_jsonl(corpus.out_dir("l5_general") / f"l5_general_exceptions_{d.doc_id}.jsonl"):
             if e["o"] not in all_units[d.doc_id]:
                 p.append(f"{d.doc_id}: exception_of trỏ mã không tồn tại {e['o']}")
-    out.append(("L5 tường minh/L5 chung exception_of (mốc D154→D151.K1.d, D36.K1.b→D37.K1, D29/D97→D35)", p))
+    # Ca "trừ" chưa xử lý của BLLĐ phải đúng danh sách đã biết (12/11). Không chặn mọi ca chưa xử lý (regex không bao giờ phủ hết, kiểm sẽ đỏ vĩnh viễn);
+    # chỉ chặn khi danh sách đổi mà chưa ai ghi lại: thêm ca mới hay bớt ca cũ đều đỏ.
+    got = {u["unit"] for u in l1.read_jsonl(corpus.out_dir("l5_general") / "l5_general_unhandled_BLLD_45-2019.jsonl")}
+    p += residue_problems(got, {B + u for u in BLLD_UNHANDLED_KNOWN})
+    out.append(("L5 tường minh/L5 chung exception_of (mốc D154→D151.K1.d, D36.K1.b→D37.K1, D29/D97→D35; ca chưa xử lý của BLLĐ = D24.K3, D188.K1)", p))
+    # 1.6 giai đoạn A: bảng cụm. Kiểm độc lập bằng text_norm (concepts.py so theo từ), không import concepts.py.
+    p = []
+    base = "BLLD_45-2019"
+    units = all_units[base]
+    labels = {r["id"]: r["label"] for r in l1.read_jsonl(corpus.out_dir("l4") / "l4_labels.jsonl")}
+    rows = l1.read_jsonl(corpus.out_dir("concepts") / f"concepts_spans_{base}.jsonl")
+    for r in rows:
+        u = units.get(r["unit"])
+        if u is None:
+            p.append(f"cụm trỏ đơn vị không tồn tại: {r['unit']}")
+            continue
+        dieu = ".".join(r["unit"].split(".")[:2])
+        if labels.get(dieu) not in ("substantive", "definition"):
+            p.append(f"{r['unit']}: cụm của Điều ngoài phạm vi (nhãn {labels.get(dieu)})")
+        if r["role"] not in ("chu_the", "dieu_kien", "ngoai_le", "ket_luan") or r["how"] not in ("llm", "cond_node") or r["source"] not in ("own", "chapeau", "heading"):
+            p.append(f"{r['unit']}: vai/how/source sai: {r['role']}/{r['how']}/{r['source']}")
+            continue
+        parent = units.get(u.get("parent")) if u["type"] == "diem" else None
+        src = {"own": u.get("text"), "chapeau": (parent or {}).get("text"), "heading": units.get(dieu, {}).get("heading")}[r["source"]] or ""
+        if text_norm(r["span"]) not in text_norm(src):
+            p.append(f"{r['unit']}: cụm không nằm trong {r['source']}: {r['span'][:50]!r}")
+        if r["predicate"] is not None:
+            p.append(f"{r['unit']}: giai đoạn A mà predicate khác null")
+        if any(x not in "WECJGDA" for x in r["params"]) or (r["how"] == "cond_node" and r["params"]):
+            p.append(f"{r['unit']}: tham số sai {r['params']}")
+        if r["targets"] and r["source"] != "own":
+            p.append(f"{r['unit']}: cụm {r['source']} mà có targets")
+        for tg in r["targets"]:
+            if tg not in all_units.get(tg.split(".")[0], {}):
+                p.append(f"{r['unit']}: targets trỏ mã không tồn tại {tg}")
+    nodes = l1.read_jsonl(corpus.out_dir("l5_general") / f"l5_general_conditions_{base}.jsonl")
+    want = sum(1 for n in nodes for uid in n["units"] if labels.get(".".join(uid.split(".")[:2])) in ("substantive", "definition"))
+    got = sum(1 for r in rows if r["how"] == "cond_node")
+    if got != want:
+        p.append(f"số cụm cond_node {got} khác số (nút 1.5, đơn vị trong phạm vi) {want}")
+    cn = {r["unit"]: r for r in rows if r["how"] == "cond_node"}
+    if sorted(cn.get(base + ".D14.K2", {}).get("targets", [])) != sorted(base + "." + x for x in ("D18.K2", "D145.K1.a", "D162.K1")):
+        p.append("mốc: cụm ngoại lệ của D14.K2 phải có targets D18.K2, D145.K1.a, D162.K1")
+    if cn.get(base + ".D151.K1.d", {}).get("targets") != [base + ".D154"]:
+        p.append("mốc: cụm ngoại lệ của D151.K1.d phải có targets D154")
+    out.append(("1.6 bảng cụm (cụm nguyên văn trong ngữ cảnh, vai, nguồn, targets tồn tại; số cụm cond_node = số nút 1.5 trong phạm vi; mốc D14.K2, D151.K1.d)", p))
     # L3
     p = []
     links = l1.read_jsonl(corpus.out_dir("l3") / "l3_links.jsonl")

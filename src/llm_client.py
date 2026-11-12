@@ -1,4 +1,5 @@
-"""Wrapper gọi LLM duy nhất của dự án (Gemini), dùng chung cho L3, L4, L6 và các bước sau.
+"""Wrapper gọi LLM duy nhất của dự án, dùng chung cho 2.2, 1.6 và các bước sau. Hai nhà cung cấp: Gemini (vai chinh, kiem: bước nối văn bản 2.2)
+và Anthropic Claude (vai trich: trích xuất ngữ nghĩa từ 1.6 trở đi, A34). Nhà cung cấp của mỗi vai nằm ở khoá "<vai>.provider" (mặc định gemini).
 
 Việc của module này:
   - đọc model, hạn mức, max_output_tokens từ khối "khoá = giá trị" trong docs/llm_config.md (không chép cứng vào code);
@@ -8,7 +9,7 @@ Việc của module này:
     các lượt đã lưu không bị gọi lại nên hôm sau chạy tiếp từ chỗ dừng.
 
 Chế độ (cờ --llm của các bước): off = không gọi gì, mọi lời gọi báo LLMUnavailable; replay = chỉ đọc cache, thiếu thì báo
-CacheMiss (không chạm mạng); live = như replay, thiếu thì gọi API rồi lưu. Khoá API chỉ lấy từ biến môi trường GEMINI_API_KEY.
+CacheMiss (không chạm mạng); live = như replay, thiếu thì gọi API rồi lưu. Khoá API chỉ lấy từ biến môi trường (GEMINI_API_KEY, ANTHROPIC_API_KEY).
 Đề xuất của LLM không bao giờ được áp thẳng: bước gọi phải kiểm bằng máy (CLAUDE.md mục 4).
 """
 import datetime
@@ -25,10 +26,15 @@ ROOT = Path(__file__).resolve().parent.parent
 CONFIG_PATH = ROOT / "docs" / "llm_config.md"
 CACHE_DIR = ROOT / "data" / "llm_cache"
 USAGE_PATH = CACHE_DIR / "_usage.json"
-ROLES = ("chinh", "kiem")  # model chính và model kiểm độc lập (llm_config.md)
+ROLES = ("chinh", "kiem")  # model chính và model kiểm độc lập của 2.2 (llm_config.md). links.py lặp qua ROLES để hai model kiểm chéo nhau: KHÔNG thêm vai vào đây
+EXTRA_ROLES = ("trich",)  # vai trích xuất ngữ nghĩa cho 1.6 trở đi (Claude, A34). Nằm ngoài ROLES có chủ đích: vai này không tham gia kiểm chéo 2.2
+PROVIDERS = {"gemini": "GEMINI_API_KEY", "anthropic": "ANTHROPIC_API_KEY"}  # nhà cung cấp -> biến môi trường giữ khoá
 RETRY_CODES = (429, 500, 503)
+RETRY_CODES_ANTHROPIC = (429, 500, 503, 529)  # 529 = Anthropic quá tải
+THINKING_MODES = ("between_tools", "disabled")  # cách TẮT suy nghĩ phụ thuộc model: Sonnet 5.5 chỉ nhận between_tools, Haiku 5.5 không nhận between_tools (chỉ disabled)
 ATTEMPTS = 3
 WAIT_SECONDS = 20
+ANTHROPIC_TIMEOUT = 180  # giây cho MỘT lời gọi; mặc định của gói là 10 phút, quá dài cho lô chỉ vài nghìn token
 
 
 HEARTBEAT_SECONDS = 30  # lượt gọi API chờ quá ngần này giây thì in một dòng "vẫn đang chờ" để biết tiến trình chưa treo
@@ -94,10 +100,21 @@ def load_config(path=CONFIG_PATH):
         if m:
             v = m[2]
             cfg[m[1]] = int(v) if v.isdigit() else v
-    for need in ("chinh.model", "chinh.luot_moi_ngay", "kiem.model", "kiem.luot_moi_ngay", "max_output_tokens"):
+    for need in ("chinh.model", "chinh.luot_moi_ngay", "kiem.model", "kiem.luot_moi_ngay", "max_output_tokens",
+                 "trich.provider", "trich.model", "trich.luot_moi_ngay", "trich.max_output_tokens", "trich.thinking"):
         if need not in cfg:
             raise LLMError(f"{path}: thiếu khoá {need}")
+    for role in ROLES + EXTRA_ROLES:
+        if provider_of(cfg, role) not in PROVIDERS:
+            raise LLMError(f"{path}: {role}.provider = {provider_of(cfg, role)!r}, chỉ nhận {sorted(PROVIDERS)}")
+    if cfg["trich.thinking"] not in THINKING_MODES:
+        raise LLMError(f"{path}: trich.thinking = {cfg['trich.thinking']!r}, chỉ nhận {THINKING_MODES}")
     return cfg
+
+
+def provider_of(cfg, role):
+    """Nhà cung cấp của một vai; không ghi khoá <vai>.provider thì là gemini (hai vai của 2.2 có từ trước khi thêm Claude)."""
+    return cfg.get(f"{role}.provider", "gemini")
 
 
 def cache_key(model, task, prompt_version, payload, system="", schema=None):
@@ -111,7 +128,7 @@ class Client:
     """Một lời gọi = ask(task, prompt_version, system, user, schema, role, payload)."""
 
     def __init__(self, mode="off", config=None, cache_dir=CACHE_DIR, usage_path=USAGE_PATH, today=None, sleep=time.sleep, api=None,
-                 clock=time.monotonic, log=None):
+                 clock=time.monotonic, log=None, anthropic_api=None):
         if mode not in ("off", "replay", "live"):
             raise LLMError(f"chế độ lạ: {mode!r}")
         self.log = log  # hàm nhận 1 chuỗi (vd stderr_log); None = im lặng (mặc định, để test không in gì). Chỉ lượt gọi API thật mới ghi log, lượt đọc cache thì không
@@ -119,6 +136,7 @@ class Client:
         self.cache_dir, self.usage_path = Path(cache_dir), Path(usage_path)
         self.today = today or datetime.date.today().isoformat()
         self.sleep, self._api, self.calls, self.hits = sleep, api, 0, 0  # calls: lượt gọi API; hits: lượt đọc lại từ cache
+        self._anthropic = anthropic_api  # client Anthropic (hoặc bản giả khi test); None thì _anthropic_client() tự dựng ở chế độ live
         self.clock, self._last = clock, {}  # thời điểm gọi API gần nhất của từng vai, để giãn nhịp theo RPM
 
     # ---- đếm lượt ----
@@ -165,6 +183,8 @@ class Client:
         if self.mode == "off":
             raise LLMUnavailable("chế độ --llm off")
         model = self.cfg[f"{role}.model"]
+        # Khoá cache KHÔNG chứa nhà cung cấp hay chế độ suy nghĩ (thêm vào sẽ đổi khoá của mọi bản ghi cũ, vỡ replay 2.2): tên model đã phân biệt hai nhà cung cấp.
+        # Hệ quả: đổi chế độ suy nghĩ của vai trich (xem _call_anthropic) mà KHÔNG nâng prompt_version của tác vụ thì cache cũ bị dùng lại âm thầm.
         key = cache_key(model, task, prompt_version, payload if payload is not None else user, system, schema)
         path = self.cache_dir / task / f"{key}.json"
         if path.exists():
@@ -185,10 +205,14 @@ class Client:
             self.log(f"{tag} gọi {model} (lượt {role} hôm nay: {self.used_today(role) + 1}/{limit}) ...")
         began = time.monotonic()
         with _Heartbeat(self.log, tag):
-            result = self._call(model, system, user, schema)
+            if provider_of(self.cfg, role) == "anthropic":
+                result = self._call_anthropic(model, system, user, schema, self.cfg.get(f"{role}.max_output_tokens", self.cfg["max_output_tokens"]),
+                                              self.cfg[f"{role}.thinking"])
+            else:
+                result = self._call(model, system, user, schema)
         if self.log:
-            u = result.get("usage") or {}
-            self.log(f"{tag} xong sau {time.monotonic() - began:.0f}s (token vào {u.get('prompt_token_count')}, ra {u.get('candidates_token_count')})")
+            n_in, n_out = tokens_in_out(result.get("usage"))
+            self.log(f"{tag} xong sau {time.monotonic() - began:.0f}s (token vào {n_in}, ra {n_out})")
         self._count(role)
         record = {"task": task, "prompt_version": prompt_version, "role": role, "requested_model": model,
                   "created": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
@@ -261,20 +285,95 @@ class Client:
                 "usage": {k: getattr(usage, k, None) for k in ("prompt_token_count", "candidates_token_count", "thoughts_token_count",
                                                                "total_token_count")}}
 
+    def _anthropic_client(self):
+        if self._anthropic is not None:
+            return self._anthropic
+        try:
+            import anthropic  # chỉ cần ở chế độ live; cài trong .venv
+        except ImportError:
+            raise LLMUnavailable("chưa cài gói anthropic; chạy: .venv/Scripts/python.exe -m pip install anthropic")
+        if not key_is_set("anthropic"):  # chỉ nhận khoá từ ANTHROPIC_API_KEY (CLAUDE.md mục 1.7), không dùng hồ sơ đăng nhập `ant auth login`
+            raise LLMUnavailable("chưa có khoá Anthropic; đặt biến môi trường ANTHROPIC_API_KEY bằng `setx` (xem đầu src/run_all.py)")
+        self._anthropic = anthropic.Anthropic(timeout=ANTHROPIC_TIMEOUT)
+        return self._anthropic
 
-def key_is_set():
-    """Biến môi trường GEMINI_API_KEY có giá trị không (chỉ trả có/không, không bao giờ in khoá)."""
-    return bool(os.environ.get("GEMINI_API_KEY"))
+    def _call_anthropic(self, model, system, user, schema, max_tokens, thinking):
+        """Một lời gọi Claude, đầu ra JSON ép theo lược đồ (output_config.format). Những chỗ khác nhánh Gemini:
+        - thinking {"type": thinking} với thinking lấy từ khoá <vai>.thinking của docs/llm_config.md: TẮT suy nghĩ bằng between_tools cho Sonnet 5.5 ({"type": "disabled"} bị 400
+          ở model đó) và bằng disabled cho Haiku 5.5 (between_tools bị 400 ở model đó). Suy nghĩ mặc định bật và tính vào token ra, lô nào cũng tốn thêm; bài toán này
+          (chép nguyên văn cụm, máy kiểm lại) không cần. Chế độ này KHÔNG vào khoá cache: đổi nó mà không đổi model thì phải nâng prompt_version.
+        - không đặt temperature / top_p (Sonnet 5.5 báo 400 nếu khác mặc định); không ép tool_choice (cũng 400).
+        - stop_reason khác end_turn (refusal, max_tokens ...) là lỗi, không lưu cache; KHÔNG bật server-side fallbacks vì nó có thể đổi model giữa chừng
+          (bản ghi phải cùng một model, llm_config.md)."""
+        try:
+            import anthropic
+            status_error, conn_error = anthropic.APIStatusError, anthropic.APIConnectionError
+        except ImportError:  # chưa cài gói (test bằng API giả): bắt Exception, như nhánh Gemini
+            status_error, conn_error = Exception, ()
+        client = self._anthropic_client()
+        request = dict(model=model, max_tokens=max_tokens, system=system, messages=[{"role": "user", "content": user}],
+                       thinking={"type": thinking}, output_config={"format": {"type": "json_schema", "schema": schema}})
+        for attempt in range(1, ATTEMPTS + 1):
+            try:
+                response = client.messages.create(**request)
+                break
+            except status_error as e:
+                code = getattr(e, "status_code", None)
+                if code in RETRY_CODES_ANTHROPIC and attempt < ATTEMPTS:
+                    if self.log:
+                        self.log(f"      ! API trả lỗi {code} (lần {attempt}/{ATTEMPTS}), chờ {WAIT_SECONDS * attempt}s rồi thử lại")
+                    self.sleep(WAIT_SECONDS * attempt)
+                    continue
+                raise LLMError(f"API trả lỗi {code}: {getattr(e, 'message', e)}")
+            except conn_error as e:  # gói đã tự thử lại 2 lần trước khi ném lỗi này
+                raise LLMError(f"lỗi kết nối tới API: {e}")
+        self.calls += 1
+        if response.stop_reason != "end_turn":
+            category = getattr(getattr(response, "stop_details", None), "category", None)
+            raise LLMError(f"mô hình dừng với stop_reason {response.stop_reason}" + (f" (loại {category})" if category else ""))
+        text = next((b.text for b in response.content if b.type == "text"), None)  # theo loại khối, không theo vị trí (có thể có khối thinking đứng trước)
+        try:
+            output = json.loads(text)
+        except (ValueError, TypeError) as e:
+            raise LLMError(f"đầu ra của mô hình không phải JSON ({e})")
+        usage = getattr(response, "usage", None)
+        return {"model": getattr(response, "model", None) or model, "request_id": getattr(response, "_request_id", None) or getattr(response, "id", None),
+                "output": output, "usage": {k: getattr(usage, k, None) for k in ("input_tokens", "output_tokens")}}
 
 
-def check_models(cfg):
-    """Hỏi models.list (KHÔNG tốn lượt tạo nội dung): mỗi model trong llm_config.md có tồn tại không. -> {model: bool}."""
-    api = Client("live", cfg)._client()
-    try:
-        names = {m.name.removeprefix("models/") for m in api.models.list()}
-    except Exception as e:  # SDK ném nhiều loại lỗi mạng / quyền
-        raise LLMError(f"models.list lỗi: {type(e).__name__}: {e}")
-    return {cfg[f"{r}.model"]: cfg[f"{r}.model"] in names for r in ROLES}
+def tokens_in_out(usage):
+    """(token vào, token ra) từ trường usage của một bản ghi, dù là Gemini (prompt_token_count ...) hay Anthropic (input_tokens ...). Bản ghi giữ nguyên tên của từng nhà cung cấp."""
+    u = usage or {}
+    return u.get("prompt_token_count", u.get("input_tokens")), u.get("candidates_token_count", u.get("output_tokens"))
+
+
+def key_is_set(provider="gemini"):
+    """Biến môi trường giữ khoá của nhà cung cấp có giá trị không (chỉ trả có/không, không bao giờ in khoá). Mặc định gemini: 2.2 và run_all dùng như cũ."""
+    return bool(os.environ.get(PROVIDERS[provider]))
+
+
+def check_models(cfg, client=None):
+    """Hỏi danh sách model của từng nhà cung cấp (KHÔNG tốn lượt tạo nội dung): mỗi model trong llm_config.md có tồn tại không. -> {model: bool}.
+    client: chỉ để test truyền Client có API giả; bình thường để trống."""
+    out, c = {}, client or Client("live", cfg)
+    gem = [r for r in ROLES + EXTRA_ROLES if provider_of(cfg, r) == "gemini"]
+    if gem:
+        api = c._client()
+        try:
+            names = {m.name.removeprefix("models/") for m in api.models.list()}
+        except Exception as e:  # SDK ném nhiều loại lỗi mạng / quyền
+            raise LLMError(f"models.list lỗi: {type(e).__name__}: {e}")
+        out.update({cfg[f"{r}.model"]: cfg[f"{r}.model"] in names for r in gem})
+    for r in (r for r in ROLES + EXTRA_ROLES if provider_of(cfg, r) == "anthropic"):
+        api = c._anthropic_client()
+        try:
+            api.models.retrieve(cfg[f"{r}.model"])
+            out[cfg[f"{r}.model"]] = True
+        except Exception as e:
+            if getattr(e, "status_code", None) != 404:
+                raise LLMError(f"models.retrieve lỗi: {type(e).__name__}: {e}")
+            out[cfg[f"{r}.model"]] = False
+    return out
 
 
 if __name__ == "__main__":
@@ -282,9 +381,12 @@ if __name__ == "__main__":
     cfg = load_config()
     c = Client("off", cfg)
     print("cấu hình:", {k: v for k, v in cfg.items() if k != "temperature"})
-    print("lượt đã dùng hôm nay:", {r: c.used_today(r) for r in ROLES}, "| khoá GEMINI_API_KEY:", "có" if key_is_set() else "KHÔNG THẤY")
+    used = ROLES + EXTRA_ROLES
+    print("lượt đã dùng hôm nay:", {r: c.used_today(r) for r in used}, "| khoá:",
+          {p: "có" if key_is_set(p) else "KHÔNG THẤY" for p in sorted({provider_of(cfg, r) for r in used})})
     if "--check-models" in sys.argv:
-        if not key_is_set():
-            raise SystemExit("không thấy GEMINI_API_KEY trong môi trường của process này (đặt khoá MỘT LẦN bằng `setx GEMINI_API_KEY` ở terminal riêng rồi mở terminal mới; xem đầu src/run_all.py)")
+        for p in sorted({provider_of(cfg, r) for r in used}):
+            if not key_is_set(p):
+                raise SystemExit(f"không thấy {PROVIDERS[p]} trong môi trường của process này (đặt khoá MỘT LẦN bằng `setx {PROVIDERS[p]}` ở terminal riêng rồi mở terminal mới; xem đầu src/run_all.py)")
         for model, ok in check_models(cfg).items():
-            print(f"  {'có' if ok else 'KHÔNG CÓ'} trên models.list: {model}")
+            print(f"  {'có' if ok else 'KHÔNG CÓ'} trên nhà cung cấp: {model}")

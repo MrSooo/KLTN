@@ -1,0 +1,143 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-sonnet-5-5",
+ "created": "2026-11-12T17:09:17+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D208.K1\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trước, trong và sau khi đình công\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Cản trở việc thực hiện quyền đình công hoặc kích động, lôi kéo, ép buộc người lao động đình công; cản trở người lao động không tham gia đình công đi làm việc.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D208.K2\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trước, trong và sau khi đình công\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Dùng bạo lực; hủy hoại máy, thiết bị, tài sản của người sử dụng lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D208.K3\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trước, trong và sau khi đình công\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Xâm phạm trật tự, an toàn công cộng.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D208.K4\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trước, trong và sau khi đình công\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chấm dứt hợp đồng lao động hoặc xử lý kỷ luật lao động đối với người lao động, người lãnh đạo đình công hoặc điều động người lao động, người lãnh đạo đình công sang làm công việc khác, đi làm việc ở nơi khác vì lý do chuẩn bị đình công hoặc tham gia đình công.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D208.K5\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trước, trong và sau khi đình công\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Trù dập, trả thù người lao động tham gia đình công, người lãnh đạo đình công.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D208.K6\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trước, trong và sau khi đình công\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Lợi dụng đình công để thực hiện hành vi vi phạm pháp luật.\"\n}\n]\n}",
+ "model": "claude-sonnet-5-5",
+ "request_id": "req_011CgyQLa4MwBsbSZkdX2gBv",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D208.K1",
+    "spans": [
+     {
+      "span": "Cản trở việc thực hiện quyền đình công hoặc kích động, lôi kéo, ép buộc người lao động đình công",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "cản trở người lao động không tham gia đình công đi làm việc",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Các hành vi bị nghiêm cấm",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D208.K2",
+    "spans": [
+     {
+      "span": "Dùng bạo lực",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "hủy hoại máy, thiết bị, tài sản của người sử dụng lao động",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "Các hành vi bị nghiêm cấm",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D208.K3",
+    "spans": [
+     {
+      "span": "Xâm phạm trật tự, an toàn công cộng",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Các hành vi bị nghiêm cấm",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D208.K4",
+    "spans": [
+     {
+      "span": "Chấm dứt hợp đồng lao động hoặc xử lý kỷ luật lao động đối với người lao động, người lãnh đạo đình công",
+      "role": "ket_luan",
+      "params": [
+       "C",
+       "W"
+      ]
+     },
+     {
+      "span": "điều động người lao động, người lãnh đạo đình công sang làm công việc khác, đi làm việc ở nơi khác",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "J"
+      ]
+     },
+     {
+      "span": "vì lý do chuẩn bị đình công hoặc tham gia đình công",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "Các hành vi bị nghiêm cấm",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D208.K5",
+    "spans": [
+     {
+      "span": "Trù dập, trả thù người lao động tham gia đình công, người lãnh đạo đình công",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Các hành vi bị nghiêm cấm",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D208.K6",
+    "spans": [
+     {
+      "span": "Lợi dụng đình công để thực hiện hành vi vi phạm pháp luật",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Các hành vi bị nghiêm cấm",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2501,
+  "output_tokens": 929
+ }
+}

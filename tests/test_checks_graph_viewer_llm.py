@@ -36,6 +36,14 @@ def test_checks_all_checks_clean():
     assert not bad, bad
 
 
+def test_checks_residue_guard_fails_on_new_or_missing_unhandled_case():
+    known = {"B.D1", "B.D2"}
+    assert chk.residue_problems({"B.D1", "B.D2"}, known) == []
+    assert "thừa ['B.D3']" in chk.residue_problems({"B.D1", "B.D2", "B.D3"}, known)[0]
+    assert "thiếu ['B.D2']" in chk.residue_problems({"B.D1"}, known)[0]
+    assert {"B." + u for u in chk.BLLD_UNHANDLED_KNOWN} == {"B.D24.K3", "B.D188.K1"}
+
+
 def test_checks_detects_broken_version_intervals():
     ok = {"X.D1": [{"id": "X.D1", "version": 1, "previous_version": None, "effective_from": "2021-01-01", "effective_to": "2023-01-01"},
                    {"id": "X.D1", "version": 2, "previous_version": 1, "effective_from": "2023-01-01", "effective_to": None}]}
@@ -152,6 +160,10 @@ def test_llm_config_is_read_from_llm_config_md():
     cfg = llm.load_config()
     assert cfg["chinh.model"].startswith("gemini") and cfg["kiem.model"] != cfg["chinh.model"]
     assert cfg["chinh.luot_moi_ngay"] > cfg["kiem.luot_moi_ngay"] and cfg["max_output_tokens"] == 32000
+    # vai trich (A34) là vai MỚI cho Claude; chinh và kiem vẫn là Gemini để cache của 2.2 (khoá theo tên model) không hụt
+    assert llm.provider_of(cfg, "chinh") == llm.provider_of(cfg, "kiem") == "gemini" and llm.provider_of(cfg, "trich") == "anthropic"
+    assert cfg["trich.model"].startswith("claude") and cfg["trich.max_output_tokens"] == 16000 and "trich" not in llm.ROLES
+    assert cfg["trich.thinking"] in llm.THINKING_MODES
 
 
 _harness.run(globals())

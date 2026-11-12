@@ -1,0 +1,160 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-sonnet-5-5",
+ "created": "2026-11-12T17:05:28+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D156.K1\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Giấy phép lao động hết thời hạn.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D156.K2\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chấm dứt hợp đồng lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D156.K3\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Nội dung của hợp đồng lao động không đúng với nội dung của giấy phép lao động đã được cấp.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D156.K4\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Làm việc không đúng với nội dung trong giấy phép lao động đã được cấp.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D156.K5\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D156.K6\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D156.K7\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D156.K8\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Giấy phép lao động bị thu hồi.\"\n}\n]\n}",
+ "model": "claude-sonnet-5-5",
+ "request_id": "req_011CgyQ3Z9K7qEeAms4UuysF",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D156.K1",
+    "spans": [
+     {
+      "span": "Giấy phép lao động hết thời hạn",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "Các trường hợp giấy phép lao động hết hiệu lực",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D156.K2",
+    "spans": [
+     {
+      "span": "Chấm dứt hợp đồng lao động",
+      "role": "dieu_kien",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "Các trường hợp giấy phép lao động hết hiệu lực",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D156.K3",
+    "spans": [
+     {
+      "span": "Nội dung của hợp đồng lao động không đúng với nội dung của giấy phép lao động đã được cấp",
+      "role": "dieu_kien",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "Các trường hợp giấy phép lao động hết hiệu lực",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D156.K4",
+    "spans": [
+     {
+      "span": "Làm việc không đúng với nội dung trong giấy phép lao động đã được cấp",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "J"
+      ]
+     },
+     {
+      "span": "Các trường hợp giấy phép lao động hết hiệu lực",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D156.K5",
+    "spans": [
+     {
+      "span": "Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt",
+      "role": "dieu_kien",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "Các trường hợp giấy phép lao động hết hiệu lực",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D156.K6",
+    "spans": [
+     {
+      "span": "Có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Các trường hợp giấy phép lao động hết hiệu lực",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D156.K7",
+    "spans": [
+     {
+      "span": "Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài",
+      "role": "chu_the",
+      "params": [
+       "E",
+       "W"
+      ]
+     },
+     {
+      "span": "chấm dứt hoạt động",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "Các trường hợp giấy phép lao động hết hiệu lực",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D156.K8",
+    "spans": [
+     {
+      "span": "Giấy phép lao động bị thu hồi",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "Các trường hợp giấy phép lao động hết hiệu lực",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2622,
+  "output_tokens": 1092
+ }
+}

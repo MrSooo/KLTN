@@ -1,0 +1,84 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-sonnet-5-5",
+ "created": "2026-11-12T17:06:39+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D173.K1\",\n\"tieu_de_dieu\": \"Ban lãnh đạo và thành viên tổ chức của người lao động tại doanh nghiệp\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Tại thời điểm đăng ký, tổ chức của người lao động tại doanh nghiệp phải có số lượng tối thiểu thành viên là người lao động làm việc tại doanh nghiệp theo quy định của Chính phủ.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D173.K2\",\n\"tieu_de_dieu\": \"Ban lãnh đạo và thành viên tổ chức của người lao động tại doanh nghiệp\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Ban lãnh đạo do thành viên của tổ chức của người lao động tại doanh nghiệp bầu. Thành viên ban lãnh đạo là người lao động Việt Nam đang làm việc tại doanh nghiệp; không đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm an ninh quốc gia, các tội xâm phạm quyền tự do của con người, quyền tự do, dân chủ của công dân, các tội xâm phạm sở hữu theo quy định của Bộ luật Hình sự.\"\n}\n]\n}",
+ "model": "claude-sonnet-5-5",
+ "request_id": "req_011CgyQ91ftptnSJ3JqomKsZ",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D173.K1",
+    "spans": [
+     {
+      "span": "tổ chức của người lao động tại doanh nghiệp",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Tại thời điểm đăng ký",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "phải có số lượng tối thiểu thành viên là người lao động làm việc tại doanh nghiệp",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "A"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D173.K2",
+    "spans": [
+     {
+      "span": "Ban lãnh đạo",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "do thành viên của tổ chức của người lao động tại doanh nghiệp bầu",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Thành viên ban lãnh đạo",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "là người lao động Việt Nam đang làm việc tại doanh nghiệp",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "không đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm an ninh quốc gia, các tội xâm phạm quyền tự do của con người, quyền tự do, dân chủ của công dân, các tội xâm phạm sở hữu theo quy định của Bộ luật Hình sự",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2129,
+  "output_tokens": 533
+ }
+}

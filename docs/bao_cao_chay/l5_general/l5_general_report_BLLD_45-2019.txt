@@ -1,5 +1,6 @@
 L5 chung báo cáo: BLLD_45-2019
-trigger L5 tường minh để lại: 45 = 'trừ trường hợp' đã xử lý 39 + unhandled 6
-nút điều kiện: 30 {'cu_the': 26, 'tuy_nghi': 3, 'dan_chieu_mo': 1}  cạnh: 59 ({'general_except': 39, 'general_except_ref': 20})
+trigger L5 tường minh để lại: 45 = 'trừ' đã xử lý 43 + unhandled 2
+nút điều kiện: 34 {'cu_the': 30, 'tuy_nghi': 3, 'dan_chieu_mo': 1}  cạnh: 66 ({'general_except': 39, 'general_except_ref': 20, 'general_except_noun': 4, 'general_except_noun_ref': 3})
 unhandled theo lý do:
-    6  ngoài hai quy tắc của L5 tường minh
+    1  'không áp dụng' không kèm dẫn chiếu tới đơn vị bị loại trừ nên không biết là ngoại lệ của đơn vị nào
+    1  ngoại lệ liệt kê ở các đơn vị con (đoạn kết thúc bằng dấu hai chấm)

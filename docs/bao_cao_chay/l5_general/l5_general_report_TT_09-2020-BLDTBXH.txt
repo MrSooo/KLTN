@@ -1,5 +1,5 @@
 L5 chung báo cáo: TT_09-2020-BLDTBXH
-trigger L5 tường minh để lại: 1 = 'trừ trường hợp' đã xử lý 0 + unhandled 1
-nút điều kiện: 0 {}  cạnh: 0 ({})
+trigger L5 tường minh để lại: 1 = 'trừ' đã xử lý 1 + unhandled 0
+nút điều kiện: 1 {'cu_the': 1}  cạnh: 2 ({'general_except_noun': 1, 'general_except_noun_ref': 1})
 unhandled theo lý do:
-    1  ngoài hai quy tắc của L5 tường minh
+  (không có)

@@ -1,15 +1,16 @@
 r"""Chạy lại cả chuỗi L1 -> L6 -> đồ thị trên cả kho lao động. Dùng làm hồi quy cho mỗi bước sửa.
 
-Chạy: python -I src/run_all.py            (L1, L2, L4, L5 tường minh + chung, L3, L6, checks, graph)
+Chạy: python -I src/run_all.py            (L1, L2, L4, L5 tường minh + chung, 1.6 gạch cụm, L3, L6, checks, graph)
       python -I src/run_all.py --viewer       (thêm viewer: dựng trang xem đồ thị)
       python -I src/run_all.py --tests    (thêm mọi tests/test_*.py)
       python -I src/run_all.py --viewer --tests
 
-LLM (mặc định tắt): --llm off | replay | live, chỉ ảnh hưởng một bước dùng LLM là L3 (đề xuất cạnh details). Bước loại Điều (article_type) không dùng LLM từ 11/11 (A14).
+LLM (mặc định tắt): --llm off | replay | live, chỉ ảnh hưởng hai bước dùng LLM: 2.2 (links: đề xuất cạnh details) và 1.6 giai đoạn A (concepts: gạch cụm). Bước loại Điều (article_type) không dùng LLM từ 11/11 (A14).
   off     không gọi gì (mặc định, kết quả tất định, cùng kết quả khi chưa có cache)
   replay  chỉ đọc phản hồi đã lưu ở data/llm_cache/, thiếu thì bước đó giữ kết quả như off (không chạm mạng)
-  live    như replay, thiếu cache thì GỌI API THẬT (tốn hạn mức theo docs/llm_config.md). Cần biến môi trường GEMINI_API_KEY trong process này và
-          gói google-genai (cài trong .venv: `.venv\Scripts\python.exe -m pip install google-genai`). Chạy: `python -I src\run_all.py --llm live --viewer --tests`.
+  live    như replay, thiếu cache thì GỌI API THẬT (tốn hạn mức theo docs/llm_config.md). Cần biến môi trường GEMINI_API_KEY (2.2) và ANTHROPIC_API_KEY (1.6, trả phí, A34)
+          trong process này, cùng hai gói google-genai và anthropic (cài trong .venv: `.venv\Scripts\python.exe -m pip install google-genai anthropic`).
+          Chạy: `python -I src\run_all.py --llm live --viewer --tests`; muốn chỉ chạy 1.6 thì `python -I src\concepts.py --llm live --max-batches N`.
           Thiếu khoá thì dừng ngay, trước khi chạy bất kỳ bước nào. Kiểm trước (không tốn lượt): `python -I src\llm_client.py --check-models`.
           Đặt khoá MỘT LẦN, ở terminal riêng của bạn (KHÔNG dùng tiền tố `!` của Claude Code, vì lệnh sẽ nằm trong cuộc trò chuyện):
               setx GEMINI_API_KEY "<khoá>"      rồi mở terminal / VS Code MỚI (setx không đổi terminal đang mở).
@@ -31,7 +32,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))  # -I không tự thêm thư mục script
 import llm_client  # noqa: E402
 
-LLM_SCRIPTS = ("src/links.py",)  # chỉ bước này nhận --llm
+LLM_SCRIPTS = ("src/links.py", "src/concepts.py")  # chỉ hai bước này nhận --llm
 
 STEPS = [
     ("L1 tách cấu trúc 18 văn bản", ["src/parse.py", "--all"]),
@@ -39,6 +40,7 @@ STEPS = [
     ("L4 phân loại Điều", ["src/article_type.py"]),
     ("L5 ngoại lệ tường minh", ["src/exceptions_explicit.py", "--all"]),
     ("L5 ngoại lệ chung", ["src/exceptions_general.py", "--all"]),
+    ("1.6 gạch cụm (giai đoạn A)", ["src/concepts.py"]),
     ("1.3 điều khoản giao chi tiết", ["src/delegation.py"]),
     ("2.2 nối văn bản: based_on, details", ["src/links.py"]),
     ("L6 phiên bản theo ngày hiệu lực", ["src/l6_versions.py"]),
@@ -101,15 +103,17 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--viewer", action="store_true", help="thêm viewer: dựng trang xem đồ thị")
     ap.add_argument("--tests", action="store_true", help="thêm mọi tests/test_*.py")
-    ap.add_argument("--llm", choices=("off", "replay", "live"), default="off", help="chế độ LLM cho L3 (xem đầu file); mặc định off")
+    ap.add_argument("--llm", choices=("off", "replay", "live"), default="off", help="chế độ LLM cho 2.2 và 1.6 (xem đầu file); mặc định off")
     args = ap.parse_args()
     if args.llm == "live":
-        if not llm_client.key_is_set():
-            raise SystemExit("--llm live nhưng không thấy GEMINI_API_KEY trong môi trường của process này; chưa chạy bước nào, chưa tốn lượt nào.\n"
-                             "Đặt khoá MỘT LẦN bằng `setx GEMINI_API_KEY` (xem hướng dẫn ở đầu src/run_all.py), mở terminal mới rồi chạy lại.")
         cfg = llm_client.load_config()
+        # 2.2 dùng vai chinh và kiem, 1.6 dùng vai trich: cần khoá của mọi nhà cung cấp đang dùng, thiếu cái nào cũng dừng ngay trước khi chạy bước nào
+        missing = [llm_client.PROVIDERS[p] for p in sorted({llm_client.provider_of(cfg, r) for r in llm_client.ROLES + llm_client.EXTRA_ROLES}) if not llm_client.key_is_set(p)]
+        if missing:
+            raise SystemExit(f"--llm live nhưng không thấy {', '.join(missing)} trong môi trường của process này; chưa chạy bước nào, chưa tốn lượt nào.\n"
+                             f"Đặt khoá MỘT LẦN bằng `setx <tên biến>` (xem hướng dẫn ở đầu src/run_all.py), mở terminal mới rồi chạy lại.")
         print(f"LLM live: sẽ gọi API thật khi thiếu cache. Hạn mức: chinh {cfg['chinh.model']} {cfg['chinh.luot_moi_ngay']}/ngày, "
-              f"kiem {cfg['kiem.model']} {cfg['kiem.luot_moi_ngay']}/ngày.")
+              f"kiem {cfg['kiem.model']} {cfg['kiem.luot_moi_ngay']}/ngày, trich {cfg['trich.model']} (chặn an toàn {cfg['trich.luot_moi_ngay']}/ngày).")
     cmds = [(name, cmd + (["--llm", args.llm] if args.llm != "off" and cmd[0] in LLM_SCRIPTS else [])) for name, cmd in STEPS + (VIEWER_STEPS if args.viewer else [])]
     chatty = lambda cmd: args.llm != "off" and cmd[0] in LLM_SCRIPTS  # noqa: E731  bước LLM: cho stderr (log tiến độ) hiện ngay
     steps = [(name, lambda cmd=cmd: run(*cmd, relay_stderr=chatty(cmd)), chatty(cmd)) for name, cmd in cmds]
@@ -118,4 +122,5 @@ if __name__ == "__main__":
     run_steps(steps)
     if args.llm != "off":
         c = llm_client.Client("off")
-        print(f"LLM hôm nay đã dùng: chinh {c.used_today('chinh')}/{c.cfg['chinh.luot_moi_ngay']}, kiem {c.used_today('kiem')}/{c.cfg['kiem.luot_moi_ngay']}")
+        print(f"LLM hôm nay đã dùng: chinh {c.used_today('chinh')}/{c.cfg['chinh.luot_moi_ngay']}, kiem {c.used_today('kiem')}/{c.cfg['kiem.luot_moi_ngay']}, "
+              f"trich {c.used_today('trich')}/{c.cfg['trich.luot_moi_ngay']}")

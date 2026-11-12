@@ -1,0 +1,154 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-sonnet-5-5",
+ "created": "2026-11-12T16:57:18+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D58\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D58.K1\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thực hiện công việc theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D58.K2\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chấp hành kỷ luật lao động, nội quy lao động; tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D58.K3\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Được trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D58.K4\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khiếu nại với doanh nghiệp cho thuê lại lao động trong trường hợp bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D58.K5\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động để giao kết hợp đồng lao động với bên thuê lại lao động.\"\n}\n]\n}",
+ "model": "claude-sonnet-5-5",
+ "request_id": "req_011CgyPRVeiLGdnwHCuFuL1F",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D58",
+    "spans": [
+     {
+      "span": "người lao động thuê lại",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "có các quyền và nghĩa vụ sau đây",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D58.K1",
+    "spans": [
+     {
+      "span": "người lao động thuê lại",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Thực hiện công việc theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động",
+      "role": "ket_luan",
+      "params": [
+       "J",
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D58.K2",
+    "spans": [
+     {
+      "span": "người lao động thuê lại",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Chấp hành kỷ luật lao động, nội quy lao động; tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D58.K3",
+    "spans": [
+     {
+      "span": "người lao động thuê lại",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Được trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động",
+      "role": "ket_luan",
+      "params": [
+       "A"
+      ]
+     },
+     {
+      "span": "có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D58.K4",
+    "spans": [
+     {
+      "span": "người lao động thuê lại",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Khiếu nại với doanh nghiệp cho thuê lại lao động",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động",
+      "role": "dieu_kien",
+      "params": [
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D58.K5",
+    "spans": [
+     {
+      "span": "người lao động thuê lại",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động",
+      "role": "ket_luan",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "để giao kết hợp đồng lao động với bên thuê lại lao động",
+      "role": "dieu_kien",
+      "params": [
+       "C"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2540,
+  "output_tokens": 953
+ }
+}

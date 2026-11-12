@@ -1,13 +1,13 @@
 # Tiến độ (đọc sau README.md)
 
-Cập nhật lần cuối: **12/11/2026**, cuối ngày (người dùng nói "tạm dừng" để về nhà làm tiếp; commit và push cùng lượt).
+Cập nhật lần cuối: **13/11/2026**, tối (người dùng nói "tạm dừng" để mai lên công ty làm tiếp; commit và push cùng lượt).
 
 ## Đọc theo thứ tự
 1. `README.md` (điểm vào, có mục "Việc của phiên này").
 2. `.claude/CLAUDE.md` (tự nạp). Tên bước L-số trong bảng mục 2 là tên **cũ**; quy tắc 11 là cách làm việc với người dùng.
 3. File này.
 4. `docs/pipeline_moi.md`: thiết kế pipeline, cách làm từng bước, ví dụ dữ liệu thật, giải thích field, mẫu "thẻ bước" và thẻ mẫu 1.3.
-5. `docs/quyet_dinh/pipeline_moi_quyet_dinh.txt`: quyết định đã chốt (mục A, A1 đến A20) và số đo, quan sát (mục B, B1 đến B10).
+5. `docs/quyet_dinh/pipeline_moi_quyet_dinh.txt`: quyết định đã chốt (mục A, A1 đến A35) và số đo, quan sát (mục B, B1 đến B11).
 6. `docs/kiem_hieu.md` và `docs/kiem_hieu_dap_an.md`: bộ kiểm hiểu 1.1 đến 1.6 (10 câu mỗi bước, tổng 60 câu; đáp án ý chính chỉ dành cho agent chấm). **Đang TẠM DỪNG** theo yêu cầu người dùng đến khi chốt xong 1.6.
 6b. `docs/the_buoc_1_1_den_1_5.md`: thẻ bước 1.1 đến 1.5 với số đo và bảng phát hiện (viết 12/11).
 7. Khi cần: `docs/tien_do_L0_L6.md` (lịch sử code cũ), `docs/quyet_dinh/l*_quyet_dinh.txt` (quyết định của code cũ), `plan/ke_hoach/` (plan tham khảo, không sửa), `plan/ke_hoach/method_vi_3_1_den_3_6_2026-11-09.md` (bản Method của luận, nguồn của mô hình K).
@@ -19,11 +19,13 @@ Cập nhật lần cuối: **12/11/2026**, cuối ngày (người dùng nói "t�
 
 ## Trạng thái hiện tại
 - Nhánh `v3_refactor`. Mốc cũ `d83a4d4` là code L0-L6 trước refactor.
-- **Bước 1.1 đến 1.5 đã code xong** và chạy xanh (kiểm lại 12/11 cuối ngày): `python -I src/run_all.py --viewer --tests` ra 12/12 bước, 7 bộ test (119 test, `tổng test lỗi: 0`), cả `--llm off` lẫn `--llm replay`, đủ 18 file triples. Trong ngày 12/11 sửa 3 chỗ (A21 nhãn 1.4, A22 ngoại lệ tường minh 1.5, A23 tên chờ đích 1.2); `CLAUDE.md` mục 3 vẫn ghi 113 test (chưa sửa). Tên file mới: `parse`, `refs`, `delegation` (1.3), `links` (2.2), `article_type` (1.4, đã bỏ LLM), `exceptions_explicit`, `exceptions_general`, `textutil`. Bản đồ tên cũ sang mới ở `docs/pipeline_moi.md`.
-- Khuôn cạnh chung `{s, p, o, evidence, how, flags}` (riêng 1.5 thêm `rule`). Đã bỏ field không ai đọc: `version` (1.1) và `heading` (1.4).
-- Đếm lại trên đĩa 11/11, khớp số cũ: 10.202 đơn vị, 893 Điều, 2.348 `refers_to`, 129 chờ đích, 51 điều khoản giao chắc (cộng 5 ca lỏng cờ `loose`).
-- Chưa làm: 1.6 (đang bàn, chưa code; còn chờ đúng một điểm: cách gộp tên đồng nghĩa) đến 1.9 và toàn bộ giai đoạn 2 (đã có code cũ cho 2.3, 2.4 ở `l6_*.py`; 2.5 đến 2.7 chưa có).
-- Mục tiêu người dùng đặt (A11): hết T7 (14/11/2026) có KB đủ lớp, có cơ chế cập nhật và một demo hỏi đáp nhỏ. Lịch đề xuất (người dùng chưa duyệt từng ngày): T5 12/11 làm 1.6 và 1.7; T6 13/11 làm 1.8, 1.9 và demo; T7 14/11 làm giai đoạn 2.
+- **Bước 1.1 đến 1.5 xong. Bước 1.6 giai đoạn A (`src/concepts.py`, gạch cụm) đã code và CHẠY LIVE XONG 13/11:** 204/204 lô bằng Claude Sonnet 5.5, $2,61, kết quả ở `data/llm_cache/concepts_spans/` (được theo dõi trong git) và `docs/bao_cao_chay/concepts/`. Đã đọc kết quả (A35): 881 đơn vị, 2552 hàng cụm, 865/881 đơn vị có cụm; cổng nguyên văn 0 cụm bị loại (kiểm độc lập xác nhận); mẫu đọc tay 30 đơn vị 74/84 cụm chấp nhận được (88%). Hai lỗi đã sửa trong code với test (A35): ngữ cảnh thiếu câu dẫn của Điều ở 46 khoản, ngoại lệ ghi hai lần ở 11 đơn vị. Sửa làm 10 lô đổi ngữ cảnh nên `replay` báo 194/204 (thiếu 10 lô, không phải lỗi).
+- **Tầng LLM (A34, A35):** vai mới `trich` (Claude) cho 1.6 trở đi, nằm ngoài `llm_client.ROLES` để cache của 2.2 (Gemini, vai `chinh` và `kiem`) không hụt. Khoá cấu hình `trich.thinking` (Sonnet: `between_tools`, Haiku: `disabled`). Cấu hình đang commit là Sonnet; đã đồng ý chuyển Haiku 5.5, CHƯA chạy (1.6A chạy lại bằng Haiku khoảng $0,13). Mọi thứ về Claude mới chỉ kiểm bằng API giả và một lần chạy Sonnet thật; Haiku chưa từng gọi thật.
+- Kiểm 13/11 trước commit: `python -I src/run_all.py --viewer --tests` 13/13 bước, 8 bộ test, 154 test, `tổng test lỗi: 0`, cả `--llm off` lẫn `--llm replay`.
+- s(CASP) đã cài và chạy được trên máy nhà từ 12/11 (A33); chưa kiểm ở máy công ty (cần từ 1.8).
+- Khuôn cạnh chung `{s, p, o, evidence, how, flags}` (riêng 1.5 thêm `rule`). Tên file: `parse`, `refs`, `delegation` (1.3), `links` (2.2), `article_type` (1.4, đã bỏ LLM), `exceptions_explicit`, `exceptions_general`, `concepts` (1.6A), `textutil`. Bản đồ tên cũ sang mới ở `docs/pipeline_moi.md`.
+- Chưa làm: 1.6B (đặt tên, tái dùng vị từ), 1.7, 1.8, 1.9 và giai đoạn 2 (đã có code cũ cho 2.3, 2.4 ở `l6_*.py`; 2.5 đến 2.7 chưa có). Thẻ 1.7 và 1.8 là bản nháp ở `docs/pipeline_moi.md`.
+- Mục tiêu người dùng đặt (A11): hết T7 (14/11/2026) có KB đủ lớp, có cơ chế cập nhật và một demo hỏi đáp nhỏ. **Đã trượt**: 1.7 chạy thật không kịp (cần sổ vị từ 1.6B); người dùng quyết cắt gì.
 
 ## Nợ (ghi 11/11)
 1. **1.2 tầng 2** (xác định đích duy nhất cho 13 ca khoản/điểm trơ trụi, đều ở nghị định, thông tư) hoãn; BLLĐ có 0 ca (B10).
@@ -38,24 +40,32 @@ Cập nhật lần cuối: **12/11/2026**, cuối ngày (người dùng nói "t�
 10. **Mở rộng ngoại lệ chung 1.5 sang "trừ <danh từ>"** (trừ hành vi, hình thức, các, những ...; 64 ca trong kho, BLLĐ 5 ca): user đã đồng ý làm, hoãn sau 1.6 (A24). Cần đo độ chính xác trên mẫu đọc tay khi làm.
 11. **Nút điều kiện quá dài của ngoại lệ chung** ("đến hết đoạn", ví dụ `ND_28-2020.D11.K1` 724 ký tự): ghi nợ, hướng cắt ở dấu ";" (A24).
 12. **Kiểm dữ kiện thô của 1.6** (R2 của plan): phần ngữ nghĩa không có cách kiểm bằng máy, bỏ (A26). Phần máy làm được dời sang bộ quét lỗi của 1.8: vị từ là kết luận của một quy tắc thì không được là `input`; mỗi `input` phải được ít nhất một quy tắc dùng. Chưa bàn 1.8 nên đây mới là việc mang sang. Phần còn lại chỉ đo được qua câu hỏi thử ở 1.9, không thành cổng.
+13. **`narrower_than`** (quan hệ hẹp hơn giữa hai vị từ gần nghĩa; A27 (2), A29 cấp 3): hoãn khỏi 1.6 và 1.7 (A32). Làm sau khi chạy một vòng KB đầy đủ, dựa trên kết quả phân tích (đếm cặp vị từ gần nghĩa, đếm ngoại lệ bị sót). Cái mất khi hoãn: chưa có tri thức quan hệ ngầm giữa vị từ gần nghĩa.
+
+14. **1.6A, chất lượng cụm (A35):** mẫu đọc tay 88% chấp nhận được, một người đọc, không phải đáp án chuẩn. Vấn đề chính: mục liệt kê "phải có các nội dung sau" và "hành vi bị cấm" bị gán `ket_luan` (vai nhập nhằng); `ket_luan` phủ 843/881 đơn vị nên `kind` khó phân biệt; vai gắn theo đơn vị chứ không theo từng quy tắc; 12% cụm dài từ 25 từ trở lên. Hai đơn vị định nghĩa D107.K1 và D63.K1 bị bỏ trống. Chỉnh bằng lời nhắc sau khi quyết Haiku (nâng PROMPT_VERSION).
+15. **Lời nhắc 1.6A còn câu "(chỉ có khi đơn vị là điểm)" cho `khoan_cha`**, không còn đúng cho 46 khoản (A35); cố ý chưa sửa để so Haiku–Sonnet sạch.
+16. **Số liệu LLM chưa đối chiếu Console:** $2,61 là tính từ token ghi trong cache.
 
 ## Kiểm hiểu (người dùng bảo "khá hay, lưu lại" 11/11)
 **TẠM DỪNG từ 12/11 theo yêu cầu người dùng; kiểm lại (1.1 và 1.6, rồi các bước khác) sau khi chốt xong 1.6. Agent không hỏi câu kiểm hiểu nào cho tới khi người dùng bảo.**
 Bộ 50 câu (10 câu mỗi bước 1.1 đến 1.5) ở `docs/kiem_hieu.md`; ý chính đáp án cho agent ở `docs/kiem_hieu_dap_an.md`. Kết quả: 1.1 đã kiểm 12/11 (1/10 đúng, chưa đạt, cần học lại rồi kiểm lại); 1.6 kiểm lượt đầu 12/11 (2/10 đúng, 3 thiếu, 3 chưa biết, 2 chưa kiểm vì user mất câu hỏi 1.6.9 và 1.6.10; chưa đạt); 1.2 đến 1.5 vẫn "chưa trả lời" (40 câu). Người dùng nói "kiểm 1.x" thì agent hỏi 10 câu của bước đó, chấm đúng/thiếu/sai, giải thích chỗ sai, rồi ghi kết quả và "mức nắm" (ngưỡng đề xuất: 8 trên 10 là đã nắm) vào bảng.
 
 ## Việc kế tiếp (theo thứ tự)
-1. Dựng lại và xác nhận xanh (README, mục "Dựng lại và kiểm").
-2. Kiểm hiểu: **tạm dừng** đến khi chốt xong 1.6. Khi người dùng nói "kiểm 1.x" thì agent hỏi 10 câu của bước đó, chấm và ghi lại (1.1 được 1/10 và 1.6 được 2/10 ngày 12/11, cần kiểm lại).
-3. **Bàn bước 1.6 (sổ khái niệm)**, chưa code. Đọc mục 3.5 của Method trước. Làm đúng quy tắc 11: kể lại bước bằng thẻ, hỏi kiểm hiểu, rồi mới nhờ quyết. **Đang bàn từ 12/11** (thẻ 1.6 ở `docs/pipeline_moi.md`, 10 câu kiểm hiểu 1.6 ở `docs/kiem_hieu.md`, A25 ở quyết định). KHÔNG dùng model thứ hai để kiểm (nguyên tắc đã chốt); mọi bước LLM kiểm bằng cổng máy. Đã chốt 12/11 (A25, A26): bỏ model thứ hai, dùng cổng máy; ngữ cảnh = tiêu đề Điều + chapeau + chữ đơn vị; bỏ kiểm dữ kiện thô (nợ #12). Còn chờ DUY NHẤT điểm 4 (gộp tên đồng nghĩa): user loại phương án có người duyệt; agent tự bác phương án (d) "gộp khi cùng neo qua 1.2" vì nó chỉ là cổng G5 đổi tên và không phủ quan hệ ngầm. Agent đang đề xuất: lưu tên vị từ gốc cho từng cụm, bảng `same_as` riêng (công tắc), 1.6 chỉ gộp khi chữ trùng sau chuẩn hoá và xuất báo cáo cặp nghi gần nghĩa để đo; quan hệ ngầm để 1.7 xét từng cặp có câu bằng chứng. Hai câu cần user quyết: (1) tách danh tính khỏi liên hệ như trên, hay LLM tái dùng tên lúc tạo vị từ; (2) có thêm lượt thứ hai cùng model chỉ để ĐO độ ổn định (không lọc) không. Chi tiết và phản biện ở A26. Chưa code.
-4. Kiểm s(CASP) trên máy này: `scasp --version`, `swipl --version`.
-5. Khi rảnh: viết thẻ 1.1, 1.2, 1.4, 1.5; rà `checks.py`.
+1. **14/11, máy công ty:** làm các bước 1 đến 10 ở `README.md` mục "Việc của phiên này" (dựng lại, khoá, chuyển Haiku, chạy 1.6A bằng Haiku, so sánh với Sonnet).
+2. **1.6B (đặt tên, tái dùng vị từ):** code phần máy trước (gom chữ theo `text_norm`, danh sách ứng viên giới hạn, cổng tên, suy `kind`, sổ vị từ, báo cáo tái dùng kèm tệp mẫu đọc tay), khung gọi LLM kiểm bằng API giả. Cần đọc thẻ 1.6 ở `docs/pipeline_moi.md` mục 4 bước 5 đến 7. Số lượt ước xấp xỉ 1719 chữ chia cỡ lô.
+3. **1.7 và 1.8:** chờ người dùng trả lời (a) đến (e) của thẻ 1.8 (B11) và có cắt 1.7 hay không (1.8 chỉ cần "thêm cạnh của 1.7 khi có"). Quy trình thẻ: kể lại bước, advisor soát, nhờ quyết.
+4. Kiểm hiểu: **tạm dừng**; người dùng nói "kiểm 1.x" thì hỏi 10 câu của bước đó (`docs/kiem_hieu.md`), chấm theo `docs/kiem_hieu_dap_an.md`. 1.1 được 1/10, 1.6 được 2/10 ngày 12/11; câu hỏi 1.6 đã cũ so với thiết kế mới, cần viết lại khi kiểm.
+5. Khi rảnh: rà `checks.py`; thẻ 1.6, 1.7, 1.8 bản cuối; nợ ở mục "Nợ".
 
 ## Chờ người dùng
-- Trả lời hai câu cuối của 1.6 (xem "Việc kế tiếp" mục 3). Kiểm hiểu tạm dừng, người dùng nói "kiểm 1.x" khi muốn tiếp.
-- Đổi chữ ở Method 3.5 của luận: còn mô tả "model khác trích lại để kiểm" mà hệ thống không làm (A25).
-- Restart VS Code ở máy chính rồi báo s(CASP) chạy được (người dùng nói chắc chắn đã cài; agent chưa thấy `scasp`, `swipl` trong PATH của phiên 11/11).
-- `.claude/CLAUDE.md` mục 5 ("Việc đang dở", phần người dùng tự cập nhật) còn trỏ tới tài liệu cũ (`docs/tien_do_L0_L6.md`, nhánh `v2-lao-dong`): agent chưa sửa; muốn thì bảo.
-- Xoá cache cũ `data/llm_cache/l4_classify/` và sửa `docs/llm_config.md`: cần người dùng bảo.
+- Trả lời (a) đến (e) của thẻ 1.8 (đề xuất ở B11; dạng "(a) đồng ý, (e) không" là đủ).
+- Có cắt 1.7 hay không (đề xuất của agent: nếu mục tiêu là demo hỏi đáp thì đi 1.6B rồi 1.8 trước, 1.7 sau).
+- Duyệt ngưỡng so sánh Haiku–Sonnet ở A35 (cụm bị loại không quá 2%, chấp nhận được trên mẫu không dưới 80%, đơn vị trống không quá 40) hoặc đổi.
+- Đọc lại tệp mẫu đọc tay 30 đơn vị (danh sách ở A35) để đối chiếu phán đoán của agent về vai: một người đọc thì chưa phải đáp án.
+- Luận văn: model của 1.6 là Claude trả phí, khác chốt "model nhẹ, miễn phí" 07/11; cần ghi lý do. Đổi chữ ở Method 3.5 (còn mô tả "model khác trích lại để kiểm" mà hệ thống không làm, A25).
+- Kiểm s(CASP) ở máy công ty khi tới 1.8 (`swipl --version`, nạp được `library(scasp)`).
+- `.claude/CLAUDE.md` mục 5 còn trỏ tài liệu cũ (`docs/tien_do_L0_L6.md`, nhánh `v2-lao-dong`): muốn sửa thì bảo (mục 5 là phần người dùng tự cập nhật).
+- Xoá cache cũ `data/llm_cache/l4_classify/` và sửa bảng vai trò ở `docs/llm_config.md` (còn ghi L4 dùng LLM): cần người dùng bảo.
 
 ## Khi người dùng nói "tạm dừng" (quy trình cho agent)
 1. Dừng việc đang làm, không bắt đầu bước mới.
@@ -74,14 +84,23 @@ Bộ 50 câu (10 câu mỗi bước 1.1 đến 1.5) ở `docs/kiem_hieu.md`; ý 
 
 ## Dựng lại trên máy mới
 - `git clone https://github.com/MrSooo/KLTN.git kltn`, rồi `git switch v3_refactor`. Trên máy cũ remote tên `KLTN`, clone mới gọi nó là `origin`.
-- Python 3.14.x, chỉ dùng thư viện chuẩn. `python -I src/run_all.py --viewer --tests` (khoảng 12 giây) dựng lại `data/processed/` và kiểm; phải ra `XONG: 12/12 bước`.
-- Chỉ khi chạy LLM thật (`--llm live`): `.venv` có `google-genai`, biến môi trường `GEMINI_API_KEY` đặt riêng trên từng máy. Chi tiết ở `docs/ban_giao_2026-11-07.md` mục 1 và 2.
+- Python từ 3.10 (máy nhà 3.14.x), chỉ dùng thư viện chuẩn. `python -I src/run_all.py --viewer --tests` (khoảng 15 giây) dựng lại `data/processed/` và kiểm; phải ra `XONG: 13/13 bước`.
+- Chỉ khi chạy LLM thật (`--llm live`): `.venv` có `google-genai` và `anthropic`, biến môi trường `GEMINI_API_KEY` (2.2) và `ANTHROPIC_API_KEY` (1.6 trở đi, A34) đặt riêng trên từng máy. Chi tiết ở `docs/ban_giao_2026-11-07.md` mục 1 và 2.
 - s(CASP): người dùng nói đã cài ở máy chính; kiểm trên từng máy bằng `scasp --version`. Cần cho bước 1.8 và 1.9.
 - Mốc đối chiếu cũ (đầu ra của code `d83a4d4` ở chế độ `replay`) không nằm trong git; dựng lại bằng `git worktree add <thư mục> d83a4d4` rồi `python -I src/run_all.py --llm replay --viewer` ở đó.
 - Heldout giữ ngoài repo, không mở khi chưa tới lúc đo.
 - Memory của Claude nằm trên từng máy và không đi theo git; mọi thứ cần nhớ phải nằm trong README, file này, `docs/pipeline_moi.md` và `docs/quyet_dinh/`.
 
 ## Nhật ký (mới nhất ở trên)
+
+### 13/11/2026: 1.6A chạy live xong; đọc kết quả; hai sửa; chuyển Haiku (chưa chạy); thêm vai `trich`
+- Đêm 12 rạng 13/11: thêm vai LLM `trich` (Claude Sonnet 5.5) vì Gemini quá tải (A34); khoá cache chứa tên model nên không đổi `chinh` (sẽ vỡ replay của 2.2). Người dùng chạy 1.6A live: 204/204 lô, $2,61 (ước tính ban đầu $1-2 là thấp).
+- Đọc kết quả (A35): cổng nguyên văn 0 cụm bị loại là THẬT (kiểm độc lập); quy tắc 2 của lời nhắc không làm trống đối tượng áp dụng; mẫu đọc tay 74/84 chấp nhận được (88%, một người đọc); `ket_luan` phủ 843/881 đơn vị.
+- Tìm hai lỗi và sửa có test (A35): khoản dưới Điều có câu dẫn thiếu ngữ cảnh (46 khoản, 10 Điều, 39% không ra chủ thể); ngoại lệ ghi hai lần (11 đơn vị). 10 lô đổi khoá cache.
+- Người dùng đồng ý chuyển sang Haiku 5.5 (rẻ khoảng 20 lần). Hệ quả: một khoá `trich.model` cho cả vai nên 1.6A chạy lại bằng Haiku (khoảng $0,13); cấu hình đang commit vẫn Sonnet; thêm khoá `trich.thinking` vì Haiku không nhận `between_tools`. Haiku chưa từng gọi thật.
+- Ghi vào B11 các số đo và thử s(CASP) cho thẻ 1.8 (trước đó chỉ nằm trong chat): cấu trúc 66 cạnh, ngoại lệ lồng ba tầng chạy đúng trên ví dụ nhỏ, vị từ không định nghĩa chỉ cảnh báo, biến không khớp cho kết quả sai âm thầm.
+- Đã kiểm trước commit: `--llm off` và `--llm replay` đều 13/13 bước, 8 bộ test, 154 test, `tổng test lỗi: 0`. Chưa kiểm: Haiku với API thật; s(CASP) ở máy công ty; đối chiếu $2,61 với Console.
+- Trượt mục tiêu T7 (A11): 1.7 không kịp (cần 1.6B). Chờ người dùng quyết cắt gì.
 
 ### 12/11/2026: sửa 3 lỗi 1.2, 1.4, 1.5; bàn 1.6 (chưa code); kiểm hiểu 1.1 và 1.6
 - Viết thẻ 1.1 đến 1.5 (`docs/the_buoc_1_1_den_1_5.md`). Sửa 3 lỗi tìm ra khi đo: A21 (nhãn 1.4: 6 Điều BLLĐ bị xếp nhầm `effect_transition`/`authority`), A22 (1.5: 23 cạnh tường minh giả từ "khấu trừ", "loại trừ"), A23 (1.2: tên luật chờ đích bị cắt, ví dụ "Luật Bảo" thành "Luật Bảo hiểm xã hội"). Mỗi lỗi có test, có so đầu ra trước/sau; 113 thành 119 test.

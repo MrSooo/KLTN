@@ -1,0 +1,193 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-sonnet-5-5",
+ "created": "2026-11-12T17:06:22+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D169.K1\",\n\"tieu_de_dieu\": \"Tuổi nghỉ hưu\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động bảo đảm điều kiện về thời gian đóng bảo hiểm xã hội theo quy định của pháp luật về bảo hiểm xã hội được hưởng lương hưu khi đủ tuổi nghỉ hưu.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D169.K2\",\n\"tieu_de_dieu\": \"Tuổi nghỉ hưu\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Tuổi nghỉ hưu của người lao động trong điều kiện lao động bình thường được điều chỉnh theo lộ trình cho đến khi đủ 62 tuổi đối với lao động nam vào năm 2028 và đủ 60 tuổi đối với lao động nữ vào năm 2035.\\nKể từ năm 2021, tuổi nghỉ hưu của người lao động trong điều kiện lao động bình thường là đủ 60 tuổi 03 tháng đối với lao động nam và đủ 55 tuổi 04 tháng đối với lao động nữ; sau đó, cứ mỗi năm tăng thêm 03 tháng đối với lao động nam và 04 tháng đối với lao động nữ.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D169.K3\",\n\"tieu_de_dieu\": \"Tuổi nghỉ hưu\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động bị suy giảm khả năng lao động; làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm; làm nghề, công việc nặng nhọc, độc hại, nguy hiểm; làm việc ở vùng có điều kiện kinh tế - xã hội đặc biệt khó khăn có thể nghỉ hưu ở tuổi thấp hơn nhưng không quá 05 tuổi so với quy định tại khoản 2 Điều này tại thời điểm nghỉ hưu, trừ trường hợp pháp luật có quy định khác.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D169.K4\",\n\"tieu_de_dieu\": \"Tuổi nghỉ hưu\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động có trình độ chuyên môn, kỹ thuật cao và một số trường hợp đặc biệt có thể nghỉ hưu ở tuổi cao hơn nhưng không quá 05 tuổi so với quy định tại khoản 2 Điều này tại thời điểm nghỉ hưu, trừ trường hợp pháp luật có quy định khác.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D169.K5\",\n\"tieu_de_dieu\": \"Tuổi nghỉ hưu\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chính phủ quy định chi tiết Điều này.\"\n}\n]\n}",
+ "model": "claude-sonnet-5-5",
+ "request_id": "req_011CgyQ7XQ17vLegkXAibhrs",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D169.K1",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "bảo đảm điều kiện về thời gian đóng bảo hiểm xã hội theo quy định của pháp luật về bảo hiểm xã hội",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "khi đủ tuổi nghỉ hưu",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "được hưởng lương hưu",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "A"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D169.K2",
+    "spans": [
+     {
+      "span": "người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "trong điều kiện lao động bình thường",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "được điều chỉnh theo lộ trình cho đến khi đủ 62 tuổi đối với lao động nam vào năm 2028 và đủ 60 tuổi đối với lao động nữ vào năm 2035",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "là đủ 60 tuổi 03 tháng đối với lao động nam và đủ 55 tuổi 04 tháng đối với lao động nữ",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D169.K3",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "bị suy giảm khả năng lao động",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "J"
+      ]
+     },
+     {
+      "span": "làm nghề, công việc nặng nhọc, độc hại, nguy hiểm",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "J"
+      ]
+     },
+     {
+      "span": "làm việc ở vùng có điều kiện kinh tế - xã hội đặc biệt khó khăn",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "G"
+      ]
+     },
+     {
+      "span": "có thể nghỉ hưu ở tuổi thấp hơn nhưng không quá 05 tuổi so với quy định tại khoản 2 Điều này tại thời điểm nghỉ hưu",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "trường hợp pháp luật có quy định khác",
+      "role": "ngoai_le",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D169.K4",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "có trình độ chuyên môn, kỹ thuật cao và một số trường hợp đặc biệt",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "có thể nghỉ hưu ở tuổi cao hơn nhưng không quá 05 tuổi so với quy định tại khoản 2 Điều này tại thời điểm nghỉ hưu",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "trường hợp pháp luật có quy định khác",
+      "role": "ngoai_le",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D169.K5",
+    "spans": [
+     {
+      "span": "Chính phủ",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "quy định chi tiết Điều này",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2707,
+  "output_tokens": 1211
+ }
+}

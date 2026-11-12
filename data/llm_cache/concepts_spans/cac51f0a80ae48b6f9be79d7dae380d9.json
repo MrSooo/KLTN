@@ -1,0 +1,192 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-sonnet-5-5",
+ "created": "2026-11-12T17:08:50+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D202.K1\",\n\"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khi có trên 50% số người được lấy ý kiến đồng ý với nội dung lấy ý kiến đình công theo quy định tại khoản 2 Điều 201 của Bộ luật này thì tổ chức đại diện người lao động ra quyết định đình công bằng văn bản.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D202.K2\",\n\"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Quyết định đình công phải có các nội dung sau đây:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D202.K2.a\",\n\"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n\"khoan_cha\": \"Quyết định đình công phải có các nội dung sau đây:\",\n\"chu_don_vi\": \"Kết quả lấy ý kiến đình công;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D202.K2.b\",\n\"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n\"khoan_cha\": \"Quyết định đình công phải có các nội dung sau đây:\",\n\"chu_don_vi\": \"Thời điểm bắt đầu đình công, địa điểm đình công;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D202.K2.c\",\n\"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n\"khoan_cha\": \"Quyết định đình công phải có các nội dung sau đây:\",\n\"chu_don_vi\": \"Phạm vi tiến hành đình công;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D202.K2.d\",\n\"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n\"khoan_cha\": \"Quyết định đình công phải có các nội dung sau đây:\",\n\"chu_don_vi\": \"Yêu cầu của người lao động;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D202.K2.dd\",\n\"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n\"khoan_cha\": \"Quyết định đình công phải có các nội dung sau đây:\",\n\"chu_don_vi\": \"Họ tên, địa chỉ liên hệ của người đại diện cho tổ chức đại diện người lao động tổ chức và lãnh đạo đình công.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D202.K3\",\n\"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Ít nhất là 05 ngày làm việc trước ngày bắt đầu đình công, tổ chức đại diện người lao động tổ chức và lãnh đạo đình công phải gửi văn bản về việc quyết định đình công cho người sử dụng lao động, Ủy ban nhân dân cấp huyện và cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D202.K4\",\n\"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Đến thời điểm bắt đầu đình công, nếu người sử dụng lao động vẫn không chấp nhận giải quyết yêu cầu của người lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công.\"\n}\n]\n}",
+ "model": "claude-sonnet-5-5",
+ "request_id": "req_011CgyQJNU3WU4p4NidSo1yh",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D202.K1",
+    "spans": [
+     {
+      "span": "tổ chức đại diện người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Khi có trên 50% số người được lấy ý kiến đồng ý với nội dung lấy ý kiến đình công theo quy định tại khoản 2 Điều 201 của Bộ luật này",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "A"
+      ]
+     },
+     {
+      "span": "ra quyết định đình công bằng văn bản",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D202.K2",
+    "spans": [
+     {
+      "span": "Quyết định đình công",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "phải có các nội dung sau đây",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D202.K2.a",
+    "spans": [
+     {
+      "span": "Quyết định đình công",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "Kết quả lấy ý kiến đình công",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D202.K2.b",
+    "spans": [
+     {
+      "span": "Quyết định đình công",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "Thời điểm bắt đầu đình công, địa điểm đình công",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D202.K2.c",
+    "spans": [
+     {
+      "span": "Quyết định đình công",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "Phạm vi tiến hành đình công",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D202.K2.d",
+    "spans": [
+     {
+      "span": "Quyết định đình công",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "Yêu cầu của người lao động",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D202.K2.dd",
+    "spans": [
+     {
+      "span": "Quyết định đình công",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "Họ tên, địa chỉ liên hệ của người đại diện cho tổ chức đại diện người lao động tổ chức và lãnh đạo đình công",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D202.K3",
+    "spans": [
+     {
+      "span": "tổ chức đại diện người lao động tổ chức và lãnh đạo đình công",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Ít nhất là 05 ngày làm việc trước ngày bắt đầu đình công",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "phải gửi văn bản về việc quyết định đình công cho người sử dụng lao động, Ủy ban nhân dân cấp huyện và cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D202.K4",
+    "spans": [
+     {
+      "span": "tổ chức đại diện người lao động tổ chức và lãnh đạo đình công",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Đến thời điểm bắt đầu đình công, nếu người sử dụng lao động vẫn không chấp nhận giải quyết yêu cầu của người lao động",
+      "role": "dieu_kien",
+      "params": [
+       "D",
+       "E",
+       "W"
+      ]
+     },
+     {
+      "span": "tổ chức và lãnh đạo đình công",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3047,
+  "output_tokens": 1255
+ }
+}

@@ -3,7 +3,7 @@
 Tổng hợp theo mẫu "thẻ bước v2" (`docs/pipeline_moi.md`, mục "Mẫu thẻ bước"). Viết 12/11/2026. Thẻ mô tả CHÍNH BƯỚC; sửa khi bước đổi.
 
 **Cách đọc file này**
-- Số đo lấy lại trên đĩa ngày 12/11 sau `python -I src/run_all.py --llm replay --viewer --tests` (12/12 bước). Toàn kho: 18 văn bản, 10.202 đơn vị, 893 Điều, 2.348 cạnh `refers_to`, 129 chờ đích, 127 không giải được, 56 điều khoản giao.
+- Số đo lấy lại trên đĩa ngày 12/11 sau `python -I src/run_all.py --llm replay --viewer --tests` (12/12 bước; 13/13 từ khi thêm 1.6 giai đoạn A). Số liệu 1.5 dưới đây là sau A24 (12/11). Toàn kho: 18 văn bản, 10.202 đơn vị, 893 Điều, 2.348 cạnh `refers_to`, 129 chờ đích, 127 không giải được, 56 điều khoản giao.
 - "BLLĐ" là số đo chỉ trên Bộ luật Lao động 45/2019 (220 Điều). "Kho" là số đo trên cả 18 văn bản. Số nào không ghi thì xem câu chứa nó.
 - **[PHÁT HIỆN n]** là chỗ dữ liệu mâu thuẫn với thiết kế. Gom ở mục cuối file. PHÁT HIỆN 1, 2, 3 đã được sửa ngay trong ngày 12/11 (quyết định A21, A22, A23 ở `docs/quyet_dinh/pipeline_moi_quyet_dinh.txt`); các số đo bên dưới là số SAU khi sửa, số cũ ghi kèm ở chỗ cần so.
 - Thẻ 1.3 chép nguyên từ `docs/pipeline_moi.md` (số đã kiểm lại 12/11, khớp).
@@ -299,10 +299,15 @@ cạnh ngoại lệ chung, rule general_except: nút điều kiện exception_of
 cạnh ngoại lệ chung, rule general_except_ref: mệnh đề dẫn chiếu tới đơn vị T thì T exception_of đơn vị (BLLĐ)
 {"s":"BLLD_45-2019.D14.K2","p":"exception_of","o":"BLLD_45-2019.D14.K1","evidence":"trừ trường hợp quy định tại khoản 2 Điều này.","how":"regex","flags":[],"rule":"general_except_ref"}
 
+cạnh ngoại lệ chung họ "trừ <danh từ>" (A24, 12/11), rule general_except_noun và general_except_noun_ref (BLLĐ D20.K2.c: mệnh đề dẫn chiếu tới D149.K1, D151.K2, D177.K4)
+{"s":"BLLD_45-2019.Xb57b29d0","p":"exception_of","o":"BLLD_45-2019.D20.K2.c","evidence":"trừ hợp đồng lao động đối với người được thuê làm giám đốc trong doanh nghiệp có vốn nhà nước và trường hợp quy định tại khoản 1 Điều 149, khoản 2 Điều 151 và khoản 4 Điều 177 của Bộ luật này.","how":"regex","flags":[],"rule":"general_except_noun"}
+{"s":"BLLD_45-2019.D149.K1","p":"exception_of","o":"BLLD_45-2019.D20.K2.c","evidence":"(cùng chữ)","how":"regex","flags":[],"rule":"general_except_noun_ref"}
+
 nút điều kiện (l5_general_conditions_*), một nút cho mỗi mệnh đề (câu giống nhau gộp một nút)
 {"id":"BLLD_45-2019.Xc9877375","type":"dieu_kien","kind":"cu_the","text":"quy định tại Mục 1 Chương XI của Bộ luật này","units":["BLLD_45-2019.D3.K1"]}
 {"id":"BLLD_45-2019.Xbdd95425","type":"dieu_kien","kind":"tuy_nghi","text":"hai bên có thỏa thuận khác","units":["BLLD_45-2019.D28","BLLD_45-2019.D168.K2"]}
 {"id":"BLLD_45-2019.X84491d28","type":"dieu_kien","kind":"dan_chieu_mo","text":"pháp luật có quy định khác","units":["BLLD_45-2019.D169.K3","BLLD_45-2019.D169.K4"]}
+{"id":"BLLD_45-2019.Xaed08f49","type":"dieu_kien","kind":"cu_the","text":"lĩnh vực nghệ thuật, thể dục, thể thao","units":["BLLD_45-2019.D61.K4"]}
 
 cạnh tường minh (l5_explicit_exceptions_*): sau sửa A22 (12/11) kho có 0 cạnh của cả hai quy tắc, nên không có dòng thật để minh hoạ.
   Trước 12/11 quy tắc except_list_pattern cho 23 cạnh, tất cả sai (xem PHÁT HIỆN 2), ví dụ:
@@ -310,7 +315,7 @@ cạnh tường minh (l5_explicit_exceptions_*): sau sửa A22 (12/11) kho có 0
   Dạng quy tắc mong đợi (chỉ có trong test): đơn vị "..., trừ các trường hợp sau đây:" kèm hai khoản con a, b thì ra hai cạnh (a exception_of đơn vị), (b exception_of đơn vị).
 
 chưa xử lý (unhandled): trigger không rơi vào quy tắc nào hoặc mơ hồ
-{"unit":"BLLD_45-2019.D61.K4","trigger":"trừ","sentence":"... phải từ đủ 18 tuổi trở lên, trừ lĩnh vực nghệ thuật, thể dục, thể thao.","reason":"ngoài hai quy tắc của L5 tường minh"}
+{"unit":"BLLD_45-2019.D188.K1","trigger":"trừ","sentence":"... trước khi yêu cầu Hội đồng trọng tài lao động hoặc Tòa án giải quyết, trừ các tranh chấp lao động sau đây không bắt buộc phải qua thủ tục hòa giải:","reason":"ngoại lệ liệt kê ở các đơn vị con (đoạn kết thúc bằng dấu hai chấm)"}
 
 chờ đích (l5_*_pending_*): ngoại lệ trỏ tới văn bản chưa có trong kho
 {"source":"ND_28-2020.D10.K2.a","edge":"exception_of","target_number":"10/2012/QH13","target_name":"Bộ luật Lao động","target_units":["D31"],"text":"Điều 31 của Bộ luật Lao động"}
@@ -325,25 +330,25 @@ Cạnh (`*_exceptions_*`):
 | `p` | loại quan hệ | luôn `exception_of` | |
 | `o` | quy tắc bị ngoại trừ | mã đơn vị | đồ thị |
 | `evidence` | câu có chữ "trừ" hoặc "không áp dụng", nguyên văn | chuỗi | cổng kiểm chuỗi con; thiếu thì không chứng minh được cạnh |
-| `how`, `flags` | như 1.2 | `how` luôn `regex`, `flags` luôn `[]` (kho 337 cạnh sau sửa; 359 trước 12/11) | — |
-| `rule` | quy tắc bắt ca này | `not_apply_pattern` (kho 0) · `except_list_pattern` (0; trước 12/11 là 23) · `general_except` (157; trước 156) · `general_except_ref` (180); BLLĐ: 0, 0, 39, 20 | thống kê, biết ca nằm trong quy tắc nào khi cần sửa |
+| `how`, `flags` | như 1.2 | `how` luôn `regex`, `flags` luôn `[]` (kho 451 cạnh sau A24; 337 sau A22; 359 trước 12/11) | — |
+| `rule` | quy tắc bắt ca này | `not_apply_pattern` (kho 0) · `except_list_pattern` (0; trước 12/11 là 23) · `general_except` (166) · `general_except_ref` (184) · `general_except_noun` (48; họ "trừ <danh từ>", A24) · `general_except_noun_ref` (53); BLLĐ: 0, 0, 39, 20, 4, 3 | thống kê, biết ca nằm trong quy tắc nào khi cần sửa |
 
-Nút điều kiện (`l5_general_conditions_*`, kho 129 sau sửa A22 (128 trước), BLLĐ 30):
+Nút điều kiện (`l5_general_conditions_*`, kho 160 sau A24 (129 sau A22), BLLĐ 34 (30 trước A24)):
 | Field | Nghĩa | Mọi giá trị có thể có |
 |---|---|---|
 | `id`, `type` | mã nút; loại | `type` luôn `dieu_kien` |
-| `kind` | loại mệnh đề | `cu_the` mệnh đề cụ thể (kho 117 / BLLĐ 26) · `tuy_nghi` "(các bên) có thỏa thuận khác" (8 / 3) · `dan_chieu_mo` "pháp luật có quy định khác" (4 / 1) |
-| `text` | mệnh đề sau "trừ trường hợp", nguyên văn | chuỗi |
-| `units` | các đơn vị có ngoại lệ này | danh sách mã; nhiều đơn vị cùng câu dùng chung một nút (BLLĐ: 24 nút một đơn vị, 4 nút hai, 1 nút ba, 1 nút bốn) |
+| `kind` | loại mệnh đề | `cu_the` mệnh đề cụ thể (kho 147 / BLLĐ 30) · `tuy_nghi` "(các bên) có thỏa thuận khác" (9 / 3) · `dan_chieu_mo` "pháp luật có quy định khác" (4 / 1) |
+| `text` | mệnh đề sau "trừ trường hợp" (họ "trừ <danh từ>": sau chữ "trừ", gồm cả danh từ), nguyên văn | chuỗi |
+| `units` | các đơn vị có ngoại lệ này | danh sách mã; nhiều đơn vị cùng câu dùng chung một nút (BLLĐ: 28 nút một đơn vị, 4 nút hai, 1 nút ba, 1 nút bốn) |
 
-Chưa xử lý (`*_unhandled_*`): `unit`, `trigger` (`trừ` hoặc `không áp dụng`), `sentence`, `reason`. Kho sau cả hai quy tắc còn 73 (BLLĐ 6; trước 12/11 là 95 và 15): 68 ca "ngoài hai quy tắc ..." (4 "không áp dụng", 64 "trừ <danh từ>" không có chữ "trường hợp") và 5 ca "nhiều hơn một 'trừ trường hợp' trong đơn vị". Chờ đích: kho 6.
+Chưa xử lý (`*_unhandled_*`): `unit`, `trigger` (`trừ` hoặc `không áp dụng`), `sentence`, `reason`. Kho sau A24 (12/11) còn 16 (BLLĐ 2: `D24.K3`, `D188.K1`; 73 và 6 sau A22, 95 và 15 trước 12/11). Lý do: 4 ngoại lệ liệt kê ở các đơn vị con (đoạn kết bằng dấu hai chấm), 3 "trừ" đi cùng danh từ ngoài danh sách đã đọc, 3 "trừ" là phép trừ ("sau khi trừ chi phí", "được trừ"), 2 "áp dụng thử" (không phải ngoại lệ), 2 "không áp dụng" không kèm dẫn chiếu, 2 "nhiều hơn một 'trừ' trong cùng một vế". Chờ đích: kho 6.
 
 **4. Cách làm** (không LLM).
 1. Tìm trigger: "trừ", "ngoại trừ", "không áp dụng" (có ranh giới từ) trong Điều, khoản, điểm có chữ; bỏ dòng chỉ thị sửa đổi. Không tính các nghĩa "trừ" không phải ngoại lệ đã thấy trong kho: "khấu trừ", "loại trừ", "giảm trừ" (từ đứng trước) và "trừ đi" (từ đứng sau) (A22).
 2. Quy tắc `not_apply_pattern`: đơn vị U có "không áp dụng" và một cụm dẫn chiếu đứng NGAY trước nó (chỉ cách dấu cách). Mỗi đích của cụm là `o`, `s` là U. Ví dụ khớp (câu minh hoạ, không có ca thật trong kho): "Quy định tại Điều 9 không áp dụng đối với doanh nghiệp nhỏ".
 3. Quy tắc `except_list_pattern`: text của U kết thúc bằng một cụm "trừ ... sau đây:" liền nhau, tức từ "trừ" (hoặc "ngoại trừ") tới "sau đây:" cuối text không có dấu `, ; .` hay xuống dòng xen giữa (ví dụ khớp: "..., trừ các trường hợp sau đây:"; không khớp: "..., trừ trường hợp kéo dài thời hạn; không thực hiện ... theo một trong các mức sau đây:"). Mỗi đơn vị con trực tiếp C của U là `s`, `o` là U.
-4. Kiểu chung: ca còn lại có "trừ trường hợp X". Mệnh đề X là chữ từ "trừ trường hợp" đến hết đoạn, bỏ `. ; : ,` ở cuối (nếu "trừ trường hợp" đứng đầu đoạn thì mệnh đề dừng ở dấu phẩy đầu tiên). Tạo nút điều kiện (mã băm từ mệnh đề đã chuẩn hoá nên câu giống nhau cùng nút) và cạnh `general_except`; nếu X dẫn chiếu tới đơn vị T (dùng cách giải của 1.2) thì thêm cạnh T `exception_of` đơn vị (`general_except_ref`). Phân `kind` bằng regex: `tuy_nghi`, `dan_chieu_mo`, còn lại `cu_the`.
-5. Đơn vị có hơn một "trừ trường hợp" thì để `unhandled`, không đoán. Trigger không thuộc quy tắc nào cũng vào `unhandled` kèm lý do.
+4. Kiểu chung: ca còn lại có "trừ trường hợp X" (kể cả "trừ các/những/một số trường hợp", A24) hoặc "trừ <danh từ> X" với danh từ thuộc danh sách đã đọc (hành vi, hình thức, lĩnh vực, thông tin, nghề, công việc, tranh chấp, hợp đồng; A24: lấy từ việc đọc từng ca "trừ" chưa xử lý của kho). Mệnh đề X là chữ từ "trừ trường hợp" (họ danh từ: từ sau chữ "trừ") đến hết đoạn, rồi cắt ở dấu ";" mà vế sau KHÔNG bắt đầu bằng khoản/điểm/Điều/Chương/mục (";" giữa hai dẫn chiếu là danh sách dẫn chiếu nên giữ), và ở dấu ")" không có "(" mở trong mệnh đề; bỏ `. ; : ,` ở cuối (nếu "trừ" đứng đầu đoạn thì mệnh đề dừng ở dấu phẩy đầu tiên). Với họ mới, đoạn kết bằng dấu hai chấm là ngoại lệ liệt kê ở các đơn vị con nên để `unhandled`. Tạo nút điều kiện (mã băm từ mệnh đề đã chuẩn hoá nên câu giống nhau cùng nút) và cạnh `general_except`; nếu X dẫn chiếu tới đơn vị T (dùng cách giải của 1.2) thì thêm cạnh T `exception_of` đơn vị (`general_except_ref`; họ danh từ: `general_except_noun` và `general_except_noun_ref`). Phân `kind` bằng regex: `tuy_nghi`, `dan_chieu_mo`, còn lại `cu_the`.
+5. Đơn vị có hơn một "trừ": mỗi trigger tự cắt mệnh đề ở dấu ";"; hai trigger nằm cùng một vế (mệnh đề đè lên nhau) thì để `unhandled`, không đoán. Trigger không thuộc quy tắc nào cũng vào `unhandled` kèm lý do.
 
 **5. Vì sao.**
 - Cần bước này: ngoại lệ đổi kết luận (BLLĐ `D3.K1`: tuổi lao động tối thiểu là 15, trừ Mục 1 Chương XI). Bỏ sót ngoại lệ thì KB trả lời theo quy tắc chính và bỏ qua trường hợp bị loại, tức kết luận quá rộng.
@@ -353,11 +358,11 @@ Chưa xử lý (`*_unhandled_*`): `unit`, `trigger` (`trừ` hoặc `không áp 
 
 **6. Kiểm và số đo.**
 - Kiểm: mỗi chỗ có "trừ" hoặc "không áp dụng" thuộc đúng một trong hai: đã tạo cạnh, hoặc ghi `unhandled`; `evidence` phải là chuỗi con nguyên văn.
-- Số đo (sau sửa A22, 12/11): BLLĐ 0 cạnh tường minh và 59 cạnh chung (39 `general_except` + 20 `general_except_ref`) từ 30 nút. Kho 0 + 337 cạnh (trước sửa: 23 + 336). Cạnh `exception_of` ở đồ thị: 278 (trước 300).
+- Số đo (sau A24, 12/11): BLLĐ 0 cạnh tường minh và 66 cạnh chung (39 `general_except` + 20 `general_except_ref` + 4 `general_except_noun` + 3 `general_except_noun_ref`) từ 34 nút. Kho 0 + 451 cạnh (sau A22: 337; trước: 23 + 336). Cạnh `exception_of` ở đồ thị: 385 (sau A22: 278; trước 300). Cạnh cũ của BLLĐ giữ nguyên; 4 cạnh cũ của ND_152, ND_28, ND_90 đổi nút vì cắt ";" hoặc ")". Đã đọc toàn bộ 34 nút mới và 16 ca còn lại, đều không thấy ngoại lệ giả; chưa có đáp án chuẩn nên chưa đo được độ chính xác và độ bỏ sót.
 - **[PHÁT HIỆN 2a, đã sửa A22]** Trước 12/11, quy tắc `except_list_pattern` sai ở cả 23 trên 23 cạnh của kho (5 đơn vị `o`: `ND_145-2020.D59.K1`, `ND_28-2020.D11.K1` và `D16.K2`, `ND_12-2022.D17.K2`, `ND_283-2026.D23.K2`). Mình đọc đầu và cuối của khoản cha, và khoản con đầu tiên, của cả 5 (chưa đọc hết từng khoản con). Các khoản con là mức phạt ("Từ 1.000.000 đồng đến 2.000.000 đồng với vi phạm từ 01 người đến 10 người lao động") hoặc nội dung phải thỏa thuận ("Thời gian làm thêm"), không phải ngoại lệ. Chữ "trừ" bắt được nằm ở chỗ khác: "khấu trừ tiền lương" (3 đơn vị) hay "trừ trường hợp kéo dài thời hạn hợp đồng ..." giữa câu; kết "sau đây:" chỉ là "theo một trong các mức sau đây:". BLLĐ không bị (0 cạnh), nhưng giai đoạn 2 sẽ dính. Điểm cần chú ý: cổng kiểm chỉ kiểm `evidence` là chuỗi con, không kiểm cạnh có đúng nghĩa. Sửa: quy tắc 2 chỉ áp khi "trừ" và "sau đây:" cuối text là một cụm liền (mục 4, bước 3). Test mới: `test_l5_explicit_rule2_needs_list_tail_not_midsentence_tru`.
 - **[PHÁT HIỆN 2b, đã sửa A22]** Trước 12/11, trigger bắt cả "khấu trừ", "trừ đi", "loại trừ", "giảm trừ" (26 trigger toàn kho), nên `unhandled` nhiễu: BLLĐ có 15 ca chưa xử lý, 9 là nhiễu (`D3.K8` ×2 "loại trừ", `D46.K2` và `D47.K2` "trừ đi", `D95.K3`, `D102.K1` K2 K3, `D129.K1` "khấu trừ"). Sau sửa BLLĐ còn đúng 6 ca, đều là ngoại lệ thật chưa được mô hình hoá (mình đọc đoạn quanh trigger, chưa đọc đủ nội dung): `D20.K2.c`, `D24.K3` ("Không áp dụng thử việc đối với ..."), `D61.K4`, `D70.K3`, `D145.K3`, `D188.K1`. Năm ca trong số đó có dạng "trừ <danh từ>" (không có chữ "trường hợp"), nên 1.5 không nhận; chưa bước nào khác (1.7 là ngoại lệ ngầm giữa hai đơn vị) nhận chúng.
-- **Tác dụng phụ của sửa A22:** `ND_28-2020.D11.K1` (trước bị quy tắc 2 nuốt) nay vào quy tắc chung: thêm 1 cạnh `general_except`, 1 nút điều kiện dài 724 ký tự (vì mệnh đề chạy "đến hết đoạn" nên gồm cả "; không thực hiện đúng quy định về thời hạn thanh toán ... theo một trong các mức sau đây:") và 1 chờ đích tới BLLĐ 2012. Chưa sửa quy tắc chung; cần bàn.
-- **Mở (chưa quyết):** sau cả hai quy tắc, kho còn 64 trigger dạng "trừ <danh từ>" không có chữ "trường hợp" (trừ hành vi 18, trừ hình thức 14, trừ các 12, trừ những 7, ...; BLLĐ 5 ca). Thêm quy tắc cho chúng là nới quy tắc để bắt thêm ca (CLAUDE.md), nên cần user quyết trước khi bàn 1.7/1.8.
+- **Tác dụng phụ của sửa A22:** `ND_28-2020.D11.K1` (trước bị quy tắc 2 nuốt) nay vào quy tắc chung: thêm 1 cạnh `general_except`, 1 nút điều kiện dài 724 ký tự (vì mệnh đề chạy "đến hết đoạn" nên gồm cả "; không thực hiện đúng quy định về thời hạn thanh toán ... theo một trong các mức sau đây:") và 1 chờ đích tới BLLĐ 2012. ĐÃ SỬA ở A24 (12/11): nút này nay cắt ở ";" (vế sau "không thực hiện ..." không phải dẫn chiếu), ra nút ngắn hơn.
+- **[A24, đã làm 12/11, user cho phép nới quy tắc]** Kho có 64 trigger "trừ <danh từ>" không có chữ "trường hợp" (BLLĐ 5 ca). Đã thêm họ "trừ <danh từ>" với danh sách danh từ đã đọc, "trừ các/những/một số trường hợp", cắt ";" và ")". Nới quy tắc để bắt thêm ca nên bản này CHƯA đo độ chính xác ngoài việc đọc hết ca khớp; quy tắc 2 của 1.5 từng sai 23/23 (A22), nên phần mở rộng có thể sai kiểu tương tự. Ghi lại ca đã đọc chưa xử lý: `D24.K3`, `D188.K1` của BLLĐ được `checks` giữ làm danh sách đã biết.
 - Chưa kiểm được: tỉ lệ bỏ sót (không có đáp án chuẩn); mốc cũ của plan (154→151.1.d, 37→36.1.b) chưa đối chiếu lại ở thẻ này.
 
 **7. Kiểm hiểu:** 10 câu mục 1.5 của `docs/kiem_hieu.md` (1.5.1 đến 1.5.10).

@@ -88,6 +88,81 @@ def test_l5_general_clause_extraction():
     assert l5g.clause_of("Trừ trường hợp A phải làm B", 0)[0] is None
 
 
+def test_l5_general_noun_family_takes_only_listed_nouns():
+    text = "Xử phạt theo Chương II, trừ hành vi vi phạm quy định tại khoản 3 Điều 32 Nghị định này;"
+    clause, evidence = l5g.clause_of(text, text.index("trừ"))
+    assert clause == "hành vi vi phạm quy định tại khoản 3 Điều 32 Nghị định này" and evidence.startswith("trừ hành vi") and evidence in text
+    text = "Cấm sử dụng, trừ các công việc nghệ thuật, thể dục, thể thao."
+    assert l5g.clause_of(text, text.index("trừ"))[0] == "các công việc nghệ thuật, thể dục, thể thao"
+    for text in ["Tính thời gian làm việc, trừ thời gian nghỉ ốm.", "Người sử dụng lao động (trừ nhà thầu) phải báo cáo."]:
+        clause, reason = l5g.clause_of(text, text.index("trừ"))
+        assert clause is None and "không phải" in reason, text  # danh từ ngoài danh sách thì không đoán
+
+
+def test_l5_general_determiner_before_truong_hop():
+    text = "Làm thêm phải được đồng ý, trừ những trường hợp không phải xác định nhu cầu."
+    clause, evidence = l5g.clause_of(text, text.index("trừ"))
+    assert clause == "không phải xác định nhu cầu" and evidence.startswith("trừ những trường hợp")
+
+
+def test_l5_general_semicolon_cut_keeps_reference_lists_and_cuts_new_rule():
+    keep = "Phạt gấp đôi, trừ trường hợp quy định tại khoản 1 Điều 7; khoản 3 Điều 13; các Điều 43, 44; điểm a khoản 2 Điều 25."
+    assert l5g.clause_of(keep, keep.index("trừ"))[0] == "quy định tại khoản 1 Điều 7; khoản 3 Điều 13; các Điều 43, 44; điểm a khoản 2 Điều 25"
+    cut = "Phạt gấp đôi, trừ trường hợp quy định tại khoản 1 Điều 7; không thực hiện đúng thời hạn thì bị phạt."
+    clause, evidence = l5g.clause_of(cut, cut.index("trừ"))
+    assert clause == "quy định tại khoản 1 Điều 7" and evidence == "trừ trường hợp quy định tại khoản 1 Điều 7"
+
+
+def test_l5_general_closing_parenthesis_ends_clause():
+    text = "Vi phạm quy định về an toàn (trừ hành vi quy định tại khoản 8 Điều này)."
+    clause, evidence = l5g.clause_of(text, text.index("trừ"))
+    assert clause == "hành vi quy định tại khoản 8 Điều này" and evidence == "trừ hành vi quy định tại khoản 8 Điều này"
+    text = "Vi phạm (kể cả vi phạm lần đầu) trừ hành vi A."
+    assert l5g.clause_of(text, text.index("trừ"))[0] == "hành vi A"  # ngoặc cân bằng nằm trước "trừ" thì không cắt
+
+
+def test_l5_general_list_tail_only_for_new_family():
+    text = "Phải qua hòa giải, trừ các tranh chấp lao động sau đây:"
+    clause, reason = l5g.clause_of(text, text.index("trừ"))
+    assert clause is None and "dấu hai chấm" in reason
+    text = "Phải qua hòa giải, trừ các trường hợp sau:"
+    assert l5g.clause_of(text, text.index("trừ"))[0] is None
+    text = "Phải báo trước, trừ trường hợp sau đây:"  # "trừ trường hợp" trơn: giữ hành vi cũ
+    assert l5g.clause_of(text, text.index("trừ"))[0] == "sau đây"
+
+
+def test_l5_general_other_reason_is_specific():
+    def reason(text, trigger):
+        return l5g.other_reason(text, {"pos": text.index(trigger), "reason": "chung"})
+    assert "phép trừ" in reason("thanh toán sau khi trừ chi phí ngân hàng", "trừ")
+    assert "phép trừ" in reason("chi phí được trừ khi xác định thu nhập", "trừ")
+    assert "áp dụng thử" in reason("không áp dụng thử mức lao động trước khi ban hành", "không áp dụng")
+    assert "không kèm dẫn chiếu" in reason("Không áp dụng thử việc đối với người lao động dưới 01 tháng.", "Không áp dụng")
+    assert "danh sách đã đọc" in reason("làm việc, trừ thời gian nghỉ", "trừ")
+    assert reason("việc khác", "việc") == "chung"
+
+
+def test_l5_general_noun_family_on_blld():
+    edges, handled, unhandled, nodes, e6, unh6 = exceptions("BLLD_45-2019")
+    rules = {(e["s"], e["o"]): e["rule"] for e in e6}
+    nid = {u: n for n in nodes.values() for u in n["units"]}
+    for u in ("D61.K4", "D70.K3", "D145.K3", "D20.K2.c"):
+        assert B + u in nid, u
+        assert any(e["o"] == B + u and e["rule"] == "general_except_noun" for e in e6), u
+    for t in ("D149.K1", "D151.K2", "D177.K4"):  # dẫn chiếu nằm trong mệnh đề của D20.K2.c
+        assert rules[(B + t, B + "D20.K2.c")] == "general_except_noun_ref", t
+    assert sorted(u["unit"].split(".", 1)[1] for u in unh6) == ["D188.K1", "D24.K3"]
+    assert (B + "D154", B + "D151.K1.d") in rules  # cạnh cũ không đổi
+
+
+def test_l5_general_two_triggers_split_by_semicolon_or_clash():
+    edges, handled, unhandled, nodes, e6, unh6 = exceptions("ND_145-2020")
+    assert sum(1 for e in e6 if e["o"] == "ND_145-2020.D89.K1.d1" and e["rule"] == "general_except") == 3  # ba "trừ trường hợp", mỗi vế một nút
+    edges, handled, unhandled, nodes, e6, unh6 = exceptions("ND_152-2020")
+    clash = [u["reason"] for u in unh6 if u["unit"].endswith("D13.K5")]
+    assert len(clash) == 2 and all(r.startswith("nhiều hơn một 'trừ'") for r in clash)  # cùng một vế: không đoán
+
+
 def test_l5_general_condition_kinds_and_merge_key():
     assert l5g.condition_kind(l5g.norm_text("có thỏa thuận khác.")) == "tuy_nghi"
     assert l5g.condition_kind(l5g.norm_text("Các bên có thoả thuận khác")) == "tuy_nghi"
@@ -102,7 +177,8 @@ def test_l5_milestones_on_blld():
     assert (B + "D154", B + "D151.K1.d") in pairs
     assert (B + "D36.K1.b", B + "D37.K1") in pairs
     assert (B + "D29", B + "D35.K2.a") in pairs and (B + "D97.K4", B + "D35.K2.b") in pairs
-    assert len(nodes) == 30 and {n["kind"] for n in nodes.values()} == {"cu_the", "tuy_nghi", "dan_chieu_mo"}
+    # 30 nút trước khi thêm họ "trừ <danh từ>" (12/11); thêm 4 nút: D20.K2.c, D61.K4, D70.K3, D145.K3
+    assert len(nodes) == 34 and {n["kind"] for n in nodes.values()} == {"cu_the", "tuy_nghi", "dan_chieu_mo"}
     assert len(edges) + sum(len(n["units"]) for n in nodes.values()) + len(unh6) >= len(handled)
 
 

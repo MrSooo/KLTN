@@ -1,0 +1,238 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-sonnet-5-5",
+ "created": "2026-11-12T17:03:39+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D137.K1\",\n\"tieu_de_dieu\": \"Bảo vệ thai sản\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa trong trường hợp sau đây:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D137.K1.a\",\n\"tieu_de_dieu\": \"Bảo vệ thai sản\",\n\"khoan_cha\": \"Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa trong trường hợp sau đây:\",\n\"chu_don_vi\": \"Mang thai từ tháng thứ 07 hoặc từ tháng thứ 06 nếu làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D137.K1.b\",\n\"tieu_de_dieu\": \"Bảo vệ thai sản\",\n\"khoan_cha\": \"Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa trong trường hợp sau đây:\",\n\"chu_don_vi\": \"Đang nuôi con dưới 12 tháng tuổi, trừ trường hợp được người lao động đồng ý.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D137.K2\",\n\"tieu_de_dieu\": \"Bảo vệ thai sản\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Lao động nữ làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm hoặc làm nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con khi mang thai và có thông báo cho người sử dụng lao động biết thì được người sử dụng lao động chuyển sang làm công việc nhẹ hơn, an toàn hơn hoặc giảm bớt 01 giờ làm việc hằng ngày mà không bị cắt giảm tiền lương và quyền, lợi ích cho đến hết thời gian nuôi con dưới 12 tháng tuổi.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D137.K3\",\n\"tieu_de_dieu\": \"Bảo vệ thai sản\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người sử dụng lao động không được sa thải hoặc đơn phương chấm dứt hợp đồng lao động đối với người lao động vì lý do kết hôn, mang thai, nghỉ thai sản, nuôi con dưới 12 tháng tuổi, trừ trường hợp người sử dụng lao động là cá nhân chết, bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết hoặc người sử dụng lao động không phải là cá nhân chấm dứt hoạt động hoặc bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật.\\nTrường hợp hợp đồng lao động hết hạn trong thời gian lao động nữ mang thai hoặc nuôi con dưới 12 tháng tuổi thì được ưu tiên giao kết hợp đồng lao động mới.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D137.K4\",\n\"tieu_de_dieu\": \"Bảo vệ thai sản\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Lao động nữ trong thời gian hành kinh được nghỉ mỗi ngày 30 phút, trong thời gian nuôi con dưới 12 tháng tuổi được nghỉ mỗi ngày 60 phút trong thời gian làm việc. Thời gian nghỉ vẫn được hưởng đủ tiền lương theo hợp đồng lao động.\"\n}\n]\n}",
+ "model": "claude-sonnet-5-5",
+ "request_id": "req_011CgyPuMZayJYJ51Z9s2dtK",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D137.K1",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D137.K1.a",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Mang thai từ tháng thứ 07 hoặc từ tháng thứ 06 nếu làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "G"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D137.K1.b",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Đang nuôi con dưới 12 tháng tuổi",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "được người lao động đồng ý",
+      "role": "ngoai_le",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D137.K2",
+    "spans": [
+     {
+      "span": "Lao động nữ",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm hoặc làm nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con khi mang thai",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     },
+     {
+      "span": "có thông báo cho người sử dụng lao động biết",
+      "role": "dieu_kien",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "được người sử dụng lao động chuyển sang làm công việc nhẹ hơn, an toàn hơn hoặc giảm bớt 01 giờ làm việc hằng ngày mà không bị cắt giảm tiền lương và quyền, lợi ích cho đến hết thời gian nuôi con dưới 12 tháng tuổi",
+      "role": "ket_luan",
+      "params": [
+       "E",
+       "J",
+       "A",
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D137.K3",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "không được sa thải hoặc đơn phương chấm dứt hợp đồng lao động đối với người lao động",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "C"
+      ]
+     },
+     {
+      "span": "vì lý do kết hôn, mang thai, nghỉ thai sản, nuôi con dưới 12 tháng tuổi",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "người sử dụng lao động là cá nhân chết, bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết hoặc người sử dụng lao động không phải là cá nhân chấm dứt hoạt động hoặc bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật",
+      "role": "ngoai_le",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "hợp đồng lao động hết hạn trong thời gian lao động nữ mang thai hoặc nuôi con dưới 12 tháng tuổi",
+      "role": "dieu_kien",
+      "params": [
+       "C",
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "được ưu tiên giao kết hợp đồng lao động mới",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D137.K4",
+    "spans": [
+     {
+      "span": "Lao động nữ",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "trong thời gian hành kinh",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "được nghỉ mỗi ngày 30 phút",
+      "role": "ket_luan",
+      "params": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "span": "trong thời gian nuôi con dưới 12 tháng tuổi",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "được nghỉ mỗi ngày 60 phút trong thời gian làm việc",
+      "role": "ket_luan",
+      "params": [
+       "D",
+       "A"
+      ]
+     },
+     {
+      "span": "Thời gian nghỉ vẫn được hưởng đủ tiền lương theo hợp đồng lao động",
+      "role": "ket_luan",
+      "params": [
+       "D",
+       "A",
+       "C"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3137,
+  "output_tokens": 1757
+ }
+}

@@ -1,6 +1,6 @@
 L5 chung báo cáo: ND_152-2020
-trigger L5 tường minh để lại: 13 = 'trừ trường hợp' đã xử lý 6 + unhandled 7
-nút điều kiện: 4 {'cu_the': 4}  cạnh: 8 ({'general_except': 6, 'general_except_ref': 2})
+trigger L5 tường minh để lại: 13 = 'trừ' đã xử lý 10 + unhandled 3
+nút điều kiện: 4 {'cu_the': 4}  cạnh: 12 ({'general_except': 10, 'general_except_ref': 2})
 unhandled theo lý do:
-    5  ngoài hai quy tắc của L5 tường minh
-    2  nhiều hơn một 'trừ trường hợp' trong đơn vị
+    2  nhiều hơn một 'trừ' trong cùng một vế (không cắt được bằng dấu ';')
+    1  'trừ' đi cùng danh từ ngoài danh sách đã đọc
