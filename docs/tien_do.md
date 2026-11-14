@@ -1,13 +1,13 @@
 # Tiến độ (đọc sau README.md)
 
-Cập nhật lần cuối: **13/11/2026**, tối (người dùng nói "tạm dừng" để mai lên công ty làm tiếp; commit và push cùng lượt).
+Cập nhật lần cuối: **14/11/2026**, chiều (người dùng nói "tạm dừng, commit lên, t sẽ check sau"; commit và push cùng lượt).
 
 ## Đọc theo thứ tự
 1. `README.md` (điểm vào, có mục "Việc của phiên này").
 2. `.claude/CLAUDE.md` (tự nạp). Tên bước L-số trong bảng mục 2 là tên **cũ**; quy tắc 11 là cách làm việc với người dùng.
 3. File này.
 4. `docs/pipeline_moi.md`: thiết kế pipeline, cách làm từng bước, ví dụ dữ liệu thật, giải thích field, mẫu "thẻ bước" và thẻ mẫu 1.3.
-5. `docs/quyet_dinh/pipeline_moi_quyet_dinh.txt`: quyết định đã chốt (mục A, A1 đến A35) và số đo, quan sát (mục B, B1 đến B11).
+5. `docs/quyet_dinh/pipeline_moi_quyet_dinh.txt`: quyết định đã chốt (mục A, A1 đến A37; đọc kỹ A36 và A37) và số đo, quan sát (mục B, B1 đến B11).
 6. `docs/kiem_hieu.md` và `docs/kiem_hieu_dap_an.md`: bộ kiểm hiểu 1.1 đến 1.6 (10 câu mỗi bước, tổng 60 câu; đáp án ý chính chỉ dành cho agent chấm). **Đang TẠM DỪNG** theo yêu cầu người dùng đến khi chốt xong 1.6.
 6b. `docs/the_buoc_1_1_den_1_5.md`: thẻ bước 1.1 đến 1.5 với số đo và bảng phát hiện (viết 12/11).
 7. Khi cần: `docs/tien_do_L0_L6.md` (lịch sử code cũ), `docs/quyet_dinh/l*_quyet_dinh.txt` (quyết định của code cũ), `plan/ke_hoach/` (plan tham khảo, không sửa), `plan/ke_hoach/method_vi_3_1_den_3_6_2026-11-09.md` (bản Method của luận, nguồn của mô hình K).
@@ -19,13 +19,15 @@ Cập nhật lần cuối: **13/11/2026**, tối (người dùng nói "tạm d�
 
 ## Trạng thái hiện tại
 - Nhánh `v3_refactor`. Mốc cũ `d83a4d4` là code L0-L6 trước refactor.
-- **Bước 1.1 đến 1.5 xong. Bước 1.6 giai đoạn A (`src/concepts.py`, gạch cụm) đã code và CHẠY LIVE XONG 13/11:** 204/204 lô bằng Claude Sonnet 5.5, $2,61, kết quả ở `data/llm_cache/concepts_spans/` (được theo dõi trong git) và `docs/bao_cao_chay/concepts/`. Đã đọc kết quả (A35): 881 đơn vị, 2552 hàng cụm, 865/881 đơn vị có cụm; cổng nguyên văn 0 cụm bị loại (kiểm độc lập xác nhận); mẫu đọc tay 30 đơn vị 74/84 cụm chấp nhận được (88%). Hai lỗi đã sửa trong code với test (A35): ngữ cảnh thiếu câu dẫn của Điều ở 46 khoản, ngoại lệ ghi hai lần ở 11 đơn vị. Sửa làm 10 lô đổi ngữ cảnh nên `replay` báo 194/204 (thiếu 10 lô, không phải lỗi).
-- **Tầng LLM (A34, A35):** vai mới `trich` (Claude) cho 1.6 trở đi, nằm ngoài `llm_client.ROLES` để cache của 2.2 (Gemini, vai `chinh` và `kiem`) không hụt. Khoá cấu hình `trich.thinking` (Sonnet: `between_tools`, Haiku: `disabled`). Cấu hình đang commit là Sonnet; đã đồng ý chuyển Haiku 5.5, CHƯA chạy (1.6A chạy lại bằng Haiku khoảng $0,13). Mọi thứ về Claude mới chỉ kiểm bằng API giả và một lần chạy Sonnet thật; Haiku chưa từng gọi thật.
-- Kiểm 13/11 trước commit: `python -I src/run_all.py --viewer --tests` 13/13 bước, 8 bộ test, 154 test, `tổng test lỗi: 0`, cả `--llm off` lẫn `--llm replay`.
+- **Bước 1.1 đến 1.5 xong. Bước 1.6 giai đoạn A (gạch cụm, `src/concepts.py`) XONG 204/204 lô ngày 14/11**: phần LLM chạy bằng phiên Claude Code (Opus 5.5, lời nhắc `concepts-2`), không gọi API (A36). Kết quả: 881 đơn vị, 3069 cụm LLM (bảng cụm 3061 hàng sau khử trùng, thêm 40 cụm từ nút điều kiện), 0 cụm hỏng cổng nguyên văn, 868/881 đơn vị có cụm. Bản ghi ở `data/llm_cache/concepts_spans/` (618 file; còn bản ghi cũ của Sonnet, Haiku và concepts-1 không dùng nữa). `replay` đọc đủ 204/204. Phần sót đo trên 204 lô (A36): 13/881 đơn vị rỗng (D205.K1-3, D73.K2.c, D47.K4 và 7 câu dẫn); 11/87 lô ngoài mốc 0,7-1,6 (không nới mốc, không chạy lại lô nào).
+- Lời nhắc 1.6A cuối cùng là `concepts-2`; `concepts-3` thử trên 21 lô rồi rút (làm Opus lặp `ket_luan` của câu dẫn vào cả 8 khoản D67). Kế hoạch chuyển Haiku qua API của 13/11 đã bỏ.
+- **Cách làm 1.6B (đặt tên, tái dùng vị từ) ĐÃ VIẾT, CHƯA CODE** (14/11, A37): `docs/pipeline_moi.md` thẻ 1.6 mục 4 bước 5 đến 10, mục 4b (cách chạy bằng Claude Code) và rủi ro ở mục 7. Tóm tắt: 1833 chữ khác nhau chia khoảng 76 lượt tuần tự theo thứ tự Điều; mỗi chữ kèm ngữ cảnh và tối đa 12 ứng viên; LLM trả `reuse` (chỉ khi cùng nghĩa, cùng `params`) hoặc `new`; chạy bằng phiên Claude Code, model Sonnet 5.5 (vai cấu hình mới `ten`, chưa có trong code; `trich.model` giữ Opus để `replay` 1.6A không vỡ). Nhiều chỗ là agent tự đặt, đánh dấu [THÊM] và chờ người dùng duyệt (danh sách ở A37 (6)).
+- Kiểm 14/11 (tạm dừng): `--llm off` rồi `--llm replay`, cả hai 13/13 bước, 8 bộ test, 155 test, `tổng test lỗi: 0`; báo cáo ở `docs/bao_cao_chay/` sinh lần cuối bằng `replay`.
+- `src/checks.py` sửa 14/11 (hàm `lead_in_text`; kiểm 1.6 trước đó báo oan cụm chapeau ở khoản vì chưa theo A35) kèm 1 test: do agent làm, người dùng chưa duyệt từng dòng.
 - s(CASP) đã cài và chạy được trên máy nhà từ 12/11 (A33); chưa kiểm ở máy công ty (cần từ 1.8).
 - Khuôn cạnh chung `{s, p, o, evidence, how, flags}` (riêng 1.5 thêm `rule`). Tên file: `parse`, `refs`, `delegation` (1.3), `links` (2.2), `article_type` (1.4, đã bỏ LLM), `exceptions_explicit`, `exceptions_general`, `concepts` (1.6A), `textutil`. Bản đồ tên cũ sang mới ở `docs/pipeline_moi.md`.
-- Chưa làm: 1.6B (đặt tên, tái dùng vị từ), 1.7, 1.8, 1.9 và giai đoạn 2 (đã có code cũ cho 2.3, 2.4 ở `l6_*.py`; 2.5 đến 2.7 chưa có). Thẻ 1.7 và 1.8 là bản nháp ở `docs/pipeline_moi.md`.
-- Mục tiêu người dùng đặt (A11): hết T7 (14/11/2026) có KB đủ lớp, có cơ chế cập nhật và một demo hỏi đáp nhỏ. **Đã trượt**: 1.7 chạy thật không kịp (cần sổ vị từ 1.6B); người dùng quyết cắt gì.
+- Chưa làm: 1.6B (code), 1.7, 1.8, 1.9 và giai đoạn 2 (đã có code cũ cho 2.3, 2.4 ở `l6_*.py`; 2.5 đến 2.7 chưa có). Thẻ 1.7 và 1.8 là bản nháp ở `docs/pipeline_moi.md`.
+- Mục tiêu người dùng đặt (A11): hết T7 (14/11/2026) có KB đủ lớp, có cơ chế cập nhật và một demo hỏi đáp nhỏ. **Đã trượt**; người dùng chọn làm đủ 1.6B, chưa quyết cắt gì ở 1.7 đến 1.9.
 
 ## Nợ (ghi 11/11)
 1. **1.2 tầng 2** (xác định đích duy nhất cho 13 ca khoản/điểm trơ trụi, đều ở nghị định, thông tư) hoãn; BLLĐ có 0 ca (B10).
@@ -43,29 +45,35 @@ Cập nhật lần cuối: **13/11/2026**, tối (người dùng nói "tạm d�
 13. **`narrower_than`** (quan hệ hẹp hơn giữa hai vị từ gần nghĩa; A27 (2), A29 cấp 3): hoãn khỏi 1.6 và 1.7 (A32). Làm sau khi chạy một vòng KB đầy đủ, dựa trên kết quả phân tích (đếm cặp vị từ gần nghĩa, đếm ngoại lệ bị sót). Cái mất khi hoãn: chưa có tri thức quan hệ ngầm giữa vị từ gần nghĩa.
 
 14. **1.6A, chất lượng cụm (A35):** mẫu đọc tay 88% chấp nhận được, một người đọc, không phải đáp án chuẩn. Vấn đề chính: mục liệt kê "phải có các nội dung sau" và "hành vi bị cấm" bị gán `ket_luan` (vai nhập nhằng); `ket_luan` phủ 843/881 đơn vị nên `kind` khó phân biệt; vai gắn theo đơn vị chứ không theo từng quy tắc; 12% cụm dài từ 25 từ trở lên. Hai đơn vị định nghĩa D107.K1 và D63.K1 bị bỏ trống. Chỉnh bằng lời nhắc sau khi quyết Haiku (nâng PROMPT_VERSION).
-15. **Lời nhắc 1.6A còn câu "(chỉ có khi đơn vị là điểm)" cho `khoan_cha`**, không còn đúng cho 46 khoản (A35); cố ý chưa sửa để so Haiku–Sonnet sạch.
-16. **Số liệu LLM chưa đối chiếu Console:** $2,61 là tính từ token ghi trong cache.
+15. ~~**Lời nhắc 1.6A còn câu "(chỉ có khi đơn vị là điểm)" cho `khoan_cha`**, không còn đúng cho 46 khoản (A35); cố ý chưa sửa để so Haiku–Sonnet sạch.~~ **Đã sửa ở `concepts-2` (13/11, A36).**
+16. **Số liệu LLM chưa đối chiếu Console:** $2,61 (1.6A bản Sonnet qua API, 13/11) tính từ token ghi trong cache. Từ 14/11 phần LLM chạy bằng phiên Claude Code nên không còn số tiền theo lượt.
+17. **Phần sót của 1.6A (A36, đo 14/11):** D205.K1-3 rỗng; D73.K2.c và D47.K4 rỗng; câu dẫn D185.K3 và D201.K2 không còn chữ trong sổ cụm; 11/87 lô ngoài mốc (e) (9 vượt, 2 dưới). Không sửa lời nhắc nữa (luật dừng đã hết lượt) trừ khi người dùng nêu lý do mới.
+18. **Cụm lặp từ câu dẫn làm neo (anchors) dư:** ít nhất 140/1286 cụm `ket_luan` là chữ lặp từ câu dẫn; ảnh hưởng tới `kind`, `anchors` ở 1.6B chưa đo.
+19. **Bản ghi mồ côi trong cache:** 2 bản ghi concepts-1 của lô 1-2 (thử nghiệm) và các bản ghi Sonnet, Haiku cũ ở `data/llm_cache/concepts_spans/` (không còn được `replay` đọc). Chờ người dùng quyết xoá hay giữ.
+20. **Mã gọi API của vai `trich` còn trong `llm_client.py` và `concepts.py` nhưng không dùng** (A36, cố ý giữ). Quy tắc 6 của CLAUDE.md nói không để code chết: cần người dùng nói giữ hay bỏ.
+21. **`docs/llm_config.md`:** phần chữ về Sonnet, Haiku và "chuyển Haiku" đã lạc hậu; cần ghi lại model thật của từng bước và thêm vai `ten` khi code 1.6B.
+22. **Mốc test trong `CLAUDE.md`** ghi 154, thực tế 155 (file của người dùng, agent không sửa).
 
 ## Kiểm hiểu (người dùng bảo "khá hay, lưu lại" 11/11)
 **TẠM DỪNG từ 12/11 theo yêu cầu người dùng; kiểm lại (1.1 và 1.6, rồi các bước khác) sau khi chốt xong 1.6. Agent không hỏi câu kiểm hiểu nào cho tới khi người dùng bảo.**
 Bộ 50 câu (10 câu mỗi bước 1.1 đến 1.5) ở `docs/kiem_hieu.md`; ý chính đáp án cho agent ở `docs/kiem_hieu_dap_an.md`. Kết quả: 1.1 đã kiểm 12/11 (1/10 đúng, chưa đạt, cần học lại rồi kiểm lại); 1.6 kiểm lượt đầu 12/11 (2/10 đúng, 3 thiếu, 3 chưa biết, 2 chưa kiểm vì user mất câu hỏi 1.6.9 và 1.6.10; chưa đạt); 1.2 đến 1.5 vẫn "chưa trả lời" (40 câu). Người dùng nói "kiểm 1.x" thì agent hỏi 10 câu của bước đó, chấm đúng/thiếu/sai, giải thích chỗ sai, rồi ghi kết quả và "mức nắm" (ngưỡng đề xuất: 8 trên 10 là đã nắm) vào bảng.
 
 ## Việc kế tiếp (theo thứ tự)
-1. **14/11, máy công ty:** làm các bước 1 đến 10 ở `README.md` mục "Việc của phiên này" (dựng lại, khoá, chuyển Haiku, chạy 1.6A bằng Haiku, so sánh với Sonnet).
-2. **1.6B (đặt tên, tái dùng vị từ):** code phần máy trước (gom chữ theo `text_norm`, danh sách ứng viên giới hạn, cổng tên, suy `kind`, sổ vị từ, báo cáo tái dùng kèm tệp mẫu đọc tay), khung gọi LLM kiểm bằng API giả. Cần đọc thẻ 1.6 ở `docs/pipeline_moi.md` mục 4 bước 5 đến 7. Số lượt ước xấp xỉ 1719 chữ chia cỡ lô.
-3. **1.7 và 1.8:** chờ người dùng trả lời (a) đến (e) của thẻ 1.8 (B11) và có cắt 1.7 hay không (1.8 chỉ cần "thêm cạnh của 1.7 khi có"). Quy trình thẻ: kể lại bước, advisor soát, nhờ quyết.
-4. Kiểm hiểu: **tạm dừng**; người dùng nói "kiểm 1.x" thì hỏi 10 câu của bước đó (`docs/kiem_hieu.md`), chấm theo `docs/kiem_hieu_dap_an.md`. 1.1 được 1/10, 1.6 được 2/10 ngày 12/11; câu hỏi 1.6 đã cũ so với thiết kế mới, cần viết lại khi kiểm.
-5. Khi rảnh: rà `checks.py`; thẻ 1.6, 1.7, 1.8 bản cuối; nợ ở mục "Nợ".
+1. **Người dùng tự đọc lại** cách làm 1.6B (thẻ 1.6 mục 4 bước 5 đến 10, 4b, mục 7; A37) và duyệt hoặc đổi các mục [THÊM]. Agent KHÔNG code 1.6B trước khi người dùng nói đã check.
+2. **Code 1.6B** (khi được bảo). Việc đầu tiên không gọi LLM: đếm chữ còn ít nhất một ứng viên (luật dừng đề xuất: hơn 20% chữ không có ứng viên thì dừng và báo). Rồi `src/concepts_names.py` (dựng chữ, hàng xóm, lượt, cổng, sổ, `replay`, `--nhap`), vai cấu hình `ten` ở `llm_client.py` và `docs/llm_config.md`, test bằng LLM giả, bản `xuat` dựng thư mục làm việc (có `HUONG_DAN.md`, `tiep.py`). Người dùng chạy khoảng 76 lượt tuần tự bằng phiên Claude Code (Sonnet 5.5); agent nhập và đọc mẫu đọc tay.
+3. **1.7 và 1.8:** sau khi có số cặp thật của 1.6B; thẻ 1.8 còn (a) đến (e) chờ người dùng trả lời. Quy trình thẻ: kể lại bước, advisor soát, nhờ quyết.
+4. Kiểm hiểu: **tạm dừng**; người dùng nói "kiểm 1.x" thì hỏi 10 câu của bước đó (`docs/kiem_hieu.md`), chấm theo `docs/kiem_hieu_dap_an.md`. Câu hỏi 1.6 đã cũ so với thiết kế mới, cần viết lại khi kiểm.
+5. Khi rảnh: rà `checks.py` (cả phần sửa 14/11); thẻ 1.7, 1.8 bản cuối; nợ ở mục "Nợ".
 
 ## Chờ người dùng
-- Trả lời (a) đến (e) của thẻ 1.8 (đề xuất ở B11; dạng "(a) đồng ý, (e) không" là đủ).
-- Có cắt 1.7 hay không (đề xuất của agent: nếu mục tiêu là demo hỏi đáp thì đi 1.6B rồi 1.8 trước, 1.7 sau).
-- Duyệt ngưỡng so sánh Haiku–Sonnet ở A35 (cụm bị loại không quá 2%, chấp nhận được trên mẫu không dưới 80%, đơn vị trống không quá 40) hoặc đổi.
-- Đọc lại tệp mẫu đọc tay 30 đơn vị (danh sách ở A35) để đối chiếu phán đoán của agent về vai: một người đọc thì chưa phải đáp án.
-- Luận văn: model của 1.6 là Claude trả phí, khác chốt "model nhẹ, miễn phí" 07/11; cần ghi lý do. Đổi chữ ở Method 3.5 (còn mô tả "model khác trích lại để kiểm" mà hệ thống không làm, A25).
+- **Duyệt hoặc đổi các mục [THÊM] của 1.6B** (A37 (6)): cỡ lượt 30, 12 ứng viên, cách tính hàng xóm, đặt tên cho 25 hàng ngoại lệ không có targets, cho `reuse` tên `new` cùng lượt, cách thử lại, `tiep.py` chạy mã repo trong thư mục làm việc, dừng sớm, mẫu đọc tay và ngưỡng, luật dừng 20%.
+- Trả lời (a) đến (e) của thẻ 1.8 (B11) và có cắt 1.7 hay không (quyết sau khi có số cặp thật).
+- Quyết 2 bản ghi mồ côi concepts-1 và các bản ghi Sonnet, Haiku cũ trong cache; quyết giữ hay bỏ mã gọi API của vai `trich` (nợ 19, 20).
+- Duyệt từng dòng sửa `src/checks.py` (`lead_in_text`) và test mới.
+- Sửa tay `.claude/CLAUDE.md`: mốc test 154 thành 155; mục 4 còn ghi vai `trich` là Sonnet qua API; mục 5 còn trỏ tài liệu cũ (file của người dùng, agent không sửa).
+- Luận văn: model của từng bước (1.6A Opus 5.5 qua phiên Claude Code, không API; 1.6B dự định Sonnet 5.5) khác chốt "model nhẹ, miễn phí" 07/11, cần ghi lý do; Method 3.5 còn mô tả "model khác trích lại để kiểm" mà hệ thống không làm (A25).
 - Kiểm s(CASP) ở máy công ty khi tới 1.8 (`swipl --version`, nạp được `library(scasp)`).
-- `.claude/CLAUDE.md` mục 5 còn trỏ tài liệu cũ (`docs/tien_do_L0_L6.md`, nhánh `v2-lao-dong`): muốn sửa thì bảo (mục 5 là phần người dùng tự cập nhật).
-- Xoá cache cũ `data/llm_cache/l4_classify/` và sửa bảng vai trò ở `docs/llm_config.md` (còn ghi L4 dùng LLM): cần người dùng bảo.
+- Xoá cache cũ `data/llm_cache/l4_classify/` (nợ 8) khi người dùng bảo.
 
 ## Khi người dùng nói "tạm dừng" (quy trình cho agent)
 1. Dừng việc đang làm, không bắt đầu bước mới.
@@ -92,6 +100,16 @@ Bộ 50 câu (10 câu mỗi bước 1.1 đến 1.5) ở `docs/kiem_hieu.md`; ý 
 - Memory của Claude nằm trên từng máy và không đi theo git; mọi thứ cần nhớ phải nằm trong README, file này, `docs/pipeline_moi.md` và `docs/quyet_dinh/`.
 
 ## Nhật ký (mới nhất ở trên)
+
+### 14/11/2026: 1.6A xong 204/204 bằng Claude Code; viết cách làm 1.6B (chưa code)
+- Phần LLM của 1.6A chạy bằng phiên Claude Code theo A36 ("không call API nữa"): mỗi lô một subagent mới (Opus 5.5) trong thư mục tách riêng ngoài repo; agent nhập bản ghi vào cache bằng script ở thư mục tạm (không vào repo), kiểm cổng nguyên văn rồi chạy `replay`.
+- Lời nhắc: `concepts-2` (thêm quy tắc 6 cho định nghĩa "X là Y"). Thử `concepts-3` trên 21 lô: cứu D205.K1-3 nhưng làm Opus lặp `ket_luan` của câu dẫn vào cả 8 khoản D67; theo tiêu chí viết trước, lùi về `concepts-2` (A36). Đính chính: đoạn "lô 52 và 192 kéo ngược chiều" của bản 13/11 là sai.
+- Lỗi tìm ra khi nhập: `checks.py` chưa theo A35 (khoản nhận chữ Điều làm chapeau), `run_all --llm replay` thoát mã 1; sửa bằng `lead_in_text` và một test (155 test).
+- Nhập 203 lô, rồi làm lại riêng lô 085 vì thiếu dòng nhật ký model; 204/204. Đo phần sót trên cả 204 lô và ghi vào A36.
+- Commit `8522ee3`. Sai sót của agent: lúc commit, báo cáo `concepts` đang ở chế độ `off` (chạy `off` sau `replay`); sửa ở commit tạm dừng này.
+- Bàn 1.6B (A37): người dùng chốt làm đủ 1.6B, chạy bằng Claude Code, Sonnet, đặt tên theo thứ tự Điều kèm ngữ cảnh, `reuse` chỉ khi cùng nghĩa, không thử từng lượt. Người dùng hỏi sao không gộp gạch cụm và đặt tên làm một bước; agent giữ hai bước (cùng chữ cùng tên do máy bảo đảm; ứng viên cần biết chữ trước; giai đoạn A đã đóng băng nên chạy lại B không vỡ cache) và nhận hai ý đúng của người dùng (ngữ cảnh, thứ tự Điều).
+- Viết cách làm 1.6B v6 vào thẻ 1.6. Advisor soát: sửa ví dụ D14.K2 và D24.K3 (ban đầu ghi ngược chiều, chưa kiểm), đánh dấu thêm các mục [THÊM], bổ sung quy tắc phụ thuộc giữa chữ trong một lượt và thứ tự Điều. Đo trước không gọi LLM: sau lọc `params` có 101/1833 chữ không còn ứng viên, trung vị 17 ứng viên, 1051 chữ có hơn 12.
+- Đã kiểm trước commit: `--llm off` rồi `--llm replay`, cả hai 13/13 bước, 8 bộ test, 155 test, `tổng test lỗi: 0`. Chưa kiểm: Sonnet ở việc đặt tên; chất lượng cụm do Opus gạch (chỉ có số đo hình dạng, chưa có mẫu đọc tay); tác động của cụm lặp câu dẫn lên 1.6B.
 
 ### 13/11/2026: 1.6A chạy live xong; đọc kết quả; hai sửa; chuyển Haiku (chưa chạy); thêm vai `trich`
 - Đêm 12 rạng 13/11: thêm vai LLM `trich` (Claude Sonnet 5.5) vì Gemini quá tải (A34); khoá cache chứa tên model nên không đổi `chinh` (sẽ vỡ replay của 2.2). Người dùng chạy 1.6A live: 204/204 lô, $2,61 (ước tính ban đầu $1-2 là thấp).

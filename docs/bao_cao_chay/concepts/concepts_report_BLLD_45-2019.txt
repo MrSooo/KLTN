@@ -1,10 +1,12 @@
 1.6 gạch cụm (giai đoạn A) báo cáo: BLLD_45-2019
-chế độ LLM: off
+chế độ LLM: replay
 đơn vị trong phạm vi: 881  lô: 204 (mỗi lô là một Điều; Điều dài hơn 20 đơn vị thì cắt)
-LLM TẮT: chỉ có cụm ngoại lệ từ nút điều kiện 1.5 và targets; KHÔNG có cụm chủ thể, điều kiện, kết luận
-cụm LLM đề xuất: 0; bị loại: 0; trùng bỏ bớt: 0
-hàng trong bảng cụm: 40 (llm 0, cond_node 40); có targets: 15; đơn vị có ít nhất một cụm: 40/881
-theo vai: chu_the 0, dieu_kien 0, ngoai_le 40, ket_luan 0
+lô có kết quả LLM: 204/204  thiếu cache: 0  hết hạn mức: 0  đầu ra bị loại: 0  bỏ qua theo --max-batches: 0
+đơn vị LLM KHÔNG trả mục nào (khác với trả mảng cụm rỗng; nên xem đầu tiên sau lượt chạy thử): 0
+cụm LLM đề xuất: 3069; bị loại: 0; trùng bỏ bớt: 48
+hàng trong bảng cụm: 3061 (llm 3021, cond_node 40); có targets: 152; đơn vị có ít nhất một cụm: 868/881
+theo vai: chu_the 840, dieu_kien 888, ngoai_le 46, ket_luan 1287
 dẫn chiếu nằm vắt qua biên cụm (không tính vào targets): 0
-BÁO: từ báo hiệu chưa có cụm phủ hoặc kề: 883 lần ở 456 đơn vị
+BÁO: từ báo hiệu chưa có cụm phủ hoặc kề: 30 lần ở 28 đơn vị
 BÁO: nút điều kiện 1.5 mà LLM không gạch cụm ngoại lệ trùng hoặc chứa nó: 0
+LLM: gọi API lần này: 0; đọc từ cache: 204; hôm nay đã dùng trich 0
