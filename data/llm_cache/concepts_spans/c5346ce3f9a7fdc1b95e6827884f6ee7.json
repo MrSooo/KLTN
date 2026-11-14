@@ -1,0 +1,121 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-haiku-5-5",
+ "created": "2026-11-13T03:53:09+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D128.K1\",\n\"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người sử dụng lao động có quyền tạm đình chỉ công việc của người lao động khi vụ việc vi phạm có những tình tiết phức tạp nếu xét thấy để người lao động tiếp tục làm việc sẽ gây khó khăn cho việc xác minh. Việc tạm đình chỉ công việc của người lao động chỉ được thực hiện sau khi tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở mà người lao động đang bị xem xét tạm đình chỉ công việc là thành viên.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D128.K2\",\n\"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời hạn tạm đình chỉ công việc không được quá 15 ngày, trường hợp đặc biệt không được quá 90 ngày. Trong thời gian bị tạm đình chỉ công việc, người lao động được tạm ứng 50% tiền lương trước khi bị đình chỉ công việc.\\nHết thời hạn tạm đình chỉ công việc, người sử dụng lao động phải nhận người lao động trở lại làm việc.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D128.K3\",\n\"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Trường hợp người lao động bị xử lý kỷ luật lao động, người lao động cũng không phải trả lại số tiền lương đã tạm ứng.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D128.K4\",\n\"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Trường hợp người lao động không bị xử lý kỷ luật lao động thì được người sử dụng lao động trả đủ tiền lương cho thời gian bị tạm đình chỉ công việc.\"\n}\n]\n}",
+ "model": "claude-haiku-5-5",
+ "request_id": "req_011CgzFSWknp7X68bBaE1HhP",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D128.K1",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "tạm đình chỉ công việc của người lao động khi vụ việc vi phạm có những tình tiết phức tạp",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "có quyền tạm đình chỉ công việc",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Việc tạm đình chỉ công việc của người lao động chỉ được thực hiện sau khi tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D128.K2",
+    "spans": [
+     {
+      "span": "Thời hạn tạm đình chỉ công việc không được quá 15 ngày, trường hợp đặc biệt không được quá 90 ngày",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "người lao động được tạm ứng 50% tiền lương trước khi bị đình chỉ công việc",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "A"
+      ]
+     },
+     {
+      "span": "người sử dụng lao động phải nhận người lao động trở lại làm việc",
+      "role": "ket_luan",
+      "params": [
+       "E",
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D128.K3",
+    "spans": [
+     {
+      "span": "Trường hợp người lao động bị xử lý kỷ luật lao động",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "người lao động cũng không phải trả lại số tiền lương đã tạm ứng",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "A"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D128.K4",
+    "spans": [
+     {
+      "span": "Trường hợp người lao động không bị xử lý kỷ luật lao động",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "người sử dụng lao động trả đủ tiền lương cho thời gian bị tạm đình chỉ công việc",
+      "role": "ket_luan",
+      "params": [
+       "E",
+       "W",
+       "A"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2407,
+  "output_tokens": 743
+ }
+}

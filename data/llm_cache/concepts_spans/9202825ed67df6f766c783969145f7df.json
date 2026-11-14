@@ -1,0 +1,130 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-haiku-5-5",
+ "created": "2026-11-13T03:44:35+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D8.K1\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Phân biệt đối xử trong lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D8.K2\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Ngược đãi người lao động, cưỡng bức lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D8.K3\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Quấy rối tình dục tại nơi làm việc.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D8.K4\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Lợi dụng danh nghĩa dạy nghề, tập nghề để trục lợi, bóc lột sức lao động hoặc lôi kéo, dụ dỗ, ép buộc người học nghề, người tập nghề vào hoạt động trái pháp luật.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D8.K5\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Sử dụng lao động chưa qua đào tạo hoặc chưa có chứng chỉ kỹ năng nghề quốc gia đối với nghề, công việc phải sử dụng lao động đã được đào tạo hoặc phải có chứng chỉ kỹ năng nghề quốc gia.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D8.K6\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Lôi kéo, dụ dỗ, hứa hẹn, quảng cáo gian dối hoặc thủ đoạn khác để lừa gạt người lao động hoặc để tuyển dụng người lao động với mục đích mua bán người, bóc lột, cưỡng bức lao động hoặc lợi dụng dịch vụ việc làm, hoạt động đưa người lao động đi làm việc ở nước ngoài theo hợp đồng để thực hiện hành vi trái pháp luật.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D8.K7\",\n\"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Sử dụng lao động chưa thành niên trái pháp luật.\"\n}\n]\n}",
+ "model": "claude-haiku-5-5",
+ "request_id": "req_011CgzEnaEqgtnRnudnovhk8",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D8.K1",
+    "spans": [
+     {
+      "span": "Phân biệt đối xử trong lao động",
+      "role": "ngoai_le",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D8.K2",
+    "spans": [
+     {
+      "span": "Ngược đãi người lao động, cưỡng bức lao động",
+      "role": "ngoai_le",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D8.K3",
+    "spans": [
+     {
+      "span": "Quấy rối tình dục tại nơi làm việc",
+      "role": "ngoai_le",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D8.K4",
+    "spans": [
+     {
+      "span": "Lợi dụng danh nghĩa dạy nghề, tập nghề để trục lợi, bóc lột sức lao động",
+      "role": "ngoai_le",
+      "params": [
+       "J",
+       "W"
+      ]
+     },
+     {
+      "span": "lôi kéo, dụ dỗ, ép buộc người học nghề, người tập nghề vào hoạt động trái pháp luật",
+      "role": "ngoai_le",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D8.K5",
+    "spans": [
+     {
+      "span": "Sử dụng lao động chưa qua đào tạo hoặc chưa có chứng chỉ kỹ năng nghề quốc gia",
+      "role": "ngoai_le",
+      "params": [
+       "W",
+       "J"
+      ]
+     },
+     {
+      "span": "đối với nghề, công việc phải sử dụng lao động đã được đào tạo hoặc phải có chứng chỉ kỹ năng nghề quốc gia",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D8.K6",
+    "spans": [
+     {
+      "span": "Lôi kéo, dụ dỗ, hứa hẹn, quảng cáo gian dối hoặc thủ đoạn khác để lừa gạt người lao động",
+      "role": "ngoai_le",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "mua bán người, bóc lột, cưỡng bức lao động",
+      "role": "ngoai_le",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "lợi dụng dịch vụ việc làm, hoạt động đưa người lao động đi làm việc ở nước ngoài theo hợp đồng để thực hiện hành vi trái pháp luật",
+      "role": "ngoai_le",
+      "params": [
+       "W",
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D8.K7",
+    "spans": [
+     {
+      "span": "Sử dụng lao động chưa thành niên trái pháp luật",
+      "role": "ngoai_le",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2723,
+  "output_tokens": 893
+ }
+}

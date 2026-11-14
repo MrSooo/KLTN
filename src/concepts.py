@@ -36,7 +36,11 @@ import llm_client
 from textutil import TONE
 
 DIR_NAME = "concepts"
-TASK, PROMPT_VERSION, BATCH_SIZE = "concepts_spans", "concepts-1", 20
+# concepts-2 (13/11, A36): thêm quy tắc 6 (định nghĩa "X là Y": X là ket_luan để thành neo, thẻ 1.6 dòng 239) và một câu ở quy tắc 2 cho đơn vị phạm vi hoặc đối tượng;
+# sửa mô tả khoan_cha (từ A35 khoản dưới Điều có câu dẫn cũng nhận câu dẫn đó). Vì sao: Opus trả rỗng cho Điều 1 và 6/9 khoản định nghĩa của Điều 3 (A36).
+# concepts-3 (14/11) đã thử rồi RÚT: thêm vế cho mục danh sách chỉ nêu tên bên dưới câu dẫn cứu được D205.K1-3 nhưng làm Opus lặp ket_luan của câu dẫn vào cả 8 khoản D67 (A36). Chữ lời nhắc đã trả về concepts-2, không có lần sửa thứ ba.
+# Đổi chữ lời nhắc là đổi khoá cache của cả 204 lô, nên bản ghi concepts-1 (Sonnet, Haiku, Opus thí điểm) còn nguyên nhưng không còn được replay đọc tới.
+TASK, PROMPT_VERSION, BATCH_SIZE = "concepts_spans", "concepts-2", 20
 ROLES = ("chu_the", "dieu_kien", "ngoai_le", "ket_luan")
 PARAMS = ("W", "E", "C", "J", "G", "D", "A")
 IN_SCOPE_LABELS = ("substantive", "definition")
@@ -49,18 +53,24 @@ SYSTEM = """Bạn đọc từng đơn vị của một văn bản pháp luật l
 - dieu_kien: khi nào quy tắc áp dụng.
 - ngoai_le: trừ khi nào (chữ sau "trừ", "ngoại trừ", "không áp dụng" ...).
 - ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).
-Mỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).
+Mỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha của điểm, hoặc câu dẫn của Điều đứng trên khoản; rỗng nếu không có) và tieu_de_dieu (tiêu đề Điều).
 Cụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.
 Quy tắc bắt buộc:
 1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.
 2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.
+   Đơn vị nói luật áp dụng cho ai hoặc điều chỉnh việc gì (phạm vi, đối tượng) thì vẫn gạch từng bên được nêu tên (người hoặc tổ chức) thành cụm chu_the; chủ đề được điều chỉnh không phải một bên thì không gạch thành chu_the.
 3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),
    D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.
 4. Không đặt tên cho cụm và không phân loại gì thêm.
 5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.
+6. Đơn vị là ĐỊNH NGHĨA, tức giải thích một thuật ngữ dạng "X là Y" (X là thuật ngữ, Y là phần giải nghĩa): gạch X thành cụm ket_luan (khái niệm được xác lập ở đây), không gạch X thành chu_the; gạch phần giải nghĩa Y thành cụm dieu_kien (điều kiện để X đúng). Phần khác của đơn vị mà có nêu quy tắc thì vẫn gạch như thường.
+   Chữ "là" nêu điều kiện, trường hợp hoặc mức giới hạn ("số người tham gia tối đa là 10 người", "Trường hợp ... thì ... là ...") không phải định nghĩa: gạch theo bốn vai như thường.
+   Câu dẫn của Điều giải thích từ ngữ ("... được hiểu như sau:") không có nghĩa riêng nên trả rỗng.
 Ví dụ cho đơn vị chu_don_vi = "Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.":
   chu_the "Hai bên" (params []); ket_luan "giao kết hợp đồng lao động bằng lời nói" (params ["C"]); dieu_kien "hợp đồng có thời hạn dưới 01 tháng" (params ["C"]);
   ngoai_le "quy định tại khoản 2 Điều 18 của Bộ luật này" (params []).
+Ví dụ định nghĩa, chu_don_vi = "Giờ cao điểm là khoảng thời gian từ 17 giờ đến 19 giờ trong ngày.":
+  ket_luan "Giờ cao điểm" (params []); dieu_kien "khoảng thời gian từ 17 giờ đến 19 giờ trong ngày" (params ["D"]).
 Trả về JSON đúng lược đồ."""
 
 SCHEMA = {"type": "object", "additionalProperties": False, "required": ["units"],

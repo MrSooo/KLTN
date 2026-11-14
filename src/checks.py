@@ -90,6 +90,15 @@ def residue_problems(got, known):
     return [f"ca 'trừ' chưa xử lý của BLLĐ lệch danh sách đã biết: thừa {sorted(got - known)}, thiếu {sorted(known - got)}"]
 
 
+def lead_in_text(units, u):
+    """Chữ câu dẫn (chapeau) của đơn vị u theo thẻ 1.6, tính lại độc lập với concepts.py: chữ khoản cha của điểm, hoặc (A35) chữ của Điều
+    đứng trên khoản. Lần chạy 14/11 có cụm chapeau ở khoản (D67.K1-8) bị báo lỗi vì chỗ này vẫn chỉ tính cho điểm."""
+    parent = units.get(u.get("parent"))
+    if parent is not None and (u["type"] == "diem" or (u["type"] == "khoan" and parent["type"] == "dieu")):
+        return parent.get("text") or ""
+    return ""
+
+
 def checks(docs):
     """-> list[(nhãn, [vấn đề])]."""
     out = []
@@ -165,8 +174,7 @@ def checks(docs):
         if r["role"] not in ("chu_the", "dieu_kien", "ngoai_le", "ket_luan") or r["how"] not in ("llm", "cond_node") or r["source"] not in ("own", "chapeau", "heading"):
             p.append(f"{r['unit']}: vai/how/source sai: {r['role']}/{r['how']}/{r['source']}")
             continue
-        parent = units.get(u.get("parent")) if u["type"] == "diem" else None
-        src = {"own": u.get("text"), "chapeau": (parent or {}).get("text"), "heading": units.get(dieu, {}).get("heading")}[r["source"]] or ""
+        src = {"own": u.get("text"), "chapeau": lead_in_text(units, u), "heading": units.get(dieu, {}).get("heading")}[r["source"]] or ""
         if text_norm(r["span"]) not in text_norm(src):
             p.append(f"{r['unit']}: cụm không nằm trong {r['source']}: {r['span'][:50]!r}")
         if r["predicate"] is not None:

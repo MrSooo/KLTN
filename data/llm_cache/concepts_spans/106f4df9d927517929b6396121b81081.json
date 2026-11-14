@@ -1,0 +1,184 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-haiku-5-5",
+ "created": "2026-11-13T03:45:10+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D20.K1\",\n\"tieu_de_dieu\": \"Loại hợp đồng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Hợp đồng lao động phải được giao kết theo một trong các loại sau đây:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D20.K1.a\",\n\"tieu_de_dieu\": \"Loại hợp đồng lao động\",\n\"khoan_cha\": \"Hợp đồng lao động phải được giao kết theo một trong các loại sau đây:\",\n\"chu_don_vi\": \"Hợp đồng lao động không xác định thời hạn là hợp đồng mà trong đó hai bên không xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D20.K1.b\",\n\"tieu_de_dieu\": \"Loại hợp đồng lao động\",\n\"khoan_cha\": \"Hợp đồng lao động phải được giao kết theo một trong các loại sau đây:\",\n\"chu_don_vi\": \"Hợp đồng lao động xác định thời hạn là hợp đồng mà trong đó hai bên xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng trong thời gian không quá 36 tháng kể từ thời điểm có hiệu lực của hợp đồng.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D20.K2\",\n\"tieu_de_dieu\": \"Loại hợp đồng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khi hợp đồng lao động quy định tại điểm b khoản 1 Điều này hết hạn mà người lao động vẫn tiếp tục làm việc thì thực hiện như sau:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D20.K2.a\",\n\"tieu_de_dieu\": \"Loại hợp đồng lao động\",\n\"khoan_cha\": \"Khi hợp đồng lao động quy định tại điểm b khoản 1 Điều này hết hạn mà người lao động vẫn tiếp tục làm việc thì thực hiện như sau:\",\n\"chu_don_vi\": \"Trong thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn, hai bên phải ký kết hợp đồng lao động mới; trong thời gian chưa ký kết hợp đồng lao động mới thì quyền, nghĩa vụ và lợi ích của hai bên được thực hiện theo hợp đồng đã giao kết;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D20.K2.b\",\n\"tieu_de_dieu\": \"Loại hợp đồng lao động\",\n\"khoan_cha\": \"Khi hợp đồng lao động quy định tại điểm b khoản 1 Điều này hết hạn mà người lao động vẫn tiếp tục làm việc thì thực hiện như sau:\",\n\"chu_don_vi\": \"Nếu hết thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn mà hai bên không ký kết hợp đồng lao động mới thì hợp đồng đã giao kết theo quy định tại điểm b khoản 1 Điều này trở thành hợp đồng lao động không xác định thời hạn;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D20.K2.c\",\n\"tieu_de_dieu\": \"Loại hợp đồng lao động\",\n\"khoan_cha\": \"Khi hợp đồng lao động quy định tại điểm b khoản 1 Điều này hết hạn mà người lao động vẫn tiếp tục làm việc thì thực hiện như sau:\",\n\"chu_don_vi\": \"Trường hợp hai bên ký kết hợp đồng lao động mới là hợp đồng lao động xác định thời hạn thì cũng chỉ được ký thêm 01 lần, sau đó nếu người lao động vẫn tiếp tục làm việc thì phải ký kết hợp đồng lao động không xác định thời hạn, trừ hợp đồng lao động đối với người được thuê làm giám đốc trong doanh nghiệp có vốn nhà nước và trường hợp quy định tại khoản 1 Điều 149, khoản 2 Điều 151 và khoản 4 Điều 177 của Bộ luật này.\"\n}\n]\n}",
+ "model": "claude-haiku-5-5",
+ "request_id": "req_011CgzEq5bVPVsrhykH4cMZ4",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D20.K1",
+    "spans": [
+     {
+      "span": "Hợp đồng lao động",
+      "role": "chu_the",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "được giao kết theo một trong các loại sau đây",
+      "role": "ket_luan",
+      "params": [
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D20.K1.a",
+    "spans": [
+     {
+      "span": "Hợp đồng lao động không xác định thời hạn",
+      "role": "chu_the",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "hai bên không xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng",
+      "role": "dieu_kien",
+      "params": [
+       "C",
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D20.K1.b",
+    "spans": [
+     {
+      "span": "Hợp đồng lao động xác định thời hạn",
+      "role": "chu_the",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "hai bên xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng trong thời gian không quá 36 tháng kể từ thời điểm có hiệu lực của hợp đồng",
+      "role": "dieu_kien",
+      "params": [
+       "C",
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D20.K2",
+    "spans": [
+     {
+      "span": "Khi hợp đồng lao động quy định tại điểm b khoản 1 Điều này hết hạn mà người lao động vẫn tiếp tục làm việc",
+      "role": "dieu_kien",
+      "params": [
+       "C",
+       "W"
+      ]
+     },
+     {
+      "span": "thực hiện như sau",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D20.K2.a",
+    "spans": [
+     {
+      "span": "hai bên",
+      "role": "chu_the",
+      "params": [
+       "E",
+       "W"
+      ]
+     },
+     {
+      "span": "phải ký kết hợp đồng lao động mới",
+      "role": "ket_luan",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "Trong thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "trong thời gian chưa ký kết hợp đồng lao động mới thì quyền, nghĩa vụ và lợi ích của hai bên được thực hiện theo hợp đồng đã giao kết",
+      "role": "ket_luan",
+      "params": [
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D20.K2.b",
+    "spans": [
+     {
+      "span": "Nếu hết thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn mà hai bên không ký kết hợp đồng lao động mới",
+      "role": "dieu_kien",
+      "params": [
+       "D",
+       "C"
+      ]
+     },
+     {
+      "span": "hợp đồng đã giao kết theo quy định tại điểm b khoản 1 Điều này trở thành hợp đồng lao động không xác định thời hạn",
+      "role": "ket_luan",
+      "params": [
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D20.K2.c",
+    "spans": [
+     {
+      "span": "hai bên ký kết hợp đồng lao động mới là hợp đồng lao động xác định thời hạn",
+      "role": "dieu_kien",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "cũng chỉ được ký thêm 01 lần",
+      "role": "ket_luan",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "nếu người lao động vẫn tiếp tục làm việc thì phải ký kết hợp đồng lao động không xác định thời hạn",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "C"
+      ]
+     },
+     {
+      "span": "trừ hợp đồng lao động đối với người được thuê làm giám đốc trong doanh nghiệp có vốn nhà nước và trường hợp quy định tại khoản 1 Điều 149, khoản 2 Điều 151 và khoản 4 Điều 177 của Bộ luật này",
+      "role": "ngoai_le",
+      "params": [
+       "C"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3171,
+  "output_tokens": 1322
+ }
+}

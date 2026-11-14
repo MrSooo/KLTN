@@ -261,7 +261,7 @@ Với `--llm off`: chỉ có cụm `ngoai_le` từ nút điều kiện của 1.5
 - B, chặn: tên `reuse` thuộc danh sách ứng viên đã đưa và cùng `params`; tên mới đúng dạng và chưa có trong sổ; cùng tên thì cùng `params` (không thì cờ `param_conflict`).
 - Bỏ sót (nói thẳng): cụm đúng chữ nhưng sai vai; gán sai thực thể cho tham số; tái dùng sai nghĩa. Ba loại này không máy nào bắt; chỉ ước lượng bằng mẫu đọc tay (A30).
 
-**6. Không làm ở bản này** (user chốt bản tối thiểu, A31): bảng quan hệ `narrower_than` (sang 1.7, rồi hoãn tiếp: nợ sau một vòng KB, A32), bảng thuật ngữ Việt-Anh, phủ định (`D151.K1.d` "có giấy phép" so với `D153.K2` "không có giấy phép"), đơn vị định nghĩa (thử khi chạy thật).
+**6. Không làm ở bản này** (user chốt bản tối thiểu, A31): bảng quan hệ `narrower_than` (sang 1.7, rồi hoãn tiếp: nợ sau một vòng KB, A32), bảng thuật ngữ Việt-Anh, phủ định (`D151.K1.d` "có giấy phép" so với `D153.K2` "không có giấy phép"), đơn vị định nghĩa (thử khi chạy thật; từ 13/11 lời nhắc có quy tắc 6 cho dạng "X là Y": X là `ket_luan`, giải nghĩa là `dieu_kien`; 14/11 thử concepts-3 (thêm vế cho mục danh sách chỉ nêu tên) rồi rút vì làm Opus lặp ket_luan của câu dẫn vào từng khoản D67; lời nhắc cuối là concepts-2; xem A36, chưa đo tác động xuống giai đoạn B).
 
 **7. Rủi ro.**
 - Gộp nhầm âm thầm ở B: LLM coi hai khái niệm gần nghĩa là một. Giảm bằng danh sách giới hạn, kiểm `params`, lời nhắc "gần nghĩa thì tách", mẫu đọc tay; không bắt được bằng máy.

@@ -1,0 +1,215 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-haiku-5-5",
+ "created": "2026-11-13T03:52:08+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D107.K1\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời gian làm thêm giờ là khoảng thời gian làm việc ngoài thời giờ làm việc bình thường theo quy định của pháp luật, thỏa ước lao động tập thể hoặc nội quy lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D107.K2\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người sử dụng lao động được sử dụng người lao động làm thêm giờ khi đáp ứng đầy đủ các yêu cầu sau đây:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D107.K2.a\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"Người sử dụng lao động được sử dụng người lao động làm thêm giờ khi đáp ứng đầy đủ các yêu cầu sau đây:\",\n\"chu_don_vi\": \"Phải được sự đồng ý của người lao động;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D107.K2.b\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"Người sử dụng lao động được sử dụng người lao động làm thêm giờ khi đáp ứng đầy đủ các yêu cầu sau đây:\",\n\"chu_don_vi\": \"Bảo đảm số giờ làm thêm của người lao động không quá 50% số giờ làm việc bình thường trong 01 ngày; trường hợp áp dụng quy định thời giờ làm việc bình thường theo tuần thì tổng số giờ làm việc bình thường và số giờ làm thêm không quá 12 giờ trong 01 ngày; không quá 40 giờ trong 01 tháng;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D107.K2.c\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"Người sử dụng lao động được sử dụng người lao động làm thêm giờ khi đáp ứng đầy đủ các yêu cầu sau đây:\",\n\"chu_don_vi\": \"Bảo đảm số giờ làm thêm của người lao động không quá 200 giờ trong 01 năm, trừ trường hợp quy định tại khoản 3 Điều này.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D107.K3\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người sử dụng lao động được sử dụng người lao động làm thêm không quá 300 giờ trong 01 năm trong một số ngành, nghề, công việc hoặc trường hợp sau đây:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D107.K3.a\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"Người sử dụng lao động được sử dụng người lao động làm thêm không quá 300 giờ trong 01 năm trong một số ngành, nghề, công việc hoặc trường hợp sau đây:\",\n\"chu_don_vi\": \"Sản xuất, gia công xuất khẩu sản phẩm hàng dệt, may, da, giày, điện, điện tử, chế biến nông, lâm, diêm nghiệp, thủy sản;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D107.K3.b\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"Người sử dụng lao động được sử dụng người lao động làm thêm không quá 300 giờ trong 01 năm trong một số ngành, nghề, công việc hoặc trường hợp sau đây:\",\n\"chu_don_vi\": \"Sản xuất, cung cấp điện, viễn thông, lọc dầu; cấp, thoát nước;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D107.K3.c\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"Người sử dụng lao động được sử dụng người lao động làm thêm không quá 300 giờ trong 01 năm trong một số ngành, nghề, công việc hoặc trường hợp sau đây:\",\n\"chu_don_vi\": \"Trường hợp giải quyết công việc đòi hỏi lao động có trình độ chuyên môn, kỹ thuật cao mà thị trường lao động không cung ứng đầy đủ, kịp thời;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D107.K3.d\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"Người sử dụng lao động được sử dụng người lao động làm thêm không quá 300 giờ trong 01 năm trong một số ngành, nghề, công việc hoặc trường hợp sau đây:\",\n\"chu_don_vi\": \"Trường hợp phải giải quyết công việc cấp bách, không thể trì hoãn do tính chất thời vụ, thời điểm của nguyên liệu, sản phẩm hoặc để giải quyết công việc phát sinh do yếu tố khách quan không dự liệu trước, do hậu quả thời tiết, thiên tai, hỏa hoạn, địch họa, thiếu điện, thiếu nguyên liệu, sự cố kỹ thuật của dây chuyền sản xuất;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D107.K3.dd\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"Người sử dụng lao động được sử dụng người lao động làm thêm không quá 300 giờ trong 01 năm trong một số ngành, nghề, công việc hoặc trường hợp sau đây:\",\n\"chu_don_vi\": \"Trường hợp khác do Chính phủ quy định.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D107.K4\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khi tổ chức làm thêm giờ theo quy định tại khoản 3 Điều này, người sử dụng lao động phải thông báo bằng văn bản cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D107.K5\",\n\"tieu_de_dieu\": \"Làm thêm giờ\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chính phủ quy định chi tiết Điều này.\"\n}\n]\n}",
+ "model": "claude-haiku-5-5",
+ "request_id": "req_011CgzFMoAsdnkRpqQsYHpRb",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D107.K1",
+    "spans": [
+     {
+      "span": "Thời gian làm thêm giờ",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "khoảng thời gian làm việc ngoài thời giờ làm việc bình thường theo quy định của pháp luật, thỏa ước lao động tập thể hoặc nội quy lao động",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D107.K2",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "được sử dụng người lao động làm thêm giờ khi đáp ứng đầy đủ các yêu cầu sau đây",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D107.K2.a",
+    "spans": [
+     {
+      "span": "Phải được sự đồng ý của người lao động",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D107.K2.b",
+    "spans": [
+     {
+      "span": "Bảo đảm số giờ làm thêm của người lao động không quá 50% số giờ làm việc bình thường trong 01 ngày",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "trường hợp áp dụng quy định thời giờ làm việc bình thường theo tuần thì tổng số giờ làm việc bình thường và số giờ làm thêm không quá 12 giờ trong 01 ngày; không quá 40 giờ trong 01 tháng",
+      "role": "dieu_kien",
+      "params": [
+       "D",
+       "A"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D107.K2.c",
+    "spans": [
+     {
+      "span": "Bảo đảm số giờ làm thêm của người lao động không quá 200 giờ trong 01 năm",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D",
+       "A"
+      ]
+     },
+     {
+      "span": "trừ trường hợp quy định tại khoản 3 Điều này",
+      "role": "ngoai_le",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D107.K3",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "được sử dụng người lao động làm thêm không quá 300 giờ trong 01 năm trong một số ngành, nghề, công việc hoặc trường hợp sau đây",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "D",
+       "A",
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D107.K3.a",
+    "spans": [
+     {
+      "span": "Sản xuất, gia công xuất khẩu sản phẩm hàng dệt, may, da, giày, điện, điện tử, chế biến nông, lâm, diêm nghiệp, thủy sản",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D107.K3.b",
+    "spans": [
+     {
+      "span": "Sản xuất, cung cấp điện, viễn thông, lọc dầu; cấp, thoát nước",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D107.K3.c",
+    "spans": [
+     {
+      "span": "Trường hợp giải quyết công việc đòi hỏi lao động có trình độ chuyên môn, kỹ thuật cao mà thị trường lao động không cung ứng đầy đủ, kịp thời",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D107.K3.d",
+    "spans": [
+     {
+      "span": "Trường hợp phải giải quyết công việc cấp bách, không thể trì hoãn do tính chất thời vụ, thời điểm của nguyên liệu, sản phẩm hoặc để giải quyết công việc phát sinh do yếu tố khách quan không dự liệu trước, do hậu quả thời tiết, thiên tai, hỏa hoạn, địch họa, thiếu điện, thiếu nguyên liệu, sự cố kỹ thuật của dây chuyền sản xuất",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D107.K3.dd",
+    "spans": [
+     {
+      "span": "Trường hợp khác do Chính phủ quy định",
+      "role": "dieu_kien",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D107.K4",
+    "spans": [
+     {
+      "span": "Khi tổ chức làm thêm giờ theo quy định tại khoản 3 Điều này",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "người sử dụng lao động phải thông báo bằng văn bản cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D107.K5",
+    "spans": [
+     {
+      "span": "Chính phủ quy định chi tiết Điều này",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4025,
+  "output_tokens": 1746
+ }
+}

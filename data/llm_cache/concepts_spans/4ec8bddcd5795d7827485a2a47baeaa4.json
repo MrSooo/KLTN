@@ -1,0 +1,199 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-haiku-5-5",
+ "created": "2026-11-13T03:50:03+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D61.K1\",\n\"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Học nghề để làm việc cho người sử dụng lao động là việc người sử dụng lao động tuyển người vào để đào tạo nghề nghiệp tại nơi làm việc. Thời gian học nghề theo chương trình đào tạo của từng trình độ theo quy định của Luật Giáo dục nghề nghiệp.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D61.K2\",\n\"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Tập nghề để làm việc cho người sử dụng lao động là việc người sử dụng lao động tuyển người vào để hướng dẫn thực hành công việc, tập làm nghề theo vị trí việc làm tại nơi làm việc. Thời hạn tập nghề không quá 03 tháng.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D61.K3\",\n\"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người sử dụng lao động tuyển người vào học nghề, tập nghề để làm việc cho mình thì không phải đăng ký hoạt động giáo dục nghề nghiệp; không được thu học phí; phải ký hợp đồng đào tạo theo quy định của Luật Giáo dục nghề nghiệp.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D61.K4\",\n\"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người học nghề, người tập nghề phải đủ 14 tuổi trở lên và phải có đủ sức khỏe phù hợp với yêu cầu học nghề, tập nghề. Người học nghề, người tập nghề thuộc danh mục nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành phải từ đủ 18 tuổi trở lên, trừ lĩnh vực nghệ thuật, thể dục, thể thao.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D61.K5\",\n\"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Trong thời gian học nghề, tập nghề, nếu người học nghề, người tập nghề trực tiếp hoặc tham gia lao động thì được người sử dụng lao động trả lương theo mức do hai bên thỏa thuận.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D61.K6\",\n\"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Hết thời hạn học nghề, tập nghề, hai bên phải ký kết hợp đồng lao động khi đủ các điều kiện theo quy định của Bộ luật này.\"\n}\n]\n}",
+ "model": "claude-haiku-5-5",
+ "request_id": "req_011CgzFCjYLw4aaGpk6JDG2x",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D61.K1",
+    "spans": [
+     {
+      "span": "người sử dụng lao động tuyển người vào để đào tạo nghề nghiệp tại nơi làm việc",
+      "role": "dieu_kien",
+      "params": [
+       "E",
+       "W"
+      ]
+     },
+     {
+      "span": "Học nghề để làm việc cho người sử dụng lao động",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "E"
+      ]
+     },
+     {
+      "span": "Thời gian học nghề theo chương trình đào tạo của từng trình độ theo quy định của Luật Giáo dục nghề nghiệp",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D61.K2",
+    "spans": [
+     {
+      "span": "người sử dụng lao động tuyển người vào để hướng dẫn thực hành công việc, tập làm nghề theo vị trí việc làm tại nơi làm việc",
+      "role": "dieu_kien",
+      "params": [
+       "E",
+       "W",
+       "J"
+      ]
+     },
+     {
+      "span": "Tập nghề để làm việc cho người sử dụng lao động",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "E"
+      ]
+     },
+     {
+      "span": "Thời hạn tập nghề không quá 03 tháng",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D61.K3",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động tuyển người vào học nghề, tập nghề để làm việc cho mình",
+      "role": "chu_the",
+      "params": [
+       "E",
+       "W"
+      ]
+     },
+     {
+      "span": "không phải đăng ký hoạt động giáo dục nghề nghiệp",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "không được thu học phí",
+      "role": "ket_luan",
+      "params": [
+       "E",
+       "W"
+      ]
+     },
+     {
+      "span": "phải ký hợp đồng đào tạo theo quy định của Luật Giáo dục nghề nghiệp",
+      "role": "ket_luan",
+      "params": [
+       "E",
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D61.K4",
+    "spans": [
+     {
+      "span": "Người học nghề, người tập nghề",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "phải đủ 14 tuổi trở lên và phải có đủ sức khỏe phù hợp với yêu cầu học nghề, tập nghề",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D",
+       "A"
+      ]
+     },
+     {
+      "span": "thuộc danh mục nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     },
+     {
+      "span": "phải từ đủ 18 tuổi trở lên",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "D",
+       "A"
+      ]
+     },
+     {
+      "span": "trừ lĩnh vực nghệ thuật, thể dục, thể thao",
+      "role": "ngoai_le",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D61.K5",
+    "spans": [
+     {
+      "span": "Trong thời gian học nghề, tập nghề, nếu người học nghề, người tập nghề trực tiếp hoặc tham gia lao động",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "được người sử dụng lao động trả lương theo mức do hai bên thỏa thuận",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "E",
+       "A"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D61.K6",
+    "spans": [
+     {
+      "span": "Hết thời hạn học nghề, tập nghề",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "hai bên phải ký kết hợp đồng lao động khi đủ các điều kiện theo quy định của Bộ luật này",
+      "role": "ket_luan",
+      "params": [
+       "E",
+       "W",
+       "C"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2870,
+  "output_tokens": 1310
+ }
+}

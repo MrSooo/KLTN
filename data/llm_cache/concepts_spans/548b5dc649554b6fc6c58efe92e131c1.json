@@ -1,0 +1,249 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-haiku-5-5",
+ "created": "2026-11-13T03:52:52+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D122.K1\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Việc xử lý kỷ luật lao động được quy định như sau:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K1.a\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"Việc xử lý kỷ luật lao động được quy định như sau:\",\n\"chu_don_vi\": \"Người sử dụng lao động phải chứng minh được lỗi của người lao động;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K1.b\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"Việc xử lý kỷ luật lao động được quy định như sau:\",\n\"chu_don_vi\": \"Phải có sự tham gia của tổ chức đại diện người lao động tại cơ sở mà người lao động đang bị xử lý kỷ luật là thành viên;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K1.c\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"Việc xử lý kỷ luật lao động được quy định như sau:\",\n\"chu_don_vi\": \"Người lao động phải có mặt và có quyền tự bào chữa, nhờ luật sư hoặc tổ chức đại diện người lao động bào chữa; trường hợp là người chưa đủ 15 tuổi thì phải có sự tham gia của người đại diện theo pháp luật;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K1.d\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"Việc xử lý kỷ luật lao động được quy định như sau:\",\n\"chu_don_vi\": \"Việc xử lý kỷ luật lao động phải được ghi thành biên bản.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K2\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Không được áp dụng nhiều hình thức xử lý kỷ luật lao động đối với một hành vi vi phạm kỷ luật lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K3\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khi một người lao động đồng thời có nhiều hành vi vi phạm kỷ luật lao động thì chỉ áp dụng hình thức kỷ luật cao nhất tương ứng với hành vi vi phạm nặng nhất.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K4\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Không được xử lý kỷ luật lao động đối với người lao động đang trong thời gian sau đây:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K4.a\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"Không được xử lý kỷ luật lao động đối với người lao động đang trong thời gian sau đây:\",\n\"chu_don_vi\": \"Nghỉ ốm đau, điều dưỡng; nghỉ việc được sự đồng ý của người sử dụng lao động;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K4.b\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"Không được xử lý kỷ luật lao động đối với người lao động đang trong thời gian sau đây:\",\n\"chu_don_vi\": \"Đang bị tạm giữ, tạm giam;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K4.c\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"Không được xử lý kỷ luật lao động đối với người lao động đang trong thời gian sau đây:\",\n\"chu_don_vi\": \"Đang chờ kết quả của cơ quan có thẩm quyền điều tra xác minh và kết luận đối với hành vi vi phạm được quy định tại khoản 1 và khoản 2 Điều 125 của Bộ luật này;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K4.d\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"Không được xử lý kỷ luật lao động đối với người lao động đang trong thời gian sau đây:\",\n\"chu_don_vi\": \"Người lao động nữ mang thai; người lao động nghỉ thai sản, nuôi con dưới 12 tháng tuổi.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K5\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Không xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động trong khi mắc bệnh tâm thần hoặc một bệnh khác làm mất khả năng nhận thức hoặc khả năng điều khiển hành vi của mình.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D122.K6\",\n\"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chính phủ quy định trình tự, thủ tục xử lý kỷ luật lao động.\"\n}\n]\n}",
+ "model": "claude-haiku-5-5",
+ "request_id": "req_011CgzFR6V1esAhJHWFXkGrZ",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D122.K1",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K1.a",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "phải chứng minh được lỗi của người lao động",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K1.b",
+    "spans": [
+     {
+      "span": "Phải có sự tham gia của tổ chức đại diện người lao động tại cơ sở",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "mà người lao động đang bị xử lý kỷ luật lao động là thành viên",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K1.c",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "phải có mặt và có quyền tự bào chữa, nhờ luật sư hoặc tổ chức đại diện người lao động bào chữa",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "trường hợp là người chưa đủ 15 tuổi",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "phải có sự tham gia của người đại diện theo pháp luật",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K1.d",
+    "spans": [
+     {
+      "span": "Việc xử lý kỷ luật lao động phải được ghi thành biên bản",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K2",
+    "spans": [
+     {
+      "span": "Không được áp dụng nhiều hình thức xử lý kỷ luật lao động",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "đối với một hành vi vi phạm kỷ luật lao động",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K3",
+    "spans": [
+     {
+      "span": "Khi một người lao động đồng thời có nhiều hành vi vi phạm kỷ luật lao động",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "chỉ áp dụng hình thức kỷ luật cao nhất tương ứng với hành vi vi phạm nặng nhất",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K4",
+    "spans": [
+     {
+      "span": "Không được xử lý kỷ luật lao động",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "đối với người lao động đang trong thời gian sau đây",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K4.a",
+    "spans": [
+     {
+      "span": "Nghỉ ốm đau, điều dưỡng",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "nghỉ việc được sự đồng ý của người sử dụng lao động",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "E"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K4.b",
+    "spans": [
+     {
+      "span": "Đang bị tạm giữ, tạm giam",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K4.c",
+    "spans": [
+     {
+      "span": "Đang chờ kết quả của cơ quan có thẩm quyền điều tra xác minh và kết luận đối với hành vi vi phạm được quy định tại khoản 1 và khoản 2 Điều 125 của Bộ luật này",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K4.d",
+    "spans": [
+     {
+      "span": "Người lao động nữ mang thai",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "người lao động nghỉ thai sản, nuôi con dưới 12 tháng tuổi",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K5",
+    "spans": [
+     {
+      "span": "Không xử lý kỷ luật lao động",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "đối với người lao động vi phạm kỷ luật lao động trong khi mắc bệnh tâm thần hoặc một bệnh khác làm mất khả năng nhận thức hoặc khả năng điều khiển hành vi của mình",
+      "role": "ngoai_le",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D122.K6",
+    "spans": [
+     {
+      "span": "Chính phủ quy định trình tự, thủ tục xử lý kỷ luật lao động",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3964,
+  "output_tokens": 1673
+ }
+}

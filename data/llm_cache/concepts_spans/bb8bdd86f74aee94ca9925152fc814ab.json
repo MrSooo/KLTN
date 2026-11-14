@@ -1,0 +1,323 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-haiku-5-5",
+ "created": "2026-11-13T03:48:41+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D36.K1\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K1.a\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n\"chu_don_vi\": \"Người lao động thường xuyên không hoàn thành công việc theo hợp đồng lao động được xác định theo tiêu chí đánh giá mức độ hoàn thành công việc trong quy chế của người sử dụng lao động. Quy chế đánh giá mức độ hoàn thành công việc do người sử dụng lao động ban hành nhưng phải tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K1.b\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n\"chu_don_vi\": \"Người lao động bị ốm đau, tai nạn đã điều trị 12 tháng liên tục đối với người làm việc theo hợp đồng lao động không xác định thời hạn hoặc đã điều trị 06 tháng liên tục đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng hoặc quá nửa thời hạn hợp đồng lao động đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng mà khả năng lao động chưa hồi phục.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K1.c\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n\"chu_don_vi\": \"Do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa hoặc di dời, thu hẹp sản xuất, kinh doanh theo yêu cầu của cơ quan nhà nước có thẩm quyền mà người sử dụng lao động đã tìm mọi biện pháp khắc phục nhưng vẫn buộc phải giảm chỗ làm việc;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K1.d\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n\"chu_don_vi\": \"Người lao động không có mặt tại nơi làm việc sau thời hạn quy định tại Điều 31 của Bộ luật này;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K1.dd\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n\"chu_don_vi\": \"Người lao động đủ tuổi nghỉ hưu theo quy định tại Điều 169 của Bộ luật này, trừ trường hợp có thỏa thuận khác;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K1.e\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n\"chu_don_vi\": \"Người lao động tự ý bỏ việc mà không có lý do chính đáng từ 05 ngày làm việc liên tục trở lên;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K1.g\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n\"chu_don_vi\": \"Người lao động cung cấp không trung thực thông tin theo quy định tại khoản 2 Điều 16 của Bộ luật này khi giao kết hợp đồng lao động làm ảnh hưởng đến việc tuyển dụng người lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K2\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khi đơn phương chấm dứt hợp đồng lao động trong trường hợp quy định tại các điểm a, b, c, đ và g khoản 1 Điều này, người sử dụng lao động phải báo trước cho người lao động như sau:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K2.a\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"Khi đơn phương chấm dứt hợp đồng lao động trong trường hợp quy định tại các điểm a, b, c, đ và g khoản 1 Điều này, người sử dụng lao động phải báo trước cho người lao động như sau:\",\n\"chu_don_vi\": \"Ít nhất 45 ngày đối với hợp đồng lao động không xác định thời hạn;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K2.b\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"Khi đơn phương chấm dứt hợp đồng lao động trong trường hợp quy định tại các điểm a, b, c, đ và g khoản 1 Điều này, người sử dụng lao động phải báo trước cho người lao động như sau:\",\n\"chu_don_vi\": \"Ít nhất 30 ngày đối với hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K2.c\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"Khi đơn phương chấm dứt hợp đồng lao động trong trường hợp quy định tại các điểm a, b, c, đ và g khoản 1 Điều này, người sử dụng lao động phải báo trước cho người lao động như sau:\",\n\"chu_don_vi\": \"Ít nhất 03 ngày làm việc đối với hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng và đối với trường hợp quy định tại điểm b khoản 1 Điều này;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K2.d\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"Khi đơn phương chấm dứt hợp đồng lao động trong trường hợp quy định tại các điểm a, b, c, đ và g khoản 1 Điều này, người sử dụng lao động phải báo trước cho người lao động như sau:\",\n\"chu_don_vi\": \"Đối với một số ngành, nghề, công việc đặc thù thì thời hạn báo trước được thực hiện theo quy định của Chính phủ.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D36.K3\",\n\"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khi đơn phương chấm dứt hợp đồng lao động quy định tại điểm d và điểm e khoản 1 Điều này thì người sử dụng lao động không phải báo trước cho người lao động.\"\n}\n]\n}",
+ "model": "claude-haiku-5-5",
+ "request_id": "req_011CgzF6XpEyxqKMzoV27uBR",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D36.K1",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "có quyền đơn phương chấm dứt hợp đồng lao động",
+      "role": "ket_luan",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "trong trường hợp sau đây",
+      "role": "dieu_kien",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K1.a",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "thường xuyên không hoàn thành công việc theo hợp đồng lao động",
+      "role": "dieu_kien",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "được xác định theo tiêu chí đánh giá mức độ hoàn thành công việc trong quy chế của người sử dụng lao động",
+      "role": "dieu_kien",
+      "params": [
+       "E"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K1.b",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "bị ốm đau, tai nạn đã điều trị 12 tháng liên tục",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "khả năng lao động chưa hồi phục",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K1.c",
+    "spans": [
+     {
+      "span": "Do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa hoặc di dời, thu hẹp sản xuất, kinh doanh theo yêu cầu của cơ quan nhà nước có thẩm quyền",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "người sử dụng lao động đã tìm mọi biện pháp khắc phục nhưng vẫn buộc phải giảm chỗ làm việc",
+      "role": "dieu_kien",
+      "params": [
+       "E"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K1.d",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "không có mặt tại nơi làm việc sau thời hạn quy định tại Điều 31 của Bộ luật này",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K1.dd",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "đủ tuổi nghỉ hưu theo quy định tại Điều 169 của Bộ luật này",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "trừ trường hợp có thỏa thuận khác",
+      "role": "ngoai_le",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K1.e",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "tự ý bỏ việc mà không có lý do chính đáng từ 05 ngày làm việc liên tục trở lên",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K1.g",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "cung cấp không trung thực thông tin theo quy định tại khoản 2 Điều 16 của Bộ luật này khi giao kết hợp đồng lao động",
+      "role": "dieu_kien",
+      "params": [
+       "C"
+      ]
+     },
+     {
+      "span": "làm ảnh hưởng đến việc tuyển dụng người lao động",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K2",
+    "spans": [
+     {
+      "span": "người sử dụng lao động phải báo trước cho người lao động",
+      "role": "ket_luan",
+      "params": [
+       "E",
+       "W"
+      ]
+     },
+     {
+      "span": "Khi đơn phương chấm dứt hợp đồng lao động trong trường hợp quy định tại các điểm a, b, c, đ và g khoản 1 Điều này",
+      "role": "dieu_kien",
+      "params": [
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K2.a",
+    "spans": [
+     {
+      "span": "Ít nhất 45 ngày",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "đối với hợp đồng lao động không xác định thời hạn",
+      "role": "dieu_kien",
+      "params": [
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K2.b",
+    "spans": [
+     {
+      "span": "Ít nhất 30 ngày",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "đối với hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng",
+      "role": "dieu_kien",
+      "params": [
+       "C",
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K2.c",
+    "spans": [
+     {
+      "span": "Ít nhất 03 ngày làm việc",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "đối với hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng",
+      "role": "dieu_kien",
+      "params": [
+       "C",
+       "D"
+      ]
+     },
+     {
+      "span": "đối với trường hợp quy định tại điểm b khoản 1 Điều này",
+      "role": "dieu_kien",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K2.d",
+    "spans": [
+     {
+      "span": "Đối với một số ngành, nghề, công việc đặc thù",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     },
+     {
+      "span": "thời hạn báo trước được thực hiện theo quy định của Chính phủ",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D36.K3",
+    "spans": [
+     {
+      "span": "người sử dụng lao động không phải báo trước cho người lao động",
+      "role": "ket_luan",
+      "params": [
+       "E",
+       "W"
+      ]
+     },
+     {
+      "span": "Khi đơn phương chấm dứt hợp đồng lao động quy định tại điểm d và điểm e khoản 1 Điều này",
+      "role": "dieu_kien",
+      "params": [
+       "C"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 5381,
+  "output_tokens": 2124
+ }
+}

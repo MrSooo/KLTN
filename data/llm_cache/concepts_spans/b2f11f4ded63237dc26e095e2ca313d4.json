@@ -1,0 +1,216 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-haiku-5-5",
+ "created": "2026-11-13T03:52:26+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D113.K1\",\n\"tieu_de_dieu\": \"Nghỉ hằng năm\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động thì được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động như sau:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D113.K1.a\",\n\"tieu_de_dieu\": \"Nghỉ hằng năm\",\n\"khoan_cha\": \"Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động thì được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động như sau:\",\n\"chu_don_vi\": \"12 ngày làm việc đối với người làm công việc trong điều kiện bình thường;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D113.K1.b\",\n\"tieu_de_dieu\": \"Nghỉ hằng năm\",\n\"khoan_cha\": \"Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động thì được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động như sau:\",\n\"chu_don_vi\": \"14 ngày làm việc đối với người lao động chưa thành niên, lao động là người khuyết tật, người làm nghề, công việc nặng nhọc, độc hại, nguy hiểm;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D113.K1.c\",\n\"tieu_de_dieu\": \"Nghỉ hằng năm\",\n\"khoan_cha\": \"Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động thì được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động như sau:\",\n\"chu_don_vi\": \"16 ngày làm việc đối với người làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D113.K2\",\n\"tieu_de_dieu\": \"Nghỉ hằng năm\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động làm việc chưa đủ 12 tháng cho một người sử dụng lao động thì số ngày nghỉ hằng năm theo tỷ lệ tương ứng với số tháng làm việc.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D113.K3\",\n\"tieu_de_dieu\": \"Nghỉ hằng năm\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Trường hợp do thôi việc, bị mất việc làm mà chưa nghỉ hằng năm hoặc chưa nghỉ hết số ngày nghỉ hằng năm thì được người sử dụng lao động thanh toán tiền lương cho những ngày chưa nghỉ.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D113.K4\",\n\"tieu_de_dieu\": \"Nghỉ hằng năm\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người sử dụng lao động có trách nhiệm quy định lịch nghỉ hằng năm sau khi tham khảo ý kiến của người lao động và phải thông báo trước cho người lao động biết. Người lao động có thể thỏa thuận với người sử dụng lao động để nghỉ hằng năm thành nhiều lần hoặc nghỉ gộp tối đa 03 năm một lần.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D113.K5\",\n\"tieu_de_dieu\": \"Nghỉ hằng năm\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khi nghỉ hằng năm mà chưa đến kỳ trả lương, người lao động được tạm ứng tiền lương theo quy định tại khoản 3 Điều 101 của Bộ luật này.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D113.K6\",\n\"tieu_de_dieu\": \"Nghỉ hằng năm\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khi nghỉ hằng năm, nếu người lao động đi bằng các phương tiện đường bộ, đường sắt, đường thủy mà số ngày đi đường cả đi và về trên 02 ngày thì từ ngày thứ 03 trở đi được tính thêm thời gian đi đường ngoài ngày nghỉ hằng năm và chỉ được tính cho 01 lần nghỉ trong năm.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D113.K7\",\n\"tieu_de_dieu\": \"Nghỉ hằng năm\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chính phủ quy định chi tiết điều này.\"\n}\n]\n}",
+ "model": "claude-haiku-5-5",
+ "request_id": "req_011CgzFPFGnka1y8KBvMgWHD",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D113.K1",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "làm việc đủ 12 tháng cho một người sử dụng lao động",
+      "role": "dieu_kien",
+      "params": [
+       "D",
+       "E"
+      ]
+     },
+     {
+      "span": "được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động",
+      "role": "ket_luan",
+      "params": [
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D113.K1.a",
+    "spans": [
+     {
+      "span": "12 ngày làm việc đối với người làm công việc trong điều kiện bình thường",
+      "role": "ket_luan",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D113.K1.b",
+    "spans": [
+     {
+      "span": "14 ngày làm việc đối với người lao động chưa thành niên, lao động là người khuyết tật, người làm nghề, công việc nặng nhọc, độc hại, nguy hiểm",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D113.K1.c",
+    "spans": [
+     {
+      "span": "16 ngày làm việc đối với người làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm",
+      "role": "ket_luan",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D113.K2",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "làm việc chưa đủ 12 tháng cho một người sử dụng lao động",
+      "role": "dieu_kien",
+      "params": [
+       "D",
+       "E"
+      ]
+     },
+     {
+      "span": "số ngày nghỉ hằng năm theo tỷ lệ tương ứng với số tháng làm việc",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D113.K3",
+    "spans": [
+     {
+      "span": "do thôi việc, bị mất việc làm mà chưa nghỉ hằng năm hoặc chưa nghỉ hết số ngày nghỉ hằng năm",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "được người sử dụng lao động thanh toán tiền lương cho những ngày chưa nghỉ",
+      "role": "ket_luan",
+      "params": [
+       "E",
+       "A"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D113.K4",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "có trách nhiệm quy định lịch nghỉ hằng năm sau khi tham khảo ý kiến của người lao động và phải thông báo trước cho người lao động biết",
+      "role": "ket_luan",
+      "params": [
+       "E",
+       "W"
+      ]
+     },
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "có thể thỏa thuận với người sử dụng lao động để nghỉ hằng năm thành nhiều lần hoặc nghỉ gộp tối đa 03 năm một lần",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "E",
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D113.K5",
+    "spans": [
+     {
+      "span": "Khi nghỉ hằng năm mà chưa đến kỳ trả lương",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "được tạm ứng tiền lương theo quy định tại khoản 3 Điều 101 của Bộ luật này",
+      "role": "ket_luan",
+      "params": [
+       "A"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D113.K6",
+    "spans": [
+     {
+      "span": "Khi nghỉ hằng năm, nếu người lao động đi bằng các phương tiện đường bộ, đường sắt, đường thủy mà số ngày đi đường cả đi và về trên 02 ngày",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "từ ngày thứ 03 trở đi được tính thêm thời gian đi đường ngoài ngày nghỉ hằng năm và chỉ được tính cho 01 lần nghỉ trong năm",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D113.K7",
+    "spans": []
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3355,
+  "output_tokens": 1491
+ }
+}

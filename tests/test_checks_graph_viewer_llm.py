@@ -30,6 +30,17 @@ def test_checks_independent_counter_skips_quote_blocks_and_appendix():
     assert (c["dieu"], c["khoan"], c["diem"]) == (2, 1, 1)
 
 
+def test_checks_lead_in_is_khoan_for_diem_and_dieu_for_khoan_under_a_dieu():
+    # A35: khoản đứng thẳng dưới Điều có chữ nhận chữ của Điều làm câu dẫn; trước đây checks chỉ tính cho điểm nên báo lỗi oan cụm chapeau ở khoản.
+    units = {"B.D1": {"type": "dieu", "text": "Các bên lựa chọn nội dung sau:"}, "B.D1.K1": {"type": "khoan", "text": "Tiền lương;", "parent": "B.D1"},
+             "B.D1.K2": {"type": "khoan", "text": "Nghỉ phép:", "parent": "B.D1"}, "B.D1.K2.a": {"type": "diem", "text": "Nghỉ hằng năm.", "parent": "B.D1.K2"},
+             "B.D2": {"type": "dieu", "text": "", "heading": "Tiêu đề"}, "B.D2.K1": {"type": "khoan", "text": "Một.", "parent": "B.D2"}}
+    assert chk.lead_in_text(units, units["B.D1.K1"]) == "Các bên lựa chọn nội dung sau:"
+    assert chk.lead_in_text(units, units["B.D1.K2.a"]) == "Nghỉ phép:"          # điểm: chữ khoản cha, không phải Điều
+    assert chk.lead_in_text(units, units["B.D2.K1"]) == ""                      # Điều không có chữ riêng: khoản không có câu dẫn
+    assert chk.lead_in_text(units, units["B.D1"]) == ""                         # Điều không có cha
+
+
 def test_checks_all_checks_clean():
     docs = corpus.load_manifest()
     bad = [(name, p[:3]) for name, p in chk.checks(docs) if p]

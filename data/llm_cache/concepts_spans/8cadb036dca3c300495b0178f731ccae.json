@@ -1,0 +1,234 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-2",
+ "role": "trich",
+ "requested_model": "claude-opus-5-5",
+ "created": "2026-11-14T07:20:17+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha của điểm, hoặc câu dẫn của Điều đứng trên khoản; rỗng nếu không có) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n   Đơn vị nói luật áp dụng cho ai hoặc điều chỉnh việc gì (phạm vi, đối tượng) thì vẫn gạch từng bên được nêu tên (người hoặc tổ chức) thành cụm chu_the; chủ đề được điều chỉnh không phải một bên thì không gạch thành chu_the.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\n6. Đơn vị là ĐỊNH NGHĨA, tức giải thích một thuật ngữ dạng \"X là Y\" (X là thuật ngữ, Y là phần giải nghĩa): gạch X thành cụm ket_luan (khái niệm được xác lập ở đây), không gạch X thành chu_the; gạch phần giải nghĩa Y thành cụm dieu_kien (điều kiện để X đúng). Phần khác của đơn vị mà có nêu quy tắc thì vẫn gạch như thường.\n   Chữ \"là\" nêu điều kiện, trường hợp hoặc mức giới hạn (\"số người tham gia tối đa là 10 người\", \"Trường hợp ... thì ... là ...\") không phải định nghĩa: gạch theo bốn vai như thường.\n   Câu dẫn của Điều giải thích từ ngữ (\"... được hiểu như sau:\") không có nghĩa riêng nên trả rỗng.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nVí dụ định nghĩa, chu_don_vi = \"Giờ cao điểm là khoảng thời gian từ 17 giờ đến 19 giờ trong ngày.\":\n  ket_luan \"Giờ cao điểm\" (params []); dieu_kien \"khoảng thời gian từ 17 giờ đến 19 giờ trong ngày\" (params [\"D\"]).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D29.K1\",\n\"tieu_de_dieu\": \"Chuyển người lao động làm công việc khác so với hợp đồng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khi gặp khó khăn đột xuất do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, áp dụng biện pháp ngăn ngừa, khắc phục tai nạn lao động, bệnh nghề nghiệp, sự cố điện, nước hoặc do nhu cầu sản xuất, kinh doanh thì người sử dụng lao động được quyền tạm thời chuyển người lao động làm công việc khác so với hợp đồng lao động nhưng không được quá 60 ngày làm việc cộng dồn trong 01 năm; trường hợp chuyển người lao động làm công việc khác so với hợp đồng lao động quá 60 ngày làm việc cộng dồn trong 01 năm thì chỉ được thực hiện khi người lao động đồng ý bằng văn bản.\\nNgười sử dụng lao động quy định cụ thể trong nội quy lao động những trường hợp do nhu cầu sản xuất, kinh doanh mà người sử dụng lao động được tạm thời chuyển người lao động làm công việc khác so với hợp đồng lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D29.K2\",\n\"tieu_de_dieu\": \"Chuyển người lao động làm công việc khác so với hợp đồng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khi tạm thời chuyển người lao động làm công việc khác so với hợp đồng lao động quy định tại khoản 1 Điều này, người sử dụng lao động phải báo cho người lao động biết trước ít nhất 03 ngày làm việc, thông báo rõ thời hạn làm tạm thời và bố trí công việc phù hợp với sức khỏe, giới tính của người lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D29.K3\",\n\"tieu_de_dieu\": \"Chuyển người lao động làm công việc khác so với hợp đồng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động chuyển sang làm công việc khác so với hợp đồng lao động được trả lương theo công việc mới. Nếu tiền lương của công việc mới thấp hơn tiền lương của công việc cũ thì được giữ nguyên tiền lương của công việc cũ trong thời hạn 30 ngày làm việc. Tiền lương theo công việc mới ít nhất phải bằng 85% tiền lương của công việc cũ nhưng không thấp hơn mức lương tối thiểu.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D29.K4\",\n\"tieu_de_dieu\": \"Chuyển người lao động làm công việc khác so với hợp đồng lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động không đồng ý tạm thời làm công việc khác so với hợp đồng lao động quá 60 ngày làm việc cộng dồn trong 01 năm mà phải ngừng việc thì người sử dụng lao động phải trả lương ngừng việc theo quy định tại Điều 99 của Bộ luật này.\"\n}\n]\n}",
+ "model": "claude-opus-5-5",
+ "request_id": null,
+ "produced_by": "claude_code_sandbox",
+ "producer_model_reported": "claude-opus-5-5",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D29.K1",
+    "spans": [
+     {
+      "span": "gặp khó khăn đột xuất do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, áp dụng biện pháp ngăn ngừa, khắc phục tai nạn lao động, bệnh nghề nghiệp, sự cố điện, nước hoặc do nhu cầu sản xuất, kinh doanh",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "được quyền tạm thời chuyển người lao động làm công việc khác so với hợp đồng lao động",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "J",
+       "C"
+      ]
+     },
+     {
+      "span": "không được quá 60 ngày làm việc cộng dồn trong 01 năm",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "chuyển người lao động làm công việc khác so với hợp đồng lao động quá 60 ngày làm việc cộng dồn trong 01 năm",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "J",
+       "C",
+       "D"
+      ]
+     },
+     {
+      "span": "chỉ được thực hiện",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "người lao động đồng ý bằng văn bản",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "quy định cụ thể trong nội quy lao động những trường hợp do nhu cầu sản xuất, kinh doanh mà người sử dụng lao động được tạm thời chuyển người lao động làm công việc khác so với hợp đồng lao động",
+      "role": "ket_luan",
+      "params": [
+       "E",
+       "W",
+       "J",
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D29.K2",
+    "spans": [
+     {
+      "span": "tạm thời chuyển người lao động làm công việc khác so với hợp đồng lao động quy định tại khoản 1 Điều này",
+      "role": "dieu_kien",
+      "params": [
+       "W",
+       "J",
+       "C"
+      ]
+     },
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "phải báo cho người lao động biết trước ít nhất 03 ngày làm việc",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "D"
+      ]
+     },
+     {
+      "span": "thông báo rõ thời hạn làm tạm thời",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     },
+     {
+      "span": "bố trí công việc phù hợp với sức khỏe, giới tính của người lao động",
+      "role": "ket_luan",
+      "params": [
+       "J",
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D29.K3",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "chuyển sang làm công việc khác so với hợp đồng lao động",
+      "role": "dieu_kien",
+      "params": [
+       "J",
+       "C"
+      ]
+     },
+     {
+      "span": "được trả lương theo công việc mới",
+      "role": "ket_luan",
+      "params": [
+       "A",
+       "J"
+      ]
+     },
+     {
+      "span": "tiền lương của công việc mới thấp hơn tiền lương của công việc cũ",
+      "role": "dieu_kien",
+      "params": [
+       "A",
+       "J"
+      ]
+     },
+     {
+      "span": "được giữ nguyên tiền lương của công việc cũ trong thời hạn 30 ngày làm việc",
+      "role": "ket_luan",
+      "params": [
+       "A",
+       "J",
+       "D"
+      ]
+     },
+     {
+      "span": "Tiền lương theo công việc mới ít nhất phải bằng 85% tiền lương của công việc cũ",
+      "role": "ket_luan",
+      "params": [
+       "A",
+       "J"
+      ]
+     },
+     {
+      "span": "không thấp hơn mức lương tối thiểu",
+      "role": "ket_luan",
+      "params": [
+       "A"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D29.K4",
+    "spans": [
+     {
+      "span": "Người lao động",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "không đồng ý tạm thời làm công việc khác so với hợp đồng lao động quá 60 ngày làm việc cộng dồn trong 01 năm",
+      "role": "dieu_kien",
+      "params": [
+       "J",
+       "C",
+       "D"
+      ]
+     },
+     {
+      "span": "phải ngừng việc",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "phải trả lương ngừng việc theo quy định tại Điều 99 của Bộ luật này",
+      "role": "ket_luan",
+      "params": [
+       "A"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "usage": null
+}

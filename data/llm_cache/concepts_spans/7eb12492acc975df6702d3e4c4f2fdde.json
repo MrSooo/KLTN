@@ -1,0 +1,111 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-haiku-5-5",
+ "created": "2026-11-13T03:50:11+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D63.K1\",\n\"tieu_de_dieu\": \"Tổ chức đối thoại tại nơi làm việc\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Đối thoại tại nơi làm việc là việc chia sẻ thông tin, tham khảo, thảo luận, trao đổi ý kiến giữa người sử dụng lao động với người lao động hoặc tổ chức đại diện người lao động về những vấn đề liên quan đến quyền, lợi ích và mối quan tâm của các bên tại nơi làm việc nhằm tăng cường sự hiểu biết, hợp tác, cùng nỗ lực hướng tới giải pháp các bên cùng có lợi.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D63.K2\",\n\"tieu_de_dieu\": \"Tổ chức đối thoại tại nơi làm việc\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người sử dụng lao động phải tổ chức đối thoại tại nơi làm việc trong trường hợp sau đây:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D63.K2.a\",\n\"tieu_de_dieu\": \"Tổ chức đối thoại tại nơi làm việc\",\n\"khoan_cha\": \"Người sử dụng lao động phải tổ chức đối thoại tại nơi làm việc trong trường hợp sau đây:\",\n\"chu_don_vi\": \"Định kỳ ít nhất 01 năm một lần;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D63.K2.b\",\n\"tieu_de_dieu\": \"Tổ chức đối thoại tại nơi làm việc\",\n\"khoan_cha\": \"Người sử dụng lao động phải tổ chức đối thoại tại nơi làm việc trong trường hợp sau đây:\",\n\"chu_don_vi\": \"Khi có yêu cầu của một hoặc các bên;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D63.K2.c\",\n\"tieu_de_dieu\": \"Tổ chức đối thoại tại nơi làm việc\",\n\"khoan_cha\": \"Người sử dụng lao động phải tổ chức đối thoại tại nơi làm việc trong trường hợp sau đây:\",\n\"chu_don_vi\": \"Khi có vụ việc quy định tại điểm a khoản 1 Điều 36, các điều 42, 44, 93, 104, 118 và khoản 1 Điều 128 của Bộ luật này.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D63.K3\",\n\"tieu_de_dieu\": \"Tổ chức đối thoại tại nơi làm việc\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khuyến khích người sử dụng lao động và người lao động hoặc tổ chức đại diện người lao động tiến hành đối thoại ngoài những trường hợp quy định tại khoản 2 Điều này.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D63.K4\",\n\"tieu_de_dieu\": \"Tổ chức đối thoại tại nơi làm việc\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chính phủ quy định việc tổ chức đối thoại và thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc.\"\n}\n]\n}",
+ "model": "claude-haiku-5-5",
+ "request_id": "req_011CgzFDQbMLTXrc5VCv6C1A",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D63.K1",
+    "spans": [
+     {
+      "span": "Đối thoại tại nơi làm việc là việc chia sẻ thông tin, tham khảo, thảo luận, trao đổi ý kiến giữa người sử dụng lao động với người lao động hoặc tổ chức đại diện người lao động về những vấn đề liên quan đến quyền, lợi ích và mối quan tâm của các bên tại nơi làm việc nhằm tăng cường sự hiểu biết, hợp tác, cùng nỗ lực hướng tới giải pháp các bên cùng có lợi.",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D63.K2",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "phải tổ chức đối thoại tại nơi làm việc",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "trong trường hợp sau đây:",
+      "role": "dieu_kien",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D63.K2.a",
+    "spans": [
+     {
+      "span": "Định kỳ ít nhất 01 năm một lần;",
+      "role": "dieu_kien",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D63.K2.b",
+    "spans": [
+     {
+      "span": "Khi có yêu cầu của một hoặc các bên;",
+      "role": "dieu_kien",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D63.K2.c",
+    "spans": [
+     {
+      "span": "Khi có vụ việc quy định tại điểm a khoản 1 Điều 36, các điều 42, 44, 93, 104, 118 và khoản 1 Điều 128 của Bộ luật này.",
+      "role": "dieu_kien",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D63.K3",
+    "spans": [
+     {
+      "span": "Khuyến khích người sử dụng lao động và người lao động hoặc tổ chức đại diện người lao động tiến hành đối thoại",
+      "role": "ket_luan",
+      "params": [
+       "E",
+       "W"
+      ]
+     },
+     {
+      "span": "ngoài những trường hợp quy định tại khoản 2 Điều này",
+      "role": "ngoai_le",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D63.K4",
+    "spans": [
+     {
+      "span": "Chính phủ quy định việc tổ chức đối thoại và thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc.",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2811,
+  "output_tokens": 897
+ }
+}

@@ -1,0 +1,127 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-haiku-5-5",
+ "created": "2026-11-13T03:53:26+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D135.K1\",\n\"tieu_de_dieu\": \"Chính sách của Nhà nước\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Bảo đảm quyền bình đẳng của lao động nữ, lao động nam, thực hiện các biện pháp bảo đảm bình đẳng giới và phòng, chống quấy rối tình dục tại nơi làm việc.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D135.K2\",\n\"tieu_de_dieu\": \"Chính sách của Nhà nước\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khuyến khích người sử dụng lao động tạo điều kiện để lao động nữ, lao động nam có việc làm thường xuyên, áp dụng rộng rãi chế độ làm việc theo thời gian biểu linh hoạt, làm việc không trọn thời gian, giao việc làm tại nhà.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D135.K3\",\n\"tieu_de_dieu\": \"Chính sách của Nhà nước\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Có biện pháp tạo việc làm, cải thiện điều kiện lao động, nâng cao trình độ nghề nghiệp, chăm sóc sức khỏe, tăng cường phúc lợi về vật chất và tinh thần của lao động nữ nhằm giúp lao động nữ phát huy có hiệu quả năng lực nghề nghiệp, kết hợp hài hòa cuộc sống lao động và cuộc sống gia đình.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D135.K4\",\n\"tieu_de_dieu\": \"Chính sách của Nhà nước\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Có chính sách giảm thuế đối với người sử dụng lao động có sử dụng nhiều lao động nữ theo quy định của pháp luật về thuế.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D135.K5\",\n\"tieu_de_dieu\": \"Chính sách của Nhà nước\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Nhà nước có kế hoạch, biện pháp tổ chức nhà trẻ, lớp mẫu giáo ở nơi có nhiều lao động. Mở rộng nhiều loại hình đào tạo thuận lợi cho lao động nữ có thêm nghề dự phòng và phù hợp với đặc điểm về cơ thể, sinh lý và chức năng làm mẹ của phụ nữ.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D135.K6\",\n\"tieu_de_dieu\": \"Chính sách của Nhà nước\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chính phủ quy định chi tiết Điều này.\"\n}\n]\n}",
+ "model": "claude-haiku-5-5",
+ "request_id": "req_011CgzFTkybGQgwLdzL5VTar",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D135.K1",
+    "spans": [
+     {
+      "span": "Bảo đảm quyền bình đẳng của lao động nữ, lao động nam",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "thực hiện các biện pháp bảo đảm bình đẳng giới và phòng, chống quấy rối tình dục tại nơi làm việc",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D135.K2",
+    "spans": [
+     {
+      "span": "Khuyến khích người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "tạo điều kiện để lao động nữ, lao động nam có việc làm thường xuyên",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "áp dụng rộng rãi chế độ làm việc theo thời gian biểu linh hoạt, làm việc không trọn thời gian, giao việc làm tại nhà",
+      "role": "ket_luan",
+      "params": [
+       "C"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D135.K3",
+    "spans": [
+     {
+      "span": "Có biện pháp tạo việc làm, cải thiện điều kiện lao động, nâng cao trình độ nghề nghiệp, chăm sóc sức khỏe, tăng cường phúc lợi về vật chất và tinh thần của lao động nữ",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "kết hợp hài hòa cuộc sống lao động và cuộc sống gia đình",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D135.K4",
+    "spans": [
+     {
+      "span": "Có chính sách giảm thuế đối với người sử dụng lao động có sử dụng nhiều lao động nữ",
+      "role": "dieu_kien",
+      "params": [
+       "E",
+       "W"
+      ]
+     },
+     {
+      "span": "theo quy định của pháp luật về thuế",
+      "role": "ngoai_le",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D135.K5",
+    "spans": [
+     {
+      "span": "Nhà nước có kế hoạch, biện pháp tổ chức nhà trẻ, lớp mẫu giáo ở nơi có nhiều lao động",
+      "role": "ket_luan",
+      "params": [
+       "G"
+      ]
+     },
+     {
+      "span": "Mở rộng nhiều loại hình đào tạo thuận lợi cho lao động nữ có thêm nghề dự phòng và phù hợp với đặc điểm về cơ thể, sinh lý và chức năng làm mẹ của phụ nữ",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D135.K6",
+    "spans": [
+     {
+      "span": "Chính phủ quy định chi tiết Điều này",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2646,
+  "output_tokens": 970
+ }
+}

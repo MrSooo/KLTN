@@ -1,0 +1,52 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-1",
+ "role": "trich",
+ "requested_model": "claude-haiku-5-5",
+ "created": "2026-11-13T03:56:54+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha, chỉ có khi đơn vị là điểm) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D212.K1\",\n\"tieu_de_dieu\": \"Nội dung quản lý nhà nước về lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Ban hành và tổ chức thực hiện văn bản quy phạm pháp luật về lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D212.K2\",\n\"tieu_de_dieu\": \"Nội dung quản lý nhà nước về lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Theo dõi, thống kê, cung cấp thông tin về cung cầu và biến động cung, cầu lao động; quyết định chính sách tiền lương đối với người lao động; quyết định chính sách, quy hoạch, kế hoạch về nguồn nhân lực, phân bố và sử dụng lao động toàn xã hội, giáo dục nghề nghiệp, phát triển kỹ năng nghề; xây dựng khung trình độ kỹ năng nghề quốc gia, khung trình độ quốc gia Việt Nam đối với các trình độ thuộc giáo dục nghề nghiệp. Quy định danh mục nghề chỉ được sử dụng lao động đã qua đào tạo giáo dục nghề nghiệp hoặc có chứng chỉ kỹ năng nghề quốc gia.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D212.K3\",\n\"tieu_de_dieu\": \"Nội dung quản lý nhà nước về lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Tổ chức và tiến hành nghiên cứu khoa học về lao động; thống kê, thông tin về lao động và thị trường lao động, về mức sống, tiền lương và thu nhập của người lao động; quản lý lao động về số lượng, chất lượng và biến động lao động.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D212.K4\",\n\"tieu_de_dieu\": \"Nội dung quản lý nhà nước về lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Xây dựng các cơ chế, thiết chế hỗ trợ phát triển quan hệ lao động tiến bộ, hài hòa và ổn định; thúc đẩy việc áp dụng quy định của Bộ luật này đối với người làm việc không có quan hệ lao động; thực hiện việc đăng ký và quản lý hoạt động của tổ chức của người lao động tại doanh nghiệp.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D212.K5\",\n\"tieu_de_dieu\": \"Nội dung quản lý nhà nước về lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Kiểm tra, thanh tra, xử lý vi phạm pháp luật và giải quyết khiếu nại, tố cáo về lao động; giải quyết tranh chấp lao động theo quy định của pháp luật.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D212.K6\",\n\"tieu_de_dieu\": \"Nội dung quản lý nhà nước về lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Hợp tác quốc tế về lao động.\"\n}\n]\n}",
+ "model": "claude-haiku-5-5",
+ "request_id": "req_011CgzFjEGpWZ5bqDrupa4MZ",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D212.K1",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D212.K2",
+    "spans": [
+     {
+      "span": "Quy định danh mục nghề chỉ được sử dụng lao động đã qua đào tạo giáo dục nghề nghiệp hoặc có chứng chỉ kỹ năng nghề quốc gia.",
+      "role": "ket_luan",
+      "params": [
+       "J",
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D212.K3",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D212.K4",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D212.K5",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D212.K6",
+    "spans": []
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2771,
+  "output_tokens": 285
+ }
+}
