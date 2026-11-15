@@ -1,6 +1,6 @@
 # Lộ trình
 
-Lộ trình này thay kế hoạch ban đầu (đánh số cũ theo chữ cái kèm số), vốn đã lạc hậu sau khi thiết kế được chia lại thành hai giai đoạn (A1, A2). Chưa đặt hạn cứng; thứ tự dưới đây theo phụ thuộc. Trạng thái hiện tại: `docs/status.md`; thiết kế: `docs/design/pipeline_design.md`; lý do: `docs/decisions.md`.
+Lộ trình này thay kế hoạch ban đầu, vốn đã lạc hậu sau khi thiết kế được chia lại thành hai giai đoạn (dựng KB gốc, cập nhật). Chưa đặt hạn cứng; thứ tự dưới đây theo phụ thuộc. Trạng thái hiện tại: `docs/status.md`; thiết kế: `docs/design/pipeline_design.md`; lý do: `docs/decisions.md`.
 
 ## Mục tiêu
 Một cơ sở tri thức dựng từ BLLĐ 45/2019, trả lời được câu hỏi có/không theo ngày sự việc kèm căn cứ, cập nhật được khi nạp nghị định, thông tư theo ngày hiệu lực; có bộ câu hỏi với đáp án chuẩn để đo; chuỗi cập nhật tăng dần cho cùng kết quả với dựng lại toàn bộ.
