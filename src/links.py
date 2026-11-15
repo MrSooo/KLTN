@@ -1,11 +1,11 @@
 """Bước 2.2: nối văn bản dưới luật với luật gốc: cạnh based_on (dòng "Căn cứ ..."), cạnh details (Điều 1 nêu điều, khoản được quy định chi tiết), và filled_by cho điều khoản giao.
 
 Chạy: python -I src/links.py [--llm off|replay|live]    (cả kho; cần bước parse, refs và delegation)
-Đầu ra (data/processed/l3/):
-  l3_links.jsonl           cạnh based_on / details: {s (doc_id), p, o (mã đơn vị hoặc doc_id), evidence, how, flags}
-  l3_pending.jsonl         based_on / details trỏ tới văn bản chưa có trong KB
-  delegation_filled.jsonl  {clause_id, filled_by}: văn bản dưới luật đã nối details tới điều khoản giao đó, theo ngày hiệu lực (rỗng nếu chưa có)
-Báo cáo: docs/bao_cao_chay/l3/l3_report.txt (mốc cổng details / based_on, ca chưa nối).
+Đầu ra (data/processed/links/):
+  links_edges.jsonl           cạnh based_on / details: {s (doc_id), p, o (mã đơn vị hoặc doc_id), evidence, how, flags}
+  links_pending.jsonl         based_on / details trỏ tới văn bản chưa có trong KB
+  links_filled.jsonl  {clause_id, filled_by}: văn bản dưới luật đã nối details tới điều khoản giao đó, theo ngày hiệu lực (rỗng nếu chưa có)
+Báo cáo: docs/run_reports/links/links_report.txt (mốc cổng details / based_on, ca chưa nối).
 
   based_on: dòng "Căn cứ ..." của văn bản; cụm điều/khoản kèm văn bản thành cạnh tới đơn vị, tên văn bản thành cạnh tới văn bản.
   details: Điều 1 (Phạm vi điều chỉnh) nêu điều, khoản được quy định chi tiết; văn bản đích lấy từ cụm hoặc từ câu dẫn
@@ -21,13 +21,13 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import parse as l1
-import refs as l2
+import parse
+import refs
 import corpus
 import llm_client
 
-L3_DIR_NAME = "l3"
-TASK, PROMPT_VERSION, MAX_TARGETS = "l3_details", "l3-1", 5
+DIR_NAME = "links"
+TASK, PROMPT_VERSION, MAX_TARGETS = "links_details", "links-1", 5
 
 SYSTEM = """Bạn đọc một văn bản dưới luật (nghị định, thông tư) của pháp luật lao động Việt Nam và xác định nó QUY ĐỊNH CHI TIẾT điều khoản nào của Bộ luật Lao động 2019.
 Bạn được cho: chữ Điều 1 (phạm vi điều chỉnh), tiêu đề các Điều của văn bản, và DANH SÁCH điều khoản của Bộ luật Lao động có giao Chính phủ / Bộ trưởng quy định chi tiết.
@@ -50,8 +50,8 @@ def lead_tail(units_in_d1):
     """Đuôi văn bản đầu tiên kiểu 'của Bộ luật Lao động' trong Điều 1, bỏ 'X này' (chính văn bản)."""
     for _, u in units_in_d1:
         text = u.get("text") or ""
-        for m in re.finditer(r"[ ]+của(?=[ ]+" + l2.KINDS + r")", text):
-            t = l2.parse_tail(text, m.start())
+        for m in re.finditer(r"[ ]+của(?=[ ]+" + refs.KINDS + r")", text):
+            t = refs.parse_tail(text, m.start())
             if t is not None and not t.self_ref:
                 return t
     return None
@@ -87,8 +87,8 @@ def based_on_links(doc, units, header, all_units, resolver, available):
     """Cạnh based_on từ dòng 'Căn cứ ...'. Trả (links, pending)."""
     links, pending, seen = [], [], set()
     for g in header["grounds"]:
-        for ref in l2.find_refs(doc.doc_id, g):
-            r = l2.resolve_ref(doc, doc.doc_id, {}, ref, all_units, resolver, available)
+        for ref in refs.find_refs(doc.doc_id, g):
+            r = refs.resolve_ref(doc, doc.doc_id, {}, ref, all_units, resolver, available)
             if r.pending:
                 pending.append({**r.pending, "edge": "based_on", "source": doc.doc_id})
             for t in r.targets:
@@ -96,8 +96,8 @@ def based_on_links(doc, units, header, all_units, resolver, available):
                     seen.add(t)
                     links.append({"s": doc.doc_id, "p": "based_on", "o": t, "how": "regex", "evidence": g, "flags": []})
         # tên / số hiệu văn bản trong dòng căn cứ thành cạnh văn bản -> văn bản
-        for number in re.findall(l2.NUMBER_RE, g):
-            number = l2.norm_number(number)
+        for number in re.findall(refs.NUMBER_RE, g):
+            number = refs.norm_number(number)
             target = resolver.by_number.get(number)
             if target and target != doc.doc_id and target not in seen:
                 seen.add(target)
@@ -105,13 +105,13 @@ def based_on_links(doc, units, header, all_units, resolver, available):
             elif not target:
                 pending.append({"source": doc.doc_id, "edge": "based_on", "target_number": number, "target_name": None,
                                 "target_units": [], "text": g})
-        if re.match(r"Căn cứ Bộ luật Lao động", g) and not re.search(l2.NUMBER_RE, g):
+        if re.match(r"Căn cứ Bộ luật Lao động", g) and not re.search(refs.NUMBER_RE, g):
             year = resolver.blld_year(doc)
             if year == 2019 and corpus.BASE_DOC_ID not in seen and doc.doc_id != corpus.BASE_DOC_ID:
                 seen.add(corpus.BASE_DOC_ID)
                 links.append({"s": doc.doc_id, "p": "based_on", "o": corpus.BASE_DOC_ID, "how": "regex", "evidence": g, "flags": []})
             elif year == 2012:
-                pending.append({"source": doc.doc_id, "edge": "based_on", "target_number": l2.BLLD_2012, "target_name": l2.BLLD_NAME,
+                pending.append({"source": doc.doc_id, "edge": "based_on", "target_number": refs.BLLD_2012, "target_name": refs.BLLD_NAME,
                                 "target_units": [], "text": g})
     return links, pending
 
@@ -125,12 +125,12 @@ def details_links(doc, units, all_units, resolver, available):
     links, seen = [], set()
     for uid, u in d1:
         text = u.get("text") or ""
-        for ref in l2.find_refs(uid, text):
+        for ref in refs.find_refs(uid, text):
             if ref.tail is None and tail is not None:
                 ref = ref._replace(tail=tail)
             elif ref.tail is None:
                 continue
-            r = l2.resolve_ref(doc, uid, units, ref, all_units, resolver, available)
+            r = refs.resolve_ref(doc, uid, units, ref, all_units, resolver, available)
             tdocs = {t.split(".")[0] for t in r.targets}
             for t in r.targets:
                 if t not in seen and t.split(".")[0] != doc.doc_id:
@@ -205,7 +205,7 @@ def llm_propose(client, doc, units, clauses, law_units):
 
 
 def decide_llm(doc, units, law_units, keyword_edges, llm):
-    """Quyết định cạnh details từ đề xuất LLM + từ khoá (plan L3). Một Điều đích được GIỮ khi: model chính đề xuất, model kiểm đề xuất độc lập (cùng Điều),
+    """Quyết định cạnh details từ đề xuất LLM + từ khoá. Một Điều đích được GIỮ khi: model chính đề xuất, model kiểm đề xuất độc lập (cùng Điều),
     và kiểm từ khoá đạt (cụm danh từ chính của phạm vi điều chỉnh nằm trong tiêu đề / chữ Điều đích). Một trong ba trượt thì cạnh vẫn ghi nhưng cờ isolated
     (không dùng khi hỏi đáp). Đề xuất chỉ do từ khoá (model chính không nêu) không bao giờ được giữ."""
     d1 = " ".join((u.get("text") or "") for _, u in subtree(units, f"{doc.doc_id}.D1"))
@@ -232,14 +232,15 @@ def main(argv=None):
     if args.llm == "live" and not llm_client.key_is_set():
         raise SystemExit("--llm live nhưng không thấy GEMINI_API_KEY trong môi trường của process này (đặt khoá MỘT LẦN bằng `setx GEMINI_API_KEY` ở terminal riêng rồi mở terminal mới; xem đầu src/run_all.py)")
     client = llm_client.Client(args.llm, log=llm_client.stderr_log) if args.llm != "off" else None
-    docs, all_units, resolver, available = l2.load_context()
-    headers = l2.load_headers()
+    docs, all_units, resolver, available = refs.load_context()
+    headers = refs.load_headers()
     base = corpus.BASE_DOC_ID
     law_units = all_units[base]
-    out = corpus.out_dir(L3_DIR_NAME)
-    if not (out / "delegation_clauses.jsonl").exists():
+    out = corpus.out_dir(DIR_NAME)
+    clauses_path = corpus.out_dir("delegation") / "delegation_clauses.jsonl"
+    if not clauses_path.exists():
         raise SystemExit("chưa có delegation_clauses.jsonl; chạy src/delegation.py trước")
-    all_clauses = l1.read_jsonl(out / "delegation_clauses.jsonl")
+    all_clauses = parse.read_jsonl(clauses_path)
     clauses = [c for c in all_clauses if not c["flags"]]  # danh mục đối chiếu chỉ gồm điều khoản giao CHẮC (tầng chặt); ca cờ loose chưa dùng để nối
     links, pending = [], []
     notes = []
@@ -281,9 +282,9 @@ def main(argv=None):
         by = {l["s"] for l in links if l["p"] == "details" and (l["o"] == c["unit_id"] or c["unit_id"].startswith(l["o"] + ".")
                                                                   or l["o"].startswith(dieu + "."))}
         filled.append({"clause_id": c["clause_id"], "filled_by": sorted(by, key=lambda d: eff[d])})
-    l1.write_jsonl(out / "delegation_filled.jsonl", filled)
-    l1.write_jsonl(out / "l3_links.jsonl", links)
-    l1.write_jsonl(out / "l3_pending.jsonl", pending)
+    parse.write_jsonl(out / "links_filled.jsonl", filled)
+    parse.write_jsonl(out / "links_edges.jsonl", links)
+    parse.write_jsonl(out / "links_pending.jsonl", pending)
 
     det = lambda s: {l["o"] for l in links if l["s"] == s and l["p"] == "details"}
     nd74 = [l for l in links if l["s"] == "ND_74-2024" and l["p"] == "details" and l["o"] == "BLLD_45-2019.D91"]
@@ -301,12 +302,12 @@ def main(argv=None):
     llm_line = ("LLM: tắt (--llm off); cạnh đề xuất bằng từ khoá mang cờ llm_check_pending" if client is None else
                 f"LLM: --llm {args.llm}; gọi API lần này: {client.calls}; đọc từ cache: {client.hits}; hôm nay đã dùng "
                 f"{{chinh: {client.used_today('chinh')}, kiem: {client.used_today('kiem')}}}")
-    report = ["L3 báo cáo (bước 2.2: nối văn bản)", llm_line,
+    report = ["2.2 báo cáo (bước 2.2: nối văn bản)", llm_line,
               f"cạnh based_on: {sum(1 for l in links if l['p'] == 'based_on')}  details: {sum(1 for l in links if l['p'] == 'details')}  chờ đích: {len(pending)}",
               f"điều khoản giao dùng làm danh mục đối chiếu: {len(clauses)} (bỏ {len(all_clauses) - len(clauses)} ca cờ loose); đã có văn bản lấp: {sum(1 for f in filled if f['filled_by'])}",
               "mốc cổng details / based_on:"] + [f"  {'đạt' if ok else 'KHÔNG đạt'}: {name}" for name, ok in detail_marks] \
         + [f"văn bản không có based_on (header mất hoặc không nêu): {no_based}", "ghi chú:"] + [f"  {n}" for n in notes]
-    rp = corpus.report_dir(L3_DIR_NAME) / "l3_report.txt"
+    rp = corpus.report_dir(DIR_NAME) / "links_report.txt"
     rp.parent.mkdir(parents=True, exist_ok=True)
     rp.write_text("\n".join(report) + "\n", encoding="utf-8", newline="\n")
     print("\n".join(report))

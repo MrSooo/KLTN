@@ -1,12 +1,12 @@
-"""L5 chung: ngoại lệ chung "..., trừ trường hợp X" và "..., trừ <danh từ> X" thành nút điều kiện và cạnh exception_of, chạy cho mọi văn bản.
+"""1.5 chung: ngoại lệ chung "..., trừ trường hợp X" và "..., trừ <danh từ> X" thành nút điều kiện và cạnh exception_of, chạy cho mọi văn bản.
 
-Chạy: python -I src/exceptions_general.py <doc_id> | --all     (chạy sau L5 tường minh: nhận các trigger L5 tường minh để lại)
-Đầu ra (data/processed/l5_general/):
-  l5_general_conditions_<doc_id>.jsonl  nút điều kiện {id, type=dieu_kien, kind, text, units}; câu giống nhau (khoá chuẩn hoá) gộp một nút
-  l5_general_exceptions_<doc_id>.jsonl  {s, p, o, evidence, how, flags, rule}: nút điều kiện exception_of đơn vị (rule general_except cho "trừ [các|những|một số]
+Chạy: python -I src/exceptions_general.py <doc_id> | --all     (chạy sau 1.5 tường minh: nhận các trigger 1.5 tường minh để lại)
+Đầu ra (data/processed/exceptions_general/):
+  exceptions_general_conditions_<doc_id>.jsonl  nút điều kiện {id, type=dieu_kien, kind, text, units}; câu giống nhau (khoá chuẩn hoá) gộp một nút
+  exceptions_general_edges_<doc_id>.jsonl  {s, p, o, evidence, how, flags, rule}: nút điều kiện exception_of đơn vị (rule general_except cho "trừ [các|những|một số]
                                 trường hợp", general_except_noun cho "trừ <danh từ>"), và nếu mệnh đề dẫn chiếu tới đơn vị T thì T exception_of đơn vị
                                 (general_except_ref, general_except_noun_ref tương ứng), T có thể ở văn bản khác
-  l5_general_unhandled_<doc_id>.jsonl   trigger không xử lý được, kèm lý do
+  exceptions_general_unhandled_<doc_id>.jsonl   trigger không xử lý được, kèm lý do
 
 Họ "trừ <danh từ>" (A24, 12/11) chỉ nhận danh từ trong NOUN_HEADS: các danh từ này lấy từ việc ĐỌC TỪNG ca "trừ" chưa xử lý của kho (73 ca) và thấy đều
 là ngoại lệ thật. "trừ" đi cùng danh từ khác (chi phí, thời gian, nhà thầu, Điều 93, ...) vẫn để unhandled kèm lý do, không đoán.
@@ -26,12 +26,12 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import parse as l1
-import refs as l2
-import exceptions_explicit as l5x
+import parse
+import refs
+import exceptions_explicit
 import corpus
 
-L5_GENERAL_DIR_NAME = "l5_general"
+DIR_NAME = "exceptions_general"
 PREDICATE = "exception_of"
 GENERAL, GENERAL_REF = "general_except", "general_except_ref"
 NOUN, NOUN_REF = "general_except_noun", "general_except_noun_ref"
@@ -119,7 +119,7 @@ def clause_of(text, pos):
 
 
 def other_reason(text, item):
-    """Lý do cụ thể cho trigger không thuộc họ "trừ trường hợp" / "trừ <danh từ>" (thay cho lý do chung của L5 tường minh)."""
+    """Lý do cụ thể cho trigger không thuộc họ "trừ trường hợp" / "trừ <danh từ>" (thay cho lý do chung của 1.5 tường minh)."""
     pos = item["pos"]
     if NOT_ALLOWED_RE.match(text, pos):
         return "'không được áp dụng'"
@@ -134,11 +134,11 @@ def other_reason(text, item):
     return item["reason"]
 
 
-def find_general(doc, units, all_units, resolver, available, l5_explicit_unhandled):
+def find_general(doc, units, all_units, resolver, available, exceptions_explicit_unhandled):
     """-> (nodes, edges, unhandled, pending). nodes: {id: dict}; edges: dict; unhandled: dict."""
     nodes, edges, unhandled, pending = collections.OrderedDict(), [], [], []
     by_unit = collections.defaultdict(list)
-    for u in l5_explicit_unhandled:
+    for u in exceptions_explicit_unhandled:
         by_unit[u["unit"]].append(u)
 
     def reject(uid, text, item, reason):
@@ -173,8 +173,8 @@ def find_general(doc, units, all_units, resolver, available, l5_explicit_unhandl
             node["units"].append(uid)
             edges.append({"s": cid, "p": PREDICATE, "o": uid, "evidence": evidence, "how": "regex", "flags": [], "rule": rule})
             ref_rule = GENERAL_REF if rule == GENERAL else NOUN_REF
-            for ref in l2.find_refs(uid, clause):
-                r = l2.resolve_ref(doc, uid, units, ref, all_units, resolver, available)
+            for ref in refs.find_refs(uid, clause):
+                r = refs.resolve_ref(doc, uid, units, ref, all_units, resolver, available)
                 if r.pending:
                     pending.append({**r.pending, "edge": PREDICATE})
                 for t in r.targets:
@@ -184,7 +184,7 @@ def find_general(doc, units, all_units, resolver, available, l5_explicit_unhandl
     return nodes, edges, unhandled, pending
 
 
-def check_general(units, all_units, nodes, edges, unhandled, n_l5_explicit_unhandled):
+def check_general(units, all_units, nodes, edges, unhandled, n_explicit_unhandled):
     errors = []
     keys = [(e["s"], e["o"], e["rule"]) for e in edges]
     for k, n in collections.Counter(keys).items():
@@ -202,36 +202,36 @@ def check_general(units, all_units, nodes, edges, unhandled, n_l5_explicit_unhan
         if not any(e["s"] == cid for e in edges):
             errors.append(f"{cid}: nút điều kiện không có cạnh")
     n_handled = sum(len(n["units"]) for n in nodes.values())
-    if n_handled + len(unhandled) != n_l5_explicit_unhandled:
-        errors.append(f"trigger L5 tường minh để lại {n_l5_explicit_unhandled} khác đã xử lý {n_handled} + unhandled {len(unhandled)}")
+    if n_handled + len(unhandled) != n_explicit_unhandled:
+        errors.append(f"trigger 1.5 tường minh để lại {n_explicit_unhandled} khác đã xử lý {n_handled} + unhandled {len(unhandled)}")
     return errors
 
 
-def l5_general_dir():
-    return corpus.out_dir(L5_GENERAL_DIR_NAME)
+def exceptions_general_dir():
+    return corpus.out_dir(DIR_NAME)
 
 
 def run_doc(doc, docs, all_units, resolver, available):
     units = all_units[doc.doc_id]
-    _, _, l5_explicit_unh, _ = l5x.find_exceptions(doc, units, all_units, resolver, available)
-    nodes, edges, unhandled, pending = find_general(doc, units, all_units, resolver, available, l5_explicit_unh)
-    errors = check_general(units, all_units, nodes, edges, unhandled, len(l5_explicit_unh))
+    _, _, exceptions_explicit_unh, _ = exceptions_explicit.find_exceptions(doc, units, all_units, resolver, available)
+    nodes, edges, unhandled, pending = find_general(doc, units, all_units, resolver, available, exceptions_explicit_unh)
+    errors = check_general(units, all_units, nodes, edges, unhandled, len(exceptions_explicit_unh))
     kinds = collections.Counter(n["kind"] for n in nodes.values())
     n_general = sum(len(n["units"]) for n in nodes.values())
-    report = [f"L5 chung báo cáo: {doc.doc_id}", f"trigger L5 tường minh để lại: {len(l5_explicit_unh)} = 'trừ' đã xử lý {n_general} + unhandled {len(unhandled)}",
+    report = [f"1.5 chung báo cáo: {doc.doc_id}", f"trigger 1.5 tường minh để lại: {len(exceptions_explicit_unh)} = 'trừ' đã xử lý {n_general} + unhandled {len(unhandled)}",
               f"nút điều kiện: {len(nodes)} {dict(kinds)}  cạnh: {len(edges)} ({dict(collections.Counter(e['rule'] for e in edges))})",
               "unhandled theo lý do:"]
     report += [f"  {n:>3}  {r}" for r, n in collections.Counter(u["reason"] for u in unhandled).most_common()] or ["  (không có)"]
     report += [f"LỖI KIỂM: {e}" for e in errors]
-    path = corpus.report_dir(L5_GENERAL_DIR_NAME) / f"l5_general_report_{doc.doc_id}.txt"
+    path = corpus.report_dir(DIR_NAME) / f"exceptions_general_report_{doc.doc_id}.txt"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(report) + "\n", encoding="utf-8", newline="\n")
     if not errors:
-        d = l5_general_dir()
-        l1.write_jsonl(d / f"l5_general_conditions_{doc.doc_id}.jsonl", list(nodes.values()))
-        l1.write_jsonl(d / f"l5_general_exceptions_{doc.doc_id}.jsonl", edges)
-        l1.write_jsonl(d / f"l5_general_unhandled_{doc.doc_id}.jsonl", unhandled)
-        l1.write_jsonl(d / f"l5_general_pending_{doc.doc_id}.jsonl", pending)
+        d = exceptions_general_dir()
+        parse.write_jsonl(d / f"exceptions_general_conditions_{doc.doc_id}.jsonl", list(nodes.values()))
+        parse.write_jsonl(d / f"exceptions_general_edges_{doc.doc_id}.jsonl", edges)
+        parse.write_jsonl(d / f"exceptions_general_unhandled_{doc.doc_id}.jsonl", unhandled)
+        parse.write_jsonl(d / f"exceptions_general_pending_{doc.doc_id}.jsonl", pending)
     return nodes, edges, unhandled, errors
 
 
@@ -240,7 +240,7 @@ def main(argv=None):
     ap.add_argument("target", nargs="?")
     ap.add_argument("--all", action="store_true")
     args = ap.parse_args(argv)
-    docs, all_units, resolver, available = l2.load_context()
+    docs, all_units, resolver, available = refs.load_context()
     targets = list(docs.values()) if args.all else [corpus.get_doc(args.target, docs)] if args.target else ap.error("cần doc_id hoặc --all")
     bad = []
     for doc in targets:

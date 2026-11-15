@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # ---- checks ----
 
-def test_checks_independent_counts_match_l1_for_blld():
+def test_checks_independent_counts_match_parse_for_blld():
     c = chk.independent_counts(corpus.load_manifest()["BLLD_45-2019"].path)
     e = chk.EXPECTED["BLLD_45-2019"]
     assert (c["dieu"], c["khoan"], c["diem"]) == (e.dieu, e.khoan, e.diem)

@@ -1,18 +1,18 @@
-"""L2: cạnh cấu trúc contains / part_of và cạnh dẫn chiếu refers_to trong và giữa các văn bản.
+"""1.2: cạnh cấu trúc contains / part_of và cạnh dẫn chiếu refers_to trong và giữa các văn bản.
 
-Chạy: python -I src/refs.py <doc_id>      một văn bản (cần l1 đã chạy cho văn bản đó và cho các văn bản nó trỏ tới)
+Chạy: python -I src/refs.py <doc_id>      một văn bản (cần bước parse đã chạy cho văn bản đó và cho các văn bản nó trỏ tới)
       python -I src/refs.py --all         cả kho, ghi thêm data/processed/pending_links.jsonl
 
-Đầu ra (data/processed/l2/, mỗi văn bản một bộ):
-  l2_edges_<doc_id>.jsonl       contains / part_of, cha lấy từ thuộc tính `parent` của L1
-  l2_refs_<doc_id>.jsonl        refers_to đã nối, kèm câu nguyên văn (evidence)
-  l2_pending_<doc_id>.jsonl     dẫn chiếu tới văn bản/phụ lục chưa có trong kho: quan hệ chờ đích (nối khi văn bản đích được nạp)
-  l2_unresolved_<doc_id>.jsonl  cụm đọc được nhưng không giải được (kèm lý do): không đoán
-Báo cáo chữ: docs/bao_cao_chay/l2/l2_report_<doc_id>.txt.
+Đầu ra (data/processed/refs/, mỗi văn bản một bộ):
+  refs_edges_<doc_id>.jsonl       contains / part_of, cha lấy từ thuộc tính `parent` của 1.1
+  refs_mentions_<doc_id>.jsonl        refers_to đã nối, kèm câu nguyên văn (evidence)
+  refs_pending_<doc_id>.jsonl     dẫn chiếu tới văn bản/phụ lục chưa có trong kho: quan hệ chờ đích (nối khi văn bản đích được nạp)
+  refs_unresolved_<doc_id>.jsonl  cụm đọc được nhưng không giải được (kèm lý do): không đoán
+Báo cáo chữ: docs/run_reports/refs/refs_report_<doc_id>.txt.
 
 Mọi cụm dẫn chiếu thuộc đúng một trong ba trạng thái: đã nối, chờ đích, unresolved. Không có cạnh nào trỏ tới mã không tồn tại.
 Dòng chỉ thị sửa đổi ("Sửa đổi, bổ sung khoản 6 Điều 7 như sau:") KHÔNG sinh refers_to: dẫn chiếu trong đó trỏ vào văn bản bị sửa, việc
-của L6. Quyết định chỗ spec im lặng: docs/quyet_dinh/l2_quyet_dinh.txt.
+của 2.3-2.4. Quyết định chỗ spec im lặng: docs/decisions.md.
 """
 import argparse
 import collections
@@ -24,10 +24,10 @@ from pathlib import Path
 from typing import NamedTuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import parse as l1
+import parse
 import corpus
 
-L2_DIR_NAME = "l2"
+DIR_NAME = "refs"
 
 # ---- cụm dẫn chiếu: chuỗi mục "từ khoá + đối số" ----
 # Điều/khoản: số có hậu tố chữ (Điều 20a, khoản 8a); điểm: một chữ kèm số tuỳ chọn (điểm a, điểm a1); "này" đứng riêng.
@@ -64,14 +64,14 @@ NAME_WORD_RE = re.compile(r"[ ]+([^\W\d_][\w]*)")
 SELF_KIND = {"Bộ luật": ("bo_luat", "van_ban_hop_nhat"), "Luật": ("bo_luat", "van_ban_hop_nhat"), "Nghị định": ("nghi_dinh",),
              "Nghị quyết": ("nghi_quyet_cp",), "Thông tư": ("thong_tu",)}
 
-# Bộ luật Lao động 2012: ngoài kho. Số hiệu lấy từ hiểu biết ngoài repo (không đối chiếu được trong kho): ghi vào quyết định L2.
+# Bộ luật Lao động 2012: ngoài kho. Số hiệu lấy từ hiểu biết ngoài repo (không đối chiếu được trong kho): ghi vào quyết định 1.2.
 BLLD_2012 = "10/2012/QH13"
 BLLD_NAME = "Bộ luật Lao động"
 BLLD_2019_DATE = datetime.date(2019, 11, 20)
 BLLD_2019_EFFECTIVE = datetime.date(2021, 1, 1)
 
 # Dòng chỉ thị sửa đổi: động từ chỉ thị đi liền một danh từ đích ("Sửa đổi, bổ sung khoản 6 ...", "Bãi bỏ điểm c ...", "Thay thế cụm từ ...").
-# Không nhận "Sửa chữa, làm sai lệch ...", "Thay đổi cơ cấu ...", "Thay thế người lao động ...": đó là điều quy tắc bình thường. Việc của L6.
+# Không nhận "Sửa chữa, làm sai lệch ...", "Thay đổi cơ cấu ...", "Thay thế người lao động ...": đó là điều quy tắc bình thường. Việc của 2.3-2.4.
 DIRECTIVE_RE = re.compile(r"^(?:Sửa đổi, bổ sung|Sửa đổi|Bổ sung|Bãi bỏ|Thay thế, bổ sung|Thay thế|Đổi tên|Hủy bỏ|Bỏ|Đính chính|Tạm ngưng|Đình chỉ)[ ]+"
                           r"(?:một[ ]+số[ ]+|các[ ]+|toàn[ ]+bộ[ ]+)?(?:tên[ ]+)?"
                           r"(?:điều|khoản|điểm|mục|chương|phụ[ ]+lục|mẫu|cụm[ ]+từ|từ|đoạn|nội[ ]+dung|quy[ ]+định|tiết|hiệu[ ]+lực|thi[ ]+hành|việc[ ]+thi[ ]+hành)(?!\w)", re.I)
@@ -109,7 +109,7 @@ PARENT_TYPES = {
 
 
 def build_structure_edges(units):
-    """Mỗi cặp cha-con trực tiếp thành 2 cạnh (cha, contains, con) rồi (con, part_of, cha), theo thứ tự đơn vị trong L1."""
+    """Mỗi cặp cha-con trực tiếp thành 2 cạnh (cha, contains, con) rồi (con, part_of, cha), theo thứ tự đơn vị trong 1.1."""
     edges = []
     for uid, u in units.items():
         parent = u.get("parent")
@@ -245,8 +245,8 @@ def is_directive(text):
 # ---- đích của cụm ----
 
 def code_segment(level, arg):
-    """Đoạn mã: Điều 5 -> D5, khoản 2 -> K2, điểm a -> a (đ -> dd như id của L1)."""
-    return f"D{arg}" if level == 0 else f"K{arg}" if level == 1 else l1.diem_code(arg)
+    """Đoạn mã: Điều 5 -> D5, khoản 2 -> K2, điểm a -> a (đ -> dd như id của 1.1)."""
+    return f"D{arg}" if level == 0 else f"K{arg}" if level == 1 else parse.diem_code(arg)
 
 
 def enclosing(unit_id, level, units):
@@ -344,7 +344,7 @@ class Resolved(NamedTuple):
 
 
 def resolve_ref(doc, uid, units, ref, all_units, resolver, available):
-    """Giải một cụm dẫn chiếu của đơn vị uid (văn bản doc) thành đích. Dùng chung cho L2 (refers_to), L5 tường minh và L5 chung (exception_of).
+    """Giải một cụm dẫn chiếu của đơn vị uid (văn bản doc) thành đích. Dùng chung cho 1.2 (refers_to), 1.5 tường minh và 1.5 chung (exception_of).
     available: các văn bản đã có trong KB; đích thuộc văn bản chưa có thì thành quan hệ chờ đích."""
     res = resolver.resolve(ref.tail, doc)
     if res[0] == "error":
@@ -378,7 +378,7 @@ def resolve_ref(doc, uid, units, ref, all_units, resolver, available):
         if t in tunits:
             found.append(t)
         else:
-            implicit = " (cụm không nêu văn bản đích; văn bản đích có thể nằm ở câu dẫn, việc của L3)" if ref.tail is None else ""
+            implicit = " (cụm không nêu văn bản đích; văn bản đích có thể nằm ở câu dẫn, việc của 2.2)" if ref.tail is None else ""
             missing.append((t, f"phụ lục {t} không có trong kho (file nguồn không kèm phụ lục này)" if ref.pl is not None
                             else f"đích {t} không có trong {target_doc}{implicit}"))
     return Resolved(found, missing, None, None)
@@ -443,44 +443,44 @@ def check_refs(doc, units, all_units, result):
 def load_all_units(docs):
     out = {}
     for doc_id in docs:
-        if l1.triples_path(doc_id).exists():
-            out[doc_id] = l1.load_units(doc_id)
+        if parse.triples_path(doc_id).exists():
+            out[doc_id] = parse.load_units(doc_id)
     return out
 
 
 def load_headers():
     path = corpus.PROCESSED_DIR / "documents.jsonl"
-    return {d["doc_id"]: d for d in l1.read_jsonl(path)} if path.exists() else {}
+    return {d["doc_id"]: d for d in parse.read_jsonl(path)} if path.exists() else {}
 
 
 def load_context():
-    """(docs, all_units, resolver, available) cho các bước đọc L1/L2 của cả kho. L2 tĩnh: mọi văn bản đã có L1 coi là đã nạp."""
+    """(docs, all_units, resolver, available) cho các bước đọc 1.1/1.2 của cả kho. 1.2 tĩnh: mọi văn bản đã có 1.1 coi là đã nạp."""
     docs = corpus.load_manifest()
     all_units = load_all_units(docs)
     return docs, all_units, Resolver(docs, load_headers()), set(all_units)
 
 
-def l2_dir():
-    return corpus.out_dir(L2_DIR_NAME)
+def output_dir():
+    return corpus.out_dir(DIR_NAME)
 
 
 def write_outputs(doc, structure, result):
-    d = l2_dir()
+    d = output_dir()
     # Khuôn cạnh chung (A12): {s, p, o, evidence, how, flags}. Cạnh cha-con không có câu bằng chứng (lấy từ thuộc tính `parent` của bước parse): how="parent".
-    l1.write_jsonl(d / f"l2_edges_{doc.doc_id}.jsonl", [{"s": s, "p": p, "o": o, "evidence": "", "how": "parent", "flags": []} for s, p, o in structure])
-    l1.write_jsonl(d / f"l2_refs_{doc.doc_id}.jsonl",
+    parse.write_jsonl(d / f"refs_edges_{doc.doc_id}.jsonl", [{"s": s, "p": p, "o": o, "evidence": "", "how": "parent", "flags": []} for s, p, o in structure])
+    parse.write_jsonl(d / f"refs_mentions_{doc.doc_id}.jsonl",
                    [{"s": s, "p": p, "o": o, "evidence": ev, "how": "regex", "flags": []} for s, p, o, ev in result.edges])
-    l1.write_jsonl(d / f"l2_pending_{doc.doc_id}.jsonl", result.pending)
-    l1.write_jsonl(d / f"l2_unresolved_{doc.doc_id}.jsonl", result.unresolved)
+    parse.write_jsonl(d / f"refs_pending_{doc.doc_id}.jsonl", result.pending)
+    parse.write_jsonl(d / f"refs_unresolved_{doc.doc_id}.jsonl", result.unresolved)
 
 
 def report_text(doc, units, structure, result):
     per_target = collections.Counter(o.split(".")[0] for _, _, o, _ in result.edges)
-    out = [f"L2 báo cáo: {doc.doc_id}", f"số đơn vị: {len(units)}  cạnh cấu trúc: {len(structure)}",
+    out = [f"1.2 báo cáo: {doc.doc_id}", f"số đơn vị: {len(units)}  cạnh cấu trúc: {len(structure)}",
            f"cụm dẫn chiếu: {result.n_refs} = nối {len(result.edges)} cạnh + chờ đích {len(result.pending)} + unresolved {len(result.unresolved)}"
            f" (một cụm có thể ra nhiều đích)",
            f"refers_to theo văn bản đích: {dict(per_target)}",
-           f"dòng chỉ thị sửa đổi bỏ qua (việc của L6): {len(result.skipped_directive)}",
+           f"dòng chỉ thị sửa đổi bỏ qua (việc của 2.3-2.4): {len(result.skipped_directive)}",
            f"từ khoá điều/khoản/điểm kèm số nằm ngoài mọi cụm: {len(result.uncovered)}"]
     pend = collections.Counter((p["target_number"] or p["target_name"]) for p in result.pending)
     out.append(f"chờ đích theo văn bản: {dict(pend)}")
@@ -499,7 +499,7 @@ def run_doc(doc, docs, all_units, resolver, available):
     errors = check_structure(units, structure)
     result = extract(doc, units, all_units, resolver, available)
     errors += check_refs(doc, units, all_units, result)
-    path = corpus.report_dir(L2_DIR_NAME) / f"l2_report_{doc.doc_id}.txt"
+    path = corpus.report_dir(DIR_NAME) / f"refs_report_{doc.doc_id}.txt"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(report_text(doc, units, structure, result) + (("LỖI KIỂM:\n" + "\n".join(errors) + "\n") if errors else ""),
                     encoding="utf-8", newline="\n")
@@ -518,9 +518,9 @@ def main(argv=None):
     all_units = load_all_units(docs)
     missing = [d.doc_id for d in targets if d.doc_id not in all_units]
     if missing:
-        raise SystemExit(f"chưa có l1 của {missing}; chạy src/parse.py trước")
+        raise SystemExit(f"chưa có đầu ra parse của {missing}; chạy src/parse.py trước")
     resolver = Resolver(docs, load_headers())
-    available = set(all_units)  # L2 tĩnh: mọi văn bản trong kho coi là đã có; L6/L11 truyền tập đã nạp theo ngày
+    available = set(all_units)  # 1.2 tĩnh: mọi văn bản trong kho coi là đã có; 2.3-2.4 truyền tập đã nạp theo ngày
     bad, pending_all = [], []
     for doc in targets:
         structure, result, errors = run_doc(doc, docs, all_units, resolver, available)
@@ -536,7 +536,7 @@ def main(argv=None):
                 print("  ", e, file=sys.stderr)
         raise SystemExit(1)
     if args.all:
-        l1.write_jsonl(corpus.PROCESSED_DIR / "pending_links.jsonl", pending_all)
+        parse.write_jsonl(corpus.PROCESSED_DIR / "pending_links.jsonl", pending_all)
         print(f"đã ghi {corpus.PROCESSED_DIR / 'pending_links.jsonl'} ({len(pending_all)} quan hệ chờ đích)")
 
 

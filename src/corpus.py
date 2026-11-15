@@ -1,7 +1,7 @@
 """Danh mục văn bản của kho lao động: đọc `data/raw/labor/manifest.csv`, không chép cứng thông tin văn bản vào code.
 
-Các bước L1-L6, checks, graph, viewer lấy từ đây: đường dẫn file, số hiệu, ngày ban hành/hiệu lực, cấp văn bản, số Điều đối chiếu.
-Cột `quan_he` và `ghi_chu` của manifest chỉ là mốc kiểm của học viên, KHÔNG phải đầu vào của pipeline: module này
+Các bước 1.1-2.4, checks, graph, viewer lấy từ đây: đường dẫn file, số hiệu, ngày ban hành/hiệu lực, cấp văn bản, số Điều đối chiếu.
+Cột `quan_he` và `ghi_chu` của manifest chỉ là mốc kiểm, KHÔNG phải đầu vào của pipeline: module này
 không đưa chúng vào Doc để không bước nào dùng nhầm.
 """
 import csv
@@ -14,11 +14,11 @@ ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = ROOT / "data" / "raw" / "labor"
 MANIFEST = RAW_DIR / "manifest.csv"
 PROCESSED_DIR = ROOT / "data" / "processed"
-REPORT_DIR = ROOT / "docs" / "bao_cao_chay"
+REPORT_DIR = ROOT / "docs" / "run_reports"
 
-BASE_DOC_ID = "BLLD_45-2019"  # văn bản gốc: KB ban đầu chỉ dựng từ văn bản này (plan L2)
+BASE_DOC_ID = "BLLD_45-2019"  # văn bản gốc: KB ban đầu chỉ dựng từ văn bản này
 
-# Cấp văn bản (plan mục 3): luật/bộ luật = 1; nghị định, nghị quyết Chính phủ = 2; thông tư = 3.
+# Cấp văn bản: luật/bộ luật = 1; nghị định, nghị quyết Chính phủ = 2; thông tư = 3.
 # Văn bản hợp nhất mang cấp của luật mà nó hợp nhất.
 LEVEL_BY_TYPE = {"Bộ luật": 1, "Văn bản hợp nhất": 1, "Nghị định": 2, "Nghị quyết CP": 2, "Thông tư": 3}
 SLUG_BY_TYPE = {"Bộ luật": "bo_luat", "Văn bản hợp nhất": "van_ban_hop_nhat", "Nghị định": "nghi_dinh",
@@ -28,7 +28,7 @@ ISSUER_BY_TYPE = {"Bộ luật": "Quốc hội", "Văn bản hợp nhất": "Vă
 
 # Phụ lục của một văn bản mà pipeline bóc chi tiết (mục, dòng). Phụ lục không nằm trong danh sách này vẫn là một nút
 # (để dẫn chiếu giải được) nhưng chỉ giữ tiêu đề, gắn scope `out_of_scope`. Chỉ NQ 66.16 cần: văn bản này kèm 14
-# phụ lục của các bộ, và chỉ Phụ lục I.7 (Bộ Nội vụ: cho thuê lại lao động, sửa quy định NĐ 145) thuộc phạm vi lao động (plan L4, L5).
+# phụ lục của các bộ, và chỉ Phụ lục I.7 (Bộ Nội vụ: cho thuê lại lao động, sửa quy định NĐ 145) thuộc phạm vi lao động.
 # Văn bản không có tên ở đây: mọi phụ lục đều được bóc chi tiết.
 PL_IN_SCOPE = {"NQ_66-16-2026": {"I_7"}}
 

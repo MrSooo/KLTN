@@ -1,9 +1,9 @@
 """Bước 1.3: tìm các điều khoản mà luật GIAO cho cấp dưới quy định chi tiết ("Chính phủ quy định chi tiết Điều này", "theo quy định của Bộ trưởng ...").
 
 Chạy: python -I src/delegation.py        (cần bước parse)
-Đầu ra (data/processed/l3/):
+Đầu ra (data/processed/delegation/):
   delegation_clauses.jsonl  {clause_id, unit_id, pattern, subpattern, delegate, phrase, context, flags}
-Báo cáo: docs/bao_cao_chay/l3/delegation_report.txt (số theo dạng, ca regex lỏng, mốc cổng).
+Báo cáo: docs/run_reports/delegation/delegation_report.txt (số theo dạng, ca regex lỏng, mốc cổng).
 
 Vì sao cần: đó là các chỗ luật chưa nói hết, chờ văn bản dưới luật lấp vào. KB phải biết chỗ nào còn trống thì mới trả lời được "chưa đủ căn cứ"
 thay vì trả lời bừa. Việc nối các chỗ trống này với văn bản dưới luật (filled_by) thuộc bước 2.2 (links.py), không làm ở đây vì cần các văn bản khác.
@@ -16,7 +16,7 @@ Hai tầng, đều bằng regex (không LLM):
     hơn thừa: KB tưởng luật đã đủ sẽ trả "bị bác" sai), nhưng gắn cờ để biết ca này chưa chắc. Đo ngày 11/11 trên BLLĐ: tầng chặt hụt các câu như
     "Bộ trưởng Bộ Lao động - Thương binh và Xã hội quy định chi tiết ..." vì dạng A chỉ cho phép các từ toàn chữ cái giữa "Bộ trưởng" và "quy định",
     dấu gạch ngang chặn lại. Số đếm là regex thô: ca không phải giao chi tiết vẫn có trong danh sách, không tự lọc.
-Quyết định: docs/quyet_dinh/pipeline_moi_quyet_dinh.txt (A15, mục 1.3).
+Quyết định: docs/decisions.md (A15, mục 1.3).
 """
 import collections
 import re
@@ -24,10 +24,10 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import parse as l1
+import parse
 import corpus
 
-L3_DIR_NAME = "l3"
+DIR_NAME = "delegation"
 
 DELEG_PATTERNS = [
     ("A", re.compile(r"(?<!\w)(?:Chính phủ|Bộ trưởng(?:[ ]+[^\W\d_]+){0,10}?|Thủ tướng Chính phủ)[ ]+quy[ ]+định(?![ ]+tại)")),
@@ -83,10 +83,10 @@ def find_delegation(units, doc_id):
 
 def main():
     base = corpus.BASE_DOC_ID
-    clauses = find_delegation(l1.load_units(base), base)
+    clauses = find_delegation(parse.load_units(base), base)
     strict = [c for c in clauses if not c["flags"]]
     loose = [c for c in clauses if c["flags"]]
-    l1.write_jsonl(corpus.out_dir(L3_DIR_NAME) / "delegation_clauses.jsonl", clauses)
+    parse.write_jsonl(corpus.out_dir(DIR_NAME) / "delegation_clauses.jsonl", clauses)
 
     per_pat = collections.Counter(c["pattern"] for c in strict)
     dieu_pat = {p: len({c["unit_id"].split(".")[1] for c in strict if c["pattern"] == p}) for p in per_pat}
@@ -96,11 +96,11 @@ def main():
                   ("D142.K1 (dạng D)", have("BLLD_45-2019.D142.K1")), ("D112 (dạng E)", have("BLLD_45-2019.D112"))]
     report = ["Báo cáo điều khoản giao chi tiết (bước 1.3)",
               f"tầng chặt: {len(strict)} cụm ở {len(units_with)} đơn vị; theo dạng {dict(per_pat)}; số Điều theo dạng {dieu_pat}",
-              "(plan 8/11: A 39 cụm/37 Điều, B 10/8, C 2 trong A, D 5 Điều, E 1 Điều; tổng ~55 cụm/~50 Điều; đây là regex thô, chưa lọc ca không phải giao chi tiết)",
+              "(đây là regex thô, chưa lọc ca không phải giao chi tiết)",
               f"tầng lỏng (cờ loose, chưa chắc là điều khoản giao, cần người xem): {len(loose)} cụm"]
     report += [f"  {c['unit_id']}: {c['phrase']}" for c in loose]
     report += ["mốc cổng tầng chặt:"] + [f"  {'đạt' if ok else 'KHÔNG đạt'}: {name}" for name, ok in milestones]
-    rp = corpus.report_dir(L3_DIR_NAME) / "delegation_report.txt"
+    rp = corpus.report_dir(DIR_NAME) / "delegation_report.txt"
     rp.parent.mkdir(parents=True, exist_ok=True)
     rp.write_text("\n".join(report) + "\n", encoding="utf-8", newline="\n")
     print("\n".join(report))

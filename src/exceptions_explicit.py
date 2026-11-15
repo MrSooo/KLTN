@@ -1,10 +1,10 @@
-"""L5 tường minh: cạnh exception_of tường minh trong chữ, hai quy tắc riêng, chạy cho mọi văn bản.
+"""1.5 tường minh: cạnh exception_of tường minh trong chữ, hai quy tắc riêng, chạy cho mọi văn bản.
 
 Chạy: python -I src/exceptions_explicit.py <doc_id> | --all
-Đầu vào: L1 (đơn vị) và L2 (cách giải dẫn chiếu, kể cả sang văn bản khác). Đầu ra (data/processed/l5_explicit/):
-  l5_explicit_exceptions_<doc_id>.jsonl  {s, p, o, evidence, how, flags, rule}; rule là tên quy tắc bắt được ca này; s là phần ngoại lệ, o là quy tắc bị ngoại trừ
-  l5_explicit_unhandled_<doc_id>.jsonl   trigger không rơi vào hai quy tắc (việc của L5 chung) hoặc rơi vào mà không giải được
-  l5_explicit_pending_<doc_id>.jsonl     đích nằm ở văn bản chưa có trong KB (quan hệ chờ đích)
+Đầu vào: 1.1 (đơn vị) và 1.2 (cách giải dẫn chiếu, kể cả sang văn bản khác). Đầu ra (data/processed/exceptions_explicit/):
+  exceptions_explicit_edges_<doc_id>.jsonl  {s, p, o, evidence, how, flags, rule}; rule là tên quy tắc bắt được ca này; s là phần ngoại lệ, o là quy tắc bị ngoại trừ
+  exceptions_explicit_unhandled_<doc_id>.jsonl   trigger không rơi vào hai quy tắc (việc của 1.5 chung) hoặc rơi vào mà không giải được
+  exceptions_explicit_pending_<doc_id>.jsonl     đích nằm ở văn bản chưa có trong KB (quan hệ chờ đích)
 
   Quy tắc 1, not_apply_pattern: đơn vị U có "không áp dụng" và một cụm dẫn chiếu đứng NGAY trước nó (chỉ cách dấu cách):
     mỗi đích của cụm là o, s = U. Evidence từ đầu cụm đến hết "không áp dụng".
@@ -16,7 +16,7 @@ Chạy: python -I src/exceptions_explicit.py <doc_id> | --all
 Trigger không tính các nghĩa "trừ" không phải ngoại lệ đã thấy trong kho: "khấu trừ", "loại trừ", "giảm trừ" và "trừ đi" (phép trừ).
 
 Mọi trigger thuộc đúng một trong hai: đã xử lý (có cạnh) hoặc unhandled. Không nới quy tắc để bắt thêm ca: ca ngoài hai quy tắc là
-ngoại lệ chung (L5 chung) hoặc để nguyên. Dòng chỉ thị sửa đổi không xét (ngoại lệ trong đó thuộc văn bản bị sửa).
+ngoại lệ chung (1.5 chung) hoặc để nguyên. Dòng chỉ thị sửa đổi không xét (ngoại lệ trong đó thuộc văn bản bị sửa).
 """
 import argparse
 import collections
@@ -25,11 +25,11 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import parse as l1
-import refs as l2
+import parse
+import refs
 import corpus
 
-L5_EXPLICIT_DIR_NAME = "l5_explicit"
+DIR_NAME = "exceptions_explicit"
 PREDICATE = "exception_of"
 NOT_APPLY, EXCEPT_LIST = "not_apply_pattern", "except_list_pattern"
 METHODS = (NOT_APPLY, EXCEPT_LIST)
@@ -60,7 +60,7 @@ def find_triggers(units):
     out = []
     for uid, u in units.items():
         text = u.get("text")
-        if u["type"] in TEXT_TYPES and text and not l2.is_directive(text):
+        if u["type"] in TEXT_TYPES and text and not refs.is_directive(text):
             out += [(uid, m) for m in TRIGGER_RE.finditer(text)]
     return out
 
@@ -74,16 +74,16 @@ def find_exceptions(doc, units, all_units, resolver, available):
         by_unit[uid].append(m)
     for uid, ms in by_unit.items():
         text = units[uid]["text"]
-        refs = l2.find_refs(uid, text)
+        found = refs.find_refs(uid, text)
         n_except = sum(1 for m in ms if kind_of(m[0]) in EXCEPT_KINDS)
         for m in ms:
             kind = kind_of(m[0])
-            reason = "ngoài hai quy tắc của L5 tường minh"
+            reason = "ngoài hai quy tắc của 1.5 tường minh"
             new, method = [], None
             if kind == NOT_APPLY_KIND:
-                ref = next((r for r in refs if r.end <= m.start() and not text[r.end:m.start()].strip(" ")), None)
+                ref = next((r for r in found if r.end <= m.start() and not text[r.end:m.start()].strip(" ")), None)
                 if ref:
-                    r = l2.resolve_ref(doc, uid, units, ref, all_units, resolver, available)
+                    r = refs.resolve_ref(doc, uid, units, ref, all_units, resolver, available)
                     evidence = text[ref.start:m.end()]
                     if r.error or r.missing:
                         reason = r.error or r.missing[0][1]
@@ -133,8 +133,8 @@ def check_exceptions(units, edges, handled, unhandled):
     return errors
 
 
-def l5_explicit_dir():
-    return corpus.out_dir(L5_EXPLICIT_DIR_NAME)
+def exceptions_explicit_dir():
+    return corpus.out_dir(DIR_NAME)
 
 
 def run_doc(doc, docs, all_units, resolver, available):
@@ -142,19 +142,19 @@ def run_doc(doc, docs, all_units, resolver, available):
     edges, handled, unhandled, pending = find_exceptions(doc, units, all_units, resolver, available)
     errors = check_exceptions(units, edges, handled, unhandled)
     per_method = collections.Counter(m for _, _, m in handled)
-    report = [f"L5 tường minh báo cáo: {doc.doc_id}", f"trigger: {len(handled) + len(unhandled)} = đã xử lý {len(handled)} {dict(per_method)} + unhandled {len(unhandled)}",
+    report = [f"1.5 tường minh báo cáo: {doc.doc_id}", f"trigger: {len(handled) + len(unhandled)} = đã xử lý {len(handled)} {dict(per_method)} + unhandled {len(unhandled)}",
               f"cạnh exception_of: {len(edges)}  chờ đích: {len(pending)}", "unhandled theo lý do:"]
     report += [f"  {n:>3}  {r}" for r, n in collections.Counter(u["reason"] for u in unhandled).most_common()] or ["  (không có)"]
     report += ([f"LỖI KIỂM: {e}" for e in errors])
-    path = corpus.report_dir(L5_EXPLICIT_DIR_NAME) / f"l5_explicit_report_{doc.doc_id}.txt"
+    path = corpus.report_dir(DIR_NAME) / f"exceptions_explicit_report_{doc.doc_id}.txt"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(report) + "\n", encoding="utf-8", newline="\n")
     if not errors:
-        d = l5_explicit_dir()
-        l1.write_jsonl(d / f"l5_explicit_exceptions_{doc.doc_id}.jsonl",
+        d = exceptions_explicit_dir()
+        parse.write_jsonl(d / f"exceptions_explicit_edges_{doc.doc_id}.jsonl",
                        [{"s": s, "p": p, "o": o, "evidence": ev, "how": "regex", "flags": [], "rule": m} for s, p, o, ev, m in edges])
-        l1.write_jsonl(d / f"l5_explicit_unhandled_{doc.doc_id}.jsonl", unhandled)
-        l1.write_jsonl(d / f"l5_explicit_pending_{doc.doc_id}.jsonl", pending)
+        parse.write_jsonl(d / f"exceptions_explicit_unhandled_{doc.doc_id}.jsonl", unhandled)
+        parse.write_jsonl(d / f"exceptions_explicit_pending_{doc.doc_id}.jsonl", pending)
     return edges, handled, unhandled, errors
 
 
@@ -163,7 +163,7 @@ def main(argv=None):
     ap.add_argument("target", nargs="?")
     ap.add_argument("--all", action="store_true")
     args = ap.parse_args(argv)
-    docs, all_units, resolver, available = l2.load_context()
+    docs, all_units, resolver, available = refs.load_context()
     targets = list(docs.values()) if args.all else [corpus.get_doc(args.target, docs)] if args.target else ap.error("cần doc_id hoặc --all")
     bad = []
     for doc in targets:

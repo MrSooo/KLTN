@@ -10,7 +10,7 @@ Việc của module này:
 
 Chế độ (cờ --llm của các bước): off = không gọi gì, mọi lời gọi báo LLMUnavailable; replay = chỉ đọc cache, thiếu thì báo
 CacheMiss (không chạm mạng); live = như replay, thiếu thì gọi API rồi lưu. Khoá API chỉ lấy từ biến môi trường (GEMINI_API_KEY, ANTHROPIC_API_KEY).
-Đề xuất của LLM không bao giờ được áp thẳng: bước gọi phải kiểm bằng máy (CLAUDE.md mục 4).
+Đề xuất của LLM không bao giờ được áp thẳng: bước gọi phải kiểm bằng máy (xem CONTRIBUTING.md, mục LLM).
 """
 import datetime
 import hashlib
@@ -101,7 +101,8 @@ def load_config(path=CONFIG_PATH):
             v = m[2]
             cfg[m[1]] = int(v) if v.isdigit() else v
     for need in ("chinh.model", "chinh.luot_moi_ngay", "kiem.model", "kiem.luot_moi_ngay", "max_output_tokens",
-                 "trich.provider", "trich.model", "trich.luot_moi_ngay", "trich.max_output_tokens", "trich.thinking"):
+                 "trich.provider", "trich.model", "trich.luot_moi_ngay", "trich.max_output_tokens", "trich.thinking",
+                 "ten.model"):  # ten: nhãn model cho khoá cache của 1.6B giai đoạn B (A37); KHÔNG nằm trong EXTRA_ROLES vì không có đường gọi API (phần LLM chạy bằng phiên Claude Code)
         if need not in cfg:
             raise LLMError(f"{path}: thiếu khoá {need}")
     for role in ROLES + EXTRA_ROLES:
@@ -292,7 +293,7 @@ class Client:
             import anthropic  # chỉ cần ở chế độ live; cài trong .venv
         except ImportError:
             raise LLMUnavailable("chưa cài gói anthropic; chạy: .venv/Scripts/python.exe -m pip install anthropic")
-        if not key_is_set("anthropic"):  # chỉ nhận khoá từ ANTHROPIC_API_KEY (CLAUDE.md mục 1.7), không dùng hồ sơ đăng nhập `ant auth login`
+        if not key_is_set("anthropic"):  # chỉ nhận khoá từ ANTHROPIC_API_KEY (CONTRIBUTING.md, mục Bí mật), không dùng hồ sơ đăng nhập `ant auth login`
             raise LLMUnavailable("chưa có khoá Anthropic; đặt biến môi trường ANTHROPIC_API_KEY bằng `setx` (xem đầu src/run_all.py)")
         self._anthropic = anthropic.Anthropic(timeout=ANTHROPIC_TIMEOUT)
         return self._anthropic

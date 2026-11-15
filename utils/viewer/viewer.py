@@ -1,7 +1,7 @@
 """viewer: trang HTML xem đồ thị tri thức của kho lao động (một file, mở offline). Chỉ đọc file graph, không đổi dữ liệu nào.
 
 Chạy: python -X utf8 -I utils/viewer/viewer.py          (cần src/graph.py đã chạy)
-Đầu ra: data/processed/viewer/do_thi.html
+Đầu ra: data/processed/viewer/graph_viewer.html
 
 Trang mặc định ở mức Điều (khoảng 700 Điều + 18 nút văn bản + phụ lục + nút điều kiện); bấm đúp một Điều / phụ lục để mở Khoản, Điểm, dòng;
 lọc theo văn bản; ô chọn ngày dùng khoảng hiệu lực nhúng sẵn trong dữ liệu (mỗi nút có danh sách [từ, đến, trạng thái, phiên bản]) nên đổi ngày
@@ -43,7 +43,7 @@ def render(data):
 
 
 def main():
-    out = corpus.out_dir("viewer") / "do_thi.html"
+    out = corpus.out_dir("viewer") / "graph_viewer.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     data = build_data()
     out.write_text(render(data), encoding="utf-8", newline="\n")

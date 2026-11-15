@@ -5,9 +5,9 @@ Chạy: python -I src/concepts.py [--doc <doc_id>] [--llm off|replay|live] [--ma
   concepts_spans_<doc_id>.jsonl     bảng cụm {unit, span, role, source, predicate, params, targets, how, flags}; predicate còn null (giai đoạn B đặt tên và tái dùng)
   concepts_rejected_<doc_id>.jsonl  cụm LLM đề xuất bị loại kèm lý do
   concepts_uncovered_<doc_id>.jsonl từ báo hiệu mà chưa có cụm phủ hoặc kề (chỉ BÁO, không chặn)
-Báo cáo: docs/bao_cao_chay/concepts/concepts_report_<doc_id>.txt. Thẻ bước: docs/pipeline_moi.md (mục "THẺ BƯỚC 1.6"), quyết định A25 đến A31.
+Báo cáo: docs/run_reports/concepts/concepts_report_<doc_id>.txt. Thiết kế: docs/design/steps_1_6_to_1_8.md; quyết định A25 đến A31 ở docs/decisions.md (bản làm lại: A38).
 
-Việc của máy và của LLM tách rạch ròi (đề cương: LLM chỉ làm phần cần hiểu, mọi đầu ra phải qua cổng máy):
+Việc của máy và của LLM tách rạch ròi (nguyên tắc: LLM chỉ làm phần cần hiểu, mọi đầu ra phải qua cổng máy):
   - LLM chỉ trả: chữ của cụm, vai, tham số. Nó KHÔNG đặt tên, KHÔNG nói cụm lấy từ đâu, KHÔNG nói dẫn chiếu trỏ đi đâu.
   - Máy tính `source` (own, rồi chapeau, rồi heading, lấy chỗ khớp đầu tiên), ghi lại `span` bằng đoạn NGUYÊN VĂN cắt từ chữ gốc (không dùng chuỗi LLM trả,
     nên span luôn là chuỗi con của chữ gốc), điền `targets` từ cạnh refers_to đã giải của 1.2, và thêm cụm ngoại lệ từ nút điều kiện của 1.5 (how=cond_node).
@@ -29,14 +29,14 @@ import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import parse as l1
-import refs as l2
+import parse
+import refs
 import corpus
 import llm_client
 from textutil import TONE
 
 DIR_NAME = "concepts"
-# concepts-2 (13/11, A36): thêm quy tắc 6 (định nghĩa "X là Y": X là ket_luan để thành neo, thẻ 1.6 dòng 239) và một câu ở quy tắc 2 cho đơn vị phạm vi hoặc đối tượng;
+# concepts-2 (13/11, A36): thêm quy tắc 6 (định nghĩa "X là Y": X là ket_luan để thành neo, mô tả bước 1.6 dòng 239) và một câu ở quy tắc 2 cho đơn vị phạm vi hoặc đối tượng;
 # sửa mô tả khoan_cha (từ A35 khoản dưới Điều có câu dẫn cũng nhận câu dẫn đó). Vì sao: Opus trả rỗng cho Điều 1 và 6/9 khoản định nghĩa của Điều 3 (A36).
 # concepts-3 (14/11) đã thử rồi RÚT: thêm vế cho mục danh sách chỉ nêu tên bên dưới câu dẫn cứu được D205.K1-3 nhưng làm Opus lặp ket_luan của câu dẫn vào cả 8 khoản D67 (A36). Chữ lời nhắc đã trả về concepts-2, không có lần sửa thứ ba.
 # Đổi chữ lời nhắc là đổi khoá cache của cả 204 lô, nên bản ghi concepts-1 (Sonnet, Haiku, Opus thí điểm) còn nguyên nhưng không còn được replay đọc tới.
@@ -45,7 +45,7 @@ ROLES = ("chu_the", "dieu_kien", "ngoai_le", "ket_luan")
 PARAMS = ("W", "E", "C", "J", "G", "D", "A")
 IN_SCOPE_LABELS = ("substantive", "definition")
 UNIT_TYPES = ("dieu", "khoan", "diem")
-# Từ báo hiệu (thẻ 1.6): dãy từ đã chuẩn hoá. "trường hợp" và "không áp dụng" gồm nhiều từ.
+# Từ báo hiệu (mô tả bước 1.6): dãy từ đã chuẩn hoá. "trường hợp" và "không áp dụng" gồm nhiều từ.
 SIGNALS = (("nếu",), ("khi",), ("trường", "hợp"), ("trừ",), ("không", "áp", "dụng"), ("phải",), ("được",), ("bị", "coi", "là"))
 
 SYSTEM = """Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:
@@ -113,7 +113,7 @@ def dieu_of(uid):
 
 def unit_contexts(units, labels):
     """[{id, heading, chapeau, text}] của mọi đơn vị có chữ dưới Điều nhãn substantive hoặc definition, theo thứ tự tài liệu.
-    chapeau = chữ khoản cha với điểm (thẻ 1.6, A26), và (A35) câu dẫn của chính Điều với khoản đứng dưới Điều có chữ trực tiếp
+    chapeau = chữ khoản cha với điểm (mô tả bước 1.6, A26), và (A35) câu dẫn của chính Điều với khoản đứng dưới Điều có chữ trực tiếp
     (vd Điều 108: "Người sử dụng lao động có quyền yêu cầu ... trong trường hợp sau đây:" rồi K1, K2). Lần chạy đầu 13/11 thiếu câu dẫn này ở 46 khoản
     thuộc 10 Điều và 18/46 khoản không ra cụm chủ thể (39%, so với 16% ở phần còn lại). heading = tiêu đề Điều."""
     out = []
@@ -251,7 +251,7 @@ def uncovered_signals(contexts, rows):
 
 # ---- chạy một văn bản ----
 
-def process_doc(doc_id, units, labels, nodes, refs, client, max_batches=None):
+def process_doc(doc_id, units, labels, nodes, citations, client, max_batches=None):
     """-> (rows, rejected, uncovered, stats, notes). client None = chế độ off."""
     contexts = unit_contexts(units, labels)
     by_id = {c["id"]: c for c in contexts}
@@ -303,7 +303,7 @@ def process_doc(doc_id, units, labels, nodes, refs, client, max_batches=None):
                     rejected.append({"unit": it["unit_id"], "span": item["span"], "role": item["role"], "reason": res})
     node_rows, node_rejected = cond_node_rows(by_id, nodes)
     rejected += node_rejected
-    # trùng: cụm LLM cùng (đơn vị, vai, chuỗi từ) với cụm khác chỉ giữ một; cụm ngoại lệ LLM trùng chữ nút 1.5 thì giữ dòng cond_node (thẻ 1.6).
+    # trùng: cụm LLM cùng (đơn vị, vai, chuỗi từ) với cụm khác chỉ giữ một; cụm ngoại lệ LLM trùng chữ nút 1.5 thì giữ dòng cond_node (mô tả bước 1.6).
     # A35: "trùng" cũng gồm cụm ngoại lệ LLM chứa hoặc nằm trong chữ nút 1.5 của cùng đơn vị (so theo vị trí từ, vd D185.K5: LLM gạch "trường hợp quy định tại
     # điểm c khoản 4 Điều này", nút là "quy định tại điểm c khoản 4 Điều này"): lần chạy đầu 13/11 ghi một ngoại lệ hai lần ở 11 đơn vị. Giữ dòng nút vì nó có targets
     # (dẫn chiếu do máy nối, LLM không đụng). Cái mất: chữ LLM chứa nút mà dài hơn nút thì phần dài thêm bị bỏ.
@@ -323,7 +323,7 @@ def process_doc(doc_id, units, labels, nodes, refs, client, max_batches=None):
     order = {c["id"]: i for i, c in enumerate(contexts)}
     src = {"own": 0, "chapeau": 1, "heading": 2}
     rows.sort(key=lambda r: (order[r["unit"]], src[r["source"]], r["_a"], r["_b"], r["role"]))
-    stats["straddling_refs"] = attach_targets(rows, by_id, collections.defaultdict(list, refs))
+    stats["straddling_refs"] = attach_targets(rows, by_id, collections.defaultdict(list, citations))
     uncovered = uncovered_signals(contexts, rows)
     # G4 (báo): nút 1.5 mà LLM không gạch cụm ngoại lệ nào trùng hoặc chứa nó (chỉ xét đơn vị thuộc lô đã có kết quả LLM)
     llm_exc = collections.defaultdict(list)
@@ -347,20 +347,20 @@ def process_doc(doc_id, units, labels, nodes, refs, client, max_batches=None):
 
 
 def load_inputs(doc_id):
-    docs, all_units, resolver, available = l2.load_context()
+    docs, all_units, resolver, available = refs.load_context()
     doc = corpus.get_doc(doc_id, docs)
-    lab_path = corpus.out_dir("l4") / "l4_labels.jsonl"
-    nodes_path = corpus.out_dir("l5_general") / f"l5_general_conditions_{doc.doc_id}.jsonl"
-    refs_path = l2.l2_dir() / f"l2_refs_{doc.doc_id}.jsonl"
+    lab_path = corpus.out_dir("article_type") / "article_type_labels.jsonl"
+    nodes_path = corpus.out_dir("exceptions_general") / f"exceptions_general_conditions_{doc.doc_id}.jsonl"
+    refs_path = refs.output_dir() / f"refs_mentions_{doc.doc_id}.jsonl"
     for p, step in ((lab_path, "article_type.py"), (nodes_path, "exceptions_general.py"), (refs_path, "refs.py")):
         if not p.exists():
             raise SystemExit(f"chưa có {p.name}; chạy src/{step} trước")
-    labels = {r["id"]: r["label"] for r in l1.read_jsonl(lab_path)}
-    refs = collections.defaultdict(list)
-    for r in l1.read_jsonl(refs_path):
+    labels = {r["id"]: r["label"] for r in parse.read_jsonl(lab_path)}
+    citations = collections.defaultdict(list)
+    for r in parse.read_jsonl(refs_path):
         if r["p"] == "refers_to":
-            refs[r["s"]].append(r)
-    return doc, all_units[doc.doc_id], labels, l1.read_jsonl(nodes_path), refs
+            citations[r["s"]].append(r)
+    return doc, all_units[doc.doc_id], labels, parse.read_jsonl(nodes_path), citations
 
 
 def report_lines(doc_id, stats, uncovered, rejected, notes, mode):
@@ -402,12 +402,12 @@ def main(argv=None):
             var = llm_client.PROVIDERS[provider]
             raise SystemExit(f"--llm live nhưng không thấy {var} trong môi trường của process này (đặt khoá MỘT LẦN bằng `setx {var}` ở terminal riêng rồi mở terminal mới; xem đầu src/run_all.py)")
     client = llm_client.Client(args.llm, log=llm_client.stderr_log) if args.llm != "off" else None
-    doc, units, labels, nodes, refs = load_inputs(args.doc)
-    rows, rejected, uncovered, stats, notes = process_doc(doc.doc_id, units, labels, nodes, refs, client, args.max_batches)
+    doc, units, labels, nodes, citations = load_inputs(args.doc)
+    rows, rejected, uncovered, stats, notes = process_doc(doc.doc_id, units, labels, nodes, citations, client, args.max_batches)
     out = corpus.out_dir(DIR_NAME)
-    l1.write_jsonl(out / f"concepts_spans_{doc.doc_id}.jsonl", rows)
-    l1.write_jsonl(out / f"concepts_rejected_{doc.doc_id}.jsonl", rejected)
-    l1.write_jsonl(out / f"concepts_uncovered_{doc.doc_id}.jsonl", uncovered)
+    parse.write_jsonl(out / f"concepts_spans_{doc.doc_id}.jsonl", rows)
+    parse.write_jsonl(out / f"concepts_rejected_{doc.doc_id}.jsonl", rejected)
+    parse.write_jsonl(out / f"concepts_uncovered_{doc.doc_id}.jsonl", uncovered)
     lines = report_lines(doc.doc_id, stats, uncovered, rejected, notes, args.llm)
     if client is not None:
         lines.append(f"LLM: gọi API lần này: {client.calls}; đọc từ cache: {client.hits}; hôm nay đã dùng trich {client.used_today('trich')}")

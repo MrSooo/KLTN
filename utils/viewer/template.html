@@ -137,7 +137,7 @@ function build(keepPos){
   const agg = new Map();
   for(const e of EDGES){
     if(!state.predsOn.has(e.p)) continue;
-    if(e.effective && e.effective>state.date && e.source==="l6") continue;
+    if(e.effective && e.effective>state.date && e.source==="versions") continue;
     const s = displayOf(e.s), o = displayOf(e.o);
     if(!s || !o || s===o || !seen.has(s) || !seen.has(o)) continue;
     const key = s+"|"+e.p+"|"+o; let a = agg.get(key);

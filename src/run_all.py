@@ -1,26 +1,27 @@
-r"""Chạy lại cả chuỗi L1 -> L6 -> đồ thị trên cả kho lao động. Dùng làm hồi quy cho mỗi bước sửa.
+r"""Chạy lại cả chuỗi 1.1 -> 2.3-2.4 -> đồ thị trên cả kho lao động. Dùng làm hồi quy cho mỗi bước sửa.
 
-Chạy: python -I src/run_all.py            (L1, L2, L4, L5 tường minh + chung, 1.6 gạch cụm, L3, L6, checks, graph)
+Chạy: python -I src/run_all.py            (1.1, 1.2, 1.4, 1.5 tường minh + chung, 1.6 gạch cụm, 2.2, 2.3-2.4, checks, graph)
       python -I src/run_all.py --viewer       (thêm viewer: dựng trang xem đồ thị)
       python -I src/run_all.py --tests    (thêm mọi tests/test_*.py)
       python -I src/run_all.py --viewer --tests
 
-LLM (mặc định tắt): --llm off | replay | live, chỉ ảnh hưởng hai bước dùng LLM: 2.2 (links: đề xuất cạnh details) và 1.6 giai đoạn A (concepts: gạch cụm). Bước loại Điều (article_type) không dùng LLM từ 11/11 (A14).
+LLM (mặc định tắt): --llm off | replay | live, chỉ ảnh hưởng ba bước dùng LLM: 2.2 (links: đề xuất cạnh details), 1.6 giai đoạn A (concepts: gạch cụm) và 1.6 giai đoạn B
+(concepts_names: đặt tên vị từ; chỉ off hoặc replay, live chạy bước này ở replay vì phần LLM của nó làm bằng phiên Claude Code, A37). Bước loại Điều (article_type) không dùng LLM từ 11/11 (A14).
   off     không gọi gì (mặc định, kết quả tất định, cùng kết quả khi chưa có cache)
   replay  chỉ đọc phản hồi đã lưu ở data/llm_cache/, thiếu thì bước đó giữ kết quả như off (không chạm mạng)
   live    như replay, thiếu cache thì GỌI API THẬT (tốn hạn mức theo docs/llm_config.md). Cần biến môi trường GEMINI_API_KEY (2.2) và ANTHROPIC_API_KEY (1.6, trả phí, A34)
           trong process này, cùng hai gói google-genai và anthropic (cài trong .venv: `.venv\Scripts\python.exe -m pip install google-genai anthropic`).
           Chạy: `python -I src\run_all.py --llm live --viewer --tests`; muốn chỉ chạy 1.6 thì `python -I src\concepts.py --llm live --max-batches N`.
           Thiếu khoá thì dừng ngay, trước khi chạy bất kỳ bước nào. Kiểm trước (không tốn lượt): `python -I src\llm_client.py --check-models`.
-          Đặt khoá MỘT LẦN, ở terminal riêng của bạn (KHÔNG dùng tiền tố `!` của Claude Code, vì lệnh sẽ nằm trong cuộc trò chuyện):
+          Đặt khoá MỘT LẦN, ở terminal riêng của bạn (không chạy trong cuộc trò chuyện của công cụ AI, vì khoá sẽ nằm trong nội dung trò chuyện):
               setx GEMINI_API_KEY "<khoá>"      rồi mở terminal / VS Code MỚI (setx không đổi terminal đang mở).
           Biến này gắn với tài khoản Windows, không gắn với venv, nên dựng lại venv không phải lấy lại khoá. Đổi khoá thì chạy setx lại.
-          Dùng .env trong repo là KHÔNG được (CLAUDE.md mục 1.7: khoá chỉ nằm trong biến môi trường).
+          Không dùng .env trong repo: khoá chỉ nằm trong biến môi trường (CONTRIBUTING.md, mục Bí mật).
 
-Dữ liệu ghi vào data/processed/<bước>/; báo cáo chữ ghi vào docs/bao_cao_chay/<bước>/. Mỗi bước in một dòng: tên bước, rồi OK (kèm số giây)
+Dữ liệu ghi vào data/processed/<bước>/; báo cáo chữ ghi vào docs/run_reports/<bước>/. Mỗi bước in một dòng: tên bước, rồi OK (kèm số giây)
 hoặc LỖI kèm đầu ra của lệnh; bước lỗi thì dừng, các bước sau không chạy (riêng bước test chạy hết các bộ rồi mới báo). Sau khi chạy,
-`git diff --stat docs/bao_cao_chay/` cho biết bước sửa vừa rồi đổi những báo cáo nào (`data/processed/` bị `.gitignore`, so bằng báo cáo chữ). Thứ tự theo phụ thuộc dữ liệu, không theo số L:
-L4 chạy trước L6 (Điều nhãn effect_transition là nguồn chỉ thị), L5 tường minh trước L5 chung, L3 sau L2.
+`git diff --stat docs/run_reports/` cho biết bước sửa vừa rồi đổi những báo cáo nào (`data/processed/` bị `.gitignore`, so bằng báo cáo chữ). Thứ tự theo phụ thuộc dữ liệu, không theo số L:
+1.4 chạy trước 2.3-2.4 (Điều nhãn effect_transition là nguồn chỉ thị), 1.5 tường minh trước 1.5 chung, 2.2 sau 1.2.
 """
 import argparse
 import subprocess
@@ -32,22 +33,35 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))  # -I không tự thêm thư mục script
 import llm_client  # noqa: E402
 
-LLM_SCRIPTS = ("src/links.py", "src/concepts.py")  # chỉ hai bước này nhận --llm
+LLM_SCRIPTS = ("src/links.py", "src/concepts.py")  # hai bước này nhận --llm off|replay|live
+# 1.6B (A37) chỉ có off|replay: phần LLM chạy bằng phiên Claude Code, không gọi API. [THÊM] `--llm live` của run_all chạy bước này ở replay (in rõ), không từ chối,
+# để `run_all --llm live` vẫn dùng được cho 1.6A và 2.2.
+NAMES_SCRIPT = "src/concepts_names.py"
 
 STEPS = [
-    ("L1 tách cấu trúc 18 văn bản", ["src/parse.py", "--all"]),
-    ("L2 cạnh cấu trúc và dẫn chiếu", ["src/refs.py", "--all"]),
-    ("L4 phân loại Điều", ["src/article_type.py"]),
-    ("L5 ngoại lệ tường minh", ["src/exceptions_explicit.py", "--all"]),
-    ("L5 ngoại lệ chung", ["src/exceptions_general.py", "--all"]),
+    ("1.1 tách cấu trúc 18 văn bản", ["src/parse.py", "--all"]),
+    ("1.2 cạnh cấu trúc và dẫn chiếu", ["src/refs.py", "--all"]),
+    ("1.4 phân loại Điều", ["src/article_type.py"]),
+    ("1.5 ngoại lệ tường minh", ["src/exceptions_explicit.py", "--all"]),
+    ("1.5 ngoại lệ chung", ["src/exceptions_general.py", "--all"]),
     ("1.6 gạch cụm (giai đoạn A)", ["src/concepts.py"]),
+    ("1.6 đặt tên vị từ (giai đoạn B)", [NAMES_SCRIPT]),
     ("1.3 điều khoản giao chi tiết", ["src/delegation.py"]),
     ("2.2 nối văn bản: based_on, details", ["src/links.py"]),
-    ("L6 phiên bản theo ngày hiệu lực", ["src/l6_versions.py"]),
+    ("2.3-2.4 phiên bản theo ngày hiệu lực", ["src/versions.py"]),
     ("checks: kiểm tra độc lập", ["src/checks.py"]),
     ("graph: đồ thị gộp", ["src/graph.py"]),
 ]
 VIEWER_STEPS = [("viewer: trang xem đồ thị", ["utils/viewer/viewer.py"])]
+
+
+def llm_flag(cmd, mode):
+    """Cờ --llm thêm vào lệnh của một bước. 1.6B: off giữ off, replay và live đều thành replay."""
+    if mode == "off":
+        return []
+    if cmd[0] == NAMES_SCRIPT:
+        return ["--llm", "replay"]
+    return ["--llm", mode] if cmd[0] in LLM_SCRIPTS else []
 
 
 class StepError(Exception):
@@ -114,7 +128,9 @@ if __name__ == "__main__":
                              f"Đặt khoá MỘT LẦN bằng `setx <tên biến>` (xem hướng dẫn ở đầu src/run_all.py), mở terminal mới rồi chạy lại.")
         print(f"LLM live: sẽ gọi API thật khi thiếu cache. Hạn mức: chinh {cfg['chinh.model']} {cfg['chinh.luot_moi_ngay']}/ngày, "
               f"kiem {cfg['kiem.model']} {cfg['kiem.luot_moi_ngay']}/ngày, trich {cfg['trich.model']} (chặn an toàn {cfg['trich.luot_moi_ngay']}/ngày).")
-    cmds = [(name, cmd + (["--llm", args.llm] if args.llm != "off" and cmd[0] in LLM_SCRIPTS else [])) for name, cmd in STEPS + (VIEWER_STEPS if args.viewer else [])]
+    if args.llm == "live":
+        print("1.6B (đặt tên vị từ) không có live (A37): bước này chạy ở replay, phần LLM của nó làm bằng phiên Claude Code (docs/operations/llm_sandbox.md).")
+    cmds = [(name, cmd + llm_flag(cmd, args.llm)) for name, cmd in STEPS + (VIEWER_STEPS if args.viewer else [])]
     chatty = lambda cmd: args.llm != "off" and cmd[0] in LLM_SCRIPTS  # noqa: E731  bước LLM: cho stderr (log tiến độ) hiện ngay
     steps = [(name, lambda cmd=cmd: run(*cmd, relay_stderr=chatty(cmd)), chatty(cmd)) for name, cmd in cmds]
     if args.tests:

@@ -1,6 +1,6 @@
-"""Test nhánh LLM của L3, giãn nhịp RPM của llm_client, và đường thiếu khoá của run_all. Toàn bộ dùng API giả: không chạm mạng, không tốn lượt.
+"""Test nhánh LLM của 2.2, giãn nhịp RPM của llm_client, và đường thiếu khoá của run_all. Toàn bộ dùng API giả: không chạm mạng, không tốn lượt.
 
-Nguyên tắc cần giữ (CLAUDE.md mục 4): đề xuất của LLM không được áp thẳng; đầu ra sai bị loại và không vào cache chính.
+Nguyên tắc cần giữ (CONTRIBUTING.md, mục LLM): đề xuất của LLM không được áp thẳng; đầu ra sai bị loại và không vào cache chính.
 (Bước loại Điều không còn dùng LLM từ 11/11, quyết định A14, nên không còn test nhánh LLM của nó.)
 """
 import contextlib
@@ -16,7 +16,7 @@ from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
 import _harness  # noqa: E402
-import links as l3  # noqa: E402
+import links  # noqa: E402
 import llm_client as llm  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -36,7 +36,7 @@ def fake_client(tmp, behaviour, cfg=None, mode="live"):
     return c, seen
 
 
-# ---- L3 ----
+# ---- 2.2 ----
 
 LAW = {"BLLD_45-2019.D91": {"type": "dieu", "heading": "Mức lương tối thiểu", "text": ""},
        "BLLD_45-2019.D91.K4": {"type": "khoan", "heading": None, "text": "Chính phủ quy định chi tiết Điều này."},
@@ -49,49 +49,49 @@ DEC_UNITS = {"ND_X.D1": {"type": "dieu", "heading": "Phạm vi điều chỉnh",
 D91K4, D5K1 = "BLLD_45-2019.D91.K4", "BLLD_45-2019.D5.K1"
 
 
-def test_l3_validate_targets():
+def test_links_validate_targets():
     allowed = {D91K4, D5K1}
-    assert l3.validate_targets({"targets": [{"unit_id": D91K4, "ly_do": "x"}, {"unit_id": D91K4, "ly_do": "lặp"}]}, allowed) == [D91K4]
-    assert l3.validate_targets({"targets": []}, allowed) == []
+    assert links.validate_targets({"targets": [{"unit_id": D91K4, "ly_do": "x"}, {"unit_id": D91K4, "ly_do": "lặp"}]}, allowed) == [D91K4]
+    assert links.validate_targets({"targets": []}, allowed) == []
     for bad in ({"targets": [{"unit_id": "BLLD_45-2019.D999", "ly_do": "x"}]}, {"targets": "x"}, {"targets": [{"ly_do": "x"}]}, [],
                 {"targets": [{"unit_id": D91K4, "ly_do": "x"}] * 6}):
         try:
-            l3.validate_targets(bad, allowed)
+            links.validate_targets(bad, allowed)
         except ValueError:
             continue
         raise AssertionError(bad)
 
 
-def test_l3_two_passes_are_independent_same_input_different_models():
+def test_links_two_passes_are_independent_same_input_different_models():
     with tempfile.TemporaryDirectory() as t:
         c, seen = fake_client(t, lambda model, user: {"targets": [{"unit_id": D91K4, "ly_do": "x"}]})
-        res = l3.llm_propose(c, DEC, DEC_UNITS, CLAUSES, LAW)
+        res = links.llm_propose(c, DEC, DEC_UNITS, CLAUSES, LAW)
         assert [m for m, _ in seen] == ["m-chinh", "m-kiem"] and seen[0][1] == seen[1][1], "lượt sau KHÔNG thấy kết quả lượt trước: cùng đầu vào"
         assert res["chinh"] == res["kiem"] == [D91K4] and res["note"] == ""
         assert "mức lương tối thiểu tháng" in seen[0][1] and D91K4 in seen[0][1]
 
 
-def test_l3_llm_pass_failures_become_none_with_note():
+def test_links_llm_pass_failures_become_none_with_note():
     with tempfile.TemporaryDirectory() as t:
         c, _ = fake_client(t, lambda model, user: {"targets": [{"unit_id": "ngoài danh sách", "ly_do": "x"}]})
-        res = l3.llm_propose(c, DEC, DEC_UNITS, CLAUSES, LAW)
+        res = links.llm_propose(c, DEC, DEC_UNITS, CLAUSES, LAW)
         assert res["chinh"] is None and res["kiem"] is None and "đầu ra bị loại" in res["note"]
     with tempfile.TemporaryDirectory() as t:
-        res = l3.llm_propose(llm.Client("replay", CFG, cache_dir=Path(t) / "c", usage_path=Path(t) / "c" / "u.json"), DEC, DEC_UNITS, CLAUSES, LAW)
+        res = links.llm_propose(llm.Client("replay", CFG, cache_dir=Path(t) / "c", usage_path=Path(t) / "c" / "u.json"), DEC, DEC_UNITS, CLAUSES, LAW)
         assert res["chinh"] is None and res["kiem"] is None and "chưa có cache" in res["note"]
 
 
 def edges(llm_result, kw=()):
-    return {e["o"]: e for e in l3.decide_llm(DEC, DEC_UNITS, LAW, list(kw), llm_result)}
+    return {e["o"]: e for e in links.decide_llm(DEC, DEC_UNITS, LAW, list(kw), llm_result)}
 
 
-def test_l3_keeps_edge_only_when_both_models_and_keyword_agree():
+def test_links_keeps_edge_only_when_both_models_and_keyword_agree():
     e = edges({"chinh": [D91K4], "kiem": [D91K4], "note": ""})["BLLD_45-2019.D91"]
     assert e["flags"] == ["llm_proposed"] and e["how"] == "llm"
     assert set(e) == {"s", "p", "o", "evidence", "how", "flags"}, "khuôn cạnh chung A12, không còn via/check"
 
 
-def test_l3_isolates_when_second_model_disagrees_keyword_fails_or_only_keyword_proposed():
+def test_links_isolates_when_second_model_disagrees_keyword_fails_or_only_keyword_proposed():
     assert edges({"chinh": [D91K4], "kiem": [], "note": ""})["BLLD_45-2019.D91"]["flags"] == ["llm_proposed", "isolated"]
     assert edges({"chinh": [D91K4], "kiem": None, "note": "x"})["BLLD_45-2019.D91"]["flags"] == ["llm_proposed", "isolated"], "lượt kiểm chưa có: không nâng cấp"
     e = edges({"chinh": [D5K1], "kiem": [D5K1], "note": ""})["BLLD_45-2019.D5"]
@@ -142,7 +142,7 @@ def run_script(*args):
 
 
 def test_live_without_key_stops_immediately_everywhere():
-    # mỗi bước đòi khoá của nhà cung cấp mình dùng: 2.2 (links) dùng Gemini, 1.6 (concepts, vai trich) dùng Anthropic, run_all đòi cả hai
+    # mỗi bước đòi khoá của nhà cung cấp mà bước đó dùng: 2.2 (links) dùng Gemini, 1.6 (concepts, vai trich) dùng Anthropic, run_all đòi cả hai
     for script, need in ((["src/run_all.py", "--llm", "live"], ("GEMINI_API_KEY", "ANTHROPIC_API_KEY")), (["src/links.py", "--llm", "live"], ("GEMINI_API_KEY",)),
                          (["src/concepts.py", "--llm", "live"], ("ANTHROPIC_API_KEY",))):
         out = run_script(*script)
@@ -458,13 +458,14 @@ def test_each_role_goes_to_its_own_provider_and_trich_stays_out_of_roles():
 
 def test_load_config_requires_trich_and_rejects_an_unknown_provider():
     good = "\n".join(["chinh.model = a", "chinh.luot_moi_ngay = 1", "kiem.model = b", "kiem.luot_moi_ngay = 1", "max_output_tokens = 10",
-                      "trich.provider = anthropic", "trich.model = c", "trich.luot_moi_ngay = 1", "trich.max_output_tokens = 10", "trich.thinking = disabled"])
+                      "trich.provider = anthropic", "trich.model = c", "trich.luot_moi_ngay = 1", "trich.max_output_tokens = 10", "trich.thinking = disabled", "ten.model = d"])
     with tempfile.TemporaryDirectory() as t:
         p = Path(t) / "cfg.md"
         p.write_text(good + "\n", encoding="utf-8")
-        assert llm.load_config(p)["trich.model"] == "c"
+        assert llm.load_config(p)["trich.model"] == "c" and llm.load_config(p)["ten.model"] == "d"
         for bad, why in ((good.replace("trich.provider = anthropic", "trich.provider = openai"), "openai"), (good.replace("trich.model = c\n", ""), "trich.model"),
-                         (good.replace("trich.thinking = disabled", "trich.thinking = adaptive"), "adaptive"), (good.replace("\ntrich.thinking = disabled", ""), "trich.thinking")):
+                         (good.replace("trich.thinking = disabled", "trich.thinking = adaptive"), "adaptive"), (good.replace("\ntrich.thinking = disabled", ""), "trich.thinking"),
+                         (good.replace("\nten.model = d", ""), "ten.model")):  # vai ten (1.6B, A37): khoá cache của giai đoạn B có tên model này nên thiếu là lỗi
             p.write_text(bad + "\n", encoding="utf-8")
             try:
                 llm.load_config(p)
@@ -490,6 +491,15 @@ def test_check_models_asks_each_provider_without_generating():
         got = llm.check_models(cfg, c)
         assert got == {"m-chinh": True, "m-kiem": False, trich_model: expect}, got
     assert asked == ["m-claude", "m-claude-sai"]
+
+
+def test_run_all_passes_llm_mode_only_to_llm_steps_and_runs_names_step_in_replay_under_live():
+    import run_all
+    names, a, other = [run_all.NAMES_SCRIPT], ["src/concepts.py"], ["src/parse.py", "--all"]
+    assert [run_all.llm_flag(c, "off") for c in (names, a, other)] == [[], [], []]
+    assert [run_all.llm_flag(c, "replay") for c in (names, a, other)] == [["--llm", "replay"], ["--llm", "replay"], []]
+    assert [run_all.llm_flag(c, "live") for c in (names, a, other)] == [["--llm", "replay"], ["--llm", "live"], []]  # 1.6B không có live (A37 (14) (i))
+    assert any(cmd == names for _, cmd in run_all.STEPS) and [c[0] for _, c in run_all.STEPS].index(run_all.NAMES_SCRIPT) == [c[0] for _, c in run_all.STEPS].index("src/concepts.py") + 1
 
 
 _harness.run(globals())

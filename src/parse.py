@@ -1,22 +1,22 @@
-"""L1: tách một văn bản lao động (.txt) thành các đơn vị, đọc đầu văn bản và nội dung trích dẫn sửa đổi.
+"""1.1: tách một văn bản lao động (.txt) thành các đơn vị, đọc đầu văn bản và nội dung trích dẫn sửa đổi.
 
 Chạy: python -I src/parse.py <doc_id | đường dẫn file>     một văn bản
       python -I src/parse.py --all                          cả kho (và ghi documents.jsonl)
 
 Đầu vào: file .txt trong data/raw/labor/ (UTF-8, mỗi đoạn một dòng) + dòng manifest.csv của nó.
-Đầu ra (data/processed/l1/, mỗi văn bản một bộ):
-  l1_triples_<doc_id>.jsonl    bộ ba (s,p,o) của từng đơn vị: type, number, heading, parent, text, scope, footnote, source_line
-  l1_payloads_<doc_id>.jsonl   mỗi khối trích dẫn “…” đứng sau câu dẫn (nội dung sửa đổi cho L6): không là đơn vị của văn bản chứa nó
-  l1_tables_<doc_id>.jsonl     bảng đã ghép lại (bảng lương vùng bị trải từng ô một dòng)
-  l1_footnotes_<doc_id>.jsonl  chú thích [n] cuối văn bản hợp nhất
+Đầu ra (data/processed/parse/, mỗi văn bản một bộ):
+  parse_triples_<doc_id>.jsonl    bộ ba (s,p,o) của từng đơn vị: type, number, heading, parent, text, scope, footnote, source_line
+  parse_payloads_<doc_id>.jsonl   mỗi khối trích dẫn “…” đứng sau câu dẫn (nội dung sửa đổi cho 2.3-2.4): không là đơn vị của văn bản chứa nó
+  parse_tables_<doc_id>.jsonl     bảng đã ghép lại (bảng lương vùng bị trải từng ô một dòng)
+  parse_footnotes_<doc_id>.jsonl  chú thích [n] cuối văn bản hợp nhất
   documents.jsonl              thông tin mỗi văn bản (chỉ ghi khi chạy --all)
-Báo cáo chữ: docs/bao_cao_chay/l1/l1_report_<doc_id>.txt.
+Báo cáo chữ: docs/run_reports/parse/parse_report_<doc_id>.txt.
 
 Cổng: số Điều = cột so_dieu_dem_duoc của manifest; không còn dòng nghi ngờ; mọi mã khác nhau. Sai thì thoát mã 1, không ghi file.
 
 Loại đơn vị: chuong, muc, dieu, khoan, diem (thân văn bản); pl (phụ lục), pl_muc (Mục / A. / I. trong phụ lục), pl_row (một dòng
 của phụ lục). Mã: <doc_id>.C<La Mã>.M<n>, .D<n><hậu tố>, .K<n><hậu tố>, .<điểm> (đ viết thành dd), .PL<nhãn>.M<n>.L<chữ>.S<La Mã>.R<k>.
-Quyết định chỗ spec im lặng: docs/quyet_dinh/l1_quyet_dinh.txt.
+Quyết định chỗ spec im lặng: docs/decisions.md.
 """
 import argparse
 import collections
@@ -33,7 +33,7 @@ import corpus
 
 ROOT = corpus.ROOT
 PROCESSED_DIR = corpus.PROCESSED_DIR
-L1_DIR_NAME = "l1"
+DIR_NAME = "parse"
 
 # Chữ của Điểm: bảng chữ trong văn bản luật (có đ, không có f j w z). Không dùng [a-z].
 DIEM_LETTERS = "abcdđeghiklmnopq"
@@ -606,16 +606,16 @@ def read_jsonl(path):
         return [json.loads(l) for l in f if l.strip()]
 
 
-def l1_dir():
-    return corpus.out_dir(L1_DIR_NAME)
+def output_dir():
+    return corpus.out_dir(DIR_NAME)
 
 
 def triples_path(doc_id):
-    return l1_dir() / f"l1_triples_{doc_id}.jsonl"
+    return output_dir() / f"parse_triples_{doc_id}.jsonl"
 
 
 def load_units(doc_id):
-    """Đọc lại l1_triples: {id: {type, number, heading, parent, text, scope, footnote, source_line}} theo thứ tự file."""
+    """Đọc lại parse_triples: {id: {type, number, heading, parent, text, scope, footnote, source_line}} theo thứ tự file."""
     units = collections.OrderedDict()
     for t in read_jsonl(triples_path(doc_id)):
         u = units.setdefault(t["s"], {"id": t["s"]})
@@ -627,12 +627,12 @@ def load_units(doc_id):
 
 
 def load_payloads(doc_id):
-    return read_jsonl(l1_dir() / f"l1_payloads_{doc_id}.jsonl")
+    return read_jsonl(output_dir() / f"parse_payloads_{doc_id}.jsonl")
 
 
 def report_text(doc, parsed):
     ty = collections.Counter(u.type for u in parsed.units)
-    out = [f"L1 báo cáo: {doc.doc_id} ({doc.so_hieu})", f"file: {doc.path.relative_to(ROOT).as_posix()}",
+    out = [f"1.1 báo cáo: {doc.doc_id} ({doc.so_hieu})", f"file: {doc.path.relative_to(ROOT).as_posix()}",
            f"số đơn vị theo loại: {dict(ty)}", f"số Điều: {ty['dieu']} (manifest {doc.so_dieu})",
            f"khối trích dẫn: {len(parsed.payloads)}  chú thích: {len(parsed.footnotes)}  bảng ghép: {len(parsed.tables)}",
            f"cờ đầu văn bản: {parsed.header['flags'] or 'không'}", f"dòng bỏ qua có chủ đích: {dict(parsed.skipped) or 'không'}",
@@ -643,17 +643,17 @@ def report_text(doc, parsed):
 
 
 def write_outputs(doc, parsed):
-    d = l1_dir()
+    d = output_dir()
     write_jsonl(triples_path(doc.doc_id), [{"s": s, "p": p, "o": o} for s, p, o in to_triples(parsed.units)])
-    write_jsonl(d / f"l1_payloads_{doc.doc_id}.jsonl",
+    write_jsonl(d / f"parse_payloads_{doc.doc_id}.jsonl",
                 [{"payload_id": p.payload_id, "first_line": p.first_line, "last_line": p.last_line, "lead_text": p.lead_text,
                   "lead_line": p.lead_line, "lead_unit": p.lead_unit, "lines": p.lines} for p in parsed.payloads])
-    write_jsonl(d / f"l1_tables_{doc.doc_id}.jsonl", parsed.tables)
-    write_jsonl(d / f"l1_footnotes_{doc.doc_id}.jsonl", [{"n": n, "text": t} for n, t in parsed.footnotes])
+    write_jsonl(d / f"parse_tables_{doc.doc_id}.jsonl", parsed.tables)
+    write_jsonl(d / f"parse_footnotes_{doc.doc_id}.jsonl", [{"n": n, "text": t} for n, t in parsed.footnotes])
 
 
 def write_report(doc, parsed):
-    path = corpus.report_dir(L1_DIR_NAME) / f"l1_report_{doc.doc_id}.txt"
+    path = corpus.report_dir(DIR_NAME) / f"parse_report_{doc.doc_id}.txt"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(report_text(doc, parsed), encoding="utf-8", newline="\n")
     return path

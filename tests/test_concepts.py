@@ -102,7 +102,7 @@ def test_uncovered_signals_reports_only_signals_without_nearby_span():
 def test_batches_are_deterministic_in_document_order_and_bounded():
     doc_id, units, labels, nodes, refs = real()
     contexts = cc.unit_contexts(units, labels)
-    assert len(contexts) == 881  # số đo của thẻ 1.6 (12/11)
+    assert len(contexts) == 881  # số đo của mô tả bước 1.6 (12/11)
     b1, b2 = cc.make_batches(contexts), cc.make_batches(cc.unit_contexts(units, labels))
     assert [[c["id"] for c in b] for b in b1] == [[c["id"] for c in b] for b in b2]
     assert all(len(b) <= cc.BATCH_SIZE for b in b1)

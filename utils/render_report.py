@@ -1,6 +1,6 @@
-"""Dựng report/tong_hop/tong_hop_cong_viec.html từ report/tong_hop/tong_hop_cong_viec.md.
+"""Dựng một trang HTML từ một file Markdown (báo cáo gửi người ngoài).
 
-Chạy: python -X utf8 -I utils/render_report.py [md] [html]   (mặc định hai file trong report/tong_hop/)
+Chạy: python -X utf8 -I utils/render_report.py <md> [html]   (không nêu html thì ghi cạnh file md, đổi đuôi thành .html)
 
 Chỉ dùng thư viện chuẩn. Chỉ hiểu phần Markdown mà báo cáo dùng: tiêu đề # đến ####, đoạn,
 danh sách gạch đầu dòng / đánh số lồng nhau, bảng, khối mã ```, đường kẻ ---, **đậm**, *nghiêng*,
@@ -11,7 +11,6 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
 
 CSS = """
 :root {
@@ -350,7 +349,10 @@ def render(md_text):
 
 
 def main(argv):
-    md_path = Path(argv[1]) if len(argv) > 1 else ROOT / "report" / "tong_hop" / "tong_hop_cong_viec.md"
+    if len(argv) < 2:
+        print("Cách dùng: python -X utf8 -I utils/render_report.py <md> [html]")
+        return 2
+    md_path = Path(argv[1])
     out_path = Path(argv[2]) if len(argv) > 2 else md_path.with_suffix(".html")
     page = render(md_path.read_text(encoding="utf-8"))
     out_path.write_text(page, encoding="utf-8", newline="\n")
