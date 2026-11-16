@@ -1,18 +1,18 @@
-"""A8 (S_know): tầng tri thức của kiến trúc trong bài báo.
+"""A8 (S_know): the knowledge layer.
 
-Từ tập ảnh hưởng A(d) — các đơn vị đang hiệu lực tại ngày d — dùng LLM đọc text và trích:
-  - mệnh đề (proposition) và vị từ P của mỗi mệnh đề, phân loại category là "concept" (khái niệm) hoặc "input" (đầu vào);
-  - cạnh exception_of NGẦM (sự kiện làm quy tắc không còn áp dụng dù văn bản không viết tường minh);
-  - quy tắc suy diễn R (head = kết luận, body = danh sách điều kiện).
-Mọi đầu ra LLM phải qua kiểm định; mục không hợp lệ bị đưa vào tập cách ly Q (không được dùng ở A9).
+Reads the affected set A(d) — the units in force at date d — and uses the LLM to extract:
+  - propositions and their predicates P, each categorized "concept" or "input";
+  - implicit exception_of edges (events that disable a rule without being spelled out);
+  - inference rules R (head = conclusion, body = list of conditions).
+Every LLM output must pass validation; invalid items are moved to the quarantine set Q (kept out of A9).
 
-Đầu vào: triples A1 (a2.read_units); tuỳ chọn kết quả A4 tại ngày (--versions a4_<name>_versions.jsonl --date YYYY-MM-DD).
-Đầu ra (data/processed/):
+Input: A1 triples (a2.read_units); optionally A4 output at a date (--versions a4_<name>_versions.jsonl --date YYYY-MM-DD).
+Output (data/processed/):
   a8_propositions_<stem>.jsonl, a8_predicates_<stem>.jsonl, a8_implicit_exceptions_<stem>.jsonl,
-  a8_rules_<stem>.jsonl, a8_quarantine_<stem>.jsonl và docs/a8_report_<stem>.txt.
-Khi LLM chưa cấu hình (S_LLM tắt): không trích gì, ghi file rỗng và báo cáo ghi chú — nền A1-A7 không đổi.
+  a8_rules_<stem>.jsonl, a8_quarantine_<stem>.jsonl and docs/a8_report_<stem>.txt.
+When the LLM is unconfigured: extract nothing, write empty files + a note, leave A1-A7 unchanged.
 
-Chạy: python -I src/a8_knowledge_layer.py <file md> [--versions a4_<name>_versions.jsonl --date YYYY-MM-DD]
+Run: python -I src/a8_knowledge_layer.py <file md> [--versions a4_<name>_versions.jsonl --date YYYY-MM-DD]
 """
 import argparse
 import json
@@ -20,7 +20,7 @@ import re
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I mode: add the script dir for sibling imports
 import a2_edges as a2
 import a4_versions as a4
 import llm
@@ -79,7 +79,7 @@ def report_path(src, tag=None):
 
 
 def active_units(src, versions=None, date=None):
-    """{mã đơn vị: {"type":..., "text":...}} của các đơn vị đang hiệu lực (chỉ giữ đơn vị có text)."""
+    """{unit id: {"type":..., "text":...}} for the in-force units (text-bearing only)."""
     if versions is None:
         units = a2.read_units(src)
         return {c: {"type": u.get("type"), "text": u.get("text")}
@@ -90,7 +90,7 @@ def active_units(src, versions=None, date=None):
             for r in active if r.get("text")}
 
 def validate_package(data, code, unit_ids, seen_prop, problems, out):
-    """Kiểm định một gói JSON của một đơn vị; mục lỗi vào problems (tập Q), mục hợp lệ vào out."""
+    """Validate one unit's LLM JSON package; bad items go to problems (set Q), valid ones to out."""
     if not isinstance(data, dict):
         problems.append({"source": code, "kind": "package", "row": data, "reason": "gói không phải object"})
         return
@@ -151,7 +151,7 @@ def write_text(text, path):
         f.write(text)
 
 def run(src, versions=None, date=None):
-    """Trích tầng tri thức, kiểm định, ghi file; trả về mã thoát (0 = không có lỗi kiểm định)."""
+    """Extract the knowledge layer, validate, write files; exit 0 when nothing lands in Q."""
     stem = Path(src).stem
     tag = _tag(versions, date)
     units = active_units(src, versions, date)

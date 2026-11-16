@@ -1,14 +1,14 @@
-"""LLM client (chỉ stdlib) cho các bước dùng LLM: S_upd (a4_versions) và S_know (a8_knowledge_layer).
+"""Stdlib-only LLM client for the LLM-backed steps: S_upd (a4_versions) and S_know (a8_knowledge_layer).
 
-Gọi API chat-completions kiểu OpenAI qua urllib.request, nên không cần thư viện bên ngoài.
-Cấu hình bằng biến môi trường (không cấu hình = tắt LLM):
-  LLM_API_KEY   (bắt buộc để bật)
-  LLM_MODEL     (bắt buộc để bật, vd gpt-4o-mini)
-  LLM_BASE_URL  (mặc định https://api.openai.com/v1)
-  LLM_TIMEOUT   (giây, mặc định 60)
+Calls an OpenAI-compatible chat-completions API via urllib.request (no third-party deps).
+Configured via environment variables / the project `.env` (unconfigured = LLM disabled):
+  LLM_API_KEY   (required to enable)
+  LLM_MODEL     (required to enable, e.g. gpt-4o-mini)
+  LLM_BASE_URL  (default https://api.openai.com/v1)
+  LLM_TIMEOUT   (seconds, default 60)
 
-Khi tắt, enabled() trả False và complete() trả None: các bước dùng LLM giữ đúng hành vi
-tất định hiện tại (không đoán, báo lỗi như trước). Đây là điểm mở rộng wrap quanh nền tất định A1-A7.
+When disabled, enabled() is False and complete() returns None, so the LLM-backed steps keep
+their current deterministic behaviour (never guess). This client wraps the A1-A7 core.
 """
 import json
 import os
@@ -21,9 +21,9 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 def _load_dotenv(path=None):
-    """Nạp .env gốc dự án (stdlib only, không cần python-dotenv).
+    """Load the project-root .env (stdlib only, no python-dotenv).
 
-    Biến môi trường thật được ưu tiên hơn giá trị trong file: chỉ ghi nếu key chưa có sẵn.
+    Real environment variables win over file values: only set a key if it is not already present.
     """
     path = path or ROOT / ".env"
     try:
@@ -48,12 +48,12 @@ def _env(name):
 
 
 def enabled():
-    """LLM có sẵn sàng không (đã cấu hình khoá + model)."""
+    """True when a key + model are configured."""
     return bool(_env("LLM_API_KEY") and _env("LLM_MODEL"))
 
 
 def complete(prompt, system=None, temperature=None, max_tokens=None):
-    """Gọi chat completions; trả về nội dung text hoặc None khi chưa cấu hình / lỗi."""
+    """Call chat completions; return the text content, or None when unconfigured / on error."""
     if not enabled():
         return None
     base = _env("LLM_BASE_URL") or "https://api.openai.com/v1"
@@ -78,7 +78,7 @@ def complete(prompt, system=None, temperature=None, max_tokens=None):
         with urllib.request.urlopen(request, timeout=int(_env("LLM_TIMEOUT") or 60)) as resp:
             body = json.loads(resp.read().decode("utf-8"))
     except (urllib.error.URLError, urllib.error.HTTPError, OSError, ValueError) as e:
-        print(f"[llm] gọi LLM lỗi, bỏ qua: {e}", file=sys.stderr)
+        print(f"[llm] LLM call failed, skipping: {e}", file=sys.stderr)
         return None
     try:
         return body["choices"][0]["message"]["content"].strip()
