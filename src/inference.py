@@ -1,14 +1,10 @@
-"""A9 (s(CASP) inference engine): compiles the in-force program Π_τ for date τ into s(CASP) syntax.
+"""S_infer: compile the in-force program Π_τ (units in force at date τ) to s(CASP).
 
-Encoding decisions (the "why"):
-  - `exception_of(E, U)` must *block* U's default rule → encoded with negation-as-failure:
-        blocked(U) :- exception_of(_, U).
-        holds(U)   :- in_force(U), not blocked(U).
-  - A8 rules keep their premises as quoted atoms (`premise(Rid, Text).` facts). Turning legal
-    text into logical atoms is S_know's job; A9 only preserves them verbatim so the .pl is always
-    syntactically valid regardless of how well the LLM normalized the atoms.
-
-Run: python -I src/inference.py <file md> [--versions a4_<name>_versions.jsonl --date YYYY-MM-DD] [--query "holds('ID')"]
+exception_of edges become blocking rules via negation-as-failure:
+    blocked(U) :- exception_of(_, U).
+    holds(U)   :- in_force(U), not blocked(U).
+A8 rule premises are kept as quoted atoms; grounding legal text to logical atoms is S_know's
+job, so here we only care that the .pl stays syntactically valid however the LLM phrased it.
 """
 import argparse
 import json
@@ -21,7 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import edges
-import versioning as versioning
+import versioning
 
 ROOT = edges.ROOT
 OUT_DIR = edges.PROCESSED_DIR

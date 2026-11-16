@@ -14,7 +14,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
 import edges
 import exceptions
-import general_exceptions as general_exceptions
+import general_exceptions
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLE_FILE = ROOT / "data" / "sample" / "blds2015_5dieu.md"

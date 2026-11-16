@@ -24,7 +24,7 @@ from pathlib import Path
 from typing import NamedTuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import parse as parse
+import parse
 import edges
 import exceptions
 import law_registry
@@ -75,10 +75,10 @@ _NORMALIZE_PROMPT = (
 
 
 def normalize_unknown_line(line):
-    """Chuẩn hoá dòng lạ bằng LLM (S_upd). Trả về dòng chỉ thị chuẩn hoặc None.
+    """S_upd: nhờ LLM viết lại dòng chỉ thị không parse được về R1-R6, rồi parse lại cho chắc.
 
-    LLM chưa cấu hình thì None (giữ hành vi cũ: dòng lạ là lỗi, không đoán). Kết quả chỉ được
-    chấp nhận khi match_directive nhận ra đúng một chỉ thị — kiểm chặt trước khi áp vào đồ thị phiên bản.
+    LLM tắt / lỗi / trả thứ match_directive không nhận -> None, caller vẫn ném đúng lỗi E_* cũ.
+    Nghĩa là model yếu chỉ có thể fail-closed, không thể nhét chỉ thị rác vào đồ thị phiên bản.
     """
     if not llm.enabled():
         return None

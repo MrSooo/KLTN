@@ -1,18 +1,9 @@
-"""A8 (S_know): the knowledge layer.
+"""S_know: pull propositions/predicates and rules out of in-force units via the LLM.
 
-Reads the affected set A(d) — the units in force at date d — and uses the LLM to extract:
-  - propositions and their predicates P, each categorized "concept" or "input";
-  - implicit exception_of edges (events that disable a rule without being spelled out);
-  - inference rules R (head = conclusion, body = list of conditions).
-Every LLM output must pass validation; invalid items are moved to the quarantine set Q (kept out of A9).
-
-Input: A1 triples (edges.read_units); optionally A4 output at a date (--versions a4_<name>_versions.jsonl --date YYYY-MM-DD).
-Output (data/processed/):
-  a8_propositions_<stem>.jsonl, a8_predicates_<stem>.jsonl, a8_implicit_exceptions_<stem>.jsonl,
-  a8_rules_<stem>.jsonl, a8_quarantine_<stem>.jsonl and docs/a8_report_<stem>.txt.
-When the LLM is unconfigured: extract nothing, write empty files + a note, leave A1-A7 unchanged.
-
-Run: python -I src/knowledge_layer.py <file md> [--versions a4_<name>_versions.jsonl --date YYYY-MM-DD]
+Each in-force unit is sent to the LLM asking for propositions + predicates P (concept|input),
+implicit exception_of edges, and rules R. Every payload is schema-checked; anything that fails
+lands in quarantine Q (a8_quarantine_*.jsonl) and never reaches inference. LLM unconfigured =>
+empty outputs, deterministic pipeline untouched.
 """
 import argparse
 import json
@@ -22,7 +13,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I mode: add the script dir for sibling imports
 import edges
-import versioning as versioning
+import versioning
 import llm
 
 ROOT = edges.ROOT
@@ -32,6 +23,7 @@ DOCS_DIR = ROOT / "docs"
 CATEGORIES = ("concept", "input")
 METHOD = "implicit"
 
+# Prompt is Vietnamese on purpose — the statute is Vietnamese, and we get more faithful ids/evidence.
 _SYSTEM = (
     "Bạn phân tích một đơn vị văn bản luật Việt Nam. Trả về ĐÚNG MỘT đối tượng JSON thuần "
     "(không markdown, không giải thích) theo lược đồ:\n"
@@ -90,7 +82,7 @@ def active_units(src, versions=None, date=None):
             for r in active if r.get("text")}
 
 def validate_package(data, code, unit_ids, seen_prop, problems, out):
-    """Validate one unit's LLM JSON package; bad items go to problems (set Q), valid ones to out."""
+    """Schema-check one unit's LLM payload; bad rows land in Q, good rows in out."""
     if not isinstance(data, dict):
         problems.append({"source": code, "kind": "package", "row": data, "reason": "gói không phải object"})
         return

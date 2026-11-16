@@ -1,14 +1,8 @@
-"""Stdlib-only LLM client for the LLM-backed steps: S_upd (versioning) and S_know (knowledge_layer).
+"""Minimal OpenAI-compatible chat client (urllib only) — zero deps so `-I` stays clean.
 
-Calls an OpenAI-compatible chat-completions API via urllib.request (no third-party deps).
-Configured via environment variables / the project `.env` (unconfigured = LLM disabled):
-  LLM_API_KEY   (required to enable)
-  LLM_MODEL     (required to enable, e.g. gpt-4o-mini)
-  LLM_BASE_URL  (default https://api.openai.com/v1)
-  LLM_TIMEOUT   (seconds, default 60)
-
-When disabled, enabled() is False and complete() returns None, so the LLM-backed steps keep
-their current deterministic behaviour (never guess). This client wraps the A1-A7 core.
+Reads LLM_* from the project `.env`. No key+model => enabled() is False and complete()
+returns None — that's the contract: LLM-backed steps then fall back to their deterministic
+path instead of guessing.
 """
 import json
 import os
@@ -21,10 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 def _load_dotenv(path=None):
-    """Load the project-root .env (stdlib only, no python-dotenv).
-
-    Real environment variables win over file values: only set a key if it is not already present.
-    """
+    """Pull `<repo>/.env` into os.environ; real env vars already set win."""
     path = path or ROOT / ".env"
     try:
         with open(path, encoding="utf-8") as f:

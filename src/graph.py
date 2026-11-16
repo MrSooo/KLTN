@@ -27,9 +27,9 @@ from typing import NamedTuple
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
 import edges
 import exceptions
-import versioning as versioning
-import validation as validation
-import general_exceptions as general_exceptions
+import versioning
+import validation
+import general_exceptions
 
 OUT_DIR = edges.PROCESSED_DIR  # test đổi sang thư mục tạm
 DOCS_DIR = edges.ROOT / "docs"

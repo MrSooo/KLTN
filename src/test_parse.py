@@ -12,7 +12,7 @@ import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import parse as parse
+import parse
 
 SAMPLE_FILE = parse.ROOT / "data" / "sample" / "blds2015_5dieu.md"
 FULL_FILE = parse.ROOT / "data" / "raw" / "blds2015_p4.md"

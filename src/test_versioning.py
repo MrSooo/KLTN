@@ -14,10 +14,10 @@ import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import parse as parse
+import parse
 import edges
 import exceptions
-import versioning as versioning
+import versioning
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLE_FILE = ROOT / "data" / "sample" / "blds2015_5dieu.md"
