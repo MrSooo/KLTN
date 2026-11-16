@@ -121,11 +121,16 @@ def check_codes(triples, expect):
         if n != 1:
             one_type.append(f"{s}: {n} dòng type" + (f" ({', '.join(type_rows[s])})" if n else ""))
     repeated = [f"({s}, {p}) lặp ở dòng {', '.join(map(str, lines))}" for (s, p), lines in pair_lines.items() if len(lines) > 1]
+    if expect is None:
+        c1a = Check("1a", "số đơn vị (s có dòng type)", f"{n_units} (không đối chiếu)", [])
+        c1b = Check("1b", "số Điều", f"{n_dieu} (không đối chiếu)", [])
+    else:
+        c1a = Check("1a", "số đơn vị (s có dòng type)", f"{n_units}, kỳ vọng {expect.units}",
+                    [] if n_units == expect.units else [f"có {n_units} đơn vị, cần {expect.units}"])
+        c1b = Check("1b", "số Điều", f"{n_dieu}, kỳ vọng {expect.dieu}",
+                    [] if n_dieu == expect.dieu else [f"có {n_dieu} Điều, cần {expect.dieu}"])
     checks = [
-        Check("1a", "số đơn vị (s có dòng type)", f"{n_units}, kỳ vọng {expect.units}",
-              [] if n_units == expect.units else [f"có {n_units} đơn vị, cần {expect.units}"]),
-        Check("1b", "số Điều", f"{n_dieu}, kỳ vọng {expect.dieu}",
-              [] if n_dieu == expect.dieu else [f"có {n_dieu} Điều, cần {expect.dieu}"]),
+        c1a, c1b,
         Check("1c", "mỗi s có đúng một dòng type", f"{len(subjects)} s", one_type),
         Check("1d", "mỗi cặp (s, p) một lần", f"{len(pair_lines)} cặp", repeated),
     ]
@@ -168,14 +173,18 @@ def check_parents(unit_types, edges, expect):
         elif child in unit_types and unit_types[child] in PARENT_TYPE and unit_types[parent] != PARENT_TYPE[unit_types[child]]:
             bad_parent.append(f"{child}: cha {parent} là {unit_types[parent]}, cần {PARENT_TYPE[unit_types[child]]}")
 
-    want_count = expect.units - expect.dieu
+    if expect is None:
+        c2e = Check("2e", "số part_of = số đơn vị - số Điều", f"{len(part_of)} (không đối chiếu)", [])
+    else:
+        want_count = expect.units - expect.dieu
+        c2e = Check("2e", "số part_of = số đơn vị - số Điều", f"{len(part_of)}, kỳ vọng {expect.units} - {expect.dieu} = {want_count}",
+                    [] if len(part_of) == want_count else [f"có {len(part_of)} part_of, cần {want_count}"])
     return [
         Check("2a", "Điều không có cha", f"{sum(1 for t in unit_types.values() if t == 'dieu')} Điều", dieu_parent),
         Check("2b", "Khoản và Điểm có đúng một cha", f"{sum(1 for t in unit_types.values() if t in ('khoan', 'diem'))} đơn vị", one_parent),
         Check("2c", "cha = mã con bỏ đoạn cuối", f"{len(part_of)} cạnh part_of", wrong_code),
         Check("2d", "contains đối xứng với part_of", f"contains {len(contains)}, part_of {len(part_of)}", asym),
-        Check("2e", "số part_of = số đơn vị - số Điều", f"{len(part_of)}, kỳ vọng {expect.units} - {expect.dieu} = {want_count}",
-              [] if len(part_of) == want_count else [f"có {len(part_of)} part_of, cần {want_count}"]),
+        c2e,
         Check("2f", "cha tồn tại và đúng bậc", f"{len(part_of)} cạnh part_of", bad_parent),
     ]
 
@@ -334,9 +343,7 @@ def write_text(text, path):
 def run(src, versions=None):
     """Chạy các bước (bước 4 chỉ khi có versions), in và ghi báo cáo, trả về mã thoát (0 đạt, 1 có vi phạm ở bất kỳ bước nào)."""
     stem = Path(src).stem
-    expect = EXPECTED.get(stem)
-    if expect is None:
-        raise SystemExit(f"LỖI: chưa có số đối chiếu cho {stem!r} (bảng EXPECTED có: {', '.join(EXPECTED)})")
+    expect = EXPECTED.get(stem)  # None => luật mới: chạy bước cấu trúc, bỏ đối chiếu số kỳ vọng
     paths = {"a1_triples": a2.triples_path(src), "a2_edges": a2.edges_path(src),
              "a2_refs": a2.refs_path(src), "a3_exceptions": a3.exceptions_path(src)}
     try:

@@ -397,9 +397,7 @@ def run(src, versions=None, date=None):
     stem = Path(src).stem
     expect, tag = None, None
     if versions is None:
-        expect = EXPECTED.get(stem)
-        if expect is None:
-            raise SystemExit(f"LỖI: chưa có số đối chiếu cho {stem!r} (bảng EXPECTED có: {', '.join(EXPECTED)})")
+        expect = EXPECTED.get(stem)  # None => bỏ bước 7f (thu nạp luật mới), vẫn chạy 7a-7e
     else:
         try:
             date = a4.parse_iso(date).isoformat()

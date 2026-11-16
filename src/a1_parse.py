@@ -12,6 +12,9 @@ ROOT = Path(__file__).resolve().parent.parent
 SAMPLE = ROOT / "data" / "raw" / "blds2015_p4.md"
 PROCESSED_DIR = ROOT / "data" / "processed"
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I: sibling import needs an explicit path
+import law_registry
+
 DOC_PREFIX = "BLDS2015"  # tiền tố id: BLDS2015.D621.K1.a (Điểm đ viết thành dd: BLDS2015.D1.K1.dd)
 
 # Dãy số Điều mong đợi của từng file nguồn, theo thứ tự xuất hiện.
@@ -139,14 +142,15 @@ def diem_code(label):
     return label.replace("đ", "dd")
 
 
-def parse(tokens, expected_dieu):
+def parse(tokens, expected_dieu, prefix=DOC_PREFIX):
     """Máy trạng thái duyệt list token, dựng các đơn vị Điều > Khoản > Điểm.
 
-    expected_dieu: dãy số Điều mong đợi theo thứ tự. Mọi lỗi được thu vào `errors`, parser vẫn đi
-    tiếp; sau lỗi, bộ đếm được đồng bộ lại theo số thực tế để lỗi không lan sang các dòng sau.
+    expected_dieu: dãy số Điều mong đợi theo thứ tự; None = không chốt dãy (thu nạp luật mới).
+    Mọi lỗi được thu vào `errors`, parser vẫn đi tiếp; sau lỗi, bộ đếm được đồng bộ lại theo số
+    thực tế để lỗi không lan sang các dòng sau.
     """
     units, errors, notes = [], [], []
-    expected_dieu = list(expected_dieu)
+    expected_dieu = list(expected_dieu) if expected_dieu is not None else None
     dieu = khoan = None  # Điều / Khoản hiện tại
     n_dieu = 0           # số phần tử expected_dieu đã dùng
     khoan_no = 0         # số Khoản gần nhất trong Điều hiện tại
@@ -160,15 +164,18 @@ def parse(tokens, expected_dieu):
 
         if t.kind == "dieu":
             number = int(t.label)
-            want = expected_dieu[n_dieu] if n_dieu < len(expected_dieu) else None
-            if number == want:
-                n_dieu += 1
+            if expected_dieu is not None:
+                want = expected_dieu[n_dieu] if n_dieu < len(expected_dieu) else None
+                if number == want:
+                    n_dieu += 1
+                else:
+                    err(t, f"Điều {number} thừa, ngoài danh sách mong đợi" if want is None
+                        else f"Điều {number}, mong đợi Điều {want}")
+                    rest = expected_dieu[n_dieu:]
+                    n_dieu += rest.index(number) + 1 if number in rest else 1
             else:
-                err(t, f"Điều {number} thừa, ngoài danh sách mong đợi" if want is None
-                    else f"Điều {number}, mong đợi Điều {want}")
-                rest = expected_dieu[n_dieu:]
-                n_dieu += rest.index(number) + 1 if number in rest else 1
-            dieu = Unit(f"{DOC_PREFIX}.D{t.label}", "dieu", t.label, t.text, [], t.line_no)
+                n_dieu += 1
+            dieu = Unit(f"{prefix}.D{t.label}", "dieu", t.label, t.text, [], t.line_no)
             units.append(dieu)
             khoan, khoan_no, diem_idx = None, 0, -1
 
@@ -207,7 +214,7 @@ def parse(tokens, expected_dieu):
             if prev is not None and prev.kind == "diem" and khoan is not None:
                 notes.append(f"Điều {dieu.number}, Khoản {khoan.number}, dòng {t.line_no}")
 
-    if n_dieu < len(expected_dieu):
+    if expected_dieu is not None and n_dieu < len(expected_dieu):
         last = tokens[-1].line_no if tokens else 0
         errors.append(ParseError(last, f"hết file nhưng còn thiếu Điều: {expected_dieu[n_dieu:]}"))
     return Parsed(units, errors, notes)
@@ -264,15 +271,21 @@ def fail_if_suspicious(result):
     raise SystemExit(1)
 
 
+def expected_dieu(name):
+    """Dãy Điều mong đợi cho một tên file; None = không chốt dãy (thu nạp luật mới)."""
+    if name in EXPECTED_DIEU:
+        return EXPECTED_DIEU[name]
+    return law_registry.articles_for(Path(name).stem)
+
+
 def load_parsed(path):
     """Đọc file, tokenize (phải sạch) rồi parse. Trả về (Tokenized, Parsed); chưa kiểm lỗi parse."""
     path = Path(path)
-    if path.name not in EXPECTED_DIEU:
-        raise SystemExit(f"chưa khai báo dãy Điều mong đợi cho {path.name} trong EXPECTED_DIEU")
+    prefix = law_registry.prefix_for(Path(path.name).stem)
     with open(path, encoding="utf-8", newline="") as f:
         result = tokenize(f.read())
     fail_if_suspicious(result)
-    return result, parse(result.tokens, EXPECTED_DIEU[path.name])
+    return result, parse(result.tokens, expected_dieu(path.name), prefix=prefix)
 
 
 def fail_if_errors(parsed):

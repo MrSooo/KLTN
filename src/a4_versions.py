@@ -27,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm
 import a1_parse as a1
 import a2_edges as a2
 import a3_exceptions as a3
+import law_registry
 import llm
 
 ROOT = a1.ROOT
@@ -1182,6 +1183,8 @@ def _display_path(path):
 def apply_series(base, amends, name=None):
     """Áp lần lượt các văn bản sửa đổi lên văn bản gốc; trả về Run, hoặc raise A4Error (chưa ghi gì)."""
     stem = Path(base).stem
+    global DOC_PREFIX                      # id prefix theo luật gốc, để A4 chạy được với nhiều bộ luật
+    DOC_PREFIX = law_registry.prefix_for(stem)
     store = load_base(base)
     state = EdgeState(load_base_edges(stem))
     docs = []
