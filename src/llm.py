@@ -15,6 +15,32 @@ import os
 import sys
 import urllib.error
 import urllib.request
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+
+
+def _load_dotenv(path=None):
+    """Nạp .env gốc dự án (stdlib only, không cần python-dotenv).
+
+    Biến môi trường thật được ưu tiên hơn giá trị trong file: chỉ ghi nếu key chưa có sẵn.
+    """
+    path = path or ROOT / ".env"
+    try:
+        with open(path, encoding="utf-8") as f:
+            for raw in f:
+                line = raw.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, _, value = line.partition("=")
+                key, value = key.strip(), value.strip().strip("\"'")
+                if key and key not in os.environ:
+                    os.environ[key] = value
+    except OSError:
+        pass
+
+
+_load_dotenv()
 
 
 def _env(name):
