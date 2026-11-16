@@ -1,6 +1,6 @@
 """A7: kiểm tra đồ thị gộp: gộp bộ ba, bản sao text, cạnh treo, kiểm 7a-7f, ghi file, trạng thái gốc rồi theo ngày (nạp A4).
 
-Chạy: python -I src/test_graph.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy: python -I tests/test_graph.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
 Chạy general_exceptions.py rồi graph.py cho cả hai file trước (python -I src/<file>.py <file md>); test_files_on_disk đọc file đã ghi.
 Các test theo ngày tự chạy versioning.apply_series vào thư mục tạm, không cần file a4_* trên đĩa.
 """
@@ -12,7 +12,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # tests/ is separate; import modules from src/
 import edges
 import exceptions
 import versioning

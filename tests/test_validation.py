@@ -1,6 +1,6 @@
 """A5: kiểm tra bốn phép kiểm (1-3 trên A1-A3, 4 trên A4 khi có --versions) bằng dữ liệu dựng tay có bơm lỗi, rồi trên file thật.
 
-Chạy: python -I src/test_validation.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy: python -I tests/test_validation.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
 Chạy validation.py cho cả hai file trước (python -I src/validation.py <file md>), test_reports_on_disk đọc báo cáo đã ghi.
 Bước 4 (4a-4e): chạy versioning.py apply cho dev01+dev02, dev04_bo_sung (mẫu) và dev01_full (p4), rồi validation.py <md> --versions
 <file> cho từng bộ; test_versions_on_disk đọc file versions, test_reports_on_disk đọc báo cáo bước 4 đã ghi (xem VERSIONS_ON_DISK).
@@ -13,7 +13,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # tests/ is separate; import modules from src/
 import edges
 import exceptions
 import validation

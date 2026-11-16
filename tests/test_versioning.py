@@ -1,6 +1,6 @@
 """A4: kiểm tra cơ chế cập nhật có phiên bản trên file mẫu 5 Điều và 8 văn bản dev trong data/dev_amend.
 
-Chạy: python -I src/test_versioning.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy: python -I tests/test_versioning.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
 Cần parse, a2_edges, a3_exceptions đã chạy cho data/sample/blds2015_5dieu.md (file cạnh gốc trong data/processed).
 Mọi kỳ vọng ở các test (2), (3), (4), (6) được viết tay trong file này, hoặc quét độc lập từ file cạnh gốc / file md gốc,
 không suy ra từ hàm của versioning. Test ghi file chỉ ghi vào thư mục tạm (versioning.OUT_DIR / versioning.DOCS_DIR được đổi trong sandbox()).
@@ -13,7 +13,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # tests/ is separate; import modules from src/
 import parse
 import edges
 import exceptions

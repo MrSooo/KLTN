@@ -1,6 +1,6 @@
 """A6: kiểm tra ngoại lệ chung (nút điều kiện + cạnh exception_of) trên ví dụ dựng tay, file mẫu rồi file đầy đủ.
 
-Chạy: python -I src/test_general_exceptions.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy: python -I tests/test_general_exceptions.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
 Chạy general_exceptions.py cho cả hai file trước (python -I src/general_exceptions.py <file md>), test_files_on_disk đọc file đã ghi.
 """
 import contextlib
@@ -11,7 +11,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # tests/ is separate; import modules from src/
 import edges
 import exceptions
 import general_exceptions

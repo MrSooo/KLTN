@@ -1,6 +1,6 @@
 """A2a: kiểm tra cạnh cấu trúc contains / part_of trên file mẫu rồi file đầy đủ.
 
-Chạy: python -I src/test_edges.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy: python -I tests/test_edges.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
 Chạy edges.py cho cả hai file trước (python -I src/edges.py <file md>), test_edges_on_disk đọc file đã ghi.
 """
 import ast
@@ -13,7 +13,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # tests/ is separate; import modules from src/
 import edges
 
 ROOT = Path(__file__).resolve().parent.parent

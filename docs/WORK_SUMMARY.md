@@ -23,7 +23,7 @@ Chuyển pipeline tri thức luật (rule-based) hiện có sang hệ suy diễn
 | LLM client | — | `llm.py` |
 | Law registry | — | `law_registry.py` |
 
-Test: `test_a1..a7.py` → `test_parse.py`, `test_edges.py`, `test_exceptions.py`, `test_versioning.py`, `test_validation.py`, `test_general_exceptions.py`, `test_graph.py`.
+Test nằm trong thư mục `tests/`: `test_parse.py`, `test_edges.py`, `test_exceptions.py`, `test_versioning.py`, `test_validation.py`, `test_general_exceptions.py`, `test_graph.py` (chạy: `python -I tests/test_parse.py` …).
 Ghi chú: tên file dữ liệu (`a1_triples_*`, `a2_edges_*`, `a8_rules_*`, `a9_*.pl`…) giữ nguyên — đó là quy ước artifact, không phải tên module.
 
 ## Danh sách commit
