@@ -27,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm
 import a1_parse as a1
 import a2_edges as a2
 import a3_exceptions as a3
+import llm
 
 ROOT = a1.ROOT
 IN_DIR = a2.PROCESSED_DIR     # file A1/A2/A3 đã sinh, chỉ đọc
@@ -50,12 +51,45 @@ class A4Error(Exception):
         self.code, self.message, self.line_no, self.line, self.doc = code, message, line_no, line, doc
 
 
-def normalize_unknown_line(line):
-    """Móc cho tầng chuẩn hoá dòng lạ (sau này gắn LLM). Trả về dòng chỉ thị chuẩn hoặc None.
+_NORMALIZE_SYSTEM = (
+    "Bạn là bộ chuẩn hoá văn bản sửa đổi luật Việt Nam. Nhận một dòng chỉ thị và trả về ĐÚNG MỘT dòng "
+    "đã chuẩn hoá theo một trong các dạng sau (giữ nguyên đích, không đánh số thứ tự, không giải thích):\n"
+    "- <đích> được sửa đổi, bổ sung như sau:\n"
+    "- Sửa đổi, bổ sung <đích> như sau:\n"
+    "- Bổ sung Điều <n> [vào sau Điều <m>] như sau:\n"
+    "- Bãi bỏ <đích>\n"
+    "- Tên Điều <n> được sửa đổi như sau:\n"
+    "- Sửa đổi cụm từ “a” thành cụm từ “b” [tại <đích>]\n"
+    "- Thay thế cụm từ “a” bằng cụm từ “b” [tại <đích>]\n"
+    "- Bỏ cụm từ “a” [tại <đích>]\n"
+    "- Bổ sung cụm từ “b” vào sau cụm từ “a” [tại <đích>]\n"
+    "Chỉ trả về dòng đã chuẩn hoá; nếu không chắc chắn, trả về dòng rỗng."
+)
 
-    Mặc định trả None, tức là dòng lạ là LỖI (không đoán). Dòng trả về phải parse được thành một chỉ thị.
+_NORMALIZE_PROMPT = (
+    "Dòng chỉ thị chưa chuẩn (có thể dùng 'đánh số lại'/'trở thành' hoặc cách viết khác):\n"
+    "  {line}\n\n"
+    "Hãy chuẩn hoá thành một dòng chỉ thị chuẩn theo hệ thống."
+)
+
+
+def normalize_unknown_line(line):
+    """Chuẩn hoá dòng lạ bằng LLM (S_upd). Trả về dòng chỉ thị chuẩn hoặc None.
+
+    LLM chưa cấu hình thì None (giữ hành vi cũ: dòng lạ là lỗi, không đoán). Kết quả chỉ được
+    chấp nhận khi match_directive nhận ra đúng một chỉ thị — kiểm chặt trước khi áp vào đồ thị phiên bản.
     """
-    return None
+    if not llm.enabled():
+        return None
+    raw = llm.complete(_NORMALIZE_PROMPT.format(line=line), system=_NORMALIZE_SYSTEM, temperature=0.0)
+    if not raw:
+        return None
+    fixed = norm_line(" ".join(raw.split()))
+    if not fixed or "\n" in fixed or RE_NUM.match(fixed):
+        return None
+    if match_directive(strip_number(fixed)) is None:
+        return None
+    return fixed
 
 
 # ---- mã đơn vị ----
@@ -610,20 +644,29 @@ def build_directives(m, lines, i, no, raw, scope, seq0):
 
 
 def resolve_unmatched(raw, no, skipped):
-    """Dòng không khớp chỉ thị: bỏ qua (ghi vào skipped) hoặc gọi hàm móc. Trả về Matched hoặc None nếu đã bỏ qua."""
+    """Dòng không khớp chỉ thị: bỏ qua (ghi skipped), chuẩn hoá bằng LLM (móc normalize_unknown_line), hoặc lỗi.
+
+    Dòng có ý định 'đánh số lại'/'trở thành' (E_UNSUPPORTED) cũng thử qua LLM trước; chỉ báo lỗi khi LLM
+    không chuẩn hoá được. Với công tắc mặc định (LLM tắt) hành vi giữ đúng như trước.
+    """
     stripped = strip_number(raw)
-    if RE_UNSUPPORTED.search(raw):
-        raise A4Error("E_UNSUPPORTED", "chưa hỗ trợ 'đánh số lại' / 'trở thành' trong khối chỉ thị", no, raw)
-    reason = skip_reason(stripped)
-    if reason:
-        skipped.append((no, raw, reason))
-        return None
+    unsupported = RE_UNSUPPORTED.search(raw) is not None
+    if not unsupported:
+        reason = skip_reason(stripped)
+        if reason:
+            skipped.append((no, raw, reason))
+            return None
     fixed = normalize_unknown_line(raw)
     if fixed is None:
-        raise A4Error("E_UNKNOWN_LINE", "dòng lạ: không khớp chỉ thị R1–R6 và hàm chuẩn hoá không xử lý được", no, raw)
+        if unsupported:
+            raise A4Error("E_UNSUPPORTED",
+                          "chưa hỗ trợ 'đánh số lại' / 'trở thành' và LLM không chuẩn hoá được", no, raw)
+        raise A4Error("E_UNKNOWN_LINE",
+                      "dòng lạ: không khớp chỉ thị R1–R6 và hàm chuẩn hoá không xử lý được", no, raw)
     m = match_directive(strip_number(norm_line(fixed)))
     if m is None:
-        raise A4Error("E_UNKNOWN_LINE", f"dòng chuẩn do normalize_unknown_line trả về không parse được: {fixed!r}", no, raw)
+        raise A4Error("E_UNKNOWN_LINE",
+                      f"dòng chuẩn do normalize_unknown_line trả về không parse được: {fixed!r}", no, raw)
     return m
 
 
