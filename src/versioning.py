@@ -1,10 +1,10 @@
 """A4: cơ chế cập nhật có phiên bản cho lớp văn bản (BLDS 2015, đơn vị Điều / Khoản / Điểm).
 
-Chạy: python -I src/a4_versions.py apply --base <md gốc> --amend DOC [--amend DOC2 ...]
+Chạy: python -I src/versioning.py apply --base <md gốc> --amend DOC [--amend DOC2 ...]
                                   [--effective-from YYYY-MM-DD] [--doc-id ID] [--name NAME]
-      python -I src/a4_versions.py snapshot --name NAME --date YYYY-MM-DD [--out PATH]
+      python -I src/versioning.py snapshot --name NAME --date YYYY-MM-DD [--out PATH]
 
-apply: nạp văn bản gốc (a1.load_parsed) và cạnh gốc của A2/A3 (chỉ đọc), áp từng văn bản sửa đổi theo ngày hiệu lực.
+apply: nạp văn bản gốc (parse.load_parsed) và cạnh gốc của A2/A3 (chỉ đọc), áp từng văn bản sửa đổi theo ngày hiệu lực.
   Không lỗi: ghi data/processed/a4_<name>_{versions,amend_edges,edge_changes}.jsonl, a4_<name>_{changed,impact}.json
   và docs/a4_report_<name>.txt, thoát 0. Có lỗi (bất kỳ kiểm nào): chỉ ghi docs/a4_report_<name>.txt, thoát 1.
 snapshot: đơn vị đang hiệu lực tại ngày T, xuất Markdown cùng quy ước với file BLDS gốc (stdout hoặc --out).
@@ -24,19 +24,19 @@ from pathlib import Path
 from typing import NamedTuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import a1_parse as a1
-import a2_edges as a2
-import a3_exceptions as a3
+import parse as parse
+import edges
+import exceptions
 import law_registry
 import llm
 
-ROOT = a1.ROOT
-IN_DIR = a2.PROCESSED_DIR     # file A1/A2/A3 đã sinh, chỉ đọc
-OUT_DIR = a2.PROCESSED_DIR    # file dữ liệu A4 (test đổi sang thư mục tạm)
+ROOT = parse.ROOT
+IN_DIR = edges.PROCESSED_DIR     # file A1/A2/A3 đã sinh, chỉ đọc
+OUT_DIR = edges.PROCESSED_DIR    # file dữ liệu A4 (test đổi sang thư mục tạm)
 DOCS_DIR = ROOT / "docs"
-DOC_PREFIX = a1.DOC_PREFIX
+DOC_PREFIX = parse.DOC_PREFIX
 
-# A2/A3 nhận mã có hậu tố chữ làm nguồn (đã thử, khoá bằng test_a2_a3_accept_suffix_codes). Đặt False thì đơn vị
+# A2/A3 nhận mã có hậu tố chữ làm nguồn (đã thử, khoá bằng test_edges_a3_accept_suffix_codes). Đặt False thì đơn vị
 # có hậu tố bị loại khỏi tập đưa vào A2/A3 và được liệt kê ở mục "chưa tính cạnh (mã có hậu tố)" của báo cáo.
 A2A3_ACCEPT_SUFFIX = True
 
@@ -102,13 +102,13 @@ def parent_code(code):
 
 
 def seg_key(seg):
-    """Khoá sắp xếp một đoạn mã: Điều/Khoản theo (số, hậu tố), Điểm theo a1.DIEM_LETTERS."""
+    """Khoá sắp xếp một đoạn mã: Điều/Khoản theo (số, hậu tố), Điểm theo parse.DIEM_LETTERS."""
     m = re.fullmatch(r"[DK](\d+)([a-z]?)", seg)
     if m:
         return (1, int(m[1]), m[2])
     letter = "đ" if seg == "dd" else seg
-    if len(letter) == 1 and letter in a1.DIEM_LETTERS:
-        return (2, a1.DIEM_LETTERS.index(letter), "")
+    if len(letter) == 1 and letter in parse.DIEM_LETTERS:
+        return (2, parse.DIEM_LETTERS.index(letter), "")
     return (0, 0, seg)
 
 
@@ -123,7 +123,7 @@ def unit_of_code(code):
     if m:
         return ("dieu" if m[1] == "D" else "khoan"), m[2]
     letter = "đ" if seg == "dd" else seg
-    if len(letter) == 1 and letter in a1.DIEM_LETTERS:
+    if len(letter) == 1 and letter in parse.DIEM_LETTERS:
         return "diem", letter
     raise A4Error("E_CODE", f"mã không hợp lệ: {code!r}")
 
@@ -131,7 +131,7 @@ def unit_of_code(code):
 def child_code(parent, kind, number):
     if kind == "khoan":
         return f"{parent}.K{number}"
-    return f"{parent}.{a1.diem_code(number)}"
+    return f"{parent}.{parse.diem_code(number)}"
 
 
 def has_suffix(code):
@@ -216,7 +216,7 @@ RE_SEP = re.compile(r", |; | và ")
 
 def _ref(dieu, khoan=None, diem=None, where=""):
     diem = diem.lower() if diem else None
-    if diem and diem not in a1.DIEM_LETTERS:
+    if diem and diem not in parse.DIEM_LETTERS:
         raise A4Error("E_REFLIST", f"điểm {diem} không thuộc bảng chữ của Điểm {where}")
     if diem and not khoan:
         raise A4Error("E_REFLIST", f"điểm {diem} phải kèm khoản {where}")
@@ -274,7 +274,7 @@ def ref_code(ref):
     if ref.khoan:
         code += f".K{ref.khoan}"
     if ref.diem:
-        code += "." + a1.diem_code(ref.diem)
+        code += "." + parse.diem_code(ref.diem)
     return code
 
 
@@ -319,14 +319,14 @@ def _khoan_key(number):
 
 
 def _check_order(prev, node):
-    """Khoản liên tiếp (2, 2a, 2b, 3; con đầu là 1), Điểm liên tiếp theo a1.DIEM_LETTERS (con đầu là a)."""
+    """Khoản liên tiếp (2, 2a, 2b, 3; con đầu là 1), Điểm liên tiếp theo parse.DIEM_LETTERS (con đầu là a)."""
     if node.kind == "diem":
-        if node.number not in a1.DIEM_LETTERS:
+        if node.number not in parse.DIEM_LETTERS:
             raise A4Error("E_ORDER", f"điểm {node.number} không thuộc bảng chữ của Điểm", node.line_no)
-        want = 0 if prev is None else a1.DIEM_LETTERS.index(prev.number) + 1
-        got = a1.DIEM_LETTERS.index(node.number)
+        want = 0 if prev is None else parse.DIEM_LETTERS.index(prev.number) + 1
+        got = parse.DIEM_LETTERS.index(node.number)
         if got != want:
-            wl = a1.DIEM_LETTERS[want] if want < len(a1.DIEM_LETTERS) else "(hết bảng chữ)"
+            wl = parse.DIEM_LETTERS[want] if want < len(parse.DIEM_LETTERS) else "(hết bảng chữ)"
             raise A4Error("E_ORDER", f"điểm {node.number}, mong đợi điểm {wl}", node.line_no)
         return
     n, s = _khoan_key(node.number)
@@ -487,11 +487,11 @@ def match_directive(line):
     if m:
         khoan = f"{DOC_PREFIX}.D{m['x'].lower()}.K{m['k'].lower()}"
         for letter in (m["n"], m["m"]):
-            if letter and letter.lower() not in a1.DIEM_LETTERS:
+            if letter and letter.lower() not in parse.DIEM_LETTERS:
                 raise A4Error("E_REFLIST", f"điểm {letter} không thuộc bảng chữ của Điểm")
         n = m["n"].lower()
-        after = f"{khoan}.{a1.diem_code(m['m'].lower())}" if m["m"] else None
-        return Matched("insert_unit", {"kind": "diem", "number": n, "code": f"{khoan}.{a1.diem_code(n)}", "after": after})
+        after = f"{khoan}.{parse.diem_code(m['m'].lower())}" if m["m"] else None
+        return Matched("insert_unit", {"kind": "diem", "number": n, "code": f"{khoan}.{parse.diem_code(n)}", "after": after})
     curly = _curly(line)
     for mode, rel, rx in PHRASE_FORMS:
         m = rx.match(curly)
@@ -809,7 +809,7 @@ def load_base_edges(stem):
     rows = []
     for p in paths:
         if not p.exists():
-            raise A4Error("E_BASE", f"chưa có {p}; chạy a2_edges.py và a3_exceptions.py cho file gốc trước")
+            raise A4Error("E_BASE", f"chưa có {p}; chạy edges.py và exceptions.py cho file gốc trước")
         rows += read_jsonl(p)
     return rows
 
@@ -838,8 +838,8 @@ RE_MENTION = re.compile(r"\b(?:Điều|khoản|điểm)\s+(?:\d+[a-zđ]?|[a-zđ]
 
 
 def uncovered_mentions(code, text):
-    """Mention điều/khoản/điểm không nằm trong cụm mà a2.find_refs nhận ra trên đơn vị: [(mã, mention, ngữ cảnh)]."""
-    refs = a2.find_refs({code: {"type": "khoan", "number": "x", "source_line": 0, "text": text}})[0]
+    """Mention điều/khoản/điểm không nằm trong cụm mà edges.find_refs nhận ra trên đơn vị: [(mã, mention, ngữ cảnh)]."""
+    refs = edges.find_refs({code: {"type": "khoan", "number": "x", "source_line": 0, "text": text}})[0]
     spans, pos = [], 0
     for r in refs:
         k = text.find(r.phrase, pos)
@@ -848,7 +848,7 @@ def uncovered_mentions(code, text):
     out = []
     for m in RE_MENTION.finditer(text):
         if not any(a <= m.start() and m.end() <= b for a, b in spans):
-            ctx = text[max(0, m.start() - a2.CONTEXT_CHARS):m.end() + a2.CONTEXT_CHARS].replace("\n", " ")
+            ctx = text[max(0, m.start() - edges.CONTEXT_CHARS):m.end() + edges.CONTEXT_CHARS].replace("\n", " ")
             out.append((code, m.group(0), ctx))
     return out
 
@@ -1036,7 +1036,7 @@ def _edge_row(op, key, row, at):
 
 
 def recompute_edges(store, state, step, S):
-    """Chạy lại a2.build_refs và a3.find_exceptions cho nguồn thuộc S, so với cạnh hiện có cùng nguồn, ghi add/close.
+    """Chạy lại edges.build_refs và exceptions.find_exceptions cho nguồn thuộc S, so với cạnh hiện có cùng nguồn, ghi add/close.
 
     Chỉ nguồn thuộc S có text trong tập đưa vào A2/A3; mọi đơn vị đang hiệu lực khác chỉ làm đích và tổ tiên. Nhờ vậy cạnh
     gốc của đơn vị không đổi mà trỏ vào đích đã đóng không làm A2/A3 báo lỗi: nó thành cờ cạnh đứt.
@@ -1046,20 +1046,20 @@ def recompute_edges(store, state, step, S):
     step.excluded = [c for c in S if c in skip]
     S_set = {c for c in S if c not in skip}
     # cha có "sau đây:" cần text để quy tắc 2 của A3 sinh cạnh cho con mới
-    listy = {parent_code(c) for c in S_set if parent_code(c) and (store.cur(parent_code(c)).text or "").endswith(a3.LIST_END)}
+    listy = {parent_code(c) for c in S_set if parent_code(c) and (store.cur(parent_code(c)).text or "").endswith(exceptions.LIST_END)}
     try:
         view = edge_view(store, S_set, skip)
-        new_refs = [(s, p, o, ev) for s, p, o, ev in a2.build_refs(view)[0] if s in S_set]
+        new_refs = [(s, p, o, ev) for s, p, o, ev in edges.build_refs(view)[0] if s in S_set]
     except ValueError as e:
         raise A4Error("E_A2", str(e))
     try:
         view3 = edge_view(store, S_set | listy, skip)
-        exc, _, unhandled = a3.find_exceptions(view3, a2.build_edges(view3))
+        exc, _, unhandled = exceptions.find_exceptions(view3, edges.build_edges(view3))
     except ValueError as e:
         raise A4Error("E_A3", str(e))
     # Cạnh thuộc phạm vi so khi đơn vị giữ chứng cứ của nó thuộc S. Với refers_to và quy tắc 1 đó là nguồn s; với quy tắc 2
     # (except_list_pattern) chứng cứ là chữ của cha o, còn nguồn s là con, nên con của một cha changed cũng được so.
-    in_scope = lambda s, o, method: s in S_set or (method == a3.EXCEPT_LIST and o in S_set)
+    in_scope = lambda s, o, method: s in S_set or (method == exceptions.EXCEPT_LIST and o in S_set)
     new_exc = [(s, p, o, ev, method) for s, p, o, ev, method in exc if in_scope(s, o, method)]
     step.unhandled = [(c, sentence) for c, sentence in unhandled if c in S_set]
 
@@ -1161,7 +1161,7 @@ class AmendSpec(NamedTuple):
 def load_base(base):
     base = Path(base)
     try:
-        _, parsed = a1.load_parsed(base)
+        _, parsed = parse.load_parsed(base)
     except SystemExit as e:
         raise A4Error("E_BASE", f"không nạp được văn bản gốc {base} (A1 thoát {e.code!r}; xem stderr)")
     if parsed.errors:

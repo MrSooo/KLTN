@@ -1,6 +1,6 @@
 """Single source of truth for law identity: id prefix, expected Article sequence, cross-check counts.
 
-a1/a4/a5/a7 used to hardcode "BLDS2015" and the expected-article/per-count tables. That breaks the
+parse/versioning/validation/graph used to hardcode "BLDS2015" and the expected-article/per-count tables. That breaks the
 moment a second corpus (Labour Code 45/2019/QH14, then Decree 152/2020 & 219/2025 as amend docs)
 arrives. Stages now resolve identity from the source-file stem via this registry instead.
 

@@ -1,4 +1,4 @@
-"""Stdlib-only LLM client for the LLM-backed steps: S_upd (a4_versions) and S_know (a8_knowledge_layer).
+"""Stdlib-only LLM client for the LLM-backed steps: S_upd (versioning) and S_know (knowledge_layer).
 
 Calls an OpenAI-compatible chat-completions API via urllib.request (no third-party deps).
 Configured via environment variables / the project `.env` (unconfigured = LLM disabled):

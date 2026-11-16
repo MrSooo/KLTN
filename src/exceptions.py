@@ -1,18 +1,18 @@
 """A3: cạnh exception_of tường minh, chỉ hai quy tắc riêng (không có bộ khớp tổng quát).
 
-Đầu vào: triples của A1 (a2.read_units) và cạnh contains của A2a (a2.build_edges).
+Đầu vào: triples của A1 (edges.read_units) và cạnh contains của A2a (edges.build_edges).
 Đầu ra: data/processed/a3_exceptions_<stem>.jsonl (s, p, o, evidence, method) và docs/a3_unhandled_<stem>.txt.
 Chiều cạnh: s là phần ngoại lệ, o là quy tắc bị ngoại trừ.
 
-  Quy tắc 1, not_apply_pattern: đơn vị U có "không áp dụng". Nếu cụm dẫn chiếu (a2.CHAIN_RE) đứng NGAY trước nó, chỉ
-    cách dấu cách, thì mỗi đích của cụm (a2.group_targets) là o, s = U. Evidence là từ đầu cụm đến hết "không áp dụng".
+  Quy tắc 1, not_apply_pattern: đơn vị U có "không áp dụng". Nếu cụm dẫn chiếu (edges.CHAIN_RE) đứng NGAY trước nó, chỉ
+    cách dấu cách, thì mỗi đích của cụm (edges.group_targets) là o, s = U. Evidence là từ đầu cụm đến hết "không áp dụng".
   Quy tắc 2, except_list_pattern: text của U có "trừ" (hoặc "ngoại trừ") và kết thúc bằng "sau đây:". Mỗi đơn vị con trực
     tiếp C của U là s, o = U. Evidence là câu chứa "trừ", nằm trong text của U (= o); câu là toàn bộ text của đơn vị.
 
-Mọi trigger (a2.TRIGGER_RE) phải rơi vào đúng một trong hai: đã xử lý (sinh cạnh) hoặc unhandled (mã đơn vị và câu).
+Mọi trigger (edges.TRIGGER_RE) phải rơi vào đúng một trong hai: đã xử lý (sinh cạnh) hoặc unhandled (mã đơn vị và câu).
 Ca nằm ngoài hai quy tắc không được nới ra để bắt thêm; nó là ngoại lệ chung hoặc thuộc bước sau.
 
-Chạy: python -I src/a3_exceptions.py <file md nguồn>   (bắt buộc truyền path, không có mặc định)
+Chạy: python -I src/exceptions.py <file md nguồn>   (bắt buộc truyền path, không có mặc định)
 """
 import argparse
 import collections
@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import a2_edges as a2
+import edges
 
 PREDICATE = "exception_of"
 NOT_APPLY = "not_apply_pattern"
@@ -35,22 +35,22 @@ LIST_END = "sau đây:"
 
 
 def exceptions_path(src):
-    return a2.PROCESSED_DIR / f"a3_exceptions_{Path(src).stem}.jsonl"
+    return edges.PROCESSED_DIR / f"a3_exceptions_{Path(src).stem}.jsonl"
 
 
 def unhandled_path(src):
     """Mỗi file nguồn một file unhandled, để chạy file này không ghi đè file kia."""
-    return a2.ROOT / "docs" / f"a3_unhandled_{Path(src).stem}.txt"
+    return edges.ROOT / "docs" / f"a3_unhandled_{Path(src).stem}.txt"
 
 
 def kind_of(phrase):
-    """Chuẩn hoá giống a2.find_triggers: một dấu cách, viết thường."""
+    """Chuẩn hoá giống edges.find_triggers: một dấu cách, viết thường."""
     return re.sub(r"[ ]+", " ", phrase).casefold()
 
 
 def phrase_before(text, pos):
     """Cụm dẫn chiếu đứng ngay trước vị trí pos, chỉ cách dấu cách (không vắt qua dòng mới); không có thì None."""
-    for m in a2.CHAIN_RE.finditer(text):
+    for m in edges.CHAIN_RE.finditer(text):
         if m.end() <= pos and not text[m.end():pos].strip(" "):
             return m
     return None
@@ -81,7 +81,7 @@ def find_exceptions(units, structural):
         text = u.get("text")
         if not text:
             continue
-        hits = [(m, kind_of(m.group(0))) for m in a2.TRIGGER_RE.finditer(text)]
+        hits = [(m, kind_of(m.group(0))) for m in edges.TRIGGER_RE.finditer(text)]
         n_except = sum(1 for _, kind in hits if kind in EXCEPT_KINDS)
         for m, kind in hits:
             new, method = [], None
@@ -89,7 +89,7 @@ def find_exceptions(units, structural):
             if ref:
                 method = NOT_APPLY
                 evidence = text[ref.start():m.end()]
-                for target in a2.group_targets(code, ref.group(0), units):
+                for target in edges.group_targets(code, ref.group(0), units):
                     if target not in units:
                         raise ValueError(f"{code}: đích {target} không có trong tập đơn vị: {evidence!r}")
                     new.append((code, PREDICATE, target, evidence, method))
@@ -137,7 +137,7 @@ def check_exceptions(units, structural, edges, handled, unhandled):
             if not evidence.endswith(LIST_END):
                 errors.append(f"{s} -> {o}: evidence quy tắc 2 phải kết thúc bằng {LIST_END!r}: {evidence!r}")
 
-    n_triggers = len(a2.find_triggers(units))
+    n_triggers = len(edges.find_triggers(units))
     if len(handled) + len(unhandled) != n_triggers:
         errors.append(f"số trigger = {n_triggers}, đã xử lý {len(handled)} + unhandled {len(unhandled)}")
     for code, phrase, method in handled:
@@ -171,20 +171,20 @@ def write_unhandled(unhandled, path):
 
 def run(src):
     """Dựng cạnh exception_of từ triples của A1 và contains của A2a, in kết quả, chỉ ghi file khi sạch."""
-    units = a2.read_units(src)
-    structural = a2.build_edges(units)
+    units = edges.read_units(src)
+    structural = edges.build_edges(units)
     try:
         edges, handled, unhandled = find_exceptions(units, structural)
     except ValueError as e:
         raise SystemExit(f"LỖI: {e}")
-    a2.fail_if_errors(check_exceptions(units, structural, edges, handled, unhandled))
+    edges.fail_if_errors(check_exceptions(units, structural, edges, handled, unhandled))
 
     for s, _, o, evidence, method in edges:
         print(f"{s} → {o} | {evidence} [{method}]")
     for code, sentence in unhandled:
         print(f"unhandled {code}: {sentence}")
     per_method = collections.Counter(method for _, _, method in handled)
-    print("số đơn vị:", len(units), "| trigger:", len(a2.find_triggers(units)),
+    print("số đơn vị:", len(units), "| trigger:", len(edges.find_triggers(units)),
           "| đã xử lý:", len(handled), dict(per_method), "| unhandled:", len(unhandled), "| cạnh exception_of:", len(edges))
     write_exceptions(edges, exceptions_path(src))
     write_unhandled(unhandled, unhandled_path(src))

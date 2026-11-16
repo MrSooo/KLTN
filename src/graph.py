@@ -1,16 +1,16 @@
 """A7: đồ thị gộp (nodes + edges jsonl) từ A1-A3, A6 hoặc từ kết quả A4 tại một ngày; khử trùng lặp, gắn nhãn cô lập, kiểm tra.
 
-Trạng thái gốc: python -I src/a7_graph.py <file md nguồn>
+Trạng thái gốc: python -I src/graph.py <file md nguồn>
   Đọc a1_triples, a2_edges, a2_refs, a3_exceptions, a6_conditions, a6_exceptions của stem. Ghi data/processed/a7_<stem>_{nodes,edges}.jsonl
   và docs/a7_report_<stem>.txt.
-Tại một ngày: python -I src/a7_graph.py <file md nguồn> --versions data/processed/a4_<name>_versions.jsonl --date YYYY-MM-DD
-  Nút là đơn vị đang hiệu lực tại T (a4.active_rows). Cạnh là cạnh gốc cộng add trừ close của a4_<name>_edge_changes.jsonl có at <= T,
-  rồi lọc theo hiệu lực. Nút điều kiện và cạnh ngoại lệ chung tính lại bằng a6.find_general trên text đang hiệu lực. Ghi
+Tại một ngày: python -I src/graph.py <file md nguồn> --versions data/processed/a4_<name>_versions.jsonl --date YYYY-MM-DD
+  Nút là đơn vị đang hiệu lực tại T (versioning.active_rows). Cạnh là cạnh gốc cộng add trừ close của a4_<name>_edge_changes.jsonl có at <= T,
+  rồi lọc theo hiệu lực. Nút điều kiện và cạnh ngoại lệ chung tính lại bằng general_exceptions.find_general trên text đang hiệu lực. Ghi
   a7_<stem>_<name>_<date>_{nodes,edges}.jsonl và docs/a7_report_<stem>_<name>_<date>.txt. md phải là văn bản gốc của bộ A4 đó.
 
 Việc làm:
   Gộp bộ ba: cạnh cùng (s, p, o) từ các file thành một cạnh (giữ dòng đầu, sources liệt kê nơi xuất hiện, evidences khi gộp).
-  Bản sao text: đơn vị có text giống hệt (cùng type, a6.norm_text) với một đơn vị đứng trước: nút status "duplicate" và cạnh
+  Bản sao text: đơn vị có text giống hệt (cùng type, general_exceptions.norm_text) với một đơn vị đứng trước: nút status "duplicate" và cạnh
     same_text_as (bản sau -> canonical = đơn vị đứng đầu nhóm). Không gộp nút: mỗi đơn vị là một vị trí pháp lý có cha riêng.
   Cạnh treo (chỉ có khi nạp A4): refers_to / exception_of có nguồn còn hiệu lực mà đích không còn: giữ, status "dangling".
     Cạnh có nguồn đã đóng, hoặc contains/part_of có một đầu đã đóng, không thuộc đồ thị tại T nên bị bỏ (báo cáo ghi số lượng).
@@ -25,14 +25,14 @@ from pathlib import Path
 from typing import NamedTuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import a2_edges as a2
-import a3_exceptions as a3
-import a4_versions as a4
-import a5_checks as a5
-import a6_general_exceptions as a6
+import edges
+import exceptions
+import versioning as versioning
+import validation as validation
+import general_exceptions as general_exceptions
 
-OUT_DIR = a2.PROCESSED_DIR  # test đổi sang thư mục tạm
-DOCS_DIR = a2.ROOT / "docs"
+OUT_DIR = edges.PROCESSED_DIR  # test đổi sang thư mục tạm
+DOCS_DIR = edges.ROOT / "docs"
 
 OK, DUPLICATE, DANGLING = "ok", "duplicate", "dangling"
 NODE_STATUS = (OK, DUPLICATE)
@@ -52,7 +52,7 @@ class Expect(NamedTuple):
 
 
 # Số kỳ vọng của trạng thái gốc. p4: 215 đơn vị + 5 nút điều kiện; 322 (A2a) + 25 (A2b) + 4 (A3) + 9 (A6) + 4 same_text_as.
-# Mẫu: 35 đơn vị; 60 + 3 + 1. Đã đối chiếu độc lập ở test_a7 (cộng số dòng của các file nguồn).
+# Mẫu: 35 đơn vị; 60 + 3 + 1. Đã đối chiếu độc lập ở test_graph (cộng số dòng của các file nguồn).
 EXPECTED = {
     "blds2015_5dieu": Expect(nodes=35, edges=64, duplicates=0),
     "blds2015_p4": Expect(nodes=220, edges=364, duplicates=4),
@@ -102,16 +102,16 @@ class Graph(NamedTuple):
 
 
 def mark_duplicates(nodes):
-    """Gán status duplicate cho đơn vị có text giống hệt (cùng type, a6.norm_text) một đơn vị đứng trước.
+    """Gán status duplicate cho đơn vị có text giống hệt (cùng type, general_exceptions.norm_text) một đơn vị đứng trước.
 
     Trả về [(bản sau, canonical)] theo thứ tự nút; canonical là đơn vị đầu nhóm theo thứ tự nút. Đơn vị không có text bị bỏ qua,
     nút điều kiện không tham gia (đã gộp theo khoá khi sinh ra).
     """
     first, pairs = {}, []
     for n in nodes:
-        if n["type"] not in a5.TYPES or not n["text"]:
+        if n["type"] not in validation.TYPES or not n["text"]:
             continue
-        canonical = first.setdefault((n["type"], a6.norm_text(n["text"])), n["id"])
+        canonical = first.setdefault((n["type"], general_exceptions.norm_text(n["text"])), n["id"])
         if canonical != n["id"]:
             n["status"] = DUPLICATE
             pairs.append((n["id"], canonical))
@@ -122,7 +122,7 @@ def assemble(units, conditions, edge_set, notes):
     """Nút (đơn vị rồi nút điều kiện), đánh dấu bản sao và thêm cạnh same_text_as vào edge_set, trả về Graph."""
     nodes = units + conditions
     for dup, canonical in mark_duplicates(nodes):
-        edge_set.add("a7", {"s": dup, "p": SAME_TEXT, "o": canonical, "evidence": "", "method": SAME_METHOD})
+        edge_set.add("graph", {"s": dup, "p": SAME_TEXT, "o": canonical, "evidence": "", "method": SAME_METHOD})
     return Graph(nodes, edge_set.rows(), edge_set.merged(), notes)
 
 
@@ -155,14 +155,14 @@ def condition_nodes(triple_rows):
 
 
 def source_paths(src):
-    return {"a1_triples": a2.triples_path(src), "a2_edges": a2.edges_path(src), "a2_refs": a2.refs_path(src),
-            "a3_exceptions": a3.exceptions_path(src), "a6_conditions": a6.conditions_path(src), "a6_exceptions": a6.exceptions_path(src)}
+    return {"a1_triples": edges.triples_path(src), "a2_edges": edges.edges_path(src), "a2_refs": edges.refs_path(src),
+            "a3_exceptions": exceptions.exceptions_path(src), "a6_conditions": general_exceptions.conditions_path(src), "a6_exceptions": general_exceptions.exceptions_path(src)}
 
 
 def graph_base(src):
     """Trạng thái gốc: (Graph, {nhãn: đường dẫn file đã đọc})."""
     paths = source_paths(src)
-    rows = {name: a5.load_rows(p) for name, p in paths.items()}
+    rows = {name: validation.load_rows(p) for name, p in paths.items()}
     edge_set = EdgeSet()
     for label in FULL_SOURCES:
         for _, r in rows[label]:
@@ -172,7 +172,7 @@ def graph_base(src):
 
 def edge_changes_path(versions):
     """a4_<name>_versions.jsonl -> a4_<name>_edge_changes.jsonl cùng thư mục; tên file không đúng dạng thì ValueError."""
-    name = a5.versions_name(versions)
+    name = validation.versions_name(versions)
     if Path(versions).stem != f"a4_{name}_versions":
         raise ValueError(f"tên file versions phải có dạng a4_<name>_versions.jsonl: {versions}")
     return Path(versions).parent / f"a4_{name}_edge_changes.jsonl"
@@ -181,17 +181,17 @@ def edge_changes_path(versions):
 def graph_at(src, versions, date):
     """Đồ thị tại ngày date (YYYY-MM-DD): (Graph, {nhãn: đường dẫn file đã đọc})."""
     paths = {k: v for k, v in source_paths(src).items() if k in ("a1_triples",) + BASE_SOURCES}
-    paths["a4_versions"] = Path(versions)
+    paths["versioning"] = Path(versions)
     paths["a4_edge_changes"] = edge_changes_path(versions)
-    version_rows = a4.read_jsonl(versions)
-    rows = {name: a5.load_rows(p) for name, p in paths.items() if name not in ("a4_versions", "a4_edge_changes")}
-    rows["a4_edge_changes"] = a5.load_rows(paths["a4_edge_changes"], CHANGE_KEYS)
+    version_rows = versioning.read_jsonl(versions)
+    rows = {name: validation.load_rows(p) for name, p in paths.items() if name not in ("versioning", "a4_edge_changes")}
+    rows["a4_edge_changes"] = validation.load_rows(paths["a4_edge_changes"], CHANGE_KEYS)
     all_ids = {r["id"] for r in version_rows}
     stray = sorted({r["s"] for _, r in rows["a1_triples"]} - all_ids)
     if stray:
         raise ValueError(f"{versions} không phải của {Path(src).stem}: mã A1 không có trong versions, ví dụ {stray[:3]}")
 
-    active = a4.active_rows(version_rows, date)
+    active = versioning.active_rows(version_rows, date)
     units = []
     for r in active:
         n = node(r["id"], r["type"], r["number"], r["heading"], r["text"])
@@ -235,8 +235,8 @@ def graph_at(src, versions, date):
 
     view = {n["id"]: {"type": n["type"], "number": n["number"], "source_line": 0, **({"text": n["text"]} if n["text"] else {})}
             for n in units}
-    general = a6.find_general(view)  # ValueError nếu text mới có hai "trừ trường hợp": lỗi của dữ liệu, không đoán
-    conditions = [node(c, a6.COND_TYPE, text=clause) for c, clause in general.nodes]
+    general = general_exceptions.find_general(view)  # ValueError nếu text mới có hai "trừ trường hợp": lỗi của dữ liệu, không đoán
+    conditions = [node(c, general_exceptions.COND_TYPE, text=clause) for c, clause in general.nodes]
     for s, p, o, evidence, method in general.edges:
         edge_set.add("a6_exceptions", {"s": s, "p": p, "o": o, "evidence": evidence, "method": method})
     notes = {"date": date, "version_rows": len(version_rows), "active": len(units), "applied": dict(applied),
@@ -270,8 +270,8 @@ def check_graph(graph, expect=None):
     # 7d: dựng lại nhóm bản sao từ chính các nút, đối chiếu status và cạnh same_text_as
     p_d, first, expected = [], {}, {}
     for n in nodes:
-        if n["type"] in a5.TYPES and n["text"]:
-            canonical = first.setdefault((n["type"], a6.norm_text(n["text"])), n["id"])
+        if n["type"] in validation.TYPES and n["text"]:
+            canonical = first.setdefault((n["type"], general_exceptions.norm_text(n["text"])), n["id"])
             if canonical != n["id"]:
                 expected[n["id"]] = canonical
     out_edges = collections.defaultdict(list)
@@ -298,7 +298,7 @@ def check_graph(graph, expect=None):
         if e["p"] == "part_of" and e["status"] == OK:
             part_of[e["s"]].append(e["o"])
     for n in nodes:
-        if n["type"] not in a5.TYPES:
+        if n["type"] not in validation.TYPES:
             continue
         parents = part_of.get(n["id"], [])
         if n["type"] == "dieu":
@@ -310,8 +310,8 @@ def check_graph(graph, expect=None):
             p_e.append(f"{n['id']}: part_of tới {parents}, cần [{want!r}]")
         elif want not in by_id:
             p_e.append(f"{n['id']}: cha {want} không phải nút")
-        elif by_id[want]["type"] != a5.PARENT_TYPE[n["type"]]:
-            p_e.append(f"{n['id']}: cha {want} là {by_id[want]['type']}, cần {a5.PARENT_TYPE[n['type']]}")
+        elif by_id[want]["type"] != validation.PARENT_TYPE[n["type"]]:
+            p_e.append(f"{n['id']}: cha {want} là {by_id[want]['type']}, cần {validation.PARENT_TYPE[n['type']]}")
     contains = {(e["s"], e["o"]) for e in edges if e["p"] == "contains" and e["status"] == OK}
     reverse = {(e["o"], e["s"]) for e in edges if e["p"] == "part_of" and e["status"] == OK}
     p_e += [f"contains {a} → {b} không có part_of ngược" for a, b in sorted(contains - reverse)]
@@ -319,18 +319,18 @@ def check_graph(graph, expect=None):
 
     n_dup = sum(1 for n in nodes if n["status"] == DUPLICATE)
     checks = [
-        a5.Check("7a", "mã nút duy nhất, status nút hợp lệ", f"{len(nodes)} nút", p_a),
-        a5.Check("7b", "cạnh ok có đủ hai đầu, cạnh treo có nguồn là nút và đích không phải nút", f"{len(edges)} cạnh", p_b),
-        a5.Check("7c", "không còn bộ ba (s, p, o) lặp", f"{len(edges)} cạnh, {len(graph.merged)} bộ ba đã gộp khi dựng", p_c),
-        a5.Check("7d", "nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm", f"{n_dup} nút duplicate", p_d),
-        a5.Check("7e", "mỗi Khoản/Điểm đúng một part_of tới cha đúng bậc, contains đối xứng", f"{len(contains)} cặp contains", p_e),
+        validation.Check("7a", "mã nút duy nhất, status nút hợp lệ", f"{len(nodes)} nút", p_a),
+        validation.Check("7b", "cạnh ok có đủ hai đầu, cạnh treo có nguồn là nút và đích không phải nút", f"{len(edges)} cạnh", p_b),
+        validation.Check("7c", "không còn bộ ba (s, p, o) lặp", f"{len(edges)} cạnh, {len(graph.merged)} bộ ba đã gộp khi dựng", p_c),
+        validation.Check("7d", "nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm", f"{n_dup} nút duplicate", p_d),
+        validation.Check("7e", "mỗi Khoản/Điểm đúng một part_of tới cha đúng bậc, contains đối xứng", f"{len(contains)} cặp contains", p_e),
     ]
     if expect is not None:
         n_edges = len(edges)
         p_f = [f"có {got} {what}, cần {want}" for what, got, want in
                (("nút", len(nodes), expect.nodes), ("cạnh", n_edges, expect.edges), ("nút duplicate", n_dup, expect.duplicates))
                if got != want]
-        checks.append(a5.Check("7f", "số nút, cạnh, nút bản sao khớp bảng EXPECTED",
+        checks.append(validation.Check("7f", "số nút, cạnh, nút bản sao khớp bảng EXPECTED",
                                f"nút {len(nodes)}/{expect.nodes}, cạnh {n_edges}/{expect.edges}, duplicate {n_dup}/{expect.duplicates}", p_f))
     return checks
 
@@ -338,7 +338,7 @@ def check_graph(graph, expect=None):
 # ---- báo cáo, ghi file ----
 
 def tag_of(versions, date):
-    return f"{a5.versions_name(versions)}_{date}"
+    return f"{validation.versions_name(versions)}_{date}"
 
 
 def nodes_path(stem, tag=None):
@@ -355,7 +355,7 @@ def report_path(stem, tag=None):
 
 def format_report(stem, tag, paths, graph, checks):
     L = [f"A7 báo cáo đồ thị gộp: {stem}" + (f" ({tag})" if tag else ""), "file đã đọc:"]
-    L += [f"  {a5.display_path(p)}" for p in paths.values()]
+    L += [f"  {validation.display_path(p)}" for p in paths.values()]
     L += ["", "== Nút =="]
     L.append(f"tổng {len(graph.nodes)} | theo loại {dict(collections.Counter(n['type'] for n in graph.nodes))} | "
              f"theo status {dict(collections.Counter(n['status'] for n in graph.nodes))}")
@@ -376,10 +376,10 @@ def format_report(stem, tag, paths, graph, checks):
         L.append(f"cạnh treo ({len(notes['dangling'])}, nguồn còn hiệu lực, đích đã đóng):")
         L += [f"  {s} {p} {o}" for s, p, o in notes["dangling"]] or ["  (không có)"]
     L += ["", "== Kiểm tra =="]
-    L += [f"[{c.id}] {c.title}: {c.summary} -> {a5.verdict(c)}" for c in checks]
+    L += [f"[{c.id}] {c.title}: {c.summary} -> {validation.verdict(c)}" for c in checks]
     for c in checks:
         L += [f"    {c.id}: {p}" for p in c.problems]
-    bad = a5.failures(checks)
+    bad = validation.failures(checks)
     L += ["", "KẾT LUẬN: " + (f"KHÔNG ĐẠT ({bad} chỗ sai)" if bad else "ĐẠT")]
     return "\n".join(L) + "\n"
 
@@ -400,9 +400,9 @@ def run(src, versions=None, date=None):
         expect = EXPECTED.get(stem)  # None => bỏ bước 7f (thu nạp luật mới), vẫn chạy 7a-7e
     else:
         try:
-            date = a4.parse_iso(date).isoformat()
+            date = versioning.parse_iso(date).isoformat()
             tag = tag_of(versions, date)
-        except a4.A4Error as e:
+        except versioning.A4Error as e:
             raise SystemExit(f"LỖI: {e.message}")
     try:
         graph, paths = graph_base(src) if versions is None else graph_at(src, versions, date)
@@ -411,9 +411,9 @@ def run(src, versions=None, date=None):
     checks = check_graph(graph, expect)
     text = format_report(stem, tag, paths, graph, checks)
     print(text, end="")
-    a4.write_text(text, report_path(stem, tag))
+    versioning.write_text(text, report_path(stem, tag))
     print("đã ghi", report_path(stem, tag))
-    if a5.failures(checks):
+    if validation.failures(checks):
         print("không ghi file dữ liệu vì còn kiểm tra không đạt", file=sys.stderr)
         return 1
     write_jsonl(graph.nodes, nodes_path(stem, tag))

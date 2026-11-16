@@ -6,13 +6,13 @@ Reads the affected set A(d) — the units in force at date d — and uses the LL
   - inference rules R (head = conclusion, body = list of conditions).
 Every LLM output must pass validation; invalid items are moved to the quarantine set Q (kept out of A9).
 
-Input: A1 triples (a2.read_units); optionally A4 output at a date (--versions a4_<name>_versions.jsonl --date YYYY-MM-DD).
+Input: A1 triples (edges.read_units); optionally A4 output at a date (--versions a4_<name>_versions.jsonl --date YYYY-MM-DD).
 Output (data/processed/):
   a8_propositions_<stem>.jsonl, a8_predicates_<stem>.jsonl, a8_implicit_exceptions_<stem>.jsonl,
   a8_rules_<stem>.jsonl, a8_quarantine_<stem>.jsonl and docs/a8_report_<stem>.txt.
 When the LLM is unconfigured: extract nothing, write empty files + a note, leave A1-A7 unchanged.
 
-Run: python -I src/a8_knowledge_layer.py <file md> [--versions a4_<name>_versions.jsonl --date YYYY-MM-DD]
+Run: python -I src/knowledge_layer.py <file md> [--versions a4_<name>_versions.jsonl --date YYYY-MM-DD]
 """
 import argparse
 import json
@@ -21,12 +21,12 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I mode: add the script dir for sibling imports
-import a2_edges as a2
-import a4_versions as a4
+import edges
+import versioning as versioning
 import llm
 
-ROOT = a2.ROOT
-OUT_DIR = a2.PROCESSED_DIR
+ROOT = edges.ROOT
+OUT_DIR = edges.PROCESSED_DIR
 DOCS_DIR = ROOT / "docs"
 
 CATEGORIES = ("concept", "input")
@@ -81,11 +81,11 @@ def report_path(src, tag=None):
 def active_units(src, versions=None, date=None):
     """{unit id: {"type":..., "text":...}} for the in-force units (text-bearing only)."""
     if versions is None:
-        units = a2.read_units(src)
+        units = edges.read_units(src)
         return {c: {"type": u.get("type"), "text": u.get("text")}
                 for c, u in units.items() if u.get("text")}
-    rows = a4.read_jsonl(versions)
-    active = a4.active_rows(rows, date)
+    rows = versioning.read_jsonl(versions)
+    active = versioning.active_rows(rows, date)
     return {r["id"]: {"type": r["type"], "text": r.get("text")}
             for r in active if r.get("text")}
 
@@ -203,7 +203,7 @@ def main(argv=None):
     if (args.versions is None) != (args.date is None):
         ap.error("--versions và --date phải đi cùng nhau")
     if args.date is not None:
-        args.date = a4.parse_iso(args.date).isoformat()
+        args.date = versioning.parse_iso(args.date).isoformat()
     return run(args.path, args.versions, args.date)
 
 

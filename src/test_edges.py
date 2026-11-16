@@ -1,7 +1,7 @@
 """A2a: kiểm tra cạnh cấu trúc contains / part_of trên file mẫu rồi file đầy đủ.
 
-Chạy: python -I src/test_a2.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
-Chạy a2_edges.py cho cả hai file trước (python -I src/a2_edges.py <file md>), test_edges_on_disk đọc file đã ghi.
+Chạy: python -I src/test_edges.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy edges.py cho cả hai file trước (python -I src/edges.py <file md>), test_edges_on_disk đọc file đã ghi.
 """
 import ast
 import collections
@@ -14,7 +14,7 @@ import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import a2_edges as a2
+import edges
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLE_FILE = ROOT / "data" / "sample" / "blds2015_5dieu.md"
@@ -44,12 +44,12 @@ LEVEL = {"điều": 0, "khoản": 1, "điểm": 2}  # cấp của từ khoá: Đ
 
 
 def build(path):
-    units = a2.load_units(a2.triples_path(path))
-    return units, a2.build_edges(units)
+    units = edges.load_units(edges.triples_path(path))
+    return units, edges.build_edges(units)
 
 
 def md_counts(path):
-    """Đếm độc lập: số dòng Khoản và Điểm của file md gốc, không qua a1, không qua a2, không qua triples."""
+    """Đếm độc lập: số dòng Khoản và Điểm của file md gốc, không qua parse, không qua edges, không qua triples."""
     khoan = diem = 0
     with open(path, encoding="utf-8", newline="") as f:
         for line in f.read().split("\n"):
@@ -63,7 +63,7 @@ def md_counts(path):
 def triples_type_counts(path):
     """Đếm độc lập thứ hai: số dòng "p": "type" theo giá trị o, đọc thẳng file triples, không qua load_units."""
     counts = collections.Counter()
-    with open(a2.triples_path(path), encoding="utf-8") as f:
+    with open(edges.triples_path(path), encoding="utf-8") as f:
         for line in f:
             row = json.loads(line)
             if row["p"] == "type":
@@ -72,13 +72,13 @@ def triples_type_counts(path):
 
 
 def test_parent_of():
-    assert a2.parent_of("BLDS2015.D621") is None
-    assert a2.parent_of("BLDS2015.D621.K1") == "BLDS2015.D621"
-    assert a2.parent_of("BLDS2015.D621.K1.a") == "BLDS2015.D621.K1"
-    assert a2.parent_of("BLDS2015.D1.K1.dd") == "BLDS2015.D1.K1"
+    assert edges.parent_of("BLDS2015.D621") is None
+    assert edges.parent_of("BLDS2015.D621.K1") == "BLDS2015.D621"
+    assert edges.parent_of("BLDS2015.D621.K1.a") == "BLDS2015.D621.K1"
+    assert edges.parent_of("BLDS2015.D1.K1.dd") == "BLDS2015.D1.K1"
     for bad in ("", "BLDS2015", "BLDS2015..D1", "BLDS2015.D1.", ".D1"):
         try:
-            a2.parent_of(bad)
+            edges.parent_of(bad)
         except ValueError:
             continue
         raise AssertionError(f"mã {bad!r} phải báo lỗi")
@@ -94,7 +94,7 @@ def test_counts_match_reference():
 
 
 def test_counts_match_independent_recount():
-    """Số cạnh mỗi loại == số Khoản + số Điểm, đếm bằng hai đường không đi qua a2: dòng của md gốc và type trong triples."""
+    """Số cạnh mỗi loại == số Khoản + số Điểm, đếm bằng hai đường không đi qua edges: dòng của md gốc và type trong triples."""
     for name, path in FILES:
         khoan, diem = md_counts(path)
         types = triples_type_counts(path)
@@ -108,7 +108,7 @@ def test_counts_match_independent_recount():
 def test_check_clean_on_real_data():
     for name, path in FILES:
         units, edges = build(path)
-        assert a2.check_edges(units, edges) == [], f"file {name}: {a2.check_edges(units, edges)}"
+        assert edges.check_edges(units, edges) == [], f"file {name}: {edges.check_edges(units, edges)}"
 
 
 def test_parent_types_via_type_attribute():
@@ -159,28 +159,28 @@ def test_check_catches_corrupted_data():
 
     # 1. cha của Khoản không còn type dieu (mã A1 và type mâu thuẫn nhau)
     bad = {c: dict(u) for c, u in units.items()}
-    bad[a2.parent_of(khoan)]["type"] = "khoan"
-    assert any(khoan in e and "mong đợi cha type dieu" in e for e in a2.check_edges(bad, edges))
+    bad[edges.parent_of(khoan)]["type"] = "khoan"
+    assert any(khoan in e and "mong đợi cha type dieu" in e for e in edges.check_edges(bad, edges))
 
     # 2. Điểm bị gắn nhầm type khoan -> cha phải là Điều nhưng cha thật là Khoản
     bad = {c: dict(u) for c, u in units.items()}
     bad[diem]["type"] = "khoan"
-    assert any(diem in e for e in a2.check_edges(bad, edges))
+    assert any(diem in e for e in edges.check_edges(bad, edges))
 
     # 3. cha không có trong tập đơn vị
-    bad = {c: u for c, u in units.items() if c != a2.parent_of(khoan)}
-    assert any("không có trong tập đơn vị" in e for e in a2.check_edges(bad, edges))
+    bad = {c: u for c, u in units.items() if c != edges.parent_of(khoan)}
+    assert any("không có trong tập đơn vị" in e for e in edges.check_edges(bad, edges))
 
     # 4. cạnh trùng
-    assert any("cạnh trùng" in e for e in a2.check_edges(units, edges + [edges[0]]))
+    assert any("cạnh trùng" in e for e in edges.check_edges(units, edges + [edges[0]]))
 
     # 5. mất một cạnh part_of -> không đối xứng
-    assert any("không đối xứng" in e for e in a2.check_edges(units, [e for e in edges if e != edges[1]]))
+    assert any("không đối xứng" in e for e in edges.check_edges(units, [e for e in edges if e != edges[1]]))
 
     # 6. Điều có cha (type dieu bị gán cho đơn vị có mã 3 đoạn)
     bad = {c: dict(u) for c, u in units.items()}
     bad[khoan]["type"] = "dieu"
-    assert any(khoan in e for e in a2.check_edges(bad, edges))
+    assert any(khoan in e for e in edges.check_edges(bad, edges))
 
 
 def test_load_units_rejects_incomplete_triples():
@@ -188,7 +188,7 @@ def test_load_units_rejects_incomplete_triples():
         p = Path(tmp) / "t.jsonl"
         p.write_text('{"s": "X.D1", "p": "type", "o": "dieu"}\n', encoding="utf-8")
         try:
-            a2.load_units(p)
+            edges.load_units(p)
         except ValueError:
             return
     raise AssertionError("triples thiếu number/source_line phải báo lỗi")
@@ -199,7 +199,7 @@ def test_jsonl_written_correctly():
         edges = build(path)[1]
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp) / "e.jsonl"
-            a2.write_edges(edges, out)
+            edges.write_edges(edges, out)
             raw = out.read_bytes()
         assert not raw.startswith(b"\xef\xbb\xbf"), "có BOM"
         assert b"\\u" not in raw, "còn escape \\u (ensure_ascii phải là False)"
@@ -213,22 +213,22 @@ def test_jsonl_written_correctly():
 def test_edges_on_disk():
     """File a2_edges_<stem>.jsonl đã ghi bằng CLI phải khớp cạnh dựng lại từ triples."""
     for name, path in FILES:
-        on_disk = a2.edges_path(path)
-        assert on_disk.exists(), f"file {name}: chưa có {on_disk}, chạy a2_edges.py trước"
+        on_disk = edges.edges_path(path)
+        assert on_disk.exists(), f"file {name}: chưa có {on_disk}, chạy edges.py trước"
         rows = [json.loads(line) for line in on_disk.read_text(encoding="utf-8").split("\n") if line]
         assert [(r["s"], r["p"], r["o"]) for r in rows] == build(path)[1], f"file {name}: file trên đĩa khác cạnh dựng lại"
         assert all(r["evidence"] == "" for r in rows)
 
 
-def test_a2_does_not_import_a1():
-    tree = ast.parse(Path(a2.__file__).read_text(encoding="utf-8"))
+def test_edges_does_not_import_a1():
+    tree = ast.parse(Path(edges.__file__).read_text(encoding="utf-8"))
     imported = set()
     for node in ast.walk(tree):
         if isinstance(node, ast.Import):
             imported.update(a.name for a in node.names)
         elif isinstance(node, ast.ImportFrom):
             imported.add(node.module)
-    assert not any(m and m.startswith("a1") for m in imported), f"a2_edges import a1: {imported}"
+    assert not any(m and m.startswith("parse") for m in imported), f"a2_edges import parse: {imported}"
 
 
 def keyword_tokens(text):
@@ -237,7 +237,7 @@ def keyword_tokens(text):
 
 
 def refs_of(text):
-    refs, excluded, total = a2.find_refs({"X.D1": {"type": "dieu", "number": "1", "source_line": 1, "text": text}})
+    refs, excluded, total = edges.find_refs({"X.D1": {"type": "dieu", "number": "1", "source_line": 1, "text": text}})
     return refs, excluded, total
 
 
@@ -282,8 +282,8 @@ def test_refs_context_window():
 def test_refs_keywords_reconcile_with_independent_count():
     """Mọi từ khoá hoặc nằm trong một cụm hoặc nằm trong danh sách bị loại: không rơi mất, không đếm hai lần."""
     for name, path in FILES:
-        units = a2.load_units(a2.triples_path(path))
-        refs, excluded, total = a2.find_refs(units)
+        units = edges.load_units(edges.triples_path(path))
+        refs, excluded, total = edges.find_refs(units)
         independent = sum(len(keyword_tokens(u["text"])) for u in units.values() if "text" in u)
         assert total == independent == KEYWORD_TOTAL[path], f"file {name}: {total}, {independent}, cần {KEYWORD_TOTAL[path]}"
         in_refs = sum(len(keyword_tokens(r.phrase)) for r in refs)
@@ -294,9 +294,9 @@ def test_refs_keywords_reconcile_with_independent_count():
 
 def test_refs_counts_and_shape_table():
     for name, path in FILES:
-        refs = a2.find_refs(a2.load_units(a2.triples_path(path)))[0]
+        refs = edges.find_refs(edges.load_units(edges.triples_path(path)))[0]
         assert len(refs) == REFS_REFERENCE[path], f"file {name}: {len(refs)} cụm, cần {REFS_REFERENCE[path]}"
-        table = {shape: n for shape, n, _ in a2.shape_table(refs)}
+        table = {shape: n for shape, n, _ in edges.shape_table(refs)}
         if path == FULL_FILE:
             assert table == SHAPES_FULL, f"file {name}: {table}"
         else:
@@ -307,23 +307,23 @@ def test_refs_counts_and_shape_table():
 def test_shapes_follow_dieu_khoan_diem_order():
     """Tiêu chí bác bỏ: mọi hình dạng phải biểu diễn được bằng thứ tự điểm > khoản > Điều (cấp không tăng dọc cụm)."""
     for name, path in FILES:
-        refs = a2.find_refs(a2.load_units(a2.triples_path(path)))[0]
+        refs = edges.find_refs(edges.load_units(edges.triples_path(path)))[0]
         for shape in {r.shape for r in refs}:
             levels = [LEVEL[w.casefold()] for w in keyword_tokens(shape)]
             assert levels == sorted(levels, reverse=True), f"file {name}: {shape!r} có cấp {levels}"
 
 
 def test_refs_flag_writes_nothing():
-    on_disk = {p: p.read_bytes() for p in (a2.edges_path(SAMPLE_FILE), a2.edges_path(FULL_FILE))}
-    real_write = a2.write_edges
-    a2.write_edges = lambda *a, **k: (_ for _ in ()).throw(AssertionError("--refs không được ghi file"))
+    on_disk = {p: p.read_bytes() for p in (edges.edges_path(SAMPLE_FILE), edges.edges_path(FULL_FILE))}
+    real_write = edges.write_edges
+    edges.write_edges = lambda *a, **k: (_ for _ in ()).throw(AssertionError("--refs không được ghi file"))
     try:
         for _, path in FILES:
             with contextlib.redirect_stdout(io.StringIO()) as out:
-                a2.main([str(path), "--refs"])
+                edges.main([str(path), "--refs"])
             assert "hình dạng" in out.getvalue()
     finally:
-        a2.write_edges = real_write
+        edges.write_edges = real_write
     assert {p: p.read_bytes() for p in on_disk} == on_disk
 
 
@@ -364,8 +364,8 @@ P = "BLDS2015."
 
 def targets_in(units, source):
     """Đích của từng cụm trong text của source, theo thứ tự cụm: [(cụm, [đích])]."""
-    refs = a2.find_refs({source: units[source]})[0]
-    return [(r.phrase, a2.group_targets(source, r.phrase, units)) for r in refs]
+    refs = edges.find_refs({source: units[source]})[0]
+    return [(r.phrase, edges.group_targets(source, r.phrase, units)) for r in refs]
 
 
 def test_group_targets_four_unit_cases():
@@ -386,7 +386,7 @@ def test_group_targets_four_unit_cases():
 
 
 def test_build_refs_four_unit_cases():
-    edges, unresolved = a2.build_refs(FOUR_CASES)
+    edges, unresolved = edges.build_refs(FOUR_CASES)
     assert edges == [
         (P + "D617.K1", "refers_to", P + "D616.K1", "khoản 1 và khoản 3 Điều 616 của Bộ luật này"),
         (P + "D617.K1", "refers_to", P + "D616.K3", "khoản 1 và khoản 3 Điều 616 của Bộ luật này"),
@@ -396,15 +396,15 @@ def test_build_refs_four_unit_cases():
         (P + "D644.K2", "refers_to", P + "D621.K1", "khoản 1 Điều 621 của Bộ luật này"),
     ]
     assert unresolved == [(P + "D644.K2", "Điều 620", P + "D620")]
-    assert a2.check_refs(FOUR_CASES, edges, unresolved) == []
+    assert edges.check_refs(FOUR_CASES, edges, unresolved) == []
 
 
 def test_group_targets_multiple_items_and_diem_dd():
     units = mini_units({"X.D5": ("dieu", None), "X.D6": ("dieu", None), "X.D7": ("dieu", None),
                         "X.D7.K1": ("khoan", None), "X.D7.K1.a": ("diem", None)})
-    assert a2.group_targets("X.D7.K1.a", "Điều 5 và Điều 6", units) == ["X.D5", "X.D6"]
-    assert a2.group_targets("X.D7.K1.a", "điểm a và điểm đ khoản 1 Điều 7", units) == ["X.D7.K1.a", "X.D7.K1.dd"]
-    assert a2.group_targets("X.D7.K1.a", "điểm đ khoản này", units) == ["X.D7.K1.dd"]
+    assert edges.group_targets("X.D7.K1.a", "Điều 5 và Điều 6", units) == ["X.D5", "X.D6"]
+    assert edges.group_targets("X.D7.K1.a", "điểm a và điểm đ khoản 1 Điều 7", units) == ["X.D7.K1.a", "X.D7.K1.dd"]
+    assert edges.group_targets("X.D7.K1.a", "điểm đ khoản này", units) == ["X.D7.K1.dd"]
 
 
 def test_this_resolves_to_enclosing_unit_of_right_type():
@@ -412,16 +412,16 @@ def test_this_resolves_to_enclosing_unit_of_right_type():
     units = mini_units({"X.D5": ("dieu", None), "X.D5.K1": ("khoan", None), "X.D5.K2": ("khoan", None),
                         "X.D5.K2.a": ("diem", None), "X.D5.K2.b": ("diem", None), "X.D6": ("dieu", None)})
     # nguồn là Điểm: 'Điều này' cách hai cấp, cha trực tiếp là Khoản K2 nên lấy cha sẽ ra X.D5.K2.K1 hoặc sai Điều
-    assert a2.group_targets("X.D5.K2.a", "khoản 1 Điều này", units) == ["X.D5.K1"]
-    assert a2.group_targets("X.D5.K2.a", "điểm b khoản này", units) == ["X.D5.K2.b"]
-    assert a2.group_targets("X.D5.K2", "khoản 1 Điều này", units) == ["X.D5.K1"]
+    assert edges.group_targets("X.D5.K2.a", "khoản 1 Điều này", units) == ["X.D5.K1"]
+    assert edges.group_targets("X.D5.K2.a", "điểm b khoản này", units) == ["X.D5.K2.b"]
+    assert edges.group_targets("X.D5.K2", "khoản 1 Điều này", units) == ["X.D5.K1"]
     # nguồn nằm ở Điều khác thì 'Điều này' đi theo nguồn, không đi theo Điều đầu tiên trong tập
     units["X.D6.K1"] = mini_units({"c": ("khoan", None)})["c"]
-    assert a2.group_targets("X.D6.K1", "khoản 2 Điều này", units) == ["X.D6.K2"]
+    assert edges.group_targets("X.D6.K1", "khoản 2 Điều này", units) == ["X.D6.K2"]
     # không có tổ tiên đúng loại thì báo lỗi, không đoán
     for source, phrase in (("X.D5", "khoản 1 Điều này"), ("X.D5.K1", "điểm a khoản này")):
         try:
-            a2.group_targets(source, phrase, units)
+            edges.group_targets(source, phrase, units)
         except ValueError:
             continue
         raise AssertionError(f"{source}: {phrase!r} phải báo lỗi vì không có tổ tiên đúng loại")
@@ -439,7 +439,7 @@ def test_group_targets_rejects_unconfirmed_shapes():
                    "điểm này",                             # chưa có quy tắc
                    "khoản 1 Điều 5 khoản 2 Điều 6"):       # hai nhóm trong một cụm
         try:
-            a2.group_targets("X.D5.K1", phrase, units)
+            edges.group_targets("X.D5.K1", phrase, units)
         except ValueError:
             continue
         raise AssertionError(f"{phrase!r} phải báo lỗi")
@@ -448,14 +448,14 @@ def test_group_targets_rejects_unconfirmed_shapes():
 def test_check_refs_catches_corrupted_data():
     units = mini_units({"X.D1": ("dieu", "theo Điều 2"), "X.D2": ("dieu", None)})
     good = [("X.D1", "refers_to", "X.D2", "Điều 2")]
-    assert a2.check_refs(units, good, []) == []
-    assert any("chính nó" in e for e in a2.check_refs(units, [("X.D1", "refers_to", "X.D1", "Điều 2")], []))
-    assert any("cạnh trùng" in e for e in a2.check_refs(units, good + good, []))
-    assert any("không có trong tập" in e for e in a2.check_refs(units, [("X.D1", "refers_to", "X.D9", "Điều 2")], []))
-    assert any("evidence" in e for e in a2.check_refs(units, [("X.D1", "refers_to", "X.D2", "Điều 3")], []))
-    assert any("evidence" in e for e in a2.check_refs(units, [("X.D1", "refers_to", "X.D2", "")], []))
-    assert any("'refers_to'" in e for e in a2.check_refs(units, [("X.D1", "part_of", "X.D2", "Điều 2")], []))
-    assert any("unresolved" in e for e in a2.check_refs(units, [], [("X.D1", "Điều 2", "X.D2")]))
+    assert edges.check_refs(units, good, []) == []
+    assert any("chính nó" in e for e in edges.check_refs(units, [("X.D1", "refers_to", "X.D1", "Điều 2")], []))
+    assert any("cạnh trùng" in e for e in edges.check_refs(units, good + good, []))
+    assert any("không có trong tập" in e for e in edges.check_refs(units, [("X.D1", "refers_to", "X.D9", "Điều 2")], []))
+    assert any("evidence" in e for e in edges.check_refs(units, [("X.D1", "refers_to", "X.D2", "Điều 3")], []))
+    assert any("evidence" in e for e in edges.check_refs(units, [("X.D1", "refers_to", "X.D2", "")], []))
+    assert any("'refers_to'" in e for e in edges.check_refs(units, [("X.D1", "part_of", "X.D2", "Điều 2")], []))
+    assert any("unresolved" in e for e in edges.check_refs(units, [], [("X.D1", "Điều 2", "X.D2")]))
 
 
 # Số (cạnh, unresolved) đếm lại tay từ danh sách --refs: mỗi cụm ra bao nhiêu đích rồi trừ đích không có trong tập đơn vị.
@@ -484,51 +484,51 @@ def refers_expected(path):
 
 def test_refers_to_counts_and_reviewed_list():
     for name, path in FILES:
-        units = a2.load_units(a2.triples_path(path))
-        edges, unresolved = a2.build_refs(units)
+        units = edges.load_units(edges.triples_path(path))
+        edges, unresolved = edges.build_refs(units)
         assert (len(edges), len(unresolved)) == REFERS_REFERENCE[path], f"file {name}: {len(edges)}, {len(unresolved)}"
         want_edges, want_unresolved = refers_expected(path)
         assert [(s, o) for s, _, o, _ in edges] == want_edges, f"file {name}: cạnh khác danh sách đã duyệt"
         assert [(s, t) for s, _, t in unresolved] == want_unresolved, f"file {name}: unresolved khác danh sách đã duyệt"
-        assert a2.check_refs(units, edges, unresolved) == [], f"file {name}"
+        assert edges.check_refs(units, edges, unresolved) == [], f"file {name}"
         assert all(s != o for s, _, o, _ in edges), f"file {name}: có cạnh s == o"
 
 
 def test_refers_to_independent_recount():
     """Số đích của mỗi cụm đếm bằng cách khác: số mục có cùng từ khoá với mục đầu của cụm (mục cấp thấp nhất). Không qua group_targets."""
     for name, path in FILES:
-        units = a2.load_units(a2.triples_path(path))
-        refs = a2.find_refs(units)[0]
+        units = edges.load_units(edges.triples_path(path))
+        refs = edges.find_refs(units)[0]
         total = 0
         for r in refs:
             words = re.findall(r"(?<!\w)(điều|khoản|điểm)[ ]+(?:\d+|này|[^\W\d_])(?!\w)", r.phrase, re.I)
             total += sum(1 for w in words if w.casefold() == words[0].casefold())
-        edges, unresolved = a2.build_refs(units)
+        edges, unresolved = edges.build_refs(units)
         assert len(edges) + len(unresolved) == total, f"file {name}: {len(edges)} + {len(unresolved)} != {total}"
         assert len(edges) + len(unresolved) == sum(REFERS_REFERENCE[path]), f"file {name}"
 
 
 def test_refers_to_evidence_is_phrase_from_source_text():
     for name, path in FILES:
-        units = a2.load_units(a2.triples_path(path))
-        refs = {(r.unit, r.phrase) for r in a2.find_refs(units)[0]}
-        for s, p, o, evidence in a2.build_refs(units)[0]:
+        units = edges.load_units(edges.triples_path(path))
+        refs = {(r.unit, r.phrase) for r in edges.find_refs(units)[0]}
+        for s, p, o, evidence in edges.build_refs(units)[0]:
             assert p == "refers_to" and (s, evidence) in refs and evidence in units[s]["text"], f"file {name}: {s} -> {o}"
 
 
 def test_refers_files_on_disk():
-    """Chạy a2_edges.py <md> --refers-to trước. File a2_refs và a2_unresolved phải khớp build_refs; file A2a không lẫn refers_to."""
+    """Chạy edges.py <md> --refers-to trước. File a2_refs và a2_unresolved phải khớp build_refs; file A2a không lẫn refers_to."""
     for name, path in FILES:
-        units = a2.load_units(a2.triples_path(path))
-        edges, unresolved = a2.build_refs(units)
-        on_disk = a2.refs_path(path)
-        assert on_disk.exists(), f"file {name}: chưa có {on_disk}, chạy a2_edges.py --refers-to trước"
+        units = edges.load_units(edges.triples_path(path))
+        edges, unresolved = edges.build_refs(units)
+        on_disk = edges.refs_path(path)
+        assert on_disk.exists(), f"file {name}: chưa có {on_disk}, chạy edges.py --refers-to trước"
         rows = [json.loads(line) for line in on_disk.read_text(encoding="utf-8").split("\n") if line]
         assert all(list(r) == ["s", "p", "o", "evidence"] for r in rows), f"file {name}: sai khoá"
         assert [(r["s"], r["p"], r["o"], r["evidence"]) for r in rows] == edges, f"file {name}: file refs khác dựng lại"
-        lines = a2.unresolved_path(path).read_text(encoding="utf-8").split("\n")
+        lines = edges.unresolved_path(path).read_text(encoding="utf-8").split("\n")
         assert lines[-1] == "" and [tuple(x.split("\t")) for x in lines[:-1]] == unresolved, f"file {name}: unresolved"
-        structural = [json.loads(line)["p"] for line in a2.edges_path(path).read_text(encoding="utf-8").split("\n") if line]
+        structural = [json.loads(line)["p"] for line in edges.edges_path(path).read_text(encoding="utf-8").split("\n") if line]
         assert set(structural) == {"contains", "part_of"}, f"file {name}: file A2a có predicate lạ {set(structural)}"
 
 
@@ -539,37 +539,37 @@ def test_missing_target_in_loaded_dieu_is_error_not_unresolved():
     for phrase in ("khoản 9 Điều 616 của Bộ luật này", "điểm a khoản 1 Điều 616 của Bộ luật này"):
         units = mini_units({**base, "BLDS2015.D617.K1": ("khoan", f"theo quy định tại {phrase} thì")})
         try:
-            a2.build_refs(units)
+            edges.build_refs(units)
         except ValueError as e:
             assert "BLDS2015.D616" in str(e) and phrase in str(e), e
             continue
         raise AssertionError(f"{phrase!r}: Điều 616 có trong tập, đích thiếu phải báo lỗi chứ không vào unresolved")
     # đối chứng: Điều 71 không có trong tập thì đúng là unresolved, không phải lỗi
     units = mini_units({**base, "BLDS2015.D617.K1": ("khoan", "theo khoản 2 Điều 71 của Bộ luật này thì")})
-    edges, unresolved = a2.build_refs(units)
+    edges, unresolved = edges.build_refs(units)
     assert edges == [] and unresolved == [("BLDS2015.D617.K1", "khoản 2 Điều 71 của Bộ luật này", "BLDS2015.D71.K2")]
-    assert a2.check_refs(units, edges, unresolved) == []
+    assert edges.check_refs(units, edges, unresolved) == []
     # check_refs cũng bắt unresolved có Điều đã nạp (đường kiểm thứ hai, độc lập với build_refs)
-    assert any("D616" in e for e in a2.check_refs(units, [], [("BLDS2015.D617.K1", "khoản 9 Điều 616", "BLDS2015.D616.K9")]))
+    assert any("D616" in e for e in edges.check_refs(units, [], [("BLDS2015.D617.K1", "khoản 9 Điều 616", "BLDS2015.D616.K9")]))
 
 
 def test_cli_stops_and_writes_nothing_on_missing_target():
     units = mini_units({"BLDS2015.D616": ("dieu", None), "BLDS2015.D616.K1": ("khoan", None),
                         "BLDS2015.D617": ("dieu", "theo khoản 9 Điều 616 của Bộ luật này")})
-    saved = a2.read_units, a2.refs_path, a2.unresolved_path
+    saved = edges.read_units, edges.refs_path, edges.unresolved_path
     with tempfile.TemporaryDirectory() as tmp:
-        a2.read_units = lambda src: units
-        a2.refs_path = lambda src: Path(tmp) / "refs.jsonl"
-        a2.unresolved_path = lambda src: Path(tmp) / "unresolved.txt"
+        edges.read_units = lambda src: units
+        edges.refs_path = lambda src: Path(tmp) / "refs.jsonl"
+        edges.unresolved_path = lambda src: Path(tmp) / "unresolved.txt"
         try:
             try:
-                a2.run_refers_to("x")
+                edges.run_refers_to("x")
             except SystemExit as e:
                 assert e.code not in (0, None), e.code
             else:
                 raise AssertionError("phải thoát khác 0")
         finally:
-            a2.read_units, a2.refs_path, a2.unresolved_path = saved
+            edges.read_units, edges.refs_path, edges.unresolved_path = saved
         assert list(Path(tmp).iterdir()) == [], "lỗi mà vẫn ghi file"
 
 
@@ -586,11 +586,11 @@ FOREIGN_CLEARED = {
 
 def test_no_reference_to_another_law():
     for name, path in FILES:
-        units = a2.load_units(a2.triples_path(path))
+        units = edges.load_units(edges.triples_path(path))
         hits = [(code, m.group(0)) for code, u in units.items() for m in FOREIGN_RE.finditer(u.get("text", ""))]
         assert hits == FOREIGN_CLEARED[path], f"file {name}: chỗ khớp chưa đọc: {[h for h in hits if h not in FOREIGN_CLEARED[path]]}"
         # chặt hơn: sau mỗi cụm mà find_refs nhận ra không được có "của <luật khác>"
-        for r in a2.find_refs(units)[0]:
+        for r in edges.find_refs(units)[0]:
             tail = re.search(re.escape(r.phrase) + r" của (?!Bộ luật này)", units[r.unit]["text"])
             assert tail is None, f"file {name}: {r.unit}: {r.phrase!r} đi kèm 'của' khác Bộ luật này"
 
@@ -626,7 +626,7 @@ def trigger_tokens(text):
 
 
 def triggers_of(text):
-    return a2.find_triggers({"X.D1": {"type": "dieu", "number": "1", "source_line": 1, "text": text}})
+    return edges.find_triggers({"X.D1": {"type": "dieu", "number": "1", "source_line": 1, "text": text}})
 
 
 def test_triggers_word_boundary_and_longest_match():
@@ -655,7 +655,7 @@ def test_triggers_words_after():
     }
     for text, want in cases.items():
         assert [t.after for t in triggers_of(text)] == [want], f"{text!r}: {triggers_of(text)}"
-    table = a2.trigger_table(triggers_of("Trừ Trường hợp.\ntrừ trường hợp!"))
+    table = edges.trigger_table(triggers_of("Trừ Trường hợp.\ntrừ trường hợp!"))
     assert [(key, n) for key, n, _ in table] == [("trường hợp", 2)], "khoá bảng phải viết thường"
 
 
@@ -668,8 +668,8 @@ def test_triggers_context_window():
 
 def test_triggers_count_matches_independent_recount():
     for name, path in FILES:
-        units = a2.load_units(a2.triples_path(path))
-        triggers = a2.find_triggers(units)
+        units = edges.load_units(edges.triples_path(path))
+        triggers = edges.find_triggers(units)
         independent = sum(trigger_tokens(u["text"]) for u in units.values() if "text" in u)
         assert len(triggers) == independent == TRIGGER_TOTAL[path], f"file {name}: {len(triggers)}, {independent}"
         assert dict(collections.Counter(t.kind for t in triggers)) == TRIGGER_KINDS[path], f"file {name}"
@@ -679,28 +679,28 @@ def test_triggers_count_matches_independent_recount():
 
 def test_triggers_table_reviewed():
     for name, path in FILES:
-        triggers = a2.find_triggers(a2.load_units(a2.triples_path(path)))
-        table = a2.trigger_table(triggers)
+        triggers = edges.find_triggers(edges.load_units(edges.triples_path(path)))
+        table = edges.trigger_table(triggers)
         assert {key: n for key, n, _ in table} == TRIGGER_TABLE[path], f"file {name}: {table}"
         assert sum(n for _, n, _ in table) == len(triggers)
         assert [n for _, n, _ in table] == sorted((n for _, n, _ in table), reverse=True)
 
 
 def test_triggers_flag_writes_nothing():
-    outputs = [f(p) for p in (SAMPLE_FILE, FULL_FILE) for f in (a2.edges_path, a2.refs_path, a2.unresolved_path)]
+    outputs = [f(p) for p in (SAMPLE_FILE, FULL_FILE) for f in (edges.edges_path, edges.refs_path, edges.unresolved_path)]
     before = {p: p.read_bytes() for p in outputs}
-    saved = a2.write_edges, a2.write_ref_edges, a2.write_unresolved
+    saved = edges.write_edges, edges.write_ref_edges, edges.write_unresolved
 
     def forbidden(*a, **k):
         raise AssertionError("--triggers không được ghi file")
-    a2.write_edges = a2.write_ref_edges = a2.write_unresolved = forbidden
+    edges.write_edges = edges.write_ref_edges = edges.write_unresolved = forbidden
     try:
         for _, path in FILES:
             with contextlib.redirect_stdout(io.StringIO()) as out:
-                a2.main([str(path), "--triggers"])
+                edges.main([str(path), "--triggers"])
             assert "6 từ đứng sau" in out.getvalue() and "từ khoá:" in out.getvalue()
     finally:
-        a2.write_edges, a2.write_ref_edges, a2.write_unresolved = saved
+        edges.write_edges, edges.write_ref_edges, edges.write_unresolved = saved
     assert {p: p.read_bytes() for p in outputs} == before
 
 
@@ -708,7 +708,7 @@ def test_mode_flags_are_mutually_exclusive():
     for flags in (["--refs", "--triggers"], ["--refers-to", "--triggers"], ["--refs", "--refers-to"]):
         with contextlib.redirect_stderr(io.StringIO()):
             try:
-                a2.main([str(SAMPLE_FILE)] + flags)
+                edges.main([str(SAMPLE_FILE)] + flags)
             except SystemExit as e:
                 assert e.code == 2, e.code
                 continue

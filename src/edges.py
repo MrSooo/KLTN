@@ -1,12 +1,12 @@
 """A2a: cạnh cấu trúc contains / part_of giữa Điều > Khoản > Điểm.
 
-Chỉ đọc triples của A1 (data/processed/a1_triples_<stem>.jsonl), không import a1_parse: nếu A1 đánh mã sai thì
+Chỉ đọc triples của A1 (data/processed/a1_triples_<stem>.jsonl), không import parse: nếu A1 đánh mã sai thì
 lỗi hiện ra ở đây thay vì bị che, vì cha được suy từ chuỗi mã còn kiểm tra dùng thuộc tính type của A1.
 
-Chạy: python -I src/a2_edges.py <file md nguồn>          (bắt buộc truyền path, không có mặc định)
-      python -I src/a2_edges.py <file md nguồn> --refs   (Bước 2: chỉ in dẫn chiếu và bảng hình dạng, không ghi file)
-      python -I src/a2_edges.py <file md nguồn> --refers-to   (A2b: ghi a2_refs_<stem>.jsonl và docs/a2_unresolved_<stem>.txt)
-      python -I src/a2_edges.py <file md nguồn> --triggers   (A3 bước 1: chỉ in cụm trừ / ngoại trừ / không áp dụng, không ghi file)
+Chạy: python -I src/edges.py <file md nguồn>          (bắt buộc truyền path, không có mặc định)
+      python -I src/edges.py <file md nguồn> --refs   (Bước 2: chỉ in dẫn chiếu và bảng hình dạng, không ghi file)
+      python -I src/edges.py <file md nguồn> --refers-to   (A2b: ghi a2_refs_<stem>.jsonl và docs/a2_unresolved_<stem>.txt)
+      python -I src/edges.py <file md nguồn> --triggers   (A3 bước 1: chỉ in cụm trừ / ngoại trừ / không áp dụng, không ghi file)
 """
 import argparse
 import collections
@@ -141,7 +141,7 @@ def fail_if_errors(errors):
 def read_units(src):
     tpath = triples_path(src)
     if not tpath.exists():
-        raise SystemExit(f"chưa có {tpath}; chạy python src/a1_parse.py -s 4 {src} trước")
+        raise SystemExit(f"chưa có {tpath}; chạy python src/parse.py -s 4 {src} trước")
     return load_units(tpath)
 
 

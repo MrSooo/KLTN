@@ -1,9 +1,9 @@
 """A4: kiểm tra cơ chế cập nhật có phiên bản trên file mẫu 5 Điều và 8 văn bản dev trong data/dev_amend.
 
-Chạy: python -I src/test_a4.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
-Cần a1_parse, a2_edges, a3_exceptions đã chạy cho data/sample/blds2015_5dieu.md (file cạnh gốc trong data/processed).
+Chạy: python -I src/test_versioning.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Cần parse, a2_edges, a3_exceptions đã chạy cho data/sample/blds2015_5dieu.md (file cạnh gốc trong data/processed).
 Mọi kỳ vọng ở các test (2), (3), (4), (6) được viết tay trong file này, hoặc quét độc lập từ file cạnh gốc / file md gốc,
-không suy ra từ hàm của a4_versions. Test ghi file chỉ ghi vào thư mục tạm (a4.OUT_DIR / a4.DOCS_DIR được đổi trong sandbox()).
+không suy ra từ hàm của versioning. Test ghi file chỉ ghi vào thư mục tạm (versioning.OUT_DIR / versioning.DOCS_DIR được đổi trong sandbox()).
 """
 import contextlib
 import io
@@ -14,10 +14,10 @@ import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import a1_parse as a1
-import a2_edges as a2
-import a3_exceptions as a3
-import a4_versions as a4
+import parse as parse
+import edges
+import exceptions
+import versioning as versioning
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLE_FILE = ROOT / "data" / "sample" / "blds2015_5dieu.md"
@@ -41,26 +41,26 @@ def c(*segs):
 # ---- tiện ích ----
 
 def run_dev(*ns):
-    return a4.apply_series(SAMPLE_FILE, [dev(n) for n in ns])
+    return versioning.apply_series(SAMPLE_FILE, [dev(n) for n in ns])
 
 
 @contextlib.contextmanager
 def sandbox():
-    """Đổi thư mục ghi của a4 sang thư mục tạm."""
+    """Đổi thư mục ghi của versioning sang thư mục tạm."""
     with tempfile.TemporaryDirectory() as tmp:
-        old = a4.OUT_DIR, a4.DOCS_DIR
-        a4.OUT_DIR = a4.DOCS_DIR = Path(tmp)
+        old = versioning.OUT_DIR, versioning.DOCS_DIR
+        versioning.OUT_DIR = versioning.DOCS_DIR = Path(tmp)
         try:
             yield Path(tmp)
         finally:
-            a4.OUT_DIR, a4.DOCS_DIR = old
+            versioning.OUT_DIR, versioning.DOCS_DIR = old
 
 
 def cli(*argv):
     out, err = io.StringIO(), io.StringIO()
     with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
         try:
-            a4.main([str(a) for a in argv])
+            versioning.main([str(a) for a in argv])
             code = 0
         except SystemExit as e:
             code = e.code
@@ -75,7 +75,7 @@ def amend_text(body, date="01 tháng 01 năm 2027"):
 
 
 def parse_body(body):
-    return a4.parse_amendment(amend_text(body))
+    return versioning.parse_amendment(amend_text(body))
 
 
 def one(body):
@@ -87,7 +87,7 @@ def one(body):
 def raises(code, fn, *args):
     try:
         fn(*args)
-    except a4.A4Error as e:
+    except versioning.A4Error as e:
         assert e.code == code, f"mã lỗi {e.code} ({e.message}), cần {code}"
         return e
     raise AssertionError(f"phải báo lỗi {code}")
@@ -177,10 +177,10 @@ def test_parse_reflist_forms():
         "khoản 2 Điều 621, điểm a khoản 1 Điều 650 và Điều 626": c("D621.K2", "D650.K1.a", "D626"),
     }
     for text, want in cases.items():
-        got = [a4.ref_code(r) for r in a4.parse_reflist(text)]
+        got = [versioning.ref_code(r) for r in versioning.parse_reflist(text)]
         assert got == want, f"{text!r}: {got}, cần {want}"
-    assert a4.parse_reflist("điểm đ khoản 1 Điều 650") == [a4.Ref("650", "1", "đ")]
-    assert a4.parse_reflist("Điều 621a") == [a4.Ref("621a")]
+    assert versioning.parse_reflist("điểm đ khoản 1 Điều 650") == [versioning.Ref("650", "1", "đ")]
+    assert versioning.parse_reflist("Điều 621a") == [versioning.Ref("621a")]
 
 
 def test_parse_reflist_partial_or_malformed_is_error():
@@ -188,7 +188,7 @@ def test_parse_reflist_partial_or_malformed_is_error():
            "Điều 621, 626", "điểm a Điều 650", "điểm f khoản 1 Điều 650", "khoản 2 Điều 621xyz",
            "các điều 626 và", "khoản 2 Điều 621. Điều 626", "điểm a và điểm đ khoản 1 Điều 7"]
     for text in bad:
-        raises("E_REFLIST", a4.parse_reflist, text)
+        raises("E_REFLIST", versioning.parse_reflist, text)
 
 
 R1_CASES = [  # (dòng chỉ thị, mã đích, relation, số của gốc cây, nội dung)
@@ -424,7 +424,7 @@ def test_dev05_bai_bo_danh_sach():
         (P + "D621.K2", 1), (P + "D650.K1.a", 2), (P + "D626", 3), (P + "D651", 4)]
     assert {r["p"] for r in run.amend_edges} == {"repeals"}
     assert [(row[1], row[2], row[3]) for row in run.table] == [(1, 3, "repeal_unit"), (2, 3, "repeal_unit"), (3, 5, "repeal_unit"), (4, 5, "repeal_unit")]
-    active = {r["id"] for r in a4.active_rows(run.version_rows(), DATE)}
+    active = {r["id"] for r in versioning.active_rows(run.version_rows(), DATE)}
     assert len(active) == 35 - 15 and P + "D644.K2" in active and P + "D650.K1.b" in active and P + "D651" not in active
     assert len([r for r in run.version_rows() if r["effective_to"] == DATE]) == 15
 
@@ -466,7 +466,7 @@ def test_dev08_thay_the_ca_van_ban():
     run = run_dev(8)
     assert [(r["p"], r["o"], r["directive_seq"], r["new_version"]) for r in run.amend_edges] == [("replaces", "BLDS2015", 1, None)]
     assert all(r["effective_to"] == DATE and r["version"] == 1 for r in run.version_rows()) and len(run.version_rows()) == 35
-    assert a4.active_rows(run.version_rows(), DATE) == [] and run.impact == {} and run.edge_changes == []
+    assert versioning.active_rows(run.version_rows(), DATE) == [] and run.impact == {} and run.edge_changes == []
 
 
 def test_base_rows_match_a1_triples():
@@ -490,7 +490,7 @@ def run_text(body, date="01 tháng 01 năm 2027"):
     with tempfile.TemporaryDirectory() as tmp:
         p = Path(tmp) / "fx.md"
         p.write_text(amend_text(body, date), encoding="utf-8", newline="\n")
-        return a4.apply_series(SAMPLE_FILE, [p])
+        return versioning.apply_series(SAMPLE_FILE, [p])
 
 
 def test_broken_edges_and_impact_when_target_has_referrers():
@@ -536,7 +536,7 @@ def test_exception_list_edges_follow_the_text_of_the_parent():
         b = write(tmp, "b.md", amend_text("Bổ sung điểm đ vào sau điểm d khoản 1 Điều 650 như sau:\n\n“đ) Trường hợp khác.”", "01 tháng 7 năm 2027"))
         d = write(tmp, "c.md", amend_text("Sửa đổi cụm từ “, trừ trường hợp sau đây” thành cụm từ “ trong trường hợp sau đây” tại khoản 1 Điều 650.",
                                           "01 tháng 01 năm 2028"))
-        run = a4.apply_series(SAMPLE_FILE, [a, b, d])
+        run = versioning.apply_series(SAMPLE_FILE, [a, b, d])
     by_step = [[(r["op"], r["s"], r["p"], r["o"], r["at"], r.get("method")) for r in s.edge_rows] for s in run.steps]
     exc = lambda op, letters, at: [(op, f"{K1}.{x}", "exception_of", K1, at, "except_list_pattern") for x in letters]
     assert by_step[0] == exc("add", ["a", "b", "c", "d"], "2027-01-01")                     # con chưa đổi, cha đổi chữ
@@ -547,7 +547,7 @@ def test_exception_list_edges_follow_the_text_of_the_parent():
     assert all(not (r["p"] == "exception_of" and r["s"].startswith(K1)) for r in base_edges())  # cạnh gốc không có, file gốc không đổi
 
 
-def test_a2_error_on_changed_unit_stops_but_dangling_unchanged_edge_does_not():
+def test_edges_error_on_changed_unit_stops_but_dangling_unchanged_edge_does_not():
     # đơn vị mới trỏ khoản 9 Điều 621 (Điều có mà khoản không có): A2 báo ValueError, A4 dừng và nêu mã đơn vị
     e = raises("E_A2", run_text, "Bổ sung khoản 3 vào Điều 621 như sau:\n\n“3. Xem khoản 9 Điều này.”")
     assert P + "D621.K3" in e.message
@@ -563,7 +563,7 @@ L = BASE_TEXT.rstrip("\n").split("\n")   # L[i] là dòng thứ i+1 của file m
 
 
 def snapshot(run, date):
-    return a4.render_markdown(a4.active_rows(run.version_rows(), date))
+    return versioning.render_markdown(versioning.active_rows(run.version_rows(), date))
 
 
 def unit_view(units):
@@ -572,9 +572,9 @@ def unit_view(units):
 
 def reparse(md):
     with tempfile.TemporaryDirectory() as tmp:
-        p = Path(tmp) / "blds2015_5dieu.md"      # a1.load_parsed nhận theo tên file
+        p = Path(tmp) / "blds2015_5dieu.md"      # parse.load_parsed nhận theo tên file
         p.write_text(md, encoding="utf-8", newline="\n")
-        _, parsed = a1.load_parsed(p)
+        _, parsed = parse.load_parsed(p)
     assert not parsed.errors, parsed.errors
     return unit_view(parsed.units)
 
@@ -584,7 +584,7 @@ def test_snapshot_before_earliest_date_equals_base_file():
     assert len(base_view) == 35
     for n in DEV_FILES:
         md = snapshot(run_dev(n), "2026-12-31")
-        assert reparse(md) == base_view, f"dev{n}: snapshot trước ngày hiệu lực khác file gốc (parse lại bằng a1)"
+        assert reparse(md) == base_view, f"dev{n}: snapshot trước ngày hiệu lực khác file gốc (parse lại bằng parse)"
         assert md == BASE_TEXT, f"dev{n}: snapshot trước ngày hiệu lực không giống từng byte file gốc"
 
 
@@ -607,7 +607,7 @@ def test_snapshot_after_effective_date_matches_handwritten_text():
     assert snapshot(run_dev(7), DATE) == "\n".join(want) + "\n"
     # văn bản 8: thay cả văn bản, không còn đơn vị nào
     assert snapshot(run_dev(8), DATE) == ""
-    # a1 đọc lại được snapshot của các văn bản không có hậu tố và còn đủ 5 Điều (EXPECTED_DIEU của a1 đòi đủ 5):
+    # parse đọc lại được snapshot của các văn bản không có hậu tố và còn đủ 5 Điều (EXPECTED_DIEU của parse đòi đủ 5):
     # văn bản 1 bỏ K2 Điều 621; văn bản 7 chỉ đổi tên hai Điều. Danh sách (mã, loại, số, heading, text) viết tay từ file mẫu.
     base_view = reparse(BASE_TEXT)
     assert reparse(snapshot(run_dev(1), DATE)) == [u for u in base_view if u[0] != P + "D621.K2"]
@@ -633,7 +633,7 @@ def test_active_rows_half_open_interval():
     rows = [{"id": "x", "effective_from": None, "effective_to": "2027-01-01"},
             {"id": "y", "effective_from": "2027-01-01", "effective_to": None},
             {"id": "z", "effective_from": "2027-01-01", "effective_to": "2027-07-01"}]
-    ids = lambda d: [r["id"] for r in a4.active_rows(rows, d)]
+    ids = lambda d: [r["id"] for r in versioning.active_rows(rows, d)]
     assert ids("2026-12-31") == ["x"] and ids("2027-01-01") == ["y", "z"] and ids("2027-06-30") == ["y", "z"] and ids("2027-07-01") == ["y"]
 
 
@@ -671,10 +671,10 @@ def test_series_later_document_sees_state_after_earlier_one():
         a.write_text(amend_text("Bãi bỏ khoản 2 Điều 621."), encoding="utf-8")
         b = Path(tmp) / "second.md"
         b.write_text(amend_text("Bổ sung khoản 2 vào Điều 621 như sau:\n\n“2. Nội dung.”", "01 tháng 7 năm 2027"), encoding="utf-8")
-        raises("E_EXISTS", a4.apply_series, SAMPLE_FILE, [a, b])                  # mã đã đóng vẫn là mã đã từng tồn tại
+        raises("E_EXISTS", versioning.apply_series, SAMPLE_FILE, [a, b])                  # mã đã đóng vẫn là mã đã từng tồn tại
         c_ = Path(tmp) / "third.md"
         c_.write_text(amend_text("Khoản 2 Điều 621 được sửa đổi như sau:\n\n“2. Nội dung.”", "01 tháng 7 năm 2027"), encoding="utf-8")
-        raises("E_TARGET", a4.apply_series, SAMPLE_FILE, [a, c_])                 # đích đã bị đóng ở văn bản trước
+        raises("E_TARGET", versioning.apply_series, SAMPLE_FILE, [a, c_])                 # đích đã bị đóng ở văn bản trước
 
 
 # ---- (5) lỗi: exit 1, chỉ báo cáo ----
@@ -762,7 +762,7 @@ def test_error_effective_from_flag():
         assert cli("apply", "--base", SAMPLE_FILE, "--amend", write(tmp, "a.md", text), "--effective-from", "2027-01-01")[0] == 0
         no_date = write(tmp, "b.md", amend_text("Bãi bỏ khoản 2 Điều 621.", date=None))
         assert cli("apply", "--base", SAMPLE_FILE, "--amend", no_date, "--effective-from", "2028-03-04", "--name", "flagonly")[0] == 0
-        assert json.loads((a4.OUT_DIR / "a4_flagonly_amend_edges.jsonl").read_text(encoding="utf-8"))["effective_from"] == "2028-03-04"
+        assert json.loads((versioning.OUT_DIR / "a4_flagonly_amend_edges.jsonl").read_text(encoding="utf-8"))["effective_from"] == "2028-03-04"
     apply_cli_error("E_ARGS", [text], "--effective-from", "01/01/2027")
 
 
@@ -805,13 +805,13 @@ def test_error_report_content_and_no_stale_files():
 
 
 def test_script_runs_isolated_and_exits_1_on_error():
-    name = "_test_a4_subprocess"
+    name = "_test_versioning_subprocess"
     report = ROOT / "docs" / f"a4_report_{name}.txt"
     with tempfile.TemporaryDirectory() as tmp:
         bad = Path(tmp) / "bad.md"
         bad.write_text(amend_text("Bãi bỏ khoản 9 Điều 621."), encoding="utf-8")
         try:
-            r = subprocess.run([sys.executable, "-I", str(ROOT / "src" / "a4_versions.py"), "apply", "--base", str(SAMPLE_FILE),
+            r = subprocess.run([sys.executable, "-I", str(ROOT / "src" / "versioning.py"), "apply", "--base", str(SAMPLE_FILE),
                                 "--amend", str(bad), "--name", name], capture_output=True, text=True, encoding="utf-8")
             assert r.returncode == 1 and "E_TARGET" in r.stderr, (r.returncode, r.stderr)
             assert report.exists() and not list((ROOT / "data" / "processed").glob(f"a4_{name}_*"))
@@ -850,12 +850,12 @@ def test_uncovered_mentions_consistent_with_find_refs():
     run = run_dev(4)
     sentence = versions_of(run, P + "D621a.K2")[0]["text"]
     assert "Điều 621a của Bộ luật này" in sentence
-    refs = a2.find_refs({"X": {"type": "khoan", "number": "2", "source_line": 0, "text": sentence}})[0]
+    refs = edges.find_refs({"X": {"type": "khoan", "number": "2", "source_line": 0, "text": sentence}})[0]
     recognized = any("621a" in r.phrase for r in refs)
     listed = [m for _, u, m, _ in run.uncovered if u == P + "D621a.K2"]
     assert ("Điều 621a" in listed) == (not recognized), (listed, [r.phrase for r in refs])
     assert "khoản 1" not in listed                                         # "khoản 1 Điều này" được A2 nhận ra nên không phải chưa phủ
-    report = a4.format_report(run)
+    report = versioning.format_report(run)
     section = report.split("== Chưa phủ")[1].split("== Chưa tính cạnh")[0]
     assert (f"{DEV_FILES[4]}\t{P}D621a.K2\tĐiều 621a\t" in section) == (not recognized)
     # mention chỉ tính cho đơn vị changed ∪ new: Điều 644 K2 (không đổi) có "Điều 620" nhưng không xuất hiện
@@ -863,7 +863,7 @@ def test_uncovered_mentions_consistent_with_find_refs():
 
 
 def test_uncovered_mentions_cases():
-    case = lambda text: [m for _, m, _ in a4.uncovered_mentions("X", text)]
+    case = lambda text: [m for _, m, _ in versioning.uncovered_mentions("X", text)]
     assert case("theo khoản 2a Điều 626, điểm đ khoản 1 Điều 650") != [] and "khoản 2a" in case("theo khoản 2a Điều 626")
     assert case("quy định tại điểm a khoản 1 Điều này") == []                 # A2 nhận ra cả cụm
     assert case("điểm chỉ và khoản này") == []                                 # không phải mention
@@ -878,29 +878,29 @@ def test_suffix_codes_accepted_by_a2_a3_as_sources():
     units = {"X.D5": U("dieu"), "X.D5.K1": U("khoan", "nội dung"), "X.D5a": U("dieu"), "X.D5a.K1": U("khoan", "nội dung"),
              "X.D5a.K2": U("khoan", "Khoản 1 Điều này không áp dụng đối với khoản 1 Điều 5."),
              "X.D5a.K3": U("khoan", "Mọi người, trừ những người sau đây:"), "X.D5a.K3.a": U("diem", "a")}
-    refs, _ = a2.build_refs(units)
+    refs, _ = edges.build_refs(units)
     assert refs == [("X.D5a.K2", "refers_to", "X.D5a.K1", "Khoản 1 Điều này"), ("X.D5a.K2", "refers_to", "X.D5.K1", "khoản 1 Điều 5")]
-    exc, handled, unhandled = a3.find_exceptions(units, a2.build_edges(units))
-    assert [(s, o, m) for s, _, o, _, m in exc] == [("X.D5a.K2", "X.D5a.K1", a3.NOT_APPLY), ("X.D5a.K3.a", "X.D5a.K3", a3.EXCEPT_LIST)]
+    exc, handled, unhandled = exceptions.find_exceptions(units, edges.build_edges(units))
+    assert [(s, o, m) for s, _, o, _, m in exc] == [("X.D5a.K2", "X.D5a.K1", exceptions.NOT_APPLY), ("X.D5a.K3.a", "X.D5a.K3", exceptions.EXCEPT_LIST)]
     # đích có hậu tố thì A2 không nhận: không cạnh nào ra (đó là lý do có cờ "chưa phủ")
     units["X.D5.K1"]["text"] = "theo Điều 5a của Bộ luật này"
-    assert a2.build_refs(units)[0] == refs[:2]
+    assert edges.build_refs(units)[0] == refs[:2]
 
 
 def test_exclude_suffix_mode_reports_units_and_skips_edges():
-    old = a4.A2A3_ACCEPT_SUFFIX
-    a4.A2A3_ACCEPT_SUFFIX = False
+    old = versioning.A2A3_ACCEPT_SUFFIX
+    versioning.A2A3_ACCEPT_SUFFIX = False
     try:
         run = run_dev(4)
     finally:
-        a4.A2A3_ACCEPT_SUFFIX = old
+        versioning.A2A3_ACCEPT_SUFFIX = old
     assert sorted(u for _, u in run.excluded) == sorted(c("D621a", "D621a.K1", "D621a.K2"))
     refs = {(r["s"], r["o"]) for r in run.edge_changes if r["p"] == "refers_to"}
     assert refs == {(P + "D621.K3", P + "D621.K1.a")}                          # D621a.K2 -> D621a.K1 không được tính
     assert any(r["s"] == P + "D621a" and r["p"] == "contains" for r in run.edge_changes)   # cạnh cấu trúc vẫn có
-    section = a4.format_report(run).split("== Chưa tính cạnh")[1]
+    section = versioning.format_report(run).split("== Chưa tính cạnh")[1]
     assert all(f"{DEV_FILES[4]}\t{P}{u}" in section for u in ("D621a", "D621a.K1", "D621a.K2"))
-    assert run_dev(4).excluded == [] and "(không có:" in a4.format_report(run_dev(4)).split("== Chưa tính cạnh")[1]   # chế độ mặc định
+    assert run_dev(4).excluded == [] and "(không có:" in versioning.format_report(run_dev(4)).split("== Chưa tính cạnh")[1]   # chế độ mặc định
 
 
 # ---- (8) hàm móc normalize_unknown_line ----
@@ -909,19 +909,19 @@ STRANGE = "Khoản 2 Điều 621 được thay thế bằng quy định mới."
 
 
 def run_with_hook(hook, body):
-    old = a4.normalize_unknown_line
-    a4.normalize_unknown_line = hook
+    old = versioning.normalize_unknown_line
+    versioning.normalize_unknown_line = hook
     try:
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "fx.md"
             p.write_text(amend_text(body), encoding="utf-8", newline="\n")
-            return a4.apply_series(SAMPLE_FILE, [a4.AmendSpec(str(p), "X")])
+            return versioning.apply_series(SAMPLE_FILE, [versioning.AmendSpec(str(p), "X")])
     finally:
-        a4.normalize_unknown_line = old
+        versioning.normalize_unknown_line = old
 
 
 def test_default_hook_returns_none():
-    assert a4.normalize_unknown_line(STRANGE) is None
+    assert versioning.normalize_unknown_line(STRANGE) is None
 
 
 def test_hook_canonical_line_gives_same_result_as_that_line():
@@ -957,9 +957,9 @@ def test_hook_unparseable_line_is_still_error():
 def test_impact_set_function():
     edges = [("a", "refers_to", "u"), ("b", "refers_to", "x"), ("c", "exception_of", "u"), ("u", "exception_of", "d"),
              ("u", "contains", "e"), ("f", "part_of", "u"), ("g", "refers_to", "u"), ("c", "refers_to", "u")]
-    assert a4.impact_set({"u"}, edges) == {
+    assert versioning.impact_set({"u"}, edges) == {
         "a": ["refers_to u"], "c": ["exception_of u", "refers_to u"], "d": ["exception_of_by u"], "g": ["refers_to u"]}
-    assert a4.impact_set(set(), edges) == {} and a4.impact_set({"zzz"}, edges) == {}
+    assert versioning.impact_set(set(), edges) == {} and versioning.impact_set({"zzz"}, edges) == {}
 
 
 def test_cli_writes_all_files_with_conventions():

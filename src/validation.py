@@ -1,7 +1,7 @@
 """A5: bốn phép kiểm (1-3 trên A1-A3, 4 trên A4 khi có --versions) trên file đã sinh, để chắc lớp văn bản không có chỗ trùng hay hở trước khi xây bước B. Không sinh dữ liệu mới.
 
 Đầu vào: a1_triples_<stem>.jsonl, a2_edges_<stem>.jsonl, a2_refs_<stem>.jsonl, a3_exceptions_<stem>.jsonl.
-Đọc thẳng từng dòng JSON, không qua a2.load_units / a2.parent_of, để phép kiểm độc lập với code đã sinh các file đó.
+Đọc thẳng từng dòng JSON, không qua edges.load_units / edges.parent_of, để phép kiểm độc lập với code đã sinh các file đó.
 Đầu ra: docs/a5_report_<stem>.txt (ghi cả khi mọi thứ đạt), cùng nội dung in ra màn hình.
 
   Bước 1, mã trùng (a1_triples). 1a: số s có dòng type bằng số đơn vị kỳ vọng. 1b: số Điều bằng số kỳ vọng.
@@ -24,7 +24,7 @@ Số kỳ vọng nằm ở bảng EXPECTED theo stem (đã đối chiếu độc
 Thoát 1 nếu bước nào có vi phạm, hoặc đầu vào lỗi (thiếu file, JSON hỏng, thiếu khoá, stem lạ); các bước luôn chạy hết
 trước khi thoát. Cạnh trùng làm thoát 1 vì bàn giao ghi "không có cạnh trùng" là yêu cầu.
 
-Chạy: python -I src/a5_checks.py <file md nguồn> [--versions PATH]   (bắt buộc truyền path md, chỉ dùng để suy stem)
+Chạy: python -I src/validation.py <file md nguồn> [--versions PATH]   (bắt buộc truyền path md, chỉ dùng để suy stem)
 Báo cáo: docs/a5_report_<stem>.txt; có --versions thì docs/a5_report_<stem>_<name>.txt, <name> lấy từ a4_<name>_versions.jsonl
 (tên file không đúng dạng đó thì dùng tên file bỏ đuôi), để các lần chạy khác nhau không đè nhau và không đè báo cáo bước 1-3.
 """
@@ -38,8 +38,8 @@ from pathlib import Path
 from typing import NamedTuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import a2_edges as a2
-import a3_exceptions as a3
+import edges
+import exceptions
 
 TYPES = ("dieu", "khoan", "diem")
 PARENT_TYPE = {"khoan": "dieu", "diem": "khoan"}  # bậc ngay trên của mỗi bậc con
@@ -78,7 +78,7 @@ def versions_name(versions):
 
 def report_path(src, versions=None):
     suffix = f"_{versions_name(versions)}" if versions is not None else ""
-    return a2.ROOT / "docs" / f"a5_report_{Path(src).stem}{suffix}.txt"
+    return edges.ROOT / "docs" / f"a5_report_{Path(src).stem}{suffix}.txt"
 
 
 def load_rows(path, keys=TRIPLE_KEYS):
@@ -280,20 +280,20 @@ def check_version1_content(a1_rows, version_rows):
     Chỉ so trường mà A1 có dòng tương ứng. Mã không có trong versions (4d đã báo) hoặc chỉ có trong versions thì bỏ qua.
     Trường versions thiếu khoá tính là None, nên khác giá trị A1. a1_rows: dòng a1_triples; version_rows: dòng versions.
     """
-    a1 = {}                                         # s -> {trường: o}, giữ dòng đầu tiên của mỗi (s, p)
+    parse = {}                                         # s -> {trường: o}, giữ dòng đầu tiên của mỗi (s, p)
     for _, r in a1_rows:
         if r["p"] in CONTENT_FIELDS:
-            a1.setdefault(r["s"], {}).setdefault(r["p"], r["o"])
+            parse.setdefault(r["s"], {}).setdefault(r["p"], r["o"])
     problems, rows_compared, fields_compared = [], 0, 0
     for _, r in version_rows:
-        if r["version"] != 1 or r["id"] not in a1:
+        if r["version"] != 1 or r["id"] not in parse:
             continue
         rows_compared += 1
         for field in CONTENT_FIELDS:
-            if field not in a1[r["id"]]:
+            if field not in parse[r["id"]]:
                 continue
             fields_compared += 1
-            want, got = a1[r["id"]][field], r.get(field)
+            want, got = parse[r["id"]][field], r.get(field)
             if got != want:
                 problems.append(f"{r['id']}: {field} A1 '{str(want)[:SHOW_CHARS]}' khác version 1 '{str(got)[:SHOW_CHARS]}'")
     return Check("4e", "version 1 giữ nguyên nội dung A1", f"{fields_compared} trường ở {rows_compared} dòng version 1", problems)
@@ -314,7 +314,7 @@ def failures(checks):
 def display_path(path):
     """Đường dẫn trong báo cáo: tương đối so với gốc dự án nếu nằm trong đó, để báo cáo không dính đường dẫn của máy."""
     try:
-        return Path(path).resolve().relative_to(a2.ROOT).as_posix()
+        return Path(path).resolve().relative_to(edges.ROOT).as_posix()
     except ValueError:
         return str(path)
 
@@ -344,21 +344,21 @@ def run(src, versions=None):
     """Chạy các bước (bước 4 chỉ khi có versions), in và ghi báo cáo, trả về mã thoát (0 đạt, 1 có vi phạm ở bất kỳ bước nào)."""
     stem = Path(src).stem
     expect = EXPECTED.get(stem)  # None => luật mới: chạy bước cấu trúc, bỏ đối chiếu số kỳ vọng
-    paths = {"a1_triples": a2.triples_path(src), "a2_edges": a2.edges_path(src),
-             "a2_refs": a2.refs_path(src), "a3_exceptions": a3.exceptions_path(src)}
+    paths = {"a1_triples": edges.triples_path(src), "a2_edges": edges.edges_path(src),
+             "a2_refs": edges.refs_path(src), "a3_exceptions": exceptions.exceptions_path(src)}
     try:
         rows = {name: load_rows(p) for name, p in paths.items()}
         if versions is not None:
-            paths["a4_versions"] = Path(versions)
-            rows["a4_versions"] = load_rows(versions, VERSION_KEYS)
+            paths["versioning"] = Path(versions)
+            rows["versioning"] = load_rows(versions, VERSION_KEYS)
     except ValueError as e:
         raise SystemExit(f"LỖI: {e}")
     checks, unit_types = check_codes(rows["a1_triples"], expect)
     checks += check_parents(unit_types, rows["a2_edges"], expect)
     checks.append(check_duplicate_edges([(name, rows[name]) for name in EDGE_SOURCES]))
     if versions is not None:
-        checks += check_versions(set(unit_types), rows["a4_versions"])
-        checks.append(check_version1_content(rows["a1_triples"], rows["a4_versions"]))
+        checks += check_versions(set(unit_types), rows["versioning"])
+        checks.append(check_version1_content(rows["a1_triples"], rows["versioning"]))
     text = format_report(stem, paths, checks)
     print(text, end="")
     write_text(text, report_path(src, versions))

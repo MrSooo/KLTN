@@ -1,7 +1,7 @@
 """A6: kiểm tra ngoại lệ chung (nút điều kiện + cạnh exception_of) trên ví dụ dựng tay, file mẫu rồi file đầy đủ.
 
-Chạy: python -I src/test_a6.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
-Chạy a6_general_exceptions.py cho cả hai file trước (python -I src/a6_general_exceptions.py <file md>), test_files_on_disk đọc file đã ghi.
+Chạy: python -I src/test_general_exceptions.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy general_exceptions.py cho cả hai file trước (python -I src/general_exceptions.py <file md>), test_files_on_disk đọc file đã ghi.
 """
 import contextlib
 import io
@@ -12,9 +12,9 @@ import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import a2_edges as a2
-import a3_exceptions as a3
-import a6_general_exceptions as a6
+import edges
+import exceptions
+import general_exceptions as general_exceptions
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLE_FILE = ROOT / "data" / "sample" / "blds2015_5dieu.md"
@@ -39,18 +39,18 @@ def mini_units(spec):
 
 
 def load(path):
-    return a2.load_units(a2.triples_path(path))
+    return edges.load_units(edges.triples_path(path))
 
 
 def general_of(spec):
-    return a6.find_general(mini_units(spec))
+    return general_exceptions.find_general(mini_units(spec))
 
 
 def test_single_clause_makes_node_and_edge():
     r = general_of({"X.D1": ("dieu", None), "X.D1.K1": ("khoan", "Người lập di chúc có quyền A, trừ trường hợp có thỏa thuận khác.")})
     assert [clause for _, clause in r.nodes] == ["có thỏa thuận khác"], r.nodes
     cond = r.nodes[0][0]
-    assert r.edges == [(cond, "exception_of", "X.D1.K1", "trừ trường hợp có thỏa thuận khác.", a6.METHOD)], r.edges
+    assert r.edges == [(cond, "exception_of", "X.D1.K1", "trừ trường hợp có thỏa thuận khác.", general_exceptions.METHOD)], r.edges
     assert r.handled == [("X.D1.K1", "trừ")] and r.unhandled == [] and r.skipped == []
     assert re.fullmatch(r"X\.C_[0-9a-f]{8}", cond), cond
 
@@ -69,7 +69,7 @@ def test_case_and_trailing_punctuation_variants_merge():
                     "X.D3": ("dieu", "C, trừ trường hợp có thỏa thuận khác")})
     assert len(r.nodes) == 1 and len(r.edges) == 3, r
     assert r.nodes[0][1] == "Có thỏa  thuận khác", r.nodes  # nút giữ mệnh đề nguyên văn của lần đầu, đã bỏ dấu cuối
-    assert a6.norm_text("Có thỏa  thuận khác.;") == "có thỏa thuận khác"
+    assert general_exceptions.norm_text("Có thỏa  thuận khác.;") == "có thỏa thuận khác"
 
 
 def test_ngoai_tru_truong_hop_also_matches():
@@ -123,16 +123,16 @@ def test_empty_clause_raises():
 
 
 def test_condition_id_is_stable_and_distinct():
-    a = a6.condition_id("X", a6.norm_text("Có thỏa thuận khác."))
-    assert a == a6.condition_id("X", "có thỏa thuận khác") == "X.C_" + a.split("_")[1]
-    assert a != a6.condition_id("Y", "có thỏa thuận khác") and a != a6.condition_id("X", "pháp luật có quy định khác")
+    a = general_exceptions.condition_id("X", general_exceptions.norm_text("Có thỏa thuận khác."))
+    assert a == general_exceptions.condition_id("X", "có thỏa thuận khác") == "X.C_" + a.split("_")[1]
+    assert a != general_exceptions.condition_id("Y", "có thỏa thuận khác") and a != general_exceptions.condition_id("X", "pháp luật có quy định khác")
     # mã từ file thật không đổi theo thứ tự hay tập đơn vị: đây là mã của "có thỏa thuận khác" đã ghi ở file đầy đủ
-    assert a6.condition_id("BLDS2015", SHARED_CLAUSE) == "BLDS2015.C_426b8c79"
+    assert general_exceptions.condition_id("BLDS2015", SHARED_CLAUSE) == "BLDS2015.C_426b8c79"
 
 
 def test_hash_collision_raises():
-    saved = a6.ID_HEX
-    a6.ID_HEX = 0  # mọi khoá cùng mã "X.C_"
+    saved = general_exceptions.ID_HEX
+    general_exceptions.ID_HEX = 0  # mọi khoá cùng mã "X.C_"
     try:
         try:
             general_of({"X.D1": ("dieu", "A, trừ trường hợp một."), "X.D2": ("dieu", "B, trừ trường hợp hai.")})
@@ -141,17 +141,17 @@ def test_hash_collision_raises():
         else:
             raise AssertionError("phải ValueError")
     finally:
-        a6.ID_HEX = saved
+        general_exceptions.ID_HEX = saved
 
 
 def test_check_general_catches_problems():
     units = mini_units({"X.D1": ("dieu", "A, trừ trường hợp có thỏa thuận khác."), "X.D2": ("dieu", "B.")})
-    good = a6.find_general(units)
-    assert a6.check_general(units, good) == []
+    good = general_exceptions.find_general(units)
+    assert general_exceptions.check_general(units, good) == []
     cond, _, o, ev, method = good.edges[0]
 
     def errors(**changes):
-        return a6.check_general(units, good._replace(**changes))
+        return general_exceptions.check_general(units, good._replace(**changes))
 
     assert any("evidence" in e for e in errors(edges=[(cond, "exception_of", o, "trừ trường hợp khác", method)]))
     assert any("bắt đầu bằng" in e for e in errors(edges=[(cond, "exception_of", o, "có thỏa thuận khác.", method)]))
@@ -169,71 +169,71 @@ def test_independent_count_of_phrase():
     """Đếm "trừ trường hợp" thẳng trên file md (không qua TRIGGER_RE, A1 hay A2), đối chiếu với số cạnh."""
     for name, path in FILES:
         n = len(re.findall(r"trừ\s+trường\s+hợp", path.read_text(encoding="utf-8"), re.I))
-        r = a6.find_general(load(path))
+        r = general_exceptions.find_general(load(path))
         assert n == len(r.edges) == len(GENERAL_UNITS[path]), f"file {name}: md có {n}, cạnh {len(r.edges)}"
 
 
 def test_files_edges_and_nodes():
     for name, path in FILES:
         units = load(path)
-        r = a6.find_general(units)
+        r = general_exceptions.find_general(units)
         assert [o for _, _, o, _, _ in r.edges] == GENERAL_UNITS[path], f"file {name}: đơn vị"
         assert len(r.nodes) == NODE_COUNT[path], f"file {name}: {len(r.nodes)} nút"
         assert r.unhandled == [], f"file {name}: unhandled"
-        assert a6.check_general(units, r) == [], f"file {name}: check"
-    r = a6.find_general(load(FULL_FILE))
+        assert general_exceptions.check_general(units, r) == [], f"file {name}: check"
+    r = general_exceptions.find_general(load(FULL_FILE))
     shared = [s for s, _ in r.nodes if dict(r.nodes)[s] == SHARED_CLAUSE]
     assert len(shared) == 1
     assert [o for s, _, o, _, _ in r.edges if s == shared[0]] == SHARED_UNITS
     assert len(r.skipped) == 1 and r.skipped[0][0] == P + "D632", r.skipped  # trigger "trừ" của quy tắc 2 A3
 
 
-def test_a6_covers_exactly_what_a3_left_unhandled():
+def test_general_exceptions_covers_exactly_what_a3_left_unhandled():
     """Ở hai file này A3 unhandled không có ca "không áp dụng", nên đơn vị A3 bỏ lại = đơn vị A6 xử lý hoặc unhandled."""
     for name, path in FILES:
         units = load(path)
-        _, _, a3_unhandled = a3.find_exceptions(units, a2.build_edges(units))
-        r = a6.find_general(units)
+        _, _, a3_unhandled = exceptions.find_exceptions(units, edges.build_edges(units))
+        r = general_exceptions.find_general(units)
         assert sorted({c for c, _ in a3_unhandled}) == sorted({c for c, _ in r.handled} | {c for c, _ in r.unhandled}), f"file {name}"
 
 
 def test_files_on_disk():
-    """Chạy a6_general_exceptions.py <md> trước. File trên đĩa phải khớp dựng lại; A2/A3 không bị lẫn nút điều kiện."""
+    """Chạy general_exceptions.py <md> trước. File trên đĩa phải khớp dựng lại; A2/A3 không bị lẫn nút điều kiện."""
     for name, path in FILES:
-        r = a6.find_general(load(path))
-        for on_disk in (a6.conditions_path(path), a6.exceptions_path(path), a6.unhandled_path(path)):
-            assert on_disk.exists(), f"file {name}: chưa có {on_disk}, chạy a6_general_exceptions.py trước"
-        rows = [json.loads(line) for line in a6.conditions_path(path).read_text(encoding="utf-8").split("\n") if line]
+        r = general_exceptions.find_general(load(path))
+        for on_disk in (general_exceptions.conditions_path(path), general_exceptions.exceptions_path(path), general_exceptions.unhandled_path(path)):
+            assert on_disk.exists(), f"file {name}: chưa có {on_disk}, chạy general_exceptions.py trước"
+        rows = [json.loads(line) for line in general_exceptions.conditions_path(path).read_text(encoding="utf-8").split("\n") if line]
         assert all(list(x) == ["s", "p", "o"] for x in rows), f"file {name}: sai khoá nút"
         assert [(x["s"], x["p"], x["o"]) for x in rows] == [(c, p, o) for c, clause in r.nodes
                                                            for p, o in (("type", "dieu_kien"), ("text", clause))], f"file {name}: nút"
-        rows = [json.loads(line) for line in a6.exceptions_path(path).read_text(encoding="utf-8").split("\n") if line]
+        rows = [json.loads(line) for line in general_exceptions.exceptions_path(path).read_text(encoding="utf-8").split("\n") if line]
         assert all(list(x) == ["s", "p", "o", "evidence", "method"] for x in rows), f"file {name}: sai khoá cạnh"
         assert [(x["s"], x["p"], x["o"], x["evidence"], x["method"]) for x in rows] == r.edges, f"file {name}: cạnh"
-        lines = a6.unhandled_path(path).read_text(encoding="utf-8").split("\n")
+        lines = general_exceptions.unhandled_path(path).read_text(encoding="utf-8").split("\n")
         assert [tuple(x.split("\t")) for x in lines[:-1]] == r.unhandled and lines[-1] == "", f"file {name}: unhandled"
-        a3_rows = [json.loads(line) for line in a3.exceptions_path(path).read_text(encoding="utf-8").split("\n") if line]
-        assert not any(x["method"] == a6.METHOD for x in a3_rows), f"file {name}: a3_exceptions lẫn cạnh của A6"
+        a3_rows = [json.loads(line) for line in exceptions.exceptions_path(path).read_text(encoding="utf-8").split("\n") if line]
+        assert not any(x["method"] == general_exceptions.METHOD for x in a3_rows), f"file {name}: a3_exceptions lẫn cạnh của A6"
         assert not any(x["s"] in dict(r.nodes) for x in a3_rows), f"file {name}: a3_exceptions lẫn nút điều kiện"
 
 
 def run_cli(units, argv=("x",)):
-    """Chạy a6.main trên đơn vị dựng tay, ghi vào thư mục tạm; trả về (mã thoát, {tên file: nội dung}, stdout)."""
-    saved = a2.read_units, a6.conditions_path, a6.exceptions_path, a6.unhandled_path
+    """Chạy general_exceptions.main trên đơn vị dựng tay, ghi vào thư mục tạm; trả về (mã thoát, {tên file: nội dung}, stdout)."""
+    saved = edges.read_units, general_exceptions.conditions_path, general_exceptions.exceptions_path, general_exceptions.unhandled_path
     with tempfile.TemporaryDirectory() as tmp:
-        a2.read_units = lambda src: units
-        a6.conditions_path = lambda src: Path(tmp) / "c.jsonl"
-        a6.exceptions_path = lambda src: Path(tmp) / "e.jsonl"
-        a6.unhandled_path = lambda src: Path(tmp) / "u.txt"
+        edges.read_units = lambda src: units
+        general_exceptions.conditions_path = lambda src: Path(tmp) / "c.jsonl"
+        general_exceptions.exceptions_path = lambda src: Path(tmp) / "e.jsonl"
+        general_exceptions.unhandled_path = lambda src: Path(tmp) / "u.txt"
         code, out = 0, io.StringIO()
         try:
             try:
                 with contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
-                    a6.main(list(argv))
+                    general_exceptions.main(list(argv))
             except SystemExit as e:
                 code = e.code
         finally:
-            a2.read_units, a6.conditions_path, a6.exceptions_path, a6.unhandled_path = saved
+            edges.read_units, general_exceptions.conditions_path, general_exceptions.exceptions_path, general_exceptions.unhandled_path = saved
         files = {p.name: p.read_text(encoding="utf-8") for p in Path(tmp).iterdir()}
     return code, files, out.getvalue()
 
@@ -252,7 +252,7 @@ def test_cli_writes_all_three_files_when_clean():
                         "X.D3": ("dieu", "Trừ người C.")})
     code, files, out = run_cli(units)
     assert code == 0, code
-    cond = a6.condition_id("X", "có thỏa thuận khác")
+    cond = general_exceptions.condition_id("X", "có thỏa thuận khác")
     assert files["c.jsonl"] == (json.dumps({"s": cond, "p": "type", "o": "dieu_kien"}, ensure_ascii=False) + "\n"
                                 + json.dumps({"s": cond, "p": "text", "o": "có thỏa thuận khác"}, ensure_ascii=False) + "\n")
     assert [(json.loads(x)["s"], json.loads(x)["o"]) for x in files["e.jsonl"].split("\n") if x] == [(cond, "X.D1"), (cond, "X.D2")]

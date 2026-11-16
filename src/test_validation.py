@@ -1,8 +1,8 @@
 """A5: kiểm tra bốn phép kiểm (1-3 trên A1-A3, 4 trên A4 khi có --versions) bằng dữ liệu dựng tay có bơm lỗi, rồi trên file thật.
 
-Chạy: python -I src/test_a5.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
-Chạy a5_checks.py cho cả hai file trước (python -I src/a5_checks.py <file md>), test_reports_on_disk đọc báo cáo đã ghi.
-Bước 4 (4a-4e): chạy a4_versions.py apply cho dev01+dev02, dev04_bo_sung (mẫu) và dev01_full (p4), rồi a5_checks.py <md> --versions
+Chạy: python -I src/test_validation.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy validation.py cho cả hai file trước (python -I src/validation.py <file md>), test_reports_on_disk đọc báo cáo đã ghi.
+Bước 4 (4a-4e): chạy versioning.py apply cho dev01+dev02, dev04_bo_sung (mẫu) và dev01_full (p4), rồi validation.py <md> --versions
 <file> cho từng bộ; test_versions_on_disk đọc file versions, test_reports_on_disk đọc báo cáo bước 4 đã ghi (xem VERSIONS_ON_DISK).
 """
 import contextlib
@@ -14,9 +14,9 @@ import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import a2_edges as a2
-import a3_exceptions as a3
-import a5_checks as a5
+import edges
+import exceptions
+import validation as validation
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLE_FILE = ROOT / "data" / "sample" / "blds2015_5dieu.md"
@@ -24,7 +24,7 @@ FULL_FILE = ROOT / "data" / "raw" / "blds2015_p4.md"
 FILES = [("mẫu", SAMPLE_FILE), ("đầy đủ", FULL_FILE)]  # luôn mẫu trước
 D, K, A = "X.D1", "X.D1.K1", "X.D1.K1.a"
 
-# Số kỳ vọng đếm độc lập với a5_checks: type và part_of bằng grep trên file jsonl, Điều bằng "### Điều" trong md.
+# Số kỳ vọng đếm độc lập với validation: type và part_of bằng grep trên file jsonl, Điều bằng "### Điều" trong md.
 UNITS = {SAMPLE_FILE: 35, FULL_FILE: 215}
 DIEU = {SAMPLE_FILE: 5, FULL_FILE: 54}
 PART_OF = {SAMPLE_FILE: 30, FULL_FILE: 161}
@@ -48,17 +48,17 @@ def mini_edges(*extra):
     return rows((D, "contains", K), (K, "part_of", D), (K, "contains", A), (A, "part_of", K), *extra)
 
 
-EXPECT = a5.Expect(units=3, dieu=1)
+EXPECT = validation.Expect(units=3, dieu=1)
 
 
 def codes(triples, expect=EXPECT):
-    checks, _ = a5.check_codes(triples, expect)
+    checks, _ = validation.check_codes(triples, expect)
     return {c.id: c for c in checks}
 
 
 def parents(triples, edges, expect=EXPECT):
-    _, unit_types = a5.check_codes(triples, expect)
-    return {c.id: c for c in a5.check_parents(unit_types, edges, expect)}
+    _, unit_types = validation.check_codes(triples, expect)
+    return {c.id: c for c in validation.check_parents(unit_types, edges, expect)}
 
 
 def bad_ids(by_id):
@@ -71,7 +71,7 @@ def test_mini_clean():
     by_id = codes(mini_triples())
     assert bad_ids(by_id) == [], by_id
     assert bad_ids(parents(mini_triples(), mini_edges())) == []
-    assert not a5.check_duplicate_edges([("a2_edges", mini_edges())]).problems
+    assert not validation.check_duplicate_edges([("a2_edges", mini_edges())]).problems
 
 
 def test_step1_duplicate_type_same_value():
@@ -104,8 +104,8 @@ def test_step1_unit_without_type_row():
 
 
 def test_step1_wrong_unit_and_dieu_counts():
-    assert bad_ids(codes(mini_triples(), a5.Expect(units=4, dieu=1))) == ["1a"]
-    assert bad_ids(codes(mini_triples(), a5.Expect(units=3, dieu=2))) == ["1b"]
+    assert bad_ids(codes(mini_triples(), validation.Expect(units=4, dieu=1))) == ["1a"]
+    assert bad_ids(codes(mini_triples(), validation.Expect(units=3, dieu=2))) == ["1b"]
     assert bad_ids(codes(mini_triples()[:-2])) == ["1a"]  # mất Điểm cuối
 
 
@@ -138,7 +138,7 @@ def test_step2_parent_not_last_segment_dropped():
 def test_step2_parent_type_row_missing():
     """Bỏ dòng type của Điều: cha của Khoản không còn là đơn vị, chỉ 2f đỏ."""
     triples = [(i, r) for i, r in mini_triples() if not (r["s"] == D and r["p"] == "type")]
-    by_id = parents(triples, mini_edges(), a5.Expect(units=2, dieu=0))
+    by_id = parents(triples, mini_edges(), validation.Expect(units=2, dieu=0))
     assert bad_ids(by_id) == ["2f"], bad_ids(by_id)
     assert by_id["2f"].problems == ["X.D1.K1: cha X.D1 không phải đơn vị"]
 
@@ -148,7 +148,7 @@ def test_step2_diem_directly_under_dieu():
     direct = "X.D1.a"
     triples = rows((D, "type", "dieu"), (direct, "type", "diem"))
     edges = rows((D, "contains", direct), (direct, "part_of", D))
-    by_id = parents(triples, edges, a5.Expect(units=2, dieu=1))
+    by_id = parents(triples, edges, validation.Expect(units=2, dieu=1))
     assert bad_ids(by_id) == ["2f"], bad_ids(by_id)
     assert not by_id["2c"].problems
     assert by_id["2f"].problems == ["X.D1.a: cha X.D1 là dieu, cần khoan"]
@@ -157,7 +157,7 @@ def test_step2_diem_directly_under_dieu():
 def test_step2_khoan_under_khoan_wrong_level():
     triples = rows((D, "type", "dieu"), (K, "type", "khoan"), ("X.D1.K1.K2", "type", "khoan"))
     edges = rows((D, "contains", K), (K, "part_of", D), (K, "contains", "X.D1.K1.K2"), ("X.D1.K1.K2", "part_of", K))
-    assert parents(triples, edges, a5.Expect(units=3, dieu=1))["2f"].problems == ["X.D1.K1.K2: cha X.D1.K1 là khoan, cần dieu"]
+    assert parents(triples, edges, validation.Expect(units=3, dieu=1))["2f"].problems == ["X.D1.K1.K2: cha X.D1.K1 là khoan, cần dieu"]
 
 
 def test_step2_asymmetry_both_directions():
@@ -175,7 +175,7 @@ def test_step2_part_of_count():
 
 def test_step2_unknown_type_and_part_of_from_non_unit():
     triples = rows((D, "type", "dieu"), (K, "type", "chuong"))
-    by_id = parents(triples, rows((K, "part_of", D), ("X.D9.K1", "part_of", "X.D9")), a5.Expect(units=2, dieu=1))
+    by_id = parents(triples, rows((K, "part_of", D), ("X.D9.K1", "part_of", "X.D9")), validation.Expect(units=2, dieu=1))
     assert "type 'chuong' không phải" in by_id["2b"].problems[0]
     assert "X.D9.K1: có part_of nhưng không có dòng type" in by_id["2b"].problems[1]
 
@@ -184,19 +184,19 @@ def test_step2_unknown_type_and_part_of_from_non_unit():
 
 def test_step3_duplicate_within_file_different_evidence():
     ref = rows((K, "refers_to", D, "Điều 1"), (K, "refers_to", D, "Điều này"), (A, "refers_to", D, "x"))
-    c = a5.check_duplicate_edges([("a2_refs", ref)])
+    c = validation.check_duplicate_edges([("a2_refs", ref)])
     assert len(c.problems) == 1
     assert c.problems[0] == f'{K}\trefers_to\t{D}\t2 lần\ta2_refs:1 "Điều 1"; a2_refs:2 "Điều này"'
     assert c.summary == "3 bộ ba, 2 khác nhau, 1 bị lặp"
 
 
 def test_step3_duplicate_across_files_is_pooled():
-    c = a5.check_duplicate_edges([("a2_refs", rows((K, "refers_to", D, "a"))), ("a3_exceptions", rows((K, "refers_to", D, "b")))])
+    c = validation.check_duplicate_edges([("a2_refs", rows((K, "refers_to", D, "a"))), ("a3_exceptions", rows((K, "refers_to", D, "b")))])
     assert len(c.problems) == 1 and "a2_refs:1" in c.problems[0] and "a3_exceptions:1" in c.problems[0]
 
 
 def test_step3_different_predicate_or_direction_is_not_duplicate():
-    c = a5.check_duplicate_edges([("a2_edges", rows((K, "refers_to", D), (K, "exception_of", D), (D, "refers_to", K)))])
+    c = validation.check_duplicate_edges([("a2_edges", rows((K, "refers_to", D), (K, "exception_of", D), (D, "refers_to", K)))])
     assert not c.problems
 
 
@@ -215,8 +215,8 @@ def vrows(*specs):
     """
     out = []
     for i, spec in enumerate(specs, 1):
-        row = dict(zip(a5.VERSION_KEYS, spec[:5]))
-        row.update({f: None for f in a5.CONTENT_FIELDS})
+        row = dict(zip(validation.VERSION_KEYS, spec[:5]))
+        row.update({f: None for f in validation.CONTENT_FIELDS})
         row.update(CONTENT.get(row["id"], {}))
         row.update(spec[5] if len(spec) > 5 else {})
         out.append((i, row))
@@ -235,7 +235,7 @@ def content_triples():
 
 
 def versions_checks(rows_, a1_ids=(D, K, A)):
-    return {c.id: c for c in a5.check_versions(set(a1_ids), rows_)}
+    return {c.id: c for c in validation.check_versions(set(a1_ids), rows_)}
 
 
 def test_step4_clean_and_new_unit_not_in_a1_is_fine():
@@ -308,14 +308,14 @@ def test_step4d_a1_unit_missing_from_versions():
 
 
 def content_check(version_rows, a1_rows=None):
-    return a5.check_version1_content(content_triples() if a1_rows is None else a1_rows, version_rows)
+    return validation.check_version1_content(content_triples() if a1_rows is None else a1_rows, version_rows)
 
 
 def test_step4e_version1_matches_a1():
     c = content_check(mini_versions())
     assert c.id == "4e" and c.problems == [], c.problems
     assert c.summary == "9 trường ở 3 dòng version 1"  # D: type/number/heading; K: type/number/text; A: type/number/text; version 2 không tính
-    assert not set(a5.CONTENT_FIELDS) & set(a5.VERSION_KEYS)  # trường nội dung không bắt buộc trong file versions
+    assert not set(validation.CONTENT_FIELDS) & set(validation.VERSION_KEYS)  # trường nội dung không bắt buộc trong file versions
 
 
 def test_step4e_text_changed_in_version1_only_4e_red():
@@ -367,7 +367,7 @@ def test_step4e_prints_first_60_chars():
 # ---- run / main ----
 
 class Env:
-    """Đổi đường dẫn vào/ra của a5 sang thư mục tạm, và bảng EXPECTED sang stem "t"."""
+    """Đổi đường dẫn vào/ra của validation sang thư mục tạm, và bảng EXPECTED sang stem "t"."""
 
     def __init__(self, tmp, triples, edges, refs=(), exceptions=(), versions=None):
         self.tmp = Path(tmp)
@@ -380,22 +380,22 @@ class Env:
             with open(self.tmp / f"{key}.jsonl", "w", encoding="utf-8") as f:
                 for _, r in rs:
                     f.write(json.dumps(r, ensure_ascii=False) + "\n")
-        self.saved = (a2.triples_path, a2.edges_path, a2.refs_path, a3.exceptions_path, a5.report_path, dict(a5.EXPECTED))
-        a2.triples_path, a2.edges_path, a2.refs_path = (lambda s, k=k: self.tmp / f"{k}.jsonl" for k in ("t1", "te", "tr"))
-        a3.exceptions_path = lambda s: self.tmp / "tx.jsonl"
-        a5.report_path = lambda s, v=None: self.tmp / "report.txt"
-        a5.EXPECTED["t"] = EXPECT
+        self.saved = (edges.triples_path, edges.edges_path, edges.refs_path, exceptions.exceptions_path, validation.report_path, dict(validation.EXPECTED))
+        edges.triples_path, edges.edges_path, edges.refs_path = (lambda s, k=k: self.tmp / f"{k}.jsonl" for k in ("t1", "te", "tr"))
+        exceptions.exceptions_path = lambda s: self.tmp / "tx.jsonl"
+        validation.report_path = lambda s, v=None: self.tmp / "report.txt"
+        validation.EXPECTED["t"] = EXPECT
         return self
 
     def __exit__(self, *exc):
-        a2.triples_path, a2.edges_path, a2.refs_path, a3.exceptions_path, a5.report_path, expected = self.saved
-        a5.EXPECTED.clear()
-        a5.EXPECTED.update(expected)
+        edges.triples_path, edges.edges_path, edges.refs_path, exceptions.exceptions_path, validation.report_path, expected = self.saved
+        validation.EXPECTED.clear()
+        validation.EXPECTED.update(expected)
 
     def run(self, *args):
         out = io.StringIO()
         with contextlib.redirect_stdout(out):
-            code = a5.main(["x/t.md", *args])
+            code = validation.main(["x/t.md", *args])
         return code, out.getvalue(), (self.tmp / "report.txt").read_text(encoding="utf-8")
 
 
@@ -430,7 +430,7 @@ def test_run_only_duplicate_edges_exit_1():
 def test_run_unknown_stem_exits_with_error_and_no_report():
     with tempfile.TemporaryDirectory() as tmp, Env(tmp, mini_triples(), mini_edges()) as env:
         try:
-            a5.main(["x/khac.md"])
+            validation.main(["x/khac.md"])
         except SystemExit as e:
             assert "LỖI" in str(e.code) and "'khac'" in str(e.code)
         else:
@@ -443,7 +443,7 @@ def test_run_missing_file_and_bad_input_exit_with_error():
         (env.tmp / "tr.jsonl").unlink()
         for expect_text in ("chưa có", "JSON hỏng", "thiếu khoá s/p/o"):
             try:
-                a5.main(["x/t.md"])
+                validation.main(["x/t.md"])
             except SystemExit as e:
                 assert "LỖI" in str(e.code) and expect_text in str(e.code), (expect_text, e.code)
             else:
@@ -453,9 +453,9 @@ def test_run_missing_file_and_bad_input_exit_with_error():
 
 
 def test_report_path_naming():
-    assert a5.report_path("a/b.md").name == "a5_report_b.txt"  # không --versions: tên cũ, báo cáo bước 1-3 không đổi
-    assert a5.report_path("a/b.md", "d/a4_dev01+dev02_versions.jsonl").name == "a5_report_b_dev01+dev02.txt"
-    assert a5.report_path("a/b.md", "d/other.jsonl").name == "a5_report_b_other.txt"
+    assert validation.report_path("a/b.md").name == "a5_report_b.txt"  # không --versions: tên cũ, báo cáo bước 1-3 không đổi
+    assert validation.report_path("a/b.md", "d/a4_dev01+dev02_versions.jsonl").name == "a5_report_b_dev01+dev02.txt"
+    assert validation.report_path("a/b.md", "d/other.jsonl").name == "a5_report_b_other.txt"
 
 
 def test_run_with_versions_clean():
@@ -505,12 +505,12 @@ def test_run_with_versions_missing_file_and_missing_keys():
 
 # ---- file thật ----
 
-# Bộ (md gốc, tên bộ A4, số dòng versions đếm bằng wc -l). Chạy a4_versions.py apply cho từng bộ trước.
+# Bộ (md gốc, tên bộ A4, số dòng versions đếm bằng wc -l). Chạy versioning.py apply cho từng bộ trước.
 VERSIONS_ON_DISK = [(SAMPLE_FILE, "dev01+dev02", 37), (SAMPLE_FILE, "dev04_bo_sung", 40), (FULL_FILE, "dev01_full", 215)]
 
 
 def versions_file(name):
-    return a2.PROCESSED_DIR / f"a4_{name}_versions.jsonl"
+    return edges.PROCESSED_DIR / f"a4_{name}_versions.jsonl"
 
 def raw_lines(path):
     return path.read_text(encoding="utf-8").split("\n")
@@ -519,21 +519,21 @@ def raw_lines(path):
 def test_files_on_disk():
     """Số kỳ vọng đếm độc lập: type/part_of bằng dòng thô của jsonl, Điều bằng '### Điều' trong md."""
     for label, md in FILES:
-        triples, edges = a2.triples_path(md), a2.edges_path(md)
+        triples, edges = edges.triples_path(md), edges.edges_path(md)
         assert sum(1 for l in raw_lines(triples) if '"p": "type"' in l) == UNITS[md], label
         assert sum(1 for l in raw_lines(md) if l.startswith("### Điều")) == DIEU[md], label
         assert sum(1 for l in raw_lines(edges) if '"p": "part_of"' in l) == PART_OF[md], label
-        assert a5.EXPECTED[md.stem] == a5.Expect(UNITS[md], DIEU[md]), label  # bảng cứng khớp số đếm độc lập
-        checks, unit_types = a5.check_codes(a5.load_rows(triples), a5.EXPECTED[md.stem])
-        checks += a5.check_parents(unit_types, a5.load_rows(edges), a5.EXPECTED[md.stem])
+        assert validation.EXPECTED[md.stem] == validation.Expect(UNITS[md], DIEU[md]), label  # bảng cứng khớp số đếm độc lập
+        checks, unit_types = validation.check_codes(validation.load_rows(triples), validation.EXPECTED[md.stem])
+        checks += validation.check_parents(unit_types, validation.load_rows(edges), validation.EXPECTED[md.stem])
         assert [(c.id, c.problems) for c in checks if c.problems] == [], label
         assert len(unit_types) == UNITS[md] and sum(1 for t in unit_types.values() if t == "dieu") == DIEU[md], label
 
 
 def test_pooled_triples_on_disk():
     for label, md in FILES:
-        sources = [(n, a5.load_rows(p(md))) for n, p in zip(a5.EDGE_SOURCES, (a2.edges_path, a2.refs_path, a3.exceptions_path))]
-        c = a5.check_duplicate_edges(sources)
+        sources = [(n, validation.load_rows(p(md))) for n, p in zip(validation.EDGE_SOURCES, (edges.edges_path, edges.refs_path, exceptions.exceptions_path))]
+        c = validation.check_duplicate_edges(sources)
         total = sum(len(r) for _, r in sources)
         assert total == POOLED[md], (label, total)
         distinct = {(r["s"], r["p"], r["o"]) for _, rs in sources for _, r in rs}
@@ -544,11 +544,11 @@ def test_pooled_triples_on_disk():
 def test_versions_on_disk():
     for md, name, n_lines in VERSIONS_ON_DISK:
         path = versions_file(name)
-        assert path.exists(), f"chưa có {path}; chạy python -I src/a4_versions.py apply cho bộ {name}"
+        assert path.exists(), f"chưa có {path}; chạy python -I src/versioning.py apply cho bộ {name}"
         assert sum(1 for l in raw_lines(path) if l.strip()) == n_lines, name
-        a1_rows, version_rows = a5.load_rows(a2.triples_path(md)), a5.load_rows(path, a5.VERSION_KEYS)
-        _, unit_types = a5.check_codes(a1_rows, a5.EXPECTED[md.stem])
-        checks = a5.check_versions(set(unit_types), version_rows) + [a5.check_version1_content(a1_rows, version_rows)]
+        a1_rows, version_rows = validation.load_rows(edges.triples_path(md)), validation.load_rows(path, validation.VERSION_KEYS)
+        _, unit_types = validation.check_codes(a1_rows, validation.EXPECTED[md.stem])
+        checks = validation.check_versions(set(unit_types), version_rows) + [validation.check_version1_content(a1_rows, version_rows)]
         assert [(c.id, c.problems) for c in checks if c.problems] == [], name
         assert checks[-1].id == "4e" and checks[-1].summary.endswith(f"ở {UNITS[md]} dòng version 1"), name  # so đủ mọi đơn vị A1, không rỗng
         assert len(unit_types) == UNITS[md], name
@@ -556,16 +556,16 @@ def test_versions_on_disk():
 
 def test_reports_on_disk():
     for label, md in FILES:
-        path = a5.report_path(md)
-        assert path.exists(), f"{label}: chưa có {path}; chạy python -I src/a5_checks.py {md}"
+        path = validation.report_path(md)
+        assert path.exists(), f"{label}: chưa có {path}; chạy python -I src/validation.py {md}"
         text = path.read_text(encoding="utf-8")
         assert f"A5 báo cáo kiểm tra: {md.stem}" in text and "KẾT LUẬN: ĐẠT" in text, label
-        assert "[2f]" in text, f"{label}: báo cáo cũ (chưa có 2f); chạy lại python -I src/a5_checks.py {md}"
+        assert "[2f]" in text, f"{label}: báo cáo cũ (chưa có 2f); chạy lại python -I src/validation.py {md}"
         assert not re.search(r"[A-Za-z]:\\", text), label  # báo cáo không dính đường dẫn tuyệt đối của máy
         assert "[4a]" not in text, f"{label}: báo cáo bước 1-3 không được chứa bước 4 (bước 4 ghi file riêng)"
     for md, name, _ in VERSIONS_ON_DISK:
-        path = a5.report_path(md, versions_file(name))
-        assert path.exists(), f"{name}: chưa có {path}; chạy python -I src/a5_checks.py {md} --versions {versions_file(name)}"
+        path = validation.report_path(md, versions_file(name))
+        assert path.exists(), f"{name}: chưa có {path}; chạy python -I src/validation.py {md} --versions {versions_file(name)}"
         text = path.read_text(encoding="utf-8")
         assert f"A5 báo cáo kiểm tra: {md.stem}" in text and "[4d]" in text and "[4e]" in text and text.endswith("\nKẾT LUẬN: ĐẠT\n"), name
         assert f"data/processed/a4_{name}_versions.jsonl" in text, name  # đường dẫn tương đối, không dính đường dẫn máy

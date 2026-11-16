@@ -1,6 +1,6 @@
-"""Chặng 3: kiểm tra đầu ra của a1_parse trên file mẫu rồi file đầy đủ.
+"""Chặng 3: kiểm tra đầu ra của parse trên file mẫu rồi file đầy đủ.
 
-Chạy: python -I src/test_a1.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
+Chạy: python -I src/test_parse.py   (các hàm test_* cũng chạy được bằng pytest nếu có cài)
 """
 import collections
 import functools
@@ -12,10 +12,10 @@ import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import a1_parse as a1
+import parse as parse
 
-SAMPLE_FILE = a1.ROOT / "data" / "sample" / "blds2015_5dieu.md"
-FULL_FILE = a1.ROOT / "data" / "raw" / "blds2015_p4.md"
+SAMPLE_FILE = parse.ROOT / "data" / "sample" / "blds2015_5dieu.md"
+FULL_FILE = parse.ROOT / "data" / "raw" / "blds2015_p4.md"
 FILES = [("mẫu", SAMPLE_FILE), ("đầy đủ", FULL_FILE)]  # luôn mẫu trước
 
 # Số đơn vị và số triples để đối chiếu (đã đếm lại độc lập bằng grep/awk, không qua parser).
@@ -29,7 +29,7 @@ PREDICATES = {"type", "number", "heading", "text", "version", "source_line"}  # 
 
 @functools.cache
 def load(path):
-    result, parsed = a1.load_parsed(path)
+    result, parsed = parse.load_parsed(path)
     assert not parsed.errors, f"{path.name}: lỗi parse {parsed.errors}"
     return result, parsed
 
@@ -44,7 +44,7 @@ def test_ids_unique():
 
 def test_dd_does_not_collide_with_d():
     md = ("### Điều 1\\. A\n**1\\.** K\n- **a)** a\n- **b)** b\n- **c)** c\n- **d)** d\n- **đ)** đ\n- **e)** e\n")
-    parsed = a1.parse(a1.tokenize(md).tokens, [1])
+    parsed = parse.parse(parse.tokenize(md).tokens, [1])
     assert not parsed.errors, parsed.errors
     ids = [u.id for u in parsed.units if u.type == "diem"]
     assert len(ids) == len(set(ids)) == 6
@@ -71,7 +71,7 @@ def test_reference_counts():
     for name, path in FILES:
         parsed = load(path)[1]
         want_units, want_triples = REFERENCE[path]
-        got = (len(parsed.units), len(a1.to_triples(parsed.units)))
+        got = (len(parsed.units), len(parse.to_triples(parsed.units)))
         assert got == (want_units, want_triples), f"file {name}: (đơn vị, triples) = {got}, cần {(want_units, want_triples)}"
 
 
@@ -120,11 +120,11 @@ def test_notes():
     assert parsed.notes == ["Điều 643, Khoản 2, dòng 301"], parsed.notes
     with tempfile.TemporaryDirectory() as tmp:
         out = Path(tmp) / "a1_notes.txt"
-        a1.write_notes(parsed.notes, out)
+        parse.write_notes(parsed.notes, out)
         lines = out.read_text(encoding="utf-8").splitlines()
     assert len(lines) == 1 and lines[0].startswith("Điều 643, Khoản 2,"), lines
     # mỗi file nguồn một file notes: chạy file mẫu không ghi đè notes của file đầy đủ
-    assert a1.notes_path(SAMPLE_FILE) != a1.notes_path(FULL_FILE)
+    assert parse.notes_path(SAMPLE_FILE) != parse.notes_path(FULL_FILE)
 
 
 def test_para_placement_in_full_file():
@@ -144,10 +144,10 @@ def test_para_placement_in_full_file():
 def test_jsonl_written_correctly():
     for name, path in FILES:
         parsed = load(path)[1]
-        triples = a1.to_triples(parsed.units)
+        triples = parse.to_triples(parsed.units)
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp) / "t.jsonl"
-            a1.write_triples(triples, out)
+            parse.write_triples(triples, out)
             raw = out.read_bytes()
         assert not raw.startswith(b"\xef\xbb\xbf"), "có BOM"
         assert b"\\u" not in raw, "còn escape \\u (ensure_ascii phải là False)"

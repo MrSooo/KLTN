@@ -1,7 +1,7 @@
 """A6: ngoại lệ chung "..., trừ trường hợp X" thành nút điều kiện và cạnh exception_of (file riêng, không sửa A3).
 
-Đầu vào: triples của A1 (a2.read_units). Không đọc file A3: A3 chỉ nhận một trigger "trừ"/"ngoại trừ" khi text kết thúc bằng
-"sau đây:" (quy tắc 2, a3.find_exceptions), nên mọi trigger "trừ" còn lại là phần của A6 hoặc unhandled của A6.
+Đầu vào: triples của A1 (edges.read_units). Không đọc file A3: A3 chỉ nhận một trigger "trừ"/"ngoại trừ" khi text kết thúc bằng
+"sau đây:" (quy tắc 2, exceptions.find_exceptions), nên mọi trigger "trừ" còn lại là phần của A6 hoặc unhandled của A6.
 Đầu ra: data/processed/a6_conditions_<stem>.jsonl (bộ ba s,p,o của nút điều kiện: type, text),
         data/processed/a6_exceptions_<stem>.jsonl (s, p, o, evidence, method), docs/a6_unhandled_<stem>.txt.
 Chiều cạnh giống A3: s là phần ngoại lệ (nút điều kiện), o là đơn vị quy tắc bị ngoại trừ.
@@ -12,7 +12,7 @@ Chiều cạnh giống A3: s là phần ngoại lệ (nút điều kiện), o l�
   Hai "trừ trường hợp" trong một đơn vị, hoặc mệnh đề rỗng: ValueError (spec không nói cách xử lý, không đoán).
   Trigger "không áp dụng" không phải việc của A6.
 
-Chạy: python -I src/a6_general_exceptions.py <file md nguồn>   (bắt buộc truyền path, không có mặc định)
+Chạy: python -I src/general_exceptions.py <file md nguồn>   (bắt buộc truyền path, không có mặc định)
 """
 import argparse
 import collections
@@ -24,29 +24,29 @@ from pathlib import Path
 from typing import NamedTuple
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
-import a2_edges as a2
-import a3_exceptions as a3
+import edges
+import exceptions
 
-PREDICATE = a3.PREDICATE
+PREDICATE = exceptions.PREDICATE
 METHOD = "general_except_pattern"
 COND_TYPE = "dieu_kien"
 ID_HEX = 8  # số ký tự hex của sha1 trong mã nút điều kiện
 
-# Khớp tại vị trí của một trigger "trừ"/"ngoại trừ" của a2.TRIGGER_RE; chỉ nối bằng dấu cách nên không vắt qua dòng mới.
+# Khớp tại vị trí của một trigger "trừ"/"ngoại trừ" của edges.TRIGGER_RE; chỉ nối bằng dấu cách nên không vắt qua dòng mới.
 GENERAL_RE = re.compile(r"(?:ngoại[ ]+)?trừ[ ]+trường[ ]+hợp(?!\w)", re.I)
 
 
 def conditions_path(src):
-    return a2.PROCESSED_DIR / f"a6_conditions_{Path(src).stem}.jsonl"
+    return edges.PROCESSED_DIR / f"a6_conditions_{Path(src).stem}.jsonl"
 
 
 def exceptions_path(src):
-    return a2.PROCESSED_DIR / f"a6_exceptions_{Path(src).stem}.jsonl"
+    return edges.PROCESSED_DIR / f"a6_exceptions_{Path(src).stem}.jsonl"
 
 
 def unhandled_path(src):
     """Mỗi file nguồn một file unhandled, để chạy file này không ghi đè file kia."""
-    return a2.ROOT / "docs" / f"a6_unhandled_{Path(src).stem}.txt"
+    return edges.ROOT / "docs" / f"a6_unhandled_{Path(src).stem}.txt"
 
 
 def norm_text(s):
@@ -80,8 +80,8 @@ def find_general(units):
         text = u.get("text")
         if not text:
             continue
-        hits = [m for m in a2.TRIGGER_RE.finditer(text) if a3.kind_of(m.group(0)) in a3.EXCEPT_KINDS]
-        if text.endswith(a3.LIST_END):  # quy tắc 2 của A3 nhận mọi trigger trừ trong đơn vị này
+        hits = [m for m in edges.TRIGGER_RE.finditer(text) if exceptions.kind_of(m.group(0)) in exceptions.EXCEPT_KINDS]
+        if text.endswith(exceptions.LIST_END):  # quy tắc 2 của A3 nhận mọi trigger trừ trong đơn vị này
             skipped += [(code, m.group(0)) for m in hits]
             continue
         n_general = sum(1 for m in hits if GENERAL_RE.match(text, m.start()))
@@ -142,7 +142,7 @@ def check_general(units, result):
     used = {s for s, _, _, _, _ in result.edges}
     errors += [f"nút {c} không có cạnh nào" for c in node_ids if c not in used]
 
-    n_except = sum(1 for t in a2.find_triggers(units) if a3.kind_of(t.phrase) in a3.EXCEPT_KINDS)
+    n_except = sum(1 for t in edges.find_triggers(units) if exceptions.kind_of(t.phrase) in exceptions.EXCEPT_KINDS)
     done = len(result.skipped) + len(result.handled) + len(result.unhandled)
     if done != n_except:
         errors.append(f"số trigger trừ/ngoại trừ = {n_except}, thuộc A3 {len(result.skipped)} + đã xử lý {len(result.handled)} "
@@ -185,12 +185,12 @@ def write_unhandled(unhandled, path):
 
 def run(src):
     """Dựng nút điều kiện và cạnh exception_of từ triples của A1, in kết quả, chỉ ghi file khi sạch."""
-    units = a2.read_units(src)
+    units = edges.read_units(src)
     try:
         result = find_general(units)
     except ValueError as e:
         raise SystemExit(f"LỖI: {e}")
-    a2.fail_if_errors(check_general(units, result))
+    edges.fail_if_errors(check_general(units, result))
 
     for s, _, o, evidence, _ in result.edges:
         print(f"{s} → {o} | {evidence}")
