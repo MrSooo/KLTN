@@ -74,7 +74,7 @@ def find_general(units):
     Chỗ spec không nói thì ValueError: một đơn vị có nhiều hơn một "trừ trường hợp", hoặc mệnh đề rỗng sau khi bỏ dấu cuối;
     hai khoá khác nhau trùng mã băm.
     """
-    nodes, edges, handled, unhandled, skipped = {}, [], [], [], []
+    nodes, exc_edges, handled, unhandled, skipped = {}, [], [], [], []
     keys = {}  # mã nút -> khoá, để bắt hai khoá khác nhau trùng mã
     for code, u in units.items():
         text = u.get("text")
@@ -101,9 +101,9 @@ def find_general(units):
             if keys.setdefault(cond, key) != key:
                 raise ValueError(f"{code}: hai khoá khác nhau cùng mã băm {cond}: {keys[cond]!r} và {key!r}")
             nodes.setdefault(cond, clause)
-            edges.append((cond, PREDICATE, code, text[m.start():g.end() + len(paragraph)], METHOD))
+            exc_edges.append((cond, PREDICATE, code, text[m.start():g.end() + len(paragraph)], METHOD))
             handled.append((code, m.group(0)))
-    return General(list(nodes.items()), edges, handled, unhandled, skipped)
+    return General(list(nodes.items()), exc_edges, handled, unhandled, skipped)
 
 
 def check_general(units, result):
@@ -165,12 +165,12 @@ def write_conditions(nodes, path):
                 f.write(json.dumps({"s": cond, "p": p, "o": o}, ensure_ascii=False) + "\n")
 
 
-def write_exceptions(edges, path):
+def write_exceptions(edge_rows, path):
     """Ghi JSONL, mỗi dòng {"s","p","o","evidence","method"}."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8", newline="\n") as f:
-        for s, p, o, evidence, method in edges:
+        for s, p, o, evidence, method in edge_rows:
             f.write(json.dumps({"s": s, "p": p, "o": o, "evidence": evidence, "method": method}, ensure_ascii=False) + "\n")
 
 

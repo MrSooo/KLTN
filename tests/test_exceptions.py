@@ -66,11 +66,11 @@ def trigger_tokens(text):
 def test_rule1_phrase_immediately_before():
     text = "Quy định tại khoản 1 Điều này không áp dụng đối với người từ chối nhận di sản theo quy định tại Điều 6."
     units = mini_units({"X.D5": ("dieu", None), "X.D5.K1": ("khoan", None), "X.D5.K2": ("khoan", text), "X.D6": ("dieu", None)})
-    edges, handled, unhandled = exceptions_of(units)
+    edge_list, handled, unhandled = exceptions_of(units)
     # chỉ cụm đứng ngay trước là đích; "Điều 6" đứng sau "không áp dụng" thì không phải đích
-    assert edges == [("X.D5.K2", "exception_of", "X.D5.K1", "khoản 1 Điều này không áp dụng", exceptions.NOT_APPLY)]
+    assert edge_list == [("X.D5.K2", "exception_of", "X.D5.K1", "khoản 1 Điều này không áp dụng", exceptions.NOT_APPLY)]
     assert handled == [("X.D5.K2", "không áp dụng", exceptions.NOT_APPLY)] and unhandled == []
-    assert exceptions.check_exceptions(units, edges.build_edges(units), edges, handled, unhandled) == []
+    assert exceptions.check_exceptions(units, edges.build_edges(units), edge_list, handled, unhandled) == []
 
 
 def test_rule1_every_target_hoa_thuong_gap_and_tail():
@@ -79,8 +79,8 @@ def test_rule1_every_target_hoa_thuong_gap_and_tail():
         "X.D5.K1": ("khoan", "Điều 6 và Điều 7  Không áp dụng nếu có thỏa thuận."),   # hai đích; hai dấu cách; chữ hoa
         "X.D5.K2": ("khoan", "Điều 8 của Bộ luật này không áp dụng cho ai."),         # đuôi "của Bộ luật này"
     })
-    edges, handled, unhandled = exceptions_of(units)
-    assert edges == [
+    edge_list, handled, unhandled = exceptions_of(units)
+    assert edge_list == [
         ("X.D5.K1", "exception_of", "X.D6", "Điều 6 và Điều 7  Không áp dụng", exceptions.NOT_APPLY),
         ("X.D5.K1", "exception_of", "X.D7", "Điều 6 và Điều 7  Không áp dụng", exceptions.NOT_APPLY),
         ("X.D5.K2", "exception_of", "X.D8", "Điều 8 của Bộ luật này không áp dụng", exceptions.NOT_APPLY),
@@ -99,8 +99,8 @@ def test_rule1_phrase_not_immediately_before_gives_no_edge():
     }
     for name, text in cases.items():
         units = mini_units({"X.D5": ("dieu", None), "X.D5.K1": ("khoan", None), "X.D5.K2": ("khoan", text)})
-        edges, handled, unhandled = exceptions_of(units)
-        assert (edges, handled) == ([], []) and unhandled == [("X.D5.K2", text)], f"{name}: {edges} {unhandled}"
+        edge_list, handled, unhandled = exceptions_of(units)
+        assert (edge_list, handled) == ([], []) and unhandled == [("X.D5.K2", text)], f"{name}: {edge_list} {unhandled}"
 
 
 def test_rule1_unconfirmed_shape_or_missing_target_is_error():
@@ -128,18 +128,18 @@ def rule2_units(text, with_children=True):
 def test_rule2_direct_children_and_evidence_in_o():
     text = "Mọi người đều có thể làm chứng, trừ những người sau đây:"
     units = rule2_units(text)
-    edges, handled, unhandled = exceptions_of(units)
+    edge_list, handled, unhandled = exceptions_of(units)
     # chỉ con trực tiếp (không lấy X.D1.K1.a); s là con, o là U; evidence là câu của U chứ không phải của con
-    assert edges == [("X.D1.K1", "exception_of", "X.D1", text, exceptions.EXCEPT_LIST),
-                     ("X.D1.K2", "exception_of", "X.D1", text, exceptions.EXCEPT_LIST)]
+    assert edge_list == [("X.D1.K1", "exception_of", "X.D1", text, exceptions.EXCEPT_LIST),
+                         ("X.D1.K2", "exception_of", "X.D1", text, exceptions.EXCEPT_LIST)]
     assert handled == [("X.D1", "trừ", exceptions.EXCEPT_LIST)] and unhandled == []
-    assert exceptions.check_exceptions(units, edges.build_edges(units), edges, handled, unhandled) == []
+    assert exceptions.check_exceptions(units, edges.build_edges(units), edge_list, handled, unhandled) == []
 
 
 def test_rule2_hoa_thuong_and_ngoai_tru():
     for text, kind in (("TRỪ những người sau đây:", "TRỪ"), ("Ngoại  trừ những người sau đây:", "Ngoại  trừ")):
-        edges, handled, unhandled = exceptions_of(rule2_units(text))
-        assert [(s, o) for s, _, o, _, _ in edges] == [("X.D1.K1", "X.D1"), ("X.D1.K2", "X.D1")], text
+        edge_list, handled, unhandled = exceptions_of(rule2_units(text))
+        assert [(s, o) for s, _, o, _, _ in edge_list] == [("X.D1.K1", "X.D1"), ("X.D1.K2", "X.D1")], text
         assert handled == [("X.D1", kind, exceptions.EXCEPT_LIST)] and unhandled == [], text
 
 
@@ -148,13 +148,13 @@ def test_rule2_text_not_ending_with_sau_day_colon_is_not_matched():
                  "Mọi người đều có thể làm chứng, trừ những người sau đây.",     # kết thúc bằng .
                  "Mọi người đều có thể làm chứng, trừ những người sau:",         # không phải "sau đây:"
                  "Trừ những người sau đây: không được làm chứng"):               # "sau đây:" nằm giữa text
-        edges, handled, unhandled = exceptions_of(rule2_units(text))
-        assert (edges, handled) == ([], []) and unhandled == [("X.D1", text)], f"{text!r}: {edges}"
+        edge_list, handled, unhandled = exceptions_of(rule2_units(text))
+        assert (edge_list, handled) == ([], []) and unhandled == [("X.D1", text)], f"{text!r}: {edge_list}"
 
 
 def test_rule2_without_tru_is_not_a_trigger():
-    edges, handled, unhandled = exceptions_of(rule2_units("Người lập di chúc có quyền sau đây:"))
-    assert (edges, handled, unhandled) == ([], [], [])   # đơn vị kết thúc bằng "sau đây:" mà không có trigger: bỏ qua, không phải unhandled
+    edge_list, handled, unhandled = exceptions_of(rule2_units("Người lập di chúc có quyền sau đây:"))
+    assert (edge_list, handled, unhandled) == ([], [], [])   # đơn vị kết thúc bằng "sau đây:" mà không có trigger: bỏ qua, không phải unhandled
 
 
 def test_rule2_unconfirmed_shape_is_error():
@@ -176,13 +176,13 @@ def test_every_trigger_is_handled_or_unhandled_hand_built():
         "X.D1.K2": ("khoan", "khoản 1 Điều này không áp dụng, trừ trường hợp có thỏa thuận khác."),  # quy tắc 1 + một trừ lạc
         "X.D2": ("dieu", "Trừ trường hợp luật có quy định khác."),                         # unhandled
     })
-    edges, handled, unhandled = exceptions_of(units)
+    edge_list, handled, unhandled = exceptions_of(units)
     independent = sum(trigger_tokens(u["text"]) for u in units.values() if "text" in u)
     assert independent == len(handled) + len(unhandled) == 4, (independent, handled, unhandled)
     # từng đơn vị: số trigger trong text = số lần đơn vị đó xuất hiện ở handled + unhandled
     per_unit = collections.Counter(c for c, *_ in handled) + collections.Counter(c for c, _ in unhandled)
-    assert per_unit == {c: trigger_tokens(u["text"]) for c, u in units.items() if trigger_tokens(u.get("text", ""))}
-    assert exceptions.check_exceptions(units, edges.build_edges(units), edges, handled, unhandled) == []
+    assert per_unit == {c: trigger_tokens(u["text"]) for c, u in units.items() if trigger_tokens(u.get("text", ""))}, f"file {name}"
+    assert exceptions.check_exceptions(units, edges.build_edges(units), edge_list, handled, unhandled) == []
 
 
 def test_trigger_accounting_independent():
@@ -203,25 +203,25 @@ def test_trigger_accounting_independent():
 def test_counts_and_reviewed_lists():
     for name, path in FILES:
         units = load(path)
-        edges, handled, unhandled = exceptions_of(units)
-        assert [(s, o, ev, m) for s, _, o, ev, m in edges] == EDGES_REFERENCE[path], f"file {name}: {edges}"
-        assert len(edges) == len(EDGES_REFERENCE[path]) == {SAMPLE_FILE: 1, FULL_FILE: 4}[path]
+        edge_list, handled, unhandled = exceptions_of(units)
+        assert [(s, o, ev, m) for s, _, o, ev, m in edge_list] == EDGES_REFERENCE[path], f"file {name}: {edge_list}"
+        assert len(edge_list) == len(EDGES_REFERENCE[path]) == {SAMPLE_FILE: 1, FULL_FILE: 4}[path]
         assert [c for c, _ in unhandled] == UNHANDLED_REFERENCE[path], f"file {name}: {[c for c, _ in unhandled]}"
         assert all(sentence == units[c]["text"] for c, sentence in unhandled), f"file {name}: câu phải là toàn bộ text"
-        assert all(p == "exception_of" for _, p, _, _, _ in edges)
+        assert all(p == "exception_of" for _, p, _, _, _ in edge_list)
 
 
 def test_edges_invariants_and_check_clean():
     for name, path in FILES:
         units = load(path)
         structural = edges.build_edges(units)
-        edges, handled, unhandled = exceptions.find_exceptions(units, structural)
-        assert all(s != o for s, _, o, _, _ in edges), f"file {name}: có cạnh s == o"
-        triples = [(s, p, o) for s, p, o, _, _ in edges]
+        edge_list, handled, unhandled = exceptions.find_exceptions(units, structural)
+        assert all(s != o for s, _, o, _, _ in edge_list), f"file {name}: có cạnh s == o"
+        triples = [(s, p, o) for s, p, o, _, _ in edge_list]
         assert len(triples) == len(set(triples)), f"file {name}: cạnh trùng"
-        assert exceptions.check_exceptions(units, structural, edges, handled, unhandled) == [], f"file {name}"
+        assert exceptions.check_exceptions(units, structural, edge_list, handled, unhandled) == [], f"file {name}"
         # evidence nằm nguyên văn trong text của đơn vị chứa trigger: s ở quy tắc 1, o ở quy tắc 2
-        for s, _, o, evidence, method in edges:
+        for s, _, o, evidence, method in edge_list:
             holder = s if method == exceptions.NOT_APPLY else o
             assert evidence in units[holder]["text"], f"file {name}: {s} -> {o}"
             if method == exceptions.EXCEPT_LIST:
@@ -232,54 +232,54 @@ def test_rule2_children_match_independent_code_prefix():
     """Con trực tiếp của U tính bằng tiền tố mã (không qua contains của A2a) phải đúng bằng các s của quy tắc 2."""
     for name, path in FILES:
         units = load(path)
-        edges = exceptions_of(units)[0]
-        for u in {o for _, _, o, _, m in edges if m == exceptions.EXCEPT_LIST}:
+        edge_list = exceptions_of(units)[0]
+        for u in {o for _, _, o, _, m in edge_list if m == exceptions.EXCEPT_LIST}:
             by_prefix = [c for c in units if c.startswith(u + ".") and c.count(".") == u.count(".") + 1]
-            assert [s for s, _, o, _, m in edges if m == exceptions.EXCEPT_LIST and o == u] == by_prefix, f"file {name}: {u}"
+            assert [s for s, _, o, _, m in edge_list if m == exceptions.EXCEPT_LIST and o == u] == by_prefix, f"file {name}: {u}"
 
 
 def test_check_catches_corrupted_data():
     units = load(FULL_FILE)
     structural = edges.build_edges(units)
-    edges, handled, unhandled = exceptions.find_exceptions(units, structural)
-    first, last = edges[0], edges[-1]   # quy tắc 2 rồi quy tắc 1
+    edge_list, handled, unhandled = exceptions.find_exceptions(units, structural)
+    first, last = edge_list[0], edge_list[-1]   # quy tắc 2 rồi quy tắc 1
 
     def errors(**kw):
-        args = dict(edges=edges, handled=handled, unhandled=unhandled)
+        args = dict(edges=edge_list, handled=handled, unhandled=unhandled)
         args.update(kw)
         return exceptions.check_exceptions(units, structural, args["edges"], args["handled"], args["unhandled"])
 
-    assert any("cạnh trùng" in e for e in errors(edges=edges + [first]))
-    assert any("chính nó" in e for e in errors(edges=edges + [(first[2], first[1], first[2], first[3], first[4])]))
-    assert any("không có trong tập đơn vị" in e for e in errors(edges=edges + [("X.D9", "exception_of", first[2], first[3], first[4])]))
-    assert any("evidence" in e for e in errors(edges=edges[:-1] + [last[:3] + ("không có trong text", last[4])]))
-    assert any("evidence" in e for e in errors(edges=edges[:-1] + [last[:3] + ("", last[4])]))
-    assert any("method" in e for e in errors(edges=edges[:-1] + [last[:4] + ("khac",)]))
-    assert any("p là" in e for e in errors(edges=edges[:-1] + [(last[0], "refers_to") + last[2:]]))
+    assert any("cạnh trùng" in e for e in errors(edges=edge_list + [first]))
+    assert any("chính nó" in e for e in errors(edges=edge_list + [(first[2], first[1], first[2], first[3], first[4])]))
+    assert any("không có trong tập đơn vị" in e for e in errors(edges=edge_list + [("X.D9", "exception_of", first[2], first[3], first[4])]))
+    assert any("evidence" in e for e in errors(edges=edge_list[:-1] + [last[:3] + ("không có trong text", last[4])]))
+    assert any("evidence" in e for e in errors(edges=edge_list[:-1] + [last[:3] + ("", last[4])]))
+    assert any("method" in e for e in errors(edges=edge_list[:-1] + [last[:4] + ("khac",)]))
+    assert any("p là" in e for e in errors(edges=edge_list[:-1] + [(last[0], "refers_to") + last[2:]]))
     # quy quắc 2 nhưng s không phải con trực tiếp của o
-    assert any("con trực tiếp" in e for e in errors(edges=edges + [("BLDS2015.D615.K1", "exception_of", first[2], first[3], first[4])]))
+    assert any("con trực tiếp" in e for e in errors(edges=edge_list + [("BLDS2015.D615.K1", "exception_of", first[2], first[3], first[4])]))
     # số trigger không khớp: bỏ một unhandled, hoặc thêm một handled
     assert any("số trigger" in e for e in errors(unhandled=unhandled[1:]))
     assert any("số trigger" in e for e in errors(handled=handled + handled[:1]))
     # trigger ghi đã xử lý nhưng không có cạnh
-    assert any("không có cạnh" in e for e in errors(edges=edges[:3]))
+    assert any("không có cạnh" in e for e in errors(edges=edge_list[:3]))
     # câu unhandled không phải text của đơn vị
     assert any("câu không phải text" in e for e in errors(unhandled=[(unhandled[0][0], "khác")] + unhandled[1:]))
     # câu có xuống dòng không ghi được thành một dòng
     bad = {c: dict(u) for c, u in units.items()}
     bad[unhandled[0][0]]["text"] += "\nđoạn hai"
     bad_unhandled = [(unhandled[0][0], bad[unhandled[0][0]]["text"])] + unhandled[1:]
-    assert any("tab hoặc xuống dòng" in e for e in exceptions.check_exceptions(bad, structural, edges, handled, bad_unhandled))
+    assert any("tab hoặc xuống dòng" in e for e in exceptions.check_exceptions(bad, structural, edge_list, handled, bad_unhandled))
 
 
 # ---- ghi file và CLI ----
 
 def test_files_written_correctly():
     for name, path in FILES:
-        edges, _, unhandled = exceptions_of(load(path))
+        edge_list, _, unhandled = exceptions_of(load(path))
         with tempfile.TemporaryDirectory() as tmp:
             out, txt = Path(tmp) / "e.jsonl", Path(tmp) / "u.txt"
-            exceptions.write_exceptions(edges, out)
+            exceptions.write_exceptions(edge_list, out)
             exceptions.write_unhandled(unhandled, txt)
             raw, raw_txt = out.read_bytes(), txt.read_bytes()
         for data in (raw, raw_txt):
@@ -287,7 +287,7 @@ def test_files_written_correctly():
             assert b"\\u" not in data and b"\r" not in data
         rows = [json.loads(line) for line in raw.decode("utf-8").split("\n") if line]
         assert all(list(r) == ["s", "p", "o", "evidence", "method"] for r in rows), f"file {name}: sai khoá"
-        assert [(r["s"], r["p"], r["o"], r["evidence"], r["method"]) for r in rows] == edges, f"file {name}: đọc lại không khớp"
+        assert [(r["s"], r["p"], r["o"], r["evidence"], r["method"]) for r in rows] == edge_list, f"file {name}: đọc lại không khớp"
         lines = raw_txt.decode("utf-8").split("\n")
         assert (lines[-1] == "" or not unhandled) and [tuple(x.split("\t")) for x in lines[:-1]] == unhandled, f"file {name}: unhandled"
         assert (raw_txt == b"") == (not unhandled), f"file {name}: file unhandled rỗng khi và chỉ khi không có ca"
@@ -296,7 +296,7 @@ def test_files_written_correctly():
 def test_files_on_disk():
     """Chạy exceptions.py <md> trước. File trên đĩa phải khớp dựng lại; file A2 không bị lẫn exception_of."""
     for name, path in FILES:
-        edges, _, unhandled = exceptions_of(load(path))
+        edge_list, _, unhandled = exceptions_of(load(path))
         on_disk = exceptions.exceptions_path(path)
         assert on_disk.exists(), f"file {name}: chưa có {on_disk}, chạy exceptions.py trước"
         rows = [json.loads(line) for line in on_disk.read_text(encoding="utf-8").split("\n") if line]

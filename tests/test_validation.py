@@ -519,13 +519,13 @@ def raw_lines(path):
 def test_files_on_disk():
     """Số kỳ vọng đếm độc lập: type/part_of bằng dòng thô của jsonl, Điều bằng '### Điều' trong md."""
     for label, md in FILES:
-        triples, edges = edges.triples_path(md), edges.edges_path(md)
-        assert sum(1 for l in raw_lines(triples) if '"p": "type"' in l) == UNITS[md], label
+        triples_path, edges_path = edges.triples_path(md), edges.edges_path(md)
+        assert sum(1 for l in raw_lines(triples_path) if '"p": "type"' in l) == UNITS[md], label
         assert sum(1 for l in raw_lines(md) if l.startswith("### Điều")) == DIEU[md], label
-        assert sum(1 for l in raw_lines(edges) if '"p": "part_of"' in l) == PART_OF[md], label
+        assert sum(1 for l in raw_lines(edges_path) if '"p": "part_of"' in l) == PART_OF[md], label
         assert validation.EXPECTED[md.stem] == validation.Expect(UNITS[md], DIEU[md]), label  # bảng cứng khớp số đếm độc lập
-        checks, unit_types = validation.check_codes(validation.load_rows(triples), validation.EXPECTED[md.stem])
-        checks += validation.check_parents(unit_types, validation.load_rows(edges), validation.EXPECTED[md.stem])
+        checks, unit_types = validation.check_codes(validation.load_rows(triples_path), validation.EXPECTED[md.stem])
+        checks += validation.check_parents(unit_types, validation.load_rows(edges_path), validation.EXPECTED[md.stem])
         assert [(c.id, c.problems) for c in checks if c.problems] == [], label
         assert len(unit_types) == UNITS[md] and sum(1 for t in unit_types.values() if t == "dieu") == DIEU[md], label
 

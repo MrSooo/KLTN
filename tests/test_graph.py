@@ -209,7 +209,7 @@ def count_lines(path):
 def test_files_match_independent_counts():
     """Cộng số dòng của file nguồn và đếm bản sao bằng Counter riêng, không qua EdgeSet / mark_duplicates / graph.EXPECTED."""
     for name, path in FILES:
-        graph, _ = graph.graph_base(path)
+        g, _ = graph.graph_base(path)
         parse = [json.loads(line) for line in edges.triples_path(path).read_text(encoding="utf-8").split("\n") if line]
         cond_ids = {json.loads(line)["s"] for line in general_exceptions.conditions_path(path).read_text(encoding="utf-8").split("\n") if line}
         types = {r["s"]: r["o"] for r in parse if r["p"] == "type"}
@@ -219,18 +219,18 @@ def test_files_match_independent_counts():
         n_edges = sum(count_lines(p) for p in (edges.edges_path(path), edges.refs_path(path), exceptions.exceptions_path(path), general_exceptions.exceptions_path(path)))
         want = (len(types) + len(cond_ids), n_edges + n_dup, n_dup)
         assert want == REFERENCE[path], f"file {name}: cộng độc lập {want}, bảng {REFERENCE[path]}"
-        got = (len(graph.nodes), len(graph.edges), sum(1 for n in graph.nodes if n["status"] == "duplicate"))
+        got = (len(g.nodes), len(g.edges), sum(1 for n in g.nodes if n["status"] == "duplicate"))
         assert got == want, f"file {name}: đồ thị {got}, cộng độc lập {want}"
         assert graph.EXPECTED[path.stem] == graph.Expect(*REFERENCE[path]), f"file {name}: EXPECTED lệch bảng test"
 
 
 def test_files_graph_content():
     for name, path in FILES:
-        graph, _ = graph.graph_base(path)
-        assert validation.failures(graph.check_graph(graph, graph.EXPECTED[path.stem])) == 0, f"file {name}"
-        assert graph.merged == [], f"file {name}: dữ liệu thật không có bộ ba trùng"
-        assert all(e["status"] == "ok" for e in graph.edges) and all(len(e["sources"]) == 1 for e in graph.edges)
-        pairs = [(e["s"], e["o"]) for e in graph.edges if e["p"] == graph.SAME_TEXT]
+        g, _ = graph.graph_base(path)
+        assert validation.failures(graph.check_graph(g, graph.EXPECTED[path.stem])) == 0, f"file {name}"
+        assert g.merged == [], f"file {name}: dữ liệu thật không có bộ ba trùng"
+        assert all(e["status"] == "ok" for e in g.edges) and all(len(e["sources"]) == 1 for e in g.edges)
+        pairs = [(e["s"], e["o"]) for e in g.edges if e["p"] == graph.SAME_TEXT]
         assert pairs == (DUPLICATE_PAIRS if path == FULL_FILE else []), f"file {name}: {pairs}"
         # mọi cạnh nguồn vào đồ thị nguyên vẹn: (s, p, o, evidence, method) khớp file gốc
         for label, rows_path in (("a2_edges", edges.edges_path(path)), ("a2_refs", edges.refs_path(path)),
@@ -239,23 +239,23 @@ def test_files_graph_content():
             mine = [e for e in graph.edges if e["sources"] == [label]]
             assert [(e["s"], e["p"], e["o"], e["evidence"], e["method"]) for e in mine] == \
                    [(r["s"], r["p"], r["o"], r["evidence"], r.get("method")) for r in src_rows], f"file {name}: {label}"
-    graph, _ = graph.graph_base(FULL_FILE)
-    cond = {n["id"]: n for n in graph.nodes if n["type"] == general_exceptions.COND_TYPE}
+    g, _ = graph.graph_base(FULL_FILE)
+    cond = {n["id"]: n for n in g.nodes if n["type"] == general_exceptions.COND_TYPE}
     assert len(cond) == 5 and all(n["text"] and n["number"] is None and n["status"] == "ok" for n in cond.values())
-    exc_to_unit = [e for e in graph.edges if e["p"] == "exception_of" and e["s"] in cond]
+    exc_to_unit = [e for e in g.edges if e["p"] == "exception_of" and e["s"] in cond]
     assert len(exc_to_unit) == 9 and all(e["method"] == general_exceptions.METHOD for e in exc_to_unit)
 
 
 def test_files_on_disk():
     """Chạy graph.py <md> trước. File trên đĩa phải khớp dựng lại."""
     for name, path in FILES:
-        graph, _ = graph.graph_base(path)
+        g, _ = graph.graph_base(path)
         stem = path.stem
-        for on_disk in (graph.nodes_path(stem), graph.edges_path(stem), graph.report_path(stem)):
+        for on_disk in (g.nodes_path(stem), g.edges_path(stem), g.report_path(stem)):
             assert on_disk.exists(), f"file {name}: chưa có {on_disk}, chạy graph.py trước"
-        nodes = [json.loads(line) for line in graph.nodes_path(stem).read_text(encoding="utf-8").split("\n") if line]
-        edges = [json.loads(line) for line in graph.edges_path(stem).read_text(encoding="utf-8").split("\n") if line]
-        assert nodes == graph.nodes and edges == graph.edges, f"file {name}: khác dựng lại"
+        nodes = [json.loads(line) for line in g.nodes_path(stem).read_text(encoding="utf-8").split("\n") if line]
+        edge_rows = [json.loads(line) for line in g.edges_path(stem).read_text(encoding="utf-8").split("\n") if line]
+        assert nodes == g.nodes and edge_rows == g.edges, f"file {name}: khác dựng lại"
         assert all(list(n) == ["id", "type", "number", "heading", "text", "source_line", "status"] for n in nodes)
         assert all(list(e)[:7] == ["s", "p", "o", "evidence", "method", "status", "sources"] for e in edges)
         assert graph.report_path(stem).read_text(encoding="utf-8").rstrip().endswith("KẾT LUẬN: ĐẠT"), f"file {name}: báo cáo"
@@ -351,8 +351,8 @@ def mini_graph(date, changes=None):
     with tempfile.TemporaryDirectory() as tmp:
         versions = mini_world(tmp, changes)
         with patched(edges, PROCESSED_DIR=Path(tmp)):
-            graph, _ = graph.graph_at("mini.md", versions, date)
-    return graph
+            g, _ = graph.graph_at("mini.md", versions, date)
+    return g
 
 
 def triples(graph, only=None):

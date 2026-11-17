@@ -248,7 +248,7 @@ def graph_at(src, versions, date):
 
 def check_graph(graph, expect=None):
     """Các Check 7a-7f trên Graph. expect (Expect) chỉ có ở trạng thái gốc; không có thì bỏ qua 7f."""
-    nodes, edges = graph.nodes, graph.edges
+    nodes, edge_list = graph.nodes, graph.edges
     by_id = {n["id"]: n for n in nodes}
 
     ids = collections.Counter(n["id"] for n in nodes)

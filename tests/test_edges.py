@@ -86,11 +86,11 @@ def test_parent_of():
 
 def test_counts_match_reference():
     for name, path in FILES:
-        edges = build(path)[1]
-        per_pred = collections.Counter(p for _, p, _ in edges)
+        edge_list = build(path)[1]
+        per_pred = collections.Counter(p for _, p, _ in edge_list)
         want = REFERENCE[path]
         assert per_pred == {"contains": want, "part_of": want}, f"file {name}: {dict(per_pred)}, cần {want} mỗi loại"
-        assert len(edges) == REFERENCE_TOTAL[path], f"file {name}: tổng {len(edges)}, cần {REFERENCE_TOTAL[path]}"
+        assert len(edge_list) == REFERENCE_TOTAL[path], f"file {name}: tổng {len(edge_list)}, cần {REFERENCE_TOTAL[path]}"
 
 
 def test_counts_match_independent_recount():
@@ -99,24 +99,24 @@ def test_counts_match_independent_recount():
         khoan, diem = md_counts(path)
         types = triples_type_counts(path)
         assert (khoan, diem) == (types["khoan"], types["diem"]), f"file {name}: md {(khoan, diem)}, triples {dict(types)}"
-        edges = build(path)[1]
-        per_pred = collections.Counter(p for _, p, _ in edges)
+        edge_list = build(path)[1]
+        per_pred = collections.Counter(p for _, p, _ in edge_list)
         assert per_pred["contains"] == per_pred["part_of"] == khoan + diem, f"file {name}: {dict(per_pred)}"
         assert khoan + diem == REFERENCE[path], f"file {name}: Khoản + Điểm = {khoan + diem}"
 
 
 def test_check_clean_on_real_data():
     for name, path in FILES:
-        units, edges = build(path)
-        assert edges.check_edges(units, edges) == [], f"file {name}: {edges.check_edges(units, edges)}"
+        units, edge_list = build(path)
+        assert edges.check_edges(units, edge_list) == [], f"file {name}: {edges.check_edges(units, edge_list)}"
 
 
 def test_parent_types_via_type_attribute():
     """Dùng thuộc tính type của A1 (không dùng mã): cha của Khoản là Điều, cha của Điểm là Khoản, Điều không có cha."""
     for name, path in FILES:
-        units, edges = build(path)
+        units, edge_list = build(path)
         parents = collections.defaultdict(list)
-        for s, p, o in edges:
+        for s, p, o in edge_list:
             if p == "contains":
                 parents[o].append(s)
         for code, u in units.items():
@@ -131,56 +131,56 @@ def test_parent_types_via_type_attribute():
 def test_direct_only_no_transitive():
     """Không có cạnh bắc cầu: không có Điều chứa Điểm; mỗi đơn vị không phải Điều có đúng một cạnh part_of đi ra."""
     for name, path in FILES:
-        units, edges = build(path)
-        for s, p, o in edges:
+        units, edge_list = build(path)
+        for s, p, o in edge_list:
             if p == "contains":
                 assert not (units[s]["type"] == "dieu" and units[o]["type"] == "diem"), f"file {name}: {s} -> {o} bắc cầu"
-        out = collections.Counter(s for s, p, _ in edges if p == "part_of")
+        out = collections.Counter(s for s, p, _ in edge_list if p == "part_of")
         for code, u in units.items():
             assert out[code] == (0 if u["type"] == "dieu" else 1), f"file {name}: {code} có {out[code]} part_of"
 
 
 def test_edge_order_per_child():
     for name, path in FILES:
-        units, edges = build(path)
+        units, edge_list = build(path)
         children = [c for c, u in units.items() if u["type"] != "dieu"]  # thứ tự trong file triples
-        assert len(edges) == 2 * len(children)
+        assert len(edge_list) == 2 * len(children)
         for i, child in enumerate(children):
-            contains, part_of = edges[2 * i], edges[2 * i + 1]
+            contains, part_of = edge_list[2 * i], edge_list[2 * i + 1]
             assert contains[1] == "contains" and contains[2] == child, f"file {name}: {contains}"
             assert part_of == (child, "part_of", contains[0]), f"file {name}: {part_of}"
 
 
 def test_check_catches_corrupted_data():
     """Phép kiểm phải bắt được dữ liệu hỏng: đổi type, thiếu cha, cạnh trùng, mất cạnh part_of, Điều có cha."""
-    units, edges = build(SAMPLE_FILE)
+    units, edge_list = build(SAMPLE_FILE)
     khoan = next(c for c, u in units.items() if u["type"] == "khoan")
     diem = next(c for c, u in units.items() if u["type"] == "diem")
 
     # 1. cha của Khoản không còn type dieu (mã A1 và type mâu thuẫn nhau)
     bad = {c: dict(u) for c, u in units.items()}
     bad[edges.parent_of(khoan)]["type"] = "khoan"
-    assert any(khoan in e and "mong đợi cha type dieu" in e for e in edges.check_edges(bad, edges))
+    assert any(khoan in e and "mong đợi cha type dieu" in e for e in edges.check_edges(bad, edge_list))
 
     # 2. Điểm bị gắn nhầm type khoan -> cha phải là Điều nhưng cha thật là Khoản
     bad = {c: dict(u) for c, u in units.items()}
     bad[diem]["type"] = "khoan"
-    assert any(diem in e for e in edges.check_edges(bad, edges))
+    assert any(diem in e for e in edges.check_edges(bad, edge_list))
 
     # 3. cha không có trong tập đơn vị
     bad = {c: u for c, u in units.items() if c != edges.parent_of(khoan)}
-    assert any("không có trong tập đơn vị" in e for e in edges.check_edges(bad, edges))
+    assert any("không có trong tập đơn vị" in e for e in edges.check_edges(bad, edge_list))
 
     # 4. cạnh trùng
-    assert any("cạnh trùng" in e for e in edges.check_edges(units, edges + [edges[0]]))
+    assert any("cạnh trùng" in e for e in edges.check_edges(units, edge_list + [edge_list[0]]))
 
     # 5. mất một cạnh part_of -> không đối xứng
-    assert any("không đối xứng" in e for e in edges.check_edges(units, [e for e in edges if e != edges[1]]))
+    assert any("không đối xứng" in e for e in edges.check_edges(units, [e for e in edge_list if e != edge_list[1]]))
 
     # 6. Điều có cha (type dieu bị gán cho đơn vị có mã 3 đoạn)
     bad = {c: dict(u) for c, u in units.items()}
     bad[khoan]["type"] = "dieu"
-    assert any(khoan in e for e in edges.check_edges(bad, edges))
+    assert any(khoan in e for e in edges.check_edges(bad, edge_list))
 
 
 def test_load_units_rejects_incomplete_triples():
@@ -196,10 +196,10 @@ def test_load_units_rejects_incomplete_triples():
 
 def test_jsonl_written_correctly():
     for name, path in FILES:
-        edges = build(path)[1]
+        edge_list = build(path)[1]
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp) / "e.jsonl"
-            edges.write_edges(edges, out)
+            edges.write_edges(edge_list, out)
             raw = out.read_bytes()
         assert not raw.startswith(b"\xef\xbb\xbf"), "có BOM"
         assert b"\\u" not in raw, "còn escape \\u (ensure_ascii phải là False)"
@@ -207,7 +207,7 @@ def test_jsonl_written_correctly():
         rows = [json.loads(line) for line in raw.decode("utf-8").split("\n") if line]
         assert all(list(r) == ["s", "p", "o", "evidence"] for r in rows), f"file {name}: sai khóa"
         assert all(r["evidence"] == "" for r in rows), f"file {name}: evidence phải là chuỗi rỗng"
-        assert [(r["s"], r["p"], r["o"]) for r in rows] == edges, f"file {name}: đọc lại không khớp"
+        assert [(r["s"], r["p"], r["o"]) for r in rows] == edge_list, f"file {name}: đọc lại không khớp"
 
 
 def test_edges_on_disk():
@@ -386,8 +386,8 @@ def test_group_targets_four_unit_cases():
 
 
 def test_build_refs_four_unit_cases():
-    edges, unresolved = edges.build_refs(FOUR_CASES)
-    assert edges == [
+    edge_list, unresolved = edges.build_refs(FOUR_CASES)
+    assert edge_list == [
         (P + "D617.K1", "refers_to", P + "D616.K1", "khoản 1 và khoản 3 Điều 616 của Bộ luật này"),
         (P + "D617.K1", "refers_to", P + "D616.K3", "khoản 1 và khoản 3 Điều 616 của Bộ luật này"),
         (P + "D623.K1.b", "refers_to", P + "D623.K1.a", "điểm a khoản này"),
@@ -396,7 +396,7 @@ def test_build_refs_four_unit_cases():
         (P + "D644.K2", "refers_to", P + "D621.K1", "khoản 1 Điều 621 của Bộ luật này"),
     ]
     assert unresolved == [(P + "D644.K2", "Điều 620", P + "D620")]
-    assert edges.check_refs(FOUR_CASES, edges, unresolved) == []
+    assert edges.check_refs(FOUR_CASES, edge_list, unresolved) == []
 
 
 def test_group_targets_multiple_items_and_diem_dd():
@@ -485,13 +485,13 @@ def refers_expected(path):
 def test_refers_to_counts_and_reviewed_list():
     for name, path in FILES:
         units = edges.load_units(edges.triples_path(path))
-        edges, unresolved = edges.build_refs(units)
-        assert (len(edges), len(unresolved)) == REFERS_REFERENCE[path], f"file {name}: {len(edges)}, {len(unresolved)}"
+        edge_list, unresolved = edges.build_refs(units)
+        assert (len(edge_list), len(unresolved)) == REFERS_REFERENCE[path], f"file {name}: {len(edge_list)}, {len(unresolved)}"
         want_edges, want_unresolved = refers_expected(path)
-        assert [(s, o) for s, _, o, _ in edges] == want_edges, f"file {name}: cạnh khác danh sách đã duyệt"
+        assert [(s, o) for s, _, o, _ in edge_list] == want_edges, f"file {name}: cạnh khác danh sách đã duyệt"
         assert [(s, t) for s, _, t in unresolved] == want_unresolved, f"file {name}: unresolved khác danh sách đã duyệt"
-        assert edges.check_refs(units, edges, unresolved) == [], f"file {name}"
-        assert all(s != o for s, _, o, _ in edges), f"file {name}: có cạnh s == o"
+        assert edges.check_refs(units, edge_list, unresolved) == [], f"file {name}"
+        assert all(s != o for s, _, o, _ in edge_list), f"file {name}: có cạnh s == o"
 
 
 def test_refers_to_independent_recount():
@@ -503,9 +503,9 @@ def test_refers_to_independent_recount():
         for r in refs:
             words = re.findall(r"(?<!\w)(điều|khoản|điểm)[ ]+(?:\d+|này|[^\W\d_])(?!\w)", r.phrase, re.I)
             total += sum(1 for w in words if w.casefold() == words[0].casefold())
-        edges, unresolved = edges.build_refs(units)
-        assert len(edges) + len(unresolved) == total, f"file {name}: {len(edges)} + {len(unresolved)} != {total}"
-        assert len(edges) + len(unresolved) == sum(REFERS_REFERENCE[path]), f"file {name}"
+        edge_list, unresolved = edges.build_refs(units)
+        assert len(edge_list) + len(unresolved) == total, f"file {name}: {len(edge_list)} + {len(unresolved)} != {total}"
+        assert len(edge_list) + len(unresolved) == sum(REFERS_REFERENCE[path]), f"file {name}"
 
 
 def test_refers_to_evidence_is_phrase_from_source_text():
@@ -520,12 +520,12 @@ def test_refers_files_on_disk():
     """Chạy edges.py <md> --refers-to trước. File a2_refs và a2_unresolved phải khớp build_refs; file A2a không lẫn refers_to."""
     for name, path in FILES:
         units = edges.load_units(edges.triples_path(path))
-        edges, unresolved = edges.build_refs(units)
+        edge_list, unresolved = edges.build_refs(units)
         on_disk = edges.refs_path(path)
         assert on_disk.exists(), f"file {name}: chưa có {on_disk}, chạy edges.py --refers-to trước"
         rows = [json.loads(line) for line in on_disk.read_text(encoding="utf-8").split("\n") if line]
         assert all(list(r) == ["s", "p", "o", "evidence"] for r in rows), f"file {name}: sai khoá"
-        assert [(r["s"], r["p"], r["o"], r["evidence"]) for r in rows] == edges, f"file {name}: file refs khác dựng lại"
+        assert [(r["s"], r["p"], r["o"], r["evidence"]) for r in rows] == edge_list, f"file {name}: file refs khác dựng lại"
         lines = edges.unresolved_path(path).read_text(encoding="utf-8").split("\n")
         assert lines[-1] == "" and [tuple(x.split("\t")) for x in lines[:-1]] == unresolved, f"file {name}: unresolved"
         structural = [json.loads(line)["p"] for line in edges.edges_path(path).read_text(encoding="utf-8").split("\n") if line]
@@ -546,9 +546,9 @@ def test_missing_target_in_loaded_dieu_is_error_not_unresolved():
         raise AssertionError(f"{phrase!r}: Điều 616 có trong tập, đích thiếu phải báo lỗi chứ không vào unresolved")
     # đối chứng: Điều 71 không có trong tập thì đúng là unresolved, không phải lỗi
     units = mini_units({**base, "BLDS2015.D617.K1": ("khoan", "theo khoản 2 Điều 71 của Bộ luật này thì")})
-    edges, unresolved = edges.build_refs(units)
-    assert edges == [] and unresolved == [("BLDS2015.D617.K1", "khoản 2 Điều 71 của Bộ luật này", "BLDS2015.D71.K2")]
-    assert edges.check_refs(units, edges, unresolved) == []
+    edge_list, unresolved = edges.build_refs(units)
+    assert edge_list == [] and unresolved == [("BLDS2015.D617.K1", "khoản 2 Điều 71 của Bộ luật này", "BLDS2015.D71.K2")]
+    assert edges.check_refs(units, edge_list, unresolved) == []
     # check_refs cũng bắt unresolved có Điều đã nạp (đường kiểm thứ hai, độc lập với build_refs)
     assert any("D616" in e for e in edges.check_refs(units, [], [("BLDS2015.D617.K1", "khoản 9 Điều 616", "BLDS2015.D616.K9")]))
 
