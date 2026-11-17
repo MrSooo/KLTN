@@ -58,13 +58,13 @@ def read_rows(path):
 
 def structural_edges(codes):
     active = set(codes)
-    edges = []
+    out = []
     for code in codes:
         parent = edges.parent_of(code)
         if parent and parent in active:
-            edges.append((parent, "contains", code))
-            edges.append((code, "part_of", parent))
-    return edges
+            out.append((parent, "contains", code))
+            out.append((code, "part_of", parent))
+    return out
 
 def exception_rows(src, versions, date):
     stem = Path(src).stem

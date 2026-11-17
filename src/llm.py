@@ -43,6 +43,35 @@ def enabled():
     return bool(_env("LLM_API_KEY") and _env("LLM_MODEL"))
 
 
+def _strip_fences(text):
+    """Drop a single surrounding ```...``` fenced block Qwen may wrap around JSON answers."""
+    lines = text.splitlines()
+    if lines and lines[0].lstrip().startswith("```"):
+        lines = lines[1:]
+    if lines and lines[-1].strip() == "```":
+        lines = lines[:-1]
+    return "\n".join(lines).strip()
+
+
+def _extract_content(body):
+    """Return choices[0].message.content (string), or None when absent / non-string.
+
+    Qwen3.8 reasoning models emit `reasoning_content` (chain-of-thought) alongside
+    `content` (the answer). We read only `content`; the extra `reasoning_content` key
+    never reaches callers. Missing / non-string content => None, so callers treat it
+    as "LLM returned nothing" instead of crashing.
+    """
+    try:
+        msg = body["choices"][0]["message"]
+    except (KeyError, IndexError, TypeError):
+        return None
+    content = msg.get("content")
+    if not isinstance(content, str):
+        return None
+    content = content.strip()
+    return _strip_fences(content) if content else ""
+
+
 def complete(prompt, system=None, temperature=None, max_tokens=None):
     """Call chat completions; return the text content, or None when unconfigured / on error."""
     if not enabled():
@@ -58,6 +87,13 @@ def complete(prompt, system=None, temperature=None, max_tokens=None):
         payload["temperature"] = temperature
     if max_tokens is not None:
         payload["max_tokens"] = max_tokens
+    # Alibaba reasoning models: LLM_ENABLE_THINKING=false skips the thinking pass
+    # (no reasoning_content) and returns much faster — right for high-volume extraction.
+    thinking = _env("LLM_ENABLE_THINKING").strip().lower()
+    if thinking in ("0", "false", "off", "no"):
+        payload["enable_thinking"] = False
+    elif thinking in ("1", "true", "on", "yes"):
+        payload["enable_thinking"] = True
     request = urllib.request.Request(
         url,
         data=json.dumps(payload).encode("utf-8"),
@@ -71,7 +107,4 @@ def complete(prompt, system=None, temperature=None, max_tokens=None):
     except (urllib.error.URLError, urllib.error.HTTPError, OSError, ValueError) as e:
         print(f"[llm] LLM call failed, skipping: {e}", file=sys.stderr)
         return None
-    try:
-        return body["choices"][0]["message"]["content"].strip()
-    except (KeyError, IndexError, TypeError):
-        return None
+    return _extract_content(body)

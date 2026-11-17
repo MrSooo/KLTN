@@ -33,7 +33,9 @@ _SYSTEM = (
     '"implicit_exceptions":[{"s":"<mã ngoại lệ>","o":"<mã quy tắc bị ngoại trừ, phải là mã đơn vị đang hiệu lực>",'
     '"evidence":"<đoạn chữ ngầm ngoại lệ>","method":"implicit"}],'
     '"rules":[{"id":"<mã quy tắc>","head":"<kết luận>","body":["<điều kiện>"],"source":"<mã đơn vị>","text":"<chữ luật>"}]}\n'
-    "category chỉ nhận 'concept' hoặc 'input'. Mỗi đơn vị có thể có nhiều mệnh đề; không có loại nào thì trả []."
+    "category chỉ nhận 'concept' hoặc 'input'. Mỗi đơn vị có thể có nhiều mệnh đề; không có loại nào thì trả [].\n"
+    "id mệnh đề PHẢI duy nhất trên toàn tài liệu: đặt id theo dạng '<mã đơn vị>.P<STT>' "
+    "(ví dụ BLDS2015.D621.K1.a.P1, BLDS2015.D621.K1.a.P2), không dùng 'P1' chung cho nhiều đơn vị."
 )
 
 
