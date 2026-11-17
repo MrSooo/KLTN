@@ -76,7 +76,7 @@ def find_exceptions(units, structural):
     hơn một "trừ" mà text kết thúc bằng "sau đây:".
     """
     children = children_of(structural)
-    edges, handled, unhandled = [], [], []
+    exc, handled, unhandled = [], [], []
     for code, u in units.items():
         text = u.get("text")
         if not text:
@@ -101,21 +101,21 @@ def find_exceptions(units, structural):
                     raise ValueError(f"{code}: text kết thúc bằng {LIST_END!r} nhưng không có đơn vị con")
                 new = [(child, PREDICATE, code, text, method) for child in children[code]]
             if new:
-                edges += new
+                exc += new
                 handled.append((code, m.group(0), method))
             else:
                 unhandled.append((code, text))
-    return edges, handled, unhandled
+    return exc, handled, unhandled
 
 
-def check_exceptions(units, structural, edges, handled, unhandled):
+def check_exceptions(units, structural, exc, handled, unhandled):
     """Trả về list lỗi (rỗng nếu sạch): không trùng, không tự trỏ, hai đầu tồn tại, evidence đúng chỗ, đếm trigger khớp."""
     errors = []
-    for key, n in collections.Counter((s, p, o) for s, p, o, _, _ in edges).items():
+    for key, n in collections.Counter((s, p, o) for s, p, o, _, _ in exc).items():
         if n > 1:
             errors.append(f"cạnh trùng {n} lần: {key}")
     contains = {(s, o) for s, p, o in structural if p == "contains"}
-    for s, p, o, evidence, method in edges:
+    for s, p, o, evidence, method in exc:
         if p != PREDICATE:
             errors.append(f"{s} -> {o}: p là {p!r}, mong đợi {PREDICATE!r}")
         if method not in METHODS:
@@ -141,7 +141,7 @@ def check_exceptions(units, structural, edges, handled, unhandled):
     if len(handled) + len(unhandled) != n_triggers:
         errors.append(f"số trigger = {n_triggers}, đã xử lý {len(handled)} + unhandled {len(unhandled)}")
     for code, phrase, method in handled:
-        if not any((s if method == NOT_APPLY else o) == code and m == method for s, _, o, _, m in edges):
+        if not any((s if method == NOT_APPLY else o) == code and m == method for s, _, o, _, m in exc):
             errors.append(f"{code}: trigger {phrase!r} ghi đã xử lý nhưng không có cạnh {method}")
     for code, sentence in unhandled:
         if code not in units or sentence != units[code].get("text"):
@@ -174,19 +174,19 @@ def run(src):
     units = edges.read_units(src)
     structural = edges.build_edges(units)
     try:
-        edges, handled, unhandled = find_exceptions(units, structural)
+        exc, handled, unhandled = find_exceptions(units, structural)
     except ValueError as e:
         raise SystemExit(f"LỖI: {e}")
-    edges.fail_if_errors(check_exceptions(units, structural, edges, handled, unhandled))
+    edges.fail_if_errors(check_exceptions(units, structural, exc, handled, unhandled))
 
-    for s, _, o, evidence, method in edges:
+    for s, _, o, evidence, method in exc:
         print(f"{s} → {o} | {evidence} [{method}]")
     for code, sentence in unhandled:
         print(f"unhandled {code}: {sentence}")
     per_method = collections.Counter(method for _, _, method in handled)
     print("số đơn vị:", len(units), "| trigger:", len(edges.find_triggers(units)),
-          "| đã xử lý:", len(handled), dict(per_method), "| unhandled:", len(unhandled), "| cạnh exception_of:", len(edges))
-    write_exceptions(edges, exceptions_path(src))
+          "| đã xử lý:", len(handled), dict(per_method), "| unhandled:", len(unhandled), "| cạnh exception_of:", len(exc))
+    write_exceptions(exc, exceptions_path(src))
     write_unhandled(unhandled, unhandled_path(src))
     print("đã ghi", exceptions_path(src))
     print("đã ghi", unhandled_path(src))
