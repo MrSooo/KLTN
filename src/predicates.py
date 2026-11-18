@@ -482,7 +482,7 @@ def build_ledger(words, rows, run):
 
 def metrics(words, ledger, run):
     """Số đo kết nối (A39): tái dùng do LLM (chữ `reuse` / chữ có tên) và tái dùng tổng (chữ có tên trên số tên); vị từ dùng ở từ 2 Điều;
-    cặp ứng viên cho 1.7 (hai đơn vị khác Điều cùng dùng một vị từ `concept`, như số đo bản cũ)."""
+    cặp khác Điều chung vị từ `concept` (số đo bản cũ; KHÔNG phải số cặp 1.7 hỏi LLM: implicit_exceptions.build_pairs lọc thêm)."""
     named = len(run.book.name_of)
     reuse = sum(1 for d in run.decisions.values() if d["kieu"] == "reuse")
     dieus_of = collections.defaultdict(set)
@@ -527,7 +527,7 @@ def main(argv=None):
              "LLM TẮT: không đặt tên" if args.llm == "off" else
              f"chữ có tên: {m['chu_co_ten']}; reuse do LLM chọn: {m['reuse_llm']} ({100 * m['reuse_llm'] / max(m['chu_co_ten'], 1):.1f}%); "
              f"vị từ: {m['ten']} (concept {m['concept']}, input {m['input']}); chữ bị loại: {len(run.rejected)}",
-             f"vị từ dùng ở từ 2 Điều: {m['vi_tu_o_tu_2_dieu']}; cặp ứng viên cho 1.7: {m['cap_ung_vien_1_7']}"]
+             f"vị từ dùng ở từ 2 Điều: {m['vi_tu_o_tu_2_dieu']}; cặp khác Điều chung vị từ concept (chưa lọc như 1.7): {m['cap_ung_vien_1_7']}"]
     if stop:
         lines.append(stop)
     d = corpus.out_dir(DIR_NAME)

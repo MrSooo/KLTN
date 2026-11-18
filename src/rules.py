@@ -88,6 +88,8 @@ def unit_groups(uid, rows, pred_of, subj_of):
             lit = {"atom": atom(name, d.get("phuong_thuc")), "pred": name, "naf": neg, "row": i}
             (g["or"][d["nhom_hoac"]] if d.get("nhom_hoac") else g["conds"]).append(lit)
         elif d["vai"] == "ngoai_le":
+            if neg:  # ngoại lệ phủ định ("trừ khi không ...") mất một lớp phủ định nếu dịch thành `not p`; chưa có ca, báo để xem
+                notes.append(f"{uid} dòng {i}: ngoai_le có cực phủ định, dịch thành `not p` mất phủ định, cần xem")
             g["exc"].append({"atom": atom(name, d.get("phuong_thuc")), "pred": name, "naf": True, "row": i})
     return groups, notes
 
