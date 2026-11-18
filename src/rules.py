@@ -150,11 +150,14 @@ def compile_units(a, pred_of, subj_of, order, kinds=None):
             else:
                 orphans[anc].append((uid, g))
 
-    def add(uid, head, body, how):
+    def add(uid, head, body, how, sources):
+        # sources: mọi đơn vị góp chữ cho quy tắc (đơn vị kết luận và đơn vị điều kiện); 1.9 chỉ dùng quy tắc khi mọi đơn vị này còn hiệu lực
+        # tại τ với đúng chữ 1.6A đã đọc.
         lits = list(body)
         if head.get("subject") and head["subject"] != head["pred"]:
             lits = [{"atom": head["subject"], "pred": head["subject"], "naf": False, "role": "chu_the"}] + lits
-        rules.append({"id": f"r{len(rules) + 1:04d}", "unit": uid, "head": {k: head[k] for k in ("atom", "pred", "neg")}, "body": lits, "how": how})
+        rules.append({"id": f"r{len(rules) + 1:04d}", "unit": uid, "head": {k: head[k] for k in ("atom", "pred", "neg")}, "body": lits, "how": how,
+                      "source_units": sorted(set(sources), key=order.get)})
 
     for uid in sorted(per_unit, key=order.get):
         for q in sorted(per_unit[uid]):
@@ -166,16 +169,16 @@ def compile_units(a, pred_of, subj_of, order, kinds=None):
                 own = bodies(g)
                 if not kids:
                     for b in own:
-                        add(uid, head, b, "compiled")
+                        add(uid, head, b, "compiled", [uid])
                 elif child_mode(a[uid]["dong"]) == "va":
                     merged = [lit for _, kg in kids for lit in bodies(kg)[0]]
                     for b in own:
-                        add(uid, head, b + merged, "compiled_children_and")
+                        add(uid, head, b + merged, "compiled_children_and", [uid] + [k for k, _ in kids])
                 else:
                     for kid, kg in kids:
                         for kb in bodies(kg):
                             for b in own:
-                                add(kid, head, b + kb, "compiled_child_or")
+                                add(kid, head, b + kb, "compiled_child_or", [uid, kid])
     return rules, notes
 
 
@@ -201,9 +204,13 @@ def under(uid, root):
     return uid == root or uid.startswith(root + ".")
 
 
+LLM_EDGE = "1.7 llm_proposed"
+
+
 def apply_blocks(rules, edges):
-    """Thêm `not blocked(r, X)` vào quy tắc gốc, quy tắc chặn và quy tắc bị bác. -> (dòng chương trình thêm, quan hệ chặn [(r, đầu chặn, nguồn)])."""
-    extra, rel = [], []
+    """Thêm literal `blocked` (kèm đầu chặn và nguồn cạnh của từng đầu) vào quy tắc gốc. Dòng chặn và dòng bị bác do program_text sinh từ
+    literal này, để 1.9 dựng lại chương trình cho từng ngày τ và bật/tắt cạnh 1.7. -> quan hệ chặn [(r, đầu chặn, nguồn)]."""
+    rel = []
     for (s, o), src in sorted(edges.items()):
         heads = sorted({r["head"]["atom"] for r in rules if under(r["unit"], s) and not r["head"]["neg"]})
         for r in rules:
@@ -213,22 +220,31 @@ def apply_blocks(rules, edges):
                 if h == r["head"]["atom"]:
                     continue
                 rel.append((r["id"], h, src))
-    by_rule = collections.defaultdict(list)
+    by_rule = collections.defaultdict(lambda: collections.defaultdict(set))
     for rid, h, src in rel:
-        by_rule[rid].append((h, src))
+        by_rule[rid][h].add(src)
     for r in rules:
         if r["id"] in by_rule:
-            r["body"] = r["body"] + [{"atom": "blocked", "naf": True, "blocked_by": sorted({h for h, _ in by_rule[r["id"]]})}]
-            for h in sorted({h for h, _ in by_rule[r["id"]]}):
-                extra.append(f"blocked({r['id']}, X) :- {h}(X).")
-            extra.append(f"{'' if r['head']['neg'] else '-'}{r['head']['atom']}(X) :- blocked({r['id']}, X).")
-    return extra, rel
+            src = {h: sorted(v) for h, v in sorted(by_rule[r["id"]].items())}
+            r["body"] = r["body"] + [{"atom": "blocked", "naf": True, "blocked_by": sorted(src), "sources": src}]
+    return rel
 
 
-def rule_text(r):
+def active_blockers(r, llm_edges=True):
+    """Đầu chặn còn dùng của quy tắc r. llm_edges=False bỏ đầu chỉ đến từ cạnh 1.7 (bật/tắt cạnh llm_proposed, steps_1_6_to_1_8.md mục 5)."""
+    for lit in r["body"]:
+        if lit["atom"] == "blocked":
+            return [h for h in lit["blocked_by"] if llm_edges or any(x != LLM_EDGE for x in lit["sources"][h])]
+    return []
+
+
+def rule_text(r, llm_edges=True):
     body = []
     for lit in r["body"]:
-        body.append(f"not blocked({r['id']}, X)" if lit["atom"] == "blocked" else lit_text(lit))
+        if lit["atom"] != "blocked":
+            body.append(lit_text(lit))
+        elif active_blockers(r, llm_edges):
+            body.append(f"not blocked({r['id']}, X)")
     head = f"{'-' if r['head']['neg'] else ''}{r['head']['atom']}(X)"
     return f"{head} :- {', '.join(body)}." if body else f"{head}."
 
@@ -293,13 +309,19 @@ def check_program(path):
     return cp.returncode == 0 and "error" not in msg.lower(), msg
 
 
-def program_text(rules, extra, iso):
+def program_text(rules, iso=(), llm_edges=True):
+    """Chương trình s(CASP) từ các quy tắc không bị cô lập: quy tắc, rồi `blocked(r, X) :- h(X).` và `-đầu(X) :- blocked(r, X).`"""
     lines = [":- use_module(library(scasp)).", "% Sinh bởi src/rules.py (bước 1.8); mỗi quy tắc ghi đơn vị nguồn.", ""]
-    keep = [r for r in rules if r["id"] not in iso]
-    ids = {r["id"] for r in keep}
-    for r in keep:
-        lines += [f"% {r['id']} {r['unit']} ({r['how']})", rule_text(r)]
-    lines += [""] + [x for x in extra if any(f"({i}," in x for i in ids)]
+    extra = []
+    for r in rules:
+        if r["id"] in iso:
+            continue
+        lines += [f"% {r['id']} {r['unit']} ({r['how']})", rule_text(r, llm_edges)]
+        hs = active_blockers(r, llm_edges)
+        extra += [f"blocked({r['id']}, X) :- {h}(X)." for h in hs]
+        if hs:
+            extra.append(f"{'' if r['head']['neg'] else '-'}{r['head']['atom']}(X) :- blocked({r['id']}, X).")
+    lines += [""] + extra
     return "\n".join(lines) + "\n"
 
 
@@ -310,12 +332,12 @@ def main(doc_id=corpus.BASE_DOC_ID):
     a, pred_of, subj_of, kinds, order, to_input = load(doc_id)
     rules, notes = compile_units(a, pred_of, subj_of, order, kinds)
     edges = exception_edges(doc_id, a)
-    extra, rel = apply_blocks(rules, edges)
+    rel = apply_blocks(rules, edges)
     iso, probs = scan(rules, kinds)
     d = corpus.out_dir(DIR_NAME)
     d.mkdir(parents=True, exist_ok=True)
     pl = d / f"rules_{doc_id}.pl"
-    pl.write_text(program_text(rules, extra, iso), encoding="utf-8", newline="\n")
+    pl.write_text(program_text(rules, iso), encoding="utf-8", newline="\n")
     ok, msg = check_program(pl)
     parse.write_jsonl(d / f"rules_{doc_id}.jsonl", [dict(r, isolated=r["id"] in iso) for r in rules])
     parse.write_jsonl(d / f"rules_isolated_{doc_id}.jsonl", [{"id": k, "ly_do": v} for k, v in sorted(iso.items())])

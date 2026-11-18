@@ -34,12 +34,12 @@ def compiled():
     a = {u: {"dong": rows} for u, (rows, _, _) in UNITS.items()}
     pred_of = {(u, i): (n, k) for u, (_, names, keys) in UNITS.items() for i, (n, k) in enumerate(zip(names, keys))}
     rules, notes = R.compile_units(a, pred_of, {"s": "foreign_worker"}, {u: i for i, u in enumerate(UNITS)})
-    extra, _rel = R.apply_blocks(rules, {(D + "D154", D + "D151.K1.d"): "1.5"})
-    return rules, extra, notes
+    R.apply_blocks(rules, {(D + "D154", D + "D151.K1.d"): "1.5"})
+    return rules, notes
 
 
 def test_rules_head_prefix_english_and_neg_marks_content():
-    rules, _, _ = compiled()
+    rules, _ = compiled()
     heads = {r["unit"].split(".", 1)[1]: (r["head"]["atom"], r["head"]["neg"]) for r in rules}
     assert heads["D151.K1.d"] == ("must_holds_work_permit", False)
     # "phải KHÔNG đang chấp hành hình phạt": phủ định nằm trong nội dung, không phải "-must_" (dấu - dành cho "được miễn")
@@ -49,11 +49,14 @@ def test_rules_head_prefix_english_and_neg_marks_content():
 
 
 def test_rules_subject_guard_and_block_relation():
-    rules, extra, _ = compiled()
+    rules, _ = compiled()
     r = next(x for x in rules if x["unit"].endswith("D151.K1.d"))
     assert [lit["atom"] for lit in r["body"]][:1] == ["foreign_worker"]
     assert any(lit["atom"] == "blocked" for lit in r["body"])
-    assert f"-must_holds_work_permit(X) :- blocked({r['id']}, X)." in extra
+    lines = R.program_text(rules).splitlines()
+    assert f"-must_holds_work_permit(X) :- blocked({r['id']}, X)." in lines
+    # tắt cạnh 1.7 không ảnh hưởng quan hệ chặn đến từ cạnh 1.5
+    assert f"-must_holds_work_permit(X) :- blocked({r['id']}, X)." in R.program_text(rules, llm_edges=False).splitlines()
 
 
 def test_rules_negative_condition_open_world_for_input_closed_for_concept():
@@ -73,6 +76,21 @@ def test_rules_effective_kinds_modal_only_concept_becomes_input():
     assert eff == {"holds_work_permit": "input", "foreign_worker": "concept", "nationality": "input"}
 
 
+def test_rules_llm_edge_toggle_drops_only_llm_blockers():
+    rules, _ = compiled()
+    R.apply_blocks(rules, {(D + "D154", D + "D151.K1.c"): R.LLM_EDGE})
+    r = next(x for x in rules if x["unit"].endswith("D151.K1.c"))
+    assert "not blocked(" in R.rule_text(r) and "not blocked(" not in R.rule_text(r, llm_edges=False)
+    assert R.active_blockers(r, llm_edges=False) == []
+
+
+def test_rules_source_units_child_or_has_lead_in_and_item():
+    u, k = D + "D53.K2", D + "D53.K2.a"
+    a = {u: {"dong": [row("ket_luan", "duoc")]}, k: {"dong": [row("dieu_kien", "khong")]}}
+    rules, _ = R.compile_units(a, {(u, 0): ("use_leased_labor", None), (k, 0): ("demand_surge", None)}, {}, {u: 0, k: 1})
+    assert [(r["unit"], r["source_units"], r["how"]) for r in rules] == [(k, [u, k], "compiled_child_or")]
+
+
 def test_rules_scan_isolates_empty_body():
     iso, _ = R.scan([{"id": "r1", "unit": D + "D155", "head": {"atom": "term_max_two_years", "pred": "term_max_two_years", "neg": False}, "body": []}], {})
     assert "r1" in iso
@@ -82,8 +100,8 @@ def test_rules_scasp_falsification_d151_d154():
     if not Path(R.SWIPL).exists() and not shutil.which(R.SWIPL):
         print("bỏ qua: không có SWI-Prolog")
         return
-    rules, extra, _ = compiled()
-    prog = R.program_text(rules, extra, {})
+    rules, _ = compiled()
+    prog = R.program_text(rules)
     cases = {  # sự kiện -> (must_holds_work_permit, -must_holds_work_permit)
         "holds_foreign_nationality(p1). married_to_vietnamese_citizen(p1). resides_in_vietnam(p1).": (True, False),  # miễn (Q04)
         "holds_foreign_nationality(p1).": (False, True),  # không thuộc diện miễn: phải có giấy phép
