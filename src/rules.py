@@ -8,7 +8,9 @@ Biên dịch (mọi lựa chọn dưới đây là [THÊM] của agent cho chỗ
     cấm forbidden_, không áp dụng not_applicable_; mô tả, định nghĩa (khong) giữ tên vị từ.
   - Cực chỉ phủ định NỘI DUNG (đặc tả 1.6A). Đầu có phương thức mà cực phủ định: chèn neg_ sau tiền tố (D151.K1.c "phải không đang chấp hành
     hình phạt" -> must_neg_serving_criminal_sentence; user chốt 18/11). Không dùng -must_p vì `-` dành cho "được miễn do bị ngoại lệ chặn".
-    Đầu mô tả có cực phủ định: phủ định cổ điển (-p). Điều kiện có cực phủ định: `not p(X)` (phủ định do thất bại).
+    Đầu mô tả có cực phủ định: phủ định cổ điển (-p). Điều kiện có cực phủ định: vị từ input thành `-p(X)` (thế giới mở,
+    user chốt 18/11: thiếu sự kiện thì không kết luận), vị từ concept thành `not p(X)`.
+  - Vị từ concept chỉ xuất hiện làm kết luận sau tiền tố phương thức thì coi là input (effective_kinds, user chốt 18/11).
   - Thân: điều kiện cùng `quy_tac` (cùng `nhom_hoac` là các phương án, mỗi phương án một quy tắc), ngoại lệ cùng quy tắc thành `not`,
     và vị từ CHỦ THỂ của dòng kết luận (1.6B names-2.1) làm điều kiện canh.
   - Mục con chỉ có điều kiện (câu dẫn là kết luận, mục con là điều kiện, 1.6A luật 5): gắn vào kết luận của tổ tiên gần nhất; `cac_muc_con`
@@ -64,10 +66,24 @@ def load(doc_id):
         elif r["loai"] == "chu_the" and r.get("predicate"):
             subj_of[Pd.word_key(r["span"], ())] = r["predicate"]
     order = {u: k for k, u in enumerate(P.contexts(doc_id))}
-    return a, pred_of, subj_of, kinds, order
+    eff = effective_kinds(named, kinds)
+    return a, pred_of, subj_of, eff, order, sorted(k for k in kinds if eff[k] != kinds[k])
 
 
-def unit_groups(uid, rows, pred_of, subj_of):
+def effective_kinds(named, kinds):
+    """Vị từ `concept` mà mọi dòng kết luận dùng nó đều có tiền tố phương thức (chỉ là ĐỐI TƯỢNG của nghĩa vụ, quyền, cấm) thì không có quy tắc
+    nào định nghĩa chính nó: thực chất là sự kiện người hỏi cung cấp, coi là `input` (user chốt 18/11; ví dụ holds_work_permit: D151.K1.d
+    "phải có giấy phép", D153.K2 "không có giấy phép thì bị trục xuất"). Vị từ bị đổi ghi ở báo cáo để soi ca thiếu định nghĩa thật."""
+    defined = {r["predicate"] for r in named if r["loai"] == "menh_de" and r.get("predicate") and r["role"] == "ket_luan"
+               and not MODE_PREFIX.get(r.get("mode") or "", "")}
+    out = dict(kinds)
+    for name, k in kinds.items():
+        if k == "concept" and name not in defined:
+            out[name] = "input"
+    return out
+
+
+def unit_groups(uid, rows, pred_of, subj_of, kinds):
     """Các nhóm quy_tac của một đơn vị: {q: {"heads": [lit], "conds": [lit], "or": {h: [lit]}, "exc": [lit]}}; dòng thiếu tên vị từ thì bỏ (ghi lý do)."""
     groups, notes = collections.defaultdict(lambda: {"heads": [], "conds": [], "or": collections.defaultdict(list), "exc": []}), []
     for i, d in enumerate(rows):
@@ -85,7 +101,10 @@ def unit_groups(uid, rows, pred_of, subj_of):
             a = atom(("neg_" + name) if neg and modal else name, d.get("phuong_thuc"))
             g["heads"].append({"atom": a, "pred": name, "neg": neg and not modal, "subject": subj_of.get(skey) if skey else None, "row": i})
         elif d["vai"] == "dieu_kien":
-            lit = {"atom": atom(name, d.get("phuong_thuc")), "pred": name, "naf": neg, "row": i}
+            # Điều kiện phủ định trên vị từ input: phủ định cổ điển -p (thế giới mở, user chốt 18/11): phải có sự kiện nói rõ "không p";
+            # thiếu sự kiện thì không kết luận (chưa đủ căn cứ) thay vì coi p sai. Vị từ concept (có quy tắc định nghĩa) giữ `not p`.
+            classical = neg and kinds.get(name) == "input"
+            lit = {"atom": atom(name, d.get("phuong_thuc")), "pred": name, "naf": neg and not classical, "neg": classical, "row": i}
             (g["or"][d["nhom_hoac"]] if d.get("nhom_hoac") else g["conds"]).append(lit)
         elif d["vai"] == "ngoai_le":
             if neg:  # ngoại lệ phủ định ("trừ khi không ...") mất một lớp phủ định nếu dịch thành `not p`; chưa có ca, báo để xem
@@ -111,12 +130,12 @@ def bodies(g):
     return out
 
 
-def compile_units(a, pred_of, subj_of, order):
+def compile_units(a, pred_of, subj_of, order, kinds=None):
     """-> (quy tắc [{id, unit, head, body, how}], ghi chú)."""
     rules, notes = [], []
     per_unit = {}
     for uid in sorted(a, key=order.get):
-        groups, n = unit_groups(uid, a[uid]["dong"], pred_of, subj_of)
+        groups, n = unit_groups(uid, a[uid]["dong"], pred_of, subj_of, kinds or {})
         notes += n
         per_unit[uid] = groups
     # mục con chỉ có điều kiện -> gắn vào tổ tiên gần nhất có kết luận
@@ -239,6 +258,15 @@ def scan(rules, kinds):
             blocked = any(lit["atom"] == "blocked" for r in rules if r["head"]["atom"] == atom_ and not r["head"]["neg"] for lit in r["body"])
             if not blocked:
                 probs.append(f"đầu ngược không có quan hệ chặn: {atom_} và -{atom_}")
+    # Hai phương thức trái nhau trên cùng vị từ mà không quy tắc nào của chúng có quan hệ chặn: cả hai có thể cùng đúng (D53.K2 được dùng
+    # lao động thuê lại / D53.K3 cấm) và không có gì phân xử. Chỉ báo, không cô lập: đây là việc của 1.7 hoặc của người đọc.
+    atoms = {r["head"]["atom"] for r in rules if not r["head"]["neg"]}
+    has_block = {r["head"]["atom"] for r in rules if any(lit["atom"] == "blocked" for lit in r["body"])}
+    for pred in sorted({r["head"]["pred"] for r in rules}):
+        for x, y in (("may_", "forbidden_"), ("must_", "forbidden_"), ("must_", "must_neg_")):
+            a_, b_ = x + pred, y + pred
+            if a_ in atoms and b_ in atoms and not ({a_, b_} & has_block):
+                probs.append(f"phương thức trái nhau không có quan hệ chặn: {a_} và {b_}")
     g = collections.defaultdict(set)  # vòng chặn: đầu bị chặn -> đầu chặn
     for r in rules:
         for lit in r["body"]:
@@ -276,8 +304,8 @@ def program_text(rules, extra, iso):
 
 
 def main(doc_id=corpus.BASE_DOC_ID):
-    a, pred_of, subj_of, kinds, order = load(doc_id)
-    rules, notes = compile_units(a, pred_of, subj_of, order)
+    a, pred_of, subj_of, kinds, order, to_input = load(doc_id)
+    rules, notes = compile_units(a, pred_of, subj_of, order, kinds)
     edges = exception_edges(doc_id, a)
     extra, rel = apply_blocks(rules, edges)
     iso, probs = scan(rules, kinds)
@@ -291,6 +319,7 @@ def main(doc_id=corpus.BASE_DOC_ID):
     lines = [f"1.8 quy tắc: {doc_id}" + (f" (kho con {corpus.SUBSET})" if corpus.SUBSET else ""),
              f"quy tắc: {len(rules)} (cô lập {len(iso)}); cạnh ngoại lệ dùng: {len(edges)} {dict(collections.Counter(edges.values()))}; quan hệ chặn: {len(rel)}",
              f"nạp s(CASP): {'đạt' if ok else 'LỖI: ' + msg[:300]}",
+             f"concept coi là input (chỉ làm đối tượng của phương thức): {len(to_input)} {to_input}",
              f"bộ quét: {len(probs)} vấn đề"] + [f"  {p}" for p in probs] + [f"  cô lập {k}: {v}" for k, v in sorted(iso.items())] + [f"  ghi chú: {n}" for n in notes]
     rp = corpus.report_dir(DIR_NAME) / f"rules_report_{doc_id}.txt"
     rp.parent.mkdir(parents=True, exist_ok=True)

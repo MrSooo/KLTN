@@ -56,6 +56,23 @@ def test_rules_subject_guard_and_block_relation():
     assert f"-must_holds_work_permit(X) :- blocked({r['id']}, X)." in extra
 
 
+def test_rules_negative_condition_open_world_for_input_closed_for_concept():
+    rows = [row("ket_luan", "khong"), row("dieu_kien", "khong"), row("dieu_kien", "khong", cuc="phu_dinh"), row("dieu_kien", "khong", cuc="phu_dinh")]
+    u = D + "D156.K3"
+    names = ["validity_lapsed", "work_permit", "conforms_to_content", "derived_ok"]
+    rules, _ = R.compile_units({u: {"dong": rows}}, {(u, i): (n, None) for i, n in enumerate(names)}, {}, {u: 0},
+                               {"conforms_to_content": "input", "derived_ok": "concept"})
+    assert R.rule_text(rules[0]) == "validity_lapsed(X) :- work_permit(X), -conforms_to_content(X), not derived_ok(X)."
+
+
+def test_rules_effective_kinds_modal_only_concept_becomes_input():
+    named = [{"loai": "menh_de", "predicate": "holds_work_permit", "role": "ket_luan", "mode": "phai"},
+             {"loai": "menh_de", "predicate": "foreign_worker", "role": "ket_luan", "mode": "khong"},
+             {"loai": "menh_de", "predicate": "foreign_worker", "role": "dieu_kien", "mode": "khong"}]
+    eff = R.effective_kinds(named, {"holds_work_permit": "concept", "foreign_worker": "concept", "nationality": "input"})
+    assert eff == {"holds_work_permit": "input", "foreign_worker": "concept", "nationality": "input"}
+
+
 def test_rules_scan_isolates_empty_body():
     iso, _ = R.scan([{"id": "r1", "unit": D + "D155", "head": {"atom": "term_max_two_years", "pred": "term_max_two_years", "neg": False}, "body": []}], {})
     assert "r1" in iso
