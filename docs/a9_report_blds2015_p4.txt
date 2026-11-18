@@ -1,4 +1,0 @@
-A9 report (s(CASP)): blds2015_p4
-in_force units: 215 | exception_of: 24 | A8 rules in_force: 202
-program: /mnt/e/KLTN/data/processed/a9_blds2015_p4.pl
-blocking: blocked(U) :- exception_of(_, U). ; holds(U) :- in_force(U), not blocked(U).
