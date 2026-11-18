@@ -1,9 +1,9 @@
 # Trạng thái dự án
 
-Cập nhật lần cuối: 16/11/2026. Nhánh làm việc: `v3_refactor`.
+Cập nhật lần cuối: 18/11/2026. Nhánh làm việc: `v3_refactor`.
 
 ## 1. Tóm tắt
-Giai đoạn 1 (dựng KB gốc từ BLLĐ): các bước 1.1 đến 1.5 đã xong; bước 1.6 (tri thức) đang làm lại; 1.7 đến 1.9 chưa có mã. Giai đoạn 2 (cập nhật khi có văn bản mới): bước 2.2 đến 2.4 đã có mã cho kho hiện tại; 2.1 và 2.5 đến 2.7 chưa làm. Thiết kế từng bước: `docs/design/pipeline_design.md`. Kế hoạch tiếp theo: `docs/roadmap.md`.
+Giai đoạn 1 (dựng KB gốc từ BLLĐ): các bước 1.1 đến 1.5 đã xong; 1.6B đến 1.9 đã có mã và chạy thông trên tập con `lldnn` (A41: `python -I src/run_all.py --tap-con lldnn --llm replay`); cả kho còn chờ chạy 1.6A đủ 204 lô. Giai đoạn 2 (cập nhật khi có văn bản mới): bước 2.2 đến 2.4 đã có mã cho kho hiện tại; 2.1 và 2.5 đến 2.7 chưa làm. Thiết kế từng bước: `docs/design/pipeline_design.md`. Kế hoạch tiếp theo: `docs/roadmap.md`.
 
 Kiểm ngày 15/11/2026 (sau khi chuẩn hoá tên và xoá thư mục lưu trữ v1): `python -I src/run_all.py --llm off --viewer --tests` rồi `--llm replay --viewer --tests`, cả hai thoát mã 0, 14/14 bước, 10 bộ test OK. Chương trình không in tổng số test. Đầu ra dữ liệu giống hệt trước khi đổi tên, trừ các nhãn chữ (xem `docs/decisions.md`, A40).
 
@@ -17,8 +17,10 @@ Kiểm ngày 15/11/2026 (sau khi chuẩn hoá tên và xoá thư mục lưu tr�
 | 1.5 Ngoại lệ tường minh | `exceptions_explicit.py`, `exceptions_general.py` | xong | đã mở rộng sang "trừ <danh từ>" (A31); chưa đo độ chính xác |
 | 1.6A Mệnh đề | `propositions.py` | **đang làm** | lời nhắc `menh-de-3` đóng băng; chưa chạy đủ 204 lô; chưa nối vào `run_all` (xem mục 3) |
 | 1.6A (bản cũ) | `concepts.py` | còn trong `run_all` | kết quả không dùng được; `concepts_names.py` và `propositions.py` còn mượn hàm của nó |
-| 1.6B Sổ vị từ | `concepts_names.py` | **cần viết lại** | đọc "cụm" của bản cũ; viết lại để đọc mệnh đề (`names-2`, A39) |
-| 1.7, 1.8, 1.9 | chưa có | chưa có mã | bản nháp ở `docs/design/steps_1_6_to_1_8.md` |
+| 1.6B Sổ vị từ | `predicates.py` (bản cũ `concepts_names.py` còn trong `run_all`) | xong trên tập con | `names-2.1`, có vị từ chủ thể (A41) |
+| 1.7 Ngoại lệ ngầm | `implicit_exceptions.py` | xong trên tập con | `ngoai-le-ngam-2`; tập con 4 cặp, 1 cạnh (A41) |
+| 1.8 Quy tắc | `rules.py` | xong trên tập con, chưa có vòng LLM sửa | máy biên dịch; s(CASP); test phản chứng D151/D154 (A41) |
+| 1.9 Hỏi đáp | `answering.py` | xong trên tập con | bộ câu hỏi dev `data/eval_dev/lldnn_questions.json` (nháp, chờ xác nhận); 11/15 câu cần 2.6 (A41) |
 | 2.2 Nối văn bản | `links.py` | xong cho kho hiện tại | có LLM (Gemini, hai model độc lập kiểm chéo) |
 | 2.3 Đọc chỉ thị | `directives.py`, `directives_rare.py` | xong cho kho hiện tại | 26 loại, bảng ở `docs/reference/directive_types.md` |
 | 2.4 Áp phiên bản | `versions.py` | xong cho kho hiện tại | 9.217 đơn vị, 9.343 phiên bản (đo 09/11) |
