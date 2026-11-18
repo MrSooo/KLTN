@@ -33,7 +33,7 @@ import parse  # noqa: E402
 import propositions as P  # noqa: E402
 from textutil import text_norm  # noqa: E402
 
-TASK, PROMPT_VERSION, ROLE = "predicates", "names-2", "ten"
+TASK, PROMPT_VERSION, ROLE = "predicates", "names-2.1", "ten"  # 2.1: thêm chữ chủ thể (vai chu_the) và đoạn lời nhắc cho nó (A41)
 EFFORT, SUBAGENT_MODEL = "high", "sonnet"   # A39: Sonnet 5.5, effort high, tuần tự
 CANDIDATE_CAP = 20                          # A39: 12 lên 20 (phỏng đoán: mệnh đề ngắn hơn cụm nên 12 dễ cắt mất ứng viên đúng; chưa đo)
 DIR_NAME = "predicates"
@@ -78,12 +78,25 @@ def load_rows(ctxs):
                 continue
             if d["loai"] not in ("menh_de", "con_tro"):
                 continue
-            rows.append({"unit": uid, "row": i, "loai": d["loai"], "span": d["menh_de"] if d["loai"] == "menh_de" else " ".join(d["trich"]),
+            subj = subject_text(d) if d["loai"] == "menh_de" else None
+            if subj:
+                # [THÊM, A41] chữ chủ thể thành chữ cần đặt tên (như vai chu_the của names-1): không có nó, quy tắc 1.8 không phân biệt được
+                # "người lao động nước ngoài" với mọi người lao động. Tham số rỗng: vị từ chủ thể là tính chất của chính thực thể.
+                rows.append({"unit": uid, "row": i, "loai": "chu_the", "span": subj, "params": (), "role": "chu_the", "targets": [], "mode": "", "cuc": "",
+                             "quy_tac": None, "nhom_hoac": None, "gan_vao": None, "liet_ke": [], "predicate": None, "flags": []})
+            rows.append({"unit": uid, "row": i, "loai": d["loai"], "subject_key": word_key(subj, ()) if subj else None, "span": d["menh_de"] if d["loai"] == "menh_de" else " ".join(d["trich"]),
                          "params": signature(d) if d["loai"] == "menh_de" else (), "role": d["vai"],
                          "targets": (d.get("targets") or []) if d["loai"] == "con_tro" else [], "mode": d.get("phuong_thuc", ""), "cuc": d.get("cuc", ""),
                          "quy_tac": d.get("quy_tac"), "nhom_hoac": d.get("nhom_hoac"), "gan_vao": d.get("gan_vao"), "liet_ke": d.get("liet_ke") or [],
                          "predicate": None, "flags": []})
     return rows, dropped
+
+
+def subject_text(row):
+    """Chữ chủ thể của dòng mệnh đề (chu_the.chu), bỏ khoảng trắng thừa; None nếu không có."""
+    ct = row.get("chu_the")
+    s = " ".join((ct.get("chu") or "").split()) if isinstance(ct, dict) else ""
+    return s or None
 
 
 def word_key(span, params):
@@ -99,7 +112,7 @@ def build_words(rows, order):
         if order[r["unit"]] < last:
             raise SystemExit(f"dòng 1.6A không theo thứ tự đơn vị ở {r['unit']}")
         last = order[r["unit"]]
-        if r["loai"] != "menh_de" or not r["span"]:  # con_tro (kể cả con_tro không giải được đích) không phải chữ để đặt tên
+        if r["loai"] not in ("menh_de", "chu_the") or not r["span"]:  # con_tro (kể cả con_tro không giải được đích) không phải chữ để đặt tên
             continue
         key = word_key(r["span"], r["params"])
         w = by_key.get(key)
@@ -227,6 +240,8 @@ _SYSTEM = """Bạn đặt TÊN VỊ TỪ cho các mệnh đề lấy từ văn b
 - ung_vien: các tên đã có, cùng SỐ tham số và loại tương thích (? khớp mọi loại); mỗi ứng viên kèm params và vài chữ đã dùng tên đó (vi_du).
 - loi_lan_truoc: chỉ có khi chữ được hỏi lại; là lý do lần trả lời trước không được nhận. Hãy sửa đúng lỗi đó.
 
+CHỮ CÓ VAI chu_the: chữ là cụm danh từ chỉ một NHÓM chủ thể ("Người lao động nước ngoài làm việc tại Việt Nam", "Doanh nghiệp cho thuê lại lao động"). Tên đặt cho tính chất "thuộc nhóm đó" (ví dụ foreign_worker_in_vietnam). Mệnh đề "là <nhóm đó>" và chữ chủ thể chỉ cùng nhóm đó là cùng một sự kiện: phải reuse. Nhóm rộng hơn hoặc hẹp hơn ("người lao động" so với "người lao động nước ngoài") là tên khác.
+
 NHIỆM VỤ: với MỖI chữ trong danh sách, trả về đúng MỘT mục gồm chu_id, kieu và ten.
 - kieu "reuse": ten là một tên nằm trong ung_vien của chính chữ đó, HOẶC một tên mà bạn đã đặt (kieu "new") cho một chữ đứng TRƯỚC chữ này trong danh sách (theo thứ tự các mục của "chu"; không được trỏ tới chữ đứng sau) và có params tương thích với chữ này.
 - kieu "new": ten là một tên mới.
@@ -235,7 +250,7 @@ KHI NÀO ĐƯỢC "reuse": khi chữ nêu CÙNG MỘT sự kiện pháp lý vớ
 
 CÁCH ĐẶT TÊN MỚI:
 - Tiếng Anh, snake_case: chỉ gồm chữ thường a-z, chữ số và dấu gạch dưới; bắt đầu bằng chữ cái; dài 3 đến 50 ký tự.
-- Tên nêu sự kiện, không nêu ai làm: không ghi chủ thể, không ghi params vào tên (params đã được ghi riêng).
+- Tên nêu sự kiện, không nêu ai làm: không ghi chủ thể, không ghi params vào tên (params đã được ghi riêng). Riêng chữ vai chu_the thì tên chính là nhóm chủ thể.
 - Không ghi phương thức vào tên (không must_, may_, allowed_, prohibited_): phương thức được ghi riêng.
 - Dạng khẳng định: không mở đầu bằng not_, no_, non_ và không đặt tên là not hay non. Chữ có ý phủ định trong nghĩa thì chọn một từ khẳng định có nghĩa tương đương.
 - Tên mới không được trùng với bất kỳ tên nào đã có, kể cả tên không nằm trong ung_vien của chữ đó; trùng thì chữ bị hỏi lại sau. Hãy đặt tên đủ cụ thể để ít trùng.
@@ -433,7 +448,7 @@ def build_ledger(words, rows, run):
     out = []
     for r in rows:
         r2 = dict(r, params=list(r["params"]), flags=list(r["flags"]))
-        if r["loai"] == "menh_de" and r["span"]:
+        if r["loai"] in ("menh_de", "chu_the") and r["span"]:
             i = by_key[word_key(r["span"], r["params"])]
             name = run.book.name_of.get(i)
             if name is not None:
@@ -506,8 +521,8 @@ def main(argv=None):
     stop = run_rounds(llm_client.Client("replay"), run) if args.llm == "replay" else None
     named, ledger = build_ledger(run.words, rows, run)
     m = metrics(run.words, ledger, run)
-    lines = [f"1.6B names-2: {args.doc}" + (f" (kho con {corpus.SUBSET})" if corpus.SUBSET else ""),
-             f"dòng 1.6A dùng: {len(rows)} (mệnh đề {sum(1 for r in rows if r['loai'] == 'menh_de')}, con trỏ {sum(1 for r in rows if r['loai'] == 'con_tro')}); bỏ vì lỗi cổng 1.6A: {dropped}",
+    lines = [f"1.6B {PROMPT_VERSION}: {args.doc}" + (f" (kho con {corpus.SUBSET})" if corpus.SUBSET else ""),
+             f"dòng 1.6A dùng: {len(rows)} (mệnh đề {sum(1 for r in rows if r['loai'] == 'menh_de')}, con trỏ {sum(1 for r in rows if r['loai'] == 'con_tro')}, chủ thể {sum(1 for r in rows if r['loai'] == 'chu_the')}); bỏ vì lỗi cổng 1.6A: {dropped}",
              f"chữ (gộp cấp 1): {m['chu']}; lượt kế hoạch: {len(run.planned)}",
              "LLM TẮT: không đặt tên" if args.llm == "off" else
              f"chữ có tên: {m['chu_co_ten']}; reuse do LLM chọn: {m['reuse_llm']} ({100 * m['reuse_llm'] / max(m['chu_co_ten'], 1):.1f}%); "

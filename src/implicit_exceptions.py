@@ -194,6 +194,8 @@ def nhap(thu_muc, doc_id=corpus.BASE_DOC_ID):
         raise SystemExit("hộp cát dựng với tập con hoặc lời nhắc khác code hiện tại: không nhập")
     pairs, _n_known, ctxs = build_pairs(doc_id)
     ls = lots(pairs, ctxs)
+    if not (d / "nhat_ky.tsv").exists():
+        raise SystemExit(f"{d} chưa có nhat_ky.tsv: phiên chưa chạy xong, không nhập")
     log = {int(p[0]): p[1].strip() for p in (line.split("\t") for line in (d / "nhat_ky.tsv").read_text(encoding="utf-8").splitlines()) if len(p) >= 2 and p[0].strip().isdigit()}
     answers, bad = {}, []
     for n, lot in enumerate(ls, 1):
