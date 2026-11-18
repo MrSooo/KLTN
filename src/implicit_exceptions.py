@@ -234,7 +234,9 @@ def nhap(thu_muc, doc_id=corpus.BASE_DOC_ID):
         if set(items) != want:
             bad.append((n, f"cap_id lệch: thiếu {sorted(want - set(items))}, thừa {sorted(set(items) - want)}"))
             continue
-        answers.update(items)
+        # Ghi kèm hai đơn vị của cặp: cap_id chỉ là số thứ tự, đổi 1.6B thì danh sách cặp đổi và số thứ tự trỏ sang cặp khác.
+        by_id = {c["cap_id"]: c for c in lot["cap"]}
+        answers.update({cid: dict(it, a=by_id[cid]["a"]["unit_id"], b=by_id[cid]["b"]["unit_id"]) for cid, it in items.items()})
     out = cache_path(doc_id)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({"prompt_version": PROMPT_VERSION, "model": MODEL, "effort": EFFORT, "answers": answers}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
@@ -244,14 +246,23 @@ def nhap(thu_muc, doc_id=corpus.BASE_DOC_ID):
 
 
 def run(doc_id=corpus.BASE_DOC_ID):
+    if not P.full_cache_path().exists():  # kho chưa chạy 1.6A (kho đầy đủ trước lần chạy cả kho): báo rõ, không coi là lỗi của chuỗi
+        print(f"BỎ QUA 1.7: chưa có kết quả 1.6A {P.full_cache_path()}")
+        return
     pairs, n_known, ctxs = build_pairs(doc_id)
     p = cache_path(doc_id)
-    answers = json.loads(p.read_text(encoding="utf-8"))["answers"] if p.exists() else {}
+    cache = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {"answers": {}}
+    if p.exists() and cache.get("prompt_version") != PROMPT_VERSION:
+        raise SystemExit(f"{p} là của lời nhắc {cache.get('prompt_version')!r}, code đang ở {PROMPT_VERSION!r}: dựng hộp cát và nhập lại")
+    answers = cache["answers"]
     known = explicit_pairs(doc_id)
     accepted, rejected, asked = [], [], []
+    stale = 0
     for k, pair in enumerate(pairs):
         cid = f"P{k:04d}"
         item = answers.get(cid)
+        if item is not None and (item.get("a"), item.get("b")) != (pair[0], pair[1]):
+            stale, item = stale + 1, None  # câu trả lời của một cặp khác: không dùng
         asked.append({"cap_id": cid, "a": pair[0], "b": pair[1], "vi_tu_chung": pair[2], "ket_qua": item.get("ket_qua") if item else None})
         if item is None:
             continue
@@ -275,6 +286,7 @@ def run(doc_id=corpus.BASE_DOC_ID):
              f"cặp cùng vị từ concept (bỏ tổ tiên/con cháu): {len(pairs) + n_known}; đã có cạnh 1.5: {n_known}; hỏi LLM: {len(pairs)}"
              + (f" (CẢNH BÁO: vượt ngân sách {PAIR_BUDGET})" if len(pairs) > PAIR_BUDGET else ""),
              f"có trả lời: {sum(1 for x in asked if x['ket_qua'])}; nhận: {len(edges)}; loại: {len(rejected)}"
+             + (f"; CẢNH BÁO: {stale} câu trả lời trong cache thuộc cặp khác (danh sách cặp đã đổi), bỏ, cần hỏi lại" if stale else "")
              + ("" if p.exists() or not pairs else "; CHƯA NHẬP kết quả LLM")]
     lines += [f"  {e['s']} exception_of {e['o']}: {e['evidence'][:80]}" for e in edges]
     rp = corpus.report_dir(DIR_NAME) / f"implicit_report_{doc_id}.txt"

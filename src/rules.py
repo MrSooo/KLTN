@@ -304,6 +304,9 @@ def program_text(rules, extra, iso):
 
 
 def main(doc_id=corpus.BASE_DOC_ID):
+    if not P.full_cache_path().exists():  # kho chưa chạy 1.6A (kho đầy đủ trước lần chạy cả kho): báo rõ, không coi là lỗi của chuỗi
+        print(f"BỎ QUA 1.8: chưa có kết quả 1.6A {P.full_cache_path()}")
+        return
     a, pred_of, subj_of, kinds, order, to_input = load(doc_id)
     rules, notes = compile_units(a, pred_of, subj_of, order, kinds)
     edges = exception_edges(doc_id, a)

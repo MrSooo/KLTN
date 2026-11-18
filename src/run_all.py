@@ -1,6 +1,6 @@
 r"""Chạy lại cả chuỗi 1.1 -> 2.3-2.4 -> đồ thị trên cả kho lao động. Dùng làm hồi quy cho mỗi bước sửa.
 
-Chạy: python -I src/run_all.py            (1.1, 1.2, 1.4, 1.5 tường minh + chung, 1.6 gạch cụm, 2.2, 2.3-2.4, checks, graph)
+Chạy: python -I src/run_all.py            (1.1, 1.2, 1.4, 1.5 tường minh + chung, 1.6 gạch cụm, 1.6B-1.8 bản viết lại, 2.2, 2.3-2.4, checks, graph)
       python -I src/run_all.py --viewer       (thêm viewer: dựng trang xem đồ thị)
       python -I src/run_all.py --tests    (thêm mọi tests/test_*.py)
       python -I src/run_all.py --viewer --tests
@@ -38,6 +38,9 @@ LLM_SCRIPTS = ("src/links.py", "src/concepts.py")  # hai bước này nhận --l
 # 1.6B (A37) chỉ có off|replay: phần LLM chạy bằng phiên Claude Code, không gọi API. [THÊM] `--llm live` của run_all chạy bước này ở replay (in rõ), không từ chối,
 # để `run_all --llm live` vẫn dùng được cho 1.6A và 2.2.
 NAMES_SCRIPT = "src/concepts_names.py"
+# Bản viết lại 1.6B-1.8 (A41): phần LLM làm bằng phiên Claude Code ngoài repo, run_all chỉ đọc cache (off giữ off, replay và live thành replay).
+# Kho chưa có kết quả 1.6A (kho đầy đủ trước lần chạy cả kho) thì ba bước tự in "BỎ QUA" và thoát 0; chạy thật trên tập con: --tap-con lldnn.
+SANDBOX_SCRIPTS = (NAMES_SCRIPT, "src/predicates.py")
 
 STEPS = [
     ("1.1 tách cấu trúc văn bản", ["src/parse.py", "--all"]),
@@ -47,6 +50,9 @@ STEPS = [
     ("1.5 ngoại lệ chung", ["src/exceptions_general.py", "--all"]),
     ("1.6 gạch cụm (giai đoạn A)", ["src/concepts.py"]),
     ("1.6 đặt tên vị từ (giai đoạn B)", [NAMES_SCRIPT]),
+    ("1.6B vị từ, bản viết lại (A41)", ["src/predicates.py"]),
+    ("1.7 ngoại lệ ngầm (A41)", ["src/implicit_exceptions.py"]),
+    ("1.8 quy tắc s(CASP) (A41)", ["src/rules.py"]),
     ("1.3 điều khoản giao chi tiết", ["src/delegation.py"]),
     ("2.2 nối văn bản: based_on, details", ["src/links.py"]),
     ("2.3-2.4 phiên bản theo ngày hiệu lực", ["src/versions.py"]),
@@ -60,7 +66,7 @@ def llm_flag(cmd, mode):
     """Cờ --llm thêm vào lệnh của một bước. 1.6B: off giữ off, replay và live đều thành replay."""
     if mode == "off":
         return []
-    if cmd[0] == NAMES_SCRIPT:
+    if cmd[0] in SANDBOX_SCRIPTS:
         return ["--llm", "replay"]
     return ["--llm", mode] if cmd[0] in LLM_SCRIPTS else []
 

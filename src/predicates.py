@@ -517,6 +517,9 @@ def main(argv=None):
         lines, bad = nhap(args.nhap, args.doc, de=args.de)
         print("\n".join(lines))
         raise SystemExit(1 if bad else 0)
+    if not P.full_cache_path().exists():  # kho chưa chạy 1.6A (kho đầy đủ trước lần chạy cả kho): báo rõ, không coi là lỗi của chuỗi
+        print(f"BỎ QUA 1.6B: chưa có kết quả 1.6A {P.full_cache_path()}")
+        return
     run, rows, dropped = prepare(args.doc)
     stop = run_rounds(llm_client.Client("replay"), run) if args.llm == "replay" else None
     named, ledger = build_ledger(run.words, rows, run)
