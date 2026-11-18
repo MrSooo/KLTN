@@ -4,8 +4,11 @@ cổng hoặc bị bộ quét bắt thì giao LLM sửa (A41, chủ đề tài c
 Biên dịch (mọi lựa chọn dưới đây là [THÊM] của agent cho chỗ thiết kế im lặng, ghi ở A41):
   - Mọi vị từ biên dịch MỘT NGÔI trên thực thể chủ thể X; đối số khác bỏ qua (biến không khớp giữa hai đầu cạnh ngoại lệ cho kết quả sai
     mà không báo, S5(4); một ngôi thì "biến của ngoại lệ nằm trong biến của quy tắc gốc" đúng theo cách dựng). Hạn chế: mất quan hệ hai bên.
-  - Đầu quy tắc: <phương thức>_<vị từ> với phải, được, cấm, không áp dụng (phai_, duoc_, cam_, khong_ap_dung_); mô tả, định nghĩa (khong) giữ tên
-    vị từ. Cực phủ định ở đầu: phủ định cổ điển (-p). Điều kiện có cực phủ định: `not p(X)` (phủ định do thất bại).
+  - Đầu quy tắc: <tiền tố phương thức><vị từ>, tiền tố tiếng Anh cho đồng bộ với tên vị từ (user chốt 18/11): phải must_, được may_,
+    cấm forbidden_, không áp dụng not_applicable_; mô tả, định nghĩa (khong) giữ tên vị từ.
+  - Cực chỉ phủ định NỘI DUNG (đặc tả 1.6A). Đầu có phương thức mà cực phủ định: chèn neg_ sau tiền tố (D151.K1.c "phải không đang chấp hành
+    hình phạt" -> must_neg_serving_criminal_sentence; user chốt 18/11). Không dùng -must_p vì `-` dành cho "được miễn do bị ngoại lệ chặn".
+    Đầu mô tả có cực phủ định: phủ định cổ điển (-p). Điều kiện có cực phủ định: `not p(X)` (phủ định do thất bại).
   - Thân: điều kiện cùng `quy_tac` (cùng `nhom_hoac` là các phương án, mỗi phương án một quy tắc), ngoại lệ cùng quy tắc thành `not`,
     và vị từ CHỦ THỂ của dòng kết luận (1.6B names-2.1) làm điều kiện canh.
   - Mục con chỉ có điều kiện (câu dẫn là kết luận, mục con là điều kiện, 1.6A luật 5): gắn vào kết luận của tổ tiên gần nhất; `cac_muc_con`
@@ -36,7 +39,7 @@ import propositions as P  # noqa: E402
 
 DIR_NAME = "rules"
 SWIPL = "C:/Program Files/swipl/bin/swipl" if sys.platform == "win32" else "swipl"
-MODE_PREFIX = {"phai": "phai_", "duoc": "duoc_", "cam": "cam_", "khong_ap_dung": "khong_ap_dung_", "khong": "", "": ""}
+MODE_PREFIX = {"phai": "must_", "duoc": "may_", "cam": "forbidden_", "khong_ap_dung": "not_applicable_", "khong": "", "": ""}
 
 
 def atom(pred, mode):
@@ -77,7 +80,10 @@ def unit_groups(uid, rows, pred_of, subj_of):
         neg = d.get("cuc") == "phu_dinh"
         g = groups[d["quy_tac"]]
         if d["vai"] == "ket_luan":
-            g["heads"].append({"atom": atom(name, d.get("phuong_thuc")), "pred": name, "neg": neg, "subject": subj_of.get(skey) if skey else None, "row": i})
+            # Có phương thức thì phủ định nằm trong tên (neg_), đầu không mang `-`; đầu mô tả thì phủ định cổ điển.
+            modal = bool(MODE_PREFIX.get(d.get("phuong_thuc") or "", ""))
+            a = atom(("neg_" + name) if neg and modal else name, d.get("phuong_thuc"))
+            g["heads"].append({"atom": a, "pred": name, "neg": neg and not modal, "subject": subj_of.get(skey) if skey else None, "row": i})
         elif d["vai"] == "dieu_kien":
             lit = {"atom": atom(name, d.get("phuong_thuc")), "pred": name, "naf": neg, "row": i}
             (g["or"][d["nhom_hoac"]] if d.get("nhom_hoac") else g["conds"]).append(lit)
