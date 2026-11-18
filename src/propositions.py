@@ -317,7 +317,7 @@ def sandbox_config(d):
     return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {"model": model(), "effort": None}
 
 
-FULL_OUT = pathlib.Path("data/llm_cache") / "propositions"
+FULL_OUT = corpus.ROOT / "data" / "llm_cache" / "propositions"  # neo theo gốc repo: tiep.py của 1.6B chạy với cwd là thư mục làm việc
 
 
 def full_cache_path():
