@@ -6,15 +6,91 @@ không đưa chúng vào Doc để không bước nào dùng nhầm.
 """
 import csv
 import datetime
+import os
 import re
 from pathlib import Path
 from typing import NamedTuple
 
 ROOT = Path(__file__).resolve().parent.parent
-RAW_DIR = ROOT / "data" / "raw" / "labor"
+
+# Tập con (A41): biến môi trường KLTN_TAP_CON=<tên> trỏ cả pipeline sang kho con do utils/subset/build_subset.py dựng từ
+# data/subsets/<tên>.json. Vì sao đổi ở đây chứ không lọc trong từng bước: mọi bước lấy đường dẫn từ module này, nên
+# pipeline chạy nguyên vẹn trên kho nhỏ, không có nhánh "nếu tập con" rải trong code. llm_cache KHÔNG đổi: khoá cache
+# tính theo nội dung gửi model, kho con giữ nguyên chữ của văn bản nên dùng chung được.
+SUBSET = os.environ.get("KLTN_TAP_CON", "").strip() or None
+if SUBSET:
+    SUBSET_ROOT = ROOT / "data" / "processed_subset" / SUBSET
+    RAW_DIR = SUBSET_ROOT / "raw"
+    PROCESSED_DIR = SUBSET_ROOT / "processed"
+    REPORT_DIR = ROOT / "docs" / "run_reports_subset" / SUBSET
+else:
+    RAW_DIR = ROOT / "data" / "raw" / "labor"
+    PROCESSED_DIR = ROOT / "data" / "processed"
+    REPORT_DIR = ROOT / "docs" / "run_reports"
 MANIFEST = RAW_DIR / "manifest.csv"
-PROCESSED_DIR = ROOT / "data" / "processed"
-REPORT_DIR = ROOT / "docs" / "run_reports"
+
+
+def _subset_spec():
+    import json
+    return json.loads((ROOT / "data" / "subsets" / f"{SUBSET}.json").read_text(encoding="utf-8"))
+
+
+def in_subset(uid):
+    """Mã đơn vị (hay doc_id) có nằm trong kho con không; kho đầy đủ thì luôn True.
+
+    Tính từ spec chứ không từ đầu ra 1.1, để dùng được ở mọi bước kể cả khi 1.1 chưa chạy. Mã như 'BLLD_45-2019.D91.K4':
+    văn bản phải có trong spec, và nếu văn bản bị cắt thì số Điều phải nằm trong danh sách giữ lại.
+    """
+    if not SUBSET:
+        return True
+    doc, _, rest = uid.partition(".")
+    how = _subset_spec()["van_ban"].get(doc)
+    if how is None:
+        return False
+    if not isinstance(how, dict) or not rest.startswith("D"):
+        return True
+    num = re.match(r"D(\d+)", rest)
+    return bool(num) and int(num[1]) in _kept(how)
+
+
+def _kept(how):
+    """Số Điều giữ lại của một văn bản bị cắt: {"dieu": ["52-58", "220"]} -> [52, ..., 58, 220] (đã sắp)."""
+    nums = []
+    for r in how["dieu"]:
+        a, _, b = r.partition("-")
+        nums += range(int(a), int(b or a) + 1)
+    return sorted(nums)
+
+
+def landmark(name, needs, ok):
+    """Một mốc cổng (tên, kết quả). Kết quả: True đạt, False trượt, None bỏ qua (kho con, mốc cần đơn vị ngoài kho con; A41).
+
+    Vì sao không lặng lẽ bỏ: báo cáo vẫn liệt kê mốc để người đọc thấy mốc nào chưa được kiểm trên kho con.
+    Nơi gọi coi None là không trượt (`ok is not False`) và in bằng mark_word. Kho đầy đủ: kết quả luôn là bool như cũ.
+    """
+    if SUBSET and not all(in_subset(u) for u in needs):
+        return name, None
+    return name, bool(ok)
+
+
+def mark_word(ok):
+    """Chữ in trong báo cáo cho kết quả của landmark()."""
+    return "bỏ qua (ngoài kho con)" if ok is None else "đạt" if ok else "KHÔNG đạt"
+
+
+def subset_jumps(doc_id):
+    """Các bước nhảy số Điều mà kho con cố ý tạo khi cắt (A41), dạng {("58", "150"), ...}; kho đầy đủ hoặc văn bản giữ nguyên thì rỗng.
+
+    Vì sao: cổng 1.1 đòi Điều liên tục để bắt lỗi parse; kho con cắt bớt Điều nên có bước nhảy thật. Chỉ nhận đúng các
+    bước nhảy ở chỗ cắt đã khai trong data/subsets/<tên>.json, mọi bước nhảy khác vẫn là lỗi.
+    """
+    if not SUBSET:
+        return set()
+    how = _subset_spec()["van_ban"].get(doc_id)
+    if not isinstance(how, dict):
+        return set()
+    nums = _kept(how)
+    return {(str(x), str(y)) for x, y in zip(nums, nums[1:]) if y != x + 1}
 
 BASE_DOC_ID = "BLLD_45-2019"  # văn bản gốc: KB ban đầu chỉ dựng từ văn bản này
 

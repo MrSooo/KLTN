@@ -808,7 +808,7 @@ def write_report(ctx, store, events, as_of):
     out.append(f"chỉ thị đọc được nhưng đích / cụm không khớp: {len(ctx.unmatched)}")
     out += [f"  {d} {u}: {why}" for d, u, why in ctx.unmatched]
     out.append("mốc cổng dev:")
-    out += [f"  {'đạt' if ok else 'KHÔNG đạt'}: {name}" + (f" ({info})" if info else "") for name, ok, info in gates]
+    out += [f"  {corpus.mark_word(ok)}: {name}" + (f" ({info})" if info else "") for name, ok, info in gates]
     path = corpus.report_dir("versions") / "versions_report.txt"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(out) + "\n", encoding="utf-8", newline="\n")
@@ -822,30 +822,38 @@ def dev_gates(ctx, store, as_of):
     def vers(prefix):
         return [vs[-1] for k, vs in store.vers.items() if k.startswith(prefix + ".")]
     last = lambda k: store.cur(k)
-    g.append(("ND_28: mọi đơn vị effective_to = 2022-01-17", all(v.effective_to == D(2022, 1, 17) for v in vers("ND_28-2020")), ""))
-    g.append(("ND_12: mọi đơn vị effective_to = 2026-09-10", all(v.effective_to == D(2026, 9, 10) for v in vers("ND_12-2022")), ""))
-    k8a = store.cur("BLLD_45-2019.D154.K8a")
-    g.append(("BLLĐ Điều 154 có khoản 8a từ 2026-01-01", k8a is not None and k8a.effective_from == D(2026, 1, 1), ""))
-    changed = [k for k, vs in store.vers.items() if k.startswith("BLLD_45-2019.") and len(vs) > 1]
-    g.append(("các đơn vị khác của BLLĐ không đổi phiên bản", not changed, f"{len(changed)} đơn vị đổi" if changed else ""))
-    g.append(("BLLĐ Điều 185 khoản 4 bị cờ consolidation_discrepancy", "consolidation_discrepancy" in (last("BLLD_45-2019.D185.K4").flags if last("BLLD_45-2019.D185.K4") else []), ""))
-    g.append(("ND_283 Điều 66 khoản 2, 3: các đơn vị đích ở trạng thái pending_event",
-              all(store.cur(k) is not None and store.cur(k).state == "pending_event" for k in ("ND_283-2026.D61.K2", "ND_283-2026.D63.K11", "ND_283-2026.D14")), ""))
+    B = "BLLD_45-2019."
+
+    def gate(name, needs, ok, info=""):
+        """Mốc kèm các mã nó cần; ở kho con, mốc ngoài kho con ghi BỎ QUA (A41)."""
+        g.append((*corpus.landmark(name, needs, ok), info))
+    gate("ND_28: mọi đơn vị effective_to = 2022-01-17", ["ND_28-2020", "ND_12-2022"], all(v.effective_to == D(2022, 1, 17) for v in vers("ND_28-2020")))
+    gate("ND_12: mọi đơn vị effective_to = 2026-09-10", ["ND_12-2022", "ND_283-2026"], all(v.effective_to == D(2026, 9, 10) for v in vers("ND_12-2022")))
+    k8a = store.cur(B + "D154.K8a")
+    gate("BLLĐ Điều 154 có khoản 8a từ 2026-01-01", ["VBHN_125-2025", B + "D154"], k8a is not None and k8a.effective_from == D(2026, 1, 1))
+    changed = [k for k, vs in store.vers.items() if k.startswith(B) and len(vs) > 1]
+    gate("các đơn vị khác của BLLĐ không đổi phiên bản", ["VBHN_125-2025"], not changed, f"{len(changed)} đơn vị đổi" if changed else "")
+    gate("BLLĐ Điều 185 khoản 4 bị cờ consolidation_discrepancy", ["VBHN_125-2025", B + "D185"],
+         "consolidation_discrepancy" in (last(B + "D185.K4").flags if last(B + "D185.K4") else []))
+    gate("ND_283 Điều 66 khoản 2, 3: các đơn vị đích ở trạng thái pending_event", ["ND_283-2026"],
+         all(store.cur(k) is not None and store.cur(k).state == "pending_event" for k in ("ND_283-2026.D61.K2", "ND_283-2026.D63.K11", "ND_283-2026.D14")))
     nq = vers("NQ_66-16-2026")
-    g.append(("NQ_66-16: khoảng hiệu lực 2026-04-15 đến 2027-03-01 (hết ngày 28/02/2027)", bool(nq) and all(v.effective_to == D(2027, 3, 1) for v in nq), ""))
-    g.append(("NQ_66-16: có cạnh overrides trong khoảng đó", any(e["p"] == "overrides" for e in store.edges), ""))
+    gate("NQ_66-16: khoảng hiệu lực 2026-04-15 đến 2027-03-01 (hết ngày 28/02/2027)", ["NQ_66-16-2026"], bool(nq) and all(v.effective_to == D(2027, 3, 1) for v in nq))
+    gate("NQ_66-16: có cạnh overrides trong khoảng đó", ["NQ_66-16-2026"], any(e["p"] == "overrides" for e in store.edges))
     for k in ("ND_152-2020.D7.K6", "ND_152-2020.D7.K14"):
         v = store.cur(k)
-        g.append((f"{k} có version 2 từ 2023-09-18", v is not None and v.version >= 2 and any(x.effective_from == D(2023, 9, 18) and x.version == 2 for x in store.vers[k]), ""))
+        gate(f"{k} có version 2 từ 2023-09-18", ["ND_152-2020", "ND_70-2023"],
+             v is not None and v.version >= 2 and any(x.effective_from == D(2023, 9, 18) and x.version == 2 for x in store.vers[k]))
     k82 = store.vers.get("ND_152-2020.D8.K2", [])
-    g.append(("ND_152.D8.K2 đổi cụm 'khoản 4, 6 và 8 Điều 154' từ 2023-09-18", any("khoản 4 và khoản 6 Điều 154" in x.text and x.effective_from == D(2023, 9, 18) for x in k82), ""))
+    gate("ND_152.D8.K2 đổi cụm 'khoản 4, 6 và 8 Điều 154' từ 2023-09-18", ["ND_152-2020", "ND_70-2023"],
+         any("khoản 4 và khoản 6 Điều 154" in x.text and x.effective_from == D(2023, 9, 18) for x in k82))
     k8 = store.cur("ND_152-2020.D7.K8")
-    g.append(("ND_152 Điều 7 khoản 8 (lao động nước ngoài) đóng từ 2025-08-07", k8 is not None and k8.effective_to == D(2025, 8, 7), ""))
+    gate("ND_152 Điều 7 khoản 8 (lao động nước ngoài) đóng từ 2025-08-07", ["ND_152-2020", "ND_219-2025"], k8 is not None and k8.effective_to == D(2025, 8, 7))
     c3 = [v for v in vers("ND_152-2020") if v.type in ("dieu", "khoan") and ".D2" in v.id[11:] and int(re.search(r"\.D(\d+)", v.id)[1]) in range(22, 29)]
-    g.append(("ND_152 phần người Việt Nam làm cho tổ chức nước ngoài (Điều 22-28) vẫn hiệu lực", bool(c3) and all(v.in_force(as_of) for v in c3), ""))
+    gate("ND_152 phần người Việt Nam làm cho tổ chức nước ngoài (Điều 22-28) vẫn hiệu lực", ["ND_152-2020"], bool(c3) and all(v.in_force(as_of) for v in c3))
     tt11_new = [v for k, vs in store.vers.items() if k.startswith("TT_11-2020-BLDTBXH.PL") for v in vs if "supplement_row" in v.flags]
     tt11_old_changed = [k for k, vs in store.vers.items() if k.startswith("TT_11-2020-BLDTBXH.") and len(vs) > 1]
-    g.append(("TT_11 có dòng danh mục mới từ 2024-02-15, dòng cũ không đổi phiên bản",
-              bool(tt11_new) and all(v.effective_from == D(2024, 2, 15) for v in tt11_new) and not tt11_old_changed, f"{len(tt11_new)} dòng mới"))
-    g.append(("không còn unknown_directive", not ctx.unknown, f"{len(ctx.unknown)} còn lại"))
+    gate("TT_11 có dòng danh mục mới từ 2024-02-15, dòng cũ không đổi phiên bản", ["TT_11-2020-BLDTBXH", "TT_19-2023-BLDTBXH"],
+         bool(tt11_new) and all(v.effective_from == D(2024, 2, 15) for v in tt11_new) and not tt11_old_changed, f"{len(tt11_new)} dòng mới")
+    gate("không còn unknown_directive", [], not ctx.unknown, f"{len(ctx.unknown)} còn lại")
     return g

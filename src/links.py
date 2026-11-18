@@ -290,13 +290,16 @@ def main(argv=None):
     nd74 = [l for l in links if l["s"] == "ND_74-2024" and l["p"] == "details" and l["o"] == "BLLD_45-2019.D91"]
     nd74_status = ("không có cạnh" if not nd74 else "CÔ LẬP: không qua đủ ba điều kiện" if "isolated" in nd74[0]["flags"] else
                    "GIỮ: hai model và từ khoá đồng ý" if "llm_proposed" in nd74[0]["flags"] else "mới ở mức từ khoá, chưa qua LLM kiểm")
-    detail_marks = [("ND_152 details D154.K1,K2,K9, D157, D150.K3",
-                     all(any(o == f"BLLD_45-2019.{x}" or o.startswith(f"BLLD_45-2019.{x}.") for o in det("ND_152-2020"))
-                         for x in ("D154.K1", "D154.K2", "D154.K9", "D157", "D150.K3"))),
-                    ("TT_10 details D21.K1-3, D73.K4, D142.K1", all(f"BLLD_45-2019.{x}" in det("TT_10-2020-BLDTBXH") for x in ("D21.K1", "D21.K2", "D21.K3", "D73.K4", "D142.K1"))),
-                    ("ND_135 details D169", any(o.startswith("BLLD_45-2019.D169") for o in det("ND_135-2020"))),
-                    ("TT_18 based_on ND_145.D68.K2", any(l["p"] == "based_on" and l["o"] == "ND_145-2020.D68.K2" for l in links)),
-                    (f"ND_74 details D91 ({nd74_status})", "BLLD_45-2019.D91" in det("ND_74-2024"))]
+    B = "BLLD_45-2019."
+    detail_marks = [corpus.landmark("ND_152 details D154.K1,K2,K9, D157, D150.K3", ["ND_152-2020", B + "D154", B + "D157", B + "D150"],
+                                    all(any(o == f"{B}{x}" or o.startswith(f"{B}{x}.") for o in det("ND_152-2020"))
+                                        for x in ("D154.K1", "D154.K2", "D154.K9", "D157", "D150.K3"))),
+                    corpus.landmark("TT_10 details D21.K1-3, D73.K4, D142.K1", ["TT_10-2020-BLDTBXH", B + "D21", B + "D73", B + "D142"],
+                                    all(f"{B}{x}" in det("TT_10-2020-BLDTBXH") for x in ("D21.K1", "D21.K2", "D21.K3", "D73.K4", "D142.K1"))),
+                    corpus.landmark("ND_135 details D169", ["ND_135-2020", B + "D169"], any(o.startswith(B + "D169") for o in det("ND_135-2020"))),
+                    corpus.landmark("TT_18 based_on ND_145.D68.K2", ["TT_18-2021-BLDTBXH", "ND_145-2020.D68.K2"],
+                                    any(l["p"] == "based_on" and l["o"] == "ND_145-2020.D68.K2" for l in links)),
+                    corpus.landmark(f"ND_74 details D91 ({nd74_status})", ["ND_74-2024", B + "D91"], B + "D91" in det("ND_74-2024"))]
     no_based = [d.doc_id for d in docs.values() if d.doc_id != base and not d.is_consolidation
                 and not any(l["s"] == d.doc_id and l["p"] == "based_on" for l in links)]
     llm_line = ("LLM: tắt (--llm off); cạnh đề xuất bằng từ khoá mang cờ llm_check_pending" if client is None else
@@ -305,13 +308,13 @@ def main(argv=None):
     report = ["2.2 báo cáo (bước 2.2: nối văn bản)", llm_line,
               f"cạnh based_on: {sum(1 for l in links if l['p'] == 'based_on')}  details: {sum(1 for l in links if l['p'] == 'details')}  chờ đích: {len(pending)}",
               f"điều khoản giao dùng làm danh mục đối chiếu: {len(clauses)} (bỏ {len(all_clauses) - len(clauses)} ca cờ loose); đã có văn bản lấp: {sum(1 for f in filled if f['filled_by'])}",
-              "mốc cổng details / based_on:"] + [f"  {'đạt' if ok else 'KHÔNG đạt'}: {name}" for name, ok in detail_marks] \
+              "mốc cổng details / based_on:"] + [f"  {corpus.mark_word(ok)}: {name}" for name, ok in detail_marks] \
         + [f"văn bản không có based_on (header mất hoặc không nêu): {no_based}", "ghi chú:"] + [f"  {n}" for n in notes]
     rp = corpus.report_dir(DIR_NAME) / "links_report.txt"
     rp.parent.mkdir(parents=True, exist_ok=True)
     rp.write_text("\n".join(report) + "\n", encoding="utf-8", newline="\n")
     print("\n".join(report))
-    if not all(ok for _, ok in detail_marks[:-1]):
+    if not all(ok is not False for _, ok in detail_marks[:-1]):
         raise SystemExit(1)
 
 

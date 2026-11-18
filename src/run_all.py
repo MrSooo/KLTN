@@ -24,6 +24,7 @@ hoặc LỖI kèm đầu ra của lệnh; bước lỗi thì dừng, các bướ
 1.4 chạy trước 2.3-2.4 (Điều nhãn effect_transition là nguồn chỉ thị), 1.5 tường minh trước 1.5 chung, 2.2 sau 1.2.
 """
 import argparse
+import os
 import subprocess
 import sys
 import time
@@ -39,7 +40,7 @@ LLM_SCRIPTS = ("src/links.py", "src/concepts.py")  # hai bước này nhận --l
 NAMES_SCRIPT = "src/concepts_names.py"
 
 STEPS = [
-    ("1.1 tách cấu trúc 18 văn bản", ["src/parse.py", "--all"]),
+    ("1.1 tách cấu trúc văn bản", ["src/parse.py", "--all"]),
     ("1.2 cạnh cấu trúc và dẫn chiếu", ["src/refs.py", "--all"]),
     ("1.4 phân loại Điều", ["src/article_type.py"]),
     ("1.5 ngoại lệ tường minh", ["src/exceptions_explicit.py", "--all"]),
@@ -118,7 +119,15 @@ if __name__ == "__main__":
     ap.add_argument("--viewer", action="store_true", help="thêm viewer: dựng trang xem đồ thị")
     ap.add_argument("--tests", action="store_true", help="thêm mọi tests/test_*.py")
     ap.add_argument("--llm", choices=("off", "replay", "live"), default="off", help="chế độ LLM cho 2.2 và 1.6 (xem đầu file); mặc định off")
+    ap.add_argument("--tap-con", metavar="TÊN", help="chạy trên kho con data/subsets/<TÊN>.json (A41): dựng kho con trước, đầu ra ở data/processed_subset/<TÊN>/")
     args = ap.parse_args()
+    if args.tap_con:
+        # Bộ test viết cho kho đầy đủ (số đối chiếu, mốc), chạy trên kho con thì đỏ giả: không cho ghép hai cờ.
+        if args.tests:
+            raise SystemExit("--tests chỉ chạy trên kho đầy đủ; bỏ --tap-con hoặc bỏ --tests")
+        # Đặt trong os.environ để mọi lệnh con (mỗi bước là một process) thấy cùng kho con qua corpus.py.
+        os.environ["KLTN_TAP_CON"] = args.tap_con
+        print(run("utils/subset/build_subset.py", args.tap_con), end="")
     if args.llm == "live":
         cfg = llm_client.load_config()
         # 2.2 dùng vai chinh và kiem, 1.6 dùng vai trich: cần khoá của mọi nhà cung cấp đang dùng, thiếu cái nào cũng dừng ngay trước khi chạy bước nào

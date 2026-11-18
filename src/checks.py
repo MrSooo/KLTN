@@ -168,7 +168,7 @@ def checks(docs):
             p.append(f"{d.doc_id}: số Điều 1.1 {ty['dieu']} khác manifest {d.so_dieu}")
         if raw_dieu < d.so_dieu:
             p.append(f"{d.doc_id}: đếm thô {raw_dieu} ít hơn manifest {d.so_dieu}")
-        exp = EXPECTED.get(d.doc_id)
+        exp = None if corpus.SUBSET else EXPECTED.get(d.doc_id)  # EXPECTED là số đếm của file BLLĐ đầy đủ; kho con (A41) bị cắt nên không áp
         if exp:
             ind = independent_counts(d.path)
             for k in ("dieu", "khoan", "diem"):
@@ -198,6 +198,8 @@ def checks(docs):
     pairs = {(e["s"], e["o"]) for e in ex}
     B = "BLLD_45-2019."
     for s, o in [(B + "D154", B + "D151.K1.d"), (B + "D36.K1.b", B + "D37.K1"), (B + "D29", B + "D35.K2.a"), (B + "D97.K4", B + "D35.K2.b")]:
+        if not (corpus.in_subset(s) and corpus.in_subset(o)):
+            continue  # kho con (A41): mốc ngoài kho con không kiểm được; nhãn kiểm ghi rõ ở dưới
         if (s, o) not in pairs:
             p.append(f"mốc exception_of thiếu: {s} → {o}")
     for d in docs.values():
@@ -207,7 +209,7 @@ def checks(docs):
     # Ca "trừ" chưa xử lý của BLLĐ phải đúng danh sách đã biết (12/11). Không chặn mọi ca chưa xử lý (regex không bao giờ phủ hết, kiểm sẽ đỏ vĩnh viễn);
     # chỉ chặn khi danh sách đổi mà chưa ai ghi lại: thêm ca mới hay bớt ca cũ đều đỏ.
     got = {u["unit"] for u in parse.read_jsonl(corpus.out_dir("exceptions_general") / "exceptions_general_unhandled_BLLD_45-2019.jsonl")}
-    p += residue_problems(got, {B + u for u in BLLD_UNHANDLED_KNOWN})
+    p += residue_problems(got, {B + u for u in BLLD_UNHANDLED_KNOWN if corpus.in_subset(B + u)})
     out.append(("1.5 tường minh/1.5 chung exception_of (mốc D154→D151.K1.d, D36.K1.b→D37.K1, D29/D97→D35; ca chưa xử lý của BLLĐ = D24.K3, D188.K1)", p))
     # 1.6 giai đoạn A: bảng cụm. Kiểm độc lập bằng text_norm (concepts.py so theo từ), không import concepts.py.
     p = []
@@ -244,7 +246,7 @@ def checks(docs):
     if got != want:
         p.append(f"số cụm cond_node {got} khác số (nút 1.5, đơn vị trong phạm vi) {want}")
     cn = {r["unit"]: r for r in rows if r["how"] == "cond_node"}
-    if sorted(cn.get(base + ".D14.K2", {}).get("targets", [])) != sorted(base + "." + x for x in ("D18.K2", "D145.K1.a", "D162.K1")):
+    if corpus.in_subset(base + ".D14.K2") and sorted(cn.get(base + ".D14.K2", {}).get("targets", [])) != sorted(base + "." + x for x in ("D18.K2", "D145.K1.a", "D162.K1")):
         p.append("mốc: cụm ngoại lệ của D14.K2 phải có targets D18.K2, D145.K1.a, D162.K1")
     if cn.get(base + ".D151.K1.d", {}).get("targets") != [base + ".D154"]:
         p.append("mốc: cụm ngoại lệ của D151.K1.d phải có targets D154")
@@ -295,6 +297,8 @@ def main():
     docs = corpus.load_manifest()
     results = checks(docs)
     lines, bad = ["checks báo cáo"], 0
+    if corpus.SUBSET:  # để người đọc báo cáo biết các mốc cố định của kho đầy đủ đã bị lọc (A41)
+        lines.append(f"KHO CON {corpus.SUBSET}: không áp EXPECTED; mốc exception_of, ca chưa xử lý đã biết, mốc cụm chỉ kiểm phần nằm trong kho con")
     for name, problems in results:
         lines.append(f"[{'OK' if not problems else 'LỖI'}] {name}")
         lines += [f"    {x}" for x in problems[:15]]

@@ -1,12 +1,12 @@
 # Sổ quyết định
 
-Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A40) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
+Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A41) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
 
 Quy ước ghi: mỗi mục gồm **Quyết định**, **Lý do** và **Cái giá hoặc chỗ chưa kiểm** khi có. Chỗ lệch so với kế hoạch ban đầu hoặc so với mã cũ được nêu rõ. Số đo ghi kèm ngày đo và phạm vi (BLLĐ là Bộ luật Lao động 45/2019; "kho" là cả 18 văn bản trong `data/raw/labor/`).
 
 Các mục A9, A10, A18, A19, A20, A28 là quy trình làm việc nội bộ giữa các phiên và không còn hiệu lực sau khi tài liệu được chuẩn hoá (A40); mã của chúng được giữ trống để các tham chiếu không đổi.
 
-Bố cục: **Phần I** quyết định về pipeline (A1 đến A40); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
+Bố cục: **Phần I** quyết định về pipeline (A1 đến A41); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
 
 ---
 
@@ -189,6 +189,25 @@ Danh sách còn hiệu lực nằm ở `docs/status.md` (mục Nợ kỹ thuật
 - Dữ liệu thí điểm 1.6A chuyển sang `data/pilot_propositions/` với tên file tiếng Anh. Thư mục làm việc ngoài repo (hộp cát) không đưa vào repo: có thể dựng lại bằng `python -I src/propositions.py xuat`.
 **Kiểm chứng.** Trước và sau đổi tên: `run_all --llm off` và `--llm replay` đều 14/14 bước, 10 bộ test; mọi file dữ liệu `.jsonl` giống hệt, chỉ khác ở nhãn chữ do đổi tên (nhãn `source` trong `graph_edges.jsonl` và các chuỗi lý do chứa tên bước cũ); băm của mọi chuỗi lời nhắc và lược đồ không đổi nên các thư mục làm việc đang dở vẫn nhập được; cache bước 2.2 di chuyển 8 bản ghi, khoá tính lại đã đối chiếu từng bản ghi.
 
+## A41. Hoàn thiện pipeline tới 2.7 trên một tập con khó trước, chạy cả kho sau (18/11)
+**Chỗ agent tự thêm, ngoài lời chủ đề tài (đặt lên đầu theo quy ước).** Chủ đề tài duyệt "cụm lao động nước ngoài + NQ 66.16"; phạm vi cụ thể dưới đây do agent chọn:
+- [THÊM] VBHN_125, cắt đúng các Điều như BLLĐ. Vì sao: Luật 71/2025 (qua VBHN_125) thêm Đ154.K8a từ 01/01/2026, là lần cập nhật cấp luật của chính Điều trung tâm cụm. Cái giá: thêm 16 Điều; so bản hợp nhất chạy trên kho cắt.
+- [THÊM] BLLĐ Đ220 và NĐ 145 Đ114-115 (hiệu lực, trách nhiệm thi hành). Vì sao: giữ câu hiệu lực mà bước 2.3 đọc. Cái giá: Đ220 nhắc BLLĐ 2012 (ngoài kho) nên có quan hệ chờ đích.
+- [THÊM] NĐ 145 Đ1-2. Vì sao: bước 2.2 lấy `details` từ Điều 1. Cái giá: Đ1 kê khoảng 20 Điều BLLĐ ngoài tập con nên các cạnh đó treo.
+- [ĐÃ BÁO TRƯỚC, agent tự tra] Cụm NQ 66.16 gồm BLLĐ Đ52-58 (cho thuê lại lao động) và NĐ 145 Chương IV (Đ12-36); NQ 66.16 Phụ lục I.7 thay NĐ 145 Đ24-28 có thời hạn.
+
+**Bối cảnh.** Chủ đề tài chốt 18/11: làm xong 1.6A đến 2.7 trên một tập con có cập nhật và ngoại lệ dài, rồi mới nối API LLM và chạy lại toàn bộ KB Luật Lao động. Chế độ làm việc: làm liền mạch, advisor soát sau mỗi bước, các chốt duyệt của roadmap (M1, M2, M4/A33, số bước lan truyền 2.5) do agent quyết kèm advisor và ghi ở sổ này. Phần LLM trên tập con chạy bằng phiên Claude Code riêng không tương tác (`claude -p --model sonnet --effort high` trong thư mục làm việc ngoài repo), không gọi API.
+**Quyết định.**
+- Tập con `lldnn` khai ở `data/subsets/lldnn.json`: BLLĐ Đ52-58, Đ150-157, Đ220; NĐ 145 Đ1-2, Đ12-36, Đ114-115; VBHN_125 như BLLĐ; NĐ 152/2020, NĐ 70/2023, NĐ 219/2025, NQ 66.16 cả văn bản.
+- Cơ chế: biến môi trường `KLTN_TAP_CON=<tên>` làm `corpus.py` trỏ mọi đường dẫn sang kho con (`data/processed_subset/<tên>/raw|processed`, báo cáo `docs/run_reports_subset/<tên>/`). `run_all --tap-con <tên>` dựng kho con bằng `utils/subset/build_subset.py` rồi chạy chuỗi. Kho con cắt file nguồn tại dòng Chương/Mục/Điều bằng regex của 1.1, giữ phần đầu văn bản.
+- `llm_cache`: không đổi đường dẫn theo kho con. Bước 2.2 dùng chung được vì khoá tính theo nội dung. **Chưa xử lý:** bước 1.6A nhập vào một file cho cả BLLĐ (`data/llm_cache/propositions/BLLD_45-2019.json`), nhập kết quả tập con sẽ đè kết quả kho đầy đủ; phải tách file trước lần nhập đầu tiên (bước 1.6A). 1.6B kiểm tương tự khi viết lại.
+- Cổng 1.1 "Điều liên tục" chỉ nhận đúng các bước nhảy ở chỗ cắt đã khai (`corpus.subset_jumps`). Mốc cố định của kho đầy đủ (1.3, 2.2, 2.3-2.4, checks) bọc bằng `corpus.landmark`: ở kho con, mốc cần đơn vị ngoài kho con in "bỏ qua (ngoài kho con)" và không tính là trượt; EXPECTED của BLLĐ không áp. Kho đầy đủ giữ nguyên hành vi.
+- `--tap-con` không đi với `--tests` (bộ test viết cho kho đầy đủ).
+**Kiểm chứng (18/11).**
+- Kho con: `run_all --tap-con lldnn` 12/12 bước, checks 0 lỗi, unknown_directive 0.
+- So với lần dựng kho đầy đủ (đầu ra trong stash `processed` của 18/11): (1) mọi phiên bản thuộc Điều hay văn bản được giữ (1.261) đều có trong kho con; (2) 1.273 phiên bản của kho con trùng các trường ngày hiệu lực, trạng thái, cờ, chữ, `closed_by`, `type`, `number`; (3) khác đã biết: NĐ 145 có hai "Chương XI" (lỗi nguồn, mã lần sau là `CXI_2`); kho con cắt mất Chương XI thứ nhất nên Chương còn lại mang mã `CXI`, `heading` của mã `CXI` và `parent` của Đ114, Đ115 khác kho đầy đủ. Mã các Điều không đổi.
+- Kho đầy đủ sau khi sửa: `run_all --llm replay --viewer --tests` 14/14 bước, 10 bộ test; báo cáo chữ không đổi nội dung (chỉ khác ký tự xuống dòng).
+**Cái giá và chỗ chưa kiểm.** Dẫn chiếu, `details`, ngoại lệ trỏ ra ngoài tập con treo hoặc chờ đích. Số đo trên tập con không đại diện cho cả kho. Mốc bị bỏ qua là chỗ chưa kiểm trên tập con. `corpus.in_subset` coi mọi mã không bắt đầu bằng `D` (Chương, Mục) của văn bản bị cắt là thuộc kho con; chưa mốc nào dựa vào điều này, bước sau dùng `in_subset` cho mã Chương/Mục thì phải sửa trước.
 ---
 
 # Phần II. Quyết định ở mức từng bước nền

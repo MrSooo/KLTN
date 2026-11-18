@@ -92,19 +92,22 @@ def main():
     dieu_pat = {p: len({c["unit_id"].split(".")[1] for c in strict if c["pattern"] == p}) for p in per_pat}
     units_with = {c["unit_id"] for c in strict}
     have = lambda u: u in units_with or any(x.startswith(u + ".") or u.startswith(x + ".") for x in units_with)
-    milestones = [("BLLD.D91.K4 (dạng A)", have("BLLD_45-2019.D91.K4")), ("D154.K1/K2/K9 (dạng B)", all(have(f"BLLD_45-2019.D154.K{k}") for k in (1, 2, 9))),
-                  ("D142.K1 (dạng D)", have("BLLD_45-2019.D142.K1")), ("D112 (dạng E)", have("BLLD_45-2019.D112"))]
+    B = "BLLD_45-2019."
+    milestones = [corpus.landmark("BLLD.D91.K4 (dạng A)", [B + "D91.K4"], have(B + "D91.K4")),
+                  corpus.landmark("D154.K1/K2/K9 (dạng B)", [B + "D154"], all(have(f"{B}D154.K{k}") for k in (1, 2, 9))),
+                  corpus.landmark("D142.K1 (dạng D)", [B + "D142.K1"], have(B + "D142.K1")),
+                  corpus.landmark("D112 (dạng E)", [B + "D112"], have(B + "D112"))]
     report = ["Báo cáo điều khoản giao chi tiết (bước 1.3)",
               f"tầng chặt: {len(strict)} cụm ở {len(units_with)} đơn vị; theo dạng {dict(per_pat)}; số Điều theo dạng {dieu_pat}",
               "(đây là regex thô, chưa lọc ca không phải giao chi tiết)",
               f"tầng lỏng (cờ loose, chưa chắc là điều khoản giao, cần người xem): {len(loose)} cụm"]
     report += [f"  {c['unit_id']}: {c['phrase']}" for c in loose]
-    report += ["mốc cổng tầng chặt:"] + [f"  {'đạt' if ok else 'KHÔNG đạt'}: {name}" for name, ok in milestones]
+    report += ["mốc cổng tầng chặt:"] + [f"  {corpus.mark_word(ok)}: {name}" for name, ok in milestones]
     rp = corpus.report_dir(DIR_NAME) / "delegation_report.txt"
     rp.parent.mkdir(parents=True, exist_ok=True)
     rp.write_text("\n".join(report) + "\n", encoding="utf-8", newline="\n")
     print("\n".join(report))
-    if not all(ok for _, ok in milestones):
+    if not all(ok is not False for _, ok in milestones):
         raise SystemExit(1)
 
 

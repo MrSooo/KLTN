@@ -187,6 +187,7 @@ class Parser:
         self.consumed = set()
         self.chuong = self.muc = self.dieu = self.khoan = self.diem = None
         self.last = {"dieu": None, "khoan": None, "diem": None}
+        self.subset_jumps = corpus.subset_jumps(doc_id)  # kho con (A41): bước nhảy số Điều do cắt, đã khai; kho đầy đủ thì rỗng
         self.pl_start = None
         self.footnote_start = None
         self.in_footer = False
@@ -364,7 +365,7 @@ class Parser:
         m = RE_DIEU.match(line)
         if m:
             self.in_head = False
-            if not next_number_ok(self.last["dieu"], m[1]):
+            if not next_number_ok(self.last["dieu"], m[1]) and (self.last["dieu"], m[1]) not in self.subset_jumps:
                 self.err(no, f"Điều {m[1]} sau Điều {self.last['dieu']}")
             parent = (self.muc or self.chuong)
             self.dieu = self.add(Unit(f"{self.doc_id}.D{m[1]}", "dieu", m[1], m[2], [], no, parent.id if parent else None))
