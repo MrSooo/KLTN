@@ -56,6 +56,7 @@ STEPS = [
     ("1.3 điều khoản giao chi tiết", ["src/delegation.py"]),
     ("2.2 nối văn bản: based_on, details", ["src/links.py"]),
     ("2.3-2.4 phiên bản theo ngày hiệu lực", ["src/versions.py"]),
+    ("1.9 hỏi đáp theo ngày (A41)", ["src/answering.py"]),  # cần phiên bản (2.3-2.4) để dựng Π_τ; chỉ đọc cache LLM
     ("checks: kiểm tra độc lập", ["src/checks.py"]),
     ("graph: đồ thị gộp", ["src/graph.py"]),
 ]
