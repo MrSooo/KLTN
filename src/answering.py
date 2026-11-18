@@ -247,6 +247,8 @@ def gate(item, q, preds, heads):
     for f in facts:
         if not isinstance(f, dict) or f.get("vi_tu") not in preds or not isinstance(f.get("phu_dinh"), bool):
             return f"dữ kiện sai hình hoặc vị từ lạ: {f!r}"
+        if f["vi_tu"] == phi:  # đầu mô tả (không tiền tố) cũng là vị từ của sổ: cho làm dữ kiện thì LLM tự trả lời thay bộ suy luận
+            return f"dữ kiện trùng φ: {phi}"
         if not f.get("trich") or f["trich"] not in q["cau_hoi"]:
             return f"trích không nguyên văn trong câu hỏi: {f.get('trich')!r}"
     return None
@@ -366,7 +368,7 @@ def run(qpath):
         lines.append(f"{r['id']} {r['ngay']} chuẩn={r['chuan']} ra={r.get('ket_qua')} [{mark}]" + (" (cần 2.6)" if r["can_2_6"] else "")
                      + (f" không cạnh 1.7={r['khong_canh_1_7']}" if r.get("khong_canh_1_7") not in (None, r.get("ket_qua")) else ""))
         if "phi" in r:
-            lines.append(f"    φ={r['phi']}; dữ kiện: " + ", ".join(f"{'-' if f['phu_dinh'] else ''}{f['vi_tu']}" for f in r.get("su_kien") or []))
+            lines.append(f"    φ={r['phi']}; quy tắc trong Π_τ: {r.get('so_quy_tac_tau', '-')}; dữ kiện: " + ", ".join(f"{'-' if f['phu_dinh'] else ''}{f['vi_tu']}" for f in r.get("su_kien") or []))
         if r.get("ly_do"):
             lines.append(f"    lý do: {r['ly_do']}")
         if r.get("can_cu") or r["can_cu_chuan"]:

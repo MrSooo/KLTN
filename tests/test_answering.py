@@ -121,6 +121,8 @@ def test_answering_gate_checks_quote_and_names():
     assert answering.gate(ok, q, {"foreign"}, {"must_a"}) is None
     assert answering.gate(dict(ok, phi="must_b"), q, {"foreign"}, {"must_a"})
     assert answering.gate({"phi": None, "su_kien": [{"vi_tu": "foreign", "phu_dinh": False, "trich": "người Việt"}]}, q, {"foreign"}, set())
+    # φ là đầu mô tả trùng tên vị từ: không được làm dữ kiện (LLM tự trả lời)
+    assert answering.gate({"phi": "foreign", "su_kien": [{"vi_tu": "foreign", "phu_dinh": False, "trich": "Người nước ngoài"}]}, q, {"foreign"}, {"foreign"})
 
 
 _harness.run(globals())
