@@ -121,6 +121,18 @@ DEFAULTS = {"loai": "", "vai": "", "menh_de": "", "chu_the": None, "doi_so": [],
             "liet_ke": []}
 
 
+BO_NGU_ALIAS = {"chu": "original_text", "pham_vi": "scope"}
+
+
+def _bo_ngu_keys(b):
+    """[THÊM, A41, chủ đề tài duyệt 18/11] Đổi tên khoá của một mục bo_ngu theo BO_NGU_ALIAS. Vì sao: lời nhắc menh-de-3 không ghi tên khoá
+    của bo_ngu (lỗi của lời nhắc, đóng băng theo A39); phiên Claude Code tự đặt {chu, pham_vi} ở 6/6 mục trên tập con. Chỉ đổi TÊN khoá:
+    giá trị vẫn qua cổng nguyên văn và tập scope; khoá lạ khác vẫn trượt. Mục đã dùng khoá đúng thì giữ nguyên."""
+    if not isinstance(b, dict) or any(v in b for v in BO_NGU_ALIAS.values()):
+        return b
+    return {BO_NGU_ALIAS.get(k, k): v for k, v in b.items()}
+
+
 def normalize(rows, reason_field=LLM_REASON):
     """Điền trường bị bỏ bằng giá trị rỗng (menh-de-3 cho LLM bỏ trường rỗng để đầu ra ngắn, đỡ token). Trường thừa giữ
     nguyên để cổng bắt. Không sửa gì khác."""
@@ -133,6 +145,8 @@ def normalize(rows, reason_field=LLM_REASON):
             ct = d.get("chu_the")
             if isinstance(ct, dict) and isinstance(ct.get("loai"), list) and len(ct["loai"]) == 1:
                 d["chu_the"] = {**ct, "loai": ct["loai"][0]}  # lược đồ Gemini ghi loai luôn là mảng
+            if isinstance(d.get("bo_ngu"), list):
+                d["bo_ngu"] = [_bo_ngu_keys(b) for b in d["bo_ngu"]]
         out.append(d)
     return out
 
@@ -306,6 +320,12 @@ def sandbox_config(d):
 FULL_OUT = pathlib.Path("data/llm_cache") / "propositions"
 
 
+def full_cache_path():
+    """File nhập kết quả `tat_ca`. Kho con (A41) ghi file riêng `<doc>.<tên tập con>.json`: nhập ghi đè cả file, nên dùng
+    chung một file thì kết quả tập con và kho đầy đủ đè lên nhau."""
+    return FULL_OUT / (f"{corpus.BASE_DOC_ID}.{corpus.SUBSET}.json" if corpus.SUBSET else f"{corpus.BASE_DOC_ID}.json")
+
+
 def lots_for(pham_vi, ctxs):
     """thi_diem: 30 đơn vị, một lô mỗi Điều; tat_ca: mọi đơn vị 1.6A, chia lô đúng như 1.6A cũ (concepts.make_batches:
     một Điều mỗi lô, Điều dài tách lô), để số lô và ranh giới lô so được với bản cũ."""
@@ -329,7 +349,8 @@ def xuat(thu_muc, run_model=None, effort="high", pham_vi="thi_diem", khoi=20):
     m = run_model or model()
     (d / "HUONG_DAN.md").write_text(HUONG_DAN.replace("@MODEL@", m).replace("@ALIAS@", ALIAS.get(m, m)).replace("@EFFORT@", effort).replace("@KHOI@", str(khoi))
                                     .replace("@N@", f"{len(lots):03d}"), encoding="utf-8", newline="\n")
-    (d / "cau_hinh.json").write_text(json.dumps({"model": m, "effort": effort, "prompt_version": PROMPT_VERSION, "pham_vi": pham_vi, "khoi": khoi}) + "\n", encoding="utf-8")
+    (d / "cau_hinh.json").write_text(json.dumps({"model": m, "effort": effort, "prompt_version": PROMPT_VERSION, "pham_vi": pham_vi, "khoi": khoi,
+                                                "tap_con": corpus.SUBSET}) + "\n", encoding="utf-8")
     print(f"đã dựng {d}: {len(lots)} lô, {sum(map(len, lots))} đơn vị, model {m}, effort {effort}, lời nhắc {PROMPT_VERSION}")
 
 
@@ -339,9 +360,11 @@ def nhap(thu_muc, out_path=None):
     pham_vi = cfg.get("pham_vi", "thi_diem")
     if cfg.get("prompt_version", PROMPT_VERSION) != PROMPT_VERSION or (d / "system.txt").read_text(encoding="utf-8") != SYSTEM + "\n":
         raise SystemExit(f"hộp cát dựng với lời nhắc {cfg.get('prompt_version')}, code đang là {PROMPT_VERSION}: không nhập")
+    if cfg.get("tap_con") != corpus.SUBSET:  # A41: hộp cát dựng ở kho nào thì chỉ nhập ở kho đó
+        raise SystemExit(f"hộp cát dựng với tập con {cfg.get('tap_con')!r}, đang chạy với {corpus.SUBSET!r} (KLTN_TAP_CON): không nhập")
     lots, want = lots_for(pham_vi, ctxs), cfg["model"]
     if out_path is None:
-        out_path = LLM_OUT if pham_vi == "thi_diem" else FULL_OUT / f"{corpus.BASE_DOC_ID}.json"
+        out_path = LLM_OUT if pham_vi == "thi_diem" else full_cache_path()
     log = {}
     if (d / "nhat_ky.tsv").exists():
         for line in (d / "nhat_ky.tsv").read_text(encoding="utf-8").splitlines():

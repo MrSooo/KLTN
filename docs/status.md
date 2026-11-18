@@ -47,6 +47,7 @@ Kiểm ngày 15/11/2026 (sau khi chuẩn hoá tên và xoá thư mục lưu tr�
 13. **s(CASP) trên máy mới:** kiểm `swipl --version` và `library(scasp)` nạp được (A7), cần từ bước 1.8.
 14. **Mục 3.5 của `docs/reference/method.md`** còn mô tả "model khác trích lại để kiểm" mà hệ thống không làm (A25); bài báo cáo cần đổi chữ.
 15. **Model ghi trong bài báo cáo:** bước 1.6 dùng phiên Claude Code (Opus 5.5 cho bản cũ, Sonnet 5.5 cho bản mới), khác chốt ban đầu "model nhẹ, miễn phí" ở `docs/llm_config.md`; cần ghi lý do.
+16. **Lời nhắc 1.6A `menh-de-3` thiếu tên khoá `bo_ngu`** (`original_text`, `scope`): đang vá bằng bí danh khoá trong `propositions.normalize` (A41); thêm vào chữ lời nhắc khi chạy cả kho bằng API.
 
 ## 5. Việc treo (không chặn)
 - Văn bản ngoài kho: NĐ 38/2022, NĐ 35/2022, TT 54/2015, BLLĐ 2012, NĐ 189/2025, Luật 64/2025.
