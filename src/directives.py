@@ -572,7 +572,9 @@ def topic_expire(ctx, store, doc, uid, text, m, eff, ev):
         if c["type"] != "chuong":
             continue
         title = (c.get("heading") or "").casefold()
-        members = [k for k, v in tunits.items() if k != cid and _under(tunits, k, cid)]
+        # Con lấy từ CÂY CỦA KHO PHIÊN BẢN, không từ cây parse tĩnh (ctx.units): đơn vị do văn bản trước chèn vào (NĐ 70 chèn
+        # D7.K14.a vào NĐ 152) chỉ có trong kho; lấy từ cây tĩnh thì chúng còn hiệu lực dưới cha đã đóng (lỗi thấy trên tập con, A41).
+        members = store.descendants(cid)
         if key in title:
             for k in [cid, *members]:
                 closed += int(store.close(k, eff, doc.doc_id, ["topic_by_chapter"]))
@@ -586,15 +588,6 @@ def topic_expire(ctx, store, doc, uid, text, m, eff, ev):
                     ev.touched.add(k)
     store.add_edge(uid, "expires_by_topic", tdoc, text[:200], doc.doc_id, eff, flags=["topic_by_chapter"], topic=m["topic"])
     ev.actions.append(f"{uid} expires_by_topic {tdoc}: đóng {closed}, suspended {susp}")
-
-
-def _under(units, k, ancestor):
-    cur = units.get(k)
-    while cur is not None:
-        if cur.get("parent") == ancestor:
-            return True
-        cur = units.get(cur.get("parent"))
-    return False
 
 
 def conditional(ctx, store, doc, uid, units, m, eff, ev):

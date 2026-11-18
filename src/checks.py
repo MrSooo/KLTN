@@ -283,13 +283,19 @@ def checks(docs):
                 p.append(f"{k}: mất khỏi versions")
             elif by[k][0]["text"] != (u.get("text") or ""):
                 p.append(f"{k}: phiên bản 1 khác chữ của 1.1")
+    # Bất biến cây theo thời gian (A41): phiên bản cuối còn hiệu lực mà cha đã đóng là đóng sót con (lỗi thấy trên tập con: đơn vị do
+    # văn bản trước chèn vào không bị đóng khi văn bản sau làm hết hiệu lực cả phần chứa nó).
+    for k, vs in by.items():
+        par = vs[-1].get("parent")
+        if vs[-1]["effective_to"] is None and par in by and by[par][-1]["effective_to"] is not None:
+            p.append(f"{k}: còn hiệu lực mà cha {par} đã đóng từ {by[par][-1]['effective_to']}")
     ids = set(by) | set(docs)
     for e in parse.read_jsonl(versions.output_dir() / "version_edges.jsonl"):
         if e["o"] not in ids and not e["o"].startswith("external:"):
             p.append(f"cạnh {e['p']} trỏ mã không tồn tại {e['o']}")
         if e["s"] not in ids and not e["s"].startswith("external:"):
             p.append(f"cạnh {e['p']} xuất phát từ mã không tồn tại {e['s']}")
-    out.append(("2.3-2.4 phiên bản liên tiếp, khoảng hiệu lực không chồng, không mất nút, phiên bản 1 = chữ 1.1, cạnh hai đầu tồn tại", p))
+    out.append(("2.3-2.4 phiên bản liên tiếp, khoảng hiệu lực không chồng, không mất nút, phiên bản 1 = chữ 1.1, không còn hiệu lực dưới cha đã đóng, cạnh hai đầu tồn tại", p))
     return out
 
 
