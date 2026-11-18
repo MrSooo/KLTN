@@ -3,6 +3,7 @@
 Cách làm:
   1. Máy dựng cặp: hai đơn vị cùng dùng một vị từ `concept` của sổ 1.6B (`predicates_named_*`). Bỏ cặp tổ tiên/con cháu (cùng nhánh cây: chữ của cha
      là câu dẫn của con nên chung vị từ theo cấu trúc, không phải ngoại lệ) [THÊM, mô tả bước im lặng], và bỏ cặp đã có cạnh exception_of ở 1.5.
+     Chỉ tính vị từ của dòng mệnh đề, không tính vị từ chủ thể; bỏ cặp mà vị từ chung là kết luận giống hệt ở hai bên [THÊM, A41].
   2. Đếm cặp; vượt ngân sách chỉ CẢNH BÁO (A41: chạy hết rồi xem ca lỗi).
   3. LLM xét từng cặp với ngữ cảnh như 1.6 (tiêu đề Điều, câu dẫn, chữ đơn vị): a_ngoai_le_cua_b | b_ngoai_le_cua_a | khong, kèm bằng chứng nguyên văn.
   4. Cổng máy: giá trị hợp lệ; bằng chứng là chuỗi con của ngữ cảnh của đơn vị NGOẠI LỆ; hai đầu tồn tại; không trùng cạnh 1.5; không tạo vòng
@@ -93,15 +94,23 @@ def build_pairs(doc_id):
     named = parse.read_jsonl(d / f"predicates_named_{doc_id}.jsonl")
     ledger = {p["predicate"]: p for p in parse.read_jsonl(d / f"predicates_ledger_{doc_id}.jsonl")}
     units_of = collections.defaultdict(set)
+    use = collections.defaultdict(set)  # (đơn vị, vị từ) -> {(vai, phương thức, cực)} của các dòng mệnh đề
     for r in named:
-        if r.get("predicate") and ledger.get(r["predicate"], {}).get("kind") == "concept":
+        # Vị từ chủ thể không tạo cặp: mọi Khoản cùng chủ thể đều chung nó (ví dụ "người lao động nước ngoài" ở D151-D157).
+        if r.get("predicate") and r["loai"] == "menh_de" and ledger.get(r["predicate"], {}).get("kind") == "concept":
             units_of[r["predicate"]].add(r["unit"])
+            use[(r["unit"], r["predicate"])].add((r["role"], r["mode"], r["cuc"]))
     shared = collections.defaultdict(set)
     for name, us in units_of.items():
         us = sorted(us, key=order.get)
         for i, a in enumerate(us):
             for b in us[i + 1:]:
                 if a in ancestors_or_self(b) or b in ancestors_or_self(a):
+                    continue
+                # Hai bên cùng kết luận y hệt (cùng phương thức, cùng cực) thì không bên nào lật được bên kia: các mục liệt kê
+                # cùng một hệ quả (D156 các trường hợp hết hiệu lực) không phải ngoại lệ của nhau.
+                ua, ub = use[(a, name)], use[(b, name)]
+                if ua == ub and all(x[0] == "ket_luan" for x in ua):
                     continue
                 shared[(a, b)].add(name)
     known = explicit_pairs(doc_id)

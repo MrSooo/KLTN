@@ -211,6 +211,9 @@ def scan(rules, kinds):
     defined = {r["head"]["atom"] for r in rules}
     iso, probs = {}, []
     for r in rules:
+        # Thân rỗng: đầu đúng cho mọi X (thường là câu nêu giá trị không có chủ thể, ví dụ D155 "thời hạn tối đa 02 năm").
+        if not r["body"]:
+            iso[r["id"]] = "thân rỗng: không có chủ thể hay điều kiện, đầu đúng cho mọi X"
         for lit in r["body"]:
             if lit["atom"] == "blocked":
                 continue
