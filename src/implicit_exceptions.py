@@ -28,7 +28,7 @@ import corpus  # noqa: E402
 import parse  # noqa: E402
 import propositions as P  # noqa: E402
 
-PROMPT_VERSION = "ngoai-le-ngam-1"
+PROMPT_VERSION = "ngoai-le-ngam-2"  # 2: kèm chữ các mục con (đơn vị câu dẫn như D53.K2 chỉ có "trong trường hợp sau đây:")
 MODEL, EFFORT, ALIAS = "claude-sonnet-5-5", "high", "sonnet"  # như A39
 LOT_SIZE = 10           # cặp mỗi lô
 PAIR_BUDGET = 400       # ngân sách cặp: vượt thì cảnh báo (bản cũ đo 108 cặp trên cả BLLĐ)
@@ -41,10 +41,11 @@ SYSTEM = """Bạn xét các CẶP đơn vị của văn bản pháp luật lao �
 "B là ngoại lệ của A" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có "trừ" hay dẫn chiếu. Ví dụ: A "người lao động nước ngoài phải có giấy phép lao động", B "người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động": B là ngoại lệ của A.
 KHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả "khong".
 
-ĐẦU VÀO: {"cap": [{"cap_id", "a": {"unit_id", "tieu_de_dieu", "khoan_cha", "chu_don_vi"}, "b": {...}, "vi_tu_chung": [tên vị từ hai bên cùng dùng]}]}.
+ĐẦU VÀO: {"cap": [{"cap_id", "a": {"unit_id", "tieu_de_dieu", "khoan_cha", "chu_don_vi", "cac_muc_con" (nếu có)}, "b": {...}, "vi_tu_chung": [tên vị từ hai bên cùng dùng]}]}.
+Đơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ "tách rời" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.
 
 ĐẦU RA: chỉ JSON {"cap": [{"cap_id": "...", "ket_qua": "a_ngoai_le_cua_b" | "b_ngoai_le_cua_a" | "khong", "bang_chung": "..."}]}. Mỗi cặp đúng một mục.
-- bang_chung: chỉ khi ket_qua khác "khong"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha hoặc chu_don_vi của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.
+- bang_chung: chỉ khi ket_qua khác "khong"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.
 - Mỗi cặp xét riêng theo chữ của cặp đó."""
 
 HUONG_DAN = """# Việc của bạn
@@ -119,9 +120,18 @@ def build_pairs(doc_id):
     return pairs, len(already), ctxs
 
 
+def _children_text(uid, ctxs):
+    """Chữ các đơn vị con cháu theo thứ tự: câu dẫn ("... trong trường hợp sau đây:") chỉ có nghĩa cùng danh sách của nó."""
+    return [c["text"] for u, c in ctxs.items() if u.startswith(uid + ".")]
+
+
 def _unit_payload(uid, ctxs):
     c = ctxs[uid]
-    return {"unit_id": uid, "tieu_de_dieu": c["heading"], "khoan_cha": c["chapeau"], "chu_don_vi": c["text"]}
+    out = {"unit_id": uid, "tieu_de_dieu": c["heading"], "khoan_cha": c["chapeau"], "chu_don_vi": c["text"]}
+    kids = _children_text(uid, ctxs)
+    if kids:
+        out["cac_muc_con"] = kids
+    return out
 
 
 def lots(pairs, ctxs):
@@ -171,7 +181,7 @@ def gate(item, pair, ctxs):
     exc, base = (a, b) if kq == "a_ngoai_le_cua_b" else (b, a)
     ev = item.get("bang_chung") or ""
     c = ctxs[exc]
-    if not ev or not any(ev in part for part in (c["heading"], c["chapeau"], c["text"])):
+    if not ev or not any(ev in part for part in (c["heading"], c["chapeau"], c["text"], *_children_text(exc, ctxs))):
         return None, "bang_chung không nguyên văn trong ngữ cảnh của đơn vị ngoại lệ"
     return (exc, base, ev), None
 
