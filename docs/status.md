@@ -1,6 +1,6 @@
 # Trạng thái dự án
 
-Cập nhật lần cuối: 19/11/2026. Nhánh làm việc: `v3_refactor`.
+Cập nhật lần cuối: 20/11/2026. Nhánh làm việc: `v3_refactor`.
 
 ## 1. Tóm tắt
 Giai đoạn 1 (dựng KB gốc từ BLLĐ): các bước 1.1 đến 1.5 đã xong; 1.6B đến 1.9 đã có mã và chạy thông trên tập con `lldnn` (A41: `python -I src/run_all.py --tap-con lldnn --llm replay`); cả kho còn chờ chạy 1.6A đủ 204 lô. Giai đoạn 2 (cập nhật khi có văn bản mới): bước 2.2 đến 2.4 đã có mã cho kho hiện tại; 2.5 đến 2.7 có mã và chạy thông trên tập con với tri thức BLLĐ (A42), tri thức của nghị định chờ phiên LLM; 2.1 chưa làm. Thiết kế từng bước: `docs/design/pipeline_design.md`. Kế hoạch tiếp theo: `docs/roadmap.md`.
@@ -22,13 +22,13 @@ Kiểm ngày 15/11/2026 (sau khi chuẩn hoá tên và xoá thư mục lưu tr�
 | 1.8 Quy tắc | `rules.py` | xong trên tập con, chưa có vòng LLM sửa | máy biên dịch; s(CASP); test phản chứng D151/D154 (A41) |
 | 1.9 Hỏi đáp | `answering.py` | xong trên tập con | bộ câu hỏi dev `data/eval_dev/lldnn_questions.json` (nháp, chờ xác nhận); 11/15 câu cần 2.6 (A41) |
 | Web demo hỏi đáp | `utils/demo/qa_server.py` | chạy trên tập con | A45: câu kết luận do máy viết, diễn giải LLM `tra-loi-1` qua cổng; LLM tạm là `claude -p`; chạy thật 2 câu (tổng 6 đến 18 giây); A48: giao diện chat, cây chứng minh và dữ kiện chỉ ghi `demo_log.jsonl` |
-| Bộ chạy hộp cát qua API | `sandbox_api.py`, nhà cung cấp `ckey` của `llm_client.py` | có mã, chưa chạy xong | A46: lần chạy riêng `--llm-run ckey`; thí điểm 1.6A 12/16 lô rồi máy chủ trả 404 cho model (19/11), chưa nhập; hộp cát tuần tự chưa chạy thật |
+| Bộ chạy hộp cát qua API | `sandbox_api.py`, nhà cung cấp `ckey` của `llm_client.py` | đã chạy thật (20/11) | A46: `deepseek-v4.1-flash`, lần chạy riêng `--llm-run ckey`: KB cả BLLĐ (1.6A `menh-de-4`, 1.6B, 1.7, 1.8; 1.142 quy tắc, replay 18/18) và cả chuỗi tập con `lldnn`; ba lần sửa lời nhắc chỉ trên tập con: ckey2 `menh-de-5` (A50), ckey3 `-6` (A51), ckey4 `-7` (A52); hỏi đáp dev 3/15, 3/15, 6/15, ckey4 không có (2.7 trượt) |
 | 2.2 Nối văn bản | `links.py` | xong cho kho hiện tại | có LLM (Gemini, hai model độc lập kiểm chéo) |
 | 2.3 Đọc chỉ thị | `directives.py`, `directives_rare.py` | xong cho kho hiện tại | 26 loại, bảng ở `docs/reference/directive_types.md` |
 | 2.4 Áp phiên bản | `versions.py` | xong cho kho hiện tại | 9.217 đơn vị, 9.343 phiên bản (đo 09/11) |
 | 2.5 Tập ảnh hưởng | `affected.py` | có mã | N một bước qua 6 quan hệ (A42) |
 | 2.6 Trích lại theo A(e) | `update.py`, `predicate_registry.py`, `knowledge_units.py` | chạy trên phần lõi của tập con | 44 KU lõi đã có 1.6A, 1.6B; 346 KU khác chưa (chủ đề tài: không chạy cả nghị định); 1.9: 11/15, 11/11 trong phạm vi, trên bộ dev đã dùng để sửa lời nhắc (A42-A44) |
-| 2.7 Đối chứng | `update.py` | đạt trên tập con | gồm tri thức nghị định lõi và mốc ND 70 sửa ND 152; bỏ quan hệ concept thì trượt |
+| 2.7 Đối chứng | `update.py` | đạt trên tập con (mặc định, ckey, ckey2, ckey3); **trượt ở ckey4** | gồm tri thức nghị định lõi và mốc ND 70 sửa ND 152; bỏ quan hệ concept thì trượt. ckey4: lỗ hổng A42 × A43 (đầu chặn dạng tương đương xuất hiện ở mốc sau, D151.K1.d không vào A(e)), chờ quyết (A52) |
 | checks, graph, viewer | `checks.py`, `graph.py`, `utils/viewer/` | xong | đồ thị 9.364 nút, 2.721 cạnh |
 
 ## 3. Việc đang dở: chạy 204 lô của bước 1.6A
@@ -55,6 +55,8 @@ Kiểm ngày 15/11/2026 (sau khi chuẩn hoá tên và xoá thư mục lưu tr�
 14. **Mục 3.5 của `docs/reference/method.md`** còn mô tả "model khác trích lại để kiểm" mà hệ thống không làm (A25); bài báo cáo cần đổi chữ.
 15. **Model ghi trong bài báo cáo:** bước 1.6 dùng phiên Claude Code (Opus 5.5 cho bản cũ, Sonnet 5.5 cho bản mới), khác chốt ban đầu "model nhẹ, miễn phí" ở `docs/llm_config.md`; cần ghi lý do.
 16. **Lời nhắc 1.6A `menh-de-3` thiếu tên khoá `bo_ngu`** (`original_text`, `scope`): đang vá bằng bí danh khoá trong `propositions.normalize` (A41); thêm vào chữ lời nhắc khi chạy cả kho bằng API.
+17. **Tập ảnh hưởng A42 không thấy phụ thuộc toàn cục của `BLOCK_ALIAS` (A43)** (A52): khi một mốc sau có quy tắc kết luận dạng tương đương của một đầu chặn cũ, quy tắc bị chặn ở văn bản khác không vào A(e); 2.7 trượt ở ckey4. Chưa sửa.
+18. **`update.py xuat-1-6a` cần sổ vị từ của 1.6B gốc** (A51): không chạy riêng 1.6A cập nhật được.
 
 ## 5. Việc treo (không chặn)
 - Văn bản ngoài kho: NĐ 38/2022, NĐ 35/2022, TT 54/2015, BLLĐ 2012, NĐ 189/2025, Luật 64/2025.
