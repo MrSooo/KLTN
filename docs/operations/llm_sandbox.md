@@ -40,6 +40,15 @@ Chạy ở gốc repo, kho con thì đặt `KLTN_TAP_CON=<tên>`; mọi lệnh t
 4. **1.9:** từ vựng đổi khi có quy tắc mới nên cả bộ câu hỏi phải hỏi lại: `... answering.py xuat <thư mục>`, phiên, `... answering.py nhap <thư mục>`.
 5. `run_all --tap-con <tên> --llm replay`: báo cáo `update_report.txt` in kết quả 2.7 và căn cứ chuẩn của bộ câu hỏi trong Π_τ.
 
+## 3c. Web demo hỏi đáp (A45)
+Cần R của 2.6 (`run_all --tap-con <tên> --llm replay` đã chạy). Ở gốc repo:
+```
+KLTN_TAP_CON=lldnn python -X utf8 -I utils/demo/qa_server.py            mở http://127.0.0.1:8765/
+KLTN_TAP_CON=lldnn python -X utf8 -I utils/demo/qa_server.py --llm off  không gọi LLM: chỉ câu của bộ dev, diễn giải dựng sẵn
+KLTN_TAP_CON=lldnn python -X utf8 -I utils/demo/qa_server.py hoi "<câu hỏi>" 2025-06-01   một câu, in JSON
+```
+Mỗi câu hỏi mới gọi `claude -p` hai lượt (dữ kiện, diễn giải); khoảng 10 đến 20 giây mỗi lượt, tốn hạn mức của tài khoản Claude Code. Kết quả lưu ở `data/processed[_subset]/demo/demo_cache.json`, hỏi lại cùng câu và ngày thì không gọi lại.
+
 ## 4. Giới hạn
 - Cách ly dựa vào hướng dẫn trong thư mục; thư mục cha vẫn đọc được nếu phiên cố tình.
 - Model và effort do phiên tự khai; effort không nằm trong khoá cache nên hai lần chạy khác effort mà cùng chữ thì `replay` không phân biệt.

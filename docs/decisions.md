@@ -1,12 +1,12 @@
 # Sổ quyết định
 
-Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A44) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
+Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A45) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
 
 Quy ước ghi: mỗi mục gồm **Quyết định**, **Lý do** và **Cái giá hoặc chỗ chưa kiểm** khi có. Chỗ lệch so với kế hoạch ban đầu hoặc so với mã cũ được nêu rõ. Số đo ghi kèm ngày đo và phạm vi (BLLĐ là Bộ luật Lao động 45/2019; "kho" là cả 18 văn bản trong `data/raw/labor/`).
 
 Các mục A9, A10, A18, A19, A20, A28 là quy trình làm việc nội bộ giữa các phiên và không còn hiệu lực sau khi tài liệu được chuẩn hoá (A40); mã của chúng được giữ trống để các tham chiếu không đổi.
 
-Bố cục: **Phần I** quyết định về pipeline (A1 đến A44); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
+Bố cục: **Phần I** quyết định về pipeline (A1 đến A45); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
 
 ---
 
@@ -288,6 +288,12 @@ Danh sách còn hiệu lực nằm ở `docs/status.md` (mục Nợ kỹ thuật
 **Quyết định (chủ đề tài duyệt 19/11).** Từ vựng 1.9: mỗi mục `ket_luan` kèm `chu_the` = các vị từ chủ thể (literal canh `chu_the` của quy tắc kết luận đầu đó, máy lấy từ R); lời nhắc thêm một luật: câu hỏi mô tả đối tượng có đủ đặc điểm của một nhóm đó thì ghi dữ kiện nhóm, trích là cụm mô tả đối tượng. Cổng không đổi (vị từ trong sổ, trích nguyên văn).
 **Số đo (tập con, phiên Sonnet 5.5, 3 lô, 0 lỗi cổng).** 11/15 đúng; 11/11 câu trong phạm vi (Q11-Q14 ngoài phạm vi trích, A42). Mọi câu về giấy phép lao động khai `foreign_worker_in_vietnam`.
 **Cái giá.** Luật mới cho LLM suy một bước (đối tượng thuộc nhóm), nới so với "chỉ ghi điều câu hỏi nêu". Lời nhắc sửa sau khi thấy lỗi trên chính bộ dev, nên 11/11 là số trên dữ liệu đã dùng để sửa, không phải số đo; số đo phải lấy trên nhóm văn bản dùng để đo. Chỉ một lần chạy.
+## A45. Web demo hỏi đáp và lời nhắc diễn giải `tra-loi-1` [THÊM] (19/11)
+**Bối cảnh.** Chủ đề tài muốn một giao diện web cục bộ để hỏi đáp, câu trả lời viết tự nhiên tổng hợp từ cây chứng minh thay vì chỉ có nhãn kết quả và cây logic. Method mục 3.6 không có bước sinh câu trả lời bằng ngôn ngữ tự nhiên: đây là phần thêm, không phải một bước của pipeline, nên không nằm trong `run_all`.
+**Quyết định.** `utils/demo/qa_server.py` (thư viện chuẩn, `ThreadingHTTPServer` ở 127.0.0.1) cùng `utils/demo/index.html`. Mỗi câu hỏi: (1) dữ kiện bằng lời nhắc 1.9 `hoi-dap-2` qua `answering.gate`; câu của bộ dev đã có trả lời cùng lời nhắc, cùng từ vựng thì dùng lại; cổng trượt thì dừng. (2) Π_τ từ R của 2.6, `answering.classify` (thêm tuỳ chọn `detail` trả mô hình s(CASP); đầu ra mặc định không đổi). (3) Cây chứng minh từ mô hình; chữ căn cứ là chữ của đơn vị tại τ trong kho phiên bản. (4) Câu kết luận do **máy** viết từ kết quả và nghĩa của φ: LLM không viết "Có"/"Không", vì φ có thể ngược cực với câu hỏi ("được miễn không?" mà φ là "phải có giấy phép" thì bị bác nghĩa là "có, được miễn"). LLM (`tra-loi-1`) chỉ viết phần diễn giải. Cổng: đúng hình, dài tối đa 1.500 ký tự, `can_cu_dung` khác rỗng và thuộc căn cứ, mọi "Điều N" và số văn bản nêu ra (dạng "N/YYYY", không tính ngày tháng; hoặc số trần sau tên loại như "Nghị định 219", "NĐ 152") phải có trong tên hoặc chữ của căn cứ (D151.K1.d nêu "trừ trường hợp quy định tại Điều 154" nên Điều 154 được nêu), không mở đầu bằng Có/Không. Trượt cổng hoặc LLM lỗi thì dùng diễn giải dựng sẵn từ cây. LLM tạm là `claude -p` (Sonnet, effort high, không công cụ, thư mục tạm rỗng, lời nhắc qua stdin, bỏ biến proxy, hết giờ 180 giây); đổi sang API chỉ thay hàm `claude_code`. Kết quả LLM của demo ghi `data/processed[_subset]/demo/demo_cache.json` (khoá: phiên bản lời nhắc và mọi đầu vào LLM thấy), không ghi vào `data/llm_cache/`.
+**Kiểm chứng (19/11, tập con `lldnn`).** `tests/test_qa_server.py`: cổng nhận Điều nêu trong chữ căn cứ, không coi ngày (01/10/2025) là số văn bản, từ chối Điều và văn bản ngoài căn cứ (cả số trần), từ chối trích ngoài căn cứ; diễn giải dựng sẵn khi trượt cổng hoặc LLM lỗi; chạy không LLM câu Q04 ra bị bác, cây có nút bị chặn, căn cứ đúng căn cứ chuẩn. Chạy thật 2 câu: Q01 với ngày 01/10/2025 (dữ kiện từ cache, diễn giải 5 giây, qua cổng); một câu mới về người nước ngoài kết hôn với người Việt (dữ kiện 11 giây, suy luận 0,7 giây, diễn giải 6 giây, qua cổng, bị bác theo D154.K8).
+**Cái giá.** Cổng chỉ kiểm điều khoản và văn bản được nêu, không kiểm được độ trung thành của câu chữ (LLM có thể diễn sai một điều kiện); trang ghi rõ là "diễn giải" và luôn hiện căn cứ nguyên văn cùng cây. `claude -p` vẫn nạp CLAUDE.md của người dùng (chế độ `--bare` cần khoá API). Phạm vi trả lời là phạm vi của KB tập con: giấy phép lao động người nước ngoài, cho thuê lại lao động; câu khác ra "ngoài phạm vi".
+
 ---
 
 # Phần II. Quyết định ở mức từng bước nền

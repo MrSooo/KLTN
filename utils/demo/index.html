@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hỏi đáp Luật Lao động</title>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--ink:#1d1d1f;--mute:#6b6b70;--line:#e2e2df;--acc:#2754c5;--ok:#1f7a3f;--no:#b3261e;--warn:#8a5a00;--chip:#eef1f8}
+@media (prefers-color-scheme:dark){:root{--bg:#141416;--card:#1d1d20;--ink:#ececef;--mute:#9a9aa2;--line:#2e2e33;--acc:#8fb0ff;--ok:#6fd398;--no:#ff8a80;--warn:#f0c060;--chip:#262a36}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:920px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:var(--mute);font-size:13px;margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
+textarea{width:100%;min-height:84px;font:inherit;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);resize:vertical}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+input[type=date],select{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+select{max-width:100%}
+button{font:inherit;padding:8px 18px;border:0;border-radius:8px;background:var(--acc);color:#fff;cursor:pointer}
+button:disabled{opacity:.5;cursor:wait}
+label{color:var(--mute);font-size:14px}
+.badge{display:inline-block;padding:2px 10px;border-radius:99px;font-size:13px;font-weight:600;background:var(--chip)}
+.b-ket_luan_duoc{color:var(--ok)}.b-bi_bac{color:var(--no)}.b-chua_du_can_cu,.b-khong_tra_loi{color:var(--warn)}.b-loi{color:var(--no)}
+.headline{font-size:17px;font-weight:600;margin:10px 0}
+.explain{white-space:pre-wrap}
+.note{color:var(--mute);font-size:12.5px;margin-top:8px}
+h2{font-size:15px;margin:0 0 10px}
+.basis{border-left:3px solid var(--acc);padding:4px 0 4px 12px;margin:10px 0}
+.basis .t{font-weight:600}.basis .h{color:var(--mute);font-size:13px}
+.basis .x{margin-top:4px}
+details summary{cursor:pointer;font-weight:600}
+ul.tree{list-style:none;padding-left:18px;margin:6px 0;border-left:1px dashed var(--line)}
+ul.tree.root{border:0;padding-left:0}
+.k{font-size:12px;padding:1px 7px;border-radius:6px;background:var(--chip);color:var(--mute);margin-right:6px}
+.k.r{color:var(--acc)}.k.c{color:var(--no)}.k.f{color:var(--ok)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+td,th{border-bottom:1px solid var(--line);padding:6px 4px;text-align:left;vertical-align:top}
+.mute{color:var(--mute)}
+.err{color:var(--no)}
+code{font-size:12.5px}
+</style>
+</head>
+<body>
+<main>
+<h1>Hỏi đáp Bộ luật Lao động theo ngày hiệu lực</h1>
+<div class="sub" id="info">đang nạp…</div>
+
+<div class="card">
+  <textarea id="q" placeholder="Nhập câu hỏi có/không, ví dụ: Một chuyên gia người nước ngoài vào Việt Nam làm việc 45 ngày trong năm. Người này có phải có giấy phép lao động không?"></textarea>
+  <div class="row">
+    <label>Ngày sự việc <input type="date" id="d"></label>
+    <label><input type="checkbox" id="ex" checked> Diễn giải bằng LLM</label>
+    <button id="go">Hỏi</button>
+  </div>
+  <div class="row"><select id="vd"><option value="">— Câu hỏi mẫu (bộ dev) —</option></select></div>
+</div>
+
+<div id="out"></div>
+</main>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const LABEL = {ket_luan_duoc:"Kết luận được", bi_bac:"Bị bác", chua_du_can_cu:"Chưa đủ căn cứ", khong_tra_loi:"Không trả lời", loi:"Lỗi"};
+let examples = [];
+
+fetch("/api/info").then(r => r.json()).then(i => {
+  $("#info").textContent = `Kho ${i.tap_con || "đầy đủ"} · ${i.so_quy_tac} quy tắc · LLM: ${i.llm ? "Claude Code (claude -p)" : "tắt"} · phạm vi hiện tại: giấy phép lao động người nước ngoài, cho thuê lại lao động (ký quỹ, giấy phép)`;
+  $("#d").value = i.hom_nay;
+  if (!i.llm) $("#ex").checked = false, $("#ex").disabled = true;
+  examples = i.vi_du;
+  for (const e of examples) {
+    const o = document.createElement("option");
+    o.value = e.id; o.textContent = `${e.id} (${e.ngay}): ${e.cau_hoi}`;
+    $("#vd").appendChild(o);
+  }
+});
+$("#vd").onchange = () => {
+  const e = examples.find(x => x.id === $("#vd").value);
+  if (e) { $("#q").value = e.cau_hoi; $("#d").value = e.ngay; }
+};
+
+$("#go").onclick = async () => {
+  const q = $("#q").value.trim();
+  if (!q) return;
+  $("#go").disabled = true;
+  const t = Date.now();
+  const tick = setInterval(() => $("#out").innerHTML = `<div class="card mute">Đang xử lý… ${Math.round((Date.now()-t)/1000)} giây (câu hỏi mới cần gọi LLM, khoảng 30–90 giây)</div>`, 500);
+  try {
+    const r = await fetch("/api/hoi", {method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({cau_hoi:q, ngay:$("#d").value, giai_thich:$("#ex").checked})});
+    const j = await r.json();
+    clearInterval(tick);
+    $("#out").innerHTML = r.ok ? render(j) : `<div class="card err">${esc(j.loi)}</div>`;
+  } catch (e) {
+    clearInterval(tick);
+    $("#out").innerHTML = `<div class="card err">Lỗi kết nối: ${esc(e)}</div>`;
+  }
+  $("#go").disabled = false;
+};
+
+function node(n) {
+  if (!n) return "";
+  const kind = {du_kien:["dữ kiện","f"], quy_tac:["quy tắc","r"], bi_chan:["bị chặn","c"], lap:["đã nêu ở trên",""], khac:["",""]}[n.loai] || ["",""];
+  let s = `<li><span class="k ${kind[1]}">${kind[0]}</span>${esc(n.nghia)}`;
+  if (n.loai === "du_kien") s += ` <span class="mute">— câu hỏi nêu “${esc(n.trich)}”</span>`;
+  if (n.ten) s += ` <span class="mute">— ${esc(n.ten)}</span>`;
+  if (n.loai === "bi_chan") s += `<div class="mute">quy định chung (khi ${esc(n.dieu_kien.join("; "))}) bị chặn bởi ngoại lệ:</div>`;
+  if (n.con && n.con.length) s += `<ul class="tree">${n.con.map(node).join("")}</ul>`;
+  return s + "</li>";
+}
+
+function render(j) {
+  let h = `<div class="card"><span class="badge b-${esc(j.ket_qua)}">${esc(LABEL[j.ket_qua] || j.ket_qua)}</span>
+    <div class="headline">${esc(j.ket_luan)}</div>`;
+  if (j.giai_thich) {
+    h += `<div class="explain">${esc(j.giai_thich)}</div>
+      <div class="note">Diễn giải: ${esc(j.nguon_giai_thich)}. Kết luận ở trên do bộ suy luận (s(CASP)) quyết; phần diễn giải đã qua cổng kiểm (chỉ nêu quy định trong căn cứ) nhưng máy không kiểm được độ trung thành của câu chữ.${j.loi_cong_giai_thich ? " Lý do không dùng diễn giải LLM: " + esc(j.loi_cong_giai_thich) : ""}</div>`;
+  }
+  h += `</div>`;
+  if (j.can_cu && j.can_cu.length) {
+    h += `<div class="card"><h2>Căn cứ (nguyên văn tại ngày ${esc(j.ngay)})</h2>` + j.can_cu.map(b => `<div class="basis">
+      <div class="t">${esc(b.ten)}</div>${b.tieu_de ? `<div class="h">${esc(b.tieu_de)}</div>` : ""}
+      ${b.cau_dan ? `<div class="x mute">${esc(b.cau_dan)}</div>` : ""}<div class="x">${esc(b.chu)}</div>
+      <div class="note"><code>${esc(b.id)}</code></div></div>`).join("") + `</div>`;
+  }
+  if (j.cay) h += `<div class="card"><details open><summary>Cây chứng minh</summary><ul class="tree root">${node(j.cay)}</ul></details></div>`;
+  else if (j.lap_luan && j.lap_luan.length) h += `<div class="card"><details open><summary>Lập luận</summary><ul>${j.lap_luan.map(x => `<li>${esc(x)}</li>`).join("")}</ul></details></div>`;
+  h += `<div class="card"><details><summary>Dữ kiện máy rút từ câu hỏi</summary>
+    <p class="mute">Nguồn: ${esc(j.nguon_du_kien)}. φ = <code>${esc(j.phi ?? "null")}</code>${j.phi_nghia ? " (" + esc(j.phi_nghia) + ")" : ""}${j.so_quy_tac_tau ? ` · ${j.so_quy_tac_tau} quy tắc hiệu lực tại ngày này` : ""}</p>`;
+  if (j.su_kien && j.su_kien.length) h += `<table><tr><th>Vị từ</th><th>Nghĩa</th><th>Trích câu hỏi</th></tr>` + j.su_kien.map(f =>
+      `<tr><td><code>${f.phu_dinh ? "-" : ""}${esc(f.vi_tu)}</code></td><td>${esc(f.nghia)}</td><td>“${esc(f.trich)}”</td></tr>`).join("") + `</table>`;
+  h += `</details></div>`;
+  if (j.thoi_gian) h += `<div class="note">Thời gian: dữ kiện ${j.thoi_gian.du_kien}s · suy luận ${j.thoi_gian.suy_luan ?? "-"}s · diễn giải ${j.thoi_gian.giai_thich ?? "-"}s · tổng ${j.thoi_gian.tong ?? "-"}s</div>`;
+  return h;
+}
+</script>
+</body>
+</html>
