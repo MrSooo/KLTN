@@ -27,7 +27,25 @@ else:
     RAW_DIR = ROOT / "data" / "raw" / "labor"
     PROCESSED_DIR = ROOT / "data" / "processed"
     REPORT_DIR = ROOT / "docs" / "run_reports"
+
+# Lần chạy LLM khác (A46): KLTN_LLM_RUN=<tên> (ví dụ `ckey`) là một bộ kết quả LLM song song với bộ mặc định (Sonnet qua phiên Claude Code).
+# Vì sao cần: cache theo khoá sha (có tên model trong khoá) không đụng nhau, nhưng cache đặt tên theo văn bản (`<doc>[.<tập con>].json`)
+# và đầu ra, báo cáo thì có: chạy bộ mới mà không tách sẽ ghi đè bộ cũ. Chỉ đổi đầu ra và báo cáo, KHÔNG đổi RAW_DIR (cùng chữ luật).
+LLM_RUN = os.environ.get("KLTN_LLM_RUN", "").strip() or None
+if LLM_RUN:
+    PROCESSED_DIR = PROCESSED_DIR.with_name(f"{PROCESSED_DIR.name}_{LLM_RUN}")
+    REPORT_DIR = REPORT_DIR.with_name(f"{REPORT_DIR.name}_{LLM_RUN}")
 MANIFEST = RAW_DIR / "manifest.csv"
+
+
+def cache_tag():
+    """Hậu tố tên file cache đặt theo văn bản: '' (kho đầy đủ, lần chạy mặc định), '.lldnn', '.ckey', '.lldnn.ckey'."""
+    return "".join(f".{x}" for x in (SUBSET, LLM_RUN) if x)
+
+
+def cache_name(stem):
+    """Tên file cache của một văn bản hay một bộ câu hỏi theo kho và lần chạy đang dùng: `<stem><hậu tố>.json`."""
+    return f"{stem}{cache_tag()}.json"
 
 
 def _subset_spec():

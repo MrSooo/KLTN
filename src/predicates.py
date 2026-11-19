@@ -34,7 +34,8 @@ import propositions as P  # noqa: E402
 from textutil import text_norm  # noqa: E402
 
 TASK, PROMPT_VERSION, ROLE = "predicates", "names-2.1", "ten"  # 2.1: thêm chữ chủ thể (vai chu_the) và đoạn lời nhắc cho nó (A41)
-EFFORT, SUBAGENT_MODEL = "high", "sonnet"   # A39: Sonnet 5.5, effort high, tuần tự
+EFFORT = P.sandbox_model()[1]  # A39: effort high, tuần tự; khoá hop_cat.effort (A46). Model của 1.6B là ten.model (nằm trong khoá cache)
+SUBAGENT_MODEL = P.ALIAS.get(llm_client.load_config()[f"{ROLE}.model"], llm_client.load_config()[f"{ROLE}.model"])
 CANDIDATE_CAP = 20                          # A39: 12 lên 20 (phỏng đoán: mệnh đề ngắn hơn cụm nên 12 dễ cắt mất ứng viên đúng; chưa đo)
 DIR_NAME = "predicates"
 SUBJECT_LIST_KIND = "?"  # chủ thể chung ("E" và "W" cùng một chủ ngữ) là MỘT vị trí tham số mà loại không duy nhất: ghi `?` (khớp mọi loại)
@@ -406,7 +407,8 @@ def xuat(d, doc_id):
     model = llm_client.load_config()[f"{ROLE}.model"]
     py = Path(sys.executable).as_posix()  # tuyệt đối (phiên ngoài repo không có venv trên PATH), dấu / để khớp quy tắc quyền Bash(...) của claude -p
     fill = lambda s: s.replace("@PY@", py).replace("@MODEL@", model).replace("@SUB@", SUBAGENT_MODEL).replace("@EFFORT@", EFFORT)  # noqa: E731
-    env = f"os.environ['KLTN_TAP_CON'] = {corpus.SUBSET!r}\n" if corpus.SUBSET else ""
+    # tiep.py chạy trong thư mục làm việc, không mang biến môi trường của người dựng: ghi cứng kho con và lần chạy LLM (A41, A46)
+    env = "".join(f"os.environ[{k!r}] = {v!r}\n" for k, v in (("KLTN_TAP_CON", corpus.SUBSET), ("KLTN_LLM_RUN", corpus.LLM_RUN)) if v)
     (d / "lo").mkdir(parents=True, exist_ok=True)
     (d / "out").mkdir()
     files = {"HUONG_DAN.md": fill(cn.HUONG_DAN), "system.txt": SYSTEM + "\n", "schema.json": json.dumps(SCHEMA, ensure_ascii=False, indent=1) + "\n",

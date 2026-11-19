@@ -39,7 +39,7 @@ Tài liệu này nêu quy ước làm việc chung của dự án. Tổng quan v
 - Chỉ gửi văn bản luật công khai cho dịch vụ bên ngoài. Không đưa tên, thông tin cá nhân hay dữ liệu nội bộ vào lời gọi.
 
 ## 5. Bí mật và dữ liệu
-- Khoá API chỉ nằm trong biến môi trường (`GEMINI_API_KEY`, `ANTHROPIC_API_KEY`). Không đưa vào repo, tệp `.env`, chat, test hay báo cáo.
+- Khoá API chỉ nằm trong biến môi trường (`GEMINI_API_KEY`, `ANTHROPIC_API_KEY`, `CKEY_API_KEY`). Không đưa vào repo, tệp `.env`, chat, test hay báo cáo.
 - Nhóm văn bản dùng để đo (heldout) nằm ngoài repo và chưa được mở; không đưa nội dung hay đường dẫn của nó vào mã, tài liệu hay cache cho tới khi giai đoạn đo bắt đầu. Chỉ `data/raw/labor/` (nhóm base và dev) được dùng khi dựng.
 - `data/processed/` bị `.gitignore`; `data/llm_cache/` được theo dõi (không ignore) vì đó là cách tính lại số liệu không cần gọi model.
 - Không sửa tay file do mã sinh ra (`docs/run_reports/`, `data/processed/`, các file HTML sinh ra).

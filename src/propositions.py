@@ -21,11 +21,15 @@ import json, pathlib, re, sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import concepts as C, corpus, llm_client as L  # noqa: E402
 
-PROMPT_VERSION = "menh-de-3"
+# Phiên bản lời nhắc theo lần chạy (A47): khoá `menh_de.prompt_version` của docs/llm_config.md. Lần chạy mặc định giữ menh-de-3 (A39 đóng băng);
+# lần chạy ckey đè bằng `ckey.menh_de.prompt_version = menh-de-4`. Cache 1.6A ghi phiên bản vào file, load_ku_cache từ chối file khác phiên bản.
+PROMPT_VERSION = L.load_config()["menh_de.prompt_version"]
 PILOT_DIR = pathlib.Path("data/pilot_propositions")
 GOLD = PILOT_DIR / "gold_draft.json"
-LLM_OUT = PILOT_DIR / "llm_output.json"
-REPORT = PILOT_DIR / "comparison.md"
+# A46, A47: lần chạy khác (KLTN_LLM_RUN) ghi file riêng kèm phiên bản lời nhắc, không đè kết quả thí điểm Sonnet hay của lời nhắc trước
+_RUN_TAG = f".{corpus.LLM_RUN}.{PROMPT_VERSION}" if corpus.LLM_RUN else ""
+LLM_OUT = PILOT_DIR / f"llm_output{_RUN_TAG}.json"
+REPORT = PILOT_DIR / f"comparison{_RUN_TAG}.md"
 
 # Tập giá trị của mô tả bước và A38. Đổi ở đây là đổi khuôn: phải sửa cả mô tả bước, lời nhắc và test.
 LOAI = {"menh_de", "con_tro", "bo_qua", "chua_ro"}
@@ -44,7 +48,7 @@ FIELDS = ("loai", "vai", "menh_de", "chu_the", "doi_so", "phuong_thuc", "cuc", "
 LLM_REASON, GOLD_REASON = "ly_do_llm", "ly_do_dap_an"  # hai trường riêng để đối chiếu (A38 Q3b)
 LONG_SYL = 15  # menh-de-3: lõi phải ngắn để tái dùng; từ 15 âm tiết là cờ (đo 34 lô menh-de-2: 22% vượt)
 
-SYSTEM = """Bạn tách các đơn vị của Bộ luật Lao động Việt Nam thành DÒNG. Mỗi đơn vị có: tieu_de_dieu, khoan_cha (câu dẫn của cha, có thể rỗng), chu_don_vi (chữ cần tách), dan_chieu (dẫn chiếu đã giải, kèm mã đích). Chỉ tách chu_don_vi; tiêu đề và câu dẫn chỉ để lấy chủ thể, phương thức, vị ngữ bị lược.
+SYSTEM_3 = """Bạn tách các đơn vị của Bộ luật Lao động Việt Nam thành DÒNG. Mỗi đơn vị có: tieu_de_dieu, khoan_cha (câu dẫn của cha, có thể rỗng), chu_don_vi (chữ cần tách), dan_chieu (dẫn chiếu đã giải, kèm mã đích). Chỉ tách chu_don_vi; tiêu đề và câu dẫn chỉ để lấy chủ thể, phương thức, vị ngữ bị lược.
 
 ## Loại dòng (loai)
 - menh_de: một điều đúng/sai được.
@@ -85,6 +89,52 @@ Tiêu đề "Nghĩa vụ của người lao động khi ... trái pháp luật",
 
 ## Đầu ra
 JSON thuần, không chữ giải thích: {"units": [{"unit_id": "...", "dong": [...]}]}. Mỗi unit_id của lô đúng một mục, mỗi mục ít nhất một dòng."""
+
+
+# ---- menh-de-4 (A47): menh-de-3 cộng bảy chỗ sửa a-g, mỗi chỗ nhắm một lỗi thấy ở thí điểm DeepSeek 19/11 (30 đơn vị). [THÊM] cả bảy.
+# Ví dụ mới lấy từ đơn vị NGOÀI bộ thí điểm (D25.K2, D53.K2, D53.K2.c) để không dạy model đúng đáp án của bộ thí điểm.
+_M4 = [
+    # e: gộp các hành vi khác nhau vào liet_ke (D5.K1.a)
+    ("không để trong menh_de.\n",
+     "không để trong menh_de. liet_ke chỉ gom tân ngữ hay phạm vi của CÙNG một động từ; mục nào tự nó là một hành vi khác thì là dòng riêng.\n"),
+    # c: ghép chữ dùng chung với chữ của mục thành một trich không nguyên văn (D146.K1)
+    ("hiểu cho từng mục. ",
+     "hiểu cho từng mục; trich chép chữ dùng chung và chữ của mục thành HAI chuỗi riêng, không ghép: \"không được A, B\" cho mục B → trich [\"không được\", \"B\"]. "),
+    # d: điều kiện cốt lõi bị hạ thành bổ ngữ (D14.K1, D14.K2); cổng không bắt được loại lỗi này
+    ("Dẫn chiếu không bao giờ là bổ ngữ.\n",
+     "Dẫn chiếu không bao giờ là bổ ngữ. Cụm giới hạn đối tượng hay hoàn cảnh áp dụng (\"đối với ...\", \"khi ...\", \"trong trường hợp ...\", \"thông qua ...\", \"dưới hình thức ...\") là dòng dieu_kien riêng (cùng quy_tac), KHÔNG phải bo_ngu: \"Không quá 60 ngày đối với công việc có chức danh nghề nghiệp cần trình độ chuyên môn, kỹ thuật từ cao đẳng trở lên\" → dieu_kien \"có chức danh nghề nghiệp cần trình độ chuyên môn, kỹ thuật từ cao đẳng trở lên\" (chủ thể công việc, J).\n"),
+    # b: chủ thể kế thừa từ câu dẫn mà trich không chép mẩu câu dẫn (D35.K2.a, D35.K2.b)
+    ("danh_sach (quyền hay mục độc lập).\n",
+     "danh_sach (quyền hay mục độc lập). Mục con kế thừa chủ thể từ câu dẫn: chu_the.nguon = cau_dan và trich PHẢI có một mẩu chép từ khoan_cha (thường là cụm chủ thể); nguon = tieu_de thì trich có mẩu chép từ tieu_de_dieu.\n"),
+    # a: bo_ngu viết thành chuỗi trần hoặc một đối tượng đơn (5 dòng); lời nhắc cũ không ghi khuôn (status.md nợ 16)
+    ("- doi_so: [{\"loai\": mã}] các đối số khác.\n",
+     "- doi_so: [{\"loai\": mã}] các đối số khác.\n- bo_ngu: LUÔN là danh sách đối tượng, kể cả khi chỉ có một mục: [{\"original_text\": nguyên văn, \"scope\": this_clause | group | unknown}]. Không viết chuỗi trần, không viết một đối tượng đơn.\n"),
+    # f: "không phải là X" mô tả còn nằm trong menh_de (D151.K1.c)
+    ("không phải quyền.\n",
+     "không phải quyền.\n- BẪY: \"không phải + động từ\" là không có nghĩa vụ (duoc + phu_dinh); \"không phải là + danh từ\" là không thuộc (khong + phu_dinh, menh_de giữ \"là ...\").\n"),
+    # a: ví dụ có bo_ngu viết bằng lời -> viết JSON đầy đủ; b: thêm ví dụ nhánh ĐIỀU KIỆN của luật 5
+    ("(bo_ngu \"trong quan hệ lao động\", this_clause)",
+     "{\"loai\":\"menh_de\",\"vai\":\"dieu_kien\",\"menh_de\":\"đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"bo_ngu\":[{\"original_text\":\"trong quan hệ lao động\",\"scope\":\"this_clause\"}],\"trich\":[\"đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động trong quan hệ lao động\"],\"quy_tac\":\"q1\"}"),
+    ("cả ba q1.\n",
+     "cả ba q1.\n"
+     "Danh sách ĐIỀU KIỆN: chu_don_vi \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\" → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"sử dụng lao động thuê lại\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\",\"nguon\":\"chinh\"},\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"trich\":[\"Bên thuê lại lao động được sử dụng lao động thuê lại\"],\"quy_tac\":\"q1\"} và {\"loai\":\"bo_qua\",\"cac_muc_con\":\"hoac\",\"trich\":[\"trong trường hợp sau đây:\"],\"ly_do_llm\":{\"ma\":\"cau_dan\",\"giai_thich\":\"Phần dẫn vào danh sách trường hợp.\"}}\n"
+     "Mục con của câu dẫn đó \"Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao.\" → {\"loai\":\"menh_de\",\"vai\":\"dieu_kien\",\"menh_de\":\"có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\",\"nguon\":\"cau_dan\"},\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"trich\":[\"Bên thuê lại lao động\",\"Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao\"],\"quy_tac\":\"q1\"}\n"),
+    # g: danh sách tự kiểm ở cuối, lặp đúng các cổng máy (model yếu hơn theo danh sách cuối bài tốt hơn luật nằm giữa)
+    ("\n## Đầu ra\n",
+     "\n## Tự kiểm trước khi trả\n- bo_ngu là danh sách đối tượng {original_text, scope}.\n- Mọi chuỗi trong trich, chu_the.chu, bo_ngu.original_text, liet_ke chép NGUYÊN VĂN, liền, không ghép từ hai chỗ.\n- chu_the.nguon = cau_dan (hay tieu_de) thì trich có mẩu chép từ khoan_cha (hay tieu_de_dieu).\n- Mọi âm tiết của menh_de có trong trich của dòng đó.\n- Cụm \"đối với / khi / trong trường hợp / thông qua / dưới hình thức ...\" là dieu_kien, không phải bo_ngu.\n\n## Đầu ra\n"),
+]
+
+
+def _apply(text, edits):
+    """Dựng lời nhắc mới từ lời nhắc cũ bằng các chỗ sửa (chữ neo, chữ thay); neo phải xuất hiện đúng một lần để không sửa nhầm chỗ."""
+    for old, new in edits:
+        assert text.count(old) == 1, f"neo không duy nhất: {old[:50]!r}"
+        text = text.replace(old, new)
+    return text
+
+
+PROMPTS = {"menh-de-3": SYSTEM_3, "menh-de-4": _apply(SYSTEM_3, _M4)}
+SYSTEM = PROMPTS[PROMPT_VERSION]
 
 SCHEMA = {"units": [{"unit_id": "string", "dong": [{f: "xem system.txt" for f in FIELDS + (LLM_REASON,)}]}]}
 
@@ -312,6 +362,14 @@ def model():
 ALIAS = {"claude-sonnet-5-5": "sonnet", "claude-opus-5-5": "opus", "claude-haiku-5-5": "haiku"}
 
 
+def sandbox_model():
+    """(model, effort) mà hộp cát của 1.6A theo KU, 1.6B, 1.7, 1.9 đòi: khoá `hop_cat.model`, `hop_cat.effort` của docs/llm_config.md.
+    Trước A46 là hằng số chép ở từng module (Sonnet 5.5, high theo A39); đưa vào cấu hình để lần chạy KLTN_LLM_RUN=ckey đổi model
+    (khoá `ckey.hop_cat.*`) mà không sửa mã, và lần chạy mặc định giữ nguyên giá trị cũ."""
+    cfg = L.load_config()
+    return cfg["hop_cat.model"], cfg["hop_cat.effort"]
+
+
 def sandbox_config(d):
     f = pathlib.Path(d) / "cau_hinh.json"
     return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {"model": model(), "effort": None}
@@ -323,7 +381,7 @@ FULL_OUT = corpus.ROOT / "data" / "llm_cache" / "propositions"  # neo theo gốc
 def full_cache_path():
     """File nhập kết quả `tat_ca`. Kho con (A41) ghi file riêng `<doc>.<tên tập con>.json`: nhập ghi đè cả file, nên dùng
     chung một file thì kết quả tập con và kho đầy đủ đè lên nhau."""
-    return FULL_OUT / (f"{corpus.BASE_DOC_ID}.{corpus.SUBSET}.json" if corpus.SUBSET else f"{corpus.BASE_DOC_ID}.json")
+    return FULL_OUT / corpus.cache_name(corpus.BASE_DOC_ID)
 
 
 # ---- 2.6 (A42): 1.6A theo đơn vị tri thức (KU, knowledge_units.py) ----
@@ -335,7 +393,7 @@ KU_DIR = FULL_OUT / "ku"
 
 
 def ku_cache_path(doc_id):
-    return KU_DIR / (f"{doc_id}.{corpus.SUBSET}.json" if corpus.SUBSET else f"{doc_id}.json")
+    return KU_DIR / corpus.cache_name(doc_id)
 
 
 def load_ku_cache():
@@ -343,7 +401,7 @@ def load_ku_cache():
     paths = [full_cache_path()] if full_cache_path().exists() else []
     for p in sorted(KU_DIR.glob("*.json")):
         _doc, _, sub = p.name[:-len(".json")].partition(".")
-        if (sub or None) == corpus.SUBSET:
+        if sub == corpus.cache_tag().lstrip("."):  # đúng kho VÀ đúng lần chạy LLM (A46): `<doc>.lldnn.ckey.json` chỉ thuộc lần chạy ckey của tập con
             paths.append(p)
     out = {}
     for p in paths:
@@ -366,7 +424,7 @@ def ku_lots(kus):
     return [g[i:i + C.BATCH_SIZE] for g in groups.values() for i in range(0, len(g), C.BATCH_SIZE)]
 
 
-def ku_xuat(thu_muc, kus, run_model="claude-sonnet-5-5", effort="high", khoi=20):
+def ku_xuat(thu_muc, kus, run_model=None, effort=None, khoi=20):
     """Dựng hộp cát 1.6A cho các KU chưa có trong cache (người gọi lọc). cau_hinh.json ghi danh sách mã KU từng lô để nhập đối chiếu."""
     d = pathlib.Path(thu_muc)
     if d.exists() and any(d.iterdir()):
@@ -375,6 +433,8 @@ def ku_xuat(thu_muc, kus, run_model="claude-sonnet-5-5", effort="high", khoi=20)
     if d.resolve() == root or root in d.resolve().parents:
         raise SystemExit(f"{d} nằm trong repo; thư mục làm việc phải ở NGOÀI repo (A36)")
     lots = ku_lots(kus)
+    default_model, default_effort = sandbox_model()
+    run_model, effort = run_model or default_model, effort or default_effort
     (d / "lo").mkdir(parents=True, exist_ok=True)
     (d / "out").mkdir(exist_ok=True)
     (d / "system.txt").write_text(SYSTEM + "\n", encoding="utf-8", newline="\n")

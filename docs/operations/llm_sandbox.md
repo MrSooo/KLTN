@@ -49,6 +49,35 @@ KLTN_TAP_CON=lldnn python -X utf8 -I utils/demo/qa_server.py hoi "<câu hỏi>" 
 ```
 Mỗi câu hỏi mới gọi `claude -p` hai lượt (dữ kiện, diễn giải); khoảng 10 đến 20 giây mỗi lượt, tốn hạn mức của tài khoản Claude Code. Kết quả lưu ở `data/processed[_subset]/demo/demo_cache.json`, hỏi lại cùng câu và ngày thì không gọi lại.
 
+## 3d. Chạy bằng API thay phiên Claude Code (A46, máy chủ ckey)
+Cùng các thư mục làm việc như trên, nhưng `src/sandbox_api.py` làm thay phiên Claude Code: gửi nguyên văn `system.txt` và `lo/NNN.json` tới vai `api` của `docs/llm_config.md` (hiện là `deepseek-v4.1-flash` qua `https://api.xah.io`), ghi `out/` và `nhat_ky.tsv`. Kiểm tra vẫn do `nhap` của từng bước làm. Kết quả là một **lần chạy riêng** `ckey`: cache theo văn bản có hậu tố `.ckey`, đầu ra ở `data/processed_ckey/`, báo cáo ở `docs/run_reports_ckey/`; kết quả Sonnet không bị đụng.
+
+**Setup (một lần).** Ở terminal riêng, không dán khoá vào chat: `setx CKEY_API_KEY "<khoá>"`. Terminal trong VS Code chỉ thấy biến sau khi thoát hẳn VS Code rồi mở lại; muốn dùng ngay trong terminal đang mở thì nạp từ registry, lệnh này không in khoá:
+```
+$env:CKEY_API_KEY = [Environment]::GetEnvironmentVariable("CKEY_API_KEY", "User")
+"do dai khoa: " + "$env:CKEY_API_KEY".Length
+```
+Không đặt `ANTHROPIC_BASE_URL` hay sửa `~/.claude/settings.json`: bộ chạy không dùng Claude Code.
+
+**Dựng KB gốc (giai đoạn 1, kho đầy đủ), PowerShell ở gốc repo.** Mọi lệnh sau trong cùng terminal có `$env:KLTN_LLM_RUN = "ckey"`; thư mục làm việc ở ngoài repo, chưa có hoặc rỗng.
+1. Dựng đầu ra của lần chạy (không gọi API): `python -I src/run_all.py --llm-run ckey --llm replay`.
+2. 1.6A:
+   ```
+   python -X utf8 -I src/propositions.py xuat <thư mục 1.6A> deepseek-v4.1-flash khong_co --tat-ca
+   python -X utf8 -I src/sandbox_api.py <thư mục 1.6A> --toi-da 60
+   python -X utf8 -I src/propositions.py nhap <thư mục 1.6A>
+   ```
+   Soát theo luật dừng A39 (câu dẫn lọt thành `menh_de`, lỗi cổng quá 5% số dòng thì dừng và báo), rồi chạy lại `sandbox_api.py` không có `--toi-da` và `nhap` lần nữa. Bỏ `--tat-ca` là bộ thí điểm 30 đơn vị (nhập vào `data/pilot_propositions/llm_output.ckey.json`).
+3. 1.6B (tuần tự, bộ chạy lái `tiep.py`): `python -X utf8 -I src/predicates.py --xuat <thư mục 1.6B>`, `python -X utf8 -I src/sandbox_api.py <thư mục 1.6B>`, `python -X utf8 -I src/predicates.py --nhap <thư mục 1.6B>`.
+4. 1.7: `python -X utf8 -I src/implicit_exceptions.py xuat <thư mục 1.7>`, `sandbox_api.py <thư mục 1.7>`, `implicit_exceptions.py nhap <thư mục 1.7>`.
+5. `python -I src/run_all.py --llm-run ckey --llm replay`: 1.8 biên dịch quy tắc từ kết quả trên; báo cáo ở `docs/run_reports_ckey/`.
+
+Tập con và giai đoạn 2 (2.6, 1.9): như mục 3b, thêm `$env:KLTN_TAP_CON = "lldnn"` và `run_all --tap-con lldnn --llm-run ckey --llm replay`; mỗi hộp cát chạy bằng `sandbox_api.py` thay cho phiên `claude -p`.
+
+**Bộ chạy.** Lô độc lập chạy song song 4 lượt (`--song-song K`); lô lỗi thì bỏ qua và báo, chạy lại lệnh là làm tiếp lô còn thiếu (lô đã xong đọc từ cache `data/llm_cache/sandbox_api/`, không tốn tiền). Ba lô lỗi liền nhau thì dừng (máy chủ có thể đang hỏng). Hộp cát tuần tự dừng ở lỗi đầu tiên và ở mọi dòng `DỪNG` của `tiep.py`. Hộp cát dựng cho model khác `api.model` bị từ chối trước khi gọi. Các dòng "đã bóc rào" là đầu ra bọc ` ```json ` đã được bóc (A46).
+
+**Giới hạn riêng.** Không kiểm chứng được model thật phía sau máy chủ; máy chủ chập chờn (ngày 19/11 gặp 503, 524, 502 rồi `404 The model is not available`). Không có effort. Lời nhắc được chỉnh trên Claude.
+
 ## 4. Giới hạn
 - Cách ly dựa vào hướng dẫn trong thư mục; thư mục cha vẫn đọc được nếu phiên cố tình.
 - Model và effort do phiên tự khai; effort không nằm trong khoá cache nên hai lần chạy khác effort mà cùng chữ thì `replay` không phân biệt.

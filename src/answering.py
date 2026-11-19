@@ -42,7 +42,7 @@ import textutil  # noqa: E402
 import versions  # noqa: E402
 
 PROMPT_VERSION = "hoi-dap-2"  # 2 (A44): ket_luan kèm vị từ chủ thể (canh của quy tắc); hoi-dap-1 không cho LLM biết φ cần chủ thể nào
-MODEL, EFFORT, ALIAS = "claude-sonnet-5-5", "high", "sonnet"  # như A39
+MODEL, EFFORT, ALIAS = implicit_exceptions.MODEL, implicit_exceptions.EFFORT, implicit_exceptions.ALIAS  # cùng hộp cát với 1.7 (khoá hop_cat.*, A46)
 LOT_SIZE = 5
 DIR_NAME = "answering"
 CACHE_DIR = corpus.ROOT / "data" / "llm_cache" / DIR_NAME
@@ -275,7 +275,7 @@ def load_questions(path):
 
 def cache_path(path):
     stem = Path(path).stem
-    return CACHE_DIR / (f"{stem}.{corpus.SUBSET}.json" if corpus.SUBSET else f"{stem}.json")
+    return CACHE_DIR / corpus.cache_name(stem)
 
 
 def lots(qs, vocab):

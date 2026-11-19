@@ -29,7 +29,8 @@ import parse  # noqa: E402
 import propositions as P  # noqa: E402
 
 PROMPT_VERSION = "ngoai-le-ngam-2"  # 2: kèm chữ các mục con (đơn vị câu dẫn như D53.K2 chỉ có "trong trường hợp sau đây:")
-MODEL, EFFORT, ALIAS = "claude-sonnet-5-5", "high", "sonnet"  # như A39
+MODEL, EFFORT = P.sandbox_model()  # A39 (Sonnet 5.5, high) qua khoá hop_cat.* của llm_config.md; lần chạy khác đè được (A46)
+ALIAS = P.ALIAS.get(MODEL, MODEL)
 LOT_SIZE = 10           # cặp mỗi lô
 PAIR_BUDGET = 400       # ngân sách cặp: vượt thì cảnh báo (bản cũ đo 108 cặp trên cả BLLĐ)
 KETQUA = {"a_ngoai_le_cua_b", "b_ngoai_le_cua_a", "khong"}
@@ -147,7 +148,7 @@ def lot_text(lot):
 
 
 def cache_path(doc_id):
-    return CACHE_DIR / (f"{doc_id}.{corpus.SUBSET}.json" if corpus.SUBSET else f"{doc_id}.json")
+    return CACHE_DIR / corpus.cache_name(doc_id)
 
 
 def xuat(thu_muc, doc_id=corpus.BASE_DOC_ID):
@@ -251,7 +252,7 @@ def nhap(thu_muc, doc_id=corpus.BASE_DOC_ID):
 # của bản parse và đầu vào trùng đầu vào đã hỏi.
 
 def ku_cache_path():
-    return CACHE_DIR / (f"ku_pairs.{corpus.SUBSET}.json" if corpus.SUBSET else "ku_pairs.json")
+    return CACHE_DIR / corpus.cache_name("ku_pairs")
 
 
 def _use_key(role, mode, cuc):

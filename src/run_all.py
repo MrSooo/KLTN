@@ -131,7 +131,14 @@ if __name__ == "__main__":
     ap.add_argument("--tests", action="store_true", help="thêm mọi tests/test_*.py")
     ap.add_argument("--llm", choices=("off", "replay", "live"), default="off", help="chế độ LLM cho 2.2 và 1.6 (xem đầu file); mặc định off")
     ap.add_argument("--tap-con", metavar="TÊN", help="chạy trên kho con data/subsets/<TÊN>.json (A41): dựng kho con trước, đầu ra ở data/processed_subset/<TÊN>/")
+    ap.add_argument("--llm-run", metavar="TÊN", help="lần chạy LLM khác (A46, ví dụ ckey): dùng khoá <TÊN>.* của llm_config.md và cache <doc>[.<tập con>].<TÊN>.json; "
+                                                   "đầu ra ở data/processed_<TÊN>/, báo cáo ở docs/run_reports_<TÊN>/")
     args = ap.parse_args()
+    if args.llm_run:
+        # Bộ test đọc đầu ra và báo cáo của lần chạy mặc định: chạy kèm lần chạy khác thì so nhầm bộ số, nên không cho ghép (như --tap-con).
+        if args.tests:
+            raise SystemExit("--tests chỉ chạy ở lần chạy LLM mặc định; bỏ --llm-run hoặc bỏ --tests")
+        os.environ["KLTN_LLM_RUN"] = args.llm_run
     if args.tap_con:
         # Bộ test viết cho kho đầy đủ (số đối chiếu, mốc), chạy trên kho con thì đỏ giả: không cho ghép hai cờ.
         if args.tests:

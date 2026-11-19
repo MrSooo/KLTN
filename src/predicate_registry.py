@@ -168,7 +168,8 @@ def xuat(d, partial=False):
     model = llm_client.load_config()[f"{Pd.ROLE}.model"]
     py = Path(sys.executable).as_posix()
     fill = lambda s: s.replace("@PY@", py).replace("@MODEL@", model).replace("@SUB@", Pd.SUBAGENT_MODEL).replace("@EFFORT@", Pd.EFFORT)  # noqa: E731
-    env = f"os.environ['KLTN_TAP_CON'] = {corpus.SUBSET!r}\n" if corpus.SUBSET else ""
+    # tiep.py chạy trong thư mục làm việc, không mang biến môi trường của người dựng: ghi cứng kho con và lần chạy LLM (A41, A46)
+    env = "".join(f"os.environ[{k!r}] = {v!r}\n" for k, v in (("KLTN_TAP_CON", corpus.SUBSET), ("KLTN_LLM_RUN", corpus.LLM_RUN)) if v)
     (d / "lo").mkdir(parents=True, exist_ok=True)
     (d / "out").mkdir()
     files = {"HUONG_DAN.md": fill(cn.HUONG_DAN), "system.txt": Pd.SYSTEM + "\n", "schema.json": json.dumps(Pd.SCHEMA, ensure_ascii=False, indent=1) + "\n",
