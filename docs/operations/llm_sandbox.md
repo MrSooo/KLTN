@@ -32,6 +32,14 @@
 
 Các dòng `DỪNG ...` mà `tiep.py` in là điều kiện dừng: model hoặc effort khai sai, đầu ra sai hình hai lần ở cùng lượt, `lo/` bị sửa, `system.txt` hay `schema.json` khác bản trong repo, hoặc lỗi dựng lượt (traceback ở `loi_tiep.txt`). Người vận hành xử lý, không để phiên tự sửa.
 
+## 3b. Bước 2.6 (A42): tri thức của văn bản nạp sau, theo thứ tự này
+Chạy ở gốc repo, kho con thì đặt `KLTN_TAP_CON=<tên>`; mọi lệnh trước đó cần `run_all --tap-con <tên> --llm replay` đã chạy (kho phiên bản, sổ gốc). Mỗi hộp cát mở bằng một phiên `claude -p "Đọc HUONG_DAN.md và làm theo." --model sonnet --effort high` trong chính thư mục đó (cho phép Read, Write, Edit, Agent, Glob; hộp cát 1.6B cần thêm Bash cho `tiep.py`).
+1. **1.6A cho KU chưa có:** `python -X utf8 -I src/update.py xuat-1-6a <thư mục> [N lô đầu]`, chạy phiên, rồi `... update.py nhap-1-6a <thư mục>`. Luật dừng A39: làm 60 lô đầu trước, nhập, soát (câu dẫn lọt thành `menh_de`, lỗi cổng quá 5% số dòng thì dừng và báo), rồi dựng hộp cát cho phần còn lại.
+2. **Sổ vị từ (một hộp cát cho cả chuỗi mốc, tuần tự):** chỉ dựng khi mọi KU đã có 1.6A (`xuat` từ chối nếu còn thiếu, vì lượt đổi khi có thêm dòng). `python -X utf8 -I src/predicate_registry.py --xuat <thư mục>`, phiên theo vòng `tiep.py` như 1.6B, rồi `--nhap <thư mục>`.
+3. **1.7 cho cặp chế độ tăng dần cần:** `... update.py xuat-1-7 <thư mục>`, phiên, `... update.py nhap-1-7 <thư mục>`.
+4. **1.9:** từ vựng đổi khi có quy tắc mới nên cả bộ câu hỏi phải hỏi lại: `... answering.py xuat <thư mục>`, phiên, `... answering.py nhap <thư mục>`.
+5. `run_all --tap-con <tên> --llm replay`: báo cáo `update_report.txt` in kết quả 2.7 và căn cứ chuẩn của bộ câu hỏi trong Π_τ.
+
 ## 4. Giới hạn
 - Cách ly dựa vào hướng dẫn trong thư mục; thư mục cha vẫn đọc được nếu phiên cố tình.
 - Model và effort do phiên tự khai; effort không nằm trong khoá cache nên hai lần chạy khác effort mà cùng chữ thì `replay` không phân biệt.

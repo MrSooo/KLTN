@@ -296,7 +296,41 @@ def checks(docs):
         if e["s"] not in ids and not e["s"].startswith("external:"):
             p.append(f"cạnh {e['p']} xuất phát từ mã không tồn tại {e['s']}")
     out.append(("2.3-2.4 phiên bản liên tiếp, khoảng hiệu lực không chồng, không mất nút, phiên bản 1 = chữ 1.1, không còn hiệu lực dưới cha đã đóng, cạnh hai đầu tồn tại", p))
+    # 2.6 (A42): R của chế độ tăng dần, kiểm chỉ từ versions.jsonl (không import update.py)
+    up = corpus.out_dir("update") / "update_rules.jsonl"
+    if up.exists():
+        out.append(("2.6 R: mọi đơn vị nguồn có phiên bản hiệu lực suốt khoảng của quy tắc; cùng một quy tắc không có hai khoảng chồng nhau",
+                    update_rules_problems(parse.read_jsonl(up), by)))
     return out
+
+
+def update_rules_problems(R, by):
+    """Kiểm độc lập R của 2.6. by: {mã đơn vị: [phiên bản]} của versions.jsonl. Một quy tắc dùng được trong [valid_from, valid_to) chỉ khi
+    mỗi đơn vị nguồn có phiên bản `normal` phủ liền cả khoảng đó; tính lại từ khoảng hiệu lực của phiên bản, không dùng mã của bước."""
+    p = []
+
+    def covered(uid, a, b):
+        spans = sorted((v["effective_from"], v["effective_to"]) for v in by.get(uid, []) if v["state"] == "normal" and v["effective_from"])
+        cur = a
+        for f, t in spans:
+            if f <= cur and (t is None or t > cur):
+                cur = t
+                if cur is None or (b is not None and cur >= b):
+                    return True
+        return False
+    for r in R:
+        for u in r["source_units"]:
+            if not covered(u, r["valid_from"], r["valid_to"]):
+                p.append(f"{r['id']}: đơn vị nguồn {u} không hiệu lực suốt [{r['valid_from']}, {r['valid_to']})")
+    same = collections.defaultdict(list)
+    for r in R:
+        same[json.dumps([r["id"], r["head"], r["body"], r.get("isolated")], ensure_ascii=False, sort_keys=True)].append((r["valid_from"], r["valid_to"] or "9999-12-31"))
+    for k, spans in same.items():
+        spans.sort()
+        for (a1, b1), (a2, _b2) in zip(spans, spans[1:]):
+            if a2 < b1:
+                p.append(f"{json.loads(k)[0]}: hai khoảng chồng nhau bắt đầu {a1} và {a2}")
+    return p
 
 
 def main():

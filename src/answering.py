@@ -75,7 +75,20 @@ def rule_docs():
     return sorted(p.name[len("rules_"):-len(".jsonl")] for p in d.glob("rules_*.jsonl") if not p.name.startswith("rules_isolated_"))
 
 
+def update_rules_path():
+    return corpus.out_dir("update") / "update_rules.jsonl"
+
+
 def load_rules():
+    """Quy tắc để dựng Π_τ. Có R của 2.6 (update.py: mọi văn bản, mỗi quy tắc có khoảng hiệu lực) thì đọc R; không thì quy tắc 1.8 của KB gốc
+    (giai đoạn 1, chọn theo phiên bản ở `in_force_rules`)."""
+    p = update_rules_path()
+    if p.exists():
+        out = parse.read_jsonl(p)
+        for r in out:
+            r["valid_from"] = datetime.date.fromisoformat(r["valid_from"])
+            r["valid_to"] = datetime.date.fromisoformat(r["valid_to"]) if r["valid_to"] else None
+        return out
     out = []
     for doc in rule_docs():
         out += parse.read_jsonl(corpus.out_dir(rules.DIR_NAME) / f"rules_{doc}.jsonl")
@@ -92,6 +105,9 @@ def gloss(atom, surface):
 def vocabulary(all_rules):
     """-> (từ vựng gửi LLM, tập tên vị từ, tập đầu). Đầu là atom dương của quy tắc (đầu mô tả có cực phủ định vẫn hỏi bằng atom dương)."""
     ledger = {}
+    reg = corpus.out_dir("predicate_registry") / "predicate_registry_names.json"
+    if update_rules_path().exists() and reg.exists():  # sổ chỉ thêm của 2.6: chữ Việt của tên là chữ của thành viên đầu (như sổ 1.6B)
+        ledger = dict(json.loads(reg.read_text(encoding="utf-8"))["surface"])
     for doc in rule_docs():
         for p in parse.read_jsonl(corpus.out_dir("predicates") / f"predicates_ledger_{doc}.jsonl"):
             ledger.setdefault(p["predicate"], p["surface"][0] if p["surface"] else p["predicate"])
@@ -115,7 +131,10 @@ def source_texts():
 
 
 def in_force_rules(all_rules, ver_rows, texts, tau):
-    """Π_τ (kể cả quy tắc bị cô lập; người gọi tách). Quy tắc dùng được khi mọi đơn vị nguồn có phiên bản hiệu lực tại τ với đúng chữ 1.6A."""
+    """Π_τ (kể cả quy tắc bị cô lập; người gọi tách). R của 2.6: quy tắc có khoảng hiệu lực chứa τ. Quy tắc 1.8 của KB gốc: dùng được khi
+    mọi đơn vị nguồn có phiên bản hiệu lực tại τ với đúng chữ 1.6A."""
+    if all_rules and "valid_from" in all_rules[0]:
+        return [r for r in all_rules if r["valid_from"] <= tau and (r["valid_to"] is None or tau < r["valid_to"])]
     live = collections.defaultdict(set)
     for v in ver_rows:
         if (v["state"] == "normal" and v["effective_from"] and v["effective_from"] <= tau
@@ -330,8 +349,7 @@ def run(qpath):
         for k in ("effective_from", "effective_to"):
             v[k] = datetime.date.fromisoformat(v[k]) if v[k] else None
     texts = source_texts()
-    iso_ids = {r["id"] for r in all_rules if r.get("isolated")}
-    rule_doc_ids = set(rule_docs())
+    rule_doc_ids = {r["unit"].split(".")[0] for r in all_rules} if update_rules_path().exists() else set(rule_docs())
     covered = {u for r in all_rules for u in r["source_units"]}
     results = []
     for q in load_questions(qpath):
@@ -351,9 +369,11 @@ def run(qpath):
             continue
         tau = datetime.date.fromisoformat(q["ngay"])
         rules_tau = in_force_rules(all_rules, ver_rows, texts, tau)
-        row["so_quy_tac_tau"] = sum(1 for r in rules_tau if r["id"] not in iso_ids)
-        with_llm = classify(item["phi"], item["su_kien"], rules_tau, iso_ids, llm_edges=True)
-        without = classify(item["phi"], item["su_kien"], rules_tau, iso_ids, llm_edges=False)
+        # R của 2.6 mang cờ cô lập theo từng khoảng (cùng mã có thể cô lập ở khoảng này, không ở khoảng khác): lấy cờ tại τ
+        iso_tau = {r["id"] for r in rules_tau if r.get("isolated")}
+        row["so_quy_tac_tau"] = sum(1 for r in rules_tau if r["id"] not in iso_tau)
+        with_llm = classify(item["phi"], item["su_kien"], rules_tau, iso_tau, llm_edges=True)
+        without = classify(item["phi"], item["su_kien"], rules_tau, iso_tau, llm_edges=False)
         row.update(with_llm, khong_canh_1_7=without["ket_qua"])
         results.append(row)
     d = corpus.out_dir(DIR_NAME)

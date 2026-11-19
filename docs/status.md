@@ -1,9 +1,9 @@
 # Trạng thái dự án
 
-Cập nhật lần cuối: 18/11/2026. Nhánh làm việc: `v3_refactor`.
+Cập nhật lần cuối: 19/11/2026. Nhánh làm việc: `v3_refactor`.
 
 ## 1. Tóm tắt
-Giai đoạn 1 (dựng KB gốc từ BLLĐ): các bước 1.1 đến 1.5 đã xong; 1.6B đến 1.9 đã có mã và chạy thông trên tập con `lldnn` (A41: `python -I src/run_all.py --tap-con lldnn --llm replay`); cả kho còn chờ chạy 1.6A đủ 204 lô. Giai đoạn 2 (cập nhật khi có văn bản mới): bước 2.2 đến 2.4 đã có mã cho kho hiện tại; 2.1 và 2.5 đến 2.7 chưa làm. Thiết kế từng bước: `docs/design/pipeline_design.md`. Kế hoạch tiếp theo: `docs/roadmap.md`.
+Giai đoạn 1 (dựng KB gốc từ BLLĐ): các bước 1.1 đến 1.5 đã xong; 1.6B đến 1.9 đã có mã và chạy thông trên tập con `lldnn` (A41: `python -I src/run_all.py --tap-con lldnn --llm replay`); cả kho còn chờ chạy 1.6A đủ 204 lô. Giai đoạn 2 (cập nhật khi có văn bản mới): bước 2.2 đến 2.4 đã có mã cho kho hiện tại; 2.5 đến 2.7 có mã và chạy thông trên tập con với tri thức BLLĐ (A42), tri thức của nghị định chờ phiên LLM; 2.1 chưa làm. Thiết kế từng bước: `docs/design/pipeline_design.md`. Kế hoạch tiếp theo: `docs/roadmap.md`.
 
 Kiểm ngày 15/11/2026 (sau khi chuẩn hoá tên và xoá thư mục lưu trữ v1): `python -I src/run_all.py --llm off --viewer --tests` rồi `--llm replay --viewer --tests`, cả hai thoát mã 0, 14/14 bước, 10 bộ test OK. Chương trình không in tổng số test. Đầu ra dữ liệu giống hệt trước khi đổi tên, trừ các nhãn chữ (xem `docs/decisions.md`, A40).
 
@@ -24,6 +24,9 @@ Kiểm ngày 15/11/2026 (sau khi chuẩn hoá tên và xoá thư mục lưu tr�
 | 2.2 Nối văn bản | `links.py` | xong cho kho hiện tại | có LLM (Gemini, hai model độc lập kiểm chéo) |
 | 2.3 Đọc chỉ thị | `directives.py`, `directives_rare.py` | xong cho kho hiện tại | 26 loại, bảng ở `docs/reference/directive_types.md` |
 | 2.4 Áp phiên bản | `versions.py` | xong cho kho hiện tại | 9.217 đơn vị, 9.343 phiên bản (đo 09/11) |
+| 2.5 Tập ảnh hưởng | `affected.py` | có mã | N một bước qua 6 quan hệ (A42) |
+| 2.6 Trích lại theo A(e) | `update.py`, `predicate_registry.py`, `knowledge_units.py` | có mã, chờ LLM | 390 KU của tập con chưa có 1.6A; 1.6B, 1.7, 1.9 chạy sau (A42) |
+| 2.7 Đối chứng | `update.py` | có mã | đạt trên tập con (tri thức BLLĐ); test tổng hợp trượt khi cắt N |
 | checks, graph, viewer | `checks.py`, `graph.py`, `utils/viewer/` | xong | đồ thị 9.364 nút, 2.721 cạnh |
 
 ## 3. Việc đang dở: chạy 204 lô của bước 1.6A

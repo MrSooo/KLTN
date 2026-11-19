@@ -53,9 +53,9 @@ Khuôn **cạnh** chung cho mọi bước tạo cạnh (A12): `{s, p, o, evidenc
 | 2.2 | Nối vào KB: quan hệ chờ đích, `based_on`, `details` (văn bản không nêu số Điều thì LLM chọn trong Δ; giữ khi model thứ hai cùng chọn và từ khoá phạm vi có trong Điều đích) | `links.py` | xong cho kho hiện tại |
 | 2.3 | Đọc chỉ thị: regex trước; câu lạ thì báo lỗi, không đoán | `directives.py`, `directives_rare.py` | xong cho kho hiện tại; bảng loại ở `docs/reference/directive_types.md` |
 | 2.4 | Áp chỉ thị lên phiên bản: đóng phiên bản cũ, mở phiên bản mới, không xoá nút | `versions.py` | xong cho kho hiện tại |
-| 2.5 | Tính tập ảnh hưởng A(d) = T(d) ∪ N(T(d)) | chưa có | chưa thiết kế |
-| 2.6 | Trích lại mệnh đề, vị từ, ngoại lệ ngầm, quy tắc cho A(d); quét lỗi | chưa có | chưa thiết kế |
-| 2.7 | Đối chứng: chạy tăng dần và dựng lại toàn bộ phải ra cùng Π_τ tại cùng ngày | chưa có | chưa thiết kế |
+| 2.5 | Tính tập ảnh hưởng A(e) = T(e) ∪ N(T(e)) theo từng mốc của kho phiên bản; N một bước | `affected.py` | có mã, chạy trên tập con (A42; `steps_2_5_to_2_7.md`) |
+| 2.6 | Trích lại mệnh đề, vị từ, ngoại lệ ngầm, quy tắc cho A(e); quét lỗi | `update.py`, `predicate_registry.py`, `knowledge_units.py` | có mã; tri thức của nghị định chờ phiên LLM (A42) |
+| 2.7 | Đối chứng: chạy tăng dần và dựng lại toàn bộ phải ra cùng Π_τ tại cùng ngày | `update.py` | có mã; đạt trên tập con với tri thức BLLĐ; test tổng hợp trượt đúng khi cắt N (A42) |
 
 Công cụ phụ: `checks.py` (kiểm tra độc lập), `graph.py` (đồ thị gộp, mỗi nút có khoảng hiệu lực), `utils/viewer/` (trang HTML xem đồ thị theo ngày, mở offline).
 
@@ -74,6 +74,6 @@ Mẫu hoàn chỉnh: bước 1.1 đến 1.5 ở `docs/design/steps_1_1_to_1_5.md
 1. **Điều khoản giao chưa có văn bản lấp** (ví dụ Điều 154 khoản 9 giao cho Chính phủ): nếu suy luận kiểu "không chứng minh được thì coi là sai", KB chỉ có BLLĐ sẽ trả "phải có giấy phép lao động" dù đáp án trung thực là "chưa đủ căn cứ". Cần quyết cách để Δ ảnh hưởng tới suy luận.
 2. **Câu hỏi cổng của giai đoạn 1**: ví dụ giấy phép lao động 45 ngày cần ND_152 và ND_219 nên không dùng được khi KB chỉ có BLLĐ. Cần chọn câu hỏi đo giai đoạn 1.
 3. **Bước 2.3 có còn cần nhãn `effect_transition` của 1.4 không**, hay chỉ cần regex trên động từ chỉ thị. Mã hiện tại chỉ tìm chỉ thị trong Điều mang nhãn này.
-4. **Số bước lan truyền của N(·)** trong tập ảnh hưởng (Method đang ghi cần xác minh).
+4. **Số bước lan truyền của N(·)**: chốt một bước (A42); 2.7 đo có đủ không.
 5. **Thứ tự mục của Method:** Method xếp cập nhật (3.4) trước tri thức (3.5), thứ tự dựng thì ngược lại.
 6. **Tám Điều lệch giữa BLLĐ và VBHN_125:** mã hiện tại xử lý qua cờ `consolidation_discrepancy` (xem `docs/decisions.md`, mục Versions); VBHN_125 nay là văn bản nạp thường nên cần bàn lại ở giai đoạn 2.

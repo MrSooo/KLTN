@@ -245,6 +245,150 @@ def nhap(thu_muc, doc_id=corpus.BASE_DOC_ID):
         print(f"  lô {n:03d} KHÔNG nhận: {why}")
 
 
+# ---- 2.6 (A42): cặp theo đơn vị tri thức (KU) trên một ảnh chụp ----
+# Cache mới khoá theo CẶP KU (`<ku a>|<ku b>`) kèm sha1 của đầu vào cặp (hai payload và vị từ chung), không theo số thứ tự cặp: danh sách cặp
+# đổi theo từng mốc nên số thứ tự trỏ sang cặp khác. Câu trả lời của KB gốc (cache theo số thứ tự, có a, b) vẫn dùng được khi cặp là hai KU
+# của bản parse và đầu vào trùng đầu vào đã hỏi.
+
+def ku_cache_path():
+    return CACHE_DIR / (f"ku_pairs.{corpus.SUBSET}.json" if corpus.SUBSET else "ku_pairs.json")
+
+
+def snapshot_pairs(kn, live, kinds, order):
+    """Như `build_pairs` trên một ảnh chụp: live {uid: KU}, kinds = loại theo sổ tại ảnh chụp. -> [(uid a, uid b, [vị từ chung])]."""
+    units_of, use = collections.defaultdict(set), collections.defaultdict(set)
+    for uid, ku in live.items():
+        for r in kn.rows(ku):
+            if r.get("predicate") and r["loai"] == "menh_de" and kinds.get(r["predicate"]) == "concept":
+                units_of[r["predicate"]].add(uid)
+                use[(uid, r["predicate"])].add((r["role"], r["mode"], r["cuc"]))
+    shared = collections.defaultdict(set)
+    for name, us in units_of.items():
+        us = sorted(us, key=order.get)
+        for i, a in enumerate(us):
+            for b in us[i + 1:]:
+                if a in ancestors_or_self(b) or b in ancestors_or_self(a):
+                    continue
+                ua, ub = use[(a, name)], use[(b, name)]
+                if ua == ub and all(x[0] == "ket_luan" for x in ua):
+                    continue
+                shared[(a, b)].add(name)
+    known = kn.exc15_unit_edges()
+    return [(a, b, sorted(shared[(a, b)])) for (a, b) in sorted(shared, key=lambda k: (order[k[0]], order[k[1]]))
+            if (a, b) not in known and (b, a) not in known]
+
+
+def pair_payload(pair, ctxs):
+    a, b, names = pair
+    return {"a": _unit_payload(a, ctxs), "b": _unit_payload(b, ctxs), "vi_tu_chung": names}
+
+
+def payload_sha(payload):
+    import hashlib
+    return hashlib.sha1(json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+
+
+class PairAnswers:
+    """Tra câu trả lời 1.7 của một cặp KU: cache theo cặp KU trước, rồi cache của KB gốc (đúng đầu vào)."""
+
+    def __init__(self):
+        p = ku_cache_path()
+        self.ku = json.loads(p.read_text(encoding="utf-8"))["answers"] if p.exists() else {}
+        bp = cache_path(corpus.BASE_DOC_ID)
+        self.base = {}
+        if bp.exists():
+            data = json.loads(bp.read_text(encoding="utf-8"))
+            if data.get("prompt_version") == PROMPT_VERSION:
+                self.base = {(it["a"], it["b"]): it for it in data["answers"].values()}
+        self._base_ctxs = None
+
+    def get(self, ka, kb, pair, ctxs):
+        payload = pair_payload(pair, ctxs)
+        sha = payload_sha(payload)
+        it = self.ku.get(f"{ka}|{kb}")
+        if it is not None and it.get("sha") == sha:
+            return it
+        it = self.base.get((ka, kb))
+        if it is not None:
+            if self._base_ctxs is None:
+                self._base_ctxs = P.contexts(corpus.BASE_DOC_ID)
+            if all(u in self._base_ctxs for u in (ka, kb)) and payload_sha(pair_payload(pair, self._base_ctxs)) == sha:
+                return it
+        return None
+
+
+def ku_xuat(thu_muc, needed):
+    """needed: [(ka, kb, pair, payload)] chưa có câu trả lời. Lô như `lots`, cau_hinh.json ghi cặp KU và payload từng cap_id để nhập."""
+    d = Path(thu_muc)
+    if d.exists() and any(d.iterdir()):
+        raise SystemExit(f"{d} đã có nội dung, không ghi đè")
+    root = corpus.ROOT.resolve()
+    if d.resolve() == root or root in d.resolve().parents:
+        raise SystemExit(f"{d} nằm trong repo; thư mục làm việc phải ở NGOÀI repo (A36)")
+    lots_ = []
+    for k in range(0, len(needed), LOT_SIZE):
+        lots_.append({"cap": [dict({"cap_id": f"P{k + i:04d}"}, **payload) for i, (_a, _b, _pair, payload) in enumerate(needed[k:k + LOT_SIZE])]})
+    (d / "lo").mkdir(parents=True, exist_ok=True)
+    (d / "out").mkdir()
+    (d / "system.txt").write_text(SYSTEM + "\n", encoding="utf-8", newline="\n")
+    for i, lot in enumerate(lots_, 1):
+        (d / "lo" / f"{i:03d}.json").write_text(lot_text(lot), encoding="utf-8", newline="\n")
+    (d / "HUONG_DAN.md").write_text(HUONG_DAN.replace("@N@", f"{len(lots_):03d}").replace("@MODEL@", MODEL).replace("@ALIAS@", ALIAS).replace("@EFFORT@", EFFORT),
+                                    encoding="utf-8", newline="\n")
+    pairs = {f"P{i:04d}": {"ka": ka, "kb": kb, "payload": payload} for i, (ka, kb, _pair, payload) in enumerate(needed)}
+    (d / "cau_hinh.json").write_text(json.dumps({"model": MODEL, "effort": EFFORT, "prompt_version": PROMPT_VERSION, "tap_con": corpus.SUBSET, "pham_vi": "ku",
+                                                "pairs": pairs}, ensure_ascii=False) + "\n", encoding="utf-8")
+    return f"đã dựng {d}: {len(lots_)} lô, {len(needed)} cặp KU"
+
+
+def ku_nhap(thu_muc):
+    """THÊM câu trả lời vào cache cặp KU (khoá cặp KU, kèm sha của payload đã hỏi). Cặp đã có cùng sha mà khác trả lời thì DỪNG."""
+    d = Path(thu_muc)
+    cfg = json.loads((d / "cau_hinh.json").read_text(encoding="utf-8"))
+    if cfg.get("pham_vi") != "ku" or cfg.get("tap_con") != corpus.SUBSET or cfg.get("prompt_version") != PROMPT_VERSION \
+            or (d / "system.txt").read_text(encoding="utf-8") != SYSTEM + "\n":
+        raise SystemExit("hộp cát không phải hộp cát cặp KU, hoặc dựng với tập con / lời nhắc khác: không nhập")
+    log = {int(p[0]): p[1].strip() for p in (line.split("\t") for line in (d / "nhat_ky.tsv").read_text(encoding="utf-8").splitlines())
+           if len(p) >= 2 and p[0].strip().isdigit()} if (d / "nhat_ky.tsv").exists() else {}
+    ids = sorted(cfg["pairs"])
+    new, bad = {}, []
+    for n, k in enumerate(range(0, len(ids), LOT_SIZE), 1):
+        chunk = ids[k:k + LOT_SIZE]
+        lot = {"cap": [dict({"cap_id": c}, **cfg["pairs"][c]["payload"]) for c in chunk]}
+        f = d / "out" / f"{n:03d}.json"
+        if (d / "lo" / f"{n:03d}.json").read_text(encoding="utf-8") != lot_text(lot):
+            bad.append((n, "lo/ khác cau_hinh.json"))
+            continue
+        if not f.exists() or log.get(n) != MODEL:
+            bad.append((n, f"chưa có out hoặc nhat_ky báo {log.get(n)!r}"))
+            continue
+        try:
+            items = {it["cap_id"]: it for it in json.loads(f.read_text(encoding="utf-8"))["cap"]}
+        except (ValueError, KeyError, TypeError) as e:
+            bad.append((n, f"sai hình: {e}"))
+            continue
+        if set(items) != set(chunk):
+            bad.append((n, f"cap_id lệch: {sorted(set(chunk) ^ set(items))}"))
+            continue
+        for c in chunk:
+            meta = cfg["pairs"][c]
+            new[f"{meta['ka']}|{meta['kb']}"] = {"ket_qua": items[c].get("ket_qua"), "bang_chung": items[c].get("bang_chung"),
+                                                  "a": meta["payload"]["a"]["unit_id"], "b": meta["payload"]["b"]["unit_id"], "sha": payload_sha(meta["payload"])}
+    p = ku_cache_path()
+    data = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {"prompt_version": PROMPT_VERSION, "model": MODEL, "effort": EFFORT, "answers": {}}
+    for key, it in new.items():
+        old = data["answers"].get(key)
+        if old is not None and old["sha"] == it["sha"] and (old["ket_qua"], old.get("bang_chung")) != (it["ket_qua"], it.get("bang_chung")):
+            raise SystemExit(f"DỪNG: cặp {key} đã có trả lời khác cho cùng đầu vào; không ghi gì")
+        data["answers"][key] = it if old is None or old["sha"] != it["sha"] else old
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(data, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+    print(f"ghi {p}: thêm {len(new)} cặp")
+    for n, why in bad:
+        print(f"  lô {n:03d} KHÔNG nhận: {why}")
+    return bad
+
+
 def run(doc_id=corpus.BASE_DOC_ID):
     if not P.full_cache_path().exists():  # kho chưa chạy 1.6A (kho đầy đủ trước lần chạy cả kho): báo rõ, không coi là lỗi của chuỗi
         print(f"BỎ QUA 1.7: chưa có kết quả 1.6A {P.full_cache_path()}")

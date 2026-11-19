@@ -40,7 +40,7 @@ LLM_SCRIPTS = ("src/links.py", "src/concepts.py")  # hai bước này nhận --l
 NAMES_SCRIPT = "src/concepts_names.py"
 # Bản viết lại 1.6B-1.8 (A41): phần LLM làm bằng phiên Claude Code ngoài repo, run_all chỉ đọc cache (off giữ off, replay và live thành replay).
 # Kho chưa có kết quả 1.6A (kho đầy đủ trước lần chạy cả kho) thì ba bước tự in "BỎ QUA" và thoát 0; chạy thật trên tập con: --tap-con lldnn.
-SANDBOX_SCRIPTS = (NAMES_SCRIPT, "src/predicates.py")
+SANDBOX_SCRIPTS = (NAMES_SCRIPT, "src/predicates.py", "src/predicate_registry.py")
 
 STEPS = [
     ("1.1 tách cấu trúc văn bản", ["src/parse.py", "--all"]),
@@ -56,6 +56,10 @@ STEPS = [
     ("1.3 điều khoản giao chi tiết", ["src/delegation.py"]),
     ("2.2 nối văn bản: based_on, details", ["src/links.py"]),
     ("2.3-2.4 phiên bản theo ngày hiệu lực", ["src/versions.py"]),
+    # Giai đoạn 2 của tầng tri thức (A42): sổ vị từ chỉ thêm qua các mốc, rồi tập ảnh hưởng, R tăng dần và đối chứng dựng lại toàn bộ.
+    # Kho chưa có 1.6A thì cả hai in "BỎ QUA". update.py thoát 1 khi 2.7 trượt.
+    ("2.6 sổ vị từ chỉ thêm (A42)", ["src/predicate_registry.py"]),
+    ("2.5-2.7 tập ảnh hưởng, cập nhật, đối chứng (A42)", ["src/update.py"]),
     ("1.9 hỏi đáp theo ngày (A41)", ["src/answering.py"]),  # cần phiên bản (2.3-2.4) để dựng Π_τ; chỉ đọc cache LLM
     ("checks: kiểm tra độc lập", ["src/checks.py"]),
     ("graph: đồ thị gộp", ["src/graph.py"]),

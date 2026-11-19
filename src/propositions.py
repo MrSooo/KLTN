@@ -326,6 +326,137 @@ def full_cache_path():
     return FULL_OUT / (f"{corpus.BASE_DOC_ID}.{corpus.SUBSET}.json" if corpus.SUBSET else f"{corpus.BASE_DOC_ID}.json")
 
 
+# ---- 2.6 (A42): 1.6A theo đơn vị tri thức (KU, knowledge_units.py) ----
+# KU của bản parse BLLĐ mang mã `uid`, nên cache 1.6A của KB gốc (full_cache_path) dùng nguyên. Mọi KU nhập ở 2.6 ghi vào thư mục riêng
+# `ku/<doc>[.<tập con>].json`, KHÔNG vào file của KB gốc: 1.6B, 1.7, 1.8 của giai đoạn 1 đọc cả file đó như danh sách đơn vị của BLLĐ (mã lạ
+# như `D154.K8a@h...` làm hỏng thứ tự), và `nhap --tat-ca` ghi đè cả file. Nhập chỉ THÊM: KU đã có mà dòng khác thì dừng.
+
+KU_DIR = FULL_OUT / "ku"
+
+
+def ku_cache_path(doc_id):
+    return KU_DIR / (f"{doc_id}.{corpus.SUBSET}.json" if corpus.SUBSET else f"{doc_id}.json")
+
+
+def load_ku_cache():
+    """{mã KU: {dong, loi, co}}: cache 1.6A của KB gốc (khoá `uid`) cộng mọi file `ku/` của kho đang chạy (đúng tập con)."""
+    paths = [full_cache_path()] if full_cache_path().exists() else []
+    for p in sorted(KU_DIR.glob("*.json")):
+        _doc, _, sub = p.name[:-len(".json")].partition(".")
+        if (sub or None) == corpus.SUBSET:
+            paths.append(p)
+    out = {}
+    for p in paths:
+        data = json.loads(p.read_text(encoding="utf-8"))
+        if data.get("prompt_version") != PROMPT_VERSION:
+            raise SystemExit(f"{p} là của lời nhắc {data.get('prompt_version')!r}, code đang ở {PROMPT_VERSION!r}")
+        for k, v in data["units"].items():
+            if k in out and out[k]["dong"] != v["dong"]:
+                raise SystemExit(f"{k} có hai bản 1.6A khác nhau ({p.name})")
+            out.setdefault(k, v)
+    return out
+
+
+def ku_lots(kus):
+    """Lô cho các KU (thứ tự cho sẵn): mỗi lô các KU của MỘT Điều cùng mốc xuất hiện đầu (một đơn vị một lần trong lô, vì LLM thấy `uid`),
+    Điều dài thì cắt theo C.BATCH_SIZE như 1.6A cũ."""
+    groups = {}
+    for k in kus:
+        groups.setdefault((C.dieu_of(k["unit"]), k["first"]), []).append(k)
+    return [g[i:i + C.BATCH_SIZE] for g in groups.values() for i in range(0, len(g), C.BATCH_SIZE)]
+
+
+def ku_xuat(thu_muc, kus, run_model="claude-sonnet-5-5", effort="high", khoi=20):
+    """Dựng hộp cát 1.6A cho các KU chưa có trong cache (người gọi lọc). cau_hinh.json ghi danh sách mã KU từng lô để nhập đối chiếu."""
+    d = pathlib.Path(thu_muc)
+    if d.exists() and any(d.iterdir()):
+        raise SystemExit(f"{d} đã có nội dung, không ghi đè")
+    root = corpus.ROOT.resolve()
+    if d.resolve() == root or root in d.resolve().parents:
+        raise SystemExit(f"{d} nằm trong repo; thư mục làm việc phải ở NGOÀI repo (A36)")
+    lots = ku_lots(kus)
+    (d / "lo").mkdir(parents=True, exist_ok=True)
+    (d / "out").mkdir(exist_ok=True)
+    (d / "system.txt").write_text(SYSTEM + "\n", encoding="utf-8", newline="\n")
+    for i, lot in enumerate(lots, 1):
+        (d / "lo" / f"{i:03d}.json").write_text(user_message([k["ctx"] for k in lot]) + "\n", encoding="utf-8", newline="\n")
+    (d / "HUONG_DAN.md").write_text(HUONG_DAN.replace("@MODEL@", run_model).replace("@ALIAS@", ALIAS.get(run_model, run_model)).replace("@EFFORT@", effort)
+                                    .replace("@KHOI@", str(khoi)).replace("@N@", f"{len(lots):03d}"), encoding="utf-8", newline="\n")
+    (d / "cau_hinh.json").write_text(json.dumps({"model": run_model, "effort": effort, "prompt_version": PROMPT_VERSION, "pham_vi": "ku", "khoi": khoi,
+                                                "tap_con": corpus.SUBSET, "lots": [[k["ku"] for k in lot] for lot in lots]}) + "\n", encoding="utf-8")
+    return f"đã dựng {d}: {len(lots)} lô, {sum(map(len, lots))} KU, model {run_model}, effort {effort}, lời nhắc {PROMPT_VERSION}"
+
+
+def ku_nhap(thu_muc, catalog_kus):
+    """Kiểm từng lô (đầu vào trùng từng byte với KU hiện tại, nhật ký đúng model, hình, cổng) rồi THÊM vào file KU của từng văn bản.
+    KU đã có trong cache: cùng dòng thì bỏ qua, khác dòng thì DỪNG, không ghi gì. -> danh sách (lô, lý do) không nhận."""
+    d = pathlib.Path(thu_muc)
+    cfg = sandbox_config(d)
+    if cfg.get("pham_vi") != "ku" or cfg.get("prompt_version") != PROMPT_VERSION or (d / "system.txt").read_text(encoding="utf-8") != SYSTEM + "\n":
+        raise SystemExit("hộp cát không phải hộp cát KU hoặc dựng với lời nhắc khác code: không nhập")
+    if cfg.get("tap_con") != corpus.SUBSET:
+        raise SystemExit(f"hộp cát dựng với tập con {cfg.get('tap_con')!r}, đang chạy với {corpus.SUBSET!r}: không nhập")
+    log = {}
+    if (d / "nhat_ky.tsv").exists():
+        for line in (d / "nhat_ky.tsv").read_text(encoding="utf-8").splitlines():
+            p = [x.strip() for x in line.split("\t")]
+            if len(p) >= 2 and p[0].isdigit():
+                log[int(p[0])] = p[1]
+    new, bad_lot = {}, []
+    for n, ids in enumerate(cfg["lots"], 1):
+        missing = [k for k in ids if k not in catalog_kus]
+        if missing:
+            bad_lot.append((n, f"KU không còn trong kho: {missing[:3]}"))
+            continue
+        lot = [catalog_kus[k] for k in ids]
+        f = d / "out" / f"{n:03d}.json"
+        if not f.exists():
+            bad_lot.append((n, "chưa có file"))
+            continue
+        if (d / "lo" / f"{n:03d}.json").read_text(encoding="utf-8") != user_message([k["ctx"] for k in lot]) + "\n":
+            bad_lot.append((n, "lo/ khác đầu vào hiện tại"))
+            continue
+        if log.get(n) != cfg["model"]:
+            bad_lot.append((n, f"nhat_ky báo {log.get(n)!r}, cần {cfg['model']}"))
+            continue
+        try:
+            items = {it["unit_id"]: it["dong"] for it in json.loads(f.read_text(encoding="utf-8"))["units"]}
+        except (ValueError, KeyError, TypeError) as e:
+            bad_lot.append((n, f"sai hình: {e}"))
+            continue
+        want = {k["unit"]: k for k in lot}
+        if set(items) != set(want):
+            bad_lot.append((n, f"unit_id lệch: thiếu {sorted(set(want) - set(items))}, thừa {sorted(set(items) - set(want))}"))
+            continue
+        for uid, rows in items.items():
+            rows = normalize(rows)
+            err, flag = gate_unit(want[uid]["ctx"], rows)
+            new[want[uid]["ku"]] = (want[uid]["doc"], {"dong": rows, "loi": [[i, m] for i, m in err], "co": [[i, m] for i, m in flag]})
+    by_doc = {}
+    for ku, (doc, entry) in new.items():
+        by_doc.setdefault(doc, {})[ku] = entry
+    files = {}
+    for doc, entries in by_doc.items():
+        p = ku_cache_path(doc)
+        data = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {"prompt_version": PROMPT_VERSION, "model": cfg["model"], "effort": cfg["effort"], "units": {}}
+        if data["prompt_version"] != PROMPT_VERSION or data["model"] != cfg["model"]:
+            raise SystemExit(f"{p}: lời nhắc hoặc model khác hộp cát; không nhập")
+        for ku, entry in entries.items():
+            old = data["units"].get(ku)
+            if old is not None and old["dong"] != entry["dong"]:
+                raise SystemExit(f"DỪNG: {ku} đã có trong {p.name} với dòng khác; không ghi gì")
+            data["units"].setdefault(ku, entry)
+        files[p] = data
+    for p, data in files.items():
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    n_err = sum(len(e["loi"]) for _, e in new.values())
+    print(f"nhập {len(new)} KU vào {sorted(p.name for p in files)}; {sum(len(e['dong']) for _, e in new.values())} dòng, {n_err} lỗi cổng")
+    for n, why in bad_lot:
+        print(f"  lô {n:03d} KHÔNG nhận: {why}")
+    return bad_lot
+
+
 def lots_for(pham_vi, ctxs):
     """thi_diem: 30 đơn vị, một lô mỗi Điều; tat_ca: mọi đơn vị 1.6A, chia lô đúng như 1.6A cũ (concepts.make_batches:
     một Điều mỗi lô, Điều dài tách lô), để số lô và ranh giới lô so được với bản cũ."""
