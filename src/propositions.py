@@ -133,7 +133,22 @@ def _apply(text, edits):
     return text
 
 
+# ---- menh-de-5 (A50, lần chạy ckey2): menh-de-4 cộng hai chỗ sửa ở luật 5 (câu dẫn). [THÊM] cả hai, do agent viết khi chủ đề tài vắng.
+# Lỗi nhắm tới (đo ở lần chạy ckey, tập con lldnn): "phải đáp ứng các điều kiện sau đây" (D151.K1) bị đọc thành danh sách ĐIỀU KIỆN vì có chữ
+# "điều kiện", nên "có giấy phép lao động" thành dieu_kien thay vì ket_luan; 8/15 câu dev sai theo. Và câu dẫn "... như sau", "gồm ..." lọt
+# thành menh_de (NĐ 145 Đ28). Ví dụ lấy từ D145.K1 và D63.K2, D107.K2 (ngoài 16 Điều của tập con) để không dạy đáp án của bộ dev.
+_M5 = [
+    # a: danh sách yêu cầu phải đáp ứng là TÂN NGỮ dù có chữ "điều kiện"; phân biệt với danh sách làm hoàn cảnh cho một hành vi khác
+    ("mục con là dieu_kien. cac_muc_con",
+     "mục con là dieu_kien. Phân biệt theo VAI của danh sách, không theo chữ \"điều kiện\": \"phải đáp ứng / phải có đủ / phải tuân theo các điều kiện, yêu cầu, quy định sau đây\" là TÂN NGỮ của nghĩa vụ (mục con là ket_luan, kế thừa chủ thể và phương thức phai); danh sách chỉ là ĐIỀU KIỆN khi nó là hoàn cảnh cho một hành vi khác nêu trong câu dẫn (\"phải tổ chức đối thoại ... trong trường hợp sau đây\", \"được sử dụng người lao động làm thêm giờ khi đáp ứng đầy đủ các yêu cầu sau đây\"). Phần chữ dẫn vào danh sách (\"... sau đây:\", \"... như sau:\", \"gồm:\") luôn là bo_qua cau_dan, không bao giờ nằm trong menh_de. cac_muc_con"),
+    # b: ví dụ nhánh TÂN NGỮ có chữ "quy định sau đây" (D145.K1.b), cộng dòng tự kiểm
+    ("\n## Tự kiểm trước khi trả\n",
+     "Danh sách TÂN NGỮ có chữ \"quy định\": khoan_cha \"Khi sử dụng người chưa đủ 15 tuổi làm việc, người sử dụng lao động phải tuân theo quy định sau đây:\", chữ \"Bố trí giờ làm việc không ảnh hưởng đến thời gian học tập của người chưa đủ 15 tuổi;\" → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"bố trí giờ làm việc không ảnh hưởng đến thời gian học tập của người chưa đủ 15 tuổi\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\",\"nguon\":\"cau_dan\"},\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"trich\":[\"người sử dụng lao động phải tuân theo\",\"Bố trí giờ làm việc không ảnh hưởng đến thời gian học tập của người chưa đủ 15 tuổi\"],\"quy_tac\":\"q1\"}\n"
+     "\n## Tự kiểm trước khi trả\n- Mục con của câu dẫn \"phải đáp ứng / phải có đủ / phải tuân theo ... sau đây\" là ket_luan phai, không phải dieu_kien; không menh_de nào chứa \"sau đây\", \"như sau\", \"gồm\".\n"),
+]
+
 PROMPTS = {"menh-de-3": SYSTEM_3, "menh-de-4": _apply(SYSTEM_3, _M4)}
+PROMPTS["menh-de-5"] = _apply(PROMPTS["menh-de-4"], _M5)
 SYSTEM = PROMPTS[PROMPT_VERSION]
 
 SCHEMA = {"units": [{"unit_id": "string", "dong": [{f: "xem system.txt" for f in FIELDS + (LLM_REASON,)}]}]}

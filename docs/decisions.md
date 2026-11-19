@@ -1,12 +1,12 @@
 # Sổ quyết định
 
-Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A49) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
+Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A50) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
 
 Quy ước ghi: mỗi mục gồm **Quyết định**, **Lý do** và **Cái giá hoặc chỗ chưa kiểm** khi có. Chỗ lệch so với kế hoạch ban đầu hoặc so với mã cũ được nêu rõ. Số đo ghi kèm ngày đo và phạm vi (BLLĐ là Bộ luật Lao động 45/2019; "kho" là cả 18 văn bản trong `data/raw/labor/`).
 
 Các mục A9, A10, A18, A19, A20, A28 là quy trình làm việc nội bộ giữa các phiên và không còn hiệu lực sau khi tài liệu được chuẩn hoá (A40); mã của chúng được giữ trống để các tham chiếu không đổi.
 
-Bố cục: **Phần I** quyết định về pipeline (A1 đến A49); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
+Bố cục: **Phần I** quyết định về pipeline (A1 đến A50); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
 
 ---
 
@@ -324,6 +324,14 @@ Danh sách còn hiệu lực nằm ở `docs/status.md` (mục Nợ kỹ thuật
 **Quyết định.** `predicate_registry.group_by_dieu`: thứ tự đơn vị của một mốc là lần gặp đầu nhưng gom các đơn vị cùng Điều liền nhau (Điều đứng ở chỗ gặp đầu của nó); `ChainRun._open` sắp ổn định các dòng mới theo thứ tự đó trước `build_words`. Phép kiểm của `make_rounds` giữ nguyên. Không sắp theo thứ tự văn bản vì cách đó có thể đổi thứ tự Điều ở mốc vốn đã liền và làm trượt khoá các lượt đã lưu.
 **Kiểm chứng (20/11).** `tests/test_update.py` thêm 1 test (thứ tự xen Điều vẫn làm `make_rounds` dừng; sau khi gom thì phủ đủ; thứ tự đã liền không đổi). Hộp cát ckey: `tiep.py moi` dựng lại lượt 001-019 khớp từng byte rồi dựng được lượt 020. Lần chạy Sonnet: `run_all --tap-con lldnn --llm replay` 18/18, `docs/run_reports_subset/lldnn/` không đổi nội dung (chỉ dòng `crlf` đã biết của parse).
 **Cái giá.** Các mục sửa lỗi của lần chạy ckey (ckey2, ckey3, ckey4) đánh số từ A50.
+
+## A50. Lần sửa 1 (ckey2): lời nhắc 1.6A `menh-de-5`, luật câu dẫn (20/11)
+**Lệch (đặt lên đầu).** [THÊM] Lời nhắc mới do agent viết khi chủ đề tài vắng, theo lời dặn "lỗi gặp nhiều thì hỏi advisor cách sửa và thử sửa ít nhất 3 lần, mỗi lần log lại". Chỉ chạy trên tập con `lldnn` (466 đơn vị), không chạy lại cả bộ luật (1.6A cộng 1.6B cả bộ mất khoảng 3,5 giờ).
+**Lỗi nhắm tới (đo ở lần chạy ckey, tập con).** (1) Câu dẫn "phải đáp ứng các điều kiện sau đây" (D151.K1) bị đọc thành danh sách ĐIỀU KIỆN vì có chữ "điều kiện": bốn mục con a-d ra `dieu_kien`, quy tắc thành `must_meet_conditions` với "có giấy phép lao động" trong thân, không quy tắc nào có đầu "phải có giấy phép lao động" để Điều 154 chặn; Q01-Q08 của bộ dev ra `chua_du_can_cu`. Có thể ví dụ "Danh sách ĐIỀU KIỆN" mà `menh-de-4` thêm (A47) đã đẩy model theo hướng này. (2) Câu dẫn lọt thành `menh_de` ("trình tự, thủ tục thu hồi giấy phép như sau", NĐ 145 Đ28).
+**Quyết định.** `menh-de-5` = `menh-de-4` cộng hai chỗ sửa (`_M5` trong `src/propositions.py`; `menh-de-3`, `menh-de-4` giữ nguyên từng byte): (a) luật 5 thêm câu phân biệt theo VAI của danh sách, không theo chữ "điều kiện": "phải đáp ứng / phải có đủ / phải tuân theo ... sau đây" là tân ngữ của nghĩa vụ (mục con `ket_luan` kế thừa `phai`); danh sách chỉ là điều kiện khi là hoàn cảnh cho một hành vi khác (ví dụ chữ của D63.K2, D107.K2); chữ dẫn ("sau đây:", "như sau:", "gồm:") luôn là `bo_qua cau_dan`; (b) một ví dụ JSON nhánh tân ngữ lấy từ D145.K1.b và một dòng tự kiểm. Ví dụ lấy ngoài 16 Điều của tập con. Lần chạy `ckey2` (khoá `ckey2.*` của `docs/llm_config.md`), cả chuỗi 7 hộp cát của tập con.
+**Số đo chốt trước khi chạy (script `do_loi.py`, scratchpad).** M1: mục con của câu dẫn "phải đáp ứng / có đủ / tuân theo ... sau đây" có dòng `ket_luan`; M2: `menh_de` kết thúc bằng "sau đây / như sau / gồm"; lỗi cổng theo loại; M3: số câu dev đúng ở 1.9. Trước (ckey): M1 **0/4** (tập con chỉ có MỘT câu dẫn như vậy, D151.K1, nên M1 thực chất là phép thử trên một đơn vị); M2 **4**; lỗi cổng **26 lỗi ở 19 đơn vị**; M3 **3/15**.
+**Luật đọc kết quả.** DeepSeek không tất định và 1.9 cũng dùng LLM; không có lần chạy đối chứng cùng lời nhắc. Chỉ ghi "đã cải thiện" khi thay đổi lớn hoặc theo cấu trúc (M1 từ 0 lên gần hết, câu dev đổi vì đúng chỗ đã sửa); lệch vài lỗi cổng hay một câu hỏi không tính.
+**Kết quả.** (điền sau khi chạy)
 
 ---
 
