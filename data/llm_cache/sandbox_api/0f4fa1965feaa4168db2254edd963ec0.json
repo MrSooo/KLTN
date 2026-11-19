@@ -1,0 +1,26 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T22:13:34+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0000\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D53.K2\",\n    \"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n    \"cac_muc_con\": [\n     \"Đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động trong khoảng thời gian nhất định;\",\n     \"Thay thế người lao động trong thời gian nghỉ thai sản, bị tai nạn lao động, bệnh nghề nghiệp hoặc phải thực hiện các nghĩa vụ công dân;\",\n     \"Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D53.K3\",\n    \"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Bên thuê lại lao động không được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n    \"cac_muc_con\": [\n     \"Để thay thế người lao động đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động;\",\n     \"Không có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động;\",\n     \"Thay thế người lao động bị cho thôi việc do thay đổi cơ cấu, công nghệ, vì lý do kinh tế hoặc chia, tách, hợp nhất, sáp nhập.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"use_leased_labor\"\n   ]\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_b6a44f81152969dcf47eb759",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0000",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Không có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động;"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 19,
+  "output_tokens": 268,
+  "cost_vnd": 3.29
+ },
+ "boc_rao": false
+}
