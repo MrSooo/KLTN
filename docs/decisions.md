@@ -1,12 +1,12 @@
 # Sổ quyết định
 
-Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A48) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
+Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A49) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
 
 Quy ước ghi: mỗi mục gồm **Quyết định**, **Lý do** và **Cái giá hoặc chỗ chưa kiểm** khi có. Chỗ lệch so với kế hoạch ban đầu hoặc so với mã cũ được nêu rõ. Số đo ghi kèm ngày đo và phạm vi (BLLĐ là Bộ luật Lao động 45/2019; "kho" là cả 18 văn bản trong `data/raw/labor/`).
 
 Các mục A9, A10, A18, A19, A20, A28 là quy trình làm việc nội bộ giữa các phiên và không còn hiệu lực sau khi tài liệu được chuẩn hoá (A40); mã của chúng được giữ trống để các tham chiếu không đổi.
 
-Bố cục: **Phần I** quyết định về pipeline (A1 đến A48); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
+Bố cục: **Phần I** quyết định về pipeline (A1 đến A49); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
 
 ---
 
@@ -317,6 +317,13 @@ Danh sách còn hiệu lực nằm ở `docs/status.md` (mục Nợ kỹ thuật
 **Quyết định.** `utils/demo/index.html` viết lại thành giao diện chat (màn chào, câu gợi ý lấy từ bộ dev, bong bóng hỏi và trả lời, ô nhập ở đáy, nút ngày áp dụng, chế độ tối). Server: `/api/hoi` trả `public_view` (kết quả, câu kết luận, chữ của nhận định φ, diễn giải, cờ diễn giải do AI viết, căn cứ nguyên văn), không gửi phần nội bộ; mọi kết quả đủ (kể cả cây, dữ kiện, lỗi nội bộ, thời gian) ghi một dòng vào `data/processed[_subset]/demo/demo_log.jsonl` (đã nằm trong `.gitignore`). `/api/info` chỉ còn câu ví dụ và ngày hôm nay. Lệnh `hoi` trên dòng lệnh vẫn in đủ như A45. Câu kết luận trên trang là "Với tình huống bạn nêu, nhận định «φ» là đúng / không đúng" hoặc "chưa đủ thông tin": đúng hay không vẫn do `ket_qua` của bộ suy luận, trang chỉ ghép chữ của φ, không tự phủ định câu. [THÊM] lịch sử chat chỉ giữ trên trang (mỗi câu trả lời độc lập, trang ghi rõ); không nút đính kèm (server không có chỗ xử lý); không font hay thư viện ngoài (chạy được khi không có mạng); câu trùng chữ trong bộ dev chỉ gợi ý một lần.
 **Kiểm chứng (19/11).** `tests/test_qa_server.py` 8 test (thêm: trang không nhận phần nội bộ; cờ "do AI viết" chỉ bật khi diễn giải không phải bản dựng sẵn). Chạy server `--llm off` trên tập con: Q04 và Q01 trả đúng 7 trường, log ghi đủ cây; câu ngoài bộ dev ra lỗi chung (không lộ lỗi nội bộ). Ảnh chụp Edge headless ở 1280px và 500px (sáng, tối), không tràn ngang. Chưa thử với LLM bật (`claude -p`).
 **Cái giá.** Người xem không thấy máy đã hiểu câu hỏi thế nào: máy rút sai dữ kiện thì trang vẫn trả lời trôi chảy, chỉ log mới cho thấy. Người trình bày demo cần mở log khi bị hỏi "vì sao".
+
+## A49. Sổ vị từ 2.6 gom đơn vị theo Điều trước khi chia lượt (20/11)
+**Lệch (đặt lên đầu).** Sửa mã giữa đêm chạy ckey mà chưa hỏi chủ đề tài: đây là lỗi chạy (crash), không thuộc quy ước "luật dừng chất lượng chỉ cảnh báo". Agent quyết làm vì chủ đề tài vắng và đã dặn ghi lỗi rồi chạy tiếp; điều kiện agent tự đặt: sửa không nới phép kiểm nào và chứng minh được không đổi kết quả nào đã có (mục Kiểm chứng). Chủ đề tài cần duyệt lại; không đồng ý thì revert commit mã (tách riêng với commit dữ liệu).
+**Bối cảnh.** Hộp cát sổ vị từ của lần chạy ckey trên tập con `lldnn` dừng sau lượt 019 với `chia lượt không phủ chữ theo thứ tự lần gặp đầu (các chữ mới của một Điều không liền nhau)` (`concepts_names.make_rounds`). Dựng lại ngoài hộp cát: ở mốc 2023-09-18 (NĐ 70/2023 sửa NĐ 152/2020), danh mục KU liệt kê trước các đơn vị bị sửa (D3.K3.a, D3.K5, D4.K1.a ... D12.K3) rồi mới tới các đơn vị được chèn (D3.K5.a, D3.K5.b, D4.K1.c, D6.K3, D7.K14.a, D7.K14.b), nên chữ mới của Điều 3, 4, 7 không liền nhau. Lỗi có sẵn trong mã từ A42; lần chạy Sonnet không gặp vì ở mốc này chỉ có chữ mới ở D7.K6, D7.K14.a, D7.K14.b (đã liền).
+**Quyết định.** `predicate_registry.group_by_dieu`: thứ tự đơn vị của một mốc là lần gặp đầu nhưng gom các đơn vị cùng Điều liền nhau (Điều đứng ở chỗ gặp đầu của nó); `ChainRun._open` sắp ổn định các dòng mới theo thứ tự đó trước `build_words`. Phép kiểm của `make_rounds` giữ nguyên. Không sắp theo thứ tự văn bản vì cách đó có thể đổi thứ tự Điều ở mốc vốn đã liền và làm trượt khoá các lượt đã lưu.
+**Kiểm chứng (20/11).** `tests/test_update.py` thêm 1 test (thứ tự xen Điều vẫn làm `make_rounds` dừng; sau khi gom thì phủ đủ; thứ tự đã liền không đổi). Hộp cát ckey: `tiep.py moi` dựng lại lượt 001-019 khớp từng byte rồi dựng được lượt 020. Lần chạy Sonnet: `run_all --tap-con lldnn --llm replay` 18/18, `docs/run_reports_subset/lldnn/` không đổi nội dung (chỉ dòng `crlf` đã biết của parse).
+**Cái giá.** Các mục sửa lỗi của lần chạy ckey (ckey2, ckey3, ckey4) đánh số từ A50.
 
 ---
 

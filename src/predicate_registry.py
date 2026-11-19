@@ -70,10 +70,9 @@ class ChainRun(Pd.Run):
 
     def _open(self, epoch, rows):
         keys = {w["key"] for w in self.words}
-        order = {}
-        for r in rows:
-            order.setdefault(r["unit"], len(order))
-        fresh = [r for r in rows if r["loai"] not in ("menh_de", "chu_the") or not r["span"] or Pd.word_key(r["span"], r["params"]) not in keys]
+        order = group_by_dieu(rows)
+        fresh = sorted((r for r in rows if r["loai"] not in ("menh_de", "chu_the") or not r["span"] or Pd.word_key(r["span"], r["params"]) not in keys),
+                       key=lambda r: order[r["unit"]])  # sorted ổn định: thứ tự dòng trong một đơn vị giữ nguyên
         new = Pd.build_words(fresh, order)
         base_n = len(self.words)
         for w in new:
@@ -87,6 +86,21 @@ class ChainRun(Pd.Run):
         self.stage_log.append({"epoch": epoch.isoformat(), "ku": len({r["ku"] for r in rows}), "rows": len(rows),
                                "known": sum(1 for r in rows if r["loai"] in ("menh_de", "chu_the") and r["span"] and Pd.word_key(r["span"], r["params"]) in keys),
                                "new_words": len(new)})
+
+
+def group_by_dieu(rows):
+    """{đơn vị: thứ tự}: đơn vị theo lần gặp đầu, nhưng gom các đơn vị cùng Điều liền nhau (Điều đứng ở chỗ gặp đầu của nó) (A49).
+    Vì sao: một mốc sửa đổi liệt kê trước các đơn vị bị sửa rồi mới tới đơn vị được chèn (NĐ 70/2023 sửa NĐ 152: D3.K5, D4.K1.a ... rồi
+    D3.K5.a, D4.K1.c), nên chữ mới của một Điều không liền nhau và `make_rounds` dừng. Thứ tự vốn đã liền theo Điều thì không đổi gì,
+    nên các lượt đã lưu của mọi mốc khác giữ nguyên khoá."""
+    first, by_dieu = [], collections.defaultdict(list)
+    for r in rows:
+        d = Pd.cc.dieu_of(r["unit"])
+        if d not in by_dieu:
+            first.append(d)
+        if r["unit"] not in by_dieu[d]:
+            by_dieu[d].append(r["unit"])
+    return {u: i for i, u in enumerate(u for d in first for u in by_dieu[d])}
 
 
 def stages_from(catalog, cache, base_kus):

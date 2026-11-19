@@ -138,5 +138,27 @@ def test_checks_update_rules_problems_catches_broken_r():
     assert any("chồng" in x for x in checks.update_rules_problems(overlap, by))
 
 
+def test_predicate_registry_groups_amended_and_inserted_units_by_dieu():
+    """A49: mốc sửa đổi liệt kê đơn vị bị sửa trước, đơn vị chèn sau (D3.K5, D4.K1.a, rồi D3.K5.a): gom theo Điều để make_rounds phủ đủ chữ
+    theo thứ tự; thứ tự vốn đã liền theo Điều thì không đổi (khoá lượt đã lưu của mọi mốc khác giữ nguyên)."""
+    import concepts_names as cn
+    import predicate_registry as R
+
+    def rows(units):
+        return [{"unit": u, "loai": "menh_de", "span": f"chữ {u}", "params": [], "role": "dieu_kien"} for u in units]
+    mixed = ["NB.D3.K5", "NB.D4.K1.a", "NB.D7.K14", "NB.D3.K5.a", "NB.D4.K1.c", "NB.D7.K14.a"]
+    try:
+        cn.make_rounds(Pd.build_words(rows(mixed), {u: i for i, u in enumerate(mixed)}))
+        raise AssertionError("thứ tự xen Điều phải làm make_rounds dừng (phép kiểm giữ nguyên)")
+    except SystemExit:
+        pass
+    order = R.group_by_dieu(rows(mixed))
+    assert sorted(order, key=order.get) == ["NB.D3.K5", "NB.D3.K5.a", "NB.D4.K1.a", "NB.D4.K1.c", "NB.D7.K14", "NB.D7.K14.a"]
+    words = Pd.build_words(sorted(rows(mixed), key=lambda r: order[r["unit"]]), order)
+    assert [i for r in cn.make_rounds(words) for i in r] == list(range(len(words)))
+    contiguous = ["NB.D7.K6", "NB.D7.K14.a", "NB.D7.K14.b", "NB.D8.K2"]
+    assert R.group_by_dieu(rows(contiguous)) == {u: i for i, u in enumerate(contiguous)}
+
+
 if __name__ == "__main__":
     _harness.run(globals())
