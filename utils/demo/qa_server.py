@@ -8,6 +8,8 @@ Mỗi câu hỏi (chữ + ngày sự việc τ):
   4. Câu mở đầu (kết luận) do MÁY viết từ kết quả và nghĩa của φ. [THÊM, A45] LLM (lời nhắc `tra-loi-1`) chỉ viết phần diễn giải tiếp theo;
      cổng: đúng hình, `can_cu_dung` thuộc căn cứ, mọi "Điều N" và số hiệu văn bản nêu ra phải có trong căn cứ hoặc trong chữ căn cứ. Trượt cổng
      thì dùng diễn giải dựng sẵn từ cây. Cổng không kiểm được độ trung thành của câu chữ: trang ghi rõ là "diễn giải".
+  5. (A48) Trang chat chỉ nhận `public_view`: kết luận, diễn giải, căn cứ nguyên văn. Cây chứng minh, dữ kiện, thời gian, lỗi nội bộ ghi vào
+     data/processed[_subset]/demo/demo_log.jsonl (một dòng mỗi câu hỏi).
 
 LLM: tạm dùng `claude -p` (phiên Claude Code, như lúc chạy thử; không công cụ, thư mục tạm rỗng, lời nhắc qua stdin). Đổi sang API thì chỉ
 thay `claude_code`. Kết quả LLM của demo ghi ở data/processed[_subset]/demo/demo_cache.json (không đụng data/llm_cache/).
@@ -155,7 +157,16 @@ class KB:
                 self.dev = {a["cau_hoi"]: a for a in c["answers"].values()}
         self.cache_file = corpus.out_dir("demo") / "demo_cache.json"
         self.cache = json.loads(self.cache_file.read_text(encoding="utf-8")) if self.cache_file.exists() else {}
+        self.log_file = corpus.out_dir("demo") / "demo_log.jsonl"
         self.lock = threading.Lock()
+
+    def log(self, out):
+        """Ghi đủ kết quả một câu hỏi (dữ kiện, cây chứng minh, thời gian) vào log của demo: trang chat không hiện các phần này (A48)."""
+        line = json.dumps(dict(out, luc=datetime.datetime.now().isoformat(timespec="seconds")), ensure_ascii=False)
+        with self.lock:
+            self.log_file.parent.mkdir(parents=True, exist_ok=True)
+            with self.log_file.open("a", encoding="utf-8") as f:
+                f.write(line + "\n")
 
     # cache của demo: khoá gồm phiên bản lời nhắc và mọi đầu vào LLM thấy
     def _key(self, *parts):
@@ -387,6 +398,21 @@ def explain_gate(out, basis, docs):
 
 # ---- web ----
 
+def public_view(out, kb):
+    """Phần trang chat hiện cho người dùng (A48): kết luận của máy, diễn giải, căn cứ nguyên văn. Không gửi vị từ, φ, cây, mã đơn vị,
+    lỗi nội bộ; các thứ đó nằm trong log của demo. `nhan_dinh` là chữ của φ để trang viết câu kết luận ("«…» đúng/không đúng với
+    tình huống của bạn"): đúng hay không vẫn do `ket_qua` của máy, không do LLM."""
+    kind = out.get("ket_qua")
+    if kind == "khong_tra_loi":
+        kind = "ngoai_pham_vi" if str(out.get("ly_do", "")).startswith("ngoai_pham_vi") else "khong_tra_loi"
+    v = {"ket_qua": kind, "ngay": out.get("ngay")}
+    if kind in ("ket_luan_duoc", "bi_bac", "chua_du_can_cu"):
+        v.update(ket_luan=out.get("ket_luan"), nhan_dinh=kb.phi_text(out["phi"]) if out.get("phi") else None, giai_thich=out.get("giai_thich"),
+                 giai_thich_ai=not str(out.get("nguon_giai_thich", "")).startswith("dựng sẵn"),  # trang chỉ ghi "do AI viết" khi đúng vậy
+                 can_cu=[{k: b.get(k, "") for k in ("ten", "tieu_de", "cau_dan", "chu")} for b in out.get("can_cu") or []])
+    return v
+
+
 def make_handler(kb, use_llm):
     page = (HERE / "index.html").read_bytes()
 
@@ -403,9 +429,7 @@ def make_handler(kb, use_llm):
             if self.path in ("/", "/index.html"):
                 return self._send(200, page, "text/html; charset=utf-8")
             if self.path == "/api/info":
-                return self._send(200, {"tap_con": corpus.SUBSET, "so_quy_tac": len(kb.rules), "vi_du": kb.examples, "llm": use_llm,
-                                        "hom_nay": datetime.date.today().isoformat(),
-                                        "ket_luan": [x["nghia"] for x in kb.vocab["ket_luan"]]})
+                return self._send(200, {"vi_du": kb.examples, "hom_nay": datetime.date.today().isoformat()})
             self._send(404, {"loi": "không có"})
 
         def do_POST(self):
@@ -420,7 +444,12 @@ def make_handler(kb, use_llm):
                 return self._send(400, {"loi": f"yêu cầu sai: {e}"})
             if not q or len(q) > 2000:
                 return self._send(400, {"loi": "câu hỏi rỗng hoặc quá dài"})
-            self._send(200, kb.ask(q, tau, use_llm=use_llm and req.get("giai_thich", True)))
+            try:
+                out = kb.ask(q, tau, use_llm=use_llm and req.get("giai_thich", True))
+            except Exception as e:  # lỗi không lường trước: ghi log, trang chỉ báo lỗi chung
+                out = {"cau_hoi": q, "ngay": tau.isoformat(), "ket_qua": "loi", "ngoai_le": repr(e)[:500]}
+            kb.log(out)
+            self._send(200, public_view(out, kb))
 
         def log_message(self, fmt, *args):
             sys.stderr.write("demo: " + (fmt % args) + "\n")

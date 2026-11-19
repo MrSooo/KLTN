@@ -93,6 +93,21 @@ def test_qa_server_unit_name():
     assert S.unit_name("NQ_66.PLI_7.M1", DOCS) == "NQ_66.PLI_7.M1"
 
 
+def test_qa_server_public_view_hides_internals():
+    """A48: trang chat chỉ nhận kết luận, nhận định, diễn giải, căn cứ nguyên văn; không có vị từ, φ, cây, mã đơn vị, lỗi nội bộ."""
+    kb = S.KB.__new__(S.KB)
+    kb.meaning = {"phai_co_giay_phep_lao_dong": "phải: có giấy phép lao động"}
+    full = {"ket_qua": "bi_bac", "ngay": "2022-03-01", "phi": "phai_co_giay_phep_lao_dong", "ket_luan": "Kết luận: …",
+            "giai_thich": "Người này thuộc diện miễn.", "su_kien": [{"vi_tu": "x"}], "cay": {"loai": "bi_chan"}, "lap_luan": ["…"],
+            "nguon_du_kien": "cache", "thoi_gian": {}, "can_cu": [dict(BASIS[0])]}
+    v = S.public_view(full, kb)
+    assert set(v) == {"ket_qua", "ngay", "ket_luan", "nhan_dinh", "giai_thich", "giai_thich_ai", "can_cu"}
+    assert v["giai_thich_ai"] and not S.public_view(dict(full, nguon_giai_thich="dựng sẵn từ cây chứng minh"), kb)["giai_thich_ai"]
+    assert v["nhan_dinh"] == "phải có giấy phép lao động" and set(v["can_cu"][0]) == {"ten", "tieu_de", "cau_dan", "chu"}
+    assert S.public_view({"ket_qua": "loi", "ngay": "2022-03-01", "loi_cong": "đầu ra sai hình"}, kb) == {"ket_qua": "loi", "ngay": "2022-03-01"}
+    assert S.public_view({"ket_qua": "khong_tra_loi", "ly_do": "ngoai_pham_vi: …", "ngay": "x"}, kb)["ket_qua"] == "ngoai_pham_vi"
+
+
 def test_qa_server_offline_on_subset_dev_question():
     """Câu Q04 của bộ dev trên tập con lldnn, --llm off: dữ kiện từ cache 1.9, bị bác, cây có nút bị chặn, căn cứ có chữ tại τ."""
     qs = ROOT / "data" / "eval_dev" / "lldnn_questions.json"

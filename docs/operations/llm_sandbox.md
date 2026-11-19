@@ -47,7 +47,7 @@ KLTN_TAP_CON=lldnn python -X utf8 -I utils/demo/qa_server.py            mở htt
 KLTN_TAP_CON=lldnn python -X utf8 -I utils/demo/qa_server.py --llm off  không gọi LLM: chỉ câu của bộ dev, diễn giải dựng sẵn
 KLTN_TAP_CON=lldnn python -X utf8 -I utils/demo/qa_server.py hoi "<câu hỏi>" 2025-06-01   một câu, in JSON
 ```
-Mỗi câu hỏi mới gọi `claude -p` hai lượt (dữ kiện, diễn giải); khoảng 10 đến 20 giây mỗi lượt, tốn hạn mức của tài khoản Claude Code. Kết quả lưu ở `data/processed[_subset]/demo/demo_cache.json`, hỏi lại cùng câu và ngày thì không gọi lại.
+Mỗi câu hỏi mới gọi `claude -p` hai lượt (dữ kiện, diễn giải); khoảng 10 đến 20 giây mỗi lượt, tốn hạn mức của tài khoản Claude Code. Kết quả lưu ở `data/processed[_subset]/demo/demo_cache.json`, hỏi lại cùng câu và ngày thì không gọi lại. Trang chat không hiện cây chứng minh và dữ kiện (A48): mỗi câu hỏi ghi đủ một dòng vào `data/processed[_subset]/demo/demo_log.jsonl`.
 
 ## 3d. Chạy bằng API thay phiên Claude Code (A46, máy chủ ckey)
 Cùng các thư mục làm việc như trên, nhưng `src/sandbox_api.py` làm thay phiên Claude Code: gửi nguyên văn `system.txt` và `lo/NNN.json` tới vai `api` của `docs/llm_config.md` (hiện là `deepseek-v4.1-flash` qua `https://api.xah.io`), ghi `out/` và `nhat_ky.tsv`. Kiểm tra vẫn do `nhap` của từng bước làm. Kết quả là một **lần chạy riêng** `ckey`: cache theo văn bản có hậu tố `.ckey`, đầu ra ở `data/processed_ckey/`, báo cáo ở `docs/run_reports_ckey/`; kết quả Sonnet không bị đụng.

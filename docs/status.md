@@ -21,7 +21,7 @@ Kiểm ngày 15/11/2026 (sau khi chuẩn hoá tên và xoá thư mục lưu tr�
 | 1.7 Ngoại lệ ngầm | `implicit_exceptions.py` | xong trên tập con | `ngoai-le-ngam-2`; tập con 4 cặp, 1 cạnh (A41) |
 | 1.8 Quy tắc | `rules.py` | xong trên tập con, chưa có vòng LLM sửa | máy biên dịch; s(CASP); test phản chứng D151/D154 (A41) |
 | 1.9 Hỏi đáp | `answering.py` | xong trên tập con | bộ câu hỏi dev `data/eval_dev/lldnn_questions.json` (nháp, chờ xác nhận); 11/15 câu cần 2.6 (A41) |
-| Web demo hỏi đáp | `utils/demo/qa_server.py` | chạy trên tập con | A45: câu kết luận do máy viết, diễn giải LLM `tra-loi-1` qua cổng; LLM tạm là `claude -p`; chạy thật 2 câu (tổng 6 đến 18 giây) |
+| Web demo hỏi đáp | `utils/demo/qa_server.py` | chạy trên tập con | A45: câu kết luận do máy viết, diễn giải LLM `tra-loi-1` qua cổng; LLM tạm là `claude -p`; chạy thật 2 câu (tổng 6 đến 18 giây); A48: giao diện chat, cây chứng minh và dữ kiện chỉ ghi `demo_log.jsonl` |
 | Bộ chạy hộp cát qua API | `sandbox_api.py`, nhà cung cấp `ckey` của `llm_client.py` | có mã, chưa chạy xong | A46: lần chạy riêng `--llm-run ckey`; thí điểm 1.6A 12/16 lô rồi máy chủ trả 404 cho model (19/11), chưa nhập; hộp cát tuần tự chưa chạy thật |
 | 2.2 Nối văn bản | `links.py` | xong cho kho hiện tại | có LLM (Gemini, hai model độc lập kiểm chéo) |
 | 2.3 Đọc chỉ thị | `directives.py`, `directives_rare.py` | xong cho kho hiện tại | 26 loại, bảng ở `docs/reference/directive_types.md` |

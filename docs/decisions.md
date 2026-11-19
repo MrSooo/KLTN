@@ -1,12 +1,12 @@
 # Sổ quyết định
 
-Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A47) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
+Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A48) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
 
 Quy ước ghi: mỗi mục gồm **Quyết định**, **Lý do** và **Cái giá hoặc chỗ chưa kiểm** khi có. Chỗ lệch so với kế hoạch ban đầu hoặc so với mã cũ được nêu rõ. Số đo ghi kèm ngày đo và phạm vi (BLLĐ là Bộ luật Lao động 45/2019; "kho" là cả 18 văn bản trong `data/raw/labor/`).
 
 Các mục A9, A10, A18, A19, A20, A28 là quy trình làm việc nội bộ giữa các phiên và không còn hiệu lực sau khi tài liệu được chuẩn hoá (A40); mã của chúng được giữ trống để các tham chiếu không đổi.
 
-Bố cục: **Phần I** quyết định về pipeline (A1 đến A47); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
+Bố cục: **Phần I** quyết định về pipeline (A1 đến A48); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
 
 ---
 
@@ -310,6 +310,13 @@ Danh sách còn hiệu lực nằm ở `docs/status.md` (mục Nợ kỹ thuật
 **Bối cảnh.** Thí điểm DeepSeek với `menh-de-3` (30 đơn vị): 9/78 dòng trượt cổng (cổng báo 12 thông điệp vì `bo_ngu` dạng một đối tượng bị đếm hai lần), vượt luật dừng 5% của A39 (chủ đề tài xác nhận 19/11: tính theo số DÒNG có ít nhất một lỗi cổng). Đọc thêm các dòng: có lỗi nghĩa cổng không bắt được (điều kiện cốt lõi bị hạ thành `bo_ngu` ở D14.K1, D14.K2; gộp các hành vi khác nhau vào `liet_ke` ở D5.K1.a). Chủ đề tài 19/11: không lấy kết quả Sonnet làm chuẩn để so.
 **Quyết định (chủ đề tài duyệt cả gói 19/11).** `menh-de-4` = `menh-de-3` cộng bảy chỗ sửa [THÊM], mỗi chỗ nhắm một lỗi đã thấy: (a) khuôn `bo_ngu` ghi tường minh, ví dụ định nghĩa viết lại bằng JSON (trả nợ 16 của status cho lần chạy này); (b) luật 5: `nguon = cau_dan` thì `trich` phải có mẩu câu dẫn, thêm ví dụ nhánh ĐIỀU KIỆN dựng từ D53.K2, D53.K2.c; (c) luật 3: chữ dùng chung và chữ của mục là hai chuỗi `trich` riêng; (d) luật 4: cụm "đối với / khi / trong trường hợp / thông qua / dưới hình thức ..." là `dieu_kien` riêng, không phải `bo_ngu` (ví dụ D25.K2); (e) luật 2: `liet_ke` chỉ cho tân ngữ, phạm vi của cùng một động từ; (f) BẪY: "không phải là + danh từ" là `khong` + `phu_dinh`; (g) danh sách tự kiểm ở cuối lặp các cổng. Ví dụ mới lấy từ đơn vị ngoài bộ thí điểm; cả ba ví dụ JSON mới qua `gate_unit` trên chữ thật. Không đổi cổng (không cho `normalize` sửa `bo_ngu` sai khuôn). File thí điểm có phiên bản trong tên (`llm_output.ckey.menh-de-3.json`, `.menh-de-4.json`).
 **Cái giá.** Sửa trên chính 30 đơn vị thí điểm nên điểm thí điểm sau khi sửa không phải số đo (như A44); phép kiểm thật là luật dừng A39 trên 60 lô đầu của cả kho. (d) đổi nghĩa đặc tả so với `menh-de-3`: nhiều dòng `dieu_kien` hơn, có thể tách cả cụm "khi ..." không cần tách. Hai lần chạy dùng hai lời nhắc khác nhau nên KB của chúng không so trực tiếp được. Lời nhắc dài thêm khoảng 40% (7.247 lên 10.170 ký tự).
+
+## A48. Trang demo thành giao diện chat; cây chứng minh chỉ ghi log (19/11)
+**Lệch so với A45 (đặt lên đầu).** A45 ghi trang "luôn hiện căn cứ nguyên văn cùng cây". Nay trang **không** hiện cây chứng minh, dữ kiện máy rút từ câu hỏi (vị từ, φ), mã đơn vị, thời gian, nguồn LLM; căn cứ nguyên văn vẫn hiện (bấm thẻ điều khoản để mở).
+**Bối cảnh.** Chủ đề tài (19/11): trang cũ "quá xấu", muốn một chatbot pháp luật thân thiện, màu tươi; cây chứng minh "để ghi lúc ghi log demo thôi, không cần show ra UI". Prompt thiết kế chủ đề tài dán ghi "luật thừa kế": chủ đề tài xác nhận là nhầm, làm cho Luật Lao động.
+**Quyết định.** `utils/demo/index.html` viết lại thành giao diện chat (màn chào, câu gợi ý lấy từ bộ dev, bong bóng hỏi và trả lời, ô nhập ở đáy, nút ngày áp dụng, chế độ tối). Server: `/api/hoi` trả `public_view` (kết quả, câu kết luận, chữ của nhận định φ, diễn giải, cờ diễn giải do AI viết, căn cứ nguyên văn), không gửi phần nội bộ; mọi kết quả đủ (kể cả cây, dữ kiện, lỗi nội bộ, thời gian) ghi một dòng vào `data/processed[_subset]/demo/demo_log.jsonl` (đã nằm trong `.gitignore`). `/api/info` chỉ còn câu ví dụ và ngày hôm nay. Lệnh `hoi` trên dòng lệnh vẫn in đủ như A45. Câu kết luận trên trang là "Với tình huống bạn nêu, nhận định «φ» là đúng / không đúng" hoặc "chưa đủ thông tin": đúng hay không vẫn do `ket_qua` của bộ suy luận, trang chỉ ghép chữ của φ, không tự phủ định câu. [THÊM] lịch sử chat chỉ giữ trên trang (mỗi câu trả lời độc lập, trang ghi rõ); không nút đính kèm (server không có chỗ xử lý); không font hay thư viện ngoài (chạy được khi không có mạng); câu trùng chữ trong bộ dev chỉ gợi ý một lần.
+**Kiểm chứng (19/11).** `tests/test_qa_server.py` 8 test (thêm: trang không nhận phần nội bộ; cờ "do AI viết" chỉ bật khi diễn giải không phải bản dựng sẵn). Chạy server `--llm off` trên tập con: Q04 và Q01 trả đúng 7 trường, log ghi đủ cây; câu ngoài bộ dev ra lỗi chung (không lộ lỗi nội bộ). Ảnh chụp Edge headless ở 1280px và 500px (sáng, tối), không tràn ngang. Chưa thử với LLM bật (`claude -p`).
+**Cái giá.** Người xem không thấy máy đã hiểu câu hỏi thế nào: máy rút sai dữ kiện thì trang vẫn trả lời trôi chảy, chỉ log mới cho thấy. Người trình bày demo cần mở log khi bị hỏi "vì sao".
 
 ---
 
