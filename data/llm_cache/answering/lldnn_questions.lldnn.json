@@ -1,27 +1,27 @@
 {
- "prompt_version": "hoi-dap-1",
+ "prompt_version": "hoi-dap-2",
  "model": "claude-sonnet-5-5",
  "effort": "high",
- "tu_vung": "5859f8dd6300165a",
+ "tu_vung": "2c5bd0de9ad1d0fc",
  "answers": {
   "Q01": {
    "cau_hoi": "Một chuyên gia người nước ngoài vào Việt Nam làm việc một lần, tổng 45 ngày trong năm. Người này có phải có giấy phép lao động không?",
    "phi": "must_holds_work_permit",
    "su_kien": [
     {
+     "vi_tu": "foreign_worker_in_vietnam",
+     "phu_dinh": false,
+     "trich": "Một chuyên gia người nước ngoài vào Việt Nam làm việc"
+    },
+    {
      "vi_tu": "manager_executive_expert_or_technician",
      "phu_dinh": false,
      "trich": "chuyên gia"
     },
     {
-     "vi_tu": "foreign_worker_in_vietnam",
-     "phu_dinh": false,
-     "trich": "người nước ngoài vào Việt Nam làm việc"
-    },
-    {
      "vi_tu": "works_in_vietnam_under_90_days_per_year",
      "phu_dinh": false,
-     "trich": "tổng 45 ngày trong năm"
+     "trich": "vào Việt Nam làm việc một lần, tổng 45 ngày trong năm"
     }
    ]
   },
@@ -30,19 +30,19 @@
    "phi": "must_holds_work_permit",
    "su_kien": [
     {
+     "vi_tu": "foreign_worker_in_vietnam",
+     "phu_dinh": false,
+     "trich": "Một chuyên gia người nước ngoài vào Việt Nam làm việc"
+    },
+    {
      "vi_tu": "manager_executive_expert_or_technician",
      "phu_dinh": false,
      "trich": "chuyên gia"
     },
     {
-     "vi_tu": "foreign_worker_in_vietnam",
-     "phu_dinh": false,
-     "trich": "người nước ngoài vào Việt Nam làm việc"
-    },
-    {
      "vi_tu": "works_in_vietnam_under_90_days_per_year",
      "phu_dinh": false,
-     "trich": "tổng 45 ngày trong năm"
+     "trich": "vào Việt Nam làm việc một lần, tổng 45 ngày trong năm"
     }
    ]
   },
@@ -51,19 +51,19 @@
    "phi": "must_holds_work_permit",
    "su_kien": [
     {
+     "vi_tu": "foreign_worker_in_vietnam",
+     "phu_dinh": false,
+     "trich": "Một lao động kỹ thuật người nước ngoài vào Việt Nam làm việc"
+    },
+    {
      "vi_tu": "manager_executive_expert_or_technician",
      "phu_dinh": false,
      "trich": "lao động kỹ thuật"
     },
     {
-     "vi_tu": "foreign_worker_in_vietnam",
-     "phu_dinh": false,
-     "trich": "người nước ngoài vào Việt Nam làm việc"
-    },
-    {
      "vi_tu": "short_stay_work_under_30_days_max_3_per_year",
      "phu_dinh": false,
-     "trich": "2 lần trong năm, mỗi lần 10 ngày"
+     "trich": "vào Việt Nam làm việc 2 lần trong năm, mỗi lần 10 ngày"
     }
    ]
   },
@@ -72,9 +72,9 @@
    "phi": "must_holds_work_permit",
    "su_kien": [
     {
-     "vi_tu": "foreign_person_group",
+     "vi_tu": "foreign_worker_in_vietnam",
      "phu_dinh": false,
-     "trich": "người nước ngoài"
+     "trich": "Một người nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam, đi làm cho một công ty Việt Nam"
     },
     {
      "vi_tu": "married_to_vietnamese_citizen",
@@ -93,19 +93,14 @@
    "phi": "must_holds_work_permit",
    "su_kien": [
     {
-     "vi_tu": "foreign_person_group",
+     "vi_tu": "foreign_worker_in_vietnam",
      "phu_dinh": false,
-     "trich": "người nước ngoài"
+     "trich": "Một người nước ngoài thuộc diện nhân lực công nghiệp công nghệ số chất lượng cao theo pháp luật về công nghiệp công nghệ số, làm việc tại Việt Nam"
     },
     {
      "vi_tu": "high_quality_digital_tech_industry_workforce",
      "phu_dinh": false,
      "trich": "nhân lực công nghiệp công nghệ số chất lượng cao"
-    },
-    {
-     "vi_tu": "foreign_worker_in_vietnam",
-     "phu_dinh": false,
-     "trich": "làm việc tại Việt Nam"
     }
    ]
   },
@@ -114,19 +109,14 @@
    "phi": "must_holds_work_permit",
    "su_kien": [
     {
-     "vi_tu": "foreign_person_group",
+     "vi_tu": "foreign_worker_in_vietnam",
      "phu_dinh": false,
-     "trich": "người nước ngoài"
+     "trich": "Một người nước ngoài thuộc diện nhân lực công nghiệp công nghệ số chất lượng cao theo pháp luật về công nghiệp công nghệ số, làm việc tại Việt Nam"
     },
     {
      "vi_tu": "high_quality_digital_tech_industry_workforce",
      "phu_dinh": false,
      "trich": "nhân lực công nghiệp công nghệ số chất lượng cao"
-    },
-    {
-     "vi_tu": "foreign_worker_in_vietnam",
-     "phu_dinh": false,
-     "trich": "làm việc tại Việt Nam"
     }
    ]
   },
@@ -135,9 +125,9 @@
    "phi": "must_holds_work_permit",
    "su_kien": [
     {
-     "vi_tu": "foreign_person_group",
+     "vi_tu": "foreign_worker_in_vietnam",
      "phu_dinh": false,
-     "trich": "người nước ngoài"
+     "trich": "Một người nước ngoài được Bộ Giáo dục và Đào tạo xác nhận vào Việt Nam làm hiệu trưởng một cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài đề nghị thành lập tại Việt Nam"
     },
     {
      "vi_tu": "moet_confirmed_entry_to_manage_mission_school",
@@ -151,9 +141,9 @@
    "phi": "must_holds_work_permit",
    "su_kien": [
     {
-     "vi_tu": "foreign_person_group",
+     "vi_tu": "foreign_worker_in_vietnam",
      "phu_dinh": false,
-     "trich": "người nước ngoài"
+     "trich": "Một người nước ngoài được Bộ Giáo dục và Đào tạo xác nhận vào Việt Nam làm hiệu trưởng một cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài đề nghị thành lập tại Việt Nam"
     },
     {
      "vi_tu": "moet_confirmed_entry_to_manage_mission_school",
@@ -207,13 +197,7 @@
   "Q15": {
    "cau_hoi": "Người lao động nước ngoài làm việc tại Việt Nam có được hưởng bảo hiểm thất nghiệp không?",
    "phi": null,
-   "su_kien": [
-    {
-     "vi_tu": "foreign_worker_in_vietnam",
-     "phu_dinh": false,
-     "trich": "Người lao động nước ngoài làm việc tại Việt Nam"
-    }
-   ]
+   "su_kien": []
   }
  }
 }

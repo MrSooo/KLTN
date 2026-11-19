@@ -41,7 +41,7 @@ import rules  # noqa: E402
 import textutil  # noqa: E402
 import versions  # noqa: E402
 
-PROMPT_VERSION = "hoi-dap-1"
+PROMPT_VERSION = "hoi-dap-2"  # 2 (A44): ket_luan kèm vị từ chủ thể (canh của quy tắc); hoi-dap-1 không cho LLM biết φ cần chủ thể nào
 MODEL, EFFORT, ALIAS = "claude-sonnet-5-5", "high", "sonnet"  # như A39
 LOT_SIZE = 5
 DIR_NAME = "answering"
@@ -52,7 +52,7 @@ MODE_GLOSS = (("must_neg_", "phải không"), ("must_", "phải"), ("may_", "đ�
 SYSTEM = """Bạn chuyển câu hỏi có/không về pháp luật lao động Việt Nam thành dữ kiện cho một bộ suy luận logic. Bạn KHÔNG trả lời câu hỏi.
 
 ĐẦU VÀO: {"tu_vung": {"ket_luan": [{"ten", "nghia"}], "vi_tu": [{"ten", "nghia"}]}, "cau_hoi": [{"id", "cau_hoi"}]}.
-- ket_luan: các kết luận bộ suy luận chứng minh được (ví dụ "phải: có giấy phép lao động").
+- ket_luan: các kết luận bộ suy luận chứng minh được (ví dụ "phải: có giấy phép lao động"). Mục có "chu_the" là danh sách vị từ chỉ NHÓM ĐỐI TƯỢNG mà kết luận đó áp cho (kết luận chỉ chứng minh được khi đối tượng thuộc nhóm).
 - vi_tu: các vị từ dùng làm dữ kiện; "nghia" là chữ trong luật.
 
 Với mỗi câu hỏi:
@@ -62,6 +62,7 @@ Với mỗi câu hỏi:
   - Không dùng "ten" của ket_luan làm dữ kiện.
   - phu_dinh = true chỉ khi câu hỏi nói rõ hoặc hàm ý rõ là KHÔNG (ví dụ "không có giấy phép"). Câu hỏi không nhắc thì KHÔNG ghi dữ kiện đó.
   - Chỉ ghi điều câu hỏi nêu; không suy thêm từ hiểu biết pháp luật, không đoán điều câu hỏi im lặng.
+  - Chủ thể: nếu ket_luan của phi có "chu_the" và câu hỏi mô tả đối tượng thuộc đúng một nhóm trong đó (đối tượng có đủ các đặc điểm mà "nghia" của nhóm nêu), ghi dữ kiện vị từ nhóm đó, "trich" là cụm của câu hỏi mô tả đối tượng. Câu hỏi không đủ để biết đối tượng thuộc nhóm thì không ghi.
   - Ngưỡng số: chỉ ghi dữ kiện so ngưỡng khi "nghia" của vị từ nêu ngưỡng và con số trong câu hỏi đủ để quyết; "trich" phải chứa con số đó.
 
 ĐẦU RA: chỉ JSON {"cau_hoi": [{"id": "...", "phi": "..." | null, "su_kien": [...]}]}. Mỗi câu hỏi đúng một mục. Mỗi câu hỏi xét riêng."""
@@ -113,7 +114,18 @@ def vocabulary(all_rules):
             ledger.setdefault(p["predicate"], p["surface"][0] if p["surface"] else p["predicate"])
     heads = sorted({r["head"]["atom"] for r in all_rules})
     pred_of_head = {r["head"]["atom"]: r["head"]["pred"] for r in all_rules}
-    vocab = {"ket_luan": [{"ten": h, "nghia": gloss(h, ledger.get(pred_of_head[h], pred_of_head[h]))} for h in heads],
+    subj = collections.defaultdict(set)  # đầu -> vị từ chủ thể (literal canh `chu_the` của các quy tắc kết luận đầu đó)
+    for r in all_rules:
+        for lit in r["body"]:
+            if lit.get("role") == "chu_the":
+                subj[r["head"]["atom"]].add(lit["atom"])
+
+    def entry(h):
+        e = {"ten": h, "nghia": gloss(h, ledger.get(pred_of_head[h], pred_of_head[h]))}
+        if subj.get(h):
+            e["chu_the"] = [{"ten": x, "nghia": ledger.get(x, x)} for x in sorted(subj[h])]
+        return e
+    vocab = {"ket_luan": [entry(h) for h in heads],
              "vi_tu": [{"ten": n, "nghia": s} for n, s in sorted(ledger.items())]}
     return vocab, set(ledger), set(heads)
 

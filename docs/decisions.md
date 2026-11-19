@@ -1,12 +1,12 @@
 # Sổ quyết định
 
-Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A43) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
+Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A44) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
 
 Quy ước ghi: mỗi mục gồm **Quyết định**, **Lý do** và **Cái giá hoặc chỗ chưa kiểm** khi có. Chỗ lệch so với kế hoạch ban đầu hoặc so với mã cũ được nêu rõ. Số đo ghi kèm ngày đo và phạm vi (BLLĐ là Bộ luật Lao động 45/2019; "kho" là cả 18 văn bản trong `data/raw/labor/`).
 
 Các mục A9, A10, A18, A19, A20, A28 là quy trình làm việc nội bộ giữa các phiên và không còn hiệu lực sau khi tài liệu được chuẩn hoá (A40); mã của chúng được giữ trống để các tham chiếu không đổi.
 
-Bố cục: **Phần I** quyết định về pipeline (A1 đến A43); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
+Bố cục: **Phần I** quyết định về pipeline (A1 đến A44); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
 
 ---
 
@@ -282,6 +282,12 @@ Danh sách còn hiệu lực nằm ở `docs/status.md` (mục Nợ kỹ thuật
 **Lý do.** Không sửa lời nhắc (A39 đóng băng) và không hỏi lại D154. Gộp đầu (đổi `not_applicable_P` thành `-P` hay ngược lại) đổi đầu trên cả KB và có thể sinh cả P lẫn -P cho cùng thực thể.
 **Số đo (tập con, phần lõi).** Không mốc nào có cả đầu P lẫn -P. Dạng `-P` chỉ thêm chặn cho đúng một quy tắc (D151.K1.d) ở mọi mốc từ 2021-02-15. 1.9: 8/15 khi bật, 5/15 khi tắt (Q02, Q03, Q05 đổi từ đúng thành sai khi tắt). Quy tắc 1.8 của KB gốc không đổi (D154 không có đầu -P). Có test (`test_rules_block_alias_not_applicable_equals_negated_description`).
 **Cái giá.** Tạo một phụ thuộc giữa các đơn vị: dòng chặn của quy tắc gốc đổi khi ở NƠI KHÁC xuất hiện quy tắc kết luận dạng kia (D151.K1.d đổi ở mốc ND 152 dù cây con D154 không đổi); trên tập con tập ảnh hưởng bắt được nhờ vị từ chủ thể chung (A42), trên kho khác có thể cần N rộng hơn. Chặn thêm dựa trên giả định hai cách ghi cùng nghĩa; chỉ áp cho cặp tiền tố `not_applicable_` và cực phủ định của đầu mô tả. Chủ đề tài có thể tắt bằng hằng `rules.BLOCK_ALIAS`.
+
+## A44. Lời nhắc 1.9 `hoi-dap-2`: kết luận kèm vị từ chủ thể (19/11)
+**Bối cảnh.** Với `hoi-dap-1`, Q04, Q07, Q08 sai cùng một kiểu: câu hỏi viết "người nước ngoài", LLM khai `foreign_person_group` mà không khai vị từ chủ thể `foreign_worker_in_vietnam` mà quy tắc D151.K1.d dùng làm canh, nên không quy tắc nào chạy (A42, phép thử phản thực). Lời nhắc cũ không cho LLM biết φ áp cho nhóm đối tượng nào; lỗi thuộc bước 1.9, sẽ gặp cả trên KB đầy đủ (từ vựng lớn hơn).
+**Quyết định (chủ đề tài duyệt 19/11).** Từ vựng 1.9: mỗi mục `ket_luan` kèm `chu_the` = các vị từ chủ thể (literal canh `chu_the` của quy tắc kết luận đầu đó, máy lấy từ R); lời nhắc thêm một luật: câu hỏi mô tả đối tượng có đủ đặc điểm của một nhóm đó thì ghi dữ kiện nhóm, trích là cụm mô tả đối tượng. Cổng không đổi (vị từ trong sổ, trích nguyên văn).
+**Số đo (tập con, phiên Sonnet 5.5, 3 lô, 0 lỗi cổng).** 11/15 đúng; 11/11 câu trong phạm vi (Q11-Q14 ngoài phạm vi trích, A42). Mọi câu về giấy phép lao động khai `foreign_worker_in_vietnam`.
+**Cái giá.** Luật mới cho LLM suy một bước (đối tượng thuộc nhóm), nới so với "chỉ ghi điều câu hỏi nêu". Lời nhắc sửa sau khi thấy lỗi trên chính bộ dev, nên 11/11 là số trên dữ liệu đã dùng để sửa, không phải số đo; số đo phải lấy trên nhóm văn bản dùng để đo. Chỉ một lần chạy.
 ---
 
 # Phần II. Quyết định ở mức từng bước nền

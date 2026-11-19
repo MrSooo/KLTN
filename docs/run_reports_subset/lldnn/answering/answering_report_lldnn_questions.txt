@@ -2,29 +2,29 @@
 văn bản có quy tắc: ['BLLD_45-2019', 'ND_145-2020', 'ND_152-2020', 'ND_219-2025']; câu hỏi: 15; từ vựng: 72 kết luận, 178 vị từ
 Không in tỉ lệ đúng chung: câu gắn 'cần 2.6' có căn cứ chuẩn ở văn bản chưa có quy tắc nên chưa thể đúng ở giai đoạn này.
 Q01 2025-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
-    φ=must_holds_work_permit; quy tắc trong Π_τ: 108; dữ kiện: manager_executive_expert_or_technician, foreign_worker_in_vietnam, works_in_vietnam_under_90_days_per_year
+    φ=must_holds_work_permit; quy tắc trong Π_τ: 108; dữ kiện: foreign_worker_in_vietnam, manager_executive_expert_or_technician, works_in_vietnam_under_90_days_per_year
     căn cứ: ['BLLD_45-2019.D151.K1.d']; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7.K8']
 Q02 2025-10-01 chuẩn=bi_bac ra=bi_bac [ĐÚNG]
-    φ=must_holds_work_permit; quy tắc trong Π_τ: 113; dữ kiện: manager_executive_expert_or_technician, foreign_worker_in_vietnam, works_in_vietnam_under_90_days_per_year
+    φ=must_holds_work_permit; quy tắc trong Π_τ: 113; dữ kiện: foreign_worker_in_vietnam, manager_executive_expert_or_technician, works_in_vietnam_under_90_days_per_year
     căn cứ: ['BLLD_45-2019.D151.K1.d', 'ND_219-2025.D7.K13', 'ND_219-2025.D7.K13.a']; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_219-2025.D7.K13.a']
 Q03 2025-06-01 chuẩn=bi_bac ra=bi_bac [ĐÚNG]
-    φ=must_holds_work_permit; quy tắc trong Π_τ: 108; dữ kiện: manager_executive_expert_or_technician, foreign_worker_in_vietnam, short_stay_work_under_30_days_max_3_per_year
+    φ=must_holds_work_permit; quy tắc trong Π_τ: 108; dữ kiện: foreign_worker_in_vietnam, manager_executive_expert_or_technician, short_stay_work_under_30_days_max_3_per_year
     căn cứ: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7', 'ND_152-2020.D7.K8']; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7.K8']
-Q04 2022-03-01 chuẩn=bi_bac ra=chua_du_can_cu [sai]
-    φ=must_holds_work_permit; quy tắc trong Π_τ: 107; dữ kiện: foreign_person_group, married_to_vietnamese_citizen, resides_in_vietnamese_territory
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'BLLD_45-2019.D154.K8']
+Q04 2022-03-01 chuẩn=bi_bac ra=bi_bac [ĐÚNG]
+    φ=must_holds_work_permit; quy tắc trong Π_τ: 107; dữ kiện: foreign_worker_in_vietnam, married_to_vietnamese_citizen, resides_in_vietnamese_territory
+    căn cứ: ['BLLD_45-2019.D151.K1.d', 'BLLD_45-2019.D154.K8']; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'BLLD_45-2019.D154.K8']
 Q05 2026-02-01 chuẩn=bi_bac ra=bi_bac [ĐÚNG]
-    φ=must_holds_work_permit; quy tắc trong Π_τ: 114; dữ kiện: foreign_person_group, high_quality_digital_tech_industry_workforce, foreign_worker_in_vietnam
+    φ=must_holds_work_permit; quy tắc trong Π_τ: 114; dữ kiện: foreign_worker_in_vietnam, high_quality_digital_tech_industry_workforce
     căn cứ: ['BLLD_45-2019.D151.K1.d', 'BLLD_45-2019.D154.K8a']; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'BLLD_45-2019.D154.K8a']
 Q06 2025-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
-    φ=must_holds_work_permit; quy tắc trong Π_τ: 108; dữ kiện: foreign_person_group, high_quality_digital_tech_industry_workforce, foreign_worker_in_vietnam
+    φ=must_holds_work_permit; quy tắc trong Π_τ: 108; dữ kiện: foreign_worker_in_vietnam, high_quality_digital_tech_industry_workforce
     căn cứ: ['BLLD_45-2019.D151.K1.d']; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d']
-Q07 2024-01-15 chuẩn=bi_bac ra=chua_du_can_cu [sai]
-    φ=must_holds_work_permit; quy tắc trong Π_τ: 108; dữ kiện: foreign_person_group, moet_confirmed_entry_to_manage_mission_school
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7.K14.b']
-Q08 2023-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
-    φ=must_holds_work_permit; quy tắc trong Π_τ: 107; dữ kiện: foreign_person_group, moet_confirmed_entry_to_manage_mission_school
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7.K14']
+Q07 2024-01-15 chuẩn=bi_bac ra=bi_bac [ĐÚNG]
+    φ=must_holds_work_permit; quy tắc trong Π_τ: 108; dữ kiện: foreign_worker_in_vietnam, moet_confirmed_entry_to_manage_mission_school
+    căn cứ: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7', 'ND_152-2020.D7.K14.b']; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7.K14.b']
+Q08 2023-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=must_holds_work_permit; quy tắc trong Π_τ: 107; dữ kiện: foreign_worker_in_vietnam, moet_confirmed_entry_to_manage_mission_school
+    căn cứ: ['BLLD_45-2019.D151.K1.d']; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7.K14']
 Q09 2022-01-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
     φ=must_place_security_deposit; quy tắc trong Π_τ: 107; dữ kiện: labor_leasing_enterprise
     căn cứ: ['BLLD_45-2019.D54.K1']; căn cứ chuẩn: ['BLLD_45-2019.D54.K1']
@@ -49,5 +49,5 @@ Q14 2026-06-01 chuẩn=bi_bac ra=khong_tra_loi [sai] (cần 2.6)
     lý do: ngoai_pham_vi
     căn cứ: []; căn cứ chuẩn: ['NQ_66-16-2026.PLI_7.M1.LB.SI.R3']
 Q15 2025-06-01 chuẩn=khong_tra_loi ra=khong_tra_loi [ĐÚNG]
-    φ=None; quy tắc trong Π_τ: 108; dữ kiện: foreign_worker_in_vietnam
+    φ=None; quy tắc trong Π_τ: 108; dữ kiện: 
     lý do: ngoai_pham_vi
