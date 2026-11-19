@@ -193,25 +193,41 @@ def contradicted(r, facts):
     return False
 
 
-def fired_units(rs, model):
-    """Căn cứ: source_units của quy tắc có đầu và mọi literal dương (không `not`) của thân trong mô hình."""
+def fired_rules(rs, model):
+    """-> (quy tắc bị chặn, quy tắc đã chạy): bị chặn là có blocked(r, p1) trong mô hình; đã chạy là có đầu và mọi literal dương (không
+    `not`) của thân trong mô hình."""
     m = {x.replace(" ", "") for x in model}
-    out = []
-    # quy tắc bị chặn (blocked(r, p1) trong mô hình) cũng là căn cứ của "bị bác": câu trả lời nêu cả quy định bị bác lẫn ngoại lệ
-    for r in rs:
-        if f"blocked({r['id']},{ENTITY})" in m:
-            out += [u for u in r["source_units"] if u not in out]
+    blocked = [r for r in rs if f"blocked({r['id']},{ENTITY})" in m]
+    fired = []
     for r in rs:
         head = f"{'-' if r['head']['neg'] else ''}{r['head']['atom']}({ENTITY})"
         if head not in m:
             continue
         if all(f"{'-' if lit.get('neg') else ''}{lit['atom']}({ENTITY})" in m for lit in r["body"] if lit["atom"] != "blocked" and not lit.get("naf")):
-            out += [u for u in r["source_units"] if u not in out]
+            fired.append(r)
+    return blocked, fired
+
+
+def fired_units(rs, model):
+    """Căn cứ: source_units của quy tắc đã chạy. Quy tắc bị chặn cũng là căn cứ của "bị bác": câu trả lời nêu cả quy định bị bác lẫn
+    ngoại lệ."""
+    out = []
+    blocked, fired = fired_rules(rs, model)
+    for r in blocked + fired:
+        out += [u for u in r["source_units"] if u not in out]
     return out
 
 
-def classify(phi, facts, rules_tau, iso_ids, llm_edges=True, query=scasp_query):
-    """-> {"ket_qua", "ly_do", "can_cu"}; ket_qua thuộc bốn loại hoặc "loi"."""
+def classify(phi, facts, rules_tau, iso_ids, llm_edges=True, query=scasp_query, detail=False):
+    """-> {"ket_qua", "ly_do", "can_cu"}; ket_qua thuộc bốn loại hoặc "loi". detail=True (web demo) thêm "mo_hinh": mô hình s(CASP) của
+    truy vấn thắng (rỗng khi không truy vấn nào thắng)."""
+    out = _classify(phi, facts, rules_tau, iso_ids, llm_edges, query)
+    if not detail:
+        out.pop("mo_hinh", None)
+    return out
+
+
+def _classify(phi, facts, rules_tau, iso_ids, llm_edges, query):
     if phi is None:
         return {"ket_qua": "khong_tra_loi", "ly_do": "ngoai_pham_vi", "can_cu": []}
     pos = {f["vi_tu"] for f in facts if not f["phu_dinh"]}
@@ -234,9 +250,9 @@ def classify(phi, facts, rules_tau, iso_ids, llm_edges=True, query=scasp_query):
     if res["pos"][0] and res["neg"][0]:
         return {"ket_qua": "loi", "ly_do": "chứng minh được cả φ lẫn -φ", "can_cu": []}
     if res["pos"][0]:
-        return {"ket_qua": "ket_luan_duoc", "ly_do": "", "can_cu": fired_units(live, res["pos"][1])}
+        return {"ket_qua": "ket_luan_duoc", "ly_do": "", "can_cu": fired_units(live, res["pos"][1]), "mo_hinh": res["pos"][1]}
     if res["neg"][0]:
-        return {"ket_qua": "bi_bac", "ly_do": "", "can_cu": fired_units(live, res["neg"][1])}
+        return {"ket_qua": "bi_bac", "ly_do": "", "can_cu": fired_units(live, res["neg"][1]), "mo_hinh": res["neg"][1]}
     phi_rules = [r for r in live if r["head"]["atom"] == phi and not r["head"]["neg"]]
     if phi_rules and all(contradicted(r, facts) for r in phi_rules):
         return {"ket_qua": "bi_bac", "ly_do": "dieu_kien_bi_bac", "can_cu": [u for r in phi_rules for u in r["source_units"]]}
