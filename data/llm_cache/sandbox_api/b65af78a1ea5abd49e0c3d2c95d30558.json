@@ -1,0 +1,46 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T18:54:50+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0040\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K5\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K1\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_legal_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0041\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K6\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K1\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_legal_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0042\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K7\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K1\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_legal_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0043\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K8\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động bị thu hồi.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K1\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_legal_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0044\",\n   \"a\": {\n    \"unit_id\": \"ND_219-2025.D2.K1.g\",\n    \"tieu_de_dieu\": \"Đối tượng áp dụng\",\n    \"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam (sau đây viết tắt là người lao động nước ngoài) là công dân nước ngoài vào làm việc tại các vị trí công việc quy định tại Điều 3 Nghị định này, theo một trong các hình thức sau đây:\",\n    \"chu_don_vi\": \"Người chịu trách nhiệm thành lập hiện diện thương mại;\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D7.K10\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người chịu trách nhiệm thành lập hiện diện thương mại.\"\n   },\n   \"vi_tu_chung\": [\n    \"responsible_for_establishing_commercial_presence\"\n   ]\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_fafd5f0d0704778cbdb411c6",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0040",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0041",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0042",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0043",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0044",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Người chịu trách nhiệm thành lập hiện diện thương mại."
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 57,
+  "output_tokens": 194,
+  "cost_vnd": 3
+ },
+ "boc_rao": true
+}
