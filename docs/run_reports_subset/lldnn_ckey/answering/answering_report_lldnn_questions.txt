@@ -1,47 +1,52 @@
 1.9 hỏi đáp: lldnn_questions.json (kho con lldnn)
 văn bản có quy tắc: ['BLLD_45-2019', 'ND_145-2020', 'ND_152-2020', 'ND_219-2025', 'NQ_66-16-2026']; câu hỏi: 15; từ vựng: 347 kết luận, 670 vị từ
 Không in tỉ lệ đúng chung: câu gắn 'cần 2.6' có căn cứ chuẩn ở văn bản chưa có quy tắc nên chưa thể đúng ở giai đoạn này.
-Q01 2025-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q01 2025-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
+    φ=subject_to_work_permit; quy tắc trong Π_τ: 334; dữ kiện: foreign_worker_in_vietnam, foreign_national, work_in_vietnam, work_in_vietnam_under_90_days_per_year
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7.K8']
-Q02 2025-10-01 chuẩn=bi_bac ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q02 2025-10-01 chuẩn=bi_bac ra=chua_du_can_cu [sai]
+    φ=subject_to_work_permit; quy tắc trong Π_τ: 324; dữ kiện: foreign_worker_in_vietnam, foreign_national, work_in_vietnam, work_in_vietnam_under_90_days_per_year
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_219-2025.D7.K13.a']
-Q03 2025-06-01 chuẩn=bi_bac ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7.K8']
-Q04 2022-03-01 chuẩn=bi_bac ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q03 2025-06-01 chuẩn=bi_bac ra=bi_bac [ĐÚNG]
+    φ=subject_to_work_permit; quy tắc trong Π_τ: 334; dữ kiện: foreign_worker_in_vietnam, foreign_national, work_in_vietnam, short_term_work_under_30_days_3_times_year
+    căn cứ: ['ND_152-2020.D7', 'ND_152-2020.D7.K8']; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7.K8']
+Q04 2022-03-01 chuẩn=bi_bac ra=chua_du_can_cu [sai]
+    φ=subject_to_work_permit; quy tắc trong Π_τ: 331; dữ kiện: foreign_worker_in_vietnam, foreign_national, marry_vietnamese_and_reside
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'BLLD_45-2019.D154.K8']
-Q05 2026-02-01 chuẩn=bi_bac ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q05 2026-02-01 chuẩn=bi_bac ra=chua_du_can_cu [sai]
+    φ=subject_to_work_permit; quy tắc trong Π_τ: 325; dữ kiện: foreign_worker_in_vietnam, foreign_national, high_quality_digital_technology_industry_workforce, work_in_vietnam
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'BLLD_45-2019.D154.K8a']
-Q06 2025-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q06 2025-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
+    φ=not_applicable_neg_subject_to_work_permit; quy tắc trong Π_τ: 334; dữ kiện: foreign_national, high_quality_digital_technology_industry_workforce, work_in_vietnam
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d']
-Q07 2024-01-15 chuẩn=bi_bac ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q07 2024-01-15 chuẩn=bi_bac ra=chua_du_can_cu [sai]
+    φ=not_applicable_grant_work_permit; quy tắc trong Π_τ: 334; dữ kiện: foreign_worker_in_vietnam, foreign_national, moet_confirmation_for_work_in_vietnam, work_as_manager_executive_or_principal
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7.K14.b']
-Q08 2023-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q08 2023-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
+    φ=not_applicable_grant_work_permit; quy tắc trong Π_τ: 331; dữ kiện: foreign_worker_in_vietnam, foreign_national, moet_confirmation_for_work_in_vietnam, work_as_manager_executive_or_principal
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'ND_152-2020.D7.K14']
-Q09 2022-01-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D54.K1']
-Q10 2022-06-01 chuẩn=bi_bac ra=chua_hoi [sai] (cần 2.6)
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q09 2022-01-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=must_make_deposit; quy tắc trong Π_τ: 331; dữ kiện: labor_leasing_enterprise
+    căn cứ: ['BLLD_45-2019.D54.K1']; căn cứ chuẩn: ['BLLD_45-2019.D54.K1']
+Q10 2022-06-01 chuẩn=bi_bac ra=chua_du_can_cu [sai] (cần 2.6)
+    φ=may_grant_labor_leasing_license; quy tắc trong Π_τ: 331; dữ kiện: enterprise, make_deposit, meet_conditions
     căn cứ: []; căn cứ chuẩn: ['ND_145-2020.D21.K2']
-Q11 2025-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai] (cần 2.6)
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q11 2025-06-01 chuẩn=ket_luan_duoc ra=khong_tra_loi [sai] (cần 2.6)
+    φ=None; quy tắc trong Π_τ: 334; dữ kiện: dossier, labor_leasing_license, legal_representative_of_labor_leasing_enterprise
+    lý do: ngoai_pham_vi
     căn cứ: []; căn cứ chuẩn: ['ND_145-2020.D24.K2']
-Q12 2026-06-01 chuẩn=bi_bac ra=chua_hoi [sai] (cần 2.6)
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q12 2026-06-01 chuẩn=bi_bac ra=khong_tra_loi [sai] (cần 2.6)
+    φ=None; quy tắc trong Π_τ: 335; dữ kiện: dossier, labor_leasing_license, legal_representative_of_labor_leasing_enterprise
+    lý do: ngoai_pham_vi
     căn cứ: []; căn cứ chuẩn: ['NQ_66-16-2026.PLI_7.M1.LB.SI', 'ND_145-2020.D24']
-Q13 2027-04-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai] (cần 2.6)
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q13 2027-04-01 chuẩn=ket_luan_duoc ra=khong_tra_loi [sai] (cần 2.6)
+    φ=None; quy tắc trong Π_τ: 325; dữ kiện: dossier, labor_leasing_license, legal_representative_of_labor_leasing_enterprise
+    lý do: ngoai_pham_vi
     căn cứ: []; căn cứ chuẩn: ['ND_145-2020.D24.K2']
-Q14 2026-06-01 chuẩn=bi_bac ra=chua_hoi [sai] (cần 2.6)
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q14 2026-06-01 chuẩn=bi_bac ra=khong_tra_loi [sai] (cần 2.6)
+    φ=None; quy tắc trong Π_τ: 335; dữ kiện: enterprise, dossier, labor_leasing_license, legal_representative_of_labor_leasing_enterprise
+    lý do: ngoai_pham_vi
     căn cứ: []; căn cứ chuẩn: ['NQ_66-16-2026.PLI_7.M1.LB.SI.R3']
-Q15 2025-06-01 chuẩn=khong_tra_loi ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+Q15 2025-06-01 chuẩn=khong_tra_loi ra=khong_tra_loi [ĐÚNG]
+    φ=None; quy tắc trong Π_τ: 334; dữ kiện: foreign_worker_in_vietnam
+    lý do: ngoai_pham_vi
