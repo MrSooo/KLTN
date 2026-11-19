@@ -1,12 +1,12 @@
 # Sổ quyết định
 
-Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A51) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
+Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A52) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
 
 Quy ước ghi: mỗi mục gồm **Quyết định**, **Lý do** và **Cái giá hoặc chỗ chưa kiểm** khi có. Chỗ lệch so với kế hoạch ban đầu hoặc so với mã cũ được nêu rõ. Số đo ghi kèm ngày đo và phạm vi (BLLĐ là Bộ luật Lao động 45/2019; "kho" là cả 18 văn bản trong `data/raw/labor/`).
 
 Các mục A9, A10, A18, A19, A20, A28 là quy trình làm việc nội bộ giữa các phiên và không còn hiệu lực sau khi tài liệu được chuẩn hoá (A40); mã của chúng được giữ trống để các tham chiếu không đổi.
 
-Bố cục: **Phần I** quyết định về pipeline (A1 đến A51); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
+Bố cục: **Phần I** quyết định về pipeline (A1 đến A52); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
 
 ---
 
@@ -345,6 +345,14 @@ Danh sách còn hiệu lực nằm ở `docs/status.md` (mục Nợ kỹ thuật
 **Kết quả (ckey3, 20/11, cả chuỗi tập con).** Lỗi đích hết: lỗi "âm tiết" có chữ "là" **20 → 1**; "chu_the sai khuôn" **7 → 0**. M1 giữ **4/4** (không lùi lần sửa 1). M2 3 → 2 (cả hai "bao gồm"). Tổng lỗi cổng **45 ở 39 đơn vị → 15 ở 11 đơn vị** (ckey gốc 26 ở 19). Loại lỗi mới: 8 lỗi `loai 'dieu_kien'` (model ghi `loai` = `dieu_kien` thay vì `menh_de`, dồn ở ND_152-2020.D4). M4 (phủ định kép, chưa nhắm) 11 → 6. Hỏi đáp (M3) **3/15 → 6/15** (Q03, Q05, Q06, Q08, Q09, Q15); đối chiếu căn cứ: Q03, Q06, Q09 có đủ căn cứ chuẩn, Q05 và Q08 đúng nhãn nhưng thiếu một căn cứ chuẩn, Q15 là câu ngoài phạm vi. Không quy phần tăng hỏi đáp cho A51: ở ckey3, 1.9 dịch Q01-Q05 thành câu hỏi khác (`exempt_from_work_permit` thay vì `must_have_work_permit`) và 1.6B đặt tên khác, cả hai không tất định.
 **Tác dụng phụ mới (đã tra).** ND_219-2025.D7 ("Người lao động nước ngoài không thuộc diện cấp giấy phép lao động", kết luận nằm ở TIÊU ĐỀ Điều): ckey3 ghi các mục K5 đến K13 chỉ có dòng `dieu_kien`, không có `ket_luan` lấy từ tiêu đề, nên không ra quy tắc; `update_rules` của ckey3 chỉ còn D7.K14.a, K14.b (ckey có 17 đơn vị của D7, ckey2 có 12). Lời nhắc gốc có ví dụ "cộng một dieu_kien lấy từ tiêu đề" (kết luận từ tiêu đề cộng điều kiện ở mục), nhưng luật (a) của A50 chỉ nói về câu dẫn, không nói về tiêu đề. Q02 (cần D7.K13.a) vì vậy không thể đúng.
 **Lỗi khi chạy.** 1.6A cập nhật: lô 016, 027, 052 bỏ sót `unit_id` (`nhap` từ chối; làm lại bằng `sandbox_api --lam-lai`), lô 016 cụt `max_tokens` thêm một lần. Chế độ chạy sai ban đầu (`chi_1_6a`) đã ghi ở trên.
+
+## A52. Lần sửa 3 (ckey4): lời nhắc 1.6A `menh-de-7`, kết luận ở tiêu đề Điều và `loai` nhầm (20/11)
+**Lệch (đặt lên đầu).** [THÊM] Lời nhắc do agent viết khi user vắng, cùng lời dặn ở A50. Kế hoạch trước (advisor) để lần sửa 3 cho phủ định kép; đổi lại vì lần sửa 2 sinh hai lỗi mới mà ckey, ckey2 không có, trong đó một lỗi im lặng (cổng không bắt) làm mất quy tắc miễn giấy phép. Phủ định kép chuyển sang lần sửa 4 (A53), vì user dặn "ít nhất 3 lần".
+**Lỗi nhắm tới (đo ở ckey3).** (1) ND_219-2025.D7 không có câu dẫn, kết luận "Người lao động nước ngoài không thuộc diện cấp giấy phép lao động" chỉ ở tiêu đề Điều; ckey3 cho các khoản K5 đến K13 chỉ dòng `dieu_kien`, không có `ket_luan`, nên không thành quy tắc (`update_rules` chỉ còn D7.K14.a, K14.b). Đã kiểm ND_152-2020.D7 (cùng nội dung nhưng CÓ câu dẫn mang kết luận): đủ quy tắc ở cả ba lần chạy, dạng `compiled_child_or` (điều kiện ở khoản con gộp "hoặc" dưới kết luận của câu dẫn), nên lỗi chỉ ở Điều không có câu dẫn. (2) 8 dòng `loai = "dieu_kien"` (nhầm `vai` sang `loai`), đều ở ND_152-2020.D4, là điều kiện thường chứ không phải khoản con của danh sách: lỗi riêng, đo riêng.
+**Quyết định.** `menh-de-7` = `menh-de-6` cộng hai chỗ thêm chữ (`_M7`; bốn bản trước giữ nguyên từng byte, đã so bằng máy với HEAD): (a) ngay sau luật của A51: Điều không có câu dẫn mà tiêu đề nêu kết luận, các khoản là từng trường hợp, thì MỖI khoản có một dòng `ket_luan` lấy từ tiêu đề (`nguon tieu_de`) CỘNG một dòng `dieu_kien` là chữ của khoản; (b) ví dụ đủ hai vế lấy BLLĐ D37.K2 (ngoài tập con; lời nhắc gốc đã có ví dụ tiêu đề D17 nhưng chỉ một vế), đã cho chạy qua `gate_unit` (không lỗi, một cờ "menh_de dài 20 âm tiết"); cộng hai dòng tự kiểm: `loai` chỉ nhận `menh_de | con_tro | bo_qua | chua_ro`; Điều tiêu đề nêu kết luận thì mỗi khoản có cả hai dòng. Cấu hình `ckey4.*`. Chạy cả chuỗi tập con.
+**Số đo chốt trước khi chạy.** Số khoản ND_219-2025.D7 có quy tắc trong `update_rules` (ckey 17 đơn vị, ckey2 12, ckey3 2); lỗi `loai 'dieu_kien'` (ckey3: 8). Chặn lùi: M1 giữ 4/4; lỗi "là" ≤ 2; `chu_the` thiếu `nguon` 0; tổng lỗi cổng không tệ hơn 15 quá mức nhiễu. Hỏi đáp chỉ ghi, không quy cho A52 (1.9 và 1.6B không tất định).
+**Cái giá.** Lời nhắc dài thêm 1.581 ký tự (ví dụ JSON hai dòng). Ví dụ D37 cùng dạng với D154 và ND_219 D7 (kết luận phủ định ở tiêu đề), nên kết quả trên D7 có phần "dạy theo dạng"; nhưng chữ ví dụ ngoài tập con.
+**Kết quả.** (điền sau khi chạy)
 
 # Phần II. Quyết định ở mức từng bước nền
 

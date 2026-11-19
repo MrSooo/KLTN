@@ -162,6 +162,21 @@ _M6 = [
      "- Mọi âm tiết của menh_de có trong trich của dòng đó; không tự thêm \"là\" vào đầu menh_de.\n- chu_the (nếu có) luôn đủ ba khoá chu, loai, nguon.\n"),
 ]
 PROMPTS["menh-de-6"] = _apply(PROMPTS["menh-de-5"], _M6)
+
+# A52: sửa tác dụng phụ của A51 ở ckey3. (1) Điều không có câu dẫn, kết luận chỉ nằm ở TIÊU ĐỀ (ND_219-2025.D7
+# "Người lao động nước ngoài không thuộc diện cấp giấy phép lao động"): mục con chỉ ra dieu_kien, mất ket_luan nên không
+# thành quy tắc. Ví dụ tiêu đề sẵn có của lời nhắc (D17) chỉ có một vế; thêm ví dụ đủ hai vế, lấy D37 (ngoài tập con).
+# (2) 8 dòng ghi loai = "dieu_kien" (nhầm trường vai sang loai).
+_M7 = [
+    # a: kết luận ở tiêu đề Điều, khoản là trường hợp: mỗi khoản có ket_luan lấy từ tiêu đề CỘNG dieu_kien là chữ của khoản
+    ("KHÔNG thêm \"là\", \"thuộc\", \"có\" hay bất kỳ chữ nối nào không có trong trich để biến nó thành vị ngữ.",
+     "KHÔNG thêm \"là\", \"thuộc\", \"có\" hay bất kỳ chữ nối nào không có trong trich để biến nó thành vị ngữ. Điều KHÔNG có câu dẫn mà tiêu đề nêu kết luận (\"Trường hợp ... không được ...\", \"Người ... không thuộc diện ...\") và các khoản là từng trường hợp: MỖI khoản ra một dòng ket_luan lấy từ tiêu đề (chu_the.nguon = tieu_de, trich có mẩu chép từ tieu_de_dieu) CỘNG một dòng dieu_kien là chữ của khoản; thiếu dòng ket_luan thì khoản đó không thành quy tắc."),
+    # b: ví dụ đủ hai vế (D37.K2) và dòng tự kiểm cho loai
+    ("\n## Tự kiểm trước khi trả\n",
+     "Kết luận ở tiêu đề, khoản là trường hợp: tieu_de_dieu \"Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động\", chữ \"Người lao động đang nghỉ hằng năm, nghỉ việc riêng và trường hợp nghỉ khác được người sử dụng lao động đồng ý.\" → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"thực hiện quyền đơn phương chấm dứt hợp đồng lao động\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\",\"nguon\":\"tieu_de\"},\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"trich\":[\"người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động\"],\"quy_tac\":\"q1\"} và {\"loai\":\"menh_de\",\"vai\":\"dieu_kien\",\"menh_de\":\"đang nghỉ hằng năm, nghỉ việc riêng và trường hợp nghỉ khác được người sử dụng lao động đồng ý\",\"chu_the\":{\"chu\":\"Người lao động\",\"loai\":\"W\",\"nguon\":\"chinh\"},\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"trich\":[\"Người lao động đang nghỉ hằng năm, nghỉ việc riêng và trường hợp nghỉ khác được người sử dụng lao động đồng ý\"],\"quy_tac\":\"q1\"}\n"
+     "\n## Tự kiểm trước khi trả\n- loai chỉ là menh_de | con_tro | bo_qua | chua_ro; ket_luan, dieu_kien, ngoai_le là giá trị của vai, không bao giờ của loai.\n- Điều không có câu dẫn mà tiêu đề nêu kết luận: mỗi khoản có cả dòng ket_luan (nguon tieu_de) lẫn dòng dieu_kien.\n"),
+]
+PROMPTS["menh-de-7"] = _apply(PROMPTS["menh-de-6"], _M7)
 SYSTEM = PROMPTS[PROMPT_VERSION]
 
 SCHEMA = {"units": [{"unit_id": "string", "dong": [{f: "xem system.txt" for f in FIELDS + (LLM_REASON,)}]}]}
