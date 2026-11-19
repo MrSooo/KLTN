@@ -1,0 +1,61 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T21:56:05+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0030\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D2.K1.g\",\n    \"tieu_de_dieu\": \"Đối tượng áp dụng\",\n    \"khoan_cha\": \"Lao động là công dân nước ngoài vào làm việc tại Việt Nam (sau đây viết tắt là người lao động nước ngoài) theo các hình thức sau đây:\",\n    \"chu_don_vi\": \"Tình nguyện viên;\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D7.K7\",\n    \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n    \"chu_don_vi\": \"Tình nguyện viên quy định tại khoản 2 Điều 3 Nghị định này.\"\n   },\n   \"vi_tu_chung\": [\n    \"volunteer\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0031\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D2.K5\",\n    \"tieu_de_dieu\": \"Đối tượng áp dụng\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động Việt Nam làm việc cho tổ chức, cá nhân nước ngoài tại Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D25.K1\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người lao động Việt Nam khi làm việc cho tổ chức, cá nhân nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tuân thủ pháp luật về lao động của Việt Nam.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_for_foreign_org_or_individual_in_vietnam\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0032\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D2.K5\",\n    \"tieu_de_dieu\": \"Đối tượng áp dụng\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động Việt Nam làm việc cho tổ chức, cá nhân nước ngoài tại Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D25.K2\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người lao động Việt Nam khi làm việc cho tổ chức, cá nhân nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thực hiện đúng các điều khoản của hợp đồng lao động đã ký kết với tổ chức, cá nhân nước ngoài.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_for_foreign_org_or_individual_in_vietnam\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0033\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D2.K5\",\n    \"tieu_de_dieu\": \"Đối tượng áp dụng\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động Việt Nam làm việc cho tổ chức, cá nhân nước ngoài tại Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D25.K3\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người lao động Việt Nam khi làm việc cho tổ chức, cá nhân nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thực hiện đúng các quy định của tổ chức có thẩm quyền tuyển dụng, quản lý người lao động Việt Nam làm việc cho tổ chức, cá nhân nước ngoài.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_for_foreign_org_or_individual_in_vietnam\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0034\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D3.K1\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài di chuyển trong nội bộ doanh nghiệp là nhà quản lý, giám đốc điều hành, chuyên gia và lao động kỹ thuật của một doanh nghiệp nước ngoài đã thành lập hiện diện thương mại trên lãnh thổ Việt Nam, di chuyển tạm thời trong nội bộ doanh nghiệp sang hiện diện thương mại trên lãnh thổ Việt Nam và đã được doanh nghiệp nước ngoài tuyển dụng trước đó ít nhất 12 tháng liên tục.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D7.K3\",\n    \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n    \"chu_don_vi\": \"Di chuyển trong nội bộ doanh nghiệp thuộc phạm vi 11 ngành dịch vụ trong biểu cam kết dịch vụ của Việt Nam với Tổ chức Thương mại thế giới, bao gồm: kinh doanh, thông tin, xây dựng, phân phối, giáo dục, môi trường, tài chính, y tế, du lịch, văn hóa giải trí và vận tải.\"\n   },\n   \"vi_tu_chung\": [\n    \"intra_corporate_transfer\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0035\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D3.K2\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tình nguyện viên là người lao động nước ngoài làm việc tại Việt Nam theo hình thức tự nguyện và không hưởng lương để thực hiện điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên và có xác nhận của cơ quan đại diện ngoại giao nước ngoài hoặc tổ chức quốc tế tại Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D7.K7\",\n    \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n    \"chu_don_vi\": \"Tình nguyện viên quy định tại khoản 2 Điều 3 Nghị định này.\"\n   },\n   \"vi_tu_chung\": [\n    \"volunteer\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0036\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D20.K2\",\n    \"tieu_de_dieu\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động hoặc người lao động nước ngoài không thực hiện đúng quy định tại Nghị định này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D26.K1\",\n    \"tieu_de_dieu\": \"Trách nhiệm của tổ chức, cá nhân nước ngoài tại Việt Nam khi sử dụng người lao động Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thực hiện đúng quy định của Bộ luật Lao động và các quy định hiện hành.\"\n   },\n   \"vi_tu_chung\": [\n    \"comply_with_relevant_regulations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0037\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D25.K1\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người lao động Việt Nam khi làm việc cho tổ chức, cá nhân nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tuân thủ pháp luật về lao động của Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D25.K2\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người lao động Việt Nam khi làm việc cho tổ chức, cá nhân nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thực hiện đúng các điều khoản của hợp đồng lao động đã ký kết với tổ chức, cá nhân nước ngoài.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_for_foreign_org_or_individual_in_vietnam\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0038\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D25.K1\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người lao động Việt Nam khi làm việc cho tổ chức, cá nhân nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tuân thủ pháp luật về lao động của Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D25.K3\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người lao động Việt Nam khi làm việc cho tổ chức, cá nhân nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thực hiện đúng các quy định của tổ chức có thẩm quyền tuyển dụng, quản lý người lao động Việt Nam làm việc cho tổ chức, cá nhân nước ngoài.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_for_foreign_org_or_individual_in_vietnam\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0039\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D25.K2\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người lao động Việt Nam khi làm việc cho tổ chức, cá nhân nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thực hiện đúng các điều khoản của hợp đồng lao động đã ký kết với tổ chức, cá nhân nước ngoài.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D25.K3\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người lao động Việt Nam khi làm việc cho tổ chức, cá nhân nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thực hiện đúng các quy định của tổ chức có thẩm quyền tuyển dụng, quản lý người lao động Việt Nam làm việc cho tổ chức, cá nhân nước ngoài.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_for_foreign_org_or_individual_in_vietnam\"\n   ]\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_f4be74f6d5c8ec1d99b42ced",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0030",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0031",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0032",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0033",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0034",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0035",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0036",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0037",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0038",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0039",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 35,
+  "output_tokens": 580,
+  "cost_vnd": 4.94
+ },
+ "boc_rao": false
+}
