@@ -149,6 +149,19 @@ _M5 = [
 
 PROMPTS = {"menh-de-3": SYSTEM_3, "menh-de-4": _apply(SYSTEM_3, _M4)}
 PROMPTS["menh-de-5"] = _apply(PROMPTS["menh-de-4"], _M5)
+
+# A51: sửa tác dụng phụ của A50 ở ckey2. Luật (a) "mục con kế thừa chủ thể" làm model viết mục con là cụm danh từ
+# thành vị ngữ "là ..." (20/21 lỗi "âm tiết không có trong trich"), cộng chu_the thiếu khoá nguon (7 lỗi). Chỉ thêm chữ,
+# không đổi luật vai hay cổng.
+_M6 = [
+    # a: mục con là cụm danh từ thì chép nguyên cụm, không thêm chữ nối; đặt ngay sau luật (a) của A50
+    ("luôn là bo_qua cau_dan, không bao giờ nằm trong menh_de.",
+     "luôn là bo_qua cau_dan, không bao giờ nằm trong menh_de. Mục con là CỤM DANH TỪ (tên một loại người, tổ chức, giấy tờ, như \"Phóng viên nước ngoài hoạt động thông tin báo chí ...\") thì menh_de chép chính cụm đó; KHÔNG thêm \"là\", \"thuộc\", \"có\" hay bất kỳ chữ nối nào không có trong trich để biến nó thành vị ngữ."),
+    # b: hai dòng tự kiểm cho đúng hai lỗi đo được
+    ("- Mọi âm tiết của menh_de có trong trich của dòng đó.\n",
+     "- Mọi âm tiết của menh_de có trong trich của dòng đó; không tự thêm \"là\" vào đầu menh_de.\n- chu_the (nếu có) luôn đủ ba khoá chu, loai, nguon.\n"),
+]
+PROMPTS["menh-de-6"] = _apply(PROMPTS["menh-de-5"], _M6)
 SYSTEM = PROMPTS[PROMPT_VERSION]
 
 SCHEMA = {"units": [{"unit_id": "string", "dong": [{f: "xem system.txt" for f in FIELDS + (LLM_REASON,)}]}]}
