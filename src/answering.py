@@ -228,7 +228,7 @@ def classify(phi, facts, rules_tau, iso_ids, llm_edges=True, query=scasp_query):
     phi_rules = [r for r in live if r["head"]["atom"] == phi and not r["head"]["neg"]]
     if phi_rules and all(contradicted(r, facts) for r in phi_rules):
         return {"ket_qua": "bi_bac", "ly_do": "dieu_kien_bi_bac", "can_cu": [u for r in phi_rules for u in r["source_units"]]}
-    watch = {phi} | {h for r in phi_rules for h in rules.active_blockers(r, llm_edges)}
+    watch = {phi} | {h.lstrip("-") for r in phi_rules for h in rules.active_blockers(r, llm_edges)}
     iso_hit = [r for r in rules_tau if r["id"] in iso_ids and r["head"]["atom"] in watch]
     if iso_hit:
         return {"ket_qua": "khong_tra_loi", "ly_do": "co_lap: " + ", ".join(r["id"] for r in iso_hit), "can_cu": []}

@@ -120,4 +120,22 @@ def test_rules_scasp_falsification_d151_d154():
             assert got == [exempt, must], (facts, got)
 
 
+def test_rules_block_alias_not_applicable_equals_negated_description():
+    """A43: quy định miễn ghi "-P" (mô tả + phủ định) ở văn bản khác chặn được quy tắc gốc mà cây con nguồn ghi not_applicable_P."""
+    rules, _ = compiled()
+    rules.append({"id": "rN", "unit": "ND_X.D7.K8", "head": {"atom": "subject_to_work_permit_issuance", "pred": "subject_to_work_permit_issuance", "neg": True},
+                  "body": [{"atom": "short_stay", "pred": "short_stay", "naf": False}], "how": "compiled", "source_units": ["ND_X.D7.K8"]})
+    for r in rules:
+        r["body"] = [x for x in r["body"] if x["atom"] != "blocked"]
+    R.apply_blocks(rules, {(D + "D154", D + "D151.K1.d"): "1.5"}, alias=True)
+    d = next(r for r in rules if r["unit"] == D + "D151.K1.d")
+    blk = next(x for x in d["body"] if x["atom"] == "blocked")["blocked_by"]
+    assert "-subject_to_work_permit_issuance" in blk and "not_applicable_subject_to_work_permit_issuance" in blk, blk
+    for r in rules:
+        r["body"] = [x for x in r["body"] if x["atom"] != "blocked"]
+    R.apply_blocks(rules, {(D + "D154", D + "D151.K1.d"): "1.5"}, alias=False)
+    blk = next(x for x in d["body"] if x["atom"] == "blocked")["blocked_by"]
+    assert blk == ["not_applicable_subject_to_work_permit_issuance"], blk
+
+
 _harness.run(globals())

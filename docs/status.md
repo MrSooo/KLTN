@@ -25,8 +25,8 @@ Kiểm ngày 15/11/2026 (sau khi chuẩn hoá tên và xoá thư mục lưu tr�
 | 2.3 Đọc chỉ thị | `directives.py`, `directives_rare.py` | xong cho kho hiện tại | 26 loại, bảng ở `docs/reference/directive_types.md` |
 | 2.4 Áp phiên bản | `versions.py` | xong cho kho hiện tại | 9.217 đơn vị, 9.343 phiên bản (đo 09/11) |
 | 2.5 Tập ảnh hưởng | `affected.py` | có mã | N một bước qua 6 quan hệ (A42) |
-| 2.6 Trích lại theo A(e) | `update.py`, `predicate_registry.py`, `knowledge_units.py` | có mã, chờ LLM | 390 KU của tập con chưa có 1.6A; 1.6B, 1.7, 1.9 chạy sau (A42) |
-| 2.7 Đối chứng | `update.py` | có mã | đạt trên tập con (tri thức BLLĐ); test tổng hợp trượt khi cắt N |
+| 2.6 Trích lại theo A(e) | `update.py`, `predicate_registry.py`, `knowledge_units.py` | chạy trên phần lõi của tập con | 44 KU lõi đã có 1.6A, 1.6B; 346 KU khác chưa (chủ đề tài: không chạy cả nghị định); 1.9: 8/15 (A42, A43) |
+| 2.7 Đối chứng | `update.py` | đạt trên tập con | gồm tri thức nghị định lõi và mốc ND 70 sửa ND 152; bỏ quan hệ concept thì trượt |
 | checks, graph, viewer | `checks.py`, `graph.py`, `utils/viewer/` | xong | đồ thị 9.364 nút, 2.721 cạnh |
 
 ## 3. Việc đang dở: chạy 204 lô của bước 1.6A

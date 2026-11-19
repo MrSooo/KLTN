@@ -18,7 +18,7 @@ trùng; mọi cặp 1.7 mà dựng lại toàn bộ cần phải đã được c
 N rồi chạy lại để thấy quan hệ nào cần (bỏ cả N phải làm 2.7 trượt, không thì phép so không chứng minh gì).
 
 Chạy (kho con thì đặt KLTN_TAP_CON): python -X utf8 -I src/update.py
-  xuat-1-6a <thư mục> [N lô đầu]   hộp cát 1.6A cho KU chưa có 1.6A   nhap-1-6a <thư mục>
+  xuat-1-6a <thư mục> [N lô đầu] [--dieu D1,D2]   hộp cát 1.6A cho KU chưa có 1.6A   nhap-1-6a <thư mục>
   xuat-1-7 <thư mục>    hộp cát 1.7 cho cặp chế độ tăng dần cần   nhap-1-7 <thư mục>
 Ra: data/processed[_subset]/update/: update_rules.jsonl (R của chế độ tăng dần, có khoảng hiệu lực; 1.9 đọc), update_epochs.jsonl (A(e), cặp
 1.7 đã hỏi), update_check.jsonl (2.7); báo cáo docs/run_reports[_subset]/update/update_report.txt.
@@ -209,7 +209,7 @@ def basis_lines(R):
         rs = [r for r in Engine.at(R, datetime.date.fromisoformat(q["ngay"])) if not r.get("isolated")]
         per = {u: [r for r in rs if ku_lib.rel(r["unit"], u)] for u in q["can_cu"]}
         blockers = sorted({h for r in per[q["can_cu"][0]] for x in r["body"] if x["atom"] == "blocked" for h in x["blocked_by"]})
-        hits = [u for u in q["can_cu"][1:] if any(r["head"]["atom"] in blockers and not r["head"]["neg"] for r in per[u])]
+        hits = [u for u in q["can_cu"][1:] if any(rules.head_form(r) in blockers for r in per[u])]
         out.append(f"    {q['id']} {q['ngay']} ({q['dap_an']}): " + ", ".join(f"{u.split('.', 1)[1] if u.startswith(corpus.BASE_DOC_ID) else u} {len(v)}" for u, v in per.items())
                    + (f"; đầu chặn của căn cứ đầu: {blockers}; căn cứ khác kết luận đầu chặn: {hits or 'KHÔNG'}" if len(q["can_cu"]) > 1 else ""))
     return out
@@ -231,8 +231,13 @@ def main():
     if cmd in (["xuat-1-6a"], ["nhap-1-6a"]):
         kus = [k for k in sorted(eng.kn.catalog.kus.values(), key=lambda k: (k["first"], eng.kn.store.order[k["unit"]])) if k["ku"] not in eng.kn.cache]
         if cmd == ["xuat-1-6a"]:
-            if len(sys.argv) > 3:  # chỉ N lô đầu (luật dừng A39: soát sau 60 lô rồi mới làm tiếp)
-                kus = [k for lot in propositions.ku_lots(kus)[:int(sys.argv[3])] for k in lot]
+            rest = sys.argv[3:]
+            if "--dieu" in rest:  # chỉ các Điều nêu (chạy từng phần theo ngân sách, ví dụ Điều mà bộ câu hỏi dev cần)
+                keep = set(rest[rest.index("--dieu") + 1].split(","))
+                kus = [k for k in kus if ku_lib.dieu_of(k["unit"]) in keep]
+                rest = rest[:rest.index("--dieu")] + rest[rest.index("--dieu") + 2:]
+            if rest:  # chỉ N lô đầu (luật dừng A39: soát sau 60 lô rồi mới làm tiếp)
+                kus = [k for lot in propositions.ku_lots(kus)[:int(rest[0])] for k in lot]
             print(propositions.ku_xuat(sys.argv[2], kus))
         else:
             raise SystemExit(1 if propositions.ku_nhap(sys.argv[2], eng.kn.catalog.kus) else 0)

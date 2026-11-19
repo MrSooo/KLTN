@@ -156,14 +156,14 @@ def tiep_entry(script, argv):
     print(line)
 
 
-def xuat(d):
+def xuat(d, partial=False):
     d, root = Path(d).resolve(), corpus.ROOT.resolve()
     if d == root or root in d.parents:
         raise SystemExit(f"{d} nằm trong repo; thư mục làm việc phải ở NGOÀI repo (A36)")
     if d.exists() and any(d.iterdir()):
         raise SystemExit(f"{d} đã có nội dung, không ghi đè")
     run, _cat, missing = prepare()
-    if missing:
+    if missing and not partial:
         raise SystemExit(f"còn {len(missing)} KU chưa có 1.6A (ví dụ {missing[:3]}): nhập 1.6A trước, vì lượt 1.6B đổi khi có thêm dòng")
     model = llm_client.load_config()[f"{Pd.ROLE}.model"]
     py = Path(sys.executable).as_posix()
@@ -209,12 +209,15 @@ def main(argv=None):
     g.add_argument("--xuat", metavar="THU_MUC")
     g.add_argument("--nhap", metavar="THU_MUC")
     ap.add_argument("--de", action="store_true")
+    # Chạy từng phần theo ngân sách (A42, chủ đề tài 19/11): cho dựng hộp cát khi còn KU chưa có 1.6A. Cái giá: nhập thêm 1.6A về sau làm đổi
+    # chữ của mốc có KU mới, nên lượt của mốc đó trở đi phải hỏi lại.
+    ap.add_argument("--mot-phan", action="store_true")
     args = ap.parse_args(argv)
     if not P.full_cache_path().exists():
         print(f"BỎ QUA sổ vị từ 2.6: chưa có kết quả 1.6A {P.full_cache_path()}")
         return
     if args.xuat:
-        print(xuat(args.xuat))
+        print(xuat(args.xuat, args.mot_phan))
         return
     if args.nhap:
         lines, bad = nhap(args.nhap, de=args.de)

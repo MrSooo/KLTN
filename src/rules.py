@@ -207,17 +207,46 @@ def under(uid, root):
 LLM_EDGE = "1.7 llm_proposed"
 
 
-def apply_blocks(rules, edges):
+# [THÊM, A43] Hai cách 1.6A ghi cùng một sự kiện "không thuộc diện P": phương thức khong_ap_dung + khẳng định (đầu not_applicable_P, như BLLĐ
+# D154.K8) và mô tả + phủ định (đầu -P, như ND 152 Đ7, ND 219 Đ7, D154.K8a). Chặn theo vị từ thì hai cách phải là MỘT khoá chặn: đầu chặn của
+# cây con nguồn ở dạng nào thì quy tắc gốc bị chặn bởi cả hai dạng, nếu có quy tắc nào kết luận dạng kia. Chỉ đổi dòng `blocked`, không đổi đầu.
+BLOCK_ALIAS = True
+NA_PREFIX = MODE_PREFIX["khong_ap_dung"]
+
+
+def blocker_forms(rule_heads, alias=None):
+    """Khoá chặn của một tập đầu (chuỗi: atom, hoặc '-atom' cho đầu phủ định). Có alias: not_applicable_P kéo theo -P và ngược lại."""
+    alias = BLOCK_ALIAS if alias is None else alias
+    out = set(rule_heads)
+    if alias:
+        for h in rule_heads:
+            if h.startswith(NA_PREFIX):
+                out.add("-" + h[len(NA_PREFIX):])
+            elif h.startswith("-"):
+                out.add(NA_PREFIX + h[1:])
+    return out
+
+
+def head_form(r):
+    return ("-" if r["head"]["neg"] else "") + r["head"]["atom"]
+
+
+def apply_blocks(rules, edges, alias=None):
     """Thêm literal `blocked` (kèm đầu chặn và nguồn cạnh của từng đầu) vào quy tắc gốc. Dòng chặn và dòng bị bác do program_text sinh từ
-    literal này, để 1.9 dựng lại chương trình cho từng ngày τ và bật/tắt cạnh 1.7. -> quan hệ chặn [(r, đầu chặn, nguồn)]."""
+    literal này, để 1.9 dựng lại chương trình cho từng ngày τ và bật/tắt cạnh 1.7. -> quan hệ chặn [(r, đầu chặn, nguồn)].
+    Đầu chặn là đầu khẳng định của cây con nguồn; với BLOCK_ALIAS (A43) thêm đầu -P và dạng tương đương, chỉ khi có quy tắc kết luận dạng đó."""
     rel = []
+    concluded = {head_form(r) for r in rules}
     for (s, o), src in sorted(edges.items()):
-        heads = sorted({r["head"]["atom"] for r in rules if under(r["unit"], s) and not r["head"]["neg"]})
+        own = {head_form(r) for r in rules if under(r["unit"], s)}
+        if not (BLOCK_ALIAS if alias is None else alias):
+            own = {h for h in own if not h.startswith("-")}
+        heads = sorted(h for h in blocker_forms(own, alias) if h in concluded)
         for r in rules:
             if not under(r["unit"], o) or not heads:
                 continue
             for h in heads:
-                if h == r["head"]["atom"]:
+                if h in (r["head"]["atom"], head_form(r)):
                     continue
                 rel.append((r["id"], h, src))
     by_rule = collections.defaultdict(lambda: collections.defaultdict(set))
@@ -287,7 +316,7 @@ def scan(rules, kinds):
     for r in rules:
         for lit in r["body"]:
             for h in lit.get("blocked_by", []):
-                g[r["head"]["atom"]].add(h)
+                g[r["head"]["atom"]].add(h.lstrip("-"))
 
     def reach(x, y, seen=None):
         seen = seen or set()

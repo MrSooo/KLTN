@@ -254,6 +254,15 @@ def ku_cache_path():
     return CACHE_DIR / (f"ku_pairs.{corpus.SUBSET}.json" if corpus.SUBSET else "ku_pairs.json")
 
 
+def _use_key(role, mode, cuc):
+    """(vai, phương thức, cực) để so "cùng kết luận" của bộ lọc A41. [THÊM, A43] Với rules.BLOCK_ALIAS, khong_ap_dung + khẳng định và
+    mô tả + phủ định là cùng một kết luận ("không thuộc diện P"): hai mục của cùng danh sách miễn ghi theo hai cách không thành cặp."""
+    import rules
+    if rules.BLOCK_ALIAS and role == "ket_luan" and (mode, cuc) == ("khong", "phu_dinh"):
+        return (role, "khong_ap_dung", "khang_dinh")
+    return (role, mode, cuc)
+
+
 def snapshot_pairs(kn, live, kinds, order):
     """Như `build_pairs` trên một ảnh chụp: live {uid: KU}, kinds = loại theo sổ tại ảnh chụp. -> [(uid a, uid b, [vị từ chung])]."""
     units_of, use = collections.defaultdict(set), collections.defaultdict(set)
@@ -261,7 +270,7 @@ def snapshot_pairs(kn, live, kinds, order):
         for r in kn.rows(ku):
             if r.get("predicate") and r["loai"] == "menh_de" and kinds.get(r["predicate"]) == "concept":
                 units_of[r["predicate"]].add(uid)
-                use[(uid, r["predicate"])].add((r["role"], r["mode"], r["cuc"]))
+                use[(uid, r["predicate"])].add(_use_key(r["role"], r["mode"], r["cuc"]))
     shared = collections.defaultdict(set)
     for name, us in units_of.items():
         us = sorted(us, key=order.get)
