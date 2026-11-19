@@ -1,0 +1,34 @@
+2.6-2.7 cập nhật tầng tri thức (kho con lldnn)
+mốc: 8; KU: 466 (chưa có 1.6A: 0); quy tắc trong R (tăng dần, mọi khoảng): 509
+mốc 2021-01-01 (BLLD_45-2019): |T| 76, |A| 76 (N: -); cặp 1.7 mới hỏi 2; quy tắc hiệu lực 89
+mốc 2021-02-01 (ND_145-2020): |T| 133, |A| 188 (N: refers_to 123, exception_of 0, details 2, overrides 0, concept 109, cay 148); cặp 1.7 mới hỏi 13; quy tắc hiệu lực 224
+mốc 2021-02-15 (ND_152-2020): |T| 115, |A| 211 (N: refers_to 129, exception_of 28, details 7, overrides 0, concept 74, cay 131); cặp 1.7 mới hỏi 21; quy tắc hiệu lực 345
+mốc 2023-09-18 (ND_70-2023): |T| 21, |A| 80 (N: refers_to 39, exception_of 22, details 7, overrides 0, concept 20, cay 31); cặp 1.7 mới hỏi 13; quy tắc hiệu lực 352
+mốc 2025-08-07 (ND_219-2025): |T| 210, |A| 362 (N: refers_to 240, exception_of 45, details 7, overrides 0, concept 139, cay 230); cặp 1.7 mới hỏi 12; quy tắc hiệu lực 343
+mốc 2026-01-01 (VBHN_125-2025): |T| 1, |A| 14 (N: refers_to 3, exception_of 3, details 0, overrides 0, concept 10, cay 2); cặp 1.7 mới hỏi 11; quy tắc hiệu lực 344
+mốc 2026-04-15 (NQ_66-16-2026): |T| 34, |A| 322 (N: refers_to 282, exception_of 0, details 2, overrides 73, concept 20, cay 97); cặp 1.7 mới hỏi 18; quy tắc hiệu lực 366
+mốc 2027-03-01 (NQ_66-16-2026): |T| 34, |A| 322 (N: refers_to 282, exception_of 0, details 2, overrides 73, concept 20, cay 97); cặp 1.7 mới hỏi 6; quy tắc hiệu lực 344
+2.7 đối chứng (tăng dần với A(e) so với dựng lại toàn bộ, 18 ngày): ĐẠT
+2.7 bỏ từng quan hệ của N (số sai khác; 0 nghĩa là trên kho này quan hệ đó không cần):
+    bỏ refers_to: 0 sai khác
+    bỏ exception_of: 0 sai khác
+    bỏ details: 0 sai khác
+    bỏ overrides: 0 sai khác
+    bỏ concept: 0 sai khác
+    bỏ cay: 0 sai khác
+    bỏ ca_N: 12 sai khác, đơn vị ví dụ ['BLLD_45-2019.D151.K1.d']
+căn cứ chuẩn của bộ câu hỏi dev trong Π_τ (số quy tắc không cô lập theo căn cứ):
+    Q01 2025-06-01 (ket_luan_duoc): D151.K1.d 2, ND_152-2020.D7.K8 1; đầu chặn của căn cứ đầu: ['not_applicable_neg_subject_to_work_permit_issuance']; căn cứ khác kết luận đầu chặn: KHÔNG
+    Q02 2025-10-01 (bi_bac): D151.K1.d 2, ND_219-2025.D7.K13.a 0; đầu chặn của căn cứ đầu: ['not_applicable_neg_subject_to_work_permit_issuance']; căn cứ khác kết luận đầu chặn: KHÔNG
+    Q03 2025-06-01 (bi_bac): D151.K1.d 2, ND_152-2020.D7.K8 1; đầu chặn của căn cứ đầu: ['not_applicable_neg_subject_to_work_permit_issuance']; căn cứ khác kết luận đầu chặn: KHÔNG
+    Q04 2022-03-01 (bi_bac): D151.K1.d 2, D154.K8 1; đầu chặn của căn cứ đầu: ['not_applicable_neg_subject_to_work_permit_issuance']; căn cứ khác kết luận đầu chặn: ['BLLD_45-2019.D154.K8']
+    Q05 2026-02-01 (bi_bac): D151.K1.d 2, D154.K8a 1; đầu chặn của căn cứ đầu: ['-subject_to_work_permit_issuance', 'not_applicable_neg_subject_to_work_permit_issuance']; căn cứ khác kết luận đầu chặn: ['BLLD_45-2019.D154.K8a']
+    Q06 2025-06-01 (ket_luan_duoc): D151.K1.d 2
+    Q07 2024-01-15 (bi_bac): D151.K1.d 2, ND_152-2020.D7.K14.b 2; đầu chặn của căn cứ đầu: ['not_applicable_neg_subject_to_work_permit_issuance']; căn cứ khác kết luận đầu chặn: KHÔNG
+    Q08 2023-06-01 (ket_luan_duoc): D151.K1.d 2, ND_152-2020.D7.K14 1; đầu chặn của căn cứ đầu: ['not_applicable_neg_subject_to_work_permit_issuance']; căn cứ khác kết luận đầu chặn: KHÔNG
+    Q09 2022-01-01 (ket_luan_duoc): D54.K1 2
+    Q10 2022-06-01 (bi_bac): ND_145-2020.D21.K2 0
+    Q11 2025-06-01 (ket_luan_duoc): ND_145-2020.D24.K2 0
+    Q12 2026-06-01 (bi_bac): NQ_66-16-2026.PLI_7.M1.LB.SI 0, ND_145-2020.D24 0; đầu chặn của căn cứ đầu: []; căn cứ khác kết luận đầu chặn: KHÔNG
+    Q13 2027-04-01 (ket_luan_duoc): ND_145-2020.D24.K2 0
+    Q14 2026-06-01 (bi_bac): NQ_66-16-2026.PLI_7.M1.LB.SI.R3 0
