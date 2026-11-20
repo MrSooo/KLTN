@@ -1,0 +1,144 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D35.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đơn phương chấm dứt hợp đồng lao động không cần báo trước",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động có quyền đơn phương chấm dứt hợp đồng lao động không cần báo trước"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "hoac",
+     "trich": [
+      "trong trường hợp sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách các trường hợp được chấm dứt không cần báo trước."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D35.K2.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được bố trí theo đúng công việc, địa điểm làm việc",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Không được bố trí theo đúng công việc, địa điểm làm việc"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Tách hai điều kiện thay thế: bố trí công việc và bảo đảm điều kiện làm việc."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được bảo đảm điều kiện làm việc theo thỏa thuận",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "không được bảo đảm điều kiện làm việc theo thỏa thuận"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "targets": [
+      "BLLD_45-2019.D29"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "trừ trường hợp quy định tại Điều 29 của Bộ luật này"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D35.K2.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được trả đủ lương",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Không được trả đủ lương"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Tách hai điều kiện thay thế: trả không đủ lương và trả lương không đúng hạn."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trả lương đúng thời hạn",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "trả lương không đúng thời hạn"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "targets": [
+      "BLLD_45-2019.D97.K4"
+     ],
+     "gan_vao": 1,
+     "trich": [
+      "trừ trường hợp quy định tại khoản 4 Điều 97 của Bộ luật này"
+     ]
+    }
+   ]
+  }
+ ]
+}

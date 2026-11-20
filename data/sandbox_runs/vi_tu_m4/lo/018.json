@@ -1,0 +1,1306 @@
+{
+"chu": [
+{
+"chu_id": "C0371",
+"chu": "đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 3,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D40.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của người lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Không được trợ cấp thôi việc."
+},
+{
+"don_vi": "BLLD_45-2019.D40.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của người lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải bồi thường cho người sử dụng lao động nửa tháng tiền lương theo hợp đồng lao động và một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+}
+],
+"ung_vien": [
+{
+"ten": "receive_severance_allowance",
+"params": [
+"W"
+],
+"vi_du": [
+"được trợ cấp thôi việc"
+]
+},
+{
+"ten": "cancel_unilateral_termination_before_notice_expiry",
+"params": [
+"?"
+],
+"vi_du": [
+"hủy bỏ việc đơn phương chấm dứt hợp đồng lao động trước khi hết thời hạn báo trước"
+]
+},
+{
+"ten": "unilaterally_terminate_labor_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"đơn phương chấm dứt hợp đồng lao động"
+]
+},
+{
+"ten": "entice_or_coerce_into_illegal_activity",
+"params": [
+"W"
+],
+"vi_du": [
+"lợi dụng danh nghĩa dạy nghề, tập nghề để lôi kéo, dụ dỗ, ép buộc người học nghề, người tập nghề vào hoạt động trái pháp luật"
+]
+},
+{
+"ten": "abuse_employment_service_for_illegal_act",
+"params": [
+"W"
+],
+"vi_du": [
+"lợi dụng dịch vụ việc làm, hoạt động đưa người lao động đi làm việc ở nước ngoài theo hợp đồng để thực hiện hành vi trái pháp luật"
+]
+},
+{
+"ten": "illegal_use_of_minor_labor",
+"params": [
+"W"
+],
+"vi_du": [
+"sử dụng lao động chưa thành niên trái pháp luật"
+]
+},
+{
+"ten": "have_written_consent_of_legal_representative",
+"params": [
+"W"
+],
+"vi_du": [
+"có sự đồng ý bằng văn bản của người đại diện theo pháp luật của người đó"
+]
+},
+{
+"ten": "supervise_labor_law_enforcement",
+"params": [
+"?"
+],
+"vi_du": [
+"giám sát việc thi hành quy định của pháp luật về lao động"
+]
+},
+{
+"ten": "agreement_or_other_legal_provision",
+"params": [
+"?"
+],
+"vi_du": [
+"hai bên có thỏa thuận hoặc pháp luật có quy định khác"
+]
+},
+{
+"ten": "open_ended_contract_term_and_expiration",
+"params": [
+"?"
+],
+"vi_du": [
+"không xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng"
+]
+},
+{
+"ten": "mutual_agreement_to_terminate_labor_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận chấm dứt hợp đồng lao động"
+]
+},
+{
+"ten": "follow_labor_employment_insurance_and_safety_law",
+"params": [
+"W"
+],
+"vi_du": [
+"thực hiện quy định của pháp luật về lao động, việc làm, giáo dục nghề nghiệp, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp và an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "specified_contract_term_and_expiration",
+"params": [
+"?"
+],
+"vi_du": [
+"xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng"
+]
+},
+{
+"ten": "dismissal_as_discipline",
+"params": [
+"W"
+],
+"vi_du": [
+"bị xử lý kỷ luật sa thải"
+]
+},
+{
+"ten": "comply_with_labor_discipline_and_rules",
+"params": [
+"W"
+],
+"vi_du": [
+"chấp hành kỷ luật lao động, nội quy lao động"
+]
+},
+{
+"ten": "serve_reform_rehab_or_education_commitment",
+"params": [
+"W"
+],
+"vi_du": [
+"chấp hành quyết định áp dụng biện pháp đưa vào trường giáo dưỡng, cơ sở cai nghiện bắt buộc hoặc cơ sở giáo dục bắt buộc"
+]
+}
+],
+"loi_lan_truoc": "reuse \"unlawful_unilateral_termination_of_labor_contract\": tên này do chữ khác đặt trong lượt nhưng params khác chữ này"
+},
+{
+"chu_id": "C0374",
+"chu": "nhận người lao động trở lại làm việc",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 2,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+},
+{
+"don_vi": "BLLD_45-2019.D128.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Tạm đình chỉ công việc",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn tạm đình chỉ công việc không được quá 15 ngày, trường hợp đặc biệt không được quá 90 ngày. Trong thời gian bị tạm đình chỉ công việc, người lao động được tạm ứng 50% tiền lương trước khi bị đình chỉ công việc.\nHết thời hạn tạm đình chỉ công việc, người sử dụng lao động phải nhận người lao động trở lại làm việc."
+}
+],
+"ung_vien": [
+{
+"ten": "receive_employee_back_to_contracted_work",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"nhận người lao động trở lại làm công việc theo hợp đồng lao động đã giao kết"
+]
+},
+{
+"ten": "receive_into_work",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"nhận người lao động vào làm việc"
+]
+},
+{
+"ten": "develop_and_recognize_national_occupational_skills",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"tham gia phát triển tiêu chuẩn kỹ năng nghề quốc gia, đánh giá, công nhận kỹ năng nghề cho người lao động"
+]
+},
+{
+"ten": "train_retrain_and_upgrade_employee_job_skills",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"đào tạo, đào tạo lại, bồi dưỡng nâng cao trình độ, kỹ năng nghề nhằm duy trì, chuyển đổi nghề nghiệp, việc làm cho người lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0375",
+"chu": "trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+}
+],
+"ung_vien": [
+{
+"ten": "protect_legitimate_rights_and_interests",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"bảo vệ quyền và lợi ích hợp pháp, chính đáng",
+"bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0376",
+"chu": "trả thêm cho người lao động một khoản tiền",
+"params": [
+"E",
+"W",
+"A"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0377",
+"chu": "một khoản tiền",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+}
+],
+"ung_vien": [
+{
+"ten": "both_parties",
+"params": [],
+"vi_du": [
+"hai bên",
+"các bên"
+]
+},
+{
+"ten": "employee",
+"params": [],
+"vi_du": [
+"Người lao động"
+]
+},
+{
+"ten": "employer",
+"params": [],
+"vi_du": [
+"Người sử dụng lao động"
+]
+},
+{
+"ten": "content_shows_paid_work_wages_and_supervision",
+"params": [],
+"vi_du": [
+"có nội dung thể hiện về việc làm có trả công, tiền lương và sự quản lý, điều hành, giám sát của một bên"
+]
+},
+{
+"ten": "conduct_probation_once",
+"params": [],
+"vi_du": [
+"chỉ thử việc một lần"
+]
+},
+{
+"ten": "state_amended_clauses_and_effective_date",
+"params": [],
+"vi_du": [
+"ghi rõ nội dung điều, khoản sửa đổi, bổ sung và thời điểm có hiệu lực"
+]
+},
+{
+"ten": "one_party",
+"params": [],
+"vi_du": [
+"một bên"
+]
+},
+{
+"ten": "single_job",
+"params": [],
+"vi_du": [
+"một công việc"
+]
+},
+{
+"ten": "special_industry_occupation_or_work",
+"params": [],
+"vi_du": [
+"một số ngành, nghề, công việc đặc thù"
+]
+},
+{
+"ten": "wage_for_new_job",
+"params": [],
+"vi_du": [
+"tiền lương của công việc mới",
+"Tiền lương theo công việc mới"
+]
+},
+{
+"ten": "concern_paid_work_wages_conditions_rights_duties",
+"params": [],
+"vi_du": [
+"về việc làm có trả công, tiền lương, điều kiện lao động, quyền và nghĩa vụ của mỗi bên"
+]
+}
+]
+},
+{
+"chu_id": "C0378",
+"chu": "ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động",
+"params": [
+"A"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 2,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+},
+{
+"don_vi": "BLLD_45-2019.D41.K3",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Trường hợp người sử dụng lao động không muốn nhận lại người lao động và người lao động đồng ý thì ngoài khoản tiền người sử dụng lao động phải trả theo quy định tại khoản 1 Điều này và trợ cấp thôi việc theo quy định tại Điều 46 của Bộ luật này, hai bên thỏa thuận khoản tiền bồi thường thêm cho người lao động nhưng ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động để chấm dứt hợp đồng lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "new_job_wage_minimum_ratio_to_old_wage",
+"params": [
+"A"
+],
+"vi_du": [
+"tiền lương theo công việc mới ít nhất bằng 85% tiền lương của công việc cũ"
+]
+},
+{
+"ten": "notify_amendment_three_working_days_ahead",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cho bên kia biết trước ít nhất 03 ngày làm việc về nội dung cần sửa đổi, bổ sung"
+]
+},
+{
+"ten": "agree_probation_wages",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận tiền lương của người lao động trong thời gian thử việc"
+]
+},
+{
+"ten": "agree_probation_by_concluding_probation_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận về thử việc bằng việc giao kết hợp đồng thử việc"
+]
+},
+{
+"ten": "give_written_notice",
+"params": [
+"?"
+],
+"vi_du": [
+"thông báo bằng văn bản"
+]
+},
+{
+"ten": "new_job_wage_lower_than_old_job_wage",
+"params": [
+"A"
+],
+"vi_du": [
+"tiền lương của công việc mới thấp hơn tiền lương của công việc cũ"
+]
+}
+]
+},
+{
+"chu_id": "C0379",
+"chu": "hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm",
+"params": [
+"W",
+"E",
+"A"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0380",
+"chu": "các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+}
+],
+"ung_vien": [
+{
+"ten": "both_parties",
+"params": [],
+"vi_du": [
+"hai bên",
+"các bên"
+]
+},
+{
+"ten": "employee",
+"params": [],
+"vi_du": [
+"Người lao động"
+]
+},
+{
+"ten": "employer",
+"params": [],
+"vi_du": [
+"Người sử dụng lao động"
+]
+},
+{
+"ten": "content_shows_paid_work_wages_and_supervision",
+"params": [],
+"vi_du": [
+"có nội dung thể hiện về việc làm có trả công, tiền lương và sự quản lý, điều hành, giám sát của một bên"
+]
+},
+{
+"ten": "state_amended_clauses_and_effective_date",
+"params": [],
+"vi_du": [
+"ghi rõ nội dung điều, khoản sửa đổi, bổ sung và thời điểm có hiệu lực"
+]
+},
+{
+"ten": "wage_for_new_job",
+"params": [],
+"vi_du": [
+"tiền lương của công việc mới",
+"Tiền lương theo công việc mới"
+]
+},
+{
+"ten": "concern_paid_work_wages_conditions_rights_duties",
+"params": [],
+"vi_du": [
+"về việc làm có trả công, tiền lương, điều kiện lao động, quyền và nghĩa vụ của mỗi bên"
+]
+}
+]
+},
+{
+"chu_id": "C0381",
+"chu": "đã nhận của người sử dụng lao động",
+"params": [
+"A"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+}
+],
+"ung_vien": [
+{
+"ten": "cancel_probation_or_concluded_labor_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết"
+]
+},
+{
+"ten": "unwanted_sexual_conduct_at_workplace",
+"params": [
+"?"
+],
+"vi_du": [
+"là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận"
+]
+}
+]
+},
+{
+"chu_id": "C0382",
+"chu": "thỏa thuận để sửa đổi, bổ sung hợp đồng lao động",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+}
+],
+"ung_vien": [
+{
+"ten": "disagreement_on_labor_contract_amendment",
+"params": [
+"?"
+],
+"vi_du": [
+"hai bên không thỏa thuận được việc sửa đổi, bổ sung nội dung hợp đồng lao động"
+]
+},
+{
+"ten": "notify_amendment_three_working_days_ahead",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cho bên kia biết trước ít nhất 03 ngày làm việc về nội dung cần sửa đổi, bổ sung"
+]
+},
+{
+"ten": "request_labor_contract_content_amendment",
+"params": [
+"?"
+],
+"vi_du": [
+"có yêu cầu sửa đổi, bổ sung nội dung hợp đồng lao động"
+]
+},
+{
+"ten": "specify_amend_supplement_contract_clauses",
+"params": [
+"C"
+],
+"vi_du": [
+"quy định chi tiết, sửa đổi, bổ sung một số điều, khoản của hợp đồng lao động"
+]
+},
+{
+"ten": "amend_and_supplement_labor_contract_clauses",
+"params": [
+"C"
+],
+"vi_du": [
+"sửa đổi, bổ sung một số điều, khoản của hợp đồng lao động"
+]
+},
+{
+"ten": "amend_labor_contract_content",
+"params": [
+"?"
+],
+"vi_du": [
+"tiến hành việc sửa đổi, bổ sung nội dung hợp đồng lao động"
+]
+},
+{
+"ten": "agree_to_add_resolution_method_content",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận bổ sung nội dung về phương thức giải quyết"
+]
+},
+{
+"ten": "include_wage_and_payment_details",
+"params": [
+"C"
+],
+"vi_du": [
+"có mức lương theo công việc hoặc chức danh, hình thức trả lương, thời hạn trả lương, phụ cấp lương và các khoản bổ sung khác"
+]
+},
+{
+"ten": "modify_labor_contract_term",
+"params": [
+"C"
+],
+"vi_du": [
+"sửa đổi thời hạn của hợp đồng lao động"
+]
+},
+{
+"ten": "different_agreement_exists",
+"params": [
+"?"
+],
+"vi_du": [
+"có thỏa thuận khác"
+]
+},
+{
+"ten": "agreement_or_other_legal_provision",
+"params": [
+"?"
+],
+"vi_du": [
+"hai bên có thỏa thuận hoặc pháp luật có quy định khác"
+]
+},
+{
+"ten": "parties_reach_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"hai bên có thỏa thuận",
+"hai bên thỏa thuận",
+"hai bên thỏa thuận được"
+]
+},
+{
+"ten": "be_agreement_between_worker_and_employer",
+"params": [
+"C"
+],
+"vi_du": [
+"là sự thỏa thuận giữa người lao động và người sử dụng lao động"
+]
+},
+{
+"ten": "deceive_by_false_promise_or_advertising",
+"params": [
+"W"
+],
+"vi_du": [
+"lôi kéo, dụ dỗ, hứa hẹn, quảng cáo gian dối hoặc thủ đoạn khác để lừa gạt người lao động"
+]
+},
+{
+"ten": "recruit_for_trafficking_or_exploitation",
+"params": [
+"W"
+],
+"vi_du": [
+"lôi kéo, dụ dỗ, hứa hẹn, quảng cáo gian dối hoặc thủ đoạn khác để tuyển dụng người lao động với mục đích mua bán người, bóc lột, cưỡng bức lao động"
+]
+},
+{
+"ten": "entice_or_coerce_into_illegal_activity",
+"params": [
+"W"
+],
+"vi_du": [
+"lợi dụng danh nghĩa dạy nghề, tập nghề để lôi kéo, dụ dỗ, ép buộc người học nghề, người tập nghề vào hoạt động trái pháp luật"
+]
+},
+{
+"ten": "abuse_employment_service_for_illegal_act",
+"params": [
+"W"
+],
+"vi_du": [
+"lợi dụng dịch vụ việc làm, hoạt động đưa người lao động đi làm việc ở nước ngoài theo hợp đồng để thực hiện hành vi trái pháp luật"
+]
+},
+{
+"ten": "cancel_probation_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"một bên hủy bỏ thỏa thuận thử việc"
+]
+},
+{
+"ten": "agree_in_writing_with_employee",
+"params": [
+"E"
+],
+"vi_du": [
+"thỏa thuận bằng văn bản với người lao động"
+]
+},
+{
+"ten": "mutual_agreement_to_terminate_labor_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận chấm dứt hợp đồng lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0383",
+"chu": "không còn vị trí, công việc đã giao kết trong hợp đồng lao động",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+}
+],
+"ung_vien": [
+{
+"ten": "both_parties",
+"params": [],
+"vi_du": [
+"hai bên",
+"các bên"
+]
+},
+{
+"ten": "employee",
+"params": [],
+"vi_du": [
+"Người lao động"
+]
+},
+{
+"ten": "employer",
+"params": [],
+"vi_du": [
+"Người sử dụng lao động"
+]
+},
+{
+"ten": "concluded_contract",
+"params": [],
+"vi_du": [
+"hợp đồng đã giao kết"
+]
+},
+{
+"ten": "employee_who_concluded_labor_contract",
+"params": [],
+"vi_du": [
+"người lao động đã giao kết hợp đồng"
+]
+},
+{
+"ten": "authorized_person_to_conclude_labor_contract",
+"params": [],
+"vi_du": [
+"Người được ủy quyền giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "freedom_to_enter_labor_contract",
+"params": [],
+"vi_du": [
+"tự do giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "labor_contract_signed_by_authorized_person",
+"params": [],
+"vi_du": [
+"Hợp đồng lao động do người được ủy quyền ký kết"
+]
+}
+]
+},
+{
+"chu_id": "C0384",
+"chu": "vẫn muốn làm việc",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+}
+],
+"ung_vien": [
+{
+"ten": "unwanted_sexual_conduct_at_workplace",
+"params": [
+"?"
+],
+"vi_du": [
+"là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận"
+]
+},
+{
+"ten": "continue_working",
+"params": [
+"W"
+],
+"vi_du": [
+"vẫn tiếp tục làm việc"
+]
+}
+]
+},
+{
+"chu_id": "C0385",
+"chu": "trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động",
+"params": [
+"E",
+"A"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0386",
+"chu": "trả trợ cấp thôi việc",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 2,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Trường hợp người lao động không muốn tiếp tục làm việc thì ngoài khoản tiền phải trả quy định tại khoản 1 Điều này người sử dụng lao động phải trả trợ cấp thôi việc theo quy định tại Điều 46 của Bộ luật này để chấm dứt hợp đồng lao động."
+},
+{
+"don_vi": "BLLD_45-2019.D46.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trợ cấp thôi việc",
+"khoan_cha": "",
+"chu_don_vi": "Khi hợp đồng lao động chấm dứt theo quy định tại các khoản 1, 2, 3, 4, 6, 7, 9 và 10 Điều 34 của Bộ luật này thì người sử dụng lao động có trách nhiệm trả trợ cấp thôi việc cho người lao động đã làm việc thường xuyên cho mình từ đủ 12 tháng trở lên, mỗi năm làm việc được trợ cấp một nửa tháng tiền lương, trừ trường hợp đủ điều kiện hưởng lương hưu theo quy định của pháp luật về bảo hiểm xã hội và trường hợp quy định tại điểm e khoản 1 Điều 36 của Bộ luật này."
+}
+],
+"ung_vien": [
+{
+"ten": "lay_off",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"cho người lao động thôi việc"
+]
+},
+{
+"ten": "provide_false_information",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"cung cấp thông tin không trung thực"
+]
+},
+{
+"ten": "provide_truthful_information",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"cung cấp thông tin trung thực"
+]
+},
+{
+"ten": "pay_wages_for_work_stoppage",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"trả lương ngừng việc"
+]
+}
+]
+},
+{
+"chu_id": "C0387",
+"chu": "không muốn tiếp tục làm việc",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Trường hợp người lao động không muốn tiếp tục làm việc thì ngoài khoản tiền phải trả quy định tại khoản 1 Điều này người sử dụng lao động phải trả trợ cấp thôi việc theo quy định tại Điều 46 của Bộ luật này để chấm dứt hợp đồng lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "continue_working",
+"params": [
+"W"
+],
+"vi_du": [
+"vẫn tiếp tục làm việc"
+]
+},
+{
+"ten": "unwanted_sexual_conduct_at_workplace",
+"params": [
+"?"
+],
+"vi_du": [
+"là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận"
+]
+},
+{
+"ten": "work_with_business_or_technology_secrets",
+"params": [
+"W"
+],
+"vi_du": [
+"làm việc có liên quan trực tiếp đến bí mật kinh doanh, bí mật công nghệ"
+]
+},
+{
+"ten": "directly_conclude_labor_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"trực tiếp giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "unauthorized_absence_5_consecutive_workdays",
+"params": [
+"W"
+],
+"vi_du": [
+"tự ý bỏ việc mà không có lý do chính đáng từ 05 ngày làm việc liên tục trở lên"
+]
+}
+]
+},
+{
+"chu_id": "C0388",
+"chu": "thỏa thuận khoản tiền bồi thường thêm cho người lao động",
+"params": [
+"?",
+"W",
+"A"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Trường hợp người sử dụng lao động không muốn nhận lại người lao động và người lao động đồng ý thì ngoài khoản tiền người sử dụng lao động phải trả theo quy định tại khoản 1 Điều này và trợ cấp thôi việc theo quy định tại Điều 46 của Bộ luật này, hai bên thỏa thuận khoản tiền bồi thường thêm cho người lao động nhưng ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động để chấm dứt hợp đồng lao động."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0389",
+"chu": "khoản tiền bồi thường thêm",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K3",
+"vai": "chu_the",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Trường hợp người sử dụng lao động không muốn nhận lại người lao động và người lao động đồng ý thì ngoài khoản tiền người sử dụng lao động phải trả theo quy định tại khoản 1 Điều này và trợ cấp thôi việc theo quy định tại Điều 46 của Bộ luật này, hai bên thỏa thuận khoản tiền bồi thường thêm cho người lao động nhưng ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động để chấm dứt hợp đồng lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "both_parties",
+"params": [],
+"vi_du": [
+"hai bên",
+"các bên"
+]
+},
+{
+"ten": "employee",
+"params": [],
+"vi_du": [
+"Người lao động"
+]
+},
+{
+"ten": "employer",
+"params": [],
+"vi_du": [
+"Người sử dụng lao động"
+]
+},
+{
+"ten": "labor_contract",
+"params": [],
+"vi_du": [
+"Hợp đồng lao động"
+]
+},
+{
+"ten": "content_shows_paid_work_wages_and_supervision",
+"params": [],
+"vi_du": [
+"có nội dung thể hiện về việc làm có trả công, tiền lương và sự quản lý, điều hành, giám sát của một bên"
+]
+},
+{
+"ten": "state_amended_clauses_and_effective_date",
+"params": [],
+"vi_du": [
+"ghi rõ nội dung điều, khoản sửa đổi, bổ sung và thời điểm có hiệu lực"
+]
+},
+{
+"ten": "employee_regularly_failing_to_perform_work",
+"params": [],
+"vi_du": [
+"Người lao động thường xuyên không hoàn thành công việc"
+]
+},
+{
+"ten": "wage_for_new_job",
+"params": [],
+"vi_du": [
+"tiền lương của công việc mới",
+"Tiền lương theo công việc mới"
+]
+},
+{
+"ten": "concern_paid_work_wages_conditions_rights_duties",
+"params": [],
+"vi_du": [
+"về việc làm có trả công, tiền lương, điều kiện lao động, quyền và nghĩa vụ của mỗi bên"
+]
+}
+]
+},
+{
+"chu_id": "C0390",
+"chu": "không muốn nhận lại người lao động",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K3",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Trường hợp người sử dụng lao động không muốn nhận lại người lao động và người lao động đồng ý thì ngoài khoản tiền người sử dụng lao động phải trả theo quy định tại khoản 1 Điều này và trợ cấp thôi việc theo quy định tại Điều 46 của Bộ luật này, hai bên thỏa thuận khoản tiền bồi thường thêm cho người lao động nhưng ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động để chấm dứt hợp đồng lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "unwanted_sexual_conduct_at_workplace",
+"params": [
+"?"
+],
+"vi_du": [
+"là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận"
+]
+}
+]
+},
+{
+"chu_id": "C0391",
+"chu": "đồng ý",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien",
+"ngoai_le"
+],
+"so_lan": 3,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D41.K3",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"khoan_cha": "",
+"chu_don_vi": "Trường hợp người sử dụng lao động không muốn nhận lại người lao động và người lao động đồng ý thì ngoài khoản tiền người sử dụng lao động phải trả theo quy định tại khoản 1 Điều này và trợ cấp thôi việc theo quy định tại Điều 46 của Bộ luật này, hai bên thỏa thuận khoản tiền bồi thường thêm cho người lao động nhưng ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động để chấm dứt hợp đồng lao động."
+},
+{
+"don_vi": "BLLD_45-2019.D137.K1.b",
+"vai": "ngoai_le",
+"tieu_de_dieu": "Bảo vệ thai sản",
+"khoan_cha": "Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa trong trường hợp sau đây:",
+"chu_don_vi": "Đang nuôi con dưới 12 tháng tuổi, trừ trường hợp được người lao động đồng ý."
+}
+],
+"ung_vien": [
+{
+"ten": "have_written_consent_of_legal_representative",
+"params": [
+"W"
+],
+"vi_du": [
+"có sự đồng ý bằng văn bản của người đại diện theo pháp luật của người đó"
+]
+},
+{
+"ten": "give_written_consent",
+"params": [
+"W"
+],
+"vi_du": [
+"người lao động đồng ý bằng văn bản"
+]
+},
+{
+"ten": "unauthorized_absence_5_consecutive_workdays",
+"params": [
+"W"
+],
+"vi_du": [
+"tự ý bỏ việc mà không có lý do chính đáng từ 05 ngày làm việc liên tục trở lên"
+]
+},
+{
+"ten": "consent_to_extended_temporary_other_work_and_stop",
+"params": [
+"W"
+],
+"vi_du": [
+"đồng ý tạm thời làm công việc khác so với hợp đồng lao động quá 60 ngày làm việc cộng dồn trong 01 năm mà phải ngừng việc"
+]
+}
+]
+}
+]
+}

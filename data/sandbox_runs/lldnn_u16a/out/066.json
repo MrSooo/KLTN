@@ -1,0 +1,127 @@
+{
+ "units": [
+  {
+   "unit_id": "ND_219-2025.D30.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hết hiệu lực",
+     "chu_the": {
+      "chu": "Giấy phép lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Giấy phép lao động hết hiệu lực"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Phần lõi là sự kiện hết hiệu lực; cụm dẫn chiếu tách thành dòng con_tro riêng."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D156.K2",
+      "BLLD_45-2019.D156.K3",
+      "BLLD_45-2019.D156.K4",
+      "BLLD_45-2019.D156.K5",
+      "BLLD_45-2019.D156.K6",
+      "BLLD_45-2019.D156.K7"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_219-2025.D30.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thực hiện đúng quy định về cấp, cấp lại, gia hạn giấy phép lao động",
+     "chu_the": {
+      "chu": "Người sử dụng lao động hoặc người lao động nước ngoài",
+      "loai": [
+       "E",
+       "W"
+      ],
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Người sử dụng lao động hoặc người lao động nước ngoài không thực hiện đúng quy định về cấp, cấp lại, gia hạn giấy phép lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Một hành vi không tuân thủ; danh sách cấp, cấp lại, gia hạn là nội dung của cùng cụm 'quy định về' nên giữ chung."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_219-2025.D30.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thực hiện đúng quy định của pháp luật Việt Nam",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "trong quá trình làm việc ở Việt Nam",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Người lao động nước ngoài trong quá trình làm việc ở Việt Nam",
+      "không thực hiện đúng quy định của pháp luật Việt Nam"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai sự kiện kiểm được riêng: không tuân thủ pháp luật và bị truy cứu trách nhiệm hình sự; cụm hoàn cảnh làm việc là bổ ngữ."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị khởi tố, truy cứu trách nhiệm hình sự",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động nước ngoài",
+      "bị khởi tố, truy cứu trách nhiệm hình sự"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Sự kiện bị truy cứu hình sự là điều kiện độc lập kiểm được."
+     }
+    }
+   ]
+  }
+ ]
+}

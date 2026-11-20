@@ -1,0 +1,508 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D118.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "ban hành nội quy lao động",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động phải ban hành nội quy lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "sử dụng từ 10 người lao động trở lên",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động phải ban hành nội quy lao động, nếu sử dụng từ 10 người lao động trở lên"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm nếu... là điều kiện riêng cho yêu cầu về hình thức văn bản."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bằng văn bản",
+     "chu_the": {
+      "chu": "nội quy lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì nội quy lao động phải bằng văn bản"
+     ],
+     "quy_tac": "q2"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trái với pháp luật về lao động và quy định của pháp luật có liên quan",
+     "chu_the": {
+      "chu": "Nội dung nội quy lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội dung nội quy lao động không được trái với pháp luật về lao động và quy định của pháp luật có liên quan"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Hai vế là tân ngữ của cùng một hành vi cấm, giữ chung."
+     }
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "danh_sach",
+     "trich": [
+      "Nội quy lao động bao gồm những nội dung chủ yếu sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn vào danh sách nội dung chủ yếu của nội quy lao động."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K2.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "Thời giờ làm việc, thời giờ nghỉ ngơi",
+     "chu_the": {
+      "chu": "Nội quy lao động",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội quy lao động bao gồm những nội dung chủ yếu",
+      "Thời giờ làm việc, thời giờ nghỉ ngơi"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể Nội quy lao động từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K2.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "Trật tự tại nơi làm việc",
+     "chu_the": {
+      "chu": "Nội quy lao động",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội quy lao động bao gồm những nội dung chủ yếu",
+      "Trật tự tại nơi làm việc"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể Nội quy lao động từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K2.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "An toàn, vệ sinh lao động",
+     "chu_the": {
+      "chu": "Nội quy lao động",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội quy lao động bao gồm những nội dung chủ yếu",
+      "An toàn, vệ sinh lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể Nội quy lao động từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K2.d",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "Phòng, chống quấy rối tình dục tại nơi làm việc",
+     "chu_the": {
+      "chu": "Nội quy lao động",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội quy lao động bao gồm những nội dung chủ yếu",
+      "Phòng, chống quấy rối tình dục tại nơi làm việc"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai nội dung độc lập (phòng chống và trình tự xử lý) kiểm được riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trình tự, thủ tục xử lý hành vi quấy rối tình dục tại nơi làm việc",
+     "chu_the": {
+      "chu": "Nội quy lao động",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội quy lao động bao gồm những nội dung chủ yếu",
+      "trình tự, thủ tục xử lý hành vi quấy rối tình dục tại nơi làm việc"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Nội dung thứ hai về trình tự, thủ tục xử lý tách riêng."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K2.dd",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "Việc bảo vệ tài sản và bí mật kinh doanh, bí mật công nghệ, sở hữu trí tuệ của người sử dụng lao động",
+     "chu_the": {
+      "chu": "Nội quy lao động",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội quy lao động bao gồm những nội dung chủ yếu",
+      "Việc bảo vệ tài sản và bí mật kinh doanh, bí mật công nghệ, sở hữu trí tuệ của người sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể Nội quy lao động từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K2.e",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "Trường hợp được tạm thời chuyển người lao động làm việc khác so với hợp đồng lao động",
+     "chu_the": {
+      "chu": "Nội quy lao động",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội quy lao động bao gồm những nội dung chủ yếu",
+      "Trường hợp được tạm thời chuyển người lao động làm việc khác so với hợp đồng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể Nội quy lao động từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K2.g",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "Các hành vi vi phạm kỷ luật lao động của người lao động và các hình thức xử lý kỷ luật lao động",
+     "chu_the": {
+      "chu": "Nội quy lao động",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội quy lao động bao gồm những nội dung chủ yếu",
+      "Các hành vi vi phạm kỷ luật lao động của người lao động và các hình thức xử lý kỷ luật lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể Nội quy lao động từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K2.h",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "Trách nhiệm vật chất",
+     "chu_the": {
+      "chu": "Nội quy lao động",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội quy lao động bao gồm những nội dung chủ yếu",
+      "Trách nhiệm vật chất"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể Nội quy lao động từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K2.i",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "Người có thẩm quyền xử lý kỷ luật lao động",
+     "chu_the": {
+      "chu": "Nội quy lao động",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội quy lao động bao gồm những nội dung chủ yếu",
+      "Người có thẩm quyền xử lý kỷ luật lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể Nội quy lao động từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người sử dụng lao động phải tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "ban hành nội quy lao động hoặc sửa đổi, bổ sung nội quy lao động",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trước khi ban hành nội quy lao động hoặc sửa đổi, bổ sung nội quy lao động, người sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm trước khi... là hoàn cảnh áp dụng, tách thành điều kiện."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có tổ chức đại diện người lao động tại cơ sở",
+     "chu_the": {
+      "chu": "nơi",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đối với nơi có tổ chức đại diện người lao động tại cơ sở"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm đối với... giới hạn phạm vi áp dụng, là điều kiện riêng."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K4",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được thông báo đến người lao động",
+     "chu_the": {
+      "chu": "Nội quy lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội quy lao động phải được thông báo đến người lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được niêm yết",
+     "chu_the": {
+      "chu": "những nội dung chính",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "bo_ngu": [
+      {
+       "original_text": "ở những nơi cần thiết tại nơi làm việc",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "những nội dung chính phải được niêm yết ở những nơi cần thiết tại nơi làm việc"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai yêu cầu độc lập (thông báo và niêm yết) kiểm được riêng."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D118.K5",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quy định chi tiết Điều này",
+     "chu_the": {
+      "chu": "Chính phủ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Chính phủ quy định chi tiết Điều này"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "chua_ro",
+      "giai_thich": "Chính phủ không thuộc bộ mã chủ thể W/E nên gán ?."
+     }
+    }
+   ]
+  }
+ ]
+}

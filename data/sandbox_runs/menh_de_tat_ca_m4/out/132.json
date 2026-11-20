@@ -1,0 +1,561 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D137.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng người lao động",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "làm việc ban đêm",
+      "làm thêm giờ",
+      "đi công tác xa"
+     ],
+     "trich": [
+      "Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Một lệnh cấm sử dụng lao động; các hình thức công việc là phạm vi của cùng động từ nên đưa vào liet_ke."
+     }
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "hoac",
+     "trich": [
+      "trong trường hợp sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách trường hợp (điều kiện)."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D137.K1.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "mang thai từ tháng thứ 07",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Người sử dụng lao động không được sử dụng người lao động",
+      "Mang thai từ tháng thứ 07"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "mang thai từ tháng thứ 06",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "bo_ngu": [
+      {
+       "original_text": "làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Người sử dụng lao động không được sử dụng người lao động",
+      "Mang thai từ tháng thứ 07 hoặc từ tháng thứ 06 nếu làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm 'nếu làm việc ở vùng cao...' chỉ là hoàn cảnh của vế ngưỡng tháng thứ 06, không áp cho vế tháng thứ 07."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D137.K1.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đang nuôi con dưới 12 tháng tuổi",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động không được sử dụng người lao động",
+      "Đang nuôi con dưới 12 tháng tuổi"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ngoai_le",
+     "menh_de": "đồng ý",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trừ trường hợp được người lao động đồng ý"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Ngoại lệ có nội dung riêng (sự đồng ý của người lao động), không phải dẫn chiếu."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D137.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm nghề, công việc nặng nhọc, độc hại, nguy hiểm",
+     "chu_the": {
+      "chu": "Lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Lao động nữ làm nghề, công việc nặng nhọc, độc hại, nguy hiểm"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm",
+     "chu_the": {
+      "chu": "Lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Lao động nữ làm nghề, công việc nặng nhọc, độc hại, nguy hiểm",
+      "đặc biệt nặng nhọc, độc hại, nguy hiểm"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con khi mang thai",
+     "chu_the": {
+      "chu": "Lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Lao động nữ làm nghề, công việc nặng nhọc, độc hại, nguy hiểm",
+      "hoặc làm nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con khi mang thai"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thông báo cho người sử dụng lao động biết",
+     "chu_the": {
+      "chu": "Lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Lao động nữ làm nghề, công việc nặng nhọc, độc hại, nguy hiểm",
+      "và có thông báo cho người sử dụng lao động biết"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chuyển sang làm công việc nhẹ hơn, an toàn hơn",
+     "chu_the": {
+      "chu": "Lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h2",
+     "trich": [
+      "thì được người sử dụng lao động chuyển sang làm công việc nhẹ hơn, an toàn hơn"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giảm bớt 01 giờ làm việc hằng ngày",
+     "chu_the": {
+      "chu": "Lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h2",
+     "trich": [
+      "hoặc giảm bớt 01 giờ làm việc hằng ngày"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cắt giảm tiền lương và quyền, lợi ích",
+     "chu_the": {
+      "chu": "Lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "phu_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "cho đến hết thời gian nuôi con dưới 12 tháng tuổi",
+       "scope": "group"
+      }
+     ],
+     "trich": [
+      "mà không bị cắt giảm tiền lương và quyền, lợi ích cho đến hết thời gian nuôi con dưới 12 tháng tuổi"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Mốc thời gian áp dụng cho cả hai phương án của quyền nên scope là group."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D137.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sa thải người lao động vì lý do",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "kết hôn",
+      "mang thai",
+      "nghỉ thai sản",
+      "nuôi con dưới 12 tháng tuổi"
+     ],
+     "trich": [
+      "Người sử dụng lao động không được sa thải hoặc đơn phương chấm dứt hợp đồng lao động đối với người lao động vì lý do kết hôn, mang thai, nghỉ thai sản, nuôi con dưới 12 tháng tuổi"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đơn phương chấm dứt hợp đồng lao động vì lý do",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "kết hôn",
+      "mang thai",
+      "nghỉ thai sản",
+      "nuôi con dưới 12 tháng tuổi"
+     ],
+     "trich": [
+      "Người sử dụng lao động không được sa thải hoặc đơn phương chấm dứt hợp đồng lao động đối với người lao động vì lý do kết hôn, mang thai, nghỉ thai sản, nuôi con dưới 12 tháng tuổi"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Sa thải và đơn phương chấm dứt là hai hành vi bị cấm riêng, kiểm được riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ngoai_le",
+     "menh_de": "chết",
+     "chu_the": {
+      "chu": "người sử dụng lao động là cá nhân",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h3",
+     "trich": [
+      "trừ trường hợp người sử dụng lao động là cá nhân chết"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ngoai_le",
+     "menh_de": "bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết",
+     "chu_the": {
+      "chu": "người sử dụng lao động là cá nhân",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h3",
+     "trich": [
+      "bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ngoai_le",
+     "menh_de": "chấm dứt hoạt động",
+     "chu_the": {
+      "chu": "người sử dụng lao động không phải là cá nhân",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h3",
+     "trich": [
+      "hoặc người sử dụng lao động không phải là cá nhân chấm dứt hoạt động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ngoai_le",
+     "menh_de": "bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật",
+     "chu_the": {
+      "chu": "người sử dụng lao động không phải là cá nhân",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h3",
+     "trich": [
+      "hoặc người sử dụng lao động không phải là cá nhân chấm dứt hoạt động",
+      "hoặc bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hết hạn trong thời gian lao động nữ mang thai hoặc nuôi con dưới 12 tháng tuổi",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trường hợp hợp đồng lao động hết hạn trong thời gian lao động nữ mang thai hoặc nuôi con dưới 12 tháng tuổi"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "ưu tiên giao kết hợp đồng lao động mới",
+     "chu_the": {
+      "chu": "lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "lao động nữ mang thai hoặc nuôi con dưới 12 tháng tuổi thì được ưu tiên giao kết hợp đồng lao động mới"
+     ],
+     "quy_tac": "q2"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D137.K4",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong thời gian hành kinh",
+     "chu_the": {
+      "chu": "Lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Lao động nữ trong thời gian hành kinh"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "nghỉ mỗi ngày 30 phút",
+     "chu_the": {
+      "chu": "Lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Lao động nữ trong thời gian hành kinh được nghỉ mỗi ngày 30 phút"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong thời gian nuôi con dưới 12 tháng tuổi",
+     "chu_the": {
+      "chu": "Lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trong thời gian nuôi con dưới 12 tháng tuổi được nghỉ mỗi ngày 60 phút trong thời gian làm việc"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "nghỉ mỗi ngày 60 phút trong thời gian làm việc",
+     "chu_the": {
+      "chu": "Lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trong thời gian nuôi con dưới 12 tháng tuổi được nghỉ mỗi ngày 60 phút trong thời gian làm việc"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "hưởng đủ tiền lương",
+     "chu_the": {
+      "chu": "Lao động nữ",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo hợp đồng lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Lao động nữ trong thời gian hành kinh",
+      "Thời gian nghỉ vẫn được hưởng đủ tiền lương theo hợp đồng lao động"
+     ],
+     "quy_tac": "q3",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "'theo hợp đồng lao động' là căn cứ xác định mức lương, bỏ đi vẫn cùng hành vi hưởng lương."
+     }
+    }
+   ]
+  }
+ ]
+}

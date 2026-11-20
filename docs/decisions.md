@@ -1,12 +1,12 @@
 # Sổ quyết định
 
-Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A52) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
+Sổ này ghi các quyết định thiết kế và kỹ thuật đã chốt, kèm lý do và cái giá. Mã quyết định (A1 đến A53) được mã nguồn, test và các tài liệu khác trích dẫn nên giữ nguyên. Một quyết định bị thay thế được ghi "Đã thay thế bởi ...", không xoá.
 
 Quy ước ghi: mỗi mục gồm **Quyết định**, **Lý do** và **Cái giá hoặc chỗ chưa kiểm** khi có. Chỗ lệch so với kế hoạch ban đầu hoặc so với mã cũ được nêu rõ. Số đo ghi kèm ngày đo và phạm vi (BLLĐ là Bộ luật Lao động 45/2019; "kho" là cả 18 văn bản trong `data/raw/labor/`).
 
 Các mục A9, A10, A18, A19, A20, A28 là quy trình làm việc nội bộ giữa các phiên và không còn hiệu lực sau khi tài liệu được chuẩn hoá (A40); mã của chúng được giữ trống để các tham chiếu không đổi.
 
-Bố cục: **Phần I** quyết định về pipeline (A1 đến A52); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
+Bố cục: **Phần I** quyết định về pipeline (A1 đến A53); **Phần II** quyết định ở mức từng bước nền (parse, refs, delegation và links, article_type, exceptions, versions, checks, graph, viewer); **Phần III** số đo và quan sát.
 
 ---
 
@@ -358,6 +358,15 @@ Danh sách còn hiệu lực nằm ở `docs/status.md` (mục Nợ kỹ thuật
 # Phần II. Quyết định ở mức từng bước nền
 
 Các quyết định ở chỗ đặc tả im lặng hoặc lệch kế hoạch ban đầu của các bước đã xong. Mã dùng tiền tố theo bước.
+
+## A53. Đưa thư mục làm việc hộp cát đã chạy xong vào repo (20/11)
+**Lệch (đặt lên đầu).** Đảo một phần A36 và A26 (dòng "Thư mục làm việc ngoài repo (hộp cát) không đưa vào repo"): các thư mục làm việc của lần chạy ckey đến ckey4, đã chạy xong, nay được commit ở `data/sandbox_runs/`. Thư mục làm việc của lần chạy MỚI vẫn phải dựng ngoài repo (`docs/operations/llm_sandbox.md`), vì phiên Claude Code đóng vai LLM chỉ được cách ly khi nó không mở trong cây thư mục của dự án.
+
+**Bối cảnh.** User yêu cầu 20/11: "đưa hết vào đi, k mang vào sao project có đủ context run ở nơi khác". Agent đã nêu trước: `replay` ở máy khác chỉ cần `data/llm_cache/` (đã có trên remote), không cần các thư mục này; cái chúng thêm là đầu vào thô từng lô (`lo/`), đầu ra thô (`out/`, `out_sai/`), nhật ký và cấu hình, dùng để đối chiếu hoặc soát lại một lô mà không phải dựng lại bằng `xuat`.
+
+**Quyết định.** Chép nguyên (từng byte, đã so bằng máy: 2.044 file, 0 khác) các thư mục làm việc từ `C:/Users/TusPC/Documents/kltn_hop_cat_ckey/` vào `data/sandbox_runs/`, giữ tên thư mục con như lúc sinh (`ckey2/b1_6a`, `lldnn_u16a`, `menh_de_tat_ca_m4`, ...) vì báo cáo và nhật ký chạy gọi theo các tên đó, dù trái quy ước tên ở CONTRIBUTING mục 1. Bản gốc ngoài repo chưa xoá. Trước khi commit đã quét: không có `CLAUDE.md` hay `.claude/` (nên phiên làm việc trong repo không nạp nhầm hướng dẫn của hộp cát), không có khoá API (dò cả dạng UTF-8 và UTF-16), không có đường dẫn nhóm heldout. Mã của repo không quét cả `data/` (các chỗ `iterdir` chỉ kiểm thư mục đích của `xuat` có rỗng không), nên các file này không bị bước nào đọc.
+
+**Cái giá.** Repo nặng thêm khoảng 28 MB, nằm vĩnh viễn trong lịch sử git; phần lớn trùng nội dung với `data/llm_cache/`. Hai bản (trong repo và ngoài repo) có thể lệch nếu sau này sửa một bên.
 
 ## Nền (corpus, LLM client, báo cáo)
 - **BA1.** Thông tin văn bản (số hiệu, ngày, số Điều) đọc từ `data/raw/labor/manifest.csv` (UTF-8 có BOM, đọc bằng `utf-8-sig`); không dùng file cấu hình riêng. Cấp văn bản (`level`), loại, cơ quan là bảng hằng trong `src/corpus.py`. Cột `quan_he` và `ghi_chu` của manifest chỉ là mốc kiểm, không phải đầu vào của pipeline.

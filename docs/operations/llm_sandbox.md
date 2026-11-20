@@ -1,6 +1,6 @@
 # Vận hành: chạy phần LLM bằng phiên Claude Code trong thư mục làm việc ngoài repo
 
-Áp dụng cho bước 1.6 (A36). Phần LLM không gọi API: một phiên Claude Code đóng vai LLM trong **thư mục làm việc ngoài repo** (gọi là "thư mục làm việc" ở dưới), mỗi lô giao cho một subagent mới. Máy (mã của repo) dựng đầu vào, kiểm và ghi bản ghi cache. Thư mục làm việc **không** đưa vào repo và có thể dựng lại bất cứ lúc nào.
+Áp dụng cho bước 1.6 (A36). Phần LLM không gọi API: một phiên Claude Code đóng vai LLM trong **thư mục làm việc ngoài repo** (gọi là "thư mục làm việc" ở dưới), mỗi lô giao cho một subagent mới. Máy (mã của repo) dựng đầu vào, kiểm và ghi bản ghi cache. Thư mục làm việc **không** dựng trong repo và có thể dựng lại bất cứ lúc nào. Chạy xong thì có thể chép vào `data/sandbox_runs/` để lưu (A53), không chạy phiên LLM trong đó.
 
 ## 1. Nguyên tắc
 - Thư mục làm việc nằm **ngoài repo**, tên trung tính, chưa có hoặc rỗng. Phiên Claude Code mở **trong thư mục đó**, không `--resume`, không `-c`, nên không nạp tài liệu của dự án; cách ly này dựa trên hướng dẫn trong thư mục, không có gì chặn kỹ thuật nếu phiên cố tình đọc thư mục cha.

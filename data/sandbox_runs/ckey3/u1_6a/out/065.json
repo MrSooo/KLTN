@@ -1,0 +1,79 @@
+{
+ "units": [
+  {
+   "unit_id": "ND_219-2025.D29",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "gia hạn theo thời hạn của một trong các trường hợp",
+     "chu_the": {
+      "chu": "Thời hạn của giấy phép lao động",
+      "loai": "D",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Thời hạn của giấy phép lao động được gia hạn theo thời hạn của một trong các trường hợp"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Vế sau 'nhưng' là quy tắc gia hạn riêng nên tách khỏi vế thời hạn theo Điều 21."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "trich": [
+      "quy định tại Điều 21 Nghị định này"
+     ],
+     "targets": [
+      "ND_219-2025.D21"
+     ],
+     "gan_vao": 0,
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chỉ gia hạn một lần",
+     "chu_the": {
+      "chu": "Thời hạn của giấy phép lao động",
+      "loai": "D",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Thời hạn của giấy phép lao động",
+      "chỉ được gia hạn một lần"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thời hạn tối đa là 02 năm",
+     "chu_the": {
+      "chu": "Thời hạn của giấy phép lao động",
+      "loai": "D",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Thời hạn của giấy phép lao động",
+      "với thời hạn tối đa là 02 năm"
+     ],
+     "quy_tac": "q3",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Giới hạn thời hạn tối đa là mệnh đề kiểm riêng, khác giới hạn số lần gia hạn."
+     }
+    }
+   ]
+  }
+ ]
+}

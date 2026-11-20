@@ -1,0 +1,140 @@
+{
+ "units": [
+  {
+   "unit_id": "ND_145-2020.D15.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện ký quỹ",
+     "chu_the": {
+      "chu": "Doanh nghiệp",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "tại ngân hàng thương mại của Việt Nam hoặc chi nhánh ngân hàng nước ngoài thành lập và hoạt động hợp pháp tại Việt Nam (sau đây gọi là ngân hàng nhận ký quỹ)",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Doanh nghiệp thực hiện ký quỹ theo mức quy định tại khoản 2 Điều 21 Nghị định này",
+      "tại ngân hàng thương mại của Việt Nam hoặc chi nhánh ngân hàng nước ngoài thành lập và hoạt động hợp pháp tại Việt Nam (sau đây gọi là ngân hàng nhận ký quỹ)"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Nơi ký quỹ là bổ ngữ; mức ký quỹ là dẫn chiếu nên tách thành dòng con_tro."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "trich": [
+      "theo mức quy định tại khoản 2 Điều 21 Nghị định này"
+     ],
+     "targets": [
+      "ND_145-2020.D21.K2"
+     ],
+     "gan_vao": 0,
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_145-2020.D15.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng vào mục đích thanh toán",
+     "chu_the": {
+      "chu": "Tiền ký quỹ",
+      "loai": "A",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể, nội quy, quy chế của doanh nghiệp cho thuê lại",
+       "scope": "this_clause"
+      }
+     ],
+     "liet_ke": [
+      "tiền lương",
+      "bảo hiểm xã hội",
+      "bảo hiểm y tế",
+      "bảo hiểm thất nghiệp",
+      "bảo hiểm tai nạn lao động, bệnh nghề nghiệp",
+      "các chế độ khác đối với người lao động thuê lại"
+     ],
+     "trich": [
+      "Tiền ký quỹ được sử dụng vào mục đích thanh toán tiền lương, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, bảo hiểm tai nạn lao động, bệnh nghề nghiệp và các chế độ khác đối với người lao động thuê lại",
+      "theo thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể, nội quy, quy chế của doanh nghiệp cho thuê lại"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Thanh toán và bồi thường là hai hành vi khác nhau, tách thành hai dòng; danh sách khoản chi đưa vào liet_ke."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng vào mục đích bồi thường cho người lao động thuê lại",
+     "chu_the": {
+      "chu": "Tiền ký quỹ",
+      "loai": "A",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Tiền ký quỹ được sử dụng vào mục đích thanh toán",
+      "hoặc bồi thường cho người lao động thuê lại"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vi phạm hợp đồng lao động với người lao động thuê lại hoặc gây thiệt hại cho người lao động thuê lại do không bảo đảm về quyền và lợi ích hợp pháp của người lao động thuê lại",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trong trường hợp doanh nghiệp cho thuê lại vi phạm hợp đồng lao động với người lao động thuê lại hoặc gây thiệt hại cho người lao động thuê lại do không bảo đảm về quyền và lợi ích hợp pháp của người lao động thuê lại"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Hai trường hợp là điều kiện thay thế cho cùng một kết luận nên giữ chung một dòng điều kiện."
+     }
+    }
+   ]
+  }
+ ]
+}

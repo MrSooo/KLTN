@@ -1,0 +1,352 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D53.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thời hạn cho thuê lại lao động tối đa là 12 tháng",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Thời hạn cho thuê lại lao động đối với người lao động tối đa là 12 tháng."
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đối với người lao động",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đối với người lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm 'đối với ...' giới hạn đối tượng áp dụng nên tách thành điều kiện."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D53.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng lao động thuê lại",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Bên thuê lại lao động được sử dụng lao động thuê lại"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "hoac",
+     "trich": [
+      "trong trường hợp sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách trường hợp được phép."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D53.K2.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "bo_ngu": [
+      {
+       "original_text": "trong khoảng thời gian nhất định",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Bên thuê lại lao động",
+      "Đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động trong khoảng thời gian nhất định"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D53.K2.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thay thế người lao động",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "bo_ngu": [
+      {
+       "original_text": "trong thời gian nghỉ thai sản, bị tai nạn lao động, bệnh nghề nghiệp hoặc phải thực hiện các nghĩa vụ công dân",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Bên thuê lại lao động",
+      "Thay thế người lao động trong thời gian nghỉ thai sản, bị tai nạn lao động, bệnh nghề nghiệp hoặc phải thực hiện các nghĩa vụ công dân"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D53.K2.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Bên thuê lại lao động",
+      "Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao."
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D53.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng lao động thuê lại",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Bên thuê lại lao động không được sử dụng lao động thuê lại"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "hoac",
+     "trich": [
+      "trong trường hợp sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách trường hợp bị cấm."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D53.K3.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thay thế người lao động",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "bo_ngu": [
+      {
+       "original_text": "đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Bên thuê lại lao động",
+      "Để thay thế người lao động đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D53.K3.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "bo_ngu": [
+      {
+       "original_text": "với doanh nghiệp cho thuê lại lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Bên thuê lại lao động",
+      "Không có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach_hay_giu_chung",
+      "giai_thich": "'Không' thuộc nội dung điều kiện nên đưa vào cực phủ định, menh_de giữ dạng khẳng định."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D53.K3.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thay thế người lao động",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "bo_ngu": [
+      {
+       "original_text": "bị cho thôi việc do thay đổi cơ cấu, công nghệ, vì lý do kinh tế hoặc chia, tách, hợp nhất, sáp nhập",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Bên thuê lại lao động",
+      "Thay thế người lao động bị cho thôi việc do thay đổi cơ cấu, công nghệ, vì lý do kinh tế hoặc chia, tách, hợp nhất, sáp nhập."
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D53.K4",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chuyển người lao động thuê lại cho người sử dụng lao động khác",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Bên thuê lại lao động",
+      "không được",
+      "chuyển người lao động thuê lại cho người sử dụng lao động khác"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "trich": [
+      "không được",
+      "sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai hành vi bị cấm độc lập sau dấu chấm phẩy, mỗi hành vi kiểm được riêng."
+     }
+    }
+   ]
+  }
+ ]
+}

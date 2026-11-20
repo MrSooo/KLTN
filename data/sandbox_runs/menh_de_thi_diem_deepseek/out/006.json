@@ -1,0 +1,177 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D14.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được giao kết bằng văn bản",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Hợp đồng lao động phải được giao kết bằng văn bản"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được làm thành 02 bản",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Hợp đồng lao động phải",
+      "được làm thành 02 bản"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Kế thừa chủ thể và 'phải' từ vế trước, yêu cầu về số bản tách riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giữ 01 bản",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người lao động giữ 01 bản"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Nghĩa vụ giữ bản của mỗi bên kiểm riêng được nên tách theo chủ thể."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giữ 01 bản",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người sử dụng lao động giữ 01 bản"
+     ],
+     "quy_tac": "q3"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "targets": [
+      "BLLD_45-2019.D14.K2"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "trừ trường hợp quy định tại khoản 2 Điều này"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có giá trị như hợp đồng lao động bằng văn bản",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": {
+      "chu": "được giao kết thông qua phương tiện điện tử dưới hình thức thông điệp dữ liệu theo quy định của pháp luật về giao dịch điện tử",
+      "pham_vi": "this_clause"
+     },
+     "trich": [
+      "Hợp đồng lao động được giao kết thông qua phương tiện điện tử dưới hình thức thông điệp dữ liệu theo quy định của pháp luật về giao dịch điện tử có giá trị như hợp đồng lao động bằng văn bản"
+     ],
+     "quy_tac": "q4",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cách thức giao kết điện tử đưa vào bổ ngữ, lõi giữ tuyên bố về giá trị pháp lý."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D14.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết hợp đồng lao động bằng lời nói",
+     "chu_the": {
+      "chu": "Hai bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": {
+      "chu": "đối với hợp đồng có thời hạn dưới 01 tháng",
+      "pham_vi": "this_clause"
+     },
+     "trich": [
+      "Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Phạm vi hợp đồng dưới 01 tháng để ở bổ ngữ, lõi là việc giao kết bằng lời nói."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "targets": [
+      "BLLD_45-2019.D18.K2",
+      "BLLD_45-2019.D145.K1.a",
+      "BLLD_45-2019.D162.K1"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "trừ trường hợp quy định tại khoản 2 Điều 18, điểm a khoản 1 Điều 145 và khoản 1 Điều 162 của Bộ luật này"
+     ]
+    }
+   ]
+  }
+ ]
+}

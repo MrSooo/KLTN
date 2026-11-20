@@ -1,0 +1,63 @@
+{
+ "units": [
+  {
+   "unit_id": "ND_219-2025.D10",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "giấy xác nhận không thuộc diện cấp giấy phép lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "theo thời hạn của một trong các trường hợp",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "theo thời hạn của một trong các trường hợp quy định tại Điều 21 Nghị định này"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm điều kiện về thời hạn áp dụng tách riêng khỏi kết luận."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "trich": [
+      "quy định tại Điều 21 Nghị định này"
+     ],
+     "targets": [
+      "ND_219-2025.D21"
+     ],
+     "gan_vao": 1,
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "quá 02 năm",
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "nhưng không quá 02 năm"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

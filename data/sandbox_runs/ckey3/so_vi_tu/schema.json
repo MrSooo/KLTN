@@ -1,0 +1,36 @@
+{
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "chu"
+ ],
+ "properties": {
+  "chu": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "chu_id",
+     "kieu",
+     "ten"
+    ],
+    "properties": {
+     "chu_id": {
+      "type": "string"
+     },
+     "kieu": {
+      "type": "string",
+      "enum": [
+       "reuse",
+       "new"
+      ]
+     },
+     "ten": {
+      "type": "string"
+     }
+    }
+   }
+  }
+ }
+}

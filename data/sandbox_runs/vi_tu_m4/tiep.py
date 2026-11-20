@@ -1,0 +1,6 @@
+# Chỉ chạy file này, không mở, không sửa:  c:/Users/TusPC/Documents/kltn/.venv/Scripts/python.exe tiep.py moi   |   c:/Users/TusPC/Documents/kltn/.venv/Scripts/python.exe tiep.py ghi NNN
+import os, sys
+os.environ['KLTN_LLM_RUN'] = 'ckey'
+sys.path.insert(0, 'C:\\Users\\TusPC\\Documents\\kltn\\src')
+import predicates
+predicates.tiep_entry(__file__, sys.argv[1:], 'BLLD_45-2019')

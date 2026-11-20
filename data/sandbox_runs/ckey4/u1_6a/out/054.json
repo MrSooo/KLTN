@@ -1,0 +1,135 @@
+{
+ "units": [
+  {
+   "unit_id": "ND_219-2025.D5.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "hợp pháp hóa lãnh sự",
+     "chu_the": {
+      "chu": "Các giấy tờ trong hồ sơ cấp, cấp lại, gia hạn giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động đối với người lao động nước ngoài nếu của nước ngoài",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Các giấy tờ trong hồ sơ cấp, cấp lại, gia hạn giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động đối với người lao động nước ngoài nếu của nước ngoài phải hợp pháp hóa lãnh sự"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "'nếu của nước ngoài' là định ngữ của 'giấy tờ' nên giữ trong cụm chủ thể, không tách thành điều kiện không có vị ngữ."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "trich": [
+      "trừ trường hợp được miễn hợp pháp hóa lãnh sự theo điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam và nước ngoài liên quan đều là thành viên hoặc theo nguyên tắc có đi có lại hoặc theo quy định của pháp luật"
+     ],
+     "targets": [],
+     "gan_vao": 0,
+     "chua_ro": [
+      {
+       "thanh_phan": "dẫn chiếu",
+       "nguyen_nhan": "khac",
+       "cau_hoi": "Ngoại lệ miễn hợp pháp hóa lãnh sự theo điều ước quốc tế, nguyên tắc có đi có lại hoặc pháp luật nhưng dan_chieu rỗng, không có mã đích."
+      }
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_219-2025.D5.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "dịch ra tiếng Việt",
+     "chu_the": {
+      "chu": "Giấy tờ đã được hợp pháp hóa lãnh sự",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Giấy tờ đã được hợp pháp hóa lãnh sự phải được dịch ra tiếng Việt"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chứng thực",
+     "chu_the": {
+      "chu": "Giấy tờ đã được hợp pháp hóa lãnh sự",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo quy định của pháp luật",
+       "scope": "group"
+      }
+     ],
+     "trich": [
+      "Giấy tờ đã được hợp pháp hóa lãnh sự phải được dịch ra tiếng Việt và chứng thực theo quy định của pháp luật"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "'dịch ra tiếng Việt' và 'chứng thực' là hai hành vi kiểm được riêng, vi phạm riêng có ý nghĩa pháp lý."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là bản sao",
+     "chu_the": {
+      "chu": "giấy tờ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trường hợp giấy tờ là bản sao"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chứng thực với bản gốc",
+     "chu_the": {
+      "chu": "giấy tờ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "trước khi dịch ra tiếng Việt và chứng thực theo quy định của pháp luật",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Trường hợp giấy tờ là bản sao phải được chứng thực với bản gốc trước khi dịch ra tiếng Việt và chứng thực theo quy định của pháp luật"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "'trước khi dịch ra tiếng Việt và chứng thực theo quy định của pháp luật' chỉ trình tự của hành vi chứng thực với bản gốc."
+     }
+    }
+   ]
+  }
+ ]
+}
