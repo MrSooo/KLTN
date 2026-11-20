@@ -1,0 +1,34 @@
+python : [LLM sandbox_api · api · lô 001] gọi deepseek-v4.1-flash (lượt api hôm nay: 148/3000) ...
+At C:\Users\TusPC\AppData\Local\Temp\claude\507e3b325f27ad47\3dce860a-7d66-4a0e-8991-734cc69aebe3\scratchpad\chuoi_tap_
+con.ps1:20 char:9
++         python -X utf8 -I src/sandbox_api.py $d *> (Join-Path $root " ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([LLM sandbox_ap...: 148/3000) ...:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+      ... [LLM sandbox_api · api · lô 001] vẫn đang chờ phản hồi (30s)
+[LLM sandbox_api · api · lô 001] xong sau 46s (token vào 102, ra 7750)
+[LLM sandbox_api · api · lô 002] gọi deepseek-v4.1-flash (lượt api hôm nay: 149/3000) ...
+      ... [LLM sandbox_api · api · lô 002] vẫn đang chờ phản hồi (30s)
+[LLM sandbox_api · api · lô 002] xong sau 57s (token vào 33, ra 2716)
+[LLM sandbox_api · api · lô 003] gọi deepseek-v4.1-flash (lượt api hôm nay: 150/3000) ...
+      ... [LLM sandbox_api · api · lô 003] vẫn đang chờ phản hồi (30s)
+      ... [LLM sandbox_api · api · lô 003] vẫn đang chờ phản hồi (60s)
+      ... [LLM sandbox_api · api · lô 003] vẫn đang chờ phản hồi (90s)
+[LLM sandbox_api · api · lô 003] xong sau 98s (token vào 23, ra 2536)
+[LLM sandbox_api · api · lô 004] gọi deepseek-v4.1-flash (lượt api hôm nay: 151/3000) ...
+      ... [LLM sandbox_api · api · lô 004] vẫn đang chờ phản hồi (30s)
+[LLM sandbox_api · api · lô 004] xong sau 53s (token vào 22, ra 2336)
+[LLM sandbox_api · api · lô 005] gọi deepseek-v4.1-flash (lượt api hôm nay: 152/3000) ...
+      ... [LLM sandbox_api · api · lô 005] vẫn đang chờ phản hồi (30s)
+[LLM sandbox_api · api · lô 005] xong sau 59s (token vào 107, ra 1476)
+LƯỢT 001: đã ghi lo/001.json (25 chữ); giao lượt 001 cho một subagent mới
+ĐÃ NHẬN 001: 25/25 chữ qua, 0 không qua; chạy `tiep.py moi`
+LƯỢT 002: đã ghi lo/002.json (30 chữ); giao lượt 002 cho một subagent mới
+ĐÃ NHẬN 002: 30/30 chữ qua, 0 không qua; chạy `tiep.py moi`
+LƯỢT 003: đã ghi lo/003.json (28 chữ); giao lượt 003 cho một subagent mới
+ĐÃ NHẬN 003: 28/28 chữ qua, 0 không qua; chạy `tiep.py moi`
+LƯỢT 004: đã ghi lo/004.json (27 chữ); giao lượt 004 cho một subagent mới
+ĐÃ NHẬN 004: 27/27 chữ qua, 0 không qua; chạy `tiep.py moi`
+LƯỢT 005: đã ghi lo/005.json (17 chữ); giao lượt 005 cho một subagent mới
+ĐÃ NHẬN 005: 17/17 chữ qua, 0 không qua; chạy `tiep.py moi`; HẾT: 5 lượt đã nhận; 127 chữ có tên, 0 chữ bị loại; báo người dùng

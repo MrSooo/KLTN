@@ -1,0 +1,10 @@
+python : [LLM sandbox_api · api · lô 001] gọi deepseek-v4.1-flash (lượt api hôm nay: 249/3000) ...
+At line:4 char:1
++ python -X utf8 -I src/sandbox_api.py $d *> "C:\Users\TusPC\Documents\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([LLM sandbox_ap...: 249/3000) ...:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[LLM sandbox_api · api · lô 001] xong sau 8s (token vào 115, ra 977)
+LƯỢT 001: đã ghi lo/001.json (3 chữ); giao lượt 001 cho một subagent mới
+DỪNG: lượt 001 lỗi API: đầu ra là list, không phải đối tượng JSON; chạy lại lệnh để làm tiếp từ lượt này
