@@ -79,8 +79,8 @@ def run(argv=None):
     import argparse
     ap = argparse.ArgumentParser(description="Verifier-guided symbolic feedback loop (eta iterations)")
     ap.add_argument("question", help="legal question to reason about")
-    ap.add_argument("--src", default="data/raw/blds2015_p4.md",
-                    help="source md that anchors the bounded concept graph (default p4)")
+    ap.add_argument("--src", default="data/raw/lld2019_labor.md",
+                    help="source md that anchors the bounded concept graph (default Labour sample)")
     ap.add_argument("--goal", action="append", default=[], help="repeatable --goal <atom>")
     ap.add_argument("--fact", action="append", default=[], help="repeatable --fact <atom>")
     ap.add_argument("--depth", type=int, choices=(1, 2, 3), default=2)

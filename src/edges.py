@@ -75,26 +75,26 @@ def build_edges(units):
 
     Duyệt theo thứ tự đơn vị trong file triples; hai cạnh của cùng một con nằm liền nhau.
     """
-    out = []
+    edges = []
     for code in units:
         parent = parent_of(code)
         if parent is None:
             continue
-        out.append((parent, "contains", code))
-        out.append((code, "part_of", parent))
-    return out
+        edges.append((parent, "contains", code))
+        edges.append((code, "part_of", parent))
+    return edges
 
 
-def check_edges(units, edge_list):
+def check_edges(units, edges):
     """Trả về list lỗi (rỗng nếu sạch). So loại của cha theo thuộc tính type của A1, không theo mã."""
     errors = []
 
-    for edge, n in collections.Counter(edge_list).items():
+    for edge, n in collections.Counter(edges).items():
         if n > 1:
             errors.append(f"cạnh trùng {n} lần: {edge}")
 
-    contains = [(s, o) for s, p, o in edge_list if p == "contains"]
-    part_of = [(o, s) for s, p, o in edge_list if p == "part_of"]  # đảo về (cha, con) để so với contains
+    contains = [(s, o) for s, p, o in edges if p == "contains"]
+    part_of = [(o, s) for s, p, o in edges if p == "part_of"]  # đảo về (cha, con) để so với contains
     for s, o in contains:
         missing = [x for x in (s, o) if x not in units]
         if missing:
@@ -120,12 +120,12 @@ def check_edges(units, edge_list):
     return errors
 
 
-def write_edges(edge_rows, path):
+def write_edges(edges, path):
     """Ghi JSONL, mỗi dòng {"s","p","o","evidence"}. evidence rỗng cho cạnh cấu trúc."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8", newline="\n") as f:
-        for s, p, o in edge_rows:
+        for s, p, o in edges:
             f.write(json.dumps({"s": s, "p": p, "o": o, "evidence": ""}, ensure_ascii=False) + "\n")
 
 
@@ -148,13 +148,13 @@ def read_units(src):
 def run(src):
     """Đọc triples của A1, dựng và kiểm cạnh, chỉ ghi khi sạch."""
     units = read_units(src)
-    edge_list = build_edges(units)
-    fail_if_errors(check_edges(units, edge_list))
+    edges = build_edges(units)
+    fail_if_errors(check_edges(units, edges))
 
-    per_pred = collections.Counter(p for _, p, _ in edge_list)
-    print("số đơn vị:", len(units), "| số cạnh:", len(edge_list), "| theo loại:", dict(per_pred))
+    per_pred = collections.Counter(p for _, p, _ in edges)
+    print("số đơn vị:", len(units), "| số cạnh:", len(edges), "| theo loại:", dict(per_pred))
     out = edges_path(src)
-    write_edges(edge_list, out)
+    write_edges(edges, out)
     print("đã ghi", out)
 
 
@@ -168,7 +168,13 @@ _KW = r"(?:điều|khoản|điểm)"
 _ARG = r"(?:\d+|này|[^\W\d_])(?!\w)"
 _ITEM = rf"(?<!\w){_KW}[ ]+{_ARG}"
 _SEP = r"(?:,[ ]*|[ ]+(?:và|hoặc)[ ]+|[ ]+)"
-CHAIN_RE = re.compile(rf"{_ITEM}(?:{_SEP}{_ITEM})*(?: của Bộ luật này)?", re.I)
+# Bảng chữ Điểm (khớp parse.DIEM_LETTERS, không f j w z). Văn bản luật hay liệt kê nhiều điểm
+# trong một cụm: "điểm a, b, c, đ và g khoản 1 Điều này" — các chữ sau chữ đầu không kèm từ khoá "điểm".
+_DIEM_LETTERS = "abcdđeghiklmnopq"
+_DIEM_ENUM = rf"(?<![\w])điểm[ ]+[{_DIEM_LETTERS}](?![\w])(?:(?:,[ ]*|[ ]+(?:và|hoặc)[ ]+)[{_DIEM_LETTERS}](?![\w]))*"
+_NUM_ENUM = rf"(?<![\w])(?:điều|khoản)[ ]+\d+(?!\w)(?:(?:,[ ]*|[ ]+(?:và|hoặc)[ ]+)\d+(?!\w))*"
+_CITE_ITEM = rf"(?:{_DIEM_ENUM}|{_NUM_ENUM}|{_ITEM})"
+CHAIN_RE = re.compile(rf"{_CITE_ITEM}(?:{_SEP}{_CITE_ITEM})*(?: của Bộ luật này)?", re.I)
 ITEM_RE = re.compile(rf"(?<!\w)({_KW})[ ]+(\d+|này|[^\W\d_])(?!\w)", re.I)  # để chuẩn hoá hình dạng
 KEYWORD_RE = re.compile(rf"(?<!\w){_KW}(?!\w)", re.I)
 
@@ -287,6 +293,32 @@ def enclosing_unit(source, level, units):
     raise ValueError(f"{source}: không có tổ tiên type {LEVEL_TYPE[level]}")
 
 
+def _citation_items(phrase):
+    """Trích các mục (level, arg) của một cụm dẫn chiếu, mở rộng danh sách liệt kê
+    'điểm a, b, c, đ và g' / 'khoản 1, 2, 3 và 4' / 'điều 35, 36 và 37' thành từng mục riêng
+    để group_targets sinh đủ các đích."""
+    items = []
+    for m in ITEM_RE.finditer(phrase):
+        kw = m.group(1).casefold()
+        arg = m.group(2)
+        items.append((LEVEL[kw], arg))
+        pos = m.end()
+        while True:
+            sep = re.match(r"(?:,[ ]*|[ ]+(?:và|hoặc)[ ]+)", phrase[pos:])
+            if not sep:
+                break
+            tail = phrase[pos + sep.end():]
+            if LEVEL[kw] == 2:  # điểm: chữ cái
+                let = re.match(rf"([{_DIEM_LETTERS}])(?!\w)", tail)
+            else:               # điều/khoản: số
+                let = re.match(rf"(\d+)(?!\w)", tail)
+            if not let:
+                break
+            items.append((LEVEL[kw], let.group(1)))
+            pos += sep.end() + let.end()
+    return items
+
+
 def group_targets(source, phrase, units):
     """Các mã đích của một cụm dẫn chiếu nằm trong đơn vị source (chưa kiểm đích có tồn tại).
 
@@ -299,7 +331,7 @@ def group_targets(source, phrase, units):
     def bad(why):
         return ValueError(f"{source}: {why}: {phrase!r}")
 
-    items = [(LEVEL[kw.casefold()], arg) for kw, arg in ITEM_RE.findall(phrase)]
+    items = _citation_items(phrase)
     if not items:
         raise bad("cụm không có mục nào")
     runs = [list(run) for _, run in itertools.groupby(items, key=lambda it: it[0])]  # các mục liền nhau cùng cấp

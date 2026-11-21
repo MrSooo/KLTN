@@ -1,8 +1,8 @@
 """S_cot: Concept-Bounded Legal Logical CoT extractor (prompt templates + deterministic parser).
 
 Forces the LLM to emit explicit legal state transitions <s_{i-1}, a_i, s_i> across
-exception depths d in {1, 2, 3}, bounded by a Concept Book for Articles 621/626/644
-(eligibility to inherit, the testator's rights, and compulsory heirs). The chain can
+exception depths d in {1, 2, 3}, bounded by a Concept Book for Articles 35/36/37/39/46/169
+(unilateral termination, severance and retirement age in the Labour Code). The chain can
 then be scored by symbolic_legal_verifier.reward_sym and repaired by scasp_feedback_loop.
 
 Contract mirrors knowledge_layer: the payload is schema-checked, anything malformed is
@@ -18,21 +18,20 @@ from typing import NamedTuple
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I mode: sibling imports
 import llm  # noqa: E402
 
-# ---- Bounded Concept Graph (Concept Book) for the inheritance corpus ----
-# Authorised concepts (the only atoms the CoT may introduce) + the 5 provision anchors.
+# ---- Bounded Concept Graph (Concept Book) for the Labour Law corpus ----
+# Authorised concepts (the only atoms the CoT may introduce) + the 6 provision anchors.
 CONCEPT_BOOK = {
-    "articles": ("BLDS2015.D621", "BLDS2015.D626", "BLDS2015.D644"),
+    "articles": ("LLD2019.D35", "LLD2019.D36", "LLD2019.D37", "LLD2019.D39", "LLD2019.D46", "LLD2019.D169"),
     "concepts": (
-        "quyền hưởng di sản",                 # right to inherit
-        "quyền của người lập di chúc",        # testator's rights
-        "người thừa kế không phụ thuộc di chúc",  # compulsory heir
-        "hai phần ba suất thừa kế",           # 2/3 of a statutory share
-        "không được quyền hưởng di sản",      # ineligible to inherit
-        "từ chối nhận di sản",                # refusal of inheritance
-        "truất quyền hưởng di sản",           # disinheritance
-        "phân định phần di sản",              # apportionment of shares
-        "di tặng", "thờ cúng",                # gift / worship reservation
-        "giao nghĩa vụ",                      # impose obligations
+        "quyền đơn phương chấm dứt hợp đồng lao động",                    # Điều 35
+        "quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động",  # Điều 36
+        "trường hợp người sử dụng lao động không được đơn phương chấm dứt",  # Điều 37
+        "đơn phương chấm dứt hợp đồng lao động trái pháp luật",           # Điều 39
+        "trợ cấp thôi việc",                                             # Điều 46
+        "tuổi nghỉ hưu",                                                 # Điều 169
+        "thời hạn báo trước", "báo trước 45 ngày", "báo trước 30 ngày", "báo trước 03 ngày làm việc",
+        "không cần báo trước", "đủ tuổi nghỉ hưu", "nghỉ thai sản", "ốm đau đang điều trị",
+        "đủ điều kiện hưởng lương hưu", "lộ trình tuổi nghỉ hưu", "lao động nữ mang thai",
     ),
     "exception_depths": ("1", "2", "3"),
 }
@@ -40,19 +39,22 @@ CONCEPT_BOOK = {
 # Provision anchors with their normative meaning, for grounding the prompt. (Not legal
 # advice; mirrors the statute's own headings used throughout src/ knowledge extraction.)
 ARTICLE_BOOK = {
-    "BLDS2015.D621": "Người không được quyền hưởng di sản (bị kết án xâm phạm tính mạng, "
-                     "ngược đãi, vi phạm nghĩa vụ nuôi dưỡng).",
-    "BLDS2015.D626": "Quyền của người lập di chúc (chỉ định người thừa kế, truất quyền, "
-                     "phân định phần di sản, di tặng/thờ cúng, giao nghĩa vụ).",
-    "BLDS2015.D644": "Người thừa kế không phụ thuộc vào nội dung của di chúc "
-                     "(hai phần ba suất; không áp dụng với người từ chối nhận di sản "
-                     "hoặc không được quyền hưởng di sản).",
+    "LLD2019.D35": "Quyền đơn phương chấm dứt HĐLĐ của người lao động "
+                   "(báo trước 45/30/03 ngày; hoặc không cần báo trước trong các trường hợp đặc biệt).",
+    "LLD2019.D36": "Quyền đơn phương chấm dứt HĐLĐ của người sử dụng lao động "
+                   "(các căn cứ chấm dứt + thời hạn báo trước).",
+    "LLD2019.D37": "Trường hợp người sử dụng lao động không được đơn phương chấm dứt "
+                   "(ốm đau điều trị, nghỉ hằng năm, thai sản, nuôi con dưới 12 tháng).",
+    "LLD2019.D39": "Đơn phương chấm dứt trái pháp luật = chấm dứt không đúng Điều 35, 36, 37.",
+    "LLD2019.D46": "Trợ cấp thôi việc (mỗi năm nửa tháng lương; trừ trường hợp đủ điều kiện "
+                   "hưởng lương hưu hoặc điểm e khoản 1 Điều 36).",
+    "LLD2019.D169": "Tuổi nghỉ hưu (theo lộ trình do Chính phủ quy định; chi tiết tại NĐ 135/2020/NĐ-CP).",
 }
 
 DEPTH_HINT = {
-    1: "lớp quy tắc gốc (vd. Điều 644 khoản 1: người hưởng 2/3 suất)",
-    2: "lớp ngoại lệ (vd. Điều 644 khoản 2: không áp dụng với Điều 620/621)",
-    3: "lớp ngoại lệ lồng (căn Điều 620 hoặc Điều 621 để chặn hoặc khôi phục kết luận)",
+    1: "lớp quy tắc gốc (vd. Điều 35 khoản 1: NLĐ có quyền đơn phương chấm dứt nhưng phải báo trước)",
+    2: "lớp ngoại lệ (vd. Điều 35 khoản 2: không cần báo trước; hoặc Điều 37 chặn quyền của Điều 36)",
+    3: "lớp ngoại lệ lồng (vd. Điều 39: trái pháp luật = không đúng Điều 35/36/37; Điều 46 'trừ trường hợp...')",
 }
 
 
@@ -70,7 +72,7 @@ def system_prompt():
     return (
         "Bạn là một kỹ sư pháp lý hình thức. Trả về ĐÚNG MỘT đối tượng JSON thuần "
         "(không markdown, không giải thích) theo lược đồ:\n"
-        '{"steps":[{"step":<int>,"rule_id":"<mã quy tắc, vd BLDS2015.D644.K1.R1>",'
+        '{"steps":[{"step":<int>,"rule_id":"<mã quy tắc, vd LLD2019.D35.K1.R1>",'
         '"premises":["<nguyên tử đã được chứng minh>"],'
         '"conclusion":"<kết luận>","blocks":["<mã đơn vị bị chặn>"],'
         '"resulting_state":["<tập nguyên tử sau bước>"],"exception_depth":<1|2|3>}],"'
