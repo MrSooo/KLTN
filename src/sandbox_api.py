@@ -8,6 +8,7 @@ Chạy ở gốc repo, với CÙNG biến KLTN_TAP_CON và KLTN_LLM_RUN như lú
   python -X utf8 -I src/sandbox_api.py <thư mục> [--toi-da N] [--song-song K]
     --toi-da N     chỉ làm N lô (hay N lượt) chưa có đầu ra, rồi dừng (luật dừng A39: soát sau 60 lô đầu)
     --song-song K  số lô gọi cùng lúc, chỉ cho hộp cát lô độc lập (mặc định 4, như HUONG_DAN); hộp cát tuần tự luôn một lượt một lần
+    --lan K        lần chạy lặp thứ K (A54, đo nhiễu): khoá cache riêng ("hop_cat#lanK"), chữ gửi đi giữ nguyên; mặc định là lần gốc
     --lam-lai 015,117  hộp cát lô độc lập: làm lại các lô mà `nhap` từ chối (ví dụ model bỏ sót unit_id). out cũ cất sang out_sai/,
                    bản ghi cache sang _rejected/ (đọc lại cache sẽ ra đúng đầu ra hỏng), rồi gọi lại như lô chưa làm
 
@@ -56,8 +57,11 @@ def expected_model(d, cfg):
 
 
 class Runner:
-    def __init__(self, d, client):
+    def __init__(self, d, client, lan=None):
         self.d, self.client = Path(d), client
+        # [THÊM, A54] lần chạy lặp: nhãn chỉ vào khoá cache (llm_client.cache_key), không vào chữ gửi đi, nên lời nhắc không đổi;
+        # mỗi lần lặp là một bản ghi riêng, bản ghi của lần chạy trước không bị cất hay ghi đè (đo nhiễu, luật sửa lỗi A54).
+        self.tag = PROMPT_TAG if lan is None else f"{PROMPT_TAG}#lan{lan}"
         self.system = (self.d / "system.txt").read_text(encoding="utf-8")
         schema = self.d / "schema.json"
         if schema.exists():  # hộp cát 1.6B, sổ vị từ: HUONG_DAN cho subagent đọc cả schema.json, mà system.txt chỉ nói "đúng lược đồ đã cho"
@@ -73,7 +77,7 @@ class Runner:
 
     def ask(self, n):
         """Một lượt cho lô n. -> bản ghi của llm_client (đầu ra ở 'output'). Ném LLMError / InvalidOutput như llm_client."""
-        return self.client.ask(TASK, PROMPT_TAG, self.system, self.user(n), None, role=llm_client.API_ROLE, validate=is_object, label=f"lô {n:03d}")
+        return self.client.ask(TASK, self.tag, self.system, self.user(n), None, role=llm_client.API_ROLE, validate=is_object, label=f"lô {n:03d}")
 
     def write(self, n, output):
         """Ghi out/NNN.json rồi dòng nhật ký (đúng thứ tự đó: nhật ký có dòng thì out đã có)."""
@@ -94,7 +98,7 @@ class Runner:
 
     def forget(self, n):
         """Cất bản ghi cache của lô n sang _rejected/ để lần gọi sau hỏi lại model (dùng khi tiep.py báo SAI HÌNH: đọc lại cache sẽ sai y hệt)."""
-        key = llm_client.cache_key(self.model, TASK, PROMPT_TAG, self.user(n), self.system, None)
+        key = llm_client.cache_key(self.model, TASK, self.tag, self.user(n), self.system, None)
         path = self.client.cache_dir / TASK / f"{key}.json"
         if path.exists():
             self.client._quarantine(path, json.loads(path.read_text(encoding="utf-8")), "tiep.py báo sai hình")
@@ -178,11 +182,12 @@ def main(argv=None):
     ap.add_argument("--toi-da", type=int, default=None)
     ap.add_argument("--song-song", type=int, default=4)
     ap.add_argument("--lam-lai", default="", help="các số lô cách nhau bằng dấu phẩy")
+    ap.add_argument("--lan", type=int, default=None, help="lần chạy lặp K (A54): bản ghi cache riêng, không đổi chữ gửi đi")
     args = ap.parse_args(argv)
     d = Path(args.thu_muc)
     if not (d / "system.txt").exists():
         raise SystemExit(f"{d} không phải thư mục làm việc (thiếu system.txt)")
-    runner = Runner(d, llm_client.Client("live", log=llm_client.stderr_log))
+    runner = Runner(d, llm_client.Client("live", log=llm_client.stderr_log), lan=args.lan)
     if args.lam_lai:
         if (d / "tiep.py").exists():
             raise SystemExit("--lam-lai chỉ cho hộp cát lô độc lập; hộp cát tuần tự làm lại qua tiep.py (SAI HÌNH)")

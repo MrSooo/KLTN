@@ -1,0 +1,159 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D199",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có quyền tiến hành thủ tục để đình công",
+     "chu_the": {
+      "chu": "Tổ chức đại diện người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "là bên tranh chấp lao động tập thể về lợi ích",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Tổ chức đại diện người lao động là bên tranh chấp lao động tập thể về lợi ích có quyền tiến hành thủ tục quy định tại các điều 200, 201 và 202 của Bộ luật này để đình công trong trường hợp sau đây:"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "targets": [
+      "BLLD_45-2019.D200",
+      "BLLD_45-2019.D201",
+      "BLLD_45-2019.D202"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "quy định tại các điều 200, 201 và 202 của Bộ luật này"
+     ]
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "hoac",
+     "trich": [
+      "trong trường hợp sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách trường hợp."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D199.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hòa giải không thành hoặc hết thời hạn hòa giải mà hòa giải viên lao động không tiến hành hòa giải",
+     "chu_the": {
+      "chu": "Tổ chức đại diện người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Tổ chức đại diện người lao động",
+      "Hòa giải không thành hoặc hết thời hạn hòa giải quy định tại khoản 2 Điều 188 của Bộ luật này mà hòa giải viên lao động không tiến hành hòa giải"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D188.K2"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "quy định tại khoản 2 Điều 188 của Bộ luật này"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D199.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "không được thành lập",
+     "chu_the": {
+      "chu": "Ban trọng tài lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Ban trọng tài lao động không được thành lập"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Tách từng khả năng trong chuỗi 'hoặc' vì mỗi vế kiểm được riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thành lập nhưng không ra quyết định giải quyết tranh chấp",
+     "chu_the": {
+      "chu": "Ban trọng tài lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thành lập nhưng không ra quyết định giải quyết tranh chấp"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Một khả năng độc lập trong chuỗi 'hoặc'."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "không thực hiện quyết định giải quyết tranh chấp của Ban trọng tài lao động",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "là bên tranh chấp",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "người sử dụng lao động là bên tranh chấp không thực hiện quyết định giải quyết tranh chấp của Ban trọng tài lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Một khả năng độc lập trong chuỗi 'hoặc', chủ thể khác."
+     }
+    }
+   ]
+  }
+ ]
+}

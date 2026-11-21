@@ -93,7 +93,7 @@ def unit_groups(uid, rows, pred_of, subj_of, kinds):
         if not name:
             notes.append(f"{uid} dòng {i}: chưa có tên vị từ, bỏ")
             continue
-        neg = d.get("cuc") == "phu_dinh"
+        neg = P.effective_cuc(d) == "phu_dinh"  # [A54] cực do máy quyết lại khi phủ định kép
         g = groups[d["quy_tac"]]
         if d["vai"] == "ket_luan":
             # Có phương thức thì phủ định nằm trong tên (neg_), đầu không mang `-`; đầu mô tả thì phủ định cổ điển.

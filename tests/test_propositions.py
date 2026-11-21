@@ -268,4 +268,42 @@ def test_bo_truong_rong_va_liet_ke():
     assert any("dài" in m for _, m in flag)
 
 
+def test_cuc_phu_dinh_kep():
+    """A54: menh_de còn "không/chưa" ở đầu mà cuc = phu_dinh thì máy đặt khang_dinh, giữ nguyên chữ (cả "không được", "không phải");
+    trừ khi nguồn có thêm một chữ phủ định ngay trước menh_de."""
+    kep = row(vai="dieu_kien", menh_de="không có giấy phép lao động", phuong_thuc="khong", cuc="phu_dinh",
+              trich=["Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động"])
+    assert P.effective_cuc(kep) == "khang_dinh"
+    assert kep["cuc"] == "phu_dinh" and kep["menh_de"] == "không có giấy phép lao động"  # không viết lại dòng
+    assert P.effective_cuc(row(menh_de="không quá 08 giờ trong 01 ngày", cuc="phu_dinh", trich=["không quá 08 giờ trong 01 ngày"])) == "khang_dinh"
+    assert P.effective_cuc(row(menh_de="không xác định thời hạn", cuc="phu_dinh", trich=["hai bên không xác định thời hạn"])) == "khang_dinh"
+    assert P.effective_cuc(row(menh_de="chưa đáp ứng được", cuc="phu_dinh")) == "khang_dinh"
+    assert P.effective_cuc(row(vai="dieu_kien", menh_de="không được thành lập", phuong_thuc="khong", cuc="phu_dinh",
+                               trich=["Ban trọng tài lao động không được thành lập"])) == "khang_dinh"
+    assert P.effective_cuc(row(vai="ket_luan", menh_de="không phải thực hiện xác định nhu cầu", phuong_thuc="duoc", cuc="phu_dinh",
+                               trich=["người sử dụng lao động không phải thực hiện xác định nhu cầu"])) == "khang_dinh"
+    two = row(menh_de="không có giấy phép", cuc="phu_dinh", trich=["trường hợp chưa không có giấy phép"])  # dựng: phủ định thứ hai ngay trước
+    assert P.effective_cuc(two) == "phu_dinh"
+    assert P.effective_cuc(row(menh_de="có giấy phép lao động", cuc="phu_dinh")) == "phu_dinh"
+    assert P.effective_cuc(row(menh_de="không có giấy phép", cuc="khang_dinh")) == "khang_dinh"
+    assert P.effective_cuc(row(loai="con_tro", menh_de="không có", cuc="phu_dinh")) == "phu_dinh"
+    assert P.effective_cuc(row(menh_de="không gian làm việc", cuc="khang_dinh")) == "khang_dinh"
+
+
+def test_menh_de_9_bo_ngu_thanh_dieu_kien():
+    """A55: menh-de-9 là chữ liền viết nguyên bản, không còn trường bo_ngu; với menh-de-9 bo_ngu khác rỗng là lỗi cổng,
+    phiên bản cũ vẫn nhận bo_ngu (cache cũ đọc như trước); dòng dieu_kien bổ ngữ nguyên văn qua cổng."""
+    t = P.PROMPTS["menh-de-9"]
+    assert "original_text" not in t and "scope" not in t and "Không có trường bo_ngu" in t
+    assert t.count('"menh_de":"trong quan hệ lao động"') == 1
+    base = row(vai="ket_luan", menh_de="cung cấp thông tin trung thực", phuong_thuc="phai", cuc="khang_dinh", quy_tac="q1",
+               trich=["Người sử dụng lao động phải cung cấp thông tin trung thực cho người lao động"])
+    leak = dict(base, bo_ngu=[{"original_text": "cho người lao động", "scope": "this_clause"}])
+    ctx = ctxs()[B + "D16.K1"]
+    assert not any("A55" in m for _, m in P.gate_unit(ctx, P.normalize([leak]), version="menh-de-4")[0])
+    assert any("A55" in m for _, m in P.gate_unit(ctx, P.normalize([leak]), version="menh-de-9")[0])
+    qual = row(vai="dieu_kien", menh_de="cho người lao động", phuong_thuc="khong", cuc="khang_dinh", quy_tac="q1", trich=["cho người lao động"])
+    assert P.gate_unit(ctx, P.normalize([base, qual]), version="menh-de-9")[0] == []
+
+
 _harness.run(globals())

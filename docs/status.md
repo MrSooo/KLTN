@@ -1,6 +1,6 @@
 # Trạng thái dự án
 
-Cập nhật lần cuối: 20/11/2026. Nhánh làm việc: `v3_refactor`.
+Cập nhật lần cuối: 21/11/2026. Nhánh làm việc: `v3_refactor`.
 
 ## 1. Tóm tắt
 Giai đoạn 1 (dựng KB gốc từ BLLĐ): các bước 1.1 đến 1.5 đã xong; 1.6B đến 1.9 đã có mã và chạy thông trên tập con `lldnn` (A41: `python -I src/run_all.py --tap-con lldnn --llm replay`); cả kho còn chờ chạy 1.6A đủ 204 lô. Giai đoạn 2 (cập nhật khi có văn bản mới): bước 2.2 đến 2.4 đã có mã cho kho hiện tại; 2.5 đến 2.7 có mã và chạy thông trên tập con với tri thức BLLĐ (A42), tri thức của nghị định chờ phiên LLM; 2.1 chưa làm. Thiết kế từng bước: `docs/design/pipeline_design.md`. Kế hoạch tiếp theo: `docs/roadmap.md`.
@@ -15,7 +15,7 @@ Kiểm ngày 15/11/2026 (sau khi chuẩn hoá tên và xoá thư mục lưu tr�
 | 1.3 Điều khoản giao | `delegation.py` | xong | BLLĐ: 51 ca chắc, 5 ca lỏng cờ `loose` |
 | 1.4 Loại Điều | `article_type.py` | xong | không dùng LLM |
 | 1.5 Ngoại lệ tường minh | `exceptions_explicit.py`, `exceptions_general.py` | xong | đã mở rộng sang "trừ <danh từ>" (A31); chưa đo độ chính xác |
-| 1.6A Mệnh đề | `propositions.py` | **đang làm** | lời nhắc `menh-de-3` đóng băng; đường A39 chưa chạy đủ 204 lô; chưa nối vào `run_all` (xem mục 3). Lần chạy riêng ckey (DeepSeek, `menh-de-4`, A46) đã chạy đủ 204 lô |
+| 1.6A Mệnh đề | `propositions.py` | **đang làm** | lời nhắc `menh-de-3` đóng băng; đường A39 chưa chạy đủ 204 lô; chưa nối vào `run_all` (xem mục 3). Lần chạy riêng ckey (DeepSeek, `menh-de-4`, A46) đã chạy đủ 204 lô. A54 (21/11): luật sửa lỗi không xoay vòng (bộ khó 19 lô `data/eval_dev/proposition_panel.json`, chấm mọi loại lỗi A1-A4 cùng lúc); phủ định kép do máy sửa (`effective_cuc`); đã đo nhiễu (ba lần) |
 | 1.6A (bản cũ) | `concepts.py` | còn trong `run_all` | kết quả không dùng được; `concepts_names.py` và `propositions.py` còn mượn hàm của nó |
 | 1.6B Sổ vị từ | `predicates.py` (bản cũ `concepts_names.py` còn trong `run_all`) | xong trên tập con | `names-2.1`, có vị từ chủ thể (A41) |
 | 1.7 Ngoại lệ ngầm | `implicit_exceptions.py` | xong trên tập con | `ngoai-le-ngam-2`; tập con 4 cặp, 1 cạnh (A41) |
@@ -57,6 +57,7 @@ Kiểm ngày 15/11/2026 (sau khi chuẩn hoá tên và xoá thư mục lưu tr�
 16. **Lời nhắc 1.6A `menh-de-3` thiếu tên khoá `bo_ngu`** (`original_text`, `scope`): đang vá bằng bí danh khoá trong `propositions.normalize` (A41); thêm vào chữ lời nhắc khi chạy cả kho bằng API.
 17. **Tập ảnh hưởng A42 không thấy phụ thuộc toàn cục của `BLOCK_ALIAS` (A43)** (A52): khi một mốc sau có quy tắc kết luận dạng tương đương của một đầu chặn cũ, quy tắc bị chặn ở văn bản khác không vào A(e); 2.7 trượt ở ckey4. Chưa sửa.
 18. **`update.py xuat-1-6a` cần sổ vị từ của 1.6B gốc** (A51): không chạy riêng 1.6A cập nhật được.
+19. **Sửa lỗi 1.6A theo A54, việc kế tiếp:** đo nhiễu đã xong (A54: một lần chạy không đủ, mỗi phiên bản chạy ba lần), lời nhắc `menh-de-9` (A55, bổ ngữ thành dòng điều kiện) qua bộ khó 3 lần (lỗi cổng 13-15% xuống 2-5%, mệnh đề dài 45-57% xuống 41-44%), nhận tạm; việc kế tiếp: chạy lại 1.6A cộng 1.6B trên tập con bằng `menh-de-9` để đo tái dùng vị từ (tiêu chí chính), theo dõi lô dài cụt `max_tokens`; rồi A3; B1 (tìm ứng viên 1.6B) sau A2. Thư mục làm việc và log bộ khó ở `data/sandbox_runs/bo_kho/`.
 
 ## 5. Việc treo (không chặn)
 - Văn bản ngoài kho: NĐ 38/2022, NĐ 35/2022, TT 54/2015, BLLĐ 2012, NĐ 189/2025, Luật 64/2025.

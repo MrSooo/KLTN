@@ -1,0 +1,285 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat#lan3",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-21T04:52:39+00:00",
+ "system": "Bạn tách các đơn vị của Bộ luật Lao động Việt Nam thành DÒNG. Mỗi đơn vị có: tieu_de_dieu, khoan_cha (câu dẫn của cha, có thể rỗng), chu_don_vi (chữ cần tách), dan_chieu (dẫn chiếu đã giải, kèm mã đích). Chỉ tách chu_don_vi; tiêu đề và câu dẫn chỉ để lấy chủ thể, phương thức, vị ngữ bị lược.\n\n## Loại dòng (loai)\n- menh_de: một điều đúng/sai được.\n- con_tro: dẫn chiếu đã giải (\"trừ trường hợp quy định tại ...\", \"theo quy định tại ...\"); targets lấy từ dan_chieu.\n- bo_qua: không thành mệnh đề; ly_do_llm.ma: cau_dan (phần chỉ dẫn vào danh sách, \"... sau đây:\") | dan_chieu_mo (\"theo quy định của pháp luật\") | dan_chieu_ngoai (một luật khác, \"theo quy định của Luật Công đoàn\") | khong_quy_pham (câu chính sách, định hướng, không có hành vi kiểm được).\n- chua_ro: cả dòng không xác định được.\n\n## Luật tách\n1. TÁCH khi từng phần kiểm được đúng/sai riêng VÀ vi phạm từng phần có ý nghĩa pháp lý riêng. GIỮ CHUNG khi là một yêu cầu tập thể. Không tách chỉ vì có nhiều danh từ.\n2. menh_de chỉ giữ LÕI: động từ (hoặc tính chất) + tân ngữ chính, càng ngắn càng tốt, để cùng một việc ở các Điều khác nhau ra cùng chữ. Danh sách liệt kê (từ 3 mục) của tân ngữ hay phạm vi đưa vào liet_ke (mỗi mục chép nguyên văn), không để trong menh_de. liet_ke chỉ gom tân ngữ hay phạm vi của CÙNG một động từ; mục nào tự nó là một hành vi khác thì là dòng riêng.\n3. Chữ dùng chung đứng ĐẦU chuỗi (\"không\" trong \"không A, B, C\") hiểu cho từng mục; trich chép chữ dùng chung và chữ của mục thành HAI chuỗi riêng, không ghép: \"không được A, B\" cho mục B → trich [\"không được\", \"B\"]. Bổ ngữ đứng CUỐI phải xác định phạm vi trong bo_ngu: this_clause | group | unknown (unknown thì thêm chua_ro nguyen_nhan pham_vi_bo_ngu).\n4. bo_ngu chỉ cho cụm mà bỏ đi thì vẫn cùng loại hành vi (nơi chốn, căn cứ, cách thức phụ). Cụm làm nên chính hành vi (thời điểm, mức, cách thức phân biệt) giữ trong menh_de: \"làm việc trên cao\" không rút thành \"làm việc\". Dẫn chiếu không bao giờ là bổ ngữ. Cụm giới hạn đối tượng hay hoàn cảnh áp dụng (\"đối với ...\", \"khi ...\", \"trong trường hợp ...\", \"thông qua ...\", \"dưới hình thức ...\") là dòng dieu_kien riêng (cùng quy_tac), KHÔNG phải bo_ngu: \"Không quá 60 ngày đối với công việc có chức danh nghề nghiệp cần trình độ chuyên môn, kỹ thuật từ cao đẳng trở lên\" → dieu_kien \"có chức danh nghề nghiệp cần trình độ chuyên môn, kỹ thuật từ cao đẳng trở lên\" (chủ thể công việc, J).\n5. Câu dẫn: danh sách là TÂN NGỮ (\"có các nghĩa vụ sau đây\") thì câu dẫn ra bo_qua cau_dan, mục con là ket_luan kế thừa chủ thể và phương thức. Danh sách là ĐIỀU KIỆN (\"trong trường hợp sau đây\") thì phần nội dung câu dẫn ra ket_luan (một lần, ở câu dẫn), phần dẫn ra bo_qua, mục con là dieu_kien. cac_muc_con của dòng cau_dan: va (điều kiện hay yêu cầu phải đủ HẾT) | hoac (trường hợp, MỘT là đủ) | danh_sach (quyền hay mục độc lập). Mục con kế thừa chủ thể từ câu dẫn: chu_the.nguon = cau_dan và trich PHẢI có một mẩu chép từ khoan_cha (thường là cụm chủ thể); nguon = tieu_de thì trich có mẩu chép từ tieu_de_dieu.\n6. Định nghĩa khái niệm \"X là Y\": dấu hiệu của Y là dieu_kien, thêm ket_luan \"là X\". Câu nêu giá trị, mức (\"thời hạn ... là N ngày\") ra một ket_luan.\n7. quy_tac (q1, q2...) gom dieu_kien và ket_luan của cùng một quy tắc. \"Hoặc\" giữa điều kiện trong một quy tắc: cùng nhom_hoac (\"h1\"). \"Hoặc\" mà một vế có \"và\": tách nhiều quy tắc.\n\n## Trường\n- vai: ket_luan | dieu_kien | ngoai_le. con_tro \"trừ ...\" có vai ngoai_le; con_tro khác lấy vai của dòng nó bổ nghĩa.\n- menh_de: đã bỏ chủ thể, chữ phương thức, chữ phủ định, bổ ngữ, liệt kê. MỌI âm tiết của menh_de phải có trong trich của dòng đó.\n- chu_the: {\"chu\": nguyên văn, \"loai\": mã hoặc danh sách mã khi chủ thể chung, \"nguon\": chinh | cau_dan | tieu_de}, hoặc bỏ. Mã: W người lao động, E người sử dụng lao động, C hợp đồng, J công việc, G vùng, D ngày, A số tiền, ? chưa biết. Người chỉ chịu tác động là đối số, không phải chủ thể.\n- doi_so: [{\"loai\": mã}] các đối số khác.\n- bo_ngu: LUÔN là danh sách đối tượng, kể cả khi chỉ có một mục: [{\"original_text\": nguyên văn, \"scope\": this_clause | group | unknown}]. Không viết chuỗi trần, không viết một đối tượng đơn.\n- phuong_thuc: duoc (được, có quyền, có thể) | phai (phải, có nghĩa vụ) | cam (cấm, không được làm) | khong_ap_dung (tuyên bố một quy định không áp cho một nhóm trường hợp) | khong (mô tả, điều kiện, định nghĩa).\n- cuc: khang_dinh | phu_dinh; chỉ phủ định menh_de: duoc + phu_dinh là \"được không bị X\"; \"không phải X\" (không có nghĩa vụ) ghi duoc + phu_dinh.\n- BẪY: \"không được + động từ\" là cam (không được làm X) hoặc bị động phủ định (không được người khác làm cho: khong + phu_dinh, menh_de giữ \"được ...\"). \"Được + động từ\" có thể là bị động, không phải quyền.\n- BẪY: \"không phải + động từ\" là không có nghĩa vụ (duoc + phu_dinh); \"không phải là + danh từ\" là không thuộc (khong + phu_dinh, menh_de giữ \"là ...\").\n- chua_ro: [{\"thanh_phan\", \"nguyen_nhan\": pham_vi_bo_ngu | tach_hay_giu_chung | phuong_thuc | chu_the | khac, \"cau_hoi\"}], mỗi chỗ một mục. Không đoán.\n- trich: chuỗi chép NGUYÊN VĂN, liền, từ tiêu đề, câu dẫn hoặc chu_don_vi; chủ thể hay phương thức kế thừa thì có cả mẩu chứa nó.\n- targets (con_tro): mã từ dan_chieu; không giải được thì rỗng kèm chua_ro. gan_vao (con_tro): số thứ tự (từ 0) của dòng menh_de nó bổ nghĩa, null nếu chặn cả quy tắc.\n- ly_do_llm: chỉ ca khó (tach | giu_chung | gan_bo_ngu | chua_ro | ke_thua) và mọi dòng bo_qua: {\"ma\", \"giai_thich\": một câu ngắn}.\n- TRƯỜNG RỖNG THÌ BỎ (chuỗi rỗng, danh sách rỗng, null): máy tự điền. Luôn có loai và trich; menh_de có thêm vai, menh_de, phuong_thuc, cuc, quy_tac.\n\n## Ví dụ\nkhoan_cha \"Người sử dụng lao động có các nghĩa vụ sau đây:\" → {\"loai\":\"bo_qua\",\"cac_muc_con\":\"danh_sach\",\"trich\":[\"Người sử dụng lao động có các nghĩa vụ sau đây:\"],\"ly_do_llm\":{\"ma\":\"cau_dan\",\"giai_thich\":\"Câu dẫn danh sách nghĩa vụ.\"}}\nMục con \"...; tôn trọng danh dự, nhân phẩm của người lao động;\" → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"tôn trọng danh dự, nhân phẩm của người lao động\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\",\"nguon\":\"cau_dan\"},\"doi_so\":[{\"loai\":\"W\"}],\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"trich\":[\"Người sử dụng lao động có các nghĩa vụ\",\"tôn trọng danh dự, nhân phẩm của người lao động\"],\"quy_tac\":\"q1\"}\n\"Người sử dụng lao động phải cung cấp thông tin trung thực cho người lao động về ..., tiền lương, hình thức trả lương, bảo hiểm xã hội, ...\" → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"cung cấp thông tin trung thực\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\",\"nguon\":\"chinh\"},\"doi_so\":[{\"loai\":\"W\"}],\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"liet_ke\":[\"tiền lương\",\"hình thức trả lương\",\"bảo hiểm xã hội\",\"...\"],\"trich\":[\"Người sử dụng lao động phải cung cấp thông tin trung thực cho người lao động\"],\"quy_tac\":\"q1\",\"ly_do_llm\":{\"ma\":\"giu_chung\",\"giai_thich\":\"Một nghĩa vụ thông tin; danh sách nội dung đưa vào liet_ke.\"}}\nTiêu đề \"Hành vi người sử dụng lao động không được làm khi giao kết, thực hiện hợp đồng lao động\", chữ \"Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động.\" → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\",\"nguon\":\"tieu_de\"},\"doi_so\":[{\"loai\":\"W\"}],\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"trich\":[\"Hành vi người sử dụng lao động không được làm\",\"Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động\"],\"quy_tac\":\"q1\"}\nTiêu đề \"Nghĩa vụ của người lao động khi ... trái pháp luật\", chữ \"Không được trợ cấp thôi việc.\" (bị động) → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"được trợ cấp thôi việc\",\"chu_the\":{\"chu\":\"người lao động\",\"loai\":\"W\",\"nguon\":\"tieu_de\"},\"phuong_thuc\":\"khong\",\"cuc\":\"phu_dinh\",\"trich\":[\"Nghĩa vụ của người lao động\",\"Không được trợ cấp thôi việc\"],\"quy_tac\":\"q1\"} cộng một dieu_kien lấy từ tiêu đề.\nĐịnh nghĩa \"Tổ chức đại diện người sử dụng lao động là tổ chức được thành lập hợp pháp, đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động trong quan hệ lao động.\" → dieu_kien \"được thành lập hợp pháp\" (bị động, khong); dieu_kien \"đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động\" {\"loai\":\"menh_de\",\"vai\":\"dieu_kien\",\"menh_de\":\"đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"bo_ngu\":[{\"original_text\":\"trong quan hệ lao động\",\"scope\":\"this_clause\"}],\"trich\":[\"đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động trong quan hệ lao động\"],\"quy_tac\":\"q1\"}; ket_luan khong \"là tổ chức đại diện người sử dụng lao động\"; cả ba q1.\nDanh sách ĐIỀU KIỆN: chu_don_vi \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\" → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"sử dụng lao động thuê lại\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\",\"nguon\":\"chinh\"},\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"trich\":[\"Bên thuê lại lao động được sử dụng lao động thuê lại\"],\"quy_tac\":\"q1\"} và {\"loai\":\"bo_qua\",\"cac_muc_con\":\"hoac\",\"trich\":[\"trong trường hợp sau đây:\"],\"ly_do_llm\":{\"ma\":\"cau_dan\",\"giai_thich\":\"Phần dẫn vào danh sách trường hợp.\"}}\nMục con của câu dẫn đó \"Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao.\" → {\"loai\":\"menh_de\",\"vai\":\"dieu_kien\",\"menh_de\":\"có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\",\"nguon\":\"cau_dan\"},\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"trich\":[\"Bên thuê lại lao động\",\"Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao\"],\"quy_tac\":\"q1\"}\n\n## Tự kiểm trước khi trả\n- bo_ngu là danh sách đối tượng {original_text, scope}.\n- Mọi chuỗi trong trich, chu_the.chu, bo_ngu.original_text, liet_ke chép NGUYÊN VĂN, liền, không ghép từ hai chỗ.\n- chu_the.nguon = cau_dan (hay tieu_de) thì trich có mẩu chép từ khoan_cha (hay tieu_de_dieu).\n- Mọi âm tiết của menh_de có trong trich của dòng đó.\n- Cụm \"đối với / khi / trong trường hợp / thông qua / dưới hình thức ...\" là dieu_kien, không phải bo_ngu.\n\n## Đầu ra\nJSON thuần, không chữ giải thích: {\"units\": [{\"unit_id\": \"...\", \"dong\": [...]}]}. Mỗi unit_id của lô đúng một mục, mỗi mục ít nhất một dòng.\n",
+ "user": "{\n \"don_vi\": [\n  {\n   \"unit_id\": \"BLLD_45-2019.D204.K1\",\n   \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Không thuộc trường hợp được đình công quy định tại Điều 199 của Bộ luật này.\",\n   \"dan_chieu\": [\n    {\n     \"cum\": \"Điều 199 của Bộ luật này\",\n     \"dich\": \"BLLD_45-2019.D199\"\n    }\n   ]\n  },\n  {\n   \"unit_id\": \"BLLD_45-2019.D204.K2\",\n   \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Không do tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"BLLD_45-2019.D204.K3\",\n   \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Vi phạm các quy định về trình tự, thủ tục tiến hành đình công theo quy định của Bộ luật này.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"BLLD_45-2019.D204.K4\",\n   \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Khi tranh chấp lao động tập thể đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết theo quy định của Bộ luật này.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"BLLD_45-2019.D204.K5\",\n   \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Tiến hành đình công trong trường hợp không được đình công quy định tại Điều 209 của Bộ luật này.\",\n   \"dan_chieu\": [\n    {\n     \"cum\": \"Điều 209 của Bộ luật này\",\n     \"dich\": \"BLLD_45-2019.D209\"\n    }\n   ]\n  },\n  {\n   \"unit_id\": \"BLLD_45-2019.D204.K6\",\n   \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Khi đã có quyết định hoãn hoặc ngừng đình công của cơ quan có thẩm quyền theo quy định tại Điều 210 của Bộ luật này.\",\n   \"dan_chieu\": [\n    {\n     \"cum\": \"Điều 210 của Bộ luật này\",\n     \"dich\": \"BLLD_45-2019.D210\"\n    }\n   ]\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_fc8d08d16ca207aa7f148f71",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D204.K1",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "đình công bất hợp pháp",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "trich": [
+       "Trường hợp đình công bất hợp pháp"
+      ],
+      "quy_tac": "q1",
+      "ly_do_llm": {
+       "ma": "ke_thua",
+       "giai_thich": "Vị ngữ bị lược của khoản lấy từ tiêu đề điều."
+      }
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "thuộc trường hợp được đình công",
+      "phuong_thuc": "khong",
+      "cuc": "phu_dinh",
+      "trich": [
+       "Không thuộc trường hợp được đình công"
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "loai": "con_tro",
+      "vai": "dieu_kien",
+      "trich": [
+       "quy định tại Điều 199 của Bộ luật này"
+      ],
+      "targets": [
+       "BLLD_45-2019.D199"
+      ],
+      "gan_vao": 1,
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D204.K2",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "đình công bất hợp pháp",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "trich": [
+       "Trường hợp đình công bất hợp pháp"
+      ],
+      "quy_tac": "q1",
+      "ly_do_llm": {
+       "ma": "ke_thua",
+       "giai_thich": "Vị ngữ bị lược của khoản lấy từ tiêu đề điều."
+      }
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "do tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công",
+      "phuong_thuc": "khong",
+      "cuc": "phu_dinh",
+      "trich": [
+       "Không do tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công"
+      ],
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D204.K3",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "đình công bất hợp pháp",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "trich": [
+       "Trường hợp đình công bất hợp pháp"
+      ],
+      "quy_tac": "q1",
+      "ly_do_llm": {
+       "ma": "ke_thua",
+       "giai_thich": "Vị ngữ bị lược của khoản lấy từ tiêu đề điều."
+      }
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "vi phạm quy định về trình tự, thủ tục tiến hành đình công",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "trich": [
+       "Vi phạm các quy định về trình tự, thủ tục tiến hành đình công"
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "loai": "bo_qua",
+      "trich": [
+       "theo quy định của Bộ luật này"
+      ],
+      "quy_tac": "q1",
+      "ly_do_llm": {
+       "ma": "dan_chieu_mo",
+       "giai_thich": "Dẫn chiếu chung tới Bộ luật, không có đích cụ thể."
+      }
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D204.K4",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "đình công bất hợp pháp",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "trich": [
+       "Trường hợp đình công bất hợp pháp"
+      ],
+      "quy_tac": "q1",
+      "ly_do_llm": {
+       "ma": "ke_thua",
+       "giai_thich": "Vị ngữ bị lược của khoản lấy từ tiêu đề điều."
+      }
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết",
+      "chu_the": {
+       "chu": "tranh chấp lao động tập thể",
+       "loai": "?",
+       "nguon": "chinh"
+      },
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "trich": [
+       "Khi tranh chấp lao động tập thể đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết"
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "loai": "bo_qua",
+      "trich": [
+       "theo quy định của Bộ luật này"
+      ],
+      "quy_tac": "q1",
+      "ly_do_llm": {
+       "ma": "dan_chieu_mo",
+       "giai_thich": "Dẫn chiếu chung tới Bộ luật, không có đích cụ thể."
+      }
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D204.K5",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "đình công bất hợp pháp",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "trich": [
+       "Trường hợp đình công bất hợp pháp"
+      ],
+      "quy_tac": "q1",
+      "ly_do_llm": {
+       "ma": "ke_thua",
+       "giai_thich": "Vị ngữ bị lược của khoản lấy từ tiêu đề điều."
+      }
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "tiến hành đình công",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "trich": [
+       "Tiến hành đình công"
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "đình công",
+      "phuong_thuc": "cam",
+      "cuc": "khang_dinh",
+      "trich": [
+       "trong trường hợp không được đình công"
+      ],
+      "quy_tac": "q1",
+      "ly_do_llm": {
+       "ma": "tach",
+       "giai_thich": "Cụm 'trong trường hợp ...' giới hạn hoàn cảnh áp dụng nên tách thành điều kiện riêng."
+      }
+     },
+     {
+      "loai": "con_tro",
+      "vai": "dieu_kien",
+      "trich": [
+       "quy định tại Điều 209 của Bộ luật này"
+      ],
+      "targets": [
+       "BLLD_45-2019.D209"
+      ],
+      "gan_vao": 2,
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D204.K6",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "đình công bất hợp pháp",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "trich": [
+       "Trường hợp đình công bất hợp pháp"
+      ],
+      "quy_tac": "q1",
+      "ly_do_llm": {
+       "ma": "ke_thua",
+       "giai_thich": "Vị ngữ bị lược của khoản lấy từ tiêu đề điều."
+      }
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "đã có quyết định hoãn hoặc ngừng đình công của cơ quan có thẩm quyền",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "trich": [
+       "Khi đã có quyết định hoãn hoặc ngừng đình công của cơ quan có thẩm quyền"
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "loai": "con_tro",
+      "vai": "dieu_kien",
+      "trich": [
+       "theo quy định tại Điều 210 của Bộ luật này"
+      ],
+      "targets": [
+       "BLLD_45-2019.D210"
+      ],
+      "gan_vao": 1,
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 107,
+  "output_tokens": 8822,
+  "cost_vnd": 44.84
+ },
+ "boc_rao": false
+}

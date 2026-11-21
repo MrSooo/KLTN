@@ -87,7 +87,7 @@ def load_rows(ctxs):
                              "quy_tac": None, "nhom_hoac": None, "gan_vao": None, "liet_ke": [], "predicate": None, "flags": []})
             rows.append({"unit": uid, "row": i, "loai": d["loai"], "subject_key": word_key(subj, ()) if subj else None, "span": d["menh_de"] if d["loai"] == "menh_de" else " ".join(d["trich"]),
                          "params": signature(d) if d["loai"] == "menh_de" else (), "role": d["vai"],
-                         "targets": (d.get("targets") or []) if d["loai"] == "con_tro" else [], "mode": d.get("phuong_thuc", ""), "cuc": d.get("cuc", ""),
+                         "targets": (d.get("targets") or []) if d["loai"] == "con_tro" else [], "mode": d.get("phuong_thuc", ""), "cuc": P.effective_cuc(d),
                          "quy_tac": d.get("quy_tac"), "nhom_hoac": d.get("nhom_hoac"), "gan_vao": d.get("gan_vao"), "liet_ke": d.get("liet_ke") or [],
                          "predicate": None, "flags": []})
     return rows, dropped

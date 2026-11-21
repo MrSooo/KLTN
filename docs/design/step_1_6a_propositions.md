@@ -31,7 +31,7 @@ Trường của dòng:
 | `doi_so` | đối số khác, theo thứ tự | danh sách `{loai}` cùng tám mã trên |
 | `phuong_thuc` | sức ép pháp lý | `duoc` (được, có quyền), `phai` (phải), `cam` (cấm, không được làm), `khong_ap_dung` (tuyên bố một quy định không áp cho một nhóm trường hợp; chặn quy tắc chứ không cấm hành vi), `khong` (chỉ mô tả, điều kiện, định nghĩa) |
 | `cuc` | khẳng định hay phủ định `menh_de` | `khang_dinh`, `phu_dinh`. `cuc` chỉ phủ định mệnh đề, không bao giờ phủ định phương thức: "được + phủ định X" là "được không bị X", không phải "cấm X" |
-| `bo_ngu` | cụm bổ nghĩa đã tách khỏi mệnh đề | danh sách `{original_text, scope}`; `scope`: `this_clause`, `group`, `unknown` |
+| `bo_ngu` | (cũ, chỉ đọc) cụm bổ nghĩa đã tách khỏi mệnh đề; từ `menh-de-9` (A55) không dùng nữa, cụm bổ nghĩa thành dòng `dieu_kien` | danh sách `{original_text, scope}`; `scope`: `this_clause`, `group`, `unknown`. Giữ trong mã để đọc cache đến `menh-de-8`; từ `menh-de-9` khác rỗng là lỗi cổng |
 | `liet_ke` | danh sách liệt kê từ 3 mục của tân ngữ hoặc phạm vi, mỗi mục chép nguyên văn | danh sách chuỗi |
 | `nhom_hoac` | các điều kiện cùng một nhóm "hoặc" trong một đơn vị | mã nhóm hoặc rỗng (rỗng nghĩa là nối bằng "và") |
 | `quy_tac` | gom điều kiện và kết luận của cùng một quy tắc trong một đơn vị | `q1`, `q2`, ... |
@@ -45,14 +45,14 @@ Trường của dòng:
 ## 4. Luật tách (nằm trong lời nhắc)
 1. **Tách** khi từng phần kiểm được đúng/sai độc lập và vi phạm từng phần có ý nghĩa pháp lý riêng. **Giữ chung** khi các phần tạo thành một yêu cầu tập thể. Không tách chỉ vì có nhiều danh từ. Mỗi quyết định tách hoặc giữ chung ở ca khó có lý do (`ly_do_llm`).
 2. `menh_de` chỉ giữ lõi, càng ngắn càng tốt; danh sách từ 3 mục đưa vào `liet_ke`.
-3. Chữ dùng chung đứng đầu chuỗi ("không" trong "không A, B, C") được hiểu cho từng mục. Bổ ngữ đứng cuối phải xác định phạm vi trong `bo_ngu`; không xác định được thì `chua_ro` với `nguyen_nhan` là `pham_vi_bo_ngu`.
-4. `bo_ngu` chỉ cho cụm mà bỏ đi thì vẫn cùng loại hành vi (nơi chốn, căn cứ, cách thức phụ). Cụm làm nên chính hành vi giữ trong `menh_de`. Dẫn chiếu không bao giờ là bổ ngữ.
+3. Chữ dùng chung đứng đầu chuỗi ("không" trong "không A, B, C") được hiểu cho từng mục. Bổ ngữ đứng cuối phải xác định phạm vi: chỉ một quy tắc (`this_clause`) thì một dòng `dieu_kien` trong quy tắc đó; chung cho cả nhóm (`group`) thì một dòng `dieu_kien` nguyên văn trong MỖI `quy_tac` của nhóm; không xác định được thì `chua_ro` với `nguyen_nhan` là `pham_vi_bo_ngu` (giữ tên mã). Đến `menh-de-8`: phạm vi ghi trong `bo_ngu` (A55).
+4. Bổ ngữ là cụm mà bỏ đi thì vẫn cùng loại hành vi (nơi chốn, căn cứ, cách thức phụ): tách khỏi `menh_de` thành một dòng `dieu_kien` riêng, chép nguyên văn, cùng chủ thể với dòng nó bổ nghĩa (A55; đến `menh-de-8` là trường `bo_ngu`). Cụm làm nên chính hành vi giữ trong `menh_de`. Dẫn chiếu không bao giờ là bổ ngữ.
 5. Câu dẫn: nếu danh sách là tân ngữ ("có các nghĩa vụ sau đây") thì câu dẫn ra `bo_qua` loại `cau_dan`, mục con là `ket_luan` kế thừa chủ thể và phương thức. Nếu danh sách là điều kiện ("trong trường hợp sau đây") thì phần nội dung của câu dẫn ra một `ket_luan` (một lần, ở câu dẫn), phần dẫn ra `bo_qua`, mục con là `dieu_kien`.
 6. Định nghĩa "X là Y": các dấu hiệu của Y là `dieu_kien`, thêm một `ket_luan` "là X". Câu nêu giá trị hoặc mức ("thời hạn ... là N ngày") ra một `ket_luan`.
 7. "Hoặc" giữa các điều kiện trong một quy tắc dùng chung `nhom_hoac`. "Hoặc" mà một vế có "và" thì tách thành nhiều quy tắc.
 8. Bẫy "không được": "không được + động từ" là `cam` (không được làm X) hoặc bị động phủ định (không được người khác làm cho: `khong` cộng `phu_dinh`). "Không phải X" (không có nghĩa vụ) ghi `duoc` cộng `phu_dinh`.
 9. Chủ thể là đối số, không nằm trong tên vị từ; chữ phương thức và chữ phủ định không nằm trong `menh_de`.
-10. Bước 1.6B đặt tên theo `menh_de`, không tính `bo_ngu`; bước 1.8 phải dùng `bo_ngu` như một điều kiện, không được bỏ sót.
+10. Bước 1.6B đặt tên theo `menh_de`. Từ `menh-de-9` bổ ngữ là dòng `dieu_kien` nên 1.6B và 1.8 dùng nó như mọi điều kiện. Cache đến `menh-de-8` còn `bo_ngu` mà 1.6B, 1.8 KHÔNG đọc (luật cũ "1.8 phải dùng `bo_ngu` như một điều kiện" chưa từng được làm; A55).
 
 ## 5. Cổng máy kiểm
 Cổng chặn (sai thì hỏi lại lô đó một lần, vẫn sai thì loại dòng): khuôn dòng và giá trị trường đúng; mỗi chuỗi `trich` là chuỗi con liền của ngữ cảnh; **cổng âm tiết**: mọi âm tiết của `menh_de` phải có trong các mẩu `trich` của chính dòng đó (chủ thể hoặc phương thức kế thừa từ câu dẫn thì mẩu câu dẫn phải nằm trong `trich`); `menh_de` không kết thúc bằng "sau đây" hoặc dấu ":" (chặn câu dẫn lọt); `con_tro` có `targets` nằm trong dẫn chiếu của bước 1.2; `bo_qua` có lý do; mọi đơn vị có ít nhất một dòng.

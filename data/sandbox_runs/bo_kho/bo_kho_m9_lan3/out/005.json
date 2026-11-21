@@ -1,0 +1,789 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D36.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đơn phương chấm dứt hợp đồng lao động",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "hoac",
+     "trich": [
+      "trong trường hợp sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách trường hợp đơn phương chấm dứt."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "sức khỏe của người lao động bình phục",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Khi sức khỏe của người lao động bình phục"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "xem xét để tiếp tục giao kết hợp đồng lao động",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động"
+     ],
+     "quy_tac": "q2"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K1.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thường xuyên hoàn thành công việc theo hợp đồng lao động",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Người lao động thường xuyên không hoàn thành công việc theo hợp đồng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Chữ phủ định đưa vào cuc, menh_de giữ lõi hành vi."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được xác định theo tiêu chí đánh giá mức độ hoàn thành công việc trong quy chế của người sử dụng lao động",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "được xác định theo tiêu chí đánh giá mức độ hoàn thành công việc trong quy chế của người sử dụng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "ban hành quy chế đánh giá mức độ hoàn thành công việc",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Quy chế đánh giá mức độ hoàn thành công việc do người sử dụng lao động ban hành"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "phải tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "nơi có tổ chức đại diện người lao động tại cơ sở",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đối với nơi có tổ chức đại diện người lao động tại cơ sở"
+     ],
+     "quy_tac": "q2"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K1.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị ốm đau, tai nạn đã điều trị 12 tháng liên tục",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động bị ốm đau, tai nạn đã điều trị 12 tháng liên tục"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "người làm việc theo hợp đồng lao động không xác định thời hạn",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đối với người làm việc theo hợp đồng lao động không xác định thời hạn"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đã điều trị 06 tháng liên tục",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "hoặc đã điều trị 06 tháng liên tục"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đã điều trị quá nửa thời hạn hợp đồng lao động",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đã điều trị",
+      "hoặc quá nửa thời hạn hợp đồng lao động"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Động từ 'đã điều trị' dùng chung từ vế trước."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "khả năng lao động chưa hồi phục",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "mà khả năng lao động chưa hồi phục"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K1.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa hoặc di dời, thu hẹp sản xuất, kinh doanh",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa hoặc di dời, thu hẹp sản xuất, kinh doanh"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "theo yêu cầu của cơ quan nhà nước có thẩm quyền",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "theo yêu cầu của cơ quan nhà nước có thẩm quyền"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm căn cứ tách thành dòng điều kiện riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đã tìm mọi biện pháp khắc phục nhưng vẫn buộc phải giảm chỗ làm việc",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người sử dụng lao động đã tìm mọi biện pháp khắc phục nhưng vẫn buộc phải giảm chỗ làm việc"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K1.d",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có mặt tại nơi làm việc",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Người lao động không có mặt tại nơi làm việc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "sau thời hạn quy định",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "sau thời hạn quy định"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D31"
+     ],
+     "gan_vao": 1,
+     "trich": [
+      "tại Điều 31 của Bộ luật này"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K1.dd",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đủ tuổi nghỉ hưu",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động đủ tuổi nghỉ hưu"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D169"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "theo quy định tại Điều 169 của Bộ luật này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ngoai_le",
+     "menh_de": "có thỏa thuận khác",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trừ trường hợp có thỏa thuận khác"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K1.e",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "tự ý bỏ việc",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động tự ý bỏ việc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có lý do chính đáng",
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "mà không có lý do chính đáng"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "từ 05 ngày làm việc liên tục trở lên",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "từ 05 ngày làm việc liên tục trở lên"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Mức thời gian tách thành dòng điều kiện riêng."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K1.g",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "cung cấp không trung thực thông tin",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động cung cấp không trung thực thông tin"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "giao kết hợp đồng lao động",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "khi giao kết hợp đồng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm ảnh hưởng đến việc tuyển dụng người lao động",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "làm ảnh hưởng đến việc tuyển dụng người lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D16.K2"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "theo quy định tại khoản 2 Điều 16 của Bộ luật này"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "báo trước",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người sử dụng lao động phải báo trước cho người lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đơn phương chấm dứt hợp đồng lao động",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Khi đơn phương chấm dứt hợp đồng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D36.K1.a",
+      "BLLD_45-2019.D36.K1.b",
+      "BLLD_45-2019.D36.K1.c",
+      "BLLD_45-2019.D36.K1.dd",
+      "BLLD_45-2019.D36.K1.g"
+     ],
+     "gan_vao": 1,
+     "trich": [
+      "trong trường hợp quy định tại các điểm a, b, c, đ và g khoản 1 Điều này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "hoac",
+     "trich": [
+      "như sau:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách thời hạn báo trước."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K2.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "báo trước ít nhất 45 ngày",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người sử dụng lao động phải báo trước",
+      "Ít nhất 45 ngày"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hợp đồng lao động không xác định thời hạn",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đối với hợp đồng lao động không xác định thời hạn"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K2.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "báo trước ít nhất 30 ngày",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người sử dụng lao động phải báo trước",
+      "Ít nhất 30 ngày"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đối với hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K2.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "báo trước ít nhất 03 ngày làm việc",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người sử dụng lao động phải báo trước",
+      "Ít nhất 03 ngày làm việc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đối với hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trường hợp quy định",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đối với trường hợp quy định tại điểm b khoản 1 Điều này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D36.K1.b"
+     ],
+     "gan_vao": 2,
+     "trich": [
+      "điểm b khoản 1 Điều này"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K2.d",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "một số ngành, nghề, công việc đặc thù",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Đối với một số ngành, nghề, công việc đặc thù"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện thời hạn báo trước",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thời hạn báo trước được thực hiện theo quy định của Chính phủ"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "trich": [
+      "theo quy định của Chính phủ"
+     ],
+     "ly_do_llm": {
+      "ma": "dan_chieu_mo",
+      "giai_thich": "Dẫn chiếu mở sang quy định của Chính phủ, không có mệnh đề kiểm được."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D36.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đơn phương chấm dứt hợp đồng lao động",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Khi đơn phương chấm dứt hợp đồng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D36.K1.d",
+      "BLLD_45-2019.D36.K1.e"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "quy định tại điểm d và điểm e khoản 1 Điều này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "báo trước",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "phu_dinh",
+     "trich": [
+      "người sử dụng lao động không phải báo trước cho người lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "'không phải báo trước' là không có nghĩa vụ: duoc + phu_dinh."
+     }
+    }
+   ]
+  }
+ ]
+}

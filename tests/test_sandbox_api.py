@@ -40,6 +40,8 @@ def server(answers, sent):
     def urlopen(req, timeout=None):
         sent.append((req.full_url, dict(req.header_items()), json.loads(req.data.decode("utf-8"))))
         a = next(it)
+        if isinstance(a, BaseException):
+            raise a
         if isinstance(a, int):
             raise urllib.error.HTTPError(req.full_url, a, "lỗi", {}, io.BytesIO(b"upstream unavailable"))
         return FakeResponse(json.dumps(a).encode("utf-8"))
@@ -104,6 +106,14 @@ def test_ckey_retries_503_then_succeeds_and_fails_fast_on_other_errors():
             assert "503" in str(e) and not (Path(t) / "cache" / "t").exists()  # lỗi không vào cache
         else:
             raise AssertionError("503 ba lần phải là lỗi")
+
+
+def test_ckey_retries_socket_oserror():
+    """A54: lỗi socket không phải ConnectionError (OSError Errno 49) được thử lại như lỗi kết nối, không văng ra khỏi bộ chạy."""
+    with tempfile.TemporaryDirectory() as t, env_key():
+        sent = []
+        rec = client(t, [OSError(49, "Can't assign requested address"), reply('{"ok": 1}')], sent).ask("t", "v1", "S", "U", None, role="api")
+        assert rec["output"] == {"ok": 1} and len(sent) == 2
 
 
 def test_ckey_rejects_cut_output_and_non_json_without_caching():
@@ -196,6 +206,24 @@ def test_runner_fills_independent_lots_verbatim_and_skips_done_ones():
         assert sorted(b["messages"][0]["content"] for _u, _h, b in sent) == [json.dumps({"lo": 1}) + "\n", json.dumps({"lo": 3}) + "\n"]
         assert sorted((d / "nhat_ky.tsv").read_text(encoding="utf-8").splitlines()) == ["001\tm-api\tkhong_co", "003\tm-api\tkhong_co"]
         assert json.loads((d / "out" / "002.json").read_text(encoding="utf-8")) == {}
+
+
+def test_runner_repeat_run_sends_same_text_and_keeps_first_record():
+    """A54 --lan K: lần lặp gửi đúng chữ như lần gốc (lời nhắc không đổi) nhưng là bản ghi cache riêng; bản ghi lần gốc còn nguyên."""
+    with tempfile.TemporaryDirectory() as t, env_key():
+        d = lot_dir(t, n=1)
+        sent = []
+        c = client(t, [reply(json.dumps({"lan": 0})), reply(json.dumps({"lan": 2}))], sent)
+        assert sandbox_api.Runner(d, c).run_lots(workers=1) == 0
+        first = sorted((c.cache_dir / sandbox_api.TASK).glob("*.json"))
+        (d / "out" / "001.json").replace(d / "out_lan0.json")
+        assert sandbox_api.Runner(d, c, lan=2).run_lots(workers=1) == 0
+        assert len(sent) == 2 and sent[0][2] == sent[1][2]  # cùng thân request: model, system, lời user
+        recs = sorted((c.cache_dir / sandbox_api.TASK).glob("*.json"))
+        assert len(recs) == 2 and all(p in recs for p in first)
+        assert json.loads((d / "out" / "001.json").read_text(encoding="utf-8")) == {"lan": 2}
+        assert sandbox_api.Runner(d, c, lan=2).ask(1)["output"] == {"lan": 2}  # gọi lại lần 2: đọc cache của lần 2, không gọi máy chủ
+        assert sandbox_api.Runner(d, c).ask(1)["output"] == {"lan": 0} and len(sent) == 2
 
 
 def test_runner_reports_failed_lot_and_writes_nothing_for_it():

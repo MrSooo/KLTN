@@ -177,6 +177,64 @@ _M7 = [
      "\n## Tự kiểm trước khi trả\n- loai chỉ là menh_de | con_tro | bo_qua | chua_ro; ket_luan, dieu_kien, ngoai_le là giá trị của vai, không bao giờ của loai.\n- Điều không có câu dẫn mà tiêu đề nêu kết luận: mỗi khoản có cả dòng ket_luan (nguon tieu_de) lẫn dòng dieu_kien.\n"),
 ]
 PROMPTS["menh-de-7"] = _apply(PROMPTS["menh-de-6"], _M7)
+
+# ---- menh-de-9 (A54, A55, lần sửa A2): VIẾT NGUYÊN BẢN, không _apply (luật 4 của A54). Gốc là chữ đã dựng của menh-de-4 (mốc nhiễu A54)
+# cộng đúng một thay đổi: bổ ngữ thành dòng dieu_kien riêng, bỏ trường bo_ngu (luật 3, 4, trường, ví dụ định nghĩa, tự kiểm). Không có
+# menh-de-8: bản "menh-de-4 viết gọn, không thêm luật" trùng từng byte với menh-de-4 (PROMPTS đã là chữ liền), nên mốc trung tính là menh-de-4.
+SYSTEM_9 = """Bạn tách các đơn vị của Bộ luật Lao động Việt Nam thành DÒNG. Mỗi đơn vị có: tieu_de_dieu, khoan_cha (câu dẫn của cha, có thể rỗng), chu_don_vi (chữ cần tách), dan_chieu (dẫn chiếu đã giải, kèm mã đích). Chỉ tách chu_don_vi; tiêu đề và câu dẫn chỉ để lấy chủ thể, phương thức, vị ngữ bị lược.
+
+## Loại dòng (loai)
+- menh_de: một điều đúng/sai được.
+- con_tro: dẫn chiếu đã giải ("trừ trường hợp quy định tại ...", "theo quy định tại ..."); targets lấy từ dan_chieu.
+- bo_qua: không thành mệnh đề; ly_do_llm.ma: cau_dan (phần chỉ dẫn vào danh sách, "... sau đây:") | dan_chieu_mo ("theo quy định của pháp luật") | dan_chieu_ngoai (một luật khác, "theo quy định của Luật Công đoàn") | khong_quy_pham (câu chính sách, định hướng, không có hành vi kiểm được).
+- chua_ro: cả dòng không xác định được.
+
+## Luật tách
+1. TÁCH khi từng phần kiểm được đúng/sai riêng VÀ vi phạm từng phần có ý nghĩa pháp lý riêng. GIỮ CHUNG khi là một yêu cầu tập thể. Không tách chỉ vì có nhiều danh từ.
+2. menh_de chỉ giữ LÕI: động từ (hoặc tính chất) + tân ngữ chính, càng ngắn càng tốt, để cùng một việc ở các Điều khác nhau ra cùng chữ. Danh sách liệt kê (từ 3 mục) của tân ngữ hay phạm vi đưa vào liet_ke (mỗi mục chép nguyên văn), không để trong menh_de. liet_ke chỉ gom tân ngữ hay phạm vi của CÙNG một động từ; mục nào tự nó là một hành vi khác thì là dòng riêng.
+3. Chữ dùng chung đứng ĐẦU chuỗi ("không" trong "không A, B, C") hiểu cho từng mục; trich chép chữ dùng chung và chữ của mục thành HAI chuỗi riêng, không ghép: "không được A, B" cho mục B → trich ["không được", "B"]. Bổ ngữ đứng CUỐI phải xác định phạm vi: chỉ thuộc một quy tắc thì là một dòng dieu_kien trong quy tắc đó; chung cho cả nhóm thì là một dòng dieu_kien nguyên văn trong MỖI quy_tac của nhóm; không xác định được thì thêm chua_ro nguyen_nhan pham_vi_bo_ngu.
+4. Bổ ngữ là cụm mà bỏ đi thì vẫn cùng loại hành vi: nơi chốn ("tại ..."), căn cứ ("theo ..."), cách thức phụ. Bổ ngữ KHÔNG ở trong menh_de: tách thành một dòng dieu_kien riêng, menh_de của dòng đó chép nguyên văn cụm bổ ngữ, cùng chu_the và quy_tac với dòng nó bổ nghĩa. Cụm làm nên chính hành vi (thời điểm, mức, cách thức phân biệt) giữ trong menh_de: "làm việc trên cao" không rút thành "làm việc". Dẫn chiếu không bao giờ là bổ ngữ. Cụm giới hạn đối tượng hay hoàn cảnh áp dụng ("đối với ...", "khi ...", "trong trường hợp ...", "thông qua ...", "dưới hình thức ...") cũng là dòng dieu_kien riêng (cùng quy_tac): "Không quá 60 ngày đối với công việc có chức danh nghề nghiệp cần trình độ chuyên môn, kỹ thuật từ cao đẳng trở lên" → dieu_kien "có chức danh nghề nghiệp cần trình độ chuyên môn, kỹ thuật từ cao đẳng trở lên" (chủ thể công việc, J).
+5. Câu dẫn: danh sách là TÂN NGỮ ("có các nghĩa vụ sau đây") thì câu dẫn ra bo_qua cau_dan, mục con là ket_luan kế thừa chủ thể và phương thức. Danh sách là ĐIỀU KIỆN ("trong trường hợp sau đây") thì phần nội dung câu dẫn ra ket_luan (một lần, ở câu dẫn), phần dẫn ra bo_qua, mục con là dieu_kien. cac_muc_con của dòng cau_dan: va (điều kiện hay yêu cầu phải đủ HẾT) | hoac (trường hợp, MỘT là đủ) | danh_sach (quyền hay mục độc lập). Mục con kế thừa chủ thể từ câu dẫn: chu_the.nguon = cau_dan và trich PHẢI có một mẩu chép từ khoan_cha (thường là cụm chủ thể); nguon = tieu_de thì trich có mẩu chép từ tieu_de_dieu.
+6. Định nghĩa khái niệm "X là Y": dấu hiệu của Y là dieu_kien, thêm ket_luan "là X". Câu nêu giá trị, mức ("thời hạn ... là N ngày") ra một ket_luan.
+7. quy_tac (q1, q2...) gom dieu_kien và ket_luan của cùng một quy tắc. "Hoặc" giữa điều kiện trong một quy tắc: cùng nhom_hoac ("h1"). "Hoặc" mà một vế có "và": tách nhiều quy tắc.
+
+## Trường
+- vai: ket_luan | dieu_kien | ngoai_le. con_tro "trừ ..." có vai ngoai_le; con_tro khác lấy vai của dòng nó bổ nghĩa.
+- menh_de: đã bỏ chủ thể, chữ phương thức, chữ phủ định, bổ ngữ (thành dòng dieu_kien riêng), liệt kê. MỌI âm tiết của menh_de phải có trong trich của dòng đó.
+- chu_the: {"chu": nguyên văn, "loai": mã hoặc danh sách mã khi chủ thể chung, "nguon": chinh | cau_dan | tieu_de}, hoặc bỏ. Mã: W người lao động, E người sử dụng lao động, C hợp đồng, J công việc, G vùng, D ngày, A số tiền, ? chưa biết. Người chỉ chịu tác động là đối số, không phải chủ thể.
+- doi_so: [{"loai": mã}] các đối số khác.
+- Không có trường bo_ngu: bổ ngữ là dòng dieu_kien riêng (luật 4).
+- phuong_thuc: duoc (được, có quyền, có thể) | phai (phải, có nghĩa vụ) | cam (cấm, không được làm) | khong_ap_dung (tuyên bố một quy định không áp cho một nhóm trường hợp) | khong (mô tả, điều kiện, định nghĩa).
+- cuc: khang_dinh | phu_dinh; chỉ phủ định menh_de: duoc + phu_dinh là "được không bị X"; "không phải X" (không có nghĩa vụ) ghi duoc + phu_dinh.
+- BẪY: "không được + động từ" là cam (không được làm X) hoặc bị động phủ định (không được người khác làm cho: khong + phu_dinh, menh_de giữ "được ..."). "Được + động từ" có thể là bị động, không phải quyền.
+- BẪY: "không phải + động từ" là không có nghĩa vụ (duoc + phu_dinh); "không phải là + danh từ" là không thuộc (khong + phu_dinh, menh_de giữ "là ...").
+- chua_ro: [{"thanh_phan", "nguyen_nhan": pham_vi_bo_ngu | tach_hay_giu_chung | phuong_thuc | chu_the | khac, "cau_hoi"}], mỗi chỗ một mục. Không đoán.
+- trich: chuỗi chép NGUYÊN VĂN, liền, từ tiêu đề, câu dẫn hoặc chu_don_vi; chủ thể hay phương thức kế thừa thì có cả mẩu chứa nó.
+- targets (con_tro): mã từ dan_chieu; không giải được thì rỗng kèm chua_ro. gan_vao (con_tro): số thứ tự (từ 0) của dòng menh_de nó bổ nghĩa, null nếu chặn cả quy tắc.
+- ly_do_llm: chỉ ca khó (tach | giu_chung | gan_bo_ngu | chua_ro | ke_thua) và mọi dòng bo_qua: {"ma", "giai_thich": một câu ngắn}.
+- TRƯỜNG RỖNG THÌ BỎ (chuỗi rỗng, danh sách rỗng, null): máy tự điền. Luôn có loai và trich; menh_de có thêm vai, menh_de, phuong_thuc, cuc, quy_tac.
+
+## Ví dụ
+khoan_cha "Người sử dụng lao động có các nghĩa vụ sau đây:" → {"loai":"bo_qua","cac_muc_con":"danh_sach","trich":["Người sử dụng lao động có các nghĩa vụ sau đây:"],"ly_do_llm":{"ma":"cau_dan","giai_thich":"Câu dẫn danh sách nghĩa vụ."}}
+Mục con "...; tôn trọng danh dự, nhân phẩm của người lao động;" → {"loai":"menh_de","vai":"ket_luan","menh_de":"tôn trọng danh dự, nhân phẩm của người lao động","chu_the":{"chu":"Người sử dụng lao động","loai":"E","nguon":"cau_dan"},"doi_so":[{"loai":"W"}],"phuong_thuc":"phai","cuc":"khang_dinh","trich":["Người sử dụng lao động có các nghĩa vụ","tôn trọng danh dự, nhân phẩm của người lao động"],"quy_tac":"q1"}
+"Người sử dụng lao động phải cung cấp thông tin trung thực cho người lao động về ..., tiền lương, hình thức trả lương, bảo hiểm xã hội, ..." → {"loai":"menh_de","vai":"ket_luan","menh_de":"cung cấp thông tin trung thực","chu_the":{"chu":"Người sử dụng lao động","loai":"E","nguon":"chinh"},"doi_so":[{"loai":"W"}],"phuong_thuc":"phai","cuc":"khang_dinh","liet_ke":["tiền lương","hình thức trả lương","bảo hiểm xã hội","..."],"trich":["Người sử dụng lao động phải cung cấp thông tin trung thực cho người lao động"],"quy_tac":"q1","ly_do_llm":{"ma":"giu_chung","giai_thich":"Một nghĩa vụ thông tin; danh sách nội dung đưa vào liet_ke."}}
+Tiêu đề "Hành vi người sử dụng lao động không được làm khi giao kết, thực hiện hợp đồng lao động", chữ "Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động." → {"loai":"menh_de","vai":"ket_luan","menh_de":"giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động","chu_the":{"chu":"người sử dụng lao động","loai":"E","nguon":"tieu_de"},"doi_so":[{"loai":"W"}],"phuong_thuc":"cam","cuc":"khang_dinh","trich":["Hành vi người sử dụng lao động không được làm","Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động"],"quy_tac":"q1"}
+Tiêu đề "Nghĩa vụ của người lao động khi ... trái pháp luật", chữ "Không được trợ cấp thôi việc." (bị động) → {"loai":"menh_de","vai":"ket_luan","menh_de":"được trợ cấp thôi việc","chu_the":{"chu":"người lao động","loai":"W","nguon":"tieu_de"},"phuong_thuc":"khong","cuc":"phu_dinh","trich":["Nghĩa vụ của người lao động","Không được trợ cấp thôi việc"],"quy_tac":"q1"} cộng một dieu_kien lấy từ tiêu đề.
+Định nghĩa "Tổ chức đại diện người sử dụng lao động là tổ chức được thành lập hợp pháp, đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động trong quan hệ lao động." → dieu_kien "được thành lập hợp pháp" (bị động, khong); dieu_kien "đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động" {"loai":"menh_de","vai":"dieu_kien","menh_de":"đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động","phuong_thuc":"khong","cuc":"khang_dinh","trich":["đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động"],"quy_tac":"q1"}; dieu_kien bổ ngữ {"loai":"menh_de","vai":"dieu_kien","menh_de":"trong quan hệ lao động","phuong_thuc":"khong","cuc":"khang_dinh","trich":["trong quan hệ lao động"],"quy_tac":"q1"}; ket_luan khong "là tổ chức đại diện người sử dụng lao động"; cả bốn q1.
+Danh sách ĐIỀU KIỆN: chu_don_vi "Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:" → {"loai":"menh_de","vai":"ket_luan","menh_de":"sử dụng lao động thuê lại","chu_the":{"chu":"Bên thuê lại lao động","loai":"E","nguon":"chinh"},"phuong_thuc":"duoc","cuc":"khang_dinh","trich":["Bên thuê lại lao động được sử dụng lao động thuê lại"],"quy_tac":"q1"} và {"loai":"bo_qua","cac_muc_con":"hoac","trich":["trong trường hợp sau đây:"],"ly_do_llm":{"ma":"cau_dan","giai_thich":"Phần dẫn vào danh sách trường hợp."}}
+Mục con của câu dẫn đó "Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao." → {"loai":"menh_de","vai":"dieu_kien","menh_de":"có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao","chu_the":{"chu":"Bên thuê lại lao động","loai":"E","nguon":"cau_dan"},"phuong_thuc":"khong","cuc":"khang_dinh","trich":["Bên thuê lại lao động","Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao"],"quy_tac":"q1"}
+
+## Tự kiểm trước khi trả
+- Không có trường bo_ngu; mỗi bổ ngữ ("tại / theo / trong ..." không làm nên chính hành vi) là một dòng dieu_kien riêng, chép nguyên văn.
+- Mọi chuỗi trong trich, chu_the.chu, liet_ke chép NGUYÊN VĂN, liền, không ghép từ hai chỗ.
+- chu_the.nguon = cau_dan (hay tieu_de) thì trich có mẩu chép từ khoan_cha (hay tieu_de_dieu).
+- Mọi âm tiết của menh_de có trong trich của dòng đó.
+- Cụm "đối với / khi / trong trường hợp / thông qua / dưới hình thức ..." là dòng dieu_kien riêng.
+
+## Đầu ra
+JSON thuần, không chữ giải thích: {"units": [{"unit_id": "...", "dong": [...]}]}. Mỗi unit_id của lô đúng một mục, mỗi mục ít nhất một dòng."""
+PROMPTS["menh-de-9"] = SYSTEM_9
+NO_BO_NGU = {"menh-de-9"}  # [A55] phiên bản lời nhắc mà bo_ngu khác rỗng là lỗi cổng (bổ ngữ phải là dòng dieu_kien)
 SYSTEM = PROMPTS[PROMPT_VERSION]
 
 SCHEMA = {"units": [{"unit_id": "string", "dong": [{f: "xem system.txt" for f in FIELDS + (LLM_REASON,)}]}]}
@@ -216,6 +274,30 @@ DEFAULTS = {"loai": "", "vai": "", "menh_de": "", "chu_the": None, "doi_so": [],
 
 BO_NGU_ALIAS = {"chu": "original_text", "pham_vi": "scope"}
 
+_NEG_LEAD = re.compile(r"(không|chưa)\s")
+_NEG_TAIL = re.compile(r"(^|\s)(không|chưa|chẳng)\s*$")
+
+
+def effective_cuc(d):
+    """[THÊM, A54, chủ đề tài duyệt 21/11] Cực của một dòng menh_de do MÁY quyết lại khi phủ định kép (lỗi A4): menh_de còn mở đầu bằng
+    "không"/"chưa" mà cuc = phu_dinh thì chữ phủ định đã nằm trong menh_de (1.6B đặt tên theo chữ đó, ví dụ `lack_work_permit`),
+    nên cờ phu_dinh lật nghĩa lần hai. Máy giữ nguyên chữ (không viết lại, cache 1.6B còn đúng) và đặt cực khang_dinh. Áp cả khi chữ sau là
+    "được"/"phải" ("không được thành lập", "không phải thực hiện ..."): 1.6B cũng đã nuốt phủ định vào tên (`..._omitted`, `exempt_from_...`).
+    Không sửa khi trong trich, ngay trước menh_de còn một chữ phủ định khác (phu_dinh khi ấy có căn cứ ở nguồn). Mọi đường đọc cực của 1.6A
+    (1.6B, KU của 2.6, 1.8) phải đi qua hàm này."""
+    c = d.get("cuc", "")
+    if c != "phu_dinh" or d.get("loai") != "menh_de":
+        return c
+    m = " ".join((d.get("menh_de") or "").split()).lower()
+    if not _NEG_LEAD.match(m):
+        return c
+    for t in d.get("trich") or []:
+        tl = " ".join((t or "").split()).lower()
+        k = tl.find(m)
+        if k >= 0 and _NEG_TAIL.search(tl[:k]):
+            return c
+    return "khang_dinh"
+
 
 def _bo_ngu_keys(b):
     """[THÊM, A41, chủ đề tài duyệt 18/11] Đổi tên khoá của một mục bo_ngu theo BO_NGU_ALIAS. Vì sao: lời nhắc menh-de-3 không ghi tên khoá
@@ -244,10 +326,12 @@ def normalize(rows, reason_field=LLM_REASON):
     return out
 
 
-def gate_unit(ctx, rows, reason_field=LLM_REASON):
+def gate_unit(ctx, rows, reason_field=LLM_REASON, version=None):
     """-> (lỗi, cờ): hai danh sách (chỉ số dòng, thông điệp). Lỗi = vi phạm khuôn hoặc nguồn (máy chứng minh được);
-    cờ = dấu hiệu đáng xem nhưng có ca đúng (ví dụ "được trả lương" là chữ đúng). Không kiểm được nghĩa."""
+    cờ = dấu hiệu đáng xem nhưng có ca đúng (ví dụ "được trả lương" là chữ đúng). Không kiểm được nghĩa.
+    version: phiên bản lời nhắc của đầu ra (mặc định PROMPT_VERSION của lần chạy); từ menh-de-9 bo_ngu khác rỗng là lỗi (A55)."""
     err, flag = [], []
+    no_bo_ngu = (version or PROMPT_VERSION) in NO_BO_NGU
     if not isinstance(rows, list) or not rows:
         return [(None, "đơn vị không có dòng nào")], flag
     menh_de_idx = {i for i, d in enumerate(rows) if isinstance(d, dict) and d.get("loai") == "menh_de"}
@@ -304,6 +388,8 @@ def gate_unit(ctx, rows, reason_field=LLM_REASON):
             for a in d["doi_so"] or []:
                 if not isinstance(a, dict) or not _kieu_ok(a.get("loai")):
                     E(f"doi_so sai khuôn {a!r}")
+            if no_bo_ngu and d["bo_ngu"]:
+                E("bo_ngu không còn dùng (A55): bổ ngữ phải là dòng dieu_kien riêng")
             for b in d["bo_ngu"] or []:
                 if not isinstance(b, dict) or b.get("scope") not in SCOPE or not _in_ctx(b.get("original_text"), ctx):
                     E(f"bo_ngu sai khuôn hoặc không nguyên văn {b!r}")

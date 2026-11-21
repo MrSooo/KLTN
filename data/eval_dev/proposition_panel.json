@@ -1,0 +1,25 @@
+{
+ "mo_ta": "Bộ đơn vị khó của 1.6A (A54): lô nguyên vẹn lấy từ thư mục làm việc đã chạy, KHÔNG gom lại, để chữ gửi đi trùng từng byte với lần chạy gốc (lần 0 đọc từ cache). Không dùng bộ câu hỏi dev để nhận hay bỏ một lần sửa.",
+ "prompt_version": "menh-de-4",
+ "lots": [
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "003", "dieu": "BLLD D3", "vi_sao": "A4 phủ định kép D3.K8; định nghĩa"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "008", "dieu": "BLLD D8", "vi_sao": "quy tắc thân rỗng (nghiêm cấm không chủ thể)"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "020", "dieu": "BLLD D20", "vi_sao": "A4 'không xác định thời hạn'; danh sách loại hợp đồng"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "034", "dieu": "BLLD D34", "vi_sao": "A3 Điều 'Các trường hợp ...'"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "036", "dieu": "BLLD D36", "vi_sao": "A1 nhiều lỗi cổng nhất (11); A4 D36.K1.d"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "041", "dieu": "BLLD D41", "vi_sao": "A4 ba điều kiện phủ định"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "063", "dieu": "BLLD D64", "vi_sao": "A1 lỗi cổng (8)"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "101", "dieu": "BLLD D105", "vi_sao": "A4 'không quá ... giờ'"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "142", "dieu": "BLLD D147", "vi_sao": "quy tắc thân rỗng (13); danh sách công việc"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "146", "dieu": "BLLD D151", "vi_sao": "A3 câu dẫn yêu cầu 'phải đáp ứng các điều kiện sau đây'"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "148", "dieu": "BLLD D153", "vi_sao": "A4 'không có giấy phép lao động'; chủ thể lao động nước ngoài"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "149", "dieu": "BLLD D154", "vi_sao": "A3 danh sách miễn; A5 dẫn chiếu mở K7, K9"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "151", "dieu": "BLLD D156", "vi_sao": "A3 Điều 'Các trường hợp ...'"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "187", "dieu": "BLLD D199", "vi_sao": "A4 'không được thành lập' (giữ, phương thức)"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "191", "dieu": "BLLD D204", "vi_sao": "A3 Điều 'Trường hợp ...'; A4"},
+  {"source": "data/sandbox_runs/menh_de_tat_ca_m4", "lo": "203", "dieu": "BLLD D217", "vi_sao": "A1 lỗi cổng (8)"},
+  {"source": "data/sandbox_runs/lldnn_u16a", "lo": "033", "dieu": "ND_152 D7", "vi_sao": "A3 danh sách miễn giấy phép, kết luận ở tiêu đề Điều"},
+  {"source": "data/sandbox_runs/lldnn_u16a", "lo": "047", "dieu": "ND_152 D7 (KU của ND_70)", "vi_sao": "A3 K14, K14.a, K14.b chèn"},
+  {"source": "data/sandbox_runs/lldnn_u16a", "lo": "056", "dieu": "ND_219 D7", "vi_sao": "A3 kết luận ở tiêu đề Điều (A51 mất ket_luan); lô hay cụt max_tokens"}
+ ]
+}

@@ -392,7 +392,7 @@ class Client:
                 if e.code not in RETRY_CODES_CKEY:
                     raise LLMError(f"API trả lỗi {e.code}: {detail}")
                 why = f"lỗi {e.code}: {detail}"
-            except (urllib.error.URLError, socket.timeout, TimeoutError, ConnectionError) as e:
+            except (urllib.error.URLError, socket.timeout, TimeoutError, OSError) as e:  # [A54] OSError: lỗi socket khác ConnectionError (gặp 21/11: Errno 49)
                 why = f"lỗi kết nối: {e}"
             if attempt == ATTEMPTS:
                 raise LLMError(f"API {why} (đã thử {ATTEMPTS} lần)")

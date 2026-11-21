@@ -1,0 +1,322 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D64.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đối thoại",
+     "chu_the": {
+      "chu": "Nội dung",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo quy định tại điểm c khoản 2 Điều 63 của Bộ luật này",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Nội dung đối thoại bắt buộc theo quy định tại điểm c khoản 2 Điều 63 của Bộ luật này."
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "chua_ro",
+      "giai_thich": "chủ thể là 'Nội dung đối thoại', không phải người; câu nêu nội dung bắt buộc."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "trich": [
+      "điểm c khoản 2 Điều 63 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D63.K2.c"
+     ],
+     "gan_vao": 0,
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn một hoặc một số nội dung để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "Ngoài nội dung quy định tại khoản 1 Điều này",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Ngoài nội dung quy định tại khoản 1 Điều này, các bên lựa chọn một hoặc một số nội dung sau đây để tiến hành đối thoại:"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "danh_sach",
+     "trich": [
+      "sau đây để tiến hành đối thoại:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách nội dung lựa chọn."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "trich": [
+      "khoản 1 Điều này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D64.K1"
+     ],
+     "gan_vao": 0,
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn nội dung để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "Tình hình sản xuất, kinh doanh của người sử dụng lao động"
+     ],
+     "trich": [
+      "các bên lựa chọn",
+      "Tình hình sản xuất, kinh doanh của người sử dụng lao động",
+      "để tiến hành đối thoại"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục là một trong các nội dung lựa chọn; kế thừa chủ thể và phương thức từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn nội dung để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "Việc thực hiện hợp đồng lao động",
+      "thỏa ước lao động tập thể",
+      "nội quy lao động",
+      "quy chế và cam kết, thỏa thuận khác tại nơi làm việc"
+     ],
+     "trich": [
+      "các bên lựa chọn",
+      "Việc thực hiện hợp đồng lao động, thỏa ước lao động tập thể, nội quy lao động, quy chế và cam kết, thỏa thuận khác tại nơi làm việc",
+      "để tiến hành đối thoại"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục là một trong các nội dung lựa chọn; danh sách đối tượng vào liet_ke."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn nội dung để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "Điều kiện làm việc"
+     ],
+     "trich": [
+      "các bên lựa chọn",
+      "Điều kiện làm việc",
+      "để tiến hành đối thoại"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục là một trong các nội dung lựa chọn; kế thừa chủ thể từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.d",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn nội dung để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "Yêu cầu của người lao động, tổ chức đại diện người lao động đối với người sử dụng lao động"
+     ],
+     "trich": [
+      "các bên lựa chọn",
+      "Yêu cầu của người lao động, tổ chức đại diện người lao động đối với người sử dụng lao động",
+      "để tiến hành đối thoại"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục là một trong các nội dung lựa chọn; kế thừa chủ thể từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.dd",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn nội dung để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      },
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "Yêu cầu của người sử dụng lao động đối với người lao động, tổ chức đại diện người lao động"
+     ],
+     "trich": [
+      "các bên lựa chọn",
+      "Yêu cầu của người sử dụng lao động đối với người lao động, tổ chức đại diện người lao động",
+      "để tiến hành đối thoại"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục là một trong các nội dung lựa chọn; kế thừa chủ thể từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.e",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn nội dung để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "Nội dung khác mà một hoặc các bên quan tâm"
+     ],
+     "trich": [
+      "các bên lựa chọn",
+      "Nội dung khác mà một hoặc các bên quan tâm",
+      "để tiến hành đối thoại"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục là một trong các nội dung lựa chọn; kế thừa chủ thể từ câu dẫn."
+     }
+    }
+   ]
+  }
+ ]
+}
