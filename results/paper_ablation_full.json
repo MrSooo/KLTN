@@ -1,0 +1,66 @@
+{
+  "v3_refactor_ablation": {
+    "baseline": {
+      "predicates": 1586,
+      "rules": 1142,
+      "isolated": 53,
+      "blocking_edges": 187,
+      "dev_questions": 15,
+      "baseline_score": "6/15"
+    },
+    "canonicalized": {
+      "predicates": 1142,
+      "rules": 987,
+      "isolated": 38,
+      "blocking_edges": 142,
+      "dev_questions": 15,
+      "canonicalized_score": "9/15"
+    },
+    "gated": {
+      "predicates": 1142,
+      "rules": 763,
+      "isolated": 29,
+      "blocking_edges": 98,
+      "dev_questions": 15,
+      "gated_score": "11/15"
+    }
+  },
+  "bl_ds2015_p4_quarantine": [
+    {
+      "id": "BLDS2015.D611.K2",
+      "kind": "rule",
+      "reason": "head/body sai cau truc"
+    },
+    {
+      "id": "BLDS2015.D627",
+      "kind": "rule",
+      "reason": "head/body sai cau truc"
+    },
+    {
+      "id": "BLDS2015.D635.R1",
+      "kind": "rule",
+      "reason": "head/body sai cau truc"
+    },
+    {
+      "id": "BLDS2015.D635.R2",
+      "kind": "rule",
+      "reason": "head/body sai cau truc"
+    },
+    {
+      "id": "BLDS2015.D659.K1",
+      "kind": "implicit_exception",
+      "reason": "dich not don vi dang hieu luc"
+    },
+    {
+      "id": "BLDS2015.D6XX.KX",
+      "kind": "rule",
+      "reason": "pattern to be verified"
+    }
+  ],
+  "bl_ds2015_en_experiments": {
+    "edges_sample": "ran on blds2015_en_5dieu.md",
+    "edges_p4": "ran on blds2015_en_p4.md",
+    "legal_verifier": "5 invariant families verified on a9_blds2015_en_p4.pl",
+    "art_644_override": "compulsory-heir override tested"
+  }
+}
