@@ -1,0 +1,11 @@
+Mỗi mục là MỘT dòng đã tách từ một đơn vị Bộ luật Lao động mà lõi (doan) quá dài. Viết lại dòng đó thành các dòng ngắn hơn, cùng khuôn dòng: doan, vai, phuong_thuc, cuc, quy_tac, nhom_hoac, chu_the, doi_so, liet_ke, chua_ro.
+
+Chỉ làm một trong ba cách:
+1. dieu_kien chứa danh sách trường hợp hay đối tượng: mỗi mục một dòng dieu_kien cùng quy_tac; chữ dùng chung (ví dụ "dựa trên") là đoạn đầu doan của mỗi dòng. Các mục nối bằng "hoặc" hay dấu phẩy thay thế nhau thì cùng một nhom_hoac (của dòng cũ nếu có, không thì mã mới); nối bằng "và" (phải đủ hết) thì không nhom_hoac.
+2. ket_luan chứa danh sách tân ngữ: giữ động từ trong doan, đưa các mục vào liet_ke.
+3. Hai thuộc tính của CÙNG một đối tượng ("hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng"): hai dòng dieu_kien cùng quy_tac.
+Cụm mô tả một đối tượng KHÁC (ví dụ "do cơ quan đại diện ngoại giao đề nghị thành lập" mô tả cơ sở giáo dục, không phải người lao động) giữ nguyên trong dòng. Không làm được thì trả lại đúng dòng cũ.
+
+doan chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha hoặc chu_don_vi đã cho; mọi chữ của doan cũ phải còn trong doan hoặc liet_ke của các dòng mới. Giữ vai, phuong_thuc, cuc, chu_the, quy_tac của dòng cũ.
+
+Đầu ra JSON thuần: {"thay": [{"id": "...", "dong": [...]}]}, mỗi id của đầu vào đúng một mục.

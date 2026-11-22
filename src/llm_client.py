@@ -400,18 +400,31 @@ class Client:
                 self.log(f"      ! API {why[:120]} (lần {attempt}/{ATTEMPTS}), chờ {WAIT_SECONDS * attempt}s rồi thử lại")
             self.sleep(WAIT_SECONDS * attempt)
         self.calls += 1
+        usage = data.get("usage") or {}
+        blocks = response_blocks(data)
         if data.get("stop_reason") != "end_turn":
-            raise LLMError(f"mô hình dừng với stop_reason {data.get('stop_reason')}")
+            # Lượt cụt không vào cache, nên tóm tắt khối phải nằm trong thông báo lỗi thì log mới giữ được (chẩn đoán token ẩn, 22/11)
+            raise LLMError(f"mô hình dừng với stop_reason {data.get('stop_reason')} (token ra {usage.get('output_tokens')}, khối {blocks})")
         text, fenced = strip_fence("".join(b.get("text", "") for b in data.get("content") or [] if b.get("type") == "text"))
         try:
             output = json.loads(text)
         except (ValueError, TypeError) as e:
             raise LLMError(f"đầu ra của mô hình không phải JSON ({e})")
-        usage = data.get("usage") or {}
         extra = usage.get("x_ckey") or {}
         return {"model": data.get("model") or model, "request_id": extra.get("request_id") or data.get("id"), "output": output,
                 "usage": {"input_tokens": usage.get("input_tokens"), "output_tokens": usage.get("output_tokens"), "cost_vnd": extra.get("cost")},
-                "boc_rao": fenced}
+                "boc_rao": fenced, "khoi_phan_hoi": blocks}
+
+
+def response_blocks(data):
+    """Tóm tắt phản hồi ckey để biết token ra đi đâu (22/11: menh-de-9 tốn token ra gấp 3,4 lần menh-de-4 mà chữ JSON chỉ hơn 7%).
+    Chỉ ghi LOẠI và SỐ KÝ TỰ của từng khối (không chép nội dung khối không phải text vào cache), cộng các khoá lạ trong usage
+    (ví dụ số token suy nghĩ nếu máy chủ có báo); khoá đã biết thì bỏ để bản ghi gọn."""
+    known = {"input_tokens", "output_tokens", "x_ckey"}
+    # "signature" của khối thinking là chuỗi mã hoá, không phải chữ model sinh: không đếm
+    blocks = [{"type": b.get("type"), "ky_tu": sum(len(v) for k, v in b.items() if k not in ("type", "signature") and isinstance(v, str))}
+              for b in data.get("content") or [] if isinstance(b, dict)]
+    return {"khoi": blocks, "usage_khac": {k: v for k, v in (data.get("usage") or {}).items() if k not in known}}
 
 
 FENCE_RE = re.compile(r"^\s*```[A-Za-z]*[ \t]*\n(.*)\n```\s*$", re.S)

@@ -234,7 +234,107 @@ Mục con của câu dẫn đó "Có nhu cầu sử dụng lao động trình đ
 ## Đầu ra
 JSON thuần, không chữ giải thích: {"units": [{"unit_id": "...", "dong": [...]}]}. Mỗi unit_id của lô đúng một mục, mỗi mục ít nhất một dòng."""
 PROMPTS["menh-de-9"] = SYSTEM_9
-NO_BO_NGU = {"menh-de-9"}  # [A55] phiên bản lời nhắc mà bo_ngu khác rỗng là lỗi cổng (bổ ngữ phải là dòng dieu_kien)
+
+# ---- menh-de-10 (A56): menh-de-9 VIẾT GỌN, chỉ cắt, không thêm luật (phép thử bỏ đi: chữ dài có đáng giữ không). Cùng khuôn đầu ra
+# và cùng cổng với menh-de-9. Đã cắt: mục "Tự kiểm" (lặp cổng), 4/8 ví dụ, các câu luật lặp ý; luật giữ nguyên nghĩa.
+_FIELDS_10 = """## Trường của một dòng
+- loai: menh_de (một điều đúng/sai được) | con_tro (dẫn chiếu đã giải: "trừ trường hợp quy định tại ...", "theo quy định tại ...") | bo_qua (không thành mệnh đề) | chua_ro (cả dòng không xác định được).
+- trich: các chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha hoặc chu_don_vi. Mọi âm tiết của menh_de có trong trich; chủ thể hay phương thức kế thừa thì trich có cả mẩu chứa nó.
+- vai: ket_luan | dieu_kien | ngoai_le. con_tro "trừ ..." là ngoai_le; con_tro khác lấy vai của dòng nó bổ nghĩa.
+- menh_de: LÕI động từ (hoặc tính chất) + tân ngữ chính, càng ngắn càng tốt để cùng một việc ở các Điều khác nhau ra cùng chữ; đã bỏ chủ thể, chữ phương thức, chữ phủ định, bổ ngữ, liệt kê.
+- chu_the: {"chu": nguyên văn, "loai": mã hoặc danh sách mã, "nguon": chinh | cau_dan | tieu_de}. Mã: W người lao động, E người sử dụng lao động, C hợp đồng, J công việc, G vùng, D ngày, A số tiền, ? chưa biết. Người chỉ chịu tác động là doi_so, không phải chủ thể. nguon cau_dan (hay tieu_de) thì trich có mẩu chép từ khoan_cha (hay tieu_de_dieu).
+- doi_so: [{"loai": mã}] các đối số khác.
+- phuong_thuc: duoc (được, có quyền, có thể) | phai (phải, có nghĩa vụ) | cam (cấm, không được làm) | khong_ap_dung (một quy định không áp cho một nhóm trường hợp) | khong (mô tả, điều kiện, định nghĩa).
+- cuc: khang_dinh | phu_dinh, chỉ phủ định menh_de. "Không phải + động từ" (không có nghĩa vụ): duoc + phu_dinh. "Không được + động từ": cam; nếu là bị động (không được người khác làm cho) thì khong + phu_dinh, menh_de giữ "được ...". "Không phải là + danh từ": khong + phu_dinh, menh_de giữ "là ...".
+- quy_tac: "q1", "q2"... gom dieu_kien và ket_luan của cùng một quy tắc. nhom_hoac: "h1"... cho các điều kiện nối bằng "hoặc" trong một quy tắc.
+- liet_ke: danh sách (từ 3 mục) tân ngữ hay phạm vi của CÙNG một động từ, mỗi mục chép nguyên văn; mục nào tự nó là một hành vi khác thì là dòng riêng.
+- cac_muc_con (chỉ ở dòng bo_qua cau_dan): va (phải đủ hết) | hoac (một là đủ) | danh_sach (mục độc lập).
+- targets, gan_vao (chỉ con_tro): targets là mã lấy từ dan_chieu, không giải được thì rỗng kèm chua_ro; gan_vao là số thứ tự (từ 0) của dòng menh_de nó bổ nghĩa, null nếu chặn cả quy tắc.
+- chua_ro: [{"thanh_phan", "nguyen_nhan": pham_vi_bo_ngu | tach_hay_giu_chung | phuong_thuc | chu_the | khac, "cau_hoi"}]. Không đoán.
+- ly_do_llm: {"ma", "giai_thich": một câu ngắn}. Bắt buộc ở dòng bo_qua, ma: cau_dan (phần dẫn vào danh sách) | dan_chieu_mo ("theo quy định của pháp luật") | dan_chieu_ngoai (luật khác) | khong_quy_pham (câu chính sách, không có hành vi kiểm được). Ở dòng khác chỉ khi khó: tach | giu_chung | gan_bo_ngu | chua_ro | ke_thua.
+- Trường rỗng thì bỏ. Luôn có loai và trich; menh_de có thêm vai, menh_de, phuong_thuc, cuc, quy_tac."""
+_HEAD_10 = "Tách mỗi đơn vị của Bộ luật Lao động thành các DÒNG để máy biên dịch thành quy tắc. Mỗi đơn vị có: tieu_de_dieu, khoan_cha (câu dẫn của cha, có thể rỗng), chu_don_vi (chữ cần tách), dan_chieu (dẫn chiếu đã giải, kèm mã đích). Chỉ tách chu_don_vi; tiêu đề và câu dẫn chỉ để lấy chủ thể, phương thức, vị ngữ bị lược."
+_TAIL_10 = """## Ví dụ
+khoan_cha "Người sử dụng lao động có các nghĩa vụ sau đây:" → {"loai":"bo_qua","cac_muc_con":"danh_sach","trich":["Người sử dụng lao động có các nghĩa vụ sau đây:"],"ly_do_llm":{"ma":"cau_dan","giai_thich":"Câu dẫn danh sách nghĩa vụ."}}
+Mục con "...; tôn trọng danh dự, nhân phẩm của người lao động;" → {"loai":"menh_de","vai":"ket_luan","menh_de":"tôn trọng danh dự, nhân phẩm của người lao động","chu_the":{"chu":"Người sử dụng lao động","loai":"E","nguon":"cau_dan"},"doi_so":[{"loai":"W"}],"phuong_thuc":"phai","cuc":"khang_dinh","trich":["Người sử dụng lao động có các nghĩa vụ","tôn trọng danh dự, nhân phẩm của người lao động"],"quy_tac":"q1"}
+chu_don_vi "Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:" → {"loai":"menh_de","vai":"ket_luan","menh_de":"sử dụng lao động thuê lại","chu_the":{"chu":"Bên thuê lại lao động","loai":"E","nguon":"chinh"},"phuong_thuc":"duoc","cuc":"khang_dinh","trich":["Bên thuê lại lao động được sử dụng lao động thuê lại"],"quy_tac":"q1"} và {"loai":"bo_qua","cac_muc_con":"hoac","trich":["trong trường hợp sau đây:"],"ly_do_llm":{"ma":"cau_dan","giai_thich":"Phần dẫn vào danh sách trường hợp."}}
+Mục con của câu dẫn đó "Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao." → {"loai":"menh_de","vai":"dieu_kien","menh_de":"có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao","chu_the":{"chu":"Bên thuê lại lao động","loai":"E","nguon":"cau_dan"},"phuong_thuc":"khong","cuc":"khang_dinh","trich":["Bên thuê lại lao động","Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao"],"quy_tac":"q1"}
+
+## Đầu ra
+JSON thuần, không chữ giải thích: {"units": [{"unit_id": "...", "dong": [...]}]}. Mỗi unit_id của lô đúng một mục, mỗi mục ít nhất một dòng."""
+# Luật 2-6 của menh-de-10 (dùng chung với menh-de-11, chỉ khác số thứ tự). Ghép phần chung bằng chuỗi cố định, không _apply sửa chữ cũ.
+_RULES_10_REST = [
+    'Bổ ngữ (nơi chốn "tại ...", căn cứ "theo ...", cách thức phụ) và cụm giới hạn ("đối với ...", "khi ...", "trong trường hợp ...", "thông qua ...", "dưới hình thức ...") là một dòng dieu_kien riêng, chép nguyên văn, cùng chu_the và quy_tac với dòng nó bổ nghĩa; chung cho cả nhóm thì lặp trong mỗi quy_tac của nhóm; không rõ phạm vi thì chua_ro pham_vi_bo_ngu. Cụm làm nên chính hành vi (thời điểm, mức) giữ trong menh_de. Dẫn chiếu không phải bổ ngữ.',
+    'Chữ dùng chung đứng đầu ("không được A, B") áp cho từng mục; trich ghi hai chuỗi riêng: mục B → ["không được", "B"].',
+    'Câu dẫn có danh sách. Danh sách là TÂN NGỮ ("có các nghĩa vụ sau đây"): câu dẫn là bo_qua cau_dan, mỗi mục con là ket_luan kế thừa chủ thể và phương thức. Danh sách là ĐIỀU KIỆN ("trong trường hợp sau đây"): nội dung câu dẫn là một ket_luan, phần dẫn là bo_qua cau_dan, mỗi mục con là dieu_kien.',
+    'Định nghĩa "X là Y": dấu hiệu của Y là dieu_kien, thêm ket_luan "là X". Câu nêu giá trị, mức là một ket_luan.',
+    '"Hoặc" mà một vế có "và": tách thành nhiều quy_tac.',
+]
+_RULE_SPLIT = 'TÁCH khi từng phần kiểm được đúng/sai riêng VÀ vi phạm từng phần có ý nghĩa pháp lý riêng. GIỮ CHUNG khi là một yêu cầu tập thể. Không tách chỉ vì có nhiều danh từ.'
+# [A56, THÊM] luật duy nhất menh-de-11 thêm vào menh-de-10, đặt đầu: lỗi chí mạng là một menh_de gộp nhiều việc nên 1.6B ra một tên nuốt
+# nhiều vị từ (KB cả bộ luật ckey: 349/1.586 tên có _and_/_or_, 82% vị từ dùng ở <=1 đơn vị). "Hoặc" chỉ tách ở điều kiện: tách kết luận
+# "được A hoặc B" thành hai dòng ket_luan cùng quy_tac là biến lựa chọn thành hai điều cùng đúng.
+_RULE_ONE_THING = 'MỖI DÒNG MỘT VIỆC. Hai hành vi, hai nghĩa vụ hay hai vi phạm nối bằng "và" hoặc dấu phẩy, mỗi vế có động từ riêng, là hai dòng; hai động từ chung một tân ngữ ("xây dựng và thực hiện phương án") cũng là hai dòng, trich ghi các chuỗi riêng. Hai vế "hoặc" của ĐIỀU KIỆN là hai dòng dieu_kien cùng nhom_hoac; "hoặc" trong ket_luan (được chọn một trong hai) giữ chung một dòng. Chỉ danh sách tân ngữ của cùng một động từ mới vào liet_ke; cụm danh từ đi đôi chỉ một khái niệm ("danh dự, nhân phẩm") giữ chung.'
+
+
+def _numbered(rules):
+    return "\n".join(f"{i}. {r}" for i, r in enumerate(rules, 1))
+
+
+PROMPTS["menh-de-10"] = f"{_HEAD_10}\n\n{_FIELDS_10}\n\n## Luật\n{_numbered([_RULE_SPLIT, *_RULES_10_REST])}\n\n{_TAIL_10}"
+PROMPTS["menh-de-11"] = f"{_HEAD_10}\n\n{_FIELDS_10}\n\n## Luật\n{_numbered([_RULE_ONE_THING, _RULE_SPLIT, *_RULES_10_REST])}\n\n{_TAIL_10}"
+# ---- menh-de-12 (A57): KHUÔN GỌN. LLM chỉ làm phần cần hiểu nghĩa (chỉ ra đoạn lõi, vai, phương thức, cực, nhóm quy tắc, chủ thể);
+# máy dựng lại các trường còn lại của khuôn cũ (expand_unit), nên cổng và mọi bước sau đọc như cũ. Viết nguyên bản, không ghép từ bản cũ.
+SYSTEM_12 = """Tách mỗi đơn vị của Bộ luật Lao động thành các DÒNG; máy dựng quy tắc từ các dòng này. Mỗi đơn vị có: tieu_de_dieu, khoan_cha (câu dẫn của cha, có thể rỗng), chu_don_vi (chữ cần tách), dan_chieu (dẫn chiếu đã giải, kèm mã đích). Chỉ tách chu_don_vi; tiêu đề và câu dẫn chỉ để lấy chủ thể, phương thức, vị ngữ bị lược.
+
+## Mỗi dòng là MỘT việc
+Một dòng là một điều kiện hoặc một kết luận kiểm được đúng/sai riêng. Hai hành vi, hai nghĩa vụ hay hai vi phạm, mỗi vế có động từ riêng, là hai dòng (kể cả khi chung tân ngữ: "xây dựng và thực hiện X" là hai dòng). Hai vế "hoặc" của điều kiện là hai dòng cùng nhom_hoac. Giữ chung khi là một khái niệm hay một yêu cầu tập thể ("danh dự, nhân phẩm"); không tách chỉ vì có nhiều danh từ.
+
+## Trường của dòng
+- doan: danh sách đoạn chép NGUYÊN VĂN, liền, đúng từng chữ, từ chu_don_vi, khoan_cha hoặc tieu_de_dieu; nối theo thứ tự là lõi: động từ (hoặc tính chất) + tân ngữ chính, càng ngắn càng tốt. Không đưa vào doan: chủ thể, chữ phương thức (phải, được, có quyền, cấm, không được), chữ phủ định, chữ dẫn chiếu, danh sách tân ngữ (để ở liet_ke). Thường một đoạn; nhiều đoạn khi lõi bị chữ khác chen giữa.
+- vai: ket_luan | dieu_kien.
+- phuong_thuc: duoc (được, có quyền, có thể) | phai (phải, có nghĩa vụ) | cam (cấm, không được làm) | khong_ap_dung (một quy định không áp cho một nhóm trường hợp) | khong (mô tả, điều kiện, định nghĩa).
+- cuc: khang_dinh | phu_dinh (chỉ phủ định lõi). "Không phải + động từ" (không có nghĩa vụ): duoc + phu_dinh. "Không được + động từ": cam; nếu bị động (không được người khác làm cho) thì khong + phu_dinh, doan giữ "được ...". "Không phải là + danh từ": khong + phu_dinh.
+- quy_tac: "q1", "q2"... gom dieu_kien và ket_luan của cùng một quy tắc. nhom_hoac: "h1"... cho các dieu_kien nối bằng "hoặc" trong một quy tắc.
+- chu_the: {"chu": chép nguyên văn cụm chủ thể, "loai": mã hoặc danh sách mã}; câu không có chủ thể thì BỎ trường này. Mã: W người lao động, E người sử dụng lao động, C hợp đồng, J công việc, G vùng, D ngày, A số tiền, ? chưa biết. Người chỉ chịu tác động là doi_so.
+- doi_so: [{"loai": mã}] các đối số khác.
+- liet_ke: danh sách (từ 3 mục) tân ngữ hay phạm vi của cùng một động từ, mỗi mục nguyên văn.
+- chua_ro: [{"thanh_phan", "nguyen_nhan": pham_vi_bo_ngu | tach_hay_giu_chung | phuong_thuc | chu_the | khac, "cau_hoi"}] khi không xác định được. Không đoán.
+Trường rỗng thì bỏ.
+
+## Trường của đơn vị (cạnh unit_id, dong)
+- cac_muc_con: chu_don_vi là câu dẫn vào các mục con ("... sau đây:", "như sau:") thì ghi va (phải đủ hết) | hoac (một mục là đủ) | danh_sach (mục độc lập). Máy tự thêm dòng cho chữ dẫn.
+- ngoai_le: danh sách mã dich (lấy từ dan_chieu) của dẫn chiếu là ngoại lệ ("trừ ...", kể cả các dẫn chiếu đứng sau một chữ "trừ" chung). Máy tự dựng dòng cho mọi dẫn chiếu.
+- bo_qua: khong_quy_pham (câu chính sách, không có hành vi kiểm được) | dan_chieu_mo | dan_chieu_ngoai (chỉ dẫn sang quy định khác). Khi đó dong có thể rỗng.
+
+## Luật
+1. Bổ ngữ (nơi chốn "tại ...", căn cứ "theo ...", cách thức phụ) và cụm giới hạn ("đối với ...", "khi ...", "trong trường hợp ...", "trong khoảng ...", "thông qua ...", "dưới hình thức ...") là một dòng dieu_kien riêng, cùng chu_the và quy_tac với dòng nó bổ nghĩa. Cụm làm nên chính hành vi (thời điểm, mức) giữ trong doan.
+2. Câu dẫn mà danh sách là TÂN NGỮ ("có các nghĩa vụ sau đây"): dong rỗng; mỗi mục con là ket_luan kế thừa chủ thể và phương thức. Câu dẫn mà danh sách là ĐIỀU KIỆN ("trong trường hợp sau đây"): dong là một ket_luan (nội dung câu dẫn); mỗi mục con là dieu_kien.
+3. Chủ thể hay phương thức bị lược thì lấy từ khoan_cha hoặc tieu_de_dieu; chu_the.chu chép đúng cụm ở đó.
+4. Định nghĩa "X là Y": dấu hiệu của Y là các dieu_kien; ket_luan có doan ["là", "X"].
+5. Câu nêu giá trị, mức là một ket_luan. "Hoặc" mà một vế có "và": tách nhiều quy_tac.
+6. Dẫn chiếu mở là điều kiện duy nhất ("trường hợp khác theo quy định của Chính phủ") vẫn là một dòng dieu_kien.
+
+## Ví dụ
+{"unit_id":"BLLD_45-2019.D6.K2","cac_muc_con":"danh_sach","dong":[]} (chu_don_vi "Người sử dụng lao động có các nghĩa vụ sau đây:")
+chu_don_vi "Thiết lập cơ chế và thực hiện đối thoại, trao đổi với người lao động và tổ chức đại diện người lao động; thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc;" → {"unit_id":"BLLD_45-2019.D6.K2.b","dong":[{"doan":["Thiết lập cơ chế","đối thoại, trao đổi"],"vai":"ket_luan","chu_the":{"chu":"Người sử dụng lao động","loai":"E"},"doi_so":[{"loai":"W"}],"phuong_thuc":"phai","cuc":"khang_dinh","quy_tac":"q1"},{"doan":["thực hiện đối thoại, trao đổi"],"vai":"ket_luan","chu_the":{"chu":"Người sử dụng lao động","loai":"E"},"doi_so":[{"loai":"W"}],"phuong_thuc":"phai","cuc":"khang_dinh","quy_tac":"q2"},{"doan":["thực hiện quy chế dân chủ ở cơ sở"],"vai":"ket_luan","chu_the":{"chu":"Người sử dụng lao động","loai":"E"},"phuong_thuc":"phai","cuc":"khang_dinh","quy_tac":"q3"},{"doan":["tại nơi làm việc"],"vai":"dieu_kien","chu_the":{"chu":"Người sử dụng lao động","loai":"E"},"phuong_thuc":"khong","cuc":"khang_dinh","quy_tac":"q3"}]}
+chu_don_vi "Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:" → {"unit_id":"BLLD_45-2019.D53.K2","cac_muc_con":"hoac","dong":[{"doan":["sử dụng lao động thuê lại"],"vai":"ket_luan","chu_the":{"chu":"Bên thuê lại lao động","loai":"E"},"phuong_thuc":"duoc","cuc":"khang_dinh","quy_tac":"q1"}]}; mục con "Đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động trong khoảng thời gian nhất định;" → {"unit_id":"BLLD_45-2019.D53.K2.a","dong":[{"doan":["Đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động"],"vai":"dieu_kien","chu_the":{"chu":"Bên thuê lại lao động","loai":"E"},"phuong_thuc":"khong","cuc":"khang_dinh","quy_tac":"q1"},{"doan":["trong khoảng thời gian nhất định"],"vai":"dieu_kien","chu_the":{"chu":"Bên thuê lại lao động","loai":"E"},"phuong_thuc":"khong","cuc":"khang_dinh","quy_tac":"q1"}]}
+Tiêu đề "Hành vi người sử dụng lao động không được làm khi giao kết, thực hiện hợp đồng lao động", chu_don_vi "Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động." → {"unit_id":"BLLD_45-2019.D17.K1","dong":[{"doan":["Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động"],"vai":"ket_luan","chu_the":{"chu":"người sử dụng lao động","loai":"E"},"doi_so":[{"loai":"W"}],"phuong_thuc":"cam","cuc":"khang_dinh","quy_tac":"q1"}]}
+chu_don_vi "Hợp đồng lao động phải được giao kết bằng văn bản và được làm thành 02 bản, ..., trừ trường hợp quy định tại khoản 2 Điều này." → {"unit_id":"BLLD_45-2019.D14.K1","ngoai_le":["BLLD_45-2019.D14.K2"],"dong":[{"doan":["được giao kết bằng văn bản"],"vai":"ket_luan","chu_the":{"chu":"Hợp đồng lao động","loai":"C"},"phuong_thuc":"phai","cuc":"khang_dinh","quy_tac":"q1"},{"doan":["được làm thành 02 bản"],"vai":"ket_luan","chu_the":{"chu":"Hợp đồng lao động","loai":"C"},"phuong_thuc":"phai","cuc":"khang_dinh","quy_tac":"q2"}, ...]}
+Định nghĩa "Việc làm là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm." → {"unit_id":"BLLD_45-2019.D9.K1","dong":[{"doan":["hoạt động lao động tạo ra thu nhập"],"vai":"dieu_kien","phuong_thuc":"khong","cuc":"khang_dinh","quy_tac":"q1"},{"doan":["cấm"],"vai":"dieu_kien","chu_the":{"chu":"pháp luật","loai":"?"},"phuong_thuc":"khong","cuc":"phu_dinh","quy_tac":"q1"},{"doan":["là","Việc làm"],"vai":"ket_luan","phuong_thuc":"khong","cuc":"khang_dinh","quy_tac":"q1"}]}
+
+## Đầu ra
+JSON thuần, không chữ giải thích: {"units": [{"unit_id": "...", "dong": [...]}]}, cộng cac_muc_con, ngoai_le, bo_qua khi có. Mỗi unit_id của lô đúng một mục."""
+PROMPTS["menh-de-12"] = SYSTEM_12
+COMPACT = {"menh-de-12"}  # [A57] phiên bản khuôn gọn: đầu ra phải qua expand_unit trước normalize và cổng
+# [A57] Cỡ lô của khuôn gọn: model flash dùng phần lớn token ra để suy nghĩ ngầm (Gemini báo reasoning_tokens: lô 19 đơn vị ra 28.000 token,
+# hai lần cụt max_tokens vì suy nghĩ 30.000); lô nhỏ thì không chạm trần. Bản cũ giữ C.BATCH_SIZE để hộp cát và cache cũ khớp như trước.
+LOT_SIZE_COMPACT = 8
+
+
+def lot_size(version=None):
+    return LOT_SIZE_COMPACT if (version or PROMPT_VERSION) in COMPACT else C.BATCH_SIZE
+NO_BO_NGU = {"menh-de-9", "menh-de-10", "menh-de-11", "menh-de-12"}  # [A55, A56] phiên bản lời nhắc mà bo_ngu khác rỗng là lỗi cổng (bổ ngữ phải là dòng dieu_kien)
 SYSTEM = PROMPTS[PROMPT_VERSION]
 
 SCHEMA = {"units": [{"unit_id": "string", "dong": [{f: "xem system.txt" for f in FIELDS + (LLM_REASON,)}]}]}
@@ -418,6 +518,206 @@ def gate_unit(ctx, rows, reason_field=LLM_REASON, version=None):
     return err, flag
 
 
+# ---- Khuôn gọn (A57): máy dựng lại khuôn cũ từ đầu ra gọn. Hàm này chỉ SUY RA trường từ chữ luật và từ trường LLM đã ghi,
+# không sửa giá trị LLM ghi (giá trị sai vẫn đi tới cổng và bị bắt), nên không nới phép kiểm nào.
+ROW_KEYS_12 = {"doan", "vai", "phuong_thuc", "cuc", "quy_tac", "nhom_hoac", "chu_the", "doi_so", "liet_ke", "chua_ro"}
+UNIT_KEYS_12 = {"unit_id", "dong", "cac_muc_con", "ngoai_le", "bo_qua"}
+BO_QUA_12 = {"khong_quy_pham", "dan_chieu_mo", "dan_chieu_ngoai"}
+_LEAD_TAIL = re.compile(r"[^,;.:]*(sau đây|như sau|gồm|bao gồm)\s*:?\s*$")
+
+
+def _core(doan):
+    """Nối các đoạn thành menh_de theo cách bản cũ ghi: bỏ dấu câu cuối, hạ chữ hoa đầu câu (trừ chữ viết tắt toàn hoa)."""
+    s = " ".join(x.strip() for x in doan if isinstance(x, str)).strip().rstrip(".;:,").strip()
+    return s[:1].lower() + s[1:] if len(s) > 1 and s[1:2].islower() else s
+
+
+def _source_of(chu, ctx):
+    """nguon của chủ thể = chỗ chữ của nó xuất hiện, xét chữ đơn vị trước (bản cũ để LLM tự ghi và hay ghi sai, A57)."""
+    for nguon, part in (("chinh", ctx["text"]), ("cau_dan", ctx["chapeau"]), ("tieu_de", ctx["heading"])):
+        if chu and part and chu in part:
+            return nguon
+    return "chinh"  # không tìm thấy: cổng sẽ báo "chu_the.chu không nguyên văn"
+
+
+def expand_unit(ctx, unit):
+    """Đầu ra gọn của một đơn vị -> các dòng khuôn cũ (trước normalize). Khoá lạ được chuyển nguyên vào dòng để cổng báo trường thừa."""
+    rows = []
+    for r in unit.get("dong") if isinstance(unit.get("dong"), list) else [unit.get("dong")]:
+        if not isinstance(r, dict):
+            rows.append(r)
+            continue
+        doan = r.get("doan") if isinstance(r.get("doan"), list) else []
+        row = {}
+        extra = sorted(set(r) - ROW_KEYS_12)
+        if extra:  # khoá lạ (kể cả trường khuôn cũ như trich, loai): giữ dưới một khoá riêng để cổng báo "thừa", không để trường máy dựng đè mất
+            row["khoa_thua"] = extra
+        row.update({k: r[k] for k in ("vai", "phuong_thuc", "cuc", "quy_tac", "nhom_hoac", "doi_so", "liet_ke", "chua_ro") if k in r})
+        row.update(loai="menh_de", menh_de=_core(doan), trich=[x for x in doan if isinstance(x, str)])
+        ct = r.get("chu_the")
+        if isinstance(ct, dict):
+            nguon = _source_of(ct.get("chu"), ctx)
+            row["chu_the"] = {**{f"thua_{k}": v for k, v in ct.items() if k not in ("chu", "loai")}, "chu": ct.get("chu"), "loai": ct.get("loai"), "nguon": nguon}  # khoá lạ (kể cả nguon do LLM ghi): cổng báo sai khuôn
+            if nguon != "chinh" and isinstance(ct.get("chu"), str):
+                row["trich"].append(ct["chu"])  # cổng đòi trich có mẩu từ câu dẫn/tiêu đề khi chủ thể lấy từ đó
+        elif ct is not None:
+            row["chu_the"] = ct  # sai khuôn: để cổng báo
+        rows.append(row)
+    exc = unit.get("ngoai_le") or []
+    for ref in ctx["refs"]:
+        rows.append({"loai": "con_tro", "vai": "ngoai_le" if ref["dich"] in exc else "dieu_kien", "targets": [ref["dich"]], "trich": [ref["cum"]]})
+    for t in exc if isinstance(exc, list) else [exc]:
+        if t not in {ref["dich"] for ref in ctx["refs"]}:
+            rows.append({"loai": "con_tro", "vai": "ngoai_le", "targets": [t], "trich": [ctx["text"]]})  # đích ngoài dan_chieu: cổng báo
+    if unit.get("cac_muc_con") is not None:
+        m = _LEAD_TAIL.search(ctx["text"] or "")
+        rows.append({"loai": "bo_qua", "cac_muc_con": unit["cac_muc_con"], "trich": [m.group(0).strip() if m else ctx["text"]],
+                     LLM_REASON: {"ma": "cau_dan", "giai_thich": "máy dựng từ cac_muc_con (A57)"}})
+    if unit.get("bo_qua") is not None:
+        rows.append({"loai": "bo_qua", "trich": [ctx["text"]], LLM_REASON: {"ma": unit["bo_qua"], "giai_thich": "máy dựng từ bo_qua của đơn vị (A57)"}})
+    extra = set(unit) - UNIT_KEYS_12
+    if extra:
+        rows.append({"khoa_don_vi_thua": sorted(extra)})  # cổng báo "trường thiếu / thừa"
+    return rows
+
+
+_GAP_LOSS = re.compile(r"(^|\s)(không|chưa|hoặc)(\s|$)")  # bỏ chữ này giữa hai đoạn là ngược nghĩa hoặc mất một vế "hoặc": lỗi
+_GAP_AND = re.compile(r"(^|\s)và(\s|$)")  # bỏ "và" có ca đúng (hai động từ chung tân ngữ): cờ
+
+
+def _gap_lost(gap, row, other_words):
+    """Chữ bị bỏ giữa hai đoạn có MẤT không: bỏ "không/chưa" mà cuc không ghi phu_dinh; bỏ một vế (sau khi trừ chữ nối và chữ phủ định
+    đã ghi ở cuc) mà chữ của vế đó không có ở dòng nào khác của đơn vị (tách vế "hoặc" thành dòng riêng là đúng, A57)."""
+    words = syllables(gap)
+    if {"không", "chưa"} & set(words) and row.get("cuc") != "phu_dinh":
+        return True
+    rest = [w for w in words if w not in ("không", "chưa", "hoặc", "và")]
+    return any(w not in other_words for w in rest)
+
+
+def compact_checks(ctx, unit, rows):
+    """Phần kiểm riêng của khuôn gọn, cộng vào cổng cũ. Lỗi: đoạn chứa chữ dẫn chiếu (dẫn chiếu thuộc dòng con_tro); bo_qua ngoài tập đóng;
+    đơn vị không có dòng; giữa hai đoạn liên tiếp cùng nguồn có chữ "không/chưa/hoặc" bị bỏ mà phần bỏ MẤT (_gap_lost). Bỏ "không" mà cuc
+    phu_dinh, hay bỏ một vế đã thành dòng riêng là đúng (đọc lần 1 của menh-de-12: 3/4 ca "không" và 18/34 ca "hoặc" thuộc loại này).
+    Đoạn đầu "là" (định nghĩa "X là Y" -> ["là", "X"]) không kiểm khoảng bỏ. Cờ: chữ "và" bị bỏ."""
+    err, flag = [], []
+    if unit.get("bo_qua") is not None and unit["bo_qua"] not in BO_QUA_12:
+        err.append((None, f"bo_qua của đơn vị {unit['bo_qua']!r}"))
+    if not rows:
+        err.append((None, "đơn vị không có dòng nào"))
+    dong = unit.get("dong") if isinstance(unit.get("dong"), list) else []
+    for i, r in enumerate(dong):
+        doan = r.get("doan") if isinstance(r, dict) and isinstance(r.get("doan"), list) else []
+        if isinstance(r, dict) and not doan:
+            err.append((i, "doan rỗng"))
+        for x in doan:
+            for ref in ctx["refs"]:
+                if isinstance(x, str) and ref["cum"] in x:
+                    err.append((i, f"doan chứa chữ dẫn chiếu {ref['cum']!r}"))
+        if doan[:1] == ["là"]:
+            continue
+        other = set()
+        for j, o in enumerate(dong):
+            if j != i and isinstance(o, dict):
+                other |= set(syllables(" ".join(x for x in (o.get("doan") or []) + (o.get("liet_ke") or []) if isinstance(x, str))))
+                other |= set(syllables((o.get("chu_the") or {}).get("chu") if isinstance(o.get("chu_the"), dict) else ""))
+        for a, b in zip(doan, doan[1:]):
+            for part in (ctx["text"], ctx["chapeau"], ctx["heading"]):
+                ia = part.find(a) if isinstance(a, str) and part else -1
+                ib = part.find(b, ia + len(a)) if ia >= 0 and isinstance(b, str) else -1
+                if ia >= 0 and ib >= 0:
+                    gap = part[ia + len(a):ib].lower()
+                    if _GAP_LOSS.search(gap) and _gap_lost(gap, r, other):
+                        err.append((i, f"doan bỏ chữ {gap.strip()[:40]!r}"))
+                    elif _GAP_LOSS.search(gap) or _GAP_AND.search(gap):
+                        flag.append((i, f"doan bỏ chữ {gap.strip()[:40]!r}"))
+                    break
+    return err, flag
+
+
+# ---- Lượt rút gọn dòng dài (A58): sau 1.6A khuôn gọn, máy chọn dòng có lõi dài hay có danh sách, hỏi lại RIÊNG các dòng đó, rồi
+# nhận dòng thay thế chỉ khi qua cổng và giữ đủ chữ của lõi cũ. Đây là lượt sinh thứ hai được máy kiểm, không phải LLM kiểm LLM.
+RUT_GON_VERSION = "rut-gon-1"
+SYSTEM_RUT_GON = """Mỗi mục là MỘT dòng đã tách từ một đơn vị Bộ luật Lao động mà lõi (doan) quá dài. Viết lại dòng đó thành các dòng ngắn hơn, cùng khuôn dòng: doan, vai, phuong_thuc, cuc, quy_tac, nhom_hoac, chu_the, doi_so, liet_ke, chua_ro.
+
+Chỉ làm một trong ba cách:
+1. dieu_kien chứa danh sách trường hợp hay đối tượng: mỗi mục một dòng dieu_kien cùng quy_tac; chữ dùng chung (ví dụ "dựa trên") là đoạn đầu doan của mỗi dòng. Các mục nối bằng "hoặc" hay dấu phẩy thay thế nhau thì cùng một nhom_hoac (của dòng cũ nếu có, không thì mã mới); nối bằng "và" (phải đủ hết) thì không nhom_hoac.
+2. ket_luan chứa danh sách tân ngữ: giữ động từ trong doan, đưa các mục vào liet_ke.
+3. Hai thuộc tính của CÙNG một đối tượng ("hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng"): hai dòng dieu_kien cùng quy_tac.
+Cụm mô tả một đối tượng KHÁC (ví dụ "do cơ quan đại diện ngoại giao đề nghị thành lập" mô tả cơ sở giáo dục, không phải người lao động) giữ nguyên trong dòng. Không làm được thì trả lại đúng dòng cũ.
+
+doan chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha hoặc chu_don_vi đã cho; mọi chữ của doan cũ phải còn trong doan hoặc liet_ke của các dòng mới. Giữ vai, phuong_thuc, cuc, chu_the, quy_tac của dòng cũ.
+
+Đầu ra JSON thuần: {"thay": [{"id": "...", "dong": [...]}]}, mỗi id của đầu vào đúng một mục."""
+PROMPTS[RUT_GON_VERSION] = SYSTEM_RUT_GON
+
+
+def long_rows(unit):
+    """Chỉ số các dòng khuôn gọn cần rút gọn: lõi từ LONG_SYL âm tiết, hoặc lõi có từ hai dấu phẩy (danh sách chưa tách)."""
+    out = []
+    for i, r in enumerate(unit.get("dong") or []):
+        doan = r.get("doan") if isinstance(r, dict) and isinstance(r.get("doan"), list) else []
+        core = " ".join(x for x in doan if isinstance(x, str))
+        if len(syllables(core)) >= LONG_SYL or core.count(",") >= 2:
+            out.append(i)
+    return out
+
+
+def rut_gon_item(ctx, unit, i):
+    return {"id": f"{unit['unit_id']}#{i}", "tieu_de_dieu": ctx["heading"], "khoan_cha": ctx["chapeau"], "chu_don_vi": ctx["text"],
+            "dong": unit["dong"][i]}
+
+
+def apply_rut_gon(ctx, unit, replies, version="menh-de-12"):
+    """replies: {chỉ số dòng: danh sách dòng thay}. -> (unit mới, [(chỉ số, 'nhan' | lý do bỏ)]).
+    Nhận khi: tách thành từ hai dòng, mỗi dòng là object có doan; mọi âm tiết của doan cũ (trừ chữ nối "và/hoặc") còn trong doan hoặc
+    liet_ke mới; giữ vai, phuong_thuc, cuc, chu_the, quy_tac của dòng cũ; đơn vị sau khi thay KHÔNG thêm lỗi cổng. Trả một dòng: 'giu' nếu
+    y nguyên, còn đổi trường (ví dụ lén đặt nhom_hoac) thì bỏ. Không nhận thì giữ dòng cũ (không sửa gì)."""
+    base_err = len(check_unit(ctx, unit, version)[1])
+    dong, status = list(unit["dong"]), []
+    for i in sorted(replies, reverse=True):  # thay từ cuối lên để chỉ số các dòng trước không dịch
+        new = replies[i]
+        old = set(syllables(" ".join(x for x in dong[i].get("doan") or [] if isinstance(x, str))))
+        if not isinstance(new, list) or not new or not all(isinstance(r, dict) and isinstance(r.get("doan"), list) and r["doan"] for r in new):
+            status.append((i, "sai hình"))
+            continue
+        got = set(syllables(" ".join(x for r in new for x in (r.get("doan") or []) + (r.get("liet_ke") or []) if isinstance(x, str))))
+        lost = old - got - {"và", "hoặc"}  # chữ nối mất khi tách danh sách là đúng
+        if lost:
+            status.append((i, f"mất chữ {sorted(lost)[:6]}"))
+            continue
+        keep = ("vai", "phuong_thuc", "cuc", "chu_the", "quy_tac")
+        if any((r.get(k) or None) != (dong[i].get(k) or None) for r in new for k in keep):
+            status.append((i, "đổi vai/phuong_thuc/cuc/chu_the/quy_tac"))
+            continue
+        if len(new) == 1:  # không tách: chỉ là "giữ", mọi trường phải như cũ (cả nhom_hoac)
+            status.append((i, "giu" if new[0] == dong[i] else "giữ nhưng đổi trường"))
+            continue
+        trial = {**unit, "dong": dong[:i] + new + dong[i + 1:]}
+        if len(check_unit(ctx, trial, version)[1]) > base_err:
+            status.append((i, "thêm lỗi cổng: " + "; ".join(m[:60] for _j, m in check_unit(ctx, trial, version)[1])[:200]))
+            continue
+        dong = trial["dong"]
+        base_err = len(check_unit(ctx, trial, version)[1])
+        status.append((i, "nhan"))
+    return {**unit, "dong": dong}, sorted(status)
+
+
+def check_unit(ctx, out_unit, version=None):
+    """MỘT đường cho mọi chỗ nhập đầu ra 1.6A (nhap, ku_nhap, gemini, chấm bộ khó): -> (dòng khuôn cũ đã normalize, lỗi, cờ).
+    out_unit là mục {"unit_id", "dong", ...} của đầu ra. Bản khuôn cũ: y như trước (normalize + gate_unit)."""
+    version = version or PROMPT_VERSION
+    if version not in COMPACT:
+        rows = normalize(out_unit.get("dong") if isinstance(out_unit, dict) else out_unit)
+        err, flag = gate_unit(ctx, rows, version=version)
+        return rows, err, flag
+    unit = out_unit if isinstance(out_unit, dict) else {"dong": out_unit}
+    rows = normalize(expand_unit(ctx, unit))
+    e2, f2 = compact_checks(ctx, unit, rows)
+    err, flag = gate_unit(ctx, rows, version=version) if rows else ([], [])
+    return rows, err + e2, flag + f2
+
+
 def load_gold(path=GOLD):
     """{unit_id đầy đủ: dòng} của file đáp án (file ghi mã đơn vị rút gọn)."""
     data = json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
@@ -546,11 +846,12 @@ def load_ku_cache():
 
 def ku_lots(kus):
     """Lô cho các KU (thứ tự cho sẵn): mỗi lô các KU của MỘT Điều cùng mốc xuất hiện đầu (một đơn vị một lần trong lô, vì LLM thấy `uid`),
-    Điều dài thì cắt theo C.BATCH_SIZE như 1.6A cũ."""
+    Điều dài thì cắt theo lot_size() (khuôn cũ: C.BATCH_SIZE như 1.6A cũ; khuôn gọn: nhỏ hơn, A57)."""
     groups = {}
     for k in kus:
         groups.setdefault((C.dieu_of(k["unit"]), k["first"]), []).append(k)
-    return [g[i:i + C.BATCH_SIZE] for g in groups.values() for i in range(0, len(g), C.BATCH_SIZE)]
+    n = lot_size()
+    return [g[i:i + n] for g in groups.values() for i in range(0, len(g), n)]
 
 
 def ku_xuat(thu_muc, kus, run_model=None, effort=None, khoi=20):
@@ -609,7 +910,7 @@ def ku_nhap(thu_muc, catalog_kus):
             bad_lot.append((n, f"nhat_ky báo {log.get(n)!r}, cần {cfg['model']}"))
             continue
         try:
-            items = {it["unit_id"]: it["dong"] for it in json.loads(f.read_text(encoding="utf-8"))["units"]}
+            items = {it["unit_id"]: it for it in json.loads(f.read_text(encoding="utf-8"))["units"]}  # cả mục: khuôn gọn có trường đơn vị (A57)
         except (ValueError, KeyError, TypeError) as e:
             bad_lot.append((n, f"sai hình: {e}"))
             continue
@@ -617,9 +918,8 @@ def ku_nhap(thu_muc, catalog_kus):
         if set(items) != set(want):
             bad_lot.append((n, f"unit_id lệch: thiếu {sorted(set(want) - set(items))}, thừa {sorted(set(items) - set(want))}"))
             continue
-        for uid, rows in items.items():
-            rows = normalize(rows)
-            err, flag = gate_unit(want[uid]["ctx"], rows)
+        for uid, item in items.items():
+            rows, err, flag = check_unit(want[uid]["ctx"], item)
             new[want[uid]["ku"]] = (want[uid]["doc"], {"dong": rows, "loi": [[i, m] for i, m in err], "co": [[i, m] for i, m in flag]})
     by_doc = {}
     for ku, (doc, entry) in new.items():
@@ -652,7 +952,7 @@ def lots_for(pham_vi, ctxs):
     if pham_vi == "thi_diem":
         return pilot_batches(ctxs, load_gold())
     if pham_vi == "tat_ca":
-        return C.make_batches(list(ctxs.values()))
+        return C.make_batches(list(ctxs.values()), size=lot_size())
     raise SystemExit(f"phạm vi lạ: {pham_vi}")
 
 
@@ -705,7 +1005,7 @@ def nhap(thu_muc, out_path=None):
             continue
         try:
             data = json.loads(f.read_text(encoding="utf-8"))
-            items = {it["unit_id"]: it["dong"] for it in data["units"]}
+            items = {it["unit_id"]: it for it in data["units"]}  # cả mục: khuôn gọn có trường đơn vị (A57)
         except (ValueError, KeyError, TypeError) as e:
             bad_lot.append((n, f"sai hình: {e}"))
             continue
@@ -713,9 +1013,8 @@ def nhap(thu_muc, out_path=None):
         if set(items) != ids:
             bad_lot.append((n, f"unit_id lệch: thiếu {sorted(ids - set(items))}, thừa {sorted(set(items) - ids)}"))
             continue
-        for uid, rows in items.items():
-            rows = normalize(rows)
-            err, flag = gate_unit(ctxs[uid], rows)
+        for uid, item in items.items():
+            rows, err, flag = check_unit(ctxs[uid], item)
             out[uid] = {"dong": rows, "loi": [[i, m] for i, m in err], "co": [[i, m] for i, m in flag]}
     out_path = pathlib.Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -899,8 +1198,7 @@ def gemini(pham_vi="thi_diem", role="chinh", out_path=None, max_lots=None, goi=1
             bad.append((n, str(e)[:200]))
             continue
         for it in rec["output"]["units"]:
-            rows = normalize(it["dong"])
-            err, flag = gate_unit(ctxs[it["unit_id"]], rows)
+            rows, err, flag = check_unit(ctxs[it["unit_id"]], it)
             out[it["unit_id"]] = {"dong": rows, "loi": [[i, m] for i, m in err], "co": [[i, m] for i, m in flag]}
     out_path = pathlib.Path(out_path or (GEMINI_OUT if pham_vi == "thi_diem" else FULL_OUT / f"{corpus.BASE_DOC_ID}.gemini.json"))
     out_path.parent.mkdir(parents=True, exist_ok=True)

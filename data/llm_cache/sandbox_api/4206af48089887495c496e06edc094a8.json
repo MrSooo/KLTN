@@ -1,0 +1,558 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat#lan2",
+ "role": "api",
+ "requested_model": "dungcsnd113/gemini-flash-3.8",
+ "created": "2026-11-22T14:41:42+00:00",
+ "system": "Tách mỗi đơn vị của Bộ luật Lao động thành các DÒNG; máy dựng quy tắc từ các dòng này. Mỗi đơn vị có: tieu_de_dieu, khoan_cha (câu dẫn của cha, có thể rỗng), chu_don_vi (chữ cần tách), dan_chieu (dẫn chiếu đã giải, kèm mã đích). Chỉ tách chu_don_vi; tiêu đề và câu dẫn chỉ để lấy chủ thể, phương thức, vị ngữ bị lược.\n\n## Mỗi dòng là MỘT việc\nMột dòng là một điều kiện hoặc một kết luận kiểm được đúng/sai riêng. Hai hành vi, hai nghĩa vụ hay hai vi phạm, mỗi vế có động từ riêng, là hai dòng (kể cả khi chung tân ngữ: \"xây dựng và thực hiện X\" là hai dòng). Hai vế \"hoặc\" của điều kiện là hai dòng cùng nhom_hoac. Giữ chung khi là một khái niệm hay một yêu cầu tập thể (\"danh dự, nhân phẩm\"); không tách chỉ vì có nhiều danh từ.\n\n## Trường của dòng\n- doan: danh sách đoạn chép NGUYÊN VĂN, liền, đúng từng chữ, từ chu_don_vi, khoan_cha hoặc tieu_de_dieu; nối theo thứ tự là lõi: động từ (hoặc tính chất) + tân ngữ chính, càng ngắn càng tốt. Không đưa vào doan: chủ thể, chữ phương thức (phải, được, có quyền, cấm, không được), chữ phủ định, chữ dẫn chiếu, danh sách tân ngữ (để ở liet_ke). Thường một đoạn; nhiều đoạn khi lõi bị chữ khác chen giữa.\n- vai: ket_luan | dieu_kien.\n- phuong_thuc: duoc (được, có quyền, có thể) | phai (phải, có nghĩa vụ) | cam (cấm, không được làm) | khong_ap_dung (một quy định không áp cho một nhóm trường hợp) | khong (mô tả, điều kiện, định nghĩa).\n- cuc: khang_dinh | phu_dinh (chỉ phủ định lõi). \"Không phải + động từ\" (không có nghĩa vụ): duoc + phu_dinh. \"Không được + động từ\": cam; nếu bị động (không được người khác làm cho) thì khong + phu_dinh, doan giữ \"được ...\". \"Không phải là + danh từ\": khong + phu_dinh.\n- quy_tac: \"q1\", \"q2\"... gom dieu_kien và ket_luan của cùng một quy tắc. nhom_hoac: \"h1\"... cho các dieu_kien nối bằng \"hoặc\" trong một quy tắc.\n- chu_the: {\"chu\": chép nguyên văn cụm chủ thể, \"loai\": mã hoặc danh sách mã}; câu không có chủ thể thì BỎ trường này. Mã: W người lao động, E người sử dụng lao động, C hợp đồng, J công việc, G vùng, D ngày, A số tiền, ? chưa biết. Người chỉ chịu tác động là doi_so.\n- doi_so: [{\"loai\": mã}] các đối số khác.\n- liet_ke: danh sách (từ 3 mục) tân ngữ hay phạm vi của cùng một động từ, mỗi mục nguyên văn.\n- chua_ro: [{\"thanh_phan\", \"nguyen_nhan\": pham_vi_bo_ngu | tach_hay_giu_chung | phuong_thuc | chu_the | khac, \"cau_hoi\"}] khi không xác định được. Không đoán.\nTrường rỗng thì bỏ.\n\n## Trường của đơn vị (cạnh unit_id, dong)\n- cac_muc_con: chu_don_vi là câu dẫn vào các mục con (\"... sau đây:\", \"như sau:\") thì ghi va (phải đủ hết) | hoac (một mục là đủ) | danh_sach (mục độc lập). Máy tự thêm dòng cho chữ dẫn.\n- ngoai_le: danh sách mã dich (lấy từ dan_chieu) của dẫn chiếu là ngoại lệ (\"trừ ...\", kể cả các dẫn chiếu đứng sau một chữ \"trừ\" chung). Máy tự dựng dòng cho mọi dẫn chiếu.\n- bo_qua: khong_quy_pham (câu chính sách, không có hành vi kiểm được) | dan_chieu_mo | dan_chieu_ngoai (chỉ dẫn sang quy định khác). Khi đó dong có thể rỗng.\n\n## Luật\n1. Bổ ngữ (nơi chốn \"tại ...\", căn cứ \"theo ...\", cách thức phụ) và cụm giới hạn (\"đối với ...\", \"khi ...\", \"trong trường hợp ...\", \"trong khoảng ...\", \"thông qua ...\", \"dưới hình thức ...\") là một dòng dieu_kien riêng, cùng chu_the và quy_tac với dòng nó bổ nghĩa. Cụm làm nên chính hành vi (thời điểm, mức) giữ trong doan.\n2. Câu dẫn mà danh sách là TÂN NGỮ (\"có các nghĩa vụ sau đây\"): dong rỗng; mỗi mục con là ket_luan kế thừa chủ thể và phương thức. Câu dẫn mà danh sách là ĐIỀU KIỆN (\"trong trường hợp sau đây\"): dong là một ket_luan (nội dung câu dẫn); mỗi mục con là dieu_kien.\n3. Chủ thể hay phương thức bị lược thì lấy từ khoan_cha hoặc tieu_de_dieu; chu_the.chu chép đúng cụm ở đó.\n4. Định nghĩa \"X là Y\": dấu hiệu của Y là các dieu_kien; ket_luan có doan [\"là\", \"X\"].\n5. Câu nêu giá trị, mức là một ket_luan. \"Hoặc\" mà một vế có \"và\": tách nhiều quy_tac.\n6. Dẫn chiếu mở là điều kiện duy nhất (\"trường hợp khác theo quy định của Chính phủ\") vẫn là một dòng dieu_kien.\n\n## Ví dụ\n{\"unit_id\":\"BLLD_45-2019.D6.K2\",\"cac_muc_con\":\"danh_sach\",\"dong\":[]} (chu_don_vi \"Người sử dụng lao động có các nghĩa vụ sau đây:\")\nchu_don_vi \"Thiết lập cơ chế và thực hiện đối thoại, trao đổi với người lao động và tổ chức đại diện người lao động; thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc;\" → {\"unit_id\":\"BLLD_45-2019.D6.K2.b\",\"dong\":[{\"doan\":[\"Thiết lập cơ chế\",\"đối thoại, trao đổi\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"doan\":[\"thực hiện đối thoại, trao đổi\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q2\"},{\"doan\":[\"thực hiện quy chế dân chủ ở cơ sở\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q3\"},{\"doan\":[\"tại nơi làm việc\"],\"vai\":\"dieu_kien\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q3\"}]}\nchu_don_vi \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\" → {\"unit_id\":\"BLLD_45-2019.D53.K2\",\"cac_muc_con\":\"hoac\",\"dong\":[{\"doan\":[\"sử dụng lao động thuê lại\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\"},\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}; mục con \"Đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động trong khoảng thời gian nhất định;\" → {\"unit_id\":\"BLLD_45-2019.D53.K2.a\",\"dong\":[{\"doan\":[\"Đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động\"],\"vai\":\"dieu_kien\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\"},\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"doan\":[\"trong khoảng thời gian nhất định\"],\"vai\":\"dieu_kien\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\"},\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}\nTiêu đề \"Hành vi người sử dụng lao động không được làm khi giao kết, thực hiện hợp đồng lao động\", chu_don_vi \"Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động.\" → {\"unit_id\":\"BLLD_45-2019.D17.K1\",\"dong\":[{\"doan\":[\"Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}\nchu_don_vi \"Hợp đồng lao động phải được giao kết bằng văn bản và được làm thành 02 bản, ..., trừ trường hợp quy định tại khoản 2 Điều này.\" → {\"unit_id\":\"BLLD_45-2019.D14.K1\",\"ngoai_le\":[\"BLLD_45-2019.D14.K2\"],\"dong\":[{\"doan\":[\"được giao kết bằng văn bản\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"Hợp đồng lao động\",\"loai\":\"C\"},\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"doan\":[\"được làm thành 02 bản\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"Hợp đồng lao động\",\"loai\":\"C\"},\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q2\"}, ...]}\nĐịnh nghĩa \"Việc làm là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm.\" → {\"unit_id\":\"BLLD_45-2019.D9.K1\",\"dong\":[{\"doan\":[\"hoạt động lao động tạo ra thu nhập\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"doan\":[\"cấm\"],\"vai\":\"dieu_kien\",\"chu_the\":{\"chu\":\"pháp luật\",\"loai\":\"?\"},\"phuong_thuc\":\"khong\",\"cuc\":\"phu_dinh\",\"quy_tac\":\"q1\"},{\"doan\":[\"là\",\"Việc làm\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}\n\n## Đầu ra\nJSON thuần, không chữ giải thích: {\"units\": [{\"unit_id\": \"...\", \"dong\": [...]}]}, cộng cac_muc_con, ngoai_le, bo_qua khi có. Mỗi unit_id của lô đúng một mục.\n",
+ "user": "{\n \"don_vi\": [\n  {\n   \"unit_id\": \"ND_152-2020.D7\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"dan_chieu\": [\n    {\n     \"cum\": \"khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động\",\n     \"dich\": \"BLLD_45-2019.D154.K3\"\n    },\n    {\n     \"cum\": \"khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động\",\n     \"dich\": \"BLLD_45-2019.D154.K4\"\n    },\n    {\n     \"cum\": \"khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động\",\n     \"dich\": \"BLLD_45-2019.D154.K5\"\n    },\n    {\n     \"cum\": \"khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động\",\n     \"dich\": \"BLLD_45-2019.D154.K6\"\n    },\n    {\n     \"cum\": \"khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động\",\n     \"dich\": \"BLLD_45-2019.D154.K7\"\n    },\n    {\n     \"cum\": \"khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động\",\n     \"dich\": \"BLLD_45-2019.D154.K8\"\n    }\n   ]\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K1\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn từ 3 tỷ đồng trở lên.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K2\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Là Chủ tịch Hội đồng quản trị hoặc thành viên Hội đồng quản trị của công ty cổ phần có giá trị góp vốn từ 3 tỷ đồng trở lên.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K3\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Di chuyển trong nội bộ doanh nghiệp thuộc phạm vi 11 ngành dịch vụ trong biểu cam kết dịch vụ của Việt Nam với Tổ chức Thương mại thế giới, bao gồm: kinh doanh, thông tin, xây dựng, phân phối, giáo dục, môi trường, tài chính, y tế, du lịch, văn hóa giải trí và vận tải.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K4\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Vào Việt Nam để cung cấp dịch vụ tư vấn về chuyên môn và kỹ thuật hoặc thực hiện các nhiệm vụ khác phục vụ cho công tác nghiên cứu, xây dựng, thẩm định, theo dõi đánh giá, quản lý và thực hiện chương trình, dự án sử dụng nguồn hỗ trợ phát triển chính thức (ODA) theo quy định hay thỏa thuận trong các điều ước quốc tế về ODA đã ký kết giữa cơ quan có thẩm quyền của Việt Nam và nước ngoài.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K5\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Được Bộ Ngoại giao cấp giấy phép hoạt động thông tin, báo chí tại Việt Nam theo quy định của pháp luật.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K6\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Được cơ quan, tổ chức có thẩm quyền của nước ngoài cử sang Việt Nam giảng dạy, nghiên cứu tại trường quốc tế thuộc quản lý của cơ quan đại diện ngoại giao nước ngoài hoặc Liên hợp quốc; các cơ sở, tổ chức được thành lập theo các hiệp định mà Việt Nam đã ký kết, tham gia.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K7\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Tình nguyện viên quy định tại khoản 2 Điều 3 Nghị định này.\",\n   \"dan_chieu\": [\n    {\n     \"cum\": \"khoản 2 Điều 3 Nghị định này\",\n     \"dich\": \"ND_152-2020.D3.K2\"\n    }\n   ]\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K8\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Vào Việt Nam làm việc tại vị trí nhà quản lý, giám đốc điều hành, chuyên gia hoặc lao động kỹ thuật có thời gian làm việc dưới 30 ngày và không quá 03 lần trong 01 năm.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K9\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Vào Việt Nam thực hiện thỏa thuận quốc tế mà cơ quan, tổ chức ở Trung ương, cấp tỉnh ký kết theo quy định của pháp luật.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K10\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Học sinh, sinh viên đang học tập tại các trường, cơ sở đào tạo ở nước ngoài có thỏa thuận thực tập trong các cơ quan, tổ chức, doanh nghiệp tại Việt Nam; học viên thực tập, tập sự trên tàu biển Việt Nam.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K11\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Thân nhân thành viên cơ quan đại diện nước ngoài tại Việt Nam quy định tại điểm l khoản 1 Điều 2 Nghị định này.\",\n   \"dan_chieu\": [\n    {\n     \"cum\": \"điểm l khoản 1 Điều 2 Nghị định này\",\n     \"dich\": \"ND_152-2020.D2.K1.l\"\n    }\n   ]\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K12\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Có hộ chiếu công vụ vào làm việc cho cơ quan nhà nước, tổ chức chính trị, tổ chức chính trị - xã hội.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K13\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Người chịu trách nhiệm thành lập hiện diện thương mại.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_152-2020.D7.K14\",\n   \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n   \"chu_don_vi\": \"Được Bộ Giáo dục và Đào tạo xác nhận người lao động nước ngoài vào Việt Nam để giảng dạy, nghiên cứu.\",\n   \"dan_chieu\": []\n  }\n ]\n}\n",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "request_id": "req_54a7f0754b796d612e99e9f9",
+ "output": {
+  "units": [
+   {
+    "unit_id": "ND_152-2020.D7",
+    "cac_muc_con": "hoac",
+    "dong": [
+     {
+      "doan": [
+       "thuộc diện cấp giấy phép lao động"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "phu_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K1",
+    "dong": [
+     {
+      "doan": [
+       "Là chủ sở hữu",
+       "của công ty trách nhiệm hữu hạn"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "thành viên góp vốn của công ty trách nhiệm hữu hạn"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "có giá trị góp vốn từ 3 tỷ đồng trở lên"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K2",
+    "dong": [
+     {
+      "doan": [
+       "Là Chủ tịch Hội đồng quản trị",
+       "của công ty cổ phần"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "thành viên Hội đồng quản trị của công ty cổ phần"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "có giá trị góp vốn từ 3 tỷ đồng trở lên"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K3",
+    "dong": [
+     {
+      "doan": [
+       "Di chuyển trong nội bộ doanh nghiệp"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "thuộc phạm vi 11 ngành dịch vụ trong biểu cam kết dịch vụ của Việt Nam với Tổ chức Thương mại thế giới"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "liet_ke": [
+       "kinh doanh",
+       "thông tin",
+       "xây dựng",
+       "phân phối",
+       "giáo dục",
+       "môi trường",
+       "tài chính",
+       "y tế",
+       "du lịch",
+       "văn hóa giải trí",
+       "vận tải"
+      ],
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K4",
+    "dong": [
+     {
+      "doan": [
+       "Vào Việt Nam để cung cấp dịch vụ tư vấn về chuyên môn và kỹ thuật"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "thực hiện các nhiệm vụ khác phục vụ cho công tác nghiên cứu, xây dựng, thẩm định, theo dõi đánh giá, quản lý và thực hiện chương trình, dự án sử dụng nguồn hỗ trợ phát triển chính thức (ODA)"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "theo quy định hay thỏa thuận trong các điều ước quốc tế về ODA đã ký kết giữa cơ quan có thẩm quyền của Việt Nam và nước ngoài"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K5",
+    "dong": [
+     {
+      "doan": [
+       "cấp giấy phép hoạt động thông tin, báo chí tại Việt Nam"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Bộ Ngoại giao",
+       "loai": "?"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "theo quy định của pháp luật"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K6",
+    "dong": [
+     {
+      "doan": [
+       "cử sang Việt Nam giảng dạy, nghiên cứu"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "cơ quan, tổ chức có thẩm quyền của nước ngoài",
+       "loai": "?"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "tại trường quốc tế thuộc quản lý của cơ quan đại diện ngoại giao nước ngoài hoặc Liên hợp quốc"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "các cơ sở, tổ chức được thành lập theo các hiệp định mà Việt Nam đã ký kết, tham gia"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K7",
+    "dong": [
+     {
+      "doan": [
+       "Tình nguyện viên"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K8",
+    "dong": [
+     {
+      "doan": [
+       "Vào Việt Nam làm việc tại vị trí nhà quản lý"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "Vào Việt Nam làm việc tại vị trí giám đốc điều hành"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "Vào Việt Nam làm việc tại vị trí chuyên gia"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "Vào Việt Nam làm việc tại vị trí lao động kỹ thuật"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "có thời gian làm việc dưới 30 ngày"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "quá 03 lần trong 01 năm"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "phu_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K9",
+    "dong": [
+     {
+      "doan": [
+       "Vào Việt Nam thực hiện thỏa thuận quốc tế mà cơ quan, tổ chức ở Trung ương, cấp tỉnh ký kết"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "theo quy định của pháp luật"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K10",
+    "dong": [
+     {
+      "doan": [
+       "Học sinh, sinh viên đang học tập tại các trường, cơ sở đào tạo ở nước ngoài có thỏa thuận thực tập trong các cơ quan, tổ chức, doanh nghiệp tại Việt Nam"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "học viên thực tập, tập sự trên tàu biển Việt Nam"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "nhom_hoac": "h1",
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K11",
+    "dong": [
+     {
+      "doan": [
+       "Thân nhân thành viên cơ quan đại diện nước ngoài tại Việt Nam"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K12",
+    "dong": [
+     {
+      "doan": [
+       "Có hộ chiếu công vụ vào làm việc cho cơ quan nhà nước, tổ chức chính trị, tổ chức chính trị - xã hội"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K13",
+    "dong": [
+     {
+      "doan": [
+       "Người chịu trách nhiệm thành lập hiện diện thương mại"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_152-2020.D7.K14",
+    "dong": [
+     {
+      "doan": [
+       "xác nhận người lao động nước ngoài vào Việt Nam để giảng dạy, nghiên cứu"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Bộ Giáo dục và Đào tạo",
+       "loai": "?"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 5890,
+  "output_tokens": 4685,
+  "cost_vnd": 6.5
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 10974
+   }
+  ],
+  "usage_khac": {}
+ }
+}

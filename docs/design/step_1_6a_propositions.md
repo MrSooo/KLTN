@@ -42,6 +42,17 @@ Trường của dòng:
 | `gan_vao` | chỉ số dòng (từ 0, trong cùng đơn vị) mà một `con_tro` bổ nghĩa | số, hoặc rỗng nếu chặn cả quy tắc |
 | `ly_do_llm` | vì sao quyết như vậy, chỉ ở ca khó và mọi dòng `bo_qua` | `{ma, giai_thich}`; `ma`: `tach`, `giu_chung`, `gan_bo_ngu`, `chua_ro`, `ke_thua`, `cau_dan`, `dan_chieu_mo`, `dan_chieu_ngoai`, `khong_quy_pham` |
 
+### 3.1. Khuôn gọn của LLM, từ `menh-de-12` (A57; lệch A38 và bảng trên)
+Bảng trên vẫn là khuôn dữ liệu mà bước sau đọc. Từ `menh-de-12`, LLM KHÔNG viết khuôn đó: nó viết khuôn gọn, máy (`propositions.expand_unit`) dựng lại khuôn trên, rồi cổng chạy như cũ (`propositions.check_unit` là đường nhập duy nhất).
+
+| Ai ghi | Trường |
+|---|---|
+| LLM, mỗi dòng | `doan` (danh sách đoạn chép nguyên văn, liền; nối lại là lõi), `vai`, `phuong_thuc`, `cuc`, `quy_tac`, `nhom_hoac`, `chu_the{chu, loai}` (bỏ khi không có chủ thể), `doi_so`, `liet_ke`, `chua_ro` |
+| LLM, mỗi đơn vị (tuỳ chọn) | `cac_muc_con`; `ngoai_le` (đích dẫn chiếu là ngoại lệ); `bo_qua` (`khong_quy_pham`, `dan_chieu_mo`, `dan_chieu_ngoai`, khi đơn vị không có dòng) |
+| Máy | `loai`; `menh_de` (nối `doan`); `trich` (`doan`, cộng chữ chủ thể khi chủ thể lấy từ câu dẫn hay tiêu đề); `chu_the.nguon` (chỗ chữ chủ thể xuất hiện); một dòng `con_tro` cho mỗi dẫn chiếu (vai `ngoai_le` theo trường `ngoai_le`, còn lại `dieu_kien`; `gan_vao` rỗng); dòng `bo_qua cau_dan` từ `cac_muc_con`; `ly_do_llm` của dòng máy dựng; `bo_ngu` rỗng |
+
+Kiểm thêm của khuôn gọn (`compact_checks`): `doan` rỗng, `doan` chứa chữ dẫn chiếu, `bo_qua` ngoài tập đóng, đơn vị không có dòng, giữa hai đoạn liên tiếp cùng nguồn có chữ "không / chưa / hoặc" bị bỏ (lỗi); chữ "và" bị bỏ (cờ). Khoá lạ ở dòng, ở đơn vị hay trong `chu_the` là lỗi; máy không sửa giá trị LLM ghi.
+
 ## 4. Luật tách (nằm trong lời nhắc)
 1. **Tách** khi từng phần kiểm được đúng/sai độc lập và vi phạm từng phần có ý nghĩa pháp lý riêng. **Giữ chung** khi các phần tạo thành một yêu cầu tập thể. Không tách chỉ vì có nhiều danh từ. Mỗi quyết định tách hoặc giữ chung ở ca khó có lý do (`ly_do_llm`).
 2. `menh_de` chỉ giữ lõi, càng ngắn càng tốt; danh sách từ 3 mục đưa vào `liet_ke`.
@@ -59,7 +70,7 @@ Cổng chặn (sai thì hỏi lại lô đó một lần, vẫn sai thì loại 
 
 Cờ cảnh báo (không chặn): `menh_de` còn chữ phương thức; `menh_de` dài từ 15 âm tiết (`LONG_SYL`).
 
-Máy không kiểm được: nghĩa của `menh_de` có đúng không; bẫy "không được"; bổ ngữ có bị rải sai không; quyết định tách hay giữ chung. Cổng âm tiết yếu hơn cổng chuỗi con: LLM vẫn có thể đảo thứ tự chữ.
+Máy không kiểm được: nghĩa của `menh_de` có đúng không; bẫy "không được"; bổ ngữ có bị rải sai không; quyết định tách hay giữ chung. Cổng âm tiết yếu hơn cổng chuỗi con: LLM vẫn có thể đảo thứ tự chữ. Từ `menh-de-12` (mục 3.1), cổng âm tiết và kiểm "chủ thể lấy từ câu dẫn/tiêu đề mà `trich` không có mẩu" luôn đúng vì máy dựng `trich`; thay bằng: mỗi `doan` là chuỗi con liền và kiểm chữ bị bỏ giữa hai đoạn.
 
 ## 6. Cách chạy
 Phần LLM chạy bằng phiên Claude Code trong thư mục làm việc ngoài repo (xem `docs/operations/llm_sandbox.md`), không gọi API. Đường chạy đã chốt (A39): Sonnet 5.5, effort `high`, mỗi subagent một khối tối đa 20 lô, song song tối đa 4, lời nhắc `menh-de-3`. Luật dừng: sau 3 khối đầu (60 lô), nếu có câu dẫn lọt thành `menh_de` hoặc lỗi cổng còn lại vượt 5% số dòng thì dừng và báo.

@@ -306,4 +306,127 @@ def test_menh_de_9_bo_ngu_thanh_dieu_kien():
     assert P.gate_unit(ctx, P.normalize([base, qual]), version="menh-de-9")[0] == []
 
 
+def _example_units():
+    """Các đơn vị JSON trong phần Ví dụ của menh-de-12 (dấu ", ..." là chỗ lược dòng)."""
+    import re
+    ex = P.PROMPTS["menh-de-12"].split("## Ví dụ\n")[1].split("\n\n## Đầu ra")[0]
+    out = []
+    for m in re.finditer(r'\{"unit_id":"[^"]+"', ex):
+        depth = 0
+        for j, ch in enumerate(ex[m.start():], m.start()):
+            depth += (ch == "{") - (ch == "}")
+            if depth == 0:
+                break
+        out.append(json.loads(ex[m.start():j + 1].replace(", ...]", "]")))
+    return out
+
+
+def test_khuon_gon_vi_du_loi_nhac_qua_cong():
+    """A57: mọi ví dụ của menh-de-12 bung ra khuôn cũ và qua cổng trên chữ luật thật (như A47 với ví dụ của bản cũ)."""
+    units = _example_units()
+    assert len(units) == 7
+    for u in units:
+        rows, err, _flag = P.check_unit(ctxs()[u["unit_id"]], u, version="menh-de-12")
+        assert err == [], (u["unit_id"], err)
+
+
+def test_khuon_gon_may_dung_truong_suy_ra():
+    """A57: máy dựng menh_de, trich, nguon, dòng con_tro (vai ngoai_le theo trường ngoai_le của LLM), dòng câu dẫn."""
+    ctx = ctxs()[B + "D14.K1"]
+    u = {"unit_id": B + "D14.K1", "ngoai_le": [B + "D14.K2"],
+         "dong": [{"doan": ["được giao kết bằng văn bản"], "vai": "ket_luan", "chu_the": {"chu": "Hợp đồng lao động", "loai": "C"},
+                   "phuong_thuc": "phai", "cuc": "khang_dinh", "quy_tac": "q1"}]}
+    rows, err, _ = P.check_unit(ctx, u, version="menh-de-12")
+    assert err == [] and rows[0]["menh_de"] == "được giao kết bằng văn bản" and rows[0]["chu_the"]["nguon"] == "chinh"
+    assert [(r["loai"], r["vai"], r["targets"]) for r in rows[1:]] == [("con_tro", "ngoai_le", [B + "D14.K2"])]
+    u.pop("ngoai_le")
+    rows, err, _ = P.check_unit(ctx, u, version="menh-de-12")
+    assert rows[1]["vai"] == "dieu_kien" and err == []  # không khai ngoại lệ: dẫn chiếu thường, không thành cạnh chặn
+    kid = ctxs()[B + "D6.K2.a"]  # chủ thể ở câu dẫn: nguon cau_dan, trich có mẩu từ câu dẫn
+    r = {"doan": ["tôn trọng danh dự, nhân phẩm của người lao động"], "vai": "ket_luan", "chu_the": {"chu": "Người sử dụng lao động", "loai": "E"},
+         "phuong_thuc": "phai", "cuc": "khang_dinh", "quy_tac": "q1"}
+    rows, err, _ = P.check_unit(kid, {"unit_id": B + "D6.K2.a", "dong": [r]}, version="menh-de-12")
+    assert err == [] and rows[0]["chu_the"]["nguon"] == "cau_dan" and "Người sử dụng lao động" in rows[0]["trich"]
+    lead = ctxs()[B + "D53.K2"]
+    rows, err, _ = P.check_unit(lead, {"unit_id": B + "D53.K2", "cac_muc_con": "hoac", "dong": []}, version="menh-de-12")
+    assert err == [] and [r2["loai"] for r2 in rows] == ["bo_qua"] and rows[0]["cac_muc_con"] == "hoac" and rows[0]["trich"][0] in lead["text"]
+    assert any("sai khuôn" in m for _i, m in P.check_unit(kid, {"unit_id": B + "D6.K2.a", "dong": [{**r, "chu_the": {**r["chu_the"], "nguon": "chinh"}}]},
+                                                       version="menh-de-12")[1])  # nguon là việc của máy: LLM ghi thì là lỗi
+
+
+def test_khuon_gon_cong_khong_noi():
+    """A57: máy không sửa giá trị LLM ghi; khoá lạ, đoạn không nguyên văn, đoạn chứa chữ dẫn chiếu, ngoại lệ ngoài dan_chieu đều là lỗi;
+    đoạn bỏ chữ "không" ở giữa là cờ."""
+    ctx = ctxs()[B + "D14.K1"]
+    base = {"doan": ["được giao kết bằng văn bản"], "vai": "ket_luan", "phuong_thuc": "phai", "cuc": "khang_dinh", "quy_tac": "q1"}
+    def errs(unit):
+        return [m for _i, m in P.check_unit(ctx, {"unit_id": B + "D14.K1", **unit}, version="menh-de-12")[1]]
+    assert any("thừa" in m for m in errs({"dong": [{**base, "trich": ["x"]}]}))  # trường của khuôn cũ trong khuôn gọn
+    assert any("thừa" in m for m in errs({"dong": [base], "ghi_chu": "x"}))  # khoá đơn vị lạ
+    assert any("không nguyên văn" in m for m in errs({"dong": [{**base, "doan": ["được ký bằng văn bản"]}]}))
+    assert any("dẫn chiếu" in m for m in errs({"dong": [{**base, "doan": ["trừ trường hợp quy định tại khoản 2 Điều này"]}]}))
+    assert any("target" in m for m in errs({"dong": [base], "ngoai_le": [B + "D99.K1"]}))
+    assert any("chu_the.chu" in m for m in errs({"dong": [{**base, "chu_the": {"chu": "", "loai": "C"}}]}))  # chủ thể rỗng không được máy vá
+    assert any("doan rỗng" in m for m in errs({"dong": [{**base, "doan": []}]}))
+    assert any("bo_qua" in m for m in errs({"dong": [], "bo_qua": "cau_dan"}))
+    neg = ctxs()[B + "D41.K1"]
+    words = neg["text"].split(" không được làm việc")[0].split()
+    assert " không được làm việc" in neg["text"] and len(words) >= 5 and neg["text"].count(" ".join(words[-5:])) == 1
+    a, b = " ".join(words[-5:]), "được làm việc"  # 5 chữ cuối: chỉ có một chỗ trong chữ luật  # "... người lao động" + "được làm việc": bỏ mất chữ "không" ở giữa
+    err = P.check_unit(neg, {"unit_id": B + "D41.K1", "dong": [{**base, "doan": [a, b]}]}, version="menh-de-12")[1]
+    assert any("doan bỏ chữ" in m for _i, m in err)  # bỏ "không" mà cuc khẳng định: lỗi
+    err = P.check_unit(neg, {"unit_id": B + "D41.K1", "dong": [{**base, "doan": [a, b], "cuc": "phu_dinh"}]}, version="menh-de-12")[1]
+    assert not any("bỏ chữ" in m for _i, m in err)  # bỏ "không" và ghi phu_dinh: đúng lời nhắc
+    d153 = ctxs()[B + "D153.K2"]
+    if "buộc xuất cảnh hoặc trục xuất" in d153["text"]:  # vế "hoặc" bị bỏ đã thành dòng riêng: không phải mất
+        one = {**base, "doan": ["bị", "trục xuất"], "phuong_thuc": "khong"}
+        two = {**base, "doan": ["bị", "buộc xuất cảnh"], "phuong_thuc": "khong"}
+        assert not any("bỏ chữ" in m for _i, m in P.check_unit(d153, {"unit_id": B + "D153.K2", "dong": [one, two]}, version="menh-de-12")[1])
+        assert any("bỏ chữ" in m for _i, m in P.check_unit(d153, {"unit_id": B + "D153.K2", "dong": [one]}, version="menh-de-12")[1])
+    six = ctxs()[B + "D6.K2.b"]  # bỏ "và" giữa hai động từ chung tân ngữ: chỉ là cờ
+    r = {**base, "doan": ["Thiết lập cơ chế", "đối thoại, trao đổi"]}
+    _rows, err, flag = P.check_unit(six, {"unit_id": B + "D6.K2.b", "dong": [r]}, version="menh-de-12")
+    assert not any("bỏ chữ" in m for _i, m in err) and any("bỏ chữ" in m for _i, m in flag)
+
+
+def test_rut_gon_chi_nhan_khi_du_chu_va_qua_cong():
+    """A58: dòng thay được nhận khi qua cổng và giữ đủ chữ của lõi cũ; mất chữ hay thêm lỗi cổng thì giữ dòng cũ."""
+    ctx = ctxs()[B + "D36.K1.b"] if B + "D36.K1.b" in ctxs() else None
+    assert ctx and "từ 12 tháng đến 36 tháng" in ctx["text"]
+    i0 = ctx["text"].index("hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng")
+    long_ = "hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng"
+    row = {"doan": [long_], "vai": "dieu_kien", "phuong_thuc": "khong", "cuc": "khang_dinh", "quy_tac": "q1"}
+    unit = {"unit_id": B + "D36.K1.b", "dong": [row]}
+    assert i0 >= 0 and P.long_rows(unit) == [0]
+    good = [{**row, "doan": ["hợp đồng lao động xác định thời hạn"]}, {**row, "doan": ["có thời hạn từ 12 tháng đến 36 tháng"]}]
+    new, st = P.apply_rut_gon(ctx, unit, {0: good})
+    assert st == [(0, "nhan")] and [r["doan"] for r in new["dong"]] == [g["doan"] for g in good]
+    lost = [{**row, "doan": ["hợp đồng lao động xác định thời hạn"]}]  # bỏ mất khoảng thời hạn
+    new, st = P.apply_rut_gon(ctx, unit, {0: lost})
+    assert st[0][1].startswith("mất chữ") and new["dong"] == [row]
+    bad = [{**row, "doan": ["hợp đồng lao động có thời hạn 12 tháng"]}, {**row, "doan": ["xác định thời hạn", "từ 12 tháng đến 36 tháng"]}]
+    new, st = P.apply_rut_gon(ctx, unit, {0: bad})  # đủ chữ nhưng đoạn đầu không nguyên văn: thêm lỗi cổng
+    assert st[0][1].startswith("thêm lỗi cổng") and new["dong"] == [row]
+    assert P.apply_rut_gon(ctx, unit, {0: [dict(row)]})[1] == [(0, "giu")]
+    assert P.apply_rut_gon(ctx, unit, {0: [{**row, "nhom_hoac": "h1"}]})[1] == [(0, "giữ nhưng đổi trường")]  # lén đổi nhóm "hoặc"
+    assert P.apply_rut_gon(ctx, unit, {0: [{**g, "vai": "ket_luan"} for g in good]})[1][0][1].startswith("đổi vai")
+
+
+def test_co_lo_theo_phien_ban():
+    """A57: khuôn gọn chia lô nhỏ (model flash suy nghĩ ngầm nhiều, lô dài cụt max_tokens); khuôn cũ giữ cỡ cũ để hộp cát cũ khớp."""
+    assert P.lot_size("menh-de-9") == P.C.BATCH_SIZE == 20 and P.lot_size("menh-de-12") == P.LOT_SIZE_COMPACT == 8
+    lots = P.C.make_batches(list(ctxs().values()), size=P.lot_size("menh-de-12"))
+    assert max(map(len, lots)) <= 8 and sum(map(len, lots)) == len(ctxs())
+
+
+def test_check_unit_ban_cu_nhu_truoc():
+    """A57: phiên bản khuôn cũ đi qua check_unit cho đúng normalize + gate_unit như trước (replay cache cũ không đổi)."""
+    g = gold()
+    for uid in list(g)[:30]:
+        rows = g[uid]
+        a = P.check_unit(ctxs()[uid], {"unit_id": uid, "dong": copy.deepcopy(rows)}, version="menh-de-9")
+        b = P.gate_unit(ctxs()[uid], P.normalize(copy.deepcopy(rows)), version="menh-de-9")
+        assert a[1] == b[0] and a[2] == b[1]
+
+
 _harness.run(globals())

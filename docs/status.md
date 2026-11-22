@@ -1,6 +1,6 @@
 # Trạng thái dự án
 
-Cập nhật lần cuối: 21/11/2026. Nhánh làm việc: `v3_refactor`.
+Cập nhật lần cuối: 22/11/2026. Nhánh làm việc: `v3_refactor`.
 
 ## 1. Tóm tắt
 Giai đoạn 1 (dựng KB gốc từ BLLĐ): các bước 1.1 đến 1.5 đã xong; 1.6B đến 1.9 đã có mã và chạy thông trên tập con `lldnn` (A41: `python -I src/run_all.py --tap-con lldnn --llm replay`); cả kho còn chờ chạy 1.6A đủ 204 lô. Giai đoạn 2 (cập nhật khi có văn bản mới): bước 2.2 đến 2.4 đã có mã cho kho hiện tại; 2.5 đến 2.7 có mã và chạy thông trên tập con với tri thức BLLĐ (A42), tri thức của nghị định chờ phiên LLM; 2.1 chưa làm. Thiết kế từng bước: `docs/design/pipeline_design.md`. Kế hoạch tiếp theo: `docs/roadmap.md`.
@@ -57,7 +57,7 @@ Kiểm ngày 15/11/2026 (sau khi chuẩn hoá tên và xoá thư mục lưu tr�
 16. **Lời nhắc 1.6A `menh-de-3` thiếu tên khoá `bo_ngu`** (`original_text`, `scope`): đang vá bằng bí danh khoá trong `propositions.normalize` (A41); thêm vào chữ lời nhắc khi chạy cả kho bằng API.
 17. **Tập ảnh hưởng A42 không thấy phụ thuộc toàn cục của `BLOCK_ALIAS` (A43)** (A52): khi một mốc sau có quy tắc kết luận dạng tương đương của một đầu chặn cũ, quy tắc bị chặn ở văn bản khác không vào A(e); 2.7 trượt ở ckey4. Chưa sửa.
 18. **`update.py xuat-1-6a` cần sổ vị từ của 1.6B gốc** (A51): không chạy riêng 1.6A cập nhật được.
-19. **Sửa lỗi 1.6A theo A54, việc kế tiếp:** đo nhiễu đã xong (A54: một lần chạy không đủ, mỗi phiên bản chạy ba lần), lời nhắc `menh-de-9` (A55, bổ ngữ thành dòng điều kiện) qua bộ khó 3 lần (lỗi cổng 13-15% xuống 2-5%, mệnh đề dài 45-57% xuống 41-44%), nhận tạm; việc kế tiếp: chạy lại 1.6A cộng 1.6B trên tập con bằng `menh-de-9` để đo tái dùng vị từ (tiêu chí chính), theo dõi lô dài cụt `max_tokens`; rồi A3; B1 (tìm ứng viên 1.6B) sau A2. Thư mục làm việc và log bộ khó ở `data/sandbox_runs/bo_kho/`.
+19. **Sửa lỗi 1.6A (A54-A57), việc kế tiếp:** A56 (`menh-de-10` cắt chữ, `-11` thêm luật "mỗi dòng một việc") không giảm gộp ý; A57 refactor khuôn đầu ra (`menh-de-12`: LLM ghi khoảng 10 trường, máy dựng phần còn lại qua `propositions.check_unit`; lô tối đa 8 đơn vị). Kết quả Gemini (`gflash`) trên bộ khó, hai lần mỗi bản: hết lỗi do LLM tự ghi `trich`/`nguon`, bắt được 4-9 dòng mỗi lần bỏ mất "không" hay một vế "hoặc" (nay là lỗi cổng), nhưng mệnh đề dài và gộp liên từ KHÔNG giảm rõ. Chưa quyết bước tiếp (lượt hỏi lại dòng có liên từ; máy cắt chữ dẫn chiếu khỏi `doan`); chưa chạy tập con. Model: Gemini flash qua ckey rẻ hơn DeepSeek khoảng 10 lần, ngang chất lượng trên `-9`. Thư mục làm việc và log ở `data/sandbox_runs/bo_kho/`. A58 (lượt rút gọn dòng dài) chỉ tách được một phần danh sách. **A59 (22/11): đổi cách tiếp cận**, 1.6A-v2: máy cắt câu, lượt 1 LLM chỉ gạch ranh giới mệnh đề (có đoạn dùng chung), lượt 2 gán vai/cây AND/OR, máy dựng lại khuôn cũ. Thử khả thi lượt 1 trên 6 câu khó: máy kiểm qua 6/6, gộp ý giảm rõ, nhưng 2/5 câu mới sai ranh giới (mệnh đề "để"; động từ trong danh sách căn cứ), chưa đạt ngưỡng đặt trước. Việc kế: đặc tả lượt 1 (có luật cho hai dạng lỗi này), rồi gold 60 câu để user duyệt.
 
 ## 5. Việc treo (không chặn)
 - Văn bản ngoài kho: NĐ 38/2022, NĐ 35/2022, TT 54/2015, BLLĐ 2012, NĐ 189/2025, Luật 64/2025.

@@ -87,6 +87,29 @@ def test_ckey_strips_a_whole_fence_only():
         assert rec["output"] == {"a": 1} and rec["boc_rao"] is True
 
 
+def test_ckey_records_block_summary_without_hidden_content():
+    """Chẩn đoán token ẩn (22/11): ghi loại, số ký tự từng khối và khoá lạ của usage; không chép chữ của khối thinking; lượt cụt báo tóm tắt trong lỗi."""
+    r = reply('{"a": 1}')
+    r["content"].insert(0, {"type": "thinking", "thinking": "suy nghĩ ngầm", "signature": "xyz123"})
+    r["usage"]["reasoning_tokens"] = 40
+    with tempfile.TemporaryDirectory() as t, env_key():
+        rec = client(t, [r], []).ask("t", "v", "s", "u", None, role="api")
+        assert rec["khoi_phan_hoi"] == {"khoi": [{"type": "thinking", "ky_tu": len("suy nghĩ ngầm")}, {"type": "text", "ky_tu": len('{"a": 1}')}],
+                                        "usage_khac": {"reasoning_tokens": 40}}
+        assert "suy nghĩ ngầm" not in json.dumps(rec, ensure_ascii=False) and rec["output"] == {"a": 1}
+    cut = reply('{"a": ')
+    cut["stop_reason"] = "max_tokens"
+    cut["content"].insert(0, {"type": "thinking", "thinking": "x" * 30})
+    with tempfile.TemporaryDirectory() as t, env_key():
+        try:
+            client(t, [cut], []).ask("t", "v", "s", "u", None, role="api")
+        except llm.LLMError as e:
+            assert "max_tokens" in str(e) and "'thinking', 'ky_tu': 30" in str(e) and "token ra 5" in str(e)
+            assert not (Path(t) / "cache" / "t").exists()
+        else:
+            raise AssertionError("cụt max_tokens phải là lỗi")
+
+
 def test_ckey_retries_503_then_succeeds_and_fails_fast_on_other_errors():
     with tempfile.TemporaryDirectory() as t, env_key():
         sent = []

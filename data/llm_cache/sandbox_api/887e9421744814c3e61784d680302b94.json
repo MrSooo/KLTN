@@ -1,0 +1,212 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat#lan3",
+ "role": "api",
+ "requested_model": "dungcsnd113/gemini-flash-3.8",
+ "created": "2026-11-22T15:23:34+00:00",
+ "system": "Tách mỗi đơn vị của Bộ luật Lao động thành các DÒNG; máy dựng quy tắc từ các dòng này. Mỗi đơn vị có: tieu_de_dieu, khoan_cha (câu dẫn của cha, có thể rỗng), chu_don_vi (chữ cần tách), dan_chieu (dẫn chiếu đã giải, kèm mã đích). Chỉ tách chu_don_vi; tiêu đề và câu dẫn chỉ để lấy chủ thể, phương thức, vị ngữ bị lược.\n\n## Mỗi dòng là MỘT việc\nMột dòng là một điều kiện hoặc một kết luận kiểm được đúng/sai riêng. Hai hành vi, hai nghĩa vụ hay hai vi phạm, mỗi vế có động từ riêng, là hai dòng (kể cả khi chung tân ngữ: \"xây dựng và thực hiện X\" là hai dòng). Hai vế \"hoặc\" của điều kiện là hai dòng cùng nhom_hoac. Giữ chung khi là một khái niệm hay một yêu cầu tập thể (\"danh dự, nhân phẩm\"); không tách chỉ vì có nhiều danh từ.\n\n## Trường của dòng\n- doan: danh sách đoạn chép NGUYÊN VĂN, liền, đúng từng chữ, từ chu_don_vi, khoan_cha hoặc tieu_de_dieu; nối theo thứ tự là lõi: động từ (hoặc tính chất) + tân ngữ chính, càng ngắn càng tốt. Không đưa vào doan: chủ thể, chữ phương thức (phải, được, có quyền, cấm, không được), chữ phủ định, chữ dẫn chiếu, danh sách tân ngữ (để ở liet_ke). Thường một đoạn; nhiều đoạn khi lõi bị chữ khác chen giữa.\n- vai: ket_luan | dieu_kien.\n- phuong_thuc: duoc (được, có quyền, có thể) | phai (phải, có nghĩa vụ) | cam (cấm, không được làm) | khong_ap_dung (một quy định không áp cho một nhóm trường hợp) | khong (mô tả, điều kiện, định nghĩa).\n- cuc: khang_dinh | phu_dinh (chỉ phủ định lõi). \"Không phải + động từ\" (không có nghĩa vụ): duoc + phu_dinh. \"Không được + động từ\": cam; nếu bị động (không được người khác làm cho) thì khong + phu_dinh, doan giữ \"được ...\". \"Không phải là + danh từ\": khong + phu_dinh.\n- quy_tac: \"q1\", \"q2\"... gom dieu_kien và ket_luan của cùng một quy tắc. nhom_hoac: \"h1\"... cho các dieu_kien nối bằng \"hoặc\" trong một quy tắc.\n- chu_the: {\"chu\": chép nguyên văn cụm chủ thể, \"loai\": mã hoặc danh sách mã}; câu không có chủ thể thì BỎ trường này. Mã: W người lao động, E người sử dụng lao động, C hợp đồng, J công việc, G vùng, D ngày, A số tiền, ? chưa biết. Người chỉ chịu tác động là doi_so.\n- doi_so: [{\"loai\": mã}] các đối số khác.\n- liet_ke: danh sách (từ 3 mục) tân ngữ hay phạm vi của cùng một động từ, mỗi mục nguyên văn.\n- chua_ro: [{\"thanh_phan\", \"nguyen_nhan\": pham_vi_bo_ngu | tach_hay_giu_chung | phuong_thuc | chu_the | khac, \"cau_hoi\"}] khi không xác định được. Không đoán.\nTrường rỗng thì bỏ.\n\n## Trường của đơn vị (cạnh unit_id, dong)\n- cac_muc_con: chu_don_vi là câu dẫn vào các mục con (\"... sau đây:\", \"như sau:\") thì ghi va (phải đủ hết) | hoac (một mục là đủ) | danh_sach (mục độc lập). Máy tự thêm dòng cho chữ dẫn.\n- ngoai_le: danh sách mã dich (lấy từ dan_chieu) của dẫn chiếu là ngoại lệ (\"trừ ...\", kể cả các dẫn chiếu đứng sau một chữ \"trừ\" chung). Máy tự dựng dòng cho mọi dẫn chiếu.\n- bo_qua: khong_quy_pham (câu chính sách, không có hành vi kiểm được) | dan_chieu_mo | dan_chieu_ngoai (chỉ dẫn sang quy định khác). Khi đó dong có thể rỗng.\n\n## Luật\n1. Bổ ngữ (nơi chốn \"tại ...\", căn cứ \"theo ...\", cách thức phụ) và cụm giới hạn (\"đối với ...\", \"khi ...\", \"trong trường hợp ...\", \"trong khoảng ...\", \"thông qua ...\", \"dưới hình thức ...\") là một dòng dieu_kien riêng, cùng chu_the và quy_tac với dòng nó bổ nghĩa. Cụm làm nên chính hành vi (thời điểm, mức) giữ trong doan.\n2. Câu dẫn mà danh sách là TÂN NGỮ (\"có các nghĩa vụ sau đây\"): dong rỗng; mỗi mục con là ket_luan kế thừa chủ thể và phương thức. Câu dẫn mà danh sách là ĐIỀU KIỆN (\"trong trường hợp sau đây\"): dong là một ket_luan (nội dung câu dẫn); mỗi mục con là dieu_kien.\n3. Chủ thể hay phương thức bị lược thì lấy từ khoan_cha hoặc tieu_de_dieu; chu_the.chu chép đúng cụm ở đó.\n4. Định nghĩa \"X là Y\": dấu hiệu của Y là các dieu_kien; ket_luan có doan [\"là\", \"X\"].\n5. Câu nêu giá trị, mức là một ket_luan. \"Hoặc\" mà một vế có \"và\": tách nhiều quy_tac.\n6. Dẫn chiếu mở là điều kiện duy nhất (\"trường hợp khác theo quy định của Chính phủ\") vẫn là một dòng dieu_kien.\n\n## Ví dụ\n{\"unit_id\":\"BLLD_45-2019.D6.K2\",\"cac_muc_con\":\"danh_sach\",\"dong\":[]} (chu_don_vi \"Người sử dụng lao động có các nghĩa vụ sau đây:\")\nchu_don_vi \"Thiết lập cơ chế và thực hiện đối thoại, trao đổi với người lao động và tổ chức đại diện người lao động; thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc;\" → {\"unit_id\":\"BLLD_45-2019.D6.K2.b\",\"dong\":[{\"doan\":[\"Thiết lập cơ chế\",\"đối thoại, trao đổi\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"doan\":[\"thực hiện đối thoại, trao đổi\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q2\"},{\"doan\":[\"thực hiện quy chế dân chủ ở cơ sở\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q3\"},{\"doan\":[\"tại nơi làm việc\"],\"vai\":\"dieu_kien\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q3\"}]}\nchu_don_vi \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\" → {\"unit_id\":\"BLLD_45-2019.D53.K2\",\"cac_muc_con\":\"hoac\",\"dong\":[{\"doan\":[\"sử dụng lao động thuê lại\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\"},\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}; mục con \"Đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động trong khoảng thời gian nhất định;\" → {\"unit_id\":\"BLLD_45-2019.D53.K2.a\",\"dong\":[{\"doan\":[\"Đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động\"],\"vai\":\"dieu_kien\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\"},\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"doan\":[\"trong khoảng thời gian nhất định\"],\"vai\":\"dieu_kien\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\"},\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}\nTiêu đề \"Hành vi người sử dụng lao động không được làm khi giao kết, thực hiện hợp đồng lao động\", chu_don_vi \"Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động.\" → {\"unit_id\":\"BLLD_45-2019.D17.K1\",\"dong\":[{\"doan\":[\"Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}\nchu_don_vi \"Hợp đồng lao động phải được giao kết bằng văn bản và được làm thành 02 bản, ..., trừ trường hợp quy định tại khoản 2 Điều này.\" → {\"unit_id\":\"BLLD_45-2019.D14.K1\",\"ngoai_le\":[\"BLLD_45-2019.D14.K2\"],\"dong\":[{\"doan\":[\"được giao kết bằng văn bản\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"Hợp đồng lao động\",\"loai\":\"C\"},\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"doan\":[\"được làm thành 02 bản\"],\"vai\":\"ket_luan\",\"chu_the\":{\"chu\":\"Hợp đồng lao động\",\"loai\":\"C\"},\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q2\"}, ...]}\nĐịnh nghĩa \"Việc làm là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm.\" → {\"unit_id\":\"BLLD_45-2019.D9.K1\",\"dong\":[{\"doan\":[\"hoạt động lao động tạo ra thu nhập\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"doan\":[\"cấm\"],\"vai\":\"dieu_kien\",\"chu_the\":{\"chu\":\"pháp luật\",\"loai\":\"?\"},\"phuong_thuc\":\"khong\",\"cuc\":\"phu_dinh\",\"quy_tac\":\"q1\"},{\"doan\":[\"là\",\"Việc làm\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}\n\n## Đầu ra\nJSON thuần, không chữ giải thích: {\"units\": [{\"unit_id\": \"...\", \"dong\": [...]}]}, cộng cac_muc_con, ngoai_le, bo_qua khi có. Mỗi unit_id của lô đúng một mục.\n",
+ "user": "{\n \"don_vi\": [\n  {\n   \"unit_id\": \"BLLD_45-2019.D105.K1\",\n   \"tieu_de_dieu\": \"Thời giờ làm việc bình thường\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Thời giờ làm việc bình thường không quá 08 giờ trong 01 ngày và không quá 48 giờ trong 01 tuần.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"BLLD_45-2019.D105.K2\",\n   \"tieu_de_dieu\": \"Thời giờ làm việc bình thường\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Người sử dụng lao động có quyền quy định thời giờ làm việc theo ngày hoặc tuần nhưng phải thông báo cho người lao động biết; trường hợp theo tuần thì thời giờ làm việc bình thường không quá 10 giờ trong 01 ngày và không quá 48 giờ trong 01 tuần.\\nNhà nước khuyến khích người sử dụng lao động thực hiện tuần làm việc 40 giờ đối với người lao động.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"BLLD_45-2019.D105.K3\",\n   \"tieu_de_dieu\": \"Thời giờ làm việc bình thường\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Người sử dụng lao động có trách nhiệm bảo đảm giới hạn thời gian làm việc tiếp xúc với yếu tố nguy hiểm, yếu tố có hại đúng theo quy chuẩn kỹ thuật quốc gia và pháp luật có liên quan.\",\n   \"dan_chieu\": []\n  }\n ]\n}\n",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "request_id": "req_ff9c95739c895765cc1dc071",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D105.K1",
+    "dong": [
+     {
+      "doan": [
+       "không quá 08 giờ trong 01 ngày"
+      ],
+      "vai": "ket_luan",
+      "chu_the": {
+       "chu": "Thời giờ làm việc bình thường",
+       "loai": "D"
+      },
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "không quá 48 giờ trong 01 tuần"
+      ],
+      "vai": "ket_luan",
+      "chu_the": {
+       "chu": "Thời giờ làm việc bình thường",
+       "loai": "D"
+      },
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2"
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D105.K2",
+    "dong": [
+     {
+      "doan": [
+       "quy định thời giờ làm việc theo ngày hoặc tuần"
+      ],
+      "vai": "ket_luan",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "thông báo cho người lao động biết"
+      ],
+      "vai": "ket_luan",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2"
+     },
+     {
+      "doan": [
+       "trường hợp theo tuần"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q3"
+     },
+     {
+      "doan": [
+       "không quá 10 giờ trong 01 ngày"
+      ],
+      "vai": "ket_luan",
+      "chu_the": {
+       "chu": "thời giờ làm việc bình thường",
+       "loai": "D"
+      },
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q3"
+     },
+     {
+      "doan": [
+       "trường hợp theo tuần"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q4"
+     },
+     {
+      "doan": [
+       "không quá 48 giờ trong 01 tuần"
+      ],
+      "vai": "ket_luan",
+      "chu_the": {
+       "chu": "thời giờ làm việc bình thường",
+       "loai": "D"
+      },
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q4"
+     },
+     {
+      "doan": [
+       "khuyến khích người sử dụng lao động thực hiện tuần làm việc 40 giờ"
+      ],
+      "vai": "ket_luan",
+      "chu_the": {
+       "chu": "Nhà nước",
+       "loai": "?"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q5"
+     },
+     {
+      "doan": [
+       "đối với người lao động"
+      ],
+      "vai": "dieu_kien",
+      "chu_the": {
+       "chu": "Nhà nước",
+       "loai": "?"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q5"
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D105.K3",
+    "dong": [
+     {
+      "doan": [
+       "bảo đảm giới hạn thời gian làm việc tiếp xúc với yếu tố nguy hiểm, yếu tố có hại"
+      ],
+      "vai": "ket_luan",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     },
+     {
+      "doan": [
+       "đúng theo quy chuẩn kỹ thuật quốc gia và pháp luật có liên quan"
+      ],
+      "vai": "dieu_kien",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3126,
+  "output_tokens": 3544,
+  "cost_vnd": 6.5
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 3442
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2044
+   }
+  }
+ }
+}

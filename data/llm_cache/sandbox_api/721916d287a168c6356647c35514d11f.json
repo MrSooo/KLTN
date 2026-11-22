@@ -1,0 +1,434 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "dungcsnd113/gemini-flash-3.8",
+ "created": "2026-11-22T15:45:25+00:00",
+ "system": "Mỗi mục là MỘT dòng đã tách từ một đơn vị Bộ luật Lao động mà lõi (doan) quá dài. Viết lại dòng đó thành các dòng ngắn hơn, cùng khuôn dòng: doan, vai, phuong_thuc, cuc, quy_tac, nhom_hoac, chu_the, doi_so, liet_ke, chua_ro.\n\nChỉ làm một trong ba cách:\n1. dieu_kien chứa danh sách trường hợp hay đối tượng: mỗi mục một dòng dieu_kien cùng quy_tac; chữ dùng chung (ví dụ \"dựa trên\") là đoạn đầu doan của mỗi dòng. Các mục nối bằng \"hoặc\" hay dấu phẩy thay thế nhau thì cùng một nhom_hoac (của dòng cũ nếu có, không thì mã mới); nối bằng \"và\" (phải đủ hết) thì không nhom_hoac.\n2. ket_luan chứa danh sách tân ngữ: giữ động từ trong doan, đưa các mục vào liet_ke.\n3. Hai thuộc tính của CÙNG một đối tượng (\"hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng\"): hai dòng dieu_kien cùng quy_tac.\nCụm mô tả một đối tượng KHÁC (ví dụ \"do cơ quan đại diện ngoại giao đề nghị thành lập\" mô tả cơ sở giáo dục, không phải người lao động) giữ nguyên trong dòng. Không làm được thì trả lại đúng dòng cũ.\n\ndoan chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha hoặc chu_don_vi đã cho; mọi chữ của doan cũ phải còn trong doan hoặc liet_ke của các dòng mới. Giữ vai, phuong_thuc, cuc, chu_the, quy_tac của dòng cũ.\n\nĐầu ra JSON thuần: {\"thay\": [{\"id\": \"...\", \"dong\": [...]}]}, mỗi id của đầu vào đúng một mục.\n",
+ "user": "{\n \"dong_dai\": [\n  {\n   \"id\": \"BLLD_45-2019.D3.K1#2\",\n   \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n   \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"chu_don_vi\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\\nĐộ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\",\n   \"dong\": {\n    \"doan\": [\n     \"chịu sự quản lý, điều hành, giám sát của người sử dụng lao động\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"doi_so\": [\n     {\n      \"loai\": \"E\"\n     }\n    ],\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D3.K2#0\",\n   \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n   \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"chu_don_vi\": \"Người sử dụng lao động là doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình, cá nhân có thuê mướn, sử dụng người lao động làm việc cho mình theo thỏa thuận; trường hợp người sử dụng lao động là cá nhân thì phải có năng lực hành vi dân sự đầy đủ.\",\n   \"dong\": {\n    \"doan\": [\n     \"doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình, cá nhân\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D3.K3#0\",\n   \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n   \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"chu_don_vi\": \"Tổ chức đại diện người lao động tại cơ sở là tổ chức được thành lập trên cơ sở tự nguyện của người lao động tại một đơn vị sử dụng lao động nhằm mục đích bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động trong quan hệ lao động thông qua thương lượng tập thể hoặc các hình thức khác theo quy định của pháp luật về lao động. Tổ chức đại diện người lao động tại cơ sở bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp.\",\n   \"dong\": {\n    \"doan\": [\n     \"thành lập trên cơ sở tự nguyện của người lao động tại một đơn vị sử dụng lao động\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"doi_so\": [\n     {\n      \"loai\": \"W\"\n     }\n    ],\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D3.K3#1\",\n   \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n   \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"chu_don_vi\": \"Tổ chức đại diện người lao động tại cơ sở là tổ chức được thành lập trên cơ sở tự nguyện của người lao động tại một đơn vị sử dụng lao động nhằm mục đích bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động trong quan hệ lao động thông qua thương lượng tập thể hoặc các hình thức khác theo quy định của pháp luật về lao động. Tổ chức đại diện người lao động tại cơ sở bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp.\",\n   \"dong\": {\n    \"doan\": [\n     \"bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động trong quan hệ lao động\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"doi_so\": [\n     {\n      \"loai\": \"W\"\n     }\n    ],\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D3.K3#5\",\n   \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n   \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"chu_don_vi\": \"Tổ chức đại diện người lao động tại cơ sở là tổ chức được thành lập trên cơ sở tự nguyện của người lao động tại một đơn vị sử dụng lao động nhằm mục đích bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động trong quan hệ lao động thông qua thương lượng tập thể hoặc các hình thức khác theo quy định của pháp luật về lao động. Tổ chức đại diện người lao động tại cơ sở bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp.\",\n   \"dong\": {\n    \"doan\": [\n     \"bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp\"\n    ],\n    \"vai\": \"ket_luan\",\n    \"chu_the\": {\n     \"chu\": \"Tổ chức đại diện người lao động tại cơ sở\",\n     \"loai\": \"?\"\n    },\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q2\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D3.K4#1\",\n   \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n   \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"chu_don_vi\": \"Tổ chức đại diện người sử dụng lao động là tổ chức được thành lập hợp pháp, đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động trong quan hệ lao động.\",\n   \"dong\": {\n    \"doan\": [\n     \"đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động trong quan hệ lao động\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"doi_so\": [\n     {\n      \"loai\": \"E\"\n     }\n    ],\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D3.K5#0\",\n   \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n   \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"chu_don_vi\": \"Quan hệ lao động là quan hệ xã hội phát sinh trong việc thuê mướn, sử dụng lao động, trả lương giữa người lao động, người sử dụng lao động, các tổ chức đại diện của các bên, cơ quan nhà nước có thẩm quyền. Quan hệ lao động bao gồm quan hệ lao động cá nhân và quan hệ lao động tập thể.\",\n   \"dong\": {\n    \"doan\": [\n     \"phát sinh trong việc thuê mướn, sử dụng lao động, trả lương giữa người lao động, người sử dụng lao động, các tổ chức đại diện của các bên, cơ quan nhà nước có thẩm quyền\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"doi_so\": [\n     {\n      \"loai\": \"W\"\n     },\n     {\n      \"loai\": \"E\"\n     }\n    ],\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D3.K5#2\",\n   \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n   \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"chu_don_vi\": \"Quan hệ lao động là quan hệ xã hội phát sinh trong việc thuê mướn, sử dụng lao động, trả lương giữa người lao động, người sử dụng lao động, các tổ chức đại diện của các bên, cơ quan nhà nước có thẩm quyền. Quan hệ lao động bao gồm quan hệ lao động cá nhân và quan hệ lao động tập thể.\",\n   \"dong\": {\n    \"doan\": [\n     \"bao gồm quan hệ lao động cá nhân và quan hệ lao động tập thể\"\n    ],\n    \"vai\": \"ket_luan\",\n    \"chu_the\": {\n     \"chu\": \"Quan hệ lao động\",\n     \"loai\": \"?\"\n    },\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q2\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D3.K8#1\",\n   \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n   \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"chu_don_vi\": \"Phân biệt đối xử trong lao động là hành vi phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp có tác động làm ảnh hưởng đến bình đẳng về cơ hội việc làm hoặc nghề nghiệp.\\nViệc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương thì không bị xem là phân biệt đối xử.\",\n   \"dong\": {\n    \"doan\": [\n     \"dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D3.K8#2\",\n   \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n   \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"chu_don_vi\": \"Phân biệt đối xử trong lao động là hành vi phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp có tác động làm ảnh hưởng đến bình đẳng về cơ hội việc làm hoặc nghề nghiệp.\\nViệc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương thì không bị xem là phân biệt đối xử.\",\n   \"dong\": {\n    \"doan\": [\n     \"có tác động làm ảnh hưởng đến bình đẳng về cơ hội việc làm hoặc nghề nghiệp\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\"\n   }\n  }\n ]\n}\n",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "request_id": "req_1fab691e7e9f314cc28223e1",
+ "output": {
+  "thay": [
+   {
+    "id": "BLLD_45-2019.D3.K1#2",
+    "dong": [
+     {
+      "doan": [
+       "chịu sự quản lý, điều hành, giám sát của người sử dụng lao động"
+      ],
+      "vai": "dieu_kien",
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D3.K2#0",
+    "dong": [
+     {
+      "doan": [
+       "doanh nghiệp"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "cơ quan"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "tổ chức"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "hợp tác xã"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "hộ gia đình"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "cá nhân"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D3.K3#0",
+    "dong": [
+     {
+      "doan": [
+       "thành lập trên cơ sở tự nguyện của người lao động tại một đơn vị sử dụng lao động"
+      ],
+      "vai": "dieu_kien",
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D3.K3#1",
+    "dong": [
+     {
+      "doan": [
+       "bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động trong quan hệ lao động"
+      ],
+      "vai": "dieu_kien",
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D3.K3#5",
+    "dong": [
+     {
+      "doan": [
+       "bao gồm"
+      ],
+      "vai": "ket_luan",
+      "chu_the": {
+       "chu": "Tổ chức đại diện người lao động tại cơ sở",
+       "loai": "?"
+      },
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "liet_ke": [
+       "công đoàn cơ sở",
+       "tổ chức của người lao động tại doanh nghiệp"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D3.K4#1",
+    "dong": [
+     {
+      "doan": [
+       "đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động trong quan hệ lao động"
+      ],
+      "vai": "dieu_kien",
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D3.K5#0",
+    "dong": [
+     {
+      "doan": [
+       "phát sinh trong việc thuê mướn, sử dụng lao động, trả lương giữa người lao động, người sử dụng lao động, các tổ chức đại diện của các bên, cơ quan nhà nước có thẩm quyền"
+      ],
+      "vai": "dieu_kien",
+      "doi_so": [
+       {
+        "loai": "W"
+       },
+       {
+        "loai": "E"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D3.K5#2",
+    "dong": [
+     {
+      "doan": [
+       "bao gồm"
+      ],
+      "vai": "ket_luan",
+      "chu_the": {
+       "chu": "Quan hệ lao động",
+       "loai": "?"
+      },
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "liet_ke": [
+       "quan hệ lao động cá nhân",
+       "quan hệ lao động tập thể"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D3.K8#1",
+    "dong": [
+     {
+      "doan": [
+       "dựa trên",
+       "chủng tộc"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "màu da"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "nguồn gốc quốc gia"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "nguồn gốc xã hội"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "dân tộc"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "giới tính"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "độ tuổi"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "tình trạng thai sản"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "tình trạng hôn nhân"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "tôn giáo"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "tín ngưỡng"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "chính kiến"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "khuyết tật"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "dựa trên",
+       "trách nhiệm gia đình"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "trên cơ sở tình trạng nhiễm HIV"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D3.K8#2",
+    "dong": [
+     {
+      "doan": [
+       "có tác động làm ảnh hưởng đến bình đẳng về cơ hội việc làm hoặc nghề nghiệp"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3482,
+  "output_tokens": 11564,
+  "cost_vnd": 6.5
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 7416
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 25642
+   }
+  }
+ }
+}
