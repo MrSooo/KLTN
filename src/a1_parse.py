@@ -22,6 +22,7 @@ BASE_DOC = {"id": DOC_PREFIX, "ten": "Bộ luật Dân sự", "so_hieu": "91/201
 EXPECTED_DIEU = {
     "blds2015_5dieu.md": [621, 626, 644, 650, 651],
     "blds2015_p4.md": list(range(609, 663)),
+    "lld2019_labor.md": [35, 36, 37, 39, 46, 169],
 }
 
 # Chữ của Điểm: bảng chữ trong văn bản luật (có đ, không có f j w z). Không dùng [a-z].

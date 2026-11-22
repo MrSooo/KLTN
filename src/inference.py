@@ -66,15 +66,26 @@ def structural_edges(codes):
             out.append((code, "part_of", parent))
     return out
 
+def _resolve_jsonl_path(dir_prefix, stem, tag, suffix=".jsonl"):
+    """Resolve JSONL path from either v3_refactor subdir or legacy flat."""
+    stem_t = f"{stem}{tag}" if tag else stem
+    # v3_refactor: data/processed/<dir_prefix>/<dir_prefix>_<stem_t>.jsonl
+    subdir = edges.PROCESSED_DIR / dir_prefix / f"{dir_prefix}_{stem_t}{suffix}"  # noqa: E501
+    # legacy flat: data/processed/<dir_prefix>_<stem_t>.jsonl
+    flat = edges.PROCESSED_DIR / f"{dir_prefix}_{stem_t}{suffix}"  # noqa: E501
+    if subdir.exists():
+        return subdir
+    if flat.exists():
+        return flat
+    return subdir  # default to subdir
 def exception_rows(src, versions, date):
     stem = Path(src).stem
     tag = _tag(versions, date)
     rows = []
-    rows += read_rows(OUT_DIR / f"a3_exceptions_{stem}.jsonl")
-    rows += read_rows(OUT_DIR / f"a6_exceptions_{stem}.jsonl")
-    rows += read_rows(OUT_DIR / f"a8_implicit_exceptions_{stem}{'_' + tag if tag else ''}.jsonl")
+    rows += read_rows(_resolve_jsonl_path("a3", stem, tag))
+    rows += read_rows(_resolve_jsonl_path("a6", stem, tag))
+    rows += read_rows(_resolve_jsonl_path("a8_implicit_exceptions", stem, tag))
     return rows
-
 
 def refers_rows(src):
     return read_rows(OUT_DIR / f"a2_refs_{Path(src).stem}.jsonl")

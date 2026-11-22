@@ -28,12 +28,45 @@ REQUIRED_ATTRS = ("type", "number", "source_line")
 KEPT_ATTRS = REQUIRED_ATTRS + ("text",)
 
 
-def triples_path(src):
-    return PROCESSED_DIR / f"a1_triples_{Path(src).stem}.jsonl"
+def _stem(src):
+    return Path(src).stem
 
 
-def edges_path(src):
-    return PROCESSED_DIR / f"a2_edges_{Path(src).stem}.jsonl"
+def _flat_path(prefix, stem, suffix=".jsonl"):
+    """Flat (legacy) path: data/processed/<prefix>_<stem>.jsonl"""
+    return PROCESSED_DIR / f"{prefix}_{stem}{suffix}"
+
+
+def _subdir_path(prefix, stem, suffix=".jsonl"):
+    """v3_refactor subdirectory path: data/processed/<prefix>/<prefix>_<stem>.jsonl"""
+    return PROCESSED_DIR / prefix / f"{prefix}_{stem}{suffix}"
+
+
+def _resolve_read_path(prefix, stem, suffix=".jsonl"):
+    """Resolve a read path: prefer existing file, check subdir then flat."""
+    subdir = _subdir_path(prefix, stem, suffix)
+    flat = _flat_path(prefix, stem, suffix)
+    if subdir.exists():
+        return subdir
+    if flat.exists():
+        return flat
+    return subdir
+
+
+def triples_path(src, for_write=False):
+    """Path to A1 triples. If for_write, return subdir path; otherwise resolve existing."""
+    stem = _stem(src)
+    if for_write:
+        return _subdir_path("a1", stem)
+    return _resolve_read_path("a1", stem)
+
+
+def edges_path(src, for_write=False):
+    """Path to A2 edges. If for_write, return subdir path; otherwise resolve existing."""
+    stem = _stem(src)
+    if for_write:
+        return _subdir_path("a2", stem)
+    return _resolve_read_path("a2", stem)
 
 
 def load_units(path):
