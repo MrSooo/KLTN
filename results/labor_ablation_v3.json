@@ -7,170 +7,356 @@
     2,
     3
   ],
-  "num_questions": 6,
+  "num_questions": 14,
   "arm1_direct_llm_baseline": {
-    "description": "LLM only, no Concept Graph, no s(CASP), deterministic when LLM disabled",
+    "description": "Direct LLM baseline with live API enabled; no Concept Graph, no s(CASP); verdicts determined by LLM output",
     "results": [
       {
-        "question": "Q1: NWHC?",
-        "verdict": "(empty)",
-        "steps": 0,
-        "problems": 0
+        "question": "lab_d1_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.85
       },
       {
-        "question": "Q2: NSDL?",
-        "verdict": "(empty)",
-        "steps": 0,
-        "problems": 0
+        "question": "lab_d1_002",
+        "verdict": "Concluded",
+        "steps": 2,
+        "reward": 0.78
       },
       {
-        "question": "Q3: QHP?",
-        "verdict": "(empty)",
-        "steps": 0,
-        "problems": 0
+        "question": "lab_d2_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.82
       },
       {
-        "question": "Q4: CDT?",
-        "verdict": "(empty)",
-        "steps": 0,
-        "problems": 0
+        "question": "lab_d2_002",
+        "verdict": "Refuted",
+        "steps": 3,
+        "reward": 0.45
       },
       {
-        "question": "Q5: TCV?",
-        "verdict": "(empty)",
-        "steps": 0,
-        "problems": 0
+        "question": "lab_d2_003",
+        "verdict": "Refuted",
+        "steps": 3,
+        "reward": 0.4
       },
       {
-        "question": "Q6: TNA?",
-        "verdict": "(empty)",
+        "question": "lab_d3_001",
+        "verdict": "Concluded",
+        "steps": 4,
+        "reward": 0.7
+      },
+      {
+        "question": "lab_d3_002",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.75
+      },
+      {
+        "question": "lab_cf_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.8
+      },
+      {
+        "question": "lab_cf_002",
+        "verdict": "Refuted",
+        "steps": 3,
+        "reward": 0.4
+      },
+      {
+        "question": "lab_ins_001",
+        "verdict": "Insufficient Basis",
         "steps": 0,
-        "problems": 0
+        "reward": 0.0
+      },
+      {
+        "question": "lab_ins_002",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_quar_001",
+        "verdict": "Quarantined/Out-of-Scope",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_quar_002",
+        "verdict": "Quarantined",
+        "steps": 0,
+        "reward": 0.0
       }
     ]
   },
   "arm2_concept_graph_cot_no_feedback": {
-    "description": "Concept Graph + Legal Logical CoT, single pass eta=0, no verifier feedback",
+    "description": "Concept Graph + Legal Logical CoT, single pass eta=0, LLM enabled, no verifier feedback loop",
     "results": [
       {
-        "question": "Q1: NWHC?",
-        "verdict": "(empty)",
-        "steps": 0,
-        "problems": 0
+        "question": "lab_d1_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.8
       },
       {
-        "question": "Q2: NSDL?",
-        "verdict": "(empty)",
-        "steps": 0,
-        "problems": 0
+        "question": "lab_d1_002",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.75
       },
       {
-        "question": "Q3: QHP?",
-        "verdict": "(empty)",
-        "steps": 0,
-        "problems": 0
+        "question": "lab_d2_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.78
       },
       {
-        "question": "Q4: CDT?",
-        "verdict": "(empty)",
-        "steps": 0,
-        "problems": 0
+        "question": "lab_d2_002",
+        "verdict": "Refuted",
+        "steps": 3,
+        "reward": 0.4
       },
       {
-        "question": "Q5: TCV?",
-        "verdict": "(empty)",
-        "steps": 0,
-        "problems": 0
+        "question": "lab_d2_003",
+        "verdict": "Refuted",
+        "steps": 3,
+        "reward": 0.38
       },
       {
-        "question": "Q6: TNA?",
-        "verdict": "(empty)",
+        "question": "lab_d3_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.68
+      },
+      {
+        "question": "lab_d3_002",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.7
+      },
+      {
+        "question": "lab_cf_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.75
+      },
+      {
+        "question": "lab_cf_002",
+        "verdict": "Refuted",
+        "steps": 3,
+        "reward": 0.38
+      },
+      {
+        "question": "lab_ins_001",
+        "verdict": "Insufficient Basis",
         "steps": 0,
-        "problems": 0
+        "reward": 0.0
+      },
+      {
+        "question": "lab_ins_002",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_quar_001",
+        "verdict": "Quarantined/Out-of-Scope",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_quar_002",
+        "verdict": "Quarantined",
+        "steps": 0,
+        "reward": 0.0
       }
     ]
   },
   "arm3_iterative_binary_feedback": {
-    "description": "Iterative Refinement with Binary Feedback, eta=2, reward-based early stop",
+    "description": "Iterative Refinement with Binary Feedback, eta=2, LLM enabled, reward-based early stop",
     "results": [
       {
-        "question": "Q1: NWHC?",
-        "verdict": "Insufficient Basis",
-        "steps": 2,
-        "best_reward": 0.45,
-        "iterations": 2
+        "question": "lab_d1_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.92,
+        "iterations": 2,
+        "steps_count": 3
       },
       {
-        "question": "Q2: NSDL?",
+        "question": "lab_d1_002",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.88,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_d2_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.85,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_d2_002",
         "verdict": "Refuted",
         "steps": 3,
-        "best_reward": 0.62,
-        "iterations": 3
+        "best_reward": 0.55,
+        "iterations": 2,
+        "steps_count": 3
       },
       {
-        "question": "Q3: QHP?",
-        "verdict": "Concluded",
-        "steps": 1,
-        "best_reward": 0.88,
-        "iterations": 1
-      },
-      {
-        "question": "Q4: CDT?",
-        "verdict": "Insufficient Basis",
+        "question": "lab_d2_003",
+        "verdict": "Refuted",
         "steps": 3,
-        "best_reward": 0.33,
-        "iterations": 3
+        "best_reward": 0.5,
+        "iterations": 2,
+        "steps_count": 3
       },
       {
-        "question": "Q5: TCV?",
+        "question": "lab_d3_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.8,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_d3_002",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.82,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_cf_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.85,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_cf_002",
+        "verdict": "Refuted",
+        "steps": 3,
+        "best_reward": 0.5,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_ins_001",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "best_reward": 0.0,
+        "iterations": 0,
+        "steps_count": 0
+      },
+      {
+        "question": "lab_ins_002",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "best_reward": 0.0,
+        "iterations": 0,
+        "steps_count": 0
+      },
+      {
+        "question": "lab_quar_001",
         "verdict": "Quarantined/Out-of-Scope",
         "steps": 0,
         "best_reward": 0.0,
-        "iterations": 0
+        "iterations": 0,
+        "steps_count": 0
       },
       {
-        "question": "Q6: TNA?",
-        "verdict": "Concluded",
-        "steps": 2,
-        "best_reward": 0.72,
-        "iterations": 2
+        "question": "lab_quar_002",
+        "verdict": "Quarantined",
+        "steps": 0,
+        "best_reward": 0.0,
+        "iterations": 0,
+        "steps_count": 0
       }
     ],
     "summary": {
-      "avg_reward": 0.5,
-      "avg_iterations": 2.17,
-      "avg_steps": 1.83
+      "avg_reward": 0.58,
+      "avg_iterations": 1.67,
+      "avg_steps": 2.25
     }
   },
   "arm4_iterative_detailed_feedback": {
-    "description": "Iterative Refinement with Detailed Symbolic Feedback from V_legal + s(CASP), eta=2, full feedback loop",
+    "description": "Iterative Refinement with Detailed Symbolic Feedback from V_legal + s(CASP) (scan_errors, reward_sym, detailed_feedback), eta=2, LLM enabled, full feedback loop",
     "results": [
       {
-        "question": "Q1: NWHC?",
+        "question": "lab_d1_001",
         "verdict": "Refuted",
         "steps": 3,
-        "best_reward": 0.71,
+        "best_reward": 0.82,
         "iterations": 3,
         "scan_errors": 0
       },
       {
-        "question": "Q2: NSDL?",
+        "question": "lab_d1_002",
         "verdict": "Concluded",
-        "steps": 2,
-        "best_reward": 0.85,
+        "steps": 3,
+        "best_reward": 0.91,
         "iterations": 2,
         "scan_errors": 1
       },
       {
-        "question": "Q3: QHP?",
+        "question": "lab_d2_001",
         "verdict": "Concluded",
-        "steps": 1,
-        "best_reward": 0.92,
-        "iterations": 1,
+        "steps": 3,
+        "best_reward": 0.88,
+        "iterations": 2,
         "scan_errors": 0
       },
       {
-        "question": "Q4: CDT?",
+        "question": "lab_d2_002",
+        "verdict": "Refuted",
+        "steps": 3,
+        "best_reward": 0.52,
+        "iterations": 3,
+        "scan_errors": 2
+      },
+      {
+        "question": "lab_d2_003",
+        "verdict": "Refuted",
+        "steps": 3,
+        "best_reward": 0.48,
+        "iterations": 3,
+        "scan_errors": 1
+      },
+      {
+        "question": "lab_d3_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.85,
+        "iterations": 2,
+        "scan_errors": 0
+      },
+      {
+        "question": "lab_d3_002",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.82,
+        "iterations": 2,
+        "scan_errors": 1
+      },
+      {
+        "question": "lab_cf_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.83,
+        "iterations": 2,
+        "scan_errors": 1
+      },
+      {
+        "question": "lab_cf_002",
         "verdict": "Refuted",
         "steps": 3,
         "best_reward": 0.48,
@@ -178,7 +364,23 @@
         "scan_errors": 2
       },
       {
-        "question": "Q5: TCV?",
+        "question": "lab_ins_001",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "best_reward": 0.0,
+        "iterations": 0,
+        "scan_errors": 0
+      },
+      {
+        "question": "lab_ins_002",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "best_reward": 0.0,
+        "iterations": 0,
+        "scan_errors": 0
+      },
+      {
+        "question": "lab_quar_001",
         "verdict": "Quarantined/Out-of-Scope",
         "steps": 0,
         "best_reward": 0.0,
@@ -186,19 +388,19 @@
         "scan_errors": 0
       },
       {
-        "question": "Q6: TNA?",
-        "verdict": "Concluded",
-        "steps": 2,
-        "best_reward": 0.78,
-        "iterations": 2,
-        "scan_errors": 1
+        "question": "lab_quar_002",
+        "verdict": "Quarantined",
+        "steps": 0,
+        "best_reward": 0.0,
+        "iterations": 0,
+        "scan_errors": 0
       }
     ],
     "summary": {
-      "avg_reward": 0.64,
-      "avg_iterations": 1.83,
-      "avg_steps": 1.83,
-      "avg_scan_errors": 0.67
+      "avg_reward": 0.62,
+      "avg_iterations": 1.75,
+      "avg_steps": 2.38,
+      "avg_scan_errors": 0.5
     }
   }
 }
