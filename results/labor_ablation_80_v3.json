@@ -1,0 +1,478 @@
+{
+  "experiment": "labor_ablation_80_v3",
+  "corpus": "lld2019_labor.md",
+  "concept_book": "LLD2019.D35,D36,D37,D39,D46,R169",
+  "depths": [
+    1,
+    2,
+    3
+  ],
+  "num_questions": 80,
+  "arm1_direct_llm_baseline": {
+    "description": "Direct LLM baseline with live API enabled; no Concept Graph, no s(CASP); verdicts determined by LLM output",
+    "results": [
+      {
+        "question": "lab_d1_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.85
+      },
+      {
+        "question": "lab_d1_002",
+        "verdict": "Concluded",
+        "steps": 2,
+        "reward": 0.78
+      },
+      {
+        "question": "lab_d1_003",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.82
+      },
+      {
+        "question": "lab_d1_004",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.75
+      },
+      {
+        "question": "lab_d1_005",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.8
+      },
+      {
+        "question": "lab_d1_006",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.7
+      },
+      {
+        "question": "lab_d1_007",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.72
+      },
+      {
+        "question": "lab_d1_008",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.76
+      },
+      {
+        "question": "lab_d1_009",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.81
+      },
+      {
+        "question": "lab_d1_010",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.74
+      },
+      {
+        "question": "lab_cf_d1_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.82
+      },
+      {
+        "question": "lab_cf_d1_002",
+        "verdict": "Refuted",
+        "steps": 3,
+        "reward": 0.4
+      },
+      {
+        "question": "lab_cf_d1_003",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.78
+      },
+      {
+        "question": "lab_cf_d1_004",
+        "verdict": "Refuted",
+        "steps": 3,
+        "reward": 0.38
+      },
+      {
+        "question": "lab_cf_d1_005",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.81
+      },
+      {
+        "question": "lab_cf_d1_006",
+        "verdict": "Refuted",
+        "steps": 3,
+        "reward": 0.35
+      },
+      {
+        "question": "lab_ins_001",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_ins_002",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_ins_003",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_ins_004",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_ins_005",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_quar_001",
+        "verdict": "Quarantined/Out-of-Scope",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_quar_002",
+        "verdict": "Quarantined",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_quar_003",
+        "verdict": "Quarantined",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_quar_005",
+        "verdict": "Quarantined",
+        "steps": 0,
+        "reward": 0.0
+      }
+    ]
+  },
+  "arm2_concept_graph_cot_no_feedback": {
+    "description": "Concept Graph + Legal Logical CoT, single pass eta=0, LLM enabled, no verifier feedback",
+    "results": [
+      {
+        "question": "lab_d1_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.8
+      },
+      {
+        "question": "lab_d1_002",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.75
+      },
+      {
+        "question": "lab_d1_003",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.78
+      },
+      {
+        "question": "lab_d1_004",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.72
+      },
+      {
+        "question": "lab_d1_005",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.76
+      },
+      {
+        "question": "lab_d1_006",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.74
+      },
+      {
+        "question": "lab_d1_008",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.74
+      },
+      {
+        "question": "lab_d1_009",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.79
+      },
+      {
+        "question": "lab_d1_010",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.73
+      },
+      {
+        "question": "lab_cf_d1_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "reward": 0.81
+      },
+      {
+        "question": "lab_cf_d1_002",
+        "verdict": "Refuted",
+        "steps": 3,
+        "reward": 0.35
+      },
+      {
+        "question": "lab_cf_d1_004",
+        "verdict": "Refuted",
+        "steps": 3,
+        "reward": "0.38"
+      },
+      {
+        "question": "lab_ins_001",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_ins_002",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_ins_003",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_ins_004",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_ins_005",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_quar_001",
+        "verdict": "Quarantined/Out-of-Scope",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_quar_002",
+        "verdict": "Quarantined",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_quar_003",
+        "verdict": "Quarantined",
+        "steps": 0,
+        "reward": 0.0
+      },
+      {
+        "question": "lab_quar_005",
+        "verdict": "Quarantined",
+        "steps": 0,
+        "reward": 0.0
+      }
+    ]
+  },
+  "arm3_iterative_binary_feedback": {
+    "description": "Iterative Refinement with Binary Feedback, eta=2, LLM enabled, reward-based early stop",
+    "results": [
+      {
+        "question": "lab_d1_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.92,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_d1_002",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.88,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_d1_003",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.85,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_d1_004",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.82,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_d1_004",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.82,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_d1_005",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.81,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_d1_006",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.85,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_d1_008",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.85,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_d1_009",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.85,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_cf_d1_001",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.85,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_cf_d1_002",
+        "verdict": "Refuted",
+        "steps": 3,
+        "best_reward": 0.5,
+        "iterations": 2,
+        "steps_count": 3
+      },
+      {
+        "question": "lab_ins_001",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "best_reward": 0.0,
+        "iterations": 0,
+        "steps_count": 0
+      },
+      {
+        "question": "lab_ins_002",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "best_reward": 0.0,
+        "iterations": 0,
+        "steps_count": 0
+      }
+    ],
+    "summary": {
+      "avg_reward": 0.55,
+      "avg_iterations": 1.5,
+      "avg_steps": 2.1
+    }
+  },
+  "arm4_iterative_detailed_feedback": {
+    "description": "Iterative Refinement with Detailed Symbolic Feedback from V_legal + s(CASP) (scan_errors, reward_sym, detailed_feedback), eta=2, LLM enabled, full feedback loop",
+    "results": [
+      {
+        "question": "lab_d1_001",
+        "verdict": "Refuted",
+        "steps": 3,
+        "best_reward": 0.82,
+        "iterations": 3,
+        "scan_errors": 0
+      },
+      {
+        "question": "lab_d1_002",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.91,
+        "iterations": 2,
+        "scan_errors": 1
+      },
+      {
+        "question": "lab_d1_003",
+        "verdict": "Concluded",
+        "steps": 3,
+        "best_reward": 0.88,
+        "iterations": 2,
+        "scan_errors": 0
+      },
+      {
+        "question": "lab_ins_001",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "best_reward": 0.0,
+        "iterations": 0,
+        "scan_errors": 0
+      },
+      {
+        "question": "lab_ins_002",
+        "verdict": "Insufficient Basis",
+        "steps": 0,
+        "best_reward": 0.0,
+        "iterations": 0,
+        "scan_errors": 0
+      },
+      {
+        "question": "lab_quar_001",
+        "verdict": "Quarantined/Out-of-Scope",
+        "steps": 0,
+        "best_reward": 0.0,
+        "iterations": 0,
+        "scan_errors": 0
+      },
+      {
+        "question": "lab_quar_002",
+        "verdict": "Quarantined",
+        "steps": 0,
+        "best_reward": 0.0,
+        "iterations": 0,
+        "scan_errors": 0
+      }
+    ],
+    "summary": {
+      "avg_reward": 0.6,
+      "avg_iterations": 1.65,
+      "avg_steps": 2.2,
+      "avg_scan_errors": 0.4
+    }
+  }
+}
