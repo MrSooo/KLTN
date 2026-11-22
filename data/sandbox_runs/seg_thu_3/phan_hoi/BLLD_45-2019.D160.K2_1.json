@@ -1,0 +1,30 @@
+{
+ "cau": "Sử dụng người lao động là người khuyết tật làm công việc nặng nhọc, độc hại, nguy hiểm theo danh mục do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành mà không có sự đồng ý của người khuyết tật sau khi đã được người sử dụng lao động cung cấp đầy đủ thông tin về công việc đó.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Sử dụng người lao động là người khuyết tật làm công việc nặng nhọc, độc hại, nguy hiểm theo danh mục do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không có sự đồng ý của người khuyết tật\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"sau khi đã được người sử dụng lao động cung cấp đầy đủ thông tin về công việc đó\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-pkoDa87gNcns2roP4IjmmAk",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3059
+   },
+   "input_tokens": 972,
+   "output_tokens": 540,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d4ef9f76a881de1fd10d1d5b"
+   }
+  }
+ }
+}

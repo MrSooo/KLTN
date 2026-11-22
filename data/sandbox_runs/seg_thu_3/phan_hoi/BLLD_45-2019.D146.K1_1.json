@@ -1,0 +1,30 @@
+{
+ "cau": "Thời giờ làm việc của người chưa đủ 15 tuổi không được quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần; không được làm thêm giờ, làm việc vào ban đêm.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thời giờ làm việc của người chưa đủ 15 tuổi không được quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"không được\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"làm thêm giờ\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"làm việc vào ban đêm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-FUcDa_z3Oeuw2roPzqyXiQQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 9530
+   },
+   "input_tokens": 947,
+   "output_tokens": 504,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_4a3a6c379d652f39a6fc2524"
+   }
+  }
+ }
+}

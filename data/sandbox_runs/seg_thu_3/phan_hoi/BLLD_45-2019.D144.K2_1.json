@@ -1,0 +1,30 @@
+{
+ "cau": "Người sử dụng lao động khi sử dụng lao động chưa thành niên có trách nhiệm quan tâm chăm sóc người lao động về các mặt lao động, sức khỏe, học tập trong quá trình lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sử dụng lao động chưa thành niên\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"có trách nhiệm\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"quan tâm\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"chăm sóc\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"người lao động về các mặt lao động, sức khỏe, học tập trong quá trình lao động\",\"ap_cho\":[\"m2\",\"m3\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-vEYDa7qsBt6N1e8PuPaK0Ak",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 15585
+   },
+   "input_tokens": 940,
+   "output_tokens": 716,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_20874e97ffa1ba74800d01c0"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Đang nuôi con dưới 12 tháng tuổi, trừ trường hợp được người lao động đồng ý.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Đang nuôi con dưới 12 tháng tuổi\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trừ trường hợp được người lao động đồng ý\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-oEQDa4THDbiA2roP-OeasAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 897
+   },
+   "input_tokens": 921,
+   "output_tokens": 959,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_277c0d8ef07ac6c95382d28d"
+   }
+  }
+ }
+}

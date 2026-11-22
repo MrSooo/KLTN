@@ -1,0 +1,30 @@
+{
+ "cau": "Bảo đảm bình đẳng giới, bảo vệ thai sản, nghỉ hằng năm; phòng, chống bạo lực và quấy rối tình dục tại nơi làm việc;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Bảo đảm bình đẳng giới\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bảo vệ thai sản\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"nghỉ hằng năm\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"phòng\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"chống\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"bạo lực và quấy rối tình dục tại nơi làm việc\",\"ap_cho\":[\"m4\",\"m5\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-NDMDa4DeJ8Cw2roPk76t6Q4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 460
+   },
+   "input_tokens": 934,
+   "output_tokens": 609,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_3fbe27350153211a47b0386e"
+   }
+  }
+ }
+}

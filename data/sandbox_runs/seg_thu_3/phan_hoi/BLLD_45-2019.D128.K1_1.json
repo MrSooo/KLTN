@@ -1,0 +1,30 @@
+{
+ "cau": "Người sử dụng lao động có quyền tạm đình chỉ công việc của người lao động khi vụ việc vi phạm có những tình tiết phức tạp nếu xét thấy để người lao động tiếp tục làm việc sẽ gây khó khăn cho việc xác minh.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người sử dụng lao động có quyền tạm đình chỉ công việc của người lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"vụ việc vi phạm có những tình tiết phức tạp\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"xét thấy\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"để người lao động tiếp tục làm việc\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"sẽ gây khó khăn cho việc xác minh\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-u0IDa8XVE9Hm2roPgeyF8AY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1365
+   },
+   "input_tokens": 947,
+   "output_tokens": 1503,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_dc601f6f3bb440a3895cc0be"
+   }
+  }
+ }
+}

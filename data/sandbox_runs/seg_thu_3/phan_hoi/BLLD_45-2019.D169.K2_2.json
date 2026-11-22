@@ -1,0 +1,30 @@
+{
+ "cau": "Kể từ năm 2021, tuổi nghỉ hưu của người lao động trong điều kiện lao động bình thường là đủ 60 tuổi 03 tháng đối với lao động nam và đủ 55 tuổi 04 tháng đối với lao động nữ; sau đó, cứ mỗi năm tăng thêm 03 tháng đối với lao động nam và 04 tháng đối với lao động nữ.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Kể từ năm 2021, tuổi nghỉ hưu của người lao động trong điều kiện lao động bình thường là\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"đủ 60 tuổi 03 tháng đối với lao động nam\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"đủ 55 tuổi 04 tháng đối với lao động nữ\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"sau đó, cứ mỗi năm tăng thêm\",\"ap_cho\":[\"m3\",\"m4\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"03 tháng đối với lao động nam\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"04 tháng đối với lao động nữ\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-qUsDa9-FNZ-grfcPxr2YqQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5423
+   },
+   "input_tokens": 984,
+   "output_tokens": 772,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_4dd97e88a7a4cf1134b37822"
+   }
+  }
+ }
+}

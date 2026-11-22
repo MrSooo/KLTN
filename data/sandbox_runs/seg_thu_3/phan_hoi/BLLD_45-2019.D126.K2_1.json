@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động bị xử lý kỷ luật kéo dài thời hạn nâng lương sau khi chấp hành được một nửa thời hạn nếu sửa chữa tiến bộ thì có thể được người sử dụng lao động xét giảm thời hạn.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"bị xử lý kỷ luật kéo dài thời hạn nâng lương\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"chấp hành được một nửa thời hạn\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"sửa chữa tiến bộ\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"có thể được người sử dụng lao động xét giảm thời hạn\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-T0IDa4rnA4Wk0-kP07qi2Q0",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 25129
+   },
+   "input_tokens": 942,
+   "output_tokens": 576,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_15d12cb4d5925afd073b677d"
+   }
+  }
+ }
+}

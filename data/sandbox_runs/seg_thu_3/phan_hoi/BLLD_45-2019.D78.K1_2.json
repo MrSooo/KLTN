@@ -1,0 +1,27 @@
+{
+ "cau": "Trường hợp các bên không thỏa thuận ngày có hiệu lực thì thỏa ước lao động tập thể có hiệu lực kể từ ngày ký kết.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trường hợp\",\"ap_cho\":[\"m1\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"các bên không thỏa thuận ngày có hiệu lực\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thỏa ước lao động tập thể có hiệu lực kể từ ngày ký kết\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-XTYDa7i7N6Lr1e8PyMzi4Qs",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 928,
+   "output_tokens": 91,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_4e816d24b87d729059cc9826"
+   }
+  }
+ }
+}

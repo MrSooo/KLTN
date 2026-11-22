@@ -1,0 +1,30 @@
+{
+ "cau": "Khi gặp khó khăn đột xuất do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, áp dụng biện pháp ngăn ngừa, khắc phục tai nạn lao động, bệnh nghề nghiệp, sự cố điện, nước hoặc do nhu cầu sản xuất, kinh doanh thì người sử dụng lao động được quyền tạm thời chuyển người lao động làm công việc khác so với hợp đồng lao động nhưng không được quá 60 ngày làm việc cộng dồn trong 01 năm; trường hợp chuyển người lao động làm công việc khác so với hợp đồng lao động quá 60 ngày làm việc cộng dồn trong 01 năm thì chỉ được thực hiện khi người lao động đồng ý bằng văn bản.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"gặp khó khăn đột xuất do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"áp dụng biện pháp ngăn ngừa, khắc phục tai nạn lao động, bệnh nghề nghiệp, sự cố điện, nước\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"do nhu cầu sản xuất, kinh doanh\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"người sử dụng lao động\",\"ap_cho\":[\"m4\",\"m5\"]},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"được quyền tạm thời chuyển người lao động làm công việc khác so với hợp đồng lao động\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"không được quá 60 ngày làm việc cộng dồn trong 01 năm\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"trường hợp chuyển người lao động làm công việc khác so với hợp đồng lao động quá 60 ngày làm việc cộng dồn trong 01 năm\"},{\"id\":\"m7\",\"loai\":\"menh_de\",\"chu\":\"chỉ được thực hiện\"},{\"id\":\"m8\",\"loai\":\"menh_de\",\"chu\":\"người lao động đồng ý bằng văn bản\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-aCgDa4WkHO7Pvr0PgoWQqAo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 43178
+   },
+   "input_tokens": 1041,
+   "output_tokens": 1196,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f1bbb8150a9207e4fd726d2c"
+   }
+  }
+ }
+}

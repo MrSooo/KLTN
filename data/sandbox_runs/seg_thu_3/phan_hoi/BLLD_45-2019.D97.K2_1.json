@@ -1,0 +1,27 @@
+{
+ "cau": "Người lao động hưởng lương theo tháng được trả một tháng một lần hoặc nửa tháng một lần.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động hưởng lương theo tháng được trả\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"một tháng một lần\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"nửa tháng một lần\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-UzsDa5G8Bbqlvr0P0pnfuA0",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 919,
+   "output_tokens": 85,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_51b21f55c1a2ca8d8cb31ec5"
+   }
+  }
+ }
+}

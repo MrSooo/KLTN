@@ -1,0 +1,30 @@
+{
+ "cau": "Đối với thỏa ước lao động tập thể doanh nghiệp, trước khi ký kết, dự thảo thỏa ước lao động tập thể đã được các bên đàm phán phải được lấy ý kiến của toàn bộ người lao động trong doanh nghiệp.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Đối với thỏa ước lao động tập thể doanh nghiệp, trước\",\"ap_cho\":[\"m1\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"ký kết\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"dự thảo thỏa ước lao động tập thể đã được các bên đàm phán phải được lấy ý kiến của toàn bộ người lao động trong doanh nghiệp\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-GDUDa9rfDa7v2roP1LLAsQ8",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 15728
+   },
+   "input_tokens": 947,
+   "output_tokens": 460,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_7ff839858f94cbdbb4cae221"
+   }
+  }
+ }
+}

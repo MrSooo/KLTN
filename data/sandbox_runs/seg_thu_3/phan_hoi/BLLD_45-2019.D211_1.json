@@ -1,0 +1,27 @@
+{
+ "cau": "Trong thời hạn 12 giờ kể từ khi nhận được thông báo về cuộc đình công không tuân theo quy định tại các điều 200, 201 và 202 của Bộ luật này, Chủ tịch Ủy ban nhân dân cấp huyện chủ trì, chỉ đạo cơ quan chuyên môn về lao động phối hợp với công đoàn cùng cấp, cơ quan, tổ chức có liên quan trực tiếp gặp gỡ người sử dụng lao động và đại diện ban lãnh đạo tổ chức đại diện người lao động tại cơ sở để nghe ý kiến, hỗ trợ các bên tìm biện pháp giải quyết, đưa hoạt động sản xuất, kinh doanh trở lại bình thường.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Trong thời hạn 12 giờ kể từ khi nhận được thông báo về cuộc đình công không tuân theo quy định tại các điều 200, 201 và 202 của Bộ luật này, Chủ tịch Ủy ban nhân dân cấp huyện\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"chủ trì\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"chỉ đạo cơ quan chuyên môn về lao động phối hợp với công đoàn cùng cấp, cơ quan, tổ chức có liên quan trực tiếp gặp gỡ người sử dụng lao động và đại diện ban lãnh đạo tổ chức đại diện người lao động tại cơ sở\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"để nghe ý kiến\"\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"hỗ trợ các bên tìm biện pháp giải quyết\"\n    },\n    {\n      \"id\": \"m5\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"đưa hoạt động sản xuất, kinh doanh trở lại bình thường\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-rlMDa8f1Frqlvr0P0pnfuA0",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 1036,
+   "output_tokens": 373,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ff2af0a7040cbf5c7783e9cc"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động không tham gia đình công nhưng phải ngừng việc vì lý do đình công thì được trả lương ngừng việc theo quy định tại khoản 2 Điều 99 của Bộ luật này và các quyền lợi khác theo quy định của pháp luật về lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"không tham gia đình công\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải ngừng việc vì lý do đình công\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"được trả lương ngừng việc theo quy định tại khoản 2 Điều 99 của Bộ luật này và các quyền lợi khác theo quy định của pháp luật về lao động\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-91IDa4vTDpq30-kP__6lqAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2959
+   },
+   "input_tokens": 953,
+   "output_tokens": 548,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_2d6424979069b440e07832b7"
+   }
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "cau": "Thành lập, gia nhập, hoạt động trong tổ chức đại diện người lao động, tổ chức nghề nghiệp và tổ chức khác theo quy định của pháp luật; yêu cầu và tham gia đối thoại, thực hiện quy chế dân chủ, thương lượng tập thể với người sử dụng lao động và được tham vấn tại nơi làm việc để bảo vệ quyền và lợi ích hợp pháp, chính đáng của mình; tham gia quản lý theo nội quy của người sử dụng lao động;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\"id\": \"m1\", \"loai\": \"menh_de\", \"chu\": \"Thành lập\"},\n    {\"id\": \"m2\", \"loai\": \"menh_de\", \"chu\": \"gia nhập\"},\n    {\"id\": \"m3\", \"loai\": \"menh_de\", \"chu\": \"hoạt động trong\"},\n    {\"id\": \"c1\", \"loai\": \"dung_chung\", \"chu\": \"tổ chức đại diện người lao động, tổ chức nghề nghiệp và tổ chức khác theo quy định của pháp luật\", \"ap_cho\": [\"m1\", \"m2\", \"m3\"]},\n    {\"id\": \"m4\", \"loai\": \"menh_de\", \"chu\": \"yêu cầu\"},\n    {\"id\": \"m5\", \"loai\": \"menh_de\", \"chu\": \"tham gia\"},\n    {\"id\": \"c2\", \"loai\": \"dung_chung\", \"chu\": \"đối thoại\", \"ap_cho\": [\"m4\", \"m5\"]},\n    {\"id\": \"m6\", \"loai\": \"menh_de\", \"chu\": \"thực hiện quy chế dân chủ\"},\n    {\"id\": \"m7\", \"loai\": \"menh_de\", \"chu\": \"thương lượng tập thể với người sử dụng lao động\"},\n    {\"id\": \"m8\", \"loai\": \"menh_de\", \"chu\": \"được tham vấn tại nơi làm việc\"},\n    {\"id\": \"m9\", \"loai\": \"menh_de\", \"chu\": \"để bảo vệ quyền và lợi ích hợp pháp, chính đáng của mình\"},\n    {\"id\": \"m10\", \"loai\": \"menh_de\", \"chu\": \"tham gia quản lý theo nội quy của người sử dụng lao động\"}\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-Y1cDa_jOBcPd2roPv57hoQ4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 995,
+   "output_tokens": 429,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_b518d77bfa58c0acf5bab52a"
+   }
+  }
+ }
+}

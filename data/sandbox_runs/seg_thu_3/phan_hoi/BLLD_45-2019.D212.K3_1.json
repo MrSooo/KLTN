@@ -1,0 +1,30 @@
+{
+ "cau": "Tổ chức và tiến hành nghiên cứu khoa học về lao động; thống kê, thông tin về lao động và thị trường lao động, về mức sống, tiền lương và thu nhập của người lao động; quản lý lao động về số lượng, chất lượng và biến động lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"Tổ chức\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"tiến hành\"\n    },\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"nghiên cứu khoa học về lao động\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"thống kê\"\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"thông tin\"\n    },\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"về lao động và thị trường lao động, về mức sống, tiền lương và thu nhập của người lao động\",\n      \"ap_cho\": [\"m3\", \"m4\"]\n    },\n    {\n      \"id\": \"m5\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"quản lý lao động về số lượng, chất lượng và biến động lao động\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-IFQDa7SYB7mN1e8Ppc7c4A8",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 647
+   },
+   "input_tokens": 958,
+   "output_tokens": 991,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_873610db9a4b9ab2451c4d52"
+   }
+  }
+ }
+}

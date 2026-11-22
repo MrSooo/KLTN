@@ -1,0 +1,30 @@
+{
+ "cau": "Thời hạn tạm đình chỉ công việc không được quá 15 ngày, trường hợp đặc biệt không được quá 90 ngày.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thời hạn tạm đình chỉ công việc\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"không được quá 15 ngày\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trường hợp đặc biệt không được quá 90 ngày\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-30IDa4njFISfrfcPio_4oAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2256
+   },
+   "input_tokens": 927,
+   "output_tokens": 360,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_8c9507ae3195a5e483aa674e"
+   }
+  }
+ }
+}

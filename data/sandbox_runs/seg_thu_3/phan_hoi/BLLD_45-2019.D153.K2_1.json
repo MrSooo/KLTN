@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động sẽ bị buộc xuất cảnh hoặc trục xuất theo quy định của pháp luật về nhập cảnh, xuất cảnh, quá cảnh, cư trú của người nước ngoài tại Việt Nam.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động nước ngoài\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"làm việc tại Việt Nam\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không có giấy phép lao động\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"sẽ bị\",\"ap_cho\":[\"m3\",\"m4\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"buộc xuất cảnh\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"trục xuất\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"theo quy định của pháp luật về nhập cảnh, xuất cảnh, quá cảnh, cư trú của người nước ngoài tại Việt Nam\",\"ap_cho\":[\"m3\",\"m4\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-WEkDa92nINrD0-kPtZHu2QE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 590
+   },
+   "input_tokens": 950,
+   "output_tokens": 791,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_54ae790effa8447fbe5124ee"
+   }
+  }
+ }
+}

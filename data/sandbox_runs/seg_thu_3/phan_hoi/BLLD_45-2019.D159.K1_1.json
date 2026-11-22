@@ -1,0 +1,30 @@
+{
+ "cau": "Người sử dụng lao động phải bảo đảm về điều kiện lao động, công cụ lao động, an toàn, vệ sinh lao động và tổ chức khám sức khỏe định kỳ phù hợp với người lao động là người khuyết tật.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động phải\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"bảo đảm về điều kiện lao động, công cụ lao động, an toàn, vệ sinh lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tổ chức khám sức khỏe định kỳ\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"phù hợp với người lao động là người khuyết tật\",\"ap_cho\":[\"m1\",\"m2\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-kUoDa7qxNeu40-kP0OTZsAs",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2684
+   },
+   "input_tokens": 946,
+   "output_tokens": 560,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_edadb2eb529ae95e49efed90"
+   }
+  }
+ }
+}

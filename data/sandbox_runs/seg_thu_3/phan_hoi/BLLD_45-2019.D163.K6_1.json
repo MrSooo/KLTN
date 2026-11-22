@@ -1,0 +1,30 @@
+{
+ "cau": "Trả tiền tàu xe đi đường khi người giúp việc gia đình thôi việc về nơi cư trú, trừ trường hợp người giúp việc gia đình chấm dứt hợp đồng lao động trước thời hạn.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Trả tiền tàu xe đi đường\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"người giúp việc gia đình\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thôi việc\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"về nơi cư trú\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"trừ trường hợp người giúp việc gia đình chấm dứt hợp đồng lao động trước thời hạn\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-HEsDa76lELLP1e8Pl9zo4QE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 639
+   },
+   "input_tokens": 938,
+   "output_tokens": 777,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_bda960c9aff202cf2fe4a4f5"
+   }
+  }
+ }
+}

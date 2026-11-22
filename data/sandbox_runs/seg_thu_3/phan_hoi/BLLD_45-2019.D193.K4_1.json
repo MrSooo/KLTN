@@ -1,0 +1,30 @@
+{
+ "cau": "Trường hợp các bên lựa chọn giải quyết tranh chấp thông qua Hội đồng trọng tài lao động theo quy định tại Điều này thì trong thời gian Hội đồng trọng tài lao động đang tiến hành giải quyết tranh chấp, các bên không được đồng thời yêu cầu Tòa án giải quyết.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Trường hợp các bên lựa chọn giải quyết tranh chấp thông qua Hội đồng trọng tài lao động theo quy định tại Điều này\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trong thời gian Hội đồng trọng tài lao động đang tiến hành giải quyết tranh chấp\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"các bên không được đồng thời yêu cầu Tòa án giải quyết\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-PFADa7_xDLyL2roP_PjpiQg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1055
+   },
+   "input_tokens": 957,
+   "output_tokens": 1167,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_83fb10b633a77ae42f38bee8"
+   }
+  }
+ }
+}

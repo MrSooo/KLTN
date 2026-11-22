@@ -1,0 +1,30 @@
+{
+ "cau": "Trường hợp trả lương qua tài khoản cá nhân của người lao động được mở tại ngân hàng thì người sử dụng lao động phải trả các loại phí liên quan đến việc mở tài khoản và chuyển tiền lương.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Trường hợp trả lương qua tài khoản cá nhân của người lao động được mở tại ngân hàng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"người sử dụng lao động phải trả các loại phí liên quan đến việc mở tài khoản và chuyển tiền lương\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-_DoDa8P7HO7Pvr0PgoWQqAo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 9967
+   },
+   "input_tokens": 942,
+   "output_tokens": 316,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ff6a11303845df108c4b2764"
+   }
+  }
+ }
+}

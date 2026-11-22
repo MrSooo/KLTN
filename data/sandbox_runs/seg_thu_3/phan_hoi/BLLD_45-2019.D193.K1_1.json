@@ -1,0 +1,30 @@
+{
+ "cau": "Trên cơ sở đồng thuận, các bên tranh chấp có quyền yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp trong trường hợp hòa giải không thành hoặc hết thời hạn hòa giải quy định tại khoản 2 Điều 188 của Bộ luật này mà hòa giải viên lao động không tiến hành hòa giải hoặc một trong các bên không thực hiện thỏa thuận trong biên bản hòa giải thành.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trên cơ sở đồng thuận, các bên tranh chấp có quyền yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp trong trường hợp\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"hòa giải không thành\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hết thời hạn hòa giải quy định tại khoản 2 Điều 188 của Bộ luật này\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hòa giải viên lao động không tiến hành hòa giải\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"một trong các bên không thực hiện thỏa thuận trong biên bản hòa giải thành\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-DlADa5q9M-zK2roPsJa1qQg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1220
+   },
+   "input_tokens": 980,
+   "output_tokens": 1404,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_527c68884b6696cc8117ca82"
+   }
+  }
+ }
+}

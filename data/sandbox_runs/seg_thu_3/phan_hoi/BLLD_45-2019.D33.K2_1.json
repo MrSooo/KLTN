@@ -1,0 +1,30 @@
+{
+ "cau": "Trường hợp hai bên thỏa thuận được thì việc sửa đổi, bổ sung nội dung hợp đồng lao động được tiến hành bằng việc ký kết phụ lục hợp đồng lao động hoặc giao kết hợp đồng lao động mới.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Trường hợp hai bên thỏa thuận được\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"việc sửa đổi, bổ sung nội dung hợp đồng lao động được tiến hành bằng việc\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"ký kết phụ lục hợp đồng lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"giao kết hợp đồng lao động mới\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-7SgDa7DTBtWM0-kPqPqXQA",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 12262
+   },
+   "input_tokens": 943,
+   "output_tokens": 504,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_a932705026f719e53353ed71"
+   }
+  }
+ }
+}

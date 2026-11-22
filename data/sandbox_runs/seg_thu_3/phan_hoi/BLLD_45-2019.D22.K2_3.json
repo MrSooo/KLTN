@@ -1,0 +1,27 @@
+{
+ "cau": "Trường hợp phụ lục hợp đồng lao động sửa đổi, bổ sung một số điều, khoản của hợp đồng lao động thì phải ghi rõ nội dung điều, khoản sửa đổi, bổ sung và thời điểm có hiệu lực.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\"id\": \"c1\", \"loai\": \"dung_chung\", \"chu\": \"Trường hợp phụ lục hợp đồng lao động\", \"ap_cho\": [\"m1\", \"m2\"]},\n    {\"id\": \"m1\", \"loai\": \"menh_de\", \"chu\": \"sửa đổi\"},\n    {\"id\": \"m2\", \"loai\": \"menh_de\", \"chu\": \"bổ sung\"},\n    {\"id\": \"c2\", \"loai\": \"dung_chung\", \"chu\": \"một số điều, khoản của hợp đồng lao động thì phải ghi rõ nội dung điều, khoản sửa đổi, bổ sung và thời điểm có hiệu lực\", \"ap_cho\": [\"m1\", \"m2\"]}\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-ASgDa9OANLqlvr0P0pnfuA0",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 945,
+   "output_tokens": 183,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d589a384c200ef727ec9a5db"
+   }
+  }
+ }
+}

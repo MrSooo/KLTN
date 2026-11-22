@@ -1,0 +1,30 @@
+{
+ "cau": "Trường hợp tạm hoãn thực hiện hợp đồng lao động, thời gian tạm hoãn do người lao động thỏa thuận với người sử dụng lao động nhưng tối thiểu phải bằng thời gian do cơ sở khám bệnh, chữa bệnh có thẩm quyền chỉ định tạm nghỉ.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trường hợp tạm hoãn thực hiện hợp đồng lao động, thời gian tạm hoãn\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"do người lao động thỏa thuận với người sử dụng lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tối thiểu phải bằng thời gian do cơ sở khám bệnh, chữa bệnh có thẩm quyền chỉ định tạm nghỉ\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-M0UDa-PBK76y2roP7d2K8Qc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 13836
+   },
+   "input_tokens": 953,
+   "output_tokens": 484,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_53206954c89519effb0e40fb"
+   }
+  }
+ }
+}

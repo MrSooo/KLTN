@@ -1,0 +1,30 @@
+{
+ "cau": "Sản xuất, cung cấp điện, viễn thông, lọc dầu; cấp, thoát nước;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Sản xuất\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"cung cấp\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"điện, viễn thông, lọc dầu\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"cấp\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"thoát\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"nước\",\"ap_cho\":[\"m3\",\"m4\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-NT4Da_OpEd_t2roPoqfpyQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 9282
+   },
+   "input_tokens": 920,
+   "output_tokens": 572,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_03a7779f738a719750fb2b44"
+   }
+  }
+ }
+}

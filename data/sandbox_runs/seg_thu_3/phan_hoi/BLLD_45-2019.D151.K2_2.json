@@ -1,0 +1,27 @@
+{
+ "cau": "Khi sử dụng người lao động nước ngoài làm việc tại Việt Nam, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"sử dụng người lao động nước ngoài làm việc tại Việt Nam\"\n    },\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"hai bên có thể\",\n      \"ap_cho\": [\"m2\", \"m3\"]\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"thỏa thuận\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"giao kết nhiều lần hợp đồng lao động xác định thời hạn\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-BUkDa4G_CvOovr0P39ymwQo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 933,
+   "output_tokens": 201,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ca2fce069dee2a005b1920fa"
+   }
+  }
+ }
+}

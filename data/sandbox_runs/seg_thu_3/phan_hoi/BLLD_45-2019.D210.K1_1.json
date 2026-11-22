@@ -1,0 +1,27 @@
+{
+ "cau": "Khi xét thấy cuộc đình công có nguy cơ gây thiệt hại nghiêm trọng cho nền kinh tế quốc dân, lợi ích công cộng, đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người thì Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định hoãn hoặc ngừng đình công.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"xét thấy cuộc đình công\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"có nguy cơ gây thiệt hại nghiêm trọng cho nền kinh tế quốc dân, lợi ích công cộng\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người\"\n    },\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định\",\n      \"ap_cho\": [\"m3\", \"m4\"]\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"hoãn\"\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"ngừng\"\n    },\n    {\n      \"id\": \"c3\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"đình công\",\n      \"ap_cho\": [\"m3\", \"m4\"]\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-i1MDa9rcL7rC0-kPrfP4qAQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 966,
+   "output_tokens": 362,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_862b2946b45285766841b7a2"
+   }
+  }
+ }
+}

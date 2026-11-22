@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động có trình độ chuyên môn, kỹ thuật cao và một số trường hợp đặc biệt có thể nghỉ hưu ở tuổi cao hơn nhưng không quá 05 tuổi so với quy định tại khoản 2 Điều này tại thời điểm nghỉ hưu, trừ trường hợp pháp luật có quy định khác.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động có trình độ chuyên môn, kỹ thuật cao và một số trường hợp đặc biệt có thể nghỉ hưu ở tuổi cao hơn\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không quá 05 tuổi so với quy định tại khoản 2 Điều này tại thời điểm nghỉ hưu\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"trừ trường hợp pháp luật có quy định khác\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-xksDa97gFOm02roP99S90QE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1446
+   },
+   "input_tokens": 962,
+   "output_tokens": 1564,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d7b42e2b4c39a61cbcd4779f"
+   }
+  }
+ }
+}

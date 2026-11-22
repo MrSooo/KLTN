@@ -1,0 +1,30 @@
+{
+ "cau": "Cưỡng bức lao động là việc dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác để ép buộc người lao động phải làm việc trái ý muốn của họ.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Cưỡng bức lao động là việc\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"dùng vũ lực\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"đe dọa dùng vũ lực\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"các thủ đoạn khác\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"để ép buộc người lao động phải làm việc trái ý muốn của họ\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-o1YDa9OCGorV1e8P4ayQ-Ak",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3208
+   },
+   "input_tokens": 939,
+   "output_tokens": 572,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_a951fb167a704d9e9dc286f9"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Tuyển dụng, bố trí, quản lý, điều hành, giám sát lao động; khen thưởng và xử lý vi phạm kỷ luật lao động;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Tuyển dụng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bố trí\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"quản lý\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"điều hành\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"giám sát\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\",\"m5\"]},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"khen thưởng\"},{\"id\":\"m7\",\"loai\":\"menh_de\",\"chu\":\"xử lý vi phạm kỷ luật lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-QSIDa7a0F8r0rfcP2NDW-QM",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 65
+   },
+   "input_tokens": 930,
+   "output_tokens": 251,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_cb1ecb69cf0cfeaac6de103d"
+   }
+  }
+ }
+}

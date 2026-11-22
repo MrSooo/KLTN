@@ -1,0 +1,30 @@
+{
+ "cau": "Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam được thành lập ở các cơ quan, tổ chức, đơn vị, doanh nghiệp.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Công đoàn cơ sở\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thuộc hệ thống tổ chức Công đoàn Việt Nam\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"được thành lập ở các cơ quan, tổ chức, đơn vị, doanh nghiệp\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-FEwDa5iCO5uy2roP-P7T0QU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1166
+   },
+   "input_tokens": 930,
+   "output_tokens": 1264,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_21301d1dd7e664c96c2abbc2"
+   }
+  }
+ }
+}

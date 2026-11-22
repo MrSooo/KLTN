@@ -1,0 +1,30 @@
+{
+ "cau": "Doanh nghiệp, cơ quan, tổ chức, cá nhân trước khi tuyển dụng người lao động nước ngoài vào làm việc tại Việt Nam phải giải trình nhu cầu sử dụng lao động và được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Doanh nghiệp, cơ quan, tổ chức, cá nhân trước khi tuyển dụng người lao động nước ngoài vào làm việc tại Việt Nam phải\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"giải trình nhu cầu sử dụng lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-OkkDa_-MFZuw0-kPqa6b6QM",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1424
+   },
+   "input_tokens": 953,
+   "output_tokens": 1544,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_8a931255cddbf1c12659e989"
+   }
+  }
+ }
+}

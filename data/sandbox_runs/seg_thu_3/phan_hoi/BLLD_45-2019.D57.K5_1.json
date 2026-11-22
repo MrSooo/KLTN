@@ -1,0 +1,30 @@
+{
+ "cau": "Trả lại người lao động thuê lại không đáp ứng yêu cầu như đã thỏa thuận hoặc vi phạm kỷ luật lao động cho doanh nghiệp cho thuê lại lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Trả lại người lao động thuê lại\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"không đáp ứng yêu cầu như đã thỏa thuận\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"vi phạm kỷ luật lao động\"\n    },\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"cho doanh nghiệp cho thuê lại lao động\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-_i8Da7aIEIP81e8P8o_pqQo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 866
+   },
+   "input_tokens": 932,
+   "output_tokens": 1078,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_41bf3ed54fe36dc1a4e12d7d"
+   }
+  }
+ }
+}

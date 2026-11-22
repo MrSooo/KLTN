@@ -1,0 +1,30 @@
+{
+ "cau": "Trường hợp phải giải quyết công việc cấp bách, không thể trì hoãn do tính chất thời vụ, thời điểm của nguyên liệu, sản phẩm hoặc để giải quyết công việc phát sinh do yếu tố khách quan không dự liệu trước, do hậu quả thời tiết, thiên tai, hỏa hoạn, địch họa, thiếu điện, thiếu nguyên liệu, sự cố kỹ thuật của dây chuyền sản xuất;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trường hợp\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"phải giải quyết công việc cấp bách\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không thể trì hoãn do tính chất thời vụ, thời điểm của nguyên liệu, sản phẩm\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"để giải quyết công việc phát sinh do yếu tố khách quan không dự liệu trước, do hậu quả thời tiết, thiên tai, hỏa hoạn, địch họa, thiếu điện, thiếu nguyên liệu, sự cố kỹ thuật của dây chuyền sản xuất\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-TT4Da6XJHLeMvr0PqPOOsQY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1344
+   },
+   "input_tokens": 984,
+   "output_tokens": 1513,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_07e74d6dad7eb3725dadd5bb"
+   }
+  }
+ }
+}

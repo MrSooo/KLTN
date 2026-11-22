@@ -1,0 +1,30 @@
+{
+ "cau": "Hợp đồng lao động có hiệu lực kể từ ngày hai bên giao kết, trừ trường hợp hai bên có thỏa thuận hoặc pháp luật có quy định khác.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Hợp đồng lao động có hiệu lực kể từ ngày hai bên giao kết\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"trừ trường hợp\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hai bên có thỏa thuận\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"pháp luật có quy định khác\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-BigDa8ws9ZfT6Q_Q-e-JAQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 826
+   },
+   "input_tokens": 932,
+   "output_tokens": 940,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_3e8eaa1b7dc812f5c203e31d"
+   }
+  }
+ }
+}

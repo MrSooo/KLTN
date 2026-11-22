@@ -1,0 +1,30 @@
+{
+ "cau": "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"Ban trọng tài lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"phải được thành lập\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"để giải quyết tranh chấp\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-tk8Da7D5O8r0rfcP2NDW-QM",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 29450
+   },
+   "input_tokens": 945,
+   "output_tokens": 560,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ab34d800ec39bfbcfb40d55e"
+   }
+  }
+ }
+}

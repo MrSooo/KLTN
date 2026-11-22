@@ -1,0 +1,30 @@
+{
+ "cau": "Nội quy lao động bao gồm những nội dung chủ yếu sau đây:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Nội quy lao động bao gồm những nội dung chủ yếu sau đây\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-akADa_aqMM_Y9tMP_IyMgQ8",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 275
+   },
+   "input_tokens": 915,
+   "output_tokens": 315,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_a0769dac0a09a293c7ede9ef"
+   }
+  }
+ }
+}

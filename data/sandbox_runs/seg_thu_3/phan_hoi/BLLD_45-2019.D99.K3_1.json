@@ -1,0 +1,30 @@
+{
+ "cau": "Nếu vì sự cố về điện, nước mà không do lỗi của người sử dụng lao động hoặc do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa, di dời địa điểm hoạt động theo yêu cầu của cơ quan nhà nước có thẩm quyền hoặc vì lý do kinh tế thì hai bên thỏa thuận về tiền lương ngừng việc như sau:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"vì sự cố về điện, nước\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không do lỗi của người sử dụng lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa, di dời địa điểm hoạt động theo yêu cầu của cơ quan nhà nước có thẩm quyền\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"vì lý do kinh tế\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"hai bên thỏa thuận về tiền lương ngừng việc như sau\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-TTwDa-SwK5-dvr0P8c_e4Ag",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1129
+   },
+   "input_tokens": 973,
+   "output_tokens": 1286,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_dc0530255366b421a568de91"
+   }
+  }
+ }
+}

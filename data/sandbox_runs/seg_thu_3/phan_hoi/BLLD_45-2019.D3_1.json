@@ -1,0 +1,30 @@
+{
+ "cau": "Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-ZR4Da7_eGoSo9tMP_IyI-AY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1977
+   },
+   "input_tokens": 915,
+   "output_tokens": 160,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_7ef61b64d5889c97dff5545b"
+   }
+  }
+ }
+}

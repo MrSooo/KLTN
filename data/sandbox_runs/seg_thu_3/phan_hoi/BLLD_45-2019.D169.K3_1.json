@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động bị suy giảm khả năng lao động; làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm; làm nghề, công việc nặng nhọc, độc hại, nguy hiểm; làm việc ở vùng có điều kiện kinh tế - xã hội đặc biệt khó khăn có thể nghỉ hưu ở tuổi thấp hơn nhưng không quá 05 tuổi so với quy định tại khoản 2 Điều này tại thời điểm nghỉ hưu, trừ trường hợp pháp luật có quy định khác.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"bị suy giảm khả năng lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"làm nghề, công việc nặng nhọc, độc hại, nguy hiểm\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"làm việc ở vùng có điều kiện kinh tế - xã hội đặc biệt khó khăn\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"có thể nghỉ hưu ở tuổi thấp hơn\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"không quá 05 tuổi so với quy định tại khoản 2 Điều này tại thời điểm nghỉ hưu\"},{\"id\":\"m7\",\"loai\":\"menh_de\",\"chu\":\"trừ trường hợp pháp luật có quy định khác\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-sksDa6a1FJHG0-kP6bbs0A4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2424
+   },
+   "input_tokens": 1002,
+   "output_tokens": 1020,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_1add76316fa23034fbc04741"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động có quyền thành lập, gia nhập và hoạt động công đoàn theo quy định của Luật Công đoàn.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động có quyền\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thành lập\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"gia nhập\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hoạt động\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"công đoàn theo quy định của Luật Công đoàn\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-_0sDa63xDLqlvr0P0pnfuA0",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 329
+   },
+   "input_tokens": 923,
+   "output_tokens": 461,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_446dd7e3450bd875c72162df"
+   }
+  }
+ }
+}

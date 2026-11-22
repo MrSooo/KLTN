@@ -1,0 +1,30 @@
+{
+ "cau": "Ngoài nội dung quy định tại khoản 1 Điều này, các bên lựa chọn một hoặc một số nội dung sau đây để tiến hành đối thoại:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Ngoài nội dung quy định tại khoản 1 Điều này, các bên\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"lựa chọn một hoặc một số nội dung sau đây\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"để tiến hành đối thoại\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-uTIDa66OMeuw2roPzqyXiQQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1168
+   },
+   "input_tokens": 930,
+   "output_tokens": 1266,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_91b735711b4b0822637bb36e"
+   }
+  }
+ }
+}

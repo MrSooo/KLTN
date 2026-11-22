@@ -1,0 +1,30 @@
+{
+ "cau": "Khi hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài lao động không ra quyết định giải quyết tranh chấp thì các bên có quyền yêu cầu Tòa án giải quyết.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"hết thời hạn quy định tại khoản 2 Điều này\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"Ban trọng tài lao động không được thành lập\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hết thời hạn quy định tại khoản 3 Điều này\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"Ban trọng tài lao động không ra quyết định giải quyết tranh chấp\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"các bên có quyền yêu cầu Tòa án giải quyết\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-V1ADa_HoJtKgrfcP0ryTkAk",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5535
+   },
+   "input_tokens": 961,
+   "output_tokens": 576,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_0c638d2e897445763f2260cf"
+   }
+  }
+ }
+}

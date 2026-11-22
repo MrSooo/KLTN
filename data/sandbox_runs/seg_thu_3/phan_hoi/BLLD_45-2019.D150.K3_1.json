@@ -1,0 +1,27 @@
+{
+ "cau": "Chính phủ quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Chính phủ quy định chi tiết việc\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tuyển dụng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"quản lý\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-UUgDa5PVCN_t2roPoqfpyQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 932,
+   "output_tokens": 126,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_bb4e9689b0722db5fd01cf41"
+   }
+  }
+ }
+}

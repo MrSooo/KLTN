@@ -1,0 +1,30 @@
+{
+ "cau": "Khi tranh chấp lao động tập thể đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết theo quy định của Bộ luật này.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"tranh chấp lao động tập thể đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết theo quy định của Bộ luật này\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-pFIDa5HDEdLg1e8P25a32Ag",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 161
+   },
+   "input_tokens": 930,
+   "output_tokens": 242,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_e06c594f166e38148e67e87c"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Người có thẩm quyền xử lý kỷ luật lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người có thẩm quyền xử lý kỷ luật lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-uUADa_fUL8_-1e8Pke7bsAU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 325
+   },
+   "input_tokens": 911,
+   "output_tokens": 361,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_e30ae7e5bf50e6b814b5bbda"
+   }
+  }
+ }
+}

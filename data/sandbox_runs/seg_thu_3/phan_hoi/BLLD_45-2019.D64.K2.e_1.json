@@ -1,0 +1,30 @@
+{
+ "cau": "Nội dung khác mà một hoặc các bên quan tâm.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Nội dung khác mà một hoặc các bên quan tâm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-7jIDa_y7G97e9tMPnrbt0As",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1340
+   },
+   "input_tokens": 912,
+   "output_tokens": 1377,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_7a309d15dcd39c219db26a76"
+   }
+  }
+ }
+}

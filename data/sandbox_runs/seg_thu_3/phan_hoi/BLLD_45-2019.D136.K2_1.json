@@ -1,0 +1,30 @@
+{
+ "cau": "Tham khảo ý kiến của lao động nữ hoặc đại diện của họ khi quyết định những vấn đề liên quan đến quyền và lợi ích của phụ nữ.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"Tham khảo ý kiến của lao động nữ hoặc đại diện của họ\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"quyết định những vấn đề liên quan đến quyền và lợi ích của phụ nữ\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-iUQDa8aUJvq31e8PquCPqQk",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 409
+   },
+   "input_tokens": 930,
+   "output_tokens": 523,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_fa1001bdd3759ce1c8f53f01"
+   }
+  }
+ }
+}

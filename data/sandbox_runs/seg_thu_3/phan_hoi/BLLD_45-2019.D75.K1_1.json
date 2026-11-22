@@ -1,0 +1,30 @@
+{
+ "cau": "Thỏa ước lao động tập thể là thỏa thuận đạt được thông qua thương lượng tập thể và được các bên ký kết bằng văn bản.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thỏa ước lao động tập thể là thỏa thuận\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"đạt được thông qua thương lượng tập thể\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"được các bên ký kết bằng văn bản\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-7TQDa-fnCpeq9tMPr8npqQg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 185
+   },
+   "input_tokens": 928,
+   "output_tokens": 280,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_46b24904a30b79bcc5a09851"
+   }
+  }
+ }
+}

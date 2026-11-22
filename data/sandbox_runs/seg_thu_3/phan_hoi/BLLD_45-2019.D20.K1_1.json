@@ -1,0 +1,30 @@
+{
+ "cau": "Hợp đồng lao động phải được giao kết theo một trong các loại sau đây:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Hợp đồng lao động phải được giao kết theo một trong các loại sau đây\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-YiYDa_3KGt2H2roPj7bO2Ac",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 140
+   },
+   "input_tokens": 917,
+   "output_tokens": 182,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_b9c26018e5371caf7a7207f2"
+   }
+  }
+ }
+}

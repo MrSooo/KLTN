@@ -1,0 +1,27 @@
+{
+ "cau": "Người lao động bị tạm giữ, tạm giam theo quy định của pháp luật về tố tụng hình sự;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\"id\": \"c1\", \"loai\": \"dung_chung\", \"chu\": \"Người lao động bị\", \"ap_cho\": [\"m1\", \"m2\"]},\n    {\"id\": \"m1\", \"loai\": \"menh_de\", \"chu\": \"tạm giữ\"},\n    {\"id\": \"m2\", \"loai\": \"menh_de\", \"chu\": \"tạm giam\"},\n    {\"id\": \"c2\", \"loai\": \"dung_chung\", \"chu\": \"theo quy định của pháp luật về tố tụng hình sự\", \"ap_cho\": [\"m1\", \"m2\"]}\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-kigDa7yLGOOW9tMPt7PD0As",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 923,
+   "output_tokens": 161,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_b1a91d72dfcce158bb129300"
+   }
+  }
+ }
+}

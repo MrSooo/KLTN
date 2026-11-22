@@ -1,0 +1,30 @@
+{
+ "cau": "Mức lao động và thời giờ làm việc, thời giờ nghỉ ngơi, làm thêm giờ, nghỉ giữa ca;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Mức lao động và thời giờ làm việc, thời giờ nghỉ ngơi, làm thêm giờ, nghỉ giữa ca\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-EjMDa4fNMqvN2roPytOJuQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1065
+   },
+   "input_tokens": 924,
+   "output_tokens": 1114,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": true,
+    "request_id": "req_d31e125d20c3f5a518277b10"
+   }
+  }
+ }
+}

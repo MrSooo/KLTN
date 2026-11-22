@@ -1,0 +1,30 @@
+{
+ "cau": "Tổ chức thi kỹ năng nghề cho người lao động; tham gia hội đồng kỹ năng nghề; dự báo nhu cầu và xây dựng tiêu chuẩn kỹ năng nghề; tổ chức đánh giá và công nhận kỹ năng nghề; phát triển năng lực nghề nghiệp cho người lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Tổ chức thi kỹ năng nghề cho người lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tham gia hội đồng kỹ năng nghề\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"dự báo nhu cầu\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"xây dựng tiêu chuẩn\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"kỹ năng nghề\",\"ap_cho\":[\"m3\",\"m4\"]},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"tổ chức đánh giá\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"công nhận\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"kỹ năng nghề\",\"ap_cho\":[\"m5\",\"m6\"]},{\"id\":\"m7\",\"loai\":\"menh_de\",\"chu\":\"phát triển năng lực nghề nghiệp cho người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-nzADa5dDxLDaug_2iuKwAg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 10069
+   },
+   "input_tokens": 955,
+   "output_tokens": 896,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_13a015cf8f5f5d32660ecadd"
+   }
+  }
+ }
+}

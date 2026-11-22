@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động tự ý bỏ việc mà không có lý do chính đáng từ 05 ngày làm việc liên tục trở lên;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tự ý bỏ việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không có lý do chính đáng\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"từ 05 ngày làm việc liên tục trở lên\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-TSsDa6D1LYHX9tMPyI-l0Qg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1534
+   },
+   "input_tokens": 926,
+   "output_tokens": 1652,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_9a872357e9823e2649601ed1"
+   }
+  }
+ }
+}

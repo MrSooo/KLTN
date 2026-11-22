@@ -1,0 +1,30 @@
+{
+ "cau": "Những trường hợp sau đây được coi là thay đổi cơ cấu, công nghệ:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Những trường hợp sau đây được coi là thay đổi cơ cấu, công nghệ\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-NSwDa_apGdeY0-kPrsuWsAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 108
+   },
+   "input_tokens": 916,
+   "output_tokens": 149,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_a47a0b2733883666f8c865d2"
+   }
+  }
+ }
+}

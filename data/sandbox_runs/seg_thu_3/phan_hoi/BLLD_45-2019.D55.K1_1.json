@@ -1,0 +1,30 @@
+{
+ "cau": "Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động phải ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động phải ký kết hợp đồng cho thuê lại lao động bằng văn bản\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"được làm thành 02 bản\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"mỗi bên giữ 01 bản\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-eS8Da82iF5bO1e8P17TQ8Ao",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 916
+   },
+   "input_tokens": 944,
+   "output_tokens": 1017,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_6c3016bbbf980b332a2644cb"
+   }
+  }
+ }
+}

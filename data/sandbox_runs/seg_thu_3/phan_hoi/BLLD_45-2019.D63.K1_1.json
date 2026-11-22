@@ -1,0 +1,30 @@
+{
+ "cau": "Đối thoại tại nơi làm việc là việc chia sẻ thông tin, tham khảo, thảo luận, trao đổi ý kiến giữa người sử dụng lao động với người lao động hoặc tổ chức đại diện người lao động về những vấn đề liên quan đến quyền, lợi ích và mối quan tâm của các bên tại nơi làm việc nhằm tăng cường sự hiểu biết, hợp tác, cùng nỗ lực hướng tới giải pháp các bên cùng có lợi.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Đối thoại tại nơi làm việc là việc\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"chia sẻ thông tin\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tham khảo\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"thảo luận\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"trao đổi ý kiến\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"giữa người sử dụng lao động với người lao động hoặc tổ chức đại diện người lao động về những vấn đề liên quan đến quyền, lợi ích và mối quan tâm của các bên tại nơi làm việc\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"nhằm\",\"ap_cho\":[\"m5\",\"m6\"]},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"tăng cường sự hiểu biết, hợp tác\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"cùng nỗ lực hướng tới giải pháp các bên cùng có lợi\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-STIDa5ixL-ab0-kP0Z_Q2QI",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2373
+   },
+   "input_tokens": 987,
+   "output_tokens": 2654,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f8c5ca372b232d599712c597"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Người giao kết hợp đồng lao động không đúng thẩm quyền hoặc vi phạm nguyên tắc giao kết hợp đồng lao động quy định tại khoản 1 Điều 15 của Bộ luật này;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người giao kết hợp đồng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"không đúng thẩm quyền\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"vi phạm nguyên tắc giao kết hợp đồng lao động quy định tại khoản 1 Điều 15 của Bộ luật này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-CS8Da-2gL7yL2roP_PjpiQg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 538
+   },
+   "input_tokens": 937,
+   "output_tokens": 640,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_24ddce56473e3546e3091ade"
+   }
+  }
+ }
+}

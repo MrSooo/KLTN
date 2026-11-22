@@ -1,0 +1,30 @@
+{
+ "cau": "Việc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương thì không bị xem là phân biệt đối xử.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Việc\",\n      \"ap_cho\": [\"m1\", \"m2\", \"m3\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"phân biệt\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"loại trừ\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"ưu tiên\"\n    },\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"xuất phát từ yêu cầu đặc thù của công việc\",\n      \"ap_cho\": [\"m1\", \"m2\", \"m3\"]\n    },\n    {\n      \"id\": \"c3\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"các hành vi\",\n      \"ap_cho\": [\"m4\", \"m5\"]\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"duy trì\"\n    },\n    {\n      \"id\": \"m5\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"bảo vệ\"\n    },\n    {\n      \"id\": \"c4\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"việc làm cho người lao động dễ bị tổn thương\",\n      \"ap_cho\": [\"m4\", \"m5\"]\n    },\n    {\n      \"id\": \"c5\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"không bị xem là phân biệt đối xử\",\n      \"ap_cho\": [\"m1\", \"m2\", \"m3\", \"m4\", \"m5\"]\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-oVYDa6KWNtqZvr0PxKCYIA",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 867
+   },
+   "input_tokens": 950,
+   "output_tokens": 1365,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_7674909df0fa0da097025da2"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được hồ sơ đăng ký nội quy lao động, nếu nội dung nội quy lao động có quy định trái với pháp luật thì cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh thông báo, hướng dẫn người sử dụng lao động sửa đổi, bổ sung và đăng ký lại.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được hồ sơ đăng ký nội quy lao động\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"nội dung nội quy lao động có quy định trái với pháp luật\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thông báo\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hướng dẫn\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"người sử dụng lao động\",\"ap_cho\":[\"m4\",\"m5\",\"m6\"]},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"sửa đổi\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"bổ sung\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"đăng ký lại\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-2UADa6jIKv6Nvr0PpZXNoQU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 34695
+   },
+   "input_tokens": 972,
+   "output_tokens": 1032,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_52324051fceea382c61bde0d"
+   }
+  }
+ }
+}

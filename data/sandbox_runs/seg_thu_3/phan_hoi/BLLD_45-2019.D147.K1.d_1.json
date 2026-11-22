@@ -1,0 +1,30 @@
+{
+ "cau": "Bảo trì, bảo dưỡng thiết bị, máy móc;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Bảo trì\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bảo dưỡng\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"thiết bị, máy móc\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-VkcDa8u4EZqP2roP0ZjwqAI",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 189
+   },
+   "input_tokens": 912,
+   "output_tokens": 268,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_b18caef2f6c7b58f4618494d"
+   }
+  }
+ }
+}

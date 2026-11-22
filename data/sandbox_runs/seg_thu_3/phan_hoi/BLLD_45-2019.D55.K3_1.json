@@ -1,0 +1,30 @@
+{
+ "cau": "Hợp đồng cho thuê lại lao động không được có những thỏa thuận về quyền, lợi ích của người lao động thấp hơn so với hợp đồng lao động mà doanh nghiệp cho thuê lại lao động đã ký với người lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Hợp đồng cho thuê lại lao động không được có những thỏa thuận về quyền, lợi ích của người lao động thấp hơn so với hợp đồng lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"doanh nghiệp cho thuê lại lao động đã ký với người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-oS8Da6nfArij9tMPmajWwA0",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 683
+   },
+   "input_tokens": 946,
+   "output_tokens": 770,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_c4c5112404c6348f47fb84e0"
+   }
+  }
+ }
+}

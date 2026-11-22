@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động có hành vi tiết lộ bí mật kinh doanh, bí mật công nghệ, xâm phạm quyền sở hữu trí tuệ của người sử dụng lao động, có hành vi gây thiệt hại nghiêm trọng hoặc đe dọa gây thiệt hại đặc biệt nghiêm trọng về tài sản, lợi ích của người sử dụng lao động hoặc quấy rối tình dục tại nơi làm việc được quy định trong nội quy lao động;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\",\"m5\"]},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"có hành vi\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tiết lộ bí mật kinh doanh, bí mật công nghệ\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"xâm phạm quyền sở hữu trí tuệ\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"của người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"c4\",\"loai\":\"dung_chung\",\"chu\":\"có hành vi\",\"ap_cho\":[\"m3\",\"m4\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"gây thiệt hại nghiêm trọng\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"đe dọa gây thiệt hại đặc biệt nghiêm trọng\"},{\"id\":\"c5\",\"loai\":\"dung_chung\",\"chu\":\"về tài sản, lợi ích của người sử dụng lao động\",\"ap_cho\":[\"m3\",\"m4\"]},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"quấy rối tình dục tại nơi làm việc được quy định trong nội quy lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-50EDa_y_COu40-kP0OTZsAs",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 13804
+   },
+   "input_tokens": 984,
+   "output_tokens": 1300,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_10f1ea5c83d54da61ae37d0f"
+   }
+  }
+ }
+}

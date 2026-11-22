@@ -1,0 +1,30 @@
+{
+ "cau": "Thời gian nghỉ việc khi chăm sóc con dưới 07 tuổi ốm đau, khám thai, sẩy thai, nạo, hút thai, thai chết lưu, phá thai bệnh lý, thực hiện các biện pháp tránh thai, triệt sản, người lao động được hưởng trợ cấp theo quy định của pháp luật về bảo hiểm xã hội.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thời gian nghỉ việc\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\",\"m5\",\"m6\",\"m7\",\"m8\",\"m9\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"chăm sóc con dưới 07 tuổi ốm đau\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"khám thai\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"sẩy thai\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"nạo\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"hút\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"thai\",\"ap_cho\":[\"m4\",\"m5\"]},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"thai chết lưu\"},{\"id\":\"m7\",\"loai\":\"menh_de\",\"chu\":\"phá thai bệnh lý\"},{\"id\":\"m8\",\"loai\":\"menh_de\",\"chu\":\"thực hiện các biện pháp tránh thai\"},{\"id\":\"m9\",\"loai\":\"menh_de\",\"chu\":\"triệt sản\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"người lao động được hưởng trợ cấp theo quy định của pháp luật về bảo hiểm xã hội\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\",\"m5\",\"m6\",\"m7\",\"m8\",\"m9\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-CEYDa4etGvWX0-kP0PnviQE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 18594
+   },
+   "input_tokens": 971,
+   "output_tokens": 1324,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_87befbd3939db1c24e1c2574"
+   }
+  }
+ }
+}

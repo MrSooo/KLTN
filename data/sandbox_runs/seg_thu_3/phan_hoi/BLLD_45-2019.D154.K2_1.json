@@ -1,0 +1,30 @@
+{
+ "cau": "Là Chủ tịch Hội đồng quản trị hoặc thành viên Hội đồng quản trị của công ty cổ phần có giá trị góp vốn theo quy định của Chính phủ.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Là Chủ tịch Hội đồng quản trị hoặc thành viên Hội đồng quản trị của công ty cổ phần\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có giá trị góp vốn theo quy định của Chính phủ\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-h0kDa76SHfuv2roPv5rX2QQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1516
+   },
+   "input_tokens": 931,
+   "output_tokens": 1588,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_7c308d3264bba96902058914"
+   }
+  }
+ }
+}

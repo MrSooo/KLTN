@@ -1,0 +1,27 @@
+{
+ "cau": "Khi sử dụng người lao động cao tuổi, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sử dụng người lao động cao tuổi\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hai bên có thể thỏa thuận\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"giao kết nhiều lần hợp đồng lao động xác định thời hạn\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-zkcDa7nZMbrC0-kPrfP4qAQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 928,
+   "output_tokens": 85,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_76a00733a09981f9e5791505"
+   }
+  }
+ }
+}

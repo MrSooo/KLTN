@@ -1,0 +1,30 @@
+{
+ "cau": "Thời gian, địa điểm và cách thức lấy ý kiến biểu quyết đối với dự thảo thỏa ước lao động tập thể do tổ chức đại diện người lao động quyết định nhưng không được làm ảnh hưởng đến hoạt động sản xuất, kinh doanh bình thường của doanh nghiệp tham gia thương lượng.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Thời gian, địa điểm và cách thức lấy ý kiến biểu quyết đối với dự thảo thỏa ước lao động tập thể\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"do tổ chức đại diện người lao động quyết định\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"không được làm ảnh hưởng đến hoạt động sản xuất, kinh doanh bình thường của doanh nghiệp tham gia thương lượng\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-gjUDa72_NNC0vr0Pi4_K-Ao",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1040
+   },
+   "input_tokens": 957,
+   "output_tokens": 1229,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_87009119c5f6d75c15c7cb14"
+   }
+  }
+ }
+}
