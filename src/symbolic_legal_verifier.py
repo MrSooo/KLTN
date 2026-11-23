@@ -302,8 +302,15 @@ def load_knowledge(src, versions=None, date=None):
     unit_ids = set(units)
 
     def _load(name):
-        for p in (edges.PROCESSED_DIR / f"{name}_{stem}{tag}.jsonl",
-                  edges.PROCESSED_DIR / f"{name}_{stem}.jsonl"):
+        """Load JSONL from either v3_refactor subdir or legacy flat path."""
+        stem_t = f"{stem}{tag}"
+        candidates = [
+            # v3_refactor subdirectory: data/processed/<name>/<name>_<stem>.jsonl
+            edges.PROCESSED_DIR / name / f"{name}_{stem_t}.jsonl",
+            # legacy flat: data/processed/<name>_<stem>.jsonl
+            edges.PROCESSED_DIR / f"{name}_{stem_t}.jsonl",
+        ]
+        for p in candidates:
             if p.exists():
                 return [json.loads(line) for line in p.read_text(encoding="utf-8").splitlines()
                         if line.strip()]
