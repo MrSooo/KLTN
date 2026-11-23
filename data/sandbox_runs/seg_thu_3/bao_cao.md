@@ -1,6 +1,6 @@
 # Chạy dò lượt 1 `seg-thu-3` trên BLLĐ (881 đơn vị 1.6A)
 
-993 câu; máy kiểm qua 976, lỗi 8, thiếu 9; câu có mệnh đề cần đọc tay (có dấu phẩy / và / hoặc, hoặc từ 15 chữ) 633; token ra 637316; 6396.0 VND.
+993 câu; máy kiểm qua 985, lỗi 8, thiếu 0; câu có mệnh đề cần đọc tay (có dấu phẩy / và / hoặc, hoặc từ 15 chữ) 638; token ra 641892; 6454.5 VND.
 
 ## Cờ gom lỗi (đếm theo câu; cờ không phải phán quyết)
 
@@ -8,9 +8,9 @@
 |---|---|---|
 | `de_nham_trong_menh_de` | 2 | BLLD_45-2019.D46.K2#1, BLLD_45-2019.D47.K2#1 |
 | `cham_phay_trong_menh_de` | 8 | BLLD_45-2019.D1#1, BLLD_45-2019.D91.K3#1, BLLD_45-2019.D115.K1.c#1, BLLD_45-2019.D166#1, BLLD_45-2019.D174.K1.a#1, BLLD_45-2019.D178.K6#1, BLLD_45-2019.D184.K2#1, BLLD_45-2019.D185.K6#1 |
-| `va_hoac_trong_menh_de` | 230 | BLLD_45-2019.D1#1, BLLD_45-2019.D2.K1#1, BLLD_45-2019.D3.K3#1, BLLD_45-2019.D3.K5#2, BLLD_45-2019.D3.K9#2, BLLD_45-2019.D4.K1#1, BLLD_45-2019.D4.K2#1, BLLD_45-2019.D4.K3#1, BLLD_45-2019.D4.K6#1, BLLD_45-2019.D4.K7#1, BLLD_45-2019.D5.K1.c#1, BLLD_45-2019.D5.K2.a#1, BLLD_45-2019.D5.K2.c#1, BLLD_45-2019.D6.K2.a#1, BLLD_45-2019.D6.K2.d#1, BLLD_45-2019.D7.K2#1, BLLD_45-2019.D7.K3#1, BLLD_45-2019.D7.K4#1, BLLD_45-2019.D10.K1#1, BLLD_45-2019.D10.K2#1, BLLD_45-2019.D13.K1#1, BLLD_45-2019.D13.K1#2, BLLD_45-2019.D14.K2#1, BLLD_45-2019.D15.K2#1, BLLD_45-2019.D16.K1#1, BLLD_45-2019.D16.K2#1, BLLD_45-2019.D17.K2#1, BLLD_45-2019.D18.K2#2, BLLD_45-2019.D18.K3.a#1, BLLD_45-2019.D18.K4.c#1, BLLD_45-2019.D19.K2#1, BLLD_45-2019.D20.K2.a#1, BLLD_45-2019.D20.K2.c#1, BLLD_45-2019.D21.K1.a#1, BLLD_45-2019.D21.K1.b#1, BLLD_45-2019.D21.K1.c#1, BLLD_45-2019.D21.K1.dd#1, BLLD_45-2019.D21.K1.i#1, BLLD_45-2019.D21.K2#1, BLLD_45-2019.D21.K5#1 |
-| `dan_chieu_trong_menh_de` | 106 | BLLD_45-2019.D14.K2#1, BLLD_45-2019.D18.K1#1, BLLD_45-2019.D20.K2#1, BLLD_45-2019.D20.K2.b#1, BLLD_45-2019.D20.K2.c#1, BLLD_45-2019.D21.K5#1, BLLD_45-2019.D24.K2#1, BLLD_45-2019.D29.K2#1, BLLD_45-2019.D29.K4#1, BLLD_45-2019.D30.K1.d#1, BLLD_45-2019.D34.K1#1, BLLD_45-2019.D34.K4#1, BLLD_45-2019.D34.K9#1, BLLD_45-2019.D34.K10#1, BLLD_45-2019.D34.K11#1, BLLD_45-2019.D34.K12#1, BLLD_45-2019.D35.K2.dd#1, BLLD_45-2019.D35.K2.e#1, BLLD_45-2019.D35.K2.g#1, BLLD_45-2019.D36.K1.d#1, BLLD_45-2019.D36.K1.dd#1, BLLD_45-2019.D36.K1.g#1, BLLD_45-2019.D36.K2#1, BLLD_45-2019.D36.K2.c#1, BLLD_45-2019.D36.K3#1, BLLD_45-2019.D40.K3#1, BLLD_45-2019.D41.K1#4, BLLD_45-2019.D41.K2#1, BLLD_45-2019.D41.K3#1, BLLD_45-2019.D42.K5#1, BLLD_45-2019.D43.K1#1, BLLD_45-2019.D43.K3#1, BLLD_45-2019.D45.K1#1, BLLD_45-2019.D45.K2#2, BLLD_45-2019.D46.K1#1, BLLD_45-2019.D47.K1#1, BLLD_45-2019.D49.K1.b#1, BLLD_45-2019.D56#1, BLLD_45-2019.D58#1, BLLD_45-2019.D62.K3#1 |
-| `dai_tu_15_chu` | 548 | BLLD_45-2019.D1#1, BLLD_45-2019.D2.K1#1, BLLD_45-2019.D2.K4#1, BLLD_45-2019.D3.K3#1, BLLD_45-2019.D3.K3#2, BLLD_45-2019.D3.K5#2, BLLD_45-2019.D3.K6#1, BLLD_45-2019.D3.K9#2, BLLD_45-2019.D4.K1#1, BLLD_45-2019.D4.K3#1, BLLD_45-2019.D4.K4#1, BLLD_45-2019.D4.K7#1, BLLD_45-2019.D5.K1.b#1, BLLD_45-2019.D5.K1.d#1, BLLD_45-2019.D5.K2.a#1, BLLD_45-2019.D5.K2.b#1, BLLD_45-2019.D5.K2.c#1, BLLD_45-2019.D6.K2.a#1, BLLD_45-2019.D6.K2.d#1, BLLD_45-2019.D7.K2#1, BLLD_45-2019.D7.K3#1, BLLD_45-2019.D7.K4#1, BLLD_45-2019.D8.K6#1, BLLD_45-2019.D9.K2#1, BLLD_45-2019.D10.K1#1, BLLD_45-2019.D10.K2#1, BLLD_45-2019.D11.K1#1, BLLD_45-2019.D12.K2#1, BLLD_45-2019.D13.K1#1, BLLD_45-2019.D13.K1#2, BLLD_45-2019.D13.K2#1, BLLD_45-2019.D14.K1#2, BLLD_45-2019.D14.K2#1, BLLD_45-2019.D15.K2#1, BLLD_45-2019.D16.K1#1, BLLD_45-2019.D16.K2#1, BLLD_45-2019.D17.K1#1, BLLD_45-2019.D17.K2#1, BLLD_45-2019.D18.K1#1, BLLD_45-2019.D18.K2#1 |
+| `va_hoac_trong_menh_de` | 234 | BLLD_45-2019.D1#1, BLLD_45-2019.D2.K1#1, BLLD_45-2019.D3.K3#1, BLLD_45-2019.D3.K5#2, BLLD_45-2019.D3.K9#2, BLLD_45-2019.D4.K1#1, BLLD_45-2019.D4.K2#1, BLLD_45-2019.D4.K3#1, BLLD_45-2019.D4.K6#1, BLLD_45-2019.D4.K7#1, BLLD_45-2019.D5.K1.c#1, BLLD_45-2019.D5.K2.a#1, BLLD_45-2019.D5.K2.c#1, BLLD_45-2019.D6.K2.a#1, BLLD_45-2019.D6.K2.d#1, BLLD_45-2019.D7.K2#1, BLLD_45-2019.D7.K3#1, BLLD_45-2019.D7.K4#1, BLLD_45-2019.D10.K1#1, BLLD_45-2019.D10.K2#1, BLLD_45-2019.D13.K1#1, BLLD_45-2019.D13.K1#2, BLLD_45-2019.D14.K2#1, BLLD_45-2019.D15.K2#1, BLLD_45-2019.D16.K1#1, BLLD_45-2019.D16.K2#1, BLLD_45-2019.D17.K2#1, BLLD_45-2019.D18.K2#2, BLLD_45-2019.D18.K3.a#1, BLLD_45-2019.D18.K4.c#1, BLLD_45-2019.D19.K2#1, BLLD_45-2019.D20.K2.a#1, BLLD_45-2019.D20.K2.c#1, BLLD_45-2019.D21.K1.a#1, BLLD_45-2019.D21.K1.b#1, BLLD_45-2019.D21.K1.c#1, BLLD_45-2019.D21.K1.dd#1, BLLD_45-2019.D21.K1.i#1, BLLD_45-2019.D21.K2#1, BLLD_45-2019.D21.K5#1 |
+| `dan_chieu_trong_menh_de` | 107 | BLLD_45-2019.D14.K2#1, BLLD_45-2019.D18.K1#1, BLLD_45-2019.D20.K2#1, BLLD_45-2019.D20.K2.b#1, BLLD_45-2019.D20.K2.c#1, BLLD_45-2019.D21.K5#1, BLLD_45-2019.D24.K2#1, BLLD_45-2019.D29.K2#1, BLLD_45-2019.D29.K4#1, BLLD_45-2019.D30.K1.d#1, BLLD_45-2019.D34.K1#1, BLLD_45-2019.D34.K4#1, BLLD_45-2019.D34.K9#1, BLLD_45-2019.D34.K10#1, BLLD_45-2019.D34.K11#1, BLLD_45-2019.D34.K12#1, BLLD_45-2019.D35.K2.dd#1, BLLD_45-2019.D35.K2.e#1, BLLD_45-2019.D35.K2.g#1, BLLD_45-2019.D36.K1.d#1, BLLD_45-2019.D36.K1.dd#1, BLLD_45-2019.D36.K1.g#1, BLLD_45-2019.D36.K2#1, BLLD_45-2019.D36.K2.c#1, BLLD_45-2019.D36.K3#1, BLLD_45-2019.D40.K3#1, BLLD_45-2019.D41.K1#4, BLLD_45-2019.D41.K2#1, BLLD_45-2019.D41.K3#1, BLLD_45-2019.D42.K5#1, BLLD_45-2019.D43.K1#1, BLLD_45-2019.D43.K3#1, BLLD_45-2019.D45.K1#1, BLLD_45-2019.D45.K2#2, BLLD_45-2019.D46.K1#1, BLLD_45-2019.D47.K1#1, BLLD_45-2019.D49.K1.b#1, BLLD_45-2019.D56#1, BLLD_45-2019.D58#1, BLLD_45-2019.D62.K3#1 |
+| `dai_tu_15_chu` | 553 | BLLD_45-2019.D1#1, BLLD_45-2019.D2.K1#1, BLLD_45-2019.D2.K4#1, BLLD_45-2019.D3.K3#1, BLLD_45-2019.D3.K3#2, BLLD_45-2019.D3.K5#2, BLLD_45-2019.D3.K6#1, BLLD_45-2019.D3.K9#2, BLLD_45-2019.D4.K1#1, BLLD_45-2019.D4.K3#1, BLLD_45-2019.D4.K4#1, BLLD_45-2019.D4.K7#1, BLLD_45-2019.D5.K1.b#1, BLLD_45-2019.D5.K1.d#1, BLLD_45-2019.D5.K2.a#1, BLLD_45-2019.D5.K2.b#1, BLLD_45-2019.D5.K2.c#1, BLLD_45-2019.D6.K2.a#1, BLLD_45-2019.D6.K2.d#1, BLLD_45-2019.D7.K2#1, BLLD_45-2019.D7.K3#1, BLLD_45-2019.D7.K4#1, BLLD_45-2019.D8.K6#1, BLLD_45-2019.D9.K2#1, BLLD_45-2019.D10.K1#1, BLLD_45-2019.D10.K2#1, BLLD_45-2019.D11.K1#1, BLLD_45-2019.D12.K2#1, BLLD_45-2019.D13.K1#1, BLLD_45-2019.D13.K1#2, BLLD_45-2019.D13.K2#1, BLLD_45-2019.D14.K1#2, BLLD_45-2019.D14.K2#1, BLLD_45-2019.D15.K2#1, BLLD_45-2019.D16.K1#1, BLLD_45-2019.D16.K2#1, BLLD_45-2019.D17.K1#1, BLLD_45-2019.D17.K2#1, BLLD_45-2019.D18.K1#1, BLLD_45-2019.D18.K2#1 |
 | `chung_ap_mot_menh_de` | 22 | BLLD_45-2019.D20.K2.c#1, BLLD_45-2019.D35.K1.d#1, BLLD_45-2019.D36.K2.d#1, BLLD_45-2019.D42.K3#1, BLLD_45-2019.D45.K2#1, BLLD_45-2019.D58.K4#1, BLLD_45-2019.D67.K8#1, BLLD_45-2019.D69.K2#2, BLLD_45-2019.D69.K2#4, BLLD_45-2019.D72.K3#1, BLLD_45-2019.D76.K1#1, BLLD_45-2019.D78.K1#2, BLLD_45-2019.D80.K2#1, BLLD_45-2019.D83#1, BLLD_45-2019.D83#2, BLLD_45-2019.D111.K1#2, BLLD_45-2019.D128.K3#1, BLLD_45-2019.D139.K4#2, BLLD_45-2019.D160.K1#1, BLLD_45-2019.D172.K3#1, BLLD_45-2019.D177.K3#2, BLLD_45-2019.D206.K2#1 |
 | `loi_khong_khop` | 8 | BLLD_45-2019.D3.K9#1, BLLD_45-2019.D20.K1.a#1, BLLD_45-2019.D41.K1#2, BLLD_45-2019.D102.K3#1, BLLD_45-2019.D113.K4#1, BLLD_45-2019.D126.K2#1, BLLD_45-2019.D163.K2#1, BLLD_45-2019.D172.K1#1 |
 | `loi_bo_chu_cuoi` | 0 |  |
@@ -3030,23 +3030,58 @@
 - `m1` quy định chi tiết khoản 1 Điều này
 - `m2` quy định trình tự, thủ tục và thẩm quyền quyết định mở rộng phạm vi áp dụng thỏa ước lao động tập thể quy định tại khoản 1 Điều này
 
-### BLLD_45-2019.D85.K1#1 — THIẾU PHẢN HỒI
+### BLLD_45-2019.D85.K1#1 — cờ đọc tay ['m1', 'm2']
+> Doanh nghiệp có thể gia nhập thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp quy định tại khoản 1 Điều 84 của Bộ luật này.
 
-### BLLD_45-2019.D85.K2#1 — THIẾU PHẢN HỒI
+- `m1` Doanh nghiệp có thể gia nhập thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp
+- `m2` có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp quy định tại khoản 1 Điều 84 của Bộ luật này
 
-### BLLD_45-2019.D85.K3#1 — THIẾU PHẢN HỒI
+### BLLD_45-2019.D85.K2#1 — cờ đọc tay ['m1', 'm2', 'm3']
+> Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp được rút khỏi thỏa ước lao động tập thể khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp có khó khăn đặc biệt trong hoạt động sản xuất, kinh doanh.
 
-### BLLD_45-2019.D86.K1#1 — THIẾU PHẢN HỒI
+- `m1` Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp được rút khỏi thỏa ước lao động tập thể
+- `m2` có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước
+- `m3` trừ trường hợp có khó khăn đặc biệt trong hoạt động sản xuất, kinh doanh
 
-### BLLD_45-2019.D86.K2#1 — THIẾU PHẢN HỒI
+### BLLD_45-2019.D85.K3#1
+> Chính phủ quy định chi tiết Điều này.
 
-### BLLD_45-2019.D86.K2.a#1 — THIẾU PHẢN HỒI
+- `m1` Chính phủ quy định chi tiết Điều này
 
-### BLLD_45-2019.D86.K2.b#1 — THIẾU PHẢN HỒI
+### BLLD_45-2019.D86.K1#1 — cờ đọc tay ['m2']
+> Thỏa ước lao động tập thể vô hiệu từng phần khi một hoặc một số nội dung trong thỏa ước lao động tập thể vi phạm pháp luật.
 
-### BLLD_45-2019.D86.K2.c#1 — THIẾU PHẢN HỒI
+- `m1` Thỏa ước lao động tập thể vô hiệu từng phần
+- `m2` một hoặc một số nội dung trong thỏa ước lao động tập thể vi phạm pháp luật
 
-### BLLD_45-2019.D88#1 — THIẾU PHẢN HỒI
+### BLLD_45-2019.D86.K2#1 — cờ đọc tay ['m1']
+> Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây:
+
+- `m1` Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây
+
+### BLLD_45-2019.D86.K2.a#1
+> Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật;
+
+- `m1` Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật
+
+### BLLD_45-2019.D86.K2.b#1
+> Người ký kết không đúng thẩm quyền;
+
+- `m1` Người ký kết không đúng thẩm quyền
+
+### BLLD_45-2019.D86.K2.c#1
+> Không tuân thủ đúng quy trình thương lượng, ký kết thỏa ước lao động tập thể.
+
+- `c1` **[chung → m1, m2]** Không tuân thủ đúng quy trình
+- `m1` thương lượng
+- `m2` ký kết
+- `c2` **[chung → m1, m2]** thỏa ước lao động tập thể
+
+### BLLD_45-2019.D88#1 — cờ đọc tay ['m2']
+> Khi thỏa ước lao động tập thể bị tuyên bố vô hiệu thì quyền, nghĩa vụ và lợi ích của các bên ghi trong thỏa ước lao động tập thể tương ứng với toàn bộ hoặc phần bị tuyên bố vô hiệu được giải quyết theo quy định của pháp luật và các thỏa thuận hợp pháp trong hợp đồng lao động.
+
+- `m1` thỏa ước lao động tập thể bị tuyên bố vô hiệu
+- `m2` quyền, nghĩa vụ và lợi ích của các bên ghi trong thỏa ước lao động tập thể tương ứng với toàn bộ hoặc phần bị tuyên bố vô hiệu được giải quyết theo quy định của pháp luật và các thỏa thuận hợp pháp trong hợp đồng lao động
 
 ### BLLD_45-2019.D89#1
 > Mọi chi phí cho việc thương lượng, ký kết, sửa đổi, bổ sung, gửi và công bố thỏa ước lao động tập thể do phía người sử dụng lao động chi trả.
