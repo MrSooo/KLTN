@@ -1,0 +1,9 @@
+prompt build OK
+valid parse OK BLDS2015.D644.K1.R1
+malformed -> quarantined OK: thiếu khoá rule_id/premises/conclusion/blocks/resulting_state
+Traceback (most recent call last):
+  File "/mnt/e/KLTN/_smoke2.py", line 38, in <module>
+    assert steps == [] and verdict == "" and problems == []
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+exit:0

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "domain": "Labour Law",
+  "base_law": {
+    "key": "lld2019",
+    "prefix": "LLD2019",
+    "title": "Bộ luật Lao động số 45/2019/QH14",
+    "effective_from": "2021-01-01"
+  },
+  "statute_anchors": [
+    {"id": "LLD2019.D35", "heading": "Quyền đơn phương chấm dứt hợp đồng lao động của người lao động"},
+    {"id": "LLD2019.D36", "heading": "Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động"},
+    {"id": "LLD2019.D37", "heading": "Trường hợp người sử dụng lao động không được đơn phương chấm dứt hợp đồng lao động"},
+    {"id": "LLD2019.D39", "heading": "Đơn phương chấm dứt hợp đồng lao động trái pháp luật"},
+    {"id": "LLD2019.D46", "heading": "Trợ cấp thôi việc"},
+    {"id": "LLD2019.D169", "heading": "Tuổi nghỉ hưu"}
+  ],
+  "base_input_predicates": [
+    {"predicate": "nguoi_lao_dong", "gloss": "the worker is a party to a labour contract", "category": "input"},
+    {"predicate": "nguoi_su_dung_lao_dong", "gloss": "the employer is a party to a labour contract", "category": "input"},
+    {"predicate": "hdld_khong_xac_dinh_thoi_han", "gloss": "open-ended labour contract", "category": "input"},
+    {"predicate": "hdld_xac_dinh_thoi_han", "gloss": "fixed-term labour contract", "category": "input"},
+    {"predicate": "bi_quay_roi_tinh_duc", "gloss": "worker was sexually harassed at the workplace", "category": "input"},
+    {"predicate": "lao_dong_nu_mang_thai", "gloss": "the worker is pregnant", "category": "input"},
+    {"predicate": "dang_nghi_thai_san", "gloss": "the worker is on maternity leave", "category": "input"},
+    {"predicate": "dang_nuoi_con_duoi_12_thang", "gloss": "the worker is raising a child under 12 months", "category": "input"},
+    {"predicate": "om_dau_dang_dieu_tri", "gloss": "the worker is sick or injured and under treatment", "category": "input"},
+    {"predicate": "du_tuoi_nghi_huu", "gloss": "the worker has reached retirement age", "category": "input"},
+    {"predicate": "du_dieu_kien_huong_luong_huu", "gloss": "the worker qualifies for a pension", "category": "input"},
+    {"predicate": "tu_y_bo_viec_5_ngay", "gloss": "the worker absented himself without valid reason for 5+ working days", "category": "input"},
+    {"predicate": "lam_viec_du_12_thang", "gloss": "worked continuously for the employer for at least 12 months", "category": "input"}
+  ],
+  "legal_concept_predicates": [
+    {"predicate": "quyen_don_phuong_cham_dut_hdld", "statute": "LLD2019.D35", "gloss": "unilateral termination right (worker)", "category": "concept"},
+    {"predicate": "thoi_han_bao_truoc", "statute": "LLD2019.D35.K1", "gloss": "advance-notice period (45/30/03 days)", "category": "concept"},
+    {"predicate": "khong_can_bao_truoc", "statute": "LLD2019.D35.K2", "gloss": "termination without notice", "category": "concept"},
+    {"predicate": "quyen_don_phuong_cham_dut_cua_nsdl", "statute": "LLD2019.D36", "gloss": "employer unilateral-termination grounds", "category": "concept"},
+    {"predicate": "nsdl_khong_duoc_don_phuong_cham_dut", "statute": "LLD2019.D37", "gloss": "prohibited unilateral termination by employer", "category": "concept"},
+    {"predicate": "don_phuong_cham_dut_trai_phap_luat", "statute": "LLD2019.D39", "gloss": "unlawful unilateral termination", "category": "concept"},
+    {"predicate": "tro_cap_thoi_viec", "statute": "LLD2019.D46", "gloss": "severance allowance", "category": "concept"},
+    {"predicate": "tuoi_nghi_huu", "statute": "LLD2019.D169", "gloss": "retirement age", "category": "concept"},
+    {"predicate": "lo_trinh_tuoi_nghi_huu", "statute": "LLD2019.D169.K2", "gloss": "retirement-age roadmap", "category": "concept"}
+  ],
+  "exception_depths": [1, 2, 3],
+  "verdicts": ["Concluded", "Refuted", "Insufficient Basis", "Quarantined/Out-of-Scope"],
+  "amendment_documents": [
+    {"id": "ND135/2020/NĐ-CP", "key": "nd135_2020", "targets": ["LLD2019.D169"], "effect_from": "2021-01-01", "note": "details the retirement-age roadmap"},
+    {"id": "ND145/2020/NĐ-CP", "key": "nd145_2020", "targets": [], "effect_from": "2021-02-01", "note": "guides the implementation of the Labour Code"},
+    {"id": "ND152/2020/NĐ-CP", "key": "nd152_2020", "targets": [], "effect_from": "2021-02-15", "note": "foreign workers"},
+    {"id": "ND12/2022/NĐ-CP", "key": "nd12_2022", "targets": [], "effect_from": "2022-01-17", "note": "administrative sanctions in the labour domain"},
+    {"id": "ND219/2025/NĐ-CP", "key": "nd219_2025", "targets": [], "effect_from": "2026-01-01", "note": "later amendments (upstream broker for broken-link detection)"}
+  ]
+}
