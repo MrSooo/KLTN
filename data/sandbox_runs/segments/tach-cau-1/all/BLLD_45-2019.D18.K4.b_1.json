@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi khi có sự đồng ý bằng văn bản của người đại diện theo pháp luật của người đó;",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có sự đồng ý bằng văn bản của người đại diện theo pháp luật của người đó\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-SbcFa6OiMI-s1e8P7eOm8QE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1222
+   },
+   "input_tokens": 2270,
+   "output_tokens": 1297,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_80fbd82ab20ae2a76fc4c999"
+   }
+  }
+ }
+}

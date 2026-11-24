@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-JLcFa4zpB8uD2roPycXo4AQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 162
+   },
+   "input_tokens": 2254,
+   "output_tokens": 206,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_1af18f9cbcf4719fc199d371"
+   }
+  }
+ }
+}

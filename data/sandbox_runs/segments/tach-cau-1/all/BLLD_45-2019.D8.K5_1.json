@@ -1,0 +1,27 @@
+{
+ "cau_gui": "Sử dụng lao động chưa qua đào tạo hoặc chưa có chứng chỉ kỹ năng nghề quốc gia đối với nghề, công việc phải sử dụng lao động đã được đào tạo hoặc phải có chứng chỉ kỹ năng nghề quốc gia.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"chưa qua đào tạo\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"chưa có chứng chỉ kỹ năng nghề quốc gia\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"đối với nghề, công việc\",\"ap_cho\":[\"m3\",\"m4\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"phải sử dụng lao động đã được đào tạo\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"phải có chứng chỉ kỹ năng nghề quốc gia\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-w7YFa5-1Fb2-1e8PvqDAmQo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 2280,
+   "output_tokens": 171,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_c679bb784867c49037baf8fa"
+   }
+  }
+ }
+}

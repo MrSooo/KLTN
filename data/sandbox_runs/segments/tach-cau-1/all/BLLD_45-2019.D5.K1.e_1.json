@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Đình công;",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Đình công\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-YbYFa7npMI-X0-kPjqmQ2Q8",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 66
+   },
+   "input_tokens": 2239,
+   "output_tokens": 95,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_58e8864188e3dbfe5555d195"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Cơ quan, tổ chức, cá nhân khác có liên quan trực tiếp đến quan hệ lao động.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Cơ quan, tổ chức, cá nhân khác có liên quan trực tiếp đến quan hệ lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-2rUFa52AC8Dp2roP-LL-kAU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 367
+   },
+   "input_tokens": 2256,
+   "output_tokens": 413,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_b4b53cf8b9a64c41c397a718"
+   }
+  }
+ }
+}

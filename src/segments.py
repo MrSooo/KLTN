@@ -12,8 +12,9 @@ mỗi câu một lời gọi; phản hồi thô lưu theo phiên bản lời nh�
 Dùng: python -I -X utf8 src/segments.py kiem <thư mục phan_hoi>   (máy kiểm lên phản hồi khuôn seg_thu_3, in số lỗi theo loại)
       python -I -X utf8 src/segments.py chon                    (chọn 60 câu gold; không ghi đè)
       python -I -X utf8 src/segments.py kiem-gold <file gold>
-      python -I -X utf8 src/segments.py goi dev|test            (gọi API cho các câu của bộ gold; tốn tiền)
+      python -I -X utf8 src/segments.py goi dev|test|all        (gọi API cho các câu của bộ gold, hay cả 993 câu; tốn tiền)
       python -I -X utf8 src/segments.py cham dev|test           (chấm phản hồi đã có với gold, ghi báo cáo)
+      python -I -X utf8 src/segments.py dung                    (lần chạy all: máy kiểm, dựng đoạn cho lượt 2, báo cáo)
 """
 import json
 import re
@@ -431,6 +432,7 @@ Ví dụ 6. Câu: "Người lao động trực tiếp giao kết hợp đồng l
 EXAMPLE_UNITS = ("D113.K4", "D85.K2", "D185.K2", "D86.K2.c", "D18.K1")
 MODEL = "dungcsnd113/gemini-flash-3.8"  # tuyến của seg_thu_3 (A59: "ckey – Gemini Flash route", upstream chưa kiểm)
 RUN_DIR = ROOT / "data/sandbox_runs/segments"
+STOP_AFTER_FAILS = 6  # như sandbox_api: lỗi API liền nhau ngần này câu thì dừng, chạy lại lệnh sau là làm tiếp câu còn thiếu
 
 
 def _gold(bo):
@@ -453,10 +455,19 @@ def goi(bo):
     out_dir.mkdir(parents=True, exist_ok=True)
     (RUN_DIR / PROMPT_VERSION / "system.txt").write_text(SYSTEM, encoding="utf-8")
 
+    hong = [0]  # số câu lỗi liền nhau; tới STOP_AFTER_FAILS thì máy chủ coi như đang hỏng (24/11: tuyến Gemini trả 404 hàng loạt)
+
     def one(c):
         path = out_dir / (c["sid"].replace("#", "_") + ".json")
         if path.exists():
             return c["sid"], "co_san"
+        if hong[0] >= STOP_AFTER_FAILS:
+            return c["sid"], "bỏ qua: máy chủ đang lỗi"
+        st = _one(c, path)
+        hong[0] = hong[0] + 1 if st.startswith("lỗi") else 0
+        return c["sid"], st
+
+    def _one(c, path):
         body = json.dumps({"model": MODEL, "max_tokens": 16000, "system": SYSTEM,
                            "messages": [{"role": "user", "content": "Câu: \"" + c["cau_gui"] + "\""}]}, ensure_ascii=False).encode("utf-8")
         req = urllib.request.Request(base + "/v1/messages", data=body, method="POST", headers={
@@ -467,17 +478,22 @@ def goi(bo):
                 with urllib.request.urlopen(req, timeout=300) as r:
                     data = json.loads(r.read().decode("utf-8"))
                 if data.get("stop_reason") != "end_turn":
-                    return c["sid"], f"cụt {data.get('stop_reason')}"
+                    return f"cụt {data.get('stop_reason')}"
                 path.write_text(json.dumps({"cau_gui": c["cau_gui"], "phien_ban": PROMPT_VERSION, "phan_hoi": data},
                                            ensure_ascii=False, indent=1), encoding="utf-8")
-                return c["sid"], "ok"
+                return "ok"
             except Exception as e:  # lỗi mạng, 429, 5xx: chờ rồi thử lại; hết 3 lần thì báo, chạy lại sau
                 err = str(e)[:120]
                 time.sleep(10 * lan)
-        return c["sid"], f"lỗi {err}"
+        return f"lỗi {err}"
 
+    if bo == "all":  # cả 993 câu BLLĐ, gọi lại cả câu gold (không chép phản hồi cũ) để có mẫu thứ hai đo độ ổn định
+        import propositions
+        cau = [{"sid": p["sid"], "cau_gui": p["cau_gui"]} for p in all_sentences(propositions.contexts())]
+    else:
+        cau = _gold(bo)["cau"]
     with ThreadPoolExecutor(4) as ex:
-        for sid, st in ex.map(one, _gold(bo)["cau"]):
+        for sid, st in ex.map(one, cau):
             if st != "co_san":
                 print(sid, st, flush=True)
 
@@ -490,12 +506,77 @@ def _shape(placed):
     return doan, ap
 
 
-def cham(bo):
+def _doc(path):
+    """Phản hồi đã lưu thành dict đầu ra; không phải JSON thì ValueError."""
+    data = json.loads(path.read_text(encoding="utf-8"))["phan_hoi"]
+    return data, parse_reply("".join(b.get("text", "") for b in data.get("content", []) if b.get("type") == "text"))
+
+
+def dung():
+    """Lần chạy cả bộ luật (thư mục all/): chạy máy kiểm từng câu, ghi các đoạn đã dựng (build) của câu qua máy kiểm làm đầu
+    vào lượt 2 (doan_luot1.json) và báo cáo bao_cao_all.md. Câu không qua máy kiểm KHÔNG sửa tay, không gọi lại: ghi vào danh
+    sách để lượt 2 xử lý (cùng chính sách một lần gọi như lúc đo 35/40). Cũng chấm lại 60 câu gold trên lần gọi này."""
+    import propositions
+    preps = all_sentences(propositions.contexts())
+    src = RUN_DIR / PROMPT_VERSION / "all"
+    qua, hong, thieu, co, vnd = {}, [], [], {}, 0.0
+    for p in preps:
+        path = src / (p["sid"].replace("#", "_") + ".json")
+        if not path.exists():
+            thieu.append(p["sid"])
+            continue
+        data = {}
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))["phan_hoi"]
+            data, out = _doc(path)
+            errs, flags, placed = check(p, out)
+        except (ValueError, KeyError) as e:  # file hỏng hay trả lời không phải JSON: báo, không dừng cả lần dựng
+            errs, flags, placed = [f"khuôn: không đọc được ({str(e)[:60]})"], [], []
+        vnd += ((data.get("usage") or {}).get("x_ckey") or {}).get("cost") or 0
+        if errs:
+            hong.append((p["sid"], errs))
+            continue
+        for f in flags:
+            k = re.sub(r"^\w+: ", "", f)
+            co[k] = co.get(k, 0) + 1
+        qua[p["sid"]] = {"cau": p["cau"], "cau_gui": p["cau_gui"], "co": flags,
+                         "doan": [{k: d[k] for k in ("id", "loai", "chu", "ap_cho", "khe_truoc") if k in d} for d in build(p, placed)]}
+    (src.parent / "doan_luot1.json").write_text(json.dumps({"phien_ban": PROMPT_VERSION, "so_cau": len(preps), "qua": len(qua),
+                                                            "cau": qua}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    loai = {}
+    for _, errs in hong:
+        for e in errs:
+            k = re.sub(r"^\w+: ", "", e).split(" '")[0].split(" [")[0]
+            loai[k] = loai.get(k, 0) + 1
+    gold = [cham(b, "all", ghi=False) for b in ("dev", "test")]
+    lines = [f"# Lượt 1 `{PROMPT_VERSION}` trên cả BLLĐ ({len(preps)} câu, mỗi câu gọi một lần)\n",
+             f"- qua máy kiểm: {len(qua)}/{len(preps)}; không qua: {len(hong)}; thiếu phản hồi: {len(thieu)}",
+             f"- chi phí: {vnd:.1f} VND",
+             "- chấm lại gold trên lần gọi này (lần gọi thứ hai của cùng câu, cùng lời nhắc):"]
+    lines += [f"  - {g['bo']}: khớp {g['khop']}/{g['n']} (lần đầu {g['lan_dau']}/{g['n']}; thiếu phản hồi {g['thieu']}), đổi kết quả khớp/không khớp ở "
+              f"{len(g['doi'])} câu {g['doi']}; điểm cắt {g['prec']:.3f}/{g['rec']:.3f}" for g in gold]
+    lines += ["\n## Loại lỗi máy kiểm (đếm theo lỗi, một câu có thể nhiều lỗi)\n"]
+    lines += [f"- {v} {k}" for k, v in sorted(loai.items(), key=lambda x: -x[1])]
+    lines += ["\n## Cờ trên câu qua (chỉ cảnh báo)\n"] + [f"- {v} {k}" for k, v in sorted(co.items(), key=lambda x: -x[1])]
+    lines += ["\n## Câu không qua máy kiểm (để lượt 2 xử lý; không sửa tay)\n"]
+    lines += [f"- {sid}: {'; '.join(e)}" for sid, e in hong] + [f"- {sid}: THIẾU PHẢN HỒI" for sid in thieu]
+    (src.parent / "bao_cao_all.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print("\n".join(lines[:8]))
+
+
+def cham(bo, nguon=None, ghi=True):
     """Chấm phản hồi đã có với gold (mục 9.6): câu khớp hoàn toàn (ranh giới, loai, ap_cho); riêng ranh giới (cùng các khoảng
-    đoạn); độ chính xác và độ phủ của điểm cắt (vị trí token đầu/cuối đoạn). Lỗi ap_cho báo riêng với lỗi ranh giới."""
+    đoạn); độ chính xác và độ phủ của điểm cắt (vị trí token đầu/cuối đoạn). Lỗi ap_cho báo riêng với lỗi ranh giới.
+    nguon="all": chấm phản hồi của lần chạy cả bộ luật thay vì thư mục của bộ, và so với lần đầu (câu đổi khớp/không khớp)."""
     import propositions
     preps = {p["sid"]: p for p in all_sentences(propositions.contexts())}
-    out_dir = RUN_DIR / PROMPT_VERSION / bo
+    out_dir = RUN_DIR / PROMPT_VERSION / (nguon or bo)
+    lan_dau = set()
+    if nguon:
+        for line in (RUN_DIR / PROMPT_VERSION / f"cham_{bo}.md").read_text(encoding="utf-8").splitlines():
+            if line.startswith("### ") and line.endswith("— khớp"):
+                lan_dau.add(line[4:].split(" — ")[0])
+    khop_ids, vang = set(), set()  # vang: câu chưa có phản hồi, không tính là "đổi kết quả"
     rows, n, khop, ranh_gioi, loi_may, thieu, vnd = [], 0, 0, 0, 0, 0, 0.0
     tp = fp = fn = 0
     for c in _gold(bo)["cau"]:
@@ -505,6 +586,7 @@ def cham(bo):
         path = out_dir / (c["sid"].replace("#", "_") + ".json")
         if not path.exists():
             thieu += 1
+            vang.add(c["sid"])
             rows.append(f"### {c['sid']} — THIẾU PHẢN HỒI\n")
             continue
         data = json.loads(path.read_text(encoding="utf-8"))["phan_hoi"]
@@ -527,6 +609,7 @@ def cham(bo):
             ranh_gioi += same_rg
             if pr == g:
                 khop += 1
+                khop_ids.add(c["sid"])
                 ket = "khớp"
             elif same_rg and pr[0] == g[0]:
                 ket = "ĐÚNG RANH GIỚI, SAI ap_cho"
@@ -546,6 +629,8 @@ def cham(bo):
     head = (f"# Chấm lượt 1 `{PROMPT_VERSION}` trên bộ {bo} ({n} câu)\n\n"
             f"- khớp hoàn toàn: {khop}/{n}\n- đúng ranh giới (bỏ qua loai, ap_cho): {ranh_gioi}/{n}\n- máy kiểm lỗi: {loi_may}; thiếu phản hồi: {thieu}\n"
             f"- điểm cắt: độ chính xác {prec:.3f}, độ phủ {rec:.3f}\n- chi phí: {vnd:.1f} VND\n\n")
+    if not ghi:
+        return {"bo": bo, "n": n, "khop": khop, "lan_dau": len(lan_dau), "thieu": thieu, "doi": sorted((khop_ids ^ lan_dau) - vang), "prec": prec, "rec": rec}
     (RUN_DIR / PROMPT_VERSION / f"cham_{bo}.md").write_text(head + "\n".join(rows), encoding="utf-8")
     print(head)
 
@@ -554,8 +639,14 @@ if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     cmd = sys.argv[1:2]
-    if cmd in (["goi"], ["cham"]) and len(sys.argv) == 3 and sys.argv[2] in ("dev", "test"):
-        (goi if cmd == ["goi"] else cham)(sys.argv[2])
+    if cmd == ["goi"] and len(sys.argv) == 3 and sys.argv[2] in ("dev", "test", "all"):
+        goi(sys.argv[2])
+        raise SystemExit(0)
+    if cmd == ["cham"] and len(sys.argv) == 3 and sys.argv[2] in ("dev", "test"):
+        cham(sys.argv[2])
+        raise SystemExit(0)
+    if cmd == ["dung"] and len(sys.argv) == 2:
+        dung()
         raise SystemExit(0)
     if cmd == ["kiem"] and len(sys.argv) == 3:
         kiem(sys.argv[2])

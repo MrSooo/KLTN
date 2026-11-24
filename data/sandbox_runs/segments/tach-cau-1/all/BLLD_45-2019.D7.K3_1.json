@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Công đoàn tham gia cùng với cơ quan nhà nước có thẩm quyền hỗ trợ xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định; giám sát việc thi hành quy định của pháp luật về lao động; bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Công đoàn\",\n      \"ap_cho\": [\n        \"m1\",\n        \"m2\",\n        \"m3\"\n      ]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"tham gia cùng với cơ quan nhà nước có thẩm quyền hỗ trợ xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"giám sát việc thi hành quy định của pháp luật về lao động\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-rbYFa-fAH_zQosUP98OS-QY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 518
+   },
+   "input_tokens": 2295,
+   "output_tokens": 759,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d49ba62e918f1002e119cdc4"
+   }
+  }
+ }
+}

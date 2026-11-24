@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Nếu hết thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn mà hai bên không ký kết hợp đồng lao động mới thì hợp đồng đã giao kết theo quy định tại điểm b khoản 1 Điều này trở thành hợp đồng lao động không xác định thời hạn;",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"hết thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hai bên không ký kết hợp đồng lao động mới\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hợp đồng đã giao kết theo quy định tại điểm b khoản 1 Điều này trở thành hợp đồng lao động không xác định thời hạn\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-b7cFa-y0GMHv2roPjM7HyQo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 393
+   },
+   "input_tokens": 2292,
+   "output_tokens": 506,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_77588f1ae9f87700c26a3567"
+   }
+  }
+ }
+}

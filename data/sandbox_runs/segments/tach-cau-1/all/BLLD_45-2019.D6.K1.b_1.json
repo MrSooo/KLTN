@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Thành lập, gia nhập, hoạt động trong tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác theo quy định của pháp luật;",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thành lập\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"gia nhập\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hoạt động trong\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác theo quy định của pháp luật\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-d7YFa5qaKLjk2roPu72UoAY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1157
+   },
+   "input_tokens": 2270,
+   "output_tokens": 1277,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_40e4c9eec8ef8c181857280d"
+   }
+  }
+ }
+}

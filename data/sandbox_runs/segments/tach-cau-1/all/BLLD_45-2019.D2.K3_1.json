@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Người lao động nước ngoài làm việc tại Việt Nam.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động nước ngoài làm việc tại Việt Nam\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-0bUFa-naLpav2roPwZu9wAo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 385
+   },
+   "input_tokens": 2246,
+   "output_tokens": 420,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_91c0bb62f1223a5c9cde406a"
+   }
+  }
+ }
+}

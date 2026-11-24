@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Bảo đảm bình đẳng giới; quy định chế độ lao động và chính sách xã hội nhằm bảo vệ lao động nữ, lao động là người khuyết tật, người lao động cao tuổi, lao động chưa thành niên.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"Bảo đảm bình đẳng giới\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"quy định chế độ lao động và chính sách xã hội\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"bảo vệ lao động nữ, lao động là người khuyết tật, người lao động cao tuổi, lao động chưa thành niên\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-ULYFa6D_Jrn62roP-YiyoAo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 842
+   },
+   "input_tokens": 2280,
+   "output_tokens": 1005,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_74b7b843299f45d24fdbb95d"
+   }
+  }
+ }
+}
