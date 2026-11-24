@@ -65,6 +65,7 @@ class Expect(NamedTuple):
 EXPECTED = {
     "blds2015_5dieu": Expect(units=35, dieu=5),
     "blds2015_p4": Expect(units=215, dieu=54, chuong=4),
+    "lld2019_labor": Expect(units=45, dieu=6),
 }
 
 

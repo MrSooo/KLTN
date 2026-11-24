@@ -64,6 +64,7 @@ class Expect(NamedTuple):
 EXPECTED = {
     "blds2015_5dieu": Expect(nodes=36, edges=74, same_text=0),
     "blds2015_p4": Expect(nodes=225, edges=481, same_text=4),
+    "lld2019_labor": Expect(nodes=53, edges=102, same_text=2),
 }
 
 
