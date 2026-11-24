@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Điều kiện, phương tiện hoạt động của tổ chức đại diện người lao động; mối quan hệ giữa người sử dụng lao động và tổ chức đại diện người lao động;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Điều kiện, phương tiện hoạt động của tổ chức đại diện người lao động; mối quan hệ giữa người sử dụng lao động và tổ chức đại diện người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538885769-69a3e2dd",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 838
+   },
+   "input_tokens": 2409,
+   "output_tokens": 60,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_81933cbcbbab6e17e18b879f"
+   }
+  }
+ }
+}

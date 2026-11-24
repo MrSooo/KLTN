@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp thỏa ước lao động tập thể có nhiều doanh nghiệp được tiến hành thông qua Hội đồng thương lượng tập thể thì được ký kết bởi Chủ tịch Hội đồng thương lượng tập thể và đại diện hợp pháp của các bên thương lượng.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"thỏa ước lao động tập thể có nhiều doanh nghiệp\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"được tiến hành thông qua Hội đồng thương lượng tập thể\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"được ký kết bởi Chủ tịch Hội đồng thương lượng tập thể và đại diện hợp pháp của các bên thương lượng\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538958015-3d2138b9",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1145
+   },
+   "input_tokens": 2424,
+   "output_tokens": 115,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a0e5d2311a64bb3b529a2768"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Đại diện thương lượng tập thể của mỗi bên không được vượt quá số lượng quy định tại khoản 1 Điều này, trừ trường hợp được bên kia đồng ý.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Đại diện thương lượng tập thể của mỗi bên\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"không được vượt quá số lượng quy định tại khoản 1 Điều này\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"được bên kia đồng ý\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538898897-4cc9925a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1172
+   },
+   "input_tokens": 2408,
+   "output_tokens": 144,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_527187a7b307c157d04a88ae"
+   }
+  }
+ }
+}

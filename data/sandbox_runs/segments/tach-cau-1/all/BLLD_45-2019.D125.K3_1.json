@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động bị xử lý kỷ luật kéo dài thời hạn nâng lương hoặc cách chức mà tái phạm trong thời gian chưa xóa kỷ luật.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"bị xử lý kỷ luật\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"kéo dài thời hạn nâng lương\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"cách chức\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"tái phạm trong thời gian chưa xóa kỷ luật\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539440172-2b483ca2",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3490
+   },
+   "input_tokens": 2407,
+   "output_tokens": 146,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_df73c14ac13e47de87f73f27"
+   }
+  }
+ }
+}

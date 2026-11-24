@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thời gian nghỉ việc khi chăm sóc con dưới 07 tuổi ốm đau, khám thai, sẩy thai, nạo, hút thai, thai chết lưu, phá thai bệnh lý, thực hiện các biện pháp tránh thai, triệt sản, người lao động được hưởng trợ cấp theo quy định của pháp luật về bảo hiểm xã hội.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thời gian nghỉ việc khi chăm sóc con dưới 07 tuổi ốm đau, khám thai, sẩy thai, nạo, hút thai, thai chết lưu, phá thai bệnh lý, thực hiện các biện pháp tránh thai, triệt sản, người lao động được hưởng trợ cấp theo quy định của pháp luật về bảo hiểm xã hội\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539628326-91fc4aec",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5685
+   },
+   "input_tokens": 2445,
+   "output_tokens": 96,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_1102277f80987b81cd09815f"
+   }
+  }
+ }
+}

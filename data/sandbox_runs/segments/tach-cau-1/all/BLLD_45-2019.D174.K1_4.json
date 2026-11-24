@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Việc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp phải được theo dõi, lưu trữ và định kỳ hằng năm công khai cho thành viên của tổ chức;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Việc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp phải được\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"theo dõi\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"lưu trữ\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"định kỳ hằng năm công khai cho thành viên của tổ chức\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539998214-7d43b06f",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2051
+   },
+   "input_tokens": 2414,
+   "output_tokens": 126,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_435272f58e6dc93504bdc04b"
+   }
+  }
+ }
+}

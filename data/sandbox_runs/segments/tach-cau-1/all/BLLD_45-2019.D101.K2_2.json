@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động nhập ngũ theo quy định của Luật Nghĩa vụ quân sự thì không được tạm ứng tiền lương.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"nhập ngũ theo quy định của Luật Nghĩa vụ quân sự\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không được tạm ứng tiền lương\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539137190-11bf9855",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 454
+   },
+   "input_tokens": 2402,
+   "output_tokens": 96,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a61f4a0a5b41908f78a6d992"
+   }
+  }
+ }
+}

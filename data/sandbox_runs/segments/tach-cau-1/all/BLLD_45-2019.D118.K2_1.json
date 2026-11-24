@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Nội dung nội quy lao động không được trái với pháp luật về lao động và quy định của pháp luật có liên quan.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Nội dung nội quy lao động không được trái với pháp luật về lao động và quy định của pháp luật có liên quan\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539332520-60db3e7a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 432
+   },
+   "input_tokens": 2399,
+   "output_tokens": 50,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_c27f12a52915b135849cfc86"
+   }
+  }
+ }
+}

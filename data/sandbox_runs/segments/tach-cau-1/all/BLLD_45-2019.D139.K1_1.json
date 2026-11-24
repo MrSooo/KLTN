@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Lao động nữ được nghỉ thai sản trước và sau khi sinh con là 06 tháng; thời gian nghỉ trước khi sinh không quá 02 tháng.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Lao động nữ được nghỉ thai sản trước và sau khi sinh con là 06 tháng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thời gian nghỉ trước khi sinh không quá 02 tháng\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539570739-52361136",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1644
+   },
+   "input_tokens": 2404,
+   "output_tokens": 70,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a94a09ceffc46fdb2ff10810"
+   }
+  }
+ }
+}

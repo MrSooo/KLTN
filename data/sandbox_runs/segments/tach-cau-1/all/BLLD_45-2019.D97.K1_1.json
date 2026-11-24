@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động hưởng lương theo giờ, ngày, tuần thì được trả lương sau giờ, ngày, tuần làm việc hoặc được trả gộp do hai bên thỏa thuận nhưng không quá 15 ngày phải được trả gộp một lần.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"hưởng lương theo giờ, ngày, tuần\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"được trả lương sau giờ, ngày, tuần làm việc\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"được trả gộp do hai bên thỏa thuận\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"không quá 15 ngày phải được trả gộp một lần\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539089156-9f37068e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2316
+   },
+   "input_tokens": 2426,
+   "output_tokens": 156,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_b0cbbce71f4853cb7fe23269"
+   }
+  }
+ }
+}

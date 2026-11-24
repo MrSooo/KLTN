@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Tranh chấp lao động cá nhân giữa người lao động với người sử dụng lao động; giữa người lao động với doanh nghiệp, tổ chức đưa người lao động đi làm việc ở nước ngoài theo hợp đồng; giữa người lao động thuê lại với người sử dụng lao động thuê lại;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Tranh chấp lao động cá nhân\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"giữa người lao động với người sử dụng lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"giữa người lao động với doanh nghiệp, tổ chức đưa người lao động đi làm việc ở nước ngoài theo hợp đồng\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"giữa người lao động thuê lại với người sử dụng lao động thuê lại\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540100528-46bd1567",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1644
+   },
+   "input_tokens": 2431,
+   "output_tokens": 143,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_000e9e9177f1da9d2d8e542f"
+   }
+  }
+ }
+}

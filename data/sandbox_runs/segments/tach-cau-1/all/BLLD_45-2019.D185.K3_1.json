@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Tiêu chuẩn và chế độ làm việc của trọng tài viên lao động được quy định như sau:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Tiêu chuẩn và chế độ làm việc của trọng tài viên lao động được quy định như sau\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540199964-46b30a71",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 300
+   },
+   "input_tokens": 2393,
+   "output_tokens": 44,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_96bb29fb88638603a53a28c8"
+   }
+  }
+ }
+}

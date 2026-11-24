@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp, ⟦DC1⟧.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539695221-a4adf654",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 472
+   },
+   "input_tokens": 2401,
+   "output_tokens": 43,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_3d2e6826297855b0ef97fc96"
+   }
+  }
+ }
+}

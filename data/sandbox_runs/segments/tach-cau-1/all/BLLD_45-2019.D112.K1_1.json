@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động được nghỉ làm việc, hưởng nguyên lương trong những ngày lễ, tết sau đây:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động được\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"nghỉ làm việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hưởng nguyên lương\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"trong những ngày lễ, tết sau đây\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539296719-db75d918",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3306
+   },
+   "input_tokens": 2396,
+   "output_tokens": 119,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_c4ff3c6fdcd6e21fa3016cbf"
+   }
+  }
+ }
+}

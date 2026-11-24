@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Tranh chấp lao động tập thể về quyền là tranh chấp giữa một hay nhiều tổ chức đại diện người lao động với người sử dụng lao động hoặc một hay nhiều tổ chức của người sử dụng lao động phát sinh trong trường hợp sau đây:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Tranh chấp lao động tập thể về quyền là tranh chấp giữa một hay nhiều tổ chức đại diện người lao động với người sử dụng lao động hoặc một hay nhiều tổ chức của người sử dụng lao động phát sinh trong trường hợp sau đây\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540098451-1c5d0a67",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 919
+   },
+   "input_tokens": 2424,
+   "output_tokens": 75,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_8015936af5e091a3852705c3"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Giải quyết khiếu nại, tố cáo về lao động theo quy định của pháp luật.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Giải quyết khiếu nại, tố cáo về lao động theo quy định của pháp luật\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540497034-4b0ee6ab",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 271
+   },
+   "input_tokens": 2393,
+   "output_tokens": 44,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_1d0c2c2e6cf3fc03a2861999"
+   }
+  }
+ }
+}

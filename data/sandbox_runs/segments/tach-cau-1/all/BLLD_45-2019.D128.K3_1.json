@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp người lao động bị xử lý kỷ luật lao động, người lao động cũng không phải trả lại số tiền lương đã tạm ứng.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"người lao động bị xử lý kỷ luật lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"người lao động cũng không phải trả lại số tiền lương đã tạm ứng\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539453213-b5592d81",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 545
+   },
+   "input_tokens": 2405,
+   "output_tokens": 69,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_63ef62fda5865a105b43bdca"
+   }
+  }
+ }
+}

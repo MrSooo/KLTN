@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Chính phủ quy định chi tiết khoản 1 Điều này; quy định trình tự, thủ tục và thẩm quyền quyết định mở rộng phạm vi áp dụng thỏa ước lao động tập thể quy định tại khoản 1 Điều này.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Chính phủ\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"quy định chi tiết khoản 1 Điều này\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"quy định trình tự, thủ tục và thẩm quyền quyết định mở rộng phạm vi áp dụng thỏa ước lao động tập thể quy định tại khoản 1 Điều này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539015763-8d9bed98",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 763
+   },
+   "input_tokens": 2422,
+   "output_tokens": 116,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_f38e2611e44501c6a783d546"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người học nghề, người tập nghề phải đủ 14 tuổi trở lên và phải có đủ sức khỏe phù hợp với yêu cầu học nghề, tập nghề.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người học nghề, người tập nghề\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"phải đủ 14 tuổi trở lên\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải có đủ sức khỏe phù hợp với yêu cầu học nghề, tập nghề\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538723531-b83fe1b1",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 426
+   },
+   "input_tokens": 2405,
+   "output_tokens": 99,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_06272416e972da5cba644536"
+   }
+  }
+ }
+}

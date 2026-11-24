@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Kiến nghị và giải quyết kiến nghị của thành viên trong nội bộ tổ chức.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Kiến nghị\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"giải quyết kiến nghị của thành viên trong nội bộ tổ chức\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540009478-8616bca6",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 647
+   },
+   "input_tokens": 2390,
+   "output_tokens": 56,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_f2b3adcd075b62b8772b2f73"
+   }
+  }
+ }
+}

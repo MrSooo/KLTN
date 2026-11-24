@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp phải ngừng việc trên 14 ngày làm việc thì tiền lương ngừng việc do hai bên thỏa thuận nhưng phải bảo đảm tiền lương ngừng việc trong 14 ngày đầu tiên không thấp hơn mức lương tối thiểu.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"phải ngừng việc trên 14 ngày làm việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tiền lương ngừng việc do hai bên thỏa thuận\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"phải bảo đảm tiền lương ngừng việc trong 14 ngày đầu tiên không thấp hơn mức lương tối thiểu\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539122242-22e1dc4b",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1816
+   },
+   "input_tokens": 2425,
+   "output_tokens": 104,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_850e3507765b9527ae95d5dc"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Đã hết thời hạn quy định tại khoản 2 Điều 70 của Bộ luật này mà các bên không đạt được thỏa thuận;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Đã hết thời hạn quy định tại khoản 2 Điều 70 của Bộ luật này\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"các bên không đạt được thỏa thuận\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538901353-4b18c69f",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 489
+   },
+   "input_tokens": 2401,
+   "output_tokens": 67,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_42258cd811972c86d319ff29"
+   }
+  }
+ }
+}

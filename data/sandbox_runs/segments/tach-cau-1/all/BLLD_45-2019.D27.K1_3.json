@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp thử việc không đạt yêu cầu thì chấm dứt hợp đồng lao động đã giao kết hoặc hợp đồng thử việc.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thử việc không đạt yêu cầu\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"chấm dứt hợp đồng lao động đã giao kết hoặc hợp đồng thử việc\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538123503-7a0c9fb9",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 529
+   },
+   "input_tokens": 2401,
+   "output_tokens": 64,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_aa7d1c7e0708eb96c74aa29b"
+   }
+  }
+ }
+}

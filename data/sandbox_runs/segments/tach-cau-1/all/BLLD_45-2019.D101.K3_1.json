@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khi nghỉ hằng năm, người lao động được tạm ứng một khoản tiền ít nhất bằng tiền lương của những ngày nghỉ.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"nghỉ hằng năm\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"người lao động được tạm ứng một khoản tiền ít nhất bằng tiền lương của những ngày nghỉ\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539145969-d60de4e8",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 672
+   },
+   "input_tokens": 2401,
+   "output_tokens": 67,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_96aeb9293ec16d5e42037ac3"
+   }
+  }
+ }
+}

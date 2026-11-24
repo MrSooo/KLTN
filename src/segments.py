@@ -475,17 +475,22 @@ def goi(bo, models=(MODEL,), thu_muc=None):
     def _one(c, path):
         err = ""
         for model in models:
-            body = json.dumps({"model": model, "max_tokens": 16000, "system": SYSTEM,
-                               "messages": [{"role": "user", "content": "Câu: \"" + c["cau_gui"] + "\""}]}, ensure_ascii=False).encode("utf-8")
-            req = urllib.request.Request(base + "/v1/messages", data=body, method="POST", headers={
-                "Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01"})
+            tat = False  # lượt cụt thì gọi lại một lần với nghĩ ngầm tắt (trần thật ~8.192 token của tuyến dự phòng; xem clause_roles._goi_mot)
             for lan in range(1, 4):
+                body = json.dumps({"model": model, "max_tokens": 16000, "system": SYSTEM,
+                                   "messages": [{"role": "user", "content": "Câu: \"" + c["cau_gui"] + "\""}],
+                                   **({"thinking": {"type": "disabled"}} if tat else {})}, ensure_ascii=False).encode("utf-8")
+                req = urllib.request.Request(base + "/v1/messages", data=body, method="POST", headers={
+                    "Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01"})
                 try:
                     with urllib.request.urlopen(req, timeout=300) as r:
                         data = json.loads(r.read().decode("utf-8"))
                     if data.get("stop_reason") != "end_turn":
-                        return f"cụt {data.get('stop_reason')} ({model})"
-                    path.write_text(json.dumps({"cau_gui": c["cau_gui"], "phien_ban": PROMPT_VERSION, "model": model, "phan_hoi": data},
+                        if not tat:
+                            tat = True
+                            continue
+                        return f"cụt {data.get('stop_reason')} cả khi tắt nghĩ ngầm ({model})"
+                    path.write_text(json.dumps({"cau_gui": c["cau_gui"], "phien_ban": PROMPT_VERSION, "model": model, "thinking_tat": tat, "phan_hoi": data},
                                                ensure_ascii=False, indent=1), encoding="utf-8")
                     return f"ok ({model})"
                 except Exception as e:  # lỗi mạng, 429, 5xx: chờ rồi thử lại; 404 (tuyến không có) thì sang tuyến sau ngay

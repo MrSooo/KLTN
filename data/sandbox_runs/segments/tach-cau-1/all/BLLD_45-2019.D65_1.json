@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thương lượng tập thể là việc đàm phán, thỏa thuận giữa một bên là một hoặc nhiều tổ chức đại diện người lao động với một bên là một hoặc nhiều người sử dụng lao động hoặc tổ chức đại diện người sử dụng lao động nhằm xác lập điều kiện lao động, quy định về mối quan hệ giữa các bên và xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thương lượng tập thể là việc đàm phán, thỏa thuận giữa một bên là một hoặc nhiều tổ chức đại diện người lao động với một bên là một hoặc nhiều người sử dụng lao động hoặc tổ chức đại diện người sử dụng lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"xác lập điều kiện lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"quy định về mối quan hệ giữa các bên\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538878767-5fbbcf89",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3457
+   },
+   "input_tokens": 2460,
+   "output_tokens": 156,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_f048dcf86b46607eb41d1ef0"
+   }
+  }
+ }
+}

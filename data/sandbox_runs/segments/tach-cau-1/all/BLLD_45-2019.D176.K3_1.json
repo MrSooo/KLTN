@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Tổ chức đại diện người lao động tại cơ sở và người sử dụng lao động thỏa thuận về thời gian tăng thêm so với thời gian tối thiểu quy định tại khoản 2 Điều này và cách thức sử dụng thời gian làm việc của thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở phù hợp với điều kiện thực tế.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Tổ chức đại diện người lao động tại cơ sở và người sử dụng lao động thỏa thuận về thời gian tăng thêm so với thời gian tối thiểu quy định tại khoản 2 Điều này và cách thức sử dụng thời gian làm việc của thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở phù hợp với điều kiện thực tế\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540047809-7af90a61",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 854
+   },
+   "input_tokens": 2448,
+   "output_tokens": 99,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_bf52ccd4ff6fcf2b311fa565"
+   }
+  }
+ }
+}

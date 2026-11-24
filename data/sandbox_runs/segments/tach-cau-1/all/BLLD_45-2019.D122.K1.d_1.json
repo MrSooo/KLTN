@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Việc xử lý kỷ luật lao động phải được ghi thành biên bản.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Việc xử lý kỷ luật lao động phải được ghi thành biên bản\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539383680-cb144bb8",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 147
+   },
+   "input_tokens": 2390,
+   "output_tokens": 41,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_3b69319b01d6e8cfeb08e43d"
+   }
+  }
+ }
+}

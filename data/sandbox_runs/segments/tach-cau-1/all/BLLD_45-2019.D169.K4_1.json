@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động có trình độ chuyên môn, kỹ thuật cao và một số trường hợp đặc biệt có thể nghỉ hưu ở tuổi cao hơn nhưng không quá 05 tuổi so với quy định tại khoản 2 Điều này tại thời điểm nghỉ hưu, trừ trường hợp pháp luật có quy định khác.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động có trình độ chuyên môn, kỹ thuật cao và một số trường hợp đặc biệt\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"có thể nghỉ hưu ở tuổi cao hơn\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không quá 05 tuổi so với quy định tại khoản 2 Điều này tại thời điểm nghỉ hưu\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"pháp luật có quy định khác\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539905065-3308cf89",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1450
+   },
+   "input_tokens": 2436,
+   "output_tokens": 141,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_16091478eab99695705f9115"
+   }
+  }
+ }
+}

@@ -22,7 +22,7 @@ import propositions  # noqa: E402
 import segments  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-PROMPT_VERSION = "vai-nhom-1"  # phải bắt đầu bằng propositions.V2_PREFIX để cổng coi là khuôn gọn
+PROMPT_VERSION = "vai-nhom-2"  # 2: đoạn không phải câu dẫn luôn có dòng, kể cả khi đơn vị ghi cac_muc_con (vòng phát triển 1: D145.K1, D51.K1)  # phải bắt đầu bằng propositions.V2_PREFIX để cổng coi là khuôn gọn
 RUN_DIR = ROOT / "data/sandbox_runs/clause_roles"
 GOLD = {"dev": ROOT / "data/eval_dev/clause_roles_gold_dev.json", "test": ROOT / "data/eval_dev/clause_roles_gold_test.json"}
 MODELS = (segments.MODEL, segments.MODEL_DU_PHONG)  # chốt trước khi đo (mục 10): tuyến chính, 404 thì dự phòng
@@ -126,7 +126,7 @@ SYSTEM = """Bạn nhận MỘT đơn vị của Bộ luật Lao động (khoản
 - cau: các câu, mỗi câu có doan đã tách: "menh_de" (một việc), "dung_chung" (phần nhiều mệnh đề dùng chung; ap_cho là các mệnh đề nó áp cho), "dan_chieu" (khối "trừ trường hợp quy định tại ..."). noi_truoc là chữ nối đứng ngay trước đoạn (nếu, khi, thì, trừ, để, và, hoặc ...).
 
 ## Mỗi dòng
-- nguon: id của MỘT đoạn menh_de (ví dụ "s1.m2"). Mỗi đoạn menh_de có ít nhất một dòng. Riêng đoạn câu dẫn ("... sau đây", "như sau") mà danh sách mục con là tân ngữ (cac_muc_con là danh_sach) thì không có dòng.
+- nguon: id của MỘT đoạn menh_de (ví dụ "s1.m2"). Mỗi đoạn menh_de có ít nhất một dòng. Riêng đoạn câu dẫn ("... sau đây", "như sau") mà danh sách mục con là tân ngữ (cac_muc_con là danh_sach) thì không có dòng; các đoạn KHÁC của câu đó (ví dụ vế "khi ..." đứng trước câu dẫn) vẫn phải có dòng.
 - doan: các mẩu chép NGUYÊN VĂN; nối lại là lõi: động từ (hoặc tính chất) + tân ngữ chính. MỖI MẨU nằm trọn trong MỘT đoạn: đoạn nguon, hoặc một đoạn dung_chung có ap_cho chứa nguon khi chữ đó là phần của việc (tân ngữ, bổ ngữ làm nên việc). Không đưa vào doan: chủ thể, chữ phương thức (phải, được, có quyền, có thể, có trách nhiệm, cấm, không được), chữ phủ định, chữ dẫn chiếu.
 - vai: ket_luan | dieu_kien | ngoai_le. Theo chữ nối trước đoạn: "nếu", "khi", "trong khi", "sau khi", "trước khi", "trường hợp", "trong trường hợp", "Do" đầu câu: dieu_kien; "trừ", "trừ trường hợp": ngoai_le; vế trước "thì" là điều kiện, vế sau là kết luận; "để", "nhằm": ket_luan cùng quy_tac với việc nó nói mục đích. Không có chữ nối thì theo nghĩa: câu quy định là ket_luan; mục con của câu dẫn "trong trường hợp sau đây" là dieu_kien.
 - phuong_thuc: duoc (được, có quyền, có thể) | phai (phải, có nghĩa vụ, có trách nhiệm) | cam (cấm, không được làm) | khong_ap_dung (một quy định không áp cho một nhóm trường hợp) | khong (không có chữ phương thức: mô tả, định nghĩa). Dòng dieu_kien và ngoai_le luôn là khong. Dòng ket_luan chỉ ghi khác khong khi chữ phương thức có trong câu, khoan_cha hoặc tieu_de_dieu ("Nghĩa vụ", "Trách nhiệm" ở tiêu đề là phai; "Quyền" là duoc).
@@ -175,27 +175,35 @@ def user_text(msg):
 
 # ---- Gọi API: mỗi đơn vị một lời gọi (mục 10), như segments.goi (tuyến chính, 404 thì dự phòng; lỗi mạng hay cụt gọi lại sau).
 def _goi_mot(text, models, key, base):
+    """-> (phản hồi, tuyến, trạng thái, đã tắt nghĩ ngầm). Tuyến dự phòng có trần thật khoảng 8.192 token ra gồm cả nghĩ ngầm, bất kể
+    max_tokens (đo 25/11: D137.K2 dừng `max_tokens` ở 7.672 + 442 token với max_tokens 64.000); ngân sách `thinking` và
+    `reasoning_effort` không có tác dụng, `thinking: disabled` thì trả lời trọn. Nên: lượt cụt thì gọi lại NGAY một lần với nghĩ ngầm
+    tắt (chỉ cho lượt cụt; đường gọi đã đo giữ nguyên), file lưu ghi lại để báo cáo đếm."""
     import time
     import urllib.request
     err = ""
     for model in models:
-        body = json.dumps({"model": model, "max_tokens": MAX_TOKENS, "system": SYSTEM,
-                           "messages": [{"role": "user", "content": text}]}, ensure_ascii=False).encode("utf-8")
-        req = urllib.request.Request(base + "/v1/messages", data=body, method="POST", headers={
-            "Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01"})
+        tat = False
         for lan in range(1, 4):
+            body = json.dumps({"model": model, "max_tokens": MAX_TOKENS, "system": SYSTEM, "messages": [{"role": "user", "content": text}],
+                               **({"thinking": {"type": "disabled"}} if tat else {})}, ensure_ascii=False).encode("utf-8")
+            req = urllib.request.Request(base + "/v1/messages", data=body, method="POST", headers={
+                "Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01"})
             try:
                 with urllib.request.urlopen(req, timeout=600) as r:
                     data = json.loads(r.read().decode("utf-8"))
                 if data.get("stop_reason") != "end_turn":
-                    return None, model, f"cụt {data.get('stop_reason')}"
-                return data, model, "ok"
+                    if not tat:
+                        tat = True
+                        continue
+                    return None, model, f"cụt {data.get('stop_reason')} (cả khi tắt nghĩ ngầm)", tat
+                return data, model, "ok", tat
             except Exception as e:  # 404 (tuyến không có): sang tuyến sau ngay; lỗi khác: chờ rồi thử lại
                 err = f"{model}: {str(e)[:100]}"
                 if getattr(e, "code", None) == 404:
                     break
                 time.sleep(10 * lan)
-    return None, None, f"lỗi {err}"
+    return None, None, f"lỗi {err}", False
 
 
 def inputs(bo):
@@ -241,10 +249,10 @@ def goi(bo, thu_muc=None):
         if hong[0] >= segments.STOP_AFTER_FAILS:
             return u, "bỏ qua: máy chủ đang lỗi"
         text = user_text(msg)
-        data, model, st = _goi_mot(text, MODELS, key, base)
+        data, model, st, tat = _goi_mot(text, MODELS, key, base)
         hong[0] = hong[0] + 1 if st.startswith("lỗi") else 0
         if data is not None:
-            path.write_text(json.dumps({"unit_id": u, "phien_ban": PROMPT_VERSION, "model": model, "gui": text, "phan_hoi": data},
+            path.write_text(json.dumps({"unit_id": u, "phien_ban": PROMPT_VERSION, "model": model, "thinking_tat": tat, "gui": text, "phan_hoi": data},
                                        ensure_ascii=False, indent=1), encoding="utf-8")
         return u, f"{st} ({model})"
 

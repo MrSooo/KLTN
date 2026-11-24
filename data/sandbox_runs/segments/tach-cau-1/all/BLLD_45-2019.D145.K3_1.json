@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động không được tuyển dụng và sử dụng người chưa đủ 13 tuổi làm việc, trừ các công việc nghệ thuật, thể dục, thể thao nhưng không làm tổn hại đến sự phát triển thể lực, trí lực, nhân cách của người chưa đủ 13 tuổi và phải có sự đồng ý của cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m5\"]},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"không được\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tuyển dụng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"sử dụng\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"người chưa đủ 13 tuổi làm việc\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"các công việc nghệ thuật, thể dục, thể thao\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"không làm tổn hại đến sự phát triển thể lực, trí lực, nhân cách của người chưa đủ 13 tuổi\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"phải có sự đồng ý của cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539660852-1d07c115",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4007
+   },
+   "input_tokens": 2458,
+   "output_tokens": 255,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_18457550fc980e9ab6bce479"
+   }
+  }
+ }
+}

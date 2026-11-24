@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Cung cấp đầy đủ, kịp thời tài liệu, chứng cứ để chứng minh cho yêu cầu của mình;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Cung cấp đầy đủ, kịp thời tài liệu, chứng cứ\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"chứng minh cho yêu cầu của mình\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540193383-737e6ed8",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1044
+   },
+   "input_tokens": 2397,
+   "output_tokens": 59,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_5f268182e14482eff8a3435e"
+   }
+  }
+ }
+}

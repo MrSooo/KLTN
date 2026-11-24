@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Đại diện cho người lao động trong quá trình giải quyết khiếu nại, tranh chấp lao động cá nhân khi được người lao động ủy quyền.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Đại diện cho người lao động trong quá trình giải quyết khiếu nại, tranh chấp lao động cá nhân\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"được người lao động ủy quyền\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540078539-da5a6476",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 740
+   },
+   "input_tokens": 2406,
+   "output_tokens": 72,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_de8bc6b58459fbb48b39cf44"
+   }
+  }
+ }
+}

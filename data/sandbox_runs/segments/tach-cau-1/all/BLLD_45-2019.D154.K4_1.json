@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Vào Việt Nam với thời hạn dưới 03 tháng để thực hiện chào bán dịch vụ.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Vào Việt Nam với thời hạn dưới 03 tháng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thực hiện chào bán dịch vụ\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539847905-94dfda3c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 405
+   },
+   "input_tokens": 2393,
+   "output_tokens": 59,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_883aad075061e20fc8f6a08d"
+   }
+  }
+ }
+}

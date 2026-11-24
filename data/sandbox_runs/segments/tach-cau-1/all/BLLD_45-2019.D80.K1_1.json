@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp thì người sử dụng lao động kế tiếp và tổ chức đại diện người lao động có quyền thương lượng theo quy định tại Điều 68 của Bộ luật này căn cứ vào phương án sử dụng lao động để xem xét lựa chọn việc tiếp tục thực hiện, sửa đổi, bổ sung thỏa ước lao động tập thể doanh nghiệp cũ hoặc thương lượng để ký kết thỏa ước lao động tập thể mới.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"người sử dụng lao động kế tiếp và tổ chức đại diện người lao động có quyền thương lượng theo quy định tại Điều 68 của Bộ luật này căn cứ vào phương án sử dụng lao động\",\"ap_cho\":[\"m2\",\"m6\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"xem xét lựa chọn việc tiếp tục thực hiện\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"sửa đổi\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"bổ sung\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"thỏa ước lao động tập thể doanh nghiệp cũ\",\"ap_cho\":[\"m2\",\"m3\",\"m4\"]},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"thương lượng\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"ký kết thỏa ước lao động tập thể mới\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539005842-54478e7a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 7863
+   },
+   "input_tokens": 2499,
+   "output_tokens": 278,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_fd41e39bb35d0974a89d78f2"
+   }
+  }
+ }
+}

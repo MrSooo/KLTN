@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Chưa hết thời hạn quy định tại khoản 2 Điều 70 của Bộ luật này nhưng các bên cùng xác định và tuyên bố về việc thương lượng tập thể không đạt được thỏa thuận.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Chưa hết thời hạn quy định tại khoản 2 Điều 70 của Bộ luật này\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"các bên cùng\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"xác định\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"tuyên bố\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"về việc thương lượng tập thể không đạt được thỏa thuận\",\"ap_cho\":[\"m2\",\"m3\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538916817-ebe0c19d",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2297
+   },
+   "input_tokens": 2414,
+   "output_tokens": 146,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_1aacb1f1804091339879f40c"
+   }
+  }
+ }
+}

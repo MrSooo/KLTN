@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người từ đủ 15 tuổi đến chưa đủ 18 tuổi không được làm công việc hoặc làm việc ở nơi làm việc quy định tại Điều 147 của Bộ luật này.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người từ đủ 15 tuổi đến chưa đủ 18 tuổi không được\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"làm công việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"làm việc ở nơi làm việc\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"quy định tại Điều 147 của Bộ luật này\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539631000-506ee0b5",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4797
+   },
+   "input_tokens": 2409,
+   "output_tokens": 131,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_2821af555fe946fab9e3c8c4"
+   }
+  }
+ }
+}

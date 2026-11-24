@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động làm hư hỏng dụng cụ, thiết bị hoặc có hành vi khác gây thiệt hại tài sản của người sử dụng lao động thì phải bồi thường theo quy định của pháp luật hoặc nội quy lao động của người sử dụng lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"làm hư hỏng dụng cụ, thiết bị\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có hành vi khác gây thiệt hại tài sản của người sử dụng lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"phải bồi thường theo quy định của pháp luật hoặc nội quy lao động của người sử dụng lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539461573-2468903f",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 499
+   },
+   "input_tokens": 2428,
+   "output_tokens": 140,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_02fc91a5911c06b13840a346"
+   }
+  }
+ }
+}

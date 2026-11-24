@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khi một bên cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể thì có quyền yêu cầu thi hành đúng thỏa ước lao động tập thể và các bên có trách nhiệm cùng xem xét giải quyết; nếu không giải quyết được, mỗi bên đều có quyền yêu cầu giải quyết tranh chấp lao động tập thể theo quy định của pháp luật.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"một bên\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có quyền yêu cầu thi hành đúng thỏa ước lao động tập thể\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"các bên có trách nhiệm cùng xem xét giải quyết\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"không giải quyết được\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"mỗi bên đều có quyền yêu cầu giải quyết tranh chấp lao động tập thể theo quy định của pháp luật\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539014352-b6be86ea",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6222
+   },
+   "input_tokens": 2454,
+   "output_tokens": 186,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_236a5aad1cd933b34b49b28c"
+   }
+  }
+ }
+}

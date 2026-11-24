@@ -1,0 +1,32 @@
+{
+ "unit_id": "BLLD_45-2019.D145.K1",
+ "phien_ban": "vai-nhom-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D145.K1\",\n \"tieu_de_dieu\": \"Sử dụng người chưa đủ 15 tuổi làm việc\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khi sử dụng người chưa đủ 15 tuổi làm việc, người sử dụng lao động phải tuân theo quy định sau đây:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"sử dụng người chưa đủ 15 tuổi làm việc\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"người sử dụng lao động phải tuân theo quy định sau đây\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D145.K1\",\n \"cac_muc_con\": \"danh_sach\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539505917-afe356c3",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2747
+   },
+   "input_tokens": 3672,
+   "output_tokens": 39,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_ffcf2fcdb2e827d3a7d2589e"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Đối với người lao động làm việc trong lĩnh vực nông nghiệp, lâm nghiệp, ngư nghiệp, diêm nghiệp thì tùy theo loại công việc mà hai bên có thể giảm một số nội dung chủ yếu của hợp đồng lao động và thỏa thuận bổ sung nội dung về phương thức giải quyết trong trường hợp thực hiện hợp đồng chịu ảnh hưởng của thiên tai, hỏa hoạn, thời tiết.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Đối với người lao động làm việc trong lĩnh vực nông nghiệp, lâm nghiệp, ngư nghiệp, diêm nghiệp\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"tùy theo loại công việc\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"hai bên có thể\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"giảm một số nội dung chủ yếu của hợp đồng lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thỏa thuận bổ sung nội dung về phương thức giải quyết trong trường hợp thực hiện hợp đồng chịu ảnh hưởng của thiên tai, hỏa hoạn, thời tiết\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538103606-96e3c052",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 7333
+   },
+   "input_tokens": 2458,
+   "output_tokens": 204,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_cd5aefc005d2d61a21194726"
+   }
+  }
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "unit_id": "BLLD_45-2019.D44.K1",
+ "phien_ban": "vai-nhom-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D44.K1\",\n \"tieu_de_dieu\": \"Phương án sử dụng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Phương án sử dụng lao động phải có những nội dung chủ yếu sau đây:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Phương án sử dụng lao động phải có những nội dung chủ yếu sau đây\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D44.K1\",\n \"cac_muc_con\": \"danh_sach\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539566699-37fe244b",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 371
+   },
+   "input_tokens": 3604,
+   "output_tokens": 39,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_b9362e2e7f0ea7fa9e53b3db"
+   }
+  }
+ }
+}

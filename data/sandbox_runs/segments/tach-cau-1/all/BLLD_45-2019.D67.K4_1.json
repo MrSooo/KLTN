@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Bảo đảm an toàn, vệ sinh lao động; thực hiện nội quy lao động;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Bảo đảm an toàn, vệ sinh lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thực hiện nội quy lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538875939-ff7d885b",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 342
+   },
+   "input_tokens": 2391,
+   "output_tokens": 57,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_7e21bbb714cbf1e8a1eba4d9"
+   }
+  }
+ }
+}

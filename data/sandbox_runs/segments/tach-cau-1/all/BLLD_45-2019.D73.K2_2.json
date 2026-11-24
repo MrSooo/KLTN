@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thành phần Hội đồng thương lượng tập thể bao gồm:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thành phần Hội đồng thương lượng tập thể bao gồm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538911542-888cb001",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 314
+   },
+   "input_tokens": 2385,
+   "output_tokens": 36,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_d0d56d2c49137365db404176"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Biện pháp và nguồn tài chính bảo đảm thực hiện phương án.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Biện pháp và nguồn tài chính bảo đảm thực hiện phương án\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538555133-7f3c0b97",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 692
+   },
+   "input_tokens": 2387,
+   "output_tokens": 38,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_6b51f4b0d720cb3906635a6c"
+   }
+  }
+ }
+}

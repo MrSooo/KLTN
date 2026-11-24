@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Phải được sự đồng ý của người lao động;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Phải được sự đồng ý của người lao động\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539222804-1990768e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 211
+   },
+   "input_tokens": 2384,
+   "output_tokens": 31,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_11cfb8aef2dda3ff559cc0c9"
+   }
+  }
+ }
+}
