@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động làm thêm giờ vào ban đêm thì ngoài việc trả lương theo quy định tại khoản 1 và khoản 2 Điều này, người lao động còn được trả thêm 20% tiền lương tính theo đơn giá tiền lương hoặc tiền lương theo công việc làm vào ban ngày của ngày làm việc bình thường hoặc của ngày nghỉ hằng tuần hoặc của ngày nghỉ lễ, tết.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động làm thêm giờ vào ban đêm\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"ngoài việc trả lương theo quy định tại khoản 1 và khoản 2 Điều này, người lao động còn được trả thêm 20% tiền lương tính theo đơn giá tiền lương hoặc tiền lương theo công việc làm vào ban ngày của ngày làm việc bình thường hoặc của ngày nghỉ hằng tuần hoặc của ngày nghỉ lễ, tết\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795537937424-95d94c36",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1618
+   },
+   "input_tokens": 2457,
+   "output_tokens": 123,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_1a7bc395b053f21dcfd59716"
+   }
+  }
+ }
+}

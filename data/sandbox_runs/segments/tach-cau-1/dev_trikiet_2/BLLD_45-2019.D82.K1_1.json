@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thỏa ước lao động tập thể chỉ được sửa đổi, bổ sung theo thỏa thuận tự nguyện của các bên, thông qua thương lượng tập thể.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thỏa ước lao động tập thể chỉ được\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sửa đổi\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bổ sung\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"theo thỏa thuận tự nguyện của các bên, thông qua thương lượng tập thể\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795537814310-7c43eeba",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1522
+   },
+   "input_tokens": 2406,
+   "output_tokens": 128,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a9e4793f41022fa7750f576d"
+   }
+  }
+ }
+}
