@@ -139,7 +139,7 @@ SYSTEM = """Bạn nhận MỘT đơn vị của Bộ luật Lao động (khoản
 Trường rỗng thì bỏ.
 
 ## Luật
-1. Bổ ngữ của ĐỘNG TỪ là một dòng dieu_kien riêng, cùng nguon, chu_the và quy_tac với dòng nó bổ nghĩa: nơi chốn ("tại ...", "ở ..."), căn cứ ("theo ..."), thời gian ("trong thời hạn ...", "trong thời gian ...", "trong quá trình ..."), và "đối với X" khi X giới hạn phạm vi áp dụng quy định. Cụm nằm trong một danh từ ("<danh từ> theo quy định của <cơ quan>" chỉ rõ danh từ nào) giữ trong doan. "Đối với X" chỉ người hay vật chịu tác động của hành vi giữ trong doan. Cụm làm nên chính việc (mức tiền, số ngày, thời điểm, hình thức của việc) giữ trong doan. Bổ ngữ nằm trong đoạn dung_chung đầu câu thì dòng của nó lấy nguon là một mệnh đề nó áp cho.
+1. Bổ ngữ của ĐỘNG TỪ là một dòng dieu_kien riêng, cùng nguon, chu_the và quy_tac với dòng nó bổ nghĩa: nơi chốn ("tại ...", "ở ..."), căn cứ ("theo ..."), thời gian ("trong thời hạn ...", "trong thời gian ...", "trong quá trình ..."), và "đối với X" khi X giới hạn phạm vi áp dụng quy định. Cụm nằm trong một danh từ ("<danh từ> theo quy định của <cơ quan>" chỉ rõ danh từ nào) giữ trong doan. "Đối với X" chỉ người hay vật chịu tác động của hành vi giữ trong doan. Cụm làm nên chính việc (mức tiền, số ngày, thời điểm, hình thức của việc) giữ trong doan. Bổ ngữ nằm trong một đoạn dung_chung thì mỗi quy_tac một dòng, nguon là mệnh đề ĐẦU TIÊN trong ap_cho của đoạn đó thuộc quy tắc ấy.
 2. Một đoạn có hai sự kiện (ví dụ một vế "do ..." nêu nguyên nhân) thì hai dòng cùng nguon.
 3. Câu dẫn: danh sách là TÂN NGỮ ("có các quyền sau đây") thì cac_muc_con là danh_sach và câu dẫn không có dòng; mục con là ket_luan (doan là chữ của mục), kế thừa chủ thể và phương thức từ khoan_cha. Danh sách là ĐIỀU KIỆN ("trong trường hợp sau đây") thì cac_muc_con là va (phải đủ hết) hoặc hoac (một mục là đủ), câu dẫn ra một ket_luan; mục con là dieu_kien.
 4. Định nghĩa "X là Y": các dấu hiệu của Y là dieu_kien; thêm một ket_luan có doan ["là", "X"]. Câu nêu giá trị, mức là một ket_luan.
@@ -279,8 +279,14 @@ def _kieu(ct):
     return tuple(sorted(k)) if isinstance(k, list) else k
 
 
+def _dup_key(r):
+    return r.get("nguon"), tuple(sorted(_syl(r.get("doan"))))
+
+
 def match(gold_rows, llm_rows, min_sim=0.5):
-    """Ghép dòng cùng nguon theo độ trùng âm tiết lõi (Jaccard), tham lam từ cặp giống nhất (như propositions.match_rows)."""
+    """Ghép dòng cùng nguon theo độ trùng âm tiết lõi (Jaccard), tham lam từ cặp giống nhất (như propositions.match_rows).
+    Dòng điều kiện lặp lại ở nhiều quy tắc (luật 5) giống hệt nhau nên ghép tham lam là ngẫu nhiên theo thứ tự; xếp lại các dòng trùng
+    đó theo quy_tac của các dòng đã ghép chắc (advisor 24/11: LLM viết khối q2 trước q1 thì không bị tính sai cấu trúc)."""
     pairs = []
     for gi, g in enumerate(gold_rows):
         for li, x in enumerate(llm_rows):
@@ -296,6 +302,20 @@ def match(gold_rows, llm_rows, min_sim=0.5):
             ug.add(gi)
             ul.add(li)
             out.append((gi, li))
+    import collections
+    import itertools
+    groups = collections.defaultdict(list)
+    for gi, li in out:
+        if _dup_key(gold_rows[gi]) == _dup_key(llm_rows[li]):
+            groups[_dup_key(gold_rows[gi])].append((gi, li))
+    dup = {k: v for k, v in groups.items() if len(v) > 1}
+    if dup:
+        chac = [(gi, li) for gi, li in out if not any((gi, li) in v for v in dup.values())]
+        qmap = collections.Counter((gold_rows[gi].get("quy_tac"), llm_rows[li].get("quy_tac")) for gi, li in chac)
+        for v in dup.values():
+            gis, lis = [g for g, _ in v], [x for _, x in v]
+            best = max(itertools.permutations(lis), key=lambda perm: sum(qmap[(gold_rows[g].get("quy_tac"), llm_rows[x].get("quy_tac"))] for g, x in zip(gis, perm)))
+            out = [p for p in out if p not in v] + list(zip(gis, best))
     return sorted(out)
 
 

@@ -142,5 +142,28 @@ def test_clause_roles_cham_ghep_va_cau_truc():
     assert clause_roles.score_unit(gold, None)["m"] == 0
 
 
+def test_clause_roles_gold_bo_ngu_dung_chung_lay_menh_de_dau():
+    # Luật 1: dòng lấy chữ từ dung_chung có nguon là mệnh đề đầu tiên trong ap_cho thuộc quy tắc của dòng (để ghép theo nguon tất định).
+    for bo, path in clause_roles.GOLD.items():
+        gold = {u["unit_id"]: u["dau_ra"] for u in json.loads(path.read_text(encoding="utf-8"))["don_vi"]}
+        for u, _ctx, _msg, segmap in clause_roles.inputs(bo):
+            dong = gold[u]["dong"]
+            for r in dong:
+                if any(x in segmap[r["nguon"]]["chu"] for x in r["doan"]):
+                    continue
+                dc = next(s for s in segmap.values() if s["loai"] == "dung_chung" and r["doan"][0] in s["chu"])
+                trong_qt = [x for x in dc["ap_cho"] if any(o["nguon"] == x and o["quy_tac"] == r["quy_tac"] for o in dong)]
+                assert r["nguon"] == trong_qt[0], (u, r)
+
+
+def test_clause_roles_cham_dong_lap_khong_ghep_cheo():
+    # D97.K3: điều kiện "hưởng lương theo sản phẩm" lặp ở q1 và q2; LLM viết khối q2 trước q1 vẫn phải đúng cấu trúc.
+    gold = {u["unit_id"]: u["dau_ra"] for u in json.loads(clause_roles.GOLD["test"].read_text(encoding="utf-8"))["don_vi"]}[B + "D97.K3"]
+    dong = gold["dong"]
+    dao = {**gold, "dong": [r for r in dong if r["quy_tac"] == "q2"] + [r for r in dong if r["quy_tac"] == "q1"]}
+    s = clause_roles.score_unit(gold, dao)
+    assert s["cau_truc"] and s["m"] == len(dong), s
+
+
 if __name__ == "__main__":
     _harness.run(globals())
