@@ -6,9 +6,14 @@ Lượt 1 do LLM gạch ranh giới mệnh đề trong MỘT câu. Module này l
 - sau LLM: kiểm đầu ra (khớp nguyên văn, khe chỉ có dấu câu / chữ nối / dấu giữ chỗ, không cắt ngang chữ nối nhiều chữ
   hay chữ dẫn chiếu, ap_cho đúng), rồi dựng danh sách đoạn kèm vị trí và chữ nối ở khe trước mỗi đoạn, chèn lại đoạn
   dan_chieu. Chữ nối đứng ngoài đoạn nên lượt 2 chỉ đọc được chúng từ phần dựng này.
-Không gọi LLM. Gold cũng là một "đầu ra" và phải qua cùng máy kiểm (mục 9.6).
+Gold cũng là một "đầu ra" và phải qua cùng máy kiểm (mục 9.6). Lời gọi LLM (lệnh goi) đi qua tuyến ckey của lần chạy dò seg_thu_3,
+mỗi câu một lời gọi; phản hồi thô lưu theo phiên bản lời nhắc, chạy lại chỉ gọi câu chưa có.
 
-Dùng: python -I -X utf8 src/segments.py kiem <thư mục phan_hoi>   (chạy máy kiểm lên các phản hồi đã có, in số lỗi theo loại)
+Dùng: python -I -X utf8 src/segments.py kiem <thư mục phan_hoi>   (máy kiểm lên phản hồi khuôn seg_thu_3, in số lỗi theo loại)
+      python -I -X utf8 src/segments.py chon                    (chọn 60 câu gold; không ghi đè)
+      python -I -X utf8 src/segments.py kiem-gold <file gold>
+      python -I -X utf8 src/segments.py goi dev|test            (gọi API cho các câu của bộ gold; tốn tiền)
+      python -I -X utf8 src/segments.py cham dev|test           (chấm phản hồi đã có với gold, ghi báo cáo)
 """
 import json
 import re
@@ -371,10 +376,187 @@ def kiem_gold(path):
     raise SystemExit(1 if bad else 0)
 
 
+# ---- Lời nhắc lượt 1 (viết theo đặc tả mục 9.3, 9.4). Sửa chữ lời nhắc thì PHẢI nâng PROMPT_VERSION (phản hồi lưu theo phiên bản).
+# Ví dụ chỉ lấy từ Điều không có trong hai file gold (mục 9.6): D113, D85, D185, D86, D18.
+PROMPT_VERSION = "tach-cau-1"
+SYSTEM = """Tách MỘT câu luật tiếng Việt thành các đoạn theo thứ tự. Mỗi đoạn là:
+- "menh_de": một việc đúng hoặc sai được (hành vi, sự kiện, trạng thái);
+- "dung_chung": phần mà nhiều mệnh đề dùng chung, kèm "ap_cho" là các id mệnh đề nó áp cho.
+Chỉ gạch ranh giới, không gán vai, không giải thích.
+
+CHỮ NỐI (danh sách đóng): và, hoặc, hay, nhưng, thì, mà, nếu, khi, sau khi, trước khi, trong khi, sau đó, trường hợp, trong trường hợp, trong trường hợp này, trừ, trừ trường hợp, để, nhằm, "Do" ở đầu câu.
+Chữ nối nằm ở chỗ ranh giới giữa hai đoạn thì đứng NGOÀI mọi đoạn: không đoạn nào được mở đầu hay kết thúc bằng chữ nối, và chữ nối không bao giờ là một đoạn. Chữ nối nằm giữa một đoạn (danh sách "A và B", "các trường hợp sau đây") thì vẫn ở trong đoạn.
+Dấu ⟦DC1⟧, ⟦DC2⟧... là một dẫn chiếu máy đã cắt sẵn: để nó ngoài mọi đoạn, không chép vào đoạn nào.
+
+LUẬT KHÔNG TÁCH (đứng trước luật tách: động từ nằm trong các phần sau thì KHÔNG tách dù có nhiều động từ)
+K1. Danh sách danh từ (đối tượng, thuộc tính, căn cứ, nơi chốn, nguyên nhân) giữ một đoạn, kể cả mục có động từ ("vì lý do thành lập, gia nhập công đoàn").
+K2. Cụm mô tả một đối tượng KHÁC chủ ngữ giữ trong đoạn, kể cả có động từ hay chữ nối bên trong: "<danh từ> do <cơ quan> ban hành", "<danh từ> mà <ai> <làm gì>", "mức lương trước khi nghỉ thai sản". Đồng vị ngữ, phần chêm của chủ ngữ ("<chủ ngữ> là <vai trò>", "<chủ ngữ>, bao gồm cả <ai>,") giữ cùng chủ ngữ.
+K3. Vế có chủ ngữ riêng sau động từ nói/khiến ("cho rằng ...", "hướng dẫn X làm ...", "ép buộc X làm ...") là nội dung của động từ đó: không tách bên trong.
+K4. Bổ ngữ không mở đầu bằng chữ nối ("đối với ...", "trên cơ sở ...", "theo ...", "tại ...", "trong thời hạn ...", "trong thời gian ...") giữ trong đoạn nó bổ nghĩa. Câu "Đối với X thì Y" là MỘT đoạn ("thì" nằm trong đoạn); "Đối với X mà <vế có động từ> thì Y" thì tách ở "thì", "Đối với X" đi cùng vế điều kiện.
+K5. Cụm "để/nhằm ..." đứng ngay sau danh từ VÀ trước động từ chính là phần tên của danh từ ("Tiền lương để tính trợ cấp thôi việc là ..."): không tách. "Trường hợp" làm danh từ ("là trường hợp <việc>", "các trường hợp <...> bao gồm", "trong trường hợp sau đây", "Trường hợp khác", "trường hợp quy định tại ...") nằm trong đoạn.
+K6. Vế "trong trường hợp/khi ..." kẹp GIỮA một mệnh đề (vị ngữ đã bắt đầu trước nó và còn tiếp sau nó) giữ trong mệnh đề đó, vì đoạn phải liền. Định nghĩa dạng công thức ("là tổng ... trừ đi ...") là một mệnh đề.
+
+LUẬT TÁCH
+T1. Mỗi việc khác nhau là một mệnh đề. Liệt kê nhiều động từ thì tách từng động từ, kể cả sau "có quyền", "được", "chỉ được", "không được", "có thể" và kể cả cặp ngắn ("sửa đổi, bổ sung" thành hai mệnh đề).
+T2. Cụm mục đích "để ...", "nhằm ..." đứng sau động từ chính là mệnh đề riêng ("để", "nhằm" ở ngoài đoạn).
+T3. Vế mở đầu bằng chữ nối điều kiện, thời gian, ngoại lệ ("nếu", "khi", "trong khi", "sau khi", "trước khi", "sau đó", "trường hợp", "trong trường hợp", "trừ", "trừ trường hợp", "Do") là mệnh đề riêng, kể cả vế không có động từ ("trừ <danh từ>"). Tính chất của CHÍNH chủ ngữ cũng là mệnh đề riêng ("Người lao động Việt Nam | đi làm việc ở nước ngoài | phải tuân theo ...").
+T4. Định nghĩa gồm nhiều sự kiện thì tách từng sự kiện. Câu dẫn ("... sau đây:") tách như câu thường.
+
+ĐOẠN DÙNG CHUNG
+D1. Chủ ngữ đứng trước từ HAI mệnh đề trở lên mà nó thật sự tham gia (không cần là bên duy nhất) thì tách thành "dung_chung"; ap_cho chỉ gồm các mệnh đề ĐỨNG SAU nó, kể cả sau chữ nối. Chủ ngữ chỉ đứng trước một mệnh đề thì giữ trong mệnh đề đó.
+D2. Chủ ngữ cộng chữ phương thức ("có thể", "chỉ được", "không được", "có quyền") đúng cho MỌI mệnh đề trong ap_cho thì gộp vào cùng một đoạn dùng chung; chỉ đúng cho một phần thì tách thành hai đoạn dùng chung lồng nhau.
+D3. Tân ngữ hay bổ ngữ chung của nhiều động từ ghi một lần thành "dung_chung" (có thể đứng sau các mệnh đề nó áp cho). Bổ ngữ đầu câu áp cho nhiều mệnh đề ("Trong thời hạn ..., nếu ... thì ...") cũng thành "dung_chung".
+
+CHÉP: mọi chữ chép nguyên văn, đúng thứ tự; mọi chữ thuộc đúng một đoạn, trừ dấu câu, chữ nối ở ranh giới và ⟦DCn⟧.
+
+Chỉ trả JSON: {"doan":[{"id":"m1","loai":"menh_de","chu":"..."},{"id":"c1","loai":"dung_chung","chu":"...","ap_cho":["m1"]}]}
+
+Ví dụ 1. Câu: "Người sử dụng lao động có trách nhiệm quy định lịch nghỉ hằng năm sau khi tham khảo ý kiến của người lao động và phải thông báo trước cho người lao động biết."
+{"doan":[{"id":"c1","loai":"dung_chung","chu":"Người sử dụng lao động","ap_cho":["m1","m2","m3"]},{"id":"m1","loai":"menh_de","chu":"có trách nhiệm quy định lịch nghỉ hằng năm"},{"id":"m2","loai":"menh_de","chu":"tham khảo ý kiến của người lao động"},{"id":"m3","loai":"menh_de","chu":"phải thông báo trước cho người lao động biết"}]}
+
+Ví dụ 2. Câu: "Người lao động có thể thỏa thuận với người sử dụng lao động để nghỉ hằng năm thành nhiều lần hoặc nghỉ gộp tối đa 03 năm một lần."
+{"doan":[{"id":"c1","loai":"dung_chung","chu":"Người lao động","ap_cho":["m1","m2","m3"]},{"id":"m1","loai":"menh_de","chu":"có thể thỏa thuận với người sử dụng lao động"},{"id":"m2","loai":"menh_de","chu":"nghỉ hằng năm thành nhiều lần"},{"id":"m3","loai":"menh_de","chu":"nghỉ gộp tối đa 03 năm một lần"}]}
+
+Ví dụ 3. Câu: "Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp được rút khỏi thỏa ước lao động tập thể khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp có khó khăn đặc biệt trong hoạt động sản xuất, kinh doanh."
+{"doan":[{"id":"c1","loai":"dung_chung","chu":"Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp","ap_cho":["m1","m3"]},{"id":"m1","loai":"menh_de","chu":"được rút khỏi thỏa ước lao động tập thể"},{"id":"m2","loai":"menh_de","chu":"có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước"},{"id":"m3","loai":"menh_de","chu":"có khó khăn đặc biệt trong hoạt động sản xuất, kinh doanh"}]}
+
+Ví dụ 4. Câu: "Số lượng trọng tài viên lao động của Hội đồng trọng tài lao động do Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định, ít nhất là 15 người, bao gồm số lượng ngang nhau do các bên đề cử, cụ thể như sau:"
+{"doan":[{"id":"c1","loai":"dung_chung","chu":"Số lượng trọng tài viên lao động của Hội đồng trọng tài lao động","ap_cho":["m1","m2","m3"]},{"id":"m1","loai":"menh_de","chu":"do Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định"},{"id":"m2","loai":"menh_de","chu":"ít nhất là 15 người"},{"id":"m3","loai":"menh_de","chu":"bao gồm số lượng ngang nhau do các bên đề cử, cụ thể như sau"}]}
+
+Ví dụ 5. Câu: "Không tuân thủ đúng quy trình thương lượng, ký kết thỏa ước lao động tập thể."
+{"doan":[{"id":"m1","loai":"menh_de","chu":"Không tuân thủ đúng quy trình thương lượng, ký kết thỏa ước lao động tập thể"}]}
+
+Ví dụ 6. Câu: "Người lao động trực tiếp giao kết hợp đồng lao động, ⟦DC1⟧."
+{"doan":[{"id":"m1","loai":"menh_de","chu":"Người lao động trực tiếp giao kết hợp đồng lao động"}]}"""
+EXAMPLE_UNITS = ("D113.K4", "D85.K2", "D185.K2", "D86.K2.c", "D18.K1")
+MODEL = "dungcsnd113/gemini-flash-3.8"  # tuyến của seg_thu_3 (A59: "ckey – Gemini Flash route", upstream chưa kiểm)
+RUN_DIR = ROOT / "data/sandbox_runs/segments"
+
+
+def _gold(bo):
+    return json.loads((GOLD_DEV if bo == "dev" else GOLD_TEST).read_text(encoding="utf-8"))
+
+
+def goi(bo):
+    """Gọi API cho từng câu của một bộ gold, 4 luồng; câu đã có phản hồi ở phiên bản này thì bỏ qua (chạy lại chỉ bù câu lỗi mạng).
+    Lượt cụt (stop_reason khác end_turn) không lưu, như llm_client."""
+    import os
+    import time
+    import urllib.request
+    from concurrent.futures import ThreadPoolExecutor
+    import llm_client
+    base = llm_client.load_config()["api.base_url"].rstrip("/")
+    key = os.environ.get("CKEY_API_KEY")
+    if not key:
+        raise SystemExit("chưa có CKEY_API_KEY trong biến môi trường")
+    out_dir = RUN_DIR / PROMPT_VERSION / bo
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (RUN_DIR / PROMPT_VERSION / "system.txt").write_text(SYSTEM, encoding="utf-8")
+
+    def one(c):
+        path = out_dir / (c["sid"].replace("#", "_") + ".json")
+        if path.exists():
+            return c["sid"], "co_san"
+        body = json.dumps({"model": MODEL, "max_tokens": 16000, "system": SYSTEM,
+                           "messages": [{"role": "user", "content": "Câu: \"" + c["cau_gui"] + "\""}]}, ensure_ascii=False).encode("utf-8")
+        req = urllib.request.Request(base + "/v1/messages", data=body, method="POST", headers={
+            "Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01"})
+        err = ""
+        for lan in range(1, 4):
+            try:
+                with urllib.request.urlopen(req, timeout=300) as r:
+                    data = json.loads(r.read().decode("utf-8"))
+                if data.get("stop_reason") != "end_turn":
+                    return c["sid"], f"cụt {data.get('stop_reason')}"
+                path.write_text(json.dumps({"cau_gui": c["cau_gui"], "phien_ban": PROMPT_VERSION, "phan_hoi": data},
+                                           ensure_ascii=False, indent=1), encoding="utf-8")
+                return c["sid"], "ok"
+            except Exception as e:  # lỗi mạng, 429, 5xx: chờ rồi thử lại; hết 3 lần thì báo, chạy lại sau
+                err = str(e)[:120]
+                time.sleep(10 * lan)
+        return c["sid"], f"lỗi {err}"
+
+    with ThreadPoolExecutor(4) as ex:
+        for sid, st in ex.map(one, _gold(bo)["cau"]):
+            if st != "co_san":
+                print(sid, st, flush=True)
+
+
+def _shape(placed):
+    """Dạng so sánh của một đầu ra đã định vị: các đoạn (loai, từ, đến) và ap_cho đổi id thành khoảng token."""
+    span = {d["id"]: (d["tu"], d["den"]) for d in placed}
+    doan = tuple((d["loai"], d["tu"], d["den"]) for d in placed)
+    ap = tuple(sorted((span[d["id"]], tuple(sorted(span[x] for x in d["ap_cho"]))) for d in placed if d["loai"] == "dung_chung"))
+    return doan, ap
+
+
+def cham(bo):
+    """Chấm phản hồi đã có với gold (mục 9.6): câu khớp hoàn toàn (ranh giới, loai, ap_cho); riêng ranh giới (cùng các khoảng
+    đoạn); độ chính xác và độ phủ của điểm cắt (vị trí token đầu/cuối đoạn). Lỗi ap_cho báo riêng với lỗi ranh giới."""
+    import propositions
+    preps = {p["sid"]: p for p in all_sentences(propositions.contexts())}
+    out_dir = RUN_DIR / PROMPT_VERSION / bo
+    rows, n, khop, ranh_gioi, loi_may, thieu, vnd = [], 0, 0, 0, 0, 0, 0.0
+    tp = fp = fn = 0
+    for c in _gold(bo)["cau"]:
+        n += 1
+        p = preps[c["sid"]]
+        g = _shape(check(p, {"doan": c["doan"]})[2])
+        path = out_dir / (c["sid"].replace("#", "_") + ".json")
+        if not path.exists():
+            thieu += 1
+            rows.append(f"### {c['sid']} — THIẾU PHẢN HỒI\n")
+            continue
+        data = json.loads(path.read_text(encoding="utf-8"))["phan_hoi"]
+        vnd += ((data.get("usage") or {}).get("x_ckey") or {}).get("cost") or 0
+        try:
+            out = parse_reply("".join(b.get("text", "") for b in data.get("content", []) if b.get("type") == "text"))
+            errs, _, placed = check(p, out)
+        except ValueError:
+            out, errs, placed = {"doan": []}, ["khuôn: không phải JSON"], []
+        gcut = {x for _, a, b in g[0] for x in (a, b)}
+        if errs:
+            loi_may += 1
+            ket = "MÁY KIỂM LỖI: " + "; ".join(errs)
+            fn += len(gcut)
+        else:
+            pr = _shape(placed)
+            pcut = {x for _, a, b in pr[0] for x in (a, b)}
+            tp, fp, fn = tp + len(gcut & pcut), fp + len(pcut - gcut), fn + len(gcut - pcut)
+            same_rg = [(a, b) for _, a, b in pr[0]] == [(a, b) for _, a, b in g[0]]
+            ranh_gioi += same_rg
+            if pr == g:
+                khop += 1
+                ket = "khớp"
+            elif same_rg and pr[0] == g[0]:
+                ket = "ĐÚNG RANH GIỚI, SAI ap_cho"
+            elif same_rg:
+                ket = "ĐÚNG RANH GIỚI, SAI loai/ap_cho"
+            else:
+                ket = "SAI RANH GIỚI"
+        lines = [f"### {c['sid']} — {ket}", f"> {c['cau_gui']}", "", "gold: " + " · ".join(
+            (f"**{d['id']}** \"{d['chu']}\" → {','.join(d['ap_cho'])}" if d["loai"] == "dung_chung" else f"{d['id']} \"{d['chu']}\"") for d in c["doan"])]
+        if ket != "khớp":
+            lines.append("model: " + " · ".join(
+                (f"**{d.get('id')}** \"{d.get('chu')}\" → {','.join(d.get('ap_cho') or [])}" if d.get("loai") == "dung_chung"
+                 else f"{d.get('id')} \"{d.get('chu')}\"") for d in out.get("doan", [])))
+        rows.append("\n".join(lines) + "\n")
+    prec = tp / (tp + fp) if tp + fp else 0
+    rec = tp / (tp + fn) if tp + fn else 0
+    head = (f"# Chấm lượt 1 `{PROMPT_VERSION}` trên bộ {bo} ({n} câu)\n\n"
+            f"- khớp hoàn toàn: {khop}/{n}\n- đúng ranh giới (bỏ qua loai, ap_cho): {ranh_gioi}/{n}\n- máy kiểm lỗi: {loi_may}; thiếu phản hồi: {thieu}\n"
+            f"- điểm cắt: độ chính xác {prec:.3f}, độ phủ {rec:.3f}\n- chi phí: {vnd:.1f} VND\n\n")
+    (RUN_DIR / PROMPT_VERSION / f"cham_{bo}.md").write_text(head + "\n".join(rows), encoding="utf-8")
+    print(head)
+
+
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     cmd = sys.argv[1:2]
+    if cmd in (["goi"], ["cham"]) and len(sys.argv) == 3 and sys.argv[2] in ("dev", "test"):
+        (goi if cmd == ["goi"] else cham)(sys.argv[2])
+        raise SystemExit(0)
     if cmd == ["kiem"] and len(sys.argv) == 3:
         kiem(sys.argv[2])
     elif cmd == ["chon"] and len(sys.argv) == 2:

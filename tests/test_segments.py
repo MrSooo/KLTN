@@ -97,6 +97,41 @@ def test_segments_vi_du_dac_ta_qua_may_kiem():
         assert errs(sid, doan) == [], (sid, errs(sid, doan))
 
 
+def test_segments_vi_du_loi_nhac_qua_may_kiem_va_ngoai_gold():
+    # Ví dụ dạy sai luật thì LLM học sai; ví dụ lấy từ Điều có trong gold thì bộ đo không còn sạch (mục 9.6).
+    import json
+    import re
+    cau = {p["cau_gui"]: p for p in preps().values()}
+    vi_du = re.findall(r'Câu: "(.*?)"\n(\{.*?\})\n', S.SYSTEM + "\n")
+    assert len(vi_du) == 6
+    for text, out in vi_du:
+        assert text in cau, text
+        assert S.check(cau[text], json.loads(out))[0] == [], text
+    gold = {".".join(c["sid"].split("#")[0].split(".")[1:2]) for path in (S.GOLD_DEV, S.GOLD_TEST)
+            for c in json.loads(path.read_text(encoding="utf-8"))["cau"]}
+    assert not {u.split(".")[0] for u in S.EXAMPLE_UNITS} & gold
+
+
+# Cụm chung chung được phép trùng chữ gold (tên chủ thể, chữ nối, khuôn câu dẫn).
+_CHUNG = {"người sử dụng lao động", "người lao động", "trường hợp sau đây", "trong trường hợp sau đây", "trường hợp quy định tại",
+          "các trường hợp sau đây", "tổ chức đại diện người lao động", "trong thời hạn", "trong thời gian",
+          "sửa đổi, bổ sung", "bao gồm cả", "các trường hợp", "là trường hợp", "người lao động việt nam", "phải tuân theo"}
+
+
+def test_segments_loi_nhac_khong_lo_chu_gold():
+    # Mẩu chữ trích trong phần luật cũng là ví dụ: mẩu từ 3 chữ trở lên trùng chữ một câu gold là lộ câu đo (advisor 24/11).
+    import json
+    import re
+    gold = [c["cau_gui"].lower() for path in (S.GOLD_DEV, S.GOLD_TEST) for c in json.loads(path.read_text(encoding="utf-8"))["cau"]]
+    lo = []
+    for frag in re.findall(r'"([^"]+)"', S.SYSTEM):
+        for piece in re.split(r"\.\.\.|\||<[^>]*>", frag):
+            piece = piece.strip(" ,.;:").lower()
+            if len(piece.split()) >= 3 and piece not in _CHUNG and any(piece in g for g in gold):
+                lo.append(piece)
+    assert not lo, lo
+
+
 def test_segments_gold_qua_may_kiem():
     # Khoá đặc tả, máy kiểm và gold với nhau: sửa một bên mà gold không còn qua là phải xem lại gold (mục 9.6).
     import json
