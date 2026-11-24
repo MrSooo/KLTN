@@ -27,7 +27,7 @@ RUN_DIR = ROOT / "data/sandbox_runs/clause_roles"
 GOLD = {"dev": ROOT / "data/eval_dev/clause_roles_gold_dev.json", "test": ROOT / "data/eval_dev/clause_roles_gold_test.json"}
 MODELS = (segments.MODEL, segments.MODEL_DU_PHONG)  # chốt trước khi đo (mục 10): tuyến chính, 404 thì dự phòng
 MAX_TOKENS = 32000  # api.max_output_tokens; tuyến dự phòng suy nghĩ ngầm dài (cụt 2/40 câu đơn ở 16.000, A60)
-LUONG = 8
+LUONG = 16  # 8 lúc đo; 16 khi chạy cả bộ (mỗi lời gọi ~1 phút, máy chủ cho 60 lượt/phút); không ảnh hưởng đầu ra
 LEAD = re.compile(r"(sau đây|như sau|gồm|bao gồm)\s*:?\s*$")
 # Ngưỡng (mục 10.5, chốt trước khi gọi).
 NGUONG = {"qua_may": 0.95, "f1_dong": 0.80, "vai": 0.90, "phuong_thuc": 0.85, "cuc": 0.95, "cau_truc": 0.70}

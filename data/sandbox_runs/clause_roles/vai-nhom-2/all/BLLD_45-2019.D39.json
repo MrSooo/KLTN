@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D39",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": true,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D39\",\n \"tieu_de_dieu\": \"Đơn phương chấm dứt hợp đồng lao động trái pháp luật\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"điều 35, 36 và 37 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D35\"\n  },\n  {\n   \"cum\": \"điều 35, 36 và 37 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D36\"\n  },\n  {\n   \"cum\": \"điều 35, 36 và 37 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D37\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Đơn phương chấm dứt hợp đồng lao động trái pháp luật là trường hợp chấm dứt hợp đồng lao động không đúng quy định tại các điều 35, 36 và 37 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Đơn phương chấm dứt hợp đồng lao động trái pháp luật là trường hợp chấm dứt hợp đồng lao động không đúng quy định tại các điều 35, 36 và 37 của Bộ luật này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\n \"unit_id\": \"BLLD_45-2019.D39\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"chấm dứt hợp đồng lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"doi_so\": [\n    {\n     \"loai\": \"C\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"đúng quy định\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"là\",\n    \"Đơn phương chấm dứt hợp đồng lao động trái pháp luật\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795542847511-2705707f",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4896
+   },
+   "input_tokens": 3822,
+   "output_tokens": 281,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_6999b3bc7047d480f842f212"
+   }
+  }
+ }
+}

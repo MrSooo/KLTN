@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D103",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D103\",\n \"tieu_de_dieu\": \"Chế độ nâng lương, nâng bậc, phụ cấp, trợ cấp\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chế độ nâng lương, nâng bậc, phụ cấp, trợ cấp và các chế độ khuyến khích đối với người lao động được thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể hoặc quy định của người sử dụng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chế độ nâng lương, nâng bậc, phụ cấp, trợ cấp và các chế độ khuyến khích đối với người lao động được thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể hoặc quy định của người sử dụng lao động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D103\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Chế độ nâng lương, nâng bậc, phụ cấp, trợ cấp và các chế độ khuyến khích đối với người lao động\",\n    \"thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể hoặc quy định của người sử dụng lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"hợp đồng lao động\",\n    \"thỏa ước lao động tập thể\",\n    \"quy định của người sử dụng lao động\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795544772014-d0184a75",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 7860
+   },
+   "input_tokens": 3721,
+   "output_tokens": 212,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_c7308eed227748d83708d1f2"
+   }
+  }
+ }
+}

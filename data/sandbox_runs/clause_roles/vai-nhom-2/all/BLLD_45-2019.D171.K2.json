@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D171.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D171.K2\",\n \"tieu_de_dieu\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Việc thành lập, giải thể, tổ chức và hoạt động của Công đoàn cơ sở được thực hiện theo quy định của Luật Công đoàn.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Việc thành lập, giải thể, tổ chức và hoạt động của Công đoàn cơ sở được thực hiện theo quy định của Luật Công đoàn\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D171.K2\",\n \"bo_qua\": \"dan_chieu_ngoai\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795546712020-0550c7c0",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2145
+   },
+   "input_tokens": 3664,
+   "output_tokens": 40,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_0a59d2d5bd3104887eab3750"
+   }
+  }
+ }
+}

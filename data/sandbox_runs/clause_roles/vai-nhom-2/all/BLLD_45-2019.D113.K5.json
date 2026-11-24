@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D113.K5",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": true,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D113.K5\",\n \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 3 Điều 101 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D101.K3\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Khi nghỉ hằng năm mà chưa đến kỳ trả lương, người lao động được tạm ứng tiền lương theo quy định tại khoản 3 Điều 101 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"nghỉ hằng năm\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"chưa đến kỳ trả lương\",\n     \"noi_truoc\": [\n      \"mà\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"người lao động được tạm ứng tiền lương theo quy định tại khoản 3 Điều 101 của Bộ luật này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D113.K5\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"doan\": [\n        \"nghỉ hằng năm\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"người lao động\",\n        \"loai\": \"W\"\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m2\",\n      \"doan\": [\n        \"đến kỳ trả lương\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"phu_dinh\",\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m3\",\n      \"doan\": [\n        \"tạm ứng tiền lương\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"duoc\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"người lao động\",\n        \"loai\": \"W\"\n      },\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795545177452-3f8af528",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3975
+   },
+   "input_tokens": 3806,
+   "output_tokens": 307,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_f641d1fb4b5582d42a9f4610"
+   }
+  }
+ }
+}

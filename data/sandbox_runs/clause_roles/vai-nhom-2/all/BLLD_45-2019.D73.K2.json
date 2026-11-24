@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D73.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D73.K2\",\n \"tieu_de_dieu\": \"Thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khi nhận được yêu cầu của các bên thương lượng tập thể có nhiều doanh nghiệp tham gia, Ủy ban nhân dân cấp tỉnh quyết định thành lập Hội đồng thương lượng tập thể để tổ chức việc thương lượng tập thể.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"nhận được yêu cầu của các bên thương lượng tập thể có nhiều doanh nghiệp tham gia\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Ủy ban nhân dân cấp tỉnh quyết định thành lập Hội đồng thương lượng tập thể\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tổ chức việc thương lượng tập thể\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Thành phần Hội đồng thương lượng tập thể bao gồm:\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Thành phần Hội đồng thương lượng tập thể bao gồm\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D73.K2\",\n \"cac_muc_con\": \"danh_sach\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"nhận được yêu cầu của các bên thương lượng tập thể có nhiều doanh nghiệp tham gia\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Ủy ban nhân dân cấp tỉnh\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"quyết định thành lập Hội đồng thương lượng tập thể\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Ủy ban nhân dân cấp tỉnh\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"tổ chức việc thương lượng tập thể\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Ủy ban nhân dân cấp tỉnh\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795543938549-76bfb4c3",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2842
+   },
+   "input_tokens": 3860,
+   "output_tokens": 367,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a462c46cfcba298a8fa908ea"
+   }
+  }
+ }
+}

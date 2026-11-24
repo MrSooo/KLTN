@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D165.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D165.K1\",\n \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Ngược đãi, quấy rối tình dục, cưỡng bức lao động, dùng vũ lực đối với lao động là người giúp việc gia đình.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Ngược đãi\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"quấy rối tình dục\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"cưỡng bức lao động\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"dùng vũ lực\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"đối với lao động là người giúp việc gia đình\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\",\n      \"s1.m4\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D165.K1\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"Ngược đãi\",\"đối với lao động là người giúp việc gia đình\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"doan\":[\"quấy rối tình dục\",\"đối với lao động là người giúp việc gia đình\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m3\",\"doan\":[\"cưỡng bức lao động\",\"đối với lao động là người giúp việc gia đình\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m4\",\"doan\":[\"dùng vũ lực\",\"đối với lao động là người giúp việc gia đình\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795546608947-35695658",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4287
+   },
+   "input_tokens": 3831,
+   "output_tokens": 370,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_e53e5a225488211b2d58f4f6"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D152.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D152.K2\",\n \"tieu_de_dieu\": \"Điều kiện tuyển dụng, sử dụng người lao động nước ngoài làm việc tại Việt Nam\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Doanh nghiệp, cơ quan, tổ chức, cá nhân trước khi tuyển dụng người lao động nước ngoài vào làm việc tại Việt Nam phải giải trình nhu cầu sử dụng lao động và được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Doanh nghiệp, cơ quan, tổ chức, cá nhân\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tuyển dụng người lao động nước ngoài vào làm việc tại Việt Nam\",\n     \"noi_truoc\": [\n      \"trước khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải giải trình nhu cầu sử dụng lao động\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D152.K2\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"doan\": [\"tuyển dụng người lao động nước ngoài vào làm việc tại Việt Nam\"],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"Doanh nghiệp, cơ quan, tổ chức, cá nhân\",\n        \"loai\": \"E\"\n      },\n      \"doi_so\": [\n        {\n          \"loai\": \"W\"\n        }\n      ],\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m2\",\n      \"doan\": [\"giải trình nhu cầu sử dụng lao động\"],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"phai\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"Doanh nghiệp, cơ quan, tổ chức, cá nhân\",\n        \"loai\": \"E\"\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m3\",\n      \"doan\": [\"được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền\"],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"phai\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"Doanh nghiệp, cơ quan, tổ chức, cá nhân\",\n        \"loai\": \"E\"\n      },\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795546269245-8912f41e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6873
+   },
+   "input_tokens": 3871,
+   "output_tokens": 388,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_9bb2d1514bcd3931c592afba"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D73.K2.b",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D73.K2.b\",\n \"tieu_de_dieu\": \"Thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể\",\n \"khoan_cha\": \"Khi nhận được yêu cầu của các bên thương lượng tập thể có nhiều doanh nghiệp tham gia, Ủy ban nhân dân cấp tỉnh quyết định thành lập Hội đồng thương lượng tập thể để tổ chức việc thương lượng tập thể. Thành phần Hội đồng thương lượng tập thể bao gồm:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Đại diện các bên thương lượng tập thể do mỗi bên cử.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Đại diện các bên thương lượng tập thể do mỗi bên cử\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Số lượng đại diện mỗi bên thương lượng tham gia Hội đồng do các bên thỏa thuận;\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Số lượng đại diện mỗi bên thương lượng tham gia Hội đồng do các bên thỏa thuận\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\n \"unit_id\": \"BLLD_45-2019.D73.K2.b\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Đại diện các bên thương lượng tập thể\",\n    \"cử\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"mỗi bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"Số lượng đại diện mỗi bên thương lượng tham gia Hội đồng\",\n    \"thỏa thuận\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795543975372-985ffd1a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3477
+   },
+   "input_tokens": 3784,
+   "output_tokens": 242,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_d3345ed2970ce4c907f28708"
+   }
+  }
+ }
+}

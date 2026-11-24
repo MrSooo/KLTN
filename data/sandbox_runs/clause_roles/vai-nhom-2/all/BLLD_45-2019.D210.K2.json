@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D210.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D210.K2\",\n \"tieu_de_dieu\": \"Quyết định hoãn, ngừng đình công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định chi tiết việc hoãn, ngừng đình công và giải quyết quyền lợi của người lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chính phủ quy định chi tiết việc hoãn, ngừng đình công và giải quyết quyền lợi của người lao động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D210.K2\",\n  \"bo_qua\": \"dan_chieu_mo\",\n  \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795547893001-9828d652",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1425
+   },
+   "input_tokens": 3651,
+   "output_tokens": 42,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_32e23c4c41aae0ad074302c0"
+   }
+  }
+ }
+}

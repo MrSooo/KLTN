@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D58.K3",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D58.K3\",\n \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n \"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Được trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Được trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D58.K3\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người lao động thuê lại\",\"loai\":\"W\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795543438590-56b9c9ba",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1465
+   },
+   "input_tokens": 3713,
+   "output_tokens": 118,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_75ba3c40a4a1942674bd7f8f"
+   }
+  }
+ }
+}

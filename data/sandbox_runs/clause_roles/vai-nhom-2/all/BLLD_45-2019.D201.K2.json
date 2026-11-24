@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D201.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D201.K2\",\n \"tieu_de_dieu\": \"Lấy ý kiến về đình công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Nội dung lấy ý kiến bao gồm:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Nội dung lấy ý kiến bao gồm\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"unit_id\":\"BLLD_45-2019.D201.K2\",\"cac_muc_con\":\"danh_sach\",\"dong\":[]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795547557572-4db8df4f",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 540
+   },
+   "input_tokens": 3615,
+   "output_tokens": 33,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_cda5532ed05d74413981696e"
+   }
+  }
+ }
+}
