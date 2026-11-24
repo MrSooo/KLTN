@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D109.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D109.K2\",\n \"tieu_de_dieu\": \"Nghỉ trong giờ làm việc\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D109.K1\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Ngoài thời gian nghỉ quy định tại khoản 1 Điều này, người sử dụng lao động bố trí cho người lao động các đợt nghỉ giải lao và ghi vào nội quy lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Ngoài thời gian nghỉ quy định tại khoản 1 Điều này\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"người sử dụng lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bố trí cho người lao động các đợt nghỉ giải lao\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"ghi vào nội quy lao động\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D109.K2\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"Ngoài thời gian nghỉ\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m1\",\"doan\":[\"bố trí cho người lao động các đợt nghỉ giải lao\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"doan\":[\"ghi vào nội quy lao động\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795552786872-b44917a2",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5872
+   },
+   "input_tokens": 3866,
+   "output_tokens": 239,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_72c11a05eea67ad4b2fa283d"
+   }
+  }
+ }
+}

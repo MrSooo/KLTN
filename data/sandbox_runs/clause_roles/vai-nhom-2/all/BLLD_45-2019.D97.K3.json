@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D97.K3",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D97.K3\",\n \"tieu_de_dieu\": \"Kỳ hạn trả lương\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động hưởng lương theo sản phẩm, theo khoán được trả lương theo thỏa thuận của hai bên; nếu công việc phải làm trong nhiều tháng thì hằng tháng được tạm ứng tiền lương theo khối lượng công việc đã làm trong tháng.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người lao động hưởng lương theo sản phẩm, theo khoán\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được trả lương theo thỏa thuận của hai bên\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"công việc phải làm trong nhiều tháng\",\n     \"noi_truoc\": [\n      \"nếu\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"hằng tháng được tạm ứng tiền lương theo khối lượng công việc đã làm trong tháng\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D97.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"trả lương\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người lao động hưởng lương theo sản phẩm, theo khoán\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"theo thỏa thuận của hai bên\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người lao động hưởng lương theo sản phẩm, theo khoán\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"làm trong nhiều tháng\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"công việc\",\n    \"loai\": \"J\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"hằng tháng\",\n    \"tạm ứng tiền lương\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người lao động hưởng lương theo sản phẩm, theo khoán\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"theo khối lượng công việc đã làm trong tháng\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người lao động hưởng lương theo sản phẩm, theo khoán\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795552588178-be47d5a9",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4607
+   },
+   "input_tokens": 3851,
+   "output_tokens": 580,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a849eeee4a43eea72fb98c09"
+   }
+  }
+ }
+}

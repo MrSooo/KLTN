@@ -1,0 +1,34 @@
+{
+ "unit_id": "BLLD_45-2019.D3.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D3.K1\",\n \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"là người làm việc cho người sử dụng lao động theo thỏa thuận\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được trả lương\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"chịu sự quản lý, điều hành, giám sát của người sử dụng lao động\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Độ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Độ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"trường hợp quy định tại Mục 1 Chương XI của Bộ luật này\",\n     \"noi_truoc\": [\n      \"trừ\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\n \"unit_id\": \"BLLD_45-2019.D3.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"là\",\n    \"Người lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"làm việc cho người sử dụng lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"doi_so\": [\n    {\n     \"loai\": \"E\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"theo thỏa thuận\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"trả lương\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"chịu sự quản lý, điều hành, giám sát của người sử dụng lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"doi_so\": [\n    {\n     \"loai\": \"E\"\n    }\n   ],\n   \"liet_ke\": [\n    \"quản lý\",\n    \"điều hành\",\n    \"giám sát\"\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"Độ tuổi lao động tối thiểu\",\n    \"là đủ 15 tuổi\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"doan\": [\n    \"quy định tại Mục 1 Chương XI của Bộ luật này\"\n   ],\n   \"vai\": \"ngoai_le\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795552198216-e918e911",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5545
+   },
+   "input_tokens": 3996,
+   "output_tokens": 700,
+   "prompt_tokens_details": {},
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_d6df8b530ac0d4d94ac3bceb"
+   }
+  }
+ }
+}

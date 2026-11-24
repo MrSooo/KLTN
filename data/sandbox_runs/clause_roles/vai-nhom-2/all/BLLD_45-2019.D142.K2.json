@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D142.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": true,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D142.K2\",\n \"tieu_de_dieu\": \"Nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D142.K1\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động phải cung cấp đầy đủ thông tin về tính chất nguy hiểm, nguy cơ, yêu cầu của công việc để người lao động lựa chọn và phải bảo đảm điều kiện an toàn, vệ sinh lao động cho người lao động theo quy định khi sử dụng họ làm công việc thuộc danh mục quy định tại khoản 1 Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người sử dụng lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m3\",\n      \"s1.m4\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải cung cấp đầy đủ thông tin về tính chất nguy hiểm, nguy cơ, yêu cầu của công việc\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"người lao động lựa chọn\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải bảo đảm điều kiện an toàn, vệ sinh lao động cho người lao động theo quy định\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"sử dụng họ làm công việc thuộc danh mục quy định tại khoản 1 Điều này\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D142.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"cung cấp đầy đủ thông tin về tính chất nguy hiểm, nguy cơ, yêu cầu của công việc\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"lựa chọn\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"doan\": [\n    \"sử dụng họ làm công việc thuộc danh mục\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"bảo đảm điều kiện an toàn, vệ sinh lao động cho người lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"theo quy định\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"doan\": [\n    \"sử dụng họ làm công việc thuộc danh mục\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795553031765-642133d7",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4273
+   },
+   "input_tokens": 3988,
+   "output_tokens": 729,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_06c68971d741caad07184d9f"
+   }
+  }
+ }
+}

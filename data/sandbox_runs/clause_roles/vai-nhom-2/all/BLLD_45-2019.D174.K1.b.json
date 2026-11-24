@@ -1,0 +1,34 @@
+{
+ "unit_id": "BLLD_45-2019.D174.K1.b",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": true,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D174.K1.b\",\n \"tieu_de_dieu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n \"khoan_cha\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây:\\nTrong một tổ chức của người lao động tại doanh nghiệp không đồng thời có thành viên là người lao động thông thường và thành viên là người lao động trực tiếp tham gia vào quá trình ra quyết định liên quan đến điều kiện lao động, tuyển dụng lao động, kỷ luật lao động, chấm dứt hợp đồng lao động hoặc chuyển người lao động làm công việc khác;\\nNhững nội dung phải do thành viên quyết định theo đa số bao gồm thông qua, sửa đổi, bổ sung điều lệ của tổ chức; bầu cử, miễn nhiệm người đứng đầu và thành viên ban lãnh đạo của tổ chức; chia, tách, hợp nhất, sáp nhập, đổi tên, giải thể, liên kết tổ chức; gia nhập Công đoàn Việt Nam;\\nViệc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp phải được theo dõi, lưu trữ và định kỳ hằng năm công khai cho thành viên của tổ chức;\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tôn chỉ, mục đích và phạm vi hoạt động là bảo vệ quyền, lợi ích hợp pháp, chính đáng của thành viên tổ chức mình trong quan hệ lao động tại doanh nghiệp; cùng với người sử dụng lao động giải quyết các vấn đề liên quan đến quyền, nghĩa vụ và lợi ích của người lao động và người sử dụng lao động; xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Tôn chỉ, mục đích và phạm vi hoạt động là\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bảo vệ quyền, lợi ích hợp pháp, chính đáng của thành viên tổ chức mình trong quan hệ lao động tại doanh nghiệp\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"cùng với người sử dụng lao động giải quyết các vấn đề liên quan đến quyền, nghĩa vụ và lợi ích của người lao động và người sử dụng lao động\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D174.K1.b\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Tôn chỉ, mục đích và phạm vi hoạt động là\",\n    \"bảo vệ quyền, lợi ích hợp pháp, chính đáng của thành viên tổ chức mình trong quan hệ lao động tại doanh nghiệp\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"Tôn chỉ, mục đích và phạm vi hoạt động là\",\n    \"cùng với người sử dụng lao động giải quyết các vấn đề liên quan đến quyền, nghĩa vụ và lợi ích của người lao động và người sử dụng lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"Tôn chỉ, mục đích và phạm vi hoạt động là\",\n    \"xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795553171777-73f6e13b",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4771
+   },
+   "input_tokens": 4128,
+   "output_tokens": 456,
+   "prompt_tokens_details": {},
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_67be6fd5058e4cf1c3c07fbd"
+   }
+  }
+ }
+}

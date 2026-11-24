@@ -115,6 +115,7 @@ def test_clause_roles_may_kiem_bat_loi():
     assert any("không phải id đoạn menh_de" in x for x in loi({**tot, "dong": [{**row, "nguon": "s1.m9"}]}))
     assert any("không nằm trọn" in x for x in loi({**tot, "dong": [{**row, "doan": ["khoản 2 Điều này"]}, row]}))
     assert any("không có dòng" in x for x in loi({**tot, "dong": []}))
+    assert any("doi_so sai khuôn" in x for x in loi({**tot, "dong": [{**row, "doi_so": [{"loai": ["W", "E"]}]}]}))
     assert any("vắng ở ngoai_le" in x for x in loi({k: v for k, v in tot.items() if k != "ngoai_le"}))
     # Câu dẫn chỉ được miễn dòng khi danh sách là tân ngữ (danh_sach); va/hoac thì câu dẫn vẫn ra một ket_luan.
     ctx2, segmap2 = build("D176.K1", VI_DU_LUOT1["D176.K1"])

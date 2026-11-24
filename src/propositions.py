@@ -492,7 +492,9 @@ def gate_unit(ctx, rows, reason_field=LLM_REASON, version=None):
                     if src is not None and not any(t in src for t in trich):
                         E(f"chủ thể lấy từ {ct['nguon']} nhưng trich không có mẩu nào từ đó")
             for a in d["doi_so"] or []:
-                if not isinstance(a, dict) or not _kieu_ok(a.get("loai")):
+                # Danh sách mã chỉ dành cho chủ thể chung (đặc tả mục 2, lược đồ ở schema()); doi_so là một mã. Cổng cũ dùng _kieu_ok nên lọt
+                # ["W","E"] ở D33.K1 (lần chạy tach) và làm 1.6B đổ vỡ (signature cần chuỗi).
+                if not isinstance(a, dict) or not isinstance(a.get("loai"), str) or a["loai"] not in KIEU:
                     E(f"doi_so sai khuôn {a!r}")
             if no_bo_ngu and d["bo_ngu"]:
                 E("bo_ngu không còn dùng (A55): bổ ngữ phải là dòng dieu_kien riêng")

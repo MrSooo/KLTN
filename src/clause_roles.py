@@ -177,7 +177,8 @@ def user_text(msg):
 def _goi_mot(text, models, key, base):
     """-> (phản hồi, tuyến, trạng thái, đã tắt nghĩ ngầm). Tuyến dự phòng có trần thật khoảng 8.192 token ra gồm cả nghĩ ngầm, bất kể
     max_tokens (đo 25/11: D137.K2 dừng `max_tokens` ở 7.672 + 442 token với max_tokens 64.000); ngân sách `thinking` và
-    `reasoning_effort` không có tác dụng, `thinking: disabled` thì trả lời trọn. Nên: lượt cụt thì gọi lại NGAY một lần với nghĩ ngầm
+    `reasoning_effort` không có tác dụng, `thinking: disabled` thường thì trả lời trọn nhưng không chắc (D176.K1.a: vẫn 7.862 token nghĩ
+    ngầm). Nên: lượt cụt thì gọi lại NGAY một lần với nghĩ ngầm
     tắt (chỉ cho lượt cụt; đường gọi đã đo giữ nguyên), file lưu ghi lại để báo cáo đếm."""
     import time
     import urllib.request
