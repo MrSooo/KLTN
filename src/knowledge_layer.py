@@ -13,6 +13,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I mode: add the script dir for sibling imports
 import edges
+import law_registry
 import versioning
 import llm
 
@@ -35,8 +36,13 @@ _SYSTEM = (
     '"rules":[{"id":"<mã quy tắc>","head":"<kết luận>","body":["<điều kiện>"],"source":"<mã đơn vị>","text":"<chữ luật>"}]}\n'
     "category chỉ nhận 'concept' hoặc 'input'. Mỗi đơn vị có thể có nhiều mệnh đề; không có loại nào thì trả [].\n"
     "id mệnh đề PHẢI duy nhất trên toàn tài liệu: đặt id theo dạng '<mã đơn vị>.P<STT>' "
-    "(ví dụ BLDS2015.D621.K1.a.P1, BLDS2015.D621.K1.a.P2), không dùng 'P1' chung cho nhiều đơn vị."
+    "(ví dụ {prefix}.D621.K1.a.P1, {prefix}.D621.K1.a.P2), không dùng 'P1' chung cho nhiều đơn vị."
 )
+
+
+def _system_prompt(stem):
+    """Prompt with the source law's own prefix in the id example (BLDS2015 default, LLD2019 for labor)."""
+    return _SYSTEM.replace("{prefix}", law_registry.prefix_for(Path(stem).stem))
 
 
 def _tag(versions, date):
@@ -155,7 +161,7 @@ def run(src, versions=None, date=None):
     if units and llm.enabled():
         for code, u in units.items():
             prompt = f"Mã đơn vị: {code}\nVăn bản:\n{u['text']}"
-            raw = llm.complete(prompt, system=_SYSTEM, temperature=0.0)
+            raw = llm.complete(prompt, system=_system_prompt(src), temperature=0.0)
             if not raw:
                 continue
             try:

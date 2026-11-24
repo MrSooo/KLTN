@@ -40,7 +40,7 @@ def read_jsonl(path):
 
 def scasp_query(program_path, goal_atom, timeout=60):
     """Run one live s(CASP) query; return dict(satisfiable, output)."""
-    p = str(program_path).replace("'", "\\'")
+    p = Path(program_path).as_posix().replace("'", "\\'")  # forward slashes: "\p" is not a Prolog escape
     g = ("use_module(library(scasp)), consult('%s'), "
          "( catch(scasp(user:%s, [model(M), tree(T)]), E, "
          "        (format('SCASP_ERROR: ~w~n', [E]), fail)) -> "

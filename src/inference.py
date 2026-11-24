@@ -17,11 +17,30 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import edges
+import law_registry
 import versioning
 
 ROOT = edges.ROOT
 OUT_DIR = edges.PROCESSED_DIR
 DOCS_DIR = ROOT / "docs"
+
+REGISTERED_PREFIXES = frozenset(law.prefix for law in law_registry.LAWS.values())
+
+
+def unit_prefix(src):
+    """Registered id prefix of the source law: blds2015 -> BLDS2015, lld2019_labor -> LLD2019."""
+    return law_registry.prefix_for(Path(src).stem)
+
+
+def with_unit_prefix(code, prefix):
+    """Swap a unit id's law prefix for the source law's registered one.
+
+    A1 triples / A4 rows produced before law_registry existed can still carry another law's
+    prefix (e.g. BLDS2015.D35 for an lld2019 source); emitting it verbatim makes the .pl
+    disagree with its own header. Ids with no registered prefix pass through untouched.
+    """
+    head, sep, rest = str(code).partition(".")
+    return f"{prefix}{sep}{rest}" if sep and head in REGISTERED_PREFIXES else str(code)
 
 
 def _tag(versions, date):
@@ -39,9 +58,11 @@ def atom(x):
 
 
 def active_codes(src, versions=None, date=None):
+    prefix = unit_prefix(src)
     if versions is None:
-        return list(edges.read_units(src).keys())
-    return [r["id"] for r in versioning.active_rows(versioning.read_jsonl(versions), date)]
+        return [with_unit_prefix(c, prefix) for c in edges.read_units(src).keys()]
+    return [with_unit_prefix(r["id"], prefix)
+            for r in versioning.active_rows(versioning.read_jsonl(versions), date)]
 
 
 def read_rows(path):
@@ -85,16 +106,31 @@ def exception_rows(src, versions, date):
     rows += read_rows(_resolve_jsonl_path("a3", stem, tag))
     rows += read_rows(_resolve_jsonl_path("a6", stem, tag))
     rows += read_rows(_resolve_jsonl_path("a8_implicit_exceptions", stem, tag))
+    prefix = unit_prefix(src)
+    for r in rows:  # normalize stale cross-law ids coming from older A3/A6/A8 outputs
+        for key in ("s", "o"):
+            if r.get(key):
+                r[key] = with_unit_prefix(r[key], prefix)
     return rows
 
 def refers_rows(src):
-    return read_rows(OUT_DIR / f"a2_refs_{Path(src).stem}.jsonl")
+    prefix = unit_prefix(src)
+    rows = read_rows(OUT_DIR / f"a2_refs_{Path(src).stem}.jsonl")
+    for r in rows:
+        if r.get("p") == "refers_to" and r.get("o"):
+            r["s"], r["o"] = with_unit_prefix(r["s"], prefix), with_unit_prefix(r["o"], prefix)
+    return rows
 
 
 def a8_rules(src, versions, date):
     stem = Path(src).stem
     tag = _tag(versions, date)
-    return read_rows(OUT_DIR / f"a8_rules_{stem}{'_' + tag if tag else ''}.jsonl")
+    rows = read_rows(OUT_DIR / f"a8_rules_{stem}{'_' + tag if tag else ''}.jsonl")
+    prefix = unit_prefix(src)
+    for r in rows:  # a rule's source must match its in_force(...) fact
+        if r.get("source"):
+            r["source"] = with_unit_prefix(r["source"], prefix)
+    return rows
 
 
 def render_program(src, versions=None, date=None, query=None):
@@ -157,7 +193,8 @@ def _run_solver(program, query):
     else:
         swipl = shutil.which("swipl")
         if swipl:
-            p = str(program).replace("\\", "\\\\").replace("'", "\\'")
+            # consult/1 takes a Prolog atom: forward slashes avoid "\p" being read as an escape on Windows.
+            p = Path(program).as_posix().replace("'", "\\'")
             goal = (
                 "use_module(library(scasp)), consult('%s'), "
                 "( catch(scasp(user:%s, [model(M), tree(T)]), E, "
