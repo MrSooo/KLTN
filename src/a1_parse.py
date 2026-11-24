@@ -12,7 +12,10 @@ ROOT = Path(__file__).resolve().parent.parent
 SAMPLE = ROOT / "data" / "raw" / "blds2015_p4.md"
 PROCESSED_DIR = ROOT / "data" / "processed"  # mỗi bước ghi vào thư mục con riêng: a1/, a2/, ..., a8/
 
-DOC_PREFIX = "BLDS2015"  # tiền tố id: BLDS2015.D621.K1.a (Điểm đ viết thành dd: BLDS2015.D1.K1.dd)
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I: sibling import needs an explicit path
+import law_registry
+
+DOC_PREFIX = law_registry.prefix_for("blds2015")  # tiền tố id mặc định: BLDS2015.D621.K1.a (Điểm đ viết thành dd: BLDS2015.D1.K1.dd); load_parsed lấy prefix theo luật của file nguồn
 
 # Văn bản gốc (review F-08). A4 lấy hieu_luc làm effective_from của phiên bản 1 và DOC_PREFIX làm source_doc; A7 dựng nút văn bản từ đây.
 BASE_DOC = {"id": DOC_PREFIX, "ten": "Bộ luật Dân sự", "so_hieu": "91/2015/QH13", "co_quan": "Quốc hội",
@@ -149,7 +152,7 @@ def diem_code(label):
     return label.replace("đ", "dd")
 
 
-def parse(tokens, expected_dieu):
+def parse(tokens, expected_dieu, prefix=DOC_PREFIX):
     """Máy trạng thái duyệt list token, dựng các đơn vị Điều > Khoản > Điểm.
 
     expected_dieu: dãy số Điều mong đợi theo thứ tự. Mọi lỗi được thu vào `errors`, parser vẫn đi
@@ -171,7 +174,7 @@ def parse(tokens, expected_dieu):
         if t.kind == "chuong":
             if any(c.number == t.label for c in chapters):
                 err(t, f"Chương {t.label} lặp")
-            chuong = Unit(f"{DOC_PREFIX}.C{t.label}", CHUONG_TYPE, t.label, t.text, [], t.line_no)
+            chuong = Unit(f"{prefix}.C{t.label}", CHUONG_TYPE, t.label, t.text, [], t.line_no)
             chapters.append(chuong)
             dieu = khoan = None
 
@@ -185,7 +188,7 @@ def parse(tokens, expected_dieu):
                     else f"Điều {number}, mong đợi Điều {want}")
                 rest = expected_dieu[n_dieu:]
                 n_dieu += rest.index(number) + 1 if number in rest else 1
-            dieu = Unit(f"{DOC_PREFIX}.D{t.label}", "dieu", t.label, t.text, [], t.line_no, chuong.id if chuong else None)
+            dieu = Unit(f"{prefix}.D{t.label}", "dieu", t.label, t.text, [], t.line_no, chuong.id if chuong else None)
             units.append(dieu)
             khoan, khoan_no, diem_idx = None, 0, -1
 
@@ -289,10 +292,11 @@ def load_parsed(path):
     path = Path(path)
     if path.name not in EXPECTED_DIEU:
         raise SystemExit(f"chưa khai báo dãy Điều mong đợi cho {path.name} trong EXPECTED_DIEU")
+    prefix = law_registry.prefix_for(path.stem)  # BLDS2015 mặc định; lld2019_labor.md -> LLD2019
     with open(path, encoding="utf-8", newline="") as f:
         result = tokenize(f.read())
     fail_if_suspicious(result)
-    return result, parse(result.tokens, EXPECTED_DIEU[path.name])
+    return result, parse(result.tokens, EXPECTED_DIEU[path.name], prefix=prefix)
 
 
 def fail_if_errors(parsed):

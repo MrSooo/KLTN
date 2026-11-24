@@ -15,7 +15,7 @@ PROCESSED_DIR = ROOT / "data" / "processed"
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I: sibling import needs an explicit path
 import law_registry
 
-DOC_PREFIX = "BLDS2015"  # tiền tố id: BLDS2015.D621.K1.a (Điểm đ viết thành dd: BLDS2015.D1.K1.dd)
+DOC_PREFIX = law_registry.prefix_for("blds2015")  # tiền tố id: BLDS2015.D621.K1.a (Điểm đ viết thành dd: BLDS2015.D1.K1.dd); use law_registry.prefix_for(stem) for other laws
 
 # Dãy số Điều mong đợi của từng file nguồn, theo thứ tự xuất hiện.
 EXPECTED_DIEU = {
