@@ -435,6 +435,7 @@ MODEL = "dungcsnd113/gemini-flash-3.8"  # tuyến của seg_thu_3 (A59: "ckey �
 # lại lời nhắc không đổi trên bộ phát triển (2 vòng) và bộ kiểm tra với cùng ngưỡng (A60). Upstream cũng chưa kiểm.
 MODEL_DU_PHONG = "trikiet2045/gemini-3.8-flash-high"
 RUN_DIR = ROOT / "data/sandbox_runs/segments"
+LUONG = 8  # số câu gọi cùng lúc (4 lúc đo dev/test; 8 từ khi chạy cả bộ bằng tuyến dự phòng chậm, 24/11; máy chủ cho 60 lượt/phút)
 STOP_AFTER_FAILS = 6  # như sandbox_api: lỗi API liền nhau ngần này câu thì dừng, chạy lại lệnh sau là làm tiếp câu còn thiếu
 
 
@@ -499,7 +500,7 @@ def goi(bo, models=(MODEL,), thu_muc=None):
         cau = [{"sid": p["sid"], "cau_gui": p["cau_gui"]} for p in all_sentences(propositions.contexts())]
     else:
         cau = _gold(bo)["cau"]
-    with ThreadPoolExecutor(4) as ex:
+    with ThreadPoolExecutor(LUONG) as ex:
         for sid, st in ex.map(one, cau):
             if st != "co_san":
                 print(sid, st, flush=True)

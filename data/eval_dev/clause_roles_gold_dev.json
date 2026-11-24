@@ -1,0 +1,1622 @@
+{
+ "bo": "dev",
+ "dac_ta": "A61",
+ "ghi_chu": "gold lượt 2 (mục 10.5): agent soạn 24/11, user duyệt trước; đầu vào là đoạn gold lượt 1",
+ "don_vi": [
+  {
+   "unit_id": "BLLD_45-2019.D100.K1",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D100.K1",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "sử dụng người cai thầu hoặc người có vai trò trung gian tương tự"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Nơi nào",
+       "loai": "?"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "có danh sách và địa chỉ của những người này kèm theo danh sách những người lao động làm việc với họ"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người sử dụng lao động",
+       "loai": "E"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m3",
+      "doan": [
+       "bảo đảm việc họ tuân thủ quy định của pháp luật về trả lương, an toàn, vệ sinh lao động"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người sử dụng lao động",
+       "loai": "E"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D101.K1",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D101.K1",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "tạm ứng tiền lương"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người lao động",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "theo điều kiện do hai bên thỏa thuận"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người lao động",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "bị tính lãi"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "phu_dinh",
+      "chu_the": {
+       "chu": "Người lao động",
+       "loai": "W"
+      },
+      "quy_tac": "q2"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D111.K2",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D111.K2",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "quyết định sắp xếp ngày nghỉ hằng tuần vào ngày Chủ nhật hoặc ngày xác định khác trong tuần"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "ghi vào nội quy lao động"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D115.K2",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D115.K2",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "nghỉ không hưởng lương 01 ngày"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người lao động",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "thông báo với người sử dụng lao động"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người lao động",
+       "loai": "W"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m3",
+      "doan": [
+       "ông nội, bà nội, ông ngoại, bà ngoại, anh, chị, em ruột chết"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "nguon": "s1.m4",
+      "doan": [
+       "cha hoặc mẹ kết hôn"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "nguon": "s1.m5",
+      "doan": [
+       "anh, chị, em ruột kết hôn"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D119.K3",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D119.K3",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "nội dung nội quy lao động có quy định trái với pháp luật"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "thông báo",
+       "người sử dụng lao động sửa đổi, bổ sung và đăng ký lại"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh",
+       "loai": "?"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được hồ sơ đăng ký nội quy lao động"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh",
+       "loai": "?"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m3",
+      "doan": [
+       "hướng dẫn",
+       "người sử dụng lao động sửa đổi, bổ sung và đăng ký lại"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh",
+       "loai": "?"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D122.K3",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D122.K3",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "đồng thời có nhiều hành vi vi phạm kỷ luật lao động"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "một người lao động",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "chỉ áp dụng hình thức kỷ luật cao nhất tương ứng với hành vi vi phạm nặng nhất"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D136.K2",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D136.K2",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "Tham khảo ý kiến của lao động nữ hoặc đại diện của họ"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người sử dụng lao động",
+       "loai": "E"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "quyết định những vấn đề liên quan đến quyền và lợi ích của phụ nữ"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người sử dụng lao động",
+       "loai": "E"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D137.K2",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D137.K2",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Lao động nữ",
+       "loai": "W"
+      },
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "làm nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Lao động nữ",
+       "loai": "W"
+      },
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "nguon": "s1.m3",
+      "doan": [
+       "mang thai"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Lao động nữ",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m4",
+      "doan": [
+       "có thông báo cho người sử dụng lao động biết"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Lao động nữ",
+       "loai": "W"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m5",
+      "doan": [
+       "chuyển sang làm công việc nhẹ hơn, an toàn hơn"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Lao động nữ",
+       "loai": "W"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m6",
+      "doan": [
+       "giảm bớt 01 giờ làm việc hằng ngày"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Lao động nữ",
+       "loai": "W"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m7",
+      "doan": [
+       "bị cắt giảm tiền lương và quyền, lợi ích cho đến hết thời gian nuôi con dưới 12 tháng tuổi"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "phu_dinh",
+      "chu_the": {
+       "chu": "Lao động nữ",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D139.K2",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D139.K2",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "hưởng chế độ thai sản"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "lao động nữ",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "Trong thời gian nghỉ thai sản"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "lao động nữ",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "theo quy định của pháp luật về bảo hiểm xã hội"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "lao động nữ",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D144.K2",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D144.K2",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "sử dụng lao động chưa thành niên"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "quan tâm chăm sóc người lao động về các mặt lao động, sức khỏe, học tập"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "trong quá trình lao động"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D145.K1",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D145.K1",
+    "cac_muc_con": "danh_sach",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "sử dụng người chưa đủ 15 tuổi làm việc"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người sử dụng lao động",
+       "loai": "E"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D152.K1",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D152.K1",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "tuyển dụng người lao động nước ngoài vào làm vị trí công việc quản lý, điều hành, chuyên gia và lao động kỹ thuật mà người lao động Việt Nam chưa đáp ứng được"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu",
+       "loai": "E"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "theo nhu cầu sản xuất, kinh doanh"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu",
+       "loai": "E"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D164.K2",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D164.K2",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "bồi thường"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "lao động là người giúp việc gia đình",
+       "loai": "W"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "theo thỏa thuận hoặc theo quy định của pháp luật"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "lao động là người giúp việc gia đình",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "làm hỏng",
+       "tài sản của người sử dụng lao động"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "lao động là người giúp việc gia đình",
+       "loai": "W"
+      },
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "nguon": "s1.m3",
+      "doan": [
+       "mất",
+       "tài sản của người sử dụng lao động"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "lao động là người giúp việc gia đình",
+       "loai": "W"
+      },
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D177.K5",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D177.K5",
+    "bo_qua": "dan_chieu_mo",
+    "dong": []
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D178.K7",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D178.K7",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "bố trí nơi làm việc"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "tổ chức đại diện người lao động tại cơ sở",
+       "loai": "?"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "cung cấp thông tin"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "tổ chức đại diện người lao động tại cơ sở",
+       "loai": "?"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m3",
+      "doan": [
+       "bảo đảm các điều kiện cần thiết cho hoạt động của tổ chức đại diện người lao động tại cơ sở"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "tổ chức đại diện người lao động tại cơ sở",
+       "loai": "?"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D182.K1",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D182.K1",
+    "cac_muc_con": "danh_sach",
+    "dong": []
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D186",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D186",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "tranh chấp lao động đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "trong thời hạn theo quy định của Bộ luật này"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "hành động đơn phương chống lại bên kia"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "cam",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "bên nào",
+       "loai": [
+        "E",
+        "W"
+       ]
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D194.K1",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D194.K1",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "Thời hiệu yêu cầu hòa giải viên lao động thực hiện hòa giải tranh chấp lao động tập thể về quyền là 06 tháng kể từ ngày phát hiện ra hành vi mà bên tranh chấp cho rằng quyền hợp pháp của mình bị vi phạm"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D201.K2.a",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D201.K2.a",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "Đồng ý"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "đồng ý"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "phu_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D202.K1",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D202.K1",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "có trên 50% số người được lấy ý kiến đồng ý với nội dung lấy ý kiến đình công"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "ra quyết định đình công bằng văn bản"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "tổ chức đại diện người lao động",
+       "loai": "?"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D205.K2",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D205.K2",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "Ủy ban nhân dân cấp tỉnh có nơi làm việc dự kiến đóng cửa"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người sử dụng lao động",
+       "loai": "E"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D218",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D218",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "sử dụng dưới 10 người lao động"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "thực hiện quy định của Bộ luật này"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m3",
+      "doan": [
+       "miễn",
+       "một số thủ tục theo quy định của Chính phủ"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m4",
+      "doan": [
+       "giảm",
+       "một số thủ tục theo quy định của Chính phủ"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D22.K1",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D22.K1",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "là bộ phận của hợp đồng lao động"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Phụ lục hợp đồng lao động",
+       "loai": "C"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "có hiệu lực như hợp đồng lao động"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Phụ lục hợp đồng lao động",
+       "loai": "C"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D27.K2",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D27.K2",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "mỗi bên",
+       "loai": [
+        "E",
+        "W"
+       ]
+      },
+      "doi_so": [
+       {
+        "loai": "C"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "Trong thời gian thử việc"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "mỗi bên",
+       "loai": [
+        "E",
+        "W"
+       ]
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "báo trước"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "phu_dinh",
+      "chu_the": {
+       "chu": "mỗi bên",
+       "loai": [
+        "E",
+        "W"
+       ]
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m3",
+      "doan": [
+       "bồi thường"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "duoc",
+      "cuc": "phu_dinh",
+      "chu_the": {
+       "chu": "mỗi bên",
+       "loai": [
+        "E",
+        "W"
+       ]
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D32.K2",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D32.K2",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "thỏa thuận với người sử dụng lao động làm việc không trọn thời gian"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người lao động",
+       "loai": "W"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "giao kết hợp đồng lao động"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người lao động",
+       "loai": "W"
+      },
+      "doi_so": [
+       {
+        "loai": "C"
+       }
+      ],
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D35.K1.b",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D35.K1.b",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "Ít nhất 30 ngày"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người lao động",
+       "loai": "W"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người lao động",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D39",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D39",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "chấm dứt hợp đồng lao động"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "đúng quy định"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "phu_dinh",
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "là",
+       "Đơn phương chấm dứt hợp đồng lao động trái pháp luật"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D44.K1",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D44.K1",
+    "cac_muc_con": "danh_sach",
+    "dong": []
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D48.K3.a",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D48.K3.a",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "Hoàn thành thủ tục xác nhận thời gian đóng bảo hiểm xã hội, bảo hiểm thất nghiệp"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "trả lại cùng với bản chính giấy tờ khác"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q2"
+     },
+     {
+      "nguon": "s1.m3",
+      "doan": [
+       "đã giữ của người lao động"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người sử dụng lao động",
+       "loai": "E"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q2"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D49.K2",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D49.K2",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "vô hiệu từng phần"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Hợp đồng lao động",
+       "loai": "C"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "vi phạm pháp luật"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "nội dung của phần đó",
+       "loai": "C"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m3",
+      "doan": [
+       "ảnh hưởng đến các phần còn lại của hợp đồng"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "phu_dinh",
+      "chu_the": {
+       "chu": "nội dung của phần đó",
+       "loai": "C"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D5.K1.g",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D5.K1.g",
+    "bo_qua": "dan_chieu_mo",
+    "dong": []
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D51.K1",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D51.K1",
+    "cac_muc_con": "danh_sach",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "bị tuyên bố vô hiệu từng phần"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "hợp đồng lao động",
+       "loai": "C"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D52.K1",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D52.K1",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động",
+       "loai": "W"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "là",
+       "Cho thuê lại lao động"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "được chuyển sang làm việc"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m3",
+      "doan": [
+       "chịu sự điều hành của người sử dụng lao động khác"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động",
+       "loai": "W"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m4",
+      "doan": [
+       "vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "người lao động",
+       "loai": "W"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D55.K2.d",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D55.K2.d",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "Trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Hợp đồng cho thuê lại lao động",
+       "loai": "C"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D62.K2.a",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D62.K2.a",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "Nghề đào tạo"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Hợp đồng đào tạo nghề",
+       "loai": "C"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  },
+  {
+   "unit_id": "BLLD_45-2019.D94.K2",
+   "dau_ra": {
+    "unit_id": "BLLD_45-2019.D94.K2",
+    "dong": [
+     {
+      "nguon": "s1.m1",
+      "doan": [
+       "hạn chế",
+       "vào quyền tự quyết chi tiêu lương của người lao động"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "cam",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m2",
+      "doan": [
+       "can thiệp",
+       "vào quyền tự quyết chi tiêu lương của người lao động"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "cam",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     },
+     {
+      "nguon": "s1.m3",
+      "doan": [
+       "ép buộc người lao động chi tiêu lương vào việc mua hàng hóa, sử dụng dịch vụ của người sử dụng lao động hoặc của đơn vị khác mà người sử dụng lao động chỉ định"
+      ],
+      "vai": "ket_luan",
+      "phuong_thuc": "cam",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người sử dụng lao động",
+       "loai": "E"
+      },
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  }
+ ]
+}

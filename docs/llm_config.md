@@ -48,6 +48,11 @@ gflash.ten.model   = dungcsnd113/gemini-flash-3.8
 gflash.hop_cat.model = dungcsnd113/gemini-flash-3.8
 gflash.hop_cat.effort = khong_co
 gflash.menh_de.prompt_version = menh-de-11
+tach.api.model     = trikiet2045/gemini-3.8-flash-high
+tach.ten.model     = trikiet2045/gemini-3.8-flash-high
+tach.hop_cat.model = trikiet2045/gemini-3.8-flash-high
+tach.hop_cat.effort = khong_co
+tach.menh_de.prompt_version = vai-nhom-1
 temperature        = (không đặt: dùng mặc định của server)
 thinking           = (không đặt)
 max_output_tokens  = 32000
@@ -67,6 +72,7 @@ Ghi chú:
 - `trich` và `ten` không còn gọi API từ A36: phần LLM của bước 1.6 chạy bằng phiên Claude Code trong thư mục làm việc ngoài repo (`docs/operations/llm_sandbox.md`). Khoá cấu hình vẫn cần để `replay` đọc đúng bản ghi cache.
 - Bản làm lại của bước 1.6A (`propositions.py`) ghi model và effort vào thư mục làm việc (`cau_hinh.json`) lúc dựng thư mục; không truyền tham số thì lấy `trich.model`. Đường chạy đã chốt (A39) là Sonnet 5.5, effort `high`, nên phải truyền tường minh `claude-sonnet-5-5 high` khi dựng (xem `docs/operations/llm_sandbox.md`). Model nằm trong khoá cache của bản ghi.
 - `ten` không nằm trong `EXTRA_ROLES` của `llm_client.py` vì không có đường gọi API. `api` cũng không, để `run_all --llm live` không đòi khoá ckey.
+- Lần chạy `tach` (A61): 1.6A-v2 (lượt 1 `segments.py`, lượt 2 `clause_roles.py`, gọi API trực tiếp với tuyến chính rồi tuyến dự phòng) và 1.6B qua `sandbox_api` bằng tuyến dự phòng `trikiet2045/gemini-3.8-flash-high` (tuyến `dungcsnd113/gemini-flash-3.8` mất từ 24/11; `sandbox_api` chỉ nhận một `api.model`). Upstream chưa kiểm.
 - Khoá `ckey.<khoá>` chỉ có hiệu lực khi `KLTN_LLM_RUN=ckey` (`run_all --llm-run ckey`): nó đè `<khoá>` để lần chạy ckey dùng model của ckey cho `ten` và `hop_cat`, còn lần chạy mặc định giữ nguyên (A46).
 - `api.max_output_tokens = 32000`: trần an toàn để lô 1.6A dài không bị cụt (cụt là lỗi, không lưu cache); ở thí điểm 19/11 mỗi lô ra 150 đến 1.400 token. Giá `deepseek-v4.1-flash` ngày 19/11: vào 1.200, ra 4.800 VND mỗi triệu token. `api.rpm = 60` và `api.luot_moi_ngay = 3000` là chặn an toàn của dự án (máy chủ cho 300 request mỗi phút).
 - `chinh` và `kiem` được giữ là Gemini vì bước 2.2 dùng hai model độc lập kiểm chéo nhau và khoá cache của nó có tên model; đổi `chinh` sang Claude làm `replay` của bước 2.2 hụt cache (A34).

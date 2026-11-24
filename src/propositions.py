@@ -327,15 +327,21 @@ chu_don_vi "Hợp đồng lao động phải được giao kết bằng văn b�
 JSON thuần, không chữ giải thích: {"units": [{"unit_id": "...", "dong": [...]}]}, cộng cac_muc_con, ngoai_le, bo_qua khi có. Mỗi unit_id của lô đúng một mục."""
 PROMPTS["menh-de-12"] = SYSTEM_12
 COMPACT = {"menh-de-12"}  # [A57] phiên bản khuôn gọn: đầu ra phải qua expand_unit trước normalize và cổng
+# [A61] Lượt 2 của 1.6A-v2 (clause_roles.py) ghi khuôn gọn; lời nhắc nằm ở clause_roles nên phiên bản của nó không có trong PROMPTS.
+V2_PREFIX = "vai-nhom-"
+
+
+def is_compact(version):
+    return version in COMPACT or version.startswith(V2_PREFIX)
 # [A57] Cỡ lô của khuôn gọn: model flash dùng phần lớn token ra để suy nghĩ ngầm (Gemini báo reasoning_tokens: lô 19 đơn vị ra 28.000 token,
 # hai lần cụt max_tokens vì suy nghĩ 30.000); lô nhỏ thì không chạm trần. Bản cũ giữ C.BATCH_SIZE để hộp cát và cache cũ khớp như trước.
 LOT_SIZE_COMPACT = 8
 
 
 def lot_size(version=None):
-    return LOT_SIZE_COMPACT if (version or PROMPT_VERSION) in COMPACT else C.BATCH_SIZE
+    return LOT_SIZE_COMPACT if is_compact(version or PROMPT_VERSION) else C.BATCH_SIZE
 NO_BO_NGU = {"menh-de-9", "menh-de-10", "menh-de-11", "menh-de-12"}  # [A55, A56] phiên bản lời nhắc mà bo_ngu khác rỗng là lỗi cổng (bổ ngữ phải là dòng dieu_kien)
-SYSTEM = PROMPTS[PROMPT_VERSION]
+SYSTEM = PROMPTS.get(PROMPT_VERSION)  # None với lượt 2 v2 (A61): lần chạy đó không dùng xuat/nhap của module này
 
 SCHEMA = {"units": [{"unit_id": "string", "dong": [{f: "xem system.txt" for f in FIELDS + (LLM_REASON,)}]}]}
 
@@ -431,7 +437,7 @@ def gate_unit(ctx, rows, reason_field=LLM_REASON, version=None):
     cờ = dấu hiệu đáng xem nhưng có ca đúng (ví dụ "được trả lương" là chữ đúng). Không kiểm được nghĩa.
     version: phiên bản lời nhắc của đầu ra (mặc định PROMPT_VERSION của lần chạy); từ menh-de-9 bo_ngu khác rỗng là lỗi (A55)."""
     err, flag = [], []
-    no_bo_ngu = (version or PROMPT_VERSION) in NO_BO_NGU
+    no_bo_ngu = (version or PROMPT_VERSION) in NO_BO_NGU or (version or PROMPT_VERSION).startswith(V2_PREFIX)
     if not isinstance(rows, list) or not rows:
         return [(None, "đơn vị không có dòng nào")], flag
     menh_de_idx = {i for i, d in enumerate(rows) if isinstance(d, dict) and d.get("loai") == "menh_de"}
@@ -707,7 +713,7 @@ def check_unit(ctx, out_unit, version=None):
     """MỘT đường cho mọi chỗ nhập đầu ra 1.6A (nhap, ku_nhap, gemini, chấm bộ khó): -> (dòng khuôn cũ đã normalize, lỗi, cờ).
     out_unit là mục {"unit_id", "dong", ...} của đầu ra. Bản khuôn cũ: y như trước (normalize + gate_unit)."""
     version = version or PROMPT_VERSION
-    if version not in COMPACT:
+    if not is_compact(version):
         rows = normalize(out_unit.get("dong") if isinstance(out_unit, dict) else out_unit)
         err, flag = gate_unit(ctx, rows, version=version)
         return rows, err, flag
