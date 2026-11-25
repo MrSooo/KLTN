@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D193.K2",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D193.K2\",\n \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D193.K1\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"giải quyết tranh chấp\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D193.K2\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D193.K1\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"thành lập\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Ban trọng tài lao động\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Ban trọng tài lao động\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"giải quyết tranh chấp\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Ban trọng tài lao động\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "wf0Ga9nJPNvs2roP5rPT2Qk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1265
+   },
+   "input_tokens": 4213,
+   "output_tokens": 1732,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_8e936330c8467c960694d9c3"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D81.K1",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D81.K1\",\n \"tieu_de_dieu\": \"Quan hệ giữa thỏa ước lao động tập thể doanh nghiệp, thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp thỏa ước lao động tập thể doanh nghiệp, thỏa ước lao động tập thể có nhiều doanh nghiệp, thỏa ước lao động tập thể ngành quy định về quyền, nghĩa vụ và lợi ích của người lao động khác nhau thì thực hiện theo nội dung có lợi nhất cho người lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thỏa ước lao động tập thể doanh nghiệp, thỏa ước lao động tập thể có nhiều doanh nghiệp, thỏa ước lao động tập thể ngành quy định về quyền, nghĩa vụ và lợi ích của người lao động khác nhau\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thực hiện theo nội dung có lợi nhất cho người lao động\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D81.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"quy định về quyền, nghĩa vụ và lợi ích của người lao động khác nhau\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"thỏa ước lao động tập thể doanh nghiệp, thỏa ước lao động tập thể có nhiều doanh nghiệp, thỏa ước lao động tập thể ngành\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"thực hiện\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"theo nội dung có lợi nhất cho người lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "vvoGa77YEqGz1e8P8pfUmAo",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1965
+   },
+   "input_tokens": 4224,
+   "output_tokens": 2339,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_34f0ea49f4e761b5b0de483e"
+   }
+  }
+ }
+}

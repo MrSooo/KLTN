@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D98.K4",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D98.K4\",\n \"tieu_de_dieu\": \"Tiền lương làm thêm giờ, làm việc vào ban đêm\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều này\",\n   \"dich\": \"BLLD_45-2019.D98\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định chi tiết Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chính phủ quy định chi tiết Điều này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D98.K4\",\n \"bo_qua\": \"dan_chieu_mo\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "F_sGa-PwDNGz1e8P4uKtyAk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 2004,
+   "completion_tokens_details": {
+    "reasoning_tokens": 442
+   },
+   "input_tokens": 2070,
+   "output_tokens": 495,
+   "prompt_tokens_details": {
+    "cached_tokens": 2004
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_33554b73a4994bf982bb5e4e"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D161.K2",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D161.K2\",\n \"tieu_de_dieu\": \"Lao động là người giúp việc gia đình\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định về lao động là người giúp việc gia đình.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chính phủ quy định về lao động là người giúp việc gia đình\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D161.K2\",\n \"bo_qua\": \"dan_chieu_mo\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "1vwGa83vK_OZvr0PvMX1-AY",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 696
+   },
+   "input_tokens": 4042,
+   "output_tokens": 750,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_8d3c60df23041b27bec3e062"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D42.K2.b",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D42.K2.b\",\n \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n \"khoan_cha\": \"Những trường hợp sau đây được coi là vì lý do kinh tế:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thực hiện chính sách, pháp luật của Nhà nước khi cơ cấu lại nền kinh tế hoặc thực hiện cam kết quốc tế.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Thực hiện chính sách, pháp luật của Nhà nước\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"cơ cấu lại nền kinh tế\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thực hiện cam kết quốc tế\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D42.K2.b\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Thực hiện chính sách, pháp luật của Nhà nước\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"cơ cấu lại nền kinh tế\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"thực hiện cam kết quốc tế\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "w_kGa6PoBJG31e8Pwu2ewQk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2801
+   },
+   "input_tokens": 4206,
+   "output_tokens": 1140,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_8b6976d0c96fcc9a2ecc7e90"
+   }
+  }
+ }
+}

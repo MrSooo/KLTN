@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D3\",\n \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D3\",\n \"cac_muc_con\": \"danh_sach\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "c_gGa8vsPKON1e8PxvuCoAc",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 429
+   },
+   "input_tokens": 4032,
+   "output_tokens": 479,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_5973b54272795c69180e7ea5"
+   }
+  }
+ }
+}

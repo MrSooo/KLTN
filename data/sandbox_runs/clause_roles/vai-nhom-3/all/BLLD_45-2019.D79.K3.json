@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D79.K3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D79.K3\",\n \"tieu_de_dieu\": \"Thực hiện thỏa ước lao động tập thể tại doanh nghiệp\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khi một bên cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể thì có quyền yêu cầu thi hành đúng thỏa ước lao động tập thể và các bên có trách nhiệm cùng xem xét giải quyết; nếu không giải quyết được, mỗi bên đều có quyền yêu cầu giải quyết tranh chấp lao động tập thể theo quy định của pháp luật.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"một bên\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ],\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"có quyền yêu cầu thi hành đúng thỏa ước lao động tập thể\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"các bên có trách nhiệm cùng xem xét giải quyết\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"không giải quyết được\",\n     \"noi_truoc\": [\n      \"nếu\"\n     ]\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"mỗi bên đều có quyền yêu cầu giải quyết tranh chấp lao động tập thể theo quy định của pháp luật\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D79.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"một bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"thực hiện không đầy đủ\",\n    \"vi phạm\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"yêu cầu thi hành đúng thỏa ước lao động tập thể\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"một bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"cùng xem xét giải quyết\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"một bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\",\n   \"liet_ke\": [\n    \"thực hiện không đầy đủ\",\n    \"vi phạm\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"doan\": [\n    \"giải quyết được\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m5\",\n   \"doan\": [\n    \"yêu cầu giải quyết tranh chấp lao động tập thể\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"mỗi bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m5\",\n   \"doan\": [\n    \"theo quy định của pháp luật\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"mỗi bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "u_oGa-LZGpOD2roP8NqSmAg",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2956
+   },
+   "input_tokens": 4443,
+   "output_tokens": 3871,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_a3ff5b5fb4c3b1a8356e9d02"
+   }
+  }
+ }
+}

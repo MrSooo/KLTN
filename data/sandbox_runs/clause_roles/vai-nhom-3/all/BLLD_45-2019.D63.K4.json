@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D63.K4",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D63.K4\",\n \"tieu_de_dieu\": \"Tổ chức đối thoại tại nơi làm việc\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định việc tổ chức đối thoại và thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chính phủ quy định việc tổ chức đối thoại và thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D63.K4\",\n \"bo_qua\": \"dan_chieu_mo\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "YvoGa8n-IvzG0-kPiZqSiAg",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 1995,
+   "completion_tokens_details": {
+    "reasoning_tokens": 424
+   },
+   "input_tokens": 2066,
+   "output_tokens": 477,
+   "prompt_tokens_details": {
+    "cached_tokens": 1995
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_cd6c79348f42520c640656ae"
+   }
+  }
+ }
+}

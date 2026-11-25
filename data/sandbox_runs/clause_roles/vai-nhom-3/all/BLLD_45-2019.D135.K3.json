@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D135.K3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D135.K3\",\n \"tieu_de_dieu\": \"Chính sách của Nhà nước\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Có biện pháp tạo việc làm, cải thiện điều kiện lao động, nâng cao trình độ nghề nghiệp, chăm sóc sức khỏe, tăng cường phúc lợi về vật chất và tinh thần của lao động nữ nhằm giúp lao động nữ phát huy có hiệu quả năng lực nghề nghiệp, kết hợp hài hòa cuộc sống lao động và cuộc sống gia đình.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Có biện pháp\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\",\n      \"s1.m4\",\n      \"s1.m5\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tạo việc làm\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"cải thiện điều kiện lao động\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"nâng cao trình độ nghề nghiệp\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"chăm sóc sức khỏe\"\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tăng cường phúc lợi về vật chất và tinh thần của lao động nữ\"\n    },\n    {\n     \"id\": \"s1.m6\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"giúp lao động nữ phát huy có hiệu quả năng lực nghề nghiệp\",\n     \"noi_truoc\": [\n      \"nhằm\"\n     ]\n    },\n    {\n     \"id\": \"s1.m7\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"kết hợp hài hòa cuộc sống lao động và cuộc sống gia đình\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D135.K3\",\n \"bo_qua\": \"khong_quy_pham\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "KvwGa8TkN5HM2roPmoTxwAg",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 778
+   },
+   "input_tokens": 4480,
+   "output_tokens": 832,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_5b21487d92bc4fb626853367"
+   }
+  }
+ }
+}

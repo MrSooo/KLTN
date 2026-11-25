@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D152.K3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D152.K3\",\n \"tieu_de_dieu\": \"Điều kiện tuyển dụng, sử dụng người lao động nước ngoài làm việc tại Việt Nam\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Nhà thầu trước khi tuyển và sử dụng lao động nước ngoài làm việc tại Việt Nam phải kê khai cụ thể các vị trí công việc, trình độ chuyên môn, kỹ thuật, kinh nghiệm làm việc, thời gian làm việc cần sử dụng lao động nước ngoài để thực hiện gói thầu và được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Nhà thầu\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\",\n      \"s1.m4\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tuyển\",\n     \"noi_truoc\": [\n      \"trước khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"sử dụng\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"lao động nước ngoài làm việc tại Việt Nam\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải kê khai cụ thể các vị trí công việc, trình độ chuyên môn, kỹ thuật, kinh nghiệm làm việc, thời gian làm việc cần sử dụng lao động nước ngoài để thực hiện gói thầu\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D152.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"tuyển\",\n    \"lao động nước ngoài làm việc tại Việt Nam\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Nhà thầu\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"sử dụng\",\n    \"lao động nước ngoài làm việc tại Việt Nam\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Nhà thầu\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"kê khai cụ thể các vị trí công việc, trình độ chuyên môn, kỹ thuật, kinh nghiệm làm việc, thời gian làm việc cần sử dụng lao động nước ngoài để thực hiện gói thầu\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Nhà thầu\",\n    \"loai\": \"E\"\n   },\n   \"liet_ke\": [\n    \"vị trí công việc\",\n    \"trình độ chuyên môn, kỹ thuật\",\n    \"kinh nghiệm làm việc\",\n    \"thời gian làm việc cần sử dụng lao động nước ngoài để thực hiện gói thầu\"\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"doan\": [\n    \"được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Nhà thầu\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "m_wGa_z3AZau1e8PtrDWgQs",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1754
+   },
+   "input_tokens": 4488,
+   "output_tokens": 2458,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_a3d82ee24a4352f255f23af2"
+   }
+  }
+ }
+}

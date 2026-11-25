@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D179.K1",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D179.K1\",\n \"tieu_de_dieu\": \"Tranh chấp lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tranh chấp lao động là tranh chấp về quyền và nghĩa vụ, lợi ích phát sinh giữa các bên trong quá trình xác lập, thực hiện hoặc chấm dứt quan hệ lao động; tranh chấp giữa các tổ chức đại diện người lao động với nhau; tranh chấp phát sinh từ quan hệ có liên quan trực tiếp đến quan hệ lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Tranh chấp lao động là\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tranh chấp về quyền và nghĩa vụ, lợi ích phát sinh giữa các bên trong quá trình xác lập, thực hiện hoặc chấm dứt quan hệ lao động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tranh chấp giữa các tổ chức đại diện người lao động với nhau\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tranh chấp phát sinh từ quan hệ có liên quan trực tiếp đến quan hệ lao động\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Các loại tranh chấp lao động bao gồm:\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Các loại tranh chấp lao động bao gồm\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D179.K1\",\n \"cac_muc_con\": \"danh_sach\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"tranh chấp về quyền và nghĩa vụ, lợi ích phát sinh giữa các bên trong quá trình xác lập, thực hiện hoặc chấm dứt quan hệ lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"là\",\n    \"Tranh chấp lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"tranh chấp giữa các tổ chức đại diện người lao động với nhau\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"là\",\n    \"Tranh chấp lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"tranh chấp phát sinh từ quan hệ có liên quan trực tiếp đến quan hệ lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q3\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"là\",\n    \"Tranh chấp lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q3\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "cv0Ga-3LHuyy2roP68PTkA0",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1109
+   },
+   "input_tokens": 4373,
+   "output_tokens": 1758,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_672bcd3856db5e8c76cd5423"
+   }
+  }
+ }
+}

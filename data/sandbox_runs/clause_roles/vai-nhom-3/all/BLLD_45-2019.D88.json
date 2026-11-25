@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D88",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D88\",\n \"tieu_de_dieu\": \"Xử lý thỏa ước lao động tập thể vô hiệu\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khi thỏa ước lao động tập thể bị tuyên bố vô hiệu thì quyền, nghĩa vụ và lợi ích của các bên ghi trong thỏa ước lao động tập thể tương ứng với toàn bộ hoặc phần bị tuyên bố vô hiệu được giải quyết theo quy định của pháp luật và các thỏa thuận hợp pháp trong hợp đồng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thỏa ước lao động tập thể bị tuyên bố vô hiệu\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"quyền, nghĩa vụ và lợi ích của các bên ghi trong thỏa ước lao động tập thể tương ứng với toàn bộ hoặc phần bị tuyên bố vô hiệu được giải quyết theo quy định của pháp luật và các thỏa thuận hợp pháp trong hợp đồng lao động\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D88\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"thỏa ước lao động tập thể bị tuyên bố vô hiệu\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"quyền, nghĩa vụ và lợi ích của các bên ghi trong thỏa ước lao động tập thể tương ứng với toàn bộ hoặc phần bị tuyên bố vô hiệu\",\n    \"được giải quyết\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"theo quy định của pháp luật và các thỏa thuận hợp pháp trong hợp đồng lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "5PoGa5vHCMSS0-kP3ZKs0Qs",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1521
+   },
+   "input_tokens": 4211,
+   "output_tokens": 1930,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_a53233e9f46df6fedbbd2a07"
+   }
+  }
+ }
+}

@@ -131,6 +131,21 @@ def test_rules_pointer_list_is_or_and_negated_pointer_skipped():
     assert [R.rule_text(r) for r in rules if r["unit"] == u] == ["must_dialogue(X) :- has_case(X)."] and any("phủ định" in n for n in notes)
 
 
+def test_rules_pointer_to_list_item_uses_case_group_only():
+    """A62: "trường hợp quy định tại điểm a" chỉ là nhóm không kết luận của điểm a (tình huống mà câu dẫn của cha kết luận); câu khác của
+    điểm a có kết luận riêng ("Quy chế đánh giá do người sử dụng lao động ban hành", D36.K1.a) không định nghĩa applies_<T>."""
+    u, t = D + "D36.K2.a", D + "D36.K1.a"
+    a = {u: {"dong": [dict(row("ket_luan", "phai"), trich=["báo trước 45 ngày"]), dict(row("dieu_kien", "khong"), trich=["chấm dứt hợp đồng"]),
+                      _ptr("điểm a khoản 1", "D36.K1.a")]},
+         t: {"dong": [row("dieu_kien", "khong", "q1"), row("ket_luan", "phai", "q2"), row("dieu_kien", "khong", "q2")]}}
+    names = {(u, 0): ("notify_45_days", None), (u, 1): ("terminate_contract", None), (t, 0): ("not_complete_work", None),
+             (t, 1): ("issue_assessment_rules", None), (t, 2): ("union_exists", None)}
+    texts = {u: "phải báo trước 45 ngày khi chấm dứt hợp đồng theo điểm a khoản 1"}
+    rules, _notes = R.compile_units(a, names, {}, {x: i for i, x in enumerate(a)}, {}, texts)
+    defs = sorted(R.rule_text(r) for r in rules if r["head"]["atom"] == "applies_d36_k1_a")
+    assert defs == ["applies_d36_k1_a(X) :- not_complete_work(X)."], defs
+
+
 def test_rules_chapeau_condition_pushed_to_list_items():
     """A62 3b: câu dẫn danh sách có vế điều kiện (D145.K1) thì điều kiện đó vào quy tắc của từng mục con, nguồn có cả câu dẫn."""
     u, k = D + "D145.K1", D + "D145.K1.a"

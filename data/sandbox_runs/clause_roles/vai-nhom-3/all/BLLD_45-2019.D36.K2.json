@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D36.K2",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D36.K2\",\n \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"điểm a, b, c, đ và g khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D36.K1.a\"\n  },\n  {\n   \"cum\": \"điểm a, b, c, đ và g khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D36.K1.b\"\n  },\n  {\n   \"cum\": \"điểm a, b, c, đ và g khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D36.K1.c\"\n  },\n  {\n   \"cum\": \"điểm a, b, c, đ và g khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D36.K1.dd\"\n  },\n  {\n   \"cum\": \"điểm a, b, c, đ và g khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D36.K1.g\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Khi đơn phương chấm dứt hợp đồng lao động trong trường hợp quy định tại các điểm a, b, c, đ và g khoản 1 Điều này, người sử dụng lao động phải báo trước cho người lao động như sau:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"đơn phương chấm dứt hợp đồng lao động trong trường hợp quy định tại các điểm a, b, c, đ và g khoản 1 Điều này\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"người sử dụng lao động phải báo trước cho người lao động như sau\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D36.K2\",\n \"cac_muc_con\": \"danh_sach\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D36.K1.a\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"dich\": \"BLLD_45-2019.D36.K1.b\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"dich\": \"BLLD_45-2019.D36.K1.c\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"dich\": \"BLLD_45-2019.D36.K1.dd\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"dich\": \"BLLD_45-2019.D36.K1.g\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"đơn phương chấm dứt hợp đồng lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"C\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "lPkGa-zmB9vs2roP5rPT2Qk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3919
+   },
+   "input_tokens": 4457,
+   "output_tokens": 1400,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_f24cb8fbd2544b4cd3a7a4f7"
+   }
+  }
+ }
+}

@@ -206,15 +206,17 @@ def add_pointers(a, per_unit, texts):
             for tgt in a[uid]["dong"][i]["targets"]:
                 if tgt not in defs:
                     bodies_t = []
-                    for u2, gs in base.items():
-                        if not under(u2, tgt):
-                            continue
-                        for g in gs.values():
-                            for b in bodies(g):
-                                if b:
-                                    bodies_t.append(b)
-                                else:  # nhóm không điều kiện: tình huống của T là chính kết luận của nó
-                                    bodies_t += [[{"atom": h["atom"], "pred": h["pred"], "naf": False, "neg": h["neg"]}] for h in g["heads"]]
+                    gs_t = [g for u2, gs in base.items() if under(u2, tgt) for g in gs.values()]
+                    # Đích có nhóm không kết luận (mục danh sách: "trường hợp" mà câu dẫn của cha kết luận) thì chỉ nhóm đó là tình
+                    # huống được dẫn chiếu; các câu khác của mục mang kết luận riêng (D36.K1.a: "Quy chế đánh giá do người sử dụng lao
+                    # động ban hành...") không phải là "trường hợp quy định tại điểm a". Lấy cả vào thì đối chứng vẫn suy ra (phép thử cặp).
+                    case_only = [g for g in gs_t if not g["heads"]]
+                    for g in (case_only or gs_t):
+                        for b in bodies(g):
+                            if b:
+                                bodies_t.append(b)
+                            else:  # nhóm không điều kiện: tình huống của T là chính kết luận của nó
+                                bodies_t += [[{"atom": h["atom"], "pred": h["pred"], "naf": False, "neg": h["neg"]}] for h in g["heads"]]
                     defs[tgt] = bodies_t
                 if not defs[tgt]:
                     notes.append(f"{uid} dòng {i}: đích {tgt} không có quy tắc nào, con trỏ không vào quy tắc")

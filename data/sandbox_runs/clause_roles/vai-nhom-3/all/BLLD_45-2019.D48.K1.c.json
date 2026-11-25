@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D48.K1.c",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D48.K1.c\",\n \"tieu_de_dieu\": \"Trách nhiệm khi chấm dứt hợp đồng lao động\",\n \"khoan_cha\": \"Trong thời hạn 14 ngày làm việc kể từ ngày chấm dứt hợp đồng lao động, hai bên có trách nhiệm thanh toán đầy đủ các khoản tiền có liên quan đến quyền lợi của mỗi bên, trừ trường hợp sau đây có thể kéo dài nhưng không được quá 30 ngày:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chia\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tách\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"hợp nhất\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"sáp nhập\"\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bán\"\n    },\n    {\n     \"id\": \"s1.m6\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"cho thuê\"\n    },\n    {\n     \"id\": \"s1.m7\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"chuyển đổi loại hình doanh nghiệp\"\n    },\n    {\n     \"id\": \"s1.m8\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D48.K1.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Chia\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"tách\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"hợp nhất\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"doan\": [\n    \"sáp nhập\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m5\",\n   \"doan\": [\n    \"bán\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m6\",\n   \"doan\": [\n    \"cho thuê\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m7\",\n   \"doan\": [\n    \"chuyển đổi loại hình doanh nghiệp\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m8\",\n   \"doan\": [\n    \"chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "8fkGa4eQL6DC0-kPjuWsuAw",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2805
+   },
+   "input_tokens": 4420,
+   "output_tokens": 3658,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_479dbe3d877387b6913a5e88"
+   }
+  }
+ }
+}

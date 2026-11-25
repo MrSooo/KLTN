@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D67.K6",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D67.K6\",\n \"tieu_de_dieu\": \"Nội dung thương lượng tập thể\",\n \"khoan_cha\": \"Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Cơ chế, phương thức phòng ngừa, giải quyết tranh chấp lao động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Cơ chế, phương thức phòng ngừa, giải quyết tranh chấp lao động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D67.K6\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Cơ chế, phương thức phòng ngừa, giải quyết tranh chấp lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Các bên thương lượng\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "fvoGa7SSHIn71e8PuqjemAY",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 1839,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1083
+   },
+   "input_tokens": 2223,
+   "output_tokens": 1251,
+   "prompt_tokens_details": {
+    "cached_tokens": 1839
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_b84ab2acb1e21cf8029872b6"
+   }
+  }
+ }
+}

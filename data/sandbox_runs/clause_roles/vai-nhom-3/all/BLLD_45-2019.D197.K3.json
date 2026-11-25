@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D197.K3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D197.K3\",\n \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về lợi ích của Hội đồng trọng tài lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trong thời hạn 30 ngày kể từ ngày được thành lập, căn cứ vào quy định của pháp luật về lao động, thỏa ước lao động tập thể, nội quy lao động đã được đăng ký và các quy chế, thỏa thuận hợp pháp khác, Ban trọng tài lao động phải ra quyết định về việc giải quyết tranh chấp và gửi cho các bên tranh chấp.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Trong thời hạn 30 ngày kể từ ngày được thành lập\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"căn cứ vào quy định của pháp luật về lao động, thỏa ước lao động tập thể, nội quy lao động đã được đăng ký và các quy chế, thỏa thuận hợp pháp khác\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.c3\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Ban trọng tài lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải ra quyết định về việc giải quyết tranh chấp\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"gửi cho các bên tranh chấp\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D197.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Trong thời hạn 30 ngày kể từ ngày được thành lập\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Ban trọng tài lao động\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"căn cứ vào quy định của pháp luật về lao động, thỏa ước lao động tập thể, nội quy lao động đã được đăng ký và các quy chế, thỏa thuận hợp pháp khác\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Ban trọng tài lao động\",\n    \"loai\": \"?\"\n   },\n   \"liet_ke\": [\n    \"quy định của pháp luật về lao động\",\n    \"thỏa ước lao động tập thể\",\n    \"nội quy lao động đã được đăng ký\",\n    \"các quy chế, thỏa thuận hợp pháp khác\"\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"ra quyết định về việc giải quyết tranh chấp\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Ban trọng tài lao động\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"gửi cho các bên tranh chấp\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Ban trọng tài lao động\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "0v0Ga5ilNfyz2roPo6Pj4Ag",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1543
+   },
+   "input_tokens": 4420,
+   "output_tokens": 2164,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_bc3667e210b739c3a4b81ff1"
+   }
+  }
+ }
+}

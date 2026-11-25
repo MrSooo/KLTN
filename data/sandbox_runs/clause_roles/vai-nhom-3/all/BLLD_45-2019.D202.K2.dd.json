@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D202.K2.dd",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D202.K2.dd\",\n \"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n \"khoan_cha\": \"Quyết định đình công phải có các nội dung sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Họ tên, địa chỉ liên hệ của người đại diện cho tổ chức đại diện người lao động tổ chức và lãnh đạo đình công.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Họ tên, địa chỉ liên hệ của người đại diện cho tổ chức đại diện người lao động tổ chức và lãnh đạo đình công\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D202.K2.dd\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Họ tên, địa chỉ liên hệ của người đại diện cho tổ chức đại diện người lao động tổ chức và lãnh đạo đình công\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Quyết định đình công\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"Họ tên\",\n    \"địa chỉ liên hệ\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "7v0Ga42HCNiw2roP4pfmoQU",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 638
+   },
+   "input_tokens": 4088,
+   "output_tokens": 849,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_938acb778330e179f396a719"
+   }
+  }
+ }
+}

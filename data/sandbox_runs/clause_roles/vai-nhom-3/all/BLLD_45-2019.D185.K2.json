@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D185.K2",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D185.K2\",\n \"tieu_de_dieu\": \"Hội đồng trọng tài lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Số lượng trọng tài viên lao động của Hội đồng trọng tài lao động do Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định, ít nhất là 15 người, bao gồm số lượng ngang nhau do các bên đề cử, cụ thể như sau:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Số lượng trọng tài viên lao động của Hội đồng trọng tài lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"do Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"ít nhất là 15 người\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bao gồm số lượng ngang nhau do các bên đề cử, cụ thể như sau\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D185.K2\",\n \"cac_muc_con\": \"danh_sach\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Số lượng trọng tài viên lao động của Hội đồng trọng tài lao động\",\n    \"quyết định\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Chủ tịch Ủy ban nhân dân cấp tỉnh\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"Số lượng trọng tài viên lao động của Hội đồng trọng tài lao động\",\n    \"ít nhất là 15 người\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "n_0Ga_FIvOvaug_Y-vyYAg",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2683
+   },
+   "input_tokens": 4258,
+   "output_tokens": 1020,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_e2fa90f3b27e2f030d34c0b8"
+   }
+  }
+ }
+}

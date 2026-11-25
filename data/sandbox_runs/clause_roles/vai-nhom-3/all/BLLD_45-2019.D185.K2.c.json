@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D185.K2.c",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D185.K2.c\",\n \"tieu_de_dieu\": \"Hội đồng trọng tài lao động\",\n \"khoan_cha\": \"Số lượng trọng tài viên lao động của Hội đồng trọng tài lao động do Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định, ít nhất là 15 người, bao gồm số lượng ngang nhau do các bên đề cử, cụ thể như sau:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tối thiểu 05 thành viên do các tổ chức đại diện của người sử dụng lao động trên địa bàn tỉnh thống nhất đề cử.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Tối thiểu 05 thành viên do các tổ chức đại diện của người sử dụng lao động trên địa bàn tỉnh thống nhất đề cử\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D185.K2.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"thống nhất đề cử\",\n    \"Tối thiểu 05 thành viên\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các tổ chức đại diện của người sử dụng lao động trên địa bàn tỉnh\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "of0Ga6PfAfKt1e8P087tkQc",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 891
+   },
+   "input_tokens": 4121,
+   "output_tokens": 1076,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_bd265c0b78136dce9c930eda"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D178.K4",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D178.K4\",\n \"tieu_de_dieu\": \"Quyền và nghĩa vụ của tổ chức đại diện người lao động tại cơ sở trong quan hệ lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Đại diện cho người lao động trong quá trình giải quyết khiếu nại, tranh chấp lao động cá nhân khi được người lao động ủy quyền.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Đại diện cho người lao động trong quá trình giải quyết khiếu nại, tranh chấp lao động cá nhân\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được người lao động ủy quyền\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D178.K4\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Đại diện\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"tổ chức đại diện người lao động tại cơ sở\",\n    \"loai\": \"?\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"trong quá trình giải quyết khiếu nại, tranh chấp lao động cá nhân\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"tổ chức đại diện người lao động tại cơ sở\",\n    \"loai\": \"?\"\n   },\n   \"liet_ke\": [\n    \"khiếu nại\",\n    \"tranh chấp lao động cá nhân\"\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"được người lao động ủy quyền\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"tổ chức đại diện người lao động tại cơ sở\",\n    \"loai\": \"?\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "Y_0Ga4SyMIb62roP79mIyAQ",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3360
+   },
+   "input_tokens": 4141,
+   "output_tokens": 3868,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_db14d54b4b1e4e0503b3dd09"
+   }
+  }
+ }
+}

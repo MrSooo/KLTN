@@ -1,46 +1,45 @@
 1.6B names-2.2: BLLD_45-2019
-dòng 1.6A dùng: 4770 (mệnh đề 2539, con trỏ 217, chủ thể 2014); bỏ vì lỗi cổng 1.6A: 53
-chữ (gộp cấp 1): 2392; lượt kế hoạch: 103
-chữ có tên: 2389; reuse do LLM chọn: 169 (7.1%); vị từ: 2176 (concept 1255, input 921); chữ bị loại: 3
-vị từ dùng ở từ 2 Điều: 255; cặp khác Điều chung vị từ concept (chưa lọc như 1.7): 29849
-máy gộp tên cùng mặt chữ (>= 3 tiếng): 40 nhóm, bớt 44 tên
-  by_agreement <- as_mutually_agreed
-  has_full_civil_act_capacity <- have_full_civil_act_capacity
+dòng 1.6A dùng: 4814 (mệnh đề 2577, con trỏ 217, chủ thể 2020); bỏ vì lỗi cổng 1.6A: 53
+chữ (gộp cấp 1): 2391; lượt kế hoạch: 103
+chữ có tên: 2389; reuse do LLM chọn: 174 (7.3%); vị từ: 2174 (concept 1244, input 930); chữ bị loại: 2
+vị từ dùng ở từ 2 Điều: 258; cặp khác Điều chung vị từ concept (chưa lọc như 1.7): 30330
+máy gộp tên cùng mặt chữ (>= 3 tiếng): 39 nhóm, bớt 43 tên
+  under_agreement <- as_agreed_by_the_parties
+  have_full_civil_act_capacity <- possess_full_civil_act_capacity
   establish_occupational_organization <- establish_professional_organization
-  establish_other_organization_as_regulated <- establish_other_lawful_organization
+  establish_other_organization_prescribed_by_law <- establish_other_lawful_organization
   join_occupational_organization <- join_professional_organization
-  join_other_organization_as_regulated <- join_other_lawful_organization
+  join_other_organization_prescribed_by_law <- join_other_lawful_organization
   participate_in_occupational_organization <- participate_in_professional_organization
-  participate_in_other_organization_as_regulated <- participate_in_other_lawful_organization
-  unilaterally_terminate_labor_contract <- terminate_labor_contract_unilaterally
+  operate_in_other_organization_prescribed_by_law <- participate_in_other_lawful_organization
+  unilaterally_terminate_employment_contract <- unilaterally_terminate_labor_contract
   perform_labor_contract <- implement_labor_contract
   perform_collective_bargaining_agreement <- implement_collective_bargaining_agreement
   perform_other_lawful_agreements <- implement_other_lawful_agreements
-  comply_with_labor_laws <- implement_labor_regulations
-  comply_with_employment_laws <- implement_employment_regulations
-  comply_with_vocational_education_laws <- implement_vocational_education_regulations
-  comply_with_social_insurance_laws <- implement_social_insurance_regulations
-  comply_with_health_insurance_laws <- implement_health_insurance_regulations
-  comply_with_unemployment_insurance_laws <- implement_unemployment_insurance_regulations
-  implement_occupational_safety_regulations <- comply_with_occupational_safety_and_health_laws
-  retain_one_copy <- keep_one_copy
-  conclude_labor_contract <- enter_into_labor_contract
-  specify_working_hours_and_rest_periods <- working_hours_and_rest_periods
-  pursuant_to_labor_contract <- according_to_labor_contract, under_labor_contract
-  lower_than_minimum_wage <- below_minimum_wage
+  comply_with_labor_law <- implement_labor_law_regulations
+  comply_with_employment_law <- implement_employment_law_regulations
+  comply_with_vocational_education_law <- implement_vocational_education_law_regulations
+  comply_with_social_insurance_law <- implement_social_insurance_law_regulations
+  comply_with_health_insurance_law <- implement_health_insurance_law_regulations
+  comply_with_unemployment_insurance_law <- implement_unemployment_insurance_regulations
+  comply_with_occupational_safety_and_health_law <- implement_occupational_safety_health_regulations
+  retain_one_copy <- keep_one_copy, retain_one_contract_copy
+  conclude_employment_contract <- enter_into_employment_contract_with_employee
+  agree_probation_in_employment_contract <- agree_on_probation_in_employment_contract
+  pursuant_to_employment_contract <- according_to_employment_contract, in_accordance_with_employment_contract, under_employment_contract
   pay_work_suspension_wage <- paid_work_suspension_wage
-  ensure_occupational_safety_and_health <- guaranteed_occupational_safety_and_health
-  notify_at_least_30_days_ahead <- give_at_least_30_days_advance_notice
-  give_at_least_3_working_days_advance_notice <- notify_at_least_3_working_days_ahead
-  work_in_specific_industries_or_jobs <- for_specific_industries_or_jobs
-  notice_period_implemented <- advance_notice_period_implemented
-  as_prescribed_by_government <- pursuant_to_government_regulations
-  as_prescribed_by_this_code <- prescribed_by_this_code, under_provisions_of_this_code
-  as_prescribed_by_law <- under_legal_provisions, under_regulations_of_law
+  ensure_occupational_safety_and_health <- work_in_occupational_safety_and_health_conditions
+  terminate_employment_contract <- terminate_labor_contract
+  notify_at_least_30_days_in_advance <- give_at_least_30_days_advance_notice
+  give_at_least_3_working_days_advance_notice <- notify_at_least_3_working_days_in_advance
+  for_specific_industries_trades_or_jobs <- for_specific_industries_and_jobs
+  notice_period_implemented <- notice_period_is_implemented
+  as_prescribed_by_government <- in_accordance_with_government_regulations
+  structural_or_technological_change <- change_structure_or_technology
+  as_prescribed_by_law <- in_accordance_with_law
   annual_leave <- take_annual_leave
   time_limit_expires <- contract_expires, work_permit_term_expires
-  on_basis_of_consensus <- on_consensus_basis
-  have_work_permit <- possess_work_permit
-  fulfill_concluded_labor_contract_agreements <- perform_concluded_labor_contract_agreements
+  by_consensus <- on_consensus_basis
+  have_work_permit <- have_employee_work_permit
+  fully_perform_concluded_contract_agreements <- fully_perform_concluded_labor_contract_agreements
   deliver_to_disputing_parties <- send_to_disputing_parties
-  while_arbitration_council_is_settling_dispute <- during_arbitration_council_dispute_settlement

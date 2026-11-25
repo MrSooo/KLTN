@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D118.K2",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D118.K2\",\n \"tieu_de_dieu\": \"Nội quy lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Nội dung nội quy lao động không được trái với pháp luật về lao động và quy định của pháp luật có liên quan.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Nội dung nội quy lao động không được trái với pháp luật về lao động và quy định của pháp luật có liên quan\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Nội quy lao động bao gồm những nội dung chủ yếu sau đây:\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Nội quy lao động bao gồm những nội dung chủ yếu sau đây\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D118.K2\",\n \"cac_muc_con\": \"danh_sach\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"trái với pháp luật về lao động và quy định của pháp luật có liên quan\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Nội dung nội quy lao động\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"pháp luật về lao động\",\n    \"quy định của pháp luật có liên quan\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "rvsGa6i5K8DZ9tMPoIGymQU",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 854
+   },
+   "input_tokens": 4148,
+   "output_tokens": 1075,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_d1db5b1071f2afa2345d83bc"
+   }
+  }
+ }
+}

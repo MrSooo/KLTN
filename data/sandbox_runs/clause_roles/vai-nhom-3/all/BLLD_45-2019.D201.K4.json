@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D201.K4",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D201.K4\",\n \"tieu_de_dieu\": \"Lấy ý kiến về đình công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thời gian, địa điểm và cách thức tiến hành lấy ý kiến về đình công do tổ chức đại diện người lao động quyết định và phải thông báo cho người sử dụng lao động biết trước ít nhất 01 ngày.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Thời gian, địa điểm và cách thức tiến hành lấy ý kiến về đình công\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"do tổ chức đại diện người lao động quyết định\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải thông báo cho người sử dụng lao động biết trước ít nhất 01 ngày\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Việc lấy ý kiến không được làm ảnh hưởng đến hoạt động sản xuất, kinh doanh bình thường của người sử dụng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Việc lấy ý kiến không được làm ảnh hưởng đến hoạt động sản xuất, kinh doanh bình thường của người sử dụng lao động\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Người sử dụng lao động không được gây khó khăn, cản trở hoặc can thiệp vào quá trình tổ chức đại diện người lao động tiến hành lấy ý kiến về đình công.\",\n   \"doan\": [\n    {\n     \"id\": \"s3.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người sử dụng lao động không được\",\n     \"ap_cho\": [\n      \"s3.m1\",\n      \"s3.m2\",\n      \"s3.m3\"\n     ]\n    },\n    {\n     \"id\": \"s3.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"gây khó khăn\"\n    },\n    {\n     \"id\": \"s3.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"cản trở\"\n    },\n    {\n     \"id\": \"s3.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"can thiệp vào quá trình tổ chức đại diện người lao động tiến hành lấy ý kiến về đình công\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D201.K4\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Thời gian, địa điểm và cách thức tiến hành lấy ý kiến về đình công\",\n    \"quyết định\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"tổ chức đại diện người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"Thời gian, địa điểm và cách thức tiến hành lấy ý kiến về đình công\",\n    \"thông báo\",\n    \"biết trước ít nhất 01 ngày\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"tổ chức đại diện người lao động\",\n    \"loai\": \"W\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"E\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"làm ảnh hưởng đến hoạt động sản xuất, kinh doanh bình thường của người sử dụng lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Việc lấy ý kiến\",\n    \"loai\": \"J\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s3.m1\",\n   \"doan\": [\n    \"gây khó khăn\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s3.m2\",\n   \"doan\": [\n    \"cản trở\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s3.m3\",\n   \"doan\": [\n    \"can thiệp vào quá trình tổ chức đại diện người lao động tiến hành lấy ý kiến về đình công\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "4_0Ga5zhF_e-1e8PsMjngA8",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4426
+   },
+   "input_tokens": 4628,
+   "output_tokens": 5293,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_1612653d857187a334ef0629"
+   }
+  }
+ }
+}

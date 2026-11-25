@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D64.K2.dd",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D64.K2.dd\",\n \"tieu_de_dieu\": \"Nội dung đối thoại tại nơi làm việc\",\n \"khoan_cha\": \"Ngoài nội dung quy định tại khoản 1 Điều này, các bên lựa chọn một hoặc một số nội dung sau đây để tiến hành đối thoại:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Yêu cầu của người sử dụng lao động đối với người lao động, tổ chức đại diện người lao động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Yêu cầu của người sử dụng lao động đối với người lao động, tổ chức đại diện người lao động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D64.K2.dd\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Yêu cầu của người sử dụng lao động đối với người lao động, tổ chức đại diện người lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"liet_ke\": [\n    \"người lao động\",\n    \"tổ chức đại diện người lao động\"\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "avoGa7qmI-6z2roPrKj24AM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1357
+   },
+   "input_tokens": 4089,
+   "output_tokens": 1563,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_9c59b9e3eb33e0ce048e77de"
+   }
+  }
+ }
+}
