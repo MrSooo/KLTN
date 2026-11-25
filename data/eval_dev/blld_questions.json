@@ -1,12 +1,12 @@
 {
  "ten": "Bộ câu hỏi dev BLLĐ nhắm các lỗi nền của KB (A61)",
- "trang_thai": "NHÁP do agent soạn 25/11 từ chữ BLLĐ; CHỜ chủ đề tài duyệt từng câu và đáp án. Bộ dev để đo sửa lỗi KB tach so với ckey, KHÔNG phải bộ đo. Trường du_doan ghi TRƯỚC khi chạy (dat/truot/? theo dữ liệu 1.6A hiện có), để sau khi chạy biết câu trượt có đúng chỗ đã dự đoán không.",
+ "trang_thai": "NHÁP vòng 5 (25/11): sửa theo bản rà vòng 4 của chủ đề tài (B37 sửa A4; B13, B19, B22, B34, B08, B11, B12 bổ sung dữ kiện; B36 đánh dấu ca nhiều lỗi). Thiết kế đã được chủ đề tài chấp nhận; CHỜ phép kiểm A6 bằng máy (không có đường né ngoài don_vi_loi) rồi đóng băng và ghi decisions.md. Mã đã bỏ (B02, B21, B23) không dùng lại. Bộ dev để đo sửa lỗi KB tach so với ckey, KHÔNG phải bộ đo. du_doan ghi TRƯỚC khi chạy. Tỷ lệ nhóm (B1) tính trên TOÀN BỘ câu.",
  "ngay_ap_dung": "Tất cả câu dùng ngày 2024-06-01 (BLLĐ 45/2019 đang hiệu lực, chưa có sửa đổi trong kho).",
  "nhom_loi": {
   "ket_luan_o_tieu_de": "kết luận nằm ở tiêu đề Điều hoặc câu dẫn, bị mất (hồi quy của 1.6A-v2: tach 30 đơn vị, ckey 9)",
   "sai_vai": "vai sai: điều kiện bị lưu làm kết luận, hoặc ngược lại",
   "liet_ke_bi_nuot": "danh sách bị gộp vào một vị từ (không có liet_ke)",
-  "ten_phan_manh": "cùng khái niệm nhưng tên vị từ khác nhau giữa các Điều",
+  "ten_phan_manh": "cùng khái niệm nhưng hai Điều diễn đạt khác nhau: tên vị từ khác nhau (B20), một Điều dẫn chiếu sang Điều kia thay vì nêu nội dung (B30), hoặc nối thuộc tính thực tế sang khái niệm pháp lý được định nghĩa ở Điều khác (B33)",
   "ngoai_le_cheo": "ngoại lệ chéo giữa các Điều (1.7)",
   "doi_chung": "đối chứng: câu đang đúng, câu phải trả lời chua_du_can_cu, câu ngoài phạm vi"
  },
@@ -23,33 +23,14 @@
    "don_vi_loi": [
     "BLLD_45-2019.D34.K8"
    ],
-   "cau_hoi": "Người lao động bị xử lý kỷ luật sa thải. Hợp đồng lao động của người này có chấm dứt không?",
+   "cau_hoi": "Công ty đã ra quyết định kỷ luật sa thải anh C vì anh trộm cắp tài sản tại nơi làm việc; quyết định này đúng căn cứ và đúng trình tự, thủ tục theo pháp luật. Hợp đồng lao động của anh C có chấm dứt không?",
    "ngay": "2024-06-01",
    "phi": "chấm dứt hợp đồng lao động",
    "dap_an": "ket_luan_duoc",
    "can_cu": [
     "BLLD_45-2019.D34.K8"
    ],
-   "giai_thich": "Đ34.K8: bị xử lý kỷ luật sa thải là một trường hợp chấm dứt HĐLĐ; kết luận nằm ở tiêu đề Điều 34.",
-   "du_doan": {
-    "tach": "truot",
-    "ckey": "dat"
-   }
-  },
-  {
-   "id": "B02",
-   "loi": "ket_luan_o_tieu_de",
-   "don_vi_loi": [
-    "BLLD_45-2019.D34.K13"
-   ],
-   "cau_hoi": "Hợp đồng lao động có ghi nội dung thử việc, và người lao động thử việc không đạt yêu cầu. Hợp đồng lao động có chấm dứt không?",
-   "ngay": "2024-06-01",
-   "phi": "chấm dứt hợp đồng lao động",
-   "dap_an": "ket_luan_duoc",
-   "can_cu": [
-    "BLLD_45-2019.D34.K13"
-   ],
-   "giai_thich": "Đ34.K13.",
+   "giai_thich": "Đ34.K8: bị xử lý kỷ luật sa thải là một trường hợp chấm dứt HĐLĐ (kết luận nằm ở tiêu đề Điều 34). Tính hợp pháp của quyết định sa thải là dữ kiện cho sẵn, câu không kiểm thủ tục sa thải.",
    "du_doan": {
     "tach": "truot",
     "ckey": "dat"
@@ -57,19 +38,18 @@
   },
   {
    "id": "B03",
-   "loi": "ket_luan_o_tieu_de",
+   "loi": "doi_chung",
    "don_vi_loi": [
-    "BLLD_45-2019.D34.K4",
-    "BLLD_45-2019.D34.K6"
+    "BLLD_45-2019.D34.K4"
    ],
-   "cau_hoi": "Người lao động đang bị khởi tố, chưa có bản án của Tòa án. Hợp đồng lao động của người này có chấm dứt không?",
+   "cau_hoi": "Người lao động đang bị khởi tố, chưa có bản án của Tòa án; đây là tình tiết duy nhất liên quan đến việc chấm dứt hợp đồng lao động của người này. Hợp đồng lao động của người này có chấm dứt không?",
    "ngay": "2024-06-01",
    "phi": "chấm dứt hợp đồng lao động",
    "dap_an": "chua_du_can_cu",
    "can_cu": [
     "BLLD_45-2019.D34.K4"
    ],
-   "giai_thich": "Đ34.K4 chỉ chấm dứt khi đã bị kết án bằng bản án có hiệu lực; Đ34 không có khoản nào cho trường hợp mới bị khởi tố. Câu này bắt KB suy quá đà.",
+   "giai_thich": "Đ34.K4 chỉ chấm dứt khi đã bị kết án bằng bản án có hiệu lực; Đ34 không có khoản nào cho người mới bị khởi tố. Câu bẫy suy quá đà, nhất là sau khi thêm luật kế thừa kết luận từ tiêu đề Điều 34.",
    "du_doan": {
     "tach": "?",
     "ckey": "?"
@@ -81,7 +61,7 @@
    "don_vi_loi": [
     "BLLD_45-2019.D34.K7"
    ],
-   "cau_hoi": "Người sử dụng lao động là một cá nhân và người này đã chết. Hợp đồng lao động giữa người đó với người lao động có chấm dứt không?",
+   "cau_hoi": "Ông X trực tiếp thuê chị A làm việc theo hợp đồng lao động. Nay ông X qua đời. Hợp đồng lao động giữa hai người có chấm dứt không?",
    "ngay": "2024-06-01",
    "phi": "chấm dứt hợp đồng lao động",
    "dap_an": "ket_luan_duoc",
@@ -98,17 +78,17 @@
    "id": "B05",
    "loi": "ket_luan_o_tieu_de",
    "don_vi_loi": [
-    "BLLD_45-2019.D37.K3"
+    "BLLD_45-2019.D37.K2"
    ],
-   "cau_hoi": "Một lao động nữ đang mang thai thường xuyên không hoàn thành công việc theo tiêu chí trong quy chế đánh giá của công ty. Công ty có được đơn phương chấm dứt hợp đồng lao động với chị không?",
+   "cau_hoi": "Anh G thường xuyên không hoàn thành công việc theo tiêu chí trong quy chế đánh giá của công ty. Đúng lúc anh đang nghỉ phép hằng năm, công ty muốn đơn phương chấm dứt hợp đồng lao động với anh. Công ty có được làm vậy không?",
    "ngay": "2024-06-01",
    "phi": "người sử dụng lao động được đơn phương chấm dứt hợp đồng lao động",
    "dap_an": "bi_bac",
    "can_cu": [
     "BLLD_45-2019.D36.K1.a",
-    "BLLD_45-2019.D37.K3"
+    "BLLD_45-2019.D37.K2"
    ],
-   "giai_thich": "Đ36.K1.a cho quyền, nhưng Đ37.K3 cấm khi người lao động nữ mang thai. Ở tach, Đ37 mất kết luận (nằm ở tiêu đề) nên dự đoán ra ket_luan_duoc (sai).",
+   "giai_thich": "Đ36.K1.a cho quyền, Đ37.K2 cấm khi người lao động đang nghỉ hằng năm. Đổi từ mang thai (Đ37.K3) sang nghỉ hằng năm để không có đường né qua Đ137.K3: chỉ Đ37 chặn. Ở tach Đ37 mất kết luận nên dự đoán ra ket_luan_duoc (sai).",
    "du_doan": {
     "tach": "truot",
     "ckey": "?"
@@ -116,7 +96,7 @@
   },
   {
    "id": "B06",
-   "loi": "ket_luan_o_tieu_de",
+   "loi": "ngoai_le_cheo",
    "don_vi_loi": [
     "BLLD_45-2019.D37.K1"
    ],
@@ -128,9 +108,9 @@
     "BLLD_45-2019.D36.K1.b",
     "BLLD_45-2019.D37.K1"
    ],
-   "giai_thich": "Đ37.K1 cấm khi đang điều trị, nhưng 'trừ trường hợp quy định tại điểm b khoản 1 Điều 36': ngoại lệ của ngoại lệ, quyền ở Đ36.K1.b vẫn đứng.",
+   "giai_thich": "Đ37.K1 cấm khi đang điều trị nhưng 'trừ trường hợp quy định tại điểm b khoản 1 Điều 36'. Câu này là CHỐT CHẶN: hiện tach đúng do tình cờ (Đ37 mất kết luận nên không chặn); khi sửa lỗi kết luận ở tiêu đề, Đ37.K1 sẽ chặn, và câu chỉ còn đúng nếu KB xử lý được ngoại lệ chéo sang Đ36.K1.b.",
    "du_doan": {
-    "tach": "?",
+    "tach": "dat",
     "ckey": "?"
    }
   },
@@ -140,7 +120,7 @@
    "don_vi_loi": [
     "BLLD_45-2019.D154.K8"
    ],
-   "cau_hoi": "Một người nước ngoài kết hôn với người Việt Nam và sinh sống trên lãnh thổ Việt Nam, nay làm việc tại Việt Nam. Người này có thuộc diện cấp giấy phép lao động không?",
+   "cau_hoi": "Anh John, quốc tịch Anh, lấy vợ người Việt và đã định cư ở Hà Nội; nay anh được một trường tư thục nhận vào dạy tiếng Anh. Anh có thuộc diện phải cấp giấy phép lao động không?",
    "ngay": "2024-06-01",
    "phi": "thuộc diện cấp giấy phép lao động",
    "dap_an": "bi_bac",
@@ -159,7 +139,7 @@
    "don_vi_loi": [
     "BLLD_45-2019.D154.K6"
    ],
-   "cau_hoi": "Một luật sư nước ngoài đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo Luật Luật sư. Người này làm việc tại Việt Nam có thuộc diện cấp giấy phép lao động không?",
+   "cau_hoi": "Bà Kim, quốc tịch Hàn Quốc, là luật sư đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư và đang làm cho một công ty luật ở TP.HCM. Bà có thuộc diện cấp giấy phép lao động không?",
    "ngay": "2024-06-01",
    "phi": "thuộc diện cấp giấy phép lao động",
    "dap_an": "bi_bac",
@@ -214,37 +194,37 @@
   },
   {
    "id": "B11",
-   "loi": "ket_luan_o_tieu_de",
+   "loi": "doi_chung",
    "don_vi_loi": [
-    "BLLD_45-2019.D99"
+    "BLLD_45-2019.D99.K1"
    ],
-   "cau_hoi": "Công ty phải ngừng việc do lỗi của người sử dụng lao động. Người lao động có được trả đủ tiền lương theo hợp đồng lao động không?",
+   "cau_hoi": "Một xưởng phải dừng hoạt động vì bộ phận quản lý của công ty không thực hiện đúng việc bảo trì máy móc, tức việc ngừng việc do lỗi của người sử dụng lao động. Người lao động có được nhận đủ lương theo hợp đồng trong thời gian xưởng dừng hoạt động không?",
    "ngay": "2024-06-01",
    "phi": "được trả đủ tiền lương theo hợp đồng lao động",
    "dap_an": "ket_luan_duoc",
    "can_cu": [
     "BLLD_45-2019.D99.K1"
    ],
-   "giai_thich": "Đ99.K1; câu dẫn 'trường hợp phải ngừng việc, người lao động được trả lương như sau' nằm ở thân Điều 99.",
+   "giai_thich": "Đ99.K1. Chuyển sang đối chứng: Đ99.K1 tự có kết luận 'trả đủ tiền lương' ở cả hai lần chạy, nên câu không đi qua câu dẫn Điều 99.",
    "du_doan": {
-    "tach": "?",
+    "tach": "dat",
     "ckey": "dat"
    }
   },
   {
    "id": "B12",
-   "loi": "ket_luan_o_tieu_de",
+   "loi": "doi_chung",
    "don_vi_loi": [
-    "BLLD_45-2019.D99"
+    "BLLD_45-2019.D99.K2"
    ],
-   "cau_hoi": "Người lao động phải ngừng việc do lỗi của chính mình. Người đó có được trả lương trong thời gian ngừng việc không?",
+   "cau_hoi": "Một công nhân vận hành sai quy trình khiến dây chuyền phải dừng hoạt động, và công nhân này được xác định là người có lỗi gây ra việc ngừng việc. Người gây ra lỗi có được hưởng lương trong thời gian ngừng việc không?",
    "ngay": "2024-06-01",
    "phi": "được trả lương ngừng việc",
    "dap_an": "bi_bac",
    "can_cu": [
     "BLLD_45-2019.D99.K2"
    ],
-   "giai_thich": "Đ99.K2: do lỗi của người lao động thì người đó không được trả lương.",
+   "giai_thich": "Đ99.K2: do lỗi của người lao động thì người đó không được trả lương. Chuyển sang đối chứng: Đ99.K2 tự có kết luận phủ định ở cả hai lần chạy.",
    "du_doan": {
     "tach": "?",
     "ckey": "?"
@@ -256,18 +236,19 @@
    "don_vi_loi": [
     "BLLD_45-2019.D36.K2"
    ],
-   "cau_hoi": "Công ty đơn phương chấm dứt hợp đồng lao động vì người lao động tự ý bỏ việc không có lý do chính đáng 6 ngày làm việc liên tục. Công ty có phải báo trước cho người lao động không?",
+   "cau_hoi": "Công ty đơn phương chấm dứt hợp đồng lao động không xác định thời hạn với chị H vì chị thường xuyên không hoàn thành công việc theo quy chế đánh giá của công ty; quy chế này được ban hành sau khi đã tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở. Công ty có phải báo trước cho chị không?",
    "ngay": "2024-06-01",
    "phi": "phải báo trước cho người lao động",
-   "dap_an": "bi_bac",
+   "dap_an": "ket_luan_duoc",
    "can_cu": [
-    "BLLD_45-2019.D36.K1.e",
-    "BLLD_45-2019.D36.K3"
+    "BLLD_45-2019.D36.K1.a",
+    "BLLD_45-2019.D36.K2",
+    "BLLD_45-2019.D36.K2.a"
    ],
-   "giai_thich": "Đ36.K3: trường hợp điểm d, e khoản 1 thì không phải báo trước. Ở tach, Đ36.K2 mất kết luận.",
+   "giai_thich": "Đ36.K2: câu dẫn 'người sử dụng lao động phải báo trước cho người lao động như sau' (điểm a khoản 1 thuộc danh sách); Đ36.K2.a: ít nhất 45 ngày. Ở tach, Đ36.K2 chỉ còn 'đơn phương chấm dứt' làm điều kiện, còn Đ36.K2.a có kết luận 'ít nhất 45 ngày' chứ không phải 'phải báo trước', nên không có đường né: đúng ca kết luận ở câu dẫn bị mất.",
    "du_doan": {
-    "tach": "?",
-    "ckey": "?"
+    "tach": "truot",
+    "ckey": "dat"
    }
   },
   {
@@ -276,14 +257,15 @@
    "don_vi_loi": [
     "BLLD_45-2019.D151.K1.d"
    ],
-   "cau_hoi": "Một người có quốc tịch nước ngoài, không thuộc trường hợp nào ở Điều 154, muốn làm việc tại Việt Nam. Người này có phải có giấy phép lao động không?",
+   "cau_hoi": "Một công ty ở Bình Dương tuyển một kỹ sư quốc tịch Nhật Bản làm trưởng phòng kỹ thuật theo hợp đồng 2 năm. Kỹ sư này không góp vốn vào công ty, không phải luật sư, không kết hôn với người Việt Nam và không thuộc trường hợp nào được miễn giấy phép lao động. Kỹ sư này có phải có giấy phép lao động không?",
    "ngay": "2024-06-01",
    "phi": "phải có giấy phép lao động",
    "dap_an": "ket_luan_duoc",
    "can_cu": [
-    "BLLD_45-2019.D151.K1.d"
+    "BLLD_45-2019.D151.K1.d",
+    "BLLD_45-2019.D154"
    ],
-   "giai_thich": "Đ151.K1.d. Cả hai lần chạy đều lưu 'có giấy phép lao động' làm điều kiện của 'đáp ứng các điều kiện', nên không có quy tắc nào kết luận 'phải có giấy phép' (cùng lỗi Q06 của bộ lldnn).",
+   "giai_thich": "Đ151.K1.d: phải có giấy phép, trừ trường hợp Đ154; dữ kiện loại trừ mọi trường hợp của Đ154. Cả hai lần chạy lưu 'có giấy phép lao động' làm điều kiện của 'đáp ứng các điều kiện' nên không có quy tắc kết luận 'phải có giấy phép' (cùng lỗi Q06 bộ lldnn).",
    "du_doan": {
     "tach": "truot",
     "ckey": "truot"
@@ -295,7 +277,7 @@
    "don_vi_loi": [
     "BLLD_45-2019.D145.K1"
    ],
-   "cau_hoi": "Công ty muốn sử dụng một người 14 tuổi làm việc. Công ty có phải giao kết hợp đồng lao động bằng văn bản với người này và người đại diện theo pháp luật của người này không?",
+   "cau_hoi": "Một xưởng may muốn nhận em E, 14 tuổi, vào làm công việc nhẹ trong dịp hè. Xưởng có phải ký hợp đồng lao động bằng văn bản với em E và người đại diện theo pháp luật của em không?",
    "ngay": "2024-06-01",
    "phi": "phải giao kết hợp đồng lao động bằng văn bản với người chưa đủ 15 tuổi và người đại diện theo pháp luật",
    "dap_an": "ket_luan_duoc",
@@ -333,7 +315,7 @@
    "don_vi_loi": [
     "BLLD_45-2019.D36.K1.c"
    ],
-   "cau_hoi": "Do dịch bệnh nguy hiểm, công ty đã tìm mọi biện pháp khắc phục nhưng vẫn buộc phải giảm chỗ làm việc. Công ty có được đơn phương chấm dứt hợp đồng lao động không?",
+   "cau_hoi": "Dịch bệnh nguy hiểm bùng phát khiến nhà hàng phải thu hẹp hoạt động. Chủ nhà hàng đã áp dụng mọi biện pháp khắc phục có thể (giảm giờ làm, cho nghỉ luân phiên, chuyển người sang việc khác) nhưng vẫn buộc phải giảm chỗ làm việc. Nhà hàng có được đơn phương chấm dứt hợp đồng lao động với một số nhân viên không?",
    "ngay": "2024-06-01",
    "phi": "người sử dụng lao động được đơn phương chấm dứt hợp đồng lao động",
    "dap_an": "ket_luan_duoc",
@@ -372,12 +354,14 @@
     "BLLD_45-2019.D53.K2.b",
     "BLLD_45-2019.D53.K3.c"
    ],
-   "cau_hoi": "Bên thuê lại lao động muốn dùng lao động thuê lại để thay thế một người lao động đang nghỉ thai sản. Bên thuê lại có được sử dụng lao động thuê lại không?",
+   "cau_hoi": "Bên thuê lại lao động muốn dùng lao động thuê lại để thay thế một người lao động đang nghỉ thai sản; các điều kiện chung về hoạt động cho thuê lại lao động đều đã được đáp ứng và thời hạn thuê lại không quá 12 tháng. Bên thuê lại có được sử dụng lao động thuê lại không?",
    "ngay": "2024-06-01",
    "phi": "bên thuê lại được sử dụng lao động thuê lại",
    "dap_an": "ket_luan_duoc",
    "can_cu": [
-    "BLLD_45-2019.D53.K2.b"
+    "BLLD_45-2019.D53.K2.b",
+    "BLLD_45-2019.D53.K3.c",
+    "BLLD_45-2019.D53.K1"
    ],
    "giai_thich": "Đ53.K2.b. Câu này đi cặp với B18: ở ckey, Đ53.K3.c chỉ còn 'thay thế người lao động' nên có thể chặn nhầm.",
    "du_doan": {
@@ -408,61 +392,23 @@
    }
   },
   {
-   "id": "B21",
-   "loi": "ten_phan_manh",
-   "don_vi_loi": [
-    "BLLD_45-2019.D42.K2",
-    "BLLD_45-2019.D42.K4"
-   ],
-   "cau_hoi": "Do suy thoái kinh tế, nhiều người lao động của công ty có nguy cơ mất việc làm. Người sử dụng lao động có phải xây dựng phương án sử dụng lao động không?",
-   "ngay": "2024-06-01",
-   "phi": "phải xây dựng phương án sử dụng lao động",
-   "dap_an": "ket_luan_duoc",
-   "can_cu": [
-    "BLLD_45-2019.D42.K2.a",
-    "BLLD_45-2019.D42.K4"
-   ],
-   "giai_thich": "Đ42.K2.a cùng Đ42.K4, trong cùng một Điều.",
-   "du_doan": {
-    "tach": "dat",
-    "ckey": "truot"
-   }
-  },
-  {
    "id": "B22",
    "loi": "ngoai_le_cheo",
    "don_vi_loi": [
-    "BLLD_45-2019.D34.K7",
-    "BLLD_45-2019.D137.K3"
+    "BLLD_45-2019.D35.K2.a",
+    "BLLD_45-2019.D29.K1",
+    "BLLD_45-2019.D29.K2"
    ],
-   "cau_hoi": "Người sử dụng lao động là một cá nhân và đã chết; người lao động là lao động nữ đang mang thai. Hợp đồng lao động có chấm dứt không?",
+   "cau_hoi": "Do sự cố mất điện đột xuất kéo dài, công ty tạm chuyển anh K sang làm công việc khác trong 20 ngày làm việc; trong năm anh chưa bị chuyển việc lần nào khác. Công ty báo trước cho anh 3 ngày làm việc, thông báo rõ thời hạn làm tạm thời, và công việc mới phù hợp với sức khỏe, giới tính của anh. Anh K có quyền đơn phương chấm dứt hợp đồng lao động không cần báo trước với lý do không được bố trí đúng công việc theo hợp đồng không?",
    "ngay": "2024-06-01",
-   "phi": "chấm dứt hợp đồng lao động",
-   "dap_an": "ket_luan_duoc",
-   "can_cu": [
-    "BLLD_45-2019.D34.K7",
-    "BLLD_45-2019.D137.K3"
-   ],
-   "giai_thich": "Đ34.K7 chấm dứt HĐLĐ. Đ137.K3 chỉ cấm sa thải hoặc đơn phương chấm dứt, và chính nó chừa trường hợp người sử dụng lao động là cá nhân đã chết, nên không chặn.",
-   "du_doan": {
-    "tach": "truot",
-    "ckey": "?"
-   }
-  },
-  {
-   "id": "B23",
-   "loi": "ngoai_le_cheo",
-   "don_vi_loi": [
-    "BLLD_45-2019.D137.K3"
-   ],
-   "cau_hoi": "Công ty muốn đơn phương chấm dứt hợp đồng lao động với một lao động nữ vì chị vừa kết hôn. Công ty có được làm vậy không?",
-   "ngay": "2024-06-01",
-   "phi": "người sử dụng lao động được đơn phương chấm dứt hợp đồng lao động",
+   "phi": "người lao động đơn phương chấm dứt hợp đồng lao động không cần báo trước",
    "dap_an": "bi_bac",
    "can_cu": [
-    "BLLD_45-2019.D137.K3"
+    "BLLD_45-2019.D35.K2.a",
+    "BLLD_45-2019.D29.K1",
+    "BLLD_45-2019.D29.K2"
    ],
-   "giai_thich": "Đ137.K3: không được đơn phương chấm dứt vì lý do kết hôn.",
+   "giai_thich": "Đ35.K2.a cho quyền khi không được bố trí đúng công việc, 'trừ trường hợp quy định tại Điều 29'; dữ kiện thỏa đủ Đ29.K1 (sự cố điện, không quá 60 ngày làm việc cộng dồn/năm) và Đ29.K2 (báo trước 3 ngày làm việc, nêu thời hạn, việc phù hợp). Chỉ Đ35.K2.a dẫn tới φ, nên phải xử lý ngoại lệ chéo sang Đ29. Nhãn bi_bac theo định nghĩa 'có quy tắc ngoại lệ áp dụng'; chủ đề tài chốt bi_bac 25/11: ngoại lệ thực sự được kích hoạt, không phải luật im lặng.",
    "du_doan": {
     "tach": "?",
     "ckey": "?"
@@ -474,7 +420,7 @@
    "don_vi_loi": [
     "BLLD_45-2019.D36.K1.e"
    ],
-   "cau_hoi": "Người lao động tự ý bỏ việc không có lý do chính đáng 4 ngày làm việc liên tục. Người sử dụng lao động có được đơn phương chấm dứt hợp đồng lao động không?",
+   "cau_hoi": "Anh F nghỉ làm 4 ngày làm việc liên tục mà không xin phép và không có lý do chính đáng; ngoài việc này anh không vi phạm gì khác và công ty không có lý do nào khác để chấm dứt hợp đồng. Công ty có được đơn phương chấm dứt hợp đồng lao động với anh F không?",
    "ngay": "2024-06-01",
    "phi": "người sử dụng lao động được đơn phương chấm dứt hợp đồng lao động",
    "dap_an": "chua_du_can_cu",
@@ -529,17 +475,20 @@
    "id": "B27",
    "loi": "doi_chung",
    "don_vi_loi": [
+    "BLLD_45-2019.D42.K5",
     "BLLD_45-2019.D47.K1"
    ],
-   "cau_hoi": "Người lao động đã làm việc thường xuyên cho công ty 3 năm và bị mất việc làm do công ty thay đổi cơ cấu. Công ty có phải trả trợ cấp mất việc làm không?",
+   "cau_hoi": "Công ty chuyển dây chuyền sản xuất sang dùng máy móc tự động, khiến việc làm của nhiều người lao động bị ảnh hưởng. Công ty không thể bố trí việc làm khác nên phải cho anh B thôi việc. Anh B đã làm việc thường xuyên cho công ty 3 năm. Công ty có phải trả trợ cấp mất việc làm cho anh B không?",
    "ngay": "2024-06-01",
    "phi": "trả trợ cấp mất việc làm",
    "dap_an": "ket_luan_duoc",
    "can_cu": [
+    "BLLD_45-2019.D42.K1.b",
+    "BLLD_45-2019.D42.K5",
     "BLLD_45-2019.D47.K1",
     "BLLD_45-2019.D34.K11"
    ],
-   "giai_thich": "Đ47.K1; câu đối chứng.",
+   "giai_thich": "Đ42.K1.b (thay đổi công nghệ), Đ42.K5 (không giải quyết được việc làm mà phải cho thôi việc thì trả trợ cấp mất việc làm), Đ47.K1. Câu đối chứng.",
    "du_doan": {
     "tach": "dat",
     "ckey": "dat"
@@ -549,7 +498,7 @@
    "id": "B28",
    "loi": "doi_chung",
    "don_vi_loi": [],
-   "cau_hoi": "Người lao động có thu nhập 20 triệu đồng một tháng thì phải nộp thuế thu nhập cá nhân bao nhiêu?",
+   "cau_hoi": "Người lao động có thu nhập 20 triệu đồng một tháng thì có phải nộp thuế thu nhập cá nhân không?",
    "ngay": "2024-06-01",
    "phi": "phải nộp thuế thu nhập cá nhân",
    "dap_an": "khong_tra_loi",
@@ -559,6 +508,189 @@
     "tach": "dat",
     "ckey": "dat"
    }
+  },
+  {
+   "id": "B29",
+   "loi": "ngoai_le_cheo",
+   "don_vi_loi": [
+    "BLLD_45-2019.D34.K1",
+    "BLLD_45-2019.D177.K4"
+   ],
+   "cau_hoi": "Hợp đồng lao động xác định thời hạn của chị L vừa hết hạn, trong khi chị đang là thành viên ban lãnh đạo công đoàn cơ sở (tổ chức đại diện người lao động tại cơ sở) của công ty và nhiệm kỳ vẫn còn. Hợp đồng lao động của chị có chấm dứt không?",
+   "ngay": "2024-06-01",
+   "phi": "chấm dứt hợp đồng lao động",
+   "dap_an": "bi_bac",
+   "can_cu": [
+    "BLLD_45-2019.D34.K1",
+    "BLLD_45-2019.D177.K4",
+    "BLLD_45-2019.D3.K3"
+   ],
+   "giai_thich": "Đ34.K1: hết hạn thì chấm dứt, 'trừ trường hợp quy định tại khoản 4 Điều 177'; Đ177.K4: phải gia hạn đến hết nhiệm kỳ. Chỉ Đ34.K1 dẫn tới φ nên phải xử lý ngoại lệ chéo. Ở tach, Đ34.K1 lại có 'hết hạn hợp đồng lao động' làm kết luận (sai vai). Nhãn bi_bac theo định nghĩa 'có quy tắc ngoại lệ áp dụng'; chủ đề tài chốt bi_bac 25/11.",
+   "du_doan": {
+    "tach": "truot",
+    "ckey": "?"
+   }
+  },
+  {
+   "id": "B30",
+   "loi": "ten_phan_manh",
+   "don_vi_loi": [
+    "BLLD_45-2019.D31",
+    "BLLD_45-2019.D36.K1.d"
+   ],
+   "cau_hoi": "Anh M tạm hoãn hợp đồng lao động để đi nghĩa vụ quân sự; khi hết thời hạn tạm hoãn, hợp đồng lao động vẫn còn thời hạn. Đã 20 ngày kể từ khi hết thời hạn tạm hoãn mà anh vẫn không đến công ty làm việc, và hai bên không có thỏa thuận nào khác về việc trở lại làm việc. Công ty có được đơn phương chấm dứt hợp đồng lao động với anh M không?",
+   "ngay": "2024-06-01",
+   "phi": "người sử dụng lao động được đơn phương chấm dứt hợp đồng lao động",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "BLLD_45-2019.D31",
+    "BLLD_45-2019.D36.K1.d",
+    "BLLD_45-2019.D30.K1.a"
+   ],
+   "giai_thich": "Đ30.K1.a (tạm hoãn vì nghĩa vụ quân sự), Đ31 (phải có mặt trong 15 ngày kể từ hết tạm hoãn, nếu hợp đồng còn thời hạn), Đ36.K1.d (không có mặt 'sau thời hạn quy định tại Điều 31'). Ca DẪN CHIẾU: Đ36 không nêu thời hạn mà trỏ sang Đ31 (tach còn cắt cụt thành 'sau thời hạn quy định tại'). Ca khác tên thuần là B20 và B33.",
+   "du_doan": {
+    "tach": "truot",
+    "ckey": "?"
+   }
+  },
+  {
+   "id": "B31",
+   "loi": "ket_luan_o_tieu_de",
+   "don_vi_loi": [
+    "BLLD_45-2019.D204.K4"
+   ],
+   "cau_hoi": "Công đoàn cơ sở tổ chức và lãnh đạo một cuộc đình công trong khi tranh chấp lao động tập thể giữa người lao động và công ty đang được Hội đồng trọng tài lao động thụ lý giải quyết theo thẩm quyền. Cuộc đình công này có bất hợp pháp không?",
+   "ngay": "2024-06-01",
+   "phi": "đình công bất hợp pháp",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "BLLD_45-2019.D204.K4"
+   ],
+   "giai_thich": "Đ204.K4; kết luận 'đình công bất hợp pháp' nằm ở tiêu đề Điều 204.",
+   "du_doan": {
+    "tach": "truot",
+    "ckey": "dat"
+   }
+  },
+  {
+   "id": "B32",
+   "loi": "ket_luan_o_tieu_de",
+   "don_vi_loi": [
+    "BLLD_45-2019.D206.K2"
+   ],
+   "cau_hoi": "Cuộc đình công tại nhà máy đã kết thúc, công nhân đều trở lại làm việc. Sau đó, công ty muốn đóng cửa tạm thời nơi làm việc. Công ty có được làm vậy không?",
+   "ngay": "2024-06-01",
+   "phi": "người sử dụng lao động được đóng cửa tạm thời nơi làm việc",
+   "dap_an": "bi_bac",
+   "can_cu": [
+    "BLLD_45-2019.D206.K2"
+   ],
+   "giai_thich": "Đ206.K2; lệnh cấm nằm ở tiêu đề Điều 206 'Trường hợp cấm đóng cửa tạm thời nơi làm việc'.",
+   "du_doan": {
+    "tach": "truot",
+    "ckey": "?"
+   }
+  },
+  {
+   "id": "B33",
+   "loi": "ten_phan_manh",
+   "don_vi_loi": [
+    "BLLD_45-2019.D143.K1",
+    "BLLD_45-2019.D144.K3"
+   ],
+   "cau_hoi": "Một cửa hàng nhận em P, 16 tuổi, vào làm nhân viên bán hàng. Cửa hàng có phải lập sổ theo dõi riêng cho em không?",
+   "ngay": "2024-06-01",
+   "phi": "lập sổ theo dõi riêng",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "BLLD_45-2019.D143.K1",
+    "BLLD_45-2019.D144.K3"
+   ],
+   "giai_thich": "Đ143.K1 chuyển thuộc tính tuổi (chưa đủ 18) thành nhóm pháp lý 'lao động chưa thành niên'; Đ144.K3 dùng nhóm đó để kích hoạt nghĩa vụ lập sổ theo dõi riêng của người sử dụng lao động. Dạng con của ten_phan_manh: nối mô tả độ tuổi với khái niệm pháp lý, khác B20 (hai cách gọi cùng một lý do).",
+   "du_doan": {
+    "tach": "?",
+    "ckey": "?"
+   }
+  },
+  {
+   "id": "B34",
+   "loi": "ket_luan_o_tieu_de",
+   "don_vi_loi": [
+    "BLLD_45-2019.D34.K6"
+   ],
+   "cau_hoi": "Anh N làm việc theo hợp đồng lao động; Tòa án đã ra quyết định có hiệu lực pháp luật tuyên bố anh mất tích. Hợp đồng lao động của anh N có chấm dứt không?",
+   "ngay": "2024-06-01",
+   "phi": "chấm dứt hợp đồng lao động",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "BLLD_45-2019.D34.K6"
+   ],
+   "giai_thich": "Đ34.K6; kết luận ở tiêu đề Điều 34. Không có đường né: không đơn vị nào khác kết luận chấm dứt HĐLĐ khi người lao động bị tuyên bố mất tích.",
+   "du_doan": {
+    "tach": "truot",
+    "ckey": "dat"
+   }
+  },
+  {
+   "id": "B35",
+   "loi": "ket_luan_o_tieu_de",
+   "don_vi_loi": [
+    "BLLD_45-2019.D156.K4"
+   ],
+   "cau_hoi": "Chị Q, người nước ngoài, được cấp giấy phép lao động với vị trí chuyên gia phân tích dữ liệu, nhưng thực tế công ty giao chị làm giám đốc bán hàng. Giấy phép lao động của chị có hết hiệu lực không?",
+   "ngay": "2024-06-01",
+   "phi": "giấy phép lao động hết hiệu lực",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "BLLD_45-2019.D156.K4"
+   ],
+   "giai_thich": "Đ156.K4 (làm việc không đúng nội dung giấy phép); kết luận ở tiêu đề Điều 156.",
+   "du_doan": {
+    "tach": "truot",
+    "ckey": "dat"
+   }
+  },
+  {
+   "id": "B36",
+   "loi": "ket_luan_o_tieu_de",
+   "don_vi_loi": [
+    "BLLD_45-2019.D204.K2"
+   ],
+   "cau_hoi": "Một nhóm công nhân tự tổ chức ngừng việc tập thể để đòi tăng lương; cuộc ngừng việc không do công đoàn cơ sở hay tổ chức đại diện người lao động nào tổ chức và lãnh đạo. Cuộc đình công này có bất hợp pháp không?",
+   "ngay": "2024-06-01",
+   "phi": "đình công bất hợp pháp",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "BLLD_45-2019.D204.K2"
+   ],
+   "giai_thich": "Đ204.K2; kết luận 'đình công bất hợp pháp' ở tiêu đề Điều 204 (lỗi nhắm: tach mất kết luận ở tiêu đề). CA NHIỀU LỖI: ở ckey, Đ204.K2 còn sai vai (lưu 'không do tổ chức đại diện…' làm kết luận phủ định). Khi báo cáo, kết quả B36 tách riêng, không dùng làm bằng chứng độc lập rằng lỗi tiêu đề đã được sửa.",
+   "du_doan": {
+    "tach": "truot",
+    "ckey": "truot"
+   },
+   "loi_phu": [
+    "sai_vai"
+   ]
+  },
+  {
+   "id": "B37",
+   "loi": "ket_luan_o_tieu_de",
+   "don_vi_loi": [
+    "BLLD_45-2019.D156.K1"
+   ],
+   "cau_hoi": "Giấy phép lao động của anh R có thời hạn đến ngày 31/3/2024; tại ngày 01/06/2024 anh chưa được cấp gia hạn. Giấy phép lao động của anh R có hết hiệu lực không?",
+   "ngay": "2024-06-01",
+   "phi": "giấy phép lao động hết hiệu lực",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "BLLD_45-2019.D156.K1"
+   ],
+   "giai_thich": "Đ156.K1 (giấy phép hết thời hạn); kết luận ở tiêu đề Điều 156.",
+   "du_doan": {
+    "tach": "truot",
+    "ckey": "dat"
+   }
   }
- ]
+ ],
+ "loi_phu": "Câu có trường loi_phu kiểm nhiều lỗi cùng lúc; tính vào nhóm 'loi' nhưng kết quả báo cáo tách riêng."
 }
