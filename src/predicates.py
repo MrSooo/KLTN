@@ -327,6 +327,7 @@ def store_round(cache_dir, cfg, items, output, **extra):
 
 
 GOP_CHU = bool(llm_client.load_config().get("ten.gop_chu", 0))  # [A61] máy gộp tên của chữ cùng mặt chữ; chỉ lần chạy bật khoá (tach)
+GOP_CHU_KEO_TIENG = 4  # [A62] từ ngần này tiếng mới kéo theo chữ khác mặt chữ đã dùng lại tên bị gộp (merge_same_text)
 GOP_CHU_MIN_TIENG = 3  # chữ ngắn hơn có ca mơ hồ: "tổ chức" (danh từ, động từ), "thực hiện", "thành lập" (đo 25/11: 9 nhóm ngắn)
 
 
@@ -353,11 +354,22 @@ def merge_same_text(run, min_tieng=GOP_CHU_MIN_TIENG):
                 first[n] = min(first.get(n, m), m)
         keep = sorted(names, key=lambda n: (-weight[n], first[n]))[0]
         gone = sorted(names - {keep})
-        for n in gone:  # chuyển MỌI chữ của tên bị gộp (cả chữ khác mặt chữ đã reuse tên đó) sang tên giữ
-            for m in run.book.members.pop(n):
+        same = set(idx)
+        drag = len(run.words[idx[0]]["surface"].split()) >= GOP_CHU_KEO_TIENG
+        for n in gone:
+            # A61: chữ khác mặt chữ mà LLM đã dùng lại tên bị gộp cũng chuyển theo (cùng khái niệm). [A62] Chỉ làm thế khi mặt chữ chung đủ
+            # dài; chữ ngắn đa nghĩa ("hết thời hạn", 3 tiếng) kéo cả "hợp đồng hết hạn" lẫn "giấy phép lao động hết thời hạn" vào một tên
+            # (time_limit_expires), nên chỉ chuyển đúng mặt chữ đó.
+            moved = [m for m in run.book.members[n] if drag or m in same]
+            rest = [m for m in run.book.members[n] if m not in moved]
+            for m in moved:
                 run.book.name_of[m] = keep
                 run.book.members[keep].append(m)
-            run.book.name_params.pop(n, None)
+            if rest:
+                run.book.members[n] = rest
+            else:
+                run.book.members.pop(n)
+                run.book.name_params.pop(n, None)
         merged.append((keep, gone))
     return merged
 

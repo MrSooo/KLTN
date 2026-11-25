@@ -91,6 +91,15 @@ def test_merge_same_text_w_e_and_short_guard():
     assert "join_occ_org_w" not in run.book.members and "join_occ_org_w" not in run.book.name_params
 
 
+def test_merge_same_text_short_text_does_not_drag_other_surfaces():
+    """A62: mặt chữ chung chỉ 3 tiếng ("hết thời hạn") thì chỉ chuyển đúng chữ đó; chữ khác mặt chữ đã dùng lại tên bị gộp giữ tên cũ."""
+    w = lambda s, n=1: {"surface": s, "params": (), "n": n}  # noqa: E731
+    words = [w("hết thời hạn", 3), w("hết thời hạn"), w("giấy phép lao động hết thời hạn")]
+    run = _FakeRun(words, ["contract_expires", "work_permit_term_expires", "work_permit_term_expires"])
+    assert P.merge_same_text(run) == [("contract_expires", ["work_permit_term_expires"])]
+    assert [run.book.name_of[i] for i in range(3)] == ["contract_expires", "contract_expires", "work_permit_term_expires"]
+
+
 def test_run_rounds_merge_flag():
     """Sổ vị từ 2.6 gọi run_rounds(merge=False) cho phần KU: không gộp (gộp ở đó có thể xoá một tên gốc); bước 1.6B gốc gộp khi bật GOP_CHU."""
     w = lambda s, p: {"surface": s, "params": p, "n": 1}  # noqa: E731

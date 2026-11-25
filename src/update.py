@@ -76,7 +76,9 @@ def compile_at(kn, snap, pairs_used, answers):
                 pred_of[(uid, r["row"])] = (r.get("predicate"), r.get("subject_key"))
             elif r["loai"] == "chu_the" and r.get("predicate"):
                 subj_of[kn.word_key(r["span"], ())] = r["predicate"]
-    out, notes = rules.compile_units(a, pred_of, subj_of, order, snap.eff)
+    # [A62] cùng cách biên dịch con trỏ điều kiện như 1.8 gốc, để 2.7 (tăng dần = dựng lại) so trên cùng một luật
+    texts = {uid: (snap.ctxs.get(uid) or {}).get("text") or "" for uid in live}
+    out, notes = rules.compile_units(a, pred_of, subj_of, order, snap.eff, texts)
     seen = collections.Counter()
     for r in out:
         r["source_kus"] = [live[u] for u in r["source_units"]]

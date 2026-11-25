@@ -200,5 +200,59 @@ def test_trai_liet_ke_giu_khi_khong_chac():
                                                              ("đang nghỉ việc riêng", "lk1"), ("đang nghỉ ốm", "lk1")], out
 
 
+def test_trai_liet_ke_khong_lap_duoi():
+    """A62: mục viết hoa ở đầu lõi đã hạ chữ (D147.K2.a) vẫn khớp; lõi chỉ chứa một phần danh sách thì giữ nguyên, không nối mục vào đuôi."""
+    row = _lk_row("dieu_kien", "dưới nước, dưới lòng đất, trong hang động", ["Dưới nước", "dưới lòng đất", "trong hang động"])
+    out, _ = clause_roles.trai_liet_ke("X.D1", [row], "Dưới nước, dưới lòng đất, trong hang động")
+    assert [r["menh_de"] for r in out] == ["dưới nước", "dưới lòng đất", "trong hang động"], out
+    row = _lk_row("dieu_kien", "tên, địa chỉ của người sử dụng lao động", ["tên", "địa chỉ", "họ tên"], trich=["tên, địa chỉ, họ tên"])
+    out, flags = clause_roles.trai_liet_ke("X.D1", [row], "tên, địa chỉ, họ tên")
+    assert out == [row] and "không khớp đủ mục" in flags[0][1], (out, flags)
+
+
+def test_trai_liet_ke_giu_thuat_ngu_co_dinh():
+    """A62: danh sách mà cả cụm lặp nguyên văn ở >= 3 Điều là một thuật ngữ, không trải."""
+    row = _lk_row("dieu_kien", "làm công việc nặng nhọc, độc hại, nguy hiểm", ["nặng nhọc", "độc hại", "nguy hiểm"])
+    out, flags = clause_roles.trai_liet_ke("X.D1", [row], "", lambda cum: 6 if cum == "nặng nhọc, độc hại, nguy hiểm" else 0)
+    assert out == [row] and "thuật ngữ cố định" in flags[0][1], flags
+    out, _ = clause_roles.trai_liet_ke("X.D1", [row], "", lambda cum: 1)
+    assert len(out) == 3
+
+
+def test_bo_dong_chi_dan_chieu():
+    """A62: bỏ điều kiện chỉ là chữ dẫn chiếu trong Bộ luật; giữ dẫn chiếu ra luật khác và câu có nội dung; kết luận thì giữ, gắn cờ."""
+    mk = lambda vai, s: {"loai": "menh_de", "vai": vai, "menh_de": s}  # noqa: E731
+    rows = [mk("dieu_kien", "theo quy định của Bộ luật này"), mk("dieu_kien", "theo quy định tại"),
+            mk("dieu_kien", "quy định tại Mục 1 Chương XI của Bộ luật này"), mk("dieu_kien", "theo quy định của pháp luật về bảo hiểm xã hội"),
+            mk("dieu_kien", "sau thời hạn quy định tại"), mk("ket_luan", "theo quy định của Bộ luật này"), {"loai": "con_tro", "vai": "dieu_kien"},
+            mk("dieu_kien", "theo quy định của điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên")]
+    out, flags = clause_roles.bo_dong_chi_dan_chieu(rows)
+    assert out == rows[3:], out
+    assert sum(m.startswith("bỏ dòng") for _, m in flags) == 3 and len(flags) == 4, flags
+
+
+def test_ket_luan_tu_tieu_de():
+    """A62 3a: hai dạng tiêu đề; mô tả trong khoản thành điều kiện (nhiều dòng thì HOẶC); chỉ áp khi không có câu dẫn."""
+    assert clause_roles.ket_luan_tu_tieu_de("Các trường hợp chấm dứt hợp đồng lao động")[:3] == ("chấm dứt hợp đồng lao động", "khong", None)
+    m, mode, chu, _ = clause_roles.ket_luan_tu_tieu_de("Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động")
+    assert (m, mode, chu["loai"]) == ("thực hiện quyền đơn phương chấm dứt hợp đồng lao động", "cam", "E")
+    m, mode, chu, _ = clause_roles.ket_luan_tu_tieu_de("Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động")
+    assert (m, mode, chu["loai"]) == ("cấp giấy phép lao động", "khong_ap_dung", "W")
+    assert clause_roles.ket_luan_tu_tieu_de("Tiền lương ngừng việc") is None
+    mk = lambda vai, s, mode="khong": {"loai": "menh_de", "vai": vai, "menh_de": s, "phuong_thuc": mode, "quy_tac": "q1", "nhom_hoac": None}  # noqa: E731
+    ctx = {"heading": "Các trường hợp chấm dứt hợp đồng lao động", "chapeau": "", "text": "Người lao động chết hoặc bị tuyên bố mất tích."}
+    out, _ = clause_roles.them_ket_luan_tieu_de(ctx, [mk("ket_luan", "người lao động chết"), mk("ket_luan", "bị tuyên bố mất tích")])
+    assert [(r["vai"], r["menh_de"], r["nhom_hoac"]) for r in out] == [("dieu_kien", "người lao động chết", "tdq1"),
+                                                                      ("dieu_kien", "bị tuyên bố mất tích", "tdq1"),
+                                                                      ("ket_luan", "chấm dứt hợp đồng lao động", None)], out
+    out, _ = clause_roles.them_ket_luan_tieu_de(dict(ctx, text="Vào Việt Nam dưới 03 tháng để chào bán dịch vụ."),
+                                                [mk("ket_luan", "vào Việt Nam dưới 03 tháng"), mk("ket_luan", "chào bán dịch vụ")])
+    assert [r["nhom_hoac"] for r in out] == [None, None, None], out  # nối "để": VÀ
+    out, _ = clause_roles.them_ket_luan_tieu_de(dict(ctx, chapeau="Người sử dụng lao động có quyền ... sau đây:"), [mk("ket_luan", "x")])
+    assert out[0]["vai"] == "ket_luan" and len(out) == 1
+    out, _ = clause_roles.them_ket_luan_tieu_de(ctx, [mk("ket_luan", "phải trả", "phai"), mk("dieu_kien", "khi y")])
+    assert len(out) == 2  # nhóm đã có kết luận có phương thức: không thêm
+
+
 if __name__ == "__main__":
     _harness.run(globals())

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D209.K1",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D209.K1\",\n \"tieu_de_dieu\": \"Nơi sử dụng lao động không được đình công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Không được đình công ở nơi sử dụng lao động mà việc đình công có thể đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Không được đình công ở nơi sử dụng lao động mà việc đình công có thể đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D209.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"đình công\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"ở nơi sử dụng lao động mà việc đình công có thể đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"liet_ke\": [\n    \"quốc phòng\",\n    \"an ninh\",\n    \"trật tự công cộng\",\n    \"sức khỏe của con người\"\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "QfgGa_afIKKs1e8Pqa3tiQU",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1043
+   },
+   "input_tokens": 4091,
+   "output_tokens": 1330,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_47c386be02a66bc161e57e52"
+   }
+  }
+ }
+}

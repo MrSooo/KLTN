@@ -91,6 +91,54 @@ def test_rules_source_units_child_or_has_lead_in_and_item():
     assert [(r["unit"], r["source_units"], r["how"]) for r in rules] == [(k, [u, k], "compiled_child_or")]
 
 
+def _ptr(phrase, target):
+    return {"loai": "con_tro", "vai": "dieu_kien", "trich": [phrase], "targets": [D + target], "quy_tac": None}
+
+
+def test_rules_pointer_condition_after_condition_or_lead_not_after_conclusion():
+    """A62: con trỏ sau một điều kiện thành điều kiện applies_<T> (nhiều đích của một cụm là HOẶC); sau một kết luận thì chỉ cách làm,
+    không thành điều kiện; applies_<T> định nghĩa từ điều kiện của T; đích không có quy tắc thì không thêm (tránh quy tắc chết)."""
+    u, t1, t2, t3, v = D + "D46.K1", D + "D34.K1", D + "D34.K2", D + "D9", D + "D29.K4"
+    a = {u: {"dong": [dict(row("dieu_kien", "khong"), trich=["hợp đồng chấm dứt"]), dict(row("ket_luan", "phai"), trich=["trả trợ cấp"]),
+                      _ptr("khoản 1, 2 Điều 34", "D34.K1"), _ptr("khoản 1, 2 Điều 34", "D34.K2"), _ptr("Điều 9", "D9")]},
+         t1: {"dong": [row("dieu_kien", "khong"), row("ket_luan", "khong")]}, t2: {"dong": [row("dieu_kien", "khong"), row("ket_luan", "khong")]},
+         t3: {"dong": [row("dieu_kien", "khong")]},
+         v: {"dong": [dict(row("ket_luan", "phai"), trich=["trả lương ngừng việc"]), _ptr("Điều 34", "D34.K1")]}}
+    names = {(u, 0): ("contract_ends", None), (u, 1): ("pay_severance", None), (t1, 0): ("contract_expires", None), (t1, 1): ("terminate", None),
+             (t2, 0): ("work_done", None), (t2, 1): ("terminate", None), (t3, 0): ("orphan_cond", None), (v, 0): ("pay_suspension_wage", None)}
+    texts = {u: "Khi hợp đồng chấm dứt theo quy định tại khoản 1, 2 Điều 34 thì phải trả trợ cấp, trừ Điều 9", v: "phải trả lương ngừng việc theo Điều 34"}
+    rules, notes = R.compile_units(a, names, {}, {x: i for i, x in enumerate(a)}, {}, texts)
+    txt = sorted(R.rule_text(r) for r in rules)
+    assert "must_pay_severance(X) :- contract_ends(X), applies_d34_k1(X)." in txt and "must_pay_severance(X) :- contract_ends(X), applies_d34_k2(X)." in txt, txt
+    assert "applies_d34_k1(X) :- contract_expires(X)." in txt and "must_pay_suspension_wage(X)." in txt, txt
+    assert not any("applies_d9" in x for x in txt)  # D9 sau kết luận ("trả trợ cấp"), và D9 không có quy tắc
+    assert any("chỉ cách làm" in n for n in notes), notes
+
+
+def test_rules_pointer_list_is_or_and_negated_pointer_skipped():
+    """A62: các cụm dẫn chiếu liền nhau ("tại khoản 1 Điều 34, khoản 2 Điều 34") là một nhóm HOẶC; dẫn chiếu sau "không đúng" không
+    biên dịch (applies_ không diễn đạt được nghĩa vi phạm)."""
+    u, t1, t2 = D + "D63.K2", D + "D34.K1", D + "D34.K2"
+    a = {u: {"dong": [dict(row("dieu_kien", "khong"), trich=["có vụ việc"]), dict(row("ket_luan", "phai"), trich=["đối thoại"]),
+                      _ptr("khoản 1 Điều 34", "D34.K1"), _ptr("khoản 2 Điều 34", "D34.K2")]},
+         t1: {"dong": [row("dieu_kien", "khong"), row("ket_luan", "khong")]}, t2: {"dong": [row("dieu_kien", "khong"), row("ket_luan", "khong")]}}
+    names = {(u, 0): ("has_case", None), (u, 1): ("dialogue", None), (t1, 0): ("a1", None), (t1, 1): ("h", None), (t2, 0): ("a2", None), (t2, 1): ("h", None)}
+    order = {x: i for i, x in enumerate(a)}
+    rules, _ = R.compile_units(a, names, {}, order, {}, {u: "khi có vụ việc quy định tại khoản 1 Điều 34, khoản 2 Điều 34 thì phải đối thoại"})
+    assert sorted(R.rule_text(r) for r in rules if r["unit"] == u) == ["must_dialogue(X) :- has_case(X), applies_d34_k1(X).",
+                                                                     "must_dialogue(X) :- has_case(X), applies_d34_k2(X)."]
+    rules, notes = R.compile_units(a, names, {}, order, {}, {u: "khi có vụ việc không đúng quy định tại khoản 1 Điều 34, khoản 2 Điều 34 thì phải đối thoại"})
+    assert [R.rule_text(r) for r in rules if r["unit"] == u] == ["must_dialogue(X) :- has_case(X)."] and any("phủ định" in n for n in notes)
+
+
+def test_rules_chapeau_condition_pushed_to_list_items():
+    """A62 3b: câu dẫn danh sách có vế điều kiện (D145.K1) thì điều kiện đó vào quy tắc của từng mục con, nguồn có cả câu dẫn."""
+    u, k = D + "D145.K1", D + "D145.K1.a"
+    a = {u: {"dong": [row("dieu_kien", "khong"), {"loai": "bo_qua", "cac_muc_con": "danh_sach"}]}, k: {"dong": [row("ket_luan", "phai")]}}
+    rules, _ = R.compile_units(a, {(u, 0): ("employ_under_15", None), (k, 0): ("written_contract", None)}, {}, {u: 0, k: 1})
+    assert [(R.rule_text(r), r["source_units"]) for r in rules] == [("must_written_contract(X) :- employ_under_15(X).", [u, k])], rules
+
+
 def test_rules_scan_isolates_empty_body():
     iso, _ = R.scan([{"id": "r1", "unit": D + "D155", "head": {"atom": "term_max_two_years", "pred": "term_max_two_years", "neg": False}, "body": []}], {})
     assert "r1" in iso

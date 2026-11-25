@@ -529,7 +529,7 @@ def gate_unit(ctx, rows, reason_field=LLM_REASON, version=None):
 # ---- Khuôn gọn (A57): máy dựng lại khuôn cũ từ đầu ra gọn. Hàm này chỉ SUY RA trường từ chữ luật và từ trường LLM đã ghi,
 # không sửa giá trị LLM ghi (giá trị sai vẫn đi tới cổng và bị bắt), nên không nới phép kiểm nào.
 ROW_KEYS_12 = {"doan", "vai", "phuong_thuc", "cuc", "quy_tac", "nhom_hoac", "chu_the", "doi_so", "liet_ke", "chua_ro"}
-UNIT_KEYS_12 = {"unit_id", "dong", "cac_muc_con", "ngoai_le", "bo_qua"}
+UNIT_KEYS_12 = {"unit_id", "dong", "cac_muc_con", "ngoai_le", "bo_qua", "dan_chieu_dieu_kien"}  # dan_chieu_dieu_kien: A62, vai-nhom-3
 BO_QUA_12 = {"khong_quy_pham", "dan_chieu_mo", "dan_chieu_ngoai"}
 _LEAD_TAIL = re.compile(r"[^,;.:]*(sau đây|như sau|gồm|bao gồm)\s*:?\s*$")
 
@@ -572,8 +572,18 @@ def expand_unit(ctx, unit):
             row["chu_the"] = ct  # sai khuôn: để cổng báo
         rows.append(row)
     exc = unit.get("ngoai_le") or []
+    # [A62, vai-nhom-3] LLM ghi dẫn chiếu nào là điều kiện của quy tắc nào; có trường này thì dẫn chiếu không được liệt kê (và không phải
+    # ngoại lệ) chỉ nói cách làm hay mức ("trả lương ngừng việc theo quy định tại Điều 99"): vai chi_dan, 1.8 không đưa vào thân.
+    dk = unit.get("dan_chieu_dieu_kien")
+    dk_q = {x.get("dich"): x.get("quy_tac") for x in dk if isinstance(x, dict)} if isinstance(dk, list) else None
     for ref in ctx["refs"]:
-        rows.append({"loai": "con_tro", "vai": "ngoai_le" if ref["dich"] in exc else "dieu_kien", "targets": [ref["dich"]], "trich": [ref["cum"]]})
+        row = {"loai": "con_tro", "vai": "ngoai_le" if ref["dich"] in exc else "dieu_kien", "targets": [ref["dich"]], "trich": [ref["cum"]]}
+        if dk_q is not None and row["vai"] == "dieu_kien":
+            if ref["dich"] in dk_q:
+                row["quy_tac"] = dk_q[ref["dich"]]
+            else:
+                row["vai"] = "chi_dan"
+        rows.append(row)
     for t in exc if isinstance(exc, list) else [exc]:
         if t not in {ref["dich"] for ref in ctx["refs"]}:
             rows.append({"loai": "con_tro", "vai": "ngoai_le", "targets": [t], "trich": [ctx["text"]]})  # đích ngoài dan_chieu: cổng báo

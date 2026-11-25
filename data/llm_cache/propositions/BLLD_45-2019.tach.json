@@ -398,6 +398,10 @@
     [
      null,
      "liet_ke giữ nguyên (dòng gốc 4): user duyệt giữ"
+    ],
+    [
+     null,
+     "dòng ngoai_le chỉ là chữ dẫn chiếu, giữ (dòng gốc 6): 'quy định tại Mục 1 Chương XI của Bộ luật này'"
     ]
    ],
    "nguon": [
@@ -10554,7 +10558,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "mức lương theo công việc hoặc chức danh, hình thức trả lương, thời hạn trả lương, phụ cấp lương và các khoản bổ sung khác Mức lương theo công việc hoặc chức danh",
+     "menh_de": "mức lương theo công việc hoặc chức danh",
      "chu_the": {
       "chu": "Hợp đồng lao động",
       "loai": "C",
@@ -10580,7 +10584,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "mức lương theo công việc hoặc chức danh, hình thức trả lương, thời hạn trả lương, phụ cấp lương và các khoản bổ sung khác hình thức trả lương",
+     "menh_de": "hình thức trả lương",
      "chu_the": {
       "chu": "Hợp đồng lao động",
       "loai": "C",
@@ -10606,7 +10610,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "mức lương theo công việc hoặc chức danh, hình thức trả lương, thời hạn trả lương, phụ cấp lương và các khoản bổ sung khác thời hạn trả lương",
+     "menh_de": "thời hạn trả lương",
      "chu_the": {
       "chu": "Hợp đồng lao động",
       "loai": "C",
@@ -10632,7 +10636,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "mức lương theo công việc hoặc chức danh, hình thức trả lương, thời hạn trả lương, phụ cấp lương và các khoản bổ sung khác phụ cấp lương",
+     "menh_de": "phụ cấp lương",
      "chu_the": {
       "chu": "Hợp đồng lao động",
       "loai": "C",
@@ -10658,7 +10662,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "mức lương theo công việc hoặc chức danh, hình thức trả lương, thời hạn trả lương, phụ cấp lương và các khoản bổ sung khác các khoản bổ sung khác",
+     "menh_de": "các khoản bổ sung khác",
      "chu_the": {
       "chu": "Hợp đồng lao động",
       "loai": "C",
@@ -10811,7 +10815,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "bảo hiểm xã hội, bảo hiểm y tế và bảo hiểm thất nghiệp Bảo hiểm xã hội",
+     "menh_de": "bảo hiểm xã hội",
      "chu_the": {
       "chu": "Hợp đồng lao động",
       "loai": "C",
@@ -10837,7 +10841,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "bảo hiểm xã hội, bảo hiểm y tế và bảo hiểm thất nghiệp bảo hiểm y tế",
+     "menh_de": "bảo hiểm y tế",
      "chu_the": {
       "chu": "Hợp đồng lao động",
       "loai": "C",
@@ -10863,7 +10867,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "bảo hiểm xã hội, bảo hiểm y tế và bảo hiểm thất nghiệp bảo hiểm thất nghiệp",
+     "menh_de": "bảo hiểm thất nghiệp",
      "chu_the": {
       "chu": "Hợp đồng lao động",
       "loai": "C",
@@ -15255,7 +15259,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "hết hạn hợp đồng lao động",
      "chu_the": null,
      "doi_so": [],
@@ -15296,10 +15300,40 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'hết hạn hợp đồng lao động' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -15308,7 +15342,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "hoàn thành công việc",
      "chu_the": null,
      "doi_so": [
@@ -15355,10 +15389,40 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'hoàn thành công việc' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1",
     "s1.m1"
@@ -15368,7 +15432,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "thỏa thuận chấm dứt hợp đồng lao động",
      "chu_the": {
       "chu": "Hai bên",
@@ -15397,10 +15461,40 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'thỏa thuận chấm dứt hợp đồng lao động' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -15409,7 +15503,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "bị kết án phạt tù",
      "chu_the": {
       "chu": "Người lao động",
@@ -15484,7 +15578,7 @@
     },
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "tử hình",
      "chu_the": {
       "chu": "Người lao động",
@@ -15509,7 +15603,7 @@
     },
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "bị cấm làm công việc ghi trong hợp đồng lao động",
      "chu_the": {
       "chu": "Người lao động",
@@ -15560,6 +15654,69 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q3",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -15571,6 +15728,30 @@
     [
      4,
      "menh_de còn chữ phương thức/phủ định"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'bị kết án phạt tù' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 3 'tử hình' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 4 'bị cấm làm công việc ghi trong hợp đồng lao động' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q1"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q2"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q3"
     ]
    ],
    "nguon": [
@@ -15611,7 +15792,7 @@
     },
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "bị trục xuất",
      "chu_the": {
       "chu": "Người lao động là người nước ngoài",
@@ -15658,6 +15839,27 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -15665,6 +15867,14 @@
     [
      2,
      "menh_de dài 24 âm tiết"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 1 'bị trục xuất' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -15777,6 +15987,27 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -15784,6 +16015,10 @@
     [
      3,
      "doan bỏ chữ 'mất năng lực hành vi dân sự, mất tích ho'"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -15797,7 +16032,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "chết",
      "chu_the": {
       "chu": "Người sử dụng lao động là cá nhân",
@@ -15822,7 +16057,7 @@
     },
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "bị Tòa án tuyên bố",
      "chu_the": {
       "chu": "Người sử dụng lao động là cá nhân",
@@ -15851,7 +16086,7 @@
     },
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "chấm dứt hoạt động",
      "chu_the": {
       "chu": "Người sử dụng lao động không phải là cá nhân",
@@ -15876,7 +16111,7 @@
     },
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật",
      "chu_the": {
       "chu": "Người sử dụng lao động không phải là cá nhân",
@@ -15898,6 +16133,90 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q3",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q4",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -15909,6 +16228,38 @@
     [
      null,
      "liet_ke giữ nguyên (dòng gốc 1): kết luận nối 'hoặc'"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'chết' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 1 'bị Tòa án tuyên bố' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 2 'chấm dứt hoạt động' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 3 'bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q1"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q2"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q3"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q4"
     ]
    ],
    "nguon": [
@@ -15944,10 +16295,36 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -15956,7 +16333,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "đơn phương chấm dứt hợp đồng lao động",
      "chu_the": {
       "chu": "Người lao động",
@@ -16005,10 +16382,40 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'đơn phương chấm dứt hợp đồng lao động' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -16017,7 +16424,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "đơn phương chấm dứt hợp đồng lao động",
      "chu_the": {
       "chu": "Người sử dụng lao động",
@@ -16066,10 +16473,40 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'đơn phương chấm dứt hợp đồng lao động' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -16078,7 +16515,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "cho người lao động thôi việc",
      "chu_the": {
       "chu": "Người sử dụng lao động",
@@ -16150,10 +16587,40 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'cho người lao động thôi việc' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -16162,7 +16629,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "giấy phép lao động hết hiệu lực",
      "chu_the": null,
      "doi_so": [],
@@ -16224,10 +16691,40 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'giấy phép lao động hết hiệu lực' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'chấm dứt hợp đồng lao động' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1",
     "s1.m1"
@@ -19382,10 +19879,40 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện quyền đơn phương chấm dứt hợp đồng lao động",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'thực hiện quyền đơn phương chấm dứt hợp đồng lao động' (cam) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1",
     "s1.m2",
@@ -19422,6 +19949,31 @@
       "trường hợp nghỉ khác được người sử dụng lao động đồng ý"
      ],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện quyền đơn phương chấm dứt hợp đồng lao động",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -19433,6 +19985,10 @@
     [
      null,
      "liet_ke giữ nguyên (dòng gốc 0): điều kiện hay ngoại lệ nối 'và' (liệt kê trường hợp hay đòi đủ: chưa rõ)"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'thực hiện quyền đơn phương chấm dứt hợp đồng lao động' (cam) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -19515,10 +20071,69 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện quyền đơn phương chấm dứt hợp đồng lao động",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện quyền đơn phương chấm dứt hợp đồng lao động",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'thực hiện quyền đơn phương chấm dứt hợp đồng lao động' (cam) cho quy_tac q1"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'thực hiện quyền đơn phương chấm dứt hợp đồng lao động' (cam) cho quy_tac q2"
+    ]
+   ],
    "nguon": [
     "s1.m1",
     "s1.m2",
@@ -22579,31 +23194,6 @@
      "ly_do_llm": null
     },
     {
-     "loai": "menh_de",
-     "vai": "dieu_kien",
-     "menh_de": "theo quy định của Bộ luật này",
-     "chu_the": {
-      "chu": "hợp đồng lao động",
-      "loai": "C",
-      "nguon": "chinh"
-     },
-     "doi_so": [],
-     "phuong_thuc": "khong",
-     "cuc": "khang_dinh",
-     "bo_ngu": [],
-     "nhom_hoac": null,
-     "cac_muc_con": null,
-     "chua_ro": [],
-     "trich": [
-      "theo quy định của Bộ luật này"
-     ],
-     "targets": [],
-     "quy_tac": "q1",
-     "gan_vao": null,
-     "liet_ke": [],
-     "ly_do_llm": null
-    },
-    {
      "loai": "con_tro",
      "vai": "ngoai_le",
      "menh_de": "",
@@ -22724,6 +23314,10 @@
     [
      0,
      "menh_de dài 17 âm tiết"
+    ],
+    [
+     null,
+     "bỏ dòng chỉ là chữ dẫn chiếu (dòng gốc 2): 'theo quy định của Bộ luật này'"
     ]
    ],
    "nguon": [
@@ -26657,7 +27251,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "địa điểm làm việc, vị trí việc làm cần sử dụng lao động thuê lại, nội dung cụ thể của công việc, yêu cầu cụ thể đối với người lao động thuê lại Địa điểm làm việc",
+     "menh_de": "địa điểm làm việc",
      "chu_the": {
       "chu": "Hợp đồng cho thuê lại lao động",
       "loai": "C",
@@ -26683,7 +27277,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "địa điểm làm việc, vị trí việc làm cần sử dụng lao động thuê lại, nội dung cụ thể của công việc, yêu cầu cụ thể đối với người lao động thuê lại vị trí việc làm cần sử dụng lao động thuê lại",
+     "menh_de": "vị trí việc làm cần sử dụng lao động thuê lại",
      "chu_the": {
       "chu": "Hợp đồng cho thuê lại lao động",
       "loai": "C",
@@ -26709,7 +27303,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "địa điểm làm việc, vị trí việc làm cần sử dụng lao động thuê lại, nội dung cụ thể của công việc, yêu cầu cụ thể đối với người lao động thuê lại nội dung cụ thể của công việc",
+     "menh_de": "nội dung cụ thể của công việc",
      "chu_the": {
       "chu": "Hợp đồng cho thuê lại lao động",
       "loai": "C",
@@ -26735,7 +27329,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "địa điểm làm việc, vị trí việc làm cần sử dụng lao động thuê lại, nội dung cụ thể của công việc, yêu cầu cụ thể đối với người lao động thuê lại yêu cầu cụ thể đối với người lao động thuê lại",
+     "menh_de": "yêu cầu cụ thể đối với người lao động thuê lại",
      "chu_the": {
       "chu": "Hợp đồng cho thuê lại lao động",
       "loai": "C",
@@ -26841,7 +27435,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "thời giờ làm việc, thời giờ nghỉ ngơi, điều kiện an toàn, vệ sinh lao động tại nơi làm việc Thời giờ làm việc",
+     "menh_de": "thời giờ làm việc",
      "chu_the": {
       "chu": "Hợp đồng cho thuê lại lao động",
       "loai": "C",
@@ -26867,7 +27461,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "thời giờ làm việc, thời giờ nghỉ ngơi, điều kiện an toàn, vệ sinh lao động tại nơi làm việc thời giờ nghỉ ngơi",
+     "menh_de": "thời giờ nghỉ ngơi",
      "chu_the": {
       "chu": "Hợp đồng cho thuê lại lao động",
       "loai": "C",
@@ -26893,7 +27487,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "thời giờ làm việc, thời giờ nghỉ ngơi, điều kiện an toàn, vệ sinh lao động tại nơi làm việc điều kiện an toàn, vệ sinh lao động tại nơi làm việc",
+     "menh_de": "điều kiện an toàn, vệ sinh lao động tại nơi làm việc",
      "chu_the": {
       "chu": "Hợp đồng cho thuê lại lao động",
       "loai": "C",
@@ -27615,32 +28209,6 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
-    },
-    {
-     "loai": "menh_de",
-     "vai": "dieu_kien",
-     "menh_de": "theo quy định của Bộ luật này",
-     "chu_the": {
-      "chu": "bên thuê lại lao động",
-      "loai": "E",
-      "nguon": "tieu_de"
-     },
-     "doi_so": [],
-     "phuong_thuc": "khong",
-     "cuc": "khang_dinh",
-     "bo_ngu": [],
-     "nhom_hoac": null,
-     "cac_muc_con": null,
-     "chua_ro": [],
-     "trich": [
-      "theo quy định của Bộ luật này",
-      "bên thuê lại lao động"
-     ],
-     "targets": [],
-     "quy_tac": "q1",
-     "gan_vao": null,
-     "liet_ke": [],
-     "ly_do_llm": null
     }
    ],
    "loi": [],
@@ -27648,6 +28216,10 @@
     [
      0,
      "menh_de dài 17 âm tiết"
+    ],
+    [
+     null,
+     "bỏ dòng chỉ là chữ dẫn chiếu (dòng gốc 1): 'theo quy định của Bộ luật này'"
     ]
    ],
    "nguon": [
@@ -29880,7 +30452,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "địa điểm, thời gian và tiền lương trong thời gian đào tạo Địa điểm",
+     "menh_de": "địa điểm",
      "chu_the": {
       "chu": "Hợp đồng đào tạo nghề",
       "loai": "C",
@@ -29906,7 +30478,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "địa điểm, thời gian và tiền lương trong thời gian đào tạo thời gian",
+     "menh_de": "thời gian",
      "chu_the": {
       "chu": "Hợp đồng đào tạo nghề",
       "loai": "C",
@@ -29932,7 +30504,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "địa điểm, thời gian và tiền lương trong thời gian đào tạo tiền lương trong thời gian đào tạo",
+     "menh_de": "tiền lương trong thời gian đào tạo",
      "chu_the": {
       "chu": "Hợp đồng đào tạo nghề",
       "loai": "C",
@@ -31385,7 +31957,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "tiền lương, trợ cấp, nâng lương, thưởng, bữa ăn và các chế độ khác Tiền lương",
+     "menh_de": "tiền lương",
      "chu_the": {
       "chu": "Các bên thương lượng",
       "loai": [
@@ -31414,7 +31986,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "tiền lương, trợ cấp, nâng lương, thưởng, bữa ăn và các chế độ khác trợ cấp",
+     "menh_de": "trợ cấp",
      "chu_the": {
       "chu": "Các bên thương lượng",
       "loai": [
@@ -31443,7 +32015,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "tiền lương, trợ cấp, nâng lương, thưởng, bữa ăn và các chế độ khác nâng lương",
+     "menh_de": "nâng lương",
      "chu_the": {
       "chu": "Các bên thương lượng",
       "loai": [
@@ -31472,7 +32044,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "tiền lương, trợ cấp, nâng lương, thưởng, bữa ăn và các chế độ khác thưởng",
+     "menh_de": "thưởng",
      "chu_the": {
       "chu": "Các bên thương lượng",
       "loai": [
@@ -31501,7 +32073,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "tiền lương, trợ cấp, nâng lương, thưởng, bữa ăn và các chế độ khác bữa ăn",
+     "menh_de": "bữa ăn",
      "chu_the": {
       "chu": "Các bên thương lượng",
       "loai": [
@@ -31530,7 +32102,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "tiền lương, trợ cấp, nâng lương, thưởng, bữa ăn và các chế độ khác các chế độ khác",
+     "menh_de": "các chế độ khác",
      "chu_the": {
       "chu": "Các bên thương lượng",
       "loai": [
@@ -33247,31 +33819,6 @@
     {
      "loai": "menh_de",
      "vai": "dieu_kien",
-     "menh_de": "theo quy định của Bộ luật này",
-     "chu_the": {
-      "chu": "các bên thương lượng",
-      "loai": "?",
-      "nguon": "chinh"
-     },
-     "doi_so": [],
-     "phuong_thuc": "khong",
-     "cuc": "khang_dinh",
-     "bo_ngu": [],
-     "nhom_hoac": null,
-     "cac_muc_con": null,
-     "chua_ro": [],
-     "trich": [
-      "theo quy định của Bộ luật này"
-     ],
-     "targets": [],
-     "quy_tac": "q1",
-     "gan_vao": null,
-     "liet_ke": [],
-     "ly_do_llm": null
-    },
-    {
-     "loai": "menh_de",
-     "vai": "dieu_kien",
      "menh_de": "đang giải quyết tranh chấp lao động",
      "chu_the": null,
      "doi_so": [],
@@ -33317,7 +33864,12 @@
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "bỏ dòng chỉ là chữ dẫn chiếu (dòng gốc 2): 'theo quy định của Bộ luật này'"
+    ]
+   ],
    "nguon": [
     "s1.m1",
     "s1.m2",
@@ -35114,31 +35666,6 @@
     {
      "loai": "menh_de",
      "vai": "dieu_kien",
-     "menh_de": "theo quy định tại",
-     "chu_the": {
-      "chu": "Thỏa ước lao động tập thể",
-      "loai": "C",
-      "nguon": "chinh"
-     },
-     "doi_so": [],
-     "phuong_thuc": "khong",
-     "cuc": "khang_dinh",
-     "bo_ngu": [],
-     "nhom_hoac": null,
-     "cac_muc_con": null,
-     "chua_ro": [],
-     "trich": [
-      "theo quy định tại"
-     ],
-     "targets": [],
-     "quy_tac": "q1",
-     "gan_vao": null,
-     "liet_ke": [],
-     "ly_do_llm": null
-    },
-    {
-     "loai": "menh_de",
-     "vai": "dieu_kien",
      "menh_de": "đối với thỏa ước lao động tập thể ngành",
      "chu_the": null,
      "doi_so": [],
@@ -35235,6 +35762,10 @@
     [
      0,
      "menh_de dài 22 âm tiết"
+    ],
+    [
+     null,
+     "bỏ dòng chỉ là chữ dẫn chiếu (dòng gốc 1): 'theo quy định tại'"
     ]
    ],
    "nguon": [
@@ -61808,7 +62339,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "dưới nước, dưới lòng đất, trong hang động, trong đường hầm Dưới nước",
+     "menh_de": "dưới nước",
      "chu_the": null,
      "doi_so": [
       {
@@ -61833,7 +62364,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "dưới nước, dưới lòng đất, trong hang động, trong đường hầm dưới lòng đất",
+     "menh_de": "dưới lòng đất",
      "chu_the": null,
      "doi_so": [
       {
@@ -61858,7 +62389,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "dưới nước, dưới lòng đất, trong hang động, trong đường hầm trong hang động",
+     "menh_de": "trong hang động",
      "chu_the": null,
      "doi_so": [
       {
@@ -61883,7 +62414,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "dưới nước, dưới lòng đất, trong hang động, trong đường hầm trong đường hầm",
+     "menh_de": "trong đường hầm",
      "chu_the": null,
      "doi_so": [
       {
@@ -61990,7 +62521,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "sòng bạc, quán bar, vũ trường, phòng hát karaoke, khách sạn, nhà nghỉ, cơ sở tắm hơi, cơ sở xoa bóp; điểm kinh doanh xổ số, dịch vụ trò chơi điện tử Sòng bạc",
+     "menh_de": "sòng bạc",
      "chu_the": null,
      "doi_so": [
       {
@@ -62015,7 +62546,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "sòng bạc, quán bar, vũ trường, phòng hát karaoke, khách sạn, nhà nghỉ, cơ sở tắm hơi, cơ sở xoa bóp; điểm kinh doanh xổ số, dịch vụ trò chơi điện tử quán bar",
+     "menh_de": "quán bar",
      "chu_the": null,
      "doi_so": [
       {
@@ -62040,7 +62571,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "sòng bạc, quán bar, vũ trường, phòng hát karaoke, khách sạn, nhà nghỉ, cơ sở tắm hơi, cơ sở xoa bóp; điểm kinh doanh xổ số, dịch vụ trò chơi điện tử vũ trường",
+     "menh_de": "vũ trường",
      "chu_the": null,
      "doi_so": [
       {
@@ -62065,7 +62596,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "sòng bạc, quán bar, vũ trường, phòng hát karaoke, khách sạn, nhà nghỉ, cơ sở tắm hơi, cơ sở xoa bóp; điểm kinh doanh xổ số, dịch vụ trò chơi điện tử phòng hát karaoke",
+     "menh_de": "phòng hát karaoke",
      "chu_the": null,
      "doi_so": [
       {
@@ -62090,7 +62621,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "sòng bạc, quán bar, vũ trường, phòng hát karaoke, khách sạn, nhà nghỉ, cơ sở tắm hơi, cơ sở xoa bóp; điểm kinh doanh xổ số, dịch vụ trò chơi điện tử khách sạn",
+     "menh_de": "khách sạn",
      "chu_the": null,
      "doi_so": [
       {
@@ -62115,7 +62646,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "sòng bạc, quán bar, vũ trường, phòng hát karaoke, khách sạn, nhà nghỉ, cơ sở tắm hơi, cơ sở xoa bóp; điểm kinh doanh xổ số, dịch vụ trò chơi điện tử nhà nghỉ",
+     "menh_de": "nhà nghỉ",
      "chu_the": null,
      "doi_so": [
       {
@@ -62140,7 +62671,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "sòng bạc, quán bar, vũ trường, phòng hát karaoke, khách sạn, nhà nghỉ, cơ sở tắm hơi, cơ sở xoa bóp; điểm kinh doanh xổ số, dịch vụ trò chơi điện tử cơ sở tắm hơi",
+     "menh_de": "cơ sở tắm hơi",
      "chu_the": null,
      "doi_so": [
       {
@@ -62165,7 +62696,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "sòng bạc, quán bar, vũ trường, phòng hát karaoke, khách sạn, nhà nghỉ, cơ sở tắm hơi, cơ sở xoa bóp; điểm kinh doanh xổ số, dịch vụ trò chơi điện tử cơ sở xoa bóp",
+     "menh_de": "cơ sở xoa bóp",
      "chu_the": null,
      "doi_so": [
       {
@@ -62190,7 +62721,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "sòng bạc, quán bar, vũ trường, phòng hát karaoke, khách sạn, nhà nghỉ, cơ sở tắm hơi, cơ sở xoa bóp; điểm kinh doanh xổ số, dịch vụ trò chơi điện tử điểm kinh doanh xổ số",
+     "menh_de": "điểm kinh doanh xổ số",
      "chu_the": null,
      "doi_so": [
       {
@@ -62215,7 +62746,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "sòng bạc, quán bar, vũ trường, phòng hát karaoke, khách sạn, nhà nghỉ, cơ sở tắm hơi, cơ sở xoa bóp; điểm kinh doanh xổ số, dịch vụ trò chơi điện tử dịch vụ trò chơi điện tử",
+     "menh_de": "dịch vụ trò chơi điện tử",
      "chu_the": null,
      "doi_so": [
       {
@@ -64530,7 +65061,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ",
      "chu_the": {
       "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
@@ -64538,7 +65069,7 @@
       "nguon": "tieu_de"
      },
      "doi_so": [],
-     "phuong_thuc": "khong_ap_dung",
+     "phuong_thuc": "khong",
      "cuc": "khang_dinh",
      "bo_ngu": [],
      "nhom_hoac": null,
@@ -64553,6 +65084,31 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -64560,6 +65116,14 @@
     [
      0,
      "menh_de dài 27 âm tiết"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'cấp giấy phép lao động' (khong_ap_dung) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -64593,6 +65157,31 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -64600,6 +65189,10 @@
     [
      0,
      "menh_de dài 30 âm tiết"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'cấp giấy phép lao động' (khong_ap_dung) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -64610,7 +65203,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "là Trưởng văn phòng đại diện, dự án",
      "chu_the": {
       "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
@@ -64618,7 +65211,7 @@
       "nguon": "tieu_de"
      },
      "doi_so": [],
-     "phuong_thuc": "khong_ap_dung",
+     "phuong_thuc": "khong",
      "cuc": "khang_dinh",
      "bo_ngu": [],
      "nhom_hoac": null,
@@ -64636,7 +65229,7 @@
     },
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài tại Việt Nam",
      "chu_the": {
       "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
@@ -64644,7 +65237,7 @@
       "nguon": "tieu_de"
      },
      "doi_so": [],
-     "phuong_thuc": "khong_ap_dung",
+     "phuong_thuc": "khong",
      "cuc": "khang_dinh",
      "bo_ngu": [],
      "nhom_hoac": null,
@@ -64659,6 +65252,56 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -64666,6 +65309,22 @@
     [
      1,
      "menh_de dài 22 âm tiết"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'là Trưởng văn phòng đại diện, dự án' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 1 'chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài tại Việt Nam' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'cấp giấy phép lao động' (khong_ap_dung) cho quy_tac q1"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'cấp giấy phép lao động' (khong_ap_dung) cho quy_tac q2"
     ]
    ],
    "nguon": [
@@ -64677,7 +65336,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "vào Việt Nam với thời hạn dưới 03 tháng",
      "chu_the": {
       "chu": "Người lao động nước ngoài",
@@ -64703,7 +65362,7 @@
     },
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "thực hiện chào bán dịch vụ",
      "chu_the": {
       "chu": "Người lao động nước ngoài",
@@ -64726,10 +65385,48 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'vào Việt Nam với thời hạn dưới 03 tháng' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 1 'thực hiện chào bán dịch vụ' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'cấp giấy phép lao động' (khong_ap_dung) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1",
     "s1.m2"
@@ -64739,7 +65436,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "vào Việt Nam với thời hạn dưới 03 tháng",
      "chu_the": {
       "chu": "Người lao động nước ngoài",
@@ -64765,7 +65462,7 @@
     },
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được",
      "chu_the": {
       "chu": "Người lao động nước ngoài",
@@ -64788,6 +65485,31 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -64795,6 +65517,18 @@
     [
      1,
      "menh_de dài 49 âm tiết"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'vào Việt Nam với thời hạn dưới 03 tháng' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 1 'xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'cấp giấy phép lao động' (khong_ap_dung) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -64806,7 +65540,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "là luật sư nước ngoài đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư",
      "chu_the": {
       "chu": "Người lao động nước ngoài",
@@ -64829,6 +65563,31 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -64836,6 +65595,14 @@
     [
      0,
      "menh_de dài 24 âm tiết"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'là luật sư nước ngoài đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'cấp giấy phép lao động' (khong_ap_dung) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -64869,6 +65636,31 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -64880,6 +65672,10 @@
     [
      null,
      "luot1_hong: 1 câu lượt 1 hỏng, cả câu là một đoạn"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'cấp giấy phép lao động' (khong_ap_dung) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -64941,10 +65737,40 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'cấp giấy phép lao động' (khong_ap_dung) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1",
     "s1.m2"
@@ -65081,10 +65907,36 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giấy phép lao động hết hiệu lực",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'giấy phép lao động hết hiệu lực' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -65115,10 +65967,36 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giấy phép lao động hết hiệu lực",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'giấy phép lao động hết hiệu lực' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -65149,10 +66027,36 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giấy phép lao động hết hiệu lực",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'giấy phép lao động hết hiệu lực' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -65179,6 +66083,27 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giấy phép lao động hết hiệu lực",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -65186,6 +66111,10 @@
     [
      0,
      "menh_de dài 15 âm tiết"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'giấy phép lao động hết hiệu lực' (khong) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -65196,7 +66125,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "hết thời hạn",
      "chu_the": {
       "chu": "Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động",
@@ -65207,7 +66136,7 @@
      "phuong_thuc": "khong",
      "cuc": "khang_dinh",
      "bo_ngu": [],
-     "nhom_hoac": null,
+     "nhom_hoac": "tdq1",
      "cac_muc_con": null,
      "chua_ro": [],
      "trich": [
@@ -65221,7 +66150,7 @@
     },
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "chấm dứt",
      "chu_the": {
       "chu": "Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động",
@@ -65232,7 +66161,7 @@
      "phuong_thuc": "khong",
      "cuc": "khang_dinh",
      "bo_ngu": [],
-     "nhom_hoac": null,
+     "nhom_hoac": "tdq1",
      "cac_muc_con": null,
      "chua_ro": [],
      "trich": [
@@ -65243,10 +66172,44 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giấy phép lao động hết hiệu lực",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'hết thời hạn' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 1 'chấm dứt' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'giấy phép lao động hết hiệu lực' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1",
     "s1.m2"
@@ -65278,6 +66241,27 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giấy phép lao động hết hiệu lực",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -65285,6 +66269,10 @@
     [
      0,
      "menh_de dài 22 âm tiết"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'giấy phép lao động hết hiệu lực' (khong) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -65346,10 +66334,36 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giấy phép lao động hết hiệu lực",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'giấy phép lao động hết hiệu lực' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1",
     "s1.m2"
@@ -65377,10 +66391,36 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giấy phép lao động hết hiệu lực",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'giấy phép lao động hết hiệu lực' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -71307,7 +72347,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "cơ cấu tổ chức, nhiệm kỳ, người đại diện của tổ chức Cơ cấu tổ chức",
+     "menh_de": "cơ cấu tổ chức",
      "chu_the": {
       "chu": "Điều lệ tổ chức của người lao động tại doanh nghiệp",
       "loai": "?",
@@ -71333,7 +72373,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "cơ cấu tổ chức, nhiệm kỳ, người đại diện của tổ chức nhiệm kỳ",
+     "menh_de": "nhiệm kỳ",
      "chu_the": {
       "chu": "Điều lệ tổ chức của người lao động tại doanh nghiệp",
       "loai": "?",
@@ -71359,7 +72399,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "cơ cấu tổ chức, nhiệm kỳ, người đại diện của tổ chức người đại diện của tổ chức",
+     "menh_de": "người đại diện của tổ chức",
      "chu_the": {
       "chu": "Điều lệ tổ chức của người lao động tại doanh nghiệp",
       "loai": "?",
@@ -73558,36 +74598,15 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
-    },
-    {
-     "loai": "menh_de",
-     "vai": "dieu_kien",
-     "menh_de": "theo quy định của Bộ luật này",
-     "chu_the": {
-      "chu": "tổ chức đại diện người lao động tại cơ sở",
-      "loai": "W",
-      "nguon": "tieu_de"
-     },
-     "doi_so": [],
-     "phuong_thuc": "khong",
-     "cuc": "khang_dinh",
-     "bo_ngu": [],
-     "nhom_hoac": null,
-     "cac_muc_con": null,
-     "chua_ro": [],
-     "trich": [
-      "theo quy định của Bộ luật này",
-      "tổ chức đại diện người lao động tại cơ sở"
-     ],
-     "targets": [],
-     "quy_tac": "q1",
-     "gan_vao": null,
-     "liet_ke": [],
-     "ly_do_llm": null
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "bỏ dòng chỉ là chữ dẫn chiếu (dòng gốc 1): 'theo quy định của Bộ luật này'"
+    ]
+   ],
    "nguon": [
     "s1.m1",
     "s1.m1"
@@ -73620,36 +74639,15 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
-    },
-    {
-     "loai": "menh_de",
-     "vai": "dieu_kien",
-     "menh_de": "theo quy định của Bộ luật này",
-     "chu_the": {
-      "chu": "tổ chức đại diện người lao động tại cơ sở",
-      "loai": "W",
-      "nguon": "tieu_de"
-     },
-     "doi_so": [],
-     "phuong_thuc": "khong",
-     "cuc": "khang_dinh",
-     "bo_ngu": [],
-     "nhom_hoac": null,
-     "cac_muc_con": null,
-     "chua_ro": [],
-     "trich": [
-      "theo quy định của Bộ luật này",
-      "tổ chức đại diện người lao động tại cơ sở"
-     ],
-     "targets": [],
-     "quy_tac": "q1",
-     "gan_vao": null,
-     "liet_ke": [],
-     "ly_do_llm": null
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "bỏ dòng chỉ là chữ dẫn chiếu (dòng gốc 1): 'theo quy định của Bộ luật này'"
+    ]
+   ],
    "nguon": [
     "s1.m1",
     "s1.m1"
@@ -74222,32 +75220,6 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
-    },
-    {
-     "loai": "menh_de",
-     "vai": "dieu_kien",
-     "menh_de": "theo quy định của Bộ luật này",
-     "chu_the": {
-      "chu": "tổ chức đại diện người lao động tại cơ sở",
-      "loai": "W",
-      "nguon": "tieu_de"
-     },
-     "doi_so": [],
-     "phuong_thuc": "khong",
-     "cuc": "khang_dinh",
-     "bo_ngu": [],
-     "nhom_hoac": null,
-     "cac_muc_con": null,
-     "chua_ro": [],
-     "trich": [
-      "theo quy định của Bộ luật này",
-      "tổ chức đại diện người lao động tại cơ sở"
-     ],
-     "targets": [],
-     "quy_tac": "q1",
-     "gan_vao": null,
-     "liet_ke": [],
-     "ly_do_llm": null
     }
    ],
    "loi": [],
@@ -74255,6 +75227,10 @@
     [
      0,
      "doan bỏ chữ 'và lãnh đạo'"
+    ],
+    [
+     null,
+     "bỏ dòng chỉ là chữ dẫn chiếu (dòng gốc 2): 'theo quy định của Bộ luật này'"
     ]
    ],
    "nguon": [
@@ -81663,7 +82639,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "thời gian, địa điểm và cách thức tiến hành lấy ý kiến về đình công quyết định Thời gian",
+     "menh_de": "thời gian quyết định",
      "chu_the": {
       "chu": "tổ chức đại diện người lao động",
       "loai": "W",
@@ -81689,7 +82665,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "thời gian, địa điểm và cách thức tiến hành lấy ý kiến về đình công quyết định địa điểm",
+     "menh_de": "địa điểm quyết định",
      "chu_the": {
       "chu": "tổ chức đại diện người lao động",
       "loai": "W",
@@ -81715,7 +82691,7 @@
     {
      "loai": "menh_de",
      "vai": "ket_luan",
-     "menh_de": "thời gian, địa điểm và cách thức tiến hành lấy ý kiến về đình công quyết định cách thức tiến hành lấy ý kiến về đình công",
+     "menh_de": "cách thức tiến hành lấy ý kiến về đình công quyết định",
      "chu_the": {
       "chu": "tổ chức đại diện người lao động",
       "loai": "W",
@@ -83104,7 +84080,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "thuộc trường hợp được đình công",
      "chu_the": {
       "chu": "đình công",
@@ -83149,10 +84125,40 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đình công bất hợp pháp",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "đình công bất hợp pháp"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'thuộc trường hợp được đình công' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'đình công bất hợp pháp' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -83183,10 +84189,36 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đình công bất hợp pháp",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "đình công bất hợp pháp"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'đình công bất hợp pháp' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -83213,6 +84245,27 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đình công bất hợp pháp",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "đình công bất hợp pháp"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -83220,6 +84273,10 @@
     [
      0,
      "menh_de dài 21 âm tiết"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'đình công bất hợp pháp' (khong) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -83251,8 +84308,8 @@
     },
     {
      "loai": "menh_de",
-     "vai": "dieu_kien",
-     "menh_de": "theo quy định của Bộ luật này",
+     "vai": "ket_luan",
+     "menh_de": "đình công bất hợp pháp",
      "chu_the": null,
      "doi_so": [],
      "phuong_thuc": "khong",
@@ -83262,13 +84319,13 @@
      "cac_muc_con": null,
      "chua_ro": [],
      "trich": [
-      "theo quy định của Bộ luật này"
+      "đình công bất hợp pháp"
      ],
      "targets": [],
      "quy_tac": "q1",
      "gan_vao": null,
      "liet_ke": [],
-     "ly_do_llm": null
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -83276,6 +84333,14 @@
     [
      0,
      "menh_de dài 19 âm tiết"
+    ],
+    [
+     null,
+     "bỏ dòng chỉ là chữ dẫn chiếu (dòng gốc 1): 'theo quy định của Bộ luật này'"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'đình công bất hợp pháp' (khong) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -83287,7 +84352,7 @@
    "dong": [
     {
      "loai": "menh_de",
-     "vai": "ket_luan",
+     "vai": "dieu_kien",
      "menh_de": "tiến hành đình công",
      "chu_the": null,
      "doi_so": [],
@@ -83349,10 +84414,40 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đình công bất hợp pháp",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "đình công bất hợp pháp"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: dòng gốc 0 'tiến hành đình công' chuyển thành điều kiện"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'đình công bất hợp pháp' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1",
     "s1.m2"
@@ -83403,10 +84498,36 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đình công bất hợp pháp",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "đình công bất hợp pháp"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'đình công bất hợp pháp' (khong) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]
@@ -83685,6 +84806,27 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đóng cửa tạm thời nơi làm việc",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "cấm đóng cửa tạm thời nơi làm việc"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
@@ -83692,6 +84834,10 @@
     [
      0,
      "menh_de dài 17 âm tiết"
+    ],
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'đóng cửa tạm thời nơi làm việc' (cam) cho quy_tac q1"
     ]
    ],
    "nguon": [
@@ -83724,10 +84870,36 @@
      "gan_vao": null,
      "liet_ke": [],
      "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đóng cửa tạm thời nơi làm việc",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "cấm đóng cửa tạm thời nơi làm việc"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": "máy: kết luận ở tiêu đề Điều (A62)"
     }
    ],
    "loi": [],
-   "co": [],
+   "co": [
+    [
+     null,
+     "kết luận ở tiêu đề: thêm 'đóng cửa tạm thời nơi làm việc' (cam) cho quy_tac q1"
+    ]
+   ],
    "nguon": [
     "s1.m1"
    ]

@@ -28,8 +28,10 @@ Ra: data/processed[_subset]/rules/rules_<doc>.jsonl (quy tắc, kèm đơn vị 
 import collections
 import itertools
 import json
+import re
 import subprocess
 import sys
+import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -113,6 +115,145 @@ def unit_groups(uid, rows, pred_of, subj_of, kinds):
     return groups, notes
 
 
+POINTER_PREFIX = "applies_"  # [A62] vị từ "tình huống của đơn vị T xảy ra", định nghĩa từ điều kiện của chính T
+
+
+def pointer_atom(target):
+    return POINTER_PREFIX + target.split(".", 1)[1].lower().replace(".", "_")
+
+
+_POINTER_GAP = re.compile(r"\s*(,|;|và|hoặc)?\s*(các\s+)?")  # khe giữa hai cụm dẫn chiếu của cùng một danh sách
+# Dẫn chiếu sau chữ phủ định hay vi phạm ("không đúng quy định tại", "không tuân theo", "trái", "vi phạm"): nghĩa là KHÔNG theo T,
+# không phải "tình huống của T xảy ra" (D39, D211). applies_T không diễn đạt được nên không biên dịch (ghi chú).
+_POINTER_NEG = re.compile(r"(không đúng|không tuân theo|không theo|không thực hiện|trái|vi phạm)[^,;.]{0,25}$")
+
+
+def _nfc_low(s):
+    return unicodedata.normalize("NFC", s or "").lower()
+
+
+def pointer_attach(uid, rows, text):
+    """[A62] Con trỏ dẫn chiếu vai dieu_kien gắn vào quy tắc nào. -> (gắn [(dòng con trỏ, quy_tac, nhóm), ...], ghi chú).
+    Dòng con trỏ có sẵn `quy_tac` (LLM gán) thì dùng. Không có (khuôn hiện tại máy dựng con trỏ không có quy_tac, A57) thì suy theo
+    dòng mệnh đề đứng NGAY TRƯỚC cụm dẫn chiếu trong chữ đơn vị: là điều kiện thì con trỏ bổ nghĩa điều kiện đó (D46.K1 "chấm dứt theo
+    quy định tại các khoản ... Điều 34"); là kết luận thì con trỏ chỉ cách làm ("trả lương ngừng việc theo quy định tại Điều 99"), không
+    thành điều kiện; không có dòng trước (cụm đứng đầu câu, "Trường hợp quy định tại khoản 1 ...") thì gắn vào quy tắc của dòng đứng sau.
+    Nhiều đích của CÙNG một cụm ("khoản 1, 2 và 3") là các phương án HOẶC (một nhóm riêng)."""
+    t, att, notes = _nfc_low(text), [], []
+    pos_of = {}
+    for i, d in enumerate(rows):
+        if d["loai"] == "menh_de" and d.get("quy_tac"):
+            ps = [t.find(_nfc_low(x)) for x in d.get("trich") or [] if x]
+            ps = [p for p in ps if p >= 0]
+            if ps:
+                pos_of[i] = min(ps)
+    # Nhóm HOẶC theo cụm; các cụm đứng liền nhau chỉ cách bởi "," / "và" / "hoặc" là một danh sách dẫn chiếu ("quy định tại điểm a khoản 1
+    # Điều 36, các điều 42, 44 và khoản 1 Điều 128", D63.K2.c) nên chung một nhóm.
+    ptr = [d for d in rows if d["loai"] == "con_tro" and d.get("vai") == "dieu_kien" and d.get("targets")]
+    spans = sorted({(t.find(_nfc_low((d.get("trich") or [""])[0])), (d.get("trich") or [""])[0]) for d in ptr})
+    phrases, start, k, prev_end = {}, {}, 0, None
+    for p, ph in spans:
+        if not (p >= 0 and prev_end is not None and _POINTER_GAP.fullmatch(t[prev_end:p])):
+            k += 1
+            start[f"ct{k}"] = p  # chữ đứng trước cụm ĐẦU của nhóm quyết nghĩa phủ định cho cả nhóm
+        phrases[ph] = f"ct{k}"
+        prev_end = p + len(ph) if p >= 0 else None
+    for i, d in enumerate(rows):
+        if d["loai"] != "con_tro" or d.get("vai") != "dieu_kien" or not d.get("targets"):
+            continue
+        phrase = (d.get("trich") or [""])[0]
+        grp = phrases.get(phrase, "ct0")
+        many = sum(1 for e in ptr if phrases.get((e.get("trich") or [""])[0]) == grp) > 1
+        p0 = start.get(grp, -1)
+        if p0 >= 0 and _POINTER_NEG.search(t[max(0, p0 - 40):p0]):
+            notes.append(f"{uid} dòng {i}: dẫn chiếu mang nghĩa phủ định/vi phạm ({t[max(0, p0 - 40):p0].strip()!r}), applies_ không diễn đạt được, không biên dịch")
+            continue
+        if d.get("quy_tac"):
+            att.append((i, d["quy_tac"], d.get("nhom_hoac") or (grp if many else None)))
+            continue
+        p = t.find(_nfc_low(phrase))
+        if p < 0:
+            notes.append(f"{uid} dòng {i}: không thấy cụm dẫn chiếu {phrase!r} trong chữ đơn vị, con trỏ không vào quy tắc")
+            continue
+        before = [j for j, q in pos_of.items() if q < p]
+        after = [j for j, q in pos_of.items() if q > p]
+        if before:
+            j = max(before, key=lambda k: pos_of[k])
+            if rows[j]["vai"] != "dieu_kien":
+                notes.append(f"{uid} dòng {i}: con trỏ đứng sau dòng {rows[j]['vai']} (chỉ cách làm), không thành điều kiện")
+                continue
+        elif after:
+            j = min(after, key=lambda k: pos_of[k])
+        else:
+            notes.append(f"{uid} dòng {i}: không có dòng mệnh đề để gắn con trỏ")
+            continue
+        att.append((i, rows[j]["quy_tac"], grp if many else None))
+    return att, notes
+
+
+def add_pointers(a, per_unit, texts):
+    """[A62] Thêm literal applies_<T> vào nhóm quy tắc của đơn vị nguồn, và trả định nghĩa applies_<T> từ điều kiện của T.
+    Định nghĩa dùng nhóm GỐC của T (trước khi thêm con trỏ) để không tạo vòng giữa hai đơn vị dẫn chiếu lẫn nhau; đổi lại xích chỉ sâu
+    một bước. Đích không có nhóm quy tắc nào (1.6A trượt cổng, mất kết luận) thì KHÔNG thêm literal: một điều kiện không định nghĩa được
+    sẽ làm quy tắc nguồn không bao giờ chạy. -> (định nghĩa [(T, [thân])], ghi chú)."""
+    base = {u: {q: {"conds": list(g["conds"]), "or": {h: list(v) for h, v in g["or"].items()}, "exc": list(g["exc"]), "heads": list(g["heads"])}
+                for q, g in gs.items()} for u, gs in per_unit.items()}
+    defs, notes, used = {}, [], set()
+    for uid in per_unit:
+        att, n = pointer_attach(uid, a[uid]["dong"], texts.get(uid, ""))
+        notes += n
+        for i, q, grp in att:
+            for tgt in a[uid]["dong"][i]["targets"]:
+                if tgt not in defs:
+                    bodies_t = []
+                    for u2, gs in base.items():
+                        if not under(u2, tgt):
+                            continue
+                        for g in gs.values():
+                            for b in bodies(g):
+                                if b:
+                                    bodies_t.append(b)
+                                else:  # nhóm không điều kiện: tình huống của T là chính kết luận của nó
+                                    bodies_t += [[{"atom": h["atom"], "pred": h["pred"], "naf": False, "neg": h["neg"]}] for h in g["heads"]]
+                    defs[tgt] = bodies_t
+                if not defs[tgt]:
+                    notes.append(f"{uid} dòng {i}: đích {tgt} không có quy tắc nào, con trỏ không vào quy tắc")
+                    continue
+                if q not in per_unit[uid]:
+                    notes.append(f"{uid} dòng {i}: quy_tac {q} không có dòng mệnh đề, con trỏ bỏ")
+                    continue
+                lit = {"atom": pointer_atom(tgt), "pred": pointer_atom(tgt), "naf": False, "neg": False, "row": i, "pointer": tgt}
+                g = per_unit[uid][q]
+                (g["or"][grp] if grp else g["conds"]).append(lit)
+                used.add(tgt)
+    return [(t, defs[t]) for t in sorted(used)], notes
+
+
+def push_chapeau_conditions(a, per_unit):
+    """[A62, bước 3b] Câu dẫn danh sách có vế điều kiện ("Khi sử dụng người chưa đủ 15 tuổi làm việc, người sử dụng lao động phải tuân theo
+    quy định sau đây:", D145.K1): các mục con là kết luận, còn điều kiện của câu dẫn nằm ở một nhóm không có kết luận. Trước đây nhóm đó bị
+    bỏ (giới hạn đã ghi ở A61), nên mục con thành quy tắc không điều kiện. Ở đây ghép điều kiện, nhóm hoặc và ngoại lệ của nhóm đó vào MỌI
+    nhóm có kết luận của các đơn vị con cháu. -> tập (đơn vị, quy_tac) đã ghép, để bước gắn mục con lên tổ tiên không xét lại."""
+    done = set()
+    for uid, groups in per_unit.items():
+        if child_mode(a[uid]["dong"]) != "danh_sach":
+            continue
+        targets = [g for u2, gs in per_unit.items() if u2 != uid and under(u2, uid) for g in gs.values() if g["heads"]]
+        if not targets:
+            continue
+        for q, g in groups.items():
+            if g["heads"]:
+                continue
+            for t in targets:
+                t["conds"] += g["conds"]
+                for h, alts in g["or"].items():
+                    t["or"][f"{uid}:{h}"] = list(alts)
+                t["exc"] += g["exc"]
+                t.setdefault("src", set()).add(uid)  # quy tắc của mục con dùng chữ câu dẫn: 1.9 kiểm hiệu lực cả đơn vị này
+            done.add((uid, q))
+    return done
+
+
 def child_mode(rows):
     """cac_muc_con của dòng câu dẫn (bo_qua cau_dan) của đơn vị, nếu có."""
     for d in rows:
@@ -130,19 +271,24 @@ def bodies(g):
     return out
 
 
-def compile_units(a, pred_of, subj_of, order, kinds=None):
-    """-> (quy tắc [{id, unit, head, body, how}], ghi chú)."""
+def compile_units(a, pred_of, subj_of, order, kinds=None, texts=None):
+    """-> (quy tắc [{id, unit, head, body, how}], ghi chú). texts ({đơn vị: chữ}) có thì biên dịch con trỏ điều kiện (A62)."""
     rules, notes = [], []
     per_unit = {}
     for uid in sorted(a, key=order.get):
         groups, n = unit_groups(uid, a[uid]["dong"], pred_of, subj_of, kinds or {})
         notes += n
         per_unit[uid] = groups
+    pointer_defs = []
+    if texts is not None:
+        pointer_defs, n = add_pointers(a, per_unit, texts)
+        notes += n
+    pushed = push_chapeau_conditions(a, per_unit)
     # mục con chỉ có điều kiện -> gắn vào tổ tiên gần nhất có kết luận
     orphans = collections.defaultdict(list)  # tổ tiên -> [(đơn vị con, nhóm)]
     for uid, groups in per_unit.items():
         for q, g in groups.items():
-            if g["heads"]:
+            if g["heads"] or (uid, q) in pushed:
                 continue
             anc = next((x for x in cn.self_and_ancestors(uid)[1:] if any(gg["heads"] for gg in per_unit.get(x, {}).values())), None)
             if anc is None:
@@ -167,18 +313,23 @@ def compile_units(a, pred_of, subj_of, order, kinds=None):
             kids = orphans.get(uid, []) if q == min(qq for qq, gg in per_unit[uid].items() if gg["heads"]) else []
             for head in g["heads"]:
                 own = bodies(g)
+                extra = sorted(g.get("src", ()))
                 if not kids:
                     for b in own:
-                        add(uid, head, b, "compiled", [uid])
+                        add(uid, head, b, "compiled", [uid] + extra)
                 elif child_mode(a[uid]["dong"]) == "va":
                     merged = [lit for _, kg in kids for lit in bodies(kg)[0]]
                     for b in own:
-                        add(uid, head, b + merged, "compiled_children_and", [uid] + [k for k, _ in kids])
+                        add(uid, head, b + merged, "compiled_children_and", [uid] + [k for k, _ in kids] + extra)
                 else:
                     for kid, kg in kids:
                         for kb in bodies(kg):
                             for b in own:
-                                add(kid, head, b + kb, "compiled_child_or", [uid, kid])
+                                add(kid, head, b + kb, "compiled_child_or", [uid, kid] + extra)
+    for tgt, bs in pointer_defs:
+        src = [u for u in per_unit if under(u, tgt)]
+        for b in bs:
+            add(src[0], {"atom": pointer_atom(tgt), "pred": pointer_atom(tgt), "neg": False}, b, "pointer_def", src)
     return rules, notes
 
 
@@ -359,7 +510,8 @@ def main(doc_id=corpus.BASE_DOC_ID):
         print(f"BỎ QUA 1.8: chưa có kết quả 1.6A {P.full_cache_path()}")
         return
     a, pred_of, subj_of, kinds, order, to_input = load(doc_id)
-    rules, notes = compile_units(a, pred_of, subj_of, order, kinds)
+    texts = {u: c.get("text") or "" for u, c in P.contexts(doc_id).items()}
+    rules, notes = compile_units(a, pred_of, subj_of, order, kinds, texts)
     edges = exception_edges(doc_id, a)
     rel = apply_blocks(rules, edges)
     iso, probs = scan(rules, kinds)
