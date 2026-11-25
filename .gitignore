@@ -1,0 +1,22 @@
+# Secret / local config
+.env
+
+# Python bytecode cache (generated)
+__pycache__/
+*.pyc
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Reference PDFs (keep on disk, untracked)
+docs/papers/*.pdf
+
+# Temporary logs
+*.tmp.log
+smoke*_out.txt
