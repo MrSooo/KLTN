@@ -39,17 +39,27 @@ def read_jsonl(path):
 
 
 def scasp_query(program_path, goal_atom, timeout=60):
-    """Run one live s(CASP) query; return dict(satisfiable, output)."""
+    """Run one live s(CASP) query; return dict(satisfiable, output).
+
+    satisfiable is True / False only when the solver actually answered; a timeout returns
+    None plus timed_out=True so callers can tell "no model" from "did not finish".
+    """
     p = Path(program_path).as_posix().replace("'", "\\'")  # forward slashes: "\p" is not a Prolog escape
     g = ("use_module(library(scasp)), consult('%s'), "
          "( catch(scasp(user:%s, [model(M), tree(T)]), E, "
          "        (format('SCASP_ERROR: ~w~n', [E]), fail)) -> "
          "  format('ANSWER: yes~nMODEL:~n', []), writeln(M), format('TREE:~n', []), writeln(T) "
          "; format('ANSWER: no~n', []) ), halt." % (p, goal_atom))
-    cp = subprocess.run(["swipl", "-q", "-g", g, "-t", "halt"],
-                        capture_output=True, text=True, timeout=timeout)
+    try:
+        cp = subprocess.run(["swipl", "-q", "-g", g, "-t", "halt"],
+                            capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return {"satisfiable": None, "timed_out": True, "output": "TIMEOUT"}
     out = (cp.stdout or "") + (cp.stderr or "")
-    return {"satisfiable": "ANSWER: yes" in out, "output": out.strip()}
+    if "SCASP_ERROR" in out:
+        # Engine failure (stack, unsupported construct) must not be read as "no model".
+        return {"satisfiable": None, "timed_out": False, "error": "SCASP_ERROR", "output": out.strip()}
+    return {"satisfiable": "ANSWER: yes" in out, "timed_out": False, "output": out.strip()}
 
 
 def predict_verdict(case):
@@ -110,9 +120,12 @@ def evaluate(cases, program_path):
             q = "holds('%s')" % c["anchor"]
             try:
                 res = scasp_query(program_path, q)
-                row["scasp"] = {"query": q, "satisfiable": res["satisfiable"]}
+                row["scasp"] = {"query": q, "satisfiable": res["satisfiable"],
+                                "timed_out": res["timed_out"]}
+                if res.get("error"):
+                    row["scasp"]["error"] = res["error"]
             except Exception as e:  # never fail the whole benchmark on a probe
-                row["scasp"] = {"query": q, "error": str(e)}
+                row["scasp"] = {"query": q, "satisfiable": None, "timed_out": False, "error": str(e)}
         rows.append(row)
     return rows
 
@@ -173,6 +186,42 @@ def static_scan(src):
             "sample": [e._asdict() for e in errs[:8]]}
 
 
+def engine_label(result):
+    """Live only when the engine actually answered; a timeout is not 'offline'."""
+    if result.get("timed_out"):
+        return "**timeout**"
+    if result["satisfiable"] is True:
+        return "**live**"
+    return "offline"
+
+
+def blocking_label(result):
+    """Blocked requires an explicit 'no model'; timeout/error must not be read as blocked."""
+    if result.get("timed_out"):
+        return "**timeout (undecided)**"
+    if result["satisfiable"] is False:
+        return "**no model (blocked)**"
+    if result["satisfiable"] is True:
+        return "satisfiable (not blocked)"
+    return "not evaluated"
+
+
+def scasp_cell(row):
+    """Per-case engine cell: SAT / UNSAT / TIMEOUT / ERR, never a silent blank."""
+    sc = row.get("scasp")
+    if not sc:
+        return "—"
+    if sc.get("error"):
+        return "ERR"
+    if sc.get("timed_out"):
+        return "TIMEOUT"
+    if sc["satisfiable"] is True:
+        return "SAT"
+    if sc["satisfiable"] is False:
+        return "UNSAT"
+    return "—"
+
+
 def write_markdown(report, smoke, path):
     m = report["metrics"]
     scan = report["static_scan"]
@@ -184,9 +233,9 @@ def write_markdown(report, smoke, path):
     a("")
     a("## Summary")
     a("- **Accuracy: %d/%d = %.1f%%**" % (m["correct"], m["total"], 100 * m["accuracy"]))
-    a("- s(CASP) engine: %s" % ("**live**" if smoke["holds_no_exception"]["satisfiable"] else "offline"))
+    a("- s(CASP) engine: %s" % engine_label(smoke["holds_no_exception"]))
     a("- s(CASP) exception blocking: `holds('LLD2019.D35.K2.e')` -> %s (pipeline exception C_798cfde0)" %
-      ("**no model (blocked)**" if not smoke["holds_blocked"]["satisfiable"] else "satisfiable"))
+      blocking_label(smoke["holds_blocked"]))
     a("")
     a("## Per-verdict breakdown")
     a("| verdict | total | correct | accuracy |")
@@ -218,14 +267,14 @@ def write_markdown(report, smoke, path):
     a("| id | depth | gold | predicted | scasp(holds anchor) | ok |")
     a("|---|---|---|---|---|---|")
     for r in report["rows"]:
-        sc = ""
-        if r.get("scasp"):
-            sc = "SAT" if r["scasp"].get("satisfiable") else "UNSAT"
-            if "error" in r["scasp"]:
-                sc = "ERR"
         a("| %s | %s | %s | %s | %s | %s |" % (
             r["id"], r.get("exception_depth"), r["gold_verdict"], r["predicted"],
-            sc, "✓" if r["correct"] else "✗"))
+            scasp_cell(r), "✓" if r["correct"] else "✗"))
+    a("")
+    a("Notes: `predict_verdict()` is a hand-encoded deterministic ceiling over")
+    a("`data/labor/concept_book.json`, so the accuracy above is a symbolic upper bound,")
+    a("not the output of an LLM arm. The `scasp` column probes `holds(<article anchor>)`")
+    a("only; it is not the nested-exception blocking check, which is the smoke row below.")
     a("")
     a("## Live s(CASP) model (representative)")
     a("#### `holds('LLD2019.D35.K1.a')` — no incoming exception, model exists")
@@ -265,6 +314,7 @@ def main(argv=None):
 
     report = {"metrics": m, "static_scan": scan,
               "smoke": {k: v["satisfiable"] for k, v in smoke.items()},
+              "smoke_timed_out": {k: v["timed_out"] for k, v in smoke.items()},
               "program": {"units": n_units, "exception_of": n_exc, "a8_rules": n_rules},
               "rows": rows}
 
