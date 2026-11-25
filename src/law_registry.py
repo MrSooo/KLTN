@@ -16,6 +16,9 @@ class Law:
     title: str
     articles: dict = field(default_factory=dict)   # stem -> list[int]; absent = don't pin the sequence
     expected: dict = field(default_factory=dict)   # stem -> {"units": int, "dieu": int, "graph": {...}}
+    so_hieu: str | None = None                     # số hiệu văn bản gốc, dùng cho nút van_ban ở A7
+    ngay_ban_hanh: str | None = None
+    hieu_luc: str | None = None
 
 
 LAWS = {
@@ -29,10 +32,12 @@ LAWS = {
             "blds2015_5dieu": {"units": 35, "dieu": 5, "graph": {"nodes": 35, "edges": 64, "dup": 0}},
             "blds2015_p4": {"units": 215, "dieu": 54, "graph": {"nodes": 220, "edges": 364, "dup": 4}},
         },
+        so_hieu="91/2015/QH13", ngay_ban_hanh="2015-11-24", hieu_luc="2017-01-01",
     ),
     # Base law d0 of the paper. Prefix "LLD2019" (Bộ luật Lao động) = our convention, not spec-canonical.
     # No article list pinned yet: ingest permissively; counts get backfilled once the corpus lands.
-    "lld2019": Law("lld2019", "LLD2019", "Bộ luật Lao động số 45/2019/QH14"),
+    "lld2019": Law("lld2019", "LLD2019", "Bộ luật Lao động số 45/2019/QH14",
+                   so_hieu="45/2019/QH14", ngay_ban_hanh="2019-11-20", hieu_luc="2021-01-01"),
 }
 
 

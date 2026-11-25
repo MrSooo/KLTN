@@ -79,8 +79,9 @@ def doc_node(code, so_hieu=None, ten=None, co_quan=None, ngay_ban_hanh=None, hie
     return {**node(code, DOC_TYPE, so_hieu, ten), "co_quan": co_quan, "ngay_ban_hanh": ngay_ban_hanh, "hieu_luc": hieu_luc}
 
 
-def base_doc_node():
-    d = a1.BASE_DOC
+def base_doc_node(src):
+    """Nút văn bản gốc của nguồn đang dựng đồ thị (không hardcode Bộ luật Dân sự)."""
+    d = a1.base_doc_for(Path(src).stem)
     return doc_node(d["id"], d["so_hieu"], d["ten"], d["co_quan"], d["ngay_ban_hanh"], d["hieu_luc"])
 
 
@@ -201,7 +202,7 @@ def graph_base(src):
     nodes = unit_nodes(rows["a1_triples"])
     units = [n for n in nodes if n["type"] != a2.CHUONG]
     chapters = [n for n in nodes if n["type"] == a2.CHUONG]
-    doc = base_doc_node()
+    doc = base_doc_node(src)
     attach_to_doc(edge_set, chapters + units, doc["id"])
     return assemble(units, condition_nodes(rows["a6_conditions"]), edge_set, {}, chapters + [doc]), paths
 
@@ -306,7 +307,7 @@ def graph_at(src, versions, date):
     conditions = [node(c, a6.COND_TYPE, text=clause, kind=a6.condition_kind(clause)) for c, clause in general.nodes]
     for s, p, o, evidence, method in general.edges + general.ref_edges:
         edge_set.add("a6_exceptions", {"s": s, "p": p, "o": o, "evidence": evidence, "method": method})
-    docs = [base_doc_node()]
+    docs = [base_doc_node(src)]
     attach_to_doc(edge_set, chapters + units, docs[0]["id"])
     docs += add_amend_edges(edge_set, rows["a4_amend_edges"], date, active_ids | {docs[0]["id"]}, paths["a4_amend_edges"])
     amend = [e for e in edge_set.edges.values() if e["p"] in AMEND_P]

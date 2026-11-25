@@ -21,6 +21,22 @@ DOC_PREFIX = law_registry.prefix_for("blds2015")  # tiền tố id mặc định
 BASE_DOC = {"id": DOC_PREFIX, "ten": "Bộ luật Dân sự", "so_hieu": "91/2015/QH13", "co_quan": "Quốc hội",
             "ngay_ban_hanh": "2015-11-24", "hieu_luc": "2017-01-01"}
 
+
+def base_doc_for(stem):
+    """Văn bản gốc của một nguồn, lấy id/tiền tố và metadata từ law_registry.
+
+    Mặc định (luật dân sự) giữ nguyên BASE_DOC để đầu ra A7 cũ không đổi; luật khác lấy
+    số hiệu/ngày ban hành/ngày hiệu lực đã đăng ký, tránh nút van_ban mang tiền tố BLDS2015.
+    """
+    law = law_registry.law_for(stem)
+    same_as_default = law.prefix == BASE_DOC["id"]
+    return {"id": law.prefix,
+            "ten": BASE_DOC["ten"] if same_as_default else law.title,
+            "so_hieu": law.so_hieu or BASE_DOC["so_hieu"],
+            "co_quan": BASE_DOC["co_quan"],
+            "ngay_ban_hanh": law.ngay_ban_hanh or BASE_DOC["ngay_ban_hanh"],
+            "hieu_luc": law.hieu_luc or BASE_DOC["hieu_luc"]}
+
 # Dãy số Điều mong đợi của từng file nguồn, theo thứ tự xuất hiện.
 EXPECTED_DIEU = {
     "blds2015_5dieu.md": [621, 626, 644, 650, 651],
