@@ -1,8 +1,15 @@
 """S_infer: compile the in-force program Π_τ (units in force at date τ) to s(CASP).
 
-exception_of edges become blocking rules via negation-as-failure:
-    blocked(U) :- exception_of(_, U).
+exception_of edges are kept as binary facts for provenance, and each distinct target also gets a
+unary has_exception/1 fact. Blocking then reads the unary predicate:
+
+    blocked(U) :- has_exception(U).
     holds(U)   :- in_force(U), not blocked(U).
+
+A binary-only rule (blocked(U) :- exception_of(_, U)) makes s(CASP) unroll an existential
+`forall` over every exception_of/2 fact when proving not blocked(U); with ten facts on the
+labor sample that query no longer terminates within two minutes. Grounding the target set into
+has_exception/1 keeps every not blocked(U) goal ground.
 A8 rule premises are kept as quoted atoms; grounding legal text to logical atoms is S_know's
 job, so here we only care that the .pl stays syntactically valid however the LLM phrased it.
 """
@@ -87,35 +94,47 @@ def structural_edges(codes):
             out.append((code, "part_of", parent))
     return out
 
-def _resolve_jsonl_path(dir_prefix, stem, tag, suffix=".jsonl"):
-    """Resolve JSONL path from either v3_refactor subdir or legacy flat."""
+def _resolve_jsonl_path(stage_dir, file_prefix, stem, tag, suffix=".jsonl"):
+    """Resolve JSONL path: v3 stage subdir first, legacy flat file as fallback.
+
+    v3_refactor: data/processed/<stage_dir>/<file_prefix>_<stem><tag>.jsonl
+    legacy flat: data/processed/<file_prefix>_<stem><tag>.jsonl
+    Stage dir and file prefix differ per stage (a3/a3_exceptions, a8/a8_implicit_exceptions),
+    so one cannot be derived from the other.
+    """
     stem_t = f"{stem}{tag}" if tag else stem
-    # v3_refactor: data/processed/<dir_prefix>/<dir_prefix>_<stem_t>.jsonl
-    subdir = edges.PROCESSED_DIR / dir_prefix / f"{dir_prefix}_{stem_t}{suffix}"  # noqa: E501
-    # legacy flat: data/processed/<dir_prefix>_<stem_t>.jsonl
-    flat = edges.PROCESSED_DIR / f"{dir_prefix}_{stem_t}{suffix}"  # noqa: E501
+    subdir = edges.PROCESSED_DIR / stage_dir / f"{file_prefix}_{stem_t}{suffix}"
+    flat = edges.PROCESSED_DIR / f"{file_prefix}_{stem_t}{suffix}"
     if subdir.exists():
         return subdir
     if flat.exists():
         return flat
-    return subdir  # default to subdir
+    return subdir  # default to the v3 location; a missing file reads as no rows anyway
+
+
 def exception_rows(src, versions, date):
+    """exception_of rows from A3 (in-unit), A6 (general) and A8 (implicit), deduplicated."""
     stem = Path(src).stem
     tag = _tag(versions, date)
-    rows = []
-    rows += read_rows(_resolve_jsonl_path("a3", stem, tag))
-    rows += read_rows(_resolve_jsonl_path("a6", stem, tag))
-    rows += read_rows(_resolve_jsonl_path("a8_implicit_exceptions", stem, tag))
     prefix = unit_prefix(src)
-    for r in rows:  # normalize stale cross-law ids coming from older A3/A6/A8 outputs
-        for key in ("s", "o"):
-            if r.get(key):
-                r[key] = with_unit_prefix(r[key], prefix)
+    rows, seen = [], set()
+    for stage_dir, file_prefix in (("a3", "a3_exceptions"),
+                                   ("a6", "a6_exceptions"),
+                                   ("a8", "a8_implicit_exceptions")):
+        for r in read_rows(_resolve_jsonl_path(stage_dir, file_prefix, stem, tag)):
+            for key in ("s", "o"):  # normalize stale cross-law ids coming from older A3/A6/A8 outputs
+                if r.get(key):
+                    r[key] = with_unit_prefix(r[key], prefix)
+            triple = (r.get("s"), r.get("p"), r.get("o"))
+            if triple in seen:  # same exception surfaced by more than one stage
+                continue
+            seen.add(triple)
+            rows.append(r)
     return rows
 
 def refers_rows(src):
     prefix = unit_prefix(src)
-    rows = read_rows(OUT_DIR / f"a2_refs_{Path(src).stem}.jsonl")
+    rows = read_rows(_resolve_jsonl_path("a2", "a2_refs", Path(src).stem, None))
     for r in rows:
         if r.get("p") == "refers_to" and r.get("o"):
             r["s"], r["o"] = with_unit_prefix(r["s"], prefix), with_unit_prefix(r["o"], prefix)
@@ -158,9 +177,15 @@ def render_program(src, versions=None, date=None, query=None):
             exc.append((r["s"], r["o"]))
             L.append(f"exception_of({atom(r['s'])}, {atom(r['o'])}).")
     L.append("")
+    # Unary view of the same edges: the target set, deduplicated and grounded, so that
+    # not blocked(U) never needs an existential scan over exception_of/2.
+    targets = sorted({o for _, o in exc})
+    for o in targets:
+        L.append(f"has_exception({atom(o)}).")
+    L.append("")
 
     L.append("% block default rule of U iff some exception targets U (negation-as-failure)")
-    L.append("blocked(U) :- exception_of(_, U).")
+    L.append("blocked(U) :- has_exception(U).")
     L.append("holds(U) :- in_force(U), not blocked(U).")
     L.append("")
 
@@ -224,7 +249,7 @@ def run(src, versions=None, date=None, query=None):
     lines = [f"A9 report (s(CASP)): {stem}" + (f" @ {date}" if tag else ""),
              f"in_force units: {n_units} | exception_of: {n_exc} | A8 rules in_force: {n_rules}",
              f"program: {out}",
-             "blocking: blocked(U) :- exception_of(_, U). ; holds(U) :- in_force(U), not blocked(U)."]
+             "blocking: blocked(U) :- has_exception(U). ; holds(U) :- in_force(U), not blocked(U)."]
     answer = None
     if query:
         answer, note = _run_solver(out, query)

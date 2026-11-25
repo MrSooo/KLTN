@@ -1,11 +1,11 @@
-"""A2a: cạnh cấu trúc contains / part_of giữa Điều > Khoản > Điểm.
+"""A2a: cạnh cấu trúc contains / part_of giữa Chương > Điều > Khoản > Điểm (Chương chỉ khi file nguồn có tiêu đề Chương).
 
-Chỉ đọc triples của A1 (data/processed/a1_triples_<stem>.jsonl), không import parse: nếu A1 đánh mã sai thì
+Chỉ đọc triples của A1 (data/processed/a1/a1_triples_<stem>.jsonl), không import a1_parse: nếu A1 đánh mã sai thì
 lỗi hiện ra ở đây thay vì bị che, vì cha được suy từ chuỗi mã còn kiểm tra dùng thuộc tính type của A1.
 
 Chạy: python -I src/edges.py <file md nguồn>          (bắt buộc truyền path, không có mặc định)
       python -I src/edges.py <file md nguồn> --refs   (Bước 2: chỉ in dẫn chiếu và bảng hình dạng, không ghi file)
-      python -I src/edges.py <file md nguồn> --refers-to   (A2b: ghi a2_refs_<stem>.jsonl và docs/a2_unresolved_<stem>.txt)
+      python -I src/edges.py <file md nguồn> --refers-to   (A2b: ghi data/processed/a2/a2_refs_<stem>.jsonl và docs/bao_cao_chay/a2/a2_unresolved_<stem>.txt)
       python -I src/edges.py <file md nguồn> --triggers   (A3 bước 1: chỉ in cụm trừ / ngoại trừ / không áp dụng, không ghi file)
 """
 import argparse
@@ -20,53 +20,68 @@ from typing import NamedTuple
 ROOT = Path(__file__).resolve().parent.parent
 PROCESSED_DIR = ROOT / "data" / "processed"
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I: sibling import needs an explicit path
+from a2_edges import CHUONG, build_edges, check_edges  # cấu trúc Chương > Điều > Khoản > Điểm dùng chung với pipeline v3
+
 # Loại của cha mà mỗi loại con phải có. Nguồn là thuộc tính type của A1, độc lập với chuỗi mã.
 PARENT_TYPE = {"khoan": "dieu", "diem": "khoan"}
 
-# Thuộc tính của đơn vị mà hàm nạp giữ lại (text có thể vắng); heading, version không dùng ở A2a.
+# Thuộc tính của đơn vị mà hàm nạp giữ lại (text, chuong có thể vắng); heading, version không dùng ở A2a.
 REQUIRED_ATTRS = ("type", "number", "source_line")
-KEPT_ATTRS = REQUIRED_ATTRS + ("text",)
+KEPT_ATTRS = REQUIRED_ATTRS + ("text", CHUONG)
 
 
 def _stem(src):
     return Path(src).stem
 
 
-def _flat_path(prefix, stem, suffix=".jsonl"):
-    """Flat (legacy) path: data/processed/<prefix>_<stem>.jsonl"""
-    return PROCESSED_DIR / f"{prefix}_{stem}{suffix}"
+def _flat_path(file_prefix, stem, suffix=".jsonl"):
+    """Flat (legacy) path: data/processed/<file_prefix>_<stem><suffix>"""
+    return PROCESSED_DIR / f"{file_prefix}_{stem}{suffix}"
 
 
-def _subdir_path(prefix, stem, suffix=".jsonl"):
-    """v3_refactor subdirectory path: data/processed/<prefix>/<prefix>_<stem>.jsonl"""
-    return PROCESSED_DIR / prefix / f"{prefix}_{stem}{suffix}"
+def _subdir_path(stage_dir, file_prefix, stem, suffix=".jsonl"):
+    """v3 path: data/processed/<stage_dir>/<file_prefix>_<stem><suffix>"""
+    return PROCESSED_DIR / stage_dir / f"{file_prefix}_{stem}{suffix}"
 
 
-def _resolve_read_path(prefix, stem, suffix=".jsonl"):
-    """Resolve a read path: prefer existing file, check subdir then flat."""
-    subdir = _subdir_path(prefix, stem, suffix)
-    flat = _flat_path(prefix, stem, suffix)
-    if subdir.exists():
-        return subdir
+def _resolve_read_path(stage_dir, file_prefix, stem, suffix=".jsonl"):
+    """Resolve a read path: canonical v3 file, then the pre-prefix subdir name, then the flat layout."""
+    canonical = _subdir_path(stage_dir, file_prefix, stem, suffix)
+    if canonical.exists():
+        return canonical
+    stale = PROCESSED_DIR / stage_dir / f"{stage_dir}_{stem}{suffix}"  # a2/a2_<stem>.jsonl produced before the stage prefix
+    if stale.exists():
+        return stale
+    flat = _flat_path(file_prefix, stem, suffix)
     if flat.exists():
         return flat
-    return subdir
+    return canonical  # default to the v3 location; a missing file reads as no rows anyway
 
 
 def triples_path(src, for_write=False):
-    """Path to A1 triples. If for_write, return subdir path; otherwise resolve existing."""
+    """Path to A1 triples. If for_write, return the v3 output path; otherwise resolve existing.
+
+    A1 writes data/processed/a1/a1_triples_<stem>.jsonl (see a1_parse.triples_path), so that
+    name is checked first; the older a1/a1_<stem>.jsonl and flat layouts stay as fallbacks for
+    artifacts produced before the stage prefix was added.
+    """
     stem = _stem(src)
     if for_write:
-        return _subdir_path("a1", stem)
-    return _resolve_read_path("a1", stem)
+        return _subdir_path("a1", "a1_triples", stem)
+    return _resolve_read_path("a1", "a1_triples", stem)
 
 
 def edges_path(src, for_write=False):
-    """Path to A2 edges. If for_write, return subdir path; otherwise resolve existing."""
+    """Path to A2 structural edges. If for_write, return the v3 output path; otherwise resolve existing.
+
+    A2 writes data/processed/a2/a2_edges_<stem>.jsonl (see a2_edges.edges_path); the pre-refactor
+    a2/a2_<stem>.jsonl and flat names remain readable fallbacks.
+    """
     stem = _stem(src)
     if for_write:
-        return _subdir_path("a2", stem)
-    return _resolve_read_path("a2", stem)
+        return _subdir_path("a2", "a2_edges", stem)
+    return _resolve_read_path("a2", "a2_edges", stem)
 
 
 def load_units(path):
@@ -103,56 +118,6 @@ def parent_of(code):
     return None if len(parts) == 2 else ".".join(parts[:-1])
 
 
-def build_edges(units):
-    """Mỗi cặp cha-con trực tiếp thành 2 cạnh (s, p, o): (cha, contains, con) rồi (con, part_of, cha).
-
-    Duyệt theo thứ tự đơn vị trong file triples; hai cạnh của cùng một con nằm liền nhau.
-    """
-    edges = []
-    for code in units:
-        parent = parent_of(code)
-        if parent is None:
-            continue
-        edges.append((parent, "contains", code))
-        edges.append((code, "part_of", parent))
-    return edges
-
-
-def check_edges(units, edges):
-    """Trả về list lỗi (rỗng nếu sạch). So loại của cha theo thuộc tính type của A1, không theo mã."""
-    errors = []
-
-    for edge, n in collections.Counter(edges).items():
-        if n > 1:
-            errors.append(f"cạnh trùng {n} lần: {edge}")
-
-    contains = [(s, o) for s, p, o in edges if p == "contains"]
-    part_of = [(o, s) for s, p, o in edges if p == "part_of"]  # đảo về (cha, con) để so với contains
-    for s, o in contains:
-        missing = [x for x in (s, o) if x not in units]
-        if missing:
-            errors.append(f"contains {s} -> {o}: không có trong tập đơn vị: {missing}")
-            continue
-        want = PARENT_TYPE.get(units[o]["type"])
-        if units[s]["type"] != want:
-            errors.append(f"{o} (type {units[o]['type']}) có cha {s} (type {units[s]['type']}), "
-                          f"mong đợi cha type {want}")
-    if collections.Counter(contains) != collections.Counter(part_of):
-        errors.append(f"contains và part_of không đối xứng: chỉ có contains {sorted(set(contains) - set(part_of))}, "
-                      f"chỉ có part_of {sorted(set(part_of) - set(contains))}")
-
-    # mỗi đơn vị không phải Điều có đúng một cha, Điều không có cha
-    n_parents = collections.Counter(o for _, o in contains)
-    for code, u in units.items():
-        want = 0 if u["type"] == "dieu" else 1
-        if n_parents[code] != want:
-            errors.append(f"{code} (type {u['type']}) có {n_parents[code]} cha, mong đợi {want}")
-    n_children = sum(1 for u in units.values() if u["type"] != "dieu")
-    if len(contains) != n_children:
-        errors.append(f"số contains = {len(contains)}, số đơn vị type khác dieu = {n_children}")
-    return errors
-
-
 def write_edges(edges, path):
     """Ghi JSONL, mỗi dòng {"s","p","o","evidence"}. evidence rỗng cho cạnh cấu trúc."""
     path = Path(path)
@@ -186,7 +151,7 @@ def run(src):
 
     per_pred = collections.Counter(p for _, p, _ in edges)
     print("số đơn vị:", len(units), "| số cạnh:", len(edges), "| theo loại:", dict(per_pred))
-    out = edges_path(src)
+    out = edges_path(src, for_write=True)
     write_edges(edges, out)
     print("đã ghi", out)
 
@@ -297,12 +262,16 @@ LEVEL_TYPE = ("dieu", "khoan", "diem")      # thuộc tính type của A1 theo c
 
 
 def refs_path(src):
-    return PROCESSED_DIR / f"a2_refs_{Path(src).stem}.jsonl"
+    """Cạnh refers_to; A2b ghi data/processed/a2/a2_refs_<stem>.jsonl (xem a2_edges.refs_path)."""
+    return _subdir_path("a2", "a2_refs", _stem(src))
 
 
 def unresolved_path(src):
-    """Mỗi file nguồn một file unresolved, để chạy file này không ghi đè file kia."""
-    return ROOT / "docs" / f"a2_unresolved_{Path(src).stem}.txt"
+    """Mỗi file nguồn một file unresolved, để chạy file này không ghi đè file kia.
+
+    A2b ghi docs/bao_cao_chay/a2/a2_unresolved_<stem>.txt (xem a2_edges.unresolved_path).
+    """
+    return ROOT / "docs" / "bao_cao_chay" / "a2" / f"a2_unresolved_{Path(src).stem}.txt"
 
 
 def code_segment(level, arg):
@@ -545,7 +514,7 @@ def main(argv=None):
     mode.add_argument("--refs", action="store_true",
                       help="Bước 2: chỉ in danh sách dẫn chiếu và bảng hình dạng, không ghi file nào")
     mode.add_argument("--refers-to", action="store_true",
-                      help="A2b: dựng cạnh refers_to, ghi a2_refs_<stem>.jsonl và docs/a2_unresolved_<stem>.txt")
+                      help="A2b: dựng cạnh refers_to, ghi data/processed/a2/a2_refs_<stem>.jsonl và docs/bao_cao_chay/a2/a2_unresolved_<stem>.txt")
     mode.add_argument("--triggers", action="store_true",
                       help="A3 bước 1: chỉ in cụm trừ / ngoại trừ / không áp dụng và bảng 6 từ đứng sau, không ghi file nào")
     args = ap.parse_args(argv)

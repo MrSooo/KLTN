@@ -1,7 +1,7 @@
 """A3: cạnh exception_of tường minh, chỉ hai quy tắc riêng (không có bộ khớp tổng quát).
 
 Đầu vào: triples của A1 (edges.read_units) và cạnh contains của A2a (edges.build_edges).
-Đầu ra: data/processed/a3_exceptions_<stem>.jsonl (s, p, o, evidence, method) và docs/a3_unhandled_<stem>.txt.
+Đầu ra: data/processed/a3/a3_exceptions_<stem>.jsonl (s, p, o, evidence, method) và docs/bao_cao_chay/a3/a3_unhandled_<stem>.txt.
 Chiều cạnh: s là phần ngoại lệ, o là quy tắc bị ngoại trừ.
 
   Quy tắc 1, not_apply_pattern: đơn vị U có "không áp dụng". Nếu cụm dẫn chiếu (edges.CHAIN_RE) đứng NGAY trước nó, chỉ
@@ -35,12 +35,16 @@ LIST_END = "sau đây:"
 
 
 def exceptions_path(src):
-    return edges.PROCESSED_DIR / f"a3_exceptions_{Path(src).stem}.jsonl"
+    """A3 ghi data/processed/a3/a3_exceptions_<stem>.jsonl (xem a3_exceptions.exceptions_path)."""
+    return edges.PROCESSED_DIR / "a3" / f"a3_exceptions_{Path(src).stem}.jsonl"
 
 
 def unhandled_path(src):
-    """Mỗi file nguồn một file unhandled, để chạy file này không ghi đè file kia."""
-    return edges.ROOT / "docs" / f"a3_unhandled_{Path(src).stem}.txt"
+    """Mỗi file nguồn một file unhandled, để chạy file này không ghi đè file kia.
+
+    A3 ghi docs/bao_cao_chay/a3/a3_unhandled_<stem>.txt (xem a3_exceptions.unhandled_path).
+    """
+    return edges.ROOT / "docs" / "bao_cao_chay" / "a3" / f"a3_unhandled_{Path(src).stem}.txt"
 
 
 def kind_of(phrase):

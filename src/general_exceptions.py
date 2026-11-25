@@ -2,8 +2,8 @@
 
 Đầu vào: triples của A1 (edges.read_units). Không đọc file A3: A3 chỉ nhận một trigger "trừ"/"ngoại trừ" khi text kết thúc bằng
 "sau đây:" (quy tắc 2, exceptions.find_exceptions), nên mọi trigger "trừ" còn lại là phần của A6 hoặc unhandled của A6.
-Đầu ra: data/processed/a6_conditions_<stem>.jsonl (bộ ba s,p,o của nút điều kiện: type, text),
-        data/processed/a6_exceptions_<stem>.jsonl (s, p, o, evidence, method), docs/a6_unhandled_<stem>.txt.
+Đầu ra: data/processed/a6/a6_conditions_<stem>.jsonl (bộ ba s,p,o của nút điều kiện: type, text),
+        data/processed/a6/a6_exceptions_<stem>.jsonl (s, p, o, evidence, method), docs/bao_cao_chay/a6/a6_unhandled_<stem>.txt.
 Chiều cạnh giống A3: s là phần ngoại lệ (nút điều kiện), o là đơn vị quy tắc bị ngoại trừ.
 
   Mẫu: (ngoại )trừ trường hợp <mệnh đề>. Mệnh đề chạy đến hết đoạn (không vượt qua dòng mới), bỏ . ; : , ở cuối.
@@ -37,16 +37,21 @@ GENERAL_RE = re.compile(r"(?:ngoại[ ]+)?trừ[ ]+trường[ ]+hợp(?!\w)", re
 
 
 def conditions_path(src):
-    return edges.PROCESSED_DIR / f"a6_conditions_{Path(src).stem}.jsonl"
+    """A6 ghi data/processed/a6/a6_conditions_<stem>.jsonl (xem a6_general_exceptions.conditions_path)."""
+    return edges.PROCESSED_DIR / "a6" / f"a6_conditions_{Path(src).stem}.jsonl"
 
 
 def exceptions_path(src):
-    return edges.PROCESSED_DIR / f"a6_exceptions_{Path(src).stem}.jsonl"
+    """A6 ghi data/processed/a6/a6_exceptions_<stem>.jsonl (xem a6_general_exceptions.exceptions_path)."""
+    return edges.PROCESSED_DIR / "a6" / f"a6_exceptions_{Path(src).stem}.jsonl"
 
 
 def unhandled_path(src):
-    """Mỗi file nguồn một file unhandled, để chạy file này không ghi đè file kia."""
-    return edges.ROOT / "docs" / f"a6_unhandled_{Path(src).stem}.txt"
+    """Mỗi file nguồn một file unhandled, để chạy file này không ghi đè file kia.
+
+    A6 ghi docs/bao_cao_chay/a6/a6_unhandled_<stem>.txt (xem a6_general_exceptions.unhandled_path).
+    """
+    return edges.ROOT / "docs" / "bao_cao_chay" / "a6" / f"a6_unhandled_{Path(src).stem}.txt"
 
 
 def norm_text(s):

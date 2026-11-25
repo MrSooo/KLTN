@@ -301,7 +301,7 @@ def test_files_on_disk():
         assert on_disk.exists(), f"file {name}: chưa có {on_disk}, chạy exceptions.py trước"
         rows = [json.loads(line) for line in on_disk.read_text(encoding="utf-8").split("\n") if line]
         assert all(list(r) == ["s", "p", "o", "evidence", "method"] for r in rows), f"file {name}: sai khoá"
-        assert [(r["s"], r["p"], r["o"], r["evidence"], r["method"]) for r in rows] == edges, f"file {name}: khác dựng lại"
+        assert [(r["s"], r["p"], r["o"], r["evidence"], r["method"]) for r in rows] == edge_list, f"file {name}: khác dựng lại"
         lines = exceptions.unhandled_path(path).read_text(encoding="utf-8").split("\n")
         assert [tuple(x.split("\t")) for x in lines[:-1]] == unhandled and lines[-1] == "", f"file {name}: unhandled"
         for other in (edges.edges_path(path), edges.refs_path(path)):
