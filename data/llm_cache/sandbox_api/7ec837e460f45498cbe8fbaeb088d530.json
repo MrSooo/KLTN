@@ -1,0 +1,74 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T08:37:51+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0210\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D118.K1\",\n    \"tieu_de_dieu\": \"Nội quy lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải ban hành nội quy lao động, nếu sử dụng từ 10 người lao động trở lên thì nội quy lao động phải bằng văn bản.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D118.K3\",\n    \"tieu_de_dieu\": \"Nội quy lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi ban hành nội quy lao động hoặc sửa đổi, bổ sung nội quy lao động, người sử dụng lao động phải tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở.\"\n   },\n   \"vi_tu_chung\": [\n    \"issue_internal_labor_regulations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0211\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D122.K5\",\n    \"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Không xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động trong khi mắc bệnh tâm thần hoặc một bệnh khác làm mất khả năng nhận thức hoặc khả năng điều khiển hành vi của mình.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.b\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Sa thải, kỷ luật, đơn phương chấm dứt hợp đồng lao động, không tiếp tục giao kết hoặc gia hạn hợp đồng lao động, chuyển người lao động làm công việc khác;\"\n   },\n   \"vi_tu_chung\": [\n    \"discipline_employee_for_labor_violations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0212\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D128.K3\",\n    \"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người lao động bị xử lý kỷ luật lao động, người lao động cũng không phải trả lại số tiền lương đã tạm ứng.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D128.K4\",\n    \"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người lao động không bị xử lý kỷ luật lao động thì được người sử dụng lao động trả đủ tiền lương cho thời gian bị tạm đình chỉ công việc.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_labor_discipline\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0213\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D128.K3\",\n    \"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người lao động bị xử lý kỷ luật lao động, người lao động cũng không phải trả lại số tiền lương đã tạm ứng.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D131\",\n    \"tieu_de_dieu\": \"Khiếu nại về kỷ luật lao động, trách nhiệm vật chất\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người bị xử lý kỷ luật lao động, bị tạm đình chỉ công việc hoặc phải bồi thường theo chế độ trách nhiệm vật chất nếu thấy không thỏa đáng có quyền khiếu nại với người sử dụng lao động, với cơ quan có thẩm quyền theo quy định của pháp luật hoặc yêu cầu giải quyết tranh chấp lao động theo trình tự do pháp luật quy định.\\nChính phủ quy định chi tiết Điều này.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_labor_discipline\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0214\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D128.K3\",\n    \"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người lao động bị xử lý kỷ luật lao động, người lao động cũng không phải trả lại số tiền lương đã tạm ứng.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K2\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định của Tòa án về cuộc đình công là bất hợp pháp thì người lao động đang tham gia đình công phải ngừng ngay đình công và trở lại làm việc; nếu người lao động không ngừng đình công, không trở lại làm việc thì tùy theo mức độ vi phạm có thể bị xử lý kỷ luật lao động theo quy định của pháp luật về lao động.\\nTrong trường hợp cuộc đình công là bất hợp pháp mà gây thiệt hại cho người sử dụng lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công phải bồi thường thiệt hại theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_labor_discipline\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0215\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D128.K4\",\n    \"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người lao động không bị xử lý kỷ luật lao động thì được người sử dụng lao động trả đủ tiền lương cho thời gian bị tạm đình chỉ công việc.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D131\",\n    \"tieu_de_dieu\": \"Khiếu nại về kỷ luật lao động, trách nhiệm vật chất\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người bị xử lý kỷ luật lao động, bị tạm đình chỉ công việc hoặc phải bồi thường theo chế độ trách nhiệm vật chất nếu thấy không thỏa đáng có quyền khiếu nại với người sử dụng lao động, với cơ quan có thẩm quyền theo quy định của pháp luật hoặc yêu cầu giải quyết tranh chấp lao động theo trình tự do pháp luật quy định.\\nChính phủ quy định chi tiết Điều này.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_labor_discipline\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0216\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D128.K4\",\n    \"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người lao động không bị xử lý kỷ luật lao động thì được người sử dụng lao động trả đủ tiền lương cho thời gian bị tạm đình chỉ công việc.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K2\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định của Tòa án về cuộc đình công là bất hợp pháp thì người lao động đang tham gia đình công phải ngừng ngay đình công và trở lại làm việc; nếu người lao động không ngừng đình công, không trở lại làm việc thì tùy theo mức độ vi phạm có thể bị xử lý kỷ luật lao động theo quy định của pháp luật về lao động.\\nTrong trường hợp cuộc đình công là bất hợp pháp mà gây thiệt hại cho người sử dụng lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công phải bồi thường thiệt hại theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_labor_discipline\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0217\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D129.K1\",\n    \"tieu_de_dieu\": \"Bồi thường thiệt hại\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm hư hỏng dụng cụ, thiết bị hoặc có hành vi khác gây thiệt hại tài sản của người sử dụng lao động thì phải bồi thường theo quy định của pháp luật hoặc nội quy lao động của người sử dụng lao động.\\nTrường hợp người lao động gây thiệt hại không nghiêm trọng do sơ suất với giá trị không quá 10 tháng lương tối thiểu vùng do Chính phủ công bố được áp dụng tại nơi người lao động làm việc thì người lao động phải bồi thường nhiều nhất là 03 tháng tiền lương và bị khấu trừ hằng tháng vào lương theo quy định tại khoản 3 Điều 102 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D129.K2\",\n    \"tieu_de_dieu\": \"Bồi thường thiệt hại\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm mất dụng cụ, thiết bị, tài sản của người sử dụng lao động hoặc tài sản khác do người sử dụng lao động giao hoặc tiêu hao vật tư quá định mức cho phép thì phải bồi thường thiệt hại một phần hoặc toàn bộ theo thời giá thị trường hoặc nội quy lao động; trường hợp có hợp đồng trách nhiệm thì phải bồi thường theo hợp đồng trách nhiệm; trường hợp do thiên tai, hỏa hoạn, địch họa, dịch bệnh nguy hiểm, thảm họa, sự kiện xảy ra khách quan không thể lường trước được và không thể khắc phục được mặc dù đã áp dụng mọi biện pháp cần thiết và khả năng cho phép thì không phải bồi thường.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_compensation\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0218\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D129.K2\",\n    \"tieu_de_dieu\": \"Bồi thường thiệt hại\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm mất dụng cụ, thiết bị, tài sản của người sử dụng lao động hoặc tài sản khác do người sử dụng lao động giao hoặc tiêu hao vật tư quá định mức cho phép thì phải bồi thường thiệt hại một phần hoặc toàn bộ theo thời giá thị trường hoặc nội quy lao động; trường hợp có hợp đồng trách nhiệm thì phải bồi thường theo hợp đồng trách nhiệm; trường hợp do thiên tai, hỏa hoạn, địch họa, dịch bệnh nguy hiểm, thảm họa, sự kiện xảy ra khách quan không thể lường trước được và không thể khắc phục được mặc dù đã áp dụng mọi biện pháp cần thiết và khả năng cho phép thì không phải bồi thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D164.K2\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của lao động là người giúp việc gia đình\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Phải bồi thường theo thỏa thuận hoặc theo quy định của pháp luật nếu làm hỏng, mất tài sản của người sử dụng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_compensation\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0219\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D129.K2\",\n    \"tieu_de_dieu\": \"Bồi thường thiệt hại\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm mất dụng cụ, thiết bị, tài sản của người sử dụng lao động hoặc tài sản khác do người sử dụng lao động giao hoặc tiêu hao vật tư quá định mức cho phép thì phải bồi thường thiệt hại một phần hoặc toàn bộ theo thời giá thị trường hoặc nội quy lao động; trường hợp có hợp đồng trách nhiệm thì phải bồi thường theo hợp đồng trách nhiệm; trường hợp do thiên tai, hỏa hoạn, địch họa, dịch bệnh nguy hiểm, thảm họa, sự kiện xảy ra khách quan không thể lường trước được và không thể khắc phục được mặc dù đã áp dụng mọi biện pháp cần thiết và khả năng cho phép thì không phải bồi thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K1\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người nào có hành vi vi phạm quy định của Bộ luật này thì tùy theo tính chất, mức độ vi phạm mà bị xử lý kỷ luật, xử phạt vi phạm hành chính hoặc bị truy cứu trách nhiệm hình sự, nếu gây thiệt hại thì phải bồi thường theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_compensation\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_c22860772c413e2cd017a1bd",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0210",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0211",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0212",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0213",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0214",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0215",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0216",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0217",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0218",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0219",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4060,
+  "output_tokens": 1126,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 801
+   }
+  }
+ }
+}

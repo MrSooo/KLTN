@@ -1,32 +1,32 @@
 {
  "unit_id": "BLLD_45-2019.D57.K5",
  "phien_ban": "vai-nhom-2",
- "model": "trikiet2045/gemini-3.8-flash-high",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
  "thinking_tat": false,
  "gui": "{\n \"unit_id\": \"BLLD_45-2019.D57.K5\",\n \"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trả lại người lao động thuê lại không đáp ứng yêu cầu như đã thỏa thuận hoặc vi phạm kỷ luật lao động cho doanh nghiệp cho thuê lại lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Trả lại người lao động thuê lại không đáp ứng yêu cầu như đã thỏa thuận hoặc vi phạm kỷ luật lao động cho doanh nghiệp cho thuê lại lao động\"\n    }\n   ]\n  }\n ]\n}",
  "phan_hoi": {
   "content": [
    {
-    "text": "{\n  \"unit_id\": \"BLLD_45-2019.D57.K5\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"doan\": [\"đáp ứng yêu cầu như đã thỏa thuận\"],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"phu_dinh\",\n      \"chu_the\": {\n        \"chu\": \"người lao động thuê lại\",\n        \"loai\": \"W\"\n      },\n      \"nhom_hoac\": \"h1\",\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m1\",\n      \"doan\": [\"vi phạm kỷ luật lao động\"],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"người lao động thuê lại\",\n        \"loai\": \"W\"\n      },\n      \"nhom_hoac\": \"h1\",\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m1\",\n      \"doan\": [\n        \"Trả lại người lao động thuê lại\",\n        \"cho doanh nghiệp cho thuê lại lao động\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"duoc\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"bên thuê lại lao động\",\n        \"loai\": \"E\"\n      },\n      \"doi_so\": [\n        {\n          \"loai\": \"W\"\n        },\n        {\n          \"loai\": \"E\"\n        }\n      ],\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}",
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D57.K5\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"đáp ứng yêu cầu như đã thỏa thuận\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người lao động thuê lại\",\n    \"loai\": \"W\"\n   },\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"vi phạm kỷ luật lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người lao động thuê lại\",\n    \"loai\": \"W\"\n   },\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Trả lại người lao động thuê lại\",\n    \"cho doanh nghiệp cho thuê lại lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"bên thuê lại lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    },\n    {\n     \"loai\": \"E\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
     "type": "text"
    }
   ],
-  "id": "chatcmpl-1795543476119-78c7f5aa",
-  "model": "trikiet2045/gemini-3.8-flash-high",
+  "id": "93IGa8S1CtrM0-kPqITkoAs",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
   "role": "assistant",
   "stop_reason": "end_turn",
   "stop_sequence": null,
   "type": "message",
   "usage": {
    "completion_tokens_details": {
-    "reasoning_tokens": 6199
+    "reasoning_tokens": 2522
    },
-   "input_tokens": 3672,
-   "output_tokens": 401,
+   "input_tokens": 3808,
+   "output_tokens": 3012,
    "x_ckey": {
-    "cost": 10.4,
+    "cost": 13,
     "cost_is_estimate": false,
-    "request_id": "req_4c5a0b96156726d883fc3a5a"
+    "request_id": "req_84043c96bfbfb91e6b0d05ec"
    }
   }
  }

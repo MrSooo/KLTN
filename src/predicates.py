@@ -33,7 +33,16 @@ import parse  # noqa: E402
 import propositions as P  # noqa: E402
 from textutil import text_norm  # noqa: E402
 
-TASK, PROMPT_VERSION, ROLE = "predicates", "names-2.1", "ten"  # 2.1: thêm chữ chủ thể (vai chu_the) và đoạn lời nhắc cho nó (A41)
+TASK, ROLE = "predicates", "ten"
+# Phiên bản lời nhắc theo lần chạy (như `menh_de.prompt_version`, A47): khoá `ten.prompt_version`, mặc định names-2.1 để replay của các lần chạy cũ giữ nguyên.
+#   names-2.1: thêm chữ chủ thể (vai chu_the) và đoạn lời nhắc cho nó (A41).
+#   names-2.2 (A61, lần chạy `tach`): ứng viên lọc theo chữ ký DÃY CON (`compatible`), bỏ chữ nối "coi là" ở đầu mệnh đề (`strip_copula`), lời nhắc nói rõ
+#     số tham số khác nhau không làm hai chữ thành hai sự kiện. Lý do: 1.8 dịch mọi vị từ thành một ngôi trên chủ thể (đối số khác bỏ qua), nên đòi cùng SỐ
+#     tham số không giúp gì cho 1.8 mà chặn cùng sự kiện viết có/không có chủ thể (31/48 nhóm cùng mặt chữ khác tên ở `tach` names-2.1).
+PROMPT_VERSION = llm_client.load_config().get("ten.prompt_version", "names-2.1")
+LOOSE = PROMPT_VERSION != "names-2.1"
+if PROMPT_VERSION not in ("names-2.1", "names-2.2"):
+    raise SystemExit(f"ten.prompt_version = {PROMPT_VERSION!r}, chỉ nhận names-2.1, names-2.2")
 EFFORT = P.sandbox_model()[1]  # A39: effort high, tuần tự; khoá hop_cat.effort (A46). Model của 1.6B là ten.model (nằm trong khoá cache)
 SUBAGENT_MODEL = P.ALIAS.get(llm_client.load_config()[f"{ROLE}.model"], llm_client.load_config()[f"{ROLE}.model"])
 CANDIDATE_CAP = 20                          # A39: 12 lên 20 (phỏng đoán: mệnh đề ngắn hơn cụm nên 12 dễ cắt mất ứng viên đúng; chưa đo)
@@ -54,8 +63,35 @@ def signature(row):
 
 
 def compatible(a, b):
-    """Hai chữ ký có dùng chung một vị từ được không (A39, lọc lỏng): cùng số tham số, từng vị trí cùng loại hoặc một bên là `?`."""
-    return len(a) == len(b) and all(x == y or "?" in (x, y) for x, y in zip(a, b))
+    """Hai chữ ký có dùng chung một vị từ được không. names-2.1 (A39, lọc lỏng): cùng số tham số, từng vị trí cùng loại hoặc một bên là `?`.
+    names-2.2 (A61): chữ ký ngắn hơn là DÃY CON của chữ ký dài hơn (giữ thứ tự, mỗi vị trí ghép được cùng loại hoặc `?`): chữ không nêu chủ thể hay
+    một đối số vẫn là cùng sự kiện. Cùng độ dài thì như names-2.1, nên ("E",) và ("W",) vẫn là hai việc khác nhau."""
+    if len(a) == len(b) or not LOOSE:
+        return len(a) == len(b) and all(x == y or "?" in (x, y) for x, y in zip(a, b))
+    short, long_ = (a, b) if len(a) < len(b) else (b, a)
+    fit = lambda x, y: x == y or "?" in (x, y)  # noqa: E731
+    ok = [True] * (len(long_) + 1)  # ok[j]: short[:i] ghép được vào long_[:j]; quy hoạch động theo i
+    for i in range(1, len(short) + 1):
+        new = [False] * (len(long_) + 1)
+        for j in range(1, len(long_) + 1):
+            new[j] = new[j - 1] or (ok[j - 1] and fit(short[i - 1], long_[j - 1]))
+        ok = new
+    return ok[-1]
+
+
+COPULA = ("được coi là ", "coi là ")
+
+
+def strip_copula(span):
+    """[names-2.2, A61] Bỏ "coi là"/"được coi là" ở đầu mệnh đề: D42.K1 "coi là thay đổi cơ cấu, công nghệ" (đầu định nghĩa) và D42.K3, D48
+    "thay đổi cơ cấu, công nghệ" là cùng một khái niệm; giữ chữ nối thì thành hai vị từ và định nghĩa không nối được với chỗ dùng."""
+    if not LOOSE:
+        return span
+    low = span.lower()
+    for c in COPULA:
+        if low.startswith(c) and len(span) > len(c):
+            return span[len(c):]
+    return span
 
 
 def load_rows(ctxs):
@@ -85,7 +121,7 @@ def load_rows(ctxs):
                 # "người lao động nước ngoài" với mọi người lao động. Tham số rỗng: vị từ chủ thể là tính chất của chính thực thể.
                 rows.append({"unit": uid, "row": i, "loai": "chu_the", "span": subj, "params": (), "role": "chu_the", "targets": [], "mode": "", "cuc": "",
                              "quy_tac": None, "nhom_hoac": None, "gan_vao": None, "liet_ke": [], "predicate": None, "flags": []})
-            rows.append({"unit": uid, "row": i, "loai": d["loai"], "subject_key": word_key(subj, ()) if subj else None, "span": d["menh_de"] if d["loai"] == "menh_de" else " ".join(d["trich"]),
+            rows.append({"unit": uid, "row": i, "loai": d["loai"], "subject_key": word_key(subj, ()) if subj else None, "span": strip_copula(d["menh_de"]) if d["loai"] == "menh_de" else " ".join(d["trich"]),
                          "params": signature(d) if d["loai"] == "menh_de" else (), "role": d["vai"],
                          "targets": (d.get("targets") or []) if d["loai"] == "con_tro" else [], "mode": d.get("phuong_thuc", ""), "cuc": P.effective_cuc(d),
                          "quy_tac": d.get("quy_tac"), "nhom_hoac": d.get("nhom_hoac"), "gan_vao": d.get("gan_vao"), "liet_ke": d.get("liet_ke") or [],
@@ -144,6 +180,8 @@ class Book(cn.Book):
         pk = self.words[i]["params"]
         if not compatible(self.name_params.setdefault(name, pk), pk):
             raise ValueError(f"tên {name!r} có tham số {self.name_params[name]} không tương thích với chữ {cn.chu_id(i)} ({pk})")
+        if len(pk) > len(self.name_params[name]):  # [names-2.2, A61] giữ chữ ký DÀI nhất: () đã nhận (E) thì không nhận (W) nữa
+            self.name_params[name] = pk
         self.name_of[i] = name
         self.members[name].append(i)
 
@@ -260,6 +298,14 @@ VÍ DỤ (chữ bịa để minh hoạ). Giả sử năm chữ sau đứng theo 
 {VI_DU}
 
 ĐẦU RA: chỉ JSON đúng lược đồ đã cho, không thêm chữ nào khác. Mọi chữ trong danh sách đều phải có đúng một mục; chu_id chép nguyên văn; không thêm mục cho chữ ngoài danh sách."""
+if LOOSE:  # names-2.2 (A61): ứng viên lọc theo dãy con; chữ khác số tham số vẫn có thể là cùng sự kiện
+    _SYSTEM = _SYSTEM.replace(
+        "- ung_vien: các tên đã có, cùng SỐ tham số và loại tương thích (? khớp mọi loại); mỗi ứng viên kèm params và vài chữ đã dùng tên đó (vi_du).",
+        "- ung_vien: các tên đã có mà params tương thích (một bên có thể thiếu chủ thể hay một vài đối số; ? khớp mọi loại); mỗi ứng viên kèm params và vài chữ đã dùng tên đó (vi_du).")
+    _SYSTEM = _SYSTEM.replace(
+        "Gần nghĩa, rộng hơn, hẹp hơn hoặc ngược nghĩa",
+        "Chữ không nêu chủ thể hay đối số mà chữ kia có nêu (params ngắn hơn) KHÔNG vì thế mà là sự kiện khác. Gần nghĩa, rộng hơn, hẹp hơn hoặc ngược nghĩa")
+    assert "params tương thích (một bên" in _SYSTEM and "params ngắn hơn" in _SYSTEM
 SYSTEM = _SYSTEM.replace("{VI_DU}", "\n".join(f'  {n}. "{chu}" params {json.dumps(p)} -> {kieu} {ten}  ({note})'
                                               for n, (chu, p, kieu, ten, note) in enumerate(PROMPT_EXAMPLE, 1)))
 SCHEMA = cn.SCHEMA  # cùng hình đầu ra với names-1: {"chu": [{"chu_id", "kieu", "ten"}]}
@@ -280,11 +326,50 @@ def store_round(cache_dir, cfg, items, output, **extra):
     return path
 
 
-def run_rounds(client, run):
-    """Chạy tới hết bằng replay. -> None nếu xong, hoặc chuỗi báo dừng (thiếu bản ghi)."""
+GOP_CHU = bool(llm_client.load_config().get("ten.gop_chu", 0))  # [A61] máy gộp tên của chữ cùng mặt chữ; chỉ lần chạy bật khoá (tach)
+GOP_CHU_MIN_TIENG = 3  # chữ ngắn hơn có ca mơ hồ: "tổ chức" (danh từ, động từ), "thực hiện", "thành lập" (đo 25/11: 9 nhóm ngắn)
+
+
+def merge_same_text(run, min_tieng=GOP_CHU_MIN_TIENG):
+    """[A61, user chốt 25/11: việc của máy] Sau khi mọi lượt đã áp: các chữ cùng `text_norm` (bỏ qua chữ ký tham số) và >= min_tieng tiếng
+    dùng MỘT tên. Lý do: 1.8 dịch mọi vị từ thành một ngôi trên chủ thể X, chủ thể là vị từ canh riêng, nên tên không cần mã hoá W hay E; chữ
+    giống hệt mà khác tên (D5 với D6 "thành lập tổ chức nghề nghiệp"; "theo hợp đồng lao động"; LLM đặt lại tên khác giữa hai lần chạy) làm
+    mất liên kết. Tên giữ: tên có nhiều lần xuất hiện nhất (tổng `n` của chữ), hoà thì tên của chữ gặp đầu. Không gọi LLM.
+    -> [(tên giữ, [tên bị gộp])]."""
+    groups = collections.defaultdict(list)
+    for i, w in enumerate(run.words):
+        if i in run.book.name_of and len(w["surface"].split()) >= min_tieng:
+            groups[text_norm(w["surface"])].append(i)
+    merged = []
+    for idx in groups.values():
+        names = {run.book.name_of[i] for i in idx}
+        if len(names) < 2:
+            continue
+        weight = collections.Counter()
+        first = {}
+        for n in names:
+            for m in run.book.members[n]:
+                weight[n] += run.words[m]["n"]
+                first[n] = min(first.get(n, m), m)
+        keep = sorted(names, key=lambda n: (-weight[n], first[n]))[0]
+        gone = sorted(names - {keep})
+        for n in gone:  # chuyển MỌI chữ của tên bị gộp (cả chữ khác mặt chữ đã reuse tên đó) sang tên giữ
+            for m in run.book.members.pop(n):
+                run.book.name_of[m] = keep
+                run.book.members[keep].append(m)
+            run.book.name_params.pop(n, None)
+        merged.append((keep, gone))
+    return merged
+
+
+def run_rounds(client, run, merge=True):
+    """Chạy tới hết bằng replay. -> None nếu xong, hoặc chuỗi báo dừng (thiếu bản ghi). Xong, bật GOP_CHU và `merge` thì máy gộp tên cùng mặt chữ.
+    Sổ vị từ 2.6 (chỉ thêm) gọi với merge=False cho phần KU: gộp ở đó có thể xoá một tên gốc mà quy tắc gốc đang dùng (advisor 25/11)."""
     while True:
         rd = run.next_round()
         if rd is None:
+            if GOP_CHU and merge:
+                run.merged = merge_same_text(run)
             return None
         ids = {cn.chu_id(i) for i in rd["indices"]}
         try:
@@ -535,6 +620,9 @@ def main(argv=None):
              f"vị từ dùng ở từ 2 Điều: {m['vi_tu_o_tu_2_dieu']}; cặp khác Điều chung vị từ concept (chưa lọc như 1.7): {m['cap_ung_vien_1_7']}"]
     if stop:
         lines.append(stop)
+    if getattr(run, "merged", None) is not None:  # [A61] chỉ khi bật ten.gop_chu: báo cáo của lần chạy khác không đổi
+        lines.append(f"máy gộp tên cùng mặt chữ (>= {GOP_CHU_MIN_TIENG} tiếng): {len(run.merged)} nhóm, bớt {sum(len(g) for _, g in run.merged)} tên")
+        lines += [f"  {k} <- {', '.join(g)}" for k, g in run.merged]
     d = corpus.out_dir(DIR_NAME)
     parse.write_jsonl(d / f"predicates_named_{args.doc}.jsonl", named)
     parse.write_jsonl(d / f"predicates_ledger_{args.doc}.jsonl", ledger)

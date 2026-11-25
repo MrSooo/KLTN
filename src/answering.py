@@ -27,6 +27,7 @@ import collections
 import datetime
 import hashlib
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -265,16 +266,30 @@ def _classify(phi, facts, rules_tau, iso_ids, llm_edges, query):
 
 # ---- bộ câu hỏi, hộp cát, cache ----
 
+# [A61] Chạy bộ câu hỏi trên kho đầy đủ (so `tach` với `ckey` trên các câu chỉ cần BLLĐ): KLTN_CAU_HOI=<tên bộ trong data/eval_dev> chọn bộ khi
+# không có tập con, KLTN_CAU_HOI_ID=Q04,Q06 chỉ lấy các câu đó (không sửa file gold); cache ghi riêng theo danh sách câu.
+CAU_HOI = os.environ.get("KLTN_CAU_HOI", "").strip() or None
+CAU_HOI_ID = [x.strip() for x in os.environ.get("KLTN_CAU_HOI_ID", "").split(",") if x.strip()]
+
+
 def questions_path():
-    return corpus.ROOT / "data" / "eval_dev" / f"{corpus.SUBSET}_questions.json" if corpus.SUBSET else None
+    if corpus.SUBSET:
+        return corpus.ROOT / "data" / "eval_dev" / f"{corpus.SUBSET}_questions.json"
+    return corpus.ROOT / "data" / "eval_dev" / f"{CAU_HOI}.json" if CAU_HOI else None
 
 
 def load_questions(path):
-    return json.loads(Path(path).read_text(encoding="utf-8"))["cau_hoi"]
+    qs = json.loads(Path(path).read_text(encoding="utf-8"))["cau_hoi"]
+    if CAU_HOI_ID:
+        missing = set(CAU_HOI_ID) - {q["id"] for q in qs}
+        if missing:
+            raise SystemExit(f"KLTN_CAU_HOI_ID có câu không có trong {path}: {sorted(missing)}")
+        qs = [q for q in qs if q["id"] in CAU_HOI_ID]
+    return qs
 
 
 def cache_path(path):
-    stem = Path(path).stem
+    stem = Path(path).stem + ("." + "_".join(CAU_HOI_ID) if CAU_HOI_ID else "")
     return CACHE_DIR / corpus.cache_name(stem)
 
 
@@ -406,7 +421,7 @@ def run(qpath):
         results.append(row)
     d = corpus.out_dir(DIR_NAME)
     d.mkdir(parents=True, exist_ok=True)
-    stem = Path(qpath).stem
+    stem = Path(qpath).stem + ("." + "_".join(CAU_HOI_ID) if CAU_HOI_ID else "")  # [A61] bộ lọc câu: file riêng
     parse.write_jsonl(d / f"answering_results_{stem}.jsonl", results)
     lines = [f"1.9 hỏi đáp: {Path(qpath).name}" + (f" (kho con {corpus.SUBSET})" if corpus.SUBSET else ""),
              f"văn bản có quy tắc: {sorted(rule_doc_ids)}; câu hỏi: {len(results)}; từ vựng: {len(vocab['ket_luan'])} kết luận, {len(vocab['vi_tu'])} vị từ",

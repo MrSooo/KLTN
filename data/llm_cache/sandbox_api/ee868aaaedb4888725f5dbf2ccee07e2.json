@@ -1,0 +1,74 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T08:37:57+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0150\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D48.K1.a\",\n    \"tieu_de_dieu\": \"Trách nhiệm khi chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"Trong thời hạn 14 ngày làm việc kể từ ngày chấm dứt hợp đồng lao động, hai bên có trách nhiệm thanh toán đầy đủ các khoản tiền có liên quan đến quyền lợi của mỗi bên, trừ trường hợp sau đây có thể kéo dài nhưng không được quá 30 ngày:\",\n    \"chu_don_vi\": \"Người sử dụng lao động không phải là cá nhân chấm dứt hoạt động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K7\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_operations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0151\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D48.K2\",\n    \"tieu_de_dieu\": \"Trách nhiệm khi chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tiền lương, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, trợ cấp thôi việc và các quyền lợi khác của người lao động theo thỏa ước lao động tập thể, hợp đồng lao động được ưu tiên thanh toán trong trường hợp doanh nghiệp, hợp tác xã bị chấm dứt hoạt động, bị giải thể, phá sản.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D80.K2\",\n    \"tieu_de_dieu\": \"Thực hiện thỏa ước lao động tập thể doanh nghiệp trong trường hợp chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp thỏa ước lao động tập thể doanh nghiệp hết hiệu lực do người sử dụng lao động chấm dứt hoạt động thì quyền lợi của người lao động được giải quyết theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_operations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0152\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D48.K2\",\n    \"tieu_de_dieu\": \"Trách nhiệm khi chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tiền lương, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, trợ cấp thôi việc và các quyền lợi khác của người lao động theo thỏa ước lao động tập thể, hợp đồng lao động được ưu tiên thanh toán trong trường hợp doanh nghiệp, hợp tác xã bị chấm dứt hoạt động, bị giải thể, phá sản.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K7\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_operations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0153\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D53.K2\",\n    \"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n    \"cac_muc_con\": [\n     \"Đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động trong khoảng thời gian nhất định;\",\n     \"Thay thế người lao động trong thời gian nghỉ thai sản, bị tai nạn lao động, bệnh nghề nghiệp hoặc phải thực hiện các nghĩa vụ công dân;\",\n     \"Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D53.K3\",\n    \"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Bên thuê lại lao động không được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n    \"cac_muc_con\": [\n     \"Để thay thế người lao động đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động;\",\n     \"Không có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động;\",\n     \"Thay thế người lao động bị cho thôi việc do thay đổi cơ cấu, công nghệ, vì lý do kinh tế hoặc chia, tách, hợp nhất, sáp nhập.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"use_subleased_labor\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0154\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D55.K1\",\n    \"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động phải ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D62.K1\",\n    \"tieu_de_dieu\": \"Hợp đồng đào tạo nghề giữa người sử dụng lao động, người lao động và chi phí đào tạo nghề\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hai bên phải ký kết hợp đồng đào tạo nghề trong trường hợp người lao động được đào tạo nâng cao trình độ, kỹ năng nghề, đào tạo lại ở trong nước hoặc nước ngoài từ kinh phí của người sử dụng lao động, kể cả kinh phí do đối tác tài trợ cho người sử dụng lao động.\\nHợp đồng đào tạo nghề phải làm thành 02 bản, mỗi bên giữ 01 bản.\"\n   },\n   \"vi_tu_chung\": [\n    \"made_in_two_copies\",\n    \"retain_one_copy\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0155\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D56.K6\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động\",\n    \"khoan_cha\": \"Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:\",\n    \"chu_don_vi\": \"Xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động khi bên thuê lại lao động trả lại người lao động do vi phạm kỷ luật lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D122.K5\",\n    \"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Không xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động trong khi mắc bệnh tâm thần hoặc một bệnh khác làm mất khả năng nhận thức hoặc khả năng điều khiển hành vi của mình.\"\n   },\n   \"vi_tu_chung\": [\n    \"discipline_employee_for_labor_violations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0156\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D56.K6\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động\",\n    \"khoan_cha\": \"Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:\",\n    \"chu_don_vi\": \"Xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động khi bên thuê lại lao động trả lại người lao động do vi phạm kỷ luật lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.b\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Sa thải, kỷ luật, đơn phương chấm dứt hợp đồng lao động, không tiếp tục giao kết hoặc gia hạn hợp đồng lao động, chuyển người lao động làm công việc khác;\"\n   },\n   \"vi_tu_chung\": [\n    \"discipline_employee_for_labor_violations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0157\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D57.K4\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thỏa thuận với người lao động thuê lại và doanh nghiệp cho thuê lại lao động để tuyển dụng chính thức người lao động thuê lại làm việc cho mình trong trường hợp hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động chưa chấm dứt.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K5\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n   },\n   \"vi_tu_chung\": [\n    \"labor_contract_terminates\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0158\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D58.K1\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n    \"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n    \"chu_don_vi\": \"Thực hiện công việc theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D90.K1\",\n    \"tieu_de_dieu\": \"Tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tiền lương là số tiền mà người sử dụng lao động trả cho người lao động theo thỏa thuận để thực hiện công việc, bao gồm mức lương theo công việc hoặc chức danh, phụ cấp lương và các khoản bổ sung khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"perform_work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0159\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D61.K4\",\n    \"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người học nghề, người tập nghề phải đủ 14 tuổi trở lên và phải có đủ sức khỏe phù hợp với yêu cầu học nghề, tập nghề. Người học nghề, người tập nghề thuộc danh mục nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành phải từ đủ 18 tuổi trở lên, trừ lĩnh vực nghệ thuật, thể dục, thể thao.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K1.a\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n    \"chu_don_vi\": \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\"\n   },\n   \"vi_tu_chung\": [\n    \"at_least_18_years_old\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_a5d3fe11b82e76f50582f194",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0150",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0151",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0152",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0153",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0154",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0155",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0156",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0157",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0158",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0159",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3999,
+  "output_tokens": 1004,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2256
+   }
+  }
+ }
+}

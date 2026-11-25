@@ -25,7 +25,8 @@ ROOT = Path(__file__).resolve().parent.parent
 PROMPT_VERSION = "vai-nhom-2"  # 2: đoạn không phải câu dẫn luôn có dòng, kể cả khi đơn vị ghi cac_muc_con (vòng phát triển 1: D145.K1, D51.K1)  # phải bắt đầu bằng propositions.V2_PREFIX để cổng coi là khuôn gọn
 RUN_DIR = ROOT / "data/sandbox_runs/clause_roles"
 GOLD = {"dev": ROOT / "data/eval_dev/clause_roles_gold_dev.json", "test": ROOT / "data/eval_dev/clause_roles_gold_test.json"}
-MODELS = (segments.MODEL, segments.MODEL_DU_PHONG)  # chốt trước khi đo (mục 10): tuyến chính, 404 thì dự phòng
+MODEL_DU_PHONG_2 = "daongocson12022004/gemini-3.8-flash-high"  # [THÊM 25/11, A61] tuyến không có trần ~8k (đo lượt 008 của 1.6B: 9.486 token nghĩ ngầm vẫn trọn)
+MODELS = (segments.MODEL, segments.MODEL_DU_PHONG, MODEL_DU_PHONG_2)  # chốt trước khi đo (mục 10): tuyến chính, 404 thì dự phòng; [A61] cụt hay 403 thì sang tuyến sau
 MAX_TOKENS = 32000  # api.max_output_tokens; tuyến dự phòng suy nghĩ ngầm dài (cụt 2/40 câu đơn ở 16.000, A60)
 LUONG = 16  # 8 lúc đo; 16 khi chạy cả bộ (mỗi lời gọi ~1 phút, máy chủ cho 60 lượt/phút); không ảnh hưởng đầu ra
 LEAD = re.compile(r"(sau đây|như sau|gồm|bao gồm)\s*:?\s*$")
@@ -118,6 +119,86 @@ def check(ctx, segmap, out):
     return rows, err + e2, f2, nguon
 
 
+# ---- Máy trải `liet_ke` (A61, user chốt 25/11): KHÔNG phải việc của LLM. Lượt 2 đã cắt ranh giới mục vào `liet_ke` (đặc tả mục 3) nhưng chưa
+# bước nào đọc trường đó, nên vị từ chỉ còn phần đầu ("đóng", "có hành vi"). Máy trải mỗi mục thành một dòng theo chữ nối đứng trước mục cuối
+# trong `trich`; không chắc thì giữ nguyên dòng và gắn cờ. Không gọi LLM, không đổi lời nhắc.
+_SEP_OR = re.compile(r"(^|\s)(hoặc|hay)(\s|$)")
+_SEP_AND = re.compile(r"(^|\s)và(\s|$)")
+# Danh sách chỉ nối bằng dấu phẩy mà user duyệt GIỮ NGUYÊN (25/11): (đơn vị, mục đầu). Tách thành HOẶC là nới nghĩa luật.
+LIET_KE_GIU = {("BLLD_45-2019.D3.K1", "quản lý"), ("BLLD_45-2019.D151.K1.b", "trình độ chuyên môn"),
+               ("BLLD_45-2019.D91.K3", "mức sống tối thiểu của người lao động và gia đình họ")}  # D91.K3: các căn cứ cùng xét, agent giữ (báo user)
+
+
+def _noi_cuoi(trich, items):
+    """Chữ nối giữa mục kề cuối và mục cuối trong `trich`: 'hoac' | 'va' | 'phay' | None (không tìm thấy mục nguyên văn theo thứ tự)."""
+    t, pos, spans = _nfc(" ".join(trich)).lower(), 0, []
+    for x in items:
+        k = t.find(_nfc(x).lower(), pos)
+        if k < 0:
+            return None
+        spans.append((k, k + len(x)))
+        pos = k + len(x)
+    gap = t[spans[-2][1]:spans[-1][0]]
+    if _SEP_OR.search(gap):
+        return "hoac"
+    if _SEP_AND.search(gap):
+        return "va"
+    return "phay" if "," in gap or ";" in gap else None
+
+
+def _lo_moi(menh_de, items, x):
+    """Lõi của mục x: thay cả chuỗi mục trong lõi bằng x; lõi không chứa mục (chỉ là phần đầu, như "đóng") thì nối x vào sau."""
+    a, z = menh_de.find(items[0]), menh_de.rfind(items[-1])
+    if a >= 0 and z >= a and all(i in menh_de for i in items):
+        return " ".join((menh_de[:a] + x + menh_de[z + len(items[-1]):]).split())
+    head, xs = menh_de.split(), x.split()
+    if head and xs and head[-1].lower() == xs[0].lower():  # "đang nghỉ" + "nghỉ việc riêng": không lặp chữ ở chỗ nối
+        xs = xs[1:]
+    return " ".join(head + xs)
+
+
+def trai_liet_ke(uid, rows, src=""):
+    """-> (dòng mới, cờ [(None, thông điệp kèm chỉ số dòng gốc)]). Luật (A61):
+    - kết luận nối "và" hay chỉ dấu phẩy: mỗi mục một kết luận cùng `quy_tac`; nối "hoặc": GIỮ ("phải A hoặc B" tách ra thành hai nghĩa vụ);
+    - điều kiện nối "hoặc" hay chỉ dấu phẩy (user chốt: phẩy là HOẶC): mỗi mục một dòng cùng `nhom_hoac` (nhóm sẵn có của dòng, không có thì nhóm mới);
+    - ngoại lệ nối "hoặc" hay phẩy: mỗi mục một ngoại lệ;
+    - điều kiện, ngoại lệ nối "và": GIỮ (liệt kê trường hợp thường là HOẶC, đòi đủ thì là VÀ: đặc tả im lặng);
+    - mục không nguyên văn trong `trich`, chữ nối không rõ, hay (đơn vị, mục đầu) thuộc LIET_KE_GIU: giữ."""
+    out, flags = [], []
+    for i, r in enumerate(rows):
+        items = [x for x in (r.get("liet_ke") or []) if isinstance(x, str) and x.strip()]
+        if r.get("loai") != "menh_de" or len(items) < 2:
+            out.append(r)
+            continue
+        # dò trên trich, không thấy thì trên chữ gốc của đơn vị (khuôn gọn dựng trich từ doan, mà doan có khi chỉ là phần đầu như "đóng")
+        noi = _noi_cuoi(r.get("trich") or [], items) or (_noi_cuoi([src], items) if src else None)
+        vai = r.get("vai")
+        why = None
+        if (uid, items[0]) in LIET_KE_GIU:
+            why = "user duyệt giữ"
+        elif noi is None:
+            why = "mục không nguyên văn theo thứ tự (trich, chữ đơn vị) hoặc chữ nối không rõ"
+        elif vai == "ket_luan" and noi == "hoac":
+            why = "kết luận nối 'hoặc'"
+        elif vai in ("dieu_kien", "ngoai_le") and noi == "va":
+            # "và" trong danh sách điều kiện thường là liệt kê trường hợp, nghĩa HOẶC (D37.K2 "đang nghỉ hằng năm, nghỉ việc riêng và trường hợp
+            # nghỉ khác"); tách thành VÀ là sai nghĩa, tách thành HOẶC là đoán: giữ, gắn cờ (đặc tả im lặng, A61)
+            why = "điều kiện hay ngoại lệ nối 'và' (liệt kê trường hợp hay đòi đủ: chưa rõ)"
+        elif vai not in ("ket_luan", "dieu_kien", "ngoai_le"):
+            why = f"vai {vai!r}"
+        if why:
+            flags.append((None, f"liet_ke giữ nguyên (dòng gốc {i}): {why}"))
+            out.append(r)
+            continue
+        group = None
+        if vai == "dieu_kien" and noi in ("hoac", "phay"):
+            group = r.get("nhom_hoac") or f"lk{i}"
+        for x in items:
+            out.append({**r, "menh_de": _lo_moi(r["menh_de"], items, x), "liet_ke": [], "nhom_hoac": group if group else r.get("nhom_hoac")})
+        flags.append((None, f"liet_ke trải {len(items)} mục (dòng gốc {i}, {vai}, nối {noi})"))
+    return out, flags
+
+
 # ---- Lời nhắc. Sửa chữ thì PHẢI nâng PROMPT_VERSION. Ví dụ chỉ lấy từ Điều không có trong hai gold (mục 10.5): D113, D53, D176, D18, D80.
 SYSTEM = """Bạn nhận MỘT đơn vị của Bộ luật Lao động (khoản, điểm hoặc Điều) mà các câu đã được tách sẵn thành đoạn. Hãy ghi các dòng mệnh đề: mỗi dòng là một điều kiện, một ngoại lệ hoặc một kết luận, kèm phương thức, cực, chủ thể, và gom thành quy tắc.
 
@@ -197,14 +278,31 @@ def _goi_mot(text, models, key, base):
                     if not tat:
                         tat = True
                         continue
-                    return None, model, f"cụt {data.get('stop_reason')} (cả khi tắt nghĩ ngầm)", tat
+                    err = f"{model}: cụt {data.get('stop_reason')} (cả khi tắt nghĩ ngầm)"
+                    break  # [A61] cụt cả khi tắt nghĩ ngầm: sang tuyến sau (trước đây trả về ngay, đơn vị thiếu đầu ra)
                 return data, model, "ok", tat
-            except Exception as e:  # 404 (tuyến không có): sang tuyến sau ngay; lỗi khác: chờ rồi thử lại
+            except Exception as e:  # 404 (tuyến không có), 403 (tài khoản không được gọi, A61): sang tuyến sau ngay; lỗi khác: chờ rồi thử lại
                 err = f"{model}: {str(e)[:100]}"
-                if getattr(e, "code", None) == 404:
+                if getattr(e, "code", None) in (403, 404):
                     break
                 time.sleep(10 * lan)
-    return None, None, f"lỗi {err}", False
+    return None, None, (err.split(": ", 1)[1] if ": cụt " in err else f"lỗi {err}"), False
+
+
+def dot_models(key, base):
+    """[A61, user chốt 25/11] Tuyến cho cả đợt gọi: thử tuyến chính MỘT lần ở đầu đợt (lời nhắn ngắn); được thì tuyến chính rồi tuyến ổn định,
+    không được thì chỉ tuyến ổn định `MODEL_DU_PHONG_2`. Không dùng `MODEL_DU_PHONG` nữa (trần ~8k, cụt ở đơn vị dài)."""
+    import urllib.request
+    body = json.dumps({"model": segments.MODEL, "max_tokens": 64, "messages": [{"role": "user", "content": "ok"}]}).encode("utf-8")
+    req = urllib.request.Request(base + "/v1/messages", data=body, method="POST", headers={
+        "Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            ok = json.loads(r.read().decode("utf-8")).get("stop_reason") is not None
+    except Exception as e:  # 403, 404, mạng: coi như tuyến chính không dùng được trong đợt này
+        print(f"tuyến chính {segments.MODEL} không dùng được: {str(e)[:100]}", flush=True)
+        ok = False
+    return (segments.MODEL, MODEL_DU_PHONG_2) if ok else (MODEL_DU_PHONG_2,)
 
 
 def inputs(bo):
@@ -239,6 +337,8 @@ def goi(bo, thu_muc=None):
         raise SystemExit("chưa có CKEY_API_KEY trong biến môi trường")
     out_dir = RUN_DIR / PROMPT_VERSION / (thu_muc or bo)
     out_dir.mkdir(parents=True, exist_ok=True)
+    models = dot_models(key, base)
+    print(f"tuyến dùng cho đợt này: {models}", flush=True)
     (RUN_DIR / PROMPT_VERSION / "system.txt").write_text(SYSTEM, encoding="utf-8")
     hong = [0]
 
@@ -250,7 +350,7 @@ def goi(bo, thu_muc=None):
         if hong[0] >= segments.STOP_AFTER_FAILS:
             return u, "bỏ qua: máy chủ đang lỗi"
         text = user_text(msg)
-        data, model, st, tat = _goi_mot(text, MODELS, key, base)
+        data, model, st, tat = _goi_mot(text, models, key, base)
         hong[0] = hong[0] + 1 if st.startswith("lỗi") else 0
         if data is not None:
             path.write_text(json.dumps({"unit_id": u, "phien_ban": PROMPT_VERSION, "model": model, "thinking_tat": tat, "gui": text, "phan_hoi": data},
@@ -458,6 +558,11 @@ def nhap():
             err = [(None, "không có đầu ra lượt 2")] + err
         flag = flag + ([(None, f"luot1_hong: {hong} câu lượt 1 hỏng, cả câu là một đoạn")] if hong else [])
         dem["qua"] += not err
+        if not err:  # [A61] máy trải liet_ke sau cổng; đơn vị trượt cổng giữ nguyên (dòng của nó bị bỏ ở 1.6B)
+            rows, f3 = trai_liet_ke(u, rows, " ".join(x for x in (ctxs[u].get("chapeau"), ctxs[u].get("text")) if x))
+            flag = flag + f3
+            dem["liet_ke_trai"] = dem.get("liet_ke_trai", 0) + sum(1 for _, m in f3 if m.startswith("liet_ke trải"))
+            dem["liet_ke_giu"] = dem.get("liet_ke_giu", 0) + sum(1 for _, m in f3 if m.startswith("liet_ke giữ"))
         units[u] = {"dong": rows, "loi": [[i, m] for i, m in err], "co": [[i, m] for i, m in flag], "nguon": nguon}
     p = propositions.full_cache_path()
     p.parent.mkdir(parents=True, exist_ok=True)

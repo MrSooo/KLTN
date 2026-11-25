@@ -1,32 +1,36 @@
 {
  "unit_id": "BLLD_45-2019.D204.K1",
  "phien_ban": "vai-nhom-2",
- "model": "trikiet2045/gemini-3.8-flash-high",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
  "thinking_tat": false,
  "gui": "{\n \"unit_id\": \"BLLD_45-2019.D204.K1\",\n \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều 199 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D199\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Không thuộc trường hợp được đình công quy định tại Điều 199 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Không thuộc trường hợp được đình công quy định tại Điều 199 của Bộ luật này\"\n    }\n   ]\n  }\n ]\n}",
  "phan_hoi": {
   "content": [
    {
-    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D204.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"thuộc trường hợp đình công\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"chu\": \"đình công\",\n    \"loai\": \"J\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D204.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"thuộc trường hợp được đình công\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"chu\": \"đình công\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
     "type": "text"
    }
   ],
-  "id": "chatcmpl-1795547793629-a55434f2",
-  "model": "trikiet2045/gemini-3.8-flash-high",
+  "id": "LnMGa6feEpva9tMPnafUwQY",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
   "role": "assistant",
   "stop_reason": "end_turn",
   "stop_sequence": null,
   "type": "message",
   "usage": {
+   "cache_read_input_tokens": 1794,
    "completion_tokens_details": {
-    "reasoning_tokens": 7860
+    "reasoning_tokens": 21771
    },
-   "input_tokens": 3669,
-   "output_tokens": 128,
+   "input_tokens": 2036,
+   "output_tokens": 508,
+   "prompt_tokens_details": {
+    "cached_tokens": 1794
+   },
    "x_ckey": {
-    "cost": 10.4,
+    "cost": 13,
     "cost_is_estimate": false,
-    "request_id": "req_5fa6e9cbcbd2102f8001d13d"
+    "request_id": "req_f957c9460066c7315d4fba92"
    }
   }
  }

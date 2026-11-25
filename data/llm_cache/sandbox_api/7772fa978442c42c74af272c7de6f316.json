@@ -1,0 +1,74 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T09:22:19+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0100\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D30.K1.h\",\n    \"tieu_de_dieu\": \"Tạm hoãn thực hiện hợp đồng lao động\",\n    \"khoan_cha\": \"Các trường hợp tạm hoãn thực hiện hợp đồng lao động bao gồm:\",\n    \"chu_don_vi\": \"Trường hợp khác do hai bên thỏa thuận.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D41.K1\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.\\nSau khi được nhận lại làm việc, người lao động hoàn trả cho người sử dụng lao động các khoản tiền trợ cấp thôi việc, trợ cấp mất việc làm nếu đã nhận của người sử dụng lao động.\\nTrường hợp không còn vị trí, công việc đã giao kết trong hợp đồng lao động mà người lao động vẫn muốn làm việc thì hai bên thỏa thuận để sửa đổi, bổ sung hợp đồng lao động.\\nTrường hợp vi phạm quy định về thời hạn báo trước quy định tại khoản 2 Điều 36 của Bộ luật này thì phải trả một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước.\"\n   },\n   \"vi_tu_chung\": [\n    \"agree\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0101\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D30.K1.h\",\n    \"tieu_de_dieu\": \"Tạm hoãn thực hiện hợp đồng lao động\",\n    \"khoan_cha\": \"Các trường hợp tạm hoãn thực hiện hợp đồng lao động bao gồm:\",\n    \"chu_don_vi\": \"Trường hợp khác do hai bên thỏa thuận.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D97.K1\",\n    \"tieu_de_dieu\": \"Kỳ hạn trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động hưởng lương theo giờ, ngày, tuần thì được trả lương sau giờ, ngày, tuần làm việc hoặc được trả gộp do hai bên thỏa thuận nhưng không quá 15 ngày phải được trả gộp một lần.\"\n   },\n   \"vi_tu_chung\": [\n    \"agree\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0102\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D31\",\n    \"tieu_de_dieu\": \"Nhận lại người lao động hết thời hạn tạm hoãn thực hiện hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 15 ngày kể từ ngày hết thời hạn tạm hoãn thực hiện hợp đồng lao động, người lao động phải có mặt tại nơi làm việc và người sử dụng lao động phải nhận người lao động trở lại làm công việc theo hợp đồng lao động đã giao kết nếu hợp đồng lao động còn thời hạn, trừ trường hợp hai bên có thỏa thuận hoặc pháp luật có quy định khác.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D36.K1.d\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n    \"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n    \"chu_don_vi\": \"Người lao động không có mặt tại nơi làm việc sau thời hạn quy định tại Điều 31 của Bộ luật này;\"\n   },\n   \"vi_tu_chung\": [\n    \"present_at_workplace\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0103\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D32.K2\",\n    \"tieu_de_dieu\": \"Làm việc không trọn thời gian\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động thỏa thuận với người sử dụng lao động làm việc không trọn thời gian khi giao kết hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D36.K1.g\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n    \"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n    \"chu_don_vi\": \"Người lao động cung cấp không trung thực thông tin theo quy định tại khoản 2 Điều 16 của Bộ luật này khi giao kết hợp đồng lao động làm ảnh hưởng đến việc tuyển dụng người lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"conclude_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0104\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D32.K2\",\n    \"tieu_de_dieu\": \"Làm việc không trọn thời gian\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động thỏa thuận với người sử dụng lao động làm việc không trọn thời gian khi giao kết hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D61.K6\",\n    \"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hết thời hạn học nghề, tập nghề, hai bên phải ký kết hợp đồng lao động khi đủ các điều kiện theo quy định của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"conclude_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0105\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D32.K2\",\n    \"tieu_de_dieu\": \"Làm việc không trọn thời gian\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động thỏa thuận với người sử dụng lao động làm việc không trọn thời gian khi giao kết hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.a\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Yêu cầu tham gia, không tham gia hoặc ra khỏi tổ chức đại diện người lao động tại cơ sở để được tuyển dụng, giao kết hoặc gia hạn hợp đồng lao động;\"\n   },\n   \"vi_tu_chung\": [\n    \"conclude_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0106\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D32.K3\",\n    \"tieu_de_dieu\": \"Làm việc không trọn thời gian\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc không trọn thời gian được hưởng lương; bình đẳng trong thực hiện quyền và nghĩa vụ với người lao động làm việc trọn thời gian; bình đẳng về cơ hội, không bị phân biệt đối xử, bảo đảm an toàn, vệ sinh lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D134.K1\",\n    \"tieu_de_dieu\": \"Bảo đảm an toàn, vệ sinh lao động tại nơi làm việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động có trách nhiệm thực hiện đầy đủ các giải pháp nhằm bảo đảm an toàn, vệ sinh lao động tại nơi làm việc.\"\n   },\n   \"vi_tu_chung\": [\n    \"ensure_occupational_safety_and_health\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0107\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D32.K3\",\n    \"tieu_de_dieu\": \"Làm việc không trọn thời gian\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc không trọn thời gian được hưởng lương; bình đẳng trong thực hiện quyền và nghĩa vụ với người lao động làm việc trọn thời gian; bình đẳng về cơ hội, không bị phân biệt đối xử, bảo đảm an toàn, vệ sinh lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D159.K1\",\n    \"tieu_de_dieu\": \"Sử dụng lao động là người khuyết tật\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải bảo đảm về điều kiện lao động, công cụ lao động, an toàn, vệ sinh lao động và tổ chức khám sức khỏe định kỳ phù hợp với người lao động là người khuyết tật.\"\n   },\n   \"vi_tu_chung\": [\n    \"ensure_occupational_safety_and_health\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0108\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hết hạn hợp đồng lao động, trừ trường hợp quy định tại khoản 4 Điều 177 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D71.K1.b\",\n    \"tieu_de_dieu\": \"Thương lượng tập thể không thành\",\n    \"khoan_cha\": \"Thương lượng tập thể không thành thuộc một trong các trường hợp sau đây:\",\n    \"chu_don_vi\": \"Đã hết thời hạn quy định tại khoản 2 Điều 70 của Bộ luật này mà các bên không đạt được thỏa thuận;\"\n   },\n   \"vi_tu_chung\": [\n    \"time_limit_expires\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0109\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hết hạn hợp đồng lao động, trừ trường hợp quy định tại khoản 4 Điều 177 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D71.K1.c\",\n    \"tieu_de_dieu\": \"Thương lượng tập thể không thành\",\n    \"khoan_cha\": \"Thương lượng tập thể không thành thuộc một trong các trường hợp sau đây:\",\n    \"chu_don_vi\": \"Chưa hết thời hạn quy định tại khoản 2 Điều 70 của Bộ luật này nhưng các bên cùng xác định và tuyên bố về việc thương lượng tập thể không đạt được thỏa thuận.\"\n   },\n   \"vi_tu_chung\": [\n    \"time_limit_expires\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_04259eecaff51589d9195ed2",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0100",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0101",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0102",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0103",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0104",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0105",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0106",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0107",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0108",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0109",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3738,
+  "output_tokens": 1373,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 457
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1128
+   }
+  }
+ }
+}

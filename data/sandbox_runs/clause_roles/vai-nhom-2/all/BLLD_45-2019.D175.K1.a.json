@@ -1,32 +1,36 @@
 {
  "unit_id": "BLLD_45-2019.D175.K1.a",
  "phien_ban": "vai-nhom-2",
- "model": "trikiet2045/gemini-3.8-flash-high",
- "thinking_tat": true,
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
  "gui": "{\n \"unit_id\": \"BLLD_45-2019.D175.K1.a\",\n \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Yêu cầu tham gia, không tham gia hoặc ra khỏi tổ chức đại diện người lao động tại cơ sở để được tuyển dụng, giao kết hoặc gia hạn hợp đồng lao động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Yêu cầu tham gia\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"không tham gia\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"ra khỏi\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"tổ chức đại diện người lao động tại cơ sở\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được tuyển dụng\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"giao kết\"\n    },\n    {\n     \"id\": \"s1.m6\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"gia hạn\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"hợp đồng lao động\",\n     \"ap_cho\": [\n      \"s1.m5\",\n      \"s1.m6\"\n     ]\n    }\n   ]\n  }\n ]\n}",
  "phan_hoi": {
   "content": [
    {
-    "text": "{\"unit_id\":\"BLLD_45-2019.D175.K1.a\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"Yêu cầu tham gia\",\"tổ chức đại diện người lao động tại cơ sở\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"doan\":[\"tham gia\",\"tổ chức đại diện người lao động tại cơ sở\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"phu_dinh\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m3\",\"doan\":[\"ra khỏi\",\"tổ chức đại diện người lao động tại cơ sở\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m4\",\"doan\":[\"tuyển dụng\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người lao động\",\"loai\":\"W\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m5\",\"doan\":[\"giao kết\",\"hợp đồng lao động\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người lao động\",\"loai\":\"W\"},\"doi_so\":[{\"loai\":\"C\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m6\",\"doan\":[\"gia hạn\",\"hợp đồng lao động\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người lao động\",\"loai\":\"W\"},\"doi_so\":[{\"loai\":\"C\"}],\"quy_tac\":\"q1\"}]}",
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D175.K1.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Yêu cầu tham gia\",\n    \"tổ chức đại diện người lao động tại cơ sở\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"tham gia\",\n    \"tổ chức đại diện người lao động tại cơ sở\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"ra khỏi\",\n    \"tổ chức đại diện người lao động tại cơ sở\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"doan\": [\n    \"tuyển dụng\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m5\",\n   \"doan\": [\n    \"giao kết\",\n    \"hợp đồng lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m6\",\n   \"doan\": [\n    \"gia hạn\",\n    \"hợp đồng lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
     "type": "text"
    }
   ],
-  "id": "chatcmpl-1795554268622-89716d54",
-  "model": "trikiet2045/gemini-3.8-flash-high",
+  "id": "KHMGa_nXFN7N2roPvs3I4Qk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
   "role": "assistant",
   "stop_reason": "end_turn",
   "stop_sequence": null,
   "type": "message",
   "usage": {
+   "cache_read_input_tokens": 2234,
    "completion_tokens_details": {
-    "reasoning_tokens": 7386
+    "reasoning_tokens": 5408
    },
-   "input_tokens": 4063,
-   "output_tokens": 494,
+   "input_tokens": 2038,
+   "output_tokens": 6297,
+   "prompt_tokens_details": {
+    "cached_tokens": 2234
+   },
    "x_ckey": {
-    "cost": 10.4,
+    "cost": 13,
     "cost_is_estimate": false,
-    "request_id": "req_932e5ad66cbe54a6c510890b"
+    "request_id": "req_bf999030045e97f66de979f1"
    }
   }
  }

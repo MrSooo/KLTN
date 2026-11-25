@@ -166,5 +166,39 @@ def test_clause_roles_cham_dong_lap_khong_ghep_cheo():
     assert s["cau_truc"] and s["m"] == len(dong), s
 
 
+def _lk_row(vai, menh_de, liet_ke, trich=None, nhom_hoac=None):
+    return {"loai": "menh_de", "vai": vai, "menh_de": menh_de, "liet_ke": liet_ke, "trich": trich or [menh_de], "nhom_hoac": nhom_hoac, "quy_tac": "q1"}
+
+
+def test_trai_liet_ke_ket_luan_va_dieu_kien():
+    """A61: kết luận nối phẩy/"và" thành nhiều kết luận; điều kiện nối phẩy hay "hoặc" thành một nhóm HOẶC; lõi chỉ là phần đầu thì nối mục vào sau,
+    chữ nối dò trên chữ đơn vị khi trich không có mục (khuôn gọn)."""
+    rows = [_lk_row("ket_luan", "đóng", ["bảo hiểm xã hội", "bảo hiểm y tế", "bảo hiểm thất nghiệp"], trich=["đóng"]),
+            _lk_row("dieu_kien", "làm hư hỏng dụng cụ, thiết bị, tài sản của người sử dụng lao động", ["dụng cụ", "thiết bị", "tài sản"]),
+            _lk_row("dieu_kien", "khác", [])]
+    out, flags = clause_roles.trai_liet_ke("X.D1", rows, "phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp")
+    assert [r["menh_de"] for r in out] == ["đóng bảo hiểm xã hội", "đóng bảo hiểm y tế", "đóng bảo hiểm thất nghiệp",
+                                           "làm hư hỏng dụng cụ của người sử dụng lao động", "làm hư hỏng thiết bị của người sử dụng lao động",
+                                           "làm hư hỏng tài sản của người sử dụng lao động", "khác"], out
+    assert [r["nhom_hoac"] for r in out[:3]] == [None] * 3 and {r["nhom_hoac"] for r in out[3:6]} == {"lk1"}
+    assert all(r["liet_ke"] == [] for r in out[:6]) and len(flags) == 2
+
+
+def test_trai_liet_ke_giu_khi_khong_chac():
+    """Giữ nguyên (gắn cờ): kết luận nối "hoặc"; điều kiện nối "và"; chữ nối không rõ; ca user duyệt giữ. Nhóm HOẶC sẵn có được dùng lại."""
+    giu = [_lk_row("ket_luan", "trả A, B hoặc C", ["A", "B", "C"]),
+           _lk_row("dieu_kien", "đang nghỉ hằng năm, nghỉ việc riêng và trường hợp nghỉ khác", ["hằng năm", "nghỉ việc riêng", "trường hợp nghỉ khác"]),
+           _lk_row("dieu_kien", "có X Y", ["X", "Y"], trich=["có X Y"])]
+    out, flags = clause_roles.trai_liet_ke("X.D1", giu)
+    assert out == giu and all("giữ nguyên" in m for _, m in flags) and len(flags) == 3, flags
+    out, flags = clause_roles.trai_liet_ke("BLLD_45-2019.D3.K1", [_lk_row("dieu_kien", "chịu sự quản lý, điều hành, giám sát", ["quản lý", "điều hành", "giám sát"])])
+    assert len(out) == 1 and "user duyệt giữ" in flags[0][1]
+    out, _ = clause_roles.trai_liet_ke("X.D1", [_lk_row("dieu_kien", "có hành vi ngược đãi, quấy rối", ["ngược đãi", "quấy rối"], nhom_hoac="h1"),
+                                                _lk_row("dieu_kien", "đang nghỉ", ["nghỉ việc riêng", "nghỉ ốm"], trich=["đang nghỉ"])],
+                                        "có hành vi ngược đãi, quấy rối; đang nghỉ việc riêng hoặc nghỉ ốm")
+    assert [(r["menh_de"], r["nhom_hoac"]) for r in out] == [("có hành vi ngược đãi", "h1"), ("có hành vi quấy rối", "h1"),
+                                                             ("đang nghỉ việc riêng", "lk1"), ("đang nghỉ ốm", "lk1")], out
+
+
 if __name__ == "__main__":
     _harness.run(globals())

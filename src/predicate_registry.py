@@ -248,7 +248,7 @@ def main(argv=None):
         return
     run, catalog, missing = prepare()
     base_words = len(run.words)
-    stop = Pd.run_rounds(llm_client.Client("replay"), run)
+    stop = Pd.run_rounds(llm_client.Client("replay"), run, merge=False)  # [A61] sổ chỉ thêm: không gộp tên ở phần KU (có thể xoá tên gốc)
     names = names_by_key(run)
     out = []
     for i, w in enumerate(run.words):

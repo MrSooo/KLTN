@@ -1,32 +1,36 @@
 {
  "unit_id": "BLLD_45-2019.D68.K3",
  "phien_ban": "vai-nhom-2",
- "model": "trikiet2045/gemini-3.8-flash-high",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
  "thinking_tat": false,
  "gui": "{\n \"unit_id\": \"BLLD_45-2019.D68.K3\",\n \"tieu_de_dieu\": \"Quyền thương lượng tập thể của tổ chức đại diện người lao động tại cơ sở trong doanh nghiệp\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D68.K1\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp doanh nghiệp có nhiều tổ chức đại diện người lao động tại cơ sở mà không có tổ chức nào đáp ứng quy định tại khoản 1 Điều này thì các tổ chức có quyền tự nguyện kết hợp với nhau để yêu cầu thương lượng tập thể nhưng tổng số thành viên của các tổ chức này phải đạt tỷ lệ tối thiểu theo quy định tại khoản 1 Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"doanh nghiệp có nhiều tổ chức đại diện người lao động tại cơ sở\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"không có tổ chức nào đáp ứng quy định tại khoản 1 Điều này\",\n     \"noi_truoc\": [\n      \"mà\"\n     ]\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"các tổ chức\",\n     \"ap_cho\": [\n      \"s1.m3\",\n      \"s1.m4\"\n     ],\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"có quyền tự nguyện kết hợp với nhau\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"yêu cầu thương lượng tập thể\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tổng số thành viên của các tổ chức này phải đạt tỷ lệ tối thiểu theo quy định tại khoản 1 Điều này\",\n     \"noi_truoc\": [\n      \"nhưng\"\n     ]\n    }\n   ]\n  }\n ]\n}",
  "phan_hoi": {
   "content": [
    {
-    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D68.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"có nhiều tổ chức đại diện người lao động tại cơ sở\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"doanh nghiệp\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"có tổ chức nào đáp ứng quy định tại khoản 1 Điều này\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"tự nguyện kết hợp với nhau\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các tổ chức\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"doan\": [\n    \"yêu cầu thương lượng tập thể\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các tổ chức\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m5\",\n   \"doan\": [\n    \"tổng số thành viên của các tổ chức này\",\n    \"đạt tỷ lệ tối thiểu theo quy định tại khoản 1 Điều này\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D68.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"doanh nghiệp có nhiều tổ chức đại diện người lao động tại cơ sở\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"có tổ chức nào đáp ứng quy định tại khoản 1 Điều này\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m5\",\n   \"doan\": [\n    \"tổng số thành viên của các tổ chức này đạt tỷ lệ tối thiểu theo quy định tại khoản 1 Điều này\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"tự nguyện kết hợp với nhau\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các tổ chức\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"doan\": [\n    \"yêu cầu thương lượng tập thể\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các tổ chức\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
     "type": "text"
    }
   ],
-  "id": "chatcmpl-1795543875107-474db95f",
-  "model": "trikiet2045/gemini-3.8-flash-high",
+  "id": "9nIGa_uEA7az1e8P173swQQ",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
   "role": "assistant",
   "stop_reason": "end_turn",
   "stop_sequence": null,
   "type": "message",
   "usage": {
+   "cache_read_input_tokens": 2217,
    "completion_tokens_details": {
-    "reasoning_tokens": 6076
+    "reasoning_tokens": 2765
    },
-   "input_tokens": 4056,
-   "output_tokens": 520,
+   "input_tokens": 2038,
+   "output_tokens": 3344,
+   "prompt_tokens_details": {
+    "cached_tokens": 2217
+   },
    "x_ckey": {
-    "cost": 10.4,
+    "cost": 13,
     "cost_is_estimate": false,
-    "request_id": "req_3aac1c188de21a430237dc33"
+    "request_id": "req_0740c7823e789846eb18dda1"
    }
   }
  }

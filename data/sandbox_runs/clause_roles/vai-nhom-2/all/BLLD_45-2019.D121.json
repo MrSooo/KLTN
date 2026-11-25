@@ -1,8 +1,8 @@
 {
  "unit_id": "BLLD_45-2019.D121",
  "phien_ban": "vai-nhom-2",
- "model": "trikiet2045/gemini-3.8-flash-high",
- "thinking_tat": true,
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
  "gui": "{\n \"unit_id\": \"BLLD_45-2019.D121\",\n \"tieu_de_dieu\": \"Hiệu lực của nội quy lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều 119 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D119\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Nội quy lao động có hiệu lực sau 15 ngày kể từ ngày cơ quan nhà nước có thẩm quyền quy định tại Điều 119 của Bộ luật này nhận được đầy đủ hồ sơ đăng ký nội quy lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Nội quy lao động có hiệu lực sau 15 ngày kể từ ngày cơ quan nhà nước có thẩm quyền quy định tại Điều 119 của Bộ luật này nhận được đầy đủ hồ sơ đăng ký nội quy lao động\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Trường hợp người sử dụng lao động sử dụng dưới 10 người lao động ban hành nội quy lao động bằng văn bản thì hiệu lực do người sử dụng lao động quyết định trong nội quy lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"người sử dụng lao động\",\n     \"ap_cho\": [\n      \"s2.m1\",\n      \"s2.m2\"\n     ],\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"sử dụng dưới 10 người lao động\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"ban hành nội quy lao động bằng văn bản\"\n    },\n    {\n     \"id\": \"s2.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"hiệu lực do người sử dụng lao động quyết định trong nội quy lao động\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
  "phan_hoi": {
   "content": [
@@ -11,23 +11,26 @@
     "type": "text"
    }
   ],
-  "id": "chatcmpl-1795549509797-283a8bfc",
-  "model": "trikiet2045/gemini-3.8-flash-high",
+  "id": "D3MGa8K9E4v62roPptfHiAk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
   "role": "assistant",
   "stop_reason": "end_turn",
   "stop_sequence": null,
   "type": "message",
   "usage": {
+   "cache_read_input_tokens": 2164,
    "completion_tokens_details": {
-    "reasoning_tokens": 5315
+    "reasoning_tokens": 1272
    },
-   "input_tokens": 3998,
-   "output_tokens": 504,
-   "prompt_tokens_details": {},
+   "input_tokens": 2038,
+   "output_tokens": 1874,
+   "prompt_tokens_details": {
+    "cached_tokens": 2164
+   },
    "x_ckey": {
-    "cost": 10.4,
+    "cost": 13,
     "cost_is_estimate": false,
-    "request_id": "req_2fac7648f95891e544bf5d27"
+    "request_id": "req_dc405d0dac38f41d5127531a"
    }
   }
  }

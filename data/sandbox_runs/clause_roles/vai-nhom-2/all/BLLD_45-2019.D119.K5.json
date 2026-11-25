@@ -1,32 +1,32 @@
 {
  "unit_id": "BLLD_45-2019.D119.K5",
  "phien_ban": "vai-nhom-2",
- "model": "trikiet2045/gemini-3.8-flash-high",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
  "thinking_tat": false,
  "gui": "{\n \"unit_id\": \"BLLD_45-2019.D119.K5\",\n \"tieu_de_dieu\": \"Đăng ký nội quy lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều này\",\n   \"dich\": \"BLLD_45-2019.D119\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Căn cứ điều kiện cụ thể, cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh có thể ủy quyền cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp huyện thực hiện việc đăng ký nội quy lao động theo quy định tại Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Căn cứ điều kiện cụ thể, cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh có thể ủy quyền cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp huyện thực hiện việc đăng ký nội quy lao động theo quy định tại Điều này\"\n    }\n   ]\n  }\n ]\n}",
  "phan_hoi": {
   "content": [
    {
-    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D119.K5\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Căn cứ điều kiện cụ thể\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"ủy quyền cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp huyện thực hiện việc đăng ký nội quy lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\",\n    \"loai\": \"?\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"?\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"theo quy định tại Điều này\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D119.K5\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Căn cứ điều kiện cụ thể\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"ủy quyền cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp huyện thực hiện việc đăng ký nội quy lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\",\n    \"loai\": \"?\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"?\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
     "type": "text"
    }
   ],
-  "id": "chatcmpl-1795545317470-1219ae86",
-  "model": "trikiet2045/gemini-3.8-flash-high",
+  "id": "6HEGa66vOL2N1e8P39nc0Ao",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
   "role": "assistant",
   "stop_reason": "end_turn",
   "stop_sequence": null,
   "type": "message",
   "usage": {
    "completion_tokens_details": {
-    "reasoning_tokens": 3658
+    "reasoning_tokens": 2681
    },
-   "input_tokens": 3751,
-   "output_tokens": 409,
+   "input_tokens": 3896,
+   "output_tokens": 1180,
    "x_ckey": {
-    "cost": 10.4,
+    "cost": 13,
     "cost_is_estimate": false,
-    "request_id": "req_0c94f990afcaed261981e0f5"
+    "request_id": "req_f0b50f4cd914babdbf6cf593"
    }
   }
  }
