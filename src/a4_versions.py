@@ -1,16 +1,19 @@
 """A4: cơ chế cập nhật có phiên bản cho lớp văn bản (BLDS 2015, đơn vị Điều / Khoản / Điểm).
 
 Chạy: python -I src/a4_versions.py apply --base <md gốc> --amend DOC [--amend DOC2 ...]
-                                  [--effective-from YYYY-MM-DD] [--doc-id ID] [--name NAME]
+                                  [--effective-from YYYY-MM-DD] [--doc-id ID] [--name NAME] [--llm off|replay|live]
+                                  [--provider claude|gemini] [--model MODEL]
       python -I src/a4_versions.py snapshot --name NAME --date YYYY-MM-DD [--out PATH]
 
 apply: nạp văn bản gốc (a1.load_parsed) và cạnh gốc của A2/A3 (chỉ đọc), áp từng văn bản sửa đổi theo ngày hiệu lực.
-  Không lỗi: ghi data/processed/a4_<name>_{versions,amend_edges,edge_changes}.jsonl, a4_<name>_{changed,impact}.json
-  và docs/a4_report_<name>.txt, thoát 0. Có lỗi (bất kỳ kiểm nào): chỉ ghi docs/a4_report_<name>.txt, thoát 1.
+  Không lỗi: ghi data/processed/a4/<name>/a4_<name>_{versions,amend_edges,edge_changes}.jsonl, a4_<name>_{changed,impact}.json
+  và docs/bao_cao_chay/a4/a4_report_<name>.txt, thoát 0. Có lỗi (bất kỳ kiểm nào): chỉ ghi báo cáo đó, thoát 1.
+--llm: dòng lạ mặc định là lỗi; replay/live cho khối chứa nó qua tầng chuẩn hoá (normalize_block, a4_llm.py; quyết định I1-I6).
 snapshot: đơn vị đang hiệu lực tại ngày T, xuất Markdown cùng quy ước với file BLDS gốc (stdout hoặc --out).
 
 Hiệu lực là nửa khoảng [effective_from, effective_to): đang hiệu lực tại T nếu (from null hoặc <= T) và (to null hoặc > T).
-Mọi quyết định chỗ spec chưa nói nằm trong docs/a4_quyet_dinh.txt.
+Phiên bản 1 của đơn vị gốc bắt đầu từ ngày hiệu lực của văn bản gốc (a1.BASE_DOC); văn bản sửa đổi phải có hiệu lực sau ngày đó.
+Mọi quyết định chỗ spec chưa nói nằm trong docs/quyet_dinh/a4_quyet_dinh.txt.
 """
 import argparse
 import collections
@@ -29,10 +32,11 @@ import a2_edges as a2
 import a3_exceptions as a3
 
 ROOT = a1.ROOT
-IN_DIR = a2.PROCESSED_DIR     # file A1/A2/A3 đã sinh, chỉ đọc
-OUT_DIR = a2.PROCESSED_DIR    # file dữ liệu A4 (test đổi sang thư mục tạm)
-DOCS_DIR = ROOT / "docs"
+IN_DIR = a2.PROCESSED_DIR     # thư mục gốc chứa a1/, a2/, a3/ đã sinh, chỉ đọc
+OUT_DIR = a2.PROCESSED_DIR / "a4"  # file dữ liệu A4, mỗi văn bản một thư mục con (test đổi sang thư mục tạm)
+DOCS_DIR = ROOT / "docs" / "bao_cao_chay" / "a4"  # thư mục con nằm trong hằng để test đổi DOCS_DIR sang thư mục tạm vẫn đúng
 DOC_PREFIX = a1.DOC_PREFIX
+BASE_EFFECTIVE = a1.BASE_DOC["hieu_luc"]  # effective_from của phiên bản 1; văn bản sửa đổi phải có hiệu lực sau ngày này
 
 # A2/A3 nhận mã có hậu tố chữ làm nguồn (đã thử, khoá bằng test_a2_a3_accept_suffix_codes). Đặt False thì đơn vị
 # có hậu tố bị loại khỏi tập đưa vào A2/A3 và được liệt kê ở mục "chưa tính cạnh (mã có hậu tố)" của báo cáo.
@@ -373,6 +377,7 @@ class Directive:
     mode: str | None = None     # phrase: replace | delete | insert
     old: str | None = None      # phrase: cụm cũ / cụm neo; rename_heading: tiêu đề cũ (nếu có)
     new: str | None = None      # phrase: cụm mới; rename_heading: tiêu đề mới
+    via: str = "ky_hieu"        # ky_hieu: văn phạm chuẩn nhận trực tiếp; llm: qua tầng chuẩn hoá khối (đã kiểm lại bằng văn phạm chuẩn)
 
 
 class Matched(NamedTuple):
@@ -383,6 +388,7 @@ class Matched(NamedTuple):
 class Parsed(NamedTuple):
     directives: list
     skipped: list  # [(số dòng, dòng, lý do)]
+    llm: tuple = ()  # [LlmBlock] khối chỉ thị đã chuẩn hoá qua BLOCK_PROPOSER
 
 
 _Q = r"“(?P<{}>[^“”]*)”"
@@ -413,6 +419,10 @@ RE_SCOPE = re.compile(r"^(?:Sửa đổi, bổ sung|Sửa đổi|Bổ sung) mộ
 RE_OWN_DIEU = re.compile(r"^Điều \d+[a-z]?\s*\.")  # tiêu đề Điều của chính văn bản sửa đổi (có dấu chấm sau số)
 RE_TITLE = re.compile(r"^(Sửa đổi|Bổ sung|Bãi bỏ)[^.]* một số điều của .+:?$")
 RE_WORDS = re.compile(r"được sửa đổi|được thay thế|được bổ sung|Sửa đổi|Bổ sung|Bãi bỏ|Thay thế|Bỏ cụm|Thay cụm|thay thế")
+# Dòng không khớp RE_WORDS nhưng vẫn có dáng chỉ thị (bị động, "hết hiệu lực", "thay bằng") là dòng lạ, không bị bỏ qua (C8).
+RE_ACTION = re.compile(r"(?<!\w)(?:sửa|bổ sung|thay|bỏ)(?!\w)", re.I)
+RE_ACTION_ALONE = re.compile(r"(?<!\w)(?:bãi bỏ|hết hiệu lực)(?!\w)", re.I)  # không cần kèm tham chiếu (cấp văn bản)
+RE_STRUCT_REF = re.compile(r"(?<!\w)(?:điều|khoản|điểm)[ ]+(?:\d+[a-zđ]?|[a-zđ])(?!\w)", re.I)
 RE_UNSUPPORTED = re.compile(r"đánh số lại|trở thành", re.I)
 
 
@@ -481,6 +491,8 @@ def skip_reason(line):
         return "tiêu đề Điều của văn bản sửa đổi"
     if RE_TITLE.match(line):
         return "tiêu đề chung"
+    if RE_ACTION_ALONE.search(line) or (RE_ACTION.search(line) and RE_STRUCT_REF.search(line)):
+        return None
     if not RE_WORDS.search(line):
         return "không phải chỉ thị"
     return None
@@ -628,18 +640,35 @@ def resolve_unmatched(raw, no, skipped):
 
 
 def parse_amendment(text):
-    """Văn bản sửa đổi -> Parsed(directives, skipped). Chưa kiểm gì với trạng thái văn bản gốc."""
-    lines = split_lines(text)
-    directives, skipped, scope, i = [], [], None, 0
+    """Văn bản sửa đổi -> Parsed(directives, skipped, llm). Chưa kiểm gì với trạng thái văn bản gốc."""
+    directives, skipped, llm = _parse_lines(split_lines(text), allow_llm=True)
+    if not directives:
+        raise A4Error("E_NO_DIRECTIVE", "văn bản sửa đổi không có chỉ thị nào")
+    return Parsed(directives, skipped, tuple(llm))
+
+
+def _parse_lines(lines, allow_llm):
+    """Vòng nhận dạng chung. Lỗi thuộc LLM_TRIGGERS: báo như cũ, hoặc (allow_llm và có BLOCK_PROPOSER) cả khối đi qua normalize_block."""
+    directives, skipped, llm, scope, i = [], [], [], None, 0
     while i < len(lines):
         no, raw = lines[i]
         i += 1
         if not raw:
             continue
         try:
-            m = match_directive(strip_number(raw))
-            if m is None:
-                m = resolve_unmatched(raw, no, skipped)
+            try:
+                m = match_directive(strip_number(raw))
+                if m is None:
+                    m = resolve_unmatched(raw, no, skipped)
+            except A4Error as e:
+                if e.code not in LLM_TRIGGERS or not allow_llm or BLOCK_PROPOSER is None:
+                    raise
+                end = block_end(lines, i)
+                new, info = normalize_block(lines[i - 1:end], len(directives))
+                directives += new
+                llm.append(info)
+                i, scope = end, None
+                continue
             if m is None:
                 continue
             if m.kind == "scope":
@@ -653,7 +682,227 @@ def parse_amendment(text):
             e.line_no = e.line_no or no
             e.line = e.line or raw
             raise
-    return Parsed(directives, skipped)
+    return directives, skipped, llm
+
+
+# ---- tầng chuẩn hoá khối (hướng C: LLM đề xuất, văn phạm chuẩn và các phép kiểm ký hiệu quyết định) ----
+#
+# Khối = dòng lạ + mọi dòng sau nó tới dòng ngoài nháy kế tiếp mở một mục đánh số / tiêu đề Điều / câu hiệu lực. BLOCK_PROPOSER
+# (a4_llm.ClaudeProposer, hoặc hàm giả trong test) trả JSON {chi_thi, khong_xu_ly_duoc}. Mỗi chỉ thị được dựng lại thành dòng chuẩn
+# R1-R5 kèm nội dung trong nháy rồi parse bằng chính _parse_lines (allow_llm=False): LLM không áp gì trực tiếp. Sau đó ba phép kiểm:
+# phủ số hiệu (V1), nội dung nguyên văn (V2), cụm từ nguyên văn (V3). Hỏng thì gửi lỗi cho LLM sửa, tối đa LLM_ROUNDS lần đề xuất;
+# vẫn hỏng thì E_LLM (cả văn bản không được áp). Các kiểm của bước áp dụng (E_TARGET, E_ROOT, E_PHRASE_MISSING, ...) vẫn chạy như cũ.
+
+BLOCK_PROPOSER = None  # None: dòng lạ là lỗi như trước; CLI --llm replay|live gắn a4_llm.ClaudeProposer
+LLM_ROUNDS = 3         # 1 lần đề xuất + tối đa 2 vòng sửa (Nội dung 2 của đề cương)
+LLM_TRIGGERS = ("E_UNKNOWN_LINE", "E_REFLIST")  # dòng lạ, hoặc khung câu nhận được mà danh sách đích nằm ngoài văn phạm
+LLM_OPS = ("replace_unit", "insert_unit", "repeal_unit", "rename_heading", "phrase")
+RE_BLOCK_STOP = re.compile(r"^(?:\d+\.\s+|Điều \d+[a-z]?\s*\.)|hiệu lực (?:thi hành )?(?:kể )?từ ngày", re.I)
+RE_MENTION_LIST = re.compile(
+    r"(?<!\w)(Điều|khoản|điểm)\s+((?:\d+[a-z]?|[a-zđ])(?!\w)(?:(?:,\s*|\s+và\s+)(?:\d+[a-z]?|[a-zđ])(?!\w))*)", re.I)
+
+
+class LlmBlock(NamedTuple):
+    line_no: int     # dòng đầu khối
+    line: str        # dòng đầu khối, nguyên văn
+    rounds: int      # số lần đề xuất đã dùng
+    meta: dict       # thông tin của proposer cho lần cuối (mô hình, khoá cache, có dùng cache)
+    canonical: list  # các dòng chuẩn đã parse thành công
+
+
+def _quote_depth(line, depth):
+    for ch in line:
+        if ch == "“":
+            depth += 1
+        elif ch == "”":
+            depth = max(depth - 1, 0)
+    return depth
+
+
+def block_end(lines, start):
+    """Chỉ số (loại trừ) dòng cuối của khối bắt đầu ở start - 1."""
+    depth, j = _quote_depth(lines[start - 1][1], 0), start
+    while j < len(lines):
+        line = lines[j][1]
+        if depth == 0 and line and RE_BLOCK_STOP.search(line) and not line.startswith("“"):
+            break
+        depth = _quote_depth(line, depth)
+        j += 1
+    return j
+
+
+def block_quotes(block):
+    """(nội dung của các cặp nháy mở ở đầu dòng, cụm của các cặp nháy nằm giữa dòng, chữ ngoài nháy) của khối."""
+    bodies, phrases, outside = [], [], []
+    depth, buf, kind = 0, [], None
+    for _, line in block:
+        stripped = line.lstrip()
+        for k, ch in enumerate(stripped):
+            if ch == "“":
+                if depth == 0:
+                    kind, buf = ("body" if not stripped[:k].strip() else "phrase"), []
+                else:
+                    buf.append(ch)
+                depth += 1
+            elif ch == "”" and depth > 0:
+                depth -= 1
+                if depth == 0:
+                    (bodies if kind == "body" else phrases).append("".join(buf))
+                else:
+                    buf.append(ch)
+            elif depth > 0:
+                buf.append(ch)
+            else:
+                outside.append(ch)
+        if depth > 0:
+            buf.append("\n")
+        outside.append("\n")
+    if depth > 0:
+        raise A4Error("E_BODY", "khối có dấu mở nháy không được đóng", block[0][0])
+    return bodies, phrases, "".join(outside)
+
+
+def _flat(s):
+    return re.sub(r"\s+", " ", s or "").strip()
+
+
+def mentioned_labels(text):
+    """{(cấp, nhãn)} của mọi Điều/khoản/điểm nhắc trong chữ (đã bỏ phần trong nháy)."""
+    out = set()
+    for kw, items in RE_MENTION_LIST.findall(text):
+        for item in re.split(r",\s*|\s+và\s+", items):
+            out.add((kw.casefold(), item.lower()))
+    return out
+
+
+def code_labels(code):
+    """{(cấp, nhãn)} của một mã: BLDS2015.D650.K1.dd -> {(điều, 650), (khoản, 1), (điểm, đ)}."""
+    segs = code.split(".")[1:]
+    out = {("điều", segs[0][1:].lower())}
+    if len(segs) > 1:
+        out.add(("khoản", segs[1][1:].lower()))
+    if len(segs) > 2:
+        out.add(("điểm", segs[2].replace("dd", "đ")))
+    return out
+
+
+def _target(t, where):
+    if not isinstance(t, dict) or not str(t.get("dieu") or "").strip():
+        raise A4Error("E_LLM_SHAPE", f"{where}: đích phải có dieu")
+    return {k: (str(t[k]).strip() if t.get(k) not in (None, "") else None) for k in ("dieu", "khoan", "diem")}
+
+
+def _uref(t):
+    s = f"Điều {t['dieu']}"
+    if t["khoan"]:
+        s = f"khoản {t['khoan']} {s}"
+    if t["diem"]:
+        s = f"điểm {t['diem']} {s}"
+    return s
+
+
+def _quoted(text):
+    rows = (text or "").split("\n")
+    rows[0] = "“" + rows[0]
+    rows[-1] = rows[-1] + "”."
+    return rows
+
+
+def render_canonical(c, k):
+    """Một chỉ thị JSON của proposer -> các dòng chuẩn R1-R5 (kèm nội dung trong nháy). Sai hình thì A4Error E_LLM_SHAPE."""
+    where = f"chỉ thị {k}"
+    op = c.get("op")
+    if op not in LLM_OPS:
+        raise A4Error("E_LLM_SHAPE", f"{where}: op {op!r} không thuộc {LLM_OPS}")
+    targets = [_target(t, where) for t in c.get("dich") or []]
+    if not targets:
+        raise A4Error("E_LLM_SHAPE", f"{where}: không có đích")
+    if op in ("replace_unit", "insert_unit", "rename_heading") and len(targets) != 1:
+        raise A4Error("E_LLM_SHAPE", f"{where}: {op} cần đúng một đích, có {len(targets)}")
+    t = targets[0]
+    if op == "repeal_unit":
+        return [f"Bãi bỏ {', '.join(_uref(x) for x in targets)}."]
+    if op == "replace_unit":
+        verb = "Thay thế" if c.get("quan_he") == "replaces" else "Sửa đổi, bổ sung"
+        return [f"{verb} {_uref(t)} như sau:", *_quoted(c.get("noi_dung"))]
+    if op == "rename_heading":
+        if t["khoan"] or t["diem"]:
+            raise A4Error("E_LLM_SHAPE", f"{where}: đổi tên chỉ áp cho Điều")
+        return [f"Tên Điều {t['dieu']} được sửa đổi như sau:", *_quoted(c.get("noi_dung"))]
+    if op == "insert_unit":
+        after = _target(c["vao_sau"], where) if c.get("vao_sau") else None
+        if t["diem"]:
+            head = f"Bổ sung điểm {t['diem']}" + (f" vào sau điểm {after['diem']}" if after else "") + f" khoản {t['khoan']} Điều {t['dieu']}"
+        elif t["khoan"]:
+            head = f"Bổ sung khoản {t['khoan']}" + (f" vào sau khoản {after['khoan']}" if after else "") + f" Điều {t['dieu']}"
+        else:
+            head = f"Bổ sung Điều {t['dieu']}" + (f" vào sau Điều {after['dieu']}" if after else "")
+        return [f"{head} như sau:", *_quoted(c.get("noi_dung"))]
+    mode, old, new, at = c.get("kieu_cum"), c.get("cum_cu"), c.get("cum_moi"), ", ".join(_uref(x) for x in targets)
+    if mode == "replace":
+        if c.get("quan_he") == "replaces":
+            return [f"Thay thế cụm từ “{old}” bằng cụm từ “{new}” tại {at}."]
+        return [f"Sửa đổi cụm từ “{old}” thành cụm từ “{new}” tại {at}."]
+    if mode == "delete":
+        return [f"Bỏ cụm từ “{old}” tại {at}."]
+    if mode == "insert":
+        return [f"Bổ sung cụm từ “{new}” vào sau cụm từ “{old}” tại {at}."]
+    raise A4Error("E_LLM_SHAPE", f"{where}: kieu_cum {mode!r} không thuộc replace/delete/insert")
+
+
+def check_block(block, proposal, directives):
+    """V1-V3 trên khối gốc và đề xuất đã parse được; trả về list lỗi (rỗng nếu đạt)."""
+    bodies, phrases, outside = block_quotes(block)
+    items = proposal.get("chi_thi") or []
+    problems = []
+    said = mentioned_labels(outside)
+    used = set()
+    for d in directives:
+        for code in d.targets + ([d.after] if d.after else []):
+            used |= code_labels(code)
+    if said - used:
+        problems.append(f"V1: số hiệu có trong khối nhưng không có trong đích nào: {sorted(said - used)}")
+    if used - said:
+        problems.append(f"V1: đích có số hiệu không có trong khối: {sorted(used - said)}")
+    given = " ".join(_flat(c.get("noi_dung")) for c in items if c.get("op") in ("replace_unit", "insert_unit", "rename_heading"))
+    if given != " ".join(_flat(b) for b in bodies):
+        problems.append("V2: nội dung các chỉ thị nối lại không bằng đúng chữ trong nháy của khối (phải chép nguyên văn, chỉ được tách)")
+    quoted = {_flat(x) for x in phrases}
+    for k, c in enumerate(items, 1):
+        if c.get("op") == "phrase":
+            for field_ in ("cum_cu", "cum_moi"):
+                if c.get(field_) is not None and _flat(c[field_]) not in quoted:
+                    problems.append(f"V3: chỉ thị {k}: {field_} {c[field_]!r} không phải cụm trong nháy của khối")
+    return problems
+
+
+def normalize_block(block, seq0):
+    """Khối dòng lạ -> (list Directive, LlmBlock), hoặc A4Error E_LLM sau LLM_ROUNDS lần đề xuất không đạt."""
+    text = "\n".join(line for _, line in block)
+    feedback, last = None, []
+    for rounds in range(1, LLM_ROUNDS + 1):
+        try:
+            proposal, meta = BLOCK_PROPOSER.propose(text, feedback)
+        except Exception as e:  # ranh giới với hệ thống ngoài (API, cache): mọi lỗi của proposer thành A4Error, văn bản không được áp
+            raise A4Error(getattr(e, "code", "E_LLM"), f"tầng chuẩn hoá: {e}", block[0][0], block[0][1])
+        if proposal.get("khong_xu_ly_duoc"):
+            raise A4Error("E_LLM", f"tầng chuẩn hoá từ chối: {proposal['khong_xu_ly_duoc']}", block[0][0], block[0][1])
+        try:
+            canonical = [row for k, c in enumerate(proposal.get("chi_thi") or [], 1) for row in render_canonical(c, k)]
+            if not canonical:
+                raise A4Error("E_LLM_SHAPE", "đề xuất không có chỉ thị nào")
+            directives, skipped, _ = _parse_lines(list(enumerate(canonical, 1)), allow_llm=False)
+            if skipped or not directives:
+                raise A4Error("E_LLM_SHAPE", f"dòng chuẩn bị bỏ qua: {[line for _, line, _ in skipped]}")
+            last = check_block(block, proposal, directives)
+        except A4Error as e:
+            last = [f"{e.code}: {e.message}" + (f" (dòng chuẩn: {e.line})" if e.line else "")]
+        if not last:
+            for k, d in enumerate(directives, 1):
+                d.seq, d.line_no, d.line, d.via = seq0 + k, block[0][0], block[0][1], "llm"
+            return directives, LlmBlock(block[0][0], block[0][1], rounds, meta, canonical)
+        feedback = json.dumps({"de_xuat_truoc": proposal, "loi": last}, ensure_ascii=False)
+    raise A4Error("E_LLM", f"không chuẩn hoá được sau {LLM_ROUNDS} lần đề xuất: {'; '.join(last)}", block[0][0], block[0][1])
 
 
 def check_overlap(directives):
@@ -705,6 +954,7 @@ class Store:
 
     def __init__(self):
         self.versions = {}
+        self.chuong = {}  # mã Điều -> mã Chương (rỗng nếu văn bản gốc không có Chương); Chương không lập phiên bản
 
     def cur(self, code):
         vs = self.versions.get(code)
@@ -761,7 +1011,7 @@ def read_jsonl(path):
 
 def load_base_edges(stem):
     """Cạnh gốc: contains/part_of (A2a), refers_to (A2b), exception_of (A3), chỉ đọc."""
-    paths = [IN_DIR / f"a2_edges_{stem}.jsonl", IN_DIR / f"a2_refs_{stem}.jsonl", IN_DIR / f"a3_exceptions_{stem}.jsonl"]
+    paths = [IN_DIR / "a2" / f"a2_edges_{stem}.jsonl", IN_DIR / "a2" / f"a2_refs_{stem}.jsonl", IN_DIR / "a3" / f"a3_exceptions_{stem}.jsonl"]
     rows = []
     for p in paths:
         if not p.exists():
@@ -818,6 +1068,7 @@ class Doc:
     date: str
     directives: list
     skipped: list
+    llm: tuple = ()  # [LlmBlock]
 
 
 @dataclass
@@ -886,6 +1137,10 @@ def apply_insert_unit(store, step, d):
             raise A4Error("E_AFTER", f"'vào sau' trỏ {d.after} không phải đơn vị có thật")
         if seg_key(code.split(".")[-1]) <= seg_key(d.after.split(".")[-1]):
             raise A4Error("E_AFTER", f"{code} không xếp sau {d.after} theo thứ tự (số, hậu tố)")
+    if parent is None and store.chuong:  # Điều mới trong văn bản có Chương: thuộc Chương của Điều nó đứng sau (review F-09)
+        if d.after is None:
+            raise A4Error("E_PARENT", f"văn bản gốc có Chương: Điều mới {code} cần 'vào sau Điều …' để biết thuộc Chương nào")
+        store.chuong[code] = store.chuong[d.after]
     for c, node in flatten(d.tree, code):
         if c in store.versions:
             raise A4Error("E_EXISTS", f"{c} đã từng tồn tại, không chèn lại được")
@@ -1005,7 +1260,8 @@ def recompute_edges(store, state, step, S):
     listy = {parent_code(c) for c in S_set if parent_code(c) and (store.cur(parent_code(c)).text or "").endswith(a3.LIST_END)}
     try:
         view = edge_view(store, S_set, skip)
-        new_refs = [(s, p, o, ev) for s, p, o, ev in a2.build_refs(view)[0] if s in S_set]
+        # mention kèm số ngoài mọi cụm (ví dụ 'Điều 621a') không chặn A4: nó được liệt kê ở mục "Chưa phủ" (F5)
+        new_refs = [(s, p, o, ev) for s, p, o, ev in a2.build_refs(view, allow_uncovered=True)[0] if s in S_set]
     except ValueError as e:
         raise A4Error("E_A2", str(e))
     try:
@@ -1028,8 +1284,8 @@ def recompute_edges(store, state, step, S):
         if k not in new_rows:
             rows.append(_edge_row("close", k, state.edges[k], date))
             del state.edges[k]
-    for c in step.new:  # contains / part_of cho mã mới, suy từ mã
-        parent = parent_code(c)
+    for c in step.new:  # contains / part_of cho mã mới: Khoản/Điểm suy từ mã, Điều lấy Chương đã gán khi chèn
+        parent = parent_code(c) or store.chuong.get(c)
         if parent is None:
             continue
         for key in ((parent, CONTAINS, c), (c, PART_OF, parent)):
@@ -1124,7 +1380,10 @@ def load_base(base):
         raise A4Error("E_BASE", f"văn bản gốc {base} còn lỗi parse A1: {parsed.errors[:3]}")
     store = Store()
     for u in parsed.units:
-        store.versions[u.id] = [Version(u.id, 1, u.type, u.number, u.heading, list(u.parts))]
+        store.versions[u.id] = [Version(u.id, 1, u.type, u.number, u.heading, list(u.parts),
+                                        effective_from=BASE_EFFECTIVE, source_doc=DOC_PREFIX)]
+        if u.chuong:
+            store.chuong[u.id] = u.chuong
     return store
 
 
@@ -1154,7 +1413,12 @@ def apply_series(base, amends, name=None):
         except A4Error as e:
             e.doc = e.doc or doc_id
             raise
-        docs.append(Doc(doc_id, _display_path(spec.path), date, parsed.directives, parsed.skipped))
+        if date <= BASE_EFFECTIVE:
+            raise A4Error("E_DATE_BEFORE_BASE", f"ngày hiệu lực {date} không sau ngày hiệu lực {BASE_EFFECTIVE} của văn bản gốc",
+                          doc=doc_id)
+        if doc_id == DOC_PREFIX:
+            raise A4Error("E_ARGS", f"doc-id {doc_id!r} trùng mã văn bản gốc", doc=doc_id)
+        docs.append(Doc(doc_id, _display_path(spec.path), date, parsed.directives, parsed.skipped, parsed.llm))
     by_date = collections.defaultdict(list)
     for d in docs:
         by_date[d.date].append(d.doc_id)
@@ -1169,7 +1433,7 @@ def apply_series(base, amends, name=None):
 # ---- ghi file, báo cáo ----
 
 def path_of(name, kind, ext="jsonl"):
-    return OUT_DIR / f"a4_{name}_{kind}.{ext}"
+    return OUT_DIR / name / f"a4_{name}_{kind}.{ext}"
 
 
 def report_path(name):
@@ -1214,6 +1478,11 @@ def format_report(run):
              ["\t".join([doc, s, p, o, ev]) for doc, s, p, o, ev in run.broken])
     _section(L, "Tập ảnh hưởng (đơn vị, lý do)", [f"{k}\t{'; '.join(v)}" for k, v in run.impact.items()])
     _section(L, "Dòng bị bỏ qua (văn bản, dòng, lý do, nội dung)", ["\t".join([doc, str(no), reason, line]) for doc, no, line, reason in run.skipped])
+    if any(d.llm for d in run.docs):  # mục chỉ có khi chạy --llm và có khối đi qua tầng chuẩn hoá
+        _section(L, "Khối chuẩn hoá bằng LLM (văn bản, dòng, số lần đề xuất, mô hình, khoá, dùng kết quả đã lưu; rồi các dòng chuẩn)",
+                 [row for d in run.docs for b in d.llm for row in
+                  ["\t".join([d.doc_id, str(b.line_no), str(b.rounds), str(b.meta.get("model")), str(b.meta.get("key")),
+                              str(b.meta.get("cached"))])] + [f"    {c}" for c in b.canonical]])
     _section(L, "A3 chưa xử lý (đơn vị changed/new: văn bản, đơn vị, câu)", ["\t".join(x) for x in run.unhandled])
     _section(L, "Chưa phủ (mention không nằm trong cụm A2 nhận ra: văn bản, đơn vị, mention, ngữ cảnh)", ["\t".join(x) for x in run.uncovered])
     none = ["(không có: A2/A3 nhận mã có hậu tố làm nguồn nên không đơn vị nào bị loại; mention trỏ tới mã hậu tố nằm ở mục 'Chưa phủ')"]
@@ -1287,6 +1556,21 @@ def cmd_snapshot(args):
 
 
 def cmd_apply(args):
+    """--llm quyết định tầng chuẩn hoá cho đúng lần chạy này (trả lại giá trị cũ khi xong, để gọi trong cùng tiến trình không rò)."""
+    global BLOCK_PROPOSER
+    saved = BLOCK_PROPOSER
+    if args.llm == "off":
+        BLOCK_PROPOSER = None
+    else:
+        import a4_llm
+        BLOCK_PROPOSER = a4_llm.make_proposer(args.llm, args.provider, args.model)
+    try:
+        return _cmd_apply(args)
+    finally:
+        BLOCK_PROPOSER = saved
+
+
+def _cmd_apply(args):
     amends = args.amend
     ids = args.doc_id or [None] * len(amends)
     dates = args.effective_from or [None] * len(amends)
@@ -1319,6 +1603,11 @@ def main(argv=None):
     ap_apply.add_argument("--effective-from", action="append", help="ngày hiệu lực YYYY-MM-DD, một giá trị cho mỗi --amend")
     ap_apply.add_argument("--doc-id", action="append", help="mã văn bản (mặc định: tên file không đuôi), một giá trị cho mỗi --amend")
     ap_apply.add_argument("--name", help="tên bộ kết quả (mặc định: các doc-id nối bằng '+')")
+    ap_apply.add_argument("--llm", choices=("off", "replay", "live"), default="off",
+                          help="dòng lạ: off = lỗi (mặc định); replay = chuẩn hoá bằng kết quả LLM đã lưu; live = gọi API khi chưa có")
+    ap_apply.add_argument("--provider", choices=("claude", "gemini"), default="claude",
+                          help="nhà cung cấp LLM khi --llm replay|live (mặc định claude); gemini dùng GEMINI_API_KEY")
+    ap_apply.add_argument("--model", help="mô hình, mặc định theo nhà cung cấp (a4_llm.MODEL / a4_llm.GEMINI_MODEL)")
     ap_snap = sub.add_parser("snapshot", help="xuất Markdown trạng thái đang hiệu lực tại một ngày")
     ap_snap.add_argument("--name", required=True)
     ap_snap.add_argument("--date", required=True, help="YYYY-MM-DD")

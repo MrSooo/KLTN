@@ -1,0 +1,46 @@
+A8: CÁC QUYẾT ĐỊNH CỦA TRANG XEM ĐỒ THỊ
+=======================================
+A8 chỉ đọc file A7 và ghi một trang HTML để duyệt / demo; không đổi dữ liệu, không thuộc spec hai khối. Chạy: python -I utils/a8/a8_viz.py <md>
+[--versions ... --date ...]; test: python -I tests/test_a8.py (phần JavaScript trong khung chưa có test tự động, đã thử tay bằng trình duyệt
+không giao diện: tap, kéo, ghim, bật tắt cạnh, tìm kiếm, bảng cạnh, zoom, xếp lại).
+
+A. ĐÃ CHỐT VỚI USER (2026-10-25)
+--------------------------------
+A1. Dạng knowledge graph: nút tròn nối bằng cạnh thẳng, force-directed (bản đầu vẽ cây trái -> phải, user thấy khó nhìn và bị ẩn bớt nút).
+A2. Hiện ĐỦ mọi nút (p4: 225). Cạnh cấu trúc (chứa / thuộc, 219 cạnh) vẽ mờ, có công tắc tắt; 43 cạnh ngữ nghĩa nổi bằng màu.
+A3. Nhãn ngắn trên nút (Ch.XXI, Đ617, K1, a); tiêu đề và nội dung hiện khi di chuột hoặc bấm. Thay hẳn giao diện cây, không giữ chế độ phụ.
+
+B. CHỖ SPEC CHƯA NÓI, TÔI CHỌN MẶC ĐỊNH (sửa nếu không đúng)
+-----------------------------------------------------------
+B1. Một file, mở offline. Dữ liệu nhúng JSON; Cytoscape.js 3.30.2 (MIT) ở utils/a8/vendor/cytoscape.min.js chèn thẳng vào trang
+    (nguồn: cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.2/cytoscape.min.js). Không gọi tài nguyên ngoài.
+B2. Bố cục lực tự viết (không thêm thư viện): lò xo theo cạnh (cha-con ngắn hơn cạnh ngữ nghĩa, cạnh ngữ nghĩa kéo yếu hơn để các Điều có
+    quan hệ gom lại gần nhau mà không phá cấu trúc), đẩy giữa mọi cặp nút, tách vòng tròn chạm nhau, hút nhẹ về tâm. Vị trí đầu là cây tròn
+    đồng tâm, không dùng số ngẫu nhiên: cùng dữ liệu thì cùng hình (đã kiểm: hai lần chạy cùng một hash vị trí; "Xếp lại" về đúng hình đó;
+    0 cặp vòng tròn chồng nhau ở p4).
+B3. Kéo một nút thì ghim nó tại chỗ (nền mờ quanh nút), bấm đúp để thả; "Xếp lại" thả hết và tính lại từ đầu. Bấm không kéo thì không ghim.
+B4. Kích thước nút theo bậc (văn bản 40, Chương 30, Điều 20, Khoản 12, Điểm 9, nút điều kiện 24). Viền đậm = nút có cạnh ngữ nghĩa.
+    Nút Khoản / Điểm CÓ cạnh ngữ nghĩa hiện mã đầy đủ (Đ617.K1.a) ngay từ đầu, loại còn lại chỉ hiện nhãn ngắn khi phóng to (zoom >= 1,2).
+    Phóng to dần thì nhãn dài dần: Chương / Điều thêm tiêu đề từ zoom 1,5; Khoản / Điểm thêm đoạn đầu nội dung từ zoom 2,4.
+    Di chuột vào nút thì mờ phần còn lại (kể cả nhãn), chỉ giữ nút, láng giềng và cạnh của nó.
+C. NÚT NGOÀI CÂY VÀ BẢN THEO NGÀY
+----------------------------------
+C1. Nút điều kiện, văn bản sửa đổi, đơn vị đã đóng không thuộc cây; chỉ nối bằng cạnh ngữ nghĩa và nằm ở chỗ lực đặt nó.
+C2. Đích của cạnh dangling / historical không còn là nút trong A7 (7b), A8 dựng nút type "da_dong" (vòng đứt nét đỏ, nhãn kèm ✕); cha suy
+    từ mã khi mã có từ ba đoạn trở lên và cha còn trong đồ thị (D621.K2 -> D621), Điều đã đóng không có cha (chỉ nối bằng cạnh ngữ nghĩa).
+D. MÀU VÀ TRẠNG THÁI HIỂN THỊ
+-----------------------------
+D1. Cạnh dẫn chiếu = xanh, ngoại lệ = cam, trùng chữ = xanh lá đứt nét (ba slot đầu của bảng màu mẫu, đã chạy validate_palette --pairs all,
+    cả sáng và tối: đạt; xanh lá dưới 3:1 trên nền sáng nên có chú giải chữ và bảng cạnh). Cạnh của văn bản sửa đổi dùng màu mực + nhãn chữ
+    (sửa đổi / thay thế / bãi bỏ) vì slot thứ tư (tím) trượt ngưỡng all-pairs với xanh. Mỗi loại cạnh còn khác hình đầu mũi tên / nét,
+    nên không chỉ dựa vào màu. Cạnh treo dùng màu trạng thái đỏ kèm nhãn "⚠ treo". Nút điều kiện màu cam vì nó là đầu của cạnh ngoại lệ.
+    Nút cấu trúc dùng thang xám theo bậc.
+D2. Sáng / tối theo hệ điều hành; #theme=light|dark ép một chế độ (dùng khi chiếu).
+D3. Trạng thái mở sẵn qua phần # của URL: #sel=id&z=1.6, #tab=table, #struct=0 (ẩn cạnh cấu trúc), #theme=..., #hover=id (hai tham số cuối
+    để kiểm tra bằng trình duyệt không giao diện).
+E. CHƯA CÓ
+----------
+E1. Thanh trượt theo thời gian. Mỗi ngày là một trang riêng (--versions --date); muốn kéo qua nhiều ngày thì phải chạy A7 cho từng ngày
+    trước rồi gộp vào một trang.
+E2. Ghi vào data/processed/a8/ và được run_all.py gọi sau khi A7 xong (trang sinh lại giống hệt nếu dữ liệu không đổi).
+E3. Chưa có thu / mở nhánh: ở dạng KG mọi nút luôn hiện. Muốn xem riêng một Điều thì dùng "Phóng vào láng giềng" ở panel chi tiết.

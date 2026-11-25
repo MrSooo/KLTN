@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\title{Pivoting the Neuro-Symbolic Legal Reasoning Pipeline to Labor Law:\\[2pt]
+       Incremental Knowledge-Base Updates over Authentic Statutory Amendment Chains}
+
+\author{Research Team (Codebase Deliverable)}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We re-target the incremental legal knowledge-base (KB) pipeline from Civil-Code
+Inheritance Law (BLDS~2015 Part~IV) to \textbf{Labor Law} (B\`o lu\^at Lao \dj\`ong
+45/2019/QH14) and its authentic statutory update chain --- implementing decrees
+(Ngh\d{i} \dj\d{i}nh 135/2020, 145/2020, 152/2020, 12/2022, 219/2025) and circulars
+(Th\^ong t\r u). The motivation is to replace synthetic amendment fixtures with
+real normative instruments, exposing deep nested exceptions (unilateral termination of
+labor contracts, disciplinary dismissal, overtime limits, severance and retirement
+conditions) that rigorously exercise three research primitives: (i)~incremental KB
+update ($S_{upd}$), (ii)~broken-link detection ($S_{scan}$), and (iii)~defeasible
+reasoning compiled to \textsc{s(CASP)} ($S_{infer}$).
+\end{abstract}
+
+\section{Architecture}
+The pipeline decomposes into seven stages, each deterministic unless an optional LLM
+back-end is configured (an unconfigured LLM produces an empty, ``never guess'' result):
+
+\begin{enumerate}
+  \itemsep0pt
+  \item $S_{upd}$ --- versioning/amendment application over directive grammars R1--R6.
+  \item $S_{know}$ --- proposition/predicate/rule extraction (concept $\sqcup$ input predicates); malformed payloads land in quarantine $Q$.
+  \item $S_{infer}$ --- compilation of the in-force program $\Pi_\tau$ to \textsc{s(CASP)} with negation-as-failure blocking:
+        $\mathit{blocked}(U) \leftarrow \mathit{has\_exception}(U)$, $\mathit{holds}(U) \leftarrow \mathit{in\_force}(U), \neg \mathit{blocked}(U)$.
+        The binary \texttt{exception\_of/2} facts are kept for provenance, and every distinct target is
+        also emitted as a unary \texttt{has\_exception/1} fact; a binary-only rule
+        $\mathit{blocked}(U) \leftarrow \mathit{exception\_of}(\_,U)$ forces \textsc{s(CASP)} to unroll an
+        existential \texttt{forall} over all exception facts, which does not terminate on the ten-edge
+        labor sample, whereas the grounded unary rule answers in seconds.
+  \item $V_{legal}$ --- deterministic symbolic verifier: reward $R_{sym}$, state distance $d_{state}(s,s')=|s\,\triangle\,s'|$, and detailed feedback with penalty weights $\alpha_{precond},\alpha_{effect},\alpha_{goal}$.
+  \item $S_{cot}$ --- concept-bounded legal logical chain-of-thought extractor over state transitions $\langle s_{i-1}, a_i, s_i\rangle$ at exception depths $d\in\{1,2,3\}$.
+  \item $S_{scan}$ --- graph scanner reporting five error families: \emph{dead\_rule}, \emph{duplicate}, \emph{broken\_link}, \emph{blocking\_cycle}, \emph{contradiction}.
+  \item $S_{repair}$ --- verifier-guided $\eta$-iteration repair loop ($\eta\in\{1,2,3\}$).
+\end{enumerate}
+
+\section{Concept Book (Labor Law)}
+The concept book bounds the atoms a reasoning chain may introduce. Base \emph{input}
+predicates encode facts (contract type, pregnancy, harassment, retirement age, tenure);
+\emph{concept} predicates encode statute-anchored legal notions. Anchors: Articles
+35 (worker unilateral termination), 36 (employer unilateral termination), 37 (prohibited
+unilateral termination), 39 (unlawful termination), 46 (severance allowance), 169
+(retirement age). Exception-depth hints: $d{=}1$ base rule, $d{=}2$ exception, $d{=}3$
+nested exception (e.g.\ Article~39 defines unlawful termination by reference to
+Articles 35--37; Article~46 carries a \emph{``tr\r u tr\r u\`ong h\dj p''} exception to
+its own severance rule).
+
+\section{Evaluation}
+The evaluation dataset ($\texttt{data/labor/eval\_nested\_exceptions.jsonl}$) pairs
+nested-exception cases at $d\in\{1,2,3\}$ with counterfactual pairs and
+out-of-scope/quarantined items, each annotated with one of four verdicts on the
+extraction/abstention surface: \texttt{Concluded}, \texttt{Refuted},
+\texttt{Insufficient Basis}, \texttt{Quarantined/Out-of-Scope}. Defeasible-reasoning
+accuracy is scored by $R_{sym}$; selective abstention is calibrated by the
+extraction-vs-abstention trade-off, with multi-seed significance testing
+(Benjamini--Hochberg FDR $q<0.05$).
+
+The first benchmark run (\texttt{results/labor\_ablation\_v3.json}) scores the
+deterministic symbolic ceiling at $14/14 = 100\%$ (Concluded $6/6$, Refuted $3/3$,
+Insufficient Basis $2/2$, Quarantined/Out-of-Scope $3/3$), with per-depth accuracy
+$8/8$ at $d{=}1$, $3/3$ at $d{=}2$, $2/2$ at $d{=}3$, and $1/1$ consistent
+counterfactual pair. This figure is the \emph{symbolic upper-bound ceiling}: it is
+produced by the hand-encoded decision function \texttt{predict\_verdict()} over
+\texttt{data/labor/concept\_book.json}, so it bounds what the symbolic layer can decide
+and is \emph{not} the output of an LLM arm. The LLM arms are reported separately and do
+not inherit this number.
+
+\section{Status}
+Base law and decrees are ingested through the registry (\texttt{src/law\_registry.py});
+the curated labor sample parses to $45$ units and $226$ triples with $0$ parse errors,
+$10$ \texttt{exception\_of} edges and $7$ condition nodes are extracted, and
+$S_{scan}$ reports $0$ errors across all five families. A2b detects $19$ reference
+clusters in this sample (the figure previously quoted as ``$19$ \texttt{refers\_to}
+edges'') but still stops on enumerated self-referential point-lists
+(e.g.\ \texttt{LLD2019.D36.K2}, whose cluster is a bare enumerated point), so no \texttt{refers\_to} edge
+is materialised and \texttt{a2\_unresolved\_lld2019\_labor.txt} is empty
+($0$ unresolved): graph merge/validation therefore runs on structural and exception
+edges only. Live s(CASP) inference runs via
+the user-space SWI-Prolog pack \texttt{scasp}~1.1.4 (\texttt{library(scasp)}, no sudo);
+\texttt{src/inference.py} returns raw models with justification trees over
+\texttt{a9\_lld2019\_labor.pl} ($45$ in-force units, $10$ \texttt{exception\_of} facts,
+$8$ distinct \texttt{has\_exception} targets), where \texttt{holds/1} is defeated
+by negation-as-failure on \texttt{has\_exception/1}; for the retirement exception of
+Article~35(2)(e), \texttt{holds('LLD2019.D35.K2.e')} answers \texttt{no} 
+while \texttt{blocked('LLD2019.D35.K2.e')} answers \texttt{yes}. The Phase-2 temporal amendment
+(ND~135/2020 over Article~169) splits the half-open intervals
+[\texttt{effective\_from},\texttt{effective\_to}) correctly: prior versions close at
+\texttt{2021-01-01}, new versions open with \texttt{previous\_version}$=1$, and the
+affected set captures dependent referers (\texttt{D169.K3}, \texttt{D169.K4}).
+\end{document}

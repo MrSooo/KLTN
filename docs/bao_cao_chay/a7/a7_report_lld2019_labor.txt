@@ -1,0 +1,32 @@
+A7 báo cáo đồ thị gộp: lld2019_labor
+file đã đọc:
+  data/processed/a1/a1_triples_lld2019_labor.jsonl
+  data/processed/a2/a2_edges_lld2019_labor.jsonl
+  data/processed/a2/a2_refs_lld2019_labor.jsonl
+  data/processed/a3/a3_exceptions_lld2019_labor.jsonl
+  data/processed/a6/a6_conditions_lld2019_labor.jsonl
+  data/processed/a6/a6_exceptions_lld2019_labor.jsonl
+
+== Nút ==
+tổng 53 | theo loại {'dieu': 6, 'khoan': 17, 'diem': 22, 'dieu_kien': 7, 'van_ban': 1} | theo status {'ok': 51, 'same_text': 2}
+
+== Cạnh ==
+tổng 102 | theo p {'contains': 45, 'part_of': 45, 'exception_of': 10, 'same_text_as': 2} | theo status {'ok': 102}
+bộ ba đã gộp (0): (không có)
+nút bản sao text (2, bản sau -> canonical):
+  LLD2019.D36.K2.d -> LLD2019.D35.K1.d
+  LLD2019.D169.K5 -> LLD2019.D46.K4
+
+== Liên thông ==
+thành phần liên thông: 1 | chỉ theo cạnh ngữ nghĩa (bỏ contains/part_of): 41 | bỏ thêm 3 nút điều kiện chung chung (tuy_nghi/dan_chieu_mo): 42 (chưa tính chính các nút đó)
+
+== Kiểm tra ==
+[7a] mã nút duy nhất, status nút hợp lệ: 53 nút -> ĐẠT
+[7b] cạnh ok có đủ hai đầu, cạnh treo / historical có nguồn là nút và đích không phải nút: 102 cạnh -> ĐẠT
+[7c] không còn bộ ba (s, p, o) lặp: 102 cạnh, 0 bộ ba đã gộp khi dựng -> ĐẠT
+[7d] nút bản sao: đúng một same_text_as tới đơn vị đầu nhóm: 2 nút same_text -> ĐẠT
+[7e] mỗi Chương/Điều/Khoản/Điểm đúng một part_of tới cha đúng bậc, contains đối xứng: 45 cặp contains -> ĐẠT
+[7f] số nút, cạnh, nút bản sao khớp bảng EXPECTED: nút 53/53, cạnh 102/102, same_text 2/2 -> ĐẠT
+[7g] không có vòng exception_of: 10 cạnh exception_of; vòng refers_to (chỉ ghi): không có -> ĐẠT
+
+KẾT LUẬN: ĐẠT
