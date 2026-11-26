@@ -27,7 +27,7 @@ RUN_DIR = ROOT / "data/sandbox_runs/clause_roles"
 NUMBERED = PROMPT_VERSION == "vai-nhom-4"  # [A63] khuôn khoảng âm tiết
 GOLD = {"dev": ROOT / "data/eval_dev/clause_roles_gold_dev.json", "test": ROOT / "data/eval_dev/clause_roles_gold_test.json"}
 MODEL_DU_PHONG_2 = "daongocson12022004/gemini-3.8-flash-high"  # [THÊM 25/11, A61] tuyến không có trần ~8k (đo lượt 008 của 1.6B: 9.486 token nghĩ ngầm vẫn trọn)
-MODEL_DU_PHONG_3 = segments.MODEL  # [A63] 26/11 tối: martha02091945 (117 khoản đầu); 26/11 khuya-27/11: daongocson12022004 (đến D149.K3); 27/11 user: dungcsnd113 với khoá mới (daongocson 404)
+MODEL_DU_PHONG_3 = "phamhuyhoang28072005/gemini-3.8-flash"  # [A63] lượt 2 đã xong (martha 116, daongocson 516, dungcsnd113 249); 27/11 02:38 dungcsnd113 404, 1.6B trở đi dùng tuyến này (vân tay +264 3/3)
 MODELS = (segments.MODEL, segments.MODEL_DU_PHONG, MODEL_DU_PHONG_2)  # chốt trước khi đo (mục 10): tuyến chính, 404 thì dự phòng; [A61] cụt hay 403 thì sang tuyến sau
 MAX_TOKENS = 32000  # api.max_output_tokens; tuyến dự phòng suy nghĩ ngầm dài (cụt 2/40 câu đơn ở 16.000, A60)
 LUONG = 2  # 8 lúc đo; 16 khi chạy cả bộ; [A63] 4 từ 26/11 tối (martha 429 ở 16 luồng); 2 từ 26/11 khuya; 1 rồi 2 ngày 27/11 (user: giãn cách, đừng spam lỗi; rồi "2 luồng" để kịp sáng); không ảnh hưởng đầu ra
