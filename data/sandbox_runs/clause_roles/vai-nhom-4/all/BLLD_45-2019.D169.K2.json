@@ -1,0 +1,29 @@
+{
+ "unit_id": "BLLD_45-2019.D169.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": true,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D169.K2\",\n \"tieu_de_dieu\": \"1:Tuổi 2:nghỉ 3:hưu\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tuổi nghỉ hưu của người lao động trong điều kiện lao động bình thường được điều chỉnh theo lộ trình cho đến khi đủ 62 tuổi đối với lao động nam vào năm 2028 và đủ 60 tuổi đối với lao động nữ vào năm 2035.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Tuổi 2:nghỉ 3:hưu 4:của 5:người 6:lao 7:động 8:trong 9:điều 10:kiện 11:lao 12:động 13:bình 14:thường 15:được 16:điều 17:chỉnh 18:theo 19:lộ 20:trình 21:cho 22:đến 23:khi 24:đủ 25:62 26:tuổi 27:đối 28:với 29:lao 30:động 31:nam 32:vào 33:năm 34:2028 35:và 36:đủ 37:60 38:tuổi 39:đối 40:với 41:lao 42:động 43:nữ 44:vào 45:năm 46:2035\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Kể từ năm 2021, tuổi nghỉ hưu của người lao động trong điều kiện lao động bình thường là đủ 60 tuổi 03 tháng đối với lao động nam và đủ 55 tuổi 04 tháng đối với lao động nữ; sau đó, cứ mỗi năm tăng thêm 03 tháng đối với lao động nam và 04 tháng đối với lao động nữ.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Kể 2:từ 3:năm 4:2021\",\n     \"ap_cho\": [\n      \"s2.m1\",\n      \"s2.m2\"\n     ]\n    },\n    {\n     \"id\": \"s2.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:tuổi 2:nghỉ 3:hưu 4:của 5:người 6:lao 7:động 8:trong 9:điều 10:kiện 11:lao 12:động 13:bình 14:thường\",\n     \"ap_cho\": [\n      \"s2.m1\",\n      \"s2.m2\"\n     ]\n    },\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:là 2:đủ 3:60 4:tuổi 5:03 6:tháng 7:đối 8:với 9:lao 10:động 11:nam 12:và 13:đủ 14:55 15:tuổi 16:04 17:tháng 18:đối 19:với 20:lao 21:động 22:nữ\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:cứ 2:mỗi 3:năm 4:tăng 5:thêm 6:03 7:tháng 8:đối 9:với 10:lao 11:động 12:nam 13:và 14:04 15:tháng 16:đối 17:với 18:lao 19:động 20:nữ\",\n     \"noi_truoc\": [\n      \"sau đó\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D169.K2\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:15-46\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:5-7\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:8-14\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:5-7\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.c1:1-4\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.c2:5-7\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.c2:8-14\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.c2:5-7\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:1-22\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.c2:5-7\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"loi\": [\n    \"s2.c2:8-14\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.c2:5-7\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q3\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"loi\": [\n    \"s2.m2:1-20\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.c2:5-7\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q3\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-d53afb43de204934a1ac835f1e950",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6616,
+   "output_tokens": 1007,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d9b90f99516d2d41c8aee464"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D154.K4",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D154.K4\",\n \"tieu_de_dieu\": \"1:Người 2:lao 3:động 4:nước 5:ngoài 6:làm 7:việc 8:tại 9:Việt 10:Nam 11:không 12:thuộc 13:diện 14:cấp 15:giấy 16:phép 17:lao 18:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Vào Việt Nam với thời hạn dưới 03 tháng để thực hiện chào bán dịch vụ.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Vào 2:Việt 3:Nam 4:với 5:thời 6:hạn 7:dưới 8:03 9:tháng\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:thực 2:hiện 3:chào 4:bán 5:dịch 6:vụ\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Parsing the targeted labor code unit requires structuring the fragmented title and clause text into valid schema components. Initial attempt misaligns the clause hierarchy, placing parent identifier constraints incorrectly on foreign worker provisions. Adjusting parsing logic to correctly isolate the clause text and cross-reference references before final serialization.\n\nClause four of the foreign worker exemption article frames a conditional purpose rather than an independent rule. Reclassifying the provision from a standalone conclusion into a dependent condition aligns the legal hierarchy correctly.\n\nArticle 154 lacks an introductory framing sentence, meaning the clauses operate directly under the exemption title. Treating these provisions as standalone conclusions rather than conditional triggers properly preserves their status as independent criteria for work permit exemptions.\n\nSource assignment constraints dictate that identifiers must reference clause segments directly rather than article titles. Examining the purpose marker connecting the segment to the preceding clause requires designating its role as a conclusion linked to the underlying exemption rule.\n\nSub-clauses lacking explicit connective words inherit their functional role based on semantic context, determining whether segments operate as conclusions or conditions. Applying subject-omission rules requires pulling missing identifiers directly from parent articles or section titles to anchor segment subjects accurately.\n\nSubject phrase extraction for foreign workers initially maps to the full nominal chain, but segment boundaries must isolate the core actor from qualifying predicates. Predicate modifier lacks explicit modal operators, classifying the operational mode as descriptive rather than prescriptive.\n\nConditional validation requires checking title keywords to determine if the segment operates as a condition or conclusion. Re-evaluating clause classification against article context reveals whether the provision defines an independent exemption criterion or a dependent trigger.\n\nConstraint definitions prevent article titles from acting as valid source identifiers for clause segments. Analyzing connective markers and semantic context confirms the operational role and dependent status of target sub-clauses.\n\nAdverbial modifiers denoting location, basis, or time generally function as conditions unless specifying the core operational duration or scope. Temporal phrases defining applicability thresholds classify as conditional triggers, whereas duration parameters directly detailing the action remain within the core predicate. Initial classification of duration limits requires verifying whether the timeframe bounds the validity of the rule or defines the core behavior itself.\n\nDuration parameters defining operational scope belong within the core predicate rather than acting as external conditions. Purpose connectors link subordinate clauses to the primary rule as shared conclusions.\n\nDetecting the absence of explicit modal markers within the clause text and title. Re-evaluating whether phrases denoting exemptions or negative conditions map to specific operational modes or default to descriptive classifications.\n\nAbsence of connective words requires falling back to semantic interpretation to distinguish operational modes. Testing whether specific entry duration phrases function as conditional triggers or standalone criteria within the exemption framework.\n\nEvaluating connective markers reveals no conditional lead-in phrase, defaulting the target segments to structural conclusions. Subject resolution maps missing actors directly from parent title definitions to anchor segment identities.\n\nIsolating the subject noun phrase to a five-token span matching foreign worker definitions. Confirming the absence of direct object actors within specific operational clauses while validating target entity codes across parallel structural units.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D154.K4\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:1-9\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"td:1-5\"],\"loai\":\"W\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"loi\":[\"s1.m2:1-6\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"td:1-5\"],\"loai\":\"W\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-eb89757fe46043b6a4628dd2877fb",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5864,
+   "output_tokens": 7110,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_4ba018e08e9f45f766dab206"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D179.K1.b",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D179.K1.b\",\n \"tieu_de_dieu\": \"1:Tranh 2:chấp 3:lao 4:động\",\n \"khoan_cha\": \"1:Tranh 2:chấp 3:lao 4:động 5:là 6:tranh 7:chấp 8:về 9:quyền 10:và 11:nghĩa 12:vụ, 13:lợi 14:ích 15:phát 16:sinh 17:giữa 18:các 19:bên 20:trong 21:quá 22:trình 23:xác 24:lập, 25:thực 26:hiện 27:hoặc 28:chấm 29:dứt 30:quan 31:hệ 32:lao 33:động; 34:tranh 35:chấp 36:giữa 37:các 38:tổ 39:chức 40:đại 41:diện 42:người 43:lao 44:động 45:với 46:nhau; 47:tranh 48:chấp 49:phát 50:sinh 51:từ 52:quan 53:hệ 54:có 55:liên 56:quan 57:trực 58:tiếp 59:đến 60:quan 61:hệ 62:lao 63:động. 64:Các 65:loại 66:tranh 67:chấp 68:lao 69:động 70:bao 71:gồm:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tranh chấp lao động tập thể về quyền hoặc về lợi ích giữa một hay nhiều tổ chức đại diện người lao động với người sử dụng lao động hoặc một hay nhiều tổ chức của người sử dụng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Tranh 2:chấp 3:lao 4:động 5:tập 6:thể 7:về 8:quyền 9:hoặc 10:về 11:lợi 12:ích 13:giữa 14:một 15:hay 16:nhiều 17:tổ 18:chức 19:đại 20:diện 21:người 22:lao 23:động 24:với 25:người 26:sử 27:dụng 28:lao 29:động 30:hoặc 31:một 32:hay 33:nhiều 34:tổ 35:chức 36:của 37:người 38:sử 39:dụng 40:lao 41:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target spans a specific clause within the Labor Code regarding labor dispute definitions. Initial reading suggests parsing the structural hierarchy of rights and obligations, but verifying exact clause boundaries requires cross-referencing the broader chapter context to ensure precise interpretation.\n\nText points to Article 179 concerning labor dispute definitions. Initial hypothesis assumed individual rights focus, but clause breakdown reveals broader categorization encompassing collective disputes, organizational conflicts, and directly related relations.\n\nLead-in phrase establishes a definitive enumeration of dispute categories. Sub-items function as substantive conclusions inheriting the core subject rather than conditional prerequisites.\n\nSub-items instantiate the core dispute categories enumerated by the lead-in. Parsing the syntactic span requires extracting the primary relational action and objects while excluding modal qualifiers and governing authorities.\n\nInitial check suggests a list structure, but lack of a shared governing verb invalidates the listing hypothesis. Entire span functions as a substantive definition rather than a distributed set of conditions, making the whole clause the core entity.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D179.K1.b\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"loi\": [\n        \"s1.m1:1-41\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-c8fd4672cb0b4150a1e6e99ecbb26",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6332,
+   "output_tokens": 2723,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_56215cd2989c65297ecab259"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D190.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D190.K3\",\n \"tieu_de_dieu\": \"1:Thời 2:hiệu 3:yêu 4:cầu 5:giải 6:quyết 7:tranh 8:chấp 9:lao 10:động 11:cá 12:nhân\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thời hiệu yêu cầu Tòa án giải quyết tranh chấp lao động cá nhân là 01 năm kể từ ngày phát hiện ra hành vi mà bên tranh chấp cho rằng quyền và lợi ích hợp pháp của mình bị vi phạm.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Thời 2:hiệu 3:yêu 4:cầu 5:Tòa 6:án 7:giải 8:quyết 9:tranh 10:chấp 11:lao 12:động 13:cá 14:nhân 15:là 16:01 17:năm 18:kể 19:từ 20:ngày 21:phát 22:hiện 23:ra 24:hành 25:vi 26:mà 27:bên 28:tranh 29:chấp 30:cho 31:rằng 32:quyền 33:và 34:lợi 35:ích 36:hợp 37:pháp 38:của 39:mình 40:bị 41:vi 42:phạm\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target text addresses individual labor dispute resolution timelines. Initial read of the title suggests general dispute procedures, but the specific sentence points specifically to court litigation limitation periods. Restructuring extraction to target judicial request timeframes rather than general dispute processing rules.\n\nSegment designates a temporal benchmark initiating the limitation period. Evaluation confirms this boundary marker belongs to the core conclusion structure rather than an external conditional clause, requiring retention within the primary extraction span.\n\nTarget phrase lacks standard subject categorization, leaving the temporal marker as a structural standalone. Definition rules mandate treating quantitative statements as core conclusions, though distinguishing whether the entire subject phrase integrates into that core requires reassessing the exclusion boundaries.\n\nSyntactic analysis confirms the full subject phrase anchors the temporal clause. Evaluation of the core predicate structure indicates the limitation period functions as the central determination, requiring specific classification for legal entities and statutory intervals rather than standard operational processing rules.\n\nSyntactic classification initially points toward a conditional breakdown typical of definitional structures, but valuation rules treat quantitative measures as unified conclusions. Reassessing the predicate structure to determine whether the temporal duration functions as a standalone determination or requires integration into the primary statutory framework.\n\nExclusion parameters omit grammatical subjects from the core extraction. Re-evaluating whether the temporal entity functions strictly as a subject to be dropped or forms an indispensable part of the primary predicate structure.\n\nSyntactic guidelines explicitly exclude grammatical subjects from core predicate structures. Re-evaluating the extraction boundaries confirms the subject phrase containing the temporal entity must remain outside the core predicate to satisfy strict compositional definitions.\n\nSubject categorization rules define specific entity codes for temporal measures. Evaluating whether the statutory period functions as a designated date marker rather than a standard legal entity requires adjusting classification boundaries to match the designated code framework.\n\nStatute of limitations terminology aligns directly with temporal classification codes rather than human actor categories. Entity definitions encompass duration and time limits within the designated temporal code framework, confirming appropriate classification for the statutory period.\n\nRule exception dictates retaining terminal duration markers within the core conclusion. The phrase initiated by the starting boundary marker integrates directly into the primary predicate rather than functioning as an external condition, confirming the complete span encompasses the entire durational definition.\n\nGuideline exception explicitly prioritizes terminal duration markers within core conclusions. Re-examining the starting boundary phrase confirms the temporal marker functions as an internal core component rather than an external condition, requiring full retention in the primary extraction span.\n\nInitial hesitation suggested omitting the subject entirely, but duration entities map directly to the designated temporal entity code. Re-evaluating the classification boundaries confirms the subject span functions as a recognized temporal entity rather than a standard actor category.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D190.K3\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:15-42\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.m1:1-14\"],\"loai\":\"D\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-dc32823937864a6897ec5480bfe0e",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5956,
+   "output_tokens": 5655,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_7518bd6c3c86bc367fe350ff"
+   }
+  }
+ }
+}

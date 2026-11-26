@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D172.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D172.K3\",\n \"tieu_de_dieu\": \"1:Thành 2:lập, 3:gia 4:nhập 5:tổ 6:chức 7:của 8:người 9:lao 10:động 11:tại 12:doanh 13:nghiệp\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp tổ chức của người lao động tại doanh nghiệp gia nhập Công đoàn Việt Nam thì thực hiện theo quy định của Luật Công đoàn.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tổ 2:chức 3:của 4:người 5:lao 6:động 7:tại 8:doanh 9:nghiệp 10:gia 11:nhập 12:Công 13:đoàn 14:Việt 15:Nam\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:thực 2:hiện 3:theo 4:quy 5:định 6:của 7:Luật 8:Công 9:đoàn\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Parsing the Labor Code unit for structured extraction. The title references worker organizations at enterprises, while the provided sentence fragment outlines initial organizational scope. Structuring the components requires mapping the text fragments into hierarchical JSON fields while preserving the exact wording and clause boundaries.\n\nEvaluating subject classification against defined codes where employee organizations fall outside standard categories. Assigning the undefined marker due to lack of a direct match in the primary taxonomy.\n\nInitial alignment suggested a conclusion role for the second clause, but analyzing verb modifiers reveals a conditional basis derived from union regulations. Treating the statutory reference clause as a distinct condition mapping to the preceding verbal action ensures structural consistency with established precedent patterns.\n\nSubject of the second clause appears omitted, prompting a check of inheritance rules. Rule constraints limit omitted subject resolution to parent sections or article titles rather than preceding clauses within the same sentence, requiring re-evaluation of the mapping boundaries.\n\nInheritance rule permits resolving omitted subjects using parent sections or article titles. The article title contains the exact worker organization phrase matching the target structural requirements.\n\nSplitting the text segment into a core action and a legal basis component. Checking whether the reference to an external statute qualifies the unit as an external cross-reference subject to omission rather than structured extraction.\n\nExternal reference list remains empty, precluding cross-reference tagging. Evaluating conditional clause structure against precedent where statutory references map to distinct conditions rather than external bypass markers.\n\nConditional mapping field requires a populated reference list, leaving the field unpopulated given the empty input array. Re-evaluating subject assignment for the secondary clause where local extraction fails. Inheriting the subject from the article title correctly resolves the omitted entity to the organizational phrase defined in the header.\n\nDirect textual match found for the subject span within the first clause segment, confirming the entity reference. Method field analysis shows no explicit modal indicators, defaulting to the descriptor classification. Rule mapping assigns all components uniformly to the primary regulatory identifier.\n\nApplying statutory basis classification rules identifies the prepositional modifier as a conditional component rather than a core action element. The explicit inclusion of foundational references under statutory directives validates separating the modifying phrase into its own conditional structural node.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D172.K3\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:10-15\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.m1:1-9\"],\"loai\":\"?\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"loi\":[\"s1.m2:1-2\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"td:5-13\"],\"loai\":\"?\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"loi\":[\"s1.m2:3-9\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"td:5-13\"],\"loai\":\"?\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-8ef0895e6e4f46feba31a233766f4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5919,
+   "output_tokens": 5834,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_61fc7d01d0d295719ae73890"
+   }
+  }
+ }
+}

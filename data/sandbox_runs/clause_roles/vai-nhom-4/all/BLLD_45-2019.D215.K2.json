@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D215.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D215.K2\",\n \"tieu_de_dieu\": \"1:Thanh 2:tra 3:chuyên 4:ngành 5:về 6:lao 7:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Việc thanh tra an toàn, vệ sinh lao động thực hiện theo quy định của Luật An toàn, vệ sinh lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Việc 2:thanh 3:tra 4:an 5:toàn, 6:vệ 7:sinh 8:lao 9:động 10:thực 11:hiện 12:theo 13:quy 14:định 15:của 16:Luật 17:An 18:toàn, 19:vệ 20:sinh 21:lao 22:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target unit maps to labor inspection regulations, specifically referencing occupational safety and health laws. Structural extraction reveals a single sentence defining the scope of safety inspections without nested clauses or cross-references.\n\nExternal reference marker detected since the text delegates procedures entirely to a separate governing statute. Evaluating whether to classify the provision as an outward cross-reference bypassing local procedural tracking.\n\nExternal reference markers signify an outward cross-reference pointing entirely to a separate governing statute. Evaluating whether to classify the provision under external bypass codes with an empty line array to match schema patterns for pure pointer clauses.\n\nRule definitions confirm that provisions directing readers entirely to separate statutes classify as external pointers with empty line arrays. Verifying whether the target schema requires empty reference condition fields given the absence of nested pointers in the input data.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D215.K2\",\"bo_qua\":\"dan_chieu_ngoai\",\"dong\":[]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-f8038ba4dfe5468b84cc69f5f02be",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5803,
+   "output_tokens": 1929,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_272afdbd365184ac5c14d2dc"
+   }
+  }
+ }
+}

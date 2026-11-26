@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D186",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D186\",\n \"tieu_de_dieu\": \"1:Cấm 2:hành 3:động 4:đơn 5:phương 6:trong 7:khi 8:tranh 9:chấp 10:lao 11:động 12:đang 13:được 14:giải 15:quyết\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khi tranh chấp lao động đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết trong thời hạn theo quy định của Bộ luật này thì không bên nào được hành động đơn phương chống lại bên kia.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tranh 2:chấp 3:lao 4:động 5:đang 6:được 7:cơ 8:quan, 9:tổ 10:chức, 11:cá 12:nhân 13:có 14:thẩm 15:quyền 16:giải 17:quyết 18:trong 19:thời 20:hạn 21:theo 22:quy 23:định 24:của 25:Bộ 26:luật 27:này\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:không 2:bên 3:nào 4:được 5:hành 6:động 7:đơn 8:phương 9:chống 10:lại 11:bên 12:kia\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Examining the article title regarding the prohibition of unilateral actions during labor dispute resolution. The initial clause fragment introduces the context of a labor dispute currently handled by competent authorities, requiring careful parsing of structural boundaries and reference mappings.\n\nAnalyzing structural clauses for temporal modifiers versus core conditions within the dispute resolution context. Initial assessment suggests treating the time frame as a condition modifier, but closer parsing indicates alignment with the active resolution process rather than a separate constraint boundary.\n\nTemporal modifier maps directly to the resolution action based on structural dependency rules. Passive voice formulation obscures the active agent, raising questions about whether the labor dispute functions as the subject or the object of the resolution process.\n\nSegmenting core legal clauses reveals missing explicit subjects in specific conditional phrases, requiring structural mapping to preceding context. Applying modifier dependency rules establishes separate condition lines for temporal bounds and core actions. Parsing the prohibition clause as a conclusion depends on identifying the subject scope and polarity rules for negative modal constructs.\n\nInitial mapping suggests treating the negative modal construct as a core prohibition governing both parties. Re-evaluating the subject scope reveals uncertainty regarding whether the negator modifies the subject boundary or the modal obligation directly. Applying structural guidelines for prohibitive markers indicates the polarity remains affirmative at the core while the modality dictates restriction.\n\nSubject mapping points to both parties in the labor dispute, designating the entity category as encompassing both worker and employer elements. Segmenting the core predicate isolates the unilateral action against the opposing party, though the exact boundary of the counter-party recipient requires checking structural relation guidelines.\n\nTreating the counter-party modifier as an integral core component rather than a peripheral entity based on strict structural dependencies. Empty reference arrays confirm the absence of external statutory cross-references requiring manual resolution. Segmenting the initial jurisdictional clauses isolates distinct conditional boundaries governing the active dispute resolution timeline.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D186\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"loi\": [\n        \"s1.m1:1-17\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m1\",\n      \"loi\": [\n        \"s1.m1:18-27\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m2\",\n      \"loi\": [\n        \"s1.m2:5-12\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"cam\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"khoang\": [\n          \"s1.m2:2-3\"\n        ],\n        \"loai\": [\n          \"W\",\n          \"E\"\n        ]\n      },\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-11d7fc90566d44a4a68d9d27cc6c3",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6030,
+   "output_tokens": 3919,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_4bd95c8136bb24aab16f02eb"
+   }
+  }
+ }
+}

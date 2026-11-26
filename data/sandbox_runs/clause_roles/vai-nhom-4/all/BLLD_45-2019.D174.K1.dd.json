@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D174.K1.dd",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D174.K1.dd\",\n \"tieu_de_dieu\": \"1:Điều 2:lệ 3:tổ 4:chức 5:của 6:người 7:lao 8:động 9:tại 10:doanh 11:nghiệp\",\n \"khoan_cha\": \"1:Điều 2:lệ 3:tổ 4:chức 5:của 6:người 7:lao 8:động 9:tại 10:doanh 11:nghiệp 12:phải 13:có 14:các 15:nội 16:dung 17:chủ 18:yếu 19:sau 20:đây:\\n21:Trong 22:một 23:tổ 24:chức 25:của 26:người 27:lao 28:động 29:tại 30:doanh 31:nghiệp 32:không 33:đồng 34:thời 35:có 36:thành 37:viên 38:là 39:người 40:lao 41:động 42:thông 43:thường 44:và 45:thành 46:viên 47:là 48:người 49:lao 50:động 51:trực 52:tiếp 53:tham 54:gia 55:vào 56:quá 57:trình 58:ra 59:quyết 60:định 61:liên 62:quan 63:đến 64:điều 65:kiện 66:lao 67:động, 68:tuyển 69:dụng 70:lao 71:động, 72:kỷ 73:luật 74:lao 75:động, 76:chấm 77:dứt 78:hợp 79:đồng 80:lao 81:động 82:hoặc 83:chuyển 84:người 85:lao 86:động 87:làm 88:công 89:việc 90:khác;\\n91:Những 92:nội 93:dung 94:phải 95:do 96:thành 97:viên 98:quyết 99:định 100:theo 101:đa 102:số 103:bao 104:gồm 105:thông 106:qua, 107:sửa 108:đổi, 109:bổ 110:sung 111:điều 112:lệ 113:của 114:tổ 115:chức; 116:bầu 117:cử, 118:miễn 119:nhiệm 120:người 121:đứng 122:đầu 123:và 124:thành 125:viên 126:ban 127:lãnh 128:đạo 129:của 130:tổ 131:chức; 132:chia, 133:tách, 134:hợp 135:nhất, 136:sáp 137:nhập, 138:đổi 139:tên, 140:giải 141:thể, 142:liên 143:kết 144:tổ 145:chức; 146:gia 147:nhập 148:Công 149:đoàn 150:Việt 151:Nam;\\n152:Việc 153:thu, 154:chi 155:tài 156:chính 157:của 158:tổ 159:chức 160:của 161:người 162:lao 163:động 164:tại 165:doanh 166:nghiệp 167:phải 168:được 169:theo 170:dõi, 171:lưu 172:trữ 173:và 174:định 175:kỳ 176:hằng 177:năm 178:công 179:khai 180:cho 181:thành 182:viên 183:của 184:tổ 185:chức;\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Nguyên tắc tổ chức, hoạt động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Nguyên 2:tắc 3:tổ 4:chức, 5:hoạt 6:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target text represents a fragmented statutory provision concerning labor organization statutes within enterprises. Initial assumption is direct mapping, but title tokens appear fractured and out of sequence, complicating schema structuring. Re-evaluating text boundaries to reconstruct the hierarchical relationship before JSON serialization.\n\nIntroductory clause functions as a direct object introducer for required charter contents rather than a conditional prefix. Structuring sub-items as core conclusions inheriting governing modal verbs from the parent clause rather than isolated conditional predicates.\n\nSubject classification initially defaulted to an unknown entity type since enterprise labor organization statutes fall outside standard categories. Re-assessing parent boundary spans to assign the proper subject code while restricting the core text strictly to the lexical tokens of the sub-item.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D174.K1.dd\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:1-6\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"kc:1-11\"],\"loai\":\"?\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-d045f4be97804df2ba23fa907e0ad",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6902,
+   "output_tokens": 1841,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_b10c1352645b7ef9ee865c79"
+   }
+  }
+ }
+}

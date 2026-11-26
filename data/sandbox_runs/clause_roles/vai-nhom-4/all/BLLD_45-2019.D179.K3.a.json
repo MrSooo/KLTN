@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D179.K3.a",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D179.K3.a\",\n \"tieu_de_dieu\": \"1:Tranh 2:chấp 3:lao 4:động\",\n \"khoan_cha\": \"1:Tranh 2:chấp 3:lao 4:động 5:tập 6:thể 7:về 8:lợi 9:ích 10:bao 11:gồm:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tranh chấp lao động phát sinh trong quá trình thương lượng tập thể;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Tranh 2:chấp 3:lao 4:động 5:phát 6:sinh 7:trong 8:quá 9:trình 10:thương 11:lượng 12:tập 13:thể\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Parsing input structure for unit identifier BLLD_45-2019.D179.K3.a reveals fragmented components across title, parent clause, and sentence segments. Initial assumption points to a hierarchical labor dispute regulation, but sentence elements require careful token alignment to reconstruct the original statutory text accurately.\n\nExamining statutory provisions indicates Article 179 Clause 3 defines collective labor disputes over interests using a standard introductory phrase with enumerated sub-points. Sub-point 'a' establishes the first statutory criterion involving collective bargaining processes, requiring precise token boundary mapping to maintain logical continuity with the parent clause.\n\nParent clause framing introduces a category definition via listing rather than conditional criteria. Evaluating whether sub-points function as exhaustive types or alternative conditions dictates structural classification.\n\nEvaluating the phrase introducing the sub-points as an exhaustive listing versus alternative conditions determines the logical relation. Treating the sub-points as individual criteria suggests a disjunctive condition establishing the parent concept. Testing whether the governing verb functions as a definitional equivalence or a structural list structure.\n\nIntroductory phrase analysis initially frames sub-points as direct objects of the governing verb. Encountering prepositional markers within the sub-component shifts classification toward a temporal modifier rule, aligning the segment as an independent conditional condition sharing the parent subject.\n\nInitial classification of the sub-component as an independent conditional condition fails under strict grammatical alignment. Re-evaluating the introductory verb phrase as a definitional equivalence establishes the parent subject as the core conclusion. The sub-point functions instead as a structural constituent governed by that definitional boundary.\n\nCore boundary constraints restrict core components strictly to primary or shared segments, disallowing cross-references into contextual or temporal modifiers. Tracing the valid token range within the primary segment confirms the predicate verb and direct object must map directly to that defined span.\n\nEvaluating \"Tranh chấp lao động\" as a potential entity reveals a missing match against standard actor codes like employers or employees. Considering whether to omit the entity field or assign an ambiguous classification, but labor disputes lack standard actor categorization. Testing whether the nominal phrase functions as an independent entity or requires omission under strict structural guidelines.\n\nComparing structural patterns with prior examples demonstrates that non-standard subjects bypass actor categorization entirely. Treating the entire nominal phrase and predicate as a unified core span aligns with established mapping precedents.\n\nComparing token spans against precedent examples clarifies the inclusion boundaries for the primary nominal phrase and its modifiers. Testing the overarching statutory structure reveals whether the introductory phrase functions as an exhaustive enumeration or a conditional trigger, resolving the core classification of the sub-component.\n\nRe-evaluating the introductory verb \"bao gồm\" against previous structural examples indicates the sub-points function as direct objects rather than conditional triggers. Contrast with conditional introductory phrases clarifies that descriptive listing verbs establish structural constituents rather than independent criteria, confirming a direct object classification for the sub-components.\n\nPrepositional phrase functions as a conditional modifier linked to the governing verb rather than a direct object. This classification forces the segment into an independent condition category sharing the parent subject, rendering the method field null due to the absence of explicit modal markers.\n\nRe-examining the subject classification for the dispute phrase against available actor codes yields no direct match for standard categories like workers or employers. Testing whether an ambiguous code applies requires verifying if the text references generalized parties, but the nominal phrase refers to the dispute itself rather than participating actors. Omitting the actor field aligns with structural rules for non-actor subjects.\n\nSubject span refers to a non-actor event, confirming the omission of actor classification based on comparative examples. Re-evaluating the temporal prepositional phrase identifies it as a conditional modifier governing the primary verbal predicate, requiring segmentation into an independent condition.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D179.K3.a\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:1-6\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:7-13\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-ec7068352ed346fdac0c278951033",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5775,
+   "output_tokens": 6709,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_7270867767c0e0a6ecce9000"
+   }
+  }
+ }
+}

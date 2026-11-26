@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D164.K4",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D164.K4\",\n \"tieu_de_dieu\": \"1:Nghĩa 2:vụ 3:của 4:lao 5:động 6:là 7:người 8:giúp 9:việc 10:gia 11:đình\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tố cáo với cơ quan có thẩm quyền nếu người sử dụng lao động có hành vi ngược đãi, quấy rối tình dục, cưỡng bức lao động hoặc có hành vi khác vi phạm pháp luật.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Tố 2:cáo 3:với 4:cơ 5:quan 6:có 7:thẩm 8:quyền\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:người 2:sử 3:dụng 4:lao 5:động\",\n     \"ap_cho\": [\n      \"s1.m2\",\n      \"s1.m3\"\n     ],\n     \"noi_truoc\": [\n      \"nếu\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:hành 3:vi 4:ngược 5:đãi, 6:quấy 7:rối 8:tình 9:dục, 10:cưỡng 11:bức 12:lao 13:động\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:hành 3:vi 4:khác 5:vi 6:phạm 7:pháp 8:luật\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target unit identifier references domestic worker regulations. Initial parsing treats the title segments literally, but syntactic analysis reveals they form a compound statutory heading defining domestic worker obligations. Structuring extraction logic around the primary legal clause to capture the core mandate regarding complaint rights against employer violations.\n\nSyntactic boundary mapping assigns the obligation modal based on the statutory header term. However, checking if the complaint action functions as a mandatory duty rather than a discretionary right. Re-evaluating the clause structure confirms the action operates as the primary mandated requirement for the domestic worker subject group.\n\nTarget phrase denotes the action target rather than a strict locative modifier, suggesting retention within the core clause. Testing whether prepositional recipients representing generic stakeholder categories must shift to counterpart fields instead. Group-based constraints override separation logic, confirming the phrase remains intact.\n\nTarget phrase introduces an external authority rather than a regulated worker or employer category. Initial assumption misclassified this recipient as a scope-limiting modifier, but closer syntactic review excludes it from standard locative or conditional categories. Re-evaluating the prepositional structure indicates it forms an integral part of the core complaint action rather than acting as a standard contextual modifier.\n\nTarget classification rules exclude bare worker or employer designations from the core action scope while retaining modified entities. Applying this distinction confirms the external authority phrase remains within the core structure due to its modifying description. Examining conditional segments reveals an alternative grouping linked by disjunctive markers, requiring assignment to an explicit disjunctive condition group.\n\nInitial parsing categorizes the behavioral list items as direct objects following a shared governing phrase. However, reviewing the disjunctive marker and subsequent predicate shifts the grouping, requiring re-evaluation of the preceding conjunction boundaries to maintain structural alignment.\n\nIsolated behavioral items lack explicit list enumeration markers, indicating a broader catch-all condition. Assigning the shared subject span from the governing employer definition clause to both conditional action nodes while linking them via a disjunctive grouping identifier. The primary obligation modal derives from the statutory title term, confirming a mandatory requirement for the worker subject group.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D164.K4\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-8\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:4-11\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-3\"\n   ],\n   \"liet_ke\": [\n    [\n     \"s1.m2:4-5\"\n    ],\n    [\n     \"s1.m2:6-9\"\n    ],\n    [\n     \"s1.m2:10-13\"\n    ]\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:1-8\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-a789aa26cefc4a7784f3ce4abbebc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6054,
+   "output_tokens": 4633,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_1a82d628044a6084c3580557"
+   }
+  }
+ }
+}

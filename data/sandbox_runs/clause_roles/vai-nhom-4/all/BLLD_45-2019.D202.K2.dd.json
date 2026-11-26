@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D202.K2.dd",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D202.K2.dd\",\n \"tieu_de_dieu\": \"1:Quyết 2:định 3:đình 4:công 5:và 6:thông 7:báo 8:thời 9:điểm 10:bắt 11:đầu 12:đình 13:công\",\n \"khoan_cha\": \"1:Quyết 2:định 3:đình 4:công 5:phải 6:có 7:các 8:nội 9:dung 10:sau 11:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Họ tên, địa chỉ liên hệ của người đại diện cho tổ chức đại diện người lao động tổ chức và lãnh đạo đình công.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Họ 2:tên, 3:địa 4:chỉ 5:liên 6:hệ 7:của 8:người 9:đại 10:diện 11:cho 12:tổ 13:chức 14:đại 15:diện 16:người 17:lao 18:động 19:tổ 20:chức 21:và 22:lãnh 23:đạo 24:đình 25:công\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target clause metadata indicates a decision regarding strike suspension notices. Initial inspection of sentence elements shows incomplete structure, requiring a reconstruction of missing components to parse the exact legal mandate.\n\nTarget clause serves as an objective clause specifying required contents of strike decisions. Subject mapping requires linking the representative's identity and contact details directly to the governing decision mandate.\n\nInitial categorization points to an unknown tag due to the specific phrasing, necessitating fallback to a question-mark classification. Examining the structural rules reveals an inheritance model where child items inherit the predicate and modality from the parent clause rather than forming an explicit enumeration block.\n\nAbsence of a preceding common verb or shared element invalidates list separation rules here. Treating the complete phrase as the core component, since structural inheritance from the parent clause applies directly without explicit list itemization.\n\nInitial parsing suggested an unknown category for the subject, but structural rules demand defining the decision mandate components. Absence of conditional references eliminates the requirement for specific cross-reference fields. Final mapping confirms the core obligation structure driven by the governing clause, linking representative identifiers directly to the mandate content without external object entities.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D202.K2.dd\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"loi\": [\n        \"s1.m1:1-25\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"phai\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"khoang\": [\n          \"kc:1-4\"\n        ],\n        \"loai\": \"?\"\n      },\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-fc58e32aa9314834adb0d3c84721c",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5915,
+   "output_tokens": 2615,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f38962fd22f64b0921a324b4"
+   }
+  }
+ }
+}

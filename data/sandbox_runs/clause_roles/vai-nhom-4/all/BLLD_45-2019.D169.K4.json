@@ -1,0 +1,29 @@
+{
+ "unit_id": "BLLD_45-2019.D169.K4",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": true,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D169.K4\",\n \"tieu_de_dieu\": \"1:Tuổi 2:nghỉ 3:hưu\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 2 Điều này\",\n   \"dich\": \"BLLD_45-2019.D169.K2\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động có trình độ chuyên môn, kỹ thuật cao và một số trường hợp đặc biệt có thể nghỉ hưu ở tuổi cao hơn nhưng không quá 05 tuổi so với quy định tại khoản 2 Điều này tại thời điểm nghỉ hưu, trừ trường hợp pháp luật có quy định khác.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Người 2:lao 3:động 4:có 5:trình 6:độ 7:chuyên 8:môn, 9:kỹ 10:thuật 11:cao 12:và 13:một 14:số 15:trường 16:hợp 17:đặc 18:biệt\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:thể 3:nghỉ 4:hưu 5:ở 6:tuổi 7:cao 8:hơn\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:không 2:quá 3:05 4:tuổi 5:so 6:với 7:quy 8:định 9:tại 10:khoản 11:2 12:Điều 13:này 14:tại 15:thời 16:điểm 17:nghỉ 18:hưu\",\n     \"noi_truoc\": [\n      \"nhưng\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:pháp 2:luật 3:có 4:quy 5:định 6:khác\",\n     \"noi_truoc\": [\n      \"trừ trường hợp\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D169.K4\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"cuc\": \"khang_dinh\",\n   \"loi\": [\n    \"s1.c1:4-11\"\n   ],\n   \"nguon\": \"s1.m1\",\n   \"nhom_hoac\": \"h1\",\n   \"phuong_thuc\": \"khong\",\n   \"quy_tac\": \"q1\",\n   \"vai\": \"dieu_kien\"\n  },\n  {\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"cuc\": \"khang_dinh\",\n   \"loi\": [\n    \"s1.c1:13-18\"\n   ],\n   \"nguon\": \"s1.m1\",\n   \"nhom_hoac\": \"h1\",\n   \"phuong_thuc\": \"khong\",\n   \"quy_tac\": \"q1\",\n   \"vai\": \"dieu_kien\"\n  },\n  {\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"cuc\": \"khang_dinh\",\n   \"loi\": [\n    \"s1.m1:3-8\"\n   ],\n   \"nguon\": \"s1.m1\",\n   \"phuong_thuc\": \"duoc\",\n   \"quy_tac\": \"q1\",\n   \"vai\": \"ket_luan\"\n  },\n  {\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"cuc\": \"khang_dinh\",\n   \"loi\": [\n    \"s1.m2:1-8\",\n    \"s1.m2:14-18\"\n   ],\n   \"nguon\": \"s1.m2\",\n   \"phuong_thuc\": \"khong\",\n   \"quy_tac\": \"q1\",\n   \"vai\": \"ket_luan\"\n  },\n  {\n   \"cuc\": \"khang_dinh\",\n   \"loi\": [\n    \"s1.m3:3-6\"\n   ],\n   \"nguon\": \"s1.m3\",\n   \"phuong_thuc\": \"khong\",\n   \"quy_tac\": \"q1\",\n   \"vai\": \"ngoai_le\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1ab31670ea7e4f42a0ff5c21b8178",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6174,
+   "output_tokens": 731,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_0979164c786ae0f2a43c52aa"
+   }
+  }
+ }
+}

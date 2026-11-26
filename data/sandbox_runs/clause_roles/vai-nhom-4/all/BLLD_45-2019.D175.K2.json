@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D175.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D175.K2\",\n \"tieu_de_dieu\": \"1:Các 2:hành 3:vi 4:bị 5:nghiêm 6:cấm 7:đối 8:với 9:người 10:sử 11:dụng 12:lao 13:động 14:liên 15:quan 16:đến 17:thành 18:lập, 19:gia 20:nhập 21:và 22:hoạt 23:động 24:của 25:tổ 26:chức 27:đại 28:diện 29:người 30:lao 31:động 32:tại 33:cơ 34:sở\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Can thiệp, thao túng quá trình thành lập, bầu cử, xây dựng kế hoạch công tác và tổ chức thực hiện các hoạt động của tổ chức đại diện người lao động tại cơ sở, bao gồm cả việc hỗ trợ tài chính hoặc các biện pháp kinh tế khác nhằm làm vô hiệu hóa hoặc suy yếu việc thực hiện chức năng đại diện của tổ chức đại diện người lao động tại cơ sở hoặc phân biệt đối xử giữa các tổ chức đại diện người lao động tại cơ sở.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Can 2:thiệp\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:thao 2:túng\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:quá 2:trình 3:thành 4:lập, 5:bầu 6:cử, 7:xây 8:dựng 9:kế 10:hoạch 11:công 12:tác 13:và 14:tổ 15:chức 16:thực 17:hiện 18:các 19:hoạt 20:động 21:của 22:tổ 23:chức 24:đại 25:diện 26:người 27:lao 28:động 29:tại 30:cơ 31:sở, 32:bao 33:gồm 34:cả 35:việc 36:hỗ 37:trợ 38:tài 39:chính 40:hoặc 41:các 42:biện 43:pháp 44:kinh 45:tế 46:khác 47:nhằm 48:làm 49:vô 50:hiệu 51:hóa 52:hoặc 53:suy 54:yếu 55:việc 56:thực 57:hiện 58:chức 59:năng 60:đại 61:diện 62:của 63:tổ 64:chức 65:đại 66:diện 67:người 68:lao 69:động 70:tại 71:cơ 72:sở 73:hoặc 74:phân 75:biệt 76:đối 77:xử 78:giữa 79:các 80:tổ 81:chức 82:đại 83:diện 84:người 85:lao 86:động 87:tại 88:cơ 89:sở\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Examining the structural inputs for unit identification. The title string contains fragmented word tokens instead of natural phrasing, complicating direct parsing. Re-evaluating how to extract the core subject entity accurately from the tokenized layout.\n\nToken segments align to specific legal entities and prohibited actions. The modifiers \"Can thiệp\" and \"thao túng\" share an extensive direct object clause detailing operational interference in labor representation structures. Mapping these fragmented constraints reveals a cohesive prohibition targeting employer obstruction.\n\nShared conditions and exceptions indicate both behaviors fall under a single governing rule. Extracting the core clause reveals the verbs governing the extensive object phrase representing the prohibited operational interference.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D175.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-2\",\n    \"s1.c1:1-89\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:9-13\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-2\",\n    \"s1.c1:1-89\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:9-13\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-4e9c9ca4f0e3491d8e74a11285792",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6559,
+   "output_tokens": 2255,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ff87d79904f58d84e1d16cfc"
+   }
+  }
+ }
+}

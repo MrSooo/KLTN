@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D169.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D169.K1\",\n \"tieu_de_dieu\": \"1:Tuổi 2:nghỉ 3:hưu\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động bảo đảm điều kiện về thời gian đóng bảo hiểm xã hội theo quy định của pháp luật về bảo hiểm xã hội được hưởng lương hưu khi đủ tuổi nghỉ hưu.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Người 2:lao 3:động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:bảo 2:đảm 3:điều 4:kiện 5:về 6:thời 7:gian 8:đóng 9:bảo 10:hiểm 11:xã 12:hội 13:theo 14:quy 15:định 16:của 17:pháp 18:luật 19:về 20:bảo 21:hiểm 22:xã 23:hội\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:được 2:hưởng 3:lương 4:hưu\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:đủ 2:tuổi 3:nghỉ 4:hưu\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target legislative text contains fragmented structural markers and shared clauses. Parsing the primary sentence mapping requires associating the shared subject with multiple modifiers before structuring into valid hierarchical JSON.\n\nThe regulatory condition referencing legal frameworks functions as an internal noun modifier rather than a conditional clause. Maintaining this phrase within the core structure prevents fragmentation of the primary retirement eligibility rule.\n\nInitial reading suggests separating the legal compliance phrase as an external condition, but structural matching confirms it functions strictly as a noun modifier defining the eligibility timeframe. Keeping the complete modifier phrase intact prevents distortion of the core qualification subject.\n\nInitial categorization identifies the primary clause as a conditional prerequisite connected to an affirmative entitlement. Modal markers govern the core action while trailing temporal phrases function as secondary operational conditions without external cross-references.\n\nInitial hypothesis suggested extracting the internal legal reference as a standalone condition, but structural rules dictate that modifying phrases embedded within noun constructs remain bound to the core entity. Preserving this nested modifier prevents artificial fragmentation of the primary subject.\n\nAssigning the shared subject span across all associated operational rows correctly links the conditional prerequisites and entitlement conclusions to the core entity. Verifying modal markers and role assignments ensures proper hierarchical sequencing without unwarranted fragmentation of nested clauses.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D169.K1\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"loi\": [\n        \"s1.m1:1-23\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"khoang\": [\n          \"s1.c1:1-3\"\n        ],\n        \"loai\": \"W\"\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m2\",\n      \"loi\": [\n        \"s1.m2:2-4\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"duoc\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"khoang\": [\n          \"s1.c1:1-3\"\n        ],\n        \"loai\": \"W\"\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m3\",\n      \"loi\": [\n        \"s1.m3:1-4\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"khoang\": [\n          \"s1.c1:1-3\"\n        ],\n        \"loai\": \"W\"\n      },\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-5a8a0490417f47c584d4b802253fd",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6014,
+   "output_tokens": 3500,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_93e7e8bdd01d2fe8a0789a5d"
+   }
+  }
+ }
+}

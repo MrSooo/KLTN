@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D179.K2.b",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D179.K2.b\",\n \"tieu_de_dieu\": \"1:Tranh 2:chấp 3:lao 4:động\",\n \"khoan_cha\": \"1:Tranh 2:chấp 3:lao 4:động 5:tập 6:thể 7:về 8:quyền 9:là 10:tranh 11:chấp 12:giữa 13:một 14:hay 15:nhiều 16:tổ 17:chức 18:đại 19:diện 20:người 21:lao 22:động 23:với 24:người 25:sử 26:dụng 27:lao 28:động 29:hoặc 30:một 31:hay 32:nhiều 33:tổ 34:chức 35:của 36:người 37:sử 38:dụng 39:lao 40:động 41:phát 42:sinh 43:trong 44:trường 45:hợp 46:sau 47:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Có sự khác nhau trong việc hiểu và thực hiện quy định của pháp luật về lao động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Có 2:sự 3:khác 4:nhau 5:trong 6:việc 7:hiểu 8:và 9:thực 10:hiện 11:quy 12:định 13:của 14:pháp 15:luật 16:về 17:lao 18:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Examining the hierarchical unit structure and associated article title regarding collective labor disputes. Initially treating the parent clause sequence as a continuous string, but structural segmentation requires mapping token indices correctly against the legal text definition.\n\nEvaluating the sub-unit role under the introductory clause indicating conditional text. The preceding segment acts as a lead-in condition, mapping the structural components similarly to established statutory patterns for rights-based collective labor disputes.\n\nAssessing whether the sub-clause inherits the parent entity or lacks an explicit actor entirely. Treating the phrase regarding differing statutory interpretations as a condition rather than an agent entity, matching standard statutory markup patterns.\n\nConfirming the phrase functions as an objective state rather than containing an active subject entity. Testing whether the embedded prepositional phrase meets specific structural criteria for independent clause segmentation. The modifier denotes scope rather than temporal, locative, or conditional categories, preventing standard separation into an isolated line.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\"unit_id\":\"BLLD_45-2019.D179.K2.b\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:1-18\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-3b29e2b2f6454b068b6402550b762",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6026,
+   "output_tokens": 2106,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_34685a9298368e5f4e131a61"
+   }
+  }
+ }
+}

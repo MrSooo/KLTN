@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D210.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D210.K2\",\n \"tieu_de_dieu\": \"1:Quyết 2:định 3:hoãn, 4:ngừng 5:đình 6:công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định chi tiết việc hoãn, ngừng đình công và giải quyết quyền lợi của người lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Chính 2:phủ 3:quy 4:định 5:chi 6:tiết 7:việc 8:hoãn, 9:ngừng 10:đình 11:công 12:và 13:giải 14:quyết 15:quyền 16:lợi 17:của 18:người 19:lao 20:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target text corresponds to Article 210, Clause 2 of the Labour Code of Vietnam, focusing on the government's regulatory authority over delayed, suspended, or halted strikes and employee rights. Parsing structure indicates a single clause unit without parent references or cross-references, requiring extraction of the core mandate regarding strike management protocols.\n\nDelegation phrasing assigning regulatory authority to the executive branch requires evaluating whether the provision functions as an open cross-reference rather than a direct conduct rule. Treating this mandate as a general delegation rather than an internal cross-reference, but must confirm if the classification triggers exclusion under policy guidelines.\n\nInitial assessment assumed direct normative content, but the phrase designating executive rulemaking mirrors open cross-reference structures. Re-evaluating whether delegation phrasing mandates classification as an open reference with an empty obligation array rather than a standard conduct rule.\n\nSubject reference to the executive branch lacks a dedicated actor code, defaulting to the wildcard category. Evaluating whether pure delegation clauses require an empty obligation structure due to the absence of direct interpersonal conduct rules between labor parties.\n\nTarget phrasing explicitly matches the open citation category designating executive rulemaking. Confirming whether the structural obligation array should remain empty alongside the open citation classification.\n\nText explicitly confirms classification as an open citation type, justifying an empty obligation array. Re-verifying whether secondary reference fields require population, yet guidelines confirm that structural arrays default to empty under open citation exemptions.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D210.K2\",\n  \"bo_qua\": \"dan_chieu_mo\",\n  \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-2510b734a45845028af54c11a84cc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5784,
+   "output_tokens": 2735,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f8ab9ae8628980cb8a0725bb"
+   }
+  }
+ }
+}

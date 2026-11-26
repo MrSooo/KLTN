@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D163.K4",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D163.K4\",\n \"tieu_de_dieu\": \"1:Nghĩa 2:vụ 3:của 4:người 5:sử 6:dụng 7:lao 8:động 9:khi 10:sử 11:dụng 12:lao 13:động 14:là 15:người 16:giúp 17:việc 18:gia 19:đình\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Bố trí chỗ ăn, ở hợp vệ sinh cho người giúp việc gia đình nếu có thỏa thuận.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Bố 2:trí 3:chỗ 4:ăn, 5:ở 6:hợp 7:vệ 8:sinh 9:cho 10:người 11:giúp 12:việc 13:gia 14:đình\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:thỏa 3:thuận\",\n     \"noi_truoc\": [\n      \"nếu\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Initial mapping suggests extracting obligations of employers toward domestic workers based on the provided title and text fragments. Sentence fragments require careful structuring to maintain legal context without corrupting hierarchy constraints.\n\nFragment extraction points to an employer obligation regarding living arrangements for domestic workers. The title establishes the modal requirement, while structural parsing maps the primary clause to accommodation duties and the conditional clause to agreed terms.\n\nTarget entity maps as the employer duty bearer while the domestic worker classifies strictly under external relations rather than core obligations. Conditional clause markers dictate distinct structural boundaries, separating primary accommodation duties from negotiated agreement terms.\n\nAbsence of an explicit subject in the conditional clause means omitting the subject field for that segment. Segment ordering follows textual appearance, placing the primary conclusion before the conditional clause. Target recipient parsing for accommodation duties aligns with general labor designations rather than generating standalone relational entities.\n\nExplicit example guidelines dictate excluding domestic worker descriptors from the core clause, assigning them instead to the counterpart entity structure. Subject omission triggers fallback mapping to the article title to identify the employer as the responsible party. Conditional markers properly govern subsequent clause boundaries while maintaining the affirmative modality inherited from statutory headings.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D163.K4\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-8\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:4-8\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-3\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-2fc4af37ee25446493520a935e3d4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5882,
+   "output_tokens": 2882,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_de4daa18654e1732f7f3289d"
+   }
+  }
+ }
+}

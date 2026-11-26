@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D161.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D161.K1\",\n \"tieu_de_dieu\": \"1:Lao 2:động 3:là 4:người 5:giúp 6:việc 7:gia 8:đình\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Lao động là người giúp việc gia đình là người lao động làm thường xuyên các công việc trong gia đình của một hoặc nhiều hộ gia đình.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Lao 2:động 3:là 4:người 5:giúp 6:việc 7:gia 8:đình 9:là 10:người 11:lao 12:động 13:làm 14:thường 15:xuyên 16:các 17:công 18:việc 19:trong 20:gia 21:đình 22:của 23:một 24:hoặc 25:nhiều 26:hộ 27:gia 28:đình\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Các công việc trong gia đình bao gồm công việc nội trợ, quản gia, chăm sóc trẻ em, chăm sóc người bệnh, chăm sóc người già, lái xe, làm vườn và các công việc khác cho hộ gia đình nhưng không liên quan đến hoạt động thương mại.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Các 2:công 3:việc 4:trong 5:gia 6:đình\",\n     \"ap_cho\": [\n      \"s2.m1\",\n      \"s2.m2\"\n     ]\n    },\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:bao 2:gồm 3:công 4:việc 5:nội 6:trợ, 7:quản 8:gia, 9:chăm 10:sóc 11:trẻ 12:em, 13:chăm 14:sóc 15:người 16:bệnh, 17:chăm 18:sóc 19:người 20:già, 21:lái 22:xe, 23:làm 24:vườn 25:và 26:các 27:công 28:việc 29:khác 30:cho 31:hộ 32:gia 33:đình\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:không 2:liên 3:quan 4:đến 5:hoạt 6:động 7:thương 8:mại\",\n     \"noi_truoc\": [\n      \"nhưng\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Initial parsing of the input text targets a specific legal article defining domestic workers. The title and sentence fragments outline regular household employment parameters, though the sequence abruptly cuts off mid-sentence, requiring structural completion based on standard legal phrasing conventions.\n\nStructuring the definition schema requires mapping the subject phrase against formal condition-conclusion rules. Initial assessment treats the primary term as X and the explanatory clause as Y, assigning the copula and subject spans to the conclusion node. Re-evaluating the condition attributes confirms the regular household tasks function as the primary qualifying requirement for the identified worker category.\n\nEvaluating whether the subsequent sentence introduces a distinct rule or merely expands the preceding definition. The enumeration of household duties functions as a specialized taxonomy item, prompting the creation of a dedicated relation node distinct from the primary subject rule.\n\nSegmenting the concluding modifier phrase requires resolving boundary indices around connective conjunctions. Testing whether the subsequent restrictive clause functions as a limiting condition rather than an independent conclusion reveals a scoping constraint on the primary subject definition.\n\nAdversative conjunctions like \"nhưng\" function semantically as negative conditions restricting the primary category rather than explicit exceptions. Evaluating whether the subsequent clause establishes a distinct rule reveals it acts as a qualifying condition for the preceding household task definition.\n\nAnalyzing token sequences for subject boundaries indicates distinct rule structures between the primary definition and the subsequent task enumeration. Initial parsing grouped subjects under a single node, but differing condition-conclusion sets dictate separating them into distinct rules. Applying definition schemas maps the subject phrase to the antecedent while isolating modifier clauses into independent condition nodes.\n\nParsing phrase modifiers within the core predicate reveals that frequency markers function as core descriptors of the action rather than external conditions. Analyzing the object phrase indicates it completes the verb's action directly rather than establishing a conditional constraint.\n\nLocative and temporal markers function as inner noun modifiers rather than external conditions, confirming the core condition boundaries. Mapping conclusion subjects against conditional attributes validates the primary rule schema. Enumerated tasks following the inclusive predicate form a comprehensive taxonomy list tied directly to the preceding household category.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D161.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:9\",\n    \"s1.m1:1-8\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:10-12\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:13-28\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:10-12\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:1-2\"\n   ],\n   \"liet_ke\": [\n    [\n     \"s2.m1:3-6\"\n    ],\n    [\n     \"s2.m1:7-8\"\n    ],\n    [\n     \"s2.m1:9-12\"\n    ],\n    [\n     \"s2.m1:13-16\"\n    ],\n    [\n     \"s2.m1:17-20\"\n    ],\n    [\n     \"s2.m1:21-22\"\n    ],\n    [\n     \"s2.m1:23-24\"\n    ],\n    [\n     \"s2.m1:26-33\"\n    ]\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.c1:1-6\"\n    ],\n    \"loai\": \"J\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"loi\": [\n    \"s2.m2:2-8\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.c1:1-6\"\n    ],\n    \"loai\": \"J\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-70e75ac1042e4709a24c7ac299b61",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6316,
+   "output_tokens": 5500,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_0f1775b9cfdaae37c1cd1580"
+   }
+  }
+ }
+}

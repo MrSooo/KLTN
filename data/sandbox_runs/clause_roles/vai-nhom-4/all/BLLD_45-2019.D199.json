@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D199",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D199\",\n \"tieu_de_dieu\": \"1:Trường 2:hợp 3:người 4:lao 5:động 6:có 7:quyền 8:đình 9:công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"điều 200, 201 và 202 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D200\"\n  },\n  {\n   \"cum\": \"điều 200, 201 và 202 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D201\"\n  },\n  {\n   \"cum\": \"điều 200, 201 và 202 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D202\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Tổ chức đại diện người lao động là bên tranh chấp lao động tập thể về lợi ích có quyền tiến hành thủ tục quy định tại các điều 200, 201 và 202 của Bộ luật này để đình công trong trường hợp sau đây:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Tổ 2:chức 3:đại 4:diện 5:người 6:lao 7:động 8:là 9:bên 10:tranh 11:chấp 12:lao 13:động 14:tập 15:thể 16:về 17:lợi 18:ích\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:quyền 3:tiến 4:hành 5:thủ 6:tục 7:quy 8:định 9:tại 10:các 11:điều 12:200, 13:201 14:và 15:202 16:của 17:Bộ 18:luật 19:này\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:đình 2:công 3:trong 4:trường 5:hợp 6:sau 7:đây\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target unit identifier points to strike rights legislation. Cross-reference shows missing hierarchical parent data, suggesting a top-level article. Internal cross-references require mapping multiple downstream target sections to capture the full scope.\n\nTarget provision aligns with strike rights regulations spanning multiple subsections. Text breakdown reveals an introductory clause followed by distinct conditions, confirming the segment constitutes the primary framework article for lawful strikes.\n\nIntroductory clause establishes conditional application rather than direct object linkage. Downstream items function as alternative triggers rather than cumulative requirements, designating the structure as a disjunctive condition.\n\nPreliminary boundary parsing incorrectly groups the statutory cross-references into the core text. Re-evaluating the clause components to isolate the procedural references from the primary subject and modal authorization.\n\nProcedural reference functions as a methodological directive rather than an exception or conditional trigger. Excluding the statutory pointer from the substantive core while mapping it to the designated tracking structure.\n\nInitial structural assignment of the procedural phrase as a condition proves incorrect; contextual markers confirm it functions strictly as a methodological directive. Subsequent examination of the introductory phrase confirms a shared regulatory rule across adjacent segments, linking both components to a unified structural authorization while isolating the procedural references from the substantive core.\n\nInitial subject span parsing misidentifies the nominal entity as a conditional trigger. Re-evaluating the phrase confirms it functions as the primary subject entity rather than a qualifying clause. Downstream sub-provisions operate as disjunctive triggers where fulfilling any single condition satisfies the mandate.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D199\",\n \"cac_muc_con\": \"hoac\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:3-6\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-18\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-2\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-18\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-278d2d5f697d48c7b5c5d8c97169e",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6250,
+   "output_tokens": 4140,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_28637cf2321f9f96b251b247"
+   }
+  }
+ }
+}

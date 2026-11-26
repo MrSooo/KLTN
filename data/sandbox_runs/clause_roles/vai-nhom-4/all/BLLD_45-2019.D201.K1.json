@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D201.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D201.K1\",\n \"tieu_de_dieu\": \"1:Lấy 2:ý 3:kiến 4:về 5:đình 6:công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều 198 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D198\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Trước khi tiến hành đình công, tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công quy định tại Điều 198 của Bộ luật này có trách nhiệm lấy ý kiến của toàn thể người lao động hoặc thành viên ban lãnh đạo của các tổ chức đại diện người lao động tham gia thương lượng.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tiến 2:hành 3:đình 4:công\",\n     \"noi_truoc\": [\n      \"trước khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tổ 2:chức 3:đại 4:diện 5:người 6:lao 7:động 8:có 9:quyền 10:tổ 11:chức 12:và 13:lãnh 14:đạo 15:đình 16:công 17:quy 18:định 19:tại 20:Điều 21:198 22:của 23:Bộ 24:luật 25:này 26:có 27:trách 28:nhiệm 29:lấy 30:ý 31:kiến 32:của 33:toàn 34:thể 35:người 36:lao 37:động 38:hoặc 39:thành 40:viên 41:ban 42:lãnh 43:đạo 44:của 45:các 46:tổ 47:chức 48:đại 49:diện 50:người 51:lao 52:động 53:tham 54:gia 55:thương 56:lượng\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target node represents Clause 1, Article 201 of the 2019 Labor Code concerning strike opinion polls. Cross-reference points to Article 198 for related procedural context. Initial text segmentation indicates the provision begins with prerequisites for organizing a strike by worker representative organizations.\n\nParsing syntactic clauses identifies the strike initiation action as a conditional prerequisite tied to Article 198 mandates. Initial ambiguity regarding the subject governing the strike actions requires mapping the organizing entity against the wider voting constituency.\n\nIsolating the subject phrase reveals a direct reference back to Article 198. Evaluating whether this functions as a conditional applicability constraint or simply defines the qualified entity subset. Classifying the reference as a structural scoping mechanism rather than a pure procedural condition.\n\nIsolating the subject core separates the primary actor from the cross-reference phrase designating Article 198. The qualifying modifier falls outside the core proposition according to structural exclusion rules. Assigning a definitive entity classification requires mapping the worker representative organization against standard actor codes.\n\nEvaluating actor classification for worker representative organizations against established entity codes points toward the standard workforce designation, though potential ambiguities remain. Syntactic breakdown of the subsequent clause isolates the obligation marker preceding the consultation action. The presence of a disjunctive conjunction within the target object phrase suggests a coordinate enumeration structure requiring specific listing classification.\n\nAnalyzing the disjunctive object structure reveals two coordinate items governed by the shared action verb. The prepositional modifier initially appears tied to the verb phrase, yet structural rules require parsing whether the connector acts independently of the enumerated subsets. Testing alternative segmentations to determine if the shared head includes the preceding preposition or excludes it prior to the list boundary.\n\nRe-evaluating the shared head boundary demonstrates that the governing verb excludes the subsequent list items, confirming a coordinate listing structure. The active subject initiating the strike maps directly to the designated worker representative organization. Testing alternative target classifications for the consultation object indicates alignment with specific beneficiary codes rather than generalized participant pools.\n\nDistinguishing possessive structures from indirect objects confirms that qualified descriptors belong inside the core proposition. Cross-referencing the organizational scope points directly back to the external statutory article, establishing a valid structural condition. Classifying the primary actor under the standard workforce designation completes the semantic mapping for the initial segment.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D201.K1\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D198\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-4\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m2:1-16\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:29-32\"\n   ],\n   \"liet_ke\": [\n    [\n     \"s1.m2:33-37\"\n    ],\n    [\n     \"s1.m2:39-56\"\n    ]\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m2:1-16\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-fc499cc2d884400e8fa9dea93cb90",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6162,
+   "output_tokens": 4880,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_e3681eb6fc7da7b83fa7452f"
+   }
+  }
+ }
+}

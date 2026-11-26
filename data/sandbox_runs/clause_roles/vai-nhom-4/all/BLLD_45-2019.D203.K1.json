@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D203.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D203.K1\",\n \"tieu_de_dieu\": \"1:Quyền 2:của 3:các 4:bên 5:trước 6:và 7:trong 8:quá 9:trình 10:đình 11:công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tiếp tục thỏa thuận để giải quyết nội dung tranh chấp lao động tập thể hoặc cùng đề nghị hòa giải viên lao động, Hội đồng trọng tài lao động tiến hành hòa giải, giải quyết tranh chấp lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Tiếp 2:tục 3:thỏa 4:thuận\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:giải 2:quyết 3:nội 4:dung 5:tranh 6:chấp 7:lao 8:động 9:tập 10:thể\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:cùng 2:đề 3:nghị 4:hòa 5:giải 6:viên 7:lao 8:động, 9:Hội 10:đồng 11:trọng 12:tài 13:lao 14:động 15:tiến 16:hành 17:hòa 18:giải, 19:giải 20:quyết 21:tranh 22:chấp 23:lao 24:động\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Parsing the legal clause to extract binding rules and propositions related to labor dispute procedures. The text focuses on ongoing negotiations or joint requests involving labor mediators and arbitration councils. Structuring the extracted legal norms to reflect these specific statutory obligations without altering the source meaning.\n\nEncountering ambiguity regarding whether \"các bên\" should map to a joint subject code for both labor and management or remain unspecified. Determining that shared dispute parties imply a combined subject identifier since the rights apply mutually to both sides during collective actions.\n\nEvaluating whether the section title introduces a temporal condition (\"trước và trong quá trình đình công\"). Section titles only supply omitted subjects or modalities rather than acting as a source segment for conditions.\n\nAssessing whether the shared subject code resolves to a list containing both labor and management identifiers. Examining the modal operator tied to the section heading to determine the prescriptive method. Applying contextual link rules for purpose markers to align the conclusion attributes with the governing statutory norm.\n\nDiscerning whether alternative actions governed by disjunction markers share a single governing rule identifier or demand distinct normative splits. Multiple statutory choices mapped to identical conditional parameters consolidate under one unified rule code rather than fragmenting.\n\nEvaluating whether provisions lacking explicit conditions group under a single regulatory rule identifier. Identical condition sets across multiple conclusion segments suggest consolidating them under one shared rule code, mirroring patterns where unconditioned statutory actions share regulatory identifiers.\n\nRe-evaluating the rule identifier assignment logic based on identical condition and exception sets. Checking the scope of disjunction grouping markers to ensure they apply strictly to alternating conditions rather than conclusion segments. Inspecting segmented text components for internal enumeration elements to refine structural breakdowns.\n\nParsing the coordinated object structure to determine whether the modifier \"cùng\" integrates into the core predicate or functions as a distributive adjunct. Initial reading suggests a joint request mechanism, but the exact boundaries of the shared verb phrase require tighter alignment with the modal operators.\n\nDetermining whether the modifier \"cùng\" belongs inside the core predicate based on statutory extraction guidelines, confirming it should remain since it avoids exclusion criteria. Re-evaluating text segments for enumeration structures, noting that trailing predicate phrases complicate the classification of lists involving labor mediators and arbitration councils.\n\nAnalyzing the structural role of the trailing entities involving labor mediators and arbitration councils to determine if they classify as counter-parties or require specialized subject tagging. Establishing that because these entities do not follow standard prepositional markers, they remain outside the counter-party classification. Re-evaluating the subject code mapping for collective terms to confirm the joint identifier assignment representing both parties.\n\nTesting whether the joint subject assignment maps correctly to the combined employee and employer code array. Verifying rule identifier grouping by checking if conclusions share identical condition and exception sets, which mandates consolidating them under a single regulatory rule code.\n\nCross-referencing statutory examples reveals that alternative conclusions connected by disjunction markers share a unified rule identifier when lacking explicit conditions. Concluding that all segmented components correctly map to the designated rule code based on consistent subject and modal attributes.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D203.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-4\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:3-4\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-10\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:3-4\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:1-24\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:3-4\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-6a4cc300fb2f4ca0808e56089d0f3",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6031,
+   "output_tokens": 6935,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_a6a09a994f0317bcddc5407c"
+   }
+  }
+ }
+}

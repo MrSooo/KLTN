@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D214.K4",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D214.K4\",\n \"tieu_de_dieu\": \"1:Nội 2:dung 3:thanh 4:tra 5:lao 6:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Giải quyết khiếu nại, tố cáo về lao động theo quy định của pháp luật.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Giải 2:quyết 3:khiếu 4:nại, 5:tố 6:cáo 7:về 8:lao 9:động 10:theo 11:quy 12:định 13:của 14:pháp 15:luật\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Initial examination suggests parsing a labor code provision regarding complaint and denunciation resolution. The segmented text formatting requires normalization to extract the core legal mandate accurately.\n\nFragment breakdown aligns with Article 214 of the labor code concerning labor inspection contents. Segmenting the regulatory basis phrase as a conditional modifier matches syntactic splitting rules for legal provisions.\n\nComparative analysis against standard regulatory extraction examples reveals that prepositional phrases indicating legal grounding function as conditional modifiers. Re-evaluating text segments for omitted subject categories confirms that unspecified institutional actors lack explicit categorical codes, warranting omission under structural schema rules.\n\nState agency and inspection actors lack mapped entity codes in the schema, requiring omission per structural guidelines. Modal markers are absent from the provision, setting polarity to affirmative without specific modalities. Re-evaluating the compound noun phrase to determine if complaint and denunciation elements constitute a formal enumerated list or a unified legal term.\n\nCompound legal terms like complaints and denunciations represent distinct administrative procedures rather than a flat enumeration list. Applying list structures fails when shared modifiers follow the terms, indicating a unified phrasal entity instead of separate list items.\n\nInitial hypothesis assumed a list structure for complaints and denunciations, but structural patterns indicate a unified legal term rather than distinct enumerated items. Applying modifier rules requires treating legal compliance phrases as verbal adjuncts rather than internal noun modifiers.\n\nMapping the statutory reference phrase as a legal basis validates the conditional modifier role, matching established structural patterns for regulatory enforcement clauses. Treating the compound administrative procedures as a unified phrase rather than an enumerated list preserves the integrity of the verbal adjunct.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D214.K4\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-9\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:10-15\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-cfe5293eb42d452491777d477d9fd",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5750,
+   "output_tokens": 3672,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_4112303ffaed4ea5537eca5a"
+   }
+  }
+ }
+}

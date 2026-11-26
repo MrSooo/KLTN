@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D178.K5",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D178.K5\",\n \"tieu_de_dieu\": \"1:Quyền 2:và 3:nghĩa 4:vụ 5:của 6:tổ 7:chức 8:đại 9:diện 10:người 11:lao 12:động 13:tại 14:cơ 15:sở 16:trong 17:quan 18:hệ 19:lao 20:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tổ chức và lãnh đạo đình công theo quy định của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Tổ 2:chức\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:lãnh 2:đạo\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:đình 2:công 3:theo 4:quy 5:định 6:của 7:Bộ 8:luật 9:này\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target unit requires mapping legal text elements into a structured format. Initial parsing of the title indicates provisions regarding the rights and obligations of employee representative organizations at the enterprise level, accompanied by a single sentence clause defining strike leadership duties. Structuring the components into the requested schema while preserving the exact wording of the statutory provision.\n\nStatutory provision maps to the right to organize and lead strikes under the labor code framework. Verification needed regarding whether the qualifying phrase modifies the entire authority or specific operational boundaries.\n\nParsing the statutory modifier phrase against structural segmentation rules. Evaluating whether the reference functions as an external basis mapped to a conditional node or remains embedded within the core conclusion based on comparative precedents.\n\nStatutory modifier phrase functions as a foundational basis rather than an external condition. Both components share identical contextual constraints, confirming assignment to a single unified rule identifier.\n\nInitial assumption assigned separate rule identifiers for the provisions, but checking the shared contextual constraints indicates they map to a single unified rule. Determining the first clause in the applicability scope to properly assign the condition source and identifying the subject category using the standardized classification code.\n\nInitial mapping pointed to an unknown category for the workers' representative organization, raising the possibility of assigning the wildcard marker. Reviewing the classification reference definitions clarifies that employee-side organizations fall under the designated worker category code rather than an unknown designation.\n\nTitle incorporates both rights and obligations terms, generating ambiguity for the normative modality line. Assuming obligation status fails since striking constitutes an inherent employee right rather than a mandatory duty.\n\nConflict arises between explicit title markers and logical domain constraints, preventing a deterministic classification without guessing. Flagging the ambiguity for resolution instead of enforcing an arbitrary modality marker.\n\nStatutory title references both rights and obligations, yet domain analysis confirms strike leadership constitutes an authorized prerogative rather than a mandatory duty. Reviewing specialized coding rules for the normative modality line clarifies that terms like rights within the header validate assigning the permissive status indicator rather than a restrictive obligation code.\n\nSubject is omitted in the statutory text, requiring retrieval from the title hierarchy to assign the correct worker category code. The concluding modifier depends on explicit methodological markers in the header, resolving the permissive status indicator for strike execution.\n\nParsing the statutory reference phrase against condition definition rules confirms classification as a basis component. Applying shared contextual constraints links the condition source to the initial clause within the applicability scope.\n\nMatching subject identifiers confirm both statutory segments share a unified rule designation. Evaluating the sequence of conclusions and conditions against ordering guidelines establishes the final structural output without external cross-references.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D178.K5\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-2\",\n    \"s1.c1:1-2\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:6-15\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-2\",\n    \"s1.c1:1-2\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:6-15\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.c1:3-9\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:6-15\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-5826782b9a1b4c79a3f4a3cd01b49",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5927,
+   "output_tokens": 6102,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_4e15e142a6243edb6e08f496"
+   }
+  }
+ }
+}

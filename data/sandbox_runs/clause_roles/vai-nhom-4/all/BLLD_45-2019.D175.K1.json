@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D175.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D175.K1\",\n \"tieu_de_dieu\": \"1:Các 2:hành 3:vi 4:bị 5:nghiêm 6:cấm 7:đối 8:với 9:người 10:sử 11:dụng 12:lao 13:động 14:liên 15:quan 16:đến 17:thành 18:lập, 19:gia 20:nhập 21:và 22:hoạt 23:động 24:của 25:tổ 26:chức 27:đại 28:diện 29:người 30:lao 31:động 32:tại 33:cơ 34:sở\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Phân 2:biệt 3:đối 4:xử 5:đối 6:với 7:người 8:lao 9:động, 10:thành 11:viên 12:ban 13:lãnh 14:đạo 15:của 16:tổ 17:chức 18:đại 19:diện 20:người 21:lao 22:động 23:tại 24:cơ 25:sở 26:vì 27:lý 28:do 29:thành 30:lập, 31:gia 32:nhập 33:hoặc 34:hoạt 35:động 36:tổ 37:chức 38:đại 39:diện 40:người 41:lao 42:động, 43:bao 44:gồm\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Extracting structured legal provisions for unit BLLD_45-2019.D175.K1 regarding prohibited acts by employers concerning worker representative organizations. Initial hypothesis suggests a top-level article structure due to the empty parent clause, requiring careful parsing of the segmented title string.\n\nParsing clause text to categorize the introductory lead-in phrase. The phrasing indicates an enumeration of prohibited discriminatory acts rather than a conditional requirement, signaling that subsequent sub-provisions function as direct syntactic objects inheriting the subject and modality from the parent clause.\n\nThe enumeration items function directly as syntactic objects governed by the introductory lead-in phrase concluding with the inclusion marker. Since the lead-in segment exclusively introduces this object list without independent clause content, validation rules dictate omitting the line mapping for that segment. Re-evaluating against reference structures confirms this exclusion pattern.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\"unit_id\":\"BLLD_45-2019.D175.K1\",\"cac_muc_con\":\"danh_sach\",\"dong\":[]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-703b3814700548e1913d4fe5196a5",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6124,
+   "output_tokens": 1673,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_e06307056694dafeb72f2885"
+   }
+  }
+ }
+}

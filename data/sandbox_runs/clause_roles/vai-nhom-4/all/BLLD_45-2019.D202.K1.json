@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D202.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D202.K1\",\n \"tieu_de_dieu\": \"1:Quyết 2:định 3:đình 4:công 5:và 6:thông 7:báo 8:thời 9:điểm 10:bắt 11:đầu 12:đình 13:công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 2 Điều 201 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D201.K2\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Khi có trên 50% số người được lấy ý kiến đồng ý với nội dung lấy ý kiến đình công theo quy định tại khoản 2 Điều 201 của Bộ luật này thì tổ chức đại diện người lao động ra quyết định đình công bằng văn bản.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:trên 3:50% 4:số 5:người 6:được 7:lấy 8:ý 9:kiến 10:đồng 11:ý 12:với 13:nội 14:dung 15:lấy 16:ý 17:kiến 18:đình 19:công 20:theo 21:quy 22:định 23:tại 24:khoản 25:2 26:Điều 27:201 28:của 29:Bộ 30:luật 31:này\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tổ 2:chức 3:đại 4:diện 5:người 6:lao 7:động 8:ra 9:quyết 10:định 11:đình 12:công 13:bằng 14:văn 15:bản\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Parsing clause identifier `BLLD_45-2019.D202.K1`. Initial title tokens indicate a strike decision notice requirement, yet structure lacks a parent clause. Cross-reference points to a preceding dispute resolution article, signaling structural dependency. Sentence fragment suggests a threshold condition for the preceding process.\n\nUncertain whether the internal reference qualifies as a conditional requirement or merely a procedural specification for the strike ballot content. Re-evaluating the referenced provision to determine if it dictates the mandatory scope of employee consultation before formalizing the dispute resolution decision.\n\nThe conditional threshold relies on the statutory scope defined in the cross-referenced provision rather than acting as mere procedural text. Extracting the reference reveals a strict requirement for majority consent prior to issuing a strike decision.\n\nBoundary of the citation phrase initially ambiguous regarding prepositional inclusion. Examining parallel examples clarifies that regulatory reference markers operate as unified blocks requiring complete exclusion to isolate the core statutory threshold.\n\nInitial doubt whether the prepositional marker preceding the cross-reference belongs inside the core clause or outside. Testing the boundary shows that stripping both the preposition and the reference leaves a complete, standalone condition regarding majority consent. Classifying the resulting segment as a conditional rule based on its temporal trigger and affirmative polarity.\n\nSubject boundaries appear ambiguous in the conditional clause without an explicit actor, leaning toward an existential structure rather than a forced participant role. Assessing the subsequent conclusion clause reveals \"tổ chức đại diện người lao động\" as the acting entity, though mapping it requires determining whether to categorize it under the worker designation or an unmapped type.\n\nMapping the phrase to employee-side worker classifications based on structural role definitions. The absence of explicit permission or obligation markers in the governing section heading and text dictates assigning a neutral operational method value.\n\nCore action requires retaining form modifiers within the primary slice boundaries based on regulatory parsing rules. Conditional elements exclude external references while preserving internal majority consent parameters, confirming the structural mapping logic for the final clause classification.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D202.K1\",\n  \"dan_chieu_dieu_kien\": [\n    {\n      \"dich\": \"BLLD_45-2019.D201.K2\",\n      \"quy_tac\": \"q1\"\n    }\n  ],\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"loi\": [\n        \"s1.m1:1-19\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m2\",\n      \"loi\": [\n        \"s1.m2:8-15\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"khoang\": [\n          \"s1.m2:1-7\"\n        ],\n        \"loai\": \"W\"\n      },\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-e0e0c07674e645f4bce22807001ac",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6121,
+   "output_tokens": 4232,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_10155b9b881f0745928bf462"
+   }
+  }
+ }
+}

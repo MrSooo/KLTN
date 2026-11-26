@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D203.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D203.K2\",\n \"tieu_de_dieu\": \"1:Quyền 2:của 3:các 4:bên 5:trước 6:và 7:trong 8:quá 9:trình 10:đình 11:công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều 198 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D198\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công theo quy định tại Điều 198 của Bộ luật này có quyền sau đây:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Tổ 2:chức 3:đại 4:diện 5:người 6:lao 7:động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:quyền 3:tổ 4:chức 5:và 6:lãnh 7:đạo 8:đình 9:công 10:theo 11:quy 12:định 13:tại 14:Điều 15:198 16:của 17:Bộ 18:luật 19:này\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:quyền 3:sau 4:đây\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target identifier specifies a legal provision, but the structural fields show fragmented title tokens rather than a clean heading. Cross-reference points directly to another statutory article. Extracting the clause components to evaluate text continuity despite the fragmented title format.\n\nParsing text reveals a lead-in clause terminating with a list introducer. Assessing whether the preceding modifying clause requires a distinct structural line based on syntactic dependency rules.\n\nInitial classification assumed a standard conditional modifier, but syntactic dependencies reveal the segment functions as a subject qualifier preceding a list introduction. Re-evaluating whether this boundary requires an independent line break based on rule precedents for complex subject clauses.\n\nSegment functions as a conditional lead-in preceding a list introduction. Checking whether rule constraints mandate a discrete data line for this antecedent component despite the absence of a concluding clause segment.\n\nReference points to an external statutory article acting as a conditional qualifier for the rule. Re-assessing whether this cross-reference functions as a mandatory antecedent requirement rather than a standard operational clause.\n\nModal phrase \"có quyền\" falls under the exclusion list for core semantic extraction. Evaluating whether the remaining predicate segment constitutes a valid functional action or an antecedent condition.\n\nCross-reference phrase includes introductory prepositions preceding the cited article identifier. Rule precedents require isolating the citation while handling the introductory modifier as a distinct conditional antecedent rather than embedding it within the core semantic action.\n\nModality phrase functions as part of a modifying relative clause rather than the primary predicate. Re-evaluating whether the subordinate clause structure requires retention of internal components while excluding citation modifiers and functional markers.\n\nSegment identified as an antecedent condition rather than a direct predicate action, matching the exclusion rule for lead-in clauses with subordinate lists. Re-evaluating structural constraints to confirm whether the segment requires an independent line entry despite functioning as a subject qualifier.\n\nSubject represents labor representatives, mapping to the employee-side category code rather than the employer side. Evaluating whether the entity classification maps directly to the standard labor code or requires an unclassified designation given the organizational phrasing.\n\nModality phrase matches the exclusion list for modal markers and must be stripped. Cross-reference citation and its introductory prepositional modifiers require separation into an independent citation segment, leaving the core functional action stripped of auxiliary terms.\n\nComparative analysis of precedent examples shows statutory references functioning as operational standards rather than explicit cross-reference markers. Re-evaluating whether the citation functions as an external condition or a core compliance mandate.\n\nCitation extraction boundary encompasses the full introductory phrase including prepositional markers, matching automated line-generation protocols. Re-evaluating whether the entire statutory pointer should be isolated from the core predicate segment to prevent redundancy with the automated generation system.\n\nPrepositional modifier introduced by statutory reference functions as a conditional constraint rather than core verbal complement. Re-evaluating whether the citation segment mandates extraction into an independent condition line based on functional scope precedents.\n\nStatutory reference maps to a substantive article governing organizational rights, functioning as an external conditional constraint. Modality markers fall under mandatory exclusion rules and are stripped from the core functional segment. Residual token analysis isolates the primary action components while excluding the citation phrase and auxiliary terms.\n\nSub-segment classification points to a list structure inheriting parent attributes without independent line breaks. Cross-reference parsing correctly maps the statutory citation to a mandatory conditional requirement field.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D203.K2\",\n \"cac_muc_con\": \"danh_sach\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D198\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:3-9\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-7\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-7bc1e6006c82431cabe8e78f61991",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6014,
+   "output_tokens": 8852,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_5d20e0ae146349b673fdba30"
+   }
+  }
+ }
+}

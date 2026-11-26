@@ -49,8 +49,8 @@ bộ quét: 48 vấn đề
   vòng chặn: may_request_court_resolution <-> must_issue_dispute_resolution_decision
   vòng chặn: forbidden_organize_and_lead_labor_strike <-> organize_and_lead_labor_strike
   vòng chặn: may_conduct_strike_procedure <-> organize_and_lead_labor_strike
-  vòng chặn: organize_and_lead_labor_strike <-> may_conduct_strike_procedure
   vòng chặn: organize_and_lead_labor_strike <-> forbidden_organize_and_lead_labor_strike
+  vòng chặn: organize_and_lead_labor_strike <-> may_conduct_strike_procedure
   cô lập r0054: thân rỗng: không có chủ thể hay điều kiện, đầu đúng cho mọi X
   cô lập r0056: thân rỗng: không có chủ thể hay điều kiện, đầu đúng cho mọi X
   cô lập r0057: thân rỗng: không có chủ thể hay điều kiện, đầu đúng cho mọi X

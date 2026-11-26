@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D157",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D157\",\n \"tieu_de_dieu\": \"1:Cấp, 2:cấp 3:lại, 4:gia 5:hạn, 6:thu 7:hồi 8:giấy 9:phép 10:lao 11:động, 12:giấy 13:xác 14:nhận 15:không 16:thuộc 17:diện 18:cấp 19:giấy 20:phép 21:lao 22:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động đối với người lao động nước ngoài làm việc tại Việt Nam.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Chính 2:phủ 3:quy 4:định 5:điều 6:kiện, 7:trình 8:tự, 9:thủ 10:tục 11:cấp, 12:cấp 13:lại, 14:gia 15:hạn, 16:thu 17:hồi 18:giấy 19:phép 20:lao 21:động 22:và 23:giấy 24:xác 25:nhận 26:không 27:thuộc 28:diện 29:cấp 30:giấy 31:phép 32:lao 33:động 34:đối 35:với 36:người 37:lao 38:động 39:nước 40:ngoài 41:làm 42:việc 43:tại 44:Việt 45:Nam\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Analyzing a legal text regarding work permit regulations for foreign laborers. Initial parse shows fragmented token structures within the title and sentence fields, requiring semantic reconstruction of administrative procedures. Focusing on the governing authority and procedural scope outlined in the primary clause.\n\nInitial reading suggests an authorization clause delegating rule-making power to the Government. Evaluating whether this constitutes an open-ended cross-reference requiring exclusion under administrative guidelines or if substantive procedural duties remain enforceable.\n\nInitial interpretation assumed potential normative content, but the phrase delegating rule-making authority to the executive branch signifies an open cross-reference. Verifying whether such administrative delegations require an empty activity array or total exclusion under non-normative policy criteria.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D157\",\"bo_qua\":\"dan_chieu_mo\",\"dong\":[]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-f8b11939ef0c453c932c7a6bce8c8",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6050,
+   "output_tokens": 1727,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_00c5440f6ed61c6d6fd87c90"
+   }
+  }
+ }
+}

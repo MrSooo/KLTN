@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D156.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D156.K3\",\n \"tieu_de_dieu\": \"1:Các 2:trường 3:hợp 4:giấy 5:phép 6:lao 7:động 8:hết 9:hiệu 10:lực\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Nội dung của hợp đồng lao động không đúng với nội dung của giấy phép lao động đã được cấp.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Nội 2:dung 3:của 4:hợp 5:đồng 6:lao 7:động 8:không 9:đúng 10:với 11:nội 12:dung 13:của 14:giấy 15:phép 16:lao 17:động 18:đã 19:được 20:cấp\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target provision corresponds to Article 156, Clause 3 of the Labor Code 2019 regarding the expiration of work permits. Examining the specific statutory text to extract the exact conditions under which a foreign worker's permit loses validity.\n\nStatutory title frames the provision around termination conditions for work permits. Evaluating whether individual clauses function independently as distinct expiration triggers or require hierarchical decomposition similar to standard structural patterns.\n\nInitial assessment assumes the clause functions as an independent expiration trigger, but structural parallels from similar statutory articles suggest the overarching condition might reside in the overarching article title. Verifying whether individual items act solely as antecedent conditions or contain implicit normative conclusions regarding work permit invalidity.\n\nAbsence of an explicit introductory phrasing within the article shifts reliance to the section title to establish normative scope. Treating the clause items as conditional antecedents rather than standalone conclusions aligns with structural principles for hierarchical sub-provisions. Testing whether the negated alignment between employment contracts and permit parameters constitutes the core condition.\n\nTarget phrase contains an internal negative particle splitting the proposition, separating the core subject components from the predicate. Subject classification rules designate employment contracts as a distinct category, raising uncertainty over whether the entire noun phrase functions as the subject or requires narrower parsing.\n\nSubject classification presents ambiguity regarding whether employment contract contents fit standard subject codes or warrant omission. Prior structural examples demonstrate that complex noun phrases lacking clean categorical alignment are frequently omitted from explicit subject labeling, relying directly on condition identifiers instead.\n\nComparative analysis of structural precedents reveals inconsistencies in subject categorization for complex noun phrases, particularly regarding whether specific terms function as actors or form part of the core predicate. Re-evaluating prior annotation examples where analogous phrases were omitted from subject labeling and integrated directly into the core proposition, indicating that complex entities lacking clean categorical alignment should bypass explicit actor assignment to align with established structural norms.\n\nParsing the internal negation structure within the proposition requires identifying how the negative particle divides the core elements. The phrase involving employment contract contents functions as the subject, yet syntactic ambiguity complicates whether the entire noun phrase or a narrower component forms the base. Re-evaluating the scope of the negation reveals that the negative particle operates across the entire intervening clause, mirroring structural patterns where the predicate condition negates the preceding subject state.\n\nNegative particle splitting the clause into distinct flanking segments mirrors established structural precedents where the core elements are partitioned around the negator. Applying this pattern maps the antecedent elements before the negator and the predicate conditions after it, confirming the negative polarity classification. Evaluating the functional role within the hierarchical context confirms the conditional status derived from the overarching introductory framework.\n\nTitle heading explicitly frames the entire article around permit expiration cases, confirming each subordinate clause functions directly as a conditional trigger. Mapping this structure assigns conditional status to the clause while setting methodological parameters to default values. Evaluating sentence composition reveals a single clausal segment, requiring determination of whether an implicit conclusion derives from the overarching statutory title.\n\nSyntactic guidelines dictate that source identifiers must exclusively reference specific clause segments rather than parent titles. Reviewing modifier separation rules to determine if prepositional phrases modifying the core verb require independent conditional row extraction.\n\nEvaluating whether the embedded noun phrase functions as a subject entity code or requires omission based on structural guidelines. Testing if the alignment criteria map to designated categorical codes or necessitate bypassing explicit actor assignment.\n\nHead noun identification establishes the full complex noun phrase as the core subject, yet standard categorical codes lack a precise match for this entity. Omitting the actor designation aligns with established structural precedents where complex phrases bypass explicit categorization. Syllable mapping confirms the precise boundaries dividing the subject from the negated predicate condition.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D156.K3\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"loi\": [\n        \"s1.m1:1-7\",\n        \"s1.m1:9-20\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"phu_dinh\",\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-ed1b3b9c7a264238a107e5e699765",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5796,
+   "output_tokens": 6702,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_10d689217fb3cac93f4fc28d"
+   }
+  }
+ }
+}

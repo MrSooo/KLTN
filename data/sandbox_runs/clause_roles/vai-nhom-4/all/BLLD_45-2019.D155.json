@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D155",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D155\",\n \"tieu_de_dieu\": \"1:Thời 2:hạn 3:của 4:giấy 5:phép 6:lao 7:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Thời 2:hạn 3:của 4:giấy 5:phép 6:lao 7:động 8:tối 9:đa 10:là 11:02 12:năm\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:gia 2:hạn\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:chỉ 2:được 3:gia 4:hạn 5:một 6:lần 7:với 8:thời 9:hạn 10:tối 11:đa 12:là 13:02 14:năm\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Initial interpretation suggests the statutory text outlines a two-year maximum validity for work permits with a single renewal restriction. Scrutinizing the conditional fragments to confirm whether exceptions alter this baseline rule. Re-evaluating the clause structure to ensure both the primary tenure limit and the renewal constraint map correctly to the extracted legal provisions.\n\nInitial classification categorized the duration limit as a standard concluding value. Re-examining the subject boundaries reveals whether the work permit itself functions as the core entity or if the phrase requires an unlisted identifier category, given that standard subject codes do not explicitly cover licensing documents. Testing the omission of the subject tag to determine if the relational value stands independently within the semantic structure.\n\nComparative analysis of reference examples indicates that certain legal subjects function primarily as structural markers within the core violation span rather than designated entity codes. Omitting the subject classification aligns the parsing logic with established patterns where grammatical subjects lacking predefined category identifiers integrate directly into the core segment.\n\nPrevious classifications indicate modal markers like permission operators are excluded from core violation spans. Testing whether limiting phrases modify the structural core or remain bounded outside the primary legislative constraint.\n\nEvaluating whether restrictive markers preceding modal operators integrate into the primary infraction span. Initial association links the limiter to the frequency modifier, suggesting extraction alongside the core clause. Testing alternative clause boundaries to verify if the restrictive particle operates independently from the governing modal phrase.\n\nDistinction between temporal application bounds and core duration specifications needs closer scrutiny. \"Với thời hạn tối đa là 02 năm\" defines the intrinsic parameter of the extension rather than an external trigger condition, pointing toward inclusion within the core clause rather than the conditional segment.\n\nReference examples confirm that phrases detailing specific quantitative parameters, such as salary rates or temporal limits introduced by prepositional markers, form intrinsic components of the core violation span. The clause regarding the maximum two-year duration parallels established patterns where structural specifications remain inside the core rather than shifting to external conditions. Testing modal indicators and restrictive particles to determine whether exclusivity modifiers alter the primary operational boundaries.\n\nModality lists do not explicitly include exclusivity markers, meaning the limiting particle remains inside the core segment. Testing whether the subject phrase requires an unlisted identifier category since standard licensing documents lack direct entity mappings.\n\nSubject terms without explicit mapping codes should be excluded from the core span, leaving the predicate structure as the primary infraction marker. Cross-checking rule associations reveals that the general duration limit forms an independent base rule, whereas the renewal provision constitutes a distinct conditional constraint paired with its own conclusion.\n\nComparative analysis of reference structures confirms that non-personal entities lack corresponding subject categorization codes. Applying the definitional framework for identity propositions, the entire phrase constitutes the core infraction span while the temporal specification functions as the conclusion.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D155\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:1-12\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"loi\":[\"s1.m2:1-2\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q2\"},{\"nguon\":\"s1.m3\",\"loi\":[\"s1.m3:1\",\"s1.m3:3-14\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q2\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-e28a526d678548218a3be2f57ee6f",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5927,
+   "output_tokens": 5667,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_bdf77e14d55e975490b29a6b"
+   }
+  }
+ }
+}

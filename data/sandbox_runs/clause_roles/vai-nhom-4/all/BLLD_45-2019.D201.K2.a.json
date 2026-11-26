@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D201.K2.a",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D201.K2.a\",\n \"tieu_de_dieu\": \"1:Lấy 2:ý 3:kiến 4:về 5:đình 6:công\",\n \"khoan_cha\": \"1:Nội 2:dung 3:lấy 4:ý 5:kiến 6:bao 7:gồm:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Đồng ý hay không đồng ý đình công;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Đồng 2:ý\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:không 2:đồng 3:ý\",\n     \"noi_truoc\": [\n      \"hay\"\n     ]\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:đình 2:công\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Structuring the legislative provision into JSON requires mapping nested clauses, titles, and reference links accurately. Initial parsing points to a multi-tiered hierarchy under the strike ballot section, but validating the node identifiers (`s1.m1`) and segment boundaries ensures alignment with the target schema.\n\nInitial assumption was a conditional structure, but semantic analysis reveals a direct object list mapping contents. Translating the statutory text requires structuring sub-clauses under an overarching object list rather than conditional branches, shifting the schema hierarchy accordingly.\n\nSub-clause classification initially suggests a conclusion type, but the text outlines specific items rather than a summary result. Evaluating the statutory phrasing reveals no matching standard subject codes, requiring the omission of the subject field for these nested nodes.\n\nParsing the negative marker within the alternative clause structure initially appeared to require splitting the core, but lexical rules dictate retaining internal modifiers within the primary span. Re-evaluating the modifier boundary indicates the negative term functions as part of the core expression rather than a clausal negation, requiring adjustment of the span indices.\n\nNegation placement within the clause structure requires separating clausal negations into designated markers rather than embedding them inside the core expression. Both sub-clauses share an identical condition and exception profile, dictating a unified rule grouping under the target schema.\n\nRule groupings map identically to standard categories despite minor lexical variations, yet distinguishing between affirmative and negative polarities requires precise core span adjustments. Conditional disjunction indicators apply exclusively to qualifying conditions rather than outcome nodes, leaving the conclusion structures unaffected by alternative conjunction markers.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D201.K2.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-2\",\n    \"s1.c1:1-2\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:2-3\",\n    \"s1.c1:1-2\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1f1e11129f7b42d88542c78d7f64e",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5846,
+   "output_tokens": 3585,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_4dc7749e3db28fd1aaf805fa"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D214.K5",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D214.K5\",\n \"tieu_de_dieu\": \"1:Nội 2:dung 3:thanh 4:tra 5:lao 6:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Xử lý theo thẩm quyền và kiến nghị cơ quan có thẩm quyền xử lý vi phạm pháp luật về lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Xử 2:lý 3:theo 4:thẩm 5:quyền\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:kiến 2:nghị 3:cơ 4:quan 5:có 6:thẩm 7:quyền 8:xử 9:lý 10:vi 11:phạm 12:pháp 13:luật 14:về 15:lao 16:động\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target string contains structured segments of a legal article regarding labor inspection and violation handling. Parsing the structural hierarchy and mapping components to extract the exact statutory mandate for enforcement actions.\n\nExamining Article 214 of the Labor Code regarding labor inspection contents reveals paragraph 5 as an independent provision on handling violations. Evaluating whether the prepositional phrase functions as a separate condition modifying the primary enforcement verb.\n\nIsolating the prepositional modifying phrase into an independent conditional clause mapping to enforcement rules. The clause lacks an explicit grammatical subject, suggesting retrieval from the article title. However, classifying \"thanh tra lao động\" within the title remains ambiguous regarding whether it designates an inspection agency or the subject matter itself, requiring resolution against the established entity codebook.\n\nReference examples indicate prepositional modifiers like \"theo thẩm quyền\" function as separate conditional clauses rather than core predicates. Splitting the statutory text yields distinct rows for the enforcement action and its governing condition, yet the direct object of the enforcement verb remains unresolved within the clause structure. Tracing the object scope toward subsequent coordinate phrases to determine whether violations constitute the direct target.\n\nRe-evaluating the shared object scope reveals that \"vi phạm pháp luật về lao động\" belongs exclusively to the second coordinate clause. Since the first clause lacks this explicit object and functions as a standalone segment without a shared modifier span, restricting the range strictly to its source segment prevents cross-segment dependency extraction.\n\nAnalyzing coordinate clauses separated by conjunctions reveals distinct rule sets due to differing modifier scopes. The modifying phrase attaches exclusively to the first predicate, establishing an isolated conditional dependency that separates it from the second coordinate segment.\n\nResolving the ambiguity of \"thanh tra lao động\" within the title requires determining whether it designates an inspection agency or the inspection activity itself. Comparing structural patterns in reference examples where missing subjects are omitted entirely rather than forced, leaving the subject field empty for the affected clause rather than misattributing a modifier.\n\nInitial consideration points toward designating \"thanh tra lao động\" from the title as the omitted subject for the enforcement clause. Classifying the entity type remains uncertain because inspection agencies do not fit standard administrative codes, pointing toward an unspecified or specialized entity classification.\n\nRe-evaluating the omitted subject rule mandates resolving the span against the article title. Parsing the predicate core reveals the verb governs a secondary agent tasked with addressing infractions, distinguishing the object span from pure recipients.\n\nPronouns are excluded from the core span, but entities with descriptive modifiers like the competent authority are retained within the core structure. Re-examining the coordinate clause reveals whether the jurisdictional modifier applies across both segments or restricts exclusively to the first predicate.\n\nJurisdictional modifiers apply strictly to the primary enforcement predicate based on coordinate clause boundaries. Classifying the omitted subject derived from the article title requires assigning an unspecified entity code since inspection agencies fall outside standard category mappings.\n\nClassifying \"theo thẩm quyền\" as a conditional basis modifier aligns with structural rules for prepositional phrases indicating legal grounds. The remaining segment constitutes a complete core predicate where nominal modifiers remain bound to their head noun without requiring further extraction.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D214.K5\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:1-2\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"td:3-6\"],\"loai\":\"?\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:3-5\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"td:3-6\"],\"loai\":\"?\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"loi\":[\"s1.m2:1-16\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"td:3-6\"],\"loai\":\"?\"},\"quy_tac\":\"q2\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-5a5598ff22214da0933c91a8bce86",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5828,
+   "output_tokens": 6570,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_8f5d82b2d403ac6dcbce0583"
+   }
+  }
+ }
+}

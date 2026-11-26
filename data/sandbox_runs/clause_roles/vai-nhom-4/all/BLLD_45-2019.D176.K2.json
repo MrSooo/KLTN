@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D176.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D176.K2\",\n \"tieu_de_dieu\": \"1:Quyền 2:của 3:thành 4:viên 5:ban 6:lãnh 7:đạo 8:của 9:tổ 10:chức 11:đại 12:diện 13:người 14:lao 15:động 16:tại 17:cơ 18:sở\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định thời gian tối thiểu mà người sử dụng lao động dành cho toàn bộ thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở để thực hiện nhiệm vụ của tổ chức đại diện trên cơ sở số lượng thành viên của tổ chức.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Chính 2:phủ 3:quy 4:định 5:thời 6:gian 7:tối 8:thiểu 9:mà 10:người 11:sử 12:dụng 13:lao 14:động 15:dành 16:cho 17:toàn 18:bộ 19:thành 20:viên 21:ban 22:lãnh 23:đạo 24:của 25:tổ 26:chức 27:đại 28:diện 29:người 30:lao 31:động 32:tại 33:cơ 34:sở 35:để 36:thực 37:hiện 38:nhiệm 39:vụ 40:của 41:tổ 42:chức 43:đại 44:diện 45:trên 46:cơ 47:sở 48:số 49:lượng 50:thành 51:viên 52:của 53:tổ 54:chức\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Initial structural parse of the legal unit metadata and segmentation yields identifiers and headers. Segment sequence validation reveals an incomplete clause text starting with government authority definitions.\n\nInitial parsing identifies a delegation clause directing the government to regulate specific time allocations for labor representative leaders. Re-evaluating whether this constitutes an enforceable behavioral norm or an open-ended directive pointing to subordinate legislation. Initial inclination leans toward classifying it as a generalized cross-reference rather than a direct operational mandate.\n\nDelegation phrasing assigning regulatory authority to the government typically indicates an open-ended cross-reference pointing to subordinate legislation rather than an immediate operational norm. Evaluating whether such provisions warrant extraction as empty structural lines or should be explicitly bypassed as open cross-references under specific exclusion tags.\n\nAnalyzing the clause structure reveals a singular sentence entirely dedicated to delegating regulatory authority without concurrent operational norms, which suggests an empty segment payload. Reassessing whether to maintain an empty line array or populate subject-action mappings where the government acts as the regulator holding an unassigned entity code.\n\nLegislative phrasing delegating regulatory power explicitly matches open cross-reference criteria rather than direct behavioral norms. Initial classification confirms complete alignment with unassigned regulatory delegations, requiring an empty line array alongside specific exclusion tagging.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D176.K2\",\"bo_qua\":\"dan_chieu_mo\",\"dong\":[]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-206c04ff27324e64b67afead4831b",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6087,
+   "output_tokens": 2210,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_045f6170f96b20dc929d091b"
+   }
+  }
+ }
+}

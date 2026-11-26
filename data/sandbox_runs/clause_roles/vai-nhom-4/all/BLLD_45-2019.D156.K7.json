@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D156.K7",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D156.K7\",\n \"tieu_de_dieu\": \"1:Các 2:trường 3:hợp 4:giấy 5:phép 6:lao 7:động 8:hết 9:hiệu 10:lực\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Doanh 2:nghiệp, 3:tổ 4:chức, 5:đối 6:tác 7:phía 8:Việt 9:Nam 10:hoặc 11:tổ 12:chức 13:nước 14:ngoài 15:tại 16:Việt 17:Nam\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:sử 2:dụng 3:lao 4:động 5:là 6:người 7:nước 8:ngoài\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:chấm 2:dứt 3:hoạt 4:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target legal provision involves Article 156 Clause 7 of the Labour Code 2019 concerning work permit expirations. Initial text fragmentation requires reconstructing the clause context to accurately identify the specific termination condition described.\n\nReconstructing clause components reveals structural fragmentation requiring verification of connective roles. Initial classification as a condition seems plausible given the introductory context, but the lack of explicit conditional markers challenges whether it functions strictly as a condition or an independent conclusion within the statutory framework.\n\nStatutory title framing implies a conditional list structure, yet analyzing the parent clause hierarchy reveals an empty parent context. Testing whether individual provisions function purely as conditions requires reconciling missing structural conclusions within the logical framework.\n\nAnalyzing semantic components confirms item entries following introductory framing operate strictly as conditions rather than independent conclusions. Examining the statutory title structure suggests a parallel conditional categorization, yet differentiating between general provisions and explicit introductory markers requires re-evaluating whether the heading itself acts as a governing antecedent.\n\nEvaluating whether the statutory heading acts as a governing antecedent implies the sub-provisions function as conditions. Tracing the subject elements within the sub-provisions reveals complex entity boundaries, challenging the initial assumption of a uniform conditional structure.\n\nSyntactic parsing identifies the subject entity block followed by a subordinate modifying clause regarding foreign employee utilization. Re-evaluating the verbal segments reveals the segmenter split the modifying relative clause and the main termination predicate into distinct dependent units, challenging the initial assumption of a unified predicate structure.\n\nEvaluating statutory titles containing enumerations suggests the subordinate items function as conditions. Reconciling whether the heading acts as a governing antecedent confirms the sub-provisions operate as conditions rather than independent conclusions.\n\nEvaluating the statutory structure reveals the absence of an explicit introductory transitional phrase in the article. Testing whether the title itself serves as a governing antecedent confirms the sub-provisions function strictly as conditions rather than independent conclusions.\n\nExamining the remaining list items confirms they consistently enumerate termination triggers for work permits, reinforcing the conditional role of each provision. Re-evaluating whether the statutory title functions as a governing antecedent establishes that the sub-items operate strictly as conditions rather than independent conclusions.\n\nComparing current structural patterns against established examples reveals that units lacking governing predicates consistently classify all sub-components exclusively as conditions. Re-evaluating the lack of explicit connective markers confirms the role defaults to a condition based on the preceding contextual heading rather than requiring an explicit conditional particle.\n\nTesting whether enterprise operational termination functions as a conclusion yields a logical contradiction, as legal rules do not mandate enterprise dissolution. Recognizing this event as an external factual circumstance confirms the provision operates as a condition. Parsing the subject and predicate segments reveals shared actors governing multiple dependent verbal units.\n\nIsolating the core verbal predicate and direct object yields the action component governing foreign labor utilization. Re-evaluating the subject boundaries confirms the enterprise or organization entity acts as the shared actor across multiple dependent clauses.\n\nEvaluating prepositional targets and role markers determines whether specific employee descriptors belong in the core predicate or the affected entity set. Reconciling guidelines for specific personnel categories confirms that descriptive entities remain within the core while general role references shift to the recipient framework.\n\nMapping direct objects to the foreign worker category confirms the specific subject type designation. Connecting shared enterprise actors across parallel conditional clauses establishes both operational termination and foreign labor utilization as prerequisite conditions under the governing rule.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D156.K7\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:1-8\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.c1:1-17\"],\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"loi\":[\"s1.m2:1-4\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.c1:1-17\"],\"loai\":\"E\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-956a6da0686944f58aa2c04e8c1eb",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5957,
+   "output_tokens": 7806,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_c96023552e34d11be2b09531"
+   }
+  }
+ }
+}

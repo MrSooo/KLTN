@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D218",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D218\",\n \"tieu_de_dieu\": \"1:Miễn, 2:giảm 3:thủ 4:tục 5:đối 6:với 7:trường 8:hợp 9:sử 10:dụng 11:dưới 12:10 13:lao 14:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động sử dụng dưới 10 người lao động thực hiện quy định của Bộ luật này nhưng được miễn, giảm một số thủ tục theo quy định của Chính phủ.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Người 2:sử 3:dụng 4:lao 5:động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:sử 2:dụng 3:dưới 4:10 5:người 6:lao 7:động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:thực 2:hiện 3:quy 4:định 5:của 6:Bộ 7:luật 8:này\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:được 2:miễn, 3:giảm 4:một 5:số 6:thủ 7:tục 8:theo 9:quy 10:định 11:của 12:Chính 13:phủ\",\n     \"noi_truoc\": [\n      \"nhưng\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target unit ID indicates a provision regarding exemptions and procedures for employers with fewer than ten workers. Initial parsing reveals a fragmented article title containing indexed words that require reconstruction for clarity. Examination of the first sentence shows an incomplete clause cut off mid-reference, necessitating verification against full statutory text to capture the complete rule.\n\nSyntactic structure indicates the clause functions as a conditional scope modifier for employers utilizing fewer than ten workers. Semantic parsing confirms the core obligation requires compliance with statutory provisions while qualifying for administrative exemptions authorized by the executive branch.\n\nInitial assessment suggests classifying the core obligation as a default affirmative requirement based on statutory compliance phrasing. Re-evaluating the modal context reveals an absence of explicit directive markers like mandatory terms in the title or text, indicating the operational mode should be classified as neutral rather than strictly obligatory. Comparing the conditional scope across clauses indicates a potential split in rule grouping that requires distinct regulatory identifiers.\n\nShared condition points toward identical worker thresholds spanning distinct regulatory outcomes. Parsing the modifying phrase reveals a statutory basis modifier functioning as a separate condition tied to the core obligation. Scope rules mandate retaining modifying clauses within the logical core when integrated into noun constructs, requiring careful boundary checking between core elements and external conditions.\n\nPrepositional modifiers indicating statutory compliance function as separate condition clauses rather than internal noun components. Parsing the regulatory basis as an independent condition aligns structural treatment with precedent where statutory reference phrases dictate procedural execution parameters.\n\nInitial parsing grouped conditions identically across clauses, but closer inspection reveals a missing executive regulation modifier in the second clause. This distinction splits the framework into two separate rules while correctly sharing the employee threshold condition across both. Assessing syntactic objects for the threshold phrase indicates it functions as a quantitative constraint requiring designation as a relational parameter rather than a standard actor entity.\n\nInitial review suggests treating descriptive worker constraints as core elements rather than external subjects. Inspecting the regulatory compliance phrase indicates it functions as a definitive conclusion tied to statutory authority. However, evaluating the modal modifier reveals a distinct operational indicator requiring explicit designation, while compound verbs require checking against listing criteria to determine appropriate structural boundaries.\n\nCompound verb phrase classification requires separating policy terms from object lists to prevent misidentifying administrative procedures as direct scopes. Analyzing the governmental compliance modifier confirms it operates as a distinct conditional clause rather than a core subject component. Cross-checking reference arrays indicates the dependency list remains empty, simplifying structural mapping for the regulatory rule set.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D218\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:1-7\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.c1:1-5\"],\"loai\":\"E\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"loi\":[\"s1.m2:1-8\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.c1:1-5\"],\"loai\":\"E\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:1-7\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.c1:1-5\"],\"loai\":\"E\"},\"quy_tac\":\"q2\"},{\"nguon\":\"s1.m3\",\"loi\":[\"s1.m3:2-7\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.c1:1-5\"],\"loai\":\"E\"},\"quy_tac\":\"q2\"},{\"nguon\":\"s1.m3\",\"loi\":[\"s1.m3:8-13\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.c1:1-5\"],\"loai\":\"E\"},\"quy_tac\":\"q2\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-6c823e85b5264389af0554793eae9",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6062,
+   "output_tokens": 4647,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_c2bf2a202057f485d15a6d51"
+   }
+  }
+ }
+}

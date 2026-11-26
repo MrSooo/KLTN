@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D153.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D153.K1\",\n \"tieu_de_dieu\": \"1:Trách 2:nhiệm 3:của 4:người 5:sử 6:dụng 7:lao 8:động 9:và 10:người 11:lao 12:động 13:nước 14:ngoài\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động nước ngoài phải xuất trình giấy phép lao động khi có yêu cầu của cơ quan nhà nước có thẩm quyền.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Người 2:lao 3:động 4:nước 5:ngoài 6:phải 7:xuất 8:trình 9:giấy 10:phép 11:lao 12:động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:yêu 3:cầu 4:của 5:cơ 6:quan 7:nhà 8:nước 9:có 10:thẩm 11:quyền\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target unit identifier points to specific labor regulations for foreign workers. Initial breakdown of sentence components reveals obligations regarding work permit presentation upon state authority request. Verification needed on precise token boundaries and structural alignment for this article segment.\n\nSyntactic decomposition splits the segment into a conditional clause governed by temporal markers and a main clause housing the primary subject and modal obligation. Core span extractions correctly isolate the worker subject and the mandated action while excluding modal markers. Rule alignment maps the conditional structure to the required regulatory schema.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\n \"unit_id\": \"BLLD_45-2019.D153.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:7-12\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-5\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-11\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-371de5f9a603484689ebc575e1bc8",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5892,
+   "output_tokens": 1331,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_6a71f2ff122bffa5c8456185"
+   }
+  }
+ }
+}

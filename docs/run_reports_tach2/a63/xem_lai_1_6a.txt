@@ -1,0 +1,162 @@
+(1) tach2: 876/881 đơn vị qua cổng (0.994); có phản hồi 881
+    tach (vai-nhom-3): 841/881; trên 881 đơn vị đã có phản hồi tach2: tach 841, tach2 876
+    tach qua mà tach2 trượt: ['D121', 'D154.K2', 'D18.K5', 'D21.K1.e']
+(2) loại lỗi cổng (chỉ đơn vị có phản hồi), 14 lỗi:
+       6  trường thiếu [] / thừa ['…']
+       5  doan rỗng
+       1  dòng có trường lạ ['…']; chỉ được dùng ['…', '…', '…', '…', '…', '…', '…', '…', '…', '…', 
+       1  menh_de là câu dẫn
+       1  lõi bỏ chữ '…' giữa sN.mN:N và sN.mN:N
+(3) theo tuyến (lượt đầu): martha02091945: 114/116 qua (0.983), daongocson12022004: 514/516 qua (0.996), dungcsnd113: 248/249 qua (0.996)
+(4) lượt sửa: {'tắt nghĩ ngầm (cụt)': 6, 'có lượt sửa': 61, 'giữ bản 1': 1, 'sửa xong qua cổng': 57}
+(5) khoản lỗi đã biết:
+
+  == D27.K1: A62: 'không đạt' ghi thành 'đạt' + phu_dinh; q4 thân rỗng
+  -- tach: loi=["doan 'thử việc đạt yêu cầu' không nằm trọn trong đoạn s3.m1 hay một dung_chung áp cho nó"]
+  [q1] dieu_kien/khong/khang_dinh | None | kết thúc thời gian thử việc
+  [q1] ket_luan/phai/khang_dinh | người sử dụng lao động | thông báo kết quả thử việc
+  [q2] dieu_kien/khong/khang_dinh | None | thử việc đạt yêu cầu
+  [q2] dieu_kien/khong/khang_dinh | người sử dụng lao động | đối với trường hợp thỏa thuận thử việc trong hợp đồng lao động
+  [q2] ket_luan/khong/khang_dinh | người sử dụng lao động | tiếp tục thực hiện hợp đồng lao động đã giao kết
+  [q3] dieu_kien/khong/khang_dinh | None | thử việc đạt yêu cầu
+  [q3] dieu_kien/khong/khang_dinh | người sử dụng lao động | đối với trường hợp giao kết hợp đồng thử việc
+  [q3] ket_luan/phai/khang_dinh | người sử dụng lao động | giao kết hợp đồng lao động
+  [q4] dieu_kien/khong/phu_dinh | None | thử việc đạt yêu cầu
+  [q4] ket_luan/khong/khang_dinh | None | chấm dứt | liet_ke=['hợp đồng lao động đã giao kết', 'hợp đồng thử việc']
+  -- tach2: loi=[]
+  [q1] dieu_kien/khong/khang_dinh | None | kết thúc thời gian thử việc
+  [q1] ket_luan/phai/khang_dinh | người sử dụng lao động | thông báo kết quả thử việc
+  [q2] dieu_kien/khong/khang_dinh | None | thử việc đạt yêu cầu
+  [q2] dieu_kien/khong/khang_dinh | None | đối với trường hợp thỏa thuận thử việc trong hợp đồng lao động
+  [q2] ket_luan/khong/khang_dinh | người sử dụng lao động | tiếp tục thực hiện hợp đồng lao động đã giao kết
+  [q3] dieu_kien/khong/khang_dinh | None | thử việc đạt yêu cầu
+  [q3] dieu_kien/khong/khang_dinh | None | đối với trường hợp giao kết hợp đồng thử việc
+  [q3] ket_luan/phai/khang_dinh | người sử dụng lao động | giao kết hợp đồng lao động
+  [q4] dieu_kien/khong/phu_dinh | None | thử việc đạt yêu cầu
+  [q4] ket_luan/khong/khang_dinh | None | chấm dứt | liet_ke=['hợp đồng lao động đã giao kết', 'hợp đồng thử việc']
+
+  == D137.K2: A62: đuôi thời gian 'cho đến hết thời gian nuôi con...' tách thành điều kiện
+  -- tach: loi=[]
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Lao động nữ | làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Lao động nữ | làm nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con
+  [q1] dieu_kien/khong/khang_dinh | Lao động nữ | mang thai
+  [q1] dieu_kien/khong/khang_dinh | Lao động nữ | thông báo biết
+  [q1] ket_luan/duoc/khang_dinh | Lao động nữ | chuyển sang làm công việc nhẹ hơn, an toàn hơn
+  [q1] ket_luan/duoc/khang_dinh | Lao động nữ | giảm bớt 01 giờ làm việc hằng ngày
+  [q1] ket_luan/khong/phu_dinh | Lao động nữ | bị cắt giảm tiền lương và quyền, lợi ích
+  [q1] dieu_kien/khong/khang_dinh | Lao động nữ | cho đến hết thời gian nuôi con dưới 12 tháng tuổi
+  -- tach2: loi=[]
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Lao động nữ | làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Lao động nữ | làm nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con
+  [q1] dieu_kien/khong/khang_dinh | Lao động nữ | mang thai
+  [q1] dieu_kien/khong/khang_dinh | Lao động nữ | có thông báo cho người sử dụng lao động biết
+  [q1] ket_luan/duoc/khang_dinh | Lao động nữ | chuyển sang làm công việc nhẹ hơn, an toàn hơn
+  [q1] ket_luan/duoc/khang_dinh | Lao động nữ | giảm bớt 01 giờ làm việc hằng ngày
+  [q1] ket_luan/khong/phu_dinh | Lao động nữ | bị cắt giảm tiền lương và quyền, lợi ích cho đến hết thời gian nuôi con dưới 12 tháng tuổi
+
+  == D154.K8: A61: mất kết luận câu dẫn cấp Điều (A62 bước 3a thêm từ tiêu đề)
+  -- tach: loi=[]
+  [q1] dieu_kien/khong/khang_dinh | Người nước ngoài | kết hôn với người Việt Nam
+  [q1] dieu_kien/khong/khang_dinh | Người nước ngoài | sinh sống
+  [q1] dieu_kien/khong/khang_dinh | Người nước ngoài | trên lãnh thổ Việt Nam
+  [q1] ket_luan/khong_ap_dung/khang_dinh | Người lao động nước ngoài làm việc tại Việt Nam | cấp giấy phép lao động
+  -- tach2: loi=[]
+  [q1] dieu_kien/khong/khang_dinh | Người nước ngoài | kết hôn với người Việt Nam
+  [q1] dieu_kien/khong/khang_dinh | Người nước ngoài | sinh sống
+  [q1] dieu_kien/khong/khang_dinh | Người nước ngoài | trên lãnh thổ Việt Nam
+  [q1] ket_luan/khong_ap_dung/khang_dinh | Người lao động nước ngoài làm việc tại Việt Nam | cấp giấy phép lao động
+
+  == D144.K2: A62: trai_liet_ke ghép danh sách 'về các mặt' vào chủ thể
+  -- tach: loi=[]
+  [q1] dieu_kien/khong/khang_dinh | Người sử dụng lao động | sử dụng lao động chưa thành niên
+  [q1] ket_luan/phai/khang_dinh | Người sử dụng lao động | quan tâm chăm sóc người lao động
+  [q1] ket_luan/phai/khang_dinh | Người sử dụng lao động | quan tâm chăm sóc người sức khỏe
+  [q1] ket_luan/phai/khang_dinh | Người sử dụng lao động | quan tâm chăm sóc người học tập
+  [q1] dieu_kien/khong/khang_dinh | Người sử dụng lao động | trong quá trình lao động
+  -- tach2: loi=[]
+  [q1] dieu_kien/khong/khang_dinh | Người sử dụng lao động | sử dụng lao động chưa thành niên
+  [q1] ket_luan/phai/khang_dinh | Người sử dụng lao động | quan tâm chăm sóc người lao động về các mặt | liet_ke=['lao động', 'sức khỏe', 'học tập']
+  [q1] dieu_kien/khong/khang_dinh | Người sử dụng lao động | trong quá trình lao động
+
+  == D109.K1: A62: dòng điều kiện bị cổng loại (mất 'từ 06 giờ trở lên')
+  -- tach: loi=["doan 'làm việc từ 06 giờ trở lên trong một ngày' không nằm trọn trong đoạn s1.m1 hay một dung_chung áp cho nó", "trich không nguyên văn: 'làm việc từ 06 giờ trở lên trong một ngày'"]
+  [q1] dieu_kien/khong/khang_dinh | Người lao động | làm việc từ 06 giờ trở lên trong một ngày
+  [q1] dieu_kien/khong/khang_dinh | Người lao động | theo thời giờ làm việc
+  [q1] ket_luan/duoc/khang_dinh | Người lao động | nghỉ giữa giờ ít nhất 30 phút liên tục
+  [q2] dieu_kien/khong/khang_dinh | Người lao động | làm việc ban đêm
+  [q2] ket_luan/duoc/khang_dinh | Người lao động | nghỉ giữa giờ ít nhất 45 phút liên tục
+  [q3] dieu_kien/khong/khang_dinh | người lao động | làm việc theo ca liên tục từ 06 giờ trở lên
+  [q3] ket_luan/khong/khang_dinh | None | thời gian nghỉ giữa giờ được tính vào giờ làm việc
+  [q1] dieu_kien// | None | 
+  -- tach2: loi=[]
+  [q1] dieu_kien/khong/khang_dinh | Người lao động | làm việc từ 06 giờ trở lên trong một ngày
+  [q1] dieu_kien/khong/khang_dinh | Người lao động | theo thời giờ làm việc
+  [q1] ket_luan/duoc/khang_dinh | Người lao động | nghỉ giữa giờ ít nhất 30 phút liên tục
+  [q2] dieu_kien/khong/khang_dinh | Người lao động | làm việc ban đêm
+  [q2] ket_luan/duoc/khang_dinh | Người lao động | nghỉ giữa giờ ít nhất 45 phút liên tục
+  [q3] dieu_kien/khong/khang_dinh | người lao động | làm việc liên tục từ 06 giờ trở lên
+  [q3] dieu_kien/khong/khang_dinh | người lao động | theo ca
+  [q3] ket_luan/khong/khang_dinh | thời gian nghỉ giữa giờ | được tính vào giờ làm việc
+  [q1] dieu_kien// | None | 
+
+  == D35.K2.c: A62: bỏ chữ 'ngược đãi, đánh đập...'
+  -- tach: loi=["doan bỏ chữ 'người sử dụng lao động ngược đãi, đánh đ'"]
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Người lao động | bị ngược đãi
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Người lao động | bị đánh đập
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Người lao động | bị có lời nói, hành vi nhục mạ, hành vi làm ảnh hưởng đến sức khỏe, nhân phẩm, danh dự | liet_ke=['sức khỏe', 'nhân phẩm', 'danh dự']
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Người lao động | bị cưỡng bức lao động
+  -- tach2: loi=[]
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Người lao động | bị ngược đãi
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Người lao động | bị đánh đập
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Người lao động | bị có lời nói, hành vi nhục mạ
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Người lao động | bị có hành vi làm ảnh hưởng đến sức khỏe, nhân phẩm, danh dự
+  [q1] dieu_kien/khong/khang_dinh HOAC=h1 | Người lao động | bị cưỡng bức lao động
+
+  == D53.K2.b: A62: điều kiện bị cổng loại
+  -- tach: loi=["doan bỏ chữ 'hoặc phải'"]
+  [q1] dieu_kien/khong/khang_dinh | Bên thuê lại lao động | thay thế người lao động
+  [q1] dieu_kien/khong/khang_dinh | Bên thuê lại lao động | trong thời gian nghỉ thai sản, bị tai nạn lao động, bệnh nghề nghiệp thực hiện các nghĩa vụ công dân | liet_ke=['nghỉ thai sản', 'bị tai nạn lao động', 'bệnh nghề nghiệp', 'thực hiện các nghĩa vụ công dân']
+  -- tach2: loi=[]
+  [q1] dieu_kien/khong/khang_dinh HOAC=lk0 | Bên thuê lại lao động | thay thế người lao động trong thời gian nghỉ thai sản
+  [q1] dieu_kien/khong/khang_dinh HOAC=lk0 | Bên thuê lại lao động | thay thế người lao động trong thời gian bị tai nạn lao động
+  [q1] dieu_kien/khong/khang_dinh HOAC=lk0 | Bên thuê lại lao động | thay thế người lao động trong thời gian bệnh nghề nghiệp
+  [q1] dieu_kien/khong/khang_dinh HOAC=lk0 | Bên thuê lại lao động | thay thế người lao động trong thời gian phải thực hiện các nghĩa vụ công dân
+
+  == D107.K2.b: A62: điều kiện bị cổng loại
+  -- tach: loi=["doan bỏ chữ 'không quá 50% số giờ làm việc bình thườn'"]
+  [q1] dieu_kien/khong/khang_dinh | Người sử dụng lao động | bảo đảm số giờ làm thêm của người lao động không quá 50% số giờ làm việc bình thường trong 01 ngày
+  [q1] dieu_kien/khong/khang_dinh | Người sử dụng lao động | bảo đảm số giờ làm thêm của người lao động không quá 40 giờ trong 01 tháng
+  [q2] dieu_kien/khong/khang_dinh | Người sử dụng lao động | áp dụng quy định thời giờ làm việc bình thường theo tuần
+  [q2] ket_luan/khong/khang_dinh | Người sử dụng lao động | tổng số giờ làm việc bình thường và số giờ làm thêm không quá 12 giờ trong 01 ngày
+  -- tach2: loi=[]
+  [q1] dieu_kien/khong/khang_dinh | Người sử dụng lao động | bảo đảm số giờ làm thêm của người lao động không quá 50% số giờ làm việc bình thường trong 01 ngày
+  [q1] dieu_kien/khong/khang_dinh | Người sử dụng lao động | bảo đảm số giờ làm thêm của người lao động không quá 40 giờ trong 01 tháng
+  [q2] dieu_kien/khong/khang_dinh | Người sử dụng lao động | áp dụng quy định thời giờ làm việc bình thường theo tuần
+  [q2] dieu_kien/khong/khang_dinh | Người sử dụng lao động | tổng số giờ làm việc bình thường và số giờ làm thêm không quá 12 giờ trong 01 ngày
+  [q2] dieu_kien/khong/khang_dinh | Người sử dụng lao động | bảo đảm số giờ làm thêm của người lao động không quá 40 giờ trong 01 tháng
+
+  == D35.K2: A62: ngoại lệ sinh -must_notify chặn cả bên NSDLĐ (tên chung NLĐ/NSDLĐ)
+  -- tach: loi=[]
+  [q1] ket_luan/duoc/khang_dinh | Người lao động | đơn phương chấm dứt hợp đồng lao động không cần báo trước
+  [None] // | None | 
+  -- tach2: loi=[]
+  [q1] ket_luan/duoc/khang_dinh | Người lao động | đơn phương chấm dứt hợp đồng lao động không cần báo trước
+  [None] // | None | 
+
+  == D36.K2: A62: cùng tên must_notify với D35
+  -- tach: loi=[]
+  [q1] dieu_kien/khong/khang_dinh | người sử dụng lao động | đơn phương chấm dứt hợp đồng lao động
+  [q1] dieu_kien// | None | 
+  [q1] dieu_kien// | None | 
+  [q1] dieu_kien// | None | 
+  [q1] dieu_kien// | None | 
+  [q1] dieu_kien// | None | 
+  [None] // | None | 
+  -- tach2: loi=[]
+  [q1] dieu_kien/khong/khang_dinh | người sử dụng lao động | đơn phương chấm dứt hợp đồng lao động
+  [q1] dieu_kien// | None | 
+  [q1] dieu_kien// | None | 
+  [q1] dieu_kien// | None | 
+  [q1] dieu_kien// | None | 
+  [q1] dieu_kien// | None | 
+  [None] // | None | 

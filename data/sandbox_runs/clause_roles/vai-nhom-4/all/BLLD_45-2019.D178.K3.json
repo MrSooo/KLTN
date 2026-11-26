@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D178.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D178.K3\",\n \"tieu_de_dieu\": \"1:Quyền 2:và 3:nghĩa 4:vụ 5:của 6:tổ 7:chức 8:đại 9:diện 10:người 11:lao 12:động 13:tại 14:cơ 15:sở 16:trong 17:quan 18:hệ 19:lao 20:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Được tham khảo ý kiến xây dựng và giám sát việc thực hiện thang lương, bảng lương, mức lao động, quy chế trả lương, quy chế thưởng, nội quy lao động và những vấn đề liên quan đến quyền, lợi ích của người lao động là thành viên của mình.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Được\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tham 2:khảo 3:ý 4:kiến 5:xây 6:dựng\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:giám 2:sát 3:việc 4:thực 5:hiện\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:thang 2:lương, 3:bảng 4:lương, 5:mức 6:lao 7:động, 8:quy 9:chế 10:trả 11:lương, 12:quy 13:chế 14:thưởng, 15:nội 16:quy 17:lao 18:động 19:và 20:những 21:vấn 22:đề 23:liên 24:quan 25:đến 26:quyền, 27:lợi 28:ích 29:của 30:người 31:lao 32:động 33:là 34:thành 35:viên 36:của 37:mình\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target text segment requires restructuring into a JSON schema mapping legal clauses. Initial parsing of the raw title string reveals segmented word indices that need clean concatenation into a coherent statutory heading. Proceeding to map the initial clause fragments while ensuring proper hierarchical nesting for the structured output.\n\nSubject code mapping for the worker representative organization requires identifying the correct category among available entity markers. Testing whether the entity fits the collective labor representation tag or defaults to an unclassified status due to specific structural phrasing.\n\nEntity classification presents an ambiguity regarding whether internal worker representation organizations map to the general worker code or require an unknown placeholder marker. Re-evaluating the subject entity definition rules to determine if collective bodies align with the primary employee category or trigger the fallback classification.\n\nEntity markers for general bodies lean toward the unknown classification tag rather than the primary employee category. Testing whether the extensive list of labor policies and rights constitutes an enumerated sequence governed by specific formatting rules.\n\nAnalyzing index tokens reveals a coordinated series of objects governed by shared verbal actions. Evaluating whether the extensive noun chain functions as an enumerated sequence requiring specific boundary markers rather than a single unified concept.\n\nConjunction boundaries separate the final enumerated item from preceding text, confirming the sequence index spans elements twenty through thirty-seven. Distributing the common introductory verbs across each listed item isolates the shared governing actions from individual statutory objects. Assessing whether the dual governing clauses share identical structural rules or require independent application maps the final compliance structure.\n\nBoth rules share identical condition and exception sets, confirming their assignment to the primary category tag. Re-evaluating the subject entity indicates the organizational structure maps to an unclassified entity marker rather than individual worker categories due to collective phrasing.\n\nParsing the direct object noun phrases reveals an exhaustive list of labor policies governed by the shared verbs. Initial assumption placed the trailing modifier phrase as an indirect object, but structural context confirms it acts as a modifier within the final list item rather than a separate patient. Finalizing the method marker as affirmative and mapping the accurate syllable spans for each enumerated object.\n\nIndexing exact word spans for salary scales, labor regulations, and associated employee rights confirms the structural boundaries of the target clause. Examining core components (`loi`) reveals modal verbs like permission markers are excluded, restricting the functional core to specific action phrases like consultation and oversight. Re-evaluating the subject entity categorization against the collective labor organization definition points to a specialized entity classification.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D178.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-6\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:6-15\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    [\n     \"s1.c2:1-2\"\n    ],\n    [\n     \"s1.c2:3-4\"\n    ],\n    [\n     \"s1.c2:5-7\"\n    ],\n    [\n     \"s1.c2:8-11\"\n    ],\n    [\n     \"s1.c2:12-14\"\n    ],\n    [\n     \"s1.c2:15-18\"\n    ],\n    [\n     \"s1.c2:20-37\"\n    ]\n   ]\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-5\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:6-15\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    [\n     \"s1.c2:1-2\"\n    ],\n    [\n     \"s1.c2:3-4\"\n    ],\n    [\n     \"s1.c2:5-7\"\n    ],\n    [\n     \"s1.c2:8-11\"\n    ],\n    [\n     \"s1.c2:12-14\"\n    ],\n    [\n     \"s1.c2:15-18\"\n    ],\n    [\n     \"s1.c2:20-37\"\n    ]\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-e3ccc2032f264d128bda9e0756d8a",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6240,
+   "output_tokens": 5768,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_86850d414761f41952b1ee85"
+   }
+  }
+ }
+}

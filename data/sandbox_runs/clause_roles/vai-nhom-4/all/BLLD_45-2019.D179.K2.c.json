@@ -1,0 +1,29 @@
+{
+ "unit_id": "BLLD_45-2019.D179.K2.c",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": true,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D179.K2.c\",\n \"tieu_de_dieu\": \"1:Tranh 2:chấp 3:lao 4:động\",\n \"khoan_cha\": \"1:Tranh 2:chấp 3:lao 4:động 5:tập 6:thể 7:về 8:quyền 9:là 10:tranh 11:chấp 12:giữa 13:một 14:hay 15:nhiều 16:tổ 17:chức 18:đại 19:diện 20:người 21:lao 22:động 23:với 24:người 25:sử 26:dụng 27:lao 28:động 29:hoặc 30:một 31:hay 32:nhiều 33:tổ 34:chức 35:của 36:người 37:sử 38:dụng 39:lao 40:động 41:phát 42:sinh 43:trong 44:trường 45:hợp 46:sau 47:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khi người sử dụng lao động có hành vi phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động vì lý do thành lập, gia nhập, hoạt động trong tổ chức đại diện người lao động; can thiệp, thao túng tổ chức đại diện người lao động; vi phạm nghĩa vụ về thương lượng thiện chí.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:người 2:sử 3:dụng 4:lao 5:động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\",\n      \"s1.m4\"\n     ],\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:hành 3:vi 4:phân 5:biệt 6:đối 7:xử 8:đối 9:với 10:người 11:lao 12:động, 13:thành 14:viên 15:ban 16:lãnh 17:đạo 18:của 19:tổ 20:chức 21:đại 22:diện 23:người 24:lao 25:động 26:vì 27:lý 28:do 29:thành 30:lập, 31:gia 32:nhập, 33:hoạt 34:động 35:trong 36:tổ 37:chức 38:đại 39:diện 40:người 41:lao 42:động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:can 2:thiệp\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:thao 2:túng\"\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:tổ 2:chức 3:đại 4:diện 5:người 6:lao 7:động\",\n     \"ap_cho\": [\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:vi 2:phạm 3:nghĩa 4:vụ 5:về 6:thương 7:lượng 8:thiện 9:chí\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D179.K2.c\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-42\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-2\",\n    \"s1.c2:1-7\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:1-2\",\n    \"s1.c2:1-7\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"loi\": [\n    \"s1.m4:1-9\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1398fc11d10c4024b252ff94877e2",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6626,
+   "output_tokens": 624,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d8a5c2fe9a4be5251552115c"
+   }
+  }
+ }
+}

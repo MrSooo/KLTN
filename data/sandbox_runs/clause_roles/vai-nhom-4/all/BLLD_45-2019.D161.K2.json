@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D161.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D161.K2\",\n \"tieu_de_dieu\": \"1:Lao 2:động 3:là 4:người 5:giúp 6:việc 7:gia 8:đình\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định về lao động là người giúp việc gia đình.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Chính 2:phủ 3:quy 4:định 5:về 6:lao 7:động 8:là 9:người 10:giúp 11:việc 12:gia 13:đình\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Extracting legal structure for domestic labor regulations based on the unit identifier. The title focuses on household workers, pointing toward government authority mandates. Initial structural parse looks standard, but sentence boundaries within the clause array require validation to ensure proper fragmentation alignment.\n\nDelegated mandate phrases directing the executive branch to issue detailed rules typically qualify as open-ended cross-references rather than directly enforceable norms. Evaluating whether such delegating clauses should be categorized under exclusion types or decomposed into explicit structural components with ministerial subjects.\n\nProvisions empowering the executive branch to issue detailed regulations function as open delegations. Assessing whether such authorizing clauses require an empty sequence array or a baseline entry tracking the ministerial mandate subject.\n\nEncountered an open delegation clause where `dong` evaluates to an empty array due to the bypass flag (`bo_qua: \"dan_chieu_mo\"`). Initial hesitation questioned whether structural action lines should be synthesized, but explicit guidance confirms that bypassed units omit normative lines entirely.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D161.K2\",\"bo_qua\":\"dan_chieu_mo\",\"dong\":[]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-06edf02fd3f44134928450b6e3ebf",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5739,
+   "output_tokens": 2003,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_8ee5f455332fcf11ea309beb"
+   }
+  }
+ }
+}

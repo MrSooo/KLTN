@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D210.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D210.K1\",\n \"tieu_de_dieu\": \"1:Quyết 2:định 3:hoãn, 4:ngừng 5:đình 6:công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khi xét thấy cuộc đình công có nguy cơ gây thiệt hại nghiêm trọng cho nền kinh tế quốc dân, lợi ích công cộng, đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người thì Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định hoãn hoặc ngừng đình công.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:xét 2:thấy 3:cuộc 4:đình 5:công 6:có 7:nguy 8:cơ 9:gây 10:thiệt 11:hại 12:nghiêm 13:trọng 14:cho 15:nền 16:kinh 17:tế 18:quốc 19:dân, 20:lợi 21:ích 22:công 23:cộng, 24:đe 25:dọa 26:đến 27:quốc 28:phòng, 29:an 30:ninh, 31:trật 32:tự 33:công 34:cộng, 35:sức 36:khỏe 37:của 38:con 39:người\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Chủ 2:tịch 3:Ủy 4:ban 5:nhân 6:dân 7:cấp 8:tỉnh 9:quyết 10:định\",\n     \"ap_cho\": [\n      \"s1.m2\",\n      \"s1.m3\"\n     ],\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:hoãn\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:ngừng\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:đình 2:công\",\n     \"ap_cho\": [\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target structure indicates a regulatory article concerning decisions to delay, suspend, or halt strikes that threaten the national economy or public interest. Initial parsing shows truncated clause text requiring extraction of underlying legal mandates regarding economic and public safety thresholds for strike interventions.\n\nParsing confirms the provincial People's Committee Chairperson serves as the acting authority. Syntactical linkage connects the preceding conditional threshold directly to this executive decision-making power.\n\nInitial classification maps the entity to a miscellaneous category due to ambiguous schema constraints. Re-evaluating the clausal span reveals that the phrase functions entirely as the complement of the perception verb rather than a separate structural condition.\n\nInitial evaluation assumes \"quyết định\" functions as a modal constraint. Re-analyzing the structural span reveals that \"quyết định\" operates purely as the governing action verb rather than a modality marker, shifting the extraction boundary.\n\nInitial mapping points toward a permissive modality based on executive authority. Re-evaluating the lexical strictness shows that explicit modality markers are entirely absent from both the clause text and the section header, forcing the classification to default to null. Grouping both delay and suspension actions under a single rule path since identical conditional thresholds govern both outcomes.\n\nEvaluating whether distinct outcome clauses share identical conditional constraints. Initial assumption points toward separate rule assignments, but structural overlap confirms both actions fall under the exact same conditional scope and therefore share a single governing rule identifier.\n\nInitial mapping treats the lengthy threshold clause as a single block. Re-examining the internal structure shows a compound coordination of distinct risk factors, requiring a breakdown into individual items rather than a flat condition span.\n\nInitial hesitation treats the compound structure as a standard list under a single verb. Re-examining the clausal span reveals multiple distinct verbs and a complete subordinate condition headed by an implicit executive subject, invalidating the list hypothesis. Verifying the target argument mapping for the governing action against known legal entity identifiers.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D210.K1\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:1-39\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.c1:1-8\"],\"loai\":\"?\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"loi\":[\"s1.c1:9-10\",\"s1.m2:1\",\"s1.c2:1-2\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.c1:1-8\"],\"loai\":\"?\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m3\",\"loi\":[\"s1.c1:9-10\",\"s1.m3:1\",\"s1.c2:1-2\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.c1:1-8\"],\"loai\":\"?\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-dbe9a9a71b1f4ab8a844b78ed38e4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6266,
+   "output_tokens": 5099,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_96769b085de173177976c46b"
+   }
+  }
+ }
+}

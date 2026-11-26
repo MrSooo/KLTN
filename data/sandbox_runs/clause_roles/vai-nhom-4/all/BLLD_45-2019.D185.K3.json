@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D185.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D185.K3\",\n \"tieu_de_dieu\": \"1:Hội 2:đồng 3:trọng 4:tài 5:lao 6:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tiêu chuẩn và chế độ làm việc của trọng tài viên lao động được quy định như sau:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Tiêu 2:chuẩn 3:và 4:chế 5:độ 6:làm 7:việc 8:của 9:trọng 10:tài 11:viên 12:lao 13:động 14:được 15:quy 16:định 17:như 18:sau\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Parsing input structure for unit identifier `BLLD_45-2019.D185.K3`. Initial review of the title indicates a reference to labor arbitration councils, accompanied by a lead-in sentence introducing working standards. Appears to function as an introductory clause before sub-provisions; verifying whether a hierarchical paragraph structure is required.\n\nMatching the lead-in phrase to the list of provisions requires setting the sub-component type to a list structure rather than an independent paragraph. Re-evaluating the clause structure reveals that because the trailing phrase acts as an object for the subsequent items, the enclosing container must suppress its own line mapping while inheriting properties for the child nodes.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D185.K3\",\"cac_muc_con\":\"danh_sach\",\"dong\":[]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-0e1cb5ce9a6a4a98a6aaea5ca6a59",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5770,
+   "output_tokens": 1242,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_fa393c3f0a15b36abe07b791"
+   }
+  }
+ }
+}

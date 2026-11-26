@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D162.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D162.K1\",\n \"tieu_de_dieu\": \"1:Hợp 2:đồng 3:lao 4:động 5:đối 6:với 7:lao 8:động 9:là 10:người 11:giúp 12:việc 13:gia 14:đình\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động phải giao kết hợp đồng lao động bằng văn bản với lao động là người giúp việc gia đình.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Người 2:sử 3:dụng 4:lao 5:động 6:phải 7:giao 8:kết 9:hợp 10:đồng 11:lao 12:động 13:bằng 14:văn 15:bản 16:với 17:lao 18:động 19:là 20:người 21:giúp 22:việc 23:gia 24:đình\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Target clause establishes a mandatory written employment contract requirement for domestic workers. Drafting structured rule lines to capture this statutory obligation, ensuring the direct condition and legal mandate map accurately to the formal schema.\n\nTarget clause analysis identifies the employer as subject and the domestic worker as the target beneficiary. Rule application dictates routing the specific worker designation into the counterpart argument slot rather than the central action core.\n\nExample matches designate specific target classifications for domestic workers under recipient constraints. Direct phrasing maps directly to counterpart slots rather than core action structures, verifying the exclusion of descriptive modifier tags from primary rule vectors.\n\nForm of the action requires retaining the written format modifier within the core structure. Prepositional phrases designating standard worker categories map to counterpart slots rather than core vectors, aligning with parallel schema patterns for employment contracts.\n\nComparative analysis of counterpart slots reveals conflicting classifications for contract objects versus worker recipients. Precedent patterns designate recipient categories strictly under worker codes, yet direct objects like employment agreements suggest alternative structural classifications requiring reconciliation.\n\nContrasting definitions reveal recipient codes assign strictly to worker classifications, while contract objects map to counterpart slots. Re-evaluating existing examples exposes a classification conflict regarding whether employment agreements constitute counterpart objects or require distinct schema placement.\n\nTarget entity designations within recipient slots prioritize person-based classifications over intermediate direct objects. Comparative inspection of benchmark outputs confirms secondary objects remain embedded within action vectors while recipient arrays isolate targeted human beneficiaries.\n\nTarget text segments following directional prepositions map exclusively to counterpart recipient arrays while excluding descriptive modifiers from core action vectors. Reviewing benchmark structures confirms direct contract objects remain embedded within the action core alongside formal modifiers, separating human beneficiary codes from structural artifacts.\n\nTarget action vectors omit secondary non-human objects from recipient arrays, mapping human beneficiaries strictly to counterpart slots. Cross-referencing prior annotations confirms recipient classifications isolate person designations like workers and employers while excluding physical contract deliverables from primary object arrays.\n\nRe-evaluating previous examples highlights a structural discrepancy between human recipient classifications and object parameters within argument arrays. Assessing whether contract objects compete with or complement worker designations in counterpart slots requires testing dual-type mappings against existing schema conventions.\n\nCross-linguistic terminology confirms counterpart argument classifications isolate human participants. Benchmark patterns show object codes like contracts embed within action vectors alongside formal modifiers, while recipient arrays strictly isolate targeted beneficiary classes.\n\nExamining benchmark patterns reveals counterpart object arrays maintain a strict limit of a single element per instance. Mapping the prepositional target directly confirms the recipient category designates the worker classification, finalizing the argument schema configuration.\n\nPrepositional phrases indicating beneficiaries map strictly to counterpart arrays when limited to basic participant designations, yet descriptive modifiers require retention within core action structures. Testing specific sub-classifications confirms distinct handling for qualified participant descriptions versus bare relational nouns.\n\nPrepositional markers govern routing rules, directing targeted entities away from core action vectors and into counterpart slots. Segment analysis verifies explicit subject identification within the clause, rendering structural titles unnecessary for antecedent resolution.\n\nConditional fields like exceptions and references require strict omission when governing contextual markers are absent from the source text. Verifying core action vectors ensures formal modifiers like written formats remain embedded internally while participant classifications populate dedicated argument slots.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D162.K1\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:7-15\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.m1:1-5\"],\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-060c993f077140d0809e4238a81db",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5847,
+   "output_tokens": 7968,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f54f29f7d13f1ff454ded38b"
+   }
+  }
+ }
+}

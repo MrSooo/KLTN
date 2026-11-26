@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D208.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D208.K1\",\n \"tieu_de_dieu\": \"1:Các 2:hành 3:vi 4:bị 5:nghiêm 6:cấm 7:trước, 8:trong 9:và 10:sau 11:khi 12:đình 13:công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Cản trở việc thực hiện quyền đình công hoặc kích động, lôi kéo, ép buộc người lao động đình công; cản trở người lao động không tham gia đình công đi làm việc.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Cản 2:trở 3:việc 4:thực 5:hiện 6:quyền 7:đình 8:công\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:kích 2:động\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:lôi 2:kéo\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:ép 2:buộc\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:người 2:lao 3:động 4:đình 5:công\",\n     \"ap_cho\": [\n      \"s1.m2\",\n      \"s1.m3\",\n      \"s1.m4\"\n     ]\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:cản 2:trở 3:người 4:lao 5:động 6:không 7:tham 8:gia 9:đình 10:công 11:đi 12:làm 13:việc\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Initial parse of the regulatory text highlights prohibited acts during strikes under specific legal provisions. The title explicitly denotes a prohibition framework spanning before, during, and after a strike action. The first sub-clause targets obstruction of strike rights, requiring further structural breakdown of subsequent clauses to map out exact behavioral restrictions.\n\nParsing the section title yields the prohibition method alongside a potential temporal modifier referencing the pre-, peri-, and post-strike periods. Evaluating whether statutory rules mandate isolating temporal modifiers into separate condition clauses. Precedent suggests structural parsing of titles typically restricts output to core prohibition markers rather than spinning off independent time clauses, requiring close scrutiny of shared context scopes.\n\nSection title lacks direct pointer capabilities under strict range rules, preventing temporal modifiers located solely in titles from forming standalone condition ranges. Reevaluating structural constraint where target intervals must reside within source text or applicable shared scopes, invalidating title-based extraction. Shifting focus directly to primary clauses defining prohibited strike behaviors.\n\nTarget core behaviors center on inciting, dragging, or coercing workers into striking under strict prohibition rules. Evaluating whether the phrase \"người lao động đình công\" functions as a direct object or requires separation into a secondary argument slot based on modifier criteria. Syntax patterns indicate the descriptive phrase attaches directly to the core violation rather than shifting into an isolated argument marker.\n\nTarget phrase includes a modifier and avoids prepositional isolation, confirming inclusion within the core violation structure. Multiple adjacent behavioral clauses share identical empty sets for conditions and exceptions, indicating they all fall under a unified rule identifier.\n\nInitial assumption placed all clauses under a unified rule identifier due to empty condition sets, but reviewing parallel clauses requires verifying if identical condition vectors strictly mandate a single shared identifier.\n\nRe-evaluating the target behavior reveals the object string incorporates workers abstaining from the strike, confirming the span captures the entire obstructive act without requiring modifier extraction.\n\nSubject absence implies a universal prohibition applying generally without specified entities, aligning with the prohibition framework. Polarity check on the obstruction clause confirms affirmative status, where internal negation merely describes the affected group rather than inverting the core prohibition vector.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D208.K1\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:1-8\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"loi\":[\"s1.m2:1-2\",\"s1.c1:1-5\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m3\",\"loi\":[\"s1.m3:1-2\",\"s1.c1:1-5\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m4\",\"loi\":[\"s1.m4:1-2\",\"s1.c1:1-5\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m5\",\"loi\":[\"s1.m5:1-13\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-219ef6312ecd431aa8b8b56bc59f4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6123,
+   "output_tokens": 4214,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_43f9b8d0c073feb27456db7f"
+   }
+  }
+ }
+}

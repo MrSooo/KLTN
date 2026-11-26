@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D189.K5",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D189.K5\",\n \"tieu_de_dieu\": \"1:Giải 2:quyết 3:tranh 4:chấp 5:lao 6:động 7:cá 8:nhân 9:của 10:Hội 11:đồng 12:trọng 13:tài 14:lao 15:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp một trong các bên không thi hành quyết định giải quyết tranh chấp của Ban trọng tài lao động thì các bên có quyền yêu cầu Tòa án giải quyết.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:một 2:trong 3:các 4:bên 5:không 6:thi 7:hành 8:quyết 9:định 10:giải 11:quyết 12:tranh 13:chấp 14:của 15:Ban 16:trọng 17:tài 18:lao 19:động\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:các 2:bên 3:có 4:quyền 5:yêu 6:cầu 7:Tòa 8:án 9:giải 10:quyết\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Targeting legal unit identifier `BLLD_45-2019.D189.K5` within the labor dispute resolution provisions. Examining clause structure reveals the primary text segment addressing non-compliance by a disputing party.\n\nParsing clause components reveals a conditional structure where failure of execution by either labor dispute party triggers judicial recourse. Categorizing subjects as a collective entity representing both participants requires mapping them to the dual-party framework.\n\nAmbiguity surrounds whether \"một trong các bên\" maps to an unknown entity code or a joint list representing both workers and employers. Evaluating semantic guidelines for collective subjects suggests leveraging the joint code list, yet the singular phrasing hints at an unspecified singular participant requiring the unknown marker. Resolving core extraction boundaries to exclude negation markers while preserving modal constraints.\n\nInitial hesitation points toward assigning an unknown entity marker for \"các bên\", yet contextual semantics of dual participation demand a joint list of codes representing both employee and employer. Splitting the clause structure to isolate the core obligation from negation and modal markers ensures accurate role mapping.\n\nContextual semantics confirm \"một trong các bên\" maps to the joint participant code list rather than an unknown marker. \"Yêu cầu Tòa án giải quyết\" forms the complete core predicate without fragmenting the institutional object into a separate argument role.\n\nEvaluating subject categorization guidelines for shared entities yields a dual-code list encompassing both workers and employers. Reviewing argument boundaries confirms object noun phrases remain intact within the core predicate without externalizing institutional targets.\n\nMapping collective subject codes to the dual worker-employer array yields the expected multi-type structure. Scrutinizing object targets indicates that institutional actors like courts remain excluded from standard role classifications unless specific recipient markers dictate otherwise.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D189.K5\",\"dong\":[{\"nguon\":\"s1.m1\",\"loi\":[\"s1.m1:6-19\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"phu_dinh\",\"chu_the\":{\"khoang\":[\"s1.m1:1-4\"],\"loai\":[\"W\",\"E\"]},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"loi\":[\"s1.m2:5-10\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"khoang\":[\"s1.m2:1-2\"],\"loai\":[\"W\",\"E\"]},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-4ee13e2cd1dd4182a9ea49b43c892",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 5953,
+   "output_tokens": 3940,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_60019c9fb3e3b8eeca664aed"
+   }
+  }
+ }
+}
