@@ -1,0 +1,30 @@
+{
+ "cau": "Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Làm việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"học nghề\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"nâng cao trình độ nghề nghiệp\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"không bị\",\"ap_cho\":[\"m5\",\"m6\",\"m7\"]},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"phân biệt đối xử\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"cưỡng bức lao động\"},{\"id\":\"m7\",\"loai\":\"menh_de\",\"chu\":\"quấy rối tình dục\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"tại nơi làm việc\",\"ap_cho\":[\"m5\",\"m6\",\"m7\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-RlcDa4_uJJq12roPwdGlkQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3132
+   },
+   "input_tokens": 951,
+   "output_tokens": 912,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_871a4d1482fac44030b217d0"
+   }
+  }
+ }
+}

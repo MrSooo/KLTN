@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D86.K2.a",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D86.K2.a\",\n \"tieu_de_dieu\": \"Thỏa ước lao động tập thể vô hiệu\",\n \"khoan_cha\": \"Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D86.K2.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795544264980-d2351e2b",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4647
+   },
+   "input_tokens": 3658,
+   "output_tokens": 115,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_7ab62db88f177fb57576cb2a"
+   }
+  }
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "unit_id": "BLLD_45-2019.D73.K2.a",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D73.K2.a\",\n \"tieu_de_dieu\": \"Thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể\",\n \"khoan_cha\": \"Khi nhận được yêu cầu của các bên thương lượng tập thể có nhiều doanh nghiệp tham gia, Ủy ban nhân dân cấp tỉnh quyết định thành lập Hội đồng thương lượng tập thể để tổ chức việc thương lượng tập thể. Thành phần Hội đồng thương lượng tập thể bao gồm:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chủ tịch Hội đồng do các bên quyết định và có trách nhiệm điều phối hoạt động của Hội đồng thương lượng tập thể, hỗ trợ cho việc thương lượng tập thể của các bên;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Chủ tịch Hội đồng\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"do các bên quyết định\"\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"có trách nhiệm\",\n     \"ap_cho\": [\n      \"s1.m2\",\n      \"s1.m3\"\n     ],\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"điều phối hoạt động của Hội đồng thương lượng tập thể\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"hỗ trợ cho việc thương lượng tập thể của các bên\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D73.K2.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Chủ tịch Hội đồng\",\n    \"quyết định\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"điều phối hoạt động của Hội đồng thương lượng tập thể\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Chủ tịch Hội đồng\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"hỗ trợ cho việc thương lượng tập thể của các bên\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Chủ tịch Hội đồng\",\n    \"loai\": \"?\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"?\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795550902106-4cf16d7a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5790
+   },
+   "input_tokens": 3938,
+   "output_tokens": 368,
+   "prompt_tokens_details": {},
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_bb59090e7122d3710416dcba"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D127.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D127.K1\",\n \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm khi xử lý kỷ luật lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Xâm phạm sức khỏe, danh dự, tính mạng, uy tín, nhân phẩm của người lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Xâm phạm sức khỏe, danh dự, tính mạng, uy tín, nhân phẩm của người lao động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D127.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Xâm phạm\",\n    \"của người lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"liet_ke\": [\n    \"sức khỏe\",\n    \"danh dự\",\n    \"tính mạng\",\n    \"uy tín\",\n    \"nhân phẩm\"\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795545530644-f5c87e38",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2704
+   },
+   "input_tokens": 3650,
+   "output_tokens": 164,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_f95b3a0b8f36ece6966255a5"
+   }
+  }
+ }
+}

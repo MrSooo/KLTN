@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trong thời hạn 30 ngày kể từ ngày được thành lập, căn cứ vào quy định của pháp luật về lao động, thỏa ước lao động tập thể, nội quy lao động đã được đăng ký và các quy chế, thỏa thuận hợp pháp khác, Ban trọng tài lao động phải ra quyết định về việc giải quyết tranh chấp và gửi cho các bên tranh chấp.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Trong thời hạn 30 ngày kể từ ngày được thành lập\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"căn cứ vào quy định của pháp luật về lao động, thỏa ước lao động tập thể, nội quy lao động đã được đăng ký và các quy chế, thỏa thuận hợp pháp khác\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"c3\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Ban trọng tài lao động\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"phải ra quyết định về việc giải quyết tranh chấp\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"gửi cho các bên tranh chấp\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540321386-eda14df1",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5381
+   },
+   "input_tokens": 2452,
+   "output_tokens": 277,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_84215634b005751f0f2eea4e"
+   }
+  }
+ }
+}

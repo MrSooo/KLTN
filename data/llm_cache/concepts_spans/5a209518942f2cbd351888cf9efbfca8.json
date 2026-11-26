@@ -1,0 +1,280 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-2",
+ "role": "trich",
+ "requested_model": "claude-opus-5-5",
+ "created": "2026-11-14T07:20:18+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha của điểm, hoặc câu dẫn của Điều đứng trên khoản; rỗng nếu không có) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n   Đơn vị nói luật áp dụng cho ai hoặc điều chỉnh việc gì (phạm vi, đối tượng) thì vẫn gạch từng bên được nêu tên (người hoặc tổ chức) thành cụm chu_the; chủ đề được điều chỉnh không phải một bên thì không gạch thành chu_the.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\n6. Đơn vị là ĐỊNH NGHĨA, tức giải thích một thuật ngữ dạng \"X là Y\" (X là thuật ngữ, Y là phần giải nghĩa): gạch X thành cụm ket_luan (khái niệm được xác lập ở đây), không gạch X thành chu_the; gạch phần giải nghĩa Y thành cụm dieu_kien (điều kiện để X đúng). Phần khác của đơn vị mà có nêu quy tắc thì vẫn gạch như thường.\n   Chữ \"là\" nêu điều kiện, trường hợp hoặc mức giới hạn (\"số người tham gia tối đa là 10 người\", \"Trường hợp ... thì ... là ...\") không phải định nghĩa: gạch theo bốn vai như thường.\n   Câu dẫn của Điều giải thích từ ngữ (\"... được hiểu như sau:\") không có nghĩa riêng nên trả rỗng.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nVí dụ định nghĩa, chu_don_vi = \"Giờ cao điểm là khoảng thời gian từ 17 giờ đến 19 giờ trong ngày.\":\n  ket_luan \"Giờ cao điểm\" (params []); dieu_kien \"khoảng thời gian từ 17 giờ đến 19 giờ trong ngày\" (params [\"D\"]).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D174.K1\",\n\"tieu_de_dieu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây:\\nTrong một tổ chức của người lao động tại doanh nghiệp không đồng thời có thành viên là người lao động thông thường và thành viên là người lao động trực tiếp tham gia vào quá trình ra quyết định liên quan đến điều kiện lao động, tuyển dụng lao động, kỷ luật lao động, chấm dứt hợp đồng lao động hoặc chuyển người lao động làm công việc khác;\\nNhững nội dung phải do thành viên quyết định theo đa số bao gồm thông qua, sửa đổi, bổ sung điều lệ của tổ chức; bầu cử, miễn nhiệm người đứng đầu và thành viên ban lãnh đạo của tổ chức; chia, tách, hợp nhất, sáp nhập, đổi tên, giải thể, liên kết tổ chức; gia nhập Công đoàn Việt Nam;\\nViệc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp phải được theo dõi, lưu trữ và định kỳ hằng năm công khai cho thành viên của tổ chức;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D174.K1.a\",\n\"tieu_de_dieu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n\"khoan_cha\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây:\\nTrong một tổ chức của người lao động tại doanh nghiệp không đồng thời có thành viên là người lao động thông thường và thành viên là người lao động trực tiếp tham gia vào quá trình ra quyết định liên quan đến điều kiện lao động, tuyển dụng lao động, kỷ luật lao động, chấm dứt hợp đồng lao động hoặc chuyển người lao động làm công việc khác;\\nNhững nội dung phải do thành viên quyết định theo đa số bao gồm thông qua, sửa đổi, bổ sung điều lệ của tổ chức; bầu cử, miễn nhiệm người đứng đầu và thành viên ban lãnh đạo của tổ chức; chia, tách, hợp nhất, sáp nhập, đổi tên, giải thể, liên kết tổ chức; gia nhập Công đoàn Việt Nam;\\nViệc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp phải được theo dõi, lưu trữ và định kỳ hằng năm công khai cho thành viên của tổ chức;\",\n\"chu_don_vi\": \"Tên, địa chỉ tổ chức; biểu tượng (nếu có);\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D174.K1.b\",\n\"tieu_de_dieu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n\"khoan_cha\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây:\\nTrong một tổ chức của người lao động tại doanh nghiệp không đồng thời có thành viên là người lao động thông thường và thành viên là người lao động trực tiếp tham gia vào quá trình ra quyết định liên quan đến điều kiện lao động, tuyển dụng lao động, kỷ luật lao động, chấm dứt hợp đồng lao động hoặc chuyển người lao động làm công việc khác;\\nNhững nội dung phải do thành viên quyết định theo đa số bao gồm thông qua, sửa đổi, bổ sung điều lệ của tổ chức; bầu cử, miễn nhiệm người đứng đầu và thành viên ban lãnh đạo của tổ chức; chia, tách, hợp nhất, sáp nhập, đổi tên, giải thể, liên kết tổ chức; gia nhập Công đoàn Việt Nam;\\nViệc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp phải được theo dõi, lưu trữ và định kỳ hằng năm công khai cho thành viên của tổ chức;\",\n\"chu_don_vi\": \"Tôn chỉ, mục đích và phạm vi hoạt động là bảo vệ quyền, lợi ích hợp pháp, chính đáng của thành viên tổ chức mình trong quan hệ lao động tại doanh nghiệp; cùng với người sử dụng lao động giải quyết các vấn đề liên quan đến quyền, nghĩa vụ và lợi ích của người lao động và người sử dụng lao động; xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D174.K1.c\",\n\"tieu_de_dieu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n\"khoan_cha\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây:\\nTrong một tổ chức của người lao động tại doanh nghiệp không đồng thời có thành viên là người lao động thông thường và thành viên là người lao động trực tiếp tham gia vào quá trình ra quyết định liên quan đến điều kiện lao động, tuyển dụng lao động, kỷ luật lao động, chấm dứt hợp đồng lao động hoặc chuyển người lao động làm công việc khác;\\nNhững nội dung phải do thành viên quyết định theo đa số bao gồm thông qua, sửa đổi, bổ sung điều lệ của tổ chức; bầu cử, miễn nhiệm người đứng đầu và thành viên ban lãnh đạo của tổ chức; chia, tách, hợp nhất, sáp nhập, đổi tên, giải thể, liên kết tổ chức; gia nhập Công đoàn Việt Nam;\\nViệc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp phải được theo dõi, lưu trữ và định kỳ hằng năm công khai cho thành viên của tổ chức;\",\n\"chu_don_vi\": \"Điều kiện, thủ tục gia nhập và ra khỏi tổ chức của người lao động tại doanh nghiệp.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D174.K1.d\",\n\"tieu_de_dieu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n\"khoan_cha\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây:\\nTrong một tổ chức của người lao động tại doanh nghiệp không đồng thời có thành viên là người lao động thông thường và thành viên là người lao động trực tiếp tham gia vào quá trình ra quyết định liên quan đến điều kiện lao động, tuyển dụng lao động, kỷ luật lao động, chấm dứt hợp đồng lao động hoặc chuyển người lao động làm công việc khác;\\nNhững nội dung phải do thành viên quyết định theo đa số bao gồm thông qua, sửa đổi, bổ sung điều lệ của tổ chức; bầu cử, miễn nhiệm người đứng đầu và thành viên ban lãnh đạo của tổ chức; chia, tách, hợp nhất, sáp nhập, đổi tên, giải thể, liên kết tổ chức; gia nhập Công đoàn Việt Nam;\\nViệc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp phải được theo dõi, lưu trữ và định kỳ hằng năm công khai cho thành viên của tổ chức;\",\n\"chu_don_vi\": \"Cơ cấu tổ chức, nhiệm kỳ, người đại diện của tổ chức;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D174.K1.dd\",\n\"tieu_de_dieu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n\"khoan_cha\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây:\\nTrong một tổ chức của người lao động tại doanh nghiệp không đồng thời có thành viên là người lao động thông thường và thành viên là người lao động trực tiếp tham gia vào quá trình ra quyết định liên quan đến điều kiện lao động, tuyển dụng lao động, kỷ luật lao động, chấm dứt hợp đồng lao động hoặc chuyển người lao động làm công việc khác;\\nNhững nội dung phải do thành viên quyết định theo đa số bao gồm thông qua, sửa đổi, bổ sung điều lệ của tổ chức; bầu cử, miễn nhiệm người đứng đầu và thành viên ban lãnh đạo của tổ chức; chia, tách, hợp nhất, sáp nhập, đổi tên, giải thể, liên kết tổ chức; gia nhập Công đoàn Việt Nam;\\nViệc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp phải được theo dõi, lưu trữ và định kỳ hằng năm công khai cho thành viên của tổ chức;\",\n\"chu_don_vi\": \"Nguyên tắc tổ chức, hoạt động;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D174.K1.e\",\n\"tieu_de_dieu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n\"khoan_cha\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây:\\nTrong một tổ chức của người lao động tại doanh nghiệp không đồng thời có thành viên là người lao động thông thường và thành viên là người lao động trực tiếp tham gia vào quá trình ra quyết định liên quan đến điều kiện lao động, tuyển dụng lao động, kỷ luật lao động, chấm dứt hợp đồng lao động hoặc chuyển người lao động làm công việc khác;\\nNhững nội dung phải do thành viên quyết định theo đa số bao gồm thông qua, sửa đổi, bổ sung điều lệ của tổ chức; bầu cử, miễn nhiệm người đứng đầu và thành viên ban lãnh đạo của tổ chức; chia, tách, hợp nhất, sáp nhập, đổi tên, giải thể, liên kết tổ chức; gia nhập Công đoàn Việt Nam;\\nViệc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp phải được theo dõi, lưu trữ và định kỳ hằng năm công khai cho thành viên của tổ chức;\",\n\"chu_don_vi\": \"Thể thức thông qua quyết định của tổ chức.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D174.K1.g\",\n\"tieu_de_dieu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n\"khoan_cha\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây:\\nTrong một tổ chức của người lao động tại doanh nghiệp không đồng thời có thành viên là người lao động thông thường và thành viên là người lao động trực tiếp tham gia vào quá trình ra quyết định liên quan đến điều kiện lao động, tuyển dụng lao động, kỷ luật lao động, chấm dứt hợp đồng lao động hoặc chuyển người lao động làm công việc khác;\\nNhững nội dung phải do thành viên quyết định theo đa số bao gồm thông qua, sửa đổi, bổ sung điều lệ của tổ chức; bầu cử, miễn nhiệm người đứng đầu và thành viên ban lãnh đạo của tổ chức; chia, tách, hợp nhất, sáp nhập, đổi tên, giải thể, liên kết tổ chức; gia nhập Công đoàn Việt Nam;\\nViệc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp phải được theo dõi, lưu trữ và định kỳ hằng năm công khai cho thành viên của tổ chức;\",\n\"chu_don_vi\": \"Phí thành viên, nguồn tài sản, tài chính và việc quản lý, sử dụng tài sản, tài chính của tổ chức.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D174.K1.h\",\n\"tieu_de_dieu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n\"khoan_cha\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây:\\nTrong một tổ chức của người lao động tại doanh nghiệp không đồng thời có thành viên là người lao động thông thường và thành viên là người lao động trực tiếp tham gia vào quá trình ra quyết định liên quan đến điều kiện lao động, tuyển dụng lao động, kỷ luật lao động, chấm dứt hợp đồng lao động hoặc chuyển người lao động làm công việc khác;\\nNhững nội dung phải do thành viên quyết định theo đa số bao gồm thông qua, sửa đổi, bổ sung điều lệ của tổ chức; bầu cử, miễn nhiệm người đứng đầu và thành viên ban lãnh đạo của tổ chức; chia, tách, hợp nhất, sáp nhập, đổi tên, giải thể, liên kết tổ chức; gia nhập Công đoàn Việt Nam;\\nViệc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp phải được theo dõi, lưu trữ và định kỳ hằng năm công khai cho thành viên của tổ chức;\",\n\"chu_don_vi\": \"Kiến nghị và giải quyết kiến nghị của thành viên trong nội bộ tổ chức.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D174.K2\",\n\"tieu_de_dieu\": \"Điều lệ tổ chức của người lao động tại doanh nghiệp\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chính phủ quy định chi tiết Điều này.\"\n}\n]\n}",
+ "model": "claude-opus-5-5",
+ "request_id": null,
+ "produced_by": "claude_code_sandbox",
+ "producer_model_reported": "claude-opus-5-5",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D174.K1",
+    "spans": [
+     {
+      "span": "Điều lệ tổ chức của người lao động tại doanh nghiệp",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "phải có các nội dung chủ yếu sau đây",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Trong một tổ chức của người lao động tại doanh nghiệp",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "không đồng thời có thành viên là người lao động thông thường và thành viên là người lao động trực tiếp tham gia vào quá trình ra quyết định liên quan đến điều kiện lao động, tuyển dụng lao động, kỷ luật lao động, chấm dứt hợp đồng lao động hoặc chuyển người lao động làm công việc khác",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "thành viên",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "quyết định theo đa số",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "thông qua, sửa đổi, bổ sung điều lệ của tổ chức; bầu cử, miễn nhiệm người đứng đầu và thành viên ban lãnh đạo của tổ chức; chia, tách, hợp nhất, sáp nhập, đổi tên, giải thể, liên kết tổ chức; gia nhập Công đoàn Việt Nam",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "Việc thu, chi tài chính của tổ chức của người lao động tại doanh nghiệp",
+      "role": "dieu_kien",
+      "params": [
+       "A"
+      ]
+     },
+     {
+      "span": "phải được theo dõi, lưu trữ và định kỳ hằng năm công khai cho thành viên của tổ chức",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D174.K1.a",
+    "spans": [
+     {
+      "span": "Điều lệ tổ chức của người lao động tại doanh nghiệp",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "phải có các nội dung chủ yếu sau đây",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Tên, địa chỉ tổ chức; biểu tượng (nếu có)",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D174.K1.b",
+    "spans": [
+     {
+      "span": "Điều lệ tổ chức của người lao động tại doanh nghiệp",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "phải có các nội dung chủ yếu sau đây",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Tôn chỉ, mục đích và phạm vi hoạt động",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "bảo vệ quyền, lợi ích hợp pháp, chính đáng của thành viên tổ chức mình trong quan hệ lao động tại doanh nghiệp",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "cùng với người sử dụng lao động giải quyết các vấn đề liên quan đến quyền, nghĩa vụ và lợi ích của người lao động và người sử dụng lao động",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "E"
+      ]
+     },
+     {
+      "span": "xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D174.K1.c",
+    "spans": [
+     {
+      "span": "Điều lệ tổ chức của người lao động tại doanh nghiệp",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "phải có các nội dung chủ yếu sau đây",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Điều kiện, thủ tục gia nhập và ra khỏi tổ chức của người lao động tại doanh nghiệp",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D174.K1.d",
+    "spans": [
+     {
+      "span": "Điều lệ tổ chức của người lao động tại doanh nghiệp",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "phải có các nội dung chủ yếu sau đây",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Cơ cấu tổ chức, nhiệm kỳ, người đại diện của tổ chức",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D174.K1.dd",
+    "spans": [
+     {
+      "span": "Điều lệ tổ chức của người lao động tại doanh nghiệp",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "phải có các nội dung chủ yếu sau đây",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Nguyên tắc tổ chức, hoạt động",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D174.K1.e",
+    "spans": [
+     {
+      "span": "Điều lệ tổ chức của người lao động tại doanh nghiệp",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "phải có các nội dung chủ yếu sau đây",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Thể thức thông qua quyết định của tổ chức",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D174.K1.g",
+    "spans": [
+     {
+      "span": "Điều lệ tổ chức của người lao động tại doanh nghiệp",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "phải có các nội dung chủ yếu sau đây",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Phí thành viên, nguồn tài sản, tài chính và việc quản lý, sử dụng tài sản, tài chính của tổ chức",
+      "role": "ket_luan",
+      "params": [
+       "A"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D174.K1.h",
+    "spans": [
+     {
+      "span": "Điều lệ tổ chức của người lao động tại doanh nghiệp",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "phải có các nội dung chủ yếu sau đây",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Kiến nghị và giải quyết kiến nghị của thành viên trong nội bộ tổ chức",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D174.K2",
+    "spans": [
+     {
+      "span": "Chính phủ",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "quy định chi tiết Điều này",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   }
+  ]
+ },
+ "usage": null
+}

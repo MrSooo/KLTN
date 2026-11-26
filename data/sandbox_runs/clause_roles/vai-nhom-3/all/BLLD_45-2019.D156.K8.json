@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D156.K8",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D156.K8\",\n \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Giấy phép lao động bị thu hồi.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Giấy phép lao động bị thu hồi\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D156.K8\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"bị thu hồi\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Giấy phép lao động\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "x_wGa-vkAbKv1e8PpoSSkAg",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1800
+   },
+   "input_tokens": 4031,
+   "output_tokens": 1959,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_034968c884cd0a8ce90814b5"
+   }
+  }
+ }
+}

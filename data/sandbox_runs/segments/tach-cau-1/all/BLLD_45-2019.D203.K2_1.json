@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công theo quy định tại Điều 198 của Bộ luật này có quyền sau đây:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Tổ chức đại diện người lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"có quyền tổ chức và lãnh đạo đình công theo quy định tại Điều 198 của Bộ luật này\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có quyền sau đây\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540640584-ba5dc7e4",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 7862
+   },
+   "input_tokens": 2407,
+   "output_tokens": 98,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_d9ad5b0d4499a6d46044a255"
+   }
+  }
+ }
+}

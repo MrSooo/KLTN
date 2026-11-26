@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D34.K7",
+ "phien_ban": "vai-nhom-2",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D34.K7\",\n \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động là cá nhân chết; bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người sử dụng lao động là cá nhân\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"chết\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Người sử dụng lao động không phải là cá nhân chấm dứt hoạt động hoặc bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người sử dụng lao động không phải là cá nhân\",\n     \"ap_cho\": [\n      \"s2.m1\",\n      \"s2.m2\"\n     ]\n    },\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"chấm dứt hoạt động\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D34.K7\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"chết\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động là cá nhân\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"bị Tòa án tuyên bố\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động là cá nhân\",\n    \"loai\": \"E\"\n   },\n   \"liet_ke\": [\n    \"mất năng lực hành vi dân sự\",\n    \"mất tích\",\n    \"đã chết\"\n   ],\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"chấm dứt hoạt động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động không phải là cá nhân\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q3\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"doan\": [\n    \"bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động không phải là cá nhân\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q4\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "vW8Ga8C1LJ232roPuMOagAc",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3415
+   },
+   "input_tokens": 4211,
+   "output_tokens": 4031,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_8a080ed6b98e6e63645e9954"
+   }
+  }
+ }
+}

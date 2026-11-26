@@ -1,0 +1,30 @@
+{
+ "cau": "Việc giải quyết tranh chấp lao động do cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết tranh chấp lao động tiến hành sau khi có yêu cầu của bên tranh chấp hoặc theo đề nghị của cơ quan, tổ chức, cá nhân có thẩm quyền và được các bên tranh chấp đồng ý.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Việc giải quyết tranh chấp lao động do cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết tranh chấp lao động tiến hành sau\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có yêu cầu của bên tranh chấp\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"theo đề nghị của cơ quan, tổ chức, cá nhân có thẩm quyền\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"được các bên tranh chấp đồng ý\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-uU4Da4bnGoP81e8Pzs2JuAY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3585
+   },
+   "input_tokens": 962,
+   "output_tokens": 548,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f0d352f2ece068ef9771e9c2"
+   }
+  }
+ }
+}

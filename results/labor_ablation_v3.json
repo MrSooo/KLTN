@@ -1,0 +1,274 @@
+{
+  "metrics": {
+    "total": 14,
+    "correct": 14,
+    "accuracy": 1.0,
+    "per_verdict": {
+      "Concluded": {
+        "total": 6,
+        "correct": 6,
+        "accuracy": 1.0
+      },
+      "Refuted": {
+        "total": 3,
+        "correct": 3,
+        "accuracy": 1.0
+      },
+      "Insufficient Basis": {
+        "total": 2,
+        "correct": 2,
+        "accuracy": 1.0
+      },
+      "Quarantined/Out-of-Scope": {
+        "total": 3,
+        "correct": 3,
+        "accuracy": 1.0
+      }
+    },
+    "per_depth": {
+      "1": {
+        "total": 8,
+        "correct": 8,
+        "accuracy": 1.0
+      },
+      "2": {
+        "total": 3,
+        "correct": 3,
+        "accuracy": 1.0
+      },
+      "3": {
+        "total": 2,
+        "correct": 2,
+        "accuracy": 1.0
+      }
+    },
+    "counterfactual_pairs": {
+      "total": 1,
+      "consistent": 1
+    }
+  },
+  "static_scan": {
+    "units": 45,
+    "total_errors": 0,
+    "families": {
+      "dead_rule": 0,
+      "duplicate": 0,
+      "broken_link": 0,
+      "blocking_cycle": 0,
+      "contradiction": 0
+    },
+    "sample": []
+  },
+  "smoke": {
+    "holds_no_exception": true,
+    "holds_blocked": false,
+    "blocked_true": true
+  },
+  "smoke_timed_out": {
+    "holds_no_exception": false,
+    "holds_blocked": false,
+    "blocked_true": false
+  },
+  "program": {
+    "units": 45,
+    "exception_of": 10,
+    "a8_rules": 0
+  },
+  "rows": [
+    {
+      "id": "lab_d1_001",
+      "anchor": "LLD2019.D35",
+      "exception_depth": 1,
+      "kind": "in_scope",
+      "pair_id": null,
+      "gold_verdict": "Concluded",
+      "predicted": "Concluded",
+      "correct": true,
+      "scasp": {
+        "query": "holds('LLD2019.D35')",
+        "satisfiable": true,
+        "timed_out": false
+      }
+    },
+    {
+      "id": "lab_d1_002",
+      "anchor": "LLD2019.D36",
+      "exception_depth": 1,
+      "kind": "in_scope",
+      "pair_id": null,
+      "gold_verdict": "Concluded",
+      "predicted": "Concluded",
+      "correct": true,
+      "scasp": {
+        "query": "holds('LLD2019.D36')",
+        "satisfiable": true,
+        "timed_out": false
+      }
+    },
+    {
+      "id": "lab_d2_001",
+      "anchor": "LLD2019.D35",
+      "exception_depth": 2,
+      "kind": "in_scope",
+      "pair_id": null,
+      "gold_verdict": "Concluded",
+      "predicted": "Concluded",
+      "correct": true,
+      "scasp": {
+        "query": "holds('LLD2019.D35')",
+        "satisfiable": true,
+        "timed_out": false
+      }
+    },
+    {
+      "id": "lab_d2_002",
+      "anchor": "LLD2019.D37",
+      "exception_depth": 2,
+      "kind": "in_scope",
+      "pair_id": null,
+      "gold_verdict": "Refuted",
+      "predicted": "Refuted",
+      "correct": true,
+      "scasp": {
+        "query": "holds('LLD2019.D37')",
+        "satisfiable": true,
+        "timed_out": false
+      }
+    },
+    {
+      "id": "lab_d2_003",
+      "anchor": "LLD2019.D46",
+      "exception_depth": 2,
+      "kind": "in_scope",
+      "pair_id": null,
+      "gold_verdict": "Refuted",
+      "predicted": "Refuted",
+      "correct": true,
+      "scasp": {
+        "query": "holds('LLD2019.D46')",
+        "satisfiable": true,
+        "timed_out": false
+      }
+    },
+    {
+      "id": "lab_d3_001",
+      "anchor": "LLD2019.D37",
+      "exception_depth": 3,
+      "kind": "in_scope",
+      "pair_id": null,
+      "gold_verdict": "Concluded",
+      "predicted": "Concluded",
+      "correct": true,
+      "scasp": {
+        "query": "holds('LLD2019.D37')",
+        "satisfiable": true,
+        "timed_out": false
+      }
+    },
+    {
+      "id": "lab_d3_002",
+      "anchor": "LLD2019.D39",
+      "exception_depth": 3,
+      "kind": "in_scope",
+      "pair_id": null,
+      "gold_verdict": "Concluded",
+      "predicted": "Concluded",
+      "correct": true,
+      "scasp": {
+        "query": "holds('LLD2019.D39')",
+        "satisfiable": true,
+        "timed_out": false
+      }
+    },
+    {
+      "id": "lab_cf_001",
+      "anchor": "LLD2019.D35",
+      "exception_depth": 1,
+      "kind": "in_scope",
+      "pair_id": "lab_cf_pair_A",
+      "gold_verdict": "Concluded",
+      "predicted": "Concluded",
+      "correct": true,
+      "scasp": {
+        "query": "holds('LLD2019.D35')",
+        "satisfiable": true,
+        "timed_out": false
+      }
+    },
+    {
+      "id": "lab_cf_002",
+      "anchor": "LLD2019.D35",
+      "exception_depth": 1,
+      "kind": "in_scope",
+      "pair_id": "lab_cf_pair_A",
+      "gold_verdict": "Refuted",
+      "predicted": "Refuted",
+      "correct": true,
+      "scasp": {
+        "query": "holds('LLD2019.D35')",
+        "satisfiable": true,
+        "timed_out": false
+      }
+    },
+    {
+      "id": "lab_ins_001",
+      "anchor": "LLD2019.D46",
+      "exception_depth": 1,
+      "kind": "in_scope",
+      "pair_id": null,
+      "gold_verdict": "Insufficient Basis",
+      "predicted": "Insufficient Basis",
+      "correct": true,
+      "scasp": {
+        "query": "holds('LLD2019.D46')",
+        "satisfiable": true,
+        "timed_out": false
+      }
+    },
+    {
+      "id": "lab_ins_002",
+      "anchor": "LLD2019.D35",
+      "exception_depth": 1,
+      "kind": "in_scope",
+      "pair_id": null,
+      "gold_verdict": "Insufficient Basis",
+      "predicted": "Insufficient Basis",
+      "correct": true,
+      "scasp": {
+        "query": "holds('LLD2019.D35')",
+        "satisfiable": true,
+        "timed_out": false
+      }
+    },
+    {
+      "id": "lab_quar_001",
+      "anchor": null,
+      "exception_depth": null,
+      "kind": "out_of_scope",
+      "pair_id": null,
+      "gold_verdict": "Quarantined/Out-of-Scope",
+      "predicted": "Quarantined/Out-of-Scope",
+      "correct": true
+    },
+    {
+      "id": "lab_quar_002",
+      "anchor": "LLD2019.D46",
+      "exception_depth": 1,
+      "kind": "quarantined",
+      "pair_id": null,
+      "gold_verdict": "Quarantined/Out-of-Scope",
+      "predicted": "Quarantined/Out-of-Scope",
+      "correct": true
+    },
+    {
+      "id": "lab_quar_003",
+      "anchor": "LLD2019.D35",
+      "exception_depth": 1,
+      "kind": "quarantined",
+      "pair_id": null,
+      "gold_verdict": "Quarantined/Out-of-Scope",
+      "predicted": "Quarantined/Out-of-Scope",
+      "correct": true
+    }
+  ]
+}

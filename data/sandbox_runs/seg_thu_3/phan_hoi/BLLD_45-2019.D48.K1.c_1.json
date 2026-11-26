@@ -1,0 +1,30 @@
+{
+ "cau": "Chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Chia\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tách\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hợp nhất\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"sáp nhập\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"bán\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"cho thuê\"},{\"id\":\"m7\",\"loai\":\"menh_de\",\"chu\":\"chuyển đổi loại hình\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"doanh nghiệp\",\"ap_cho\":[\"m5\",\"m6\",\"m7\"]},{\"id\":\"m8\",\"loai\":\"menh_de\",\"chu\":\"chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-zS4Da_qaEv-R2roPpIzAuAM",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3413
+   },
+   "input_tokens": 943,
+   "output_tokens": 816,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f986ced4b07ba358ec73c0b7"
+   }
+  }
+ }
+}

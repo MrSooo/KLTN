@@ -1,0 +1,30 @@
+{
+ "cau": "Tổ chức của người lao động tại doanh nghiệp tổ chức và hoạt động phải bảo đảm nguyên tắc tuân thủ Hiến pháp, pháp luật và điều lệ; tự nguyện, tự quản, dân chủ, minh bạch.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Tổ chức của người lao động tại doanh nghiệp\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tổ chức\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hoạt động\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"phải bảo đảm nguyên tắc tuân thủ Hiến pháp, pháp luật và điều lệ; tự nguyện, tự quản, dân chủ, minh bạch\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-RkwDa7i7Aqzm2roPiMbM2QI",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 670
+   },
+   "input_tokens": 945,
+   "output_tokens": 808,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_13d66d9ee98960b156ef5c43"
+   }
+  }
+ }
+}

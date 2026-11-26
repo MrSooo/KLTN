@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Yêu cầu tổ chức đại diện người lao động thương lượng với mục đích ký kết thỏa ước lao động tập thể; tham gia giải quyết tranh chấp lao động, đình công; đối thoại, trao đổi với tổ chức đại diện người lao động về các vấn đề trong quan hệ lao động, cải thiện đời sống vật chất và tinh thần của người lao động;",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Yêu cầu tổ chức đại diện người lao động thương lượng với mục đích ký kết thỏa ước lao động tập thể\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tham gia giải quyết tranh chấp lao động, đình công\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"đối thoại\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"trao đổi\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"với tổ chức đại diện người lao động về các vấn đề trong quan hệ lao động, cải thiện đời sống vật chất và tinh thần của người lao động\",\"ap_cho\":[\"m3\",\"m4\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-d7YFa83hBIW20-kP4oLY2Ag",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 901
+   },
+   "input_tokens": 2308,
+   "output_tokens": 1072,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_befd1472ac77c56427b15792"
+   }
+  }
+ }
+}

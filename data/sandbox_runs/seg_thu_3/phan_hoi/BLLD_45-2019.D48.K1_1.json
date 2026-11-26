@@ -1,0 +1,30 @@
+{
+ "cau": "Trong thời hạn 14 ngày làm việc kể từ ngày chấm dứt hợp đồng lao động, hai bên có trách nhiệm thanh toán đầy đủ các khoản tiền có liên quan đến quyền lợi của mỗi bên, trừ trường hợp sau đây có thể kéo dài nhưng không được quá 30 ngày:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Trong thời hạn 14 ngày làm việc kể từ ngày chấm dứt hợp đồng lao động, hai bên có trách nhiệm thanh toán đầy đủ các khoản tiền có liên quan đến quyền lợi của mỗi bên\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"trừ trường hợp sau đây\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có thể kéo dài\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"không được quá 30 ngày\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-rS4Da7fKDMDN2roP5tKFqQQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1256
+   },
+   "input_tokens": 960,
+   "output_tokens": 1397,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_6e26f0840b5c5b5823f8b2cc"
+   }
+  }
+ }
+}

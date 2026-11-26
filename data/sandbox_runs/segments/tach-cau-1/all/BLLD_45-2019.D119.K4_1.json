@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động có các chi nhánh, đơn vị, cơ sở sản xuất, kinh doanh đặt ở nhiều địa bàn khác nhau thì gửi nội quy lao động đã được đăng ký đến cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh nơi đặt chi nhánh, đơn vị, cơ sở sản xuất, kinh doanh.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"có các chi nhánh, đơn vị, cơ sở sản xuất, kinh doanh đặt ở nhiều địa bàn khác nhau\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"gửi nội quy lao động đã được đăng ký đến cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh nơi đặt chi nhánh, đơn vị, cơ sở sản xuất, kinh doanh\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539375974-8175470d",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1081
+   },
+   "input_tokens": 2446,
+   "output_tokens": 140,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_49e7829f8179e8083391d108"
+   }
+  }
+ }
+}

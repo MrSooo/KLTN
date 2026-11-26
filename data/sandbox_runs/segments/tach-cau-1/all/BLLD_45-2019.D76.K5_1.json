@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thỏa ước lao động tập thể phải được gửi cho mỗi bên ký kết và cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh theo quy định tại Điều 77 của Bộ luật này.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thỏa ước lao động tập thể phải được gửi cho mỗi bên ký kết và cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh theo quy định tại Điều 77 của Bộ luật này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538955598-8f47cc11",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 589
+   },
+   "input_tokens": 2419,
+   "output_tokens": 70,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_f85838631788c7f8081ed0ce"
+   }
+  }
+ }
+}

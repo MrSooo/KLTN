@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Lao động nữ làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm hoặc làm nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con khi mang thai và có thông báo cho người sử dụng lao động biết thì được người sử dụng lao động chuyển sang làm công việc nhẹ hơn, an toàn hơn hoặc giảm bớt 01 giờ làm việc hằng ngày mà không bị cắt giảm tiền lương và quyền, lợi ích cho đến hết thời gian nuôi con dưới 12 tháng tuổi.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Lao động nữ\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\",\"m5\",\"m6\",\"m7\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"làm nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"mang thai\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"có thông báo cho người sử dụng lao động biết\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"được người sử dụng lao động\",\"ap_cho\":[\"m5\",\"m6\"]},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"chuyển sang làm công việc nhẹ hơn, an toàn hơn\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"giảm bớt 01 giờ làm việc hằng ngày\"},{\"id\":\"m7\",\"loai\":\"menh_de\",\"chu\":\"không bị cắt giảm tiền lương và quyền, lợi ích cho đến hết thời gian nuôi con dưới 12 tháng tuổi\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795537532407-6228dc68",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6444
+   },
+   "input_tokens": 2500,
+   "output_tokens": 309,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_2b6037457dc1172a12355780"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Phải có sự tham gia của tổ chức đại diện người lao động tại cơ sở mà người lao động đang bị xử lý kỷ luật là thành viên;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Phải có sự tham gia của tổ chức đại diện người lao động tại cơ sở\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"người lao động đang bị xử lý kỷ luật là thành viên\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-BUEDa4_aHoKw2roPw-S46QE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 465
+   },
+   "input_tokens": 931,
+   "output_tokens": 537,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_5023924bc9b43c4d489f54f3"
+   }
+  }
+ }
+}

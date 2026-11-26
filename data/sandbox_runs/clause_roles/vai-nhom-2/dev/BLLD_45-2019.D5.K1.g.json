@@ -1,0 +1,32 @@
+{
+ "unit_id": "BLLD_45-2019.D5.K1.g",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D5.K1.g\",\n \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Các quyền khác theo quy định của pháp luật.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Các quyền khác theo quy định của pháp luật\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D5.K1.g\",\n \"bo_qua\": \"dan_chieu_mo\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540033129-f810383a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1547
+   },
+   "input_tokens": 3631,
+   "output_tokens": 40,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_bc9621905b3d480a9d468361"
+   }
+  }
+ }
+}

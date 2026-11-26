@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D6.K1.dd",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D6.K1.dd\",\n \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người sử dụng lao động\",\n \"khoan_cha\": \"Người sử dụng lao động có các quyền sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Các quyền khác theo quy định của pháp luật.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Các quyền khác theo quy định của pháp luật\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D6.K1.dd\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Các quyền khác theo quy định của pháp luật\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "k_gGa6GnHd6B1e8Px7XwoQQ",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1075
+   },
+   "input_tokens": 4045,
+   "output_tokens": 1241,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_70b95cc5e5281c6fef2df69e"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Người lao động có thể giao kết nhiều hợp đồng lao động với nhiều người sử dụng lao động nhưng phải bảo đảm thực hiện đầy đủ các nội dung đã giao kết.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"có thể giao kết nhiều hợp đồng lao động với nhiều người sử dụng lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải bảo đảm thực hiện đầy đủ các nội dung đã giao kết\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-jrMFa4WDKLCz1e8P_Kfp-Qs",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 336
+   },
+   "input_tokens": 2269,
+   "output_tokens": 436,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_98fa3ac334dec509c27f6fb6"
+   }
+  }
+ }
+}

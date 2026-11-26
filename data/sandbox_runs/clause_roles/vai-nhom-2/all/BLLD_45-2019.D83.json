@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D83",
+ "phien_ban": "vai-nhom-2",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D83\",\n \"tieu_de_dieu\": \"Thỏa ước lao động tập thể hết hạn\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều 76 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D76\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Trong thời hạn 90 ngày trước ngày thỏa ước lao động tập thể hết hạn, các bên có thể thương lượng để kéo dài thời hạn của thỏa ước lao động tập thể hoặc ký kết thỏa ước lao động tập thể mới.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Trong thời hạn 90 ngày trước ngày thỏa ước lao động tập thể hết hạn\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"các bên\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"có thể thương lượng\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"kéo dài thời hạn của thỏa ước lao động tập thể\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"ký kết thỏa ước lao động tập thể mới\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Trường hợp các bên thỏa thuận kéo dài thời hạn của thỏa ước lao động tập thể thì phải lấy ý kiến theo quy định tại Điều 76 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"các bên\",\n     \"ap_cho\": [\n      \"s2.m1\",\n      \"s2.m2\"\n     ],\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thỏa thuận kéo dài thời hạn của thỏa ước lao động tập thể\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải lấy ý kiến theo quy định tại Điều 76 của Bộ luật này\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Khi thỏa ước lao động tập thể hết hạn mà các bên vẫn tiếp tục thương lượng thì thỏa ước lao động tập thể cũ vẫn được tiếp tục thực hiện trong thời hạn không quá 90 ngày kể từ ngày thỏa ước lao động tập thể hết hạn, trừ trường hợp các bên có thỏa thuận khác.\",\n   \"doan\": [\n    {\n     \"id\": \"s3.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thỏa ước lao động tập thể hết hạn\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s3.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"các bên vẫn tiếp tục thương lượng\",\n     \"noi_truoc\": [\n      \"mà\"\n     ]\n    },\n    {\n     \"id\": \"s3.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thỏa ước lao động tập thể cũ vẫn được tiếp tục thực hiện trong thời hạn không quá 90 ngày kể từ ngày thỏa ước lao động tập thể hết hạn\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    },\n    {\n     \"id\": \"s3.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"các bên có thỏa thuận khác\",\n     \"noi_truoc\": [\n      \"trừ trường hợp\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D83\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Trong thời hạn 90 ngày trước ngày thỏa ước lao động tập thể hết hạn\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"thương lượng\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"kéo dài thời hạn của thỏa ước lao động tập thể\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"ký kết thỏa ước lao động tập thể mới\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"thỏa thuận kéo dài thời hạn của thỏa ước lao động tập thể\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"doan\": [\n    \"lấy ý kiến\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"doan\": [\n    \"theo quy định tại Điều 76 của Bộ luật này\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s3.m1\",\n   \"doan\": [\n    \"thỏa ước lao động tập thể hết hạn\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q3\"\n  },\n  {\n   \"nguon\": \"s3.m2\",\n   \"doan\": [\n    \"tiếp tục thương lượng\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q3\"\n  },\n  {\n   \"nguon\": \"s3.m3\",\n   \"doan\": [\n    \"tiếp tục thực hiện\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"thỏa ước lao động tập thể cũ\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q3\"\n  },\n  {\n   \"nguon\": \"s3.m3\",\n   \"doan\": [\n    \"trong thời hạn không quá 90 ngày kể từ ngày thỏa ước lao động tập thể hết hạn\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"thỏa ước lao động tập thể cũ\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q3\"\n  },\n  {\n   \"nguon\": \"s3.m4\",\n   \"doan\": [\n    \"có thỏa thuận khác\"\n   ],\n   \"vai\": \"ngoai_le\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q3\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "93IGa5fcDJSM1e8P4emroAo",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 2723,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1941
+   },
+   "input_tokens": 2040,
+   "output_tokens": 3402,
+   "prompt_tokens_details": {
+    "cached_tokens": 2723
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_24fcd2519b823aab7bd67664"
+   }
+  }
+ }
+}

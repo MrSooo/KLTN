@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D6.K1.b",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D6.K1.b\",\n \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người sử dụng lao động\",\n \"khoan_cha\": \"Người sử dụng lao động có các quyền sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thành lập, gia nhập, hoạt động trong tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác theo quy định của pháp luật;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Thành lập\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"gia nhập\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"hoạt động trong\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác theo quy định của pháp luật\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D6.K1.b\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"Thành lập\",\"tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác theo quy định của pháp luật\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"quy_tac\":\"q1\",\"liet_ke\":[\"tổ chức đại diện người sử dụng lao động\",\"tổ chức nghề nghiệp\",\"tổ chức khác theo quy định của pháp luật\"]},{\"nguon\":\"s1.m2\",\"doan\":[\"gia nhập\",\"tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác theo quy định của pháp luật\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"quy_tac\":\"q1\",\"liet_ke\":[\"tổ chức đại diện người sử dụng lao động\",\"tổ chức nghề nghiệp\",\"tổ chức khác theo quy định của pháp luật\"]},{\"nguon\":\"s1.m3\",\"doan\":[\"hoạt động trong\",\"tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác theo quy định của pháp luật\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"quy_tac\":\"q1\",\"liet_ke\":[\"tổ chức đại diện người sử dụng lao động\",\"tổ chức nghề nghiệp\",\"tổ chức khác theo quy định của pháp luật\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795541456179-23443ce5",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6565
+   },
+   "input_tokens": 3806,
+   "output_tokens": 387,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_6472e2d06f51fa4febc814eb"
+   }
+  }
+ }
+}

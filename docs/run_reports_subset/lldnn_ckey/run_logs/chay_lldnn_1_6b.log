@@ -1,0 +1,41 @@
+python : [LLM sandbox_api · api · lô 001] gọi deepseek-v4.1-flash (lượt api hôm nay: 3/3000) ...
+At line:1 char:520
++ ... = Get-Date; python -X utf8 -I src/sandbox_api.py $d *> "C:\Users\TusP ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([LLM sandbox_ap...ay: 3/3000) ...:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+      ... [LLM sandbox_api · api · lô 001] vẫn đang chờ phản hồi (30s)
+      ... [LLM sandbox_api · api · lô 001] vẫn đang chờ phản hồi (60s)
+[LLM sandbox_api · api · lô 001] xong sau 68s (token vào 21, ra 2052)
+[LLM sandbox_api · api · lô 002] gọi deepseek-v4.1-flash (lượt api hôm nay: 4/3000) ...
+[LLM sandbox_api · api · lô 002] xong sau 9s (token vào 49, ra 1084)
+[LLM sandbox_api · api · lô 003] gọi deepseek-v4.1-flash (lượt api hôm nay: 5/3000) ...
+      ... [LLM sandbox_api · api · lô 003] vẫn đang chờ phản hồi (30s)
+      ... [LLM sandbox_api · api · lô 003] vẫn đang chờ phản hồi (60s)
+      ... [LLM sandbox_api · api · lô 003] vẫn đang chờ phản hồi (90s)
+      ... [LLM sandbox_api · api · lô 003] vẫn đang chờ phản hồi (120s)
+[LLM sandbox_api · api · lô 003] xong sau 124s (token vào 34, ra 4976)
+[LLM sandbox_api · api · lô 004] gọi deepseek-v4.1-flash (lượt api hôm nay: 6/3000) ...
+      ... [LLM sandbox_api · api · lô 004] vẫn đang chờ phản hồi (30s)
+      ... [LLM sandbox_api · api · lô 004] vẫn đang chờ phản hồi (60s)
+[LLM sandbox_api · api · lô 004] xong sau 81s (token vào 12, ra 2600)
+[LLM sandbox_api · api · lô 005] gọi deepseek-v4.1-flash (lượt api hôm nay: 7/3000) ...
+      ... [LLM sandbox_api · api · lô 005] vẫn đang chờ phản hồi (30s)
+      ... [LLM sandbox_api · api · lô 005] vẫn đang chờ phản hồi (60s)
+[LLM sandbox_api · api · lô 005] xong sau 88s (token vào 46, ra 2624)
+[LLM sandbox_api · api · lô 006] gọi deepseek-v4.1-flash (lượt api hôm nay: 8/3000) ...
+      ... [LLM sandbox_api · api · lô 006] vẫn đang chờ phản hồi (30s)
+[LLM sandbox_api · api · lô 006] xong sau 38s (token vào 123, ra 84)
+LƯỢT 001: đã ghi lo/001.json (24 chữ); giao lượt 001 cho một subagent mới
+ĐÃ NHẬN 001: 24/24 chữ qua, 0 không qua; chạy `tiep.py moi`
+LƯỢT 002: đã ghi lo/002.json (28 chữ); giao lượt 002 cho một subagent mới
+ĐÃ NHẬN 002: 21/28 chữ qua, 7 không qua; chạy `tiep.py moi`
+LƯỢT 003: đã ghi lo/003.json (35 chữ); giao lượt 003 cho một subagent mới
+ĐÃ NHẬN 003: 35/35 chữ qua, 0 không qua; chạy `tiep.py moi`
+LƯỢT 004: đã ghi lo/004.json (30 chữ); giao lượt 004 cho một subagent mới
+ĐÃ NHẬN 004: 30/30 chữ qua, 0 không qua; chạy `tiep.py moi`
+LƯỢT 005: đã ghi lo/005.json (20 chữ); giao lượt 005 cho một subagent mới
+ĐÃ NHẬN 005: 19/20 chữ qua, 1 không qua; chạy `tiep.py moi`
+LƯỢT 006: đã ghi lo/006.json (1 chữ); giao lượt 006 cho một subagent mới
+ĐÃ NHẬN 006: 1/1 chữ qua, 0 không qua; chạy `tiep.py moi`; HẾT: 6 lượt đã nhận; 130 chữ có tên, 0 chữ bị loại; báo người dùng

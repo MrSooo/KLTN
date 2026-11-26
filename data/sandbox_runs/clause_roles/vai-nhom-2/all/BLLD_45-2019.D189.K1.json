@@ -1,0 +1,34 @@
+{
+ "unit_id": "BLLD_45-2019.D189.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D189.K1\",\n \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 7 Điều 188 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D188.K7\"\n  },\n  {\n   \"cum\": \"khoản 4 Điều này\",\n   \"dich\": \"BLLD_45-2019.D189.K4\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Trên cơ sở đồng thuận, các bên tranh chấp có quyền yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp trong trường hợp quy định tại khoản 7 Điều 188 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Trên cơ sở đồng thuận, các bên tranh chấp có quyền yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp trong trường hợp quy định tại khoản 7 Điều 188 của Bộ luật này\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Khi yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp, các bên không được đồng thời yêu cầu Tòa án giải quyết, trừ trường hợp quy định tại khoản 4 Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"các bên không được đồng thời yêu cầu Tòa án giải quyết\"\n    },\n    {\n     \"id\": \"s2.d1\",\n     \"loai\": \"dan_chieu\",\n     \"chu\": \"trừ trường hợp quy định tại khoản 4 Điều này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\n \"unit_id\": \"BLLD_45-2019.D189.K1\",\n \"ngoai_le\": [\n  \"BLLD_45-2019.D189.K4\"\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Trên cơ sở đồng thuận\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên tranh chấp\",\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên tranh chấp\",\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"doan\": [\n    \"đồng thời yêu cầu Tòa án giải quyết\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795547386031-472d5c45",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6980
+   },
+   "input_tokens": 3976,
+   "output_tokens": 500,
+   "prompt_tokens_details": {},
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_03fbde5b4a9e2c3187fbde83"
+   }
+  }
+ }
+}

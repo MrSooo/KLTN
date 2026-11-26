@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D182.K1.b",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D182.K1.b\",\n \"tieu_de_dieu\": \"Quyền và nghĩa vụ của hai bên trong giải quyết tranh chấp lao động\",\n \"khoan_cha\": \"Trong giải quyết tranh chấp lao động, các bên có quyền sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Rút yêu cầu hoặc thay đổi nội dung yêu cầu;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Rút yêu cầu\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thay đổi nội dung yêu cầu\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D182.K1.b\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Rút yêu cầu\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"thay đổi nội dung yêu cầu\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "kf0Ga5raGdy02roPhvTJgQg",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1065
+   },
+   "input_tokens": 4114,
+   "output_tokens": 1366,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_0f5cde506c858264629e438e"
+   }
+  }
+ }
+}

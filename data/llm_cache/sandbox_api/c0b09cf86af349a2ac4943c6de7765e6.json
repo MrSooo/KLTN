@@ -1,0 +1,64 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T17:00:27+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0140\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D86.K1\",\n    \"tieu_de_dieu\": \"Thỏa ước lao động tập thể vô hiệu\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thỏa ước lao động tập thể vô hiệu từng phần khi một hoặc một số nội dung trong thỏa ước lao động tập thể vi phạm pháp luật.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D86.K2.a\",\n    \"tieu_de_dieu\": \"Thỏa ước lao động tập thể vô hiệu\",\n    \"khoan_cha\": \"Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây:\",\n    \"chu_don_vi\": \"Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật;\"\n   },\n   \"vi_tu_chung\": [\n    \"violate_law\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0141\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D86.K1\",\n    \"tieu_de_dieu\": \"Thỏa ước lao động tập thể vô hiệu\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thỏa ước lao động tập thể vô hiệu từng phần khi một hoặc một số nội dung trong thỏa ước lao động tập thể vi phạm pháp luật.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D119.K3\",\n    \"tieu_de_dieu\": \"Đăng ký nội quy lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được hồ sơ đăng ký nội quy lao động, nếu nội dung nội quy lao động có quy định trái với pháp luật thì cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh thông báo, hướng dẫn người sử dụng lao động sửa đổi, bổ sung và đăng ký lại.\"\n   },\n   \"vi_tu_chung\": [\n    \"violate_law\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0142\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D86.K2.a\",\n    \"tieu_de_dieu\": \"Thỏa ước lao động tập thể vô hiệu\",\n    \"khoan_cha\": \"Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây:\",\n    \"chu_don_vi\": \"Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D119.K3\",\n    \"tieu_de_dieu\": \"Đăng ký nội quy lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được hồ sơ đăng ký nội quy lao động, nếu nội dung nội quy lao động có quy định trái với pháp luật thì cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh thông báo, hướng dẫn người sử dụng lao động sửa đổi, bổ sung và đăng ký lại.\"\n   },\n   \"vi_tu_chung\": [\n    \"violate_law\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0143\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D90.K1\",\n    \"tieu_de_dieu\": \"Tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tiền lương là số tiền mà người sử dụng lao động trả cho người lao động theo thỏa thuận để thực hiện công việc, bao gồm mức lương theo công việc hoặc chức danh, phụ cấp lương và các khoản bổ sung khác.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D94.K1\",\n    \"tieu_de_dieu\": \"Nguyên tắc trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải trả lương trực tiếp, đầy đủ, đúng hạn cho người lao động. Trường hợp người lao động không thể nhận lương trực tiếp thì người sử dụng lao động có thể trả lương cho người được người lao động ủy quyền hợp pháp.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_wages_to_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0144\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D90.K1\",\n    \"tieu_de_dieu\": \"Tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tiền lương là số tiền mà người sử dụng lao động trả cho người lao động theo thỏa thuận để thực hiện công việc, bao gồm mức lương theo công việc hoặc chức danh, phụ cấp lương và các khoản bổ sung khác.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D95.K1\",\n    \"tieu_de_dieu\": \"Trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động trả lương cho người lao động căn cứ vào tiền lương đã thỏa thuận, năng suất lao động và chất lượng thực hiện công việc.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_wages_to_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0145\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D90.K1\",\n    \"tieu_de_dieu\": \"Tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tiền lương là số tiền mà người sử dụng lao động trả cho người lao động theo thỏa thuận để thực hiện công việc, bao gồm mức lương theo công việc hoặc chức danh, phụ cấp lương và các khoản bổ sung khác.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D168.K2\",\n    \"tieu_de_dieu\": \"Tham gia bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian người lao động nghỉ việc hưởng chế độ bảo hiểm xã hội thì người sử dụng lao động không phải trả lương cho người lao động, trừ trường hợp hai bên có thỏa thuận khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_wages_to_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0146\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D93.K1\",\n    \"tieu_de_dieu\": \"Xây dựng thang lương, bảng lương và định mức lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải xây dựng thang lương, bảng lương và định mức lao động làm cơ sở để tuyển dụng, sử dụng lao động, thỏa thuận mức lương theo công việc hoặc chức danh ghi trong hợp đồng lao động và trả lương cho người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D93.K3\",\n    \"tieu_de_dieu\": \"Xây dựng thang lương, bảng lương và định mức lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở khi xây dựng thang lương, bảng lương và định mức lao động.\\nThang lương, bảng lương và mức lao động phải được công bố công khai tại nơi làm việc trước khi thực hiện.\"\n   },\n   \"vi_tu_chung\": [\n    \"build_salary_scale_payroll_and_labor_norms\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0147\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D94.K1\",\n    \"tieu_de_dieu\": \"Nguyên tắc trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải trả lương trực tiếp, đầy đủ, đúng hạn cho người lao động. Trường hợp người lao động không thể nhận lương trực tiếp thì người sử dụng lao động có thể trả lương cho người được người lao động ủy quyền hợp pháp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D95.K1\",\n    \"tieu_de_dieu\": \"Trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động trả lương cho người lao động căn cứ vào tiền lương đã thỏa thuận, năng suất lao động và chất lượng thực hiện công việc.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_wages_to_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0148\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D94.K1\",\n    \"tieu_de_dieu\": \"Nguyên tắc trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải trả lương trực tiếp, đầy đủ, đúng hạn cho người lao động. Trường hợp người lao động không thể nhận lương trực tiếp thì người sử dụng lao động có thể trả lương cho người được người lao động ủy quyền hợp pháp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D168.K2\",\n    \"tieu_de_dieu\": \"Tham gia bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian người lao động nghỉ việc hưởng chế độ bảo hiểm xã hội thì người sử dụng lao động không phải trả lương cho người lao động, trừ trường hợp hai bên có thỏa thuận khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_wages_to_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0149\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D95.K1\",\n    \"tieu_de_dieu\": \"Trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động trả lương cho người lao động căn cứ vào tiền lương đã thỏa thuận, năng suất lao động và chất lượng thực hiện công việc.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D168.K2\",\n    \"tieu_de_dieu\": \"Tham gia bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian người lao động nghỉ việc hưởng chế độ bảo hiểm xã hội thì người sử dụng lao động không phải trả lương cho người lao động, trừ trường hợp hai bên có thỏa thuận khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_wages_to_employee\"\n   ]\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_5e1039e14f08cdbc7f761300",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0140",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật;"
+   },
+   {
+    "cap_id": "P0141",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0142",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0143",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0144",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0145",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0146",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0147",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0148",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Trong thời gian người lao động nghỉ việc hưởng chế độ bảo hiểm xã hội thì người sử dụng lao động không phải trả lương cho người lao động, trừ trường hợp hai bên có thỏa thuận khác."
+   },
+   {
+    "cap_id": "P0149",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Trong thời gian người lao động nghỉ việc hưởng chế độ bảo hiểm xã hội thì người sử dụng lao động không phải trả lương cho người lao động, trừ trường hợp hai bên có thỏa thuận khác."
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 25,
+  "output_tokens": 1128,
+  "cost_vnd": 7.6
+ },
+ "boc_rao": false
+}

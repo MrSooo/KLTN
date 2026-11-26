@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D28",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D28\",\n \"tieu_de_dieu\": \"Thực hiện công việc theo hợp đồng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Công việc theo hợp đồng lao động phải do người lao động đã giao kết hợp đồng thực hiện.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Công việc theo hợp đồng lao động phải do người lao động đã giao kết hợp đồng thực hiện\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Địa điểm làm việc được thực hiện theo hợp đồng lao động, trừ trường hợp hai bên có thỏa thuận khác.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Địa điểm làm việc được thực hiện theo hợp đồng lao động\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"hai bên có thỏa thuận khác\",\n     \"noi_truoc\": [\n      \"trừ trường hợp\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D28\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"thực hiện\",\n    \"Công việc theo hợp đồng lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người lao động đã giao kết hợp đồng\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"Địa điểm làm việc được thực hiện\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"theo hợp đồng lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"doan\": [\n    \"có thỏa thuận khác\"\n   ],\n   \"vai\": \"ngoai_le\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"hai bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "GvkGa8XWCse31e8PkfuIoA8",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2522
+   },
+   "input_tokens": 4206,
+   "output_tokens": 2984,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_f5a41ac200fd84db0a2a3f32"
+   }
+  }
+ }
+}

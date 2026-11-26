@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trù dập, trả thù người lao động tham gia đình công, người lãnh đạo đình công.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Trù dập\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trả thù\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"người lao động tham gia đình công, người lãnh đạo đình công\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540447372-8f50b4f5",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 736
+   },
+   "input_tokens": 2396,
+   "output_tokens": 90,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_c65c200dce26279ce57769a6"
+   }
+  }
+ }
+}

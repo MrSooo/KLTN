@@ -1,0 +1,76 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T09:22:07+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0030\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.dd\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đơn phương chấm dứt hợp đồng lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D36.K2\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đơn phương chấm dứt hợp đồng lao động trong trường hợp quy định tại các điểm a, b, c, đ và g khoản 1 Điều này, người sử dụng lao động phải báo trước cho người lao động như sau:\",\n    \"cac_muc_con\": [\n     \"Ít nhất 45 ngày đối với hợp đồng lao động không xác định thời hạn;\",\n     \"Ít nhất 30 ngày đối với hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng;\",\n     \"Ít nhất 03 ngày làm việc đối với hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng và đối với trường hợp quy định tại điểm b khoản 1 Điều này;\",\n     \"Đối với một số ngành, nghề, công việc đặc thù thì thời hạn báo trước được thực hiện theo quy định của Chính phủ.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"unilaterally_terminate_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0031\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.dd\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đơn phương chấm dứt hợp đồng lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D36.K3\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đơn phương chấm dứt hợp đồng lao động quy định tại điểm d và điểm e khoản 1 Điều này thì người sử dụng lao động không phải báo trước cho người lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"unilaterally_terminate_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0032\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.dd\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đơn phương chấm dứt hợp đồng lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D138.K1\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt, tạm hoãn hợp đồng lao động của lao động nữ mang thai\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động nữ mang thai nếu có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi thì có quyền đơn phương chấm dứt hợp đồng lao động hoặc tạm hoãn thực hiện hợp đồng lao động.\\nTrường hợp đơn phương chấm dứt hợp đồng lao động hoặc tạm hoãn thực hiện hợp đồng lao động thì phải thông báo cho người sử dụng lao động kèm theo xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi.\"\n   },\n   \"vi_tu_chung\": [\n    \"unilaterally_terminate_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0033\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.dd\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đơn phương chấm dứt hợp đồng lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.b\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Sa thải, kỷ luật, đơn phương chấm dứt hợp đồng lao động, không tiếp tục giao kết hoặc gia hạn hợp đồng lao động, chuyển người lao động làm công việc khác;\"\n   },\n   \"vi_tu_chung\": [\n    \"unilaterally_terminate_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0034\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.e\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đình công;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D197.K4\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về lợi ích của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi các bên lựa chọn giải quyết tranh chấp thông qua Hội đồng trọng tài lao động theo quy định tại Điều này thì tổ chức đại diện người lao động không được tiến hành đình công trong thời gian Hội đồng trọng tài lao động đang tiến hành giải quyết tranh chấp.\\nKhi hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài không ra quyết định giải quyết tranh chấp hoặc người sử dụng lao động là bên tranh chấp không thực hiện quyết định giải quyết tranh chấp của Ban trọng tài lao động thì tổ chức đại diện người lao động là bên tranh chấp có quyền tiến hành thủ tục quy định tại các điều 200, 201 và 202 của Bộ luật này để đình công.\"\n   },\n   \"vi_tu_chung\": [\n    \"strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0035\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.e\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đình công;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D198\",\n    \"tieu_de_dieu\": \"Đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Đình công là sự ngừng việc tạm thời, tự nguyện và có tổ chức của người lao động nhằm đạt được yêu cầu trong quá trình giải quyết tranh chấp lao động và do tổ chức đại diện người lao động có quyền thương lượng tập thể là một bên tranh chấp lao động tập thể tổ chức và lãnh đạo.\"\n   },\n   \"vi_tu_chung\": [\n    \"strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0036\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.e\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đình công;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D201.K1\",\n    \"tieu_de_dieu\": \"Lấy ý kiến về đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi tiến hành đình công, tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công quy định tại Điều 198 của Bộ luật này có trách nhiệm lấy ý kiến của toàn thể người lao động hoặc thành viên ban lãnh đạo của các tổ chức đại diện người lao động tham gia thương lượng.\"\n   },\n   \"vi_tu_chung\": [\n    \"strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0037\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.e\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đình công;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D203.K2.a\",\n    \"tieu_de_dieu\": \"Quyền của các bên trước và trong quá trình đình công\",\n    \"khoan_cha\": \"Tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công theo quy định tại Điều 198 của Bộ luật này có quyền sau đây:\",\n    \"chu_don_vi\": \"Rút quyết định đình công nếu chưa đình công hoặc chấm dứt đình công nếu đang đình công;\"\n   },\n   \"vi_tu_chung\": [\n    \"strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0038\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.e\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đình công;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D204.K5\",\n    \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tiến hành đình công trong trường hợp không được đình công quy định tại Điều 209 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0039\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.e\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đình công;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D209.K1\",\n    \"tieu_de_dieu\": \"Nơi sử dụng lao động không được đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Không được đình công ở nơi sử dụng lao động mà việc đình công có thể đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người.\"\n   },\n   \"vi_tu_chung\": [\n    \"strike\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_fcbe665cdf833a00458b216b",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0030",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0031",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0032",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0033",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0034",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "tổ chức đại diện người lao động không được tiến hành đình công trong thời gian Hội đồng trọng tài lao động đang tiến hành giải quyết tranh chấp."
+   },
+   {
+    "cap_id": "P0035",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0036",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0037",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0038",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0039",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Không được đình công ở nơi sử dụng lao động mà việc đình công có thể đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người."
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3630,
+  "output_tokens": 1436,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 908
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1009
+   }
+  }
+ }
+}

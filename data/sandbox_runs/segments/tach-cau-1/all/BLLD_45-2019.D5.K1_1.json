@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Người lao động có các quyền sau đây:",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động có các quyền sau đây\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-VbYFa7OBM--d0-kPlN2AsAo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 196
+   },
+   "input_tokens": 2244,
+   "output_tokens": 230,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_013d913d6d9b6a7599d11038"
+   }
+  }
+ }
+}

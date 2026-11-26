@@ -1,0 +1,492 @@
+"""Wrapper gọi LLM duy nhất của dự án, dùng chung cho 2.2, 1.6 và các bước sau. Hai nhà cung cấp: Gemini (vai chinh, kiem: bước nối văn bản 2.2)
+và Anthropic Claude (vai trich: trích xuất ngữ nghĩa từ 1.6 trở đi, A34). Nhà cung cấp của mỗi vai nằm ở khoá "<vai>.provider" (mặc định gemini).
+
+Việc của module này:
+  - đọc model, hạn mức, max_output_tokens từ khối "khoá = giá trị" trong docs/llm_config.md (không chép cứng vào code);
+  - lưu MỌI phản hồi thô vào data/llm_cache/<tác vụ>/<khoá>.json; cùng đầu vào đọc lại đúng phản hồi cũ, nên tính tái lập
+    đến từ cache chứ không từ temperature (llm_config.md);
+  - đếm lượt theo ngày và theo vai (chính / kiểm) trong data/llm_cache/_usage.json; chạm hạn mức thì dừng gọn (QuotaReached),
+    các lượt đã lưu không bị gọi lại nên hôm sau chạy tiếp từ chỗ dừng.
+
+Chế độ (cờ --llm của các bước): off = không gọi gì, mọi lời gọi báo LLMUnavailable; replay = chỉ đọc cache, thiếu thì báo
+CacheMiss (không chạm mạng); live = như replay, thiếu thì gọi API rồi lưu. Khoá API chỉ lấy từ biến môi trường (GEMINI_API_KEY, ANTHROPIC_API_KEY, CKEY_API_KEY).
+Nhà cung cấp thứ ba `ckey` (A46): máy chủ trung gian nói giao thức Anthropic Messages, gọi bằng urllib của thư viện chuẩn (không cần gói); chỉ vai `api`
+(bộ chạy hộp cát `sandbox_api.py`) dùng.
+Đề xuất của LLM không bao giờ được áp thẳng: bước gọi phải kiểm bằng máy (xem CONTRIBUTING.md, mục LLM).
+"""
+import datetime
+import hashlib
+import json
+import os
+import re
+import socket
+import sys
+import threading
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
+import corpus  # noqa: E402  (chỉ để biết lần chạy KLTN_LLM_RUN, A46)
+
+ROOT = Path(__file__).resolve().parent.parent
+CONFIG_PATH = ROOT / "docs" / "llm_config.md"
+CACHE_DIR = ROOT / "data" / "llm_cache"
+USAGE_PATH = CACHE_DIR / "_usage.json"
+ROLES = ("chinh", "kiem")  # model chính và model kiểm độc lập của 2.2 (llm_config.md). links.py lặp qua ROLES để hai model kiểm chéo nhau: KHÔNG thêm vai vào đây
+EXTRA_ROLES = ("trich",)  # vai trích xuất ngữ nghĩa cho 1.6 trở đi (Claude, A34). Nằm ngoài ROLES có chủ đích: vai này không tham gia kiểm chéo 2.2
+# [A63, user 26/11] Không gửi User-Agent mặc định của Python ("Python-urllib/x"): một số tuyến ckey trả 403 hay khoá tài khoản theo nó.
+# Mọi lời gọi HTTP của dự án dùng giá trị này (tên chung, không mang tên dự án hay người dùng).
+USER_AGENT = "llm-client/1.0"
+PROVIDERS = {"gemini": "GEMINI_API_KEY", "anthropic": "ANTHROPIC_API_KEY", "ckey": "CKEY_API_KEY"}  # nhà cung cấp -> biến môi trường giữ khoá
+# Vai của bộ chạy hộp cát qua API (A46). KHÔNG nằm trong EXTRA_ROLES: `run_all --llm live` đòi khoá của mọi vai trong ROLES + EXTRA_ROLES,
+# mà vai này không thuộc bước nào của run_all (nó chỉ lấp thư mục làm việc, kết quả vào cache qua lệnh `nhap` của từng bước).
+API_ROLE = "api"
+RETRY_CODES = (429, 500, 503)
+RETRY_CODES_ANTHROPIC = (429, 500, 503, 529)  # 529 = Anthropic quá tải
+# máy chủ trung gian: 503 và 524 "upstream gateway unavailable" là lỗi tạm đã gặp khi thử (19/11); 520-524 là mã quá thời gian của lớp Cloudflare đứng trước
+RETRY_CODES_CKEY = (429, 500, 502, 503, 504, 520, 521, 522, 523, 524)
+CKEY_TIMEOUT = 300  # giây cho MỘT lời gọi: trang model ghi thời gian phản hồi P95 khoảng 105 giây
+THINKING_MODES = ("between_tools", "disabled")  # cách TẮT suy nghĩ phụ thuộc model: Sonnet 5.5 chỉ nhận between_tools, Haiku 5.5 không nhận between_tools (chỉ disabled)
+ATTEMPTS = 3
+WAIT_SECONDS = 20
+ANTHROPIC_TIMEOUT = 180  # giây cho MỘT lời gọi; mặc định của gói là 10 phút, quá dài cho lô chỉ vài nghìn token
+
+
+_USAGE_LOCK = threading.Lock()
+HEARTBEAT_SECONDS = 30  # lượt gọi API chờ quá ngần này giây thì in một dòng "vẫn đang chờ" để biết tiến trình chưa treo
+
+
+def stderr_log(msg):
+    """Ghi tiến độ ra stderr (không lẫn vào stdout là phần báo cáo của bước); flush để thấy ngay."""
+    try:  # Windows: stderr mặc định có thể không phải UTF-8 (khi chạy trực tiếp, không qua run_all -X utf8), tiếng Việt sẽ thành \uXXXX
+        sys.stderr.reconfigure(encoding="utf-8")
+    except (AttributeError, ValueError):
+        pass
+    print(msg, file=sys.stderr, flush=True)
+
+
+class _Heartbeat:
+    """Trong lúc một lời gọi API đang chặn, cứ HEARTBEAT_SECONDS in một dòng kèm số giây đã chờ. Chạy trong luồng nền, dừng ngay khi lời gọi xong.
+    Dùng đồng hồ thật (time.monotonic), không dùng clock của Client, nên test giả đồng hồ không bị ảnh hưởng."""
+
+    def __init__(self, log, label, every=None):
+        self.log, self.label, self.every = log, label, every or HEARTBEAT_SECONDS
+        self._stop = threading.Event()
+
+    def __enter__(self):
+        if self.log is not None:
+            began = time.monotonic()
+
+            def beat():
+                while not self._stop.wait(self.every):
+                    self.log(f"      ... {self.label} vẫn đang chờ phản hồi ({time.monotonic() - began:.0f}s)")
+            threading.Thread(target=beat, daemon=True).start()
+        return self
+
+    def __exit__(self, *exc):
+        self._stop.set()
+
+
+class LLMError(Exception):
+    pass
+
+
+class InvalidOutput(ValueError):
+    """Phản hồi của model không qua kiểm hợp lệ của bước gọi. Đã chuyển sang <cache>/<tác vụ>/_rejected/ (kèm lý do) và ĐÃ tính lượt (vì API đã tốn);
+    không nằm trong cache chính nên chạy lại sẽ gọi lại. Là ValueError để bước gọi bắt chung với lỗi kiểm của chính nó."""
+
+
+class LLMUnavailable(LLMError):
+    """Chế độ off, hoặc thiếu gói / khoá API."""
+
+
+class CacheMiss(LLMError):
+    """Chế độ replay mà chưa có phản hồi đã lưu cho đầu vào này."""
+
+
+class QuotaReached(LLMError):
+    """Hết hạn mức lượt trong ngày của một vai; các lượt đã lưu vẫn dùng được, chạy tiếp hôm sau."""
+
+
+def load_config(path=CONFIG_PATH):
+    """Đọc các dòng 'khoá = giá trị' trong llm_config.md thành dict phẳng; số nguyên đổi sang int."""
+    cfg = {}
+    for line in Path(path).read_text(encoding="utf-8").splitlines():
+        m = re.match(r"^([\w.]+)\s*=\s*(.+?)\s*$", line)
+        if m:
+            v = m[2]
+            cfg[m[1]] = int(v) if v.isdigit() else v
+    for need in ("chinh.model", "chinh.luot_moi_ngay", "kiem.model", "kiem.luot_moi_ngay", "max_output_tokens",
+                 "trich.provider", "trich.model", "trich.luot_moi_ngay", "trich.max_output_tokens", "trich.thinking",
+                 "ten.model"):  # ten: nhãn model cho khoá cache của 1.6B giai đoạn B (A37); KHÔNG nằm trong EXTRA_ROLES vì không có đường gọi API (phần LLM chạy bằng phiên Claude Code)
+        if need not in cfg:
+            raise LLMError(f"{path}: thiếu khoá {need}")
+    run = corpus.LLM_RUN
+    if run:  # A46: khoá `<lần chạy>.<khoá>` đè khoá `<khoá>`, để một lần chạy khác đổi model mà không sửa khoá của lần chạy mặc định (replay cũ giữ nguyên)
+        over = {k[len(run) + 1:]: v for k, v in cfg.items() if k.startswith(run + ".")}
+        if not over:
+            raise LLMError(f"{path}: KLTN_LLM_RUN={run} nhưng không có khoá nào bắt đầu bằng '{run}.'")
+        cfg.update(over)
+    for role in ROLES + EXTRA_ROLES + ((API_ROLE,) if f"{API_ROLE}.model" in cfg else ()):
+        if provider_of(cfg, role) not in PROVIDERS:
+            raise LLMError(f"{path}: {role}.provider = {provider_of(cfg, role)!r}, chỉ nhận {sorted(PROVIDERS)}")
+    if cfg["trich.thinking"] not in THINKING_MODES:
+        raise LLMError(f"{path}: trich.thinking = {cfg['trich.thinking']!r}, chỉ nhận {THINKING_MODES}")
+    return cfg
+
+
+def provider_of(cfg, role):
+    """Nhà cung cấp của một vai; không ghi khoá <vai>.provider thì là gemini (hai vai của 2.2 có từ trước khi thêm Claude)."""
+    return cfg.get(f"{role}.provider", "gemini")
+
+
+def cache_key(model, task, prompt_version, payload, system="", schema=None):
+    """Khoá cache = sha256 của (model, tác vụ, phiên bản prompt, đầu vào, chữ system, lược đồ): sửa prompt hay lược đồ mà quên đổi
+    phiên bản vẫn không dùng nhầm phản hồi cũ."""
+    raw = json.dumps([model, task, prompt_version, payload, system, schema], ensure_ascii=False, sort_keys=True)
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:32]
+
+
+class Client:
+    """Một lời gọi = ask(task, prompt_version, system, user, schema, role, payload)."""
+
+    def __init__(self, mode="off", config=None, cache_dir=CACHE_DIR, usage_path=USAGE_PATH, today=None, sleep=time.sleep, api=None,
+                 clock=time.monotonic, log=None, anthropic_api=None, urlopen=None):
+        if mode not in ("off", "replay", "live"):
+            raise LLMError(f"chế độ lạ: {mode!r}")
+        self.log = log  # hàm nhận 1 chuỗi (vd stderr_log); None = im lặng (mặc định, để test không in gì). Chỉ lượt gọi API thật mới ghi log, lượt đọc cache thì không
+        self.mode, self.cfg = mode, config or load_config()
+        self.cache_dir, self.usage_path = Path(cache_dir), Path(usage_path)
+        self.today = today or datetime.date.today().isoformat()
+        self.sleep, self._api, self.calls, self.hits = sleep, api, 0, 0  # calls: lượt gọi API; hits: lượt đọc lại từ cache
+        self._anthropic = anthropic_api  # client Anthropic (hoặc bản giả khi test); None thì _anthropic_client() tự dựng ở chế độ live
+        self.clock, self._last = clock, {}  # thời điểm gọi API gần nhất của từng vai, để giãn nhịp theo RPM
+        self._urlopen = urlopen or urllib.request.urlopen  # nhánh ckey; test truyền hàm giả
+
+    # ---- đếm lượt ----
+    def _usage(self):
+        if self.usage_path.exists():
+            return json.loads(self.usage_path.read_text(encoding="utf-8"))
+        return {}
+
+    def used_today(self, role):
+        with _USAGE_LOCK:
+            return self._usage().get(self.today, {}).get(role, 0)
+
+    def _count(self, role):
+        with _USAGE_LOCK:  # bộ chạy hộp cát (A46) gọi song song nhiều luồng trên MỘT Client: đọc-sửa-ghi _usage.json phải tuần tự
+            usage = self._usage()
+            day = usage.setdefault(self.today, {})
+            day[role] = day.get(role, 0) + 1
+            self.usage_path.parent.mkdir(parents=True, exist_ok=True)
+            self.usage_path.write_text(json.dumps(usage, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+
+    # ---- gọi ----
+    @staticmethod
+    def _invalid(validate, output):
+        """None nếu hợp lệ (hoặc không có validate); ngược lại lý do (validate ném ValueError)."""
+        if validate is None:
+            return None
+        try:
+            validate(output)
+        except ValueError as e:
+            return str(e) or "không hợp lệ"
+        return None
+
+    @staticmethod
+    def _quarantine(path, record, reason, move=True):
+        """Ghi phản hồi không hợp lệ vào _rejected/ cạnh cache chính (kèm lý do); move=True thì gỡ nó khỏi cache chính."""
+        dest = path.parent / "_rejected" / path.name
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_text(json.dumps({**record, "rejected_reason": reason}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+        if move:
+            path.unlink()
+
+    def ask(self, task, prompt_version, system, user, schema, role="chinh", payload=None, validate=None, label=None):
+        """Trả dict đã lưu {model, output, usage, ...}. payload (mặc định = user) dùng để tính khoá cache. label chỉ để ghi log tiến độ (vd "lô 3/13"), không vào khoá cache.
+        validate(output) ném ValueError nếu đầu ra không hợp lệ: phản hồi MỚI không hợp lệ không vào cache chính (xem InvalidOutput); phản hồi đã lưu mà
+        nay không qua kiểm (kiểm chặt hơn sau này) bị chuyển sang _rejected/ và coi như chưa có."""
+        if self.mode == "off":
+            raise LLMUnavailable("chế độ --llm off")
+        model = self.cfg[f"{role}.model"]
+        # Khoá cache KHÔNG chứa nhà cung cấp hay chế độ suy nghĩ (thêm vào sẽ đổi khoá của mọi bản ghi cũ, vỡ replay 2.2): tên model đã phân biệt hai nhà cung cấp.
+        # Hệ quả: đổi chế độ suy nghĩ của vai trich (xem _call_anthropic) mà KHÔNG nâng prompt_version của tác vụ thì cache cũ bị dùng lại âm thầm.
+        key = cache_key(model, task, prompt_version, payload if payload is not None else user, system, schema)
+        path = self.cache_dir / task / f"{key}.json"
+        if path.exists():
+            record = json.loads(path.read_text(encoding="utf-8"))
+            reason = self._invalid(validate, record.get("output"))
+            if reason is None:
+                self.hits += 1
+                return record
+            self._quarantine(path, record, reason)
+        if self.mode == "replay":
+            raise CacheMiss(f"chưa có phản hồi đã lưu cho {task}/{key} (chạy --llm live để gọi)")
+        limit = self.cfg[f"{role}.luot_moi_ngay"]
+        if self.used_today(role) >= limit:
+            raise QuotaReached(f"vai {role} đã dùng {self.used_today(role)}/{limit} lượt hôm nay ({self.today})")
+        self._throttle(role)
+        tag = f"[LLM {task} · {role}{' · ' + label if label else ''}]"
+        if self.log:
+            self.log(f"{tag} gọi {model} (lượt {role} hôm nay: {self.used_today(role) + 1}/{limit}) ...")
+        began = time.monotonic()
+        with _Heartbeat(self.log, tag):
+            if provider_of(self.cfg, role) == "ckey":
+                result = self._call_ckey(model, system, user, self.cfg.get(f"{role}.max_output_tokens", self.cfg["max_output_tokens"]))
+            elif provider_of(self.cfg, role) == "anthropic":
+                result = self._call_anthropic(model, system, user, schema, self.cfg.get(f"{role}.max_output_tokens", self.cfg["max_output_tokens"]),
+                                              self.cfg[f"{role}.thinking"])
+            else:
+                result = self._call(model, system, user, schema)
+        if self.log:
+            n_in, n_out = tokens_in_out(result.get("usage"))
+            self.log(f"{tag} xong sau {time.monotonic() - began:.0f}s (token vào {n_in}, ra {n_out})")
+        self._count(role)
+        record = {"task": task, "prompt_version": prompt_version, "role": role, "requested_model": model,
+                  "created": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
+                  "system": system, "user": user, **result}
+        reason = self._invalid(validate, result["output"])
+        if reason is not None:
+            self._quarantine(path, record, reason, move=False)
+            raise InvalidOutput(reason)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(record, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+        return record
+
+    def _throttle(self, role):
+        """Chờ cho đủ 60/rpm giây kể từ lần gọi API trước của cùng vai (llm_config.md: chinh 15 RPM, kiem 5 RPM). Lượt đọc từ cache không chờ."""
+        rpm = self.cfg.get(f"{role}.rpm")
+        if rpm:
+            wait = 60.0 / rpm - (self.clock() - self._last[role]) if role in self._last else 0
+            if wait > 0:
+                self.sleep(wait)
+        self._last[role] = self.clock()
+
+    def _client(self):
+        if self._api is not None:
+            return self._api
+        try:
+            from google import genai  # chỉ cần ở chế độ live; cài trong .venv
+        except ImportError:
+            raise LLMUnavailable("chưa cài gói google-genai; chạy: .venv/Scripts/python.exe -m pip install google-genai")
+        try:
+            self._api = genai.Client()
+        except ValueError as e:
+            raise LLMUnavailable(f"chưa có khoá Gemini; đặt biến môi trường GEMINI_API_KEY bằng `setx` (xem đầu src/run_all.py) ({e})")
+        return self._api
+
+    def _call(self, model, system, user, schema):
+        try:
+            from google.genai import errors
+            api_error = errors.APIError
+        except ImportError:
+            api_error = Exception
+        config = {"system_instruction": system, "response_mime_type": "application/json", "response_json_schema": schema,
+                  "max_output_tokens": self.cfg["max_output_tokens"]}  # temperature, thinking: để mặc định (llm_config.md)
+        client = self._client()
+        for attempt in range(1, ATTEMPTS + 1):
+            try:
+                response = client.models.generate_content(model=model, contents=user, config=config)
+                break
+            except api_error as e:
+                code = getattr(e, "code", None)
+                if code in RETRY_CODES and attempt < ATTEMPTS:
+                    if self.log:  # dòng này cho biết lượt chậm là do server báo bận (429/500/503) hay do server xử lý chậm
+                        self.log(f"      ! API trả lỗi {code} (lần {attempt}/{ATTEMPTS}), chờ {WAIT_SECONDS * attempt}s rồi thử lại")
+                    self.sleep(WAIT_SECONDS * attempt)
+                    continue
+                raise LLMError(f"API trả lỗi {code}: {getattr(e, 'message', e)}")
+        self.calls += 1
+        cands = getattr(response, "candidates", None) or []
+        if not cands:
+            raise LLMError("mô hình không trả ứng viên nào")
+        finish = getattr(cands[0].finish_reason, "name", str(cands[0].finish_reason))
+        if finish != "STOP":
+            raise LLMError(f"mô hình dừng với finish_reason {finish}")
+        usage = getattr(response, "usage_metadata", None)
+        try:
+            output = json.loads(response.text)
+        except (ValueError, TypeError) as e:
+            raise LLMError(f"đầu ra của mô hình không phải JSON ({e})")
+        return {"model": getattr(response, "model_version", None) or model, "request_id": getattr(response, "response_id", None),
+                "output": output,
+                "usage": {k: getattr(usage, k, None) for k in ("prompt_token_count", "candidates_token_count", "thoughts_token_count",
+                                                               "total_token_count")}}
+
+    def _anthropic_client(self):
+        if self._anthropic is not None:
+            return self._anthropic
+        try:
+            import anthropic  # chỉ cần ở chế độ live; cài trong .venv
+        except ImportError:
+            raise LLMUnavailable("chưa cài gói anthropic; chạy: .venv/Scripts/python.exe -m pip install anthropic")
+        if not key_is_set("anthropic"):  # chỉ nhận khoá từ ANTHROPIC_API_KEY (CONTRIBUTING.md, mục Bí mật), không dùng hồ sơ đăng nhập `ant auth login`
+            raise LLMUnavailable("chưa có khoá Anthropic; đặt biến môi trường ANTHROPIC_API_KEY bằng `setx` (xem đầu src/run_all.py)")
+        self._anthropic = anthropic.Anthropic(timeout=ANTHROPIC_TIMEOUT)
+        return self._anthropic
+
+    def _call_anthropic(self, model, system, user, schema, max_tokens, thinking):
+        """Một lời gọi Claude, đầu ra JSON ép theo lược đồ (output_config.format). Những chỗ khác nhánh Gemini:
+        - thinking {"type": thinking} với thinking lấy từ khoá <vai>.thinking của docs/llm_config.md: TẮT suy nghĩ bằng between_tools cho Sonnet 5.5 ({"type": "disabled"} bị 400
+          ở model đó) và bằng disabled cho Haiku 5.5 (between_tools bị 400 ở model đó). Suy nghĩ mặc định bật và tính vào token ra, lô nào cũng tốn thêm; bài toán này
+          (chép nguyên văn cụm, máy kiểm lại) không cần. Chế độ này KHÔNG vào khoá cache: đổi nó mà không đổi model thì phải nâng prompt_version.
+        - không đặt temperature / top_p (Sonnet 5.5 báo 400 nếu khác mặc định); không ép tool_choice (cũng 400).
+        - stop_reason khác end_turn (refusal, max_tokens ...) là lỗi, không lưu cache; KHÔNG bật server-side fallbacks vì nó có thể đổi model giữa chừng
+          (bản ghi phải cùng một model, llm_config.md)."""
+        try:
+            import anthropic
+            status_error, conn_error = anthropic.APIStatusError, anthropic.APIConnectionError
+        except ImportError:  # chưa cài gói (test bằng API giả): bắt Exception, như nhánh Gemini
+            status_error, conn_error = Exception, ()
+        client = self._anthropic_client()
+        request = dict(model=model, max_tokens=max_tokens, system=system, messages=[{"role": "user", "content": user}],
+                       thinking={"type": thinking}, output_config={"format": {"type": "json_schema", "schema": schema}})
+        for attempt in range(1, ATTEMPTS + 1):
+            try:
+                response = client.messages.create(**request)
+                break
+            except status_error as e:
+                code = getattr(e, "status_code", None)
+                if code in RETRY_CODES_ANTHROPIC and attempt < ATTEMPTS:
+                    if self.log:
+                        self.log(f"      ! API trả lỗi {code} (lần {attempt}/{ATTEMPTS}), chờ {WAIT_SECONDS * attempt}s rồi thử lại")
+                    self.sleep(WAIT_SECONDS * attempt)
+                    continue
+                raise LLMError(f"API trả lỗi {code}: {getattr(e, 'message', e)}")
+            except conn_error as e:  # gói đã tự thử lại 2 lần trước khi ném lỗi này
+                raise LLMError(f"lỗi kết nối tới API: {e}")
+        self.calls += 1
+        if response.stop_reason != "end_turn":
+            category = getattr(getattr(response, "stop_details", None), "category", None)
+            raise LLMError(f"mô hình dừng với stop_reason {response.stop_reason}" + (f" (loại {category})" if category else ""))
+        text = next((b.text for b in response.content if b.type == "text"), None)  # theo loại khối, không theo vị trí (có thể có khối thinking đứng trước)
+        try:
+            output = json.loads(text)
+        except (ValueError, TypeError) as e:
+            raise LLMError(f"đầu ra của mô hình không phải JSON ({e})")
+        usage = getattr(response, "usage", None)
+        return {"model": getattr(response, "model", None) or model, "request_id": getattr(response, "_request_id", None) or getattr(response, "id", None),
+                "output": output, "usage": {k: getattr(usage, k, None) for k in ("input_tokens", "output_tokens")}}
+
+    def _call_ckey(self, model, system, user, max_tokens):
+        """Một lời gọi tới máy chủ ckey theo giao thức Anthropic Messages (A46), bằng urllib. Khác nhánh Anthropic:
+        - không gửi thinking, output_config (lược đồ): máy chủ đổi sang model khác (Gemini) nên các trường riêng của Anthropic không chắc
+          được giữ; lược đồ chỉ nằm trong chữ lời nhắc, cổng `nhap` của từng bước kiểm hình đầu ra như khi phiên Claude Code làm;
+        - lỗi 429/5xx và lỗi mạng thử lại ATTEMPTS lần rồi ném LLMError (bước gọi dừng, chạy lại thì lượt đã xong đọc từ cache);
+        - stop_reason khác end_turn (cụt vì max_tokens ...) là lỗi, không lưu cache, như nhánh Anthropic;
+        - máy chủ không báo token vào (input_tokens = 0 khi thử 19/11): ghi nguyên số nó trả kèm chi phí (VND) nó báo, không tự tính."""
+        key = os.environ.get(PROVIDERS["ckey"])
+        if not key:
+            raise LLMUnavailable("chưa có khoá ckey; đặt biến môi trường CKEY_API_KEY bằng `setx` ở terminal riêng rồi mở terminal mới")
+        body = json.dumps({"model": model, "max_tokens": max_tokens, "system": system, "messages": [{"role": "user", "content": user}]},
+                          ensure_ascii=False).encode("utf-8")
+        req = urllib.request.Request(self.cfg[f"{API_ROLE}.base_url"].rstrip("/") + "/v1/messages", data=body, method="POST",
+                                     headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01",
+                                              "User-Agent": USER_AGENT})
+        for attempt in range(1, ATTEMPTS + 1):
+            why = None
+            try:
+                with self._urlopen(req, timeout=CKEY_TIMEOUT) as r:
+                    data = json.loads(r.read().decode("utf-8"))
+                break
+            except urllib.error.HTTPError as e:
+                detail = e.read().decode("utf-8", "replace")[:300]
+                if e.code not in RETRY_CODES_CKEY:
+                    raise LLMError(f"API trả lỗi {e.code}: {detail}")
+                why = f"lỗi {e.code}: {detail}"
+            except (urllib.error.URLError, socket.timeout, TimeoutError, OSError) as e:  # [A54] OSError: lỗi socket khác ConnectionError (gặp 21/11: Errno 49)
+                why = f"lỗi kết nối: {e}"
+            if attempt == ATTEMPTS:
+                raise LLMError(f"API {why} (đã thử {ATTEMPTS} lần)")
+            if self.log:
+                self.log(f"      ! API {why[:120]} (lần {attempt}/{ATTEMPTS}), chờ {WAIT_SECONDS * attempt}s rồi thử lại")
+            self.sleep(WAIT_SECONDS * attempt)
+        self.calls += 1
+        usage = data.get("usage") or {}
+        blocks = response_blocks(data)
+        if data.get("stop_reason") != "end_turn":
+            # Lượt cụt không vào cache, nên tóm tắt khối phải nằm trong thông báo lỗi thì log mới giữ được (chẩn đoán token ẩn, 22/11)
+            raise LLMError(f"mô hình dừng với stop_reason {data.get('stop_reason')} (token ra {usage.get('output_tokens')}, khối {blocks})")
+        text, fenced = strip_fence("".join(b.get("text", "") for b in data.get("content") or [] if b.get("type") == "text"))
+        try:
+            output = json.loads(text)
+        except (ValueError, TypeError) as e:
+            raise LLMError(f"đầu ra của mô hình không phải JSON ({e})")
+        extra = usage.get("x_ckey") or {}
+        return {"model": data.get("model") or model, "request_id": extra.get("request_id") or data.get("id"), "output": output,
+                "usage": {"input_tokens": usage.get("input_tokens"), "output_tokens": usage.get("output_tokens"), "cost_vnd": extra.get("cost")},
+                "boc_rao": fenced, "khoi_phan_hoi": blocks}
+
+
+def response_blocks(data):
+    """Tóm tắt phản hồi ckey để biết token ra đi đâu (22/11: menh-de-9 tốn token ra gấp 3,4 lần menh-de-4 mà chữ JSON chỉ hơn 7%).
+    Chỉ ghi LOẠI và SỐ KÝ TỰ của từng khối (không chép nội dung khối không phải text vào cache), cộng các khoá lạ trong usage
+    (ví dụ số token suy nghĩ nếu máy chủ có báo); khoá đã biết thì bỏ để bản ghi gọn."""
+    known = {"input_tokens", "output_tokens", "x_ckey"}
+    # "signature" của khối thinking là chuỗi mã hoá, không phải chữ model sinh: không đếm
+    blocks = [{"type": b.get("type"), "ky_tu": sum(len(v) for k, v in b.items() if k not in ("type", "signature") and isinstance(v, str))}
+              for b in data.get("content") or [] if isinstance(b, dict)]
+    return {"khoi": blocks, "usage_khac": {k: v for k, v in (data.get("usage") or {}).items() if k not in known}}
+
+
+FENCE_RE = re.compile(r"^\s*```[A-Za-z]*[ \t]*\n(.*)\n```\s*$", re.S)
+
+
+def strip_fence(text):
+    """Bóc MỘT khối rào ```...``` bọc toàn bộ đầu ra (A46: user duyệt 19/11; model Gemini hay bọc JSON trong ```json). -> (chữ, có bóc không).
+    Chỉ bóc khi cả đầu ra là một khối rào: chữ thừa ngoài rào thì để nguyên cho json.loads báo lỗi, không đoán phần nào là JSON."""
+    m = FENCE_RE.match(text or "")
+    return (m[1], True) if m else (text, False)
+
+
+def tokens_in_out(usage):
+    """(token vào, token ra) từ trường usage của một bản ghi, dù là Gemini (prompt_token_count ...) hay Anthropic (input_tokens ...). Bản ghi giữ nguyên tên của từng nhà cung cấp."""
+    u = usage or {}
+    return u.get("prompt_token_count", u.get("input_tokens")), u.get("candidates_token_count", u.get("output_tokens"))
+
+
+def key_is_set(provider="gemini"):
+    """Biến môi trường giữ khoá của nhà cung cấp có giá trị không (chỉ trả có/không, không bao giờ in khoá). Mặc định gemini: 2.2 và run_all dùng như cũ."""
+    return bool(os.environ.get(PROVIDERS[provider]))
+
+
+def check_models(cfg, client=None):
+    """Hỏi danh sách model của từng nhà cung cấp (KHÔNG tốn lượt tạo nội dung): mỗi model trong llm_config.md có tồn tại không. -> {model: bool}.
+    client: chỉ để test truyền Client có API giả; bình thường để trống."""
+    out, c = {}, client or Client("live", cfg)
+    gem = [r for r in ROLES + EXTRA_ROLES if provider_of(cfg, r) == "gemini"]
+    if gem:
+        api = c._client()
+        try:
+            names = {m.name.removeprefix("models/") for m in api.models.list()}
+        except Exception as e:  # SDK ném nhiều loại lỗi mạng / quyền
+            raise LLMError(f"models.list lỗi: {type(e).__name__}: {e}")
+        out.update({cfg[f"{r}.model"]: cfg[f"{r}.model"] in names for r in gem})
+    for r in (r for r in ROLES + EXTRA_ROLES if provider_of(cfg, r) == "anthropic"):
+        api = c._anthropic_client()
+        try:
+            api.models.retrieve(cfg[f"{r}.model"])
+            out[cfg[f"{r}.model"]] = True
+        except Exception as e:
+            if getattr(e, "status_code", None) != 404:
+                raise LLMError(f"models.retrieve lỗi: {type(e).__name__}: {e}")
+            out[cfg[f"{r}.model"]] = False
+    return out
+
+
+if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
+    cfg = load_config()
+    c = Client("off", cfg)
+    print("cấu hình:", {k: v for k, v in cfg.items() if k != "temperature"})
+    used = ROLES + EXTRA_ROLES
+    print("lượt đã dùng hôm nay:", {r: c.used_today(r) for r in used}, "| khoá:",
+          {p: "có" if key_is_set(p) else "KHÔNG THẤY" for p in sorted({provider_of(cfg, r) for r in used})})
+    if "--check-models" in sys.argv:
+        for p in sorted({provider_of(cfg, r) for r in used}):
+            if not key_is_set(p):
+                raise SystemExit(f"không thấy {PROVIDERS[p]} trong môi trường của process này (đặt khoá MỘT LẦN bằng `setx {PROVIDERS[p]}` ở terminal riêng rồi mở terminal mới; xem đầu src/run_all.py)")
+        for model, ok in check_models(cfg).items():
+            print(f"  {'có' if ok else 'KHÔNG CÓ'} trên nhà cung cấp: {model}")

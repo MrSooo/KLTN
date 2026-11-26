@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D129.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D129.K1\",\n \"tieu_de_dieu\": \"Bồi thường thiệt hại\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 3 Điều 102 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D102.K3\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động làm hư hỏng dụng cụ, thiết bị hoặc có hành vi khác gây thiệt hại tài sản của người sử dụng lao động thì phải bồi thường theo quy định của pháp luật hoặc nội quy lao động của người sử dụng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"làm hư hỏng dụng cụ, thiết bị\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"có hành vi khác gây thiệt hại tài sản của người sử dụng lao động\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải bồi thường theo quy định của pháp luật hoặc nội quy lao động của người sử dụng lao động\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Trường hợp người lao động gây thiệt hại không nghiêm trọng do sơ suất với giá trị không quá 10 tháng lương tối thiểu vùng do Chính phủ công bố được áp dụng tại nơi người lao động làm việc thì người lao động phải bồi thường nhiều nhất là 03 tháng tiền lương và bị khấu trừ hằng tháng vào lương theo quy định tại khoản 3 Điều 102 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"người lao động gây thiệt hại không nghiêm trọng do sơ suất với giá trị không quá 10 tháng lương tối thiểu vùng do Chính phủ công bố được áp dụng tại nơi người lao động làm việc\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s2.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"người lao động\",\n     \"ap_cho\": [\n      \"s2.m2\",\n      \"s2.m3\"\n     ],\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải bồi thường nhiều nhất là 03 tháng tiền lương\"\n    },\n    {\n     \"id\": \"s2.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bị khấu trừ hằng tháng vào lương theo quy định tại khoản 3 Điều 102 của Bộ luật này\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D129.K1\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"làm hư hỏng dụng cụ, thiết bị\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người lao động\",\"loai\":\"W\"},\"quy_tac\":\"q1\",\"nhom_hoac\":\"h1\"},{\"nguon\":\"s1.m2\",\"doan\":[\"có hành vi khác gây thiệt hại tài sản của người sử dụng lao động\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người lao động\",\"loai\":\"W\"},\"doi_so\":[{\"loai\":\"E\"}],\"quy_tac\":\"q1\",\"nhom_hoac\":\"h1\"},{\"nguon\":\"s1.m3\",\"doan\":[\"bồi thường\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người lao động\",\"loai\":\"W\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m3\",\"doan\":[\"theo quy định của pháp luật hoặc nội quy lao động của người sử dụng lao động\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người lao động\",\"loai\":\"W\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s2.m1\",\"doan\":[\"gây thiệt hại không nghiêm trọng\",\"với giá trị không quá 10 tháng lương tối thiểu vùng do Chính phủ công bố được áp dụng tại nơi người lao động làm việc\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người lao động\",\"loai\":\"W\"},\"quy_tac\":\"q2\"},{\"nguon\":\"s2.m1\",\"doan\":[\"sơ suất\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người lao động\",\"loai\":\"W\"},\"quy_tac\":\"q2\"},{\"nguon\":\"s2.m2\",\"doan\":[\"bồi thường nhiều nhất là 03 tháng tiền lương\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người lao động\",\"loai\":\"W\"},\"quy_tac\":\"q2\"},{\"nguon\":\"s2.m3\",\"doan\":[\"bị khấu trừ hằng tháng vào lương\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người lao động\",\"loai\":\"W\"},\"quy_tac\":\"q2\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795554048543-d8478092",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4875
+   },
+   "input_tokens": 4287,
+   "output_tokens": 643,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_e6cae61ab6d7b2b94506e2c4"
+   }
+  }
+ }
+}

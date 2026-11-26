@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Lao động được bảo đảm việc làm cũ khi trở lại làm việc sau khi nghỉ hết thời gian theo quy định tại các khoản 1, 3 và 5 Điều 139 của Bộ luật này mà không bị cắt giảm tiền lương và quyền, lợi ích so với trước khi nghỉ thai sản; trường hợp việc làm cũ không còn thì người sử dụng lao động phải bố trí việc làm khác cho họ với mức lương không thấp hơn mức lương trước khi nghỉ thai sản.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"được bảo đảm việc làm cũ\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trở lại làm việc\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"nghỉ hết thời gian theo quy định tại các khoản 1, 3 và 5 Điều 139 của Bộ luật này\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"không bị cắt giảm tiền lương và quyền, lợi ích so với trước khi nghỉ thai sản\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"việc làm cũ không còn\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"người sử dụng lao động phải bố trí việc làm khác cho họ với mức lương không thấp hơn mức lương trước khi nghỉ thai sản\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539590257-87824ddb",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2204
+   },
+   "input_tokens": 2475,
+   "output_tokens": 233,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_d7459c17c3e2a3e841365397"
+   }
+  }
+ }
+}

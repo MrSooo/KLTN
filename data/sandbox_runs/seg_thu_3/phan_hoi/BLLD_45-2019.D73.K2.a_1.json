@@ -1,0 +1,30 @@
+{
+ "cau": "Chủ tịch Hội đồng do các bên quyết định và có trách nhiệm điều phối hoạt động của Hội đồng thương lượng tập thể, hỗ trợ cho việc thương lượng tập thể của các bên;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Chủ tịch Hội đồng\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"do các bên quyết định\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"có trách nhiệm\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"điều phối hoạt động của Hội đồng thương lượng tập thể\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hỗ trợ cho việc thương lượng tập thể của các bên\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-ejQDa5jcEpuy2roP-P7T0QU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1801
+   },
+   "input_tokens": 938,
+   "output_tokens": 1944,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_eaaaf2d6d362268ec2e57bd6"
+   }
+  }
+ }
+}

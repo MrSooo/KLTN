@@ -1,0 +1,27 @@
+{
+ "cau": "Lương được trả bằng tiền mặt hoặc trả qua tài khoản cá nhân của người lao động được mở tại ngân hàng.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\"id\": \"c1\", \"loai\": \"dung_chung\", \"chu\": \"Lương được\", \"ap_cho\": [\"m1\", \"m2\"]},\n    {\"id\": \"m1\", \"loai\": \"menh_de\", \"chu\": \"trả bằng tiền mặt\"},\n    {\"id\": \"m2\", \"loai\": \"menh_de\", \"chu\": \"trả qua tài khoản cá nhân của người lao động được mở tại ngân hàng\"}\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-9joDa5miOaTC0-kP-eTo0QM",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 924,
+   "output_tokens": 126,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ccec3bab75f85fa5c177ef52"
+   }
+  }
+ }
+}

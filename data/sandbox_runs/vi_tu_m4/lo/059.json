@@ -1,0 +1,3494 @@
+{
+"chu": [
+{
+"chu_id": "C1370",
+"chu": "cưỡng bức lao động",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D165.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Các hành vi bị nghiêm cấm đối với người sử dụng lao động",
+"khoan_cha": "",
+"chu_don_vi": "Ngược đãi, quấy rối tình dục, cưỡng bức lao động, dùng vũ lực đối với lao động là người giúp việc gia đình."
+}
+],
+"ung_vien": [
+{
+"ten": "use_physical_force",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"dùng vũ lực"
+]
+},
+{
+"ten": "assign_work_outside_labor_contract",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"giao việc không theo hợp đồng lao động"
+]
+},
+{
+"ten": "retain_identity_documents",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"giữ giấy tờ tùy thân của người lao động"
+]
+},
+{
+"ten": "commit_abuse",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"ngược đãi"
+]
+},
+{
+"ten": "commit_sexual_harassment",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"quấy rối tình dục"
+]
+}
+],
+"loi_lan_truoc": "new \"forced_labor\": tên này đã có trong sổ"
+},
+{
+"chu_id": "C1377",
+"chu": "Người sử dụng lao động, người lao động",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D168.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Tham gia bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Người sử dụng lao động, người lao động phải tham gia bảo hiểm xã hội bắt buộc, bảo hiểm y tế, bảo hiểm thất nghiệp; người lao động được hưởng các chế độ theo quy định của pháp luật về bảo hiểm xã hội, bảo hiểm y tế và bảo hiểm thất nghiệp.\nKhuyến khích người sử dụng lao động, người lao động tham gia các hình thức bảo hiểm khác đối với người lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "employee",
+"params": [],
+"vi_du": [
+"Người lao động",
+"người đó",
+"một người lao động"
+]
+},
+{
+"ten": "employer",
+"params": [],
+"vi_du": [
+"Người sử dụng lao động"
+]
+}
+],
+"loi_lan_truoc": "new \"employer_and_employee\": tên này đã có trong sổ"
+},
+{
+"chu_id": "C1398",
+"chu": "thành lập, gia nhập và hoạt động công đoàn",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D170.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quyền thành lập, gia nhập và tham gia hoạt động của tổ chức đại diện người lao động tại cơ sở",
+"khoan_cha": "",
+"chu_don_vi": "Người lao động có quyền thành lập, gia nhập và hoạt động công đoàn theo quy định của Luật Công đoàn."
+}
+],
+"ung_vien": [
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "establish_join_and_operate_in_worker_organizations",
+"params": [
+"W"
+],
+"vi_du": [
+"thành lập, gia nhập, hoạt động trong tổ chức đại diện người lao động, tổ chức nghề nghiệp và tổ chức khác"
+]
+},
+{
+"ten": "include_national_wage_council_members",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập"
+]
+},
+{
+"ten": "establish_national_wage_council",
+"params": [
+"?"
+],
+"vi_du": [
+"thành lập Hội đồng tiền lương quốc gia"
+]
+},
+{
+"ten": "include_all_employees_or_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ người lao động tại các doanh nghiệp tham gia thương lượng hoặc toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "regulate_labor_leasing_license_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "decide_establish_collective_bargaining_council",
+"params": [
+"?"
+],
+"vi_du": [
+"quyết định thành lập Hội đồng thương lượng tập thể để tổ chức việc thương lượng tập thể"
+]
+},
+{
+"ten": "decide_bargaining_participant_composition",
+"params": [
+"?"
+],
+"vi_du": [
+"quyết định thành phần tham gia thương lượng tập thể"
+]
+},
+{
+"ten": "request_establish_collective_bargaining_council",
+"params": [
+"?"
+],
+"vi_du": [
+"yêu cầu Ủy ban nhân dân cấp tỉnh thành lập Hội đồng thương lượng tập thể để tiến hành thương lượng tập thể"
+]
+},
+{
+"ten": "be_established_legally",
+"params": [
+"?"
+],
+"vi_du": [
+"được thành lập hợp pháp"
+]
+},
+{
+"ten": "include_grassroots_union_and_employee_organization",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "include_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "ensure_minimum_living_standard",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm mức sống tối thiểu của người lao động và gia đình họ"
+]
+},
+{
+"ten": "have_multiple_representative_orgs_in_bargaining",
+"params": [
+"W"
+],
+"vi_du": [
+"có nhiều tổ chức đại diện tham gia thương lượng tập thể"
+]
+},
+{
+"ten": "have_participation_of_legal_representative",
+"params": [
+"W"
+],
+"vi_du": [
+"có sự tham gia của người đại diện theo pháp luật"
+]
+},
+{
+"ten": "all_employers_and_employee_orgs_consent",
+"params": [
+"?"
+],
+"vi_du": [
+"có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước"
+]
+},
+{
+"ten": "coordinate_council_and_support_bargaining",
+"params": [
+"?"
+],
+"vi_du": [
+"có trách nhiệm điều phối hoạt động của Hội đồng thương lượng tập thể, hỗ trợ cho việc thương lượng tập thể của các bên"
+]
+},
+{
+"ten": "majority_of_enterprise_employees_approve",
+"params": [
+"W"
+],
+"vi_du": [
+"có trên 50% người lao động của doanh nghiệp biểu quyết tán thành"
+]
+}
+]
+},
+{
+"chu_id": "C1399",
+"chu": "Người lao động trong doanh nghiệp",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D170.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Quyền thành lập, gia nhập và tham gia hoạt động của tổ chức đại diện người lao động tại cơ sở",
+"khoan_cha": "",
+"chu_don_vi": "Người lao động trong doanh nghiệp có quyền thành lập, gia nhập và tham gia hoạt động của tổ chức của người lao động tại doanh nghiệp theo quy định tại các điều 172, 173 và 174 của Bộ luật này."
+}
+],
+"ung_vien": [
+{
+"ten": "employee",
+"params": [],
+"vi_du": [
+"Người lao động",
+"người đó",
+"một người lao động"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"doanh nghiệp",
+"những doanh nghiệp",
+"các doanh nghiệp"
+]
+},
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "competent_state_authority",
+"params": [],
+"vi_du": [
+"cơ quan nhà nước có thẩm quyền"
+]
+},
+{
+"ten": "corporate_restructuring_or_asset_transfer",
+"params": [],
+"vi_du": [
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã",
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_parties",
+"params": [],
+"vi_du": [
+"các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "organization_individual_or_contractor",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu"
+]
+},
+{
+"ten": "enterprise_agency_organization_individual",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, cơ quan, tổ chức, cá nhân"
+]
+},
+{
+"ten": "entity_employing_foreign_worker_in_vietnam",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài"
+]
+},
+{
+"ten": "labor_leasing_enterprise_and_lessee",
+"params": [],
+"vi_du": [
+"Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động"
+]
+},
+{
+"ten": "labor_leasing_enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "member_enterprise_of_sector_or_multi_cba",
+"params": [],
+"vi_du": [
+"Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "leased_worker_labor_contract",
+"params": [],
+"vi_du": [
+"hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "sector_or_multi_enterprise_cba",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"Thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"một thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "enterprise_employees",
+"params": [],
+"vi_du": [
+"người lao động của doanh nghiệp"
+]
+},
+{
+"ten": "employer_and_employee_org_in_agreement_enterprises",
+"params": [],
+"vi_du": [
+"từng người sử dụng lao động và từng tổ chức đại diện người lao động tại các doanh nghiệp tham gia thỏa ước",
+"người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước"
+]
+},
+{
+"ten": "legal_representative_of_enterprise",
+"params": [],
+"vi_du": [
+"Người đại diện theo pháp luật của doanh nghiệp"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+}
+]
+},
+{
+"chu_id": "C1400",
+"chu": "thành lập, gia nhập và tham gia hoạt động của tổ chức của người lao động tại doanh nghiệp",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D170.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quyền thành lập, gia nhập và tham gia hoạt động của tổ chức đại diện người lao động tại cơ sở",
+"khoan_cha": "",
+"chu_don_vi": "Người lao động trong doanh nghiệp có quyền thành lập, gia nhập và tham gia hoạt động của tổ chức của người lao động tại doanh nghiệp theo quy định tại các điều 172, 173 và 174 của Bộ luật này."
+}
+],
+"ung_vien": [
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "include_all_employees_or_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ người lao động tại các doanh nghiệp tham gia thương lượng hoặc toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "establish_join_and_operate_in_worker_organizations",
+"params": [
+"W"
+],
+"vi_du": [
+"thành lập, gia nhập, hoạt động trong tổ chức đại diện người lao động, tổ chức nghề nghiệp và tổ chức khác"
+]
+},
+{
+"ten": "all_employers_and_employee_orgs_consent",
+"params": [
+"?"
+],
+"vi_du": [
+"có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước"
+]
+},
+{
+"ten": "receive_multi_enterprise_bargaining_request",
+"params": [
+"?"
+],
+"vi_du": [
+"nhận được yêu cầu của các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "agree_collective_bargaining_procedure",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận quyết định quy trình tiến hành thương lượng tập thể ngành, thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "include_national_wage_council_members",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập"
+]
+},
+{
+"ten": "include_grassroots_union_and_employee_organization",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "majority_of_enterprise_employees_approve",
+"params": [
+"W"
+],
+"vi_du": [
+"có trên 50% người lao động của doanh nghiệp biểu quyết tán thành"
+]
+},
+{
+"ten": "outside_compulsory_insurance_coverage",
+"params": [
+"W"
+],
+"vi_du": [
+"người lao động không thuộc đối tượng tham gia bảo hiểm xã hội bắt buộc, bảo hiểm y tế, bảo hiểm thất nghiệp"
+]
+},
+{
+"ten": "decide_bargaining_participant_composition",
+"params": [
+"?"
+],
+"vi_du": [
+"quyết định thành phần tham gia thương lượng tập thể"
+]
+},
+{
+"ten": "join_social_health_unemployment_insurance",
+"params": [
+"W"
+],
+"vi_du": [
+"tham gia bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp"
+]
+},
+{
+"ten": "establish_national_wage_council",
+"params": [
+"?"
+],
+"vi_du": [
+"thành lập Hội đồng tiền lương quốc gia"
+]
+},
+{
+"ten": "perform_work_under_leasing_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"thực hiện công việc theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "deduct_unemployment_insurance_period",
+"params": [
+"?"
+],
+"vi_du": [
+"trừ đi thời gian người lao động đã tham gia bảo hiểm thất nghiệp"
+]
+}
+]
+},
+{
+"chu_id": "C1401",
+"chu": "Các tổ chức đại diện người lao động",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D170.K3",
+"vai": "chu_the",
+"tieu_de_dieu": "Quyền thành lập, gia nhập và tham gia hoạt động của tổ chức đại diện người lao động tại cơ sở",
+"khoan_cha": "",
+"chu_don_vi": "Các tổ chức đại diện người lao động quy định tại khoản 1 và khoản 2 Điều này bình đẳng về quyền và nghĩa vụ trong việc đại diện bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động trong quan hệ lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "employee",
+"params": [],
+"vi_du": [
+"Người lao động",
+"người đó",
+"một người lao động"
+]
+},
+{
+"ten": "other_grassroots_employee_representative_orgs",
+"params": [],
+"vi_du": [
+"Các tổ chức đại diện người lao động tại cơ sở khác"
+]
+},
+{
+"ten": "have_grassroots_employee_representative_org",
+"params": [],
+"vi_du": [
+"có tổ chức đại diện người lao động tại cơ sở"
+]
+},
+{
+"ten": "person_under_15_and_legal_representative",
+"params": [],
+"vi_du": [
+"Người chưa đủ 15 tuổi và người đại diện theo pháp luật của người đó"
+]
+},
+{
+"ten": "employers_workers_and_representative_organizations",
+"params": [],
+"vi_du": [
+"Người sử dụng lao động, tổ chức đại diện người sử dụng lao động và người lao động, tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "employer_or_employee_rep_org_there",
+"params": [],
+"vi_du": [
+"người sử dụng lao động hoặc tổ chức đại diện của người lao động tại đó"
+]
+},
+{
+"ten": "successor_employer_and_employee_representative_org",
+"params": [],
+"vi_du": [
+"người sử dụng lao động kế tiếp và tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "employer_employee_or_employee_rep_org",
+"params": [],
+"vi_du": [
+"người sử dụng lao động và người lao động hoặc tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "employer_and_employee_org_in_agreement_enterprises",
+"params": [],
+"vi_du": [
+"từng người sử dụng lao động và từng tổ chức đại diện người lao động tại các doanh nghiệp tham gia thỏa ước",
+"người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước"
+]
+},
+{
+"ten": "representative_of_entity_without_legal_status",
+"params": [],
+"vi_du": [
+"Người đại diện của hộ gia đình, tổ hợp tác, tổ chức khác không có tư cách pháp nhân"
+]
+},
+{
+"ten": "legal_representative_of_enterprise",
+"params": [],
+"vi_du": [
+"Người đại diện theo pháp luật của doanh nghiệp"
+]
+},
+{
+"ten": "legal_representative_of_that_person",
+"params": [],
+"vi_du": [
+"người đại diện theo pháp luật của người đó"
+]
+},
+{
+"ten": "employer_representative_organization",
+"params": [],
+"vi_du": [
+"Tổ chức đại diện người sử dụng lao động",
+"Phòng Thương mại và Công nghiệp Việt Nam, Liên minh Hợp tác xã Việt Nam và các tổ chức đại diện của người sử dụng lao động khác"
+]
+},
+{
+"ten": "representative_count_per_party_in_council",
+"params": [],
+"vi_du": [
+"Số lượng đại diện mỗi bên thương lượng tham gia Hội đồng"
+]
+},
+{
+"ten": "consult_rep_org_before_temporary_suspension",
+"params": [],
+"vi_du": [
+"tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở mà người lao động đang bị xem xét tạm đình chỉ công việc là thành viên"
+]
+}
+]
+},
+{
+"chu_id": "C1402",
+"chu": "bình đẳng về quyền và nghĩa vụ",
+"params": [
+"?",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D170.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quyền thành lập, gia nhập và tham gia hoạt động của tổ chức đại diện người lao động tại cơ sở",
+"khoan_cha": "",
+"chu_don_vi": "Các tổ chức đại diện người lao động quy định tại khoản 1 và khoản 2 Điều này bình đẳng về quyền và nghĩa vụ trong việc đại diện bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động trong quan hệ lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "equal_in_exercising_rights_and_obligations",
+"params": [
+"W",
+"W"
+],
+"vi_du": [
+"bình đẳng trong thực hiện quyền và nghĩa vụ"
+]
+},
+{
+"ten": "differing_cba_employee_rights_provisions",
+"params": [
+"C",
+"W"
+],
+"vi_du": [
+"quy định về quyền, nghĩa vụ và lợi ích của người lao động khác nhau"
+]
+},
+{
+"ten": "ensure_gender_equal_pay",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bảo đảm trả lương bình đẳng, không phân biệt giới tính"
+]
+},
+{
+"ten": "less_favorable_terms_than_labor_contract",
+"params": [
+"C",
+"W"
+],
+"vi_du": [
+"có thỏa thuận về quyền, lợi ích của người lao động thấp hơn so với hợp đồng lao động mà doanh nghiệp cho thuê lại lao động đã ký với người lao động"
+]
+},
+{
+"ten": "protect_labor_rights_and_self_employment",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"bảo trợ quyền lao động, tự tạo việc làm"
+]
+},
+{
+"ten": "protect_legitimate_rights_and_interests",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"bảo vệ quyền và lợi ích hợp pháp, chính đáng",
+"bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động"
+]
+},
+{
+"ten": "ensure_employee_rights",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bảo đảm các quyền lợi cho người lao động"
+]
+},
+{
+"ten": "ensure_daily_overtime_limit_50_percent",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bảo đảm số giờ làm thêm của người lao động không quá 50% số giờ làm việc bình thường trong 01 ngày"
+]
+},
+{
+"ten": "interfere_in_employee_org_consultation_process",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"can thiệp vào quá trình tổ chức đại diện người lao động lấy ý kiến biểu quyết về dự thảo thỏa ước"
+]
+}
+]
+},
+{
+"chu_id": "C1403",
+"chu": "Công đoàn cơ sở",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D171.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam được thành lập ở các cơ quan, tổ chức, đơn vị, doanh nghiệp."
+}
+],
+"ung_vien": [
+{
+"ten": "other_grassroots_employee_representative_orgs",
+"params": [],
+"vi_du": [
+"Các tổ chức đại diện người lao động tại cơ sở khác"
+]
+},
+{
+"ten": "medical_indication_of_rest_duration",
+"params": [],
+"vi_du": [
+"có chỉ định của cơ sở khám bệnh, chữa bệnh có thẩm quyền về thời gian tạm nghỉ"
+]
+},
+{
+"ten": "have_grassroots_employee_representative_org",
+"params": [],
+"vi_du": [
+"có tổ chức đại diện người lao động tại cơ sở"
+]
+},
+{
+"ten": "consult_rep_org_before_temporary_suspension",
+"params": [],
+"vi_du": [
+"tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở mà người lao động đang bị xem xét tạm đình chỉ công việc là thành viên"
+]
+},
+{
+"ten": "suspension_duration_at_least_medical_rest",
+"params": [],
+"vi_du": [
+"thời gian tạm hoãn tối thiểu bằng thời gian do cơ sở khám bệnh, chữa bệnh có thẩm quyền chỉ định tạm nghỉ"
+]
+},
+{
+"ten": "grassroots_employee_representative_organization",
+"params": [],
+"vi_du": [
+"Tổ chức đại diện người lao động tại cơ sở",
+"các tổ chức",
+"các tổ chức đó"
+]
+},
+{
+"ten": "corporate_restructuring_or_asset_transfer",
+"params": [],
+"vi_du": [
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã",
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp"
+]
+},
+{
+"ten": "clear_risk_to_life_or_health_at_work",
+"params": [],
+"vi_du": [
+"có nguy cơ rõ ràng đe dọa trực tiếp đến tính mạng, sức khỏe trong quá trình thực hiện công việc"
+]
+},
+{
+"ten": "request_by_competent_authority",
+"params": [],
+"vi_du": [
+"có yêu cầu của cơ quan nhà nước có thẩm quyền"
+]
+},
+{
+"ten": "labor_union",
+"params": [],
+"vi_du": [
+"Công đoàn"
+]
+},
+{
+"ten": "provincial_labor_specialized_agency",
+"params": [],
+"vi_du": [
+"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "competent_state_authority",
+"params": [],
+"vi_du": [
+"cơ quan nhà nước có thẩm quyền"
+]
+}
+]
+},
+{
+"chu_id": "C1404",
+"chu": "được thành lập",
+"params": [
+"?"
+],
+"vai": [
+"dieu_kien",
+"ket_luan"
+],
+"so_lan": 5,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D171.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam được thành lập ở các cơ quan, tổ chức, đơn vị, doanh nghiệp."
+},
+{
+"don_vi": "BLLD_45-2019.D189.K4",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động",
+"khoan_cha": "",
+"chu_don_vi": "Trường hợp hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài lao động không ra quyết định giải quyết tranh chấp thì các bên có quyền yêu cầu Tòa án giải quyết."
+}
+],
+"ung_vien": [
+{
+"ten": "include_national_wage_council_members",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập"
+]
+},
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "decide_establish_collective_bargaining_council",
+"params": [
+"?"
+],
+"vi_du": [
+"quyết định thành lập Hội đồng thương lượng tập thể để tổ chức việc thương lượng tập thể"
+]
+},
+{
+"ten": "establish_join_and_operate_in_worker_organizations",
+"params": [
+"W"
+],
+"vi_du": [
+"thành lập, gia nhập, hoạt động trong tổ chức đại diện người lao động, tổ chức nghề nghiệp và tổ chức khác"
+]
+},
+{
+"ten": "establish_join_operate_employer_professional_orgs",
+"params": [
+"E"
+],
+"vi_du": [
+"thành lập, gia nhập, hoạt động trong tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác"
+]
+},
+{
+"ten": "establish_national_wage_council",
+"params": [
+"?"
+],
+"vi_du": [
+"thành lập Hội đồng tiền lương quốc gia"
+]
+},
+{
+"ten": "request_establish_collective_bargaining_council",
+"params": [
+"?"
+],
+"vi_du": [
+"yêu cầu Ủy ban nhân dân cấp tỉnh thành lập Hội đồng thương lượng tập thể để tiến hành thương lượng tập thể"
+]
+},
+{
+"ten": "be_established_legally",
+"params": [
+"?"
+],
+"vi_du": [
+"được thành lập hợp pháp"
+]
+},
+{
+"ten": "issue_work_performance_evaluation_regulation",
+"params": [
+"E"
+],
+"vi_du": [
+"ban hành quy chế đánh giá mức độ hoàn thành công việc"
+]
+},
+{
+"ten": "include_all_employees_or_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ người lao động tại các doanh nghiệp tham gia thương lượng hoặc toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "include_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "all_employers_and_employee_orgs_consent",
+"params": [
+"?"
+],
+"vi_du": [
+"có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước"
+]
+},
+{
+"ten": "majority_of_enterprise_employees_approve",
+"params": [
+"W"
+],
+"vi_du": [
+"có trên 50% người lao động của doanh nghiệp biểu quyết tán thành"
+]
+},
+{
+"ten": "record_in_minutes",
+"params": [
+"?"
+],
+"vi_du": [
+"ghi thành biên bản"
+]
+},
+{
+"ten": "complete_work",
+"params": [
+"J"
+],
+"vi_du": [
+"hoàn thành công việc"
+]
+},
+{
+"ten": "conclude_leasing_contract_in_writing_two_copies",
+"params": [
+"?"
+],
+"vi_du": [
+"ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản"
+]
+},
+{
+"ten": "owner_or_capital_contributor_of_llc",
+"params": [
+"W"
+],
+"vi_du": [
+"là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ"
+]
+},
+{
+"ten": "chair_or_board_member_of_joint_stock_company",
+"params": [
+"W"
+],
+"vi_du": [
+"là Chủ tịch Hội đồng quản trị hoặc thành viên Hội đồng quản trị của công ty cổ phần có giá trị góp vốn theo quy định của Chính phủ"
+]
+},
+{
+"ten": "make_two_copies",
+"params": [
+"C"
+],
+"vi_du": [
+"làm thành 02 bản"
+]
+},
+{
+"ten": "be_organization_with_most_members",
+"params": [
+"W"
+],
+"vi_du": [
+"là tổ chức có số thành viên nhiều nhất"
+]
+}
+]
+},
+{
+"chu_id": "C1405",
+"chu": "Tổ chức của người lao động tại doanh nghiệp",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 5,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D172.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Tổ chức của người lao động tại doanh nghiệp được thành lập và hoạt động hợp pháp sau khi cơ quan nhà nước có thẩm quyền cấp đăng ký.\nTổ chức của người lao động tại doanh nghiệp tổ chức và hoạt động phải bảo đảm nguyên tắc tuân thủ Hiến pháp, pháp luật và điều lệ; tự nguyện, tự quản, dân chủ, minh bạch."
+},
+{
+"don_vi": "BLLD_45-2019.D172.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Tổ chức của người lao động tại doanh nghiệp được thành lập và hoạt động hợp pháp sau khi cơ quan nhà nước có thẩm quyền cấp đăng ký.\nTổ chức của người lao động tại doanh nghiệp tổ chức và hoạt động phải bảo đảm nguyên tắc tuân thủ Hiến pháp, pháp luật và điều lệ; tự nguyện, tự quản, dân chủ, minh bạch."
+}
+],
+"ung_vien": [
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"doanh nghiệp",
+"những doanh nghiệp",
+"các doanh nghiệp"
+]
+},
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "competent_state_authority",
+"params": [],
+"vi_du": [
+"cơ quan nhà nước có thẩm quyền"
+]
+},
+{
+"ten": "entity_employing_foreign_worker_in_vietnam",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài"
+]
+},
+{
+"ten": "employer_and_employee_org_in_agreement_enterprises",
+"params": [],
+"vi_du": [
+"từng người sử dụng lao động và từng tổ chức đại diện người lao động tại các doanh nghiệp tham gia thỏa ước",
+"người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước"
+]
+},
+{
+"ten": "corporate_restructuring_or_asset_transfer",
+"params": [],
+"vi_du": [
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã",
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_parties",
+"params": [],
+"vi_du": [
+"các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "vietnamese_worker_for_foreign_entity_in_vn",
+"params": [],
+"vi_du": [
+"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "organization_individual_or_contractor",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu"
+]
+},
+{
+"ten": "enterprise_agency_organization_individual",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, cơ quan, tổ chức, cá nhân"
+]
+},
+{
+"ten": "labor_leasing_enterprise_and_lessee",
+"params": [],
+"vi_du": [
+"Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động"
+]
+},
+{
+"ten": "labor_leasing_enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "member_enterprise_of_sector_or_multi_cba",
+"params": [],
+"vi_du": [
+"Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "leased_worker_labor_contract",
+"params": [],
+"vi_du": [
+"hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "sector_or_multi_enterprise_cba",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"Thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"một thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "enterprise_employees",
+"params": [],
+"vi_du": [
+"người lao động của doanh nghiệp"
+]
+},
+{
+"ten": "legal_representative_of_enterprise",
+"params": [],
+"vi_du": [
+"Người đại diện theo pháp luật của doanh nghiệp"
+]
+}
+]
+},
+{
+"chu_id": "C1406",
+"chu": "được thành lập và hoạt động hợp pháp",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D172.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Tổ chức của người lao động tại doanh nghiệp được thành lập và hoạt động hợp pháp sau khi cơ quan nhà nước có thẩm quyền cấp đăng ký.\nTổ chức của người lao động tại doanh nghiệp tổ chức và hoạt động phải bảo đảm nguyên tắc tuân thủ Hiến pháp, pháp luật và điều lệ; tự nguyện, tự quản, dân chủ, minh bạch."
+}
+],
+"ung_vien": [
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "establish_join_and_operate_in_worker_organizations",
+"params": [
+"W"
+],
+"vi_du": [
+"thành lập, gia nhập, hoạt động trong tổ chức đại diện người lao động, tổ chức nghề nghiệp và tổ chức khác"
+]
+},
+{
+"ten": "establish_join_operate_employer_professional_orgs",
+"params": [
+"E"
+],
+"vi_du": [
+"thành lập, gia nhập, hoạt động trong tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác"
+]
+},
+{
+"ten": "be_established_legally",
+"params": [
+"?"
+],
+"vi_du": [
+"được thành lập hợp pháp"
+]
+},
+{
+"ten": "include_national_wage_council_members",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập"
+]
+},
+{
+"ten": "entice_or_coerce_into_illegal_activity",
+"params": [
+"W"
+],
+"vi_du": [
+"lợi dụng danh nghĩa dạy nghề, tập nghề để lôi kéo, dụ dỗ, ép buộc người học nghề, người tập nghề vào hoạt động trái pháp luật"
+]
+},
+{
+"ten": "abuse_employment_service_for_illegal_act",
+"params": [
+"W"
+],
+"vi_du": [
+"lợi dụng dịch vụ việc làm, hoạt động đưa người lao động đi làm việc ở nước ngoài theo hợp đồng để thực hiện hành vi trái pháp luật"
+]
+},
+{
+"ten": "decide_establish_collective_bargaining_council",
+"params": [
+"?"
+],
+"vi_du": [
+"quyết định thành lập Hội đồng thương lượng tập thể để tổ chức việc thương lượng tập thể"
+]
+},
+{
+"ten": "illegal_use_of_minor_labor",
+"params": [
+"W"
+],
+"vi_du": [
+"sử dụng lao động chưa thành niên trái pháp luật"
+]
+},
+{
+"ten": "establish_national_wage_council",
+"params": [
+"?"
+],
+"vi_du": [
+"thành lập Hội đồng tiền lương quốc gia"
+]
+},
+{
+"ten": "request_establish_collective_bargaining_council",
+"params": [
+"?"
+],
+"vi_du": [
+"yêu cầu Ủy ban nhân dân cấp tỉnh thành lập Hội đồng thương lượng tập thể để tiến hành thương lượng tập thể"
+]
+},
+{
+"ten": "issue_work_performance_evaluation_regulation",
+"params": [
+"E"
+],
+"vi_du": [
+"ban hành quy chế đánh giá mức độ hoàn thành công việc"
+]
+},
+{
+"ten": "include_all_employees_or_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ người lao động tại các doanh nghiệp tham gia thương lượng hoặc toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "include_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "ensure_gender_equality_and_promote_measures",
+"params": [
+"E"
+],
+"vi_du": [
+"bảo đảm thực hiện bình đẳng giới và các biện pháp thúc đẩy bình đẳng giới"
+]
+},
+{
+"ten": "meet_social_insurance_contribution_time_condition",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm điều kiện về thời gian đóng bảo hiểm xã hội theo quy định của pháp luật về bảo hiểm xã hội"
+]
+},
+{
+"ten": "notice_of_legal_representative_absence",
+"params": [
+"E"
+],
+"vi_du": [
+"bị ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật",
+"bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật"
+]
+},
+{
+"ten": "terminate_operation",
+"params": [
+"E"
+],
+"vi_du": [
+"chấm dứt hoạt động",
+"tự chấm dứt hoạt động"
+]
+},
+{
+"ten": "serve_reform_rehab_or_education_commitment",
+"params": [
+"W"
+],
+"vi_du": [
+"chấp hành quyết định áp dụng biện pháp đưa vào trường giáo dưỡng, cơ sở cai nghiện bắt buộc hoặc cơ sở giáo dục bắt buộc"
+]
+},
+{
+"ten": "include_travel_and_living_expenses",
+"params": [
+"A"
+],
+"vi_du": [
+"còn bao gồm chi phí đi lại, chi phí sinh hoạt"
+]
+}
+]
+},
+{
+"chu_id": "C1407",
+"chu": "cấp đăng ký",
+"params": [
+"?"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D172.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Tổ chức của người lao động tại doanh nghiệp được thành lập và hoạt động hợp pháp sau khi cơ quan nhà nước có thẩm quyền cấp đăng ký.\nTổ chức của người lao động tại doanh nghiệp tổ chức và hoạt động phải bảo đảm nguyên tắc tuân thủ Hiến pháp, pháp luật và điều lệ; tự nguyện, tự quản, dân chủ, minh bạch."
+}
+],
+"ung_vien": [
+{
+"ten": "notice_of_legal_representative_absence",
+"params": [
+"E"
+],
+"vi_du": [
+"bị ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật",
+"bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật"
+]
+},
+{
+"ten": "authorize_district_agency_to_register_rules",
+"params": [
+"?"
+],
+"vi_du": [
+"ủy quyền cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp huyện thực hiện việc đăng ký nội quy lao động"
+]
+},
+{
+"ten": "send_registered_internal_labor_rules",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi nội quy lao động đã được đăng ký"
+]
+},
+{
+"ten": "receive_complete_internal_rules_registration",
+"params": [
+"?"
+],
+"vi_du": [
+"nhận được đầy đủ hồ sơ đăng ký nội quy lao động"
+]
+},
+{
+"ten": "submit_internal_labor_rules_registration_dossier",
+"params": [
+"E"
+],
+"vi_du": [
+"nộp hồ sơ đăng ký nội quy lao động"
+]
+},
+{
+"ten": "register_vocational_education_activity",
+"params": [
+"E"
+],
+"vi_du": [
+"đăng ký hoạt động giáo dục nghề nghiệp"
+]
+},
+{
+"ten": "register_internal_labor_rules",
+"params": [
+"E"
+],
+"vi_du": [
+"đăng ký nội quy lao động"
+]
+},
+{
+"ten": "send_cba_to_parties_and_labor_authority",
+"params": [
+"?"
+],
+"vi_du": [
+"được gửi cho mỗi bên ký kết và cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "ensure_matching_worker_qualifications",
+"params": [
+"E"
+],
+"vi_du": [
+"bảo đảm đưa người lao động có trình độ phù hợp với những yêu cầu của bên thuê lại lao động và nội dung của hợp đồng lao động đã ký với người lao động"
+]
+},
+{
+"ten": "job_requires_intermediate_or_technical_level",
+"params": [
+"J"
+],
+"vi_du": [
+"có chức danh nghề nghiệp cần trình độ chuyên môn, kỹ thuật trung cấp, công nhân kỹ thuật, nhân viên nghiệp vụ"
+]
+},
+{
+"ten": "take_effect_from_signing_date",
+"params": [
+"C"
+],
+"vi_du": [
+"có hiệu lực kể từ ngày ký kết"
+]
+},
+{
+"ten": "include_wage_and_payment_details",
+"params": [
+"C"
+],
+"vi_du": [
+"có mức lương theo công việc hoặc chức danh, hình thức trả lương, thời hạn trả lương, phụ cấp lương và các khoản bổ sung khác"
+]
+},
+{
+"ten": "obtain_provincial_labor_authority_consent",
+"params": [
+"E"
+],
+"vi_du": [
+"có sự đồng ý của cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "grant_work_permit",
+"params": [
+"W"
+],
+"vi_du": [
+"cấp giấy phép lao động"
+]
+},
+{
+"ten": "resolve_urgent_work",
+"params": [
+"E"
+],
+"vi_du": [
+"giải quyết công việc cấp bách, không thể trì hoãn"
+]
+},
+{
+"ten": "receive_social_insurance_benefit",
+"params": [
+"W"
+],
+"vi_du": [
+"hưởng trợ cấp"
+]
+},
+{
+"ten": "omit_concluding_new_labor_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"không ký kết hợp đồng lao động mới"
+]
+},
+{
+"ten": "conclude_training_contract",
+"params": [
+"E"
+],
+"vi_du": [
+"ký hợp đồng đào tạo",
+"ký kết hợp đồng đào tạo nghề"
+]
+},
+{
+"ten": "conclude_leasing_contract_in_writing_two_copies",
+"params": [
+"?"
+],
+"vi_du": [
+"ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản"
+]
+},
+{
+"ten": "conclude_indefinite_term_labor_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"ký kết hợp đồng lao động không xác định thời hạn"
+]
+}
+]
+},
+{
+"chu_id": "C1408",
+"chu": "tổ chức và hoạt động bảo đảm nguyên tắc",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D172.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Tổ chức của người lao động tại doanh nghiệp được thành lập và hoạt động hợp pháp sau khi cơ quan nhà nước có thẩm quyền cấp đăng ký.\nTổ chức của người lao động tại doanh nghiệp tổ chức và hoạt động phải bảo đảm nguyên tắc tuân thủ Hiến pháp, pháp luật và điều lệ; tự nguyện, tự quản, dân chủ, minh bạch."
+}
+],
+"ung_vien": [
+{
+"ten": "labor_protection_and_safe_working_conditions",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo hộ lao động, làm việc trong điều kiện bảo đảm về an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "ensure_occupational_safety_and_hygiene",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "ensure_adequate_bathing_and_toilet_facilities",
+"params": [
+"E"
+],
+"vi_du": [
+"bảo đảm có đủ buồng tắm và buồng vệ sinh phù hợp"
+]
+},
+{
+"ten": "ensure_limit_of_exposure_to_hazardous_factors",
+"params": [
+"E"
+],
+"vi_du": [
+"bảo đảm giới hạn thời gian làm việc tiếp xúc với yếu tố nguy hiểm, yếu tố có hại"
+]
+},
+{
+"ten": "ensure_minimum_living_standard",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm mức sống tối thiểu của người lao động và gia đình họ"
+]
+},
+{
+"ten": "ensure_gender_equality_and_promote_measures",
+"params": [
+"E"
+],
+"vi_du": [
+"bảo đảm thực hiện bình đẳng giới và các biện pháp thúc đẩy bình đẳng giới"
+]
+},
+{
+"ten": "ensure_full_performance_of_agreed_contents",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm thực hiện đầy đủ các nội dung đã giao kết"
+]
+},
+{
+"ten": "ensure_previous_job",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm việc làm cũ"
+]
+},
+{
+"ten": "meet_social_insurance_contribution_time_condition",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm điều kiện về thời gian đóng bảo hiểm xã hội theo quy định của pháp luật về bảo hiểm xã hội"
+]
+},
+{
+"ten": "ensure_required_conditions",
+"params": [
+"?"
+],
+"vi_du": [
+"bảo đảm điều kiện"
+]
+},
+{
+"ten": "ensure_matching_worker_qualifications",
+"params": [
+"E"
+],
+"vi_du": [
+"bảo đảm đưa người lao động có trình độ phù hợp với những yêu cầu của bên thuê lại lao động và nội dung của hợp đồng lao động đã ký với người lao động"
+]
+},
+{
+"ten": "include_measures_and_financial_resources",
+"params": [
+"?"
+],
+"vi_du": [
+"có biện pháp và nguồn tài chính bảo đảm thực hiện phương án"
+]
+},
+{
+"ten": "select_content_on_occupational_safety",
+"params": [
+"?"
+],
+"vi_du": [
+"lựa chọn nội dung bảo đảm an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "select_content_ensuring_employment_for_workers",
+"params": [
+"?"
+],
+"vi_du": [
+"lựa chọn nội dung bảo đảm việc làm đối với người lao động"
+]
+},
+{
+"ten": "master_occupational_safety_knowledge_and_skills",
+"params": [
+"W"
+],
+"vi_du": [
+"nắm vững kiến thức, kỹ năng về các biện pháp bảo đảm an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "create_jobs_and_ensure_job_opportunities",
+"params": [
+"E"
+],
+"vi_du": [
+"tham gia giải quyết việc làm, bảo đảm cho mọi người có khả năng lao động đều có cơ hội có việc làm"
+]
+},
+{
+"ten": "agree_stoppage_wage_with_minimum_for_first_14_days",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận tiền lương ngừng việc nhưng phải bảo đảm tiền lương ngừng việc trong 14 ngày đầu tiên không thấp hơn mức lương tối thiểu"
+]
+},
+{
+"ten": "implement_mobilization_order_for_defense_security",
+"params": [
+"W"
+],
+"vi_du": [
+"thực hiện lệnh động viên, huy động bảo đảm nhiệm vụ quốc phòng, an ninh"
+]
+},
+{
+"ten": "implement_measures_to_ensure_occupational_safety",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện đầy đủ các giải pháp nhằm bảo đảm an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "violate_labor_contract_conclusion_principles",
+"params": [
+"?"
+],
+"vi_du": [
+"vi phạm nguyên tắc giao kết hợp đồng lao động"
+]
+}
+]
+},
+{
+"chu_id": "C1409",
+"chu": "bị thu hồi đăng ký",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D172.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Tổ chức của người lao động tại doanh nghiệp bị thu hồi đăng ký khi vi phạm về tôn chỉ, mục đích của tổ chức quy định tại điểm b khoản 1 Điều 174 của Bộ luật này hoặc tổ chức của người lao động tại doanh nghiệp chấm dứt sự tồn tại trong trường hợp chia, tách, hợp nhất, sáp nhập, giải thể hoặc doanh nghiệp giải thể, phá sản."
+}
+],
+"ung_vien": [
+{
+"ten": "notice_of_legal_representative_absence",
+"params": [
+"E"
+],
+"vi_du": [
+"bị ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật",
+"bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật"
+]
+},
+{
+"ten": "revoke_work_permit",
+"params": [
+"?"
+],
+"vi_du": [
+"bị thu hồi"
+]
+},
+{
+"ten": "send_registered_internal_labor_rules",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi nội quy lao động đã được đăng ký"
+]
+},
+{
+"ten": "receive_complete_internal_rules_registration",
+"params": [
+"?"
+],
+"vi_du": [
+"nhận được đầy đủ hồ sơ đăng ký nội quy lao động"
+]
+},
+{
+"ten": "submit_internal_labor_rules_registration_dossier",
+"params": [
+"E"
+],
+"vi_du": [
+"nộp hồ sơ đăng ký nội quy lao động"
+]
+},
+{
+"ten": "regulate_labor_leasing_license_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "regulate_work_permit_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "authorize_district_agency_to_register_rules",
+"params": [
+"?"
+],
+"vi_du": [
+"ủy quyền cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp huyện thực hiện việc đăng ký nội quy lao động"
+]
+},
+{
+"ten": "register_vocational_education_activity",
+"params": [
+"E"
+],
+"vi_du": [
+"đăng ký hoạt động giáo dục nghề nghiệp"
+]
+},
+{
+"ten": "register_internal_labor_rules",
+"params": [
+"E"
+],
+"vi_du": [
+"đăng ký nội quy lao động"
+]
+},
+{
+"ten": "ensure_matching_worker_qualifications",
+"params": [
+"E"
+],
+"vi_du": [
+"bảo đảm đưa người lao động có trình độ phù hợp với những yêu cầu của bên thuê lại lao động và nội dung của hợp đồng lao động đã ký với người lao động"
+]
+},
+{
+"ten": "forced_exit_or_deportation",
+"params": [
+"W"
+],
+"vi_du": [
+"bị buộc xuất cảnh hoặc trục xuất"
+]
+},
+{
+"ten": "breach_agreements_in_labor_leasing_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động"
+]
+},
+{
+"ten": "be_forced_labor",
+"params": [
+"?"
+],
+"vi_du": [
+"là cưỡng bức lao động",
+"bị cưỡng bức lao động"
+]
+},
+{
+"ten": "court_ordered_contractual_job_restriction",
+"params": [
+"W"
+],
+"vi_du": [
+"bị cấm làm công việc ghi trong hợp đồng lao động"
+]
+},
+{
+"ten": "receive_reprimand_after_three_months",
+"params": [
+"W"
+],
+"vi_du": [
+"bị khiển trách sau 03 tháng"
+]
+},
+{
+"ten": "monthly_wage_deduction",
+"params": [
+"W"
+],
+"vi_du": [
+"bị khấu trừ hằng tháng vào lương"
+]
+},
+{
+"ten": "be_convicted",
+"params": [
+"W"
+],
+"vi_du": [
+"bị kết án"
+]
+},
+{
+"ten": "be_laid_off",
+"params": [
+"W"
+],
+"vi_du": [
+"bị thôi việc",
+"bị mất việc làm"
+]
+},
+{
+"ten": "suffer_discrimination_forced_labor_and_harassment",
+"params": [
+"W"
+],
+"vi_du": [
+"bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc"
+]
+}
+]
+},
+{
+"chu_id": "C1410",
+"chu": "vi phạm về tôn chỉ, mục đích",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D172.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Tổ chức của người lao động tại doanh nghiệp bị thu hồi đăng ký khi vi phạm về tôn chỉ, mục đích của tổ chức quy định tại điểm b khoản 1 Điều 174 của Bộ luật này hoặc tổ chức của người lao động tại doanh nghiệp chấm dứt sự tồn tại trong trường hợp chia, tách, hợp nhất, sáp nhập, giải thể hoặc doanh nghiệp giải thể, phá sản."
+}
+],
+"ung_vien": [
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "competent_state_authority",
+"params": [],
+"vi_du": [
+"cơ quan nhà nước có thẩm quyền"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"doanh nghiệp",
+"những doanh nghiệp",
+"các doanh nghiệp"
+]
+},
+{
+"ten": "return_worker_for_labor_discipline_violation",
+"params": [],
+"vi_du": [
+"bên thuê lại lao động trả lại người lao động do vi phạm kỷ luật lao động"
+]
+},
+{
+"ten": "medical_indication_of_rest_duration",
+"params": [],
+"vi_du": [
+"có chỉ định của cơ sở khám bệnh, chữa bệnh có thẩm quyền về thời gian tạm nghỉ"
+]
+},
+{
+"ten": "violation_act",
+"params": [],
+"vi_du": [
+"hành vi vi phạm"
+]
+},
+{
+"ten": "violation_case",
+"params": [],
+"vi_du": [
+"vụ việc vi phạm"
+]
+},
+{
+"ten": "apply_highest_discipline_for_most_severe_violation",
+"params": [],
+"vi_du": [
+"áp dụng hình thức kỷ luật cao nhất tương ứng với hành vi vi phạm nặng nhất"
+]
+}
+]
+},
+{
+"chu_id": "C1411",
+"chu": "chia, tách, hợp nhất, sáp nhập, giải thể",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D172.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Tổ chức của người lao động tại doanh nghiệp bị thu hồi đăng ký khi vi phạm về tôn chỉ, mục đích của tổ chức quy định tại điểm b khoản 1 Điều 174 của Bộ luật này hoặc tổ chức của người lao động tại doanh nghiệp chấm dứt sự tồn tại trong trường hợp chia, tách, hợp nhất, sáp nhập, giải thể hoặc doanh nghiệp giải thể, phá sản."
+}
+],
+"ung_vien": [
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "competent_state_authority",
+"params": [],
+"vi_du": [
+"cơ quan nhà nước có thẩm quyền"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"doanh nghiệp",
+"những doanh nghiệp",
+"các doanh nghiệp"
+]
+},
+{
+"ten": "corporate_restructuring_or_asset_transfer",
+"params": [],
+"vi_du": [
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã",
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp"
+]
+},
+{
+"ten": "seasonal_or_fixed_term_job_under_12_months",
+"params": [],
+"vi_du": [
+"công việc theo mùa vụ, công việc nhất định có thời hạn dưới 12 tháng"
+]
+},
+{
+"ten": "resolve_successfully",
+"params": [],
+"vi_du": [
+"giải quyết được"
+]
+},
+{
+"ten": "income_generating_labor_activity",
+"params": [],
+"vi_du": [
+"là hoạt động lao động tạo ra thu nhập"
+]
+},
+{
+"ten": "minimum_wage",
+"params": [],
+"vi_du": [
+"là mức lương tối thiểu",
+"mức lương thấp nhất",
+"Mức lương tối thiểu"
+]
+}
+]
+},
+{
+"chu_id": "C1412",
+"chu": "giải thể, phá sản",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D172.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Tổ chức của người lao động tại doanh nghiệp bị thu hồi đăng ký khi vi phạm về tôn chỉ, mục đích của tổ chức quy định tại điểm b khoản 1 Điều 174 của Bộ luật này hoặc tổ chức của người lao động tại doanh nghiệp chấm dứt sự tồn tại trong trường hợp chia, tách, hợp nhất, sáp nhập, giải thể hoặc doanh nghiệp giải thể, phá sản."
+}
+],
+"ung_vien": [
+{
+"ten": "issue_reproduction_harmful_occupation_list",
+"params": [
+"?"
+],
+"vi_du": [
+"ban hành danh mục nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con"
+]
+},
+{
+"ten": "have_establishments_in_multiple_locations",
+"params": [
+"E"
+],
+"vi_du": [
+"có các chi nhánh, đơn vị, cơ sở sản xuất, kinh doanh đặt ở nhiều địa bàn khác nhau"
+]
+},
+{
+"ten": "jointly_consider_and_resolve",
+"params": [
+"?"
+],
+"vi_du": [
+"cùng xem xét giải quyết"
+]
+},
+{
+"ten": "resolve_urgent_work",
+"params": [
+"E"
+],
+"vi_du": [
+"giải quyết công việc cấp bách, không thể trì hoãn"
+]
+},
+{
+"ten": "resolve_high_technical_work_with_labor_shortage",
+"params": [
+"E"
+],
+"vi_du": [
+"giải quyết công việc đòi hỏi lao động có trình độ chuyên môn, kỹ thuật cao mà thị trường lao động không cung ứng đầy đủ, kịp thời"
+]
+},
+{
+"ten": "settle_by_applicable_collective_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"giải quyết theo thỏa ước lao động tập thể đang áp dụng"
+]
+},
+{
+"ten": "explain_demand_for_labor_use",
+"params": [
+"E"
+],
+"vi_du": [
+"giải trình nhu cầu sử dụng lao động"
+]
+},
+{
+"ten": "violation_related_to_finance_assets_or_secrets",
+"params": [
+"?"
+],
+"vi_du": [
+"hành vi vi phạm liên quan trực tiếp đến tài chính, tài sản, tiết lộ bí mật công nghệ, bí mật kinh doanh của người sử dụng lao động"
+]
+},
+{
+"ten": "damage_or_lose_assets",
+"params": [
+"E"
+],
+"vi_du": [
+"làm hỏng, mất tài sản của người sử dụng lao động"
+]
+},
+{
+"ten": "consist_of_money_property_or_other_forms",
+"params": [
+"?"
+],
+"vi_du": [
+"là số tiền hoặc tài sản hoặc bằng các hình thức khác"
+]
+},
+{
+"ten": "select_labor_dispute_resolution_content",
+"params": [
+"?"
+],
+"vi_du": [
+"lựa chọn nội dung cơ chế, phương thức phòng ngừa, giải quyết tranh chấp lao động"
+]
+},
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "specify_production_or_business_demand_cases",
+"params": [
+"E"
+],
+"vi_du": [
+"quy định cụ thể những trường hợp do nhu cầu sản xuất, kinh doanh"
+]
+}
+]
+},
+{
+"chu_id": "C1413",
+"chu": "gia nhập Công đoàn Việt Nam",
+"params": [
+"?"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D172.K3",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Trường hợp tổ chức của người lao động tại doanh nghiệp gia nhập Công đoàn Việt Nam thì thực hiện theo quy định của Luật Công đoàn."
+}
+],
+"ung_vien": [
+{
+"ten": "include_national_wage_council_members",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập"
+]
+},
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "enter_vietnam_short_term_for_technical_incident",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được"
+]
+},
+{
+"ten": "join_sector_or_multi_enterprise_cba",
+"params": [
+"E"
+],
+"vi_du": [
+"gia nhập thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "marry_vietnamese_and_reside_in_vietnam",
+"params": [
+"W"
+],
+"vi_du": [
+"kết hôn với người Việt Nam và sinh sống"
+]
+},
+{
+"ten": "foreign_lawyer_with_vietnam_practice_license",
+"params": [
+"W"
+],
+"vi_du": [
+"là luật sư nước ngoài đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư"
+]
+},
+{
+"ten": "foreign_national_employee_in_vietnam",
+"params": [
+"W"
+],
+"vi_du": [
+"người lao động là người nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "vietnamese_worker_fails_to_meet_requirements",
+"params": [
+"W"
+],
+"vi_du": [
+"người lao động Việt Nam chưa đáp ứng được"
+]
+},
+{
+"ten": "regulate_recruitment_vietnamese_for_foreign_org",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "under_international_treaty_vietnam_is_member",
+"params": [
+"W"
+],
+"vi_du": [
+"theo quy định của điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên"
+]
+},
+{
+"ten": "establish_join_and_operate_in_worker_organizations",
+"params": [
+"W"
+],
+"vi_du": [
+"thành lập, gia nhập, hoạt động trong tổ chức đại diện người lao động, tổ chức nghề nghiệp và tổ chức khác"
+]
+},
+{
+"ten": "establish_join_operate_employer_professional_orgs",
+"params": [
+"E"
+],
+"vi_du": [
+"thành lập, gia nhập, hoạt động trong tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác"
+]
+},
+{
+"ten": "comply_with_vietnamese_labor_law",
+"params": [
+"W"
+],
+"vi_du": [
+"tuân theo pháp luật lao động Việt Nam"
+]
+},
+{
+"ten": "comply_with_vietnamese_law",
+"params": [
+"W"
+],
+"vi_du": [
+"tuân theo pháp luật Việt Nam"
+]
+},
+{
+"ten": "comply_with_vietnamese_and_host_country_law",
+"params": [
+"W"
+],
+"vi_du": [
+"tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại"
+]
+},
+{
+"ten": "enter_vietnam_under_three_months_for_service_offer",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để thực hiện chào bán dịch vụ"
+]
+},
+{
+"ten": "protected_by_vietnamese_law",
+"params": [
+"W"
+],
+"vi_du": [
+"pháp luật bảo vệ",
+"được pháp luật Việt Nam bảo vệ"
+]
+},
+{
+"ten": "include_grassroots_union_and_employee_organization",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "include_all_employees_or_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ người lao động tại các doanh nghiệp tham gia thương lượng hoặc toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "ensure_minimum_living_standard",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm mức sống tối thiểu của người lao động và gia đình họ"
+]
+}
+]
+},
+{
+"chu_id": "C1414",
+"chu": "quy định về",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D172.K4",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Chính phủ quy định về hồ sơ, trình tự, thủ tục đăng ký; thẩm quyền, thủ tục cấp đăng ký, thu hồi đăng ký; quản lý nhà nước đối với vấn đề tài chính, tài sản của tổ chức của người lao động tại doanh nghiệp; chia, tách, hợp nhất, sáp nhập, giải thể, quyền liên kết của tổ chức của người lao động tại doanh nghiệp."
+}
+],
+"ung_vien": [
+{
+"ten": "notify_amendment_three_working_days_ahead",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cho bên kia biết trước ít nhất 03 ngày làm việc về nội dung cần sửa đổi, bổ sung"
+]
+},
+{
+"ten": "equal_opportunity",
+"params": [
+"W"
+],
+"vi_du": [
+"bình đẳng về cơ hội"
+]
+},
+{
+"ten": "labor_protection_and_safe_working_conditions",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo hộ lao động, làm việc trong điều kiện bảo đảm về an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "meet_social_insurance_contribution_time_condition",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm điều kiện về thời gian đóng bảo hiểm xã hội theo quy định của pháp luật về bảo hiểm xã hội"
+]
+},
+{
+"ten": "notice_of_legal_representative_absence",
+"params": [
+"E"
+],
+"vi_du": [
+"bị ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật",
+"bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật"
+]
+},
+{
+"ten": "comply_with_occupational_safety_rules",
+"params": [
+"W"
+],
+"vi_du": [
+"chấp hành quy định, nội quy, quy trình, yêu cầu về an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "obtain_provincial_labor_authority_consent",
+"params": [
+"E"
+],
+"vi_du": [
+"có sự đồng ý của cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "medical_confirmation_of_fetal_risk",
+"params": [
+"W"
+],
+"vi_du": [
+"có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi"
+]
+},
+{
+"ten": "medical_confirmation_early_return_safe",
+"params": [
+"W"
+],
+"vi_du": [
+"có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc đi làm sớm không có hại cho sức khỏe của người lao động"
+]
+},
+{
+"ten": "jointly_declare_collective_bargaining_disagreement",
+"params": [
+"?"
+],
+"vi_du": [
+"cùng xác định và tuyên bố về việc thương lượng tập thể không đạt được thỏa thuận"
+]
+},
+{
+"ten": "supervise_labor_law_enforcement",
+"params": [
+"?"
+],
+"vi_du": [
+"giám sát việc thi hành quy định của pháp luật về lao động"
+]
+},
+{
+"ten": "head_foreign_org_office_or_project",
+"params": [
+"W"
+],
+"vi_du": [
+"là Trưởng văn phòng đại diện, dự án hoặc chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài"
+]
+},
+{
+"ten": "record_and_report_leased_workers",
+"params": [
+"E"
+],
+"vi_du": [
+"lập hồ sơ ghi rõ số lao động đã cho thuê lại, bên thuê lại lao động và định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "master_occupational_safety_knowledge_and_skills",
+"params": [
+"W"
+],
+"vi_du": [
+"nắm vững kiến thức, kỹ năng về các biện pháp bảo đảm an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "absence_of_legal_provision",
+"params": [
+"?"
+],
+"vi_du": [
+"pháp luật về lao động không có quy định"
+]
+},
+{
+"ten": "regulate_domestic_worker",
+"params": [
+"E"
+],
+"vi_du": [
+"quy định về lao động là người giúp việc gia đình"
+]
+},
+{
+"ten": "decide_national_occupational_safety_program",
+"params": [
+"?"
+],
+"vi_du": [
+"quyết định Chương trình quốc gia về an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "state_management_of_labor",
+"params": [
+"?"
+],
+"vi_du": [
+"quản lý nhà nước về lao động"
+]
+},
+{
+"ten": "agree_to_add_resolution_method_content",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận bổ sung nội dung về phương thức giải quyết"
+]
+},
+{
+"ten": "agree_on_wage_payment_form",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận về hình thức trả lương"
+]
+}
+]
+},
+{
+"chu_id": "C1415",
+"chu": "có số lượng tối thiểu thành viên là người lao động làm việc tại doanh nghiệp",
+"params": [
+"?",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D173.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Ban lãnh đạo và thành viên tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Tại thời điểm đăng ký, tổ chức của người lao động tại doanh nghiệp phải có số lượng tối thiểu thành viên là người lao động làm việc tại doanh nghiệp theo quy định của Chính phủ."
+}
+],
+"ung_vien": [
+{
+"ten": "establish_vocational_training_center",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thành lập cơ sở giáo dục nghề nghiệp hoặc mở lớp đào tạo nghề tại nơi làm việc"
+]
+},
+{
+"ten": "include_quantity_and_list_of_retiring_employees",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"có số lượng và danh sách người lao động nghỉ hưu"
+]
+},
+{
+"ten": "include_quantity_and_list_of_employees",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"có số lượng và danh sách người lao động"
+]
+},
+{
+"ten": "less_favorable_terms_than_labor_contract",
+"params": [
+"C",
+"W"
+],
+"vi_du": [
+"có thỏa thuận về quyền, lợi ích của người lao động thấp hơn so với hợp đồng lao động mà doanh nghiệp cho thuê lại lao động đã ký với người lao động"
+]
+}
+]
+},
+{
+"chu_id": "C1416",
+"chu": "đăng ký",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D173.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Ban lãnh đạo và thành viên tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Tại thời điểm đăng ký, tổ chức của người lao động tại doanh nghiệp phải có số lượng tối thiểu thành viên là người lao động làm việc tại doanh nghiệp theo quy định của Chính phủ."
+}
+],
+"ung_vien": [
+{
+"ten": "within_7_working_days_of_registration_receipt",
+"params": [],
+"vi_du": [
+"trong thời hạn 07 ngày làm việc kể từ ngày nhận được hồ sơ đăng ký nội quy lao động"
+]
+},
+{
+"ten": "labor_contract_signed_by_authorized_person",
+"params": [],
+"vi_du": [
+"Hợp đồng lao động do người được ủy quyền ký kết"
+]
+},
+{
+"ten": "sign_by_wrong_authority",
+"params": [],
+"vi_du": [
+"ký sai thẩm quyền"
+]
+},
+{
+"ten": "signer",
+"params": [],
+"vi_du": [
+"Người ký kết"
+]
+},
+{
+"ten": "apply_like_collective_bargaining_and_signing",
+"params": [],
+"vi_du": [
+"thực hiện như việc thương lượng, ký kết thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "within_10_days_from_cba_signing",
+"params": [],
+"vi_du": [
+"Trong thời hạn 10 ngày kể từ ngày thỏa ước lao động tập thể được ký kết"
+]
+},
+{
+"ten": "prior_to_signing_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"trước khi ký kết"
+]
+},
+{
+"ten": "comply_with_cba_bargaining_signing_procedure",
+"params": [],
+"vi_du": [
+"tuân thủ đúng quy trình thương lượng, ký kết thỏa ước lao động tập thể"
+]
+}
+]
+},
+{
+"chu_id": "C1417",
+"chu": "Ban lãnh đạo",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D173.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Ban lãnh đạo và thành viên tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Ban lãnh đạo do thành viên của tổ chức của người lao động tại doanh nghiệp bầu. Thành viên ban lãnh đạo là người lao động Việt Nam đang làm việc tại doanh nghiệp; không đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm an ninh quốc gia, các tội xâm phạm quyền tự do của con người, quyền tự do, dân chủ của công dân, các tội xâm phạm sở hữu theo quy định của Bộ luật Hình sự."
+}
+],
+"ung_vien": [
+{
+"ten": "provincial_labor_specialized_agency",
+"params": [],
+"vi_du": [
+"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "within_10_days_from_internal_rules_issuance",
+"params": [],
+"vi_du": [
+"trong thời hạn 10 ngày kể từ ngày ban hành nội quy lao động"
+]
+},
+{
+"ten": "provincial_people_committee",
+"params": [],
+"vi_du": [
+"Ủy ban nhân dân cấp tỉnh"
+]
+}
+]
+},
+{
+"chu_id": "C1418",
+"chu": "do thành viên của tổ chức của người lao động tại doanh nghiệp bầu",
+"params": [
+"?",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D173.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Ban lãnh đạo và thành viên tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Ban lãnh đạo do thành viên của tổ chức của người lao động tại doanh nghiệp bầu. Thành viên ban lãnh đạo là người lao động Việt Nam đang làm việc tại doanh nghiệp; không đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm an ninh quốc gia, các tội xâm phạm quyền tự do của con người, quyền tự do, dân chủ của công dân, các tội xâm phạm sở hữu theo quy định của Bộ luật Hình sự."
+}
+],
+"ung_vien": [
+{
+"ten": "establish_vocational_training_center",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thành lập cơ sở giáo dục nghề nghiệp hoặc mở lớp đào tạo nghề tại nơi làm việc"
+]
+},
+{
+"ten": "less_favorable_terms_than_labor_contract",
+"params": [
+"C",
+"W"
+],
+"vi_du": [
+"có thỏa thuận về quyền, lợi ích của người lao động thấp hơn so với hợp đồng lao động mà doanh nghiệp cho thuê lại lao động đã ký với người lao động"
+]
+},
+{
+"ten": "bonus_based_on_business_results_and_completion",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"căn cứ vào kết quả sản xuất, kinh doanh, mức độ hoàn thành công việc của người lao động"
+]
+}
+]
+},
+{
+"chu_id": "C1419",
+"chu": "Thành viên ban lãnh đạo",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 2,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D173.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Ban lãnh đạo và thành viên tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Ban lãnh đạo do thành viên của tổ chức của người lao động tại doanh nghiệp bầu. Thành viên ban lãnh đạo là người lao động Việt Nam đang làm việc tại doanh nghiệp; không đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm an ninh quốc gia, các tội xâm phạm quyền tự do của con người, quyền tự do, dân chủ của công dân, các tội xâm phạm sở hữu theo quy định của Bộ luật Hình sự."
+},
+{
+"don_vi": "BLLD_45-2019.D173.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Ban lãnh đạo và thành viên tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Ban lãnh đạo do thành viên của tổ chức của người lao động tại doanh nghiệp bầu. Thành viên ban lãnh đạo là người lao động Việt Nam đang làm việc tại doanh nghiệp; không đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm an ninh quốc gia, các tội xâm phạm quyền tự do của con người, quyền tự do, dân chủ của công dân, các tội xâm phạm sở hữu theo quy định của Bộ luật Hình sự."
+}
+],
+"ung_vien": [
+{
+"ten": "member_enterprise_of_sector_or_multi_cba",
+"params": [],
+"vi_du": [
+"Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "employer_and_employee_org_in_agreement_enterprises",
+"params": [],
+"vi_du": [
+"từng người sử dụng lao động và từng tổ chức đại diện người lao động tại các doanh nghiệp tham gia thỏa ước",
+"người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước"
+]
+},
+{
+"ten": "consult_rep_org_before_temporary_suspension",
+"params": [],
+"vi_du": [
+"tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở mà người lao động đang bị xem xét tạm đình chỉ công việc là thành viên"
+]
+},
+{
+"ten": "total_membership_of_organizations",
+"params": [],
+"vi_du": [
+"tổng số thành viên của các tổ chức này"
+]
+},
+{
+"ten": "majority_of_consulted_persons_approve",
+"params": [],
+"vi_du": [
+"có trên 50% tổng số người được lấy ý kiến biểu quyết tán thành",
+"có trên 50% số người được lấy ý kiến biểu quyết tán thành"
+]
+},
+{
+"ten": "provincial_labor_specialized_agency",
+"params": [],
+"vi_du": [
+"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "minor_worker",
+"params": [],
+"vi_du": [
+"là lao động chưa thành niên",
+"Lao động chưa thành niên"
+]
+}
+]
+},
+{
+"chu_id": "C1420",
+"chu": "là người lao động Việt Nam đang làm việc tại doanh nghiệp",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D173.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Ban lãnh đạo và thành viên tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Ban lãnh đạo do thành viên của tổ chức của người lao động tại doanh nghiệp bầu. Thành viên ban lãnh đạo là người lao động Việt Nam đang làm việc tại doanh nghiệp; không đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm an ninh quốc gia, các tội xâm phạm quyền tự do của con người, quyền tự do, dân chủ của công dân, các tội xâm phạm sở hữu theo quy định của Bộ luật Hình sự."
+}
+],
+"ung_vien": [
+{
+"ten": "enter_vietnam_short_term_for_technical_incident",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được"
+]
+},
+{
+"ten": "include_grassroots_union_and_employee_organization",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "include_all_employees_or_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ người lao động tại các doanh nghiệp tham gia thương lượng hoặc toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "all_employers_and_employee_orgs_consent",
+"params": [
+"?"
+],
+"vi_du": [
+"có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước"
+]
+},
+{
+"ten": "foreign_lawyer_with_vietnam_practice_license",
+"params": [
+"W"
+],
+"vi_du": [
+"là luật sư nước ngoài đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư"
+]
+},
+{
+"ten": "foreign_national_employee_in_vietnam",
+"params": [
+"W"
+],
+"vi_du": [
+"người lao động là người nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "regulate_recruitment_vietnamese_for_foreign_org",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "comply_with_vietnamese_and_host_country_law",
+"params": [
+"W"
+],
+"vi_du": [
+"tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại"
+]
+},
+{
+"ten": "authorized_for_invested_corporate_capital",
+"params": [
+"W"
+],
+"vi_du": [
+"được ủy quyền để thực hiện quyền, trách nhiệm của doanh nghiệp đối với phần vốn của doanh nghiệp đầu tư tại doanh nghiệp khác"
+]
+},
+{
+"ten": "authorized_for_state_capital_representation",
+"params": [
+"W"
+],
+"vi_du": [
+"được ủy quyền để thực hiện quyền, trách nhiệm của đại diện chủ sở hữu nhà nước đối với phần vốn nhà nước tại doanh nghiệp"
+]
+},
+{
+"ten": "include_national_wage_council_members",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập"
+]
+},
+{
+"ten": "majority_of_enterprise_employees_approve",
+"params": [
+"W"
+],
+"vi_du": [
+"có trên 50% người lao động của doanh nghiệp biểu quyết tán thành"
+]
+}
+]
+},
+{
+"chu_id": "C1421",
+"chu": "đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D173.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Ban lãnh đạo và thành viên tổ chức của người lao động tại doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Ban lãnh đạo do thành viên của tổ chức của người lao động tại doanh nghiệp bầu. Thành viên ban lãnh đạo là người lao động Việt Nam đang làm việc tại doanh nghiệp; không đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm an ninh quốc gia, các tội xâm phạm quyền tự do của con người, quyền tự do, dân chủ của công dân, các tội xâm phạm sở hữu theo quy định của Bộ luật Hình sự."
+}
+],
+"ung_vien": [
+{
+"ten": "court_declared_civil_incapacity_missing_or_dead",
+"params": [
+"W"
+],
+"vi_du": [
+"bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết"
+]
+},
+{
+"ten": "repeat_violation_while_discipline_unexpired",
+"params": [
+"W"
+],
+"vi_du": [
+"bị xử lý kỷ luật kéo dài thời hạn nâng lương hoặc cách chức mà tái phạm trong thời gian chưa xóa kỷ luật"
+]
+},
+{
+"ten": "serve_criminal_sentence",
+"params": [
+"W"
+],
+"vi_du": [
+"là người đang trong thời gian chấp hành hình phạt"
+]
+},
+{
+"ten": "repeat_violation_before_discipline_erasure",
+"params": [
+"?"
+],
+"vi_du": [
+"là trường hợp người lao động lặp lại hành vi vi phạm đã bị xử lý kỷ luật mà chưa được xóa kỷ luật"
+]
+},
+{
+"ten": "head_foreign_org_office_or_project",
+"params": [
+"W"
+],
+"vi_du": [
+"là Trưởng văn phòng đại diện, dự án hoặc chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài"
+]
+},
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "serve_reform_rehab_or_education_commitment",
+"params": [
+"W"
+],
+"vi_du": [
+"chấp hành quyết định áp dụng biện pháp đưa vào trường giáo dưỡng, cơ sở cai nghiện bắt buộc hoặc cơ sở giáo dục bắt buộc"
+]
+},
+{
+"ten": "owner_or_capital_contributor_of_llc",
+"params": [
+"W"
+],
+"vi_du": [
+"là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ"
+]
+},
+{
+"ten": "unwanted_sexual_conduct_at_workplace",
+"params": [
+"?"
+],
+"vi_du": [
+"là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận"
+]
+},
+{
+"ten": "enter_vietnam_short_term_for_technical_incident",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được"
+]
+},
+{
+"ten": "illness_or_occupational_accident_under_treatment",
+"params": [
+"W"
+],
+"vi_du": [
+"ốm đau hoặc bị tai nạn, bệnh nghề nghiệp đang điều trị, điều dưỡng"
+]
+},
+{
+"ten": "forced_exit_or_deportation",
+"params": [
+"W"
+],
+"vi_du": [
+"bị buộc xuất cảnh hoặc trục xuất"
+]
+},
+{
+"ten": "breach_agreements_in_labor_leasing_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động"
+]
+},
+{
+"ten": "receive_reprimand_after_three_months",
+"params": [
+"W"
+],
+"vi_du": [
+"bị khiển trách sau 03 tháng"
+]
+},
+{
+"ten": "be_convicted",
+"params": [
+"W"
+],
+"vi_du": [
+"bị kết án"
+]
+},
+{
+"ten": "compensate_under_responsibility_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"bồi thường theo hợp đồng trách nhiệm"
+]
+},
+{
+"ten": "allege_incomplete_performance_or_violation_of_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "comply_with_labor_discipline_and_rules",
+"params": [
+"W"
+],
+"vi_du": [
+"chấp hành kỷ luật lao động, nội quy lao động"
+]
+},
+{
+"ten": "comply_with_occupational_safety_rules",
+"params": [
+"W"
+],
+"vi_du": [
+"chấp hành quy định, nội quy, quy trình, yêu cầu về an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "serve_half_of_discipline_term",
+"params": [
+"W"
+],
+"vi_du": [
+"chấp hành được một nửa thời hạn"
+]
+}
+]
+}
+]
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Nấu, thổi, đúc, cán, dập, hàn kim loại;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Nấu\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thổi\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"đúc\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"cán\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"dập\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"hàn\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"kim loại\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\",\"m5\",\"m6\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539660604-8d289f02",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1149
+   },
+   "input_tokens": 2392,
+   "output_tokens": 153,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_0699542e72c0b149a265d462"
+   }
+  }
+ }
+}

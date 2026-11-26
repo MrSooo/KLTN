@@ -1,0 +1,30 @@
+{
+ "cau": "Công đoàn tham gia cùng với cơ quan nhà nước có thẩm quyền hỗ trợ xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định; giám sát việc thi hành quy định của pháp luật về lao động; bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Công đoàn\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tham gia cùng với cơ quan nhà nước có thẩm quyền hỗ trợ xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"giám sát việc thi hành quy định của pháp luật về lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-0iIDa6rYBZHO2roP3eHCkQI",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 769
+   },
+   "input_tokens": 960,
+   "output_tokens": 914,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_cb6d3225fb289d2bc251a1dc"
+   }
+  }
+ }
+}

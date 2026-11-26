@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D130.K2",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D130.K2\",\n \"tieu_de_dieu\": \"Xử lý bồi thường thiệt hại\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định trình tự, thủ tục, thời hiệu xử lý việc bồi thường thiệt hại.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chính phủ quy định trình tự, thủ tục, thời hiệu xử lý việc bồi thường thiệt hại\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D130.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"quy định trình tự, thủ tục, thời hiệu xử lý việc bồi thường thiệt hại\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Chính phủ\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"trình tự\",\n    \"thủ tục\",\n    \"thời hiệu\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "G_wGa6LOFLv72roPlMyiyAE",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 695
+   },
+   "input_tokens": 4055,
+   "output_tokens": 898,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_543f27d0bd5ad6ebf9624327"
+   }
+  }
+ }
+}

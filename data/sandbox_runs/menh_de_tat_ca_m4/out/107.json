@@ -1,0 +1,185 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D111.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được nghỉ ít nhất 24 giờ liên tục",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "Mỗi tuần",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Mỗi tuần, người lao động được nghỉ ít nhất 24 giờ liên tục"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "chu kỳ lao động không thể nghỉ hằng tuần",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "Trong trường hợp đặc biệt",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Trong trường hợp đặc biệt do chu kỳ lao động không thể nghỉ hằng tuần"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có trách nhiệm bảo đảm cho người lao động được nghỉ tính bình quân 01 tháng ít nhất 04 ngày",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "D"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì người sử dụng lao động có trách nhiệm bảo đảm cho người lao động được nghỉ tính bình quân 01 tháng ít nhất 04 ngày"
+     ],
+     "quy_tac": "q2"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D111.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có quyền quyết định sắp xếp ngày nghỉ hằng tuần",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "vào ngày Chủ nhật hoặc ngày xác định khác trong tuần",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Người sử dụng lao động có quyền quyết định sắp xếp ngày nghỉ hằng tuần vào ngày Chủ nhật hoặc ngày xác định khác trong tuần"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "phải ghi vào nội quy lao động",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "nhưng phải ghi vào nội quy lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Chủ thể và đối tượng kế thừa từ vế trước; đây là nghĩa vụ kèm theo của quyền sắp xếp."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D111.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trùng với ngày nghỉ lễ, tết",
+     "chu_the": {
+      "chu": "ngày nghỉ hằng tuần",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nếu ngày nghỉ hằng tuần trùng với ngày nghỉ lễ, tết"
+     ],
+     "quy_tac": "q1",
+     "chua_ro": [
+      {
+       "thanh_phan": "phạm vi ngày nghỉ lễ, tết",
+       "nguyen_nhan": "pham_vi_bo_ngu",
+       "cau_hoi": "Chỉ áp dụng cho ngày nghỉ lễ, tết tại khoản 1 Điều 112 hay mọi ngày lễ, tết?"
+      }
+     ]
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "trich": [
+      "quy định tại khoản 1 Điều 112 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D112.K1"
+     ],
+     "gan_vao": 0
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được nghỉ bù ngày nghỉ hằng tuần",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "vào ngày làm việc kế tiếp",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "thì người lao động được nghỉ bù ngày nghỉ hằng tuần vào ngày làm việc kế tiếp"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

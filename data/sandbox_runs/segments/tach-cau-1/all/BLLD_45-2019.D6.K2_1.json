@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Người sử dụng lao động có các nghĩa vụ sau đây:",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người sử dụng lao động có các nghĩa vụ sau đây\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-hrYFa6PNLvypvr0Ppvrl4Ag",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 176
+   },
+   "input_tokens": 2247,
+   "output_tokens": 213,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d0ad0745971b5837dccb1a29"
+   }
+  }
+ }
+}

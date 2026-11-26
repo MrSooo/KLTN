@@ -1,0 +1,30 @@
+{
+ "cau": "Sa thải, kỷ luật, đơn phương chấm dứt hợp đồng lao động, không tiếp tục giao kết hoặc gia hạn hợp đồng lao động, chuyển người lao động làm công việc khác;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Sa thải\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"kỷ luật\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"đơn phương chấm dứt hợp đồng lao động\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"không tiếp tục\",\"ap_cho\":[\"m4\",\"m5\"]},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"giao kết\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"gia hạn\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"hợp đồng lao động\",\"ap_cho\":[\"m4\",\"m5\"]},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"chuyển người lao động làm công việc khác\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-UE0Da9eOObaSvr0PxIGCUA",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3368
+   },
+   "input_tokens": 938,
+   "output_tokens": 768,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_65044e207d015e94dc3ea1a4"
+   }
+  }
+ }
+}

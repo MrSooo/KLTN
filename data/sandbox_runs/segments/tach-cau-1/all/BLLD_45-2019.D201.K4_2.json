@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Việc lấy ý kiến không được làm ảnh hưởng đến hoạt động sản xuất, kinh doanh bình thường của người sử dụng lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Việc lấy ý kiến không được làm ảnh hưởng đến hoạt động sản xuất, kinh doanh bình thường của người sử dụng lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540322687-8447d1c0",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 389
+   },
+   "input_tokens": 2400,
+   "output_tokens": 51,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_82d9ecaa57d7459ce77d1457"
+   }
+  }
+ }
+}

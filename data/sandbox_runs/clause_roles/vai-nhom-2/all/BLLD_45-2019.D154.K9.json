@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D154.K9",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D154.K9\",\n \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp khác theo quy định của Chính phủ.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Trường hợp khác theo quy định của Chính phủ\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D154.K9\",\n  \"bo_qua\": \"dan_chieu_mo\",\n  \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795546350855-e5fef5a8",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1359
+   },
+   "input_tokens": 3631,
+   "output_tokens": 42,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_5533306c6a149fa83d88ae5f"
+   }
+  }
+ }
+}

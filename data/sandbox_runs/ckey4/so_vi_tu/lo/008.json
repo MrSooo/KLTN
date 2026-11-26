@@ -1,0 +1,4304 @@
+{
+"chu": [
+{
+"chu_id": "C0282",
+"chu": "bị thu hồi giấy phép",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "meet_required_conditions",
+"params": [
+"E"
+],
+"vi_du": [
+"bảo đảm điều kiện",
+"bảo đảm các điều kiện"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+},
+{
+"ten": "submit_license_issue_dossier_to_new_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ quy định tại điểm a khoản này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới để đề nghị cấp giấy phép"
+]
+},
+{
+"ten": "have_clean_criminal_record",
+"params": [
+"E"
+],
+"vi_du": [
+"không có án tích"
+]
+},
+{
+"ten": "be_enterprise_manager",
+"params": [
+"E"
+],
+"vi_du": [
+"là người quản lý doanh nghiệp"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "have_three_years_sublease_or_supply_experience",
+"params": [
+"E"
+],
+"vi_du": [
+"đã có thời gian trực tiếp làm chuyên môn hoặc quản lý về cho thuê lại lao động hoặc cung ứng lao động từ đủ 03 năm (36 tháng) trở lên"
+]
+},
+{
+"ten": "make_two_billion_dong_deposit",
+"params": [
+"E"
+],
+"vi_du": [
+"đã thực hiện ký quỹ 2.000.000.000 đồng (hai tỷ đồng)"
+]
+},
+{
+"ten": "revoke_or_deny_renewal_or_reissue_of_labor_license",
+"params": [
+"E"
+],
+"vi_du": [
+"bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép"
+]
+},
+{
+"ten": "revoke_work_permit",
+"params": [
+"?"
+],
+"vi_du": [
+"bị thu hồi"
+]
+},
+{
+"ten": "regulate_labor_sublease_license_and_jobs",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định việc ký quỹ, điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động và danh mục công việc được thực hiện cho thuê lại lao động"
+]
+},
+{
+"ten": "propose_license_revocation_to_provincial_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép của doanh nghiệp"
+]
+},
+{
+"ten": "damaged_license_with_incomplete_information",
+"params": [
+"?"
+],
+"vi_du": [
+"bị hư hỏng không còn đầy đủ thông tin trên giấy phép"
+]
+},
+{
+"ten": "license_lost",
+"params": [
+"?"
+],
+"vi_du": [
+"bị mất"
+]
+}
+]
+},
+{
+"chu_id": "C0283",
+"chu": "chấm dứt hoạt động cho thuê lại lao động theo đề nghị của doanh nghiệp cho thuê lại",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K1.a",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:",
+"chu_don_vi": "Chấm dứt hoạt động cho thuê lại lao động theo đề nghị của doanh nghiệp cho thuê lại;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "submit_license_issue_dossier_to_new_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ quy định tại điểm a khoản này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới để đề nghị cấp giấy phép"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "cease_operation",
+"params": [
+"E"
+],
+"vi_du": [
+"chấm dứt hoạt động"
+]
+},
+{
+"ten": "bear_national_symbols_and_license_title_on_blue",
+"params": [
+"?"
+],
+"vi_du": [
+"có quốc hiệu, quốc huy và dòng chữ “GIẤY PHÉP HOẠT ĐỘNG CHO THUÊ LẠI LAO ĐỘNG” in trên nền màu xanh da trời"
+]
+},
+{
+"ten": "issue_deposit_certificate_for_labor_sublease",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "request_renewal_and_change_legal_representative",
+"params": [
+"E"
+],
+"vi_du": [
+"doanh nghiệp đề nghị gia hạn giấy phép đồng thời thay đổi người đại diện theo pháp luật của doanh nghiệp"
+]
+},
+{
+"ten": "submit_license_reissue_dossier_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ theo quy định tại khoản 2 Điều này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính để đề nghị cấp lại giấy phép"
+]
+},
+{
+"ten": "submit_license_renewal_dossier_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính để đề nghị gia hạn giấy phép"
+]
+},
+{
+"ten": "send_request_and_evidence_for_information_change",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin"
+]
+}
+]
+},
+{
+"chu_id": "C0284",
+"chu": "giải thể",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K1.b",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:",
+"chu_don_vi": "Doanh nghiệp giải thể hoặc bị Tòa án ra quyết định tuyên bố phá sản;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+},
+{
+"ten": "submit_license_issue_dossier_to_new_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ quy định tại điểm a khoản này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới để đề nghị cấp giấy phép"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "explain_labor_demand",
+"params": [
+"?"
+],
+"vi_du": [
+"giải trình nhu cầu sử dụng lao động"
+]
+},
+{
+"ten": "regulate_labor_dispute_resolution_details",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết giải quyết tranh chấp lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0285",
+"chu": "bị Tòa án ra quyết định tuyên bố phá sản",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K1.b",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:",
+"chu_don_vi": "Doanh nghiệp giải thể hoặc bị Tòa án ra quyết định tuyên bố phá sản;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+},
+{
+"ten": "submit_license_issue_dossier_to_new_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ quy định tại điểm a khoản này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới để đề nghị cấp giấy phép"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "damaged_license_with_incomplete_information",
+"params": [
+"?"
+],
+"vi_du": [
+"bị hư hỏng không còn đầy đủ thông tin trên giấy phép"
+]
+},
+{
+"ten": "license_lost",
+"params": [
+"?"
+],
+"vi_du": [
+"bị mất"
+]
+},
+{
+"ten": "revoke_or_deny_renewal_or_reissue_of_labor_license",
+"params": [
+"E"
+],
+"vi_du": [
+"bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép"
+]
+},
+{
+"ten": "revoke_work_permit",
+"params": [
+"?"
+],
+"vi_du": [
+"bị thu hồi"
+]
+},
+{
+"ten": "be_sanctioned_under_law",
+"params": [
+"E"
+],
+"vi_du": [
+"bị xử lý"
+]
+},
+{
+"ten": "have_clean_criminal_record",
+"params": [
+"E"
+],
+"vi_du": [
+"không có án tích"
+]
+},
+{
+"ten": "regulate_labor_dispute_resolution_details",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết giải quyết tranh chấp lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0286",
+"chu": "không bảo đảm một trong các điều kiện",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K1.c",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:",
+"chu_don_vi": "Không bảo đảm một trong các điều kiện quy định tại Điều 21 Nghị định này;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "meet_required_conditions",
+"params": [
+"E"
+],
+"vi_du": [
+"bảo đảm điều kiện",
+"bảo đảm các điều kiện"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "submit_license_issue_dossier_to_new_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ quy định tại điểm a khoản này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới để đề nghị cấp giấy phép"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+},
+{
+"ten": "have_clean_criminal_record",
+"params": [
+"E"
+],
+"vi_du": [
+"không có án tích"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "be_enterprise_manager",
+"params": [
+"E"
+],
+"vi_du": [
+"là người quản lý doanh nghiệp"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "have_three_years_sublease_or_supply_experience",
+"params": [
+"E"
+],
+"vi_du": [
+"đã có thời gian trực tiếp làm chuyên môn hoặc quản lý về cho thuê lại lao động hoặc cung ứng lao động từ đủ 03 năm (36 tháng) trở lên"
+]
+},
+{
+"ten": "make_two_billion_dong_deposit",
+"params": [
+"E"
+],
+"vi_du": [
+"đã thực hiện ký quỹ 2.000.000.000 đồng (hai tỷ đồng)"
+]
+},
+{
+"ten": "sublease_enterprise_failing_renewal_conditions",
+"params": [
+"E"
+],
+"vi_du": [
+"cho thuê lại không bảo đảm quy định theo khoản 1 Điều này"
+]
+},
+{
+"ten": "submit_license_reissue_dossier_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ theo quy định tại khoản 2 Điều này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính để đề nghị cấp lại giấy phép"
+]
+},
+{
+"ten": "dossier_failing_requirements",
+"params": [
+"?"
+],
+"vi_du": [
+"hồ sơ không bảo đảm theo quy định"
+]
+},
+{
+"ten": "conditional_business_sector",
+"params": [
+"?"
+],
+"vi_du": [
+"là ngành, nghề kinh doanh có điều kiện"
+]
+},
+{
+"ten": "constitute_labor_sublease",
+"params": [
+"?"
+],
+"vi_du": [
+"là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động, sau đó người lao động được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác mà vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "pay_additional_security_deposit",
+"params": [
+"E"
+],
+"vi_du": [
+"nộp bổ sung tiền ký quỹ bảo đảm"
+]
+}
+]
+},
+{
+"chu_id": "C0287",
+"chu": "cho doanh nghiệp, tổ chức, cá nhân khác sử dụng giấy phép",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K1.d",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:",
+"chu_don_vi": "Cho doanh nghiệp, tổ chức, cá nhân khác sử dụng giấy phép;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+},
+{
+"ten": "submit_license_issue_dossier_to_new_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ quy định tại điểm a khoản này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới để đề nghị cấp giấy phép"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "other_relevant_entities_scope",
+"params": [
+"?"
+],
+"vi_du": [
+"Các cơ quan, tổ chức, cá nhân khác có liên quan"
+]
+},
+{
+"ten": "regulate_hiring_vietnamese_for_foreign_entities",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "labor_lessee_entity_type",
+"params": [
+"E"
+],
+"vi_du": [
+"là doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình và cá nhân"
+]
+},
+{
+"ten": "constitute_labor_sublease",
+"params": [
+"?"
+],
+"vi_du": [
+"là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động, sau đó người lao động được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác mà vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "have_demand_for_high_skilled_labor",
+"params": [
+"E"
+],
+"vi_du": [
+"có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao"
+]
+},
+{
+"ten": "explain_labor_demand",
+"params": [
+"?"
+],
+"vi_du": [
+"giải trình nhu cầu sử dụng lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0288",
+"chu": "cho thuê lại lao động để thực hiện công việc không thuộc danh mục công việc được thực hiện cho thuê lại lao động",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K1.dd",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:",
+"chu_don_vi": "Cho thuê lại lao động để thực hiện công việc không thuộc danh mục công việc được thực hiện cho thuê lại lao động tại Phụ lục II ban hành kèm theo Nghị định này;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "submit_license_issue_dossier_to_new_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ quy định tại điểm a khoản này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới để đề nghị cấp giấy phép"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "regulate_labor_sublease_license_and_jobs",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định việc ký quỹ, điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động và danh mục công việc được thực hiện cho thuê lại lao động"
+]
+},
+{
+"ten": "report_results_to_provincial_committee",
+"params": [
+"E"
+],
+"vi_du": [
+"báo cáo kết quả thực hiện về Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "regulate_workplace_dialogue_and_democracy_details",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết tổ chức đối thoại và thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc"
+]
+},
+{
+"ten": "make_deposit",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện ký quỹ",
+"nộp tiền ký quỹ"
+]
+},
+{
+"ten": "perform_labor_sublease",
+"params": [
+"?"
+],
+"vi_du": [
+"thực hiện"
+]
+},
+{
+"ten": "make_two_billion_dong_deposit",
+"params": [
+"E"
+],
+"vi_du": [
+"đã thực hiện ký quỹ 2.000.000.000 đồng (hai tỷ đồng)"
+]
+},
+{
+"ten": "make_deposit_at_another_bank",
+"params": [
+"E"
+],
+"vi_du": [
+"đã thực hiện ký quỹ tại một ngân hàng thương mại của Việt Nam hoặc chi nhánh ngân hàng thương mại nước ngoài tại Việt Nam khác"
+]
+}
+]
+},
+{
+"chu_id": "C0289",
+"chu": "có hành vi giả mạo các văn bản trong hồ sơ đề nghị cấp, gia hạn, cấp lại giấy phép",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K1.e",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:",
+"chu_don_vi": "Doanh nghiệp cho thuê lại có hành vi giả mạo các văn bản trong hồ sơ đề nghị cấp, gia hạn, cấp lại giấy phép hoặc tẩy xóa, sửa chữa nội dung giấy phép đã được cấp hoặc sử dụng giấy phép giả."
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "submit_license_issue_dossier_to_new_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ quy định tại điểm a khoản này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới để đề nghị cấp giấy phép"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "written_request_for_license_renewal_form_05",
+"params": [
+"?"
+],
+"vi_du": [
+"văn bản đề nghị gia hạn giấy phép của doanh nghiệp theo Mẫu số 05/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "reply_stating_license_renewal_refusal_reason",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản trả lời doanh nghiệp trong đó nêu rõ lý do không gia hạn giấy phép"
+]
+},
+{
+"ten": "request_enterprise_complete_dossier",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ"
+]
+},
+{
+"ten": "submit_license_renewal_dossier_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính để đề nghị gia hạn giấy phép"
+]
+},
+{
+"ten": "written_request_for_license_reissue_form_05",
+"params": [
+"?"
+],
+"vi_du": [
+"văn bản đề nghị cấp lại giấy phép theo Mẫu số 05/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "reply_stating_license_reissue_refusal_reason",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản trả lời doanh nghiệp trong đó nêu rõ lý do không cấp lại giấy phép"
+]
+},
+{
+"ten": "submit_license_reissue_dossier_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ theo quy định tại khoản 2 Điều này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính để đề nghị cấp lại giấy phép"
+]
+},
+{
+"ten": "send_request_and_evidence_for_information_change",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin"
+]
+},
+{
+"ten": "written_request_for_deposit_withdrawal",
+"params": [
+"E"
+],
+"vi_du": [
+"Văn bản đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại"
+]
+}
+]
+},
+{
+"chu_id": "C0290",
+"chu": "tẩy xóa, sửa chữa nội dung giấy phép đã được cấp",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K1.e",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:",
+"chu_don_vi": "Doanh nghiệp cho thuê lại có hành vi giả mạo các văn bản trong hồ sơ đề nghị cấp, gia hạn, cấp lại giấy phép hoặc tẩy xóa, sửa chữa nội dung giấy phép đã được cấp hoặc sử dụng giấy phép giả."
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+},
+{
+"ten": "submit_license_issue_dossier_to_new_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ quy định tại điểm a khoản này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới để đề nghị cấp giấy phép"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "change_license_content",
+"params": [
+"E"
+],
+"vi_du": [
+"thay đổi một trong các nội dung của giấy phép đã được cấp"
+]
+},
+{
+"ten": "print_content_on_white_blue_pattern_background",
+"params": [
+"?"
+],
+"vi_du": [
+"ghi nội dung của giấy phép trên nền trắng có hoa văn màu xanh da trời"
+]
+},
+{
+"ten": "previously_issued_license",
+"params": [
+"?"
+],
+"vi_du": [
+"giấy phép đã được cấp trước đó"
+]
+},
+{
+"ten": "constitute_labor_sublease",
+"params": [
+"?"
+],
+"vi_du": [
+"là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động, sau đó người lao động được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác mà vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "maintain_sublease_records_and_report_periodically",
+"params": [
+"E"
+],
+"vi_du": [
+"lập hồ sơ ghi rõ số lao động đã cho thuê lại, bên thuê lại lao động và định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "relocate_headquarters_to_another_province",
+"params": [
+"E"
+],
+"vi_du": [
+"thay đổi địa chỉ trụ sở chính sang địa bàn cấp tỉnh khác so với nơi đã được cấp giấy phép"
+]
+}
+]
+},
+{
+"chu_id": "C0291",
+"chu": "sử dụng giấy phép giả",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K1.e",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:",
+"chu_don_vi": "Doanh nghiệp cho thuê lại có hành vi giả mạo các văn bản trong hồ sơ đề nghị cấp, gia hạn, cấp lại giấy phép hoặc tẩy xóa, sửa chữa nội dung giấy phép đã được cấp hoặc sử dụng giấy phép giả."
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+},
+{
+"ten": "submit_license_issue_dossier_to_new_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ quy định tại điểm a khoản này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới để đề nghị cấp giấy phép"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "have_demand_for_high_skilled_labor",
+"params": [
+"E"
+],
+"vi_du": [
+"có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao"
+]
+},
+{
+"ten": "explain_labor_demand",
+"params": [
+"?"
+],
+"vi_du": [
+"giải trình nhu cầu sử dụng lao động"
+]
+},
+{
+"ten": "constitute_labor_sublease",
+"params": [
+"?"
+],
+"vi_du": [
+"là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động, sau đó người lao động được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác mà vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "employer_entity",
+"params": [
+"E"
+],
+"vi_du": [
+"Người sử dụng lao động"
+]
+},
+{
+"ten": "use_leased_labor",
+"params": [
+"E"
+],
+"vi_du": [
+"sử dụng lao động thuê lại"
+]
+},
+{
+"ten": "meet_temporary_surge_in_labor_demand",
+"params": [
+"E"
+],
+"vi_du": [
+"đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0292",
+"chu": "hồ sơ đề nghị thu hồi giấy phép",
+"params": [],
+"vai": [
+"chu_the",
+"ket_luan"
+],
+"so_lan": 5,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "",
+"chu_don_vi": "Hồ sơ đề nghị thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này, gồm:"
+},
+{
+"don_vi": "ND_145-2020.D28.K2.a",
+"vai": "chu_the",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Hồ sơ đề nghị thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này, gồm:",
+"chu_don_vi": "Văn bản đề nghị thu hồi giấy phép theo Mẫu số 06/PLIII Phụ lục III ban hành kèm theo Nghị định này;"
+}
+],
+"ung_vien": [
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "labor_sublease_company",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise_entity",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "department_of_labor_invalids_and_social_affairs",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "enterprise_eligible_for_license_renewal",
+"params": [],
+"vi_du": [
+"Doanh nghiệp được gia hạn giấy phép"
+]
+},
+{
+"ten": "license_reissue_application_dossier",
+"params": [],
+"vi_du": [
+"Hồ sơ đề nghị cấp lại giấy phép"
+]
+},
+{
+"ten": "license_renewal_application_dossier",
+"params": [],
+"vi_du": [
+"Hồ sơ đề nghị gia hạn giấy phép"
+]
+},
+{
+"ten": "generic_application_dossier",
+"params": [],
+"vi_du": [
+"hồ sơ"
+]
+}
+]
+},
+{
+"chu_id": "C0293",
+"chu": "văn bản đề nghị thu hồi giấy phép theo Mẫu số 06/PLIII Phụ lục III ban hành kèm theo Nghị định này",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K2.a",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Hồ sơ đề nghị thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này, gồm:",
+"chu_don_vi": "Văn bản đề nghị thu hồi giấy phép theo Mẫu số 06/PLIII Phụ lục III ban hành kèm theo Nghị định này;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "written_request_for_license_reissue_form_05",
+"params": [
+"?"
+],
+"vi_du": [
+"văn bản đề nghị cấp lại giấy phép theo Mẫu số 05/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "written_request_for_license_renewal_form_05",
+"params": [
+"?"
+],
+"vi_du": [
+"văn bản đề nghị gia hạn giấy phép của doanh nghiệp theo Mẫu số 05/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "follow_form_04_pliii_appendix_iii",
+"params": [
+"?"
+],
+"vi_du": [
+"theo Mẫu số 04/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "deduct_deposit_money",
+"params": [
+"?"
+],
+"vi_du": [
+"trích tiền ký quỹ",
+"trích tiền ký quỹ theo Mẫu số 03/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "documents_under_clauses_2_3_4_5_article_24",
+"params": [
+"?"
+],
+"vi_du": [
+"các văn bản quy định tại các khoản 2, 3, 4 và khoản 5 Điều 24 Nghị định này"
+]
+},
+{
+"ten": "documents_under_clauses_2_3_4_article_24",
+"params": [
+"?"
+],
+"vi_du": [
+"các văn bản quy định tại các khoản 2, 3 và khoản 4 Điều 24 Nghị định này"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "send_request_and_evidence_for_information_change",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin"
+]
+},
+{
+"ten": "document_under_clause_5_article_24",
+"params": [
+"?"
+],
+"vi_du": [
+"văn bản quy định tại khoản 5 Điều 24 Nghị định này"
+]
+},
+{
+"ten": "written_request_for_deposit_withdrawal",
+"params": [
+"E"
+],
+"vi_du": [
+"Văn bản đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "revoke_or_deny_renewal_or_reissue_of_labor_license",
+"params": [
+"E"
+],
+"vi_du": [
+"bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép"
+]
+},
+{
+"ten": "revoke_work_permit",
+"params": [
+"?"
+],
+"vi_du": [
+"bị thu hồi"
+]
+},
+{
+"ten": "reply_stating_license_reissue_refusal_reason",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản trả lời doanh nghiệp trong đó nêu rõ lý do không cấp lại giấy phép"
+]
+},
+{
+"ten": "reply_stating_license_renewal_refusal_reason",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản trả lời doanh nghiệp trong đó nêu rõ lý do không gia hạn giấy phép"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "request_enterprise_complete_dossier",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ"
+]
+}
+]
+},
+{
+"chu_id": "C0294",
+"chu": "giấy phép đã được cấp hoặc văn bản cam kết chịu trách nhiệm trước pháp luật của doanh nghiệp cho thuê lại đối với trường hợp giấy phép bị mất",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K2.b",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Hồ sơ đề nghị thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này, gồm:",
+"chu_don_vi": "Giấy phép đã được cấp hoặc văn bản cam kết chịu trách nhiệm trước pháp luật của doanh nghiệp cho thuê lại đối với trường hợp giấy phép bị mất;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "have_criminal_record_or_pending_prosecution",
+"params": [
+"W"
+],
+"vi_du": [
+"là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam"
+]
+},
+{
+"ten": "lead_foreign_ngo_or_intl_organization_in_vietnam",
+"params": [
+"W"
+],
+"vi_du": [
+"là Trưởng văn phòng đại diện, dự án hoặc chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "sign_written_labor_sublease_contract_in_two_copies",
+"params": [
+"?"
+],
+"vi_du": [
+"ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản"
+]
+},
+{
+"ten": "be_owner_or_capital_contributor_of_llc",
+"params": [
+"W"
+],
+"vi_du": [
+"là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ"
+]
+},
+{
+"ten": "constitute_labor_sublease",
+"params": [
+"?"
+],
+"vi_du": [
+"là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động, sau đó người lao động được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác mà vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "regulate_discipline_and_material_liability",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết kỷ luật lao động, trách nhiệm vật chất"
+]
+},
+{
+"ten": "forced_to_exit_or_deported",
+"params": [
+"W"
+],
+"vi_du": [
+"bị buộc xuất cảnh hoặc trục xuất"
+]
+},
+{
+"ten": "license_lost",
+"params": [
+"?"
+],
+"vi_du": [
+"bị mất"
+]
+},
+{
+"ten": "revoke_or_deny_renewal_or_reissue_of_labor_license",
+"params": [
+"E"
+],
+"vi_du": [
+"bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép"
+]
+},
+{
+"ten": "documents_under_clauses_2_3_4_5_article_24",
+"params": [
+"?"
+],
+"vi_du": [
+"các văn bản quy định tại các khoản 2, 3, 4 và khoản 5 Điều 24 Nghị định này"
+]
+},
+{
+"ten": "documents_under_clauses_2_3_4_article_24",
+"params": [
+"?"
+],
+"vi_du": [
+"các văn bản quy định tại các khoản 2, 3 và khoản 4 Điều 24 Nghị định này"
+]
+},
+{
+"ten": "reply_stating_license_reissue_refusal_reason",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản trả lời doanh nghiệp trong đó nêu rõ lý do không cấp lại giấy phép"
+]
+},
+{
+"ten": "reply_stating_license_renewal_refusal_reason",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản trả lời doanh nghiệp trong đó nêu rõ lý do không gia hạn giấy phép"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "request_enterprise_complete_dossier",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ"
+]
+},
+{
+"ten": "request_renewal_and_change_legal_representative",
+"params": [
+"E"
+],
+"vi_du": [
+"doanh nghiệp đề nghị gia hạn giấy phép đồng thời thay đổi người đại diện theo pháp luật của doanh nghiệp"
+]
+},
+{
+"ten": "maintain_labor_relation_with_contracting_employer",
+"params": [
+"W"
+],
+"vi_du": [
+"duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0295",
+"chu": "báo cáo tình hình hoạt động cho thuê lại lao động của doanh nghiệp theo Mẫu số 09/PLIII Phụ lục III ban hành kèm theo Nghị định này",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K2.c",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Hồ sơ đề nghị thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này, gồm:",
+"chu_don_vi": "Báo cáo tình hình hoạt động cho thuê lại lao động của doanh nghiệp theo Mẫu số 09/PLIII Phụ lục III ban hành kèm theo Nghị định này;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "follow_form_04_pliii_appendix_iii",
+"params": [
+"?"
+],
+"vi_du": [
+"theo Mẫu số 04/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "deduct_deposit_money",
+"params": [
+"?"
+],
+"vi_du": [
+"trích tiền ký quỹ",
+"trích tiền ký quỹ theo Mẫu số 03/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "written_request_for_license_reissue_form_05",
+"params": [
+"?"
+],
+"vi_du": [
+"văn bản đề nghị cấp lại giấy phép theo Mẫu số 05/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "written_request_for_license_renewal_form_05",
+"params": [
+"?"
+],
+"vi_du": [
+"văn bản đề nghị gia hạn giấy phép của doanh nghiệp theo Mẫu số 05/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "maintain_sublease_records_and_report_periodically",
+"params": [
+"E"
+],
+"vi_du": [
+"lập hồ sơ ghi rõ số lao động đã cho thuê lại, bên thuê lại lao động và định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "report_results_to_provincial_committee",
+"params": [
+"E"
+],
+"vi_du": [
+"báo cáo kết quả thực hiện về Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "complete_report",
+"params": [
+"E"
+],
+"vi_du": [
+"hoàn thành việc báo cáo"
+]
+},
+{
+"ten": "have_criminal_record_or_pending_prosecution",
+"params": [
+"W"
+],
+"vi_du": [
+"là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam"
+]
+},
+{
+"ten": "comply_with_reporting_regime",
+"params": [
+"E"
+],
+"vi_du": [
+"tuân thủ đầy đủ chế độ báo cáo"
+]
+},
+{
+"ten": "sublease_enterprise_failing_renewal_conditions",
+"params": [
+"E"
+],
+"vi_du": [
+"cho thuê lại không bảo đảm quy định theo khoản 1 Điều này"
+]
+},
+{
+"ten": "cease_operation",
+"params": [
+"E"
+],
+"vi_du": [
+"chấm dứt hoạt động"
+]
+},
+{
+"ten": "comply_with_labor_discipline_and_rules",
+"params": [
+"W"
+],
+"vi_du": [
+"chấp hành kỷ luật lao động, nội quy lao động"
+]
+},
+{
+"ten": "documents_under_clauses_2_3_4_5_article_24",
+"params": [
+"?"
+],
+"vi_du": [
+"các văn bản quy định tại các khoản 2, 3, 4 và khoản 5 Điều 24 Nghị định này"
+]
+},
+{
+"ten": "documents_under_clauses_2_3_4_article_24",
+"params": [
+"?"
+],
+"vi_du": [
+"các văn bản quy định tại các khoản 2, 3 và khoản 4 Điều 24 Nghị định này"
+]
+},
+{
+"ten": "have_embossed_national_emblem",
+"params": [
+"?"
+],
+"vi_du": [
+"có hình quốc huy in chìm"
+]
+},
+{
+"ten": "have_full_civil_act_capacity",
+"params": [
+"E"
+],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ"
+]
+}
+]
+},
+{
+"chu_id": "C0296",
+"chu": "bản sao hợp đồng cho thuê lại lao động đang còn hiệu lực đến thời điểm đề nghị thu hồi giấy phép",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K2.d",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Hồ sơ đề nghị thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này, gồm:",
+"chu_don_vi": "Bản sao hợp đồng cho thuê lại lao động đang còn hiệu lực đến thời điểm đề nghị thu hồi giấy phép."
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "submit_license_issue_dossier_to_new_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ quy định tại điểm a khoản này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới để đề nghị cấp giấy phép"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "enterprise_registration_certificate_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"bản sao giấy chứng nhận đăng ký doanh nghiệp"
+]
+},
+{
+"ten": "revoke_or_deny_renewal_or_reissue_of_labor_license",
+"params": [
+"E"
+],
+"vi_du": [
+"bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép"
+]
+},
+{
+"ten": "revoke_work_permit",
+"params": [
+"?"
+],
+"vi_du": [
+"bị thu hồi"
+]
+},
+{
+"ten": "request_renewal_and_change_legal_representative",
+"params": [
+"E"
+],
+"vi_du": [
+"doanh nghiệp đề nghị gia hạn giấy phép đồng thời thay đổi người đại diện theo pháp luật của doanh nghiệp"
+]
+},
+{
+"ten": "submit_license_reissue_dossier_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ theo quy định tại khoản 2 Điều này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính để đề nghị cấp lại giấy phép"
+]
+},
+{
+"ten": "submit_license_renewal_dossier_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính để đề nghị gia hạn giấy phép"
+]
+},
+{
+"ten": "send_request_and_evidence_for_information_change",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin"
+]
+},
+{
+"ten": "work_permit_become_invalid",
+"params": [
+"?"
+],
+"vi_du": [
+"hết hiệu lực"
+]
+},
+{
+"ten": "have_criminal_record_or_pending_prosecution",
+"params": [
+"W"
+],
+"vi_du": [
+"là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam"
+]
+},
+{
+"ten": "regulate_labor_sublease_license_and_jobs",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định việc ký quỹ, điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động và danh mục công việc được thực hiện cho thuê lại lao động"
+]
+},
+{
+"ten": "reissued_license_term_equals_remaining_term",
+"params": [
+"?"
+],
+"vi_du": [
+"thời hạn giấy phép được cấp lại bằng thời hạn còn lại của giấy phép đã được cấp trước đó"
+]
+},
+{
+"ten": "propose_license_revocation_to_provincial_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép của doanh nghiệp"
+]
+},
+{
+"ten": "short_term_entry_to_resolve_technical_incident",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được"
+]
+},
+{
+"ten": "written_request_for_license_reissue_form_05",
+"params": [
+"?"
+],
+"vi_du": [
+"văn bản đề nghị cấp lại giấy phép theo Mẫu số 05/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+}
+]
+},
+{
+"chu_id": "C0297",
+"chu": "trình tự, thủ tục thu hồi giấy phép",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 2,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "",
+"chu_don_vi": "Trình tự, thủ tục thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này như sau:"
+},
+{
+"don_vi": "ND_145-2020.D28.K4",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "",
+"chu_don_vi": "Trình tự, thủ tục thu hồi giấy phép đối với trường hợp quy định tại các điểm c, d, đ và điểm e khoản 1 Điều này thực hiện như sau:"
+}
+],
+"ung_vien": [
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "labor_sublease_company",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise_entity",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "department_of_labor_invalids_and_social_affairs",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "enterprise_eligible_for_license_renewal",
+"params": [],
+"vi_du": [
+"Doanh nghiệp được gia hạn giấy phép"
+]
+}
+]
+},
+{
+"chu_id": "C0298",
+"chu": "gửi một bộ hồ sơ theo quy định tại khoản 2 Điều này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K3.a",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Trình tự, thủ tục thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này như sau:",
+"chu_don_vi": "Doanh nghiệp gửi một bộ hồ sơ theo quy định tại khoản 2 Điều này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "submit_license_reissue_dossier_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ theo quy định tại khoản 2 Điều này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính để đề nghị cấp lại giấy phép"
+]
+},
+{
+"ten": "submit_license_issue_dossier_to_new_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ quy định tại điểm a khoản này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới để đề nghị cấp giấy phép"
+]
+},
+{
+"ten": "submit_license_renewal_dossier_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính để đề nghị gia hạn giấy phép"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "submit_deposit_withdrawal_dossier_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"nộp 01 bộ hồ sơ tại Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "notify_dolisa_and_chairman_of_headquarters",
+"params": [
+"?"
+],
+"vi_du": [
+"thông báo bằng văn bản cho Sở Lao động - Thương binh và Xã hội và Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính"
+]
+},
+{
+"ten": "documents_under_clauses_2_3_4_5_article_24",
+"params": [
+"?"
+],
+"vi_du": [
+"các văn bản quy định tại các khoản 2, 3, 4 và khoản 5 Điều 24 Nghị định này"
+]
+},
+{
+"ten": "documents_under_clauses_2_3_4_article_24",
+"params": [
+"?"
+],
+"vi_du": [
+"các văn bản quy định tại các khoản 2, 3 và khoản 4 Điều 24 Nghị định này"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+},
+{
+"ten": "check_dossier_document_sufficiency",
+"params": [
+"?"
+],
+"vi_du": [
+"kiểm tra đủ giấy tờ quy định tại khoản 2 Điều này"
+]
+},
+{
+"ten": "relocate_headquarters_to_another_province",
+"params": [
+"E"
+],
+"vi_du": [
+"thay đổi địa chỉ trụ sở chính sang địa bàn cấp tỉnh khác so với nơi đã được cấp giấy phép"
+]
+},
+{
+"ten": "fall_under_clause_5_article_25",
+"params": [
+"E"
+],
+"vi_du": [
+"thuộc trường hợp quy định tại khoản 5 Điều 25 Nghị định này"
+]
+},
+{
+"ten": "document_under_clause_5_article_24",
+"params": [
+"?"
+],
+"vi_du": [
+"văn bản quy định tại khoản 5 Điều 24 Nghị định này"
+]
+},
+{
+"ten": "sublease_enterprise_failing_renewal_conditions",
+"params": [
+"E"
+],
+"vi_du": [
+"cho thuê lại không bảo đảm quy định theo khoản 1 Điều này"
+]
+},
+{
+"ten": "submit_deposit_withdrawal_dossier_to_bank",
+"params": [
+"E"
+],
+"vi_du": [
+"nộp hồ sơ tại ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "regulate_workplace_dialogue_and_democracy_details",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết tổ chức đối thoại và thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc"
+]
+}
+]
+},
+{
+"chu_id": "C0299",
+"chu": "kiểm tra, rà soát các hợp đồng cho thuê lại lao động đang còn hiệu lực của doanh nghiệp để yêu cầu doanh nghiệp cho thuê lại giải quyết chế độ cho người lao động theo Điều 29 Nghị định này và trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K3.b",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Trình tự, thủ tục thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này như sau:",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ. Trong thời hạn 10 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị thu hồi giấy phép của doanh nghiệp, Sở Lao động - Thương binh và Xã hội kiểm tra, rà soát các hợp đồng cho thuê lại lao động đang còn hiệu lực của doanh nghiệp để yêu cầu doanh nghiệp cho thuê lại giải quyết chế độ cho người lao động theo Điều 29 Nghị định này và trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "propose_license_revocation_to_provincial_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép của doanh nghiệp"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "appraise_and_submit_reissue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"thẩm tra, trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp lại giấy phép đối với doanh nghiệp"
+]
+},
+{
+"ten": "appraise_and_submit_renewal_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"thẩm tra, trình Chủ tịch Ủy ban nhân dân cấp tỉnh gia hạn giấy phép đối với doanh nghiệp"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "notify_dolisa_and_chairman_of_headquarters",
+"params": [
+"?"
+],
+"vi_du": [
+"thông báo bằng văn bản cho Sở Lao động - Thương binh và Xã hội và Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính"
+]
+},
+{
+"ten": "request_provincial_chairman_reissue_license",
+"params": [
+"E"
+],
+"vi_du": [
+"đề nghị Chủ tịch Ủy ban nhân dân cấp tỉnh cấp lại giấy phép"
+]
+},
+{
+"ten": "report_results_to_provincial_committee",
+"params": [
+"E"
+],
+"vi_du": [
+"báo cáo kết quả thực hiện về Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "check_dossier_document_sufficiency",
+"params": [
+"?"
+],
+"vi_du": [
+"kiểm tra đủ giấy tờ quy định tại khoản 2 Điều này"
+]
+},
+{
+"ten": "maintain_sublease_records_and_report_periodically",
+"params": [
+"E"
+],
+"vi_du": [
+"lập hồ sơ ghi rõ số lao động đã cho thuê lại, bên thuê lại lao động và định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "regulate_labor_sublease_license_and_jobs",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định việc ký quỹ, điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động và danh mục công việc được thực hiện cho thuê lại lao động"
+]
+},
+{
+"ten": "have_demand_for_high_skilled_labor",
+"params": [
+"E"
+],
+"vi_du": [
+"có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "explain_labor_demand",
+"params": [
+"?"
+],
+"vi_du": [
+"giải trình nhu cầu sử dụng lao động"
+]
+},
+{
+"ten": "submit_license_reissue_dossier_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi một bộ hồ sơ theo quy định tại khoản 2 Điều này đến Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính để đề nghị cấp lại giấy phép"
+]
+},
+{
+"ten": "regulate_workplace_dialogue_and_democracy_details",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết tổ chức đối thoại và thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc"
+]
+}
+]
+},
+{
+"chu_id": "C0300",
+"chu": "quyết định thu hồi giấy phép",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K3.c",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Trình tự, thủ tục thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này như sau:",
+"chu_don_vi": "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội, Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định thu hồi giấy phép. Quyết định thu hồi giấy phép theo Mẫu số 08/PLIII Phụ lục III ban hành kèm theo Nghị định này."
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "revoke_or_deny_renewal_or_reissue_of_labor_license",
+"params": [
+"E"
+],
+"vi_du": [
+"bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép"
+]
+},
+{
+"ten": "revoke_work_permit",
+"params": [
+"?"
+],
+"vi_du": [
+"bị thu hồi"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "regulate_labor_sublease_license_and_jobs",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định việc ký quỹ, điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động và danh mục công việc được thực hiện cho thuê lại lao động"
+]
+},
+{
+"ten": "propose_license_revocation_to_provincial_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép của doanh nghiệp"
+]
+},
+{
+"ten": "regulate_labor_dispute_resolution_details",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết giải quyết tranh chấp lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0301",
+"chu": "Quyết định thu hồi giấy phép",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K3.c",
+"vai": "chu_the",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Trình tự, thủ tục thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này như sau:",
+"chu_don_vi": "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội, Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định thu hồi giấy phép. Quyết định thu hồi giấy phép theo Mẫu số 08/PLIII Phụ lục III ban hành kèm theo Nghị định này."
+}
+],
+"ung_vien": [
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "labor_sublease_company",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise_entity",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "department_of_labor_invalids_and_social_affairs",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "enterprise_eligible_for_license_renewal",
+"params": [],
+"vi_du": [
+"Doanh nghiệp được gia hạn giấy phép"
+]
+},
+{
+"ten": "deposit_deduction_decision",
+"params": [],
+"vi_du": [
+"Quyết định trích tiền ký quỹ"
+]
+}
+]
+},
+{
+"chu_id": "C0302",
+"chu": "quyết định thu hồi giấy phép theo Mẫu số 08/PLIII Phụ lục III ban hành kèm theo Nghị định này",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K3.c",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Trình tự, thủ tục thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này như sau:",
+"chu_don_vi": "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội, Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định thu hồi giấy phép. Quyết định thu hồi giấy phép theo Mẫu số 08/PLIII Phụ lục III ban hành kèm theo Nghị định này."
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "follow_form_04_pliii_appendix_iii",
+"params": [
+"?"
+],
+"vi_du": [
+"theo Mẫu số 04/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "deduct_deposit_money",
+"params": [
+"?"
+],
+"vi_du": [
+"trích tiền ký quỹ",
+"trích tiền ký quỹ theo Mẫu số 03/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "written_request_for_license_reissue_form_05",
+"params": [
+"?"
+],
+"vi_du": [
+"văn bản đề nghị cấp lại giấy phép theo Mẫu số 05/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "written_request_for_license_renewal_form_05",
+"params": [
+"?"
+],
+"vi_du": [
+"văn bản đề nghị gia hạn giấy phép của doanh nghiệp theo Mẫu số 05/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "revoke_or_deny_renewal_or_reissue_of_labor_license",
+"params": [
+"E"
+],
+"vi_du": [
+"bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép"
+]
+},
+{
+"ten": "revoke_work_permit",
+"params": [
+"?"
+],
+"vi_du": [
+"bị thu hồi"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "regulate_labor_sublease_license_and_jobs",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định việc ký quỹ, điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động và danh mục công việc được thực hiện cho thuê lại lao động"
+]
+},
+{
+"ten": "propose_license_revocation_to_provincial_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép của doanh nghiệp"
+]
+},
+{
+"ten": "sublease_enterprise_failing_renewal_conditions",
+"params": [
+"E"
+],
+"vi_du": [
+"cho thuê lại không bảo đảm quy định theo khoản 1 Điều này"
+]
+},
+{
+"ten": "comply_with_labor_discipline_and_rules",
+"params": [
+"W"
+],
+"vi_du": [
+"chấp hành kỷ luật lao động, nội quy lao động"
+]
+},
+{
+"ten": "documents_under_clauses_2_3_4_5_article_24",
+"params": [
+"?"
+],
+"vi_du": [
+"các văn bản quy định tại các khoản 2, 3, 4 và khoản 5 Điều 24 Nghị định này"
+]
+},
+{
+"ten": "documents_under_clauses_2_3_4_article_24",
+"params": [
+"?"
+],
+"vi_du": [
+"các văn bản quy định tại các khoản 2, 3 và khoản 4 Điều 24 Nghị định này"
+]
+},
+{
+"ten": "have_full_civil_act_capacity",
+"params": [
+"E"
+],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ"
+]
+},
+{
+"ten": "possess_full_civil_act_capacity",
+"params": [
+"W"
+],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+}
+]
+},
+{
+"chu_id": "C0303",
+"chu": "Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K4.a",
+"vai": "chu_the",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Trình tự, thủ tục thu hồi giấy phép đối với trường hợp quy định tại các điểm c, d, đ và điểm e khoản 1 Điều này thực hiện như sau:",
+"chu_don_vi": "Khi phát hiện doanh nghiệp cho thuê lại thuộc trường hợp quy định tại các điểm c, d, đ và điểm e khoản 1 Điều này, Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính thực hiện kiểm tra, thu thập các bằng chứng liên quan và trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép;"
+}
+],
+"ung_vien": [
+{
+"ten": "department_of_labor_invalids_and_social_affairs",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "labor_sublease_company",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise_entity",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "enterprise_eligible_for_license_renewal",
+"params": [],
+"vi_du": [
+"Doanh nghiệp được gia hạn giấy phép"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "dolisa_of_new_headquarters_province",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "dolisa_of_original_licensing_province",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp cho thuê lại đã được cấp giấy phép"
+]
+},
+{
+"ten": "provincial_chairman_at_sublease_hq",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính"
+]
+},
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "contract_as_basis_for_work_permit",
+"params": [],
+"vi_du": [
+"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0304",
+"chu": "thực hiện kiểm tra, thu thập các bằng chứng liên quan và trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K4.a",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Trình tự, thủ tục thu hồi giấy phép đối với trường hợp quy định tại các điểm c, d, đ và điểm e khoản 1 Điều này thực hiện như sau:",
+"chu_don_vi": "Khi phát hiện doanh nghiệp cho thuê lại thuộc trường hợp quy định tại các điểm c, d, đ và điểm e khoản 1 Điều này, Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính thực hiện kiểm tra, thu thập các bằng chứng liên quan và trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "propose_license_revocation_to_provincial_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép của doanh nghiệp"
+]
+},
+{
+"ten": "notify_dolisa_and_chairman_of_headquarters",
+"params": [
+"?"
+],
+"vi_du": [
+"thông báo bằng văn bản cho Sở Lao động - Thương binh và Xã hội và Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "supplementary_deposit_below_required_amount",
+"params": [
+"E"
+],
+"vi_du": [
+"không bổ sung đầy đủ tiền ký quỹ"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "appraise_and_submit_reissue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"thẩm tra, trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp lại giấy phép đối với doanh nghiệp"
+]
+},
+{
+"ten": "appraise_and_submit_renewal_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"thẩm tra, trình Chủ tịch Ủy ban nhân dân cấp tỉnh gia hạn giấy phép đối với doanh nghiệp"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "report_results_to_provincial_committee",
+"params": [
+"E"
+],
+"vi_du": [
+"báo cáo kết quả thực hiện về Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "request_provincial_chairman_reissue_license",
+"params": [
+"E"
+],
+"vi_du": [
+"đề nghị Chủ tịch Ủy ban nhân dân cấp tỉnh cấp lại giấy phép"
+]
+},
+{
+"ten": "maintain_sublease_records_and_report_periodically",
+"params": [
+"E"
+],
+"vi_du": [
+"lập hồ sơ ghi rõ số lao động đã cho thuê lại, bên thuê lại lao động và định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "regulate_labor_sublease_license_and_jobs",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định việc ký quỹ, điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động và danh mục công việc được thực hiện cho thuê lại lao động"
+]
+},
+{
+"ten": "regulate_workplace_dialogue_and_democracy_details",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết tổ chức đối thoại và thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc"
+]
+},
+{
+"ten": "other_relevant_entities_scope",
+"params": [
+"?"
+],
+"vi_du": [
+"Các cơ quan, tổ chức, cá nhân khác có liên quan"
+]
+},
+{
+"ten": "revoke_or_deny_renewal_or_reissue_of_labor_license",
+"params": [
+"E"
+],
+"vi_du": [
+"bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép"
+]
+},
+{
+"ten": "revoke_work_permit",
+"params": [
+"?"
+],
+"vi_du": [
+"bị thu hồi"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "check_dossier_document_sufficiency",
+"params": [
+"?"
+],
+"vi_du": [
+"kiểm tra đủ giấy tờ quy định tại khoản 2 Điều này"
+]
+}
+]
+},
+{
+"chu_id": "C0305",
+"chu": "quyết định thu hồi giấy phép của doanh nghiệp",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K4.b",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Trình tự, thủ tục thu hồi giấy phép đối với trường hợp quy định tại các điểm c, d, đ và điểm e khoản 1 Điều này thực hiện như sau:",
+"chu_don_vi": "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội, Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định thu hồi giấy phép của doanh nghiệp;"
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "propose_license_revocation_to_provincial_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép của doanh nghiệp"
+]
+},
+{
+"ten": "supplementary_deposit_below_required_amount",
+"params": [
+"E"
+],
+"vi_du": [
+"không bổ sung đầy đủ tiền ký quỹ"
+]
+},
+{
+"ten": "notify_dolisa_and_chairman_of_headquarters",
+"params": [
+"?"
+],
+"vi_du": [
+"thông báo bằng văn bản cho Sở Lao động - Thương binh và Xã hội và Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "revoke_or_deny_renewal_or_reissue_of_labor_license",
+"params": [
+"E"
+],
+"vi_du": [
+"bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép"
+]
+},
+{
+"ten": "revoke_work_permit",
+"params": [
+"?"
+],
+"vi_du": [
+"bị thu hồi"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "regulate_labor_sublease_license_and_jobs",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định việc ký quỹ, điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động và danh mục công việc được thực hiện cho thuê lại lao động"
+]
+},
+{
+"ten": "regulate_labor_dispute_resolution_details",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết giải quyết tranh chấp lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0306",
+"chu": "nộp lại giấy phép cho Ủy ban nhân dân cấp tỉnh",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K4.c",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Trình tự, thủ tục thu hồi giấy phép đối với trường hợp quy định tại các điểm c, d, đ và điểm e khoản 1 Điều này thực hiện như sau:",
+"chu_don_vi": "Trong thời hạn 03 ngày làm việc kể từ ngày nhận được quyết định thu hồi giấy phép, doanh nghiệp cho thuê lại có trách nhiệm nộp lại giấy phép cho Ủy ban nhân dân cấp tỉnh."
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "notify_dolisa_and_chairman_of_headquarters",
+"params": [
+"?"
+],
+"vi_du": [
+"thông báo bằng văn bản cho Sở Lao động - Thương binh và Xã hội và Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính"
+]
+},
+{
+"ten": "propose_license_revocation_to_provincial_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép của doanh nghiệp"
+]
+},
+{
+"ten": "supplementary_deposit_below_required_amount",
+"params": [
+"E"
+],
+"vi_du": [
+"không bổ sung đầy đủ tiền ký quỹ"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "report_results_to_provincial_committee",
+"params": [
+"E"
+],
+"vi_du": [
+"báo cáo kết quả thực hiện về Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "maintain_sublease_records_and_report_periodically",
+"params": [
+"E"
+],
+"vi_du": [
+"lập hồ sơ ghi rõ số lao động đã cho thuê lại, bên thuê lại lao động và định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "appraise_and_submit_reissue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"thẩm tra, trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp lại giấy phép đối với doanh nghiệp"
+]
+},
+{
+"ten": "appraise_and_submit_renewal_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"thẩm tra, trình Chủ tịch Ủy ban nhân dân cấp tỉnh gia hạn giấy phép đối với doanh nghiệp"
+]
+},
+{
+"ten": "submit_refusal_of_license_issue_to_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh không cấp giấy phép đối với doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "request_provincial_chairman_reissue_license",
+"params": [
+"E"
+],
+"vi_du": [
+"đề nghị Chủ tịch Ủy ban nhân dân cấp tỉnh cấp lại giấy phép"
+]
+},
+{
+"ten": "other_relevant_entities_scope",
+"params": [
+"?"
+],
+"vi_du": [
+"Các cơ quan, tổ chức, cá nhân khác có liên quan"
+]
+},
+{
+"ten": "have_full_civil_act_capacity",
+"params": [
+"E"
+],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ"
+]
+},
+{
+"ten": "labor_lessee_entity_type",
+"params": [
+"E"
+],
+"vi_du": [
+"là doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình và cá nhân"
+]
+},
+{
+"ten": "submit_deposit_withdrawal_dossier_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"nộp 01 bộ hồ sơ tại Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính"
+]
+},
+{
+"ten": "pay_additional_security_deposit",
+"params": [
+"E"
+],
+"vi_du": [
+"nộp bổ sung tiền ký quỹ bảo đảm"
+]
+},
+{
+"ten": "submit_deposit_withdrawal_dossier_to_bank",
+"params": [
+"E"
+],
+"vi_du": [
+"nộp hồ sơ tại ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "make_deposit",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện ký quỹ",
+"nộp tiền ký quỹ"
+]
+}
+]
+},
+{
+"chu_id": "C0307",
+"chu": "được cấp giấy phép trong thời hạn 05 năm, kể từ ngày bị thu hồi giấy phép",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K5",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp cho thuê lại không được cấp giấy phép trong thời hạn 05 năm, kể từ ngày bị thu hồi giấy phép vì vi phạm các nội dung quy định tại các điểm c, d, đ và điểm e khoản 1 Điều này."
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "revoke_or_deny_renewal_or_reissue_of_labor_license",
+"params": [
+"E"
+],
+"vi_du": [
+"bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép"
+]
+},
+{
+"ten": "revoke_work_permit",
+"params": [
+"?"
+],
+"vi_du": [
+"bị thu hồi"
+]
+},
+{
+"ten": "request_dossier_copy_and_revocation_confirmation",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đề nghị Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đã được cấp giấy phép cung cấp bản sao hồ sơ đề nghị cấp giấy phép và xác nhận về các điều kiện không bị thu hồi giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "have_three_years_sublease_or_supply_experience",
+"params": [
+"E"
+],
+"vi_du": [
+"đã có thời gian trực tiếp làm chuyên môn hoặc quản lý về cho thuê lại lao động hoặc cung ứng lao động từ đủ 03 năm (36 tháng) trở lên"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "provide_operation_opinion_and_dossier_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"có ý kiến về tình hình hoạt động của doanh nghiệp cho thuê lại trong thời gian hoạt động tại địa bàn, trả lời cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới và gửi kèm bản sao hồ sơ đề nghị cấp giấy phép của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "issue_dossier_receipt_with_date",
+"params": [
+"?"
+],
+"vi_du": [
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ đề nghị gia hạn giấy phép",
+"cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận hồ sơ khi hồ sơ có đủ các giấy tờ quy định tại điểm a khoản này"
+]
+},
+{
+"ten": "regulate_labor_sublease_license_and_jobs",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định việc ký quỹ, điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động và danh mục công việc được thực hiện cho thuê lại lao động"
+]
+},
+{
+"ten": "propose_license_revocation_to_provincial_chairman",
+"params": [
+"?"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép của doanh nghiệp"
+]
+},
+{
+"ten": "damaged_license_with_incomplete_information",
+"params": [
+"?"
+],
+"vi_du": [
+"bị hư hỏng không còn đầy đủ thông tin trên giấy phép"
+]
+},
+{
+"ten": "license_lost",
+"params": [
+"?"
+],
+"vi_du": [
+"bị mất"
+]
+},
+{
+"ten": "be_sanctioned_under_law",
+"params": [
+"E"
+],
+"vi_du": [
+"bị xử lý"
+]
+},
+{
+"ten": "reply_stating_license_reissue_refusal_reason",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản trả lời doanh nghiệp trong đó nêu rõ lý do không cấp lại giấy phép"
+]
+},
+{
+"ten": "reply_stating_license_renewal_refusal_reason",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản trả lời doanh nghiệp trong đó nêu rõ lý do không gia hạn giấy phép"
+]
+},
+{
+"ten": "request_renewal_and_change_legal_representative",
+"params": [
+"E"
+],
+"vi_du": [
+"doanh nghiệp đề nghị gia hạn giấy phép đồng thời thay đổi người đại diện theo pháp luật của doanh nghiệp"
+]
+},
+{
+"ten": "receive_interest_from_deposit",
+"params": [
+"E"
+],
+"vi_du": [
+"hưởng lãi suất từ tiền ký quỹ"
+]
+},
+{
+"ten": "work_permit_term_expires",
+"params": [
+"?"
+],
+"vi_du": [
+"hết thời hạn"
+]
+}
+]
+},
+{
+"chu_id": "C0308",
+"chu": "vi phạm các nội dung",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D28.K5",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp cho thuê lại không được cấp giấy phép trong thời hạn 05 năm, kể từ ngày bị thu hồi giấy phép vì vi phạm các nội dung quy định tại các điểm c, d, đ và điểm e khoản 1 Điều này."
+}
+],
+"ung_vien": [
+{
+"ten": "receive_check_and_issue_dossier_receipt",
+"params": [
+"?"
+],
+"vi_du": [
+"tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ"
+]
+},
+{
+"ten": "outside_license_revocation_case",
+"params": [
+"E"
+],
+"vi_du": [
+"không thuộc trường hợp bị thu hồi giấy phép"
+]
+},
+{
+"ten": "print_content_on_white_blue_pattern_background",
+"params": [
+"?"
+],
+"vi_du": [
+"ghi nội dung của giấy phép trên nền trắng có hoa văn màu xanh da trời"
+]
+},
+{
+"ten": "change_license_content",
+"params": [
+"E"
+],
+"vi_du": [
+"thay đổi một trong các nội dung của giấy phép đã được cấp"
+]
+},
+{
+"ten": "have_full_civil_act_capacity",
+"params": [
+"E"
+],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ"
+]
+}
+]
+}
+]
+}

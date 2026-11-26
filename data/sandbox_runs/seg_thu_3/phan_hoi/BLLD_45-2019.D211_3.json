@@ -1,0 +1,30 @@
+{
+ "cau": "Đối với các nội dung tranh chấp lao động thì tùy từng loại tranh chấp, hướng dẫn, hỗ trợ các bên tiến hành các thủ tục giải quyết tranh chấp lao động theo quy định của Bộ luật này.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Đối với các nội dung tranh chấp lao động\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"tùy từng loại tranh chấp\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"hướng dẫn\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"hỗ trợ\"\n    },\n    {\n      \"id\": \"c3\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"các bên tiến hành các thủ tục giải quyết tranh chấp lao động theo quy định của Bộ luật này\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1FMDa_fmOoKw2roP4-S48QE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1075
+   },
+   "input_tokens": 942,
+   "output_tokens": 1347,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d1d66e18eac967efe5a0ec43"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động để giao kết hợp đồng lao động với bên thuê lại lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"giao kết hợp đồng lao động với bên thuê lại lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538703999-b47f5c3b",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 489
+   },
+   "input_tokens": 2407,
+   "output_tokens": 73,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_add4968c37125a15e95c821d"
+   }
+  }
+ }
+}

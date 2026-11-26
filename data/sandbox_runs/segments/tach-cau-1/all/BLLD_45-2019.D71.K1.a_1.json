@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Một bên từ chối thương lượng hoặc không tiến hành thương lượng trong thời hạn quy định tại khoản 1 Điều 70 của Bộ luật này;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Một bên\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"từ chối thương lượng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không tiến hành thương lượng trong thời hạn quy định tại khoản 1 Điều 70 của Bộ luật này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538899216-aabcb7f7",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 639
+   },
+   "input_tokens": 2403,
+   "output_tokens": 97,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_e021787647201e7c6901f4b0"
+   }
+  }
+ }
+}

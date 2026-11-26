@@ -1,0 +1,463 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D18.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trực tiếp giao kết hợp đồng lao động",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động trực tiếp giao kết hợp đồng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "targets": [
+      "BLLD_45-2019.D18.K2"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "trừ trường hợp quy định tại khoản 2 Điều này"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D18.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "công việc theo mùa vụ, công việc nhất định có thời hạn dưới 12 tháng",
+     "chu_the": {
+      "chu": "công việc theo mùa vụ, công việc nhất định có thời hạn dưới 12 tháng",
+      "loai": "J",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Đối với công việc theo mùa vụ, công việc nhất định có thời hạn dưới 12 tháng"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "ủy quyền cho một người lao động trong nhóm để giao kết hợp đồng lao động",
+     "chu_the": {
+      "chu": "nhóm người lao động từ đủ 18 tuổi trở lên",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "nhóm người lao động từ đủ 18 tuổi trở lên có thể ủy quyền cho một người lao động trong nhóm để giao kết hợp đồng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "trich": [
+      "trong trường hợp này"
+     ],
+     "ly_do_llm": {
+      "ma": "dan_chieu_mo",
+      "giai_thich": "Cụm quy chiếu lại trường hợp vừa nêu, không thành mệnh đề riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết bằng văn bản",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "hợp đồng lao động phải được giao kết bằng văn bản"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có hiệu lực như giao kết với từng người lao động",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "có hiệu lực như giao kết với từng người lao động"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "kèm theo danh sách ghi rõ",
+     "chu_the": {
+      "chu": "Hợp đồng lao động do người được ủy quyền ký kết",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "họ tên",
+      "ngày tháng năm sinh",
+      "giới tính",
+      "nơi cư trú",
+      "chữ ký của từng người lao động"
+     ],
+     "trich": [
+      "Hợp đồng lao động do người được ủy quyền ký kết phải kèm theo danh sách ghi rõ",
+      "họ tên, ngày tháng năm sinh, giới tính, nơi cư trú và chữ ký của từng người lao động"
+     ],
+     "quy_tac": "q3",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Một nghĩa vụ kèm danh sách; các nội dung trong danh sách đưa vào liet_ke."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D18.K3",
+   "dong": [
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "hoac",
+     "trich": [
+      "Người giao kết hợp đồng lao động bên phía người sử dụng lao động là người thuộc một trong các trường hợp sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn danh sách các trường hợp, mỗi trường hợp là một mục con."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D18.K3.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết hợp đồng lao động bên phía người sử dụng lao động",
+     "chu_the": {
+      "chu": "Người đại diện theo pháp luật của doanh nghiệp",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người đại diện theo pháp luật của doanh nghiệp",
+      "Người giao kết hợp đồng lao động bên phía người sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con chỉ nêu người đủ tư cách; hành vi giao kết kế thừa từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D18.K3.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết hợp đồng lao động bên phía người sử dụng lao động",
+     "chu_the": {
+      "chu": "Người đứng đầu cơ quan, tổ chức có tư cách pháp nhân theo quy định của pháp luật",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người đứng đầu cơ quan, tổ chức có tư cách pháp nhân theo quy định của pháp luật",
+      "Người giao kết hợp đồng lao động bên phía người sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con chỉ nêu người đủ tư cách; hành vi giao kết kế thừa từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D18.K3.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết hợp đồng lao động bên phía người sử dụng lao động",
+     "chu_the": {
+      "chu": "Người đại diện của hộ gia đình, tổ hợp tác, tổ chức khác không có tư cách pháp nhân",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người đại diện của hộ gia đình, tổ hợp tác, tổ chức khác không có tư cách pháp nhân",
+      "Người giao kết hợp đồng lao động bên phía người sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con chỉ nêu người đủ tư cách; hành vi giao kết kế thừa từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D18.K3.d",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết hợp đồng lao động bên phía người sử dụng lao động",
+     "chu_the": {
+      "chu": "Cá nhân trực tiếp sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Cá nhân trực tiếp sử dụng lao động",
+      "Người giao kết hợp đồng lao động bên phía người sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con chỉ nêu người đủ tư cách; hành vi giao kết kế thừa từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D18.K4",
+   "dong": [
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "hoac",
+     "trich": [
+      "Người giao kết hợp đồng lao động bên phía người lao động là người thuộc một trong các trường hợp sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn danh sách các trường hợp, mỗi trường hợp là một mục con."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D18.K4.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết hợp đồng lao động bên phía người lao động",
+     "chu_the": {
+      "chu": "Người lao động từ đủ 18 tuổi trở lên",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động từ đủ 18 tuổi trở lên",
+      "Người giao kết hợp đồng lao động bên phía người lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con chỉ nêu người đủ tư cách; hành vi giao kết kế thừa từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D18.K4.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có sự đồng ý bằng văn bản của người đại diện theo pháp luật của người đó",
+     "chu_the": {
+      "chu": "người đại diện theo pháp luật của người đó",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "khi có sự đồng ý bằng văn bản của người đại diện theo pháp luật của người đó"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết hợp đồng lao động bên phía người lao động",
+     "chu_the": {
+      "chu": "Người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "Người giao kết hợp đồng lao động bên phía người lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Tách điều kiện (có sự đồng ý bằng văn bản) khỏi kết luận về tư cách giao kết."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D18.K4.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết hợp đồng lao động bên phía người lao động",
+     "chu_the": {
+      "chu": "Người chưa đủ 15 tuổi và người đại diện theo pháp luật của người đó",
+      "loai": [
+       "W",
+       "W"
+      ],
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người chưa đủ 15 tuổi và người đại diện theo pháp luật của người đó",
+      "Người giao kết hợp đồng lao động bên phía người lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Hai chủ thể cùng tham gia giao kết, là một yêu cầu tập thể."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D18.K4.d",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được những người lao động trong nhóm ủy quyền hợp pháp",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động được những người lao động trong nhóm ủy quyền hợp pháp"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết hợp đồng lao động",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "giao kết hợp đồng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Tách điều kiện được ủy quyền hợp pháp khỏi kết luận về việc giao kết."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D18.K5",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "ủy quyền lại cho người khác giao kết hợp đồng lao động",
+     "chu_the": {
+      "chu": "Người được ủy quyền giao kết hợp đồng lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người được ủy quyền giao kết hợp đồng lao động không được ủy quyền lại cho người khác giao kết hợp đồng lao động"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Trong quá trình thực hiện hợp đồng lao động, nếu bên nào có yêu cầu sửa đổi, bổ sung nội dung hợp đồng lao động thì phải báo cho bên kia biết trước ít nhất 03 ngày làm việc về nội dung cần sửa đổi, bổ sung.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trong quá trình thực hiện hợp đồng lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"bên nào có yêu cầu\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sửa đổi\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bổ sung\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"nội dung hợp đồng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"phải báo cho bên kia biết trước ít nhất 03 ngày làm việc về nội dung cần sửa đổi, bổ sung\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-0igDa5rTAsXZ9tMPirm1yQw",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1102
+   },
+   "input_tokens": 953,
+   "output_tokens": 1291,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f61168a79f219fc17888de91"
+   }
+  }
+ }
+}

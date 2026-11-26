@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Nếu vì sự cố về điện, nước mà không do lỗi của người sử dụng lao động hoặc do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa, di dời địa điểm hoạt động theo yêu cầu của cơ quan nhà nước có thẩm quyền hoặc vì lý do kinh tế thì hai bên thỏa thuận về tiền lương ngừng việc như sau:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"vì sự cố về điện, nước mà không do lỗi của người sử dụng lao động\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa, di dời địa điểm hoạt động theo yêu cầu của cơ quan nhà nước có thẩm quyền\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"vì lý do kinh tế\"\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"hai bên thỏa thuận về tiền lương ngừng việc như sau\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539136050-1608d239",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3738
+   },
+   "input_tokens": 2452,
+   "output_tokens": 202,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_00e38dc3472c64ae8105909c"
+   }
+  }
+ }
+}

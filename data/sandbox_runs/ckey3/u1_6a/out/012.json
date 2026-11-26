@@ -1,0 +1,192 @@
+{
+ "units": [
+  {
+   "unit_id": "ND_145-2020.D20.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "nộp bổ sung tiền ký quỹ bảo đảm",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "doanh nghiệp cho thuê lại phải nộp bổ sung tiền ký quỹ bảo đảm"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong thời hạn 30 ngày kể từ ngày rút tiền ký quỹ để thanh toán",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trong thời hạn 30 ngày kể từ ngày rút tiền ký quỹ để thanh toán"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Thời hạn và mốc tính thời hạn là hoàn cảnh áp dụng, tách thành điều kiện."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "trich": [
+      "đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều 18 và Điều 19 Nghị định này"
+     ],
+     "targets": [
+      "ND_145-2020.D18.K1.a",
+      "ND_145-2020.D18.K1.b",
+      "ND_145-2020.D19"
+     ],
+     "gan_vao": 0,
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "trich": [
+      "quy định tại khoản 2 Điều 21 Nghị định này"
+     ],
+     "targets": [
+      "ND_145-2020.D21.K2"
+     ],
+     "gan_vao": 0,
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_145-2020.D20.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thông báo bằng văn bản",
+     "chu_the": {
+      "chu": "ngân hàng nhận ký quỹ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "Sở Lao động - Thương binh và Xã hội",
+       "scope": "this_clause"
+      },
+      {
+       "original_text": "Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "ngân hàng nhận ký quỹ có trách nhiệm thông báo bằng văn bản"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cơ quan nhận thông báo là bổ ngữ, không làm đổi loại hành vi thông báo."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong thời hạn không quá 30 ngày kể từ ngày hết thời hạn",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trong thời hạn không quá 30 ngày kể từ ngày hết thời hạn"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Thời hạn là hoàn cảnh áp dụng của nghĩa vụ thông báo."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "trich": [
+      "quy định tại khoản 1 Điều này"
+     ],
+     "targets": [
+      "ND_145-2020.D20.K1"
+     ],
+     "gan_vao": 1,
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bổ sung đầy đủ tiền ký quỹ",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "doanh nghiệp cho thuê lại không bổ sung đầy đủ tiền ký quỹ"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép của doanh nghiệp",
+     "chu_the": {
+      "chu": "Sở Lao động - Thương binh và Xã hội",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép của doanh nghiệp"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong thời hạn 15 ngày kể từ ngày nhận được thông báo của ngân hàng nhận ký quỹ",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trong thời hạn 15 ngày, kể từ ngày nhận được thông báo của ngân hàng nhận ký quỹ"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Thời hạn trình là hoàn cảnh áp dụng, tách thành điều kiện."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "trich": [
+      "theo quy định tại khoản 4 Điều 28 Nghị định này"
+     ],
+     "targets": [
+      "ND_145-2020.D28.K4"
+     ],
+     "gan_vao": 4,
+     "quy_tac": "q2"
+    }
+   ]
+  }
+ ]
+}

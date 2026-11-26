@@ -1,0 +1,27 @@
+{
+ "cau_gui": "Nhà nước, người sử dụng lao động và xã hội có trách nhiệm tham gia giải quyết việc làm, bảo đảm cho mọi người có khả năng lao động đều có cơ hội có việc làm.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Nhà nước, người sử dụng lao động và xã hội có trách nhiệm\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tham gia giải quyết việc làm\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bảo đảm cho mọi người có khả năng lao động đều có cơ hội có việc làm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-z7YFa7u-KYGA2roPl6LMyQY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 2275,
+   "output_tokens": 106,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_bfd90f6d6f40e4a840f6909b"
+   }
+  }
+ }
+}

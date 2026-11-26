@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D185.K4.a",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D185.K4.a\",\n \"tieu_de_dieu\": \"Hội đồng trọng tài lao động\",\n \"khoan_cha\": \"Khi có yêu cầu giải quyết tranh chấp lao động theo quy định tại các điều 189, 193 và 197 của Bộ luật này, Hội đồng trọng tài lao động quyết định thành lập Ban trọng tài lao động để giải quyết tranh chấp như sau:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Đại diện mỗi bên tranh chấp chọn 01 trọng tài viên trong số danh sách trọng tài viên lao động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Đại diện mỗi bên tranh chấp chọn 01 trọng tài viên trong số danh sách trọng tài viên lao động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D185.K4.a\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"chọn 01 trọng tài viên trong số danh sách trọng tài viên lao động\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Đại diện mỗi bên tranh chấp\",\"loai\":[\"W\",\"E\"]},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795547308656-c1276d41",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3200
+   },
+   "input_tokens": 3701,
+   "output_tokens": 102,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_51cac6b90c54cf19e5e4b812"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Việc thành lập, giải thể, tổ chức và hoạt động của Công đoàn cơ sở được thực hiện theo quy định của Luật Công đoàn.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Việc\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thành lập\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"giải thể\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"tổ chức\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"hoạt động\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"của Công đoàn cơ sở được thực hiện theo quy định của Luật Công đoàn\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-KUwDa5r0CrSv2roP7NHsoAY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 553
+   },
+   "input_tokens": 929,
+   "output_tokens": 714,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_49ca326207003d2672b007eb"
+   }
+  }
+ }
+}

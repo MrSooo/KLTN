@@ -1,0 +1,30 @@
+{
+ "cau": "Người sử dụng lao động phải cho người lao động tạm ứng tiền lương tương ứng với số ngày người lao động tạm thời nghỉ việc để thực hiện nghĩa vụ công dân từ 01 tuần trở lên nhưng tối đa không quá 01 tháng tiền lương theo hợp đồng lao động và người lao động phải hoàn trả số tiền đã tạm ứng.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người sử dụng lao động phải cho người lao động tạm ứng tiền lương tương ứng với số ngày\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"người lao động tạm thời nghỉ việc\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"để thực hiện nghĩa vụ công dân từ 01 tuần trở lên\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"tối đa không quá 01 tháng tiền lương theo hợp đồng lao động\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"người lao động phải hoàn trả số tiền đã tạm ứng\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-izwDa9GyOZmy9tMPlbqiyAk",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 23690
+   },
+   "input_tokens": 969,
+   "output_tokens": 636,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_43c1a2a49c909dc3e8f8d7a2"
+   }
+  }
+ }
+}

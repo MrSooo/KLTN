@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D8.K7",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D8.K7\",\n \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Sử dụng lao động chưa thành niên trái pháp luật.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Sử dụng lao động chưa thành niên trái pháp luật\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D8.K7\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Sử dụng lao động chưa thành niên trái pháp luật\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795541530724-278f1f6b",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 930
+   },
+   "input_tokens": 3629,
+   "output_tokens": 127,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_f6ee18234dce0319fb4f2ba2"
+   }
+  }
+ }
+}

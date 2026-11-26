@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thời gian, địa điểm và cách thức lấy ý kiến biểu quyết đối với dự thảo thỏa ước lao động tập thể do tổ chức đại diện người lao động quyết định nhưng không được làm ảnh hưởng đến hoạt động sản xuất, kinh doanh bình thường của doanh nghiệp tham gia thương lượng.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thời gian, địa điểm và cách thức lấy ý kiến biểu quyết đối với dự thảo thỏa ước lao động tập thể\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"do tổ chức đại diện người lao động quyết định\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không được làm ảnh hưởng đến hoạt động sản xuất, kinh doanh bình thường của doanh nghiệp tham gia thương lượng\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538946962-70a1ed4c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 685
+   },
+   "input_tokens": 2434,
+   "output_tokens": 127,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_6917769742512bdd2593b1f3"
+   }
+  }
+ }
+}

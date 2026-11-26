@@ -1,0 +1,142 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D160.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng người lao động là người khuyết tật làm thêm giờ, làm việc vào ban đêm",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Các hành vi bị nghiêm cấm khi sử dụng lao động là người khuyết tật",
+      "Sử dụng người lao động là người khuyết tật nhẹ suy giảm khả năng lao động từ 51% trở lên, khuyết tật nặng hoặc khuyết tật đặc biệt nặng làm thêm giờ, làm việc vào ban đêm"
+     ],
+     "quy_tac": "q1",
+     "chua_ro": [
+      {
+       "thanh_phan": "chủ thể của hành vi bị cấm",
+       "nguyen_nhan": "chu_the",
+       "cau_hoi": "Tiêu đề chỉ nêu 'hành vi bị nghiêm cấm khi sử dụng lao động', không nêu nguyên văn chủ thể; chủ thể có phải người sử dụng lao động?"
+      }
+     ],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Làm thêm giờ và làm việc ban đêm là hai hình thức của cùng một hành vi sử dụng lao động khuyết tật, giữ chung một mệnh đề."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là người khuyết tật",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "khuyết tật nhẹ suy giảm khả năng lao động từ 51% trở lên",
+      "khuyết tật nặng",
+      "khuyết tật đặc biệt nặng"
+     ],
+     "trich": [
+      "người lao động là người khuyết tật nhẹ suy giảm khả năng lao động từ 51% trở lên, khuyết tật nặng hoặc khuyết tật đặc biệt nặng"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm mô tả giới hạn đối tượng (51% trở lên, khuyết tật nặng/đặc biệt nặng) tách thành điều kiện."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ngoai_le",
+     "menh_de": "đồng ý",
+     "chu_the": {
+      "chu": "người lao động là người khuyết tật",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trừ trường hợp người lao động là người khuyết tật đồng ý"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D160.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng người lao động là người khuyết tật làm công việc nặng nhọc, độc hại, nguy hiểm",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo danh mục do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Các hành vi bị nghiêm cấm khi sử dụng lao động là người khuyết tật",
+      "Sử dụng người lao động là người khuyết tật làm công việc nặng nhọc, độc hại, nguy hiểm theo danh mục do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành"
+     ],
+     "quy_tac": "q1",
+     "chua_ro": [
+      {
+       "thanh_phan": "chủ thể của hành vi bị cấm",
+       "nguyen_nhan": "chu_the",
+       "cau_hoi": "Tiêu đề không nêu nguyên văn chủ thể; chủ thể có phải người sử dụng lao động?"
+      }
+     ],
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm 'theo danh mục do Bộ trưởng ... ban hành' là căn cứ phụ, bỏ đi vẫn cùng loại hành vi."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có sự đồng ý của người khuyết tật sau khi đã được người sử dụng lao động cung cấp đầy đủ thông tin về công việc đó",
+     "chu_the": {
+      "chu": "người khuyết tật",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "mà không có sự đồng ý của người khuyết tật sau khi đã được người sử dụng lao động cung cấp đầy đủ thông tin về công việc đó"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Việc thiếu sự đồng ý sau khi được cung cấp thông tin là hoàn cảnh áp dụng, tách thành điều kiện."
+     }
+    }
+   ]
+  }
+ ]
+}

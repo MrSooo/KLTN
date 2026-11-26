@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thực hiện chính sách, pháp luật của Nhà nước khi cơ cấu lại nền kinh tế hoặc thực hiện cam kết quốc tế.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thực hiện chính sách, pháp luật của Nhà nước\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"cơ cấu lại nền kinh tế\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"thực hiện cam kết quốc tế\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538522841-a7029a46",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 815
+   },
+   "input_tokens": 2399,
+   "output_tokens": 80,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_c2c60ef797dd006845a61dcc"
+   }
+  }
+ }
+}

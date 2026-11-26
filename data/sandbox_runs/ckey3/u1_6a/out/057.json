@@ -1,0 +1,51 @@
+{
+ "units": [
+  {
+   "unit_id": "ND_219-2025.D10",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động theo thời hạn của một trong các trường hợp",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động theo thời hạn của một trong các trường hợp"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Giá trị thời hạn theo trường hợp được dẫn chiếu và giới hạn tối đa là hai ràng buộc kiểm riêng được."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "không quá 02 năm",
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động",
+      "nhưng không quá 02 năm"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Giới hạn tối đa 02 năm là ràng buộc độc lập với việc xác định thời hạn theo trường hợp."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "trich": [
+      "quy định tại Điều 21 Nghị định này"
+     ],
+     "targets": [
+      "ND_219-2025.D21"
+     ],
+     "gan_vao": 0
+    }
+   ]
+  }
+ ]
+}

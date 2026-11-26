@@ -1,0 +1,16 @@
+1.9 hỏi đáp: lldnn_questions.json
+văn bản có quy tắc: ['BLLD_45-2019']; câu hỏi: 4; từ vựng: 903 kết luận, 1586 vị từ
+Không in tỉ lệ đúng chung: câu gắn 'cần 2.6' có căn cứ chuẩn ở văn bản chưa có quy tắc nên chưa thể đúng ở giai đoạn này.
+Q04 2022-03-01 chuẩn=bi_bac ra=ket_luan_duoc [sai]
+    φ=not_applicable_grant_work_permit; quy tắc trong Π_τ: 1089; dữ kiện: foreign_worker_in_vietnam, marry_vietnamese_and_reside_in_vietnam
+    căn cứ: ['BLLD_45-2019.D154.K8']; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'BLLD_45-2019.D154.K8']
+Q06 2025-06-01 chuẩn=ket_luan_duoc ra=khong_tra_loi [sai]
+    φ=None; quy tắc trong Π_τ: 1089; dữ kiện: foreign_worker_in_vietnam
+    lý do: ngoai_pham_vi
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d']
+Q09 2022-01-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=must_make_deposit; quy tắc trong Π_τ: 1089; dữ kiện: labor_leasing_enterprise
+    căn cứ: ['BLLD_45-2019.D54.K1']; căn cứ chuẩn: ['BLLD_45-2019.D54.K1']
+Q15 2025-06-01 chuẩn=khong_tra_loi ra=khong_tra_loi [ĐÚNG]
+    φ=None; quy tắc trong Π_τ: 1089; dữ kiện: employee, foreign_worker_in_vietnam
+    lý do: ngoai_pham_vi

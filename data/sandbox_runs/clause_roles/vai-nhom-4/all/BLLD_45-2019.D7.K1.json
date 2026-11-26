@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D7.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D7.K1\",\n \"tieu_de_dieu\": \"1:Xây 2:dựng 3:quan 4:hệ 5:lao 6:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Quan hệ lao động được xác lập qua đối thoại, thương lượng, thỏa thuận theo nguyên tắc tự nguyện, thiện chí, bình đẳng, hợp tác, tôn trọng quyền và lợi ích hợp pháp của nhau.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Quan 2:hệ 3:lao 4:động 5:được 6:xác 7:lập 8:qua 9:đối 10:thoại, 11:thương 12:lượng, 13:thỏa 14:thuận 15:theo 16:nguyên 17:tắc 18:tự 19:nguyện, 20:thiện 21:chí, 22:bình 23:đẳng, 24:hợp 25:tác, 26:tôn 27:trọng 28:quyền 29:và 30:lợi 31:ích 32:hợp 33:pháp 34:của 35:nhau\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D7.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:5-14\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-4\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:15-35\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-4\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-28abf46a8a4c476ca8a63cae662ade49",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3946
+   },
+   "input_tokens": 5881,
+   "output_tokens": 1004,
+   "x_ckey": {
+    "cost": 11.05,
+    "cost_is_estimate": false,
+    "request_id": "req_fdccfeb9166731cbe668af56"
+   }
+  }
+ }
+}

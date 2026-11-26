@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trong thời gian tiến hành sửa đổi, bổ sung thỏa ước lao động tập thể thì quyền lợi của người lao động được thực hiện theo quy định của pháp luật.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Trong thời gian tiến hành\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"sửa đổi\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"bổ sung\"\n    },\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"thỏa ước lao động tập thể\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"quyền lợi của người lao động được thực hiện theo quy định của pháp luật\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539018852-ff5c34de",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4058
+   },
+   "input_tokens": 2408,
+   "output_tokens": 220,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_1692be6bf369698c29d600cc"
+   }
+  }
+ }
+}

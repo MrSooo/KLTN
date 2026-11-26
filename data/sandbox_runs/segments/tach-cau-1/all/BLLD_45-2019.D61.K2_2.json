@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thời hạn tập nghề không quá 03 tháng.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thời hạn tập nghề không quá 03 tháng\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538719324-08f15810",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 146
+   },
+   "input_tokens": 2384,
+   "output_tokens": 35,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_79e89bf5a669030c9008f289"
+   }
+  }
+ }
+}

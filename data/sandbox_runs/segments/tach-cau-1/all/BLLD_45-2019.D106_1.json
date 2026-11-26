@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Giờ làm việc ban đêm được tính từ 22 giờ đến 06 giờ sáng ngày hôm sau.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Giờ làm việc ban đêm được tính từ 22 giờ đến 06 giờ sáng ngày hôm sau\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539223349-1c6f2c85",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 272
+   },
+   "input_tokens": 2395,
+   "output_tokens": 46,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a4411e2882e34c391df6bc94"
+   }
+  }
+ }
+}

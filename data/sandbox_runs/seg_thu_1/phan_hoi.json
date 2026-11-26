@@ -1,0 +1,23 @@
+{
+ "content": [
+  {
+   "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"lợi dụng đình công gây mất trật tự, an toàn công cộng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"người có hành vi cản trở thực hiện quyền đình công\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"kích động\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"lôi kéo\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"ép buộc\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"người lao động đình công\",\"ap_cho\":[\"m4\",\"m5\",\"m6\"]},{\"id\":\"m7\",\"loai\":\"menh_de\",\"chu\":\"người có hành vi trù dập\"},{\"id\":\"m8\",\"loai\":\"menh_de\",\"chu\":\"trả thù\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"người tham gia đình công, người lãnh đạo cuộc đình công\",\"ap_cho\":[\"m7\",\"m8\"]},{\"id\":\"c4\",\"loai\":\"dung_chung\",\"chu\":\"tùy theo mức độ vi phạm\",\"ap_cho\":[\"m9\",\"m10\"]},{\"id\":\"m9\",\"loai\":\"menh_de\",\"chu\":\"bị xử phạt vi phạm hành chính\"},{\"id\":\"m10\",\"loai\":\"menh_de\",\"chu\":\"truy cứu trách nhiệm hình sự\"},{\"id\":\"m11\",\"loai\":\"menh_de\",\"chu\":\"gây thiệt hại\"},{\"id\":\"m12\",\"loai\":\"menh_de\",\"chu\":\"phải bồi thường theo quy định của pháp luật\"}]}\n```",
+   "type": "text"
+  }
+ ],
+ "id": "chatcmpl-lBcDa9n8AZ-dvr0P8c_e4Ag",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "role": "assistant",
+ "stop_reason": "end_turn",
+ "stop_sequence": null,
+ "type": "message",
+ "usage": {
+  "input_tokens": 779,
+  "output_tokens": 433,
+  "x_ckey": {
+   "cost": 6.5,
+   "cost_is_estimate": false,
+   "request_id": "req_115a37c9e47c57c4407ce674"
+  }
+ }
+}

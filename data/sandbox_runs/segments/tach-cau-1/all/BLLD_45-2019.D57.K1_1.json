@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thông báo, hướng dẫn cho người lao động thuê lại biết nội quy lao động và các quy chế khác của mình.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thông báo\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hướng dẫn\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"cho người lao động thuê lại biết nội quy lao động và các quy chế khác của mình\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538690293-9a8efb00",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 905
+   },
+   "input_tokens": 2397,
+   "output_tokens": 90,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_4188b4f7c7cdc7677a930934"
+   }
+  }
+ }
+}

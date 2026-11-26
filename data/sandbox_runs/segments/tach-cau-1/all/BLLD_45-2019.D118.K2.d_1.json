@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Phòng, chống quấy rối tình dục tại nơi làm việc; trình tự, thủ tục xử lý hành vi quấy rối tình dục tại nơi làm việc;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Phòng, chống quấy rối tình dục tại nơi làm việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trình tự, thủ tục xử lý hành vi quấy rối tình dục tại nơi làm việc\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539353965-2dfb41eb",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2092
+   },
+   "input_tokens": 2408,
+   "output_tokens": 74,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_93d45953404cf840845df846"
+   }
+  }
+ }
+}

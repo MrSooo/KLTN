@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D18.K4.c",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D18.K4.c\",\n \"tieu_de_dieu\": \"Thẩm quyền giao kết hợp đồng lao động\",\n \"khoan_cha\": \"Người giao kết hợp đồng lao động bên phía người lao động là người thuộc một trong các trường hợp sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người chưa đủ 15 tuổi và người đại diện theo pháp luật của người đó;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Người chưa đủ 15 tuổi và người đại diện theo pháp luật của người đó\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D18.K4.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Người chưa đủ 15 tuổi và người đại diện theo pháp luật của người đó\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người giao kết hợp đồng lao động bên phía người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "3PgGa-XXD9Gz1e8P4uKtyAk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1897
+   },
+   "input_tokens": 4072,
+   "output_tokens": 600,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_1d4a8b25523bc1f77d7df880"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Cha đẻ, mẹ đẻ, cha nuôi, mẹ nuôi; cha đẻ, mẹ đẻ, cha nuôi, mẹ nuôi của vợ hoặc chồng; vợ hoặc chồng; con đẻ, con nuôi chết: nghỉ 03 ngày.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Cha đẻ, mẹ đẻ, cha nuôi, mẹ nuôi; cha đẻ, mẹ đẻ, cha nuôi, mẹ nuôi của vợ hoặc chồng; vợ hoặc chồng; con đẻ, con nuôi chết\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"nghỉ 03 ngày\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539324899-b3ff2672",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1544
+   },
+   "input_tokens": 2431,
+   "output_tokens": 94,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_7c536a35334f8db5208e5a12"
+   }
+  }
+ }
+}

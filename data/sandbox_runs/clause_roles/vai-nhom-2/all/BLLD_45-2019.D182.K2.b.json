@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D182.K2.b",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D182.K2.b\",\n \"tieu_de_dieu\": \"Quyền và nghĩa vụ của hai bên trong giải quyết tranh chấp lao động\",\n \"khoan_cha\": \"Trong giải quyết tranh chấp lao động, các bên có nghĩa vụ sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chấp hành thỏa thuận đã đạt được, quyết định của Ban trọng tài lao động, bản án, quyết định của Tòa án đã có hiệu lực pháp luật.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chấp hành thỏa thuận đã đạt được, quyết định của Ban trọng tài lao động, bản án, quyết định của Tòa án đã có hiệu lực pháp luật\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D182.K2.b\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Chấp hành\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"liet_ke\": [\n    \"thỏa thuận đã đạt được\",\n    \"quyết định của Ban trọng tài lao động\",\n    \"bản án, quyết định của Tòa án đã có hiệu lực pháp luật\"\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795547212092-608c4f7e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2593
+   },
+   "input_tokens": 3695,
+   "output_tokens": 182,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_98e15cf3bfdeb647a5b1eda5"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động phải có mặt và có quyền tự bào chữa, nhờ luật sư hoặc tổ chức đại diện người lao động bào chữa; trường hợp là người chưa đủ 15 tuổi thì phải có sự tham gia của người đại diện theo pháp luật;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"phải có mặt\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"có quyền\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tự bào chữa\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"nhờ luật sư hoặc tổ chức đại diện người lao động bào chữa\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"trường hợp là người chưa đủ 15 tuổi\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"phải có sự tham gia của người đại diện theo pháp luật\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-FUEDa5L-JNS50-kP2qCpqA4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 949
+   },
+   "input_tokens": 951,
+   "output_tokens": 1143,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_9e9566929fae275cb115ef12"
+   }
+  }
+ }
+}

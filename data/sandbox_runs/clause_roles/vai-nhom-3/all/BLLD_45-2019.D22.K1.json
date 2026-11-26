@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D22.K1",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D22.K1\",\n \"tieu_de_dieu\": \"Phụ lục hợp đồng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Phụ lục hợp đồng lao động là bộ phận của hợp đồng lao động và có hiệu lực như hợp đồng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Phụ lục hợp đồng lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"là bộ phận của hợp đồng lao động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"có hiệu lực như hợp đồng lao động\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D22.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"là bộ phận của hợp đồng lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Phụ lục hợp đồng lao động\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"có hiệu lực như hợp đồng lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Phụ lục hợp đồng lao động\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "_vgGa5O5C-Sw1e8PuIXgwQk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 2139,
+   "completion_tokens_details": {
+    "reasoning_tokens": 747
+   },
+   "input_tokens": 2038,
+   "output_tokens": 1038,
+   "prompt_tokens_details": {
+    "cached_tokens": 2139
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_bc992c45d411dc13f96ecdd3"
+   }
+  }
+ }
+}

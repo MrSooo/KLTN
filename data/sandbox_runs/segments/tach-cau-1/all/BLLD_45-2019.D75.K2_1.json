@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Nội dung thỏa ước lao động tập thể không được trái với quy định của pháp luật; khuyến khích có lợi hơn cho người lao động so với quy định của pháp luật.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Nội dung thỏa ước lao động tập thể\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"không được trái với quy định của pháp luật\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"khuyến khích có lợi hơn cho người lao động so với quy định của pháp luật\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538931816-0ee1226b",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 613
+   },
+   "input_tokens": 2413,
+   "output_tokens": 106,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_ae86ce46ddf65b6a89bfe687"
+   }
+  }
+ }
+}

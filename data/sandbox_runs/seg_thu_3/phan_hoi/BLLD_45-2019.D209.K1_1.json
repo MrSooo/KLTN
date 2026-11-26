@@ -1,0 +1,30 @@
+{
+ "cau": "Không được đình công ở nơi sử dụng lao động mà việc đình công có thể đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Không được đình công ở nơi sử dụng lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"việc đình công có thể đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-YVMDa5qvMrKy2roP87mKyAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 444
+   },
+   "input_tokens": 939,
+   "output_tokens": 524,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f4b0c24cd747c758cb91d8ed"
+   }
+  }
+ }
+}

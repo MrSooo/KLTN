@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Lập, cập nhật, quản lý, sử dụng sổ quản lý lao động bằng bản giấy hoặc bản điện tử và xuất trình khi cơ quan nhà nước có thẩm quyền yêu cầu.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Lập\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"cập nhật\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"quản lý\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"sử dụng\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"sổ quản lý lao động bằng bản giấy hoặc bản điện tử\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\",\"m5\"]},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"xuất trình\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"cơ quan nhà nước có thẩm quyền yêu cầu\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-8rYFa_OMIqyv1e8P_rPvqQI",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6185
+   },
+   "input_tokens": 2272,
+   "output_tokens": 696,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_da94d1381a09704139ba18b0"
+   }
+  }
+ }
+}

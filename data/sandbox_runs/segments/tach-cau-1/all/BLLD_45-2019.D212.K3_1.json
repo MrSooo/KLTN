@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Tổ chức và tiến hành nghiên cứu khoa học về lao động; thống kê, thông tin về lao động và thị trường lao động, về mức sống, tiền lương và thu nhập của người lao động; quản lý lao động về số lượng, chất lượng và biến động lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Tổ chức\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tiến hành\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"nghiên cứu khoa học về lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"thống kê\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"thông tin\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"về lao động và thị trường lao động, về mức sống, tiền lương và thu nhập của người lao động\",\"ap_cho\":[\"m3\",\"m4\"]},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"quản lý lao động về số lượng, chất lượng và biến động lao động\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540517541-7c2f816a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6213
+   },
+   "input_tokens": 2432,
+   "output_tokens": 196,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_f5cedd450bec7c280d96cf76"
+   }
+  }
+ }
+}

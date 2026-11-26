@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D203.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D203.K1\",\n \"tieu_de_dieu\": \"Quyền của các bên trước và trong quá trình đình công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tiếp tục thỏa thuận để giải quyết nội dung tranh chấp lao động tập thể hoặc cùng đề nghị hòa giải viên lao động, Hội đồng trọng tài lao động tiến hành hòa giải, giải quyết tranh chấp lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Tiếp tục thỏa thuận\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"giải quyết nội dung tranh chấp lao động tập thể\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"cùng đề nghị hòa giải viên lao động, Hội đồng trọng tài lao động tiến hành hòa giải, giải quyết tranh chấp lao động\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D203.K1\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"doan\": [\n        \"Tiếp tục thỏa thuận\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"duoc\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"các bên\",\n        \"loai\": [\n          \"W\",\n          \"E\"\n        ]\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m2\",\n      \"doan\": [\n        \"giải quyết nội dung tranh chấp lao động tập thể\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"duoc\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"các bên\",\n        \"loai\": [\n          \"W\",\n          \"E\"\n        ]\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m3\",\n      \"doan\": [\n        \"cùng đề nghị hòa giải viên lao động, Hội đồng trọng tài lao động tiến hành hòa giải, giải quyết tranh chấp lao động\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"duoc\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"các bên\",\n        \"loai\": [\n          \"W\",\n          \"E\"\n        ]\n      },\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795547708899-1c2e66b4",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2988
+   },
+   "input_tokens": 3787,
+   "output_tokens": 380,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_9c4f1659ecdeca1b8245029c"
+   }
+  }
+ }
+}

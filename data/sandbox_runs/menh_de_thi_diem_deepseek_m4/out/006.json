@@ -1,0 +1,149 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D14.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết bằng văn bản",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Hợp đồng lao động phải được giao kết bằng văn bản"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "làm thành 02 bản",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Hợp đồng lao động phải được giao kết bằng văn bản và được làm thành 02 bản"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giữ 01 bản",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người lao động giữ 01 bản"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giữ 01 bản",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người sử dụng lao động giữ 01 bản"
+     ],
+     "quy_tac": "q3"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "gan_vao": null,
+     "targets": [
+      "BLLD_45-2019.D14.K2"
+     ],
+     "trich": [
+      "trừ trường hợp quy định tại khoản 2 Điều này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có giá trị như hợp đồng lao động bằng văn bản",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "dieu_kien": "giao kết thông qua phương tiện điện tử dưới hình thức thông điệp dữ liệu theo quy định của pháp luật về giao dịch điện tử",
+     "trich": [
+      "Hợp đồng lao động được giao kết thông qua phương tiện điện tử dưới hình thức thông điệp dữ liệu theo quy định của pháp luật về giao dịch điện tử có giá trị như hợp đồng lao động bằng văn bản"
+     ],
+     "quy_tac": "q4",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Điều kiện hình thức giao kết điện tử tách thành dieu_kien, hệ quả giá trị pháp lý là ket_luan."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D14.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết hợp đồng lao động bằng lời nói",
+     "chu_the": {
+      "chu": "Hai bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "dieu_kien": "đối với hợp đồng có thời hạn dưới 01 tháng",
+     "trich": [
+      "Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "gan_vao": 0,
+     "targets": [
+      "BLLD_45-2019.D18.K2",
+      "BLLD_45-2019.D145.K1.a",
+      "BLLD_45-2019.D162.K1"
+     ],
+     "trich": [
+      "trừ trường hợp quy định tại khoản 2 Điều 18, điểm a khoản 1 Điều 145 và khoản 1 Điều 162 của Bộ luật này"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Ngoại lệ giới hạn quyền giao kết bằng lời nói nên gắn vào dòng menh_de đó."
+     }
+    }
+   ]
+  }
+ ]
+}

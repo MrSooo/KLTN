@@ -1,0 +1,1191 @@
+{
+"chu": [
+{
+"chu_id": "C0030",
+"chu": "thời giờ làm việc, thời giờ nghỉ ngơi, điều kiện an toàn, vệ sinh lao động tại nơi làm việc",
+"params": [
+"C"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D55.K2.c",
+"vai": "ket_luan",
+"tieu_de_dieu": "Hợp đồng cho thuê lại lao động",
+"khoan_cha": "Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu sau đây:",
+"chu_don_vi": "Thời giờ làm việc, thời giờ nghỉ ngơi, điều kiện an toàn, vệ sinh lao động tại nơi làm việc;"
+}
+],
+"ung_vien": [
+{
+"ten": "include_mandatory_contents",
+"params": [
+"C"
+],
+"vi_du": [
+"gồm các nội dung chủ yếu"
+]
+},
+{
+"ten": "sign_written_labor_leasing_contract_in_two_copies",
+"params": [
+"?"
+],
+"vi_du": [
+"ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản"
+]
+},
+{
+"ten": "include_obligations_of_each_party_toward_worker",
+"params": [
+"C"
+],
+"vi_du": [
+"nghĩa vụ của mỗi bên đối với người lao động"
+]
+},
+{
+"ten": "include_leasing_term_and_start_date_contents",
+"params": [
+"C"
+],
+"vi_du": [
+"thời hạn thuê lại lao động; thời gian bắt đầu làm việc của người lao động thuê lại"
+]
+},
+{
+"ten": "include_work_location_and_job_position_contents",
+"params": [
+"C"
+],
+"vi_du": [
+"địa điểm làm việc, vị trí việc làm cần sử dụng lao động thuê lại, nội dung cụ thể của công việc, yêu cầu cụ thể đối với người lao động thuê lại"
+]
+},
+{
+"ten": "conditional_business_line",
+"params": [
+"?"
+],
+"vi_du": [
+"là ngành, nghề kinh doanh có điều kiện"
+]
+},
+{
+"ten": "regulate_labor_leasing_license_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động"
+]
+}
+],
+"loi_lan_truoc": "new \"include_working_time_and_safety_conditions_contents\": tên phải khớp ^[a-z][a-z0-9_]{2,49}$ (chữ thường không dấu, số, gạch dưới; 3 đến 50 ký tự)"
+},
+{
+"chu_id": "C0031",
+"chu": "trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp",
+"params": [
+"C"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D55.K2.d",
+"vai": "ket_luan",
+"tieu_de_dieu": "Hợp đồng cho thuê lại lao động",
+"khoan_cha": "Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu sau đây:",
+"chu_don_vi": "Trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp;"
+}
+],
+"ung_vien": [
+{
+"ten": "include_mandatory_contents",
+"params": [
+"C"
+],
+"vi_du": [
+"gồm các nội dung chủ yếu"
+]
+},
+{
+"ten": "sign_written_labor_leasing_contract_in_two_copies",
+"params": [
+"?"
+],
+"vi_du": [
+"ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản"
+]
+},
+{
+"ten": "include_obligations_of_each_party_toward_worker",
+"params": [
+"C"
+],
+"vi_du": [
+"nghĩa vụ của mỗi bên đối với người lao động"
+]
+},
+{
+"ten": "include_leasing_term_and_start_date_contents",
+"params": [
+"C"
+],
+"vi_du": [
+"thời hạn thuê lại lao động; thời gian bắt đầu làm việc của người lao động thuê lại"
+]
+},
+{
+"ten": "include_work_location_and_job_position_contents",
+"params": [
+"C"
+],
+"vi_du": [
+"địa điểm làm việc, vị trí việc làm cần sử dụng lao động thuê lại, nội dung cụ thể của công việc, yêu cầu cụ thể đối với người lao động thuê lại"
+]
+},
+{
+"ten": "conditional_business_line",
+"params": [
+"?"
+],
+"vi_du": [
+"là ngành, nghề kinh doanh có điều kiện"
+]
+}
+],
+"loi_lan_truoc": "new \"include_occupational_accident_compensation_responsibility\": tên phải khớp ^[a-z][a-z0-9_]{2,49}$ (chữ thường không dấu, số, gạch dưới; 3 đến 50 ký tự)"
+},
+{
+"chu_id": "C0033",
+"chu": "có thỏa thuận về quyền, lợi ích của người lao động thấp hơn so với hợp đồng lao động mà doanh nghiệp cho thuê lại lao động đã ký với người lao động",
+"params": [
+"C",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D55.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Hợp đồng cho thuê lại lao động",
+"khoan_cha": "",
+"chu_don_vi": "Hợp đồng cho thuê lại lao động không được có những thỏa thuận về quyền, lợi ích của người lao động thấp hơn so với hợp đồng lao động mà doanh nghiệp cho thuê lại lao động đã ký với người lao động."
+}
+],
+"ung_vien": [],
+"loi_lan_truoc": "new \"agree_on_lower_rights_and_benefits_than_labor_contract\": tên phải khớp ^[a-z][a-z0-9_]{2,49}$ (chữ thường không dấu, số, gạch dưới; 3 đến 50 ký tự)"
+},
+{
+"chu_id": "C0034",
+"chu": "bảo đảm đưa người lao động có trình độ phù hợp với những yêu cầu của bên thuê lại lao động và nội dung của hợp đồng lao động đã ký với người lao động",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D56.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động",
+"khoan_cha": "Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:",
+"chu_don_vi": "Bảo đảm đưa người lao động có trình độ phù hợp với những yêu cầu của bên thuê lại lao động và nội dung của hợp đồng lao động đã ký với người lao động;"
+}
+],
+"ung_vien": [
+{
+"ten": "ensure_equal_pay_for_leased_worker",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bảo đảm trả lương cho người lao động thuê lại không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau"
+]
+},
+{
+"ten": "notify_client_of_worker_background_and_requests",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thông báo cho bên thuê lại lao động biết sơ yếu lý lịch của người lao động, yêu cầu của người lao động"
+]
+},
+{
+"ten": "client_return_worker_due_to_discipline_violation",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bên thuê lại lao động trả lại người lao động do vi phạm kỷ luật lao động"
+]
+},
+{
+"ten": "discipline_worker_for_labor_discipline_violation",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động"
+]
+}
+],
+"loi_lan_truoc": "new \"ensure_worker_qualification_matches_client_requirements\": tên phải khớp ^[a-z][a-z0-9_]{2,49}$ (chữ thường không dấu, số, gạch dưới; 3 đến 50 ký tự)"
+},
+{
+"chu_id": "C0041",
+"chu": "thông báo, hướng dẫn người lao động thuê lại biết nội quy lao động và các quy chế khác của mình",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D57.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quyền và nghĩa vụ của bên thuê lại lao động",
+"khoan_cha": "",
+"chu_don_vi": "Thông báo, hướng dẫn cho người lao động thuê lại biết nội quy lao động và các quy chế khác của mình."
+}
+],
+"ung_vien": [
+{
+"ten": "agree_on_night_work_and_overtime",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thỏa thuận về làm việc vào ban đêm, làm thêm giờ"
+]
+},
+{
+"ten": "notify_client_of_worker_background_and_requests",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thông báo cho bên thuê lại lao động biết sơ yếu lý lịch của người lao động, yêu cầu của người lao động"
+]
+}
+],
+"loi_lan_truoc": "new \"notify_and_instruct_leased_worker_on_internal_rules\": tên phải khớp ^[a-z][a-z0-9_]{2,49}$ (chữ thường không dấu, số, gạch dưới; 3 đến 50 ký tự)"
+},
+{
+"chu_id": "C0042",
+"chu": "phân biệt đối xử về điều kiện lao động đối với người lao động thuê lại so với người lao động của mình",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D57.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quyền và nghĩa vụ của bên thuê lại lao động",
+"khoan_cha": "",
+"chu_don_vi": "Không được phân biệt đối xử về điều kiện lao động đối với người lao động thuê lại so với người lao động của mình."
+}
+],
+"ung_vien": [
+{
+"ten": "agree_on_night_work_and_overtime",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thỏa thuận về làm việc vào ban đêm, làm thêm giờ"
+]
+},
+{
+"ten": "discipline_worker_for_labor_discipline_violation",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động"
+]
+}
+],
+"loi_lan_truoc": "new \"discriminate_in_working_conditions_against_leased_worker\": tên phải khớp ^[a-z][a-z0-9_]{2,49}$ (chữ thường không dấu, số, gạch dưới; 3 đến 50 ký tự)"
+},
+{
+"chu_id": "C0045",
+"chu": "hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D57.K4",
+"vai": "chu_the",
+"tieu_de_dieu": "Quyền và nghĩa vụ của bên thuê lại lao động",
+"khoan_cha": "",
+"chu_don_vi": "Thỏa thuận với người lao động thuê lại và doanh nghiệp cho thuê lại lao động để tuyển dụng chính thức người lao động thuê lại làm việc cho mình trong trường hợp hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động chưa chấm dứt."
+}
+],
+"ung_vien": [
+{
+"ten": "labor_leasing_client",
+"params": [],
+"vi_du": [
+"Bên thuê lại lao động"
+]
+},
+{
+"ten": "leased_worker",
+"params": [],
+"vi_du": [
+"người lao động thuê lại"
+]
+}
+],
+"loi_lan_truoc": "new \"labor_contract_between_leased_worker_and_leasing_enterprise\": tên phải khớp ^[a-z][a-z0-9_]{2,49}$ (chữ thường không dấu, số, gạch dưới; 3 đến 50 ký tự)"
+},
+{
+"chu_id": "C0052",
+"chu": "thực hiện công việc",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D58.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quyền và nghĩa vụ của người lao động thuê lại",
+"khoan_cha": "Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:",
+"chu_don_vi": "Thực hiện công việc theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động;"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0053",
+"chu": "chấp hành kỷ luật lao động, nội quy lao động",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D58.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quyền và nghĩa vụ của người lao động thuê lại",
+"khoan_cha": "Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:",
+"chu_don_vi": "Chấp hành kỷ luật lao động, nội quy lao động; tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động;"
+}
+],
+"ung_vien": [
+{
+"ten": "labor_discipline_violation",
+"params": [
+"W"
+],
+"vi_du": [
+"vi phạm kỷ luật lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0054",
+"chu": "tuân theo sự quản lý, điều hành, giám sát hợp pháp",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D58.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quyền và nghĩa vụ của người lao động thuê lại",
+"khoan_cha": "Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:",
+"chu_don_vi": "Chấp hành kỷ luật lao động, nội quy lao động; tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động;"
+}
+],
+"ung_vien": [
+{
+"ten": "conditional_business_line",
+"params": [
+"?"
+],
+"vi_du": [
+"là ngành, nghề kinh doanh có điều kiện"
+]
+},
+{
+"ten": "regulate_labor_leasing_license_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0055",
+"chu": "trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau",
+"params": [
+"W",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D58.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quyền và nghĩa vụ của người lao động thuê lại",
+"khoan_cha": "Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:",
+"chu_don_vi": "Được trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau;"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0056",
+"chu": "khiếu nại với doanh nghiệp cho thuê lại lao động",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D58.K4",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quyền và nghĩa vụ của người lao động thuê lại",
+"khoan_cha": "Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:",
+"chu_don_vi": "Khiếu nại với doanh nghiệp cho thuê lại lao động trong trường hợp bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động;"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0057",
+"chu": "vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động",
+"params": [
+"E",
+"C"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D58.K4",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Quyền và nghĩa vụ của người lao động thuê lại",
+"khoan_cha": "Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:",
+"chu_don_vi": "Khiếu nại với doanh nghiệp cho thuê lại lao động trong trường hợp bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động;"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0058",
+"chu": "thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động",
+"params": [
+"W",
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D58.K5",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quyền và nghĩa vụ của người lao động thuê lại",
+"khoan_cha": "Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:",
+"chu_don_vi": "Thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động để giao kết hợp đồng lao động với bên thuê lại lao động."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0059",
+"chu": "Người lao động Việt Nam đi làm việc ở nước ngoài",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D150.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Nhà nước khuyến khích doanh nghiệp, cơ quan, tổ chức, cá nhân tìm kiếm và mở rộng thị trường lao động để đưa người lao động Việt Nam đi làm việc ở nước ngoài.\nNgười lao động Việt Nam đi làm việc ở nước ngoài phải tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác."
+}
+],
+"ung_vien": [
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+}
+]
+},
+{
+"chu_id": "C0060",
+"chu": "tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D150.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Nhà nước khuyến khích doanh nghiệp, cơ quan, tổ chức, cá nhân tìm kiếm và mở rộng thị trường lao động để đưa người lao động Việt Nam đi làm việc ở nước ngoài.\nNgười lao động Việt Nam đi làm việc ở nước ngoài phải tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác."
+}
+],
+"ung_vien": [
+{
+"ten": "labor_discipline_violation",
+"params": [
+"W"
+],
+"vi_du": [
+"vi phạm kỷ luật lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0061",
+"chu": "Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 2,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D150.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam phải tuân theo pháp luật Việt Nam và được pháp luật bảo vệ."
+},
+{
+"don_vi": "BLLD_45-2019.D150.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam phải tuân theo pháp luật Việt Nam và được pháp luật bảo vệ."
+}
+],
+"ung_vien": [
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "perform_labor_leasing_by_licensed_enterprise",
+"params": [],
+"vi_du": [
+"thực hiện bởi các doanh nghiệp có Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "apply_to_certain_jobs",
+"params": [],
+"vi_du": [
+"áp dụng đối với một số công việc nhất định"
+]
+}
+]
+},
+{
+"chu_id": "C0062",
+"chu": "tuân theo pháp luật Việt Nam",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D150.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam phải tuân theo pháp luật Việt Nam và được pháp luật bảo vệ."
+}
+],
+"ung_vien": [
+{
+"ten": "labor_discipline_violation",
+"params": [
+"W"
+],
+"vi_du": [
+"vi phạm kỷ luật lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0063",
+"chu": "pháp luật bảo vệ",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D150.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam phải tuân theo pháp luật Việt Nam và được pháp luật bảo vệ."
+}
+],
+"ung_vien": [
+{
+"ten": "labor_discipline_violation",
+"params": [
+"W"
+],
+"vi_du": [
+"vi phạm kỷ luật lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0064",
+"chu": "quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D150.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Chính phủ quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam."
+}
+],
+"ung_vien": [
+{
+"ten": "include_mandatory_contents",
+"params": [
+"C"
+],
+"vi_du": [
+"gồm các nội dung chủ yếu"
+]
+},
+{
+"ten": "keep_leasing_records_and_report_to_labor_authority",
+"params": [
+"E"
+],
+"vi_du": [
+"lập hồ sơ ghi rõ số lao động đã cho thuê lại, bên thuê lại lao động và định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+}
+]
+},
+{
+"chu_id": "C0065",
+"chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 29,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:"
+},
+{
+"don_vi": "BLLD_45-2019.D151.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0066",
+"chu": "là người có quốc tịch nước ngoài",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0067",
+"chu": "đáp ứng các điều kiện",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:"
+}
+],
+"ung_vien": [
+{
+"ten": "conditional_business_line",
+"params": [
+"?"
+],
+"vi_du": [
+"là ngành, nghề kinh doanh có điều kiện"
+]
+},
+{
+"ten": "regulate_labor_leasing_license_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "meet_agreed_requirements",
+"params": [
+"W"
+],
+"vi_du": [
+"đáp ứng yêu cầu như đã thỏa thuận"
+]
+}
+]
+},
+{
+"chu_id": "C0068",
+"chu": "đủ 18 tuổi trở lên",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K1.a",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:",
+"chu_don_vi": "Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0069",
+"chu": "có năng lực hành vi dân sự đầy đủ",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K1.a",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:",
+"chu_don_vi": "Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;"
+}
+],
+"ung_vien": [
+{
+"ten": "labor_discipline_violation",
+"params": [
+"W"
+],
+"vi_du": [
+"vi phạm kỷ luật lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0070",
+"chu": "có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K1.b",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:",
+"chu_don_vi": "Có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc; có đủ sức khỏe theo quy định của Bộ trưởng Bộ Y tế;"
+}
+],
+"ung_vien": [
+{
+"ten": "conditional_business_line",
+"params": [
+"?"
+],
+"vi_du": [
+"là ngành, nghề kinh doanh có điều kiện"
+]
+},
+{
+"ten": "regulate_labor_leasing_license_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0071",
+"chu": "có đủ sức khỏe",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K1.b",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:",
+"chu_don_vi": "Có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc; có đủ sức khỏe theo quy định của Bộ trưởng Bộ Y tế;"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0072",
+"chu": "là người đang trong thời gian chấp hành hình phạt",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K1.c",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:",
+"chu_don_vi": "Không phải là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam;"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0073",
+"chu": "có giấy phép lao động",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K1.d",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:",
+"chu_don_vi": "Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp, trừ trường hợp quy định tại Điều 154 của Bộ luật này."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0074",
+"chu": "Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam không được vượt quá thời hạn của Giấy phép lao động. Khi sử dụng người lao động nước ngoài làm việc tại Việt Nam, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn."
+}
+],
+"ung_vien": [
+{
+"ten": "apply_to_certain_jobs",
+"params": [],
+"vi_du": [
+"áp dụng đối với một số công việc nhất định"
+]
+},
+{
+"ten": "applicable_to_employee",
+"params": [],
+"vi_du": [
+"đối với người lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0075",
+"chu": "không được vượt quá thời hạn của Giấy phép lao động",
+"params": [
+"C"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam không được vượt quá thời hạn của Giấy phép lao động. Khi sử dụng người lao động nước ngoài làm việc tại Việt Nam, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0076",
+"chu": "hai bên",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam không được vượt quá thời hạn của Giấy phép lao động. Khi sử dụng người lao động nước ngoài làm việc tại Việt Nam, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0077",
+"chu": "thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam không được vượt quá thời hạn của Giấy phép lao động. Khi sử dụng người lao động nước ngoài làm việc tại Việt Nam, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn."
+}
+],
+"ung_vien": [
+{
+"ten": "meet_agreed_requirements",
+"params": [
+"W"
+],
+"vi_du": [
+"đáp ứng yêu cầu như đã thỏa thuận"
+]
+},
+{
+"ten": "sign_written_labor_leasing_contract_in_two_copies",
+"params": [
+"?"
+],
+"vi_du": [
+"ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản"
+]
+}
+]
+},
+{
+"chu_id": "C0078",
+"chu": "tuân theo pháp luật lao động Việt Nam",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Người lao động nước ngoài làm việc tại Việt Nam phải tuân theo pháp luật lao động Việt Nam và được pháp luật Việt Nam bảo vệ, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác."
+}
+],
+"ung_vien": [
+{
+"ten": "labor_discipline_violation",
+"params": [
+"W"
+],
+"vi_du": [
+"vi phạm kỷ luật lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0079",
+"chu": "được pháp luật Việt Nam bảo vệ",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D151.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Điều kiện người lao động nước ngoài làm việc tại Việt Nam",
+"khoan_cha": "",
+"chu_don_vi": "Người lao động nước ngoài làm việc tại Việt Nam phải tuân theo pháp luật lao động Việt Nam và được pháp luật Việt Nam bảo vệ, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác."
+}
+],
+"ung_vien": [
+{
+"ten": "labor_discipline_violation",
+"params": [
+"W"
+],
+"vi_du": [
+"vi phạm kỷ luật lao động"
+]
+}
+]
+}
+]
+}

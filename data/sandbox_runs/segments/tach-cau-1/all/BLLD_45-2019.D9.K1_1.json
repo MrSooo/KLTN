@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Việc làm là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Việc làm là hoạt động lao động tạo ra thu nhập mà pháp luật không cấm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-zbYFa73BLoj91e8Px5CBuQ4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 404
+   },
+   "input_tokens": 2254,
+   "output_tokens": 448,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_c4cf5fd4317fc530fb29a3fa"
+   }
+  }
+ }
+}

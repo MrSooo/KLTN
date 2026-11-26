@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D14.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D14.K1\",\n \"tieu_de_dieu\": \"Hình thức hợp đồng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 2 Điều này\",\n   \"dich\": \"BLLD_45-2019.D14.K2\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Hợp đồng lao động phải được giao kết bằng văn bản và được làm thành 02 bản, người lao động giữ 01 bản, người sử dụng lao động giữ 01 bản, trừ trường hợp quy định tại khoản 2 Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Hợp đồng lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải được giao kết bằng văn bản\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được làm thành 02 bản\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"người lao động giữ 01 bản\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"người sử dụng lao động giữ 01 bản\"\n    },\n    {\n     \"id\": \"s1.d1\",\n     \"loai\": \"dan_chieu\",\n     \"chu\": \"trừ trường hợp quy định tại khoản 2 Điều này\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Hợp đồng lao động được giao kết thông qua phương tiện điện tử dưới hình thức thông điệp dữ liệu theo quy định của pháp luật về giao dịch điện tử có giá trị như hợp đồng lao động bằng văn bản.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Hợp đồng lao động được giao kết thông qua phương tiện điện tử dưới hình thức thông điệp dữ liệu theo quy định của pháp luật về giao dịch điện tử có giá trị như hợp đồng lao động bằng văn bản\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D14.K1\",\n \"ngoai_le\": [\n  \"BLLD_45-2019.D14.K2\"\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"giao kết bằng văn bản\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Hợp đồng lao động\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"làm thành 02 bản\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Hợp đồng lao động\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"giữ 01 bản\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"doan\": [\n    \"giữ 01 bản\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"giao kết thông qua phương tiện điện tử dưới hình thức thông điệp dữ liệu theo quy định của pháp luật về giao dịch điện tử\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Hợp đồng lao động\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"có giá trị như hợp đồng lao động bằng văn bản\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Hợp đồng lao động\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795548263139-6e6f7865",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4029
+   },
+   "input_tokens": 4060,
+   "output_tokens": 682,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_5fda2801f99619bb4436e8dc"
+   }
+  }
+ }
+}

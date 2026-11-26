@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khi hợp đồng lao động bị tuyên bố vô hiệu toàn bộ thì quyền, nghĩa vụ và lợi ích của người lao động được giải quyết theo quy định của pháp luật; trường hợp do ký sai thẩm quyền thì hai bên ký lại.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"hợp đồng lao động bị tuyên bố vô hiệu toàn bộ\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"quyền, nghĩa vụ và lợi ích của người lao động được giải quyết theo quy định của pháp luật\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"do ký sai thẩm quyền\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"hai bên ký lại\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538639503-d7a68ca1",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 901
+   },
+   "input_tokens": 2423,
+   "output_tokens": 115,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_4d5940060e6a0c3f145f6799"
+   }
+  }
+ }
+}

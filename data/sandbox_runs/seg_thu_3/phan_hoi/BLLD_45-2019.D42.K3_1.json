@@ -1,0 +1,27 @@
+{
+ "cau": "Trường hợp thay đổi cơ cấu, công nghệ mà ảnh hưởng đến việc làm của nhiều người lao động thì người sử dụng lao động phải xây dựng và thực hiện phương án sử dụng lao động theo quy định tại Điều 44 của Bộ luật này; trường hợp có chỗ làm việc mới thì ưu tiên đào tạo lại người lao động để tiếp tục sử dụng.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Trường hợp\",\n      \"ap_cho\": [\"m1\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"thay đổi cơ cấu, công nghệ\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"ảnh hưởng đến việc làm của nhiều người lao động\"\n    },\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"người sử dụng lao động phải\",\n      \"ap_cho\": [\"m3\", \"m4\"]\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"xây dựng\"\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"thực hiện\"\n    },\n    {\n      \"id\": \"c3\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"phương án sử dụng lao động theo quy định tại Điều 44 của Bộ luật này\",\n      \"ap_cho\": [\"m3\", \"m4\"]\n    },\n    {\n      \"id\": \"c4\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"trường hợp\",\n      \"ap_cho\": [\"m5\"]\n    },\n    {\n      \"id\": \"m5\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"có chỗ làm việc mới\"\n    },\n    {\n      \"id\": \"m6\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"ưu tiên đào tạo lại người lao động\"\n    },\n    {\n      \"id\": \"c5\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"để\",\n      \"ap_cho\": [\"m7\"]\n    },\n    {\n      \"id\": \"m7\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"tiếp tục sử dụng\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-pSwDa7rED7jd9tMP8vKUgQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 974,
+   "output_tokens": 560,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_00055bc50298496f9198b611"
+   }
+  }
+ }
+}

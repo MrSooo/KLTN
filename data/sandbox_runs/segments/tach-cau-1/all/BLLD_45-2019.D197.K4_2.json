@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khi hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài không ra quyết định giải quyết tranh chấp hoặc người sử dụng lao động là bên tranh chấp không thực hiện quyết định giải quyết tranh chấp của Ban trọng tài lao động thì tổ chức đại diện người lao động là bên tranh chấp có quyền tiến hành thủ tục quy định tại các điều 200, 201 và 202 của Bộ luật này để đình công.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"hết thời hạn quy định tại khoản 2 Điều này\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"Ban trọng tài lao động không được thành lập\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"hết thời hạn quy định tại khoản 3 Điều này\"\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"Ban trọng tài không ra quyết định giải quyết tranh chấp\"\n    },\n    {\n      \"id\": \"m5\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"người sử dụng lao động là bên tranh chấp không thực hiện quyết định giải quyết tranh chấp của Ban trọng tài lao động\"\n    },\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"tổ chức đại diện người lao động là bên tranh chấp\",\n      \"ap_cho\": [\n        \"m6\",\n        \"m7\"\n      ]\n    },\n    {\n      \"id\": \"m6\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"có quyền tiến hành thủ tục quy định tại các điều 200, 201 và 202 của Bộ luật này\"\n    },\n    {\n      \"id\": \"m7\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"đình công\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540306757-9e1bbedc",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2680
+   },
+   "input_tokens": 2488,
+   "output_tokens": 370,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_e97b3d9bb07142c6bf3321b1"
+   }
+  }
+ }
+}

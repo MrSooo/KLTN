@@ -1,0 +1,30 @@
+{
+ "cau": "Tổ chức và lãnh đạo đình công theo quy định của Bộ luật này.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Tổ chức\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"lãnh đạo\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"đình công theo quy định của Bộ luật này\",\"ap_cho\":[\"m1\",\"m2\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-FE4Da6OAFbrC0-kPrfP4qAQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 521
+   },
+   "input_tokens": 916,
+   "output_tokens": 600,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_5a864b6bfc6217aee443f768"
+   }
+  }
+ }
+}

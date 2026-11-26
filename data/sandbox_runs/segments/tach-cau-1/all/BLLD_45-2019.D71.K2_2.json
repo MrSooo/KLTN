@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trong khi đang giải quyết tranh chấp lao động, tổ chức đại diện người lao động không được tổ chức đình công.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"đang giải quyết tranh chấp lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tổ chức đại diện người lao động không được tổ chức đình công\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538906912-17d84203",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 750
+   },
+   "input_tokens": 2398,
+   "output_tokens": 63,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_4245dcff757058461cfd01bd"
+   }
+  }
+ }
+}

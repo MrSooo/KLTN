@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Những trường hợp sau đây được coi là vì lý do kinh tế:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Những trường hợp sau đây được coi là vì lý do kinh tế\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538518536-ec42fc97",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 326
+   },
+   "input_tokens": 2388,
+   "output_tokens": 39,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_f2eae5e012aaf74d814e2e5a"
+   }
+  }
+ }
+}

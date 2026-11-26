@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thanh tra việc chấp hành quy định của pháp luật về lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thanh tra việc chấp hành quy định của pháp luật về lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540492743-0d759177",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 263
+   },
+   "input_tokens": 2388,
+   "output_tokens": 39,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_3e9218859c62d2ddc0947b63"
+   }
+  }
+ }
+}

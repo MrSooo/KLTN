@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động được những người lao động trong nhóm ủy quyền hợp pháp giao kết hợp đồng lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"được những người lao động trong nhóm ủy quyền hợp pháp\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"giao kết hợp đồng lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-HiYDa6LaBPOovr0P39ymwQo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2156
+   },
+   "input_tokens": 921,
+   "output_tokens": 364,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_69821d87a0a3fb0af8594ab5"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D193.K4",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D193.K4\",\n \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều này\",\n   \"dich\": \"BLLD_45-2019.D193\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp các bên lựa chọn giải quyết tranh chấp thông qua Hội đồng trọng tài lao động theo quy định tại Điều này thì trong thời gian Hội đồng trọng tài lao động đang tiến hành giải quyết tranh chấp, các bên không được đồng thời yêu cầu Tòa án giải quyết.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"các bên lựa chọn giải quyết tranh chấp thông qua Hội đồng trọng tài lao động theo quy định tại Điều này\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"trong thời gian Hội đồng trọng tài lao động đang tiến hành giải quyết tranh chấp, các bên không được đồng thời yêu cầu Tòa án giải quyết\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D193.K4\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"lựa chọn giải quyết tranh chấp thông qua Hội đồng trọng tài lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"trong thời gian Hội đồng trọng tài lao động đang tiến hành giải quyết tranh chấp\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"đồng thời yêu cầu Tòa án giải quyết\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795547476429-213da2cc",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4857
+   },
+   "input_tokens": 3816,
+   "output_tokens": 349,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_564e00f9132239eb697c93b4"
+   }
+  }
+ }
+}

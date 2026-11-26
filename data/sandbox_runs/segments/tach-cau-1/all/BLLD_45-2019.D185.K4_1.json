@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khi có yêu cầu giải quyết tranh chấp lao động theo quy định tại các điều 189, 193 và 197 của Bộ luật này, Hội đồng trọng tài lao động quyết định thành lập Ban trọng tài lao động để giải quyết tranh chấp như sau:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"có yêu cầu giải quyết tranh chấp lao động theo quy định tại các điều 189, 193 và 197 của Bộ luật này\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Hội đồng trọng tài lao động\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"quyết định thành lập Ban trọng tài lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"giải quyết tranh chấp như sau\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540230149-812ba279",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2710
+   },
+   "input_tokens": 2428,
+   "output_tokens": 137,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_59f13e77ea03648601e60724"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Mức lương tối thiểu được xác lập theo vùng, ấn định theo tháng, giờ.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Mức lương tối thiểu được\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"xác lập theo vùng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"ấn định theo tháng, giờ\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539049671-c337413a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2495
+   },
+   "input_tokens": 2394,
+   "output_tokens": 86,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_67cbf485f1d055302ee246cf"
+   }
+  }
+ }
+}

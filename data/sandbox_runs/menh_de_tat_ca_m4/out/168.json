@@ -1,0 +1,135 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D173.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có số lượng tối thiểu thành viên là người lao động làm việc tại doanh nghiệp",
+     "chu_the": {
+      "chu": "tổ chức của người lao động tại doanh nghiệp",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "tổ chức của người lao động tại doanh nghiệp phải có số lượng tối thiểu thành viên là người lao động làm việc tại doanh nghiệp"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đăng ký",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "Tại thời điểm",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Tại thời điểm đăng ký"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "trich": [
+      "theo quy định của Chính phủ"
+     ],
+     "ly_do_llm": {
+      "ma": "dan_chieu_ngoai",
+      "giai_thich": "Dẫn chiếu quy định của Chính phủ, không có đích cụ thể trong dan_chieu."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D173.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "do thành viên của tổ chức của người lao động tại doanh nghiệp bầu",
+     "chu_the": {
+      "chu": "Ban lãnh đạo",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Ban lãnh đạo do thành viên của tổ chức của người lao động tại doanh nghiệp bầu"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là người lao động Việt Nam đang làm việc tại doanh nghiệp",
+     "chu_the": {
+      "chu": "Thành viên ban lãnh đạo",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Thành viên ban lãnh đạo là người lao động Việt Nam đang làm việc tại doanh nghiệp"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm",
+     "chu_the": {
+      "chu": "Thành viên ban lãnh đạo",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "liet_ke": [
+      "an ninh quốc gia",
+      "quyền tự do của con người, quyền tự do, dân chủ của công dân",
+      "sở hữu"
+     ],
+     "trich": [
+      "Thành viên ban lãnh đạo",
+      "không đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm an ninh quốc gia, các tội xâm phạm quyền tự do của con người, quyền tự do, dân chủ của công dân, các tội xâm phạm sở hữu"
+     ],
+     "quy_tac": "q3",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Các trạng thái bị truy cứu, chấp hành hình phạt và chưa xóa án tích là một điều kiện loại trừ chung của thành viên."
+     }
+    },
+    {
+     "loai": "bo_qua",
+     "trich": [
+      "theo quy định của Bộ luật Hình sự"
+     ],
+     "ly_do_llm": {
+      "ma": "dan_chieu_ngoai",
+      "giai_thich": "Dẫn chiếu Bộ luật Hình sự, không có đích cụ thể trong dan_chieu."
+     }
+    }
+   ]
+  }
+ ]
+}

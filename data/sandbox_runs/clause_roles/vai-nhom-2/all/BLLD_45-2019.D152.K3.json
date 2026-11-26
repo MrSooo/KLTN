@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D152.K3",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": true,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D152.K3\",\n \"tieu_de_dieu\": \"Điều kiện tuyển dụng, sử dụng người lao động nước ngoài làm việc tại Việt Nam\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Nhà thầu trước khi tuyển và sử dụng lao động nước ngoài làm việc tại Việt Nam phải kê khai cụ thể các vị trí công việc, trình độ chuyên môn, kỹ thuật, kinh nghiệm làm việc, thời gian làm việc cần sử dụng lao động nước ngoài để thực hiện gói thầu và được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Nhà thầu\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\",\n      \"s1.m4\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tuyển\",\n     \"noi_truoc\": [\n      \"trước khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"sử dụng\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"lao động nước ngoài làm việc tại Việt Nam\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải kê khai cụ thể các vị trí công việc, trình độ chuyên môn, kỹ thuật, kinh nghiệm làm việc, thời gian làm việc cần sử dụng lao động nước ngoài để thực hiện gói thầu\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D152.K3\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"tuyển\",\"lao động nước ngoài làm việc tại Việt Nam\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Nhà thầu\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"doan\":[\"sử dụng\",\"lao động nước ngoài làm việc tại Việt Nam\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Nhà thầu\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m3\",\"doan\":[\"kê khai cụ thể các vị trí công việc, trình độ chuyên môn, kỹ thuật, kinh nghiệm làm việc, thời gian làm việc cần sử dụng lao động nước ngoài để thực hiện gói thầu\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Nhà thầu\",\"loai\":\"E\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m4\",\"doan\":[\"được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Nhà thầu\",\"loai\":\"E\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795546349648-f590c380",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5983
+   },
+   "input_tokens": 4029,
+   "output_tokens": 366,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_503baae043f5197026ee1440"
+   }
+  }
+ }
+}

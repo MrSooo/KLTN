@@ -1,11 +1,11 @@
-"""A2a: cạnh cấu trúc contains / part_of giữa Điều > Khoản > Điểm.
+"""A2a: cạnh cấu trúc contains / part_of giữa Chương > Điều > Khoản > Điểm (Chương chỉ khi file nguồn có tiêu đề Chương).
 
-Chỉ đọc triples của A1 (data/processed/a1_triples_<stem>.jsonl), không import a1_parse: nếu A1 đánh mã sai thì
+Chỉ đọc triples của A1 (data/processed/a1/a1_triples_<stem>.jsonl), không import a1_parse: nếu A1 đánh mã sai thì
 lỗi hiện ra ở đây thay vì bị che, vì cha được suy từ chuỗi mã còn kiểm tra dùng thuộc tính type của A1.
 
 Chạy: python -I src/a2_edges.py <file md nguồn>          (bắt buộc truyền path, không có mặc định)
       python -I src/a2_edges.py <file md nguồn> --refs   (Bước 2: chỉ in dẫn chiếu và bảng hình dạng, không ghi file)
-      python -I src/a2_edges.py <file md nguồn> --refers-to   (A2b: ghi a2_refs_<stem>.jsonl và docs/a2_unresolved_<stem>.txt)
+      python -I src/a2_edges.py <file md nguồn> --refers-to   (A2b: ghi a2_refs_<stem>.jsonl và docs/bao_cao_chay/a2/a2_unresolved_<stem>.txt)
       python -I src/a2_edges.py <file md nguồn> --triggers   (A3 bước 1: chỉ in cụm trừ / ngoại trừ / không áp dụng, không ghi file)
 """
 import argparse
@@ -18,22 +18,23 @@ from pathlib import Path
 from typing import NamedTuple
 
 ROOT = Path(__file__).resolve().parent.parent
-PROCESSED_DIR = ROOT / "data" / "processed"
+PROCESSED_DIR = ROOT / "data" / "processed"  # mỗi bước ghi vào thư mục con riêng: a1/, a2/, ..., a8/
 
 # Loại của cha mà mỗi loại con phải có. Nguồn là thuộc tính type của A1, độc lập với chuỗi mã.
 PARENT_TYPE = {"khoan": "dieu", "diem": "khoan"}
+CHUONG = "chuong"  # Điều có thuộc tính chuong (mã Chương, review F-09) thì cha của nó là Chương đó, không suy từ mã
 
-# Thuộc tính của đơn vị mà hàm nạp giữ lại (text có thể vắng); heading, version không dùng ở A2a.
+# Thuộc tính của đơn vị mà hàm nạp giữ lại (text, chuong có thể vắng); heading, version không dùng ở A2a.
 REQUIRED_ATTRS = ("type", "number", "source_line")
-KEPT_ATTRS = REQUIRED_ATTRS + ("text",)
+KEPT_ATTRS = REQUIRED_ATTRS + ("text", CHUONG)
 
 
 def triples_path(src):
-    return PROCESSED_DIR / f"a1_triples_{Path(src).stem}.jsonl"
+    return PROCESSED_DIR / "a1" / f"a1_triples_{Path(src).stem}.jsonl"
 
 
 def edges_path(src):
-    return PROCESSED_DIR / f"a2_edges_{Path(src).stem}.jsonl"
+    return PROCESSED_DIR / "a2" / f"a2_edges_{Path(src).stem}.jsonl"
 
 
 def load_units(path):
@@ -73,11 +74,12 @@ def parent_of(code):
 def build_edges(units):
     """Mỗi cặp cha-con trực tiếp thành 2 cạnh (s, p, o): (cha, contains, con) rồi (con, part_of, cha).
 
-    Duyệt theo thứ tự đơn vị trong file triples; hai cạnh của cùng một con nằm liền nhau.
+    Duyệt theo thứ tự đơn vị trong file triples; hai cạnh của cùng một con nằm liền nhau. Cha của Khoản/Điểm suy từ mã;
+    cha của Điều là thuộc tính chuong (không có thì Điều là gốc); Chương là gốc.
     """
     edges = []
-    for code in units:
-        parent = parent_of(code)
+    for code, u in units.items():
+        parent = u.get(CHUONG) if u["type"] == "dieu" else None if u["type"] == CHUONG else parent_of(code)
         if parent is None:
             continue
         edges.append((parent, "contains", code))
@@ -100,7 +102,7 @@ def check_edges(units, edges):
         if missing:
             errors.append(f"contains {s} -> {o}: không có trong tập đơn vị: {missing}")
             continue
-        want = PARENT_TYPE.get(units[o]["type"])
+        want = CHUONG if units[o]["type"] == "dieu" else PARENT_TYPE.get(units[o]["type"])
         if units[s]["type"] != want:
             errors.append(f"{o} (type {units[o]['type']}) có cha {s} (type {units[s]['type']}), "
                           f"mong đợi cha type {want}")
@@ -108,13 +110,14 @@ def check_edges(units, edges):
         errors.append(f"contains và part_of không đối xứng: chỉ có contains {sorted(set(contains) - set(part_of))}, "
                       f"chỉ có part_of {sorted(set(part_of) - set(contains))}")
 
-    # mỗi đơn vị không phải Điều có đúng một cha, Điều không có cha
+    # Khoản/Điểm có đúng một cha; Điều có một cha nếu văn bản có Chương, không có nếu không; Chương không có cha
+    has_chuong = any(u["type"] == CHUONG for u in units.values())
     n_parents = collections.Counter(o for _, o in contains)
     for code, u in units.items():
-        want = 0 if u["type"] == "dieu" else 1
+        want = int(has_chuong) if u["type"] == "dieu" else 0 if u["type"] == CHUONG else 1
         if n_parents[code] != want:
             errors.append(f"{code} (type {u['type']}) có {n_parents[code]} cha, mong đợi {want}")
-    n_children = sum(1 for u in units.values() if u["type"] != "dieu")
+    n_children = sum(1 for u in units.values() if u["type"] != CHUONG and (u["type"] != "dieu" or has_chuong))
     if len(contains) != n_children:
         errors.append(f"số contains = {len(contains)}, số đơn vị type khác dieu = {n_children}")
     return errors
@@ -180,6 +183,7 @@ class Ref(NamedTuple):
     phrase: str   # cụm nguyên văn
     shape: str    # hình dạng: số thành N, chữ điểm thành X
     context: str  # CONTEXT_CHARS ký tự mỗi bên của cụm
+    end: int      # vị trí ngay sau cụm trong text, để xét đuôi (tail_of)
 
 
 class Excluded(NamedTuple):
@@ -211,7 +215,7 @@ def find_refs(units):
         for m in CHAIN_RE.finditer(text):
             spans.append(m.span())
             context = text[max(0, m.start() - CONTEXT_CHARS):m.end() + CONTEXT_CHARS]
-            refs.append(Ref(code, m.group(0), shape_of(m.group(0)), context))
+            refs.append(Ref(code, m.group(0), shape_of(m.group(0)), context, m.end()))
         for m in KEYWORD_RE.finditer(text):
             total += 1
             if not any(a <= m.start() < b for a, b in spans):
@@ -258,12 +262,12 @@ LEVEL_TYPE = ("dieu", "khoan", "diem")      # thuộc tính type của A1 theo c
 
 
 def refs_path(src):
-    return PROCESSED_DIR / f"a2_refs_{Path(src).stem}.jsonl"
+    return PROCESSED_DIR / "a2" / f"a2_refs_{Path(src).stem}.jsonl"
 
 
 def unresolved_path(src):
     """Mỗi file nguồn một file unresolved, để chạy file này không ghi đè file kia."""
-    return ROOT / "docs" / f"a2_unresolved_{Path(src).stem}.txt"
+    return ROOT / "docs" / "bao_cao_chay" / "a2" / f"a2_unresolved_{Path(src).stem}.txt"
 
 
 def code_segment(level, arg):
@@ -331,15 +335,66 @@ def dieu_of(code):
     return ".".join(code.split(".")[:2])
 
 
-def build_refs(units):
+# Đuôi ngay sau một cụm (review F-01, F-02). Văn bản đang xử lý là Bộ luật: "Bộ luật này" là chính nó (CHAIN_RE đã nuốt
+# "của Bộ luật này"); tên một văn bản khác là dẫn chiếu ra ngoài; "<loại khác> này" và "của <thứ khác>" chưa có quy tắc.
+DOC_KINDS = r"(?:Hiến pháp|Bộ luật|Luật|Pháp lệnh|Nghị quyết|Nghị định|Quyết định|Thông tư)"
+SELF_DOC = "bộ luật này"
+EXTERNAL = "external:"  # tiền tố của cột đích trong unresolved khi cụm trỏ ra văn bản khác
+TAIL_THIS_RE = re.compile(rf"[ ]+(?:của[ ]+)?({DOC_KINDS}[ ]+này)(?!\w)", re.I)
+TAIL_DOC_RE = re.compile(rf"[ ]+(?:của[ ]+)?({DOC_KINDS}(?!\w)(?:(?![ ]+(?:và|hoặc)[ ]+)[^,.;:\n])*)", re.I)
+TAIL_OF_RE = re.compile(r"[ ]+của(?!\w)", re.I)
+TAIL_RANGE_RE = re.compile(r"[ ]+đến[ ]+(?:điều|khoản|điểm)(?!\w)", re.I)
+TAIL_BARE_RE = re.compile(r"(?:,[ ]*|[ ]+(?:và|hoặc)[ ]+)\d+(?!\w)")
+
+
+def tail_of(ref, units):
+    """Tên văn bản khác nếu cụm trỏ ra ngoài, None nếu cụm thuộc văn bản đang xử lý. Đuôi chưa có quy tắc thì ValueError."""
+    def bad(why):
+        return ValueError(f"{ref.unit}: {why}: {ref.phrase!r}")
+
+    tail = units[ref.unit]["text"][ref.end:]
+    if TAIL_RANGE_RE.match(tail):
+        raise bad("khoảng 'từ … đến …' chưa có quy tắc")
+    if TAIL_BARE_RE.match(tail):
+        raise bad("danh sách số trần sau cụm chưa có quy tắc")
+    m = TAIL_THIS_RE.match(tail)
+    if m:
+        if m.group(1).casefold() == SELF_DOC:
+            return None
+        raise bad(f"'{m.group(1)}' không phải văn bản đang xử lý (Bộ luật)")
+    m = TAIL_DOC_RE.match(tail)
+    if m:
+        return m.group(1).strip()
+    if TAIL_OF_RE.match(tail):
+        raise bad("đuôi 'của …' không nhận ra văn bản")
+    return None
+
+
+def uncovered(units):
+    """Từ khoá điều/khoản/điểm kèm số mà không thuộc cụm nào ('Điều 5a', 'khoản 2a', số trần sau cụm): [Excluded]."""
+    return [e for e in find_refs(units)[1] if e.after[:1].isdigit()]
+
+
+def build_refs(units, allow_uncovered=False):
     """Từ các cụm dẫn chiếu thành (edges, unresolved), theo thứ tự cụm trong file triples rồi thứ tự đích trong cụm.
 
     edges: (s, "refers_to", o, evidence): s là đơn vị chứa cụm, o là đích có trong units, evidence là cụm nguyên văn.
-    unresolved: (s, cụm nguyên văn, đích); không tạo cạnh. Chỉ dành cho đích mà Điều của nó chưa được nạp.
-    Đích không có trong units mà Điều của nó có (ví dụ 'khoản 9 Điều 616' khi D616 chỉ có K1-K3) thì báo lỗi.
+    unresolved: (s, cụm nguyên văn, đích); không tạo cạnh. Dành cho đích mà Điều của nó chưa được nạp, và cho cụm trỏ ra văn
+    bản khác (đích là EXTERNAL + tên văn bản, ví dụ 'external:Luật Đất đai').
+    Đích không có trong units mà Điều của nó có (ví dụ 'khoản 9 Điều 616' khi D616 chỉ có K1-K3) thì báo lỗi. Đuôi chưa có quy
+    tắc (tail_of) và từ khoá kèm số nằm ngoài mọi cụm (uncovered) cũng báo lỗi, trừ khi allow_uncovered (A4 tự liệt kê chúng ở
+    mục "Chưa phủ").
     """
+    if not allow_uncovered:
+        missed = uncovered(units)
+        if missed:
+            raise ValueError(f"từ khoá kèm số không thuộc cụm nào, chưa có quy tắc: {[(e.unit, e.keyword + ' ' + e.after) for e in missed]}")
     edges, unresolved = [], []
     for ref in find_refs(units)[0]:
+        external = tail_of(ref, units)
+        if external:
+            unresolved.append((ref.unit, ref.phrase, EXTERNAL + external))
+            continue
         for target in group_targets(ref.unit, ref.phrase, units):
             if target in units:
                 edges.append((ref.unit, "refers_to", target, ref.phrase))
@@ -367,7 +422,10 @@ def check_refs(units, edges, unresolved):
         elif not evidence or evidence not in units[s].get("text", ""):
             errors.append(f"{s} -> {o}: evidence {evidence!r} không nằm trong text của {s}")
     for s, phrase, target in unresolved:
-        if target in units:
+        if target.startswith(EXTERNAL):
+            if target == EXTERNAL:
+                errors.append(f"{s}: {phrase!r} trỏ ra ngoài nhưng không có tên văn bản")
+        elif target in units:
             errors.append(f"{s}: {phrase!r} ghi unresolved nhưng {target} có trong tập đơn vị")
         elif dieu_of(target) in units:
             errors.append(f"{s}: {phrase!r} ghi unresolved nhưng {dieu_of(target)} (Điều của đích {target}) có trong tập đơn vị")
@@ -480,7 +538,7 @@ def main(argv=None):
     mode.add_argument("--refs", action="store_true",
                       help="Bước 2: chỉ in danh sách dẫn chiếu và bảng hình dạng, không ghi file nào")
     mode.add_argument("--refers-to", action="store_true",
-                      help="A2b: dựng cạnh refers_to, ghi a2_refs_<stem>.jsonl và docs/a2_unresolved_<stem>.txt")
+                      help="A2b: dựng cạnh refers_to, ghi a2_refs_<stem>.jsonl và docs/bao_cao_chay/a2/a2_unresolved_<stem>.txt")
     mode.add_argument("--triggers", action="store_true",
                       help="A3 bước 1: chỉ in cụm trừ / ngoại trừ / không áp dụng và bảng 6 từ đứng sau, không ghi file nào")
     args = ap.parse_args(argv)

@@ -1,0 +1,173 @@
+{
+ "units": [
+  {
+   "unit_id": "ND_145-2020.D15.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện ký quỹ",
+     "chu_the": {
+      "chu": "Doanh nghiệp",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "tại ngân hàng thương mại của Việt Nam hoặc chi nhánh ngân hàng nước ngoài thành lập và hoạt động hợp pháp tại Việt Nam",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Doanh nghiệp thực hiện ký quỹ",
+      "tại ngân hàng thương mại của Việt Nam hoặc chi nhánh ngân hàng nước ngoài thành lập và hoạt động hợp pháp tại Việt Nam"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "targets": [
+      "ND_145-2020.D21.K2"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "theo mức quy định tại khoản 2 Điều 21 Nghị định này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "trich": [
+      "(sau đây gọi là ngân hàng nhận ký quỹ)"
+     ],
+     "ly_do_llm": {
+      "ma": "khong_quy_pham",
+      "giai_thich": "Chỉ đặt tên gọi cho ngân hàng nhận ký quỹ, không phải hành vi kiểm được."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_145-2020.D15.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng vào mục đích thanh toán tiền lương và các chế độ khác đối với người lao động thuê lại",
+     "chu_the": {
+      "chu": "Tiền ký quỹ",
+      "loai": "A",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "bảo hiểm xã hội",
+      "bảo hiểm y tế",
+      "bảo hiểm thất nghiệp",
+      "bảo hiểm tai nạn lao động, bệnh nghề nghiệp"
+     ],
+     "bo_ngu": [
+      {
+       "original_text": "theo thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể, nội quy, quy chế của doanh nghiệp cho thuê lại",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Tiền ký quỹ được sử dụng vào mục đích thanh toán tiền lương",
+      "bảo hiểm xã hội",
+      "bảo hiểm y tế",
+      "bảo hiểm thất nghiệp",
+      "bảo hiểm tai nạn lao động, bệnh nghề nghiệp",
+      "và các chế độ khác đối với người lao động thuê lại",
+      "theo thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể, nội quy, quy chế của doanh nghiệp cho thuê lại"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai mục đích sử dụng tiền ký quỹ là hai hành vi khác nhau, tách thành hai quy tắc."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng vào mục đích bồi thường cho người lao động thuê lại",
+     "chu_the": {
+      "chu": "Tiền ký quỹ",
+      "loai": "A",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Tiền ký quỹ được sử dụng vào mục đích",
+      "bồi thường cho người lao động thuê lại trong trường hợp"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vi phạm hợp đồng lao động với người lao động thuê lại",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "trong trường hợp doanh nghiệp cho thuê lại vi phạm hợp đồng lao động với người lao động thuê lại"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "gây thiệt hại cho người lao động thuê lại do không bảo đảm về quyền và lợi ích hợp pháp của người lao động thuê lại",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "trong trường hợp doanh nghiệp cho thuê lại",
+      "hoặc gây thiệt hại cho người lao động thuê lại do không bảo đảm về quyền và lợi ích hợp pháp của người lao động thuê lại"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "tach_hay_giu_chung",
+      "giai_thich": "Hai căn cứ bồi thường nối bằng “hoặc” nên là hai điều kiện cùng nhóm hoặc."
+     }
+    }
+   ]
+  }
+ ]
+}

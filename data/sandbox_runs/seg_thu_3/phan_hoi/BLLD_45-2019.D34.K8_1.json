@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động bị xử lý kỷ luật sa thải.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động bị xử lý kỷ luật sa thải\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-jSkDa_TcBISM1e8P1ILAuQE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 217
+   },
+   "input_tokens": 911,
+   "output_tokens": 253,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_10ea42facbc4c94fdd54b3d1"
+   }
+  }
+ }
+}

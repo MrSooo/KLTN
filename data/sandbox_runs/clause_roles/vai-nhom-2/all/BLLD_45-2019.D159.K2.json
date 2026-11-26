@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D159.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D159.K2\",\n \"tieu_de_dieu\": \"Sử dụng lao động là người khuyết tật\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động phải tham khảo ý kiến của người lao động là người khuyết tật khi quyết định những vấn đề liên quan đến quyền và lợi ích của họ.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người sử dụng lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải tham khảo ý kiến của người lao động là người khuyết tật\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"quyết định những vấn đề liên quan đến quyền và lợi ích của họ\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D159.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"tham khảo ý kiến của người lao động là người khuyết tật\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"quyết định những vấn đề liên quan đến quyền và lợi ích của họ\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795546475555-999fc9de",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1413
+   },
+   "input_tokens": 3779,
+   "output_tokens": 272,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_cf4d143161d10029ae53347e"
+   }
+  }
+ }
+}

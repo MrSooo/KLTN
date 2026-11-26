@@ -1,0 +1,30 @@
+{
+ "cau": "Tiền lương, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, trợ cấp thôi việc và các quyền lợi khác của người lao động theo thỏa ước lao động tập thể, hợp đồng lao động được ưu tiên thanh toán trong trường hợp doanh nghiệp, hợp tác xã bị chấm dứt hoạt động, bị giải thể, phá sản.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Tiền lương, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, trợ cấp thôi việc và các quyền lợi khác của người lao động theo thỏa ước lao động tập thể, hợp đồng lao động được ưu tiên thanh toán trong trường hợp doanh nghiệp, hợp tác xã\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"bị chấm dứt hoạt động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bị giải thể\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"phá sản\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-5y4Da8jYO_mx0-kPrIfmgAE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1026
+   },
+   "input_tokens": 972,
+   "output_tokens": 1184,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_139e4f5314438241983fab15"
+   }
+  }
+ }
+}

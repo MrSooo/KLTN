@@ -1,0 +1,74 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T09:22:52+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0300\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D139.K4\",\n    \"tieu_de_dieu\": \"Nghỉ thai sản\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi hết thời gian nghỉ thai sản theo quy định tại khoản 1 Điều này, lao động nữ có thể trở lại làm việc khi đã nghỉ ít nhất được 04 tháng nhưng người lao động phải báo trước, được người sử dụng lao động đồng ý và có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc đi làm sớm không có hại cho sức khỏe của người lao động. Trong trường hợp này, ngoài tiền lương của những ngày làm việc do người sử dụng lao động trả, lao động nữ vẫn tiếp tục được hưởng trợ cấp thai sản theo quy định của pháp luật về bảo hiểm xã hội.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D140\",\n    \"tieu_de_dieu\": \"Bảo đảm việc làm cho lao động nghỉ thai sản\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động được bảo đảm việc làm cũ khi trở lại làm việc sau khi nghỉ hết thời gian theo quy định tại các khoản 1, 3 và 5 Điều 139 của Bộ luật này mà không bị cắt giảm tiền lương và quyền, lợi ích so với trước khi nghỉ thai sản; trường hợp việc làm cũ không còn thì người sử dụng lao động phải bố trí việc làm khác cho họ với mức lương không thấp hơn mức lương trước khi nghỉ thai sản.\"\n   },\n   \"vi_tu_chung\": [\n    \"return_to_work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0301\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D139.K4\",\n    \"tieu_de_dieu\": \"Nghỉ thai sản\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi hết thời gian nghỉ thai sản theo quy định tại khoản 1 Điều này, lao động nữ có thể trở lại làm việc khi đã nghỉ ít nhất được 04 tháng nhưng người lao động phải báo trước, được người sử dụng lao động đồng ý và có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc đi làm sớm không có hại cho sức khỏe của người lao động. Trong trường hợp này, ngoài tiền lương của những ngày làm việc do người sử dụng lao động trả, lao động nữ vẫn tiếp tục được hưởng trợ cấp thai sản theo quy định của pháp luật về bảo hiểm xã hội.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K2\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định của Tòa án về cuộc đình công là bất hợp pháp thì người lao động đang tham gia đình công phải ngừng ngay đình công và trở lại làm việc; nếu người lao động không ngừng đình công, không trở lại làm việc thì tùy theo mức độ vi phạm có thể bị xử lý kỷ luật lao động theo quy định của pháp luật về lao động.\\nTrong trường hợp cuộc đình công là bất hợp pháp mà gây thiệt hại cho người sử dụng lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công phải bồi thường thiệt hại theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"return_to_work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0302\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D140\",\n    \"tieu_de_dieu\": \"Bảo đảm việc làm cho lao động nghỉ thai sản\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động được bảo đảm việc làm cũ khi trở lại làm việc sau khi nghỉ hết thời gian theo quy định tại các khoản 1, 3 và 5 Điều 139 của Bộ luật này mà không bị cắt giảm tiền lương và quyền, lợi ích so với trước khi nghỉ thai sản; trường hợp việc làm cũ không còn thì người sử dụng lao động phải bố trí việc làm khác cho họ với mức lương không thấp hơn mức lương trước khi nghỉ thai sản.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K2\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định của Tòa án về cuộc đình công là bất hợp pháp thì người lao động đang tham gia đình công phải ngừng ngay đình công và trở lại làm việc; nếu người lao động không ngừng đình công, không trở lại làm việc thì tùy theo mức độ vi phạm có thể bị xử lý kỷ luật lao động theo quy định của pháp luật về lao động.\\nTrong trường hợp cuộc đình công là bất hợp pháp mà gây thiệt hại cho người sử dụng lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công phải bồi thường thiệt hại theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"return_to_work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0303\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D146.K1\",\n    \"tieu_de_dieu\": \"Thời giờ làm việc của người chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời giờ làm việc của người chưa đủ 15 tuổi không được quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần; không được làm thêm giờ, làm việc vào ban đêm.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D146.K2\",\n    \"tieu_de_dieu\": \"Thời giờ làm việc của người chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời giờ làm việc của người từ đủ 15 tuổi đến chưa đủ 18 tuổi không được quá 08 giờ trong 01 ngày và 40 giờ trong 01 tuần. Người từ đủ 15 tuổi đến chưa đủ 18 tuổi có thể được làm thêm giờ, làm việc vào ban đêm trong một số nghề, công việc theo danh mục do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_at_night\",\n    \"work_overtime\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0304\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K1.c\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n    \"chu_don_vi\": \"Không phải là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D173.K2\",\n    \"tieu_de_dieu\": \"Ban lãnh đạo và thành viên tổ chức của người lao động tại doanh nghiệp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Ban lãnh đạo do thành viên của tổ chức của người lao động tại doanh nghiệp bầu. Thành viên ban lãnh đạo là người lao động Việt Nam đang làm việc tại doanh nghiệp; không đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm an ninh quốc gia, các tội xâm phạm quyền tự do của con người, quyền tự do, dân chủ của công dân, các tội xâm phạm sở hữu theo quy định của Bộ luật Hình sự.\"\n   },\n   \"vi_tu_chung\": [\n    \"serving_penalty\",\n    \"under_criminal_prosecution\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0305\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết thời hạn.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K5\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n   },\n   \"vi_tu_chung\": [\n    \"time_limit_expires\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0306\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết thời hạn.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K4\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài lao động không ra quyết định giải quyết tranh chấp thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"time_limit_expires\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0307\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết thời hạn.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D193.K5\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài lao động không ra quyết định giải quyết tranh chấp thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"time_limit_expires\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0308\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K2\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chấm dứt hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D208.K4\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trước, trong và sau khi đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chấm dứt hợp đồng lao động hoặc xử lý kỷ luật lao động đối với người lao động, người lãnh đạo đình công hoặc điều động người lao động, người lãnh đạo đình công sang làm công việc khác, đi làm việc ở nơi khác vì lý do chuẩn bị đình công hoặc tham gia đình công.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0309\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K5\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K4\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài lao động không ra quyết định giải quyết tranh chấp thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"time_limit_expires\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_a36607fe9474ab3a0acb5198",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0300",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0301",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0302",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0303",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0304",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0305",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0306",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0307",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0308",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0309",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3962,
+  "output_tokens": 1217,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 892
+   }
+  }
+ }
+}

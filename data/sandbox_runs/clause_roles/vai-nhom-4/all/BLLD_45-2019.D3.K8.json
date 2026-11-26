@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D3.K8",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D3.K8\",\n \"tieu_de_dieu\": \"1:Giải 2:thích 3:từ 4:ngữ\",\n \"khoan_cha\": \"1:Trong 2:Bộ 3:luật 4:này, 5:các 6:từ 7:ngữ 8:dưới 9:đây 10:được 11:hiểu 12:như 13:sau:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Phân biệt đối xử trong lao động là hành vi phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp có tác động làm ảnh hưởng đến bình đẳng về cơ hội việc làm hoặc nghề nghiệp.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Phân 2:biệt 3:đối 4:xử 5:trong 6:lao 7:động 8:là 9:hành 10:vi\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:phân 2:biệt\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:loại 2:trừ\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:ưu 2:tiên\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:dựa 2:trên 3:chủng 4:tộc, 5:màu 6:da, 7:nguồn 8:gốc 9:quốc 10:gia 11:hoặc 12:nguồn 13:gốc 14:xã 15:hội, 16:dân 17:tộc, 18:giới 19:tính, 20:độ 21:tuổi, 22:tình 23:trạng 24:thai 25:sản, 26:tình 27:trạng 28:hôn 29:nhân, 30:tôn 31:giáo, 32:tín 33:ngưỡng, 34:chính 35:kiến, 36:khuyết 37:tật, 38:trách 39:nhiệm 40:gia 41:đình 42:hoặc 43:trên 44:cơ 45:sở 46:tình 47:trạng 48:nhiễm 49:HIV 50:hoặc 51:vì 52:lý 53:do 54:thành 55:lập, 56:gia 57:nhập 58:và 59:hoạt 60:động 61:công 62:đoàn, 63:tổ 64:chức 65:của 66:người 67:lao 68:động 69:tại 70:doanh 71:nghiệp 72:có 73:tác 74:động 75:làm 76:ảnh 77:hưởng 78:đến 79:bình 80:đẳng 81:về 82:cơ 83:hội 84:việc 85:làm 86:hoặc 87:nghề 88:nghiệp\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Việc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương thì không bị xem là phân biệt đối xử.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Việc 2:phân 3:biệt, 4:loại 5:trừ 6:hoặc 7:ưu 8:tiên 9:xuất 10:phát 11:từ 12:yêu 13:cầu 14:đặc 15:thù 16:của 17:công 18:việc 19:và 20:các 21:hành 22:vi 23:duy 24:trì, 25:bảo 26:vệ 27:việc 28:làm 29:cho 30:người 31:lao 32:động 33:dễ 34:bị 35:tổn 36:thương 37:thì 38:không 39:bị 40:xem 41:là 42:phân 43:biệt 44:đối 45:xử\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D3.K8\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.c1:8\",\n    \"s1.c1:1-7\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.c1:9-10\",\n    \"s1.m1:1-2\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.c1:9-10\",\n    \"s1.m2:1-2\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.c1:9-10\",\n    \"s1.m3:1-2\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.c2:1-71\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.c2:72-88\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:2-18\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:39-45\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:23-36\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q3\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:39-45\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"quy_tac\": \"q3\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-4a985545911342c29351aad475c0fb07",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5871
+   },
+   "input_tokens": 7025,
+   "output_tokens": 6933,
+   "x_ckey": {
+    "cost": 22.41,
+    "cost_is_estimate": false,
+    "request_id": "req_5fd19418efd2301991561282"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Hợp đồng lao động phải được giao kết bằng văn bản và được làm thành 02 bản, người lao động giữ 01 bản, người sử dụng lao động giữ 01 bản, trừ trường hợp quy định tại khoản 2 Điều này.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Hợp đồng lao động phải\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"được giao kết bằng văn bản\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"được làm thành 02 bản\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"người lao động giữ 01 bản\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"người sử dụng lao động giữ 01 bản\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"trừ trường hợp quy định tại khoản 2 Điều này\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-iCUDa7LVG9Lg1e8P25a32Ag",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5709
+   },
+   "input_tokens": 953,
+   "output_tokens": 720,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_c632d00325650ab8118ca197"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D180.K3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D180.K3\",\n \"tieu_de_dieu\": \"Nguyên tắc giải quyết tranh chấp lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Công khai, minh bạch, khách quan, kịp thời, nhanh chóng và đúng pháp luật.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Công khai, minh bạch, khách quan, kịp thời, nhanh chóng và đúng pháp luật\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D180.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Công khai, minh bạch, khách quan, kịp thời, nhanh chóng và đúng pháp luật\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"Công khai\",\n    \"minh bạch\",\n    \"khách quan\",\n    \"kịp thời\",\n    \"nhanh chóng\",\n    \"đúng pháp luật\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "iP0Ga9WbAv-11e8Pw_LGsAk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 723
+   },
+   "input_tokens": 4050,
+   "output_tokens": 919,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_4f42ae98cc92ba1cf414a7e9"
+   }
+  }
+ }
+}

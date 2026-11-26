@@ -1,0 +1,994 @@
+{
+"chu": [
+{
+"chu_id": "C0164",
+"chu": "Chủ tịch Ủy ban nhân dân cấp tỉnh",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 21,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ khi doanh nghiệp thuộc một trong các trường hợp sau:"
+},
+{
+"don_vi": "ND_145-2020.D18.K4.c",
+"vai": "chu_the",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Trong thời hạn 05 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội, Chủ tịch Ủy ban nhân dân cấp tỉnh có văn bản đồng ý về việc rút tiền ký quỹ và phương án sử dụng tiền ký quỹ (nếu có) gửi doanh nghiệp cho thuê lại và ngân hàng nhận ký quỹ. Trường hợp không đồng ý về việc rút tiền ký quỹ thì Chủ tịch Ủy ban nhân dân cấp tỉnh có văn bản trả lời doanh nghiệp cho thuê lại trong đó nêu rõ lý do không đồng ý;"
+}
+],
+"ung_vien": [
+{
+"ten": "worker_leasing_company",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise_as_legal_entity",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "provincial_chairman_written_consent",
+"params": [],
+"vi_du": [
+"có ý kiến đồng ý bằng văn bản của Chủ tịch Ủy ban nhân dân tỉnh, thành phố trực thuộc Trung ương"
+]
+},
+{
+"ten": "full_civil_act_capacity_requirement",
+"params": [],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ"
+]
+},
+{
+"ten": "vietnamese_citizen_working_for_foreign_employer",
+"params": [],
+"vi_du": [
+"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam"
+]
+}
+]
+},
+{
+"chu_id": "C0165",
+"chu": "đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"params": [
+"?",
+"E",
+"A"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ khi doanh nghiệp thuộc một trong các trường hợp sau:"
+}
+],
+"ung_vien": [
+{
+"ten": "authorize_security_deposit_withdrawal",
+"params": [
+"?",
+"?",
+"A"
+],
+"vi_du": [
+"cho doanh nghiệp cho thuê lại rút tiền ký quỹ"
+]
+},
+{
+"ten": "require_additional_security_deposit",
+"params": [
+"?",
+"?",
+"A"
+],
+"vi_du": [
+"yêu cầu doanh nghiệp cho thuê lại nộp bổ sung tiền ký quỹ"
+]
+}
+]
+},
+{
+"chu_id": "C0166",
+"chu": "gặp khó khăn, không đủ nguồn tài chính để thanh toán đủ tiền lương, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, bảo hiểm tai nạn lao động, bệnh nghề nghiệp và các chế độ khác đối với người lao động thuê lại",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K1.a",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ khi doanh nghiệp thuộc một trong các trường hợp sau:",
+"chu_don_vi": "Doanh nghiệp cho thuê lại gặp khó khăn, không đủ nguồn tài chính để thanh toán đủ tiền lương, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, bảo hiểm tai nạn lao động, bệnh nghề nghiệp và các chế độ khác đối với người lao động thuê lại theo thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể, nội quy, quy chế của doanh nghiệp cho thuê lại sau thời hạn từ 30 ngày kể từ ngày đến thời hạn thanh toán theo quy định của pháp luật;"
+}
+],
+"ung_vien": [
+{
+"ten": "specific_compensation_agreement_for_leased_worker",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "inform_leased_worker_of_internal_rules",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thông báo, hướng dẫn cho người lao động thuê lại biết nội quy lao động và các quy chế khác của mình"
+]
+}
+]
+},
+{
+"chu_id": "C0167",
+"chu": "gặp khó khăn, không đủ khả năng bồi thường cho người lao động thuê lại do vi phạm hợp đồng lao động với người lao động thuê lại hoặc gây thiệt hại cho người lao động thuê lại vì không bảo đảm quyền và lợi ích hợp pháp của người lao động thuê lại",
+"params": [
+"E",
+"W",
+"C"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K1.b",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ khi doanh nghiệp thuộc một trong các trường hợp sau:",
+"chu_don_vi": "Doanh nghiệp cho thuê lại gặp khó khăn, không đủ khả năng bồi thường cho người lao động thuê lại do vi phạm hợp đồng lao động với người lao động thuê lại hoặc gây thiệt hại cho người lao động thuê lại vì không bảo đảm quyền và lợi ích hợp pháp của người lao động thuê lại sau thời hạn 60 ngày kể từ ngày đến thời hạn bồi thường theo quy định của pháp luật;"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0168",
+"chu": "không được cấp giấy phép",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K1.c",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ khi doanh nghiệp thuộc một trong các trường hợp sau:",
+"chu_don_vi": "Doanh nghiệp không được cấp giấy phép;"
+}
+],
+"ung_vien": [
+{
+"ten": "use_leased_worker_from_unlicensed_enterprise",
+"params": [
+"E"
+],
+"vi_du": [
+"sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0169",
+"chu": "bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K1.d",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ khi doanh nghiệp thuộc một trong các trường hợp sau:",
+"chu_don_vi": "Doanh nghiệp cho thuê lại bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép;"
+}
+],
+"ung_vien": [
+{
+"ten": "labor_permit_revocation",
+"params": [
+"?"
+],
+"vi_du": [
+"bị thu hồi"
+]
+},
+{
+"ten": "be_sanctioned",
+"params": [
+"E"
+],
+"vi_du": [
+"bị xử lý"
+]
+},
+{
+"ten": "renew_labor_permit_once_max_two_years",
+"params": [
+"?"
+],
+"vi_du": [
+"gia hạn một lần với thời hạn tối đa là 02 năm"
+]
+},
+{
+"ten": "use_leased_worker_from_unlicensed_enterprise",
+"params": [
+"E"
+],
+"vi_du": [
+"sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "replace_dismissed_employee",
+"params": [
+"E"
+],
+"vi_du": [
+"thay thế người lao động bị cho thôi việc"
+]
+},
+{
+"ten": "meet_temporary_sudden_labor_demand_increase",
+"params": [
+"E"
+],
+"vi_du": [
+"đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0170",
+"chu": "đã thực hiện ký quỹ",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K1.dd",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ khi doanh nghiệp thuộc một trong các trường hợp sau:",
+"chu_don_vi": "Doanh nghiệp cho thuê lại đã thực hiện ký quỹ tại một ngân hàng thương mại của Việt Nam hoặc chi nhánh ngân hàng thương mại nước ngoài tại Việt Nam khác."
+}
+],
+"ung_vien": [
+{
+"ten": "replace_employee_during_strike_or_dispute",
+"params": [
+"E"
+],
+"vi_du": [
+"thay thế người lao động đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động"
+]
+},
+{
+"ten": "deposit_security_funds",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện ký quỹ",
+"nộp tiền ký quỹ"
+]
+}
+]
+},
+{
+"chu_id": "C0171",
+"chu": "chi trả thanh toán, bồi thường cho người lao động thuê lại theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý",
+"params": [
+"?",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4",
+"vai": "ket_luan",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng."
+}
+],
+"ung_vien": [
+{
+"ten": "specific_compensation_agreement_for_leased_worker",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "use_deposit_to_compensate_leased_worker",
+"params": [
+"A",
+"W"
+],
+"vi_du": [
+"sử dụng vào mục đích bồi thường cho người lao động thuê lại"
+]
+},
+{
+"ten": "use_deposit_for_leased_worker_wages_and_benefits",
+"params": [
+"A",
+"W"
+],
+"vi_du": [
+"sử dụng vào mục đích thanh toán tiền lương và các chế độ khác đối với người lao động thuê lại"
+]
+},
+{
+"ten": "agree_on_night_work_and_overtime",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thỏa thuận về làm việc vào ban đêm, làm thêm giờ"
+]
+},
+{
+"ten": "return_worker_for_labor_discipline_violation",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"trả lại người lao động do vi phạm kỷ luật lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0172",
+"chu": "rút tiền ký quỹ",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng."
+}
+],
+"ung_vien": [
+{
+"ten": "worker_leasing_company",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise_as_legal_entity",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+}
+]
+},
+{
+"chu_id": "C0173",
+"chu": "nộp 01 bộ hồ sơ",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.a",
+"vai": "ket_luan",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Doanh nghiệp cho thuê lại nộp 01 bộ hồ sơ quy định tại khoản 2 Điều này tại Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính;"
+}
+],
+"ung_vien": [
+{
+"ten": "deposit_security_funds",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện ký quỹ",
+"nộp tiền ký quỹ"
+]
+}
+]
+},
+{
+"chu_id": "C0174",
+"chu": "Sở Lao động - Thương binh và Xã hội",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 23,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.b",
+"vai": "chu_the",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ. Trong thời hạn 05 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại, Sở Lao động - Thương binh và Xã hội kiểm tra, xác thực hồ sơ đề nghị của doanh nghiệp cho thuê lại và việc hoàn thành nghĩa vụ đối với người lao động thuê lại của doanh nghiệp cho thuê lại trong trường hợp quy định tại điểm d khoản 1 Điều này và trình Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ;"
+},
+{
+"don_vi": "ND_145-2020.D18.K4.b",
+"vai": "chu_the",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ. Trong thời hạn 05 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại, Sở Lao động - Thương binh và Xã hội kiểm tra, xác thực hồ sơ đề nghị của doanh nghiệp cho thuê lại và việc hoàn thành nghĩa vụ đối với người lao động thuê lại của doanh nghiệp cho thuê lại trong trường hợp quy định tại điểm d khoản 1 Điều này và trình Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ;"
+}
+],
+"ung_vien": [
+{
+"ten": "worker_leasing_company",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise_as_legal_entity",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "enterprise_agency_org_coop_household_individual",
+"params": [],
+"vi_du": [
+"doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình và cá nhân"
+]
+},
+{
+"ten": "contract_as_basis_for_labor_permit",
+"params": [],
+"vi_du": [
+"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0175",
+"chu": "tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 2,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.b",
+"vai": "ket_luan",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ. Trong thời hạn 05 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại, Sở Lao động - Thương binh và Xã hội kiểm tra, xác thực hồ sơ đề nghị của doanh nghiệp cho thuê lại và việc hoàn thành nghĩa vụ đối với người lao động thuê lại của doanh nghiệp cho thuê lại trong trường hợp quy định tại điểm d khoản 1 Điều này và trình Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ;"
+},
+{
+"don_vi": "ND_145-2020.D28.K3.b",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thu hồi giấy phép",
+"khoan_cha": "Trình tự, thủ tục thu hồi giấy phép đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều này như sau:",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ. Trong thời hạn 10 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị thu hồi giấy phép của doanh nghiệp, Sở Lao động - Thương binh và Xã hội kiểm tra, rà soát các hợp đồng cho thuê lại lao động đang còn hiệu lực của doanh nghiệp để yêu cầu doanh nghiệp cho thuê lại giải quyết chế độ cho người lao động theo Điều 29 Nghị định này và trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép;"
+}
+],
+"ung_vien": [
+{
+"ten": "full_civil_act_capacity",
+"params": [
+"E"
+],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ"
+]
+},
+{
+"ten": "have_full_civil_act_capacity",
+"params": [
+"W"
+],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ"
+]
+},
+{
+"ten": "have_sufficient_health",
+"params": [
+"W"
+],
+"vi_du": [
+"có đủ sức khỏe"
+]
+},
+{
+"ten": "renew_labor_permit_once_max_two_years",
+"params": [
+"?"
+],
+"vi_du": [
+"gia hạn một lần với thời hạn tối đa là 02 năm"
+]
+},
+{
+"ten": "labor_subleasing_term_max_12_months",
+"params": [
+"W"
+],
+"vi_du": [
+"thời hạn cho thuê lại lao động đối với người lao động tối đa là 12 tháng"
+]
+},
+{
+"ten": "labor_permit_max_term_two_years",
+"params": [
+"?"
+],
+"vi_du": [
+"tối đa là 02 năm"
+]
+},
+{
+"ten": "enter_vietnam_under_three_months_to_offer_services",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để thực hiện chào bán dịch vụ"
+]
+},
+{
+"ten": "enter_vietnam_short_term_for_technical_incident",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được"
+]
+},
+{
+"ten": "be_at_least_18_years_old",
+"params": [
+"W"
+],
+"vi_du": [
+"đủ 18 tuổi trở lên"
+]
+}
+]
+},
+{
+"chu_id": "C0176",
+"chu": "kiểm tra, xác thực hồ sơ đề nghị của doanh nghiệp cho thuê lại và việc hoàn thành nghĩa vụ đối với người lao động thuê lại và trình Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"params": [
+"?",
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.b",
+"vai": "ket_luan",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội tiếp nhận hồ sơ, kiểm tra và cấp giấy biên nhận ghi rõ ngày, tháng, năm nhận đủ hồ sơ. Trong thời hạn 05 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại, Sở Lao động - Thương binh và Xã hội kiểm tra, xác thực hồ sơ đề nghị của doanh nghiệp cho thuê lại và việc hoàn thành nghĩa vụ đối với người lao động thuê lại của doanh nghiệp cho thuê lại trong trường hợp quy định tại điểm d khoản 1 Điều này và trình Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ;"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0177",
+"chu": "có văn bản đồng ý về việc rút tiền ký quỹ và phương án sử dụng tiền ký quỹ gửi doanh nghiệp cho thuê lại và ngân hàng nhận ký quỹ",
+"params": [
+"?",
+"E",
+"A"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.c",
+"vai": "ket_luan",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Trong thời hạn 05 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội, Chủ tịch Ủy ban nhân dân cấp tỉnh có văn bản đồng ý về việc rút tiền ký quỹ và phương án sử dụng tiền ký quỹ (nếu có) gửi doanh nghiệp cho thuê lại và ngân hàng nhận ký quỹ. Trường hợp không đồng ý về việc rút tiền ký quỹ thì Chủ tịch Ủy ban nhân dân cấp tỉnh có văn bản trả lời doanh nghiệp cho thuê lại trong đó nêu rõ lý do không đồng ý;"
+}
+],
+"ung_vien": [
+{
+"ten": "authorize_security_deposit_withdrawal",
+"params": [
+"?",
+"?",
+"A"
+],
+"vi_du": [
+"cho doanh nghiệp cho thuê lại rút tiền ký quỹ"
+]
+},
+{
+"ten": "require_additional_security_deposit",
+"params": [
+"?",
+"?",
+"A"
+],
+"vi_du": [
+"yêu cầu doanh nghiệp cho thuê lại nộp bổ sung tiền ký quỹ"
+]
+}
+]
+},
+{
+"chu_id": "C0178",
+"chu": "có văn bản trả lời doanh nghiệp cho thuê lại trong đó nêu rõ lý do không đồng ý",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.c",
+"vai": "ket_luan",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Trong thời hạn 05 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội, Chủ tịch Ủy ban nhân dân cấp tỉnh có văn bản đồng ý về việc rút tiền ký quỹ và phương án sử dụng tiền ký quỹ (nếu có) gửi doanh nghiệp cho thuê lại và ngân hàng nhận ký quỹ. Trường hợp không đồng ý về việc rút tiền ký quỹ thì Chủ tịch Ủy ban nhân dân cấp tỉnh có văn bản trả lời doanh nghiệp cho thuê lại trong đó nêu rõ lý do không đồng ý;"
+}
+],
+"ung_vien": [
+{
+"ten": "send_request_and_evidence_for_information_change",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin"
+]
+},
+{
+"ten": "enter_vietnam_short_term_for_technical_incident",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được"
+]
+},
+{
+"ten": "obtain_written_approval_from_authority",
+"params": [
+"E"
+],
+"vi_du": [
+"được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền"
+]
+},
+{
+"ten": "be_sanctioned",
+"params": [
+"E"
+],
+"vi_du": [
+"bị xử lý"
+]
+},
+{
+"ten": "lack_work_permit",
+"params": [
+"W"
+],
+"vi_du": [
+"không có giấy phép lao động"
+]
+},
+{
+"ten": "fall_short_of_agreed_requirements",
+"params": [
+"W"
+],
+"vi_du": [
+"không đáp ứng yêu cầu như đã thỏa thuận"
+]
+},
+{
+"ten": "contract_content_differs_from_granted_permit",
+"params": [
+"C"
+],
+"vi_du": [
+"không đúng với nội dung của giấy phép lao động đã được cấp"
+]
+},
+{
+"ten": "make_contract_in_two_copies_each_keeps_one",
+"params": [
+"C"
+],
+"vi_du": [
+"làm thành 02 bản, mỗi bên giữ 01 bản"
+]
+},
+{
+"ten": "head_of_rep_office_or_chief_of_foreign_org_or_ngo",
+"params": [
+"W"
+],
+"vi_du": [
+"là Trưởng văn phòng đại diện, dự án hoặc chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài"
+]
+},
+{
+"ten": "detail_recruitment_and_management_rules",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "use_leased_worker_from_unlicensed_enterprise",
+"params": [
+"E"
+],
+"vi_du": [
+"sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0179",
+"chu": "nộp hồ sơ",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.d",
+"vai": "ket_luan",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Sau khi có văn bản đồng ý về việc rút tiền ký quỹ của Chủ tịch Ủy ban nhân dân cấp tỉnh, doanh nghiệp cho thuê lại nộp hồ sơ theo quy định tại khoản 3 Điều này tại ngân hàng nhận ký quỹ;"
+}
+],
+"ung_vien": [
+{
+"ten": "deposit_security_funds",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện ký quỹ",
+"nộp tiền ký quỹ"
+]
+}
+]
+},
+{
+"chu_id": "C0180",
+"chu": "tiếp nhận và kiểm tra hồ sơ rút tiền ký quỹ của doanh nghiệp cho thuê lại",
+"params": [
+"?",
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.dd",
+"vai": "ket_luan",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Ngân hàng nhận ký quỹ tiếp nhận và kiểm tra hồ sơ rút tiền ký quỹ của doanh nghiệp cho thuê lại, nếu đúng quy định thì ngân hàng nhận ký quỹ cho doanh nghiệp cho thuê lại thực hiện rút tiền ký quỹ trong thời hạn 01 ngày làm việc, kể từ ngày tiếp nhận hồ sơ rút tiền ký quỹ."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0181",
+"chu": "đúng quy định",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.dd",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Ngân hàng nhận ký quỹ tiếp nhận và kiểm tra hồ sơ rút tiền ký quỹ của doanh nghiệp cho thuê lại, nếu đúng quy định thì ngân hàng nhận ký quỹ cho doanh nghiệp cho thuê lại thực hiện rút tiền ký quỹ trong thời hạn 01 ngày làm việc, kể từ ngày tiếp nhận hồ sơ rút tiền ký quỹ."
+}
+],
+"ung_vien": [
+{
+"ten": "worker_leasing_company",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise_as_legal_entity",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "work_differs_from_granted_permit_content",
+"params": [],
+"vi_du": [
+"làm việc không đúng với nội dung trong giấy phép lao động đã được cấp"
+]
+},
+{
+"ten": "conform_to_legal_provisions",
+"params": [],
+"vi_du": [
+"phù hợp quy định của pháp luật"
+]
+},
+{
+"ten": "established_under_enterprise_law",
+"params": [],
+"vi_du": [
+"được thành lập theo quy định của Luật Doanh nghiệp"
+]
+}
+]
+},
+{
+"chu_id": "C0182",
+"chu": "cho doanh nghiệp cho thuê lại thực hiện rút tiền ký quỹ trong thời hạn 01 ngày làm việc",
+"params": [
+"?",
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.dd",
+"vai": "ket_luan",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Ngân hàng nhận ký quỹ tiếp nhận và kiểm tra hồ sơ rút tiền ký quỹ của doanh nghiệp cho thuê lại, nếu đúng quy định thì ngân hàng nhận ký quỹ cho doanh nghiệp cho thuê lại thực hiện rút tiền ký quỹ trong thời hạn 01 ngày làm việc, kể từ ngày tiếp nhận hồ sơ rút tiền ký quỹ."
+}
+],
+"ung_vien": [
+{
+"ten": "perform_by_licensed_labor_subleasing_enterprise",
+"params": [
+"J",
+"E"
+],
+"vi_du": [
+"chỉ thực hiện bởi doanh nghiệp có Giấy phép hoạt động cho thuê lại lao động"
+]
+}
+]
+}
+]
+}

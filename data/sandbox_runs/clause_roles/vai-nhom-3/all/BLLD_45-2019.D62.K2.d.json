@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D62.K2.d",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D62.K2.d\",\n \"tieu_de_dieu\": \"Hợp đồng đào tạo nghề giữa người sử dụng lao động, người lao động và chi phí đào tạo nghề\",\n \"khoan_cha\": \"Hợp đồng đào tạo nghề phải có các nội dung chủ yếu sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chi phí đào tạo và trách nhiệm hoàn trả chi phí đào tạo;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chi phí đào tạo và trách nhiệm hoàn trả chi phí đào tạo\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D62.K2.d\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Chi phí đào tạo và trách nhiệm hoàn trả chi phí đào tạo\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Hợp đồng đào tạo nghề\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"Chi phí đào tạo\",\n    \"trách nhiệm hoàn trả chi phí đào tạo\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "VPoGa7flItGN1e8PwJX2oQ8",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 998
+   },
+   "input_tokens": 4070,
+   "output_tokens": 1202,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_e8ca7f9e76655e4bc4f14f3e"
+   }
+  }
+ }
+}

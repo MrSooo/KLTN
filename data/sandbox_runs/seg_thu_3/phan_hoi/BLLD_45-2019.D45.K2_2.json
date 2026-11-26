@@ -1,0 +1,27 @@
+{
+ "cau": "Trường hợp người sử dụng lao động không phải là cá nhân bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật theo quy định tại khoản 7 Điều 34 của Bộ luật này thì thời điểm chấm dứt hợp đồng lao động tính từ ngày ra thông báo.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trường hợp người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"không phải là cá nhân\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật theo quy định tại khoản 7 Điều 34 của Bộ luật này\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"thời điểm chấm dứt hợp đồng lao động tính từ ngày ra thông báo\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-ty0Da77MBpHG0-kP6bbs0A4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 991,
+   "output_tokens": 174,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f3d329ebfa71e64092ef15e3"
+   }
+  }
+ }
+}

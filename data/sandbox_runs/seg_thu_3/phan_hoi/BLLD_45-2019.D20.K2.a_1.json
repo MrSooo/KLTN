@@ -1,0 +1,30 @@
+{
+ "cau": "Trong thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn, hai bên phải ký kết hợp đồng lao động mới; trong thời gian chưa ký kết hợp đồng lao động mới thì quyền, nghĩa vụ và lợi ích của hai bên được thực hiện theo hợp đồng đã giao kết;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Trong thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn, hai bên phải ký kết hợp đồng lao động mới\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trong thời gian chưa ký kết hợp đồng lao động mới\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"quyền, nghĩa vụ và lợi ích của hai bên được thực hiện theo hợp đồng đã giao kết\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-eyYDa-28BMy32roPpbfN6Ac",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1643
+   },
+   "input_tokens": 960,
+   "output_tokens": 1759,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_12733dfd9426076de80598b6"
+   }
+  }
+ }
+}

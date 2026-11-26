@@ -1,0 +1,231 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-2",
+ "role": "trich",
+ "requested_model": "claude-opus-5-5",
+ "created": "2026-11-14T07:20:17+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha của điểm, hoặc câu dẫn của Điều đứng trên khoản; rỗng nếu không có) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n   Đơn vị nói luật áp dụng cho ai hoặc điều chỉnh việc gì (phạm vi, đối tượng) thì vẫn gạch từng bên được nêu tên (người hoặc tổ chức) thành cụm chu_the; chủ đề được điều chỉnh không phải một bên thì không gạch thành chu_the.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\n6. Đơn vị là ĐỊNH NGHĨA, tức giải thích một thuật ngữ dạng \"X là Y\" (X là thuật ngữ, Y là phần giải nghĩa): gạch X thành cụm ket_luan (khái niệm được xác lập ở đây), không gạch X thành chu_the; gạch phần giải nghĩa Y thành cụm dieu_kien (điều kiện để X đúng). Phần khác của đơn vị mà có nêu quy tắc thì vẫn gạch như thường.\n   Chữ \"là\" nêu điều kiện, trường hợp hoặc mức giới hạn (\"số người tham gia tối đa là 10 người\", \"Trường hợp ... thì ... là ...\") không phải định nghĩa: gạch theo bốn vai như thường.\n   Câu dẫn của Điều giải thích từ ngữ (\"... được hiểu như sau:\") không có nghĩa riêng nên trả rỗng.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nVí dụ định nghĩa, chu_don_vi = \"Giờ cao điểm là khoảng thời gian từ 17 giờ đến 19 giờ trong ngày.\":\n  ket_luan \"Giờ cao điểm\" (params []); dieu_kien \"khoảng thời gian từ 17 giờ đến 19 giờ trong ngày\" (params [\"D\"]).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D42.K1\",\n\"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Những trường hợp sau đây được coi là thay đổi cơ cấu, công nghệ:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D42.K1.a\",\n\"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n\"khoan_cha\": \"Những trường hợp sau đây được coi là thay đổi cơ cấu, công nghệ:\",\n\"chu_don_vi\": \"Thay đổi cơ cấu tổ chức, tổ chức lại lao động;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D42.K1.b\",\n\"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n\"khoan_cha\": \"Những trường hợp sau đây được coi là thay đổi cơ cấu, công nghệ:\",\n\"chu_don_vi\": \"Thay đổi quy trình, công nghệ, máy móc, thiết bị sản xuất, kinh doanh gắn với ngành, nghề sản xuất, kinh doanh của người sử dụng lao động;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D42.K1.c\",\n\"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n\"khoan_cha\": \"Những trường hợp sau đây được coi là thay đổi cơ cấu, công nghệ:\",\n\"chu_don_vi\": \"Thay đổi sản phẩm hoặc cơ cấu sản phẩm.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D42.K2\",\n\"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Những trường hợp sau đây được coi là vì lý do kinh tế:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D42.K2.a\",\n\"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n\"khoan_cha\": \"Những trường hợp sau đây được coi là vì lý do kinh tế:\",\n\"chu_don_vi\": \"Khủng hoảng hoặc suy thoái kinh tế;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D42.K2.b\",\n\"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n\"khoan_cha\": \"Những trường hợp sau đây được coi là vì lý do kinh tế:\",\n\"chu_don_vi\": \"Thực hiện chính sách, pháp luật của Nhà nước khi cơ cấu lại nền kinh tế hoặc thực hiện cam kết quốc tế.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D42.K3\",\n\"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Trường hợp thay đổi cơ cấu, công nghệ mà ảnh hưởng đến việc làm của nhiều người lao động thì người sử dụng lao động phải xây dựng và thực hiện phương án sử dụng lao động theo quy định tại Điều 44 của Bộ luật này; trường hợp có chỗ làm việc mới thì ưu tiên đào tạo lại người lao động để tiếp tục sử dụng.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D42.K4\",\n\"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Trong trường hợp vì lý do kinh tế mà nhiều người lao động có nguy cơ mất việc làm, phải thôi việc thì người sử dụng lao động phải xây dựng và thực hiện phương án sử dụng lao động theo quy định tại Điều 44 của Bộ luật này.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D42.K5\",\n\"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Trong trường hợp người sử dụng lao động không thể giải quyết được việc làm mà phải cho người lao động thôi việc thì phải trả trợ cấp mất việc làm theo quy định tại Điều 47 của Bộ luật này.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D42.K6\",\n\"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Việc cho thôi việc đối với người lao động theo quy định tại Điều này chỉ được tiến hành sau khi đã trao đổi ý kiến với tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở mà người lao động là thành viên và thông báo trước 30 ngày cho Ủy ban nhân dân cấp tỉnh và cho người lao động.\"\n}\n]\n}",
+ "model": "claude-opus-5-5",
+ "request_id": null,
+ "produced_by": "claude_code_sandbox",
+ "producer_model_reported": "claude-opus-5-5",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D42.K1",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D42.K1.a",
+    "spans": [
+     {
+      "span": "thay đổi cơ cấu, công nghệ",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Thay đổi cơ cấu tổ chức, tổ chức lại lao động",
+      "role": "dieu_kien",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D42.K1.b",
+    "spans": [
+     {
+      "span": "thay đổi cơ cấu, công nghệ",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Thay đổi quy trình, công nghệ, máy móc, thiết bị sản xuất, kinh doanh gắn với ngành, nghề sản xuất, kinh doanh của người sử dụng lao động",
+      "role": "dieu_kien",
+      "params": [
+       "J",
+       "E"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D42.K1.c",
+    "spans": [
+     {
+      "span": "thay đổi cơ cấu, công nghệ",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Thay đổi sản phẩm hoặc cơ cấu sản phẩm",
+      "role": "dieu_kien",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D42.K2",
+    "spans": []
+   },
+   {
+    "unit_id": "BLLD_45-2019.D42.K2.a",
+    "spans": [
+     {
+      "span": "vì lý do kinh tế",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Khủng hoảng hoặc suy thoái kinh tế",
+      "role": "dieu_kien",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D42.K2.b",
+    "spans": [
+     {
+      "span": "vì lý do kinh tế",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "Thực hiện chính sách, pháp luật của Nhà nước khi cơ cấu lại nền kinh tế hoặc thực hiện cam kết quốc tế",
+      "role": "dieu_kien",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D42.K3",
+    "spans": [
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "thay đổi cơ cấu, công nghệ mà ảnh hưởng đến việc làm của nhiều người lao động",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "phải xây dựng và thực hiện phương án sử dụng lao động theo quy định tại Điều 44 của Bộ luật này",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "có chỗ làm việc mới",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     },
+     {
+      "span": "ưu tiên đào tạo lại người lao động để tiếp tục sử dụng",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D42.K4",
+    "spans": [
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "vì lý do kinh tế mà nhiều người lao động có nguy cơ mất việc làm, phải thôi việc",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "phải xây dựng và thực hiện phương án sử dụng lao động theo quy định tại Điều 44 của Bộ luật này",
+      "role": "ket_luan",
+      "params": [
+       "E"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D42.K5",
+    "spans": [
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người sử dụng lao động không thể giải quyết được việc làm mà phải cho người lao động thôi việc",
+      "role": "dieu_kien",
+      "params": [
+       "E",
+       "W"
+      ]
+     },
+     {
+      "span": "phải trả trợ cấp mất việc làm theo quy định tại Điều 47 của Bộ luật này",
+      "role": "ket_luan",
+      "params": [
+       "A"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D42.K6",
+    "spans": [
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "Việc cho thôi việc đối với người lao động theo quy định tại Điều này chỉ được tiến hành",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "sau khi đã trao đổi ý kiến với tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở mà người lao động là thành viên",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "thông báo trước 30 ngày cho Ủy ban nhân dân cấp tỉnh và cho người lao động",
+      "role": "dieu_kien",
+      "params": [
+       "D",
+       "W"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "usage": null
+}

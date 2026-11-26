@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Phải gia hạn hợp đồng lao động đã giao kết đến hết nhiệm kỳ cho người lao động là thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở đang trong nhiệm kỳ mà hết hạn hợp đồng lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Phải gia hạn hợp đồng lao động đã giao kết đến hết nhiệm kỳ cho người lao động là thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở đang trong nhiệm kỳ mà hết hạn hợp đồng lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540086282-674a8cd7",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2535
+   },
+   "input_tokens": 2422,
+   "output_tokens": 73,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_13ae66edfde4e2777e24d9e1"
+   }
+  }
+ }
+}

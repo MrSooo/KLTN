@@ -1,0 +1,26 @@
+{
+ "content": [
+  {
+   "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Do\",\n      \"ap_cho\": [\"m1\", \"m2\", \"m3\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"di dời\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"thu hẹp\"\n    },\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"sản xuất, kinh doanh theo yêu cầu của cơ quan nhà nước có thẩm quyền\",\n      \"ap_cho\": [\"m2\", \"m3\"]\n    },\n    {\n      \"id\": \"c3\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"người sử dụng lao động\",\n      \"ap_cho\": [\"m4\", \"m5\"]\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"đã tìm mọi biện pháp khắc phục\"\n    },\n    {\n      \"id\": \"m5\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"vẫn buộc phải giảm chỗ làm việc\"\n    }\n  ]\n}\n```",
+   "type": "text"
+  }
+ ],
+ "id": "chatcmpl-5xgDa6LIO_7Y9tMPiOzjgAc",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "role": "assistant",
+ "stop_reason": "end_turn",
+ "stop_sequence": null,
+ "type": "message",
+ "usage": {
+  "completion_tokens_details": {
+   "reasoning_tokens": 1651
+  },
+  "input_tokens": 902,
+  "output_tokens": 2049,
+  "x_ckey": {
+   "cost": 6.5,
+   "cost_is_estimate": false,
+   "request_id": "req_c814e3ec7c50c87275dfa3f4"
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D24.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D24.K2\",\n \"tieu_de_dieu\": \"1:Thử 2:việc\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"điểm a, b, c, đ, g và h khoản 1 Điều 21 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D21.K1.a\"\n  },\n  {\n   \"cum\": \"điểm a, b, c, đ, g và h khoản 1 Điều 21 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D21.K1.b\"\n  },\n  {\n   \"cum\": \"điểm a, b, c, đ, g và h khoản 1 Điều 21 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D21.K1.c\"\n  },\n  {\n   \"cum\": \"điểm a, b, c, đ, g và h khoản 1 Điều 21 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D21.K1.dd\"\n  },\n  {\n   \"cum\": \"điểm a, b, c, đ, g và h khoản 1 Điều 21 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D21.K1.g\"\n  },\n  {\n   \"cum\": \"điểm a, b, c, đ, g và h khoản 1 Điều 21 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D21.K1.h\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Nội dung chủ yếu của hợp đồng thử việc gồm thời gian thử việc và nội dung quy định tại các điểm a, b, c, đ, g và h khoản 1 Điều 21 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Nội 2:dung 3:chủ 4:yếu 5:của 6:hợp 7:đồng 8:thử 9:việc 10:gồm 11:thời 12:gian 13:thử 14:việc 15:và 16:nội 17:dung 18:quy 19:định 20:tại 21:các 22:điểm 23:a, 24:b, 25:c, 26:đ, 27:g 28:và 29:h 30:khoản 31:1 32:Điều 33:21 34:của 35:Bộ 36:luật 37:này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D24.K2\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-4\",\n    \"s1.m1:10\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:6-9\"\n    ],\n    \"loai\": \"C\"\n   },\n   \"liet_ke\": [\n    [\n     \"s1.m1:11-14\"\n    ],\n    [\n     \"s1.m1:16-19\"\n    ]\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-b5b50618ed084fdfbf6db79a1657901d",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3991
+   },
+   "input_tokens": 6257,
+   "output_tokens": 788,
+   "x_ckey": {
+    "cost": 11.31,
+    "cost_is_estimate": false,
+    "request_id": "req_87fbf9752346a816fb9ddce4"
+   }
+  }
+ }
+}

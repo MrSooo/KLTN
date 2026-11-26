@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động được bổ nhiệm làm người quản lý doanh nghiệp của công ty trách nhiệm hữu hạn một thành viên do Nhà nước nắm giữ 100% vốn điều lệ;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động được bổ nhiệm làm người quản lý doanh nghiệp của công ty trách nhiệm hữu hạn một thành viên do Nhà nước nắm giữ 100% vốn điều lệ\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538187722-ecec2f2e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 840
+   },
+   "input_tokens": 2409,
+   "output_tokens": 60,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_30fabeafac1e804444a5f9e1"
+   }
+  }
+ }
+}

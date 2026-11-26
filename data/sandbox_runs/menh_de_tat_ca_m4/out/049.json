@@ -1,0 +1,196 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D49.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "vô hiệu toàn bộ",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Hợp đồng lao động vô hiệu toàn bộ"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "hoac",
+     "trich": [
+      "trong trường hợp sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách trường hợp làm hợp đồng vô hiệu toàn bộ."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D49.K1.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vi phạm pháp luật",
+     "chu_the": {
+      "chu": "Toàn bộ nội dung của hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Toàn bộ nội dung của hợp đồng lao động vi phạm pháp luật"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D49.K1.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "giao kết hợp đồng lao động đúng thẩm quyền",
+     "chu_the": {
+      "chu": "Người giao kết hợp đồng lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Người giao kết hợp đồng lao động",
+      "không đúng thẩm quyền"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai điều kiện thay thế nhau: không đúng thẩm quyền hoặc vi phạm nguyên tắc giao kết."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vi phạm nguyên tắc giao kết hợp đồng lao động",
+     "chu_the": {
+      "chu": "Người giao kết hợp đồng lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Người giao kết hợp đồng lao động",
+      "vi phạm nguyên tắc giao kết hợp đồng lao động quy định tại khoản 1 Điều 15 của Bộ luật này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "trich": [
+      "quy định tại khoản 1 Điều 15 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D15.K1"
+     ],
+     "gan_vao": 1,
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D49.K1.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là công việc mà pháp luật cấm",
+     "chu_the": {
+      "chu": "Công việc đã giao kết trong hợp đồng lao động",
+      "loai": "J",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Công việc đã giao kết trong hợp đồng lao động là công việc mà pháp luật cấm"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Một điều kiện định danh công việc bị pháp luật cấm; tách sẽ mất nghĩa."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D49.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "vô hiệu từng phần",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Hợp đồng lao động vô hiệu từng phần"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vi phạm pháp luật",
+     "chu_the": {
+      "chu": "nội dung của phần đó",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "nội dung của phần đó vi phạm pháp luật"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "ảnh hưởng đến các phần còn lại của hợp đồng",
+     "chu_the": {
+      "chu": "nội dung của phần đó",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "nội dung của phần đó vi phạm pháp luật nhưng không ảnh hưởng đến các phần còn lại của hợp đồng"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Điều kiện kép: vi phạm pháp luật và không ảnh hưởng các phần còn lại, kiểm được riêng."
+     }
+    }
+   ]
+  }
+ ]
+}

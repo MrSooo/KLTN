@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D102.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D102.K1\",\n \"tieu_de_dieu\": \"Khấu trừ tiền lương\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều 129 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D129\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động chỉ được khấu trừ tiền lương của người lao động để bồi thường thiệt hại do làm hư hỏng dụng cụ, thiết bị, tài sản của người sử dụng lao động theo quy định tại Điều 129 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người sử dụng lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"chỉ được khấu trừ tiền lương của người lao động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bồi thường thiệt hại do làm hư hỏng dụng cụ, thiết bị, tài sản của người sử dụng lao động theo quy định tại Điều 129 của Bộ luật này\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\n \"unit_id\": \"BLLD_45-2019.D102.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"khấu trừ tiền lương của người lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"bồi thường thiệt hại\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"làm hư hỏng dụng cụ, thiết bị, tài sản của người sử dụng lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"liet_ke\": [\n    \"dụng cụ\",\n    \"thiết bị\",\n    \"tài sản\"\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}",
+    "type": "text"
+   }
+  ],
+  "id": "X3EGa6f2B5HM2roPzIPxwAg",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4308
+   },
+   "input_tokens": 4015,
+   "output_tokens": 1480,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_99ebef6f5282501afc8f719c"
+   }
+  }
+ }
+}

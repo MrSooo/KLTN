@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Điều kiện, thủ tục gia nhập và ra khỏi tổ chức của người lao động tại doanh nghiệp.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Điều kiện, thủ tục gia nhập và ra khỏi tổ chức của người lao động tại doanh nghiệp\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539995715-b1670c54",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 895
+   },
+   "input_tokens": 2394,
+   "output_tokens": 45,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_b29eff220db532257c31f382"
+   }
+  }
+ }
+}

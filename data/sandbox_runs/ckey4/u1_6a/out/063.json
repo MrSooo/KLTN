@@ -1,0 +1,130 @@
+{
+ "units": [
+  {
+   "unit_id": "ND_219-2025.D23.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp lại giấy phép lao động",
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Các trường hợp cấp lại giấy phép lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Kết luận (được cấp lại giấy phép lao động) lấy từ tiêu đề điều, khoản chỉ nêu trường hợp."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị mất",
+     "chu_the": {
+      "chu": "Giấy phép lao động còn thời hạn",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Giấy phép lao động còn thời hạn bị mất"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai phương án 'bị mất' và 'bị hư hỏng không sử dụng được' là điều kiện thay thế, tách theo nhom_hoac."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị hư hỏng không sử dụng được",
+     "chu_the": {
+      "chu": "Giấy phép lao động còn thời hạn",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Giấy phép lao động còn thời hạn",
+      "bị hư hỏng không sử dụng được"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Phương án thay thế thứ hai của cùng điều kiện."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_219-2025.D23.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp lại giấy phép lao động",
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Các trường hợp cấp lại giấy phép lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Kết luận lấy từ tiêu đề điều, khoản chỉ nêu trường hợp."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thay đổi một trong các nội dung ghi trong giấy phép lao động còn thời hạn",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "họ và tên",
+      "quốc tịch",
+      "số hộ chiếu"
+     ],
+     "trich": [
+      "Thay đổi một trong các nội dung ghi trong giấy phép lao động còn thời hạn",
+      "họ và tên",
+      "quốc tịch",
+      "số hộ chiếu"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Ba nội dung là danh sách tân ngữ của cùng động từ 'thay đổi' nên đưa vào liet_ke."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đổi tên người sử dụng lao động mà không thay đổi mã số định danh của người sử dụng lao động",
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đổi tên người sử dụng lao động mà không thay đổi mã số định danh của người sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Mục này là một hành vi khác (đổi tên) chứ không phải tên nội dung, nên tách thành dòng riêng."
+     }
+    }
+   ]
+  }
+ ]
+}

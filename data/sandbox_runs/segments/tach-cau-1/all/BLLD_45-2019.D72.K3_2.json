@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp thương lượng tập thể có nhiều doanh nghiệp tham gia thì đại diện thương lượng do các bên thương lượng quyết định trên cơ sở tự nguyện, thỏa thuận.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thương lượng tập thể có nhiều doanh nghiệp tham gia\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"đại diện thương lượng do các bên thương lượng quyết định trên cơ sở tự nguyện, thỏa thuận\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538912425-c6edfe93",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 874
+   },
+   "input_tokens": 2409,
+   "output_tokens": 73,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_90102fe26031e02ba6dfc568"
+   }
+  }
+ }
+}

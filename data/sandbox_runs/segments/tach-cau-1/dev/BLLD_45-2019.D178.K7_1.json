@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Được người sử dụng lao động bố trí nơi làm việc và được cung cấp thông tin, bảo đảm các điều kiện cần thiết cho hoạt động của tổ chức đại diện người lao động tại cơ sở.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Được người sử dụng lao động bố trí nơi làm việc\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"được\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"cung cấp thông tin\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"bảo đảm các điều kiện cần thiết cho hoạt động của tổ chức đại diện người lao động tại cơ sở\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-s7IFa_eKOKGz1e8PvJXt2As",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 8081
+   },
+   "input_tokens": 2276,
+   "output_tokens": 492,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_cb5df33aac44b93a2b79647e"
+   }
+  }
+ }
+}

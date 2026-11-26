@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Một bên có quyền đơn phương chấm dứt hợp đồng lao động bất kỳ khi nào nhưng phải báo trước ít nhất 15 ngày.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Một bên\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"có quyền đơn phương chấm dứt hợp đồng lao động bất kỳ khi nào\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải báo trước ít nhất 15 ngày\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539863075-69284d3c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 498
+   },
+   "input_tokens": 2402,
+   "output_tokens": 96,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_56f24fd949f1d3641a160345"
+   }
+  }
+ }
+}

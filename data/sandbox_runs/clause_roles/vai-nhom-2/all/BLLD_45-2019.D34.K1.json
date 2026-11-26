@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D34.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D34.K1\",\n \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 4 Điều 177 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D177.K4\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Hết hạn hợp đồng lao động, trừ trường hợp quy định tại khoản 4 Điều 177 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Hết hạn hợp đồng lao động\"\n    },\n    {\n     \"id\": \"s1.d1\",\n     \"loai\": \"dan_chieu\",\n     \"chu\": \"trừ trường hợp quy định tại khoản 4 Điều 177 của Bộ luật này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D34.K1\",\"ngoai_le\":[\"BLLD_45-2019.D177.K4\"],\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"Hết hạn hợp đồng lao động\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795542391244-ba4ab850",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5528
+   },
+   "input_tokens": 3724,
+   "output_tokens": 87,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_18e854241bf06a8d1a30f92f"
+   }
+  }
+ }
+}

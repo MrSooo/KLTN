@@ -1,0 +1,30 @@
+{
+ "cau": "Trường hợp phụ lục hợp đồng lao động quy định chi tiết một số điều, khoản của hợp đồng lao động mà dẫn đến cách hiểu khác với hợp đồng lao động thì thực hiện theo nội dung của hợp đồng lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Trường hợp phụ lục hợp đồng lao động\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"quy định chi tiết một số điều, khoản của hợp đồng lao động\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"dẫn đến cách hiểu khác với hợp đồng lao động\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"thực hiện theo nội dung của hợp đồng lao động\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-ACgDa9PLE8DZ9tMPgda-mQs",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1467
+   },
+   "input_tokens": 946,
+   "output_tokens": 1680,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_b0973ec93582d51ef36722e2"
+   }
+  }
+ }
+}

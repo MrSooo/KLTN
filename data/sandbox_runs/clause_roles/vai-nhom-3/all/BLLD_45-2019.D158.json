@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D158",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D158\",\n \"tieu_de_dieu\": \"Chính sách của Nhà nước đối với lao động là người khuyết tật\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Nhà nước bảo trợ quyền lao động, tự tạo việc làm của người lao động là người khuyết tật; có chính sách khuyến khích, ưu đãi phù hợp đối với người sử dụng lao động trong tạo việc làm và nhận người lao động là người khuyết tật vào làm việc theo quy định của pháp luật về người khuyết tật.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Nhà nước\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bảo trợ quyền lao động, tự tạo việc làm của người lao động là người khuyết tật\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"có chính sách khuyến khích, ưu đãi phù hợp đối với người sử dụng lao động trong tạo việc làm và nhận người lao động là người khuyết tật vào làm việc theo quy định của pháp luật về người khuyết tật\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D158\",\n \"bo_qua\": \"khong_quy_pham\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "yPwGa922AsSWvr0P9sjY0Ac",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 593
+   },
+   "input_tokens": 4257,
+   "output_tokens": 644,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_db15b3d4255299bc09a89456"
+   }
+  }
+ }
+}

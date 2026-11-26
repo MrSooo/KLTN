@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Phí thành viên, nguồn tài sản, tài chính và việc quản lý, sử dụng tài sản, tài chính của tổ chức.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Phí thành viên, nguồn tài sản, tài chính và việc quản lý, sử dụng tài sản, tài chính của tổ chức\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540008236-3fba2fe7",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 668
+   },
+   "input_tokens": 2400,
+   "output_tokens": 51,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_40f140f16cdd2ca7f2f47fd9"
+   }
+  }
+ }
+}

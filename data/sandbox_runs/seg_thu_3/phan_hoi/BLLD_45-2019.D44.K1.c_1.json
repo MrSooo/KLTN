@@ -1,0 +1,30 @@
+{
+ "cau": "Số lượng và danh sách người lao động phải chấm dứt hợp đồng lao động;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Số lượng và danh sách người lao động phải chấm dứt hợp đồng lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-XC0Da5DVCYvF0-kPn6GMqQQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 368
+   },
+   "input_tokens": 917,
+   "output_tokens": 410,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_fcd61c1d7eea219958369627"
+   }
+  }
+ }
+}

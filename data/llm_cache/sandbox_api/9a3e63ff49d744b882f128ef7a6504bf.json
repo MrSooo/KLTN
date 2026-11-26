@@ -1,0 +1,74 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T08:37:34+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0020\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D35.K1.b\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người lao động\",\n    \"khoan_cha\": \"Người lao động có quyền đơn phương chấm dứt hợp đồng lao động nhưng phải báo trước cho người sử dụng lao động như sau:\",\n    \"chu_don_vi\": \"Ít nhất 30 ngày nếu làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng;\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0021\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D35.K1.c\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người lao động\",\n    \"khoan_cha\": \"Người lao động có quyền đơn phương chấm dứt hợp đồng lao động nhưng phải báo trước cho người sử dụng lao động như sau:\",\n    \"chu_don_vi\": \"Ít nhất 03 ngày làm việc nếu làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng;\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0022\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D35.K2.c\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người lao động\",\n    \"khoan_cha\": \"Người lao động có quyền đơn phương chấm dứt hợp đồng lao động không cần báo trước trong trường hợp sau đây:\",\n    \"chu_don_vi\": \"Bị người sử dụng lao động ngược đãi, đánh đập hoặc có lời nói, hành vi nhục mạ, hành vi làm ảnh hưởng đến sức khỏe, nhân phẩm, danh dự; bị cưỡng bức lao động;\"\n   },\n   \"vi_tu_chung\": [\n    \"subjected_to_forced_labor\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0023\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D35.K2.d\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người lao động\",\n    \"khoan_cha\": \"Người lao động có quyền đơn phương chấm dứt hợp đồng lao động không cần báo trước trong trường hợp sau đây:\",\n    \"chu_don_vi\": \"Bị quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"vi_tu_chung\": [\n    \"subjected_to_sexual_harassment\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0024\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D137.K1.a\",\n    \"tieu_de_dieu\": \"Bảo vệ thai sản\",\n    \"khoan_cha\": \"Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa trong trường hợp sau đây:\",\n    \"chu_don_vi\": \"Mang thai từ tháng thứ 07 hoặc từ tháng thứ 06 nếu làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo;\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0025\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D153.K2\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người sử dụng lao động và người lao động nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động sẽ bị buộc xuất cảnh hoặc trục xuất theo quy định của pháp luật về nhập cảnh, xuất cảnh, quá cảnh, cư trú của người nước ngoài tại Việt Nam.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0026\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.c\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Thành lập, gia nhập, hoạt động trong tổ chức đại diện người lao động, tổ chức nghề nghiệp và tổ chức khác theo quy định của pháp luật; yêu cầu và tham gia đối thoại, thực hiện quy chế dân chủ, thương lượng tập thể với người sử dụng lao động và được tham vấn tại nơi làm việc để bảo vệ quyền và lợi ích hợp pháp, chính đáng của mình; tham gia quản lý theo nội quy của người sử dụng lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D177.K1\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động đối với tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Không được cản trở, gây khó khăn khi người lao động tiến hành các hoạt động hợp pháp nhằm thành lập, gia nhập và tham gia các hoạt động của tổ chức đại diện người lao động tại cơ sở.\"\n   },\n   \"vi_tu_chung\": [\n    \"establish_employee_representative_org\",\n    \"join_employee_representative_org\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0027\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.dd\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đơn phương chấm dứt hợp đồng lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K9\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động đơn phương chấm dứt hợp đồng lao động theo quy định tại Điều 35 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"unilaterally_terminate_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0028\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.dd\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đơn phương chấm dứt hợp đồng lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D138.K1\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt, tạm hoãn hợp đồng lao động của lao động nữ mang thai\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động nữ mang thai nếu có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi thì có quyền đơn phương chấm dứt hợp đồng lao động hoặc tạm hoãn thực hiện hợp đồng lao động.\\nTrường hợp đơn phương chấm dứt hợp đồng lao động hoặc tạm hoãn thực hiện hợp đồng lao động thì phải thông báo cho người sử dụng lao động kèm theo xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi.\"\n   },\n   \"vi_tu_chung\": [\n    \"unilaterally_terminate_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0029\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.e\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Đình công;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D197.K4\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về lợi ích của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi các bên lựa chọn giải quyết tranh chấp thông qua Hội đồng trọng tài lao động theo quy định tại Điều này thì tổ chức đại diện người lao động không được tiến hành đình công trong thời gian Hội đồng trọng tài lao động đang tiến hành giải quyết tranh chấp.\\nKhi hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài không ra quyết định giải quyết tranh chấp hoặc người sử dụng lao động là bên tranh chấp không thực hiện quyết định giải quyết tranh chấp của Ban trọng tài lao động thì tổ chức đại diện người lao động là bên tranh chấp có quyền tiến hành thủ tục quy định tại các điều 200, 201 và 202 của Bộ luật này để đình công.\"\n   },\n   \"vi_tu_chung\": [\n    \"strike\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_2e04b95d8daa96893ad0fb13",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0020",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0021",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0022",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0023",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0024",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0025",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0026",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0027",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0028",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0029",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3851,
+  "output_tokens": 804,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 457
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2117
+   }
+  }
+ }
+}

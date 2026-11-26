@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D144.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D144.K2\",\n \"tieu_de_dieu\": \"1:Nguyên 2:tắc 3:sử 4:dụng 5:lao 6:động 7:chưa 8:thành 9:niên\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động khi sử dụng lao động chưa thành niên có trách nhiệm quan tâm chăm sóc người lao động về các mặt lao động, sức khỏe, học tập trong quá trình lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Người 2:sử 3:dụng 4:lao 5:động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:sử 2:dụng 3:lao 4:động 5:chưa 6:thành 7:niên\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:trách 3:nhiệm 4:quan 5:tâm 6:chăm 7:sóc 8:người 9:lao 10:động 11:về 12:các 13:mặt 14:lao 15:động, 16:sức 17:khỏe, 18:học 19:tập 20:trong 21:quá 22:trình 23:lao 24:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D144.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-7\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:20-24\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:4-7\",\n    \"s1.m2:11-13\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"liet_ke\": [\n    [\n     \"s1.m2:14-15\"\n    ],\n    [\n     \"s1.m2:16-17\"\n    ],\n    [\n     \"s1.m2:18-19\"\n    ]\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "Rs4Ha9ztDsq81e8PhdrT6Ac",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1453
+   },
+   "input_tokens": 6005,
+   "output_tokens": 2043,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_65a71ffe42598ad6d575935e"
+   }
+  }
+ }
+}

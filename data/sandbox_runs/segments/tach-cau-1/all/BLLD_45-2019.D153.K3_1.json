@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động sử dụng người lao động nước ngoài làm việc cho mình mà không có giấy phép lao động thì bị xử lý theo quy định của pháp luật.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Người sử dụng lao động\",\n      \"ap_cho\": [\n        \"m1\",\n        \"m2\",\n        \"m3\"\n      ]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"sử dụng người lao động nước ngoài làm việc cho mình\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"không có giấy phép lao động\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"bị xử lý theo quy định của pháp luật\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539802343-96ed3e88",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3288
+   },
+   "input_tokens": 2408,
+   "output_tokens": 186,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a695c25425a6abc99eac28f5"
+   }
+  }
+ }
+}

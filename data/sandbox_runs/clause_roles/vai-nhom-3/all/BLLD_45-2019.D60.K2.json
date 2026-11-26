@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D60.K2",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D60.K2\",\n \"tieu_de_dieu\": \"Trách nhiệm của người sử dụng lao động về đào tạo, bồi dưỡng, nâng cao trình độ, kỹ năng nghề\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Hằng năm, người sử dụng lao động thông báo kết quả đào tạo, bồi dưỡng, nâng cao trình độ, kỹ năng nghề cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Hằng năm, người sử dụng lao động thông báo kết quả đào tạo, bồi dưỡng, nâng cao trình độ, kỹ năng nghề cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D60.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Hằng năm\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"thông báo kết quả đào tạo, bồi dưỡng, nâng cao trình độ, kỹ năng nghề cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "RfoGa5DABpbO1e8P3PmpoAY",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 806
+   },
+   "input_tokens": 4115,
+   "output_tokens": 1117,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_5a26fa8b3876f0fb51f2f229"
+   }
+  }
+ }
+}

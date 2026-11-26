@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D163.K6",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D163.K6\",\n \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động khi sử dụng lao động là người giúp việc gia đình\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trả tiền tàu xe đi đường khi người giúp việc gia đình thôi việc về nơi cư trú, trừ trường hợp người giúp việc gia đình chấm dứt hợp đồng lao động trước thời hạn.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Trả tiền tàu xe đi đường\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"người giúp việc gia đình thôi việc về nơi cư trú\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"người giúp việc gia đình chấm dứt hợp đồng lao động trước thời hạn\",\n     \"noi_truoc\": [\n      \"trừ trường hợp\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D163.K6\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Trả tiền tàu xe đi đường\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"thôi việc về nơi cư trú\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người giúp việc gia đình\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"chấm dứt hợp đồng lao động trước thời hạn\"\n   ],\n   \"vai\": \"ngoai_le\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người giúp việc gia đình\",\n    \"loai\": \"W\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"C\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795546559947-bfa44b59",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1556
+   },
+   "input_tokens": 3786,
+   "output_tokens": 364,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_0186f42c5bb5e4a444a420d4"
+   }
+  }
+ }
+}

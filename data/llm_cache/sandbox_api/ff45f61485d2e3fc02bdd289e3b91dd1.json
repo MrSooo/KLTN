@@ -1,0 +1,62 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T21:57:13+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0020\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K6\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D20.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 1, 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0021\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K7\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D20.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 1, 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0022\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K8\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động bị thu hồi.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D20.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 1, 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\",\n    \"revoke_work_permit\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0023\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K8\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động bị thu hồi.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D20.K2\",\n    \"tieu_de_dieu\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động hoặc người lao động nước ngoài không thực hiện đúng quy định tại Nghị định này.\"\n   },\n   \"vi_tu_chung\": [\n    \"revoke_work_permit\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0024\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K8\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động bị thu hồi.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D20.K3\",\n    \"tieu_de_dieu\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài trong quá trình làm việc ở Việt Nam không thực hiện đúng pháp luật Việt Nam làm ảnh hưởng tới an ninh, trật tự, an toàn xã hội.\"\n   },\n   \"vi_tu_chung\": [\n    \"revoke_work_permit\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0025\",\n   \"a\": {\n    \"unit_id\": \"ND_145-2020.D32.K1\",\n    \"tieu_de_dieu\": \"Trách nhiệm của ngân hàng nhận ký quỹ\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thực hiện đúng các quy định về mở tài khoản ký quỹ, nộp tiền ký quỹ, sử dụng tài khoản ký quỹ của doanh nghiệp cho thuê lại và các quy định liên quan đến tài khoản này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D20.K2\",\n    \"tieu_de_dieu\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động hoặc người lao động nước ngoài không thực hiện đúng quy định tại Nghị định này.\"\n   },\n   \"vi_tu_chung\": [\n    \"comply_with_relevant_regulations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0026\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D2.K1.b\",\n    \"tieu_de_dieu\": \"Đối tượng áp dụng\",\n    \"khoan_cha\": \"Lao động là công dân nước ngoài vào làm việc tại Việt Nam (sau đây viết tắt là người lao động nước ngoài) theo các hình thức sau đây:\",\n    \"chu_don_vi\": \"Di chuyển trong nội bộ doanh nghiệp;\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D3.K1\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài di chuyển trong nội bộ doanh nghiệp là nhà quản lý, giám đốc điều hành, chuyên gia và lao động kỹ thuật của một doanh nghiệp nước ngoài đã thành lập hiện diện thương mại trên lãnh thổ Việt Nam, di chuyển tạm thời trong nội bộ doanh nghiệp sang hiện diện thương mại trên lãnh thổ Việt Nam và đã được doanh nghiệp nước ngoài tuyển dụng trước đó ít nhất 12 tháng liên tục.\"\n   },\n   \"vi_tu_chung\": [\n    \"intra_corporate_transfer\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0027\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D2.K1.b\",\n    \"tieu_de_dieu\": \"Đối tượng áp dụng\",\n    \"khoan_cha\": \"Lao động là công dân nước ngoài vào làm việc tại Việt Nam (sau đây viết tắt là người lao động nước ngoài) theo các hình thức sau đây:\",\n    \"chu_don_vi\": \"Di chuyển trong nội bộ doanh nghiệp;\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D7.K3\",\n    \"tieu_de_dieu\": \"Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:\",\n    \"chu_don_vi\": \"Di chuyển trong nội bộ doanh nghiệp thuộc phạm vi 11 ngành dịch vụ trong biểu cam kết dịch vụ của Việt Nam với Tổ chức Thương mại thế giới, bao gồm: kinh doanh, thông tin, xây dựng, phân phối, giáo dục, môi trường, tài chính, y tế, du lịch, văn hóa giải trí và vận tải.\"\n   },\n   \"vi_tu_chung\": [\n    \"intra_corporate_transfer\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0028\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D2.K1.d\",\n    \"tieu_de_dieu\": \"Đối tượng áp dụng\",\n    \"khoan_cha\": \"Lao động là công dân nước ngoài vào làm việc tại Việt Nam (sau đây viết tắt là người lao động nước ngoài) theo các hình thức sau đây:\",\n    \"chu_don_vi\": \"Nhà cung cấp dịch vụ theo hợp đồng;\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D3.K8\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Nhà cung cấp dịch vụ theo hợp đồng là người lao động nước ngoài làm việc ít nhất 02 năm (24 tháng) trong một doanh nghiệp nước ngoài không có hiện diện thương mại tại Việt Nam và phải đáp ứng quy định đối với chuyên gia tại khoản 3 Điều này.\"\n   },\n   \"vi_tu_chung\": [\n    \"service_supplier_under_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0029\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D2.K1.g\",\n    \"tieu_de_dieu\": \"Đối tượng áp dụng\",\n    \"khoan_cha\": \"Lao động là công dân nước ngoài vào làm việc tại Việt Nam (sau đây viết tắt là người lao động nước ngoài) theo các hình thức sau đây:\",\n    \"chu_don_vi\": \"Tình nguyện viên;\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D3.K2\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tình nguyện viên là người lao động nước ngoài làm việc tại Việt Nam theo hình thức tự nguyện và không hưởng lương để thực hiện điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên và có xác nhận của cơ quan đại diện ngoại giao nước ngoài hoặc tổ chức quốc tế tại Việt Nam.\"\n   },\n   \"vi_tu_chung\": [\n    \"volunteer\"\n   ]\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_4efe1b396de84a443bd3c723",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0020",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0021",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0022",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0023",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0024",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0025",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0026",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0027",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Di chuyển trong nội bộ doanh nghiệp thuộc phạm vi 11 ngành dịch vụ trong biểu cam kết dịch vụ của Việt Nam với Tổ chức Thương mại thế giới, bao gồm: kinh doanh, thông tin, xây dựng, phân phối, giáo dục, môi trường, tài chính, y tế, du lịch, văn hóa giải trí và vận tải."
+   },
+   {
+    "cap_id": "P0028",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0029",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 91,
+  "output_tokens": 912,
+  "cost_vnd": 6.49
+ },
+ "boc_rao": false
+}

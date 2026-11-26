@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thỏa ước lao động tập thể doanh nghiệp chỉ được ký kết khi có trên 50% người lao động của doanh nghiệp biểu quyết tán thành.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thỏa ước lao động tập thể doanh nghiệp chỉ được ký kết\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có trên 50% người lao động của doanh nghiệp biểu quyết tán thành\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538937219-69f45117",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 726
+   },
+   "input_tokens": 2405,
+   "output_tokens": 71,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_421fa02fd66add0e1a3f0567"
+   }
+  }
+ }
+}

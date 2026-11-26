@@ -1,0 +1,2154 @@
+{
+"chu": [
+{
+"chu_id": "C0205",
+"chu": "tiếp nhận và kiểm tra hồ sơ rút tiền ký quỹ của doanh nghiệp cho thuê lại",
+"params": [
+"?",
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.dd",
+"vai": "ket_luan",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Ngân hàng nhận ký quỹ tiếp nhận và kiểm tra hồ sơ rút tiền ký quỹ của doanh nghiệp cho thuê lại, nếu đúng quy định thì ngân hàng nhận ký quỹ cho doanh nghiệp cho thuê lại thực hiện rút tiền ký quỹ trong thời hạn 01 ngày làm việc, kể từ ngày tiếp nhận hồ sơ rút tiền ký quỹ."
+}
+],
+"ung_vien": [
+{
+"ten": "propose_deposit_withdrawal_for_approval",
+"params": [
+"?",
+"E"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ"
+]
+},
+{
+"ten": "allow_deposit_withdrawal",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"thực hiện cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ"
+]
+},
+{
+"ten": "refuse_deposit_withdrawal_with_written_reason",
+"params": [
+"?",
+"E"
+],
+"vi_du": [
+"có văn bản trả lời doanh nghiệp cho thuê lại nêu rõ lý do không đồng ý"
+]
+},
+{
+"ten": "request_additional_deposit",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"yêu cầu doanh nghiệp cho thuê lại nộp bổ sung tiền ký quỹ"
+]
+}
+]
+},
+{
+"chu_id": "C0206",
+"chu": "đúng quy định",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.dd",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Ngân hàng nhận ký quỹ tiếp nhận và kiểm tra hồ sơ rút tiền ký quỹ của doanh nghiệp cho thuê lại, nếu đúng quy định thì ngân hàng nhận ký quỹ cho doanh nghiệp cho thuê lại thực hiện rút tiền ký quỹ trong thời hạn 01 ngày làm việc, kể từ ngày tiếp nhận hồ sơ rút tiền ký quỹ."
+}
+],
+"ung_vien": [
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "deposit_withdrawal_voucher",
+"params": [],
+"vi_du": [
+"Chứng từ rút tiền ký quỹ"
+]
+},
+{
+"ten": "labor_reletting_enterprise",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "labor_subcontracting_deposit_certificate",
+"params": [],
+"vi_du": [
+"Giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "plan_for_using_withdrawn_deposit",
+"params": [],
+"vi_du": [
+"Phương án sử dụng số tiền rút từ tài khoản ký quỹ"
+]
+},
+{
+"ten": "withdraw_deposit",
+"params": [],
+"vi_du": [
+"rút tiền ký quỹ"
+]
+},
+{
+"ten": "after_chairman_consent_to_deposit_withdrawal",
+"params": [],
+"vi_du": [
+"Sau khi có văn bản đồng ý về việc rút tiền ký quỹ của Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "after_60_days_from_compensation_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn 60 ngày kể từ ngày đến thời hạn bồi thường"
+]
+},
+{
+"ten": "after_30_days_from_payment_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn từ 30 ngày kể từ ngày đến thời hạn thanh toán"
+]
+},
+{
+"ten": "provincial_labor_invalids_social_affairs_dept",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "within_5_working_days_of_department_submission",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "within_5_working_days_of_withdrawal_application",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "consent_to_deposit_withdrawal",
+"params": [],
+"vi_du": [
+"đồng ý về việc rút tiền ký quỹ"
+]
+},
+{
+"ten": "other_related_agencies_organizations_individuals",
+"params": [],
+"vi_du": [
+"Các cơ quan, tổ chức, cá nhân khác có liên quan đến việc thực hiện quy định tại Nghị định này"
+]
+}
+]
+},
+{
+"chu_id": "C0207",
+"chu": "cho doanh nghiệp cho thuê lại thực hiện rút tiền ký quỹ trong thời hạn 01 ngày làm việc kể từ ngày tiếp nhận hồ sơ rút tiền ký quỹ",
+"params": [
+"?",
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D18.K4.dd",
+"vai": "ket_luan",
+"tieu_de_dieu": "Rút tiền ký quỹ",
+"khoan_cha": "Trình tự, thủ tục rút tiền ký quỹ được thực hiện như sau:\nTrường hợp rút tiền ký quỹ theo quy định tại các điểm a và điểm b khoản 1 Điều này thì việc thanh toán, bồi thường cho người lao động thuê lại do ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý sau khi trừ chi phí dịch vụ ngân hàng.",
+"chu_don_vi": "Ngân hàng nhận ký quỹ tiếp nhận và kiểm tra hồ sơ rút tiền ký quỹ của doanh nghiệp cho thuê lại, nếu đúng quy định thì ngân hàng nhận ký quỹ cho doanh nghiệp cho thuê lại thực hiện rút tiền ký quỹ trong thời hạn 01 ngày làm việc, kể từ ngày tiếp nhận hồ sơ rút tiền ký quỹ."
+}
+],
+"ung_vien": [
+{
+"ten": "propose_deposit_withdrawal_for_approval",
+"params": [
+"?",
+"E"
+],
+"vi_du": [
+"trình Chủ tịch Ủy ban nhân dân cấp tỉnh đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ"
+]
+},
+{
+"ten": "allow_deposit_withdrawal",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"thực hiện cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ"
+]
+},
+{
+"ten": "refuse_deposit_withdrawal_with_written_reason",
+"params": [
+"?",
+"E"
+],
+"vi_du": [
+"có văn bản trả lời doanh nghiệp cho thuê lại nêu rõ lý do không đồng ý"
+]
+},
+{
+"ten": "request_additional_deposit",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"yêu cầu doanh nghiệp cho thuê lại nộp bổ sung tiền ký quỹ"
+]
+},
+{
+"ten": "labor_subcontracting_by_licensed_enterprise",
+"params": [
+"?",
+"E"
+],
+"vi_du": [
+"chỉ được thực hiện bởi các doanh nghiệp có Giấy phép hoạt động cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0208",
+"chu": "hết 60 ngày kể từ ngày đến hạn",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "",
+"chu_don_vi": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:"
+}
+],
+"ung_vien": [
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "labor_reletting_enterprise",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "provincial_labor_invalids_social_affairs_dept",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "deposit_funds",
+"params": [],
+"vi_du": [
+"Tiền ký quỹ"
+]
+},
+{
+"ten": "after_60_days_from_compensation_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn 60 ngày kể từ ngày đến thời hạn bồi thường"
+]
+},
+{
+"ten": "after_30_days_from_payment_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn từ 30 ngày kể từ ngày đến thời hạn thanh toán"
+]
+},
+{
+"ten": "within_5_working_days_of_department_submission",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "within_5_working_days_of_withdrawal_application",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "deposit_withdrawal_voucher",
+"params": [],
+"vi_du": [
+"Chứng từ rút tiền ký quỹ"
+]
+},
+{
+"ten": "other_related_agencies_organizations_individuals",
+"params": [],
+"vi_du": [
+"Các cơ quan, tổ chức, cá nhân khác có liên quan đến việc thực hiện quy định tại Nghị định này"
+]
+},
+{
+"ten": "plan_for_using_withdrawn_deposit",
+"params": [],
+"vi_du": [
+"Phương án sử dụng số tiền rút từ tài khoản ký quỹ"
+]
+}
+]
+},
+{
+"chu_id": "C0209",
+"chu": "thanh toán các chế độ, quyền lợi cho người lao động thuê lại",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "",
+"chu_don_vi": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:"
+}
+],
+"ung_vien": [
+{
+"ten": "breach_contract_or_damage_subcontracted_worker",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"vi phạm hợp đồng lao động với người lao động thuê lại hoặc gây thiệt hại cho người lao động thuê lại do không bảo đảm về quyền và lợi ích hợp pháp của người lao động thuê lại"
+]
+},
+{
+"ten": "allow_deposit_withdrawal",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"thực hiện cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ"
+]
+},
+{
+"ten": "request_additional_deposit",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"yêu cầu doanh nghiệp cho thuê lại nộp bổ sung tiền ký quỹ"
+]
+},
+{
+"ten": "face_financial_difficulty_to_pay_in_full",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"gặp khó khăn, không đủ nguồn tài chính để thanh toán đủ"
+]
+},
+{
+"ten": "notify_subcontracted_employee_of_labor_rules",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thông báo, hướng dẫn cho người lao động thuê lại biết nội quy lao động và các quy chế khác của mình"
+]
+},
+{
+"ten": "direct_payment_and_compensation_to_worker",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"trực tiếp chi trả việc thanh toán, bồi thường cho người lao động thuê lại"
+]
+},
+{
+"ten": "ensure_provide_matching_qualified_worker",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bảo đảm đưa người lao động có trình độ phù hợp với những yêu cầu của bên thuê lại lao động và nội dung của hợp đồng lao động đã ký với người lao động"
+]
+},
+{
+"ten": "send_information_change_request_and_evidence",
+"params": [
+"E",
+"?"
+],
+"vi_du": [
+"gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin"
+]
+},
+{
+"ten": "vietnamese_worker_recruitment_and_management_rules",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "replace_employee_on_statutory_leave",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thay thế người lao động trong thời gian nghỉ thai sản, bị tai nạn lao động, bệnh nghề nghiệp hoặc phải thực hiện các nghĩa vụ công dân"
+]
+},
+{
+"ten": "replace_employee_during_strike_or_dispute",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thay thế người lao động đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0210",
+"chu": "trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác",
+"params": [
+"?"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "",
+"chu_don_vi": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:"
+}
+],
+"ung_vien": [
+{
+"ten": "deduct_deposit",
+"params": [
+"?"
+],
+"vi_du": [
+"trích tiền ký quỹ"
+]
+},
+{
+"ten": "has_work_permit_issued_by_vietnam",
+"params": [
+"W"
+],
+"vi_du": [
+"có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp"
+]
+},
+{
+"ten": "request_by_competent_state_authority",
+"params": [
+"?"
+],
+"vi_du": [
+"có yêu cầu của cơ quan nhà nước có thẩm quyền"
+]
+},
+{
+"ten": "foreign_organization_office_head",
+"params": [
+"W"
+],
+"vi_du": [
+"là Trưởng văn phòng đại diện, dự án hoặc chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài"
+]
+},
+{
+"ten": "maintain_labor_relation_with_original_employer",
+"params": [
+"W"
+],
+"vi_du": [
+"vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "obtain_written_approval_from_competent_authority",
+"params": [
+"E"
+],
+"vi_du": [
+"được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền"
+]
+},
+{
+"ten": "periodically_report_to_provincial_labor_agency",
+"params": [
+"E"
+],
+"vi_du": [
+"định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "report_and_evidence_of_obligation_fulfillment",
+"params": [
+"W"
+],
+"vi_du": [
+"Báo cáo việc hoàn thành nghĩa vụ và văn bản chứng minh việc hoàn thành nghĩa vụ đối với người lao động thuê lại"
+]
+},
+{
+"ten": "breach_of_subcontracting_agreement",
+"params": [
+"E"
+],
+"vi_du": [
+"bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0211",
+"chu": "có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại",
+"params": [
+"?",
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "",
+"chu_don_vi": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0212",
+"chu": "sau 10 ngày kể từ ngày có văn bản yêu cầu",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "",
+"chu_don_vi": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:"
+}
+],
+"ung_vien": [
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "labor_reletting_enterprise",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "provincial_labor_invalids_social_affairs_dept",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "deposit_funds",
+"params": [],
+"vi_du": [
+"Tiền ký quỹ"
+]
+},
+{
+"ten": "after_60_days_from_compensation_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn 60 ngày kể từ ngày đến thời hạn bồi thường"
+]
+},
+{
+"ten": "after_30_days_from_payment_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn từ 30 ngày kể từ ngày đến thời hạn thanh toán"
+]
+},
+{
+"ten": "within_5_working_days_of_department_submission",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "within_5_working_days_of_withdrawal_application",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "deposit_withdrawal_voucher",
+"params": [],
+"vi_du": [
+"Chứng từ rút tiền ký quỹ"
+]
+},
+{
+"ten": "plan_for_using_withdrawn_deposit",
+"params": [],
+"vi_du": [
+"Phương án sử dụng số tiền rút từ tài khoản ký quỹ"
+]
+},
+{
+"ten": "after_chairman_consent_to_deposit_withdrawal",
+"params": [],
+"vi_du": [
+"Sau khi có văn bản đồng ý về việc rút tiền ký quỹ của Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "transfer_to_subcontracted_labor_user",
+"params": [],
+"vi_du": [
+"sau đó chuyển sang làm việc và chịu sự điều hành của bên thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0213",
+"chu": "thực hiện thanh toán",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "",
+"chu_don_vi": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:"
+}
+],
+"ung_vien": [
+{
+"ten": "deduct_deposit",
+"params": [
+"?"
+],
+"vi_du": [
+"trích tiền ký quỹ"
+]
+},
+{
+"ten": "make_deposit",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện ký quỹ",
+"đã thực hiện ký quỹ"
+]
+}
+]
+},
+{
+"chu_id": "C0214",
+"chu": "có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "",
+"chu_don_vi": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:"
+}
+],
+"ung_vien": [
+{
+"ten": "allow_deposit_withdrawal",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"thực hiện cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ"
+]
+},
+{
+"ten": "breach_contract_or_damage_subcontracted_worker",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"vi phạm hợp đồng lao động với người lao động thuê lại hoặc gây thiệt hại cho người lao động thuê lại do không bảo đảm về quyền và lợi ích hợp pháp của người lao động thuê lại"
+]
+},
+{
+"ten": "request_additional_deposit",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"yêu cầu doanh nghiệp cho thuê lại nộp bổ sung tiền ký quỹ"
+]
+},
+{
+"ten": "face_financial_difficulty_to_pay_in_full",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"gặp khó khăn, không đủ nguồn tài chính để thanh toán đủ"
+]
+},
+{
+"ten": "send_information_change_request_and_evidence",
+"params": [
+"E",
+"?"
+],
+"vi_du": [
+"gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin"
+]
+},
+{
+"ten": "direct_payment_and_compensation_to_worker",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"trực tiếp chi trả việc thanh toán, bồi thường cho người lao động thuê lại"
+]
+},
+{
+"ten": "ensure_provide_matching_qualified_worker",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bảo đảm đưa người lao động có trình độ phù hợp với những yêu cầu của bên thuê lại lao động và nội dung của hợp đồng lao động đã ký với người lao động"
+]
+},
+{
+"ten": "agree_to_formally_hire_subcontracted_employee",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thỏa thuận để tuyển dụng chính thức người lao động thuê lại làm việc cho mình"
+]
+},
+{
+"ten": "notify_subcontracted_employee_of_labor_rules",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thông báo, hướng dẫn cho người lao động thuê lại biết nội quy lao động và các quy chế khác của mình"
+]
+}
+]
+},
+{
+"chu_id": "C0215",
+"chu": "trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại",
+"params": [
+"?",
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "",
+"chu_don_vi": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0216",
+"chu": "yêu cầu doanh nghiệp cho thuê lại báo cáo",
+"params": [
+"?",
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1.a",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội yêu cầu doanh nghiệp cho thuê lại báo cáo về số lượng, danh sách người lao động cho thuê lại, số tiền chưa thanh toán, bồi thường các chế độ, quyền lợi của từng người lao động thuê lại. Trong thời hạn 05 ngày làm việc kể từ ngày nhận được yêu cầu của Sở Lao động - Thương binh và Xã hội, doanh nghiệp cho thuê lại phải hoàn thành việc báo cáo. Trong thời hạn 03 ngày làm việc kể từ ngày nhận được báo cáo của doanh nghiệp cho thuê lại, Sở Lao động - Thương binh và Xã hội tổng hợp, trình Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định việc trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán chế độ cho người lao động;"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0217",
+"chu": "trong thời hạn 05 ngày làm việc kể từ ngày nhận được yêu cầu của Sở Lao động - Thương binh và Xã hội",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1.a",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội yêu cầu doanh nghiệp cho thuê lại báo cáo về số lượng, danh sách người lao động cho thuê lại, số tiền chưa thanh toán, bồi thường các chế độ, quyền lợi của từng người lao động thuê lại. Trong thời hạn 05 ngày làm việc kể từ ngày nhận được yêu cầu của Sở Lao động - Thương binh và Xã hội, doanh nghiệp cho thuê lại phải hoàn thành việc báo cáo. Trong thời hạn 03 ngày làm việc kể từ ngày nhận được báo cáo của doanh nghiệp cho thuê lại, Sở Lao động - Thương binh và Xã hội tổng hợp, trình Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định việc trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán chế độ cho người lao động;"
+}
+],
+"ung_vien": [
+{
+"ten": "provincial_labor_invalids_social_affairs_dept",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "labor_reletting_enterprise",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "deposit_funds",
+"params": [],
+"vi_du": [
+"Tiền ký quỹ"
+]
+},
+{
+"ten": "within_5_working_days_of_department_submission",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "within_5_working_days_of_withdrawal_application",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "after_60_days_from_compensation_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn 60 ngày kể từ ngày đến thời hạn bồi thường"
+]
+},
+{
+"ten": "after_30_days_from_payment_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn từ 30 ngày kể từ ngày đến thời hạn thanh toán"
+]
+},
+{
+"ten": "international_treaty_vietnam_member",
+"params": [],
+"vi_du": [
+"điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên"
+]
+},
+{
+"ten": "deposit_withdrawal_voucher",
+"params": [],
+"vi_du": [
+"Chứng từ rút tiền ký quỹ"
+]
+},
+{
+"ten": "enterprise_agency_org_coop_household_individual",
+"params": [],
+"vi_du": [
+"doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình và cá nhân"
+]
+},
+{
+"ten": "labor_subcontracting_deposit_certificate",
+"params": [],
+"vi_du": [
+"Giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "contract_as_basis_for_work_permit",
+"params": [],
+"vi_du": [
+"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động"
+]
+},
+{
+"ten": "plan_for_using_withdrawn_deposit",
+"params": [],
+"vi_du": [
+"Phương án sử dụng số tiền rút từ tài khoản ký quỹ"
+]
+},
+{
+"ten": "change_deposit_certificate_information",
+"params": [],
+"vi_du": [
+"thay đổi một trong các thông tin trên giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0218",
+"chu": "hoàn thành việc báo cáo",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1.a",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội yêu cầu doanh nghiệp cho thuê lại báo cáo về số lượng, danh sách người lao động cho thuê lại, số tiền chưa thanh toán, bồi thường các chế độ, quyền lợi của từng người lao động thuê lại. Trong thời hạn 05 ngày làm việc kể từ ngày nhận được yêu cầu của Sở Lao động - Thương binh và Xã hội, doanh nghiệp cho thuê lại phải hoàn thành việc báo cáo. Trong thời hạn 03 ngày làm việc kể từ ngày nhận được báo cáo của doanh nghiệp cho thuê lại, Sở Lao động - Thương binh và Xã hội tổng hợp, trình Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định việc trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán chế độ cho người lao động;"
+}
+],
+"ung_vien": [
+{
+"ten": "deduct_deposit",
+"params": [
+"?"
+],
+"vi_du": [
+"trích tiền ký quỹ"
+]
+},
+{
+"ten": "complete_deposit_procedure",
+"params": [
+"E"
+],
+"vi_du": [
+"hoàn thành thủ tục ký quỹ"
+]
+},
+{
+"ten": "periodically_report_to_provincial_labor_agency",
+"params": [
+"E"
+],
+"vi_du": [
+"định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "make_contract_in_two_copies",
+"params": [
+"?"
+],
+"vi_du": [
+"làm thành 02 bản, mỗi bên giữ 01 bản"
+]
+}
+]
+},
+{
+"chu_id": "C0219",
+"chu": "trong thời hạn 03 ngày làm việc kể từ ngày nhận được báo cáo của doanh nghiệp cho thuê lại",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1.a",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội yêu cầu doanh nghiệp cho thuê lại báo cáo về số lượng, danh sách người lao động cho thuê lại, số tiền chưa thanh toán, bồi thường các chế độ, quyền lợi của từng người lao động thuê lại. Trong thời hạn 05 ngày làm việc kể từ ngày nhận được yêu cầu của Sở Lao động - Thương binh và Xã hội, doanh nghiệp cho thuê lại phải hoàn thành việc báo cáo. Trong thời hạn 03 ngày làm việc kể từ ngày nhận được báo cáo của doanh nghiệp cho thuê lại, Sở Lao động - Thương binh và Xã hội tổng hợp, trình Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định việc trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán chế độ cho người lao động;"
+}
+],
+"ung_vien": [
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "labor_reletting_enterprise",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "provincial_labor_invalids_social_affairs_dept",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "deposit_funds",
+"params": [],
+"vi_du": [
+"Tiền ký quỹ"
+]
+},
+{
+"ten": "within_5_working_days_of_department_submission",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "within_5_working_days_of_withdrawal_application",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "after_60_days_from_compensation_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn 60 ngày kể từ ngày đến thời hạn bồi thường"
+]
+},
+{
+"ten": "after_30_days_from_payment_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn từ 30 ngày kể từ ngày đến thời hạn thanh toán"
+]
+},
+{
+"ten": "deposit_withdrawal_voucher",
+"params": [],
+"vi_du": [
+"Chứng từ rút tiền ký quỹ"
+]
+},
+{
+"ten": "notice_of_stopping_foreign_worker_dispatch",
+"params": [],
+"vi_du": [
+"có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam"
+]
+},
+{
+"ten": "labor_subcontracting_deposit_certificate",
+"params": [],
+"vi_du": [
+"Giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "plan_for_using_withdrawn_deposit",
+"params": [],
+"vi_du": [
+"Phương án sử dụng số tiền rút từ tài khoản ký quỹ"
+]
+},
+{
+"ten": "change_deposit_certificate_information",
+"params": [],
+"vi_du": [
+"thay đổi một trong các thông tin trên giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0220",
+"chu": "tổng hợp, trình Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định việc trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán chế độ cho người lao động",
+"params": [
+"?",
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1.a",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội yêu cầu doanh nghiệp cho thuê lại báo cáo về số lượng, danh sách người lao động cho thuê lại, số tiền chưa thanh toán, bồi thường các chế độ, quyền lợi của từng người lao động thuê lại. Trong thời hạn 05 ngày làm việc kể từ ngày nhận được yêu cầu của Sở Lao động - Thương binh và Xã hội, doanh nghiệp cho thuê lại phải hoàn thành việc báo cáo. Trong thời hạn 03 ngày làm việc kể từ ngày nhận được báo cáo của doanh nghiệp cho thuê lại, Sở Lao động - Thương binh và Xã hội tổng hợp, trình Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định việc trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán chế độ cho người lao động;"
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0221",
+"chu": "trong thời hạn 05 ngày làm việc kể từ ngày nhận được đề nghị của Sở Lao động - Thương binh và Xã hội",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1.b",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:",
+"chu_don_vi": "Trong thời hạn 05 ngày làm việc kể từ ngày nhận được đề nghị của Sở Lao động - Thương binh và Xã hội, Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định trích tiền ký quỹ của doanh nghiệp cho thuê lại. Quyết định trích tiền ký quỹ theo Mẫu số 03/PLIII Phụ lục III ban hành kèm theo Nghị định này;"
+}
+],
+"ung_vien": [
+{
+"ten": "provincial_labor_invalids_social_affairs_dept",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "labor_reletting_enterprise",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "deposit_funds",
+"params": [],
+"vi_du": [
+"Tiền ký quỹ"
+]
+},
+{
+"ten": "within_5_working_days_of_department_submission",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "within_5_working_days_of_withdrawal_application",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "after_60_days_from_compensation_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn 60 ngày kể từ ngày đến thời hạn bồi thường"
+]
+},
+{
+"ten": "after_30_days_from_payment_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn từ 30 ngày kể từ ngày đến thời hạn thanh toán"
+]
+},
+{
+"ten": "international_treaty_vietnam_member",
+"params": [],
+"vi_du": [
+"điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên"
+]
+},
+{
+"ten": "deposit_withdrawal_voucher",
+"params": [],
+"vi_du": [
+"Chứng từ rút tiền ký quỹ"
+]
+},
+{
+"ten": "other_related_agencies_organizations_individuals",
+"params": [],
+"vi_du": [
+"Các cơ quan, tổ chức, cá nhân khác có liên quan đến việc thực hiện quy định tại Nghị định này"
+]
+},
+{
+"ten": "enterprise_agency_org_coop_household_individual",
+"params": [],
+"vi_du": [
+"doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình và cá nhân"
+]
+},
+{
+"ten": "labor_subcontracting_deposit_certificate",
+"params": [],
+"vi_du": [
+"Giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "contract_as_basis_for_work_permit",
+"params": [],
+"vi_du": [
+"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động"
+]
+},
+{
+"ten": "plan_for_using_withdrawn_deposit",
+"params": [],
+"vi_du": [
+"Phương án sử dụng số tiền rút từ tài khoản ký quỹ"
+]
+},
+{
+"ten": "change_deposit_certificate_information",
+"params": [],
+"vi_du": [
+"thay đổi một trong các thông tin trên giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0222",
+"chu": "quyết định trích tiền ký quỹ của doanh nghiệp cho thuê lại",
+"params": [
+"?",
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1.b",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:",
+"chu_don_vi": "Trong thời hạn 05 ngày làm việc kể từ ngày nhận được đề nghị của Sở Lao động - Thương binh và Xã hội, Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định trích tiền ký quỹ của doanh nghiệp cho thuê lại. Quyết định trích tiền ký quỹ theo Mẫu số 03/PLIII Phụ lục III ban hành kèm theo Nghị định này;"
+}
+],
+"ung_vien": [
+{
+"ten": "allow_deposit_withdrawal",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"thực hiện cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ"
+]
+},
+{
+"ten": "request_additional_deposit",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"yêu cầu doanh nghiệp cho thuê lại nộp bổ sung tiền ký quỹ"
+]
+}
+]
+},
+{
+"chu_id": "C0223",
+"chu": "quyết định trích tiền ký quỹ theo Mẫu số 03/PLIII Phụ lục III ban hành kèm theo Nghị định này",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1.b",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:",
+"chu_don_vi": "Trong thời hạn 05 ngày làm việc kể từ ngày nhận được đề nghị của Sở Lao động - Thương binh và Xã hội, Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định trích tiền ký quỹ của doanh nghiệp cho thuê lại. Quyết định trích tiền ký quỹ theo Mẫu số 03/PLIII Phụ lục III ban hành kèm theo Nghị định này;"
+}
+],
+"ung_vien": [
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "labor_reletting_enterprise",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "provincial_labor_invalids_social_affairs_dept",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "deposit_funds",
+"params": [],
+"vi_du": [
+"Tiền ký quỹ"
+]
+},
+{
+"ten": "other_related_agencies_organizations_individuals",
+"params": [],
+"vi_du": [
+"Các cơ quan, tổ chức, cá nhân khác có liên quan đến việc thực hiện quy định tại Nghị định này"
+]
+},
+{
+"ten": "have_provincial_chairman_written_consent",
+"params": [],
+"vi_du": [
+"chưa có ý kiến đồng ý bằng văn bản của Chủ tịch Ủy ban nhân dân tỉnh, thành phố trực thuộc Trung ương"
+]
+},
+{
+"ten": "possess_full_civil_act_capacity",
+"params": [],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ"
+]
+},
+{
+"ten": "plan_for_using_withdrawn_deposit",
+"params": [],
+"vi_du": [
+"Phương án sử dụng số tiền rút từ tài khoản ký quỹ"
+]
+},
+{
+"ten": "after_chairman_consent_to_deposit_withdrawal",
+"params": [],
+"vi_du": [
+"Sau khi có văn bản đồng ý về việc rút tiền ký quỹ của Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "transfer_to_subcontracted_labor_user",
+"params": [],
+"vi_du": [
+"sau đó chuyển sang làm việc và chịu sự điều hành của bên thuê lại lao động"
+]
+},
+{
+"ten": "within_5_working_days_of_withdrawal_application",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại"
+]
+}
+]
+},
+{
+"chu_id": "C0224",
+"chu": "trong thời hạn 07 ngày làm việc kể từ ngày nhận được quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1.c",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:",
+"chu_don_vi": "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh, ngân hàng nhận ký quỹ thực hiện trích tiền ký quỹ của doanh nghiệp cho thuê lại và trực tiếp chi trả cho người lao động thuê lại theo danh sách kèm theo quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh, sau khi trừ chi phí dịch vụ ngân hàng. Tiền ký quỹ của doanh nghiệp cho thuê được thanh toán theo thứ tự ưu tiên: tiền lương; bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp; bảo hiểm tai nạn lao động, bệnh nghề nghiệp và các chế độ khác đối với người lao động thuê lại theo thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể, nội quy, quy chế của doanh nghiệp cho thuê lại."
+}
+],
+"ung_vien": [
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "labor_reletting_enterprise",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "provincial_labor_invalids_social_affairs_dept",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "deposit_funds",
+"params": [],
+"vi_du": [
+"Tiền ký quỹ"
+]
+},
+{
+"ten": "have_provincial_chairman_written_consent",
+"params": [],
+"vi_du": [
+"chưa có ý kiến đồng ý bằng văn bản của Chủ tịch Ủy ban nhân dân tỉnh, thành phố trực thuộc Trung ương"
+]
+},
+{
+"ten": "after_chairman_consent_to_deposit_withdrawal",
+"params": [],
+"vi_du": [
+"Sau khi có văn bản đồng ý về việc rút tiền ký quỹ của Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "within_5_working_days_of_department_submission",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận được hồ sơ trình của Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "within_5_working_days_of_withdrawal_application",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc kể từ ngày nhận đủ hồ sơ đề nghị rút tiền ký quỹ của doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "vietnamese_worker_for_foreign_entity_in_vietnam",
+"params": [],
+"vi_du": [
+"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "after_60_days_from_compensation_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn 60 ngày kể từ ngày đến thời hạn bồi thường"
+]
+},
+{
+"ten": "after_30_days_from_payment_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn từ 30 ngày kể từ ngày đến thời hạn thanh toán"
+]
+},
+{
+"ten": "deposit_withdrawal_voucher",
+"params": [],
+"vi_du": [
+"Chứng từ rút tiền ký quỹ"
+]
+},
+{
+"ten": "other_related_agencies_organizations_individuals",
+"params": [],
+"vi_du": [
+"Các cơ quan, tổ chức, cá nhân khác có liên quan đến việc thực hiện quy định tại Nghị định này"
+]
+},
+{
+"ten": "possess_full_civil_act_capacity",
+"params": [],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ"
+]
+},
+{
+"ten": "enterprise_organization_individual_contractor",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu"
+]
+},
+{
+"ten": "enterprise_organization_individual",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, cơ quan, tổ chức, cá nhân"
+]
+},
+{
+"ten": "enterprise_agency_org_coop_household_individual",
+"params": [],
+"vi_du": [
+"doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình và cá nhân"
+]
+},
+{
+"ten": "labor_subcontracting_deposit_certificate",
+"params": [],
+"vi_du": [
+"Giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0225",
+"chu": "trích tiền ký quỹ của doanh nghiệp cho thuê lại và trực tiếp chi trả cho người lao động thuê lại theo danh sách kèm theo quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh",
+"params": [
+"?",
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1.c",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:",
+"chu_don_vi": "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh, ngân hàng nhận ký quỹ thực hiện trích tiền ký quỹ của doanh nghiệp cho thuê lại và trực tiếp chi trả cho người lao động thuê lại theo danh sách kèm theo quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh, sau khi trừ chi phí dịch vụ ngân hàng. Tiền ký quỹ của doanh nghiệp cho thuê được thanh toán theo thứ tự ưu tiên: tiền lương; bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp; bảo hiểm tai nạn lao động, bệnh nghề nghiệp và các chế độ khác đối với người lao động thuê lại theo thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể, nội quy, quy chế của doanh nghiệp cho thuê lại."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0226",
+"chu": "trừ chi phí dịch vụ ngân hàng",
+"params": [
+"?"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1.c",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:",
+"chu_don_vi": "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh, ngân hàng nhận ký quỹ thực hiện trích tiền ký quỹ của doanh nghiệp cho thuê lại và trực tiếp chi trả cho người lao động thuê lại theo danh sách kèm theo quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh, sau khi trừ chi phí dịch vụ ngân hàng. Tiền ký quỹ của doanh nghiệp cho thuê được thanh toán theo thứ tự ưu tiên: tiền lương; bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp; bảo hiểm tai nạn lao động, bệnh nghề nghiệp và các chế độ khác đối với người lao động thuê lại theo thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể, nội quy, quy chế của doanh nghiệp cho thuê lại."
+}
+],
+"ung_vien": [
+{
+"ten": "deduct_deposit",
+"params": [
+"?"
+],
+"vi_du": [
+"trích tiền ký quỹ"
+]
+},
+{
+"ten": "report_and_evidence_of_obligation_fulfillment",
+"params": [
+"W"
+],
+"vi_du": [
+"Báo cáo việc hoàn thành nghĩa vụ và văn bản chứng minh việc hoàn thành nghĩa vụ đối với người lao động thuê lại"
+]
+}
+]
+},
+{
+"chu_id": "C0227",
+"chu": "thanh toán tiền ký quỹ của doanh nghiệp cho thuê theo thứ tự ưu tiên",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K1.c",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "Khi hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác. Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại theo trình tự, thủ tục như sau:",
+"chu_don_vi": "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh, ngân hàng nhận ký quỹ thực hiện trích tiền ký quỹ của doanh nghiệp cho thuê lại và trực tiếp chi trả cho người lao động thuê lại theo danh sách kèm theo quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh, sau khi trừ chi phí dịch vụ ngân hàng. Tiền ký quỹ của doanh nghiệp cho thuê được thanh toán theo thứ tự ưu tiên: tiền lương; bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp; bảo hiểm tai nạn lao động, bệnh nghề nghiệp và các chế độ khác đối với người lao động thuê lại theo thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể, nội quy, quy chế của doanh nghiệp cho thuê lại."
+}
+],
+"ung_vien": [
+{
+"ten": "provincial_people_committee_chairman",
+"params": [],
+"vi_du": [
+"Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "labor_reletting_enterprise",
+"params": [],
+"vi_du": [
+"là doanh nghiệp cho thuê lại lao động",
+"doanh nghiệp cho thuê lại"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "deposit_receiving_bank",
+"params": [],
+"vi_du": [
+"Ngân hàng nhận ký quỹ"
+]
+},
+{
+"ten": "provincial_labor_invalids_social_affairs_dept",
+"params": [],
+"vi_du": [
+"Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "deposit_funds",
+"params": [],
+"vi_du": [
+"Tiền ký quỹ"
+]
+},
+{
+"ten": "after_30_days_from_payment_due_date",
+"params": [],
+"vi_du": [
+"sau thời hạn từ 30 ngày kể từ ngày đến thời hạn thanh toán"
+]
+},
+{
+"ten": "established_under_enterprise_law",
+"params": [],
+"vi_du": [
+"được thành lập theo quy định của Luật Doanh nghiệp"
+]
+}
+]
+},
+{
+"chu_id": "C0228",
+"chu": "giám sát việc thực hiện thanh toán, bồi thường cho người lao động thuê lại",
+"params": [
+"?",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội có trách nhiệm giám sát việc thực hiện thanh toán, bồi thường cho người lao động thuê lại theo quy định tại khoản 1 Điều này và báo cáo kết quả thực hiện về Ủy ban nhân dân cấp tỉnh."
+}
+],
+"ung_vien": [
+{
+"ten": "allow_deposit_withdrawal",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"thực hiện cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ"
+]
+},
+{
+"ten": "request_additional_deposit",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"yêu cầu doanh nghiệp cho thuê lại nộp bổ sung tiền ký quỹ"
+]
+},
+{
+"ten": "direct_payment_and_compensation_to_worker",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"trực tiếp chi trả việc thanh toán, bồi thường cho người lao động thuê lại"
+]
+},
+{
+"ten": "specific_work_accident_compensation_agreement",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "financial_hardship_to_compensate_worker",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"gặp khó khăn, không đủ khả năng bồi thường cho người lao động thuê lại"
+]
+},
+{
+"ten": "face_financial_difficulty_to_pay_in_full",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"gặp khó khăn, không đủ nguồn tài chính để thanh toán đủ"
+]
+},
+{
+"ten": "use_deposit_fund_for_compensation",
+"params": [
+"A",
+"W"
+],
+"vi_du": [
+"sử dụng vào mục đích bồi thường cho người lao động thuê lại"
+]
+},
+{
+"ten": "use_deposit_fund_for_payment",
+"params": [
+"A",
+"W"
+],
+"vi_du": [
+"sử dụng vào mục đích thanh toán"
+]
+},
+{
+"ten": "replace_employee_on_statutory_leave",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thay thế người lao động trong thời gian nghỉ thai sản, bị tai nạn lao động, bệnh nghề nghiệp hoặc phải thực hiện các nghĩa vụ công dân"
+]
+},
+{
+"ten": "replace_employee_during_strike_or_dispute",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thay thế người lao động đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0229",
+"chu": "báo cáo kết quả thực hiện về Ủy ban nhân dân cấp tỉnh",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D19.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trích tiền ký quỹ khi doanh nghiệp cho thuê lại không thực hiện nghĩa vụ đối với người lao động thuê lại",
+"khoan_cha": "",
+"chu_don_vi": "Sở Lao động - Thương binh và Xã hội có trách nhiệm giám sát việc thực hiện thanh toán, bồi thường cho người lao động thuê lại theo quy định tại khoản 1 Điều này và báo cáo kết quả thực hiện về Ủy ban nhân dân cấp tỉnh."
+}
+],
+"ung_vien": [
+{
+"ten": "deduct_deposit",
+"params": [
+"?"
+],
+"vi_du": [
+"trích tiền ký quỹ"
+]
+},
+{
+"ten": "periodically_report_to_provincial_labor_agency",
+"params": [
+"E"
+],
+"vi_du": [
+"định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "provincial_chairman_deposit_withdrawal_consent",
+"params": [
+"?"
+],
+"vi_du": [
+"Văn bản đồng ý về việc rút tiền ký quỹ của Chủ tịch Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "report_and_evidence_of_obligation_fulfillment",
+"params": [
+"W"
+],
+"vi_du": [
+"Báo cáo việc hoàn thành nghĩa vụ và văn bản chứng minh việc hoàn thành nghĩa vụ đối với người lao động thuê lại"
+]
+},
+{
+"ten": "make_deposit",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện ký quỹ",
+"đã thực hiện ký quỹ"
+]
+},
+{
+"ten": "have_full_civil_act_capacity",
+"params": [
+"W"
+],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ",
+"có năng lực hành vi dân sự đầy đủ"
+]
+},
+{
+"ten": "approve_deposit_withdrawal_and_use_plan",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản đồng ý về việc rút tiền ký quỹ và phương án sử dụng tiền ký quỹ"
+]
+},
+{
+"ten": "enter_labor_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"giao kết hợp đồng lao động",
+"giao kết hợp đồng lao động với người lao động"
+]
+},
+{
+"ten": "sign_labor_subcontracting_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"ký kết hợp đồng cho thuê lại lao động"
+]
+}
+]
+}
+]
+}

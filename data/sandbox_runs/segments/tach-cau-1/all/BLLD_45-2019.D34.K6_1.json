@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động chết; bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"chết\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"bị Tòa án tuyên bố\",\"ap_cho\":[\"m2\",\"m3\",\"m4\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"mất năng lực hành vi dân sự\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"mất tích\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"đã chết\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538284710-9febab47",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2479
+   },
+   "input_tokens": 2400,
+   "output_tokens": 161,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_16ea9d19ee4d98cbde1fcc1b"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Những nội dung phải do thành viên quyết định theo đa số bao gồm thông qua, sửa đổi, bổ sung điều lệ của tổ chức; bầu cử, miễn nhiệm người đứng đầu và thành viên ban lãnh đạo của tổ chức; chia, tách, hợp nhất, sáp nhập, đổi tên, giải thể, liên kết tổ chức; gia nhập Công đoàn Việt Nam;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Những nội dung phải do thành viên quyết định theo đa số bao gồm\",\n      \"ap_cho\": [\"m1\", \"m2\", \"m3\", \"m4\", \"m5\", \"m6\", \"m7\", \"m8\", \"m9\", \"m10\", \"m11\", \"m12\", \"m13\"]\n    },\n    {\"id\": \"m1\", \"loai\": \"menh_de\", \"chu\": \"thông qua\"},\n    {\"id\": \"m2\", \"loai\": \"menh_de\", \"chu\": \"sửa đổi\"},\n    {\"id\": \"m3\", \"loai\": \"menh_de\", \"chu\": \"bổ sung\"},\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"điều lệ của tổ chức\",\n      \"ap_cho\": [\"m1\", \"m2\", \"m3\"]\n    },\n    {\"id\": \"m4\", \"loai\": \"menh_de\", \"chu\": \"bầu cử\"},\n    {\"id\": \"m5\", \"loai\": \"menh_de\", \"chu\": \"miễn nhiệm\"},\n    {\n      \"id\": \"c3\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"người đứng đầu và thành viên ban lãnh đạo của tổ chức\",\n      \"ap_cho\": [\"m4\", \"m5\"]\n    },\n    {\"id\": \"m6\", \"loai\": \"menh_de\", \"chu\": \"chia\"},\n    {\"id\": \"m7\", \"loai\": \"menh_de\", \"chu\": \"tách\"},\n    {\"id\": \"m8\", \"loai\": \"menh_de\", \"chu\": \"hợp nhất\"},\n    {\"id\": \"m9\", \"loai\": \"menh_de\", \"chu\": \"sáp nhập\"},\n    {\"id\": \"m10\", \"loai\": \"menh_de\", \"chu\": \"đổi tên\"},\n    {\"id\": \"m11\", \"loai\": \"menh_de\", \"chu\": \"giải thể\"},\n    {\"id\": \"m12\", \"loai\": \"menh_de\", \"chu\": \"liên kết\"},\n    {\n      \"id\": \"c4\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"tổ chức\",\n      \"ap_cho\": [\"m6\", \"m7\", \"m8\", \"m9\", \"m10\", \"m11\", \"m12\"]\n    },\n    {\"id\": \"m13\", \"loai\": \"menh_de\", \"chu\": \"gia nhập Công đoàn Việt Nam\"}\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540047913-193948e5",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5501
+   },
+   "input_tokens": 2453,
+   "output_tokens": 619,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_550bbf584270d0e18be07336"
+   }
+  }
+ }
+}

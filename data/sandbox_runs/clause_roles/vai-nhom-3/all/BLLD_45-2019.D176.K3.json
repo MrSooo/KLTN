@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D176.K3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D176.K3\",\n \"tieu_de_dieu\": \"Quyền của thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 2 Điều này\",\n   \"dich\": \"BLLD_45-2019.D176.K2\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Tổ chức đại diện người lao động tại cơ sở và người sử dụng lao động thỏa thuận về thời gian tăng thêm so với thời gian tối thiểu quy định tại khoản 2 Điều này và cách thức sử dụng thời gian làm việc của thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở phù hợp với điều kiện thực tế.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Tổ chức đại diện người lao động tại cơ sở và người sử dụng lao động thỏa thuận về thời gian tăng thêm so với thời gian tối thiểu quy định tại khoản 2 Điều này và cách thức sử dụng thời gian làm việc của thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở phù hợp với điều kiện thực tế\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D176.K3\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"thỏa thuận về\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Tổ chức đại diện người lao động tại cơ sở và người sử dụng lao động\",\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"thời gian tăng thêm so với thời gian tối thiểu\",\n    \"cách thức sử dụng thời gian làm việc của thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở phù hợp với điều kiện thực tế\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "Sf0Ga9eIBYb62roP8NmIyAQ",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4264
+   },
+   "input_tokens": 4214,
+   "output_tokens": 868,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_19fe2557bc5d7acc3ea07093"
+   }
+  }
+ }
+}

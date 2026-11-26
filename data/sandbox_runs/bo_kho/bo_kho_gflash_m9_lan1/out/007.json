@@ -1,0 +1,304 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D64.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đối thoại bắt buộc",
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội dung đối thoại bắt buộc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D63.K2.c"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "theo quy định tại điểm c khoản 2 Điều 63 của Bộ luật này"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2",
+   "dong": [
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D64.K1"
+     ],
+     "trich": [
+      "Ngoài nội dung quy định tại khoản 1 Điều này"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn một hoặc một số nội dung để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên lựa chọn một hoặc một số nội dung",
+      "để tiến hành đối thoại"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "danh_sach",
+     "trich": [
+      "sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách các nội dung lựa chọn đối thoại."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn tình hình sản xuất, kinh doanh của người sử dụng lao động để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên lựa chọn",
+      "để tiến hành đối thoại",
+      "Tình hình sản xuất, kinh doanh của người sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục danh sách kế thừa hành vi lựa chọn nội dung đối thoại từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn việc thực hiện hợp đồng lao động, thỏa ước lao động tập thể, nội quy lao động, quy chế và cam kết, thỏa thuận khác để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "hợp đồng lao động",
+      "thỏa ước lao động tập thể",
+      "nội quy lao động",
+      "quy chế",
+      "cam kết, thỏa thuận khác"
+     ],
+     "trich": [
+      "các bên lựa chọn",
+      "để tiến hành đối thoại",
+      "Việc thực hiện hợp đồng lao động, thỏa ước lao động tập thể, nội quy lao động, quy chế và cam kết, thỏa thuận khác"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Cùng một đối tượng đối thoại về việc thực hiện các văn bản, quy chế; liệt kê danh sách văn bản."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "tại nơi làm việc",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "tại nơi làm việc"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn điều kiện làm việc để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên lựa chọn",
+      "để tiến hành đối thoại",
+      "Điều kiện làm việc"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Kế thừa chủ thể và hành vi lựa chọn từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.d",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn yêu cầu của người lao động, tổ chức đại diện người lao động đối với người sử dụng lao động để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên lựa chọn",
+      "để tiến hành đối thoại",
+      "Yêu cầu của người lao động, tổ chức đại diện người lao động đối với người sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Kế thừa chủ thể và phương thức từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.dd",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn yêu cầu của người sử dụng lao động đối với người lao động, tổ chức đại diện người lao động để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      },
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên lựa chọn",
+      "để tiến hành đối thoại",
+      "Yêu cầu của người sử dụng lao động đối với người lao động, tổ chức đại diện người lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Kế thừa chủ thể và phương thức từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.e",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lựa chọn nội dung khác mà một hoặc các bên quan tâm để tiến hành đối thoại",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên lựa chọn",
+      "để tiến hành đối thoại",
+      "Nội dung khác mà một hoặc các bên quan tâm"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Kế thừa chủ thể và phương thức từ câu dẫn."
+     }
+    }
+   ]
+  }
+ ]
+}

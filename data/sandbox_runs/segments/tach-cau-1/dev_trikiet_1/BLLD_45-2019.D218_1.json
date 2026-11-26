@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động sử dụng dưới 10 người lao động thực hiện quy định của Bộ luật này nhưng được miễn, giảm một số thủ tục theo quy định của Chính phủ.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sử dụng dưới 10 người lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thực hiện quy định của Bộ luật này\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"được\",\"ap_cho\":[\"m3\",\"m4\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"miễn\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"giảm\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"một số thủ tục theo quy định của Chính phủ\",\"ap_cho\":[\"m3\",\"m4\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795537587271-0efb81a7",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6079
+   },
+   "input_tokens": 2411,
+   "output_tokens": 194,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_2b7388bfde5b36590c2629fb"
+   }
+  }
+ }
+}

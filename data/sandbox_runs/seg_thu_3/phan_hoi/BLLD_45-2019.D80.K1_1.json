@@ -1,0 +1,27 @@
+{
+ "cau": "Trường hợp chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp thì người sử dụng lao động kế tiếp và tổ chức đại diện người lao động có quyền thương lượng theo quy định tại Điều 68 của Bộ luật này căn cứ vào phương án sử dụng lao động để xem xét lựa chọn việc tiếp tục thực hiện, sửa đổi, bổ sung thỏa ước lao động tập thể doanh nghiệp cũ hoặc thương lượng để ký kết thỏa ước lao động tập thể mới.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\"id\": \"c1\", \"loai\": \"dung_chung\", \"chu\": \"Trường hợp\", \"ap_cho\": [\"m1\", \"m2\", \"m3\", \"m4\", \"m5\", \"m6\", \"m7\", \"m8\"]},\n    {\"id\": \"m1\", \"loai\": \"menh_de\", \"chu\": \"chia\"},\n    {\"id\": \"m2\", \"loai\": \"menh_de\", \"chu\": \"tách\"},\n    {\"id\": \"m3\", \"loai\": \"menh_de\", \"chu\": \"hợp nhất\"},\n    {\"id\": \"m4\", \"loai\": \"menh_de\", \"chu\": \"sáp nhập\"},\n    {\"id\": \"m5\", \"loai\": \"menh_de\", \"chu\": \"bán\"},\n    {\"id\": \"m6\", \"loai\": \"menh_de\", \"chu\": \"cho thuê\"},\n    {\"id\": \"m7\", \"loai\": \"menh_de\", \"chu\": \"chuyển đổi loại hình doanh nghiệp\"},\n    {\"id\": \"m8\", \"loai\": \"menh_de\", \"chu\": \"chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp\"},\n    {\"id\": \"c2\", \"loai\": \"dung_chung\", \"chu\": \"người sử dụng lao động kế tiếp và tổ chức đại diện người lao động có quyền thương lượng theo quy định tại Điều 68 của Bộ luật này căn cứ vào phương án sử dụng lao động để xem xét lựa chọn việc\", \"ap_cho\": [\"m9\", \"m10\", \"m11\"]},\n    {\"id\": \"m9\", \"loai\": \"menh_de\", \"chu\": \"tiếp tục thực hiện\"},\n    {\"id\": \"m10\", \"loai\": \"menh_de\", \"chu\": \"sửa đổi\"},\n    {\"id\": \"m11\", \"loai\": \"menh_de\", \"chu\": \"bổ sung\"},\n    {\"id\": \"c3\", \"loai\": \"dung_chung\", \"chu\": \"thỏa ước lao động tập thể doanh nghiệp cũ\", \"ap_cho\": [\"m9\", \"m10\", \"m11\"]},\n    {\"id\": \"m12\", \"loai\": \"menh_de\", \"chu\": \"thương lượng\"},\n    {\"id\": \"m13\", \"loai\": \"menh_de\", \"chu\": \"để ký kết thỏa ước lao động tập thể mới\"}\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-dDcDa5LrDcrC0-kPwobz2Ao",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 1021,
+   "output_tokens": 601,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_4cf7a62a6626727008e92351"
+   }
+  }
+ }
+}

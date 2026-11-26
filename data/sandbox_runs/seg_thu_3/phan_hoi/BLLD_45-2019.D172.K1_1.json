@@ -1,0 +1,30 @@
+{
+ "cau": "Tổ chức của người lao động tại doanh nghiệp được thành lập và hoạt động hợp pháp sau khi cơ quan nhà nước có thẩm quyền cấp đăng ký.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Tổ chức của người lao động tại doanh nghiệp được\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thành lập\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hoạt động hợp pháp\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"cơ quan nhà nước có thẩm quyền cấp đăng ký\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-OkwDa7mOFo3u2roP9pCJuQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 23391
+   },
+   "input_tokens": 931,
+   "output_tokens": 452,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_3f86b6499126717f3f6d19d4"
+   }
+  }
+ }
+}

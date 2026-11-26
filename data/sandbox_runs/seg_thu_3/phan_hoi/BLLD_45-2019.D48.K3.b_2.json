@@ -1,0 +1,30 @@
+{
+ "cau": "Chi phí sao, gửi tài liệu do người sử dụng lao động trả.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Chi phí\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sao\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"gửi\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"tài liệu do người sử dụng lao động trả\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-AC8Da-6OJLLP1e8Pl9zo4QE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 282
+   },
+   "input_tokens": 915,
+   "output_tokens": 390,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_973e79e060c47d98870251e6"
+   }
+  }
+ }
+}

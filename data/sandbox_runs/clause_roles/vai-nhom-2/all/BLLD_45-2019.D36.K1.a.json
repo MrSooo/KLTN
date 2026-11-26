@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D36.K1.a",
+ "phien_ban": "vai-nhom-2",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D36.K1.a\",\n \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n \"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động thường xuyên không hoàn thành công việc theo hợp đồng lao động được xác định theo tiêu chí đánh giá mức độ hoàn thành công việc trong quy chế của người sử dụng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thường xuyên không hoàn thành công việc theo hợp đồng lao động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được xác định theo tiêu chí đánh giá mức độ hoàn thành công việc trong quy chế của người sử dụng lao động\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Quy chế đánh giá mức độ hoàn thành công việc do người sử dụng lao động ban hành nhưng phải tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở;\",\n   \"doan\": [\n    {\n     \"id\": \"s2.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Quy chế đánh giá mức độ hoàn thành công việc\",\n     \"ap_cho\": [\n      \"s2.m1\",\n      \"s2.m2\"\n     ]\n    },\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"do người sử dụng lao động ban hành\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở\",\n     \"noi_truoc\": [\n      \"nhưng\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D36.K1.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"thường xuyên\",\n    \"hoàn thành công việc\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người lao động\",\n    \"loai\": \"W\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"J\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"theo hợp đồng lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"được xác định\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"theo tiêu chí đánh giá mức độ hoàn thành công việc trong quy chế của người sử dụng lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"ban hành\",\n    \"Quy chế đánh giá mức độ hoàn thành công việc\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"doan\": [\n    \"tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"?\"\n    }\n   ],\n   \"quy_tac\": \"q3\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"doan\": [\n    \"đối với nơi có tổ chức đại diện người lao động tại cơ sở\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q3\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "QXAGa5a3Afyz2roPo6Pj4Ag",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4368
+   },
+   "input_tokens": 4266,
+   "output_tokens": 5348,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_ea37687db98afe70c6e32cbd"
+   }
+  }
+ }
+}

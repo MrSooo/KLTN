@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D149.K3",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D149.K3\",\n \"tieu_de_dieu\": \"Sử dụng người lao động cao tuổi\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Không được sử dụng người lao động cao tuổi làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm có ảnh hưởng xấu tới sức khỏe người lao động cao tuổi, trừ trường hợp bảo đảm các điều kiện làm việc an toàn.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Không được sử dụng người lao động cao tuổi làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm có ảnh hưởng xấu tới sức khỏe người lao động cao tuổi\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bảo đảm các điều kiện làm việc an toàn\",\n     \"noi_truoc\": [\n      \"trừ trường hợp\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D149.K3\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"sử dụng người lao động cao tuổi làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm có ảnh hưởng xấu tới sức khỏe người lao động cao tuổi\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"doan\":[\"bảo đảm các điều kiện làm việc an toàn\"],\"vai\":\"ngoai_le\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795546148729-efd60c13",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2649
+   },
+   "input_tokens": 3775,
+   "output_tokens": 176,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_7925f8436d9e44accf429299"
+   }
+  }
+ }
+}

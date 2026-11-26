@@ -1,0 +1,30 @@
+{
+ "cau": "Người sử dụng lao động và người lao động có thể thỏa thuận nội dung thử việc ghi trong hợp đồng lao động hoặc thỏa thuận về thử việc bằng việc giao kết hợp đồng thử việc.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động và người lao động có thể\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thỏa thuận nội dung thử việc ghi trong hợp đồng lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thỏa thuận về thử việc bằng việc giao kết hợp đồng thử việc\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-DigDa57ZILex2roPmIjY4Qc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 400
+   },
+   "input_tokens": 938,
+   "output_tokens": 505,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ca1758a6ddcd4b93fac9dac7"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Hai bên tiến hành sửa đổi, bổ sung phần của hợp đồng lao động bị tuyên bố vô hiệu để phù hợp với thỏa ước lao động tập thể hoặc pháp luật về lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Hai bên tiến hành\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sửa đổi\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bổ sung\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"phần của hợp đồng lao động bị tuyên bố vô hiệu\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"phù hợp với thỏa ước lao động tập thể hoặc pháp luật về lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538676831-7deb619b",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 7863
+   },
+   "input_tokens": 2413,
+   "output_tokens": 153,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_1301d64302d0dfa73f0a2e7e"
+   }
+  }
+ }
+}

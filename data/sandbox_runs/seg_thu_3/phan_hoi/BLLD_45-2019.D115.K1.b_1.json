@@ -1,0 +1,30 @@
+{
+ "cau": "Con đẻ, con nuôi kết hôn: nghỉ 01 ngày;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Con đẻ, con nuôi kết hôn\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"nghỉ 01 ngày\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-2j8Da4yVNfmx0-kPrIfmgAE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 883
+   },
+   "input_tokens": 915,
+   "output_tokens": 940,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d201aaa029e0baa02da2c388"
+   }
+  }
+ }
+}

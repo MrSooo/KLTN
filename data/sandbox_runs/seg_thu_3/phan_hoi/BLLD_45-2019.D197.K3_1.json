@@ -1,0 +1,30 @@
+{
+ "cau": "Trong thời hạn 30 ngày kể từ ngày được thành lập, căn cứ vào quy định của pháp luật về lao động, thỏa ước lao động tập thể, nội quy lao động đã được đăng ký và các quy chế, thỏa thuận hợp pháp khác, Ban trọng tài lao động phải ra quyết định về việc giải quyết tranh chấp và gửi cho các bên tranh chấp.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trong thời hạn 30 ngày kể từ ngày được thành lập, căn cứ vào quy định của pháp luật về lao động, thỏa ước lao động tập thể, nội quy lao động đã được đăng ký và các quy chế, thỏa thuận hợp pháp khác, Ban trọng tài lao động phải\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"ra quyết định về việc giải quyết tranh chấp\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"gửi cho các bên tranh chấp.\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-NlEDa5WiAqzm2roPiMbM2QI",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 732
+   },
+   "input_tokens": 975,
+   "output_tokens": 873,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_e15bcce95ba329acd16d7760"
+   }
+  }
+ }
+}

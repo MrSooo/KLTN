@@ -1,0 +1,30 @@
+{
+ "cau": "Họ tên, địa chỉ liên hệ của người đại diện cho tổ chức đại diện người lao động tổ chức và lãnh đạo đình công.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Họ tên, địa chỉ liên hệ của người đại diện cho tổ chức đại diện người lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tổ chức\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"lãnh đạo\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"đình công\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-RlIDa7uqKY2V9tMP9N2lqAg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 437
+   },
+   "input_tokens": 928,
+   "output_tokens": 559,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_c50941e8e463f8ca795566fc"
+   }
+  }
+ }
+}

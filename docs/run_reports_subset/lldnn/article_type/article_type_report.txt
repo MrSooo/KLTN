@@ -1,0 +1,23 @@
+1.4 báo cáo
+tổng Điều/phụ lục có nhãn: 165
+phân bố nhãn theo văn bản:
+  BLLD_45-2019           {'substantive': 15, 'effect_transition': 1}
+  ND_145-2020            {'substantive': 22, 'authority': 4, 'procedural': 2, 'effect_transition': 1}
+  ND_152-2020            {'substantive': 16, 'definition': 1, 'procedural': 9, 'authority': 3, 'effect_transition': 1}
+  ND_70-2023             {'effect_transition': 3}
+  ND_219-2025            {'substantive': 17, 'authority': 2, 'procedural': 15, 'effect_transition': 2}
+  NQ_66-16-2026          {'substantive': 17, 'effect_transition': 2, 'appendix': 16}
+  VBHN_125-2025          {'substantive': 15, 'effect_transition': 1}
+cách xếp: regex 47; mặc định substantive (không khớp mẫu nào) 102; phụ lục 16
+LLM: không dùng (quyết định A14)
+10 Điều mẫu ngẫu nhiên (hạt giống cố định):
+  ND_152-2020.D3                     definition         regex                Giải thích từ ngữ
+  BLLD_45-2019.D155                  substantive        default              Thời hạn của giấy phép lao động
+  NQ_66-16-2026.D12                  substantive        default              Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên qua
+  ND_152-2020.D30                    authority          regex                Trách nhiệm thi hành
+  ND_145-2020.D29                    substantive        default              Trách nhiệm của doanh nghiệp cho thuê lại trong trường hợp b
+  ND_219-2025.D31                    procedural         regex                Trình tự thu hồi giấy phép lao động
+  ND_219-2025.D18                    procedural         regex                Hồ sơ đề nghị cấp giấy phép lao động
+  ND_152-2020.D2                     substantive        default              Đối tượng áp dụng
+  BLLD_45-2019.D54                   substantive        default              Doanh nghiệp cho thuê lại lao động
+  NQ_66-16-2026.D6                   substantive        default              Cắt giảm, đơn giản hóa thủ tục hành chính, quy định liên qua

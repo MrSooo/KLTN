@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Người lao động trong doanh nghiệp có quyền thành lập, gia nhập và tham gia hoạt động của tổ chức của người lao động tại doanh nghiệp theo quy định tại các điều 172, 173 và 174 của Bộ luật này.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động trong doanh nghiệp có quyền\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thành lập\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"gia nhập\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"tham gia hoạt động của tổ chức của người lao động tại doanh nghiệp theo quy định tại các điều 172, 173 và 174 của Bộ luật này\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-jrMFa4ujPNrD0-kPxcLZ0AY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4257
+   },
+   "input_tokens": 2288,
+   "output_tokens": 508,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_a8de108054dac74dd3b54b56"
+   }
+  }
+ }
+}

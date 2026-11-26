@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người học nghề, người tập nghề thuộc danh mục nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành phải từ đủ 18 tuổi trở lên, trừ lĩnh vực nghệ thuật, thể dục, thể thao.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người học nghề, người tập nghề\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thuộc danh mục nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải từ đủ 18 tuổi trở lên\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"lĩnh vực nghệ thuật, thể dục, thể thao\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538737752-742f0ce5",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1775
+   },
+   "input_tokens": 2452,
+   "output_tokens": 156,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_b6f3680c03f95f3388a4693c"
+   }
+  }
+ }
+}

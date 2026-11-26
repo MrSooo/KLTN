@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D93.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D93.K2\",\n \"tieu_de_dieu\": \"Xây dựng thang lương, bảng lương và định mức lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Mức lao động phải là mức trung bình bảo đảm số đông người lao động thực hiện được mà không phải kéo dài thời giờ làm việc bình thường và phải được áp dụng thử trước khi ban hành chính thức.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Mức lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải là mức trung bình bảo đảm số đông người lao động thực hiện được mà không phải kéo dài thời giờ làm việc bình thường\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải được áp dụng thử\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"ban hành chính thức\",\n     \"noi_truoc\": [\n      \"trước khi\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D93.K2\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"là mức trung bình bảo đảm số đông người lao động thực hiện được mà không phải kéo dài thời giờ làm việc bình thường\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Mức lao động\",\"loai\":\"J\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"doan\":[\"áp dụng thử\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Mức lao động\",\"loai\":\"J\"},\"quy_tac\":\"q2\"},{\"nguon\":\"s1.m3\",\"doan\":[\"ban hành chính thức\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Mức lao động\",\"loai\":\"J\"},\"quy_tac\":\"q2\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795549154937-0d8f660a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4320
+   },
+   "input_tokens": 3843,
+   "output_tokens": 231,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_0c9f530410cf9c82dde1dc39"
+   }
+  }
+ }
+}

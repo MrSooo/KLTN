@@ -1,0 +1,61 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T21:56:10+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0010\",\n   \"a\": {\n    \"unit_id\": \"ND_145-2020.D18.K1.d\",\n    \"tieu_de_dieu\": \"Rút tiền ký quỹ\",\n    \"khoan_cha\": \"Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ khi doanh nghiệp thuộc một trong các trường hợp sau:\",\n    \"chu_don_vi\": \"Doanh nghiệp cho thuê lại bị thu hồi giấy phép hoặc không được gia hạn, cấp lại giấy phép;\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_145-2020.D28.K1\",\n    \"tieu_de_dieu\": \"Thu hồi giấy phép\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:\",\n    \"cac_muc_con\": [\n     \"Chấm dứt hoạt động cho thuê lại lao động theo đề nghị của doanh nghiệp cho thuê lại;\",\n     \"Doanh nghiệp giải thể hoặc bị Tòa án ra quyết định tuyên bố phá sản;\",\n     \"Không bảo đảm một trong các điều kiện quy định tại Điều 21 Nghị định này;\",\n     \"Cho doanh nghiệp, tổ chức, cá nhân khác sử dụng giấy phép;\",\n     \"Cho thuê lại lao động để thực hiện công việc không thuộc danh mục công việc được thực hiện cho thuê lại lao động tại Phụ lục II ban hành kèm theo Nghị định này;\",\n     \"Doanh nghiệp cho thuê lại có hành vi giả mạo các văn bản trong hồ sơ đề nghị cấp, gia hạn, cấp lại giấy phép hoặc tẩy xóa, sửa chữa nội dung giấy phép đã được cấp hoặc sử dụng giấy phép giả.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"revoke_labor_subcontracting_license\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0011\",\n   \"a\": {\n    \"unit_id\": \"ND_145-2020.D18.K1.dd\",\n    \"tieu_de_dieu\": \"Rút tiền ký quỹ\",\n    \"khoan_cha\": \"Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính đồng ý để doanh nghiệp cho thuê lại rút tiền ký quỹ khi doanh nghiệp thuộc một trong các trường hợp sau:\",\n    \"chu_don_vi\": \"Doanh nghiệp cho thuê lại đã thực hiện ký quỹ tại một ngân hàng thương mại của Việt Nam hoặc chi nhánh ngân hàng thương mại nước ngoài tại Việt Nam khác.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_145-2020.D21.K2\",\n    \"tieu_de_dieu\": \"Điều kiện cấp giấy phép\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Doanh nghiệp đã thực hiện ký quỹ 2.000.000.000 đồng (hai tỷ đồng).\"\n   },\n   \"vi_tu_chung\": [\n    \"make_deposit\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0012\",\n   \"a\": {\n    \"unit_id\": \"ND_145-2020.D20.K1\",\n    \"tieu_de_dieu\": \"Nộp bổ sung tiền ký quỹ\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 30 ngày kể từ ngày rút tiền ký quỹ để thanh toán đối với trường hợp quy định tại các điểm a và điểm b khoản 1 Điều 18 và Điều 19 Nghị định này, doanh nghiệp cho thuê lại phải nộp bổ sung tiền ký quỹ bảo đảm quy định tại khoản 2 Điều 21 Nghị định này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_145-2020.D20.K2\",\n    \"tieu_de_dieu\": \"Nộp bổ sung tiền ký quỹ\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn không quá 30 ngày kể từ ngày hết thời hạn quy định tại khoản 1 Điều này mà doanh nghiệp cho thuê lại không bổ sung đầy đủ tiền ký quỹ thì ngân hàng nhận ký quỹ có trách nhiệm thông báo bằng văn bản cho Sở Lao động - Thương binh và Xã hội và Chủ tịch Ủy ban nhân dân cấp tỉnh nơi doanh nghiệp cho thuê lại đặt trụ sở chính. Trong thời hạn 15 ngày, kể từ ngày nhận được thông báo của ngân hàng nhận ký quỹ, Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép của doanh nghiệp theo quy định tại khoản 4 Điều 28 Nghị định này.\"\n   },\n   \"vi_tu_chung\": [\n    \"supplement_deposit\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0013\",\n   \"a\": {\n    \"unit_id\": \"ND_145-2020.D26.K1.a\",\n    \"tieu_de_dieu\": \"Gia hạn giấy phép\",\n    \"khoan_cha\": \"Doanh nghiệp được gia hạn giấy phép phải bảo đảm các quy định sau đây:\",\n    \"chu_don_vi\": \"Bảo đảm các điều kiện quy định tại Điều 21 Nghị định này;\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_145-2020.D28.K1.c\",\n    \"tieu_de_dieu\": \"Thu hồi giấy phép\",\n    \"khoan_cha\": \"Doanh nghiệp cho thuê lại bị thu hồi giấy phép trong các trường hợp sau đây:\",\n    \"chu_don_vi\": \"Không bảo đảm một trong các điều kiện quy định tại Điều 21 Nghị định này;\"\n   },\n   \"vi_tu_chung\": [\n    \"satisfy_article_21_conditions\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0014\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D150.K3\",\n    \"tieu_de_dieu\": \"Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chính phủ quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D1.K2\",\n    \"tieu_de_dieu\": \"Phạm vi điều chỉnh\",\n    \"khoan_cha\": \"Nghị định này quy định về người lao động nước ngoài làm việc tại Việt Nam và tuyển dụng, quản lý người lao động Việt Nam làm việc cho tổ chức, cá nhân nước ngoài tại Việt Nam theo các điều, khoản sau đây của Bộ luật Lao động:\",\n    \"chu_don_vi\": \"Tuyển dụng, giới thiệu, quản lý người lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam (sau đây gọi là tổ chức, cá nhân nước ngoài) theo khoản 3 Điều 150 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"vietnamese_worker_recruitment_and_management_rules\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0015\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết thời hạn.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D20.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 1, 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0016\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K2\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chấm dứt hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D20.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 1, 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0017\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K3\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Nội dung của hợp đồng lao động không đúng với nội dung của giấy phép lao động đã được cấp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D20.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 1, 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0018\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K4\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Làm việc không đúng với nội dung trong giấy phép lao động đã được cấp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D20.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 1, 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0019\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K5\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_152-2020.D20.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 1, 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_f8bec220eeac90cb61344df6",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0010",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0011",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0012",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0013",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0014",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0015",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0016",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0017",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0018",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0019",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 100,
+  "output_tokens": 580,
+  "cost_vnd": 5.01
+ },
+ "boc_rao": false
+}

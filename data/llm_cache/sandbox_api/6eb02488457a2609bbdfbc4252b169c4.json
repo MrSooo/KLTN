@@ -1,0 +1,659 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T19:42:49+00:00",
+ "system": "Bạn tách các đơn vị của Bộ luật Lao động Việt Nam thành DÒNG. Mỗi đơn vị có: tieu_de_dieu, khoan_cha (câu dẫn của cha, có thể rỗng), chu_don_vi (chữ cần tách), dan_chieu (dẫn chiếu đã giải, kèm mã đích). Chỉ tách chu_don_vi; tiêu đề và câu dẫn chỉ để lấy chủ thể, phương thức, vị ngữ bị lược.\n\n## Loại dòng (loai)\n- menh_de: một điều đúng/sai được.\n- con_tro: dẫn chiếu đã giải (\"trừ trường hợp quy định tại ...\", \"theo quy định tại ...\"); targets lấy từ dan_chieu.\n- bo_qua: không thành mệnh đề; ly_do_llm.ma: cau_dan (phần chỉ dẫn vào danh sách, \"... sau đây:\") | dan_chieu_mo (\"theo quy định của pháp luật\") | dan_chieu_ngoai (một luật khác, \"theo quy định của Luật Công đoàn\") | khong_quy_pham (câu chính sách, định hướng, không có hành vi kiểm được).\n- chua_ro: cả dòng không xác định được.\n\n## Luật tách\n1. TÁCH khi từng phần kiểm được đúng/sai riêng VÀ vi phạm từng phần có ý nghĩa pháp lý riêng. GIỮ CHUNG khi là một yêu cầu tập thể. Không tách chỉ vì có nhiều danh từ.\n2. menh_de chỉ giữ LÕI: động từ (hoặc tính chất) + tân ngữ chính, càng ngắn càng tốt, để cùng một việc ở các Điều khác nhau ra cùng chữ. Danh sách liệt kê (từ 3 mục) của tân ngữ hay phạm vi đưa vào liet_ke (mỗi mục chép nguyên văn), không để trong menh_de. liet_ke chỉ gom tân ngữ hay phạm vi của CÙNG một động từ; mục nào tự nó là một hành vi khác thì là dòng riêng.\n3. Chữ dùng chung đứng ĐẦU chuỗi (\"không\" trong \"không A, B, C\") hiểu cho từng mục; trich chép chữ dùng chung và chữ của mục thành HAI chuỗi riêng, không ghép: \"không được A, B\" cho mục B → trich [\"không được\", \"B\"]. Bổ ngữ đứng CUỐI phải xác định phạm vi trong bo_ngu: this_clause | group | unknown (unknown thì thêm chua_ro nguyen_nhan pham_vi_bo_ngu).\n4. bo_ngu chỉ cho cụm mà bỏ đi thì vẫn cùng loại hành vi (nơi chốn, căn cứ, cách thức phụ). Cụm làm nên chính hành vi (thời điểm, mức, cách thức phân biệt) giữ trong menh_de: \"làm việc trên cao\" không rút thành \"làm việc\". Dẫn chiếu không bao giờ là bổ ngữ. Cụm giới hạn đối tượng hay hoàn cảnh áp dụng (\"đối với ...\", \"khi ...\", \"trong trường hợp ...\", \"thông qua ...\", \"dưới hình thức ...\") là dòng dieu_kien riêng (cùng quy_tac), KHÔNG phải bo_ngu: \"Không quá 60 ngày đối với công việc có chức danh nghề nghiệp cần trình độ chuyên môn, kỹ thuật từ cao đẳng trở lên\" → dieu_kien \"có chức danh nghề nghiệp cần trình độ chuyên môn, kỹ thuật từ cao đẳng trở lên\" (chủ thể công việc, J).\n5. Câu dẫn: danh sách là TÂN NGỮ (\"có các nghĩa vụ sau đây\") thì câu dẫn ra bo_qua cau_dan, mục con là ket_luan kế thừa chủ thể và phương thức. Danh sách là ĐIỀU KIỆN (\"trong trường hợp sau đây\") thì phần nội dung câu dẫn ra ket_luan (một lần, ở câu dẫn), phần dẫn ra bo_qua, mục con là dieu_kien. Phân biệt theo VAI của danh sách, không theo chữ \"điều kiện\": \"phải đáp ứng / phải có đủ / phải tuân theo các điều kiện, yêu cầu, quy định sau đây\" là TÂN NGỮ của nghĩa vụ (mục con là ket_luan, kế thừa chủ thể và phương thức phai); danh sách chỉ là ĐIỀU KIỆN khi nó là hoàn cảnh cho một hành vi khác nêu trong câu dẫn (\"phải tổ chức đối thoại ... trong trường hợp sau đây\", \"được sử dụng người lao động làm thêm giờ khi đáp ứng đầy đủ các yêu cầu sau đây\"). Phần chữ dẫn vào danh sách (\"... sau đây:\", \"... như sau:\", \"gồm:\") luôn là bo_qua cau_dan, không bao giờ nằm trong menh_de. cac_muc_con của dòng cau_dan: va (điều kiện hay yêu cầu phải đủ HẾT) | hoac (trường hợp, MỘT là đủ) | danh_sach (quyền hay mục độc lập). Mục con kế thừa chủ thể từ câu dẫn: chu_the.nguon = cau_dan và trich PHẢI có một mẩu chép từ khoan_cha (thường là cụm chủ thể); nguon = tieu_de thì trich có mẩu chép từ tieu_de_dieu.\n6. Định nghĩa khái niệm \"X là Y\": dấu hiệu của Y là dieu_kien, thêm ket_luan \"là X\". Câu nêu giá trị, mức (\"thời hạn ... là N ngày\") ra một ket_luan.\n7. quy_tac (q1, q2...) gom dieu_kien và ket_luan của cùng một quy tắc. \"Hoặc\" giữa điều kiện trong một quy tắc: cùng nhom_hoac (\"h1\"). \"Hoặc\" mà một vế có \"và\": tách nhiều quy tắc.\n\n## Trường\n- vai: ket_luan | dieu_kien | ngoai_le. con_tro \"trừ ...\" có vai ngoai_le; con_tro khác lấy vai của dòng nó bổ nghĩa.\n- menh_de: đã bỏ chủ thể, chữ phương thức, chữ phủ định, bổ ngữ, liệt kê. MỌI âm tiết của menh_de phải có trong trich của dòng đó.\n- chu_the: {\"chu\": nguyên văn, \"loai\": mã hoặc danh sách mã khi chủ thể chung, \"nguon\": chinh | cau_dan | tieu_de}, hoặc bỏ. Mã: W người lao động, E người sử dụng lao động, C hợp đồng, J công việc, G vùng, D ngày, A số tiền, ? chưa biết. Người chỉ chịu tác động là đối số, không phải chủ thể.\n- doi_so: [{\"loai\": mã}] các đối số khác.\n- bo_ngu: LUÔN là danh sách đối tượng, kể cả khi chỉ có một mục: [{\"original_text\": nguyên văn, \"scope\": this_clause | group | unknown}]. Không viết chuỗi trần, không viết một đối tượng đơn.\n- phuong_thuc: duoc (được, có quyền, có thể) | phai (phải, có nghĩa vụ) | cam (cấm, không được làm) | khong_ap_dung (tuyên bố một quy định không áp cho một nhóm trường hợp) | khong (mô tả, điều kiện, định nghĩa).\n- cuc: khang_dinh | phu_dinh; chỉ phủ định menh_de: duoc + phu_dinh là \"được không bị X\"; \"không phải X\" (không có nghĩa vụ) ghi duoc + phu_dinh.\n- BẪY: \"không được + động từ\" là cam (không được làm X) hoặc bị động phủ định (không được người khác làm cho: khong + phu_dinh, menh_de giữ \"được ...\"). \"Được + động từ\" có thể là bị động, không phải quyền.\n- BẪY: \"không phải + động từ\" là không có nghĩa vụ (duoc + phu_dinh); \"không phải là + danh từ\" là không thuộc (khong + phu_dinh, menh_de giữ \"là ...\").\n- chua_ro: [{\"thanh_phan\", \"nguyen_nhan\": pham_vi_bo_ngu | tach_hay_giu_chung | phuong_thuc | chu_the | khac, \"cau_hoi\"}], mỗi chỗ một mục. Không đoán.\n- trich: chuỗi chép NGUYÊN VĂN, liền, từ tiêu đề, câu dẫn hoặc chu_don_vi; chủ thể hay phương thức kế thừa thì có cả mẩu chứa nó.\n- targets (con_tro): mã từ dan_chieu; không giải được thì rỗng kèm chua_ro. gan_vao (con_tro): số thứ tự (từ 0) của dòng menh_de nó bổ nghĩa, null nếu chặn cả quy tắc.\n- ly_do_llm: chỉ ca khó (tach | giu_chung | gan_bo_ngu | chua_ro | ke_thua) và mọi dòng bo_qua: {\"ma\", \"giai_thich\": một câu ngắn}.\n- TRƯỜNG RỖNG THÌ BỎ (chuỗi rỗng, danh sách rỗng, null): máy tự điền. Luôn có loai và trich; menh_de có thêm vai, menh_de, phuong_thuc, cuc, quy_tac.\n\n## Ví dụ\nkhoan_cha \"Người sử dụng lao động có các nghĩa vụ sau đây:\" → {\"loai\":\"bo_qua\",\"cac_muc_con\":\"danh_sach\",\"trich\":[\"Người sử dụng lao động có các nghĩa vụ sau đây:\"],\"ly_do_llm\":{\"ma\":\"cau_dan\",\"giai_thich\":\"Câu dẫn danh sách nghĩa vụ.\"}}\nMục con \"...; tôn trọng danh dự, nhân phẩm của người lao động;\" → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"tôn trọng danh dự, nhân phẩm của người lao động\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\",\"nguon\":\"cau_dan\"},\"doi_so\":[{\"loai\":\"W\"}],\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"trich\":[\"Người sử dụng lao động có các nghĩa vụ\",\"tôn trọng danh dự, nhân phẩm của người lao động\"],\"quy_tac\":\"q1\"}\n\"Người sử dụng lao động phải cung cấp thông tin trung thực cho người lao động về ..., tiền lương, hình thức trả lương, bảo hiểm xã hội, ...\" → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"cung cấp thông tin trung thực\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\",\"nguon\":\"chinh\"},\"doi_so\":[{\"loai\":\"W\"}],\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"liet_ke\":[\"tiền lương\",\"hình thức trả lương\",\"bảo hiểm xã hội\",\"...\"],\"trich\":[\"Người sử dụng lao động phải cung cấp thông tin trung thực cho người lao động\"],\"quy_tac\":\"q1\",\"ly_do_llm\":{\"ma\":\"giu_chung\",\"giai_thich\":\"Một nghĩa vụ thông tin; danh sách nội dung đưa vào liet_ke.\"}}\nTiêu đề \"Hành vi người sử dụng lao động không được làm khi giao kết, thực hiện hợp đồng lao động\", chữ \"Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động.\" → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\",\"nguon\":\"tieu_de\"},\"doi_so\":[{\"loai\":\"W\"}],\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"trich\":[\"Hành vi người sử dụng lao động không được làm\",\"Giữ bản chính giấy tờ tùy thân, văn bằng, chứng chỉ của người lao động\"],\"quy_tac\":\"q1\"}\nTiêu đề \"Nghĩa vụ của người lao động khi ... trái pháp luật\", chữ \"Không được trợ cấp thôi việc.\" (bị động) → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"được trợ cấp thôi việc\",\"chu_the\":{\"chu\":\"người lao động\",\"loai\":\"W\",\"nguon\":\"tieu_de\"},\"phuong_thuc\":\"khong\",\"cuc\":\"phu_dinh\",\"trich\":[\"Nghĩa vụ của người lao động\",\"Không được trợ cấp thôi việc\"],\"quy_tac\":\"q1\"} cộng một dieu_kien lấy từ tiêu đề.\nĐịnh nghĩa \"Tổ chức đại diện người sử dụng lao động là tổ chức được thành lập hợp pháp, đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động trong quan hệ lao động.\" → dieu_kien \"được thành lập hợp pháp\" (bị động, khong); dieu_kien \"đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động\" {\"loai\":\"menh_de\",\"vai\":\"dieu_kien\",\"menh_de\":\"đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"bo_ngu\":[{\"original_text\":\"trong quan hệ lao động\",\"scope\":\"this_clause\"}],\"trich\":[\"đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động trong quan hệ lao động\"],\"quy_tac\":\"q1\"}; ket_luan khong \"là tổ chức đại diện người sử dụng lao động\"; cả ba q1.\nDanh sách ĐIỀU KIỆN: chu_don_vi \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\" → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"sử dụng lao động thuê lại\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\",\"nguon\":\"chinh\"},\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"trich\":[\"Bên thuê lại lao động được sử dụng lao động thuê lại\"],\"quy_tac\":\"q1\"} và {\"loai\":\"bo_qua\",\"cac_muc_con\":\"hoac\",\"trich\":[\"trong trường hợp sau đây:\"],\"ly_do_llm\":{\"ma\":\"cau_dan\",\"giai_thich\":\"Phần dẫn vào danh sách trường hợp.\"}}\nMục con của câu dẫn đó \"Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao.\" → {\"loai\":\"menh_de\",\"vai\":\"dieu_kien\",\"menh_de\":\"có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\",\"nguon\":\"cau_dan\"},\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"trich\":[\"Bên thuê lại lao động\",\"Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao\"],\"quy_tac\":\"q1\"}\nDanh sách TÂN NGỮ có chữ \"quy định\": khoan_cha \"Khi sử dụng người chưa đủ 15 tuổi làm việc, người sử dụng lao động phải tuân theo quy định sau đây:\", chữ \"Bố trí giờ làm việc không ảnh hưởng đến thời gian học tập của người chưa đủ 15 tuổi;\" → {\"loai\":\"menh_de\",\"vai\":\"ket_luan\",\"menh_de\":\"bố trí giờ làm việc không ảnh hưởng đến thời gian học tập của người chưa đủ 15 tuổi\",\"chu_the\":{\"chu\":\"người sử dụng lao động\",\"loai\":\"E\",\"nguon\":\"cau_dan\"},\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"trich\":[\"người sử dụng lao động phải tuân theo\",\"Bố trí giờ làm việc không ảnh hưởng đến thời gian học tập của người chưa đủ 15 tuổi\"],\"quy_tac\":\"q1\"}\n\n## Tự kiểm trước khi trả\n- Mục con của câu dẫn \"phải đáp ứng / phải có đủ / phải tuân theo ... sau đây\" là ket_luan phai, không phải dieu_kien; không menh_de nào chứa \"sau đây\", \"như sau\", \"gồm\".\n- bo_ngu là danh sách đối tượng {original_text, scope}.\n- Mọi chuỗi trong trich, chu_the.chu, bo_ngu.original_text, liet_ke chép NGUYÊN VĂN, liền, không ghép từ hai chỗ.\n- chu_the.nguon = cau_dan (hay tieu_de) thì trich có mẩu chép từ khoan_cha (hay tieu_de_dieu).\n- Mọi âm tiết của menh_de có trong trich của dòng đó.\n- Cụm \"đối với / khi / trong trường hợp / thông qua / dưới hình thức ...\" là dieu_kien, không phải bo_ngu.\n\n## Đầu ra\nJSON thuần, không chữ giải thích: {\"units\": [{\"unit_id\": \"...\", \"dong\": [...]}]}. Mỗi unit_id của lô đúng một mục, mỗi mục ít nhất một dòng.\n",
+ "user": "{\n \"don_vi\": [\n  {\n   \"unit_id\": \"ND_219-2025.D19.K1\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý quy định tại khoản 1 Điều 3 Nghị định này là một trong các giấy tờ sau:\",\n   \"dan_chieu\": [\n    {\n     \"cum\": \"khoản 1 Điều 3 Nghị định này\",\n     \"dich\": \"ND_219-2025.D3.K1\"\n    }\n   ]\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K1.a\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý quy định tại khoản 1 Điều 3 Nghị định này là một trong các giấy tờ sau:\",\n   \"chu_don_vi\": \"Điều lệ công ty và giấy tờ chứng minh là nhà quản lý hoặc văn bản bổ nhiệm, điều động đối với các vị trí là nhà quản lý theo quy định tại khoản 24 Điều 4 Luật Doanh nghiệp;\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K1.b\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý quy định tại khoản 1 Điều 3 Nghị định này là một trong các giấy tờ sau:\",\n   \"chu_don_vi\": \"Giấy phép thành lập cơ quan, tổ chức hoặc văn bản bổ nhiệm, điều động đối với người đứng đầu, cấp phó của người đứng đầu cơ quan, tổ chức.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K2\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Giấy tờ chứng minh người lao động nước ngoài là giám đốc điều hành quy định tại khoản 2 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam thì được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam.\",\n   \"dan_chieu\": [\n    {\n     \"cum\": \"khoản 2 Điều 3 Nghị định này\",\n     \"dich\": \"ND_219-2025.D3.K2\"\n    }\n   ]\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K2.a\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"Giấy tờ chứng minh người lao động nước ngoài là giám đốc điều hành quy định tại khoản 2 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam thì được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam.\",\n   \"chu_don_vi\": \"Giấy chứng nhận đăng ký hoạt động chi nhánh, giấy chứng nhận đăng ký hoạt động văn phòng đại diện hoặc giấy chứng nhận đăng ký địa điểm kinh doanh của doanh nghiệp;\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K2.b\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"Giấy tờ chứng minh người lao động nước ngoài là giám đốc điều hành quy định tại khoản 2 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam thì được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam.\",\n   \"chu_don_vi\": \"Điều lệ công ty hoặc văn bản quy định về cơ cấu tổ chức của cơ quan, tổ chức; văn bản xác nhận người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K3\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Giấy tờ chứng minh người lao động nước ngoài là chuyên gia quy định tại khoản 3 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam thì được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\",\n   \"dan_chieu\": [\n    {\n     \"cum\": \"khoản 3 Điều 3 Nghị định này\",\n     \"dich\": \"ND_219-2025.D3.K3\"\n    }\n   ]\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K3.a\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"Giấy tờ chứng minh người lao động nước ngoài là chuyên gia quy định tại khoản 3 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam thì được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\",\n   \"chu_don_vi\": \"Văn bằng, chứng chỉ hoặc giấy chứng nhận chứng minh tốt nghiệp đại học trở lên hoặc tương đương và văn bản xác nhận của người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc của chuyên gia đó.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K3.b\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"Giấy tờ chứng minh người lao động nước ngoài là chuyên gia quy định tại khoản 3 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam thì được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\",\n   \"chu_don_vi\": \"Văn bằng, chứng chỉ hoặc giấy chứng nhận chứng minh tốt nghiệp đại học trở lên hoặc tương đương trong lĩnh vực tài chính, khoa học, công nghệ, đổi mới sáng tạo, chuyển đổi số quốc gia, lĩnh vực ưu tiên phát triển kinh tế - xã hội hoặc theo thỏa thuận hợp tác của Chính phủ Việt Nam và văn bản xác nhận người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc của chuyên gia đó.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K3.c\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"Giấy tờ chứng minh người lao động nước ngoài là chuyên gia quy định tại khoản 3 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam thì được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\",\n   \"chu_don_vi\": \"Giấy chứng nhận thành tích cao, bằng cấp, kinh nghiệm trong lĩnh vực văn hóa, thể thao đối với nghệ sĩ, huấn luyện viên, vận động viên theo hướng dẫn của Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch;\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K3.d\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"Giấy tờ chứng minh người lao động nước ngoài là chuyên gia quy định tại khoản 3 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam thì được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\",\n   \"chu_don_vi\": \"Giấy phép lái tàu bay, chứng chỉ chuyên môn được phép làm việc trên tàu bay đối với tiếp viên hàng không, chứng nhận trình độ chuyên môn trong lĩnh vực bảo dưỡng tàu bay, chứng nhận khả năng chuyên môn đối với thuyền viên nước ngoài do cơ quan có thẩm quyền của Việt Nam cấp. Trường hợp do cơ quan có thẩm quyền của nước ngoài cấp phải được cơ quan có thẩm quyền của Việt Nam công nhận theo hướng dẫn của Bộ trưởng Bộ Xây dựng;\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K3.dd\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"Giấy tờ chứng minh người lao động nước ngoài là chuyên gia quy định tại khoản 3 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam thì được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\",\n   \"chu_don_vi\": \"Giấy tờ chứng minh về trình độ, trình độ chuẩn theo Luật Giáo dục, Luật Giáo dục đại học, Luật Giáo dục nghề nghiệp đối với chuyên gia làm việc trong lĩnh vực giáo dục và đào tạo. Trường hợp chuyên gia làm việc trong Trung tâm ngoại ngữ, tin học phải đảm bảo theo quy chế tổ chức hoạt động của trung tâm;\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K3.e\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"Giấy tờ chứng minh người lao động nước ngoài là chuyên gia quy định tại khoản 3 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam thì được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\",\n   \"chu_don_vi\": \"Giấy tờ chứng minh chuyên gia làm việc trong một số nghề, công việc đặc thù khác theo hướng dẫn của Bộ trưởng, Thủ trưởng cơ quan ngang bộ quản lý ngành, công việc đặc thù.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K4\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Giấy tờ chứng minh người lao động nước ngoài là lao động kỹ thuật quy định tại khoản 4 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam.\",\n   \"dan_chieu\": [\n    {\n     \"cum\": \"khoản 4 Điều 3 Nghị định này\",\n     \"dich\": \"ND_219-2025.D3.K4\"\n    }\n   ]\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K4.a\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"Giấy tờ chứng minh người lao động nước ngoài là lao động kỹ thuật quy định tại khoản 4 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam.\",\n   \"chu_don_vi\": \"Văn bằng, chứng chỉ hoặc giấy chứng nhận chứng minh đào tạo ít nhất 01 năm và văn bản xác nhận của người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc của lao động kỹ thuật đó.\",\n   \"dan_chieu\": []\n  },\n  {\n   \"unit_id\": \"ND_219-2025.D19.K4.b\",\n   \"tieu_de_dieu\": \"Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật\",\n   \"khoan_cha\": \"Giấy tờ chứng minh người lao động nước ngoài là lao động kỹ thuật quy định tại khoản 4 Điều 3 Nghị định này là một trong các giấy tờ sau:\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam;\\nTrường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam.\",\n   \"chu_don_vi\": \"Văn bản xác nhận của người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc của lao động kỹ thuật đó.\",\n   \"dan_chieu\": []\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_32a4f8be155c8521e5626756",
+ "output": {
+  "units": [
+   {
+    "unit_id": "ND_219-2025.D19.K1",
+    "dong": [
+     {
+      "loai": "bo_qua",
+      "cac_muc_con": "hoac",
+      "trich": [
+       "Giấy tờ chứng minh người lao động nước ngoài là nhà quản lý quy định tại khoản 1 Điều 3 Nghị định này là một trong các giấy tờ sau:"
+      ],
+      "ly_do_llm": {
+       "ma": "cau_dan",
+       "giai_thich": "Câu dẫn vào danh sách giấy tờ, mỗi mục là một phương án đủ."
+      }
+     },
+     {
+      "loai": "con_tro",
+      "vai": "dieu_kien",
+      "targets": [
+       "ND_219-2025.D3.K1"
+      ],
+      "gan_vao": null,
+      "trich": [
+       "quy định tại khoản 1 Điều 3 Nghị định này"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K1.a",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "Điều lệ công ty và giấy tờ chứng minh là nhà quản lý hoặc văn bản bổ nhiệm, điều động đối với các vị trí là nhà quản lý theo quy định tại khoản 24 Điều 4 Luật Doanh nghiệp",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "Điều lệ công ty và giấy tờ chứng minh là nhà quản lý hoặc văn bản bổ nhiệm, điều động đối với các vị trí là nhà quản lý theo quy định tại khoản 24 Điều 4 Luật Doanh nghiệp"
+      ],
+      "ly_do_llm": {
+       "ma": "giu_chung",
+       "giai_thich": "Tên giấy tờ là một cụm không tách thành hành vi riêng được."
+      }
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K1.b",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "Giấy phép thành lập cơ quan, tổ chức hoặc văn bản bổ nhiệm, điều động đối với người đứng đầu, cấp phó của người đứng đầu cơ quan, tổ chức",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "Giấy phép thành lập cơ quan, tổ chức hoặc văn bản bổ nhiệm, điều động đối với người đứng đầu, cấp phó của người đứng đầu cơ quan, tổ chức"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K2",
+    "dong": [
+     {
+      "loai": "bo_qua",
+      "cac_muc_con": "hoac",
+      "trich": [
+       "Giấy tờ chứng minh người lao động nước ngoài là giám đốc điều hành quy định tại khoản 2 Điều 3 Nghị định này là một trong các giấy tờ sau:"
+      ],
+      "ly_do_llm": {
+       "ma": "cau_dan",
+       "giai_thich": "Câu dẫn vào danh sách giấy tờ, mỗi mục là một phương án đủ."
+      }
+     },
+     {
+      "loai": "con_tro",
+      "vai": "dieu_kien",
+      "targets": [
+       "ND_219-2025.D3.K2"
+      ],
+      "gan_vao": null,
+      "trich": [
+       "quy định tại khoản 2 Điều 3 Nghị định này"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "đã làm việc",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W",
+       "nguon": "chinh"
+      },
+      "bo_ngu": [
+       {
+        "original_text": "tại Việt Nam",
+        "scope": "this_clause"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "trich": [
+       "Trường hợp người lao động nước ngoài đã làm việc tại Việt Nam"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W",
+       "nguon": "chinh"
+      },
+      "bo_ngu": [
+       {
+        "original_text": "để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam",
+        "scope": "this_clause"
+       }
+      ],
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "trich": [
+       "Trường hợp người lao động nước ngoài đã làm việc tại Việt Nam thì được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K2.a",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "Giấy chứng nhận đăng ký hoạt động chi nhánh, giấy chứng nhận đăng ký hoạt động văn phòng đại diện hoặc giấy chứng nhận đăng ký địa điểm kinh doanh của doanh nghiệp",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "Giấy chứng nhận đăng ký hoạt động chi nhánh, giấy chứng nhận đăng ký hoạt động văn phòng đại diện hoặc giấy chứng nhận đăng ký địa điểm kinh doanh của doanh nghiệp"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K2.b",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "Điều lệ công ty hoặc văn bản quy định về cơ cấu tổ chức của cơ quan, tổ chức",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "Điều lệ công ty hoặc văn bản quy định về cơ cấu tổ chức của cơ quan, tổ chức"
+      ],
+      "ly_do_llm": {
+       "ma": "tach",
+       "giai_thich": "Hai giấy tờ cùng phải có, kiểm tra riêng được nên tách."
+      }
+     },
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "văn bản xác nhận người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "văn bản xác nhận người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K3",
+    "dong": [
+     {
+      "loai": "bo_qua",
+      "cac_muc_con": "hoac",
+      "trich": [
+       "Giấy tờ chứng minh người lao động nước ngoài là chuyên gia quy định tại khoản 3 Điều 3 Nghị định này là một trong các giấy tờ sau:"
+      ],
+      "ly_do_llm": {
+       "ma": "cau_dan",
+       "giai_thich": "Câu dẫn vào danh sách giấy tờ, mỗi mục là một phương án đủ."
+      }
+     },
+     {
+      "loai": "con_tro",
+      "vai": "dieu_kien",
+      "targets": [
+       "ND_219-2025.D3.K3"
+      ],
+      "gan_vao": null,
+      "trich": [
+       "quy định tại khoản 3 Điều 3 Nghị định này"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "đã làm việc",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W",
+       "nguon": "chinh"
+      },
+      "bo_ngu": [
+       {
+        "original_text": "tại Việt Nam",
+        "scope": "this_clause"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "trich": [
+       "Trường hợp người lao động nước ngoài đã làm việc tại Việt Nam"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W",
+       "nguon": "chinh"
+      },
+      "bo_ngu": [
+       {
+        "original_text": "để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam",
+        "scope": "this_clause"
+       }
+      ],
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "trich": [
+       "Trường hợp người lao động nước ngoài đã làm việc tại Việt Nam thì được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh số năm kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "đã làm việc",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W",
+       "nguon": "chinh"
+      },
+      "bo_ngu": [
+       {
+        "original_text": "tại Việt Nam",
+        "scope": "this_clause"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q3",
+      "trich": [
+       "Trường hợp người lao động nước ngoài đã làm việc tại Việt Nam"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W",
+       "nguon": "chinh"
+      },
+      "bo_ngu": [
+       {
+        "original_text": "để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam",
+        "scope": "this_clause"
+       }
+      ],
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "quy_tac": "q3",
+      "trich": [
+       "Trường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K3.a",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "Văn bằng, chứng chỉ hoặc giấy chứng nhận chứng minh tốt nghiệp đại học trở lên hoặc tương đương",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "Văn bằng, chứng chỉ hoặc giấy chứng nhận chứng minh tốt nghiệp đại học trở lên hoặc tương đương"
+      ],
+      "ly_do_llm": {
+       "ma": "tach",
+       "giai_thich": "Hai giấy tờ cùng phải có, kiểm tra riêng được nên tách."
+      }
+     },
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "văn bản xác nhận của người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc của chuyên gia đó",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "văn bản xác nhận của người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc của chuyên gia đó"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K3.b",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "Văn bằng, chứng chỉ hoặc giấy chứng nhận chứng minh tốt nghiệp đại học trở lên hoặc tương đương trong lĩnh vực tài chính, khoa học, công nghệ, đổi mới sáng tạo, chuyển đổi số quốc gia, lĩnh vực ưu tiên phát triển kinh tế - xã hội hoặc theo thỏa thuận hợp tác của Chính phủ Việt Nam",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "Văn bằng, chứng chỉ hoặc giấy chứng nhận chứng minh tốt nghiệp đại học trở lên hoặc tương đương trong lĩnh vực tài chính, khoa học, công nghệ, đổi mới sáng tạo, chuyển đổi số quốc gia, lĩnh vực ưu tiên phát triển kinh tế - xã hội hoặc theo thỏa thuận hợp tác của Chính phủ Việt Nam"
+      ],
+      "ly_do_llm": {
+       "ma": "tach",
+       "giai_thich": "Hai giấy tờ cùng phải có, kiểm tra riêng được nên tách."
+      }
+     },
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "văn bản xác nhận người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc của chuyên gia đó",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "văn bản xác nhận người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc của chuyên gia đó"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K3.c",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "Giấy chứng nhận thành tích cao, bằng cấp, kinh nghiệm trong lĩnh vực văn hóa, thể thao đối với nghệ sĩ, huấn luyện viên, vận động viên theo hướng dẫn của Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "Giấy chứng nhận thành tích cao, bằng cấp, kinh nghiệm trong lĩnh vực văn hóa, thể thao đối với nghệ sĩ, huấn luyện viên, vận động viên theo hướng dẫn của Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch"
+      ],
+      "ly_do_llm": {
+       "ma": "giu_chung",
+       "giai_thich": "Một nhóm giấy tờ thay thế cho nhau, giữ chung để không đổi nghĩa tên giấy tờ."
+      }
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K3.d",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "Giấy phép lái tàu bay, chứng chỉ chuyên môn được phép làm việc trên tàu bay đối với tiếp viên hàng không, chứng nhận trình độ chuyên môn trong lĩnh vực bảo dưỡng tàu bay, chứng nhận khả năng chuyên môn đối với thuyền viên nước ngoài do cơ quan có thẩm quyền của Việt Nam cấp",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "Giấy phép lái tàu bay, chứng chỉ chuyên môn được phép làm việc trên tàu bay đối với tiếp viên hàng không, chứng nhận trình độ chuyên môn trong lĩnh vực bảo dưỡng tàu bay, chứng nhận khả năng chuyên môn đối với thuyền viên nước ngoài do cơ quan có thẩm quyền của Việt Nam cấp"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "do cơ quan có thẩm quyền của nước ngoài cấp",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "trich": [
+       "Trường hợp do cơ quan có thẩm quyền của nước ngoài cấp"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "được cơ quan có thẩm quyền của Việt Nam công nhận",
+      "bo_ngu": [
+       {
+        "original_text": "theo hướng dẫn của Bộ trưởng Bộ Xây dựng",
+        "scope": "this_clause"
+       }
+      ],
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "trich": [
+       "phải được cơ quan có thẩm quyền của Việt Nam công nhận theo hướng dẫn của Bộ trưởng Bộ Xây dựng"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K3.dd",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "Giấy tờ chứng minh về trình độ, trình độ chuẩn theo Luật Giáo dục, Luật Giáo dục đại học, Luật Giáo dục nghề nghiệp đối với chuyên gia làm việc trong lĩnh vực giáo dục và đào tạo",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "Giấy tờ chứng minh về trình độ, trình độ chuẩn theo Luật Giáo dục, Luật Giáo dục đại học, Luật Giáo dục nghề nghiệp đối với chuyên gia làm việc trong lĩnh vực giáo dục và đào tạo"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "chuyên gia làm việc trong Trung tâm ngoại ngữ, tin học",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "trich": [
+       "Trường hợp chuyên gia làm việc trong Trung tâm ngoại ngữ, tin học"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "đảm bảo theo quy chế tổ chức hoạt động của trung tâm",
+      "phuong_thuc": "phai",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "trich": [
+       "phải đảm bảo theo quy chế tổ chức hoạt động của trung tâm"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K3.e",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "Giấy tờ chứng minh chuyên gia làm việc trong một số nghề, công việc đặc thù khác theo hướng dẫn của Bộ trưởng, Thủ trưởng cơ quan ngang bộ quản lý ngành, công việc đặc thù",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "Giấy tờ chứng minh chuyên gia làm việc trong một số nghề, công việc đặc thù khác theo hướng dẫn của Bộ trưởng, Thủ trưởng cơ quan ngang bộ quản lý ngành, công việc đặc thù"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K4",
+    "dong": [
+     {
+      "loai": "bo_qua",
+      "cac_muc_con": "hoac",
+      "trich": [
+       "Giấy tờ chứng minh người lao động nước ngoài là lao động kỹ thuật quy định tại khoản 4 Điều 3 Nghị định này là một trong các giấy tờ sau:"
+      ],
+      "ly_do_llm": {
+       "ma": "cau_dan",
+       "giai_thich": "Câu dẫn vào danh sách giấy tờ, mỗi mục là một phương án đủ."
+      }
+     },
+     {
+      "loai": "con_tro",
+      "vai": "dieu_kien",
+      "targets": [
+       "ND_219-2025.D3.K4"
+      ],
+      "gan_vao": null,
+      "trich": [
+       "quy định tại khoản 4 Điều 3 Nghị định này"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "đã làm việc",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W",
+       "nguon": "chinh"
+      },
+      "bo_ngu": [
+       {
+        "original_text": "tại Việt Nam",
+        "scope": "this_clause"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "trich": [
+       "Trường hợp người lao động nước ngoài đã làm việc tại Việt Nam"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W",
+       "nguon": "chinh"
+      },
+      "bo_ngu": [
+       {
+        "original_text": "để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam",
+        "scope": "this_clause"
+       }
+      ],
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "trich": [
+       "Trường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "dieu_kien",
+      "menh_de": "đã làm việc",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W",
+       "nguon": "chinh"
+      },
+      "bo_ngu": [
+       {
+        "original_text": "tại Việt Nam",
+        "scope": "this_clause"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q3",
+      "trich": [
+       "Trường hợp người lao động nước ngoài đã làm việc tại Việt Nam"
+      ]
+     },
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp",
+      "chu_the": {
+       "chu": "người lao động nước ngoài",
+       "loai": "W",
+       "nguon": "chinh"
+      },
+      "bo_ngu": [
+       {
+        "original_text": "để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam",
+        "scope": "this_clause"
+       }
+      ],
+      "phuong_thuc": "duoc",
+      "cuc": "khang_dinh",
+      "quy_tac": "q3",
+      "trich": [
+       "Trường hợp người lao động nước ngoài đã làm việc tại Việt Nam được sử dụng giấy phép lao động hoặc giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp để thay thế giấy tờ chứng minh kinh nghiệm làm việc trong lĩnh vực phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K4.a",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "Văn bằng, chứng chỉ hoặc giấy chứng nhận chứng minh đào tạo ít nhất 01 năm",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "Văn bằng, chứng chỉ hoặc giấy chứng nhận chứng minh đào tạo ít nhất 01 năm"
+      ],
+      "ly_do_llm": {
+       "ma": "tach",
+       "giai_thich": "Hai giấy tờ cùng phải có, kiểm tra riêng được nên tách."
+      }
+     },
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "văn bản xác nhận của người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc của lao động kỹ thuật đó",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "văn bản xác nhận của người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc của lao động kỹ thuật đó"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "ND_219-2025.D19.K4.b",
+    "dong": [
+     {
+      "loai": "menh_de",
+      "vai": "ket_luan",
+      "menh_de": "Văn bản xác nhận của người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc của lao động kỹ thuật đó",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "trich": [
+       "Văn bản xác nhận của người sử dụng lao động tại nước ngoài về số năm kinh nghiệm làm việc của lao động kỹ thuật đó"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 71,
+  "output_tokens": 28281,
+  "cost_vnd": 140.24
+ },
+ "boc_rao": false
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Nội quy lao động phải được thông báo đến người lao động và những nội dung chính phải được niêm yết ở những nơi cần thiết tại nơi làm việc.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Nội quy lao động phải được thông báo đến người lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"những nội dung chính phải được niêm yết ở những nơi cần thiết tại nơi làm việc\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539366424-b92b6c84",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 745
+   },
+   "input_tokens": 2407,
+   "output_tokens": 73,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_36cfeff3c455c37bb730e5d6"
+   }
+  }
+ }
+}

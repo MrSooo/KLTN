@@ -1,0 +1,136 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D43.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "ảnh hưởng đến việc làm của nhiều người lao động",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "chia, tách, hợp nhất, sáp nhập",
+      "bán, cho thuê, chuyển đổi loại hình doanh nghiệp",
+      "chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã"
+     ],
+     "trich": [
+      "Trong trường hợp chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã mà ảnh hưởng đến việc làm của nhiều người lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Một điều kiện áp dụng chung cho cùng một nghĩa vụ; các trường hợp đưa vào liet_ke."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "xây dựng phương án sử dụng lao động",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người sử dụng lao động phải xây dựng phương án sử dụng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "targets": [
+      "BLLD_45-2019.D44"
+     ],
+     "gan_vao": 1,
+     "trich": [
+      "theo quy định tại Điều 44 của Bộ luật này"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D43.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện phương án sử dụng lao động đã được thông qua",
+     "chu_the": {
+      "chu": "Người sử dụng lao động hiện tại và người sử dụng lao động kế tiếp",
+      "loai": [
+       "E",
+       "E"
+      ],
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động hiện tại và người sử dụng lao động kế tiếp có trách nhiệm thực hiện phương án sử dụng lao động đã được thông qua"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D43.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị thôi việc",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động bị thôi việc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "nhận trợ cấp mất việc làm",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động",
+      "được nhận trợ cấp mất việc làm"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "targets": [
+      "BLLD_45-2019.D47"
+     ],
+     "gan_vao": 1,
+     "trich": [
+      "theo quy định tại Điều 47 của Bộ luật này"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

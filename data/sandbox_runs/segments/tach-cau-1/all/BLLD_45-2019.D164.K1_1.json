@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thực hiện đầy đủ thỏa thuận đã giao kết trong hợp đồng lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thực hiện đầy đủ thỏa thuận đã giao kết trong hợp đồng lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539876360-bc2b1b26",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 306
+   },
+   "input_tokens": 2390,
+   "output_tokens": 41,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_9c0a9e8df9d01d6baf09c64d"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp thỏa ước lao động tập thể doanh nghiệp, thỏa ước lao động tập thể có nhiều doanh nghiệp, thỏa ước lao động tập thể ngành quy định về quyền, nghĩa vụ và lợi ích của người lao động khác nhau thì thực hiện theo nội dung có lợi nhất cho người lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thỏa ước lao động tập thể doanh nghiệp, thỏa ước lao động tập thể có nhiều doanh nghiệp, thỏa ước lao động tập thể ngành quy định về quyền, nghĩa vụ và lợi ích của người lao động khác nhau\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thực hiện theo nội dung có lợi nhất cho người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538974278-15bfcd69",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 723
+   },
+   "input_tokens": 2439,
+   "output_tokens": 102,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_d23a5c55486422bd6e167385"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D41.K3",
+ "phien_ban": "vai-nhom-2",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D41.K3\",\n \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D41.K1\"\n  },\n  {\n   \"cum\": \"Điều 46 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D46\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp người sử dụng lao động không muốn nhận lại người lao động và người lao động đồng ý thì ngoài khoản tiền người sử dụng lao động phải trả theo quy định tại khoản 1 Điều này và trợ cấp thôi việc theo quy định tại Điều 46 của Bộ luật này, hai bên thỏa thuận khoản tiền bồi thường thêm cho người lao động nhưng ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động để chấm dứt hợp đồng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"người sử dụng lao động không muốn nhận lại người lao động\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"người lao động đồng ý\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"ngoài khoản tiền người sử dụng lao động phải trả theo quy định tại khoản 1 Điều này và trợ cấp thôi việc theo quy định tại Điều 46 của Bộ luật này, hai bên thỏa thuận khoản tiền bồi thường thêm cho người lao động\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động\",\n     \"noi_truoc\": [\n      \"nhưng\"\n     ]\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"chấm dứt hợp đồng lao động\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D41.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"muốn nhận lại người lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"đồng ý\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người lao động\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"trả\",\n    \"khoản tiền\",\n    \"và trợ cấp thôi việc\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"thỏa thuận khoản tiền bồi thường thêm cho người lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"hai bên\",\n    \"loai\": [\n     \"E\",\n     \"W\"\n    ]\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"doan\": [\n    \"ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m5\",\n   \"doan\": [\n    \"chấm dứt hợp đồng lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"hai bên\",\n    \"loai\": [\n     \"E\",\n     \"W\"\n    ]\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"C\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "ZnAGa9K5D4aj9tMPrrj4uAo",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 8257
+   },
+   "input_tokens": 4276,
+   "output_tokens": 2912,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_75943bc1ea51079fc412c0a7"
+   }
+  }
+ }
+}

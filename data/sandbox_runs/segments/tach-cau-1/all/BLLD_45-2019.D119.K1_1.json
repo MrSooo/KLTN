@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động sử dụng từ 10 người lao động trở lên phải đăng ký nội quy lao động tại cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh nơi người sử dụng lao động đăng ký kinh doanh.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sử dụng từ 10 người lao động trở lên\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải đăng ký nội quy lao động tại cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh nơi người sử dụng lao động đăng ký kinh doanh\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539371054-97aaedd4",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 812
+   },
+   "input_tokens": 2424,
+   "output_tokens": 119,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_7d44c10ec081cb2dcba9e11a"
+   }
+  }
+ }
+}

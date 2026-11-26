@@ -1,0 +1,34 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T20:55:24+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0000\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D53.K2\",\n    \"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n    \"cac_muc_con\": [\n     \"Đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động trong khoảng thời gian nhất định;\",\n     \"Thay thế người lao động trong thời gian nghỉ thai sản, bị tai nạn lao động, bệnh nghề nghiệp hoặc phải thực hiện các nghĩa vụ công dân;\",\n     \"Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D53.K3\",\n    \"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Bên thuê lại lao động không được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n    \"cac_muc_con\": [\n     \"Để thay thế người lao động đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động;\",\n     \"Không có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động;\",\n     \"Thay thế người lao động bị cho thôi việc do thay đổi cơ cấu, công nghệ, vì lý do kinh tế hoặc chia, tách, hợp nhất, sáp nhập.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"use_subcontracted_labor\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0001\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D56.K6\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động\",\n    \"khoan_cha\": \"Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:\",\n    \"chu_don_vi\": \"Xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động khi bên thuê lại lao động trả lại người lao động do vi phạm kỷ luật lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D57.K5\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trả lại người lao động thuê lại không đáp ứng yêu cầu như đã thỏa thuận hoặc vi phạm kỷ luật lao động cho doanh nghiệp cho thuê lại lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"return_subcontracted_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0002\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K1\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n    \"cac_muc_con\": [\n     \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\",\n     \"Có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc; có đủ sức khỏe theo quy định của Bộ trưởng Bộ Y tế;\",\n     \"Không phải là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam;\",\n     \"Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp, trừ trường hợp quy định tại Điều 154 của Bộ luật này.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D157\",\n    \"tieu_de_dieu\": \"Cấp, cấp lại, gia hạn, thu hồi giấy phép lao động, giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chính phủ quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động đối với người lao động nước ngoài làm việc tại Việt Nam.\"\n   },\n   \"vi_tu_chung\": [\n    \"foreign_worker_working_in_vietnam\"\n   ]\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_60912b2fbcec0b69e5432aac",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0000",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Không có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động;"
+   },
+   {
+    "cap_id": "P0001",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0002",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 65,
+  "output_tokens": 380,
+  "cost_vnd": 3.82
+ },
+ "boc_rao": false
+}

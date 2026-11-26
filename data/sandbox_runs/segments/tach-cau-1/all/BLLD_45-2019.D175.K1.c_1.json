@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Phân biệt đối xử về tiền lương, thời giờ làm việc, các quyền và nghĩa vụ khác trong quan hệ lao động;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Phân biệt đối xử về tiền lương, thời giờ làm việc, các quyền và nghĩa vụ khác trong quan hệ lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540014422-966c53a5",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 352
+   },
+   "input_tokens": 2400,
+   "output_tokens": 51,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_91524df83a014c401c4cd2a1"
+   }
+  }
+ }
+}

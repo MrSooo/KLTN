@@ -1,0 +1,30 @@
+{
+ "cau": "Yêu cầu tham gia, không tham gia hoặc ra khỏi tổ chức đại diện người lao động tại cơ sở để được tuyển dụng, giao kết hoặc gia hạn hợp đồng lao động;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Yêu cầu\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tham gia\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không tham gia\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"ra khỏi\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"tổ chức đại diện người lao động tại cơ sở\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"để được\",\"ap_cho\":[\"m4\",\"m5\",\"m6\"]},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"tuyển dụng\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"giao kết\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"gia hạn\"},{\"id\":\"c4\",\"loai\":\"dung_chung\",\"chu\":\"hợp đồng lao động\",\"ap_cho\":[\"m4\",\"m5\",\"m6\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-T00Da5dF6oHV7w-h-J-IBA",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1568
+   },
+   "input_tokens": 937,
+   "output_tokens": 1824,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_995d57e1f984f4181f9ca977"
+   }
+  }
+ }
+}

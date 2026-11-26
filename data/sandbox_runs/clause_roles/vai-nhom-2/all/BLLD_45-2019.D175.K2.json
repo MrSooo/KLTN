@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D175.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D175.K2\",\n \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Can thiệp, thao túng quá trình thành lập, bầu cử, xây dựng kế hoạch công tác và tổ chức thực hiện các hoạt động của tổ chức đại diện người lao động tại cơ sở, bao gồm cả việc hỗ trợ tài chính hoặc các biện pháp kinh tế khác nhằm làm vô hiệu hóa hoặc suy yếu việc thực hiện chức năng đại diện của tổ chức đại diện người lao động tại cơ sở hoặc phân biệt đối xử giữa các tổ chức đại diện người lao động tại cơ sở.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Can thiệp\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thao túng\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"quá trình thành lập, bầu cử, xây dựng kế hoạch công tác và tổ chức thực hiện các hoạt động của tổ chức đại diện người lao động tại cơ sở, bao gồm cả việc hỗ trợ tài chính hoặc các biện pháp kinh tế khác nhằm làm vô hiệu hóa hoặc suy yếu việc thực hiện chức năng đại diện của tổ chức đại diện người lao động tại cơ sở hoặc phân biệt đối xử giữa các tổ chức đại diện người lao động tại cơ sở\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D175.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Can thiệp\",\n    \"quá trình thành lập, bầu cử, xây dựng kế hoạch công tác và tổ chức thực hiện các hoạt động của tổ chức đại diện người lao động tại cơ sở, bao gồm cả việc hỗ trợ tài chính hoặc các biện pháp kinh tế khác nhằm làm vô hiệu hóa hoặc suy yếu việc thực hiện chức năng đại diện của tổ chức đại diện người lao động tại cơ sở hoặc phân biệt đối xử giữa các tổ chức đại diện người lao động tại cơ sở\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"thao túng\",\n    \"quá trình thành lập, bầu cử, xây dựng kế hoạch công tác và tổ chức thực hiện các hoạt động của tổ chức đại diện người lao động tại cơ sở, bao gồm cả việc hỗ trợ tài chính hoặc các biện pháp kinh tế khác nhằm làm vô hiệu hóa hoặc suy yếu việc thực hiện chức năng đại diện của tổ chức đại diện người lao động tại cơ sở hoặc phân biệt đối xử giữa các tổ chức đại diện người lao động tại cơ sở\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795546900009-e392e65d",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3553
+   },
+   "input_tokens": 3918,
+   "output_tokens": 423,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_35425437464e6dee55834082"
+   }
+  }
+ }
+}

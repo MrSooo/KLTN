@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D203.K3.a",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D203.K3.a\",\n \"tieu_de_dieu\": \"Quyền của các bên trước và trong quá trình đình công\",\n \"khoan_cha\": \"Người sử dụng lao động có quyền sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chấp nhận toàn bộ hoặc một phần yêu cầu và thông báo bằng văn bản cho tổ chức đại diện người lao động đang tổ chức và lãnh đạo đình công;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chấp nhận toàn bộ hoặc một phần yêu cầu\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thông báo bằng văn bản cho tổ chức đại diện người lao động đang tổ chức và lãnh đạo đình công\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D203.K3.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Chấp nhận toàn bộ hoặc một phần yêu cầu\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"thông báo bằng văn bản cho tổ chức đại diện người lao động đang tổ chức và lãnh đạo đình công\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "9_0Ga-v3A5Gj9tMPmtrywQw",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1147
+   },
+   "input_tokens": 4147,
+   "output_tokens": 1453,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_b2eef04ad2fffd707171a244"
+   }
+  }
+ }
+}

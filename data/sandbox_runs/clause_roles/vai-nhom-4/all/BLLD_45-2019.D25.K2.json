@@ -1,0 +1,65 @@
+{
+ "unit_id": "BLLD_45-2019.D25.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D25.K2\",\n \"tieu_de_dieu\": \"1:Thời 2:gian 3:thử 4:việc\",\n \"khoan_cha\": \"1:Thời 2:gian 3:thử 4:việc 5:do 6:hai 7:bên 8:thỏa 9:thuận 10:căn 11:cứ 12:vào 13:tính 14:chất 15:và 16:mức 17:độ 18:phức 19:tạp 20:của 21:công 22:việc 23:nhưng 24:chỉ 25:được 26:thử 27:việc 28:một 29:lần 30:đối 31:với 32:một 33:công 34:việc 35:và 36:bảo 37:đảm 38:điều 39:kiện 40:sau 41:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Không quá 60 ngày đối với công việc có chức danh nghề nghiệp cần trình độ chuyên môn, kỹ thuật từ cao đẳng trở lên;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Không 2:quá 3:60 4:ngày 5:đối 6:với 7:công 8:việc 9:có 10:chức 11:danh 12:nghề 13:nghiệp 14:cần 15:trình 16:độ 17:chuyên 18:môn, 19:kỹ 20:thuật 21:từ 22:cao 23:đẳng 24:trở 25:lên\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D25.K2\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-4\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-4\"\n    ],\n    \"loai\": \"D\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:5-25\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-e52515ed8a274e539aeacf2637d60b26",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 3978,
+   "completion_tokens_details": {
+    "reasoning_tokens": 455
+   },
+   "input_tokens": 2570,
+   "output_tokens": 733,
+   "prompt_tokens_details": {
+    "cached_tokens": 3978
+   },
+   "x_ckey": {
+    "cost": 11.69,
+    "cost_is_estimate": false,
+    "request_id": "req_874e477a1ddae8d24a6ec6bd"
+   }
+  }
+ },
+ "phan_hoi_1": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D25.K2\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loai\": \"ket_luan\",\n   \"loi\": [\n    \"s1.m1:1-4\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-4\"\n    ],\n    \"loai\": \"D\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loai\": \"dieu_kien\",\n   \"loi\": [\n    \"s1.m1:5-25\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-0d7f119755b6416d868b13c189870d64",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1168
+   },
+   "input_tokens": 6024,
+   "output_tokens": 1470,
+   "x_ckey": {
+    "cost": 12.03,
+    "cost_is_estimate": false,
+    "request_id": "req_2499855699a6873b9bd301ab"
+   }
+  }
+ },
+ "sua": "Máy kiểm báo các lỗi sau ở đầu ra trên:\n- dòng có trường lạ ['loai']; chỉ được dùng ['chu_the', 'chua_ro', 'cuc', 'doi_so', 'liet_ke', 'loi', 'nguon', 'nhom_hoac', 'phuong_thuc', 'quy_tac', 'vai']\n- dòng có trường lạ ['loai']; chỉ được dùng ['chu_the', 'chua_ro', 'cuc', 'doi_so', 'liet_ke', 'loi', 'nguon', 'nhom_hoac', 'phuong_thuc', 'quy_tac', 'vai']\n- trường thiếu [] / thừa ['khoa_thua']\n- trường thiếu [] / thừa ['khoa_thua']\nSửa đúng các lỗi đó (khoảng ghi theo số âm tiết in sẵn trong đoạn) và trả lại TOÀN BỘ JSON của đơn vị, cùng khuôn, không chữ giải thích.",
+ "model_1": "martha02091945/gemini-3.8-flash"
+}

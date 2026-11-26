@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thời điểm trả lương do hai bên thỏa thuận và phải được ấn định vào một thời điểm có tính chu kỳ.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thời điểm trả lương\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"do hai bên thỏa thuận\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải được ấn định vào một thời điểm có tính chu kỳ\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539076825-766c89b5",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 419
+   },
+   "input_tokens": 2400,
+   "output_tokens": 93,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_83d864a5a4caed676fdf7b02"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động tham gia đình công không được trả lương và các quyền lợi khác theo quy định của pháp luật, trừ trường hợp các bên có thỏa thuận khác.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động tham gia đình công\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không được trả lương và các quyền lợi khác theo quy định của pháp luật\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"trừ trường hợp các bên có thỏa thuận khác\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-B1MDa8nBE8_-1e8Pke7bsAU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1016
+   },
+   "input_tokens": 933,
+   "output_tokens": 1106,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_7d27a31bd87fe977f6b43840"
+   }
+  }
+ }
+}

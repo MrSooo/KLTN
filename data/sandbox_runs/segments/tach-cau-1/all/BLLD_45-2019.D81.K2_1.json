@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Doanh nghiệp thuộc đối tượng áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp nhưng chưa có thỏa ước lao động tập thể doanh nghiệp thì có thể xây dựng thỏa ước lao động tập thể doanh nghiệp với những nội dung có lợi hơn cho người lao động so với thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Doanh nghiệp\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thuộc đối tượng áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"chưa có thỏa ước lao động tập thể doanh nghiệp\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"có thể xây dựng thỏa ước lao động tập thể doanh nghiệp với những nội dung có lợi hơn cho người lao động so với thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538982555-03a0624c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 914
+   },
+   "input_tokens": 2468,
+   "output_tokens": 180,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_158f68885a4d56de25172352"
+   }
+  }
+ }
+}

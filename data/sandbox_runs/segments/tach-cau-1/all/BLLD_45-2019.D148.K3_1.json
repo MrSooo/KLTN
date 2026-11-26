@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Nhà nước khuyến khích sử dụng người lao động cao tuổi làm việc phù hợp với sức khỏe để bảo đảm quyền lao động và sử dụng hiệu quả nguồn nhân lực.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Nhà nước\",\n      \"ap_cho\": [\"m1\", \"m2\", \"m3\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"khuyến khích sử dụng người lao động cao tuổi làm việc phù hợp với sức khỏe\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"bảo đảm quyền lao động\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"sử dụng hiệu quả nguồn nhân lực\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539686338-032347c0",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2798
+   },
+   "input_tokens": 2409,
+   "output_tokens": 180,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_31165f7f05c7ed514bfbe9ac"
+   }
+  }
+ }
+}

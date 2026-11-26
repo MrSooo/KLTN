@@ -1,0 +1,170 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D153.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "xuất trình giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động nước ngoài phải xuất trình giấy phép lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có yêu cầu của cơ quan nhà nước có thẩm quyền",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "khi có yêu cầu của cơ quan nhà nước có thẩm quyền"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm 'khi ...' giới hạn hoàn cảnh áp dụng nên tách thành điều kiện."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D153.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bị buộc xuất cảnh",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động sẽ bị buộc xuất cảnh hoặc trục xuất"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai chế tài thay thế, mỗi chế tài kiểm được riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bị trục xuất",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động sẽ bị buộc xuất cảnh hoặc trục xuất"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1"
+    },
+    {
+     "loai": "bo_qua",
+     "trich": [
+      "theo quy định của pháp luật về nhập cảnh, xuất cảnh, quá cảnh, cư trú của người nước ngoài tại Việt Nam"
+     ],
+     "ly_do_llm": {
+      "ma": "dan_chieu_ngoai",
+      "giai_thich": "Dẫn chiếu sang pháp luật về nhập cảnh, không phải bổ ngữ."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D153.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "sử dụng người lao động nước ngoài làm việc cho mình mà không có giấy phép lao động",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động sử dụng người lao động nước ngoài làm việc cho mình mà không có giấy phép lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Hai vế gắn với nhau thành một hoàn cảnh vi phạm duy nhất; tách sẽ phải gán chủ thể cho 'không có giấy phép' một cách khiên cưỡng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bị xử lý",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì bị xử lý"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "trich": [
+      "theo quy định của pháp luật"
+     ],
+     "ly_do_llm": {
+      "ma": "dan_chieu_mo",
+      "giai_thich": "Dẫn chiếu chung tới pháp luật, không phải bổ ngữ."
+     }
+    }
+   ]
+  }
+ ]
+}

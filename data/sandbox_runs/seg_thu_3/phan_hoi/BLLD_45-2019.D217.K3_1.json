@@ -1,0 +1,30 @@
+{
+ "cau": "Người lợi dụng đình công gây mất trật tự, an toàn công cộng, làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động; người có hành vi cản trở thực hiện quyền đình công, kích động, lôi kéo, ép buộc người lao động đình công; người có hành vi trù dập, trả thù người tham gia đình công, người lãnh đạo cuộc đình công thì tùy theo mức độ vi phạm mà bị xử phạt vi phạm hành chính hoặc truy cứu trách nhiệm hình sự, nếu gây thiệt hại thì phải bồi thường theo quy định của pháp luật.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lợi dụng đình công\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"gây mất trật tự, an toàn công cộng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"người có hành vi\",\"ap_cho\":[\"m3\",\"m4\",\"m5\",\"m6\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"cản trở thực hiện quyền đình công\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"kích động\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"lôi kéo\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"ép buộc\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"người lao động đình công\",\"ap_cho\":[\"m4\",\"m5\",\"m6\"]},{\"id\":\"c4\",\"loai\":\"dung_chung\",\"chu\":\"người có hành vi\",\"ap_cho\":[\"m7\",\"m8\"]},{\"id\":\"m7\",\"loai\":\"menh_de\",\"chu\":\"trù dập\"},{\"id\":\"m8\",\"loai\":\"menh_de\",\"chu\":\"trả thù\"},{\"id\":\"c5\",\"loai\":\"dung_chung\",\"chu\":\"người tham gia đình công, người lãnh đạo cuộc đình công\",\"ap_cho\":[\"m7\",\"m8\"]},{\"id\":\"c6\",\"loai\":\"dung_chung\",\"chu\":\"tùy theo mức độ vi phạm mà bị\",\"ap_cho\":[\"m9\",\"m10\"]},{\"id\":\"m9\",\"loai\":\"menh_de\",\"chu\":\"xử phạt vi phạm hành chính\"},{\"id\":\"m10\",\"loai\":\"menh_de\",\"chu\":\"truy cứu trách nhiệm hình sự\"},{\"id\":\"m11\",\"loai\":\"menh_de\",\"chu\":\"gây thiệt hại\"},{\"id\":\"m12\",\"loai\":\"menh_de\",\"chu\":\"phải bồi thường theo quy định của pháp luật\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-8VUDa4W5BIOL2roPkKWNgAE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3776
+   },
+   "input_tokens": 1024,
+   "output_tokens": 4266,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ab060094b8476c1ddf3a2c27"
+   }
+  }
+ }
+}

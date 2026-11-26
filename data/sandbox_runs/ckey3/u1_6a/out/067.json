@@ -1,0 +1,154 @@
+{
+ "units": [
+  {
+   "unit_id": "ND_219-2025.D32.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm việc đúng với nội dung trong giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp",
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Làm việc không đúng với nội dung trong giấy xác nhận không thuộc diện cấp giấy phép lao động đã được cấp."
+     ],
+     "chua_ro": [
+      {
+       "thanh_phan": "chủ thể",
+       "nguyen_nhan": "chu_the",
+       "cau_hoi": "Ai là người làm việc không đúng nội dung giấy xác nhận (khoản không nêu chủ thể)?"
+      }
+     ],
+     "ly_do_llm": {
+      "ma": "chua_ro",
+      "giai_thich": "Khoản chỉ nêu hành vi, chủ thể không có trong chữ."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_219-2025.D32.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có văn bản thông báo của người sử dụng lao động tại nước ngoài về việc không tiếp tục làm việc tại Việt Nam",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Có văn bản thông báo của người sử dụng lao động tại nước ngoài về việc không tiếp tục làm việc tại Việt Nam."
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_219-2025.D32.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "chấm dứt hoạt động",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "bo_ngu": [
+      {
+       "original_text": "tại Việt Nam hoặc nước ngoài",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Người sử dụng lao động tại Việt Nam hoặc nước ngoài chấm dứt hoạt động."
+     ],
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm chỉ nơi chốn của người sử dụng lao động, bỏ đi vẫn cùng hành vi chấm dứt hoạt động."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_219-2025.D32.K4",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thực hiện đúng quy định về cấp, cấp lại, gia hạn giấy xác nhận không thuộc diện cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người sử dụng lao động hoặc người lao động nước ngoài",
+      "loai": [
+       "E",
+       "W"
+      ],
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Người sử dụng lao động hoặc người lao động nước ngoài không thực hiện đúng quy định về cấp, cấp lại, gia hạn giấy xác nhận không thuộc diện cấp giấy phép lao động",
+      "quy định tại Nghị định này."
+     ],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Một hành vi vi phạm của hai loại chủ thể; cụm 'quy định tại Nghị định này' là tự dẫn chiếu, không tách dòng."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_219-2025.D32.K5",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thực hiện đúng quy định của pháp luật Việt Nam",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "bo_ngu": [
+      {
+       "original_text": "trong quá trình làm việc ở Việt Nam",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Người lao động nước ngoài trong quá trình làm việc ở Việt Nam không thực hiện đúng quy định của pháp luật Việt Nam"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị khởi tố, truy cứu trách nhiệm hình sự",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "mà bị khởi tố, truy cứu trách nhiệm hình sự."
+     ],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai sự kiện kiểm được riêng: vi phạm quy định pháp luật và bị truy cứu trách nhiệm hình sự."
+     }
+    }
+   ]
+  }
+ ]
+}

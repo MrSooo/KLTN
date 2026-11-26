@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Đối với công việc theo mùa vụ, công việc nhất định có thời hạn dưới 12 tháng thì nhóm người lao động từ đủ 18 tuổi trở lên có thể ủy quyền cho một người lao động trong nhóm để giao kết hợp đồng lao động; trong trường hợp này, hợp đồng lao động phải được giao kết bằng văn bản và có hiệu lực như giao kết với từng người lao động.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Đối với công việc theo mùa vụ, công việc nhất định có thời hạn dưới 12 tháng thì nhóm người lao động từ đủ 18 tuổi trở lên có thể ủy quyền cho một người lao động trong nhóm\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"giao kết hợp đồng lao động\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"hợp đồng lao động\",\"ap_cho\":[\"m3\",\"m4\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"phải được giao kết bằng văn bản\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"có hiệu lực như giao kết với từng người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-LbcFa8PLINqgvr0PxbKGqQg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2138
+   },
+   "input_tokens": 2316,
+   "output_tokens": 692,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_40f9cf2dd3b5ddbacf2fdc41"
+   }
+  }
+ }
+}

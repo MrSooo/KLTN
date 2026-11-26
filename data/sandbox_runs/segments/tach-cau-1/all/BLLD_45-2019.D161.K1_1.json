@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Lao động là người giúp việc gia đình là người lao động làm thường xuyên các công việc trong gia đình của một hoặc nhiều hộ gia đình.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Lao động là người giúp việc gia đình là người lao động làm thường xuyên các công việc trong gia đình của một hoặc nhiều hộ gia đình\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539863320-9e2a11c3",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 515
+   },
+   "input_tokens": 2403,
+   "output_tokens": 54,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_fe20e3091d3e8aa6b5c96dc9"
+   }
+  }
+ }
+}

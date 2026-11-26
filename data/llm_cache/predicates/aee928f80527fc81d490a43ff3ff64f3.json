@@ -1,0 +1,159 @@
+{
+ "task": "predicates",
+ "prompt_version": "names-2",
+ "role": "ten",
+ "requested_model": "claude-sonnet-5-5",
+ "created": "2026-11-18T15:59:50+00:00",
+ "system": "Bạn đặt TÊN VỊ TỪ cho các mệnh đề lấy từ văn bản pháp luật lao động Việt Nam. Mỗi mệnh đề là lõi của một điều đúng/sai được (động từ hoặc tính chất cộng tân ngữ chính); chủ thể, chữ chỉ phương thức (phải, được, cấm), chữ phủ định và bổ ngữ đã được bỏ ra và ghi riêng. Hai mệnh đề nêu CÙNG MỘT sự kiện pháp lý phải mang cùng một tên, kể cả khi viết khác chữ; hai mệnh đề nêu sự kiện khác nhau phải mang tên khác.\n\nĐẦU VÀO là danh sách \"chu\". Mỗi mục có:\n- chu_id: mã của chữ. chu: chữ của mệnh đề, nguyên văn.\n- params: loại các tham số theo THỨ TỰ: vị trí đầu là chủ thể (nếu mệnh đề có chủ thể), các vị trí sau là đối số. W người lao động, E người sử dụng lao động, C hợp đồng, J nghề hoặc công việc, G vùng, D ngày hoặc mốc thời gian, A số tiền hoặc số lượng, ? chưa rõ loại. Rỗng nếu mệnh đề không có chủ thể hay đối số.\n- vai: các vai mệnh đề từng đóng (ket_luan: hệ quả; dieu_kien: khi nào áp dụng; ngoai_le: trừ khi nào). so_lan: số lần chữ này xuất hiện.\n- ngu_canh: tối đa hai nơi chữ xuất hiện đầu tiên, mỗi nơi có tieu_de_dieu, khoan_cha, chu_don_vi và vai của mệnh đề ở đó. Chỉ dùng để hiểu nghĩa của chữ; đừng đặt tên theo cả đoạn.\n- ung_vien: các tên đã có, cùng SỐ tham số và loại tương thích (? khớp mọi loại); mỗi ứng viên kèm params và vài chữ đã dùng tên đó (vi_du).\n- loi_lan_truoc: chỉ có khi chữ được hỏi lại; là lý do lần trả lời trước không được nhận. Hãy sửa đúng lỗi đó.\n\nNHIỆM VỤ: với MỖI chữ trong danh sách, trả về đúng MỘT mục gồm chu_id, kieu và ten.\n- kieu \"reuse\": ten là một tên nằm trong ung_vien của chính chữ đó, HOẶC một tên mà bạn đã đặt (kieu \"new\") cho một chữ đứng TRƯỚC chữ này trong danh sách (theo thứ tự các mục của \"chu\"; không được trỏ tới chữ đứng sau) và có params tương thích với chữ này.\n- kieu \"new\": ten là một tên mới.\n\nKHI NÀO ĐƯỢC \"reuse\": khi chữ nêu CÙNG MỘT sự kiện pháp lý với chữ đã dùng tên đó: cùng hành vi hoặc tình trạng, cùng đối tượng, cùng phạm vi. Khác cách viết, khác thứ tự từ, dùng từ đồng nghĩa, viết tắt hay viết đầy đủ mà vẫn là một sự kiện thì PHẢI reuse. Gần nghĩa, rộng hơn, hẹp hơn hoặc ngược nghĩa thì KHÔNG phải cùng sự kiện: đặt tên mới. Chỉ chung vài từ hoặc cùng chủ đề là chưa đủ. Không chắc thì đặt tên mới.\n\nCÁCH ĐẶT TÊN MỚI:\n- Tiếng Anh, snake_case: chỉ gồm chữ thường a-z, chữ số và dấu gạch dưới; bắt đầu bằng chữ cái; dài 3 đến 50 ký tự.\n- Tên nêu sự kiện, không nêu ai làm: không ghi chủ thể, không ghi params vào tên (params đã được ghi riêng).\n- Không ghi phương thức vào tên (không must_, may_, allowed_, prohibited_): phương thức được ghi riêng.\n- Dạng khẳng định: không mở đầu bằng not_, no_, non_ và không đặt tên là not hay non. Chữ có ý phủ định trong nghĩa thì chọn một từ khẳng định có nghĩa tương đương.\n- Tên mới không được trùng với bất kỳ tên nào đã có, kể cả tên không nằm trong ung_vien của chữ đó; trùng thì chữ bị hỏi lại sau. Hãy đặt tên đủ cụ thể để ít trùng.\n\nVÍ DỤ (chữ bịa để minh hoạ). Giả sử năm chữ sau đứng theo đúng thứ tự trong danh sách và chưa có ứng viên nào:\n  1. \"cấp thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> new issue_factory_access_card  (tên mới)\n  2. \"phát thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> reuse issue_factory_access_card  (cùng một sự kiện với chữ 1, chỉ khác chữ; dùng lại tên do chính bạn đặt cho chữ 1 (đứng trước, tham số tương thích))\n  3. \"thu hồi thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> new revoke_factory_access_card  (việc ngược lại, không phải cùng sự kiện: tên mới)\n  4. \"cấp thẻ ra vào khu xưởng có thời hạn dưới 30 ngày\" params [\"E\", \"W\"] -> new issue_short_term_factory_access_card  (hẹp hơn chữ 1: tên mới)\n  5. \"có thẻ ra vào khu xưởng\" params [\"W\"] -> new holds_factory_access_card  (nêu tình trạng có thẻ, không phải việc cấp thẻ: tên mới)\n\nĐẦU RA: chỉ JSON đúng lược đồ đã cho, không thêm chữ nào khác. Mọi chữ trong danh sách đều phải có đúng một mục; chu_id chép nguyên văn; không thêm mục cho chữ ngoài danh sách.",
+ "user": "{\n\"chu\": [\n{\n\"chu_id\": \"C0000\",\n\"chu\": \"giao kết hợp đồng lao động với doanh nghiệp cho thuê lại lao động\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D52.K1\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Cho thuê lại lao động là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động, sau đó người lao động được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác mà vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0001\",\n\"chu\": \"được chuyển sang làm việc\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D52.K1\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Cho thuê lại lao động là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động, sau đó người lao động được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác mà vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0002\",\n\"chu\": \"chịu sự điều hành của người sử dụng lao động khác\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D52.K1\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Cho thuê lại lao động là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động, sau đó người lao động được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác mà vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0003\",\n\"chu\": \"duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D52.K1\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Cho thuê lại lao động là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động, sau đó người lao động được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác mà vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0004\",\n\"chu\": \"là cho thuê lại lao động\",\n\"params\": [],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D52.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Cho thuê lại lao động là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động, sau đó người lao động được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác mà vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0005\",\n\"chu\": \"là ngành, nghề kinh doanh có điều kiện\",\n\"params\": [\n\"?\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D52.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Hoạt động cho thuê lại lao động là ngành, nghề kinh doanh có điều kiện, chỉ được thực hiện bởi các doanh nghiệp có Giấy phép hoạt động cho thuê lại lao động và áp dụng đối với một số công việc nhất định.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0006\",\n\"chu\": \"được thực hiện bởi các doanh nghiệp có Giấy phép hoạt động cho thuê lại lao động\",\n\"params\": [\n\"?\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D52.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Hoạt động cho thuê lại lao động là ngành, nghề kinh doanh có điều kiện, chỉ được thực hiện bởi các doanh nghiệp có Giấy phép hoạt động cho thuê lại lao động và áp dụng đối với một số công việc nhất định.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0007\",\n\"chu\": \"áp dụng đối với một số công việc nhất định\",\n\"params\": [\n\"?\",\n\"J\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D52.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Hoạt động cho thuê lại lao động là ngành, nghề kinh doanh có điều kiện, chỉ được thực hiện bởi các doanh nghiệp có Giấy phép hoạt động cho thuê lại lao động và áp dụng đối với một số công việc nhất định.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0008\",\n\"chu\": \"thời hạn cho thuê lại lao động tối đa là 12 tháng\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D53.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời hạn cho thuê lại lao động đối với người lao động tối đa là 12 tháng.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0009\",\n\"chu\": \"sử dụng lao động thuê lại\",\n\"params\": [\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 2,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D53.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\"\n},\n{\n\"don_vi\": \"BLLD_45-2019.D53.K3\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Bên thuê lại lao động không được sử dụng lao động thuê lại trong trường hợp sau đây:\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0010\",\n\"chu\": \"đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động trong khoảng thời gian nhất định\",\n\"params\": [\n\"E\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D53.K2.a\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n\"khoan_cha\": \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n\"chu_don_vi\": \"Đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động trong khoảng thời gian nhất định;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0011\",\n\"chu\": \"thay thế người lao động\",\n\"params\": [\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D53.K2.b\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n\"khoan_cha\": \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n\"chu_don_vi\": \"Thay thế người lao động trong thời gian nghỉ thai sản, bị tai nạn lao động, bệnh nghề nghiệp hoặc phải thực hiện các nghĩa vụ công dân;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0012\",\n\"chu\": \"có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao\",\n\"params\": [\n\"E\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D53.K2.c\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n\"khoan_cha\": \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n\"chu_don_vi\": \"Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0013\",\n\"chu\": \"thay thế người lao động đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động\",\n\"params\": [\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D53.K3.a\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n\"khoan_cha\": \"Bên thuê lại lao động không được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n\"chu_don_vi\": \"Để thay thế người lao động đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0014\",\n\"chu\": \"có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động\",\n\"params\": [\n\"E\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D53.K3.b\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n\"khoan_cha\": \"Bên thuê lại lao động không được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n\"chu_don_vi\": \"Không có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0015\",\n\"chu\": \"thay thế người lao động bị cho thôi việc\",\n\"params\": [\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D53.K3.c\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n\"khoan_cha\": \"Bên thuê lại lao động không được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n\"chu_don_vi\": \"Thay thế người lao động bị cho thôi việc do thay đổi cơ cấu, công nghệ, vì lý do kinh tế hoặc chia, tách, hợp nhất, sáp nhập.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0016\",\n\"chu\": \"chuyển người lao động thuê lại cho người sử dụng lao động khác\",\n\"params\": [\n\"E\",\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D53.K4\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Bên thuê lại lao động không được chuyển người lao động thuê lại cho người sử dụng lao động khác; không được sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0017\",\n\"chu\": \"sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động\",\n\"params\": [\n\"E\",\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D53.K4\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Bên thuê lại lao động không được chuyển người lao động thuê lại cho người sử dụng lao động khác; không được sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0018\",\n\"chu\": \"ký quỹ\",\n\"params\": [\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D54.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Doanh nghiệp cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Doanh nghiệp cho thuê lại lao động phải ký quỹ và được cấp Giấy phép hoạt động cho thuê lại lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0019\",\n\"chu\": \"được cấp Giấy phép hoạt động cho thuê lại lao động\",\n\"params\": [\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D54.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Doanh nghiệp cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Doanh nghiệp cho thuê lại lao động phải ký quỹ và được cấp Giấy phép hoạt động cho thuê lại lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0020\",\n\"chu\": \"ký kết hợp đồng cho thuê lại lao động bằng văn bản\",\n\"params\": [\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D55.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động phải ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0021\",\n\"chu\": \"được làm thành 02 bản, mỗi bên giữ 01 bản\",\n\"params\": [\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D55.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động phải ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0022\",\n\"chu\": \"gồm các nội dung chủ yếu\",\n\"params\": [\n\"C\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 2,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D55.K2.a\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n\"khoan_cha\": \"Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu sau đây:\",\n\"chu_don_vi\": \"Địa điểm làm việc, vị trí việc làm cần sử dụng lao động thuê lại, nội dung cụ thể của công việc, yêu cầu cụ thể đối với người lao động thuê lại;\"\n},\n{\n\"don_vi\": \"BLLD_45-2019.D55.K2.c\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n\"khoan_cha\": \"Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu sau đây:\",\n\"chu_don_vi\": \"Thời giờ làm việc, thời giờ nghỉ ngơi, điều kiện an toàn, vệ sinh lao động tại nơi làm việc;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0023\",\n\"chu\": \"gồm thời hạn thuê lại lao động\",\n\"params\": [\n\"C\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D55.K2.b\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n\"khoan_cha\": \"Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu sau đây:\",\n\"chu_don_vi\": \"Thời hạn thuê lại lao động; thời gian bắt đầu làm việc của người lao động thuê lại;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0024\",\n\"chu\": \"gồm thời gian bắt đầu làm việc của người lao động thuê lại\",\n\"params\": [\n\"C\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D55.K2.b\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n\"khoan_cha\": \"Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu sau đây:\",\n\"chu_don_vi\": \"Thời hạn thuê lại lao động; thời gian bắt đầu làm việc của người lao động thuê lại;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0025\",\n\"chu\": \"gồm trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp\",\n\"params\": [\n\"C\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D55.K2.d\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n\"khoan_cha\": \"Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu sau đây:\",\n\"chu_don_vi\": \"Trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0026\",\n\"chu\": \"gồm nghĩa vụ của mỗi bên đối với người lao động\",\n\"params\": [\n\"C\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D55.K2.dd\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n\"khoan_cha\": \"Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu sau đây:\",\n\"chu_don_vi\": \"Nghĩa vụ của mỗi bên đối với người lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0027\",\n\"chu\": \"có thỏa thuận về quyền, lợi ích của người lao động thấp hơn so với hợp đồng lao động mà doanh nghiệp cho thuê lại lao động đã ký với người lao động\",\n\"params\": [\n\"C\",\n\"W\",\n\"C\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D55.K3\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Hợp đồng cho thuê lại lao động không được có những thỏa thuận về quyền, lợi ích của người lao động thấp hơn so với hợp đồng lao động mà doanh nghiệp cho thuê lại lao động đã ký với người lao động.\"\n}\n],\n\"ung_vien\": []\n}\n]\n}",
+ "output": {
+  "chu": [
+   {
+    "chu_id": "C0000",
+    "kieu": "new",
+    "ten": "conclude_contract_with_leasing_enterprise"
+   },
+   {
+    "chu_id": "C0001",
+    "kieu": "new",
+    "ten": "be_transferred_to_work_for_other_employer"
+   },
+   {
+    "chu_id": "C0002",
+    "kieu": "new",
+    "ten": "be_under_direction_of_other_employer"
+   },
+   {
+    "chu_id": "C0003",
+    "kieu": "new",
+    "ten": "maintain_labor_relation_with_contracting_employer"
+   },
+   {
+    "chu_id": "C0004",
+    "kieu": "new",
+    "ten": "constitutes_labor_leasing"
+   },
+   {
+    "chu_id": "C0005",
+    "kieu": "new",
+    "ten": "is_conditional_business_line"
+   },
+   {
+    "chu_id": "C0006",
+    "kieu": "new",
+    "ten": "performed_by_licensed_leasing_enterprises"
+   },
+   {
+    "chu_id": "C0007",
+    "kieu": "new",
+    "ten": "applies_to_specified_jobs"
+   },
+   {
+    "chu_id": "C0008",
+    "kieu": "new",
+    "ten": "leasing_term_max_12_months"
+   },
+   {
+    "chu_id": "C0009",
+    "kieu": "new",
+    "ten": "use_leased_worker"
+   },
+   {
+    "chu_id": "C0010",
+    "kieu": "new",
+    "ten": "meet_temporary_sudden_labor_demand_surge"
+   },
+   {
+    "chu_id": "C0011",
+    "kieu": "new",
+    "ten": "replace_worker_on_maternity_or_injury_leave"
+   },
+   {
+    "chu_id": "C0012",
+    "kieu": "new",
+    "ten": "has_demand_for_highly_skilled_labor"
+   },
+   {
+    "chu_id": "C0013",
+    "kieu": "new",
+    "ten": "replace_worker_during_strike_or_dispute"
+   },
+   {
+    "chu_id": "C0014",
+    "kieu": "new",
+    "ten": "has_specific_accident_compensation_agreement"
+   },
+   {
+    "chu_id": "C0015",
+    "kieu": "new",
+    "ten": "replace_worker_dismissed_for_restructuring"
+   },
+   {
+    "chu_id": "C0016",
+    "kieu": "new",
+    "ten": "transfer_leased_worker_to_other_employer"
+   },
+   {
+    "chu_id": "C0017",
+    "kieu": "new",
+    "ten": "use_leased_worker_from_unlicensed_enterprise"
+   },
+   {
+    "chu_id": "C0018",
+    "kieu": "new",
+    "ten": "place_security_deposit"
+   },
+   {
+    "chu_id": "C0019",
+    "kieu": "new",
+    "ten": "be_granted_labor_leasing_license"
+   },
+   {
+    "chu_id": "C0020",
+    "kieu": "new",
+    "ten": "conclude_written_labor_leasing_contract"
+   },
+   {
+    "chu_id": "C0021",
+    "kieu": "new",
+    "ten": "contract_made_in_two_copies"
+   },
+   {
+    "chu_id": "C0022",
+    "kieu": "new",
+    "ten": "contract_includes_essential_contents"
+   },
+   {
+    "chu_id": "C0023",
+    "kieu": "new",
+    "ten": "contract_includes_leasing_term"
+   },
+   {
+    "chu_id": "C0024",
+    "kieu": "new",
+    "ten": "contract_includes_work_start_time"
+   },
+   {
+    "chu_id": "C0025",
+    "kieu": "new",
+    "ten": "contract_includes_accident_compensation_liability"
+   },
+   {
+    "chu_id": "C0026",
+    "kieu": "new",
+    "ten": "contract_includes_parties_obligations_to_worker"
+   },
+   {
+    "chu_id": "C0027",
+    "kieu": "new",
+    "ten": "agree_lower_worker_rights_than_labor_contract"
+   }
+  ]
+ },
+ "model": "claude-sonnet-5-5",
+ "request_id": null,
+ "usage": null,
+ "produced_by": "claude_code_sandbox",
+ "producer_model_reported": "claude-sonnet-5-5",
+ "effort_reported": "high"
+}

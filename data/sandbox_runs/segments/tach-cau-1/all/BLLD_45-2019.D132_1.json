@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động, người lao động và cơ quan, tổ chức, cá nhân có liên quan đến lao động, sản xuất, kinh doanh phải thực hiện quy định của pháp luật về an toàn, vệ sinh lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người sử dụng lao động, người lao động và cơ quan, tổ chức, cá nhân có liên quan đến lao động, sản xuất, kinh doanh phải thực hiện quy định của pháp luật về an toàn, vệ sinh lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539483165-a6a025ab",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 682
+   },
+   "input_tokens": 2421,
+   "output_tokens": 72,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_e8c0f6977ac0ac6a7281bcb8"
+   }
+  }
+ }
+}

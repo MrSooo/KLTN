@@ -1,0 +1,51 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T17:02:54+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0230\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D201.K1\",\n    \"tieu_de_dieu\": \"Lấy ý kiến về đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi tiến hành đình công, tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công quy định tại Điều 198 của Bộ luật này có trách nhiệm lấy ý kiến của toàn thể người lao động hoặc thành viên ban lãnh đạo của các tổ chức đại diện người lao động tham gia thương lượng.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D204.K6\",\n    \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định hoãn hoặc ngừng đình công của cơ quan có thẩm quyền theo quy định tại Điều 210 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"organize_and_lead_labor_strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0231\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D202.K4\",\n    \"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Đến thời điểm bắt đầu đình công, nếu người sử dụng lao động vẫn không chấp nhận giải quyết yêu cầu của người lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D203.K2\",\n    \"tieu_de_dieu\": \"Quyền của các bên trước và trong quá trình đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công theo quy định tại Điều 198 của Bộ luật này có quyền sau đây:\",\n    \"cac_muc_con\": [\n     \"Rút quyết định đình công nếu chưa đình công hoặc chấm dứt đình công nếu đang đình công;\",\n     \"Yêu cầu Tòa án tuyên bố cuộc đình công là hợp pháp.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"organize_and_lead_labor_strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0232\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D202.K4\",\n    \"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Đến thời điểm bắt đầu đình công, nếu người sử dụng lao động vẫn không chấp nhận giải quyết yêu cầu của người lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D203.K3.a\",\n    \"tieu_de_dieu\": \"Quyền của các bên trước và trong quá trình đình công\",\n    \"khoan_cha\": \"Người sử dụng lao động có quyền sau đây:\",\n    \"chu_don_vi\": \"Chấp nhận toàn bộ hoặc một phần yêu cầu và thông báo bằng văn bản cho tổ chức đại diện người lao động đang tổ chức và lãnh đạo đình công;\"\n   },\n   \"vi_tu_chung\": [\n    \"accept_and_resolve_employee_demands\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0233\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D202.K4\",\n    \"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Đến thời điểm bắt đầu đình công, nếu người sử dụng lao động vẫn không chấp nhận giải quyết yêu cầu của người lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D204.K4\",\n    \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi tranh chấp lao động tập thể đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết theo quy định của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"organize_and_lead_labor_strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0234\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D202.K4\",\n    \"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Đến thời điểm bắt đầu đình công, nếu người sử dụng lao động vẫn không chấp nhận giải quyết yêu cầu của người lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D204.K6\",\n    \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định hoãn hoặc ngừng đình công của cơ quan có thẩm quyền theo quy định tại Điều 210 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"organize_and_lead_labor_strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0235\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D203.K2\",\n    \"tieu_de_dieu\": \"Quyền của các bên trước và trong quá trình đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công theo quy định tại Điều 198 của Bộ luật này có quyền sau đây:\",\n    \"cac_muc_con\": [\n     \"Rút quyết định đình công nếu chưa đình công hoặc chấm dứt đình công nếu đang đình công;\",\n     \"Yêu cầu Tòa án tuyên bố cuộc đình công là hợp pháp.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D204.K4\",\n    \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi tranh chấp lao động tập thể đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết theo quy định của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"organize_and_lead_labor_strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0236\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D203.K2\",\n    \"tieu_de_dieu\": \"Quyền của các bên trước và trong quá trình đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công theo quy định tại Điều 198 của Bộ luật này có quyền sau đây:\",\n    \"cac_muc_con\": [\n     \"Rút quyết định đình công nếu chưa đình công hoặc chấm dứt đình công nếu đang đình công;\",\n     \"Yêu cầu Tòa án tuyên bố cuộc đình công là hợp pháp.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D204.K6\",\n    \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định hoãn hoặc ngừng đình công của cơ quan có thẩm quyền theo quy định tại Điều 210 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"organize_and_lead_labor_strike\"\n   ]\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_7bb1e2ff984cacd40edf7773",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0230",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0231",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0232",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0233",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Khi tranh chấp lao động tập thể đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết theo quy định của Bộ luật này."
+   },
+   {
+    "cap_id": "P0234",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Khi đã có quyết định hoãn hoặc ngừng đình công của cơ quan có thẩm quyền theo quy định tại Điều 210 của Bộ luật này."
+   },
+   {
+    "cap_id": "P0235",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0236",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 29,
+  "output_tokens": 760,
+  "cost_vnd": 5.65
+ },
+ "boc_rao": false
+}

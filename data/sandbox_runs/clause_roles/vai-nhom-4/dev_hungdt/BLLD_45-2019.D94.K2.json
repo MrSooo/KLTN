@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D94.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "hungdt/om-gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D94.K2\",\n \"tieu_de_dieu\": \"1:Nguyên 2:tắc 3:trả 4:lương\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động không được hạn chế hoặc can thiệp vào quyền tự quyết chi tiêu lương của người lao động; không được ép buộc người lao động chi tiêu lương vào việc mua hàng hóa, sử dụng dịch vụ của người sử dụng lao động hoặc của đơn vị khác mà người sử dụng lao động chỉ định.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Người 2:sử 3:dụng 4:lao 5:động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:không 2:được\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:hạn 2:chế\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:can 2:thiệp\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    },\n    {\n     \"id\": \"s1.c3\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:vào 2:quyền 3:tự 4:quyết 5:chi 6:tiêu 7:lương 8:của 9:người 10:lao 11:động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:không 2:được 3:ép 4:buộc 5:người 6:lao 7:động 8:chi 9:tiêu 10:lương 11:vào 12:việc 13:mua 14:hàng 15:hóa, 16:sử 17:dụng 18:dịch 19:vụ 20:của 21:người 22:sử 23:dụng 24:lao 25:động 26:hoặc 27:của 28:đơn 29:vị 30:khác 31:mà 32:người 33:sử 34:dụng 35:lao 36:động 37:chỉ 38:định\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D94.K2\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"loi\": [\n        \"s1.m1:1-2\",\n        \"s1.c3:2-11\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"cam\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"khoang\": [\n          \"s1.c1:1-5\"\n        ],\n        \"loai\": \"E\"\n      },\n      \"doi_so\": [\n        {\n          \"loai\": \"W\"\n        }\n      ],\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m2\",\n      \"loi\": [\n        \"s1.m2:1-2\",\n        \"s1.c3:1-11\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"cam\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"khoang\": [\n          \"s1.c1:1-5\"\n        ],\n        \"loai\": \"E\"\n      },\n      \"doi_so\": [\n        {\n          \"loai\": \"W\"\n        }\n      ],\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m3\",\n      \"loi\": [\n        \"s1.m3:3-38\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"cam\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"khoang\": [\n          \"s1.c1:1-5\"\n        ],\n        \"loai\": \"E\"\n      },\n      \"doi_so\": [\n        {\n          \"loai\": \"W\"\n        }\n      ],\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "l_QHa539AuSi9tMPyb23qQg",
+  "model": "hungdt/om-gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 6573,
+   "output_tokens": 1784,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_c013b096274c12f67a994a28"
+   }
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "cau": "Cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết tranh chấp lao động, trong phạm vi nhiệm vụ, quyền hạn của mình, có quyền yêu cầu các bên tranh chấp, cơ quan, tổ chức, cá nhân có liên quan cung cấp tài liệu, chứng cứ, trưng cầu giám định, mời người làm chứng và người có liên quan.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết tranh chấp lao động, trong phạm vi nhiệm vụ, quyền hạn của mình, có quyền yêu cầu các bên tranh chấp, cơ quan, tổ chức, cá nhân có liên quan\",\n      \"ap_cho\": [\"m1\", \"m2\", \"m3\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"cung cấp tài liệu, chứng cứ\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"trưng cầu giám định\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"mời người làm chứng và người có liên quan\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-Hk8Da-HsJtqZvr0PxKCYIA",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 973,
+   "output_tokens": 245,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_86aff3333ae3555ca81ed0b9"
+   }
+  }
+ }
+}

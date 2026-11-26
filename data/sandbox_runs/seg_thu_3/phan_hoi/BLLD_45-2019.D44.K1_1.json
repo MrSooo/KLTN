@@ -1,0 +1,30 @@
+{
+ "cau": "Phương án sử dụng lao động phải có những nội dung chủ yếu sau đây:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Phương án sử dụng lao động phải có những nội dung chủ yếu sau đây\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-NS0Da9DwApKmvr0PtJyr-Qg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 186
+   },
+   "input_tokens": 916,
+   "output_tokens": 227,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_de5daaacaf43427df4e69f5a"
+   }
+  }
+ }
+}

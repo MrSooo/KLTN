@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D147.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D147.K1\",\n \"tieu_de_dieu\": \"Công việc và nơi làm việc cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm các công việc sau đây:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Cấm sử dụng người lao động từ đủ 15 tuổi đến chưa đủ 18 tuổi làm các công việc sau đây\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"unit_id\":\"BLLD_45-2019.D147.K1\",\"cac_muc_con\":\"danh_sach\",\"dong\":[]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795545976648-ea652732",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 795
+   },
+   "input_tokens": 3665,
+   "output_tokens": 33,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_483084d1875f744205dc00b3"
+   }
+  }
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "cau_gui": "Can thiệp, thao túng quá trình thành lập, bầu cử, xây dựng kế hoạch công tác và tổ chức thực hiện các hoạt động của tổ chức đại diện người lao động tại cơ sở, bao gồm cả việc hỗ trợ tài chính hoặc các biện pháp kinh tế khác nhằm làm vô hiệu hóa hoặc suy yếu việc thực hiện chức năng đại diện của tổ chức đại diện người lao động tại cơ sở hoặc phân biệt đối xử giữa các tổ chức đại diện người lao động tại cơ sở.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Can thiệp\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thao túng\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"quá trình thành lập, bầu cử, xây dựng kế hoạch công tác và tổ chức thực hiện các hoạt động của tổ chức đại diện người lao động tại cơ sở, bao gồm cả việc hỗ trợ tài chính hoặc các biện pháp kinh tế khác nhằm làm vô hiệu hóa hoặc suy yếu việc thực hiện chức năng đại diện của tổ chức đại diện người lao động tại cơ sở hoặc phân biệt đối xử giữa các tổ chức đại diện người lao động tại cơ sở\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540904584-f046bdaa",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 7004
+   },
+   "input_tokens": 2476,
+   "output_tokens": 170,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_0f9c95320af77d051ceb9c76"
+   }
+  }
+ }
+}

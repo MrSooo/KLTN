@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D69.K3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D69.K3\",\n \"tieu_de_dieu\": \"Đại diện thương lượng tập thể tại doanh nghiệp\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D69.K1\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Mỗi bên thương lượng tập thể có quyền mời tổ chức đại diện cấp trên của mình cử người tham gia là đại diện thương lượng và bên kia không được từ chối.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Mỗi bên thương lượng tập thể có quyền mời tổ chức đại diện cấp trên của mình cử người tham gia là đại diện thương lượng\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bên kia không được từ chối\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Đại diện thương lượng tập thể của mỗi bên không được vượt quá số lượng quy định tại khoản 1 Điều này, trừ trường hợp được bên kia đồng ý.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Đại diện thương lượng tập thể của mỗi bên\",\n     \"ap_cho\": [\n      \"s2.m1\",\n      \"s2.m2\"\n     ]\n    },\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"không được vượt quá số lượng quy định tại khoản 1 Điều này\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được bên kia đồng ý\",\n     \"noi_truoc\": [\n      \"trừ trường hợp\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D69.K3\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"mời tổ chức đại diện cấp trên của mình cử người tham gia là đại diện thương lượng\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Mỗi bên thương lượng tập thể\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"từ chối\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"bên kia\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"vượt quá số lượng\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Đại diện thương lượng tập thể của mỗi bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"doan\": [\n    \"được bên kia đồng ý\"\n   ],\n   \"vai\": \"ngoai_le\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Đại diện thương lượng tập thể của mỗi bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "jPoGa4GCI8SS0-kP3ZKs0Qs",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2430
+   },
+   "input_tokens": 4430,
+   "output_tokens": 2978,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_af3161b01bc3747929d4d95b"
+   }
+  }
+ }
+}

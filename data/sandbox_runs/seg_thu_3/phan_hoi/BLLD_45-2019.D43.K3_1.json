@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động bị thôi việc thì được nhận trợ cấp mất việc làm theo quy định tại Điều 47 của Bộ luật này.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"bị thôi việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"được nhận trợ cấp mất việc làm theo quy định tại Điều 47 của Bộ luật này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-By0Da_GrONaa0-kPrcCo2QU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 545
+   },
+   "input_tokens": 927,
+   "output_tokens": 639,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_60d05db77dc829ae9e6d598f"
+   }
+  }
+ }
+}

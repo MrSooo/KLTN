@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trong trường hợp người sử dụng lao động không thể giải quyết được việc làm mà phải cho người lao động thôi việc thì phải trả trợ cấp mất việc làm theo quy định tại Điều 47 của Bộ luật này.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"không thể giải quyết được việc làm\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải cho người lao động thôi việc\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"phải trả trợ cấp mất việc làm theo quy định tại Điều 47 của Bộ luật này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538528594-bc28e940",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 767
+   },
+   "input_tokens": 2416,
+   "output_tokens": 126,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_dee763309a8806a740813688"
+   }
+  }
+ }
+}

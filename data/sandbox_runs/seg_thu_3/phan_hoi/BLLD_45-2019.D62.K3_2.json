@@ -1,0 +1,30 @@
+{
+ "cau": "Trường hợp người lao động được gửi đi đào tạo ở nước ngoài thì chi phí đào tạo còn bao gồm chi phí đi lại, chi phí sinh hoạt trong thời gian đào tạo.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"Trường hợp người lao động được gửi đi đào tạo ở nước ngoài\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"chi phí đào tạo còn bao gồm chi phí đi lại, chi phí sinh hoạt trong thời gian đào tạo\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-SDIDa9SlKJS-vr0PoYym-As",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 591
+   },
+   "input_tokens": 937,
+   "output_tokens": 712,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_fc2969470a9d8f9beb4ce5cc"
+   }
+  }
+ }
+}

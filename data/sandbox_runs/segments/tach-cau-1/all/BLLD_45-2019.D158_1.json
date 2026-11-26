@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Nhà nước bảo trợ quyền lao động, tự tạo việc làm của người lao động là người khuyết tật; có chính sách khuyến khích, ưu đãi phù hợp đối với người sử dụng lao động trong tạo việc làm và nhận người lao động là người khuyết tật vào làm việc theo quy định của pháp luật về người khuyết tật.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Nhà nước\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"bảo trợ quyền lao động, tự tạo việc làm của người lao động là người khuyết tật\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có chính sách khuyến khích, ưu đãi phù hợp đối với người sử dụng lao động trong tạo việc làm và nhận người lao động là người khuyết tật vào làm việc theo quy định của pháp luật về người khuyết tật\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539857088-f64c972c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1399
+   },
+   "input_tokens": 2451,
+   "output_tokens": 145,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_14a611a4ada8a4695db6875e"
+   }
+  }
+ }
+}

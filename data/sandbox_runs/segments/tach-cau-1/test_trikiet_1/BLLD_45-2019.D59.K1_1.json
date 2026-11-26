@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động được tự do lựa chọn đào tạo nghề nghiệp, tham gia đánh giá, công nhận kỹ năng nghề quốc gia, phát triển năng lực nghề nghiệp phù hợp với nhu cầu việc làm và khả năng của mình.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động được tự do\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"lựa chọn đào tạo nghề nghiệp\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tham gia đánh giá, công nhận kỹ năng nghề quốc gia\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"phát triển năng lực nghề nghiệp phù hợp với nhu cầu việc làm và khả năng của mình\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795537913714-e1e1a4fc",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2432
+   },
+   "input_tokens": 2419,
+   "output_tokens": 130,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_838ef06e954482fdfd6bc866"
+   }
+  }
+ }
+}

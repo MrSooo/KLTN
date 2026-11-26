@@ -1,0 +1,27 @@
+{
+ "cau_gui": "Hoàn thành thủ tục xác nhận thời gian đóng bảo hiểm xã hội, bảo hiểm thất nghiệp và trả lại cùng với bản chính giấy tờ khác nếu người sử dụng lao động đã giữ của người lao động;",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Hoàn thành thủ tục xác nhận thời gian đóng bảo hiểm xã hội, bảo hiểm thất nghiệp\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trả lại cùng với bản chính giấy tờ khác\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"người sử dụng lao động đã giữ của người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-AbMFa9KzAdbu2roPi7--qQ4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 2277,
+   "output_tokens": 99,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ca717c7a33cf80090aa9e772"
+   }
+  }
+ }
+}

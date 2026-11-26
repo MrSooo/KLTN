@@ -1,0 +1,30 @@
+{
+ "cau": "Khi người lao động cao tuổi đang hưởng lương hưu theo quy định của Luật Bảo hiểm xã hội mà làm việc theo hợp đồng lao động mới thì ngoài quyền lợi đang hưởng theo chế độ hưu trí, người lao động cao tuổi được hưởng tiền lương và các quyền lợi khác theo quy định của pháp luật, hợp đồng lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"người lao động cao tuổi\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"đang hưởng lương hưu theo quy định của Luật Bảo hiểm xã hội\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"làm việc theo hợp đồng lao động mới\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"ngoài quyền lợi đang hưởng theo chế độ hưu trí, người lao động cao tuổi được hưởng tiền lương và các quyền lợi khác theo quy định của pháp luật, hợp đồng lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-3UcDa8fbLsSw2roP9orisAI",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 7549
+   },
+   "input_tokens": 968,
+   "output_tokens": 616,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_37342a68e800f8c6c04c8217"
+   }
+  }
+ }
+}

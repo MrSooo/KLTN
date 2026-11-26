@@ -1,0 +1,60 @@
+1.6B names-2.2: BLLD_45-2019
+dòng 1.6A dùng: 5151 (mệnh đề 2801, con trỏ 217, chủ thể 2133); bỏ vì lỗi cổng 1.6A: 56
+chữ (gộp cấp 1): 2588; lượt kế hoạch: 111
+chữ có tên: 2584; reuse do LLM chọn: 178 (6.9%); vị từ: 2349 (concept 1313, input 1036); chữ bị loại: 4
+vị từ dùng ở từ 2 Điều: 264; cặp khác Điều chung vị từ concept (chưa lọc như 1.7): 29105
+máy gộp tên cùng mặt chữ (>= 3 tiếng): 54 nhóm, bớt 59 tên
+  have_full_civil_act_capacity <- possess_full_civil_act_capacity
+  at_the_workplace <- at_workplace
+  establish_occupational_organization <- establish_professional_organization
+  establish_other_lawful_organization <- establish_other_statutory_organization
+  join_occupational_organization <- join_professional_organization
+  join_other_lawful_organization <- join_other_statutory_organization
+  operate_in_occupational_organization <- operate_in_professional_organization
+  operate_in_other_lawful_organization <- operate_in_other_statutory_organization
+  engage_in_collective_bargaining <- collective_bargaining
+  employer_unilaterally_terminates_contract <- unilaterally_terminate_employment_contract, unilaterally_terminate_labor_contract
+  other_rights_under_law <- other_statutory_rights
+  perform_labor_contract <- implement_employment_contract, perform_employment_contract
+  implement_collective_bargaining_agreement <- perform_collective_bargaining_agreement
+  perform_other_lawful_agreements <- implement_other_lawful_agreements
+  comply_with_labor_law <- implement_labor_regulations
+  comply_with_employment_law <- implement_employment_regulations
+  comply_with_vocational_education_law <- implement_vocational_education_regulations
+  comply_with_social_insurance_law <- implement_social_insurance_regulations
+  comply_with_health_insurance_law <- implement_health_insurance_regulations
+  comply_with_unemployment_insurance_law <- implement_unemployment_insurance_regulations
+  comply_with_occupational_safety_and_health_law <- implement_occupational_safety_regulations
+  through_employment_service_organization <- recruit_via_employment_service_organization
+  enter_into_employment_contract <- conclude_employment_contract
+  keep_one_copy <- retain_one_copy
+  contract_contains_wage_rate <- job_or_title_wage_rate
+  contract_contains_working_and_rest_hours <- working_and_rest_hours
+  under_employment_contract <- in_accordance_with_employment_contract, pursuant_to_employment_contract, wage_under_employment_contract
+  pay_work_suspension_wage <- be_paid_work_suspension_wage
+  ensure_occupational_safety_and_health <- guaranteed_occupational_safety_and_health
+  terminate_employment_contract <- employment_contract_terminates
+  agree_to_terminate_employment_contract <- agree_to_terminate_labor_contract
+  declared_incapacitated_by_court <- court_declares_loss_of_civil_act_capacity
+  declared_missing_by_court <- court_declares_missing
+  declared_dead_by_court <- court_declares_death
+  give_at_least_45_days_advance_notice <- advance_notice_at_least_45_days
+  give_at_least_30_days_advance_notice <- advance_notice_at_least_30_days
+  advance_notice_at_least_3_working_days <- give_at_least_3_working_days_advance_notice
+  as_prescribed_by_government <- under_government_regulations
+  continue_concluding_employment_contract <- continue_entering_into_employment_contract
+  make_request <- request_is_made
+  in_accordance_with_law <- as_prescribed_by_law, under_applicable_provisions_of_law
+  contract_contains_working_hours <- working_hours
+  contract_contains_rest_hours <- rest_hours
+  training_costs <- contract_contains_training_costs
+  time_limit_expired <- contract_expires
+  organize_strike <- stage_strike
+  receive_one_copy <- receive_one_copy_of_cba
+  notify_employer <- notify_employee
+  subject_to_labor_discipline <- impose_labor_discipline
+  possess_work_permit <- have_work_permit
+  fully_perform_concluded_contract_agreements <- fully_implement_contractual_agreements
+  settle_labor_dispute <- settle_labor_disputes
+  make_written_record <- draw_up_written_record
+  during_labor_arbitration_council_settlement <- during_arbitration_council_settling_dispute

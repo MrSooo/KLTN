@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp vì lý do bất khả kháng mà người sử dụng lao động đã tìm mọi biện pháp khắc phục nhưng không thể trả lương đúng hạn thì không được chậm quá 30 ngày; nếu trả lương chậm từ 15 ngày trở lên thì người sử dụng lao động phải đền bù cho người lao động một khoản tiền ít nhất bằng số tiền lãi của số tiền trả chậm tính theo lãi suất huy động tiền gửi có kỳ hạn 01 tháng do ngân hàng nơi người sử dụng lao động mở tài khoản trả lương cho người lao động công bố tại thời điểm trả lương.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"vì lý do bất khả kháng\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"người sử dụng lao động\",\"ap_cho\":[\"m2\",\"m3\",\"m4\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"đã tìm mọi biện pháp khắc phục\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"không thể trả lương đúng hạn\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"không được chậm quá 30 ngày\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"trả lương chậm từ 15 ngày trở lên\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"người sử dụng lao động phải đền bù cho người lao động một khoản tiền ít nhất bằng số tiền lãi của số tiền trả chậm tính theo lãi suất huy động tiền gửi có kỳ hạn 01 tháng do ngân hàng nơi người sử dụng lao động mở tài khoản trả lương cho người lao động công bố tại thời điểm trả lương\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540730530-1fc9b4fd",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5823
+   },
+   "input_tokens": 2502,
+   "output_tokens": 252,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_1261989e51fa323c64b0f8c9"
+   }
+  }
+ }
+}

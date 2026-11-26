@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Sản xuất, kinh doanh cồn, rượu, bia, thuốc lá, chất tác động đến tinh thần hoặc chất gây nghiện khác;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Sản xuất\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"kinh doanh\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"cồn, rượu, bia, thuốc lá, chất tác động đến tinh thần hoặc chất gây nghiện khác\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539654941-29ede84c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1566
+   },
+   "input_tokens": 2404,
+   "output_tokens": 97,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_ebdac0bb972afb3a38566e1f"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động bị xử lý kỷ luật sa thải.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động bị xử lý kỷ luật sa thải\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538288067-148b436e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 189
+   },
+   "input_tokens": 2387,
+   "output_tokens": 38,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_9d96ab6460620098fd911eae"
+   }
+  }
+ }
+}

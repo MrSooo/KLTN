@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp hai bên không thỏa thuận được việc sửa đổi, bổ sung nội dung hợp đồng lao động thì tiếp tục thực hiện hợp đồng lao động đã giao kết.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"hai bên\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"không thỏa thuận được việc sửa đổi, bổ sung nội dung hợp đồng lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tiếp tục thực hiện hợp đồng lao động đã giao kết\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538256746-0105a011",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2223
+   },
+   "input_tokens": 2408,
+   "output_tokens": 99,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_5d2fe514fa4ac1c23e848d56"
+   }
+  }
+ }
+}

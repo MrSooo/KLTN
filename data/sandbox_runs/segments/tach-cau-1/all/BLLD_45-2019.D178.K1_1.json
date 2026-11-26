@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thương lượng tập thể với người sử dụng lao động theo quy định của Bộ luật này.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thương lượng tập thể với người sử dụng lao động theo quy định của Bộ luật này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540071152-377ca5a2",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 268
+   },
+   "input_tokens": 2392,
+   "output_tokens": 43,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_f5bee59409abe9d86f314efe"
+   }
+  }
+ }
+}

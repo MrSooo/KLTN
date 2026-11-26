@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D154.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": true,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D154.K1\",\n \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D154.K1\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"Là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong_ap_dung\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người lao động nước ngoài làm việc tại Việt Nam\",\"loai\":\"W\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795546377888-5f11fb2a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5666
+   },
+   "input_tokens": 3668,
+   "output_tokens": 117,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_02fe875d3d10cb32fbd7dc7f"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D179.K1.b",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D179.K1.b\",\n \"tieu_de_dieu\": \"Tranh chấp lao động\",\n \"khoan_cha\": \"Tranh chấp lao động là tranh chấp về quyền và nghĩa vụ, lợi ích phát sinh giữa các bên trong quá trình xác lập, thực hiện hoặc chấm dứt quan hệ lao động; tranh chấp giữa các tổ chức đại diện người lao động với nhau; tranh chấp phát sinh từ quan hệ có liên quan trực tiếp đến quan hệ lao động. Các loại tranh chấp lao động bao gồm:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tranh chấp lao động tập thể về quyền hoặc về lợi ích giữa một hay nhiều tổ chức đại diện người lao động với người sử dụng lao động hoặc một hay nhiều tổ chức của người sử dụng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Tranh chấp lao động tập thể về quyền hoặc về lợi ích giữa một hay nhiều tổ chức đại diện người lao động với người sử dụng lao động hoặc một hay nhiều tổ chức của người sử dụng lao động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D179.K1.b\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Tranh chấp lao động tập thể về quyền hoặc về lợi ích giữa một hay nhiều tổ chức đại diện người lao động với người sử dụng lao động hoặc một hay nhiều tổ chức của người sử dụng lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795547077761-de59d164",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1754
+   },
+   "input_tokens": 3771,
+   "output_tokens": 140,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_4f8e883dd31ae992f9d6f6ea"
+   }
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "cau": "Người lao động được ủy quyền để thực hiện quyền, trách nhiệm của doanh nghiệp đối với phần vốn của doanh nghiệp đầu tư tại doanh nghiệp khác;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"được ủy quyền\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"để thực hiện quyền, trách nhiệm của doanh nghiệp đối với phần vốn của doanh nghiệp đầu tư tại doanh nghiệp khác\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-qSgDa96OGMPd2roPv57hoQ4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 930,
+   "output_tokens": 98,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_0cb5c5caedff4ddbdf6a47c9"
+   }
+  }
+ }
+}

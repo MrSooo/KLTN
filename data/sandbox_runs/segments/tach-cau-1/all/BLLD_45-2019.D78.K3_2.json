@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thời hạn cụ thể do các bên thỏa thuận và ghi trong thỏa ước lao động tập thể.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thời hạn cụ thể do các bên\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thỏa thuận\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"ghi trong thỏa ước lao động tập thể\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538975589-c211e56c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1254
+   },
+   "input_tokens": 2396,
+   "output_tokens": 88,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_ab0a96c1455c3d7653ca985b"
+   }
+  }
+ }
+}

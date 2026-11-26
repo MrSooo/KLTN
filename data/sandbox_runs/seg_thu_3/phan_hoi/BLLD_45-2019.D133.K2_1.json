@@ -1,0 +1,30 @@
+{
+ "cau": "Ủy ban nhân dân cấp tỉnh trình Hội đồng nhân dân cùng cấp quyết định Chương trình an toàn, vệ sinh lao động của địa phương và đưa vào kế hoạch phát triển kinh tế - xã hội.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Ủy ban nhân dân cấp tỉnh trình Hội đồng nhân dân cùng cấp\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"quyết định Chương trình an toàn, vệ sinh lao động của địa phương\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"đưa vào kế hoạch phát triển kinh tế - xã hội\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1EMDa8DEHZSB2roP9KmsqAQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2019
+   },
+   "input_tokens": 941,
+   "output_tokens": 624,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_81f0da29afc11b12ae2e1a4b"
+   }
+  }
+ }
+}

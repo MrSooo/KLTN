@@ -1,0 +1,30 @@
+{
+ "cau": "Công khai, minh bạch, khách quan, kịp thời, nhanh chóng và đúng pháp luật.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Công khai\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"minh bạch\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"khách quan\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"kịp thời\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"nhanh chóng\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"đúng pháp luật\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-tE4Da5i8B9Lm1e8P29G10Qs",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2993
+   },
+   "input_tokens": 919,
+   "output_tokens": 484,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_07f5fc51946125c4c0abf330"
+   }
+  }
+ }
+}

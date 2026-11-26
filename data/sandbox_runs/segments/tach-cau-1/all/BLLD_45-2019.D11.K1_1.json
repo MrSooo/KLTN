@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Người sử dụng lao động có quyền trực tiếp hoặc thông qua tổ chức dịch vụ việc làm, doanh nghiệp hoạt động cho thuê lại lao động để tuyển dụng lao động theo nhu cầu của người sử dụng lao động.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Người sử dụng lao động\",\n      \"ap_cho\": [\n        \"m1\",\n        \"m2\",\n        \"m3\"\n      ]\n    },\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"có quyền\",\n      \"ap_cho\": [\n        \"m1\",\n        \"m2\"\n      ]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"trực tiếp\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"thông qua tổ chức dịch vụ việc làm, doanh nghiệp hoạt động cho thuê lại lao động\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"tuyển dụng lao động theo nhu cầu của người sử dụng lao động\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-3LYFa6SjM8Hv2roPjM7HyQo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1488
+   },
+   "input_tokens": 2278,
+   "output_tokens": 1770,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_7d6cd756db21ac407bd8452e"
+   }
+  }
+ }
+}

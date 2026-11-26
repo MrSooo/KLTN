@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D21.K1.k",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D21.K1.k\",\n \"tieu_de_dieu\": \"Nội dung hợp đồng lao động\",\n \"khoan_cha\": \"Hợp đồng lao động phải có những nội dung chủ yếu sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Đào tạo, bồi dưỡng, nâng cao trình độ, kỹ năng nghề.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Đào tạo\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bồi dưỡng\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"nâng cao\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"trình độ, kỹ năng nghề\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D21.K1.k\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Đào tạo\",\n    \"trình độ, kỹ năng nghề\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Hợp đồng lao động\",\n    \"loai\": \"C\"\n   },\n   \"liet_ke\": [\n    \"trình độ\",\n    \"kỹ năng nghề\"\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"bồi dưỡng\",\n    \"trình độ, kỹ năng nghề\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Hợp đồng lao động\",\n    \"loai\": \"C\"\n   },\n   \"liet_ke\": [\n    \"trình độ\",\n    \"kỹ năng nghề\"\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"nâng cao\",\n    \"trình độ, kỹ năng nghề\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Hợp đồng lao động\",\n    \"loai\": \"C\"\n   },\n   \"liet_ke\": [\n    \"trình độ\",\n    \"kỹ năng nghề\"\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "-fgGa5K6EpG31e8P6cGfWQ",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1468
+   },
+   "input_tokens": 4208,
+   "output_tokens": 1976,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_d44355db7945666469df01c5"
+   }
+  }
+ }
+}

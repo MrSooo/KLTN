@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Bảo đảm sự tham gia của đại diện các bên trong quá trình giải quyết tranh chấp lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Bảo đảm sự tham gia của đại diện các bên trong quá trình giải quyết tranh chấp lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540112389-1fdb8a28",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 250
+   },
+   "input_tokens": 2395,
+   "output_tokens": 46,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_bfc2e2a10f1b927dff960c3a"
+   }
+  }
+ }
+}

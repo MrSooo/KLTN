@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D208.K4",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D208.K4\",\n \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trước, trong và sau khi đình công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chấm dứt hợp đồng lao động hoặc xử lý kỷ luật lao động đối với người lao động, người lãnh đạo đình công hoặc điều động người lao động, người lãnh đạo đình công sang làm công việc khác, đi làm việc ở nơi khác vì lý do chuẩn bị đình công hoặc tham gia đình công.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chấm dứt hợp đồng lao động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"xử lý kỷ luật lao động đối với người lao động, người lãnh đạo đình công\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"điều động người lao động, người lãnh đạo đình công sang làm công việc khác, đi làm việc ở nơi khác\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"vì lý do chuẩn bị đình công hoặc tham gia đình công\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D208.K4\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Chấm dứt hợp đồng lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"doi_so\": [\n    {\n     \"loai\": \"C\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"vì lý do chuẩn bị đình công hoặc tham gia đình công\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"chuẩn bị đình công\",\n    \"tham gia đình công\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"xử lý kỷ luật lao động đối với người lao động, người lãnh đạo đình công\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"vì lý do chuẩn bị đình công hoặc tham gia đình công\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\",\n   \"liet_ke\": [\n    \"chuẩn bị đình công\",\n    \"tham gia đình công\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"điều động người lao động, người lãnh đạo đình công sang làm công việc khác, đi làm việc ở nơi khác\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q3\",\n   \"liet_ke\": [\n    \"sang làm công việc khác\",\n    \"đi làm việc ở nơi khác\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"vì lý do chuẩn bị đình công hoặc tham gia đình công\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q3\",\n   \"liet_ke\": [\n    \"chuẩn bị đình công\",\n    \"tham gia đình công\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "Gv4Ga-byMo7D0-kP1MO48QY",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3964
+   },
+   "input_tokens": 4328,
+   "output_tokens": 4727,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_a89ad5556b7d376d92c0a66f"
+   }
+  }
+ }
+}

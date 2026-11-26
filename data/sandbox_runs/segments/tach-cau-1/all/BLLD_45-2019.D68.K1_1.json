@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Tổ chức đại diện người lao động tại cơ sở có quyền yêu cầu thương lượng tập thể khi đạt tỷ lệ thành viên tối thiểu trên tổng số người lao động trong doanh nghiệp theo quy định của Chính phủ.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Tổ chức đại diện người lao động tại cơ sở\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"có quyền yêu cầu thương lượng tập thể\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"đạt tỷ lệ thành viên tối thiểu trên tổng số người lao động trong doanh nghiệp theo quy định của Chính phủ\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538875567-ebffd0cd",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 694
+   },
+   "input_tokens": 2417,
+   "output_tokens": 111,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_daf2c47a4e23890edadde49f"
+   }
+  }
+ }
+}

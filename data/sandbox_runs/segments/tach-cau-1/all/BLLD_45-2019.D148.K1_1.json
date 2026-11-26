@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động cao tuổi là người tiếp tục lao động sau độ tuổi theo quy định tại khoản 2 Điều 169 của Bộ luật này.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động cao tuổi là người tiếp tục lao động sau độ tuổi theo quy định tại khoản 2 Điều 169 của Bộ luật này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539670044-47e4a498",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 564
+   },
+   "input_tokens": 2403,
+   "output_tokens": 54,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_af3569522cae0dffe66485d3"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D109.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": true,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D109.K1\",\n \"tieu_de_dieu\": \"Nghỉ trong giờ làm việc\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều 105 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D105\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động làm việc theo thời giờ làm việc quy định tại Điều 105 của Bộ luật này từ 06 giờ trở lên trong một ngày thì được nghỉ giữa giờ ít nhất 30 phút liên tục, làm việc ban đêm thì được nghỉ giữa giờ ít nhất 45 phút liên tục.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\",\n      \"s1.m4\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"làm việc theo thời giờ làm việc quy định tại Điều 105 của Bộ luật này từ 06 giờ trở lên trong một ngày\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được nghỉ giữa giờ ít nhất 30 phút liên tục\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"làm việc ban đêm\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được nghỉ giữa giờ ít nhất 45 phút liên tục\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Trường hợp người lao động làm việc theo ca liên tục từ 06 giờ trở lên thì thời gian nghỉ giữa giờ được tính vào giờ làm việc.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"người lao động làm việc theo ca liên tục từ 06 giờ trở lên\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thời gian nghỉ giữa giờ được tính vào giờ làm việc\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\n  \"unit_id\": \"BLLD_45-2019.D109.K1\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"doan\": [\n        \"làm việc\",\n        \"từ 06 giờ trở lên trong một ngày\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"Người lao động\",\n        \"loai\": \"W\"\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m1\",\n      \"doan\": [\n        \"theo thời giờ làm việc quy định tại Điều 105 của Bộ luật này\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"Người lao động\",\n        \"loai\": \"W\"\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m2\",\n      \"doan\": [\n        \"nghỉ giữa giờ ít nhất 30 phút liên tục\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"duoc\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"Người lao động\",\n        \"loai\": \"W\"\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m3\",\n      \"doan\": [\n        \"làm việc ban đêm\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"Người lao động\",\n        \"loai\": \"W\"\n      },\n      \"quy_tac\": \"q2\"\n    },\n    {\n      \"nguon\": \"s1.m4\",\n      \"doan\": [\n        \"nghỉ giữa giờ ít nhất 45 phút liên tục\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"duoc\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"Người lao động\",\n        \"loai\": \"W\"\n      },\n      \"quy_tac\": \"q2\"\n    },\n    {\n      \"nguon\": \"s2.m1\",\n      \"doan\": [\n        \"làm việc theo ca liên tục từ 06 giờ trở lên\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"người lao động\",\n        \"loai\": \"W\"\n      },\n      \"quy_tac\": \"q3\"\n    },\n    {\n      \"nguon\": \"s2.m2\",\n      \"doan\": [\n        \"thời gian nghỉ giữa giờ được tính vào giờ làm việc\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"quy_tac\": \"q3\"\n    }\n  ]\n}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795545007446-747aefba",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5658
+   },
+   "input_tokens": 4111,
+   "output_tokens": 750,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_29556aa8cc88ddbf46061a1f"
+   }
+  }
+ }
+}

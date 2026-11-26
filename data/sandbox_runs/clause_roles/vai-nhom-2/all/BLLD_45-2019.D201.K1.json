@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D201.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D201.K1\",\n \"tieu_de_dieu\": \"Lấy ý kiến về đình công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều 198 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D198\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Trước khi tiến hành đình công, tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công quy định tại Điều 198 của Bộ luật này có trách nhiệm lấy ý kiến của toàn thể người lao động hoặc thành viên ban lãnh đạo của các tổ chức đại diện người lao động tham gia thương lượng.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tiến hành đình công\",\n     \"noi_truoc\": [\n      \"trước khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công quy định tại Điều 198 của Bộ luật này có trách nhiệm lấy ý kiến của toàn thể người lao động hoặc thành viên ban lãnh đạo của các tổ chức đại diện người lao động tham gia thương lượng\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D201.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"tiến hành đình công\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công quy định tại Điều 198 của Bộ luật này\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"lấy ý kiến của toàn thể người lao động hoặc thành viên ban lãnh đạo của các tổ chức đại diện người lao động tham gia thương lượng\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công quy định tại Điều 198 của Bộ luật này\",\n    \"loai\": \"W\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795547573044-82f32023",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2767
+   },
+   "input_tokens": 3812,
+   "output_tokens": 320,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_107cc0a700006ce198ff39d4"
+   }
+  }
+ }
+}

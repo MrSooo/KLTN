@@ -1,0 +1,1994 @@
+{
+"chu": [
+{
+"chu_id": "C0533",
+"chu": "thay đổi nhu cầu sử dụng người lao động nước ngoài",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D4.K1.a",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Sử dụng người lao động nước ngoài",
+"khoan_cha": "Xác định nhu cầu sử dụng người lao động nước ngoài",
+"chu_don_vi": "Trước ít nhất 15 ngày kể từ ngày dự kiến sử dụng người lao động nước ngoài, người sử dụng lao động (trừ nhà thầu) có trách nhiệm xác định nhu cầu sử dụng người lao động nước ngoài đối với từng vị trí công việc mà người lao động Việt Nam chưa đáp ứng được và báo cáo giải trình với Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội nơi người lao động nước ngoài dự kiến làm việc theo Mẫu số 01/PLI Phụ lục I ban hành kèm theo Nghị định này.\nTrong quá trình thực hiện nếu thay đổi nhu cầu sử dụng người lao động nước ngoài về vị trí, chức danh công việc, hình thức làm việc, số lượng, địa điểm thì người sử dụng lao động phải báo cáo Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội theo Mẫu số 02/PLI Phụ lục I ban hành kèm theo Nghị định này trước ít nhất 15 ngày kể từ ngày dự kiến sử dụng người lao động nước ngoài."
+}
+],
+"ung_vien": [
+{
+"ten": "determine_foreign_worker_demand",
+"params": [
+"E"
+],
+"vi_du": [
+"xác định nhu cầu sử dụng người lao động nước ngoài",
+"thực hiện xác định nhu cầu sử dụng người lao động nước ngoài"
+]
+},
+{
+"ten": "report_foreign_worker_use_30_days_in_advance",
+"params": [
+"E"
+],
+"vi_du": [
+"báo cáo Bộ Lao động - Thương binh và Xã hội hoặc Ủy ban nhân dân cấp tỉnh trước ít nhất 30 ngày kể từ ngày dự kiến sử dụng người lao động nước ngoài"
+]
+},
+{
+"ten": "issue_written_decision_on_foreign_worker_use",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản chấp thuận hoặc không chấp thuận về việc sử dụng người lao động nước ngoài"
+]
+},
+{
+"ten": "report_changed_foreign_worker_demand",
+"params": [
+"E"
+],
+"vi_du": [
+"báo cáo Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "report_explanation_on_foreign_worker_demand",
+"params": [
+"E"
+],
+"vi_du": [
+"báo cáo giải trình với Bộ Lao động - Thương binh và Xã hội hoặc Ủy ban nhân dân tỉnh, thành phố trực thuộc Trung ương",
+"báo cáo giải trình với Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "have_demand_for_high_skilled_labor",
+"params": [
+"E"
+],
+"vi_du": [
+"có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao"
+]
+},
+{
+"ten": "explain_labor_demand",
+"params": [
+"?"
+],
+"vi_du": [
+"giải trình nhu cầu sử dụng lao động"
+]
+},
+{
+"ten": "confirm_adjusted_labor_demand_plan",
+"params": [
+"?"
+],
+"vi_du": [
+"xác nhận phương án điều chỉnh, bổ sung nhu cầu lao động cần sử dụng của nhà thầu",
+"xác nhận phương án điều chỉnh, bổ sung nhu cầu lao động cần sử dụng của nhà thầu"
+]
+},
+{
+"ten": "meet_temporary_surge_in_labor_demand",
+"params": [
+"E"
+],
+"vi_du": [
+"đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động"
+]
+},
+{
+"ten": "need_adjust_declared_worker_number",
+"params": [
+"E"
+],
+"vi_du": [
+"có nhu cầu điều chỉnh, bổ sung số lao động đã kê khai"
+]
+},
+{
+"ten": "relocate_headquarters_to_another_province",
+"params": [
+"E"
+],
+"vi_du": [
+"thay đổi địa chỉ trụ sở chính sang địa bàn cấp tỉnh khác so với nơi đã được cấp giấy phép",
+"doanh nghiệp cho thuê lại lao động thay đổi địa chỉ trụ sở chính sang địa bàn cấp tỉnh khác so với nơi đã được cấp giấy phép"
+]
+},
+{
+"ten": "request_renewal_and_change_legal_representative",
+"params": [
+"E"
+],
+"vi_du": [
+"doanh nghiệp đề nghị gia hạn giấy phép đồng thời thay đổi người đại diện theo pháp luật của doanh nghiệp"
+]
+},
+{
+"ten": "send_request_and_evidence_for_information_change",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin"
+]
+},
+{
+"ten": "change_license_content",
+"params": [
+"E"
+],
+"vi_du": [
+"thay đổi một trong các nội dung của giấy phép đã được cấp"
+]
+},
+{
+"ten": "change_deposit_certificate_information",
+"params": [
+"E"
+],
+"vi_du": [
+"thay đổi một trong các thông tin trên giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động"
+]
+}
+],
+"loi_lan_truoc": "reuse \"change_foreign_worker_demand\": tên này không nằm trong danh sách ứng viên đã đưa và không phải tên new đã được nhận cho chữ đứng trước trong cùng lượt"
+},
+{
+"chu_id": "C0549",
+"chu": "được cơ quan, tổ chức có thẩm quyền của nước ngoài cử sang Việt Nam giảng dạy hoặc làm nhà quản lý, giám đốc điều hành tại cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài, tổ chức liên chính phủ đề nghị thành lập tại Việt Nam; các cơ sở, tổ chức được thành lập theo các điều ước quốc tế mà Việt Nam đã ký kết, tham gia",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D7.K6",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động",
+"khoan_cha": "Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:",
+"chu_don_vi": "Được cơ quan, tổ chức có thẩm quyền của nước ngoài cử sang Việt Nam giảng dạy hoặc làm nhà quản lý, giám đốc điều hành tại cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài, tổ chức liên chính phủ đề nghị thành lập tại Việt Nam; các cơ sở, tổ chức được thành lập theo các điều ước quốc tế mà Việt Nam đã ký kết, tham gia."
+}
+],
+"ung_vien": [
+{
+"ten": "foreign_student_internship_agreement_in_vietnam",
+"params": [],
+"vi_du": [
+"học sinh, sinh viên đang học tập tại các trường, cơ sở đào tạo ở nước ngoài có thỏa thuận thực tập trong các cơ quan, tổ chức, doanh nghiệp tại Việt Nam"
+]
+},
+{
+"ten": "relative_of_foreign_mission_member_in_vietnam",
+"params": [],
+"vi_du": [
+"thân nhân thành viên cơ quan đại diện nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "commercial_presence_establishment_responsible",
+"params": [],
+"vi_du": [
+"người chịu trách nhiệm thành lập hiện diện thương mại"
+]
+},
+{
+"ten": "trainee_on_vietnamese_sea_vessel",
+"params": [],
+"vi_du": [
+"học viên thực tập, tập sự trên tàu biển Việt Nam"
+]
+},
+{
+"ten": "volunteer_worker_in_vietnam",
+"params": [],
+"vi_du": [
+"Tình nguyện viên"
+]
+},
+{
+"ten": "foreign_worker_in_vietnam",
+"params": [],
+"vi_du": [
+"Người lao động nước ngoài làm việc tại Việt Nam"
+]
+},
+{
+"ten": "foreign_national",
+"params": [],
+"vi_du": [
+"Người nước ngoài"
+]
+},
+{
+"ten": "diplomatic_consular_or_intl_org_mission",
+"params": [],
+"vi_du": [
+"Cơ quan đại diện ngoại giao, cơ quan lãnh sự nước ngoài, cơ quan đại diện các tổ chức quốc tế thuộc hệ thống Liên hợp quốc, các tổ chức khu vực, tiểu khu vực"
+]
+},
+{
+"ten": "foreign_ngo_registered_by_vietnam",
+"params": [],
+"vi_du": [
+"Tổ chức phi chính phủ nước ngoài được cơ quan có thẩm quyền của Việt Nam cấp giấy đăng ký theo quy định của pháp luật"
+]
+},
+{
+"ten": "foreign_org_representative_office_in_vietnam",
+"params": [],
+"vi_du": [
+"Văn phòng đại diện tại Việt Nam của tổ chức nước ngoài hoạt động trong các lĩnh vực: kinh tế, thương mại, tài chính, ngân hàng, bảo hiểm, khoa học - kỹ thuật, văn hóa, giáo dục, y tế, tư vấn pháp luật nước ngoài"
+]
+},
+{
+"ten": "intl_intergovernmental_or_foreign_gov_org",
+"params": [],
+"vi_du": [
+"Tổ chức quốc tế, tổ chức liên Chính phủ, tổ chức thuộc Chính phủ nước ngoài"
+]
+}
+]
+},
+{
+"chu_id": "C0550",
+"chu": "được Bộ Giáo dục và Đào tạo xác nhận người lao động nước ngoài vào Việt Nam",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D7.K14",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động",
+"khoan_cha": "Ngoài các trường hợp quy định tại các khoản 3, 4, 5, 6, 7 và 8 Điều 154 của Bộ luật Lao động, người lao động nước ngoài không thuộc diện cấp giấy phép lao động:",
+"chu_don_vi": "Được Bộ Giáo dục và Đào tạo xác nhận người lao động nước ngoài vào Việt Nam để thực hiện các công việc sau:"
+}
+],
+"ung_vien": [
+{
+"ten": "foreign_student_internship_agreement_in_vietnam",
+"params": [],
+"vi_du": [
+"học sinh, sinh viên đang học tập tại các trường, cơ sở đào tạo ở nước ngoài có thỏa thuận thực tập trong các cơ quan, tổ chức, doanh nghiệp tại Việt Nam"
+]
+},
+{
+"ten": "trainee_on_vietnamese_sea_vessel",
+"params": [],
+"vi_du": [
+"học viên thực tập, tập sự trên tàu biển Việt Nam"
+]
+},
+{
+"ten": "commercial_presence_establishment_responsible",
+"params": [],
+"vi_du": [
+"người chịu trách nhiệm thành lập hiện diện thương mại"
+]
+},
+{
+"ten": "relative_of_foreign_mission_member_in_vietnam",
+"params": [],
+"vi_du": [
+"thân nhân thành viên cơ quan đại diện nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "volunteer_worker_in_vietnam",
+"params": [],
+"vi_du": [
+"Tình nguyện viên"
+]
+},
+{
+"ten": "foreign_worker_in_vietnam",
+"params": [],
+"vi_du": [
+"Người lao động nước ngoài làm việc tại Việt Nam"
+]
+},
+{
+"ten": "foreign_national",
+"params": [],
+"vi_du": [
+"Người nước ngoài"
+]
+},
+{
+"ten": "reissue_work_permit_exemption_certificate",
+"params": [],
+"vi_du": [
+"cấp lại xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "duration_of_work_permit_exemption_certificate",
+"params": [],
+"vi_du": [
+"Thời hạn xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "within_5_working_days_of_exemption_dossier",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc, kể từ ngày nhận đủ hồ sơ đề nghị xác nhận không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "form_09_work_permit_exemption_request",
+"params": [],
+"vi_du": [
+"Văn bản đề nghị xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động theo Mẫu số 09/PLI Phụ lục I ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "foreign_org_representative_office_in_vietnam",
+"params": [],
+"vi_du": [
+"Văn phòng đại diện tại Việt Nam của tổ chức nước ngoài hoạt động trong các lĩnh vực: kinh tế, thương mại, tài chính, ngân hàng, bảo hiểm, khoa học - kỹ thuật, văn hóa, giáo dục, y tế, tư vấn pháp luật nước ngoài"
+]
+}
+]
+},
+{
+"chu_id": "C0551",
+"chu": "giảng dạy, nghiên cứu",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D7.K14.a",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động",
+"khoan_cha": "Được Bộ Giáo dục và Đào tạo xác nhận người lao động nước ngoài vào Việt Nam để thực hiện các công việc sau:",
+"chu_don_vi": "Giảng dạy, nghiên cứu;"
+}
+],
+"ung_vien": [
+{
+"ten": "education_ministry_teaching_research_confirmation",
+"params": [
+"W"
+],
+"vi_du": [
+"được Bộ Giáo dục và Đào tạo xác nhận người lao động nước ngoài vào Việt Nam để giảng dạy, nghiên cứu"
+]
+},
+{
+"ten": "foreign_authority_assigned_to_teach_or_research",
+"params": [
+"W"
+],
+"vi_du": [
+"được cơ quan, tổ chức có thẩm quyền của nước ngoài cử sang Việt Nam giảng dạy, nghiên cứu"
+]
+},
+{
+"ten": "official_passport_work_for_state_or_political_org",
+"params": [
+"W"
+],
+"vi_du": [
+"có hộ chiếu công vụ vào làm việc cho"
+]
+},
+{
+"ten": "intra_company_transfer_in_11_wto_service_sectors",
+"params": [
+"W"
+],
+"vi_du": [
+"di chuyển trong nội bộ doanh nghiệp thuộc phạm vi 11 ngành dịch vụ trong biểu cam kết dịch vụ của Việt Nam với Tổ chức Thương mại thế giới"
+]
+},
+{
+"ten": "be_owner_or_capital_contributor_of_llc",
+"params": [
+"W"
+],
+"vi_du": [
+"là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ",
+"là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn từ 3 tỷ đồng trở lên"
+]
+},
+{
+"ten": "be_chair_or_board_member_of_joint_stock_company",
+"params": [
+"W"
+],
+"vi_du": [
+"là Chủ tịch Hội đồng quản trị hoặc thành viên Hội đồng quản trị của công ty cổ phần có giá trị góp vốn theo quy định của Chính phủ",
+"là Chủ tịch Hội đồng quản trị hoặc thành viên Hội đồng quản trị của công ty cổ phần có giá trị góp vốn từ 3 tỷ đồng trở lên"
+]
+},
+{
+"ten": "work_under_30_days_max_3_times_per_year",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam làm việc tại vị trí có thời gian làm việc dưới 30 ngày và không quá 03 lần trong 01 năm"
+]
+},
+{
+"ten": "perform_international_agreement_signed_by_agency",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam thực hiện thỏa thuận quốc tế mà cơ quan, tổ chức ở Trung ương, cấp tỉnh ký kết"
+]
+},
+{
+"ten": "enter_vietnam_for_oda_consultancy_or_tasks",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam để cung cấp dịch vụ tư vấn về chuyên môn và kỹ thuật hoặc thực hiện các nhiệm vụ khác phục vụ cho công tác"
+]
+},
+{
+"ten": "hold_foreign_ministry_press_license",
+"params": [
+"W"
+],
+"vi_du": [
+"được Bộ Ngoại giao cấp giấy phép hoạt động thông tin, báo chí tại Việt Nam"
+]
+},
+{
+"ten": "marry_vietnamese_and_live_in_vietnam",
+"params": [
+"?"
+],
+"vi_du": [
+"kết hôn với người Việt Nam và sinh sống trên lãnh thổ Việt Nam"
+]
+},
+{
+"ten": "foreign_lawyer_with_vietnam_practice_license",
+"params": [
+"W"
+],
+"vi_du": [
+"là luật sư nước ngoài đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư"
+]
+},
+{
+"ten": "lead_foreign_ngo_or_intl_organization_in_vietnam",
+"params": [
+"W"
+],
+"vi_du": [
+"là Trưởng văn phòng đại diện, dự án hoặc chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "under_international_treaty_vietnam_is_member",
+"params": [
+"W"
+],
+"vi_du": [
+"theo quy định của điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên"
+]
+},
+{
+"ten": "be_subject_to_work_permit_issuance",
+"params": [
+"W"
+],
+"vi_du": [
+"thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "enter_vietnam_under_three_months_to_offer_services",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để thực hiện chào bán dịch vụ"
+]
+},
+{
+"ten": "short_term_entry_to_resolve_technical_incident",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được"
+]
+},
+{
+"ten": "have_criminal_record_or_pending_prosecution",
+"params": [
+"W"
+],
+"vi_du": [
+"là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam"
+]
+}
+]
+},
+{
+"chu_id": "C0552",
+"chu": "làm nhà quản lý, giám đốc điều hành, hiệu trưởng, phó hiệu trưởng cơ sở giáo dục",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D7.K14.b",
+"vai": "ket_luan",
+"tieu_de_dieu": "Trường hợp người lao động nước ngoài không thuộc diện cấp giấy phép lao động",
+"khoan_cha": "Được Bộ Giáo dục và Đào tạo xác nhận người lao động nước ngoài vào Việt Nam để thực hiện các công việc sau:",
+"chu_don_vi": "Làm nhà quản lý, giám đốc điều hành, hiệu trưởng, phó hiệu trưởng cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài hoặc tổ chức liên chính phủ đề nghị thành lập tại Việt Nam."
+}
+],
+"ung_vien": [
+{
+"ten": "education_ministry_teaching_research_confirmation",
+"params": [
+"W"
+],
+"vi_du": [
+"được Bộ Giáo dục và Đào tạo xác nhận người lao động nước ngoài vào Việt Nam để giảng dạy, nghiên cứu"
+]
+},
+{
+"ten": "be_owner_or_capital_contributor_of_llc",
+"params": [
+"W"
+],
+"vi_du": [
+"là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ",
+"là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn từ 3 tỷ đồng trở lên"
+]
+},
+{
+"ten": "be_chair_or_board_member_of_joint_stock_company",
+"params": [
+"W"
+],
+"vi_du": [
+"là Chủ tịch Hội đồng quản trị hoặc thành viên Hội đồng quản trị của công ty cổ phần có giá trị góp vốn theo quy định của Chính phủ",
+"là Chủ tịch Hội đồng quản trị hoặc thành viên Hội đồng quản trị của công ty cổ phần có giá trị góp vốn từ 3 tỷ đồng trở lên"
+]
+},
+{
+"ten": "perform_international_agreement_signed_by_agency",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam thực hiện thỏa thuận quốc tế mà cơ quan, tổ chức ở Trung ương, cấp tỉnh ký kết"
+]
+},
+{
+"ten": "foreign_authority_assigned_to_teach_or_research",
+"params": [
+"W"
+],
+"vi_du": [
+"được cơ quan, tổ chức có thẩm quyền của nước ngoài cử sang Việt Nam giảng dạy, nghiên cứu"
+]
+},
+{
+"ten": "official_passport_work_for_state_or_political_org",
+"params": [
+"W"
+],
+"vi_du": [
+"có hộ chiếu công vụ vào làm việc cho"
+]
+},
+{
+"ten": "intra_company_transfer_in_11_wto_service_sectors",
+"params": [
+"W"
+],
+"vi_du": [
+"di chuyển trong nội bộ doanh nghiệp thuộc phạm vi 11 ngành dịch vụ trong biểu cam kết dịch vụ của Việt Nam với Tổ chức Thương mại thế giới"
+]
+},
+{
+"ten": "work_under_30_days_max_3_times_per_year",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam làm việc tại vị trí có thời gian làm việc dưới 30 ngày và không quá 03 lần trong 01 năm"
+]
+},
+{
+"ten": "enter_vietnam_for_oda_consultancy_or_tasks",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam để cung cấp dịch vụ tư vấn về chuyên môn và kỹ thuật hoặc thực hiện các nhiệm vụ khác phục vụ cho công tác"
+]
+},
+{
+"ten": "hold_foreign_ministry_press_license",
+"params": [
+"W"
+],
+"vi_du": [
+"được Bộ Ngoại giao cấp giấy phép hoạt động thông tin, báo chí tại Việt Nam"
+]
+},
+{
+"ten": "short_term_entry_to_resolve_technical_incident",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được"
+]
+},
+{
+"ten": "foreign_lawyer_with_vietnam_practice_license",
+"params": [
+"W"
+],
+"vi_du": [
+"là luật sư nước ngoài đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư"
+]
+},
+{
+"ten": "lead_foreign_ngo_or_intl_organization_in_vietnam",
+"params": [
+"W"
+],
+"vi_du": [
+"là Trưởng văn phòng đại diện, dự án hoặc chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "under_international_treaty_vietnam_is_member",
+"params": [
+"W"
+],
+"vi_du": [
+"theo quy định của điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên"
+]
+},
+{
+"ten": "marry_vietnamese_and_live_in_vietnam",
+"params": [
+"?"
+],
+"vi_du": [
+"kết hôn với người Việt Nam và sinh sống trên lãnh thổ Việt Nam"
+]
+},
+{
+"ten": "be_subject_to_work_permit_issuance",
+"params": [
+"W"
+],
+"vi_du": [
+"thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "enter_vietnam_under_three_months_to_offer_services",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để thực hiện chào bán dịch vụ"
+]
+},
+{
+"ten": "manager_executive_expert_technical_worker",
+"params": [
+"W"
+],
+"vi_du": [
+"nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật",
+"là nhà quản lý, giám đốc điều hành, chuyên gia và lao động kỹ thuật của một doanh nghiệp nước ngoài"
+]
+},
+{
+"ten": "follow_lawful_management_and_supervision",
+"params": [
+"W"
+],
+"vi_du": [
+"tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động"
+]
+},
+{
+"ten": "commercial_presence_forms",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm tổ chức kinh tế có vốn đầu tư nước ngoài; văn phòng đại diện, chi nhánh của thương nhân nước ngoài tại Việt Nam; văn phòng điều hành của nhà đầu tư nước ngoài trong hợp đồng hợp tác kinh doanh"
+]
+}
+]
+},
+{
+"chu_id": "C0553",
+"chu": "quy định tại khoản 4 và khoản 6 Điều 154 của Bộ luật Lao động và khoản 1, 2, 8 và 11 Điều 7 Nghị định này",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D8.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động",
+"khoan_cha": "",
+"chu_don_vi": "Người sử dụng lao động đề nghị Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội nơi người lao động nước ngoài dự kiến làm việc xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động trước ít nhất 10 ngày, kể từ ngày người lao động nước ngoài bắt đầu làm việc.\nTrường hợp quy định tại khoản 4 và khoản 6 Điều 154 của Bộ luật Lao động và khoản 1, 2, 8 và 11 Điều 7 Nghị định này thì không phải làm thủ tục xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động nhưng phải báo cáo với Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội nơi người lao động nước ngoài dự kiến làm việc thông tin: họ và tên, tuổi, quốc tịch, số hộ chiếu, tên người sử dụng lao động nước ngoài, ngày bắt đầu và ngày kết thúc làm việc trước ít nhất 3 ngày làm việc, kể từ ngày người lao động nước ngoài dự kiến bắt đầu làm việc tại Việt Nam.\nThời hạn xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động tối đa là 02 năm và theo thời hạn của một trong các trường hợp quy định tại Điều 10 Nghị định này. Trường hợp cấp lại xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động thì thời hạn tối đa là 02 năm."
+}
+],
+"ung_vien": [
+{
+"ten": "documents_under_points_b_c_and_dd",
+"params": [],
+"vi_du": [
+"Các giấy tờ quy định tại điểm b, c và đ khoản này"
+]
+},
+{
+"ten": "form_09_work_permit_exemption_request",
+"params": [],
+"vi_du": [
+"Văn bản đề nghị xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động theo Mẫu số 09/PLI Phụ lục I ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "ministry_or_provincial_dolisa",
+"params": [],
+"vi_du": [
+"Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "within_5_working_days_of_exemption_dossier",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc, kể từ ngày nhận đủ hồ sơ đề nghị xác nhận không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "certified_copy_of_valid_passport",
+"params": [],
+"vi_du": [
+"Bản sao có chứng thực hộ chiếu còn giá trị"
+]
+},
+{
+"ten": "documents_proving_work_permit_exemption",
+"params": [],
+"vi_du": [
+"Các giấy tờ để chứng minh người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "reissue_work_permit_exemption_certificate",
+"params": [],
+"vi_du": [
+"cấp lại xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "foreign_origin",
+"params": [],
+"vi_du": [
+"của nước ngoài"
+]
+},
+{
+"ten": "health_or_medical_examination_certificate",
+"params": [],
+"vi_du": [
+"Giấy chứng nhận sức khỏe hoặc giấy khám sức khỏe"
+]
+},
+{
+"ten": "duration_of_work_permit_exemption_certificate",
+"params": [],
+"vi_du": [
+"Thời hạn xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "at_least_10_days_before_foreign_worker_start",
+"params": [],
+"vi_du": [
+"trước ít nhất 10 ngày, kể từ ngày người lao động nước ngoài bắt đầu làm việc"
+]
+},
+{
+"ten": "at_least_3_days_before_foreign_worker_start",
+"params": [],
+"vi_du": [
+"trước ít nhất 3 ngày, kể từ ngày người lao động nước ngoài dự kiến bắt đầu làm việc tại Việt Nam"
+]
+},
+{
+"ten": "foreign_worker_demand_approval",
+"params": [],
+"vi_du": [
+"Văn bản chấp thuận nhu cầu sử dụng người lao động nước ngoài trừ những trường hợp không phải xác định nhu cầu sử dụng người lao động nước ngoài",
+"được cơ quan có thẩm quyền chấp thuận nhu cầu sử dụng người lao động nước ngoài"
+]
+},
+{
+"ten": "certify_work_permit_exemption",
+"params": [],
+"vi_du": [
+"xác nhận"
+]
+},
+{
+"ten": "foreign_worker_in_vietnam",
+"params": [],
+"vi_du": [
+"Người lao động nước ngoài làm việc tại Việt Nam"
+]
+},
+{
+"ten": "foreign_national",
+"params": [],
+"vi_du": [
+"Người nước ngoài"
+]
+},
+{
+"ten": "relative_of_foreign_mission_member_in_vietnam",
+"params": [],
+"vi_du": [
+"thân nhân thành viên cơ quan đại diện nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "duration_of_foreign_party_assigning_worker",
+"params": [],
+"vi_du": [
+"Thời hạn của bên nước ngoài cử người lao động nước ngoài sang làm việc tại Việt Nam"
+]
+},
+{
+"ten": "duration_of_expected_labor_contract",
+"params": [],
+"vi_du": [
+"Thời hạn của hợp đồng lao động dự kiến sẽ ký kết"
+]
+},
+{
+"ten": "vietnam_foreign_service_contract_duration",
+"params": [],
+"vi_du": [
+"Thời hạn hợp đồng hoặc thỏa thuận cung cấp dịch vụ ký kết giữa đối tác Việt Nam và nước ngoài"
+]
+}
+]
+},
+{
+"chu_id": "C0554",
+"chu": "thời hạn xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động tối đa là 02 năm",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D8.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động",
+"khoan_cha": "",
+"chu_don_vi": "Người sử dụng lao động đề nghị Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội nơi người lao động nước ngoài dự kiến làm việc xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động trước ít nhất 10 ngày, kể từ ngày người lao động nước ngoài bắt đầu làm việc.\nTrường hợp quy định tại khoản 4 và khoản 6 Điều 154 của Bộ luật Lao động và khoản 1, 2, 8 và 11 Điều 7 Nghị định này thì không phải làm thủ tục xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động nhưng phải báo cáo với Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội nơi người lao động nước ngoài dự kiến làm việc thông tin: họ và tên, tuổi, quốc tịch, số hộ chiếu, tên người sử dụng lao động nước ngoài, ngày bắt đầu và ngày kết thúc làm việc trước ít nhất 3 ngày làm việc, kể từ ngày người lao động nước ngoài dự kiến bắt đầu làm việc tại Việt Nam.\nThời hạn xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động tối đa là 02 năm và theo thời hạn của một trong các trường hợp quy định tại Điều 10 Nghị định này. Trường hợp cấp lại xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động thì thời hạn tối đa là 02 năm."
+}
+],
+"ung_vien": [
+{
+"ten": "duration_of_work_permit_exemption_certificate",
+"params": [],
+"vi_du": [
+"Thời hạn xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "within_5_working_days_of_exemption_dossier",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc, kể từ ngày nhận đủ hồ sơ đề nghị xác nhận không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "reissue_work_permit_exemption_certificate",
+"params": [],
+"vi_du": [
+"cấp lại xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "form_09_work_permit_exemption_request",
+"params": [],
+"vi_du": [
+"Văn bản đề nghị xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động theo Mẫu số 09/PLI Phụ lục I ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "documents_proving_work_permit_exemption",
+"params": [],
+"vi_du": [
+"Các giấy tờ để chứng minh người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "certify_work_permit_exemption",
+"params": [],
+"vi_du": [
+"xác nhận"
+]
+},
+{
+"ten": "health_or_medical_examination_certificate",
+"params": [],
+"vi_du": [
+"Giấy chứng nhận sức khỏe hoặc giấy khám sức khỏe"
+]
+},
+{
+"ten": "foreign_worker_demand_approval",
+"params": [],
+"vi_du": [
+"Văn bản chấp thuận nhu cầu sử dụng người lao động nước ngoài trừ những trường hợp không phải xác định nhu cầu sử dụng người lao động nước ngoài",
+"được cơ quan có thẩm quyền chấp thuận nhu cầu sử dụng người lao động nước ngoài"
+]
+},
+{
+"ten": "certified_copy_of_valid_passport",
+"params": [],
+"vi_du": [
+"Bản sao có chứng thực hộ chiếu còn giá trị"
+]
+},
+{
+"ten": "ministry_or_provincial_dolisa",
+"params": [],
+"vi_du": [
+"Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "documents_under_points_b_c_and_dd",
+"params": [],
+"vi_du": [
+"Các giấy tờ quy định tại điểm b, c và đ khoản này"
+]
+},
+{
+"ten": "foreign_origin",
+"params": [],
+"vi_du": [
+"của nước ngoài"
+]
+},
+{
+"ten": "at_least_10_days_before_foreign_worker_start",
+"params": [],
+"vi_du": [
+"trước ít nhất 10 ngày, kể từ ngày người lao động nước ngoài bắt đầu làm việc"
+]
+},
+{
+"ten": "at_least_3_days_before_foreign_worker_start",
+"params": [],
+"vi_du": [
+"trước ít nhất 3 ngày, kể từ ngày người lao động nước ngoài dự kiến bắt đầu làm việc tại Việt Nam"
+]
+},
+{
+"ten": "foreign_enterprise_participation_proof_duration",
+"params": [],
+"vi_du": [
+"Thời hạn trong văn bản chứng minh người lao động nước ngoài được tham gia vào hoạt động của một doanh nghiệp nước ngoài đã thành lập hiện diện thương mại tại Việt Nam"
+]
+},
+{
+"ten": "service_provider_presence_document_duration",
+"params": [],
+"vi_du": [
+"Thời hạn trong văn bản của nhà cung cấp dịch vụ cử người lao động nước ngoài vào Việt Nam để thành lập hiện diện thương mại của nhà cung cấp dịch vụ đó"
+]
+},
+{
+"ten": "duration_in_entity_operating_license",
+"params": [],
+"vi_du": [
+"Thời hạn đã được xác định trong giấy phép hoạt động của cơ quan, tổ chức, doanh nghiệp"
+]
+},
+{
+"ten": "relative_of_foreign_mission_member_in_vietnam",
+"params": [],
+"vi_du": [
+"thân nhân thành viên cơ quan đại diện nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "duration_of_foreign_party_assigning_worker",
+"params": [],
+"vi_du": [
+"Thời hạn của bên nước ngoài cử người lao động nước ngoài sang làm việc tại Việt Nam"
+]
+},
+{
+"ten": "duration_of_expected_labor_contract",
+"params": [],
+"vi_du": [
+"Thời hạn của hợp đồng lao động dự kiến sẽ ký kết"
+]
+}
+]
+},
+{
+"chu_id": "C0555",
+"chu": "theo thời hạn của một trong các trường hợp quy định tại Điều 10 Nghị định này",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D8.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động",
+"khoan_cha": "",
+"chu_don_vi": "Người sử dụng lao động đề nghị Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội nơi người lao động nước ngoài dự kiến làm việc xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động trước ít nhất 10 ngày, kể từ ngày người lao động nước ngoài bắt đầu làm việc.\nTrường hợp quy định tại khoản 4 và khoản 6 Điều 154 của Bộ luật Lao động và khoản 1, 2, 8 và 11 Điều 7 Nghị định này thì không phải làm thủ tục xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động nhưng phải báo cáo với Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội nơi người lao động nước ngoài dự kiến làm việc thông tin: họ và tên, tuổi, quốc tịch, số hộ chiếu, tên người sử dụng lao động nước ngoài, ngày bắt đầu và ngày kết thúc làm việc trước ít nhất 3 ngày làm việc, kể từ ngày người lao động nước ngoài dự kiến bắt đầu làm việc tại Việt Nam.\nThời hạn xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động tối đa là 02 năm và theo thời hạn của một trong các trường hợp quy định tại Điều 10 Nghị định này. Trường hợp cấp lại xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động thì thời hạn tối đa là 02 năm."
+}
+],
+"ung_vien": [
+{
+"ten": "within_5_working_days_of_exemption_dossier",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc, kể từ ngày nhận đủ hồ sơ đề nghị xác nhận không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "form_09_work_permit_exemption_request",
+"params": [],
+"vi_du": [
+"Văn bản đề nghị xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động theo Mẫu số 09/PLI Phụ lục I ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "documents_under_points_b_c_and_dd",
+"params": [],
+"vi_du": [
+"Các giấy tờ quy định tại điểm b, c và đ khoản này"
+]
+},
+{
+"ten": "duration_of_work_permit_exemption_certificate",
+"params": [],
+"vi_du": [
+"Thời hạn xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "at_least_10_days_before_foreign_worker_start",
+"params": [],
+"vi_du": [
+"trước ít nhất 10 ngày, kể từ ngày người lao động nước ngoài bắt đầu làm việc"
+]
+},
+{
+"ten": "foreign_worker_demand_approval",
+"params": [],
+"vi_du": [
+"Văn bản chấp thuận nhu cầu sử dụng người lao động nước ngoài trừ những trường hợp không phải xác định nhu cầu sử dụng người lao động nước ngoài",
+"được cơ quan có thẩm quyền chấp thuận nhu cầu sử dụng người lao động nước ngoài"
+]
+},
+{
+"ten": "certified_copy_of_valid_passport",
+"params": [],
+"vi_du": [
+"Bản sao có chứng thực hộ chiếu còn giá trị"
+]
+},
+{
+"ten": "ministry_or_provincial_dolisa",
+"params": [],
+"vi_du": [
+"Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "documents_proving_work_permit_exemption",
+"params": [],
+"vi_du": [
+"Các giấy tờ để chứng minh người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "reissue_work_permit_exemption_certificate",
+"params": [],
+"vi_du": [
+"cấp lại xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "foreign_origin",
+"params": [],
+"vi_du": [
+"của nước ngoài"
+]
+},
+{
+"ten": "health_or_medical_examination_certificate",
+"params": [],
+"vi_du": [
+"Giấy chứng nhận sức khỏe hoặc giấy khám sức khỏe"
+]
+},
+{
+"ten": "at_least_3_days_before_foreign_worker_start",
+"params": [],
+"vi_du": [
+"trước ít nhất 3 ngày, kể từ ngày người lao động nước ngoài dự kiến bắt đầu làm việc tại Việt Nam"
+]
+},
+{
+"ten": "certify_work_permit_exemption",
+"params": [],
+"vi_du": [
+"xác nhận"
+]
+},
+{
+"ten": "foreign_enterprise_participation_proof_duration",
+"params": [],
+"vi_du": [
+"Thời hạn trong văn bản chứng minh người lao động nước ngoài được tham gia vào hoạt động của một doanh nghiệp nước ngoài đã thành lập hiện diện thương mại tại Việt Nam"
+]
+},
+{
+"ten": "service_provider_negotiation_document_duration",
+"params": [],
+"vi_du": [
+"Thời hạn nêu trong văn bản của nhà cung cấp dịch vụ cử người lao động nước ngoài vào Việt Nam để đàm phán cung cấp dịch vụ"
+]
+},
+{
+"ten": "foreign_worker_use_approval_document_duration",
+"params": [],
+"vi_du": [
+"Thời hạn trong văn bản chấp thuận sử dụng người lao động nước ngoài"
+]
+},
+{
+"ten": "service_provider_presence_document_duration",
+"params": [],
+"vi_du": [
+"Thời hạn trong văn bản của nhà cung cấp dịch vụ cử người lao động nước ngoài vào Việt Nam để thành lập hiện diện thương mại của nhà cung cấp dịch vụ đó"
+]
+},
+{
+"ten": "duration_in_entity_operating_license",
+"params": [],
+"vi_du": [
+"Thời hạn đã được xác định trong giấy phép hoạt động của cơ quan, tổ chức, doanh nghiệp"
+]
+},
+{
+"ten": "duration_of_foreign_party_assigning_worker",
+"params": [],
+"vi_du": [
+"Thời hạn của bên nước ngoài cử người lao động nước ngoài sang làm việc tại Việt Nam"
+]
+}
+]
+},
+{
+"chu_id": "C0556",
+"chu": "thời hạn tối đa là 02 năm",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D8.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động",
+"khoan_cha": "",
+"chu_don_vi": "Người sử dụng lao động đề nghị Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội nơi người lao động nước ngoài dự kiến làm việc xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động trước ít nhất 10 ngày, kể từ ngày người lao động nước ngoài bắt đầu làm việc.\nTrường hợp quy định tại khoản 4 và khoản 6 Điều 154 của Bộ luật Lao động và khoản 1, 2, 8 và 11 Điều 7 Nghị định này thì không phải làm thủ tục xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động nhưng phải báo cáo với Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội nơi người lao động nước ngoài dự kiến làm việc thông tin: họ và tên, tuổi, quốc tịch, số hộ chiếu, tên người sử dụng lao động nước ngoài, ngày bắt đầu và ngày kết thúc làm việc trước ít nhất 3 ngày làm việc, kể từ ngày người lao động nước ngoài dự kiến bắt đầu làm việc tại Việt Nam.\nThời hạn xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động tối đa là 02 năm và theo thời hạn của một trong các trường hợp quy định tại Điều 10 Nghị định này. Trường hợp cấp lại xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động thì thời hạn tối đa là 02 năm."
+}
+],
+"ung_vien": [
+{
+"ten": "duration_of_work_permit_exemption_certificate",
+"params": [],
+"vi_du": [
+"Thời hạn xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "within_5_working_days_of_exemption_dossier",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc, kể từ ngày nhận đủ hồ sơ đề nghị xác nhận không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "certified_copy_of_valid_passport",
+"params": [],
+"vi_du": [
+"Bản sao có chứng thực hộ chiếu còn giá trị"
+]
+},
+{
+"ten": "ministry_or_provincial_dolisa",
+"params": [],
+"vi_du": [
+"Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "documents_under_points_b_c_and_dd",
+"params": [],
+"vi_du": [
+"Các giấy tờ quy định tại điểm b, c và đ khoản này"
+]
+},
+{
+"ten": "documents_proving_work_permit_exemption",
+"params": [],
+"vi_du": [
+"Các giấy tờ để chứng minh người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "reissue_work_permit_exemption_certificate",
+"params": [],
+"vi_du": [
+"cấp lại xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "foreign_origin",
+"params": [],
+"vi_du": [
+"của nước ngoài"
+]
+},
+{
+"ten": "health_or_medical_examination_certificate",
+"params": [],
+"vi_du": [
+"Giấy chứng nhận sức khỏe hoặc giấy khám sức khỏe"
+]
+},
+{
+"ten": "at_least_10_days_before_foreign_worker_start",
+"params": [],
+"vi_du": [
+"trước ít nhất 10 ngày, kể từ ngày người lao động nước ngoài bắt đầu làm việc"
+]
+},
+{
+"ten": "at_least_3_days_before_foreign_worker_start",
+"params": [],
+"vi_du": [
+"trước ít nhất 3 ngày, kể từ ngày người lao động nước ngoài dự kiến bắt đầu làm việc tại Việt Nam"
+]
+},
+{
+"ten": "foreign_worker_demand_approval",
+"params": [],
+"vi_du": [
+"Văn bản chấp thuận nhu cầu sử dụng người lao động nước ngoài trừ những trường hợp không phải xác định nhu cầu sử dụng người lao động nước ngoài",
+"được cơ quan có thẩm quyền chấp thuận nhu cầu sử dụng người lao động nước ngoài"
+]
+},
+{
+"ten": "form_09_work_permit_exemption_request",
+"params": [],
+"vi_du": [
+"Văn bản đề nghị xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động theo Mẫu số 09/PLI Phụ lục I ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "certify_work_permit_exemption",
+"params": [],
+"vi_du": [
+"xác nhận"
+]
+},
+{
+"ten": "duration_of_foreign_party_assigning_worker",
+"params": [],
+"vi_du": [
+"Thời hạn của bên nước ngoài cử người lao động nước ngoài sang làm việc tại Việt Nam"
+]
+},
+{
+"ten": "duration_of_expected_labor_contract",
+"params": [],
+"vi_du": [
+"Thời hạn của hợp đồng lao động dự kiến sẽ ký kết"
+]
+},
+{
+"ten": "vietnam_foreign_service_contract_duration",
+"params": [],
+"vi_du": [
+"Thời hạn hợp đồng hoặc thỏa thuận cung cấp dịch vụ ký kết giữa đối tác Việt Nam và nước ngoài"
+]
+},
+{
+"ten": "vietnam_foreign_contract_or_agreement_duration",
+"params": [],
+"vi_du": [
+"Thời hạn hợp đồng hoặc thỏa thuận ký kết giữa đối tác Việt Nam và nước ngoài"
+]
+},
+{
+"ten": "service_provider_negotiation_document_duration",
+"params": [],
+"vi_du": [
+"Thời hạn nêu trong văn bản của nhà cung cấp dịch vụ cử người lao động nước ngoài vào Việt Nam để đàm phán cung cấp dịch vụ"
+]
+},
+{
+"ten": "foreign_worker_use_approval_document_duration",
+"params": [],
+"vi_du": [
+"Thời hạn trong văn bản chấp thuận sử dụng người lao động nước ngoài"
+]
+}
+]
+},
+{
+"chu_id": "C0557",
+"chu": "Bản sao có chứng thực hộ chiếu hoặc bản sao hộ chiếu có xác nhận của người sử dụng lao động còn giá trị theo quy định của pháp luật",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D8.K3.d",
+"vai": "ket_luan",
+"tieu_de_dieu": "Xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động",
+"khoan_cha": "Hồ sơ đề nghị xác nhận không thuộc diện cấp giấy phép lao động, bao gồm:",
+"chu_don_vi": "Bản sao có chứng thực hộ chiếu hoặc bản sao hộ chiếu có xác nhận của người sử dụng lao động còn giá trị theo quy định của pháp luật;"
+}
+],
+"ung_vien": [
+{
+"ten": "certified_copy_of_valid_passport",
+"params": [],
+"vi_du": [
+"Bản sao có chứng thực hộ chiếu còn giá trị"
+]
+},
+{
+"ten": "health_or_medical_examination_certificate",
+"params": [],
+"vi_du": [
+"Giấy chứng nhận sức khỏe hoặc giấy khám sức khỏe"
+]
+},
+{
+"ten": "foreign_worker_demand_approval",
+"params": [],
+"vi_du": [
+"Văn bản chấp thuận nhu cầu sử dụng người lao động nước ngoài trừ những trường hợp không phải xác định nhu cầu sử dụng người lao động nước ngoài",
+"được cơ quan có thẩm quyền chấp thuận nhu cầu sử dụng người lao động nước ngoài"
+]
+},
+{
+"ten": "form_09_work_permit_exemption_request",
+"params": [],
+"vi_du": [
+"Văn bản đề nghị xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động theo Mẫu số 09/PLI Phụ lục I ban hành kèm theo Nghị định này"
+]
+},
+{
+"ten": "reissue_work_permit_exemption_certificate",
+"params": [],
+"vi_du": [
+"cấp lại xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "duration_of_work_permit_exemption_certificate",
+"params": [],
+"vi_du": [
+"Thời hạn xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "within_5_working_days_of_exemption_dossier",
+"params": [],
+"vi_du": [
+"trong thời hạn 05 ngày làm việc, kể từ ngày nhận đủ hồ sơ đề nghị xác nhận không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "certify_work_permit_exemption",
+"params": [],
+"vi_du": [
+"xác nhận"
+]
+},
+{
+"ten": "ministry_or_provincial_dolisa",
+"params": [],
+"vi_du": [
+"Bộ Lao động - Thương binh và Xã hội hoặc Sở Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "documents_proving_work_permit_exemption",
+"params": [],
+"vi_du": [
+"Các giấy tờ để chứng minh người lao động nước ngoài không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "documents_under_points_b_c_and_dd",
+"params": [],
+"vi_du": [
+"Các giấy tờ quy định tại điểm b, c và đ khoản này"
+]
+},
+{
+"ten": "foreign_origin",
+"params": [],
+"vi_du": [
+"của nước ngoài"
+]
+},
+{
+"ten": "at_least_10_days_before_foreign_worker_start",
+"params": [],
+"vi_du": [
+"trước ít nhất 10 ngày, kể từ ngày người lao động nước ngoài bắt đầu làm việc"
+]
+},
+{
+"ten": "at_least_3_days_before_foreign_worker_start",
+"params": [],
+"vi_du": [
+"trước ít nhất 3 ngày, kể từ ngày người lao động nước ngoài dự kiến bắt đầu làm việc tại Việt Nam"
+]
+},
+{
+"ten": "household_business_or_individual_doing_business",
+"params": [],
+"vi_du": [
+"Hộ kinh doanh, cá nhân được phép hoạt động kinh doanh theo quy định của pháp luật"
+]
+}
+]
+},
+{
+"chu_id": "C0558",
+"chu": "hợp pháp hóa lãnh sự, dịch ra tiếng Việt và công chứng hoặc chứng thực",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D8.K3.e",
+"vai": "ket_luan",
+"tieu_de_dieu": "Xác nhận người lao động nước ngoài không thuộc diện cấp giấy phép lao động",
+"khoan_cha": "Hồ sơ đề nghị xác nhận không thuộc diện cấp giấy phép lao động, bao gồm:",
+"chu_don_vi": "Các giấy tờ quy định tại điểm b, c và đ khoản này là 01 bản gốc hoặc bản sao có chứng thực, nếu của nước ngoài thì phải hợp pháp hóa lãnh sự, dịch ra tiếng Việt và công chứng hoặc chứng thực trừ trường hợp được miễn hợp pháp hóa lãnh sự theo điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam và nước ngoài liên quan đều là thành viên hoặc theo nguyên tắc có đi có lại hoặc theo quy định của pháp luật."
+}
+],
+"ung_vien": [
+{
+"ten": "consular_legalization",
+"params": [
+"?"
+],
+"vi_du": [
+"hợp pháp hóa lãnh sự"
+]
+},
+{
+"ten": "translate_into_vietnamese",
+"params": [
+"?"
+],
+"vi_du": [
+"dịch ra tiếng Việt"
+]
+},
+{
+"ten": "original_or_certified_copy",
+"params": [
+"?"
+],
+"vi_du": [
+"là 01 bản gốc hoặc bản sao có chứng thực"
+]
+},
+{
+"ten": "authenticated_translation",
+"params": [
+"?"
+],
+"vi_du": [
+"có chứng thực"
+]
+},
+{
+"ten": "reply_stating_refusal_reason",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản trả lời và nêu rõ lý do"
+]
+},
+{
+"ten": "maximum_work_permit_exemption_certificate_duration",
+"params": [
+"D"
+],
+"vi_du": [
+"tối đa là 02 năm"
+]
+},
+{
+"ten": "enter_vietnam_for_oda_consultancy_or_tasks",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam để cung cấp dịch vụ tư vấn về chuyên môn và kỹ thuật hoặc thực hiện các nhiệm vụ khác phục vụ cho công tác"
+]
+},
+{
+"ten": "have_criminal_record_or_pending_prosecution",
+"params": [
+"W"
+],
+"vi_du": [
+"là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam"
+]
+},
+{
+"ten": "short_term_entry_to_resolve_technical_incident",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được"
+]
+},
+{
+"ten": "sublease_labor_for_unlisted_job",
+"params": [
+"E"
+],
+"vi_du": [
+"cho thuê lại lao động để thực hiện công việc không thuộc danh mục công việc được thực hiện cho thuê lại lao động"
+]
+},
+{
+"ten": "university_degree_and_3_years_experience",
+"params": [
+"W"
+],
+"vi_du": [
+"có bằng đại học trở lên hoặc tương đương và có ít nhất 3 năm kinh nghiệm làm việc trong chuyên ngành được đào tạo phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam"
+]
+},
+{
+"ten": "five_years_experience_and_practice_certificate",
+"params": [
+"W"
+],
+"vi_du": [
+"có ít nhất 5 năm kinh nghiệm và có chứng chỉ hành nghề phù hợp với vị trí công việc mà người lao động nước ngoài dự kiến làm việc tại Việt Nam"
+]
+},
+{
+"ten": "publish_labor_sublease_license_status",
+"params": [
+"?"
+],
+"vi_du": [
+"công bố doanh nghiệp được cấp, gia hạn, cấp lại hoặc thu hồi giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "issued_license_or_lost_license_commitment",
+"params": [
+"?"
+],
+"vi_du": [
+"giấy phép đã được cấp hoặc văn bản cam kết chịu trách nhiệm trước pháp luật của doanh nghiệp cho thuê lại đối với trường hợp giấy phép bị mất"
+]
+},
+{
+"ten": "send_certified_license_copy_to_dolisa",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi bản sao chứng thực giấy phép đến Sở Lao động - Thương binh và Xã hội đó"
+]
+},
+{
+"ten": "violate_vietnamese_law_affecting_social_order",
+"params": [
+"W"
+],
+"vi_du": [
+"không thực hiện đúng pháp luật Việt Nam làm ảnh hưởng tới an ninh, trật tự, an toàn xã hội"
+]
+}
+]
+},
+{
+"chu_id": "C0559",
+"chu": "thay đổi một trong các nội dung",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D12.K3",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Các trường hợp cấp lại giấy phép lao động",
+"khoan_cha": "",
+"chu_don_vi": "Thay đổi một trong các nội dung sau: họ và tên, quốc tịch, số hộ chiếu, địa điểm làm việc, đổi tên doanh nghiệp mà không thay đổi mã số doanh nghiệp ghi trong giấy phép lao động còn thời hạn."
+}
+],
+"ung_vien": [
+{
+"ten": "change_work_permit_information",
+"params": [],
+"vi_du": [
+"thay đổi"
+]
+},
+{
+"ten": "reissue_work_permit",
+"params": [],
+"vi_du": [
+"cấp lại giấy phép lao động"
+]
+},
+{
+"ten": "valid_work_permit",
+"params": [],
+"vi_du": [
+"Giấy phép lao động còn thời hạn"
+]
+},
+{
+"ten": "work_outside_work_permit_content",
+"params": [],
+"vi_du": [
+"làm việc không đúng với nội dung trong giấy phép lao động đã được cấp"
+]
+},
+{
+"ten": "within_10_working_days_of_demand_report",
+"params": [],
+"vi_du": [
+"trong thời hạn 10 ngày làm việc kể từ ngày nhận được báo cáo giải trình hoặc báo cáo giải trình thay đổi nhu cầu sử dụng người lao động nước ngoài"
+]
+},
+{
+"ten": "documents_proving_continued_work",
+"params": [],
+"vi_du": [
+"giấy tờ chứng minh người lao động nước ngoài tiếp tục làm việc cho người sử dụng lao động theo nội dung giấy phép lao động đã được cấp"
+]
+},
+{
+"ten": "intra_company_transferee",
+"params": [],
+"vi_du": [
+"Người lao động nước ngoài di chuyển trong nội bộ doanh nghiệp"
+]
+},
+{
+"ten": "labor_contract_content",
+"params": [],
+"vi_du": [
+"Nội dung của hợp đồng lao động"
+]
+},
+{
+"ten": "labor_sublease_license_content",
+"params": [],
+"vi_du": [
+"Nội dung giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "recruitment_notice_content",
+"params": [],
+"vi_du": [
+"nội dung thông báo tuyển dụng bao gồm"
+]
+},
+{
+"ten": "change_foreign_worker_demand",
+"params": [],
+"vi_du": [
+"thay đổi nhu cầu sử dụng người lao động nước ngoài"
+]
+},
+{
+"ten": "foreign_enterprise_participation_proof_duration",
+"params": [],
+"vi_du": [
+"Thời hạn trong văn bản chứng minh người lao động nước ngoài được tham gia vào hoạt động của một doanh nghiệp nước ngoài đã thành lập hiện diện thương mại tại Việt Nam"
+]
+},
+{
+"ten": "extension_follows_case_duration",
+"params": [],
+"vi_du": [
+"được gia hạn theo thời hạn của một trong các trường hợp"
+]
+}
+]
+},
+{
+"chu_id": "C0560",
+"chu": "làm việc cho một người sử dụng lao động tại nhiều tỉnh, thành phố trực thuộc trung ương",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D6.K3",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Báo cáo sử dụng người lao động nước ngoài",
+"khoan_cha": "",
+"chu_don_vi": "Trường hợp người lao động nước ngoài làm việc cho một người sử dụng lao động tại nhiều tỉnh, thành phố trực thuộc trung ương thì trong vòng 3 ngày làm việc kể từ ngày người lao động nước ngoài bắt đầu làm việc, người sử dụng lao động phải báo cáo qua môi trường điện tử về Bộ Lao động - Thương binh và Xã hội và Sở Lao động - Thương binh và Xã hội nơi người lao động nước ngoài đến làm việc theo Mẫu số 17/PLI Phụ lục I ban hành kèm theo Nghị định này."
+}
+],
+"ung_vien": [
+{
+"ten": "report_foreign_worker_situation_in_local_area",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Bộ Lao động - Thương binh và Xã hội về tình hình người lao động nước ngoài làm việc trên địa bàn"
+]
+},
+{
+"ten": "perform_international_agreement_signed_by_agency",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam thực hiện thỏa thuận quốc tế mà cơ quan, tổ chức ở Trung ương, cấp tỉnh ký kết"
+]
+},
+{
+"ten": "enter_labor_contract_with_sublease_enterprise",
+"params": [
+"W"
+],
+"vi_du": [
+"giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "head_and_direct_manager_of_subunit",
+"params": [
+"W"
+],
+"vi_du": [
+"là người đứng đầu và trực tiếp điều hành đơn vị trực thuộc cơ quan, tổ chức, doanh nghiệp"
+]
+},
+{
+"ten": "constitute_labor_sublease",
+"params": [
+"?"
+],
+"vi_du": [
+"là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động, sau đó người lao động được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác mà vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "report_revocation_and_notify_new_dolisa",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cáo Chủ tịch Ủy ban nhân dân cấp tỉnh thu hồi giấy phép và thông báo cho Sở Lao động - Thương binh và Xã hội nơi doanh nghiệp đặt trụ sở chính mới"
+]
+},
+{
+"ten": "issue_written_decision_on_foreign_worker_use",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản chấp thuận hoặc không chấp thuận về việc sử dụng người lao động nước ngoài"
+]
+},
+{
+"ten": "request_completion_and_submit_for_license_issue",
+"params": [
+"?"
+],
+"vi_du": [
+"có văn bản yêu cầu doanh nghiệp hoàn thiện hồ sơ và trình Chủ tịch Ủy ban nhân dân cấp tỉnh cấp giấy phép cho doanh nghiệp cho thuê lại"
+]
+}
+]
+},
+{
+"chu_id": "C0561",
+"chu": "báo cáo qua môi trường điện tử trong vòng 3 ngày làm việc kể từ ngày người lao động nước ngoài bắt đầu làm việc",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_152-2020.D6.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Báo cáo sử dụng người lao động nước ngoài",
+"khoan_cha": "",
+"chu_don_vi": "Trường hợp người lao động nước ngoài làm việc cho một người sử dụng lao động tại nhiều tỉnh, thành phố trực thuộc trung ương thì trong vòng 3 ngày làm việc kể từ ngày người lao động nước ngoài bắt đầu làm việc, người sử dụng lao động phải báo cáo qua môi trường điện tử về Bộ Lao động - Thương binh và Xã hội và Sở Lao động - Thương binh và Xã hội nơi người lao động nước ngoài đến làm việc theo Mẫu số 17/PLI Phụ lục I ban hành kèm theo Nghị định này."
+}
+],
+"ung_vien": [
+{
+"ten": "allow_labor_sublease_withdraw_deposit",
+"params": [
+"?",
+"?"
+],
+"vi_du": [
+"thực hiện cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"rút tiền ký quỹ"
+]
+},
+{
+"ten": "report_foreign_worker_use_half_year_and_annual",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"báo cáo về tình hình sử dụng người lao động nước ngoài của 6 tháng đầu năm và hằng năm"
+]
+},
+{
+"ten": "leased_worker_benefits_overdue_after_60_days",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"hết 60 ngày kể từ ngày đến hạn mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại tại khoản 2 Điều 15 Nghị định này"
+]
+},
+{
+"ten": "withdrawal_omission_after_payment_default",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động"
+]
+},
+{
+"ten": "annual_report_vietnamese_worker_recruitment_use",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"báo cáo hằng năm về tình hình tuyển dụng, sử dụng người lao động Việt Nam làm việc cho tổ chức, cá nhân nước ngoài"
+]
+},
+{
+"ten": "report_worker_information",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"báo cáo thông tin"
+]
+},
+{
+"ten": "report_vietnamese_worker_supply_or_sublease",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"báo cáo tình hình cung ứng người lao động Việt Nam hoặc cho thuê lại lao động Việt Nam làm việc cho tổ chức, cá nhân nước ngoài tại Việt Nam"
+]
+}
+]
+}
+]
+}

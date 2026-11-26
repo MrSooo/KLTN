@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khi có trên 50% số người được lấy ý kiến đồng ý với nội dung lấy ý kiến đình công theo quy định tại khoản 2 Điều 201 của Bộ luật này thì tổ chức đại diện người lao động ra quyết định đình công bằng văn bản.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"có trên 50% số người được lấy ý kiến đồng ý với nội dung lấy ý kiến đình công theo quy định tại khoản 2 Điều 201 của Bộ luật này\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tổ chức đại diện người lao động ra quyết định đình công bằng văn bản\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795537751844-8c3fe712",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 690
+   },
+   "input_tokens": 2427,
+   "output_tokens": 92,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_514f058c1bc58ecf9d7d1b80"
+   }
+  }
+ }
+}

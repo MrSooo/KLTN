@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thẩm quyền thanh tra chuyên ngành về lao động thực hiện theo quy định của Luật Thanh tra.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thẩm quyền thanh tra chuyên ngành về lao động thực hiện theo quy định của Luật Thanh tra\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540497992-f2d04755",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 269
+   },
+   "input_tokens": 2394,
+   "output_tokens": 41,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_277007af724a6eb83ae8830e"
+   }
+  }
+ }
+}

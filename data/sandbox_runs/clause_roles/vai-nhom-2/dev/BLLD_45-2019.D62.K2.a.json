@@ -1,0 +1,32 @@
+{
+ "unit_id": "BLLD_45-2019.D62.K2.a",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D62.K2.a\",\n \"tieu_de_dieu\": \"Hợp đồng đào tạo nghề giữa người sử dụng lao động, người lao động và chi phí đào tạo nghề\",\n \"khoan_cha\": \"Hợp đồng đào tạo nghề phải có các nội dung chủ yếu sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Nghề đào tạo;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Nghề đào tạo\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D62.K2.a\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"Nghề đào tạo\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Hợp đồng đào tạo nghề\",\"loai\":\"C\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540054668-22b3d91e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1134
+   },
+   "input_tokens": 3641,
+   "output_tokens": 87,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_93ffb3a2060db637db52f361"
+   }
+  }
+ }
+}

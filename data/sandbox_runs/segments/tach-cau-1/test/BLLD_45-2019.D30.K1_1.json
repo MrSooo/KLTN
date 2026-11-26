@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Các trường hợp tạm hoãn thực hiện hợp đồng lao động bao gồm:",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Các trường hợp tạm hoãn thực hiện hợp đồng lao động bao gồm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-lLMFa9HQO-eh1e8P4rX9wAg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 281
+   },
+   "input_tokens": 2250,
+   "output_tokens": 321,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_0c16f9cbc2738e611b3210ba"
+   }
+  }
+ }
+}

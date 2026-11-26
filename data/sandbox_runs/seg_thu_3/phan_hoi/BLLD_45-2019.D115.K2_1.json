@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động được nghỉ không hưởng lương 01 ngày và phải thông báo với người sử dụng lao động khi ông nội, bà nội, ông ngoại, bà ngoại, anh, chị, em ruột chết; cha hoặc mẹ kết hôn; anh, chị, em ruột kết hôn.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"được nghỉ không hưởng lương 01 ngày\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải thông báo với người sử dụng lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"ông nội, bà nội, ông ngoại, bà ngoại, anh, chị, em ruột chết\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"cha hoặc mẹ kết hôn\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"anh, chị, em ruột kết hôn\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-7z8Da_LXLLyt9tMP3sXjoQ0",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4341
+   },
+   "input_tokens": 960,
+   "output_tokens": 672,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_cf1ab01e8964a2bac5c257ad"
+   }
+  }
+ }
+}

@@ -1,0 +1,143 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D96.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thỏa thuận về hình thức trả lương",
+     "chu_the": {
+      "chu": "Người sử dụng lao động và người lao động",
+      "loai": [
+       "E",
+       "W"
+      ],
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "theo thời gian",
+      "sản phẩm",
+      "khoán"
+     ],
+     "trich": [
+      "Người sử dụng lao động và người lao động thỏa thuận về hình thức trả lương theo thời gian, sản phẩm hoặc khoán."
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Một thỏa thuận về hình thức trả lương; các hình thức đưa vào liet_ke."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D96.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả bằng tiền mặt hoặc trả qua tài khoản cá nhân của người lao động",
+     "chu_the": {
+      "chu": "Lương",
+      "loai": "A",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "được mở tại ngân hàng",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Lương được trả bằng tiền mặt hoặc trả qua tài khoản cá nhân của người lao động được mở tại ngân hàng."
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Câu thứ nhất nêu hình thức trả lương, câu thứ hai là quy tắc riêng về phí khi trả qua tài khoản."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trả lương qua tài khoản cá nhân của người lao động được mở tại ngân hàng",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trường hợp trả lương qua tài khoản cá nhân của người lao động được mở tại ngân hàng"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả các loại phí liên quan đến việc mở tài khoản và chuyển tiền lương",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì người sử dụng lao động phải trả các loại phí liên quan đến việc mở tài khoản và chuyển tiền lương"
+     ],
+     "quy_tac": "q2"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D96.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quy định chi tiết Điều này",
+     "chu_the": {
+      "chu": "Chính phủ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Chính phủ quy định chi tiết Điều này."
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "targets": [
+      "BLLD_45-2019.D96"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "Điều này"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

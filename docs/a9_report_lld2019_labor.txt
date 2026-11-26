@@ -1,0 +1,8 @@
+A9 report (s(CASP)): lld2019_labor
+in_force units: 45 | exception_of: 10 | A8 rules in_force: 0
+program: /mnt/e/KLTN/data/processed/a9_lld2019_labor.pl
+blocking: blocked(U) :- has_exception(U). ; holds(U) :- in_force(U), not blocked(U).
+query: holds('LLD2019.D35.K2.e')
+answer:
+ANSWER: no (no s(CASP) model — blocked or unprovable)
+

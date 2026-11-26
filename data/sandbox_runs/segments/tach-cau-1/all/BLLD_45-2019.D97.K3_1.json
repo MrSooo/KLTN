@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động hưởng lương theo sản phẩm, theo khoán được trả lương theo thỏa thuận của hai bên; nếu công việc phải làm trong nhiều tháng thì hằng tháng được tạm ứng tiền lương theo khối lượng công việc đã làm trong tháng.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động hưởng lương theo sản phẩm, theo khoán\",\"ap_cho\":[\"m1\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"được trả lương theo thỏa thuận của hai bên\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"công việc phải làm trong nhiều tháng\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hằng tháng được tạm ứng tiền lương theo khối lượng công việc đã làm trong tháng\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539090282-104d8e19",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1454
+   },
+   "input_tokens": 2429,
+   "output_tokens": 136,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_511a0c6fcb64032908747b37"
+   }
+  }
+ }
+}

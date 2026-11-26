@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Là Trưởng văn phòng đại diện, dự án hoặc chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài tại Việt Nam.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Là Trưởng văn phòng đại diện, dự án\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài tại Việt Nam\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539857187-9ec6b76c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1542
+   },
+   "input_tokens": 2409,
+   "output_tokens": 75,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_4cd6771abf0f1311eaf1dd35"
+   }
+  }
+ }
+}

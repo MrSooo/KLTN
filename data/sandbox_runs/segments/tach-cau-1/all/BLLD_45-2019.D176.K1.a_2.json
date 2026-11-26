@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Việc thực hiện quyền này phải bảo đảm không ảnh hưởng đến hoạt động bình thường của người sử dụng lao động;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Việc thực hiện quyền này phải bảo đảm không ảnh hưởng đến hoạt động bình thường của người sử dụng lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540032555-d980bf2f",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 484
+   },
+   "input_tokens": 2397,
+   "output_tokens": 48,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_9e2f186bd2c6f78590ca82b6"
+   }
+  }
+ }
+}

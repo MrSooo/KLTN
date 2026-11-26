@@ -1,0 +1,30 @@
+{
+ "cau": "Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết; phải trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp trong những ngày người lao động không được làm việc và phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Phải nhận người lao động trở lại làm việc theo hợp đồng lao động đã giao kết\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"phải\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trả tiền lương\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"trong những ngày người lao động không được làm việc\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"phải trả thêm cho người lao động một khoản tiền ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-9ysDa-LkOZTb9tMP9pq_-QY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 14297
+   },
+   "input_tokens": 975,
+   "output_tokens": 804,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_5978550ffe5f7e552bbbee09"
+   }
+  }
+ }
+}

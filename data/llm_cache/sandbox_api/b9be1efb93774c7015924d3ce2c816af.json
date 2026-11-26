@@ -1,0 +1,74 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T09:22:43+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0240\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D71.K2\",\n    \"tieu_de_dieu\": \"Thương lượng tập thể không thành\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi thương lượng không thành, các bên thương lượng tiến hành thủ tục giải quyết tranh chấp lao động theo quy định của Bộ luật này. Trong khi đang giải quyết tranh chấp lao động, tổ chức đại diện người lao động không được tổ chức đình công.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D202.K4\",\n    \"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Đến thời điểm bắt đầu đình công, nếu người sử dụng lao động vẫn không chấp nhận giải quyết yêu cầu của người lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công.\"\n   },\n   \"vi_tu_chung\": [\n    \"organize_strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0241\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D73.K1\",\n    \"tieu_de_dieu\": \"Thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trên cơ sở đồng thuận, các bên thương lượng tập thể có nhiều doanh nghiệp tham gia có thể yêu cầu Ủy ban nhân dân cấp tỉnh nơi đặt trụ sở chính của các doanh nghiệp tham gia thương lượng hoặc nơi do các bên lựa chọn trong trường hợp các doanh nghiệp tham gia thương lượng có trụ sở chính tại nhiều tỉnh, thành phố trực thuộc Trung ương thành lập Hội đồng thương lượng tập thể để tiến hành thương lượng tập thể.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D73.K3\",\n    \"tieu_de_dieu\": \"Thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hội đồng thương lượng tập thể tiến hành thương lượng theo yêu cầu của các bên và tự chấm dứt hoạt động khi thỏa ước lao động tập thể có nhiều doanh nghiệp tham gia được ký kết hoặc theo thỏa thuận của các bên.\"\n   },\n   \"vi_tu_chung\": [\n    \"conduct_collective_bargaining\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0242\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D73.K1\",\n    \"tieu_de_dieu\": \"Thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trên cơ sở đồng thuận, các bên thương lượng tập thể có nhiều doanh nghiệp tham gia có thể yêu cầu Ủy ban nhân dân cấp tỉnh nơi đặt trụ sở chính của các doanh nghiệp tham gia thương lượng hoặc nơi do các bên lựa chọn trong trường hợp các doanh nghiệp tham gia thương lượng có trụ sở chính tại nhiều tỉnh, thành phố trực thuộc Trung ương thành lập Hội đồng thương lượng tập thể để tiến hành thương lượng tập thể.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D179.K3.b\",\n    \"tieu_de_dieu\": \"Tranh chấp lao động\",\n    \"khoan_cha\": \"Tranh chấp lao động tập thể về lợi ích bao gồm:\",\n    \"chu_don_vi\": \"Khi một bên từ chối thương lượng hoặc không tiến hành thương lượng trong thời hạn theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"conduct_collective_bargaining\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0243\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D73.K3\",\n    \"tieu_de_dieu\": \"Thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hội đồng thương lượng tập thể tiến hành thương lượng theo yêu cầu của các bên và tự chấm dứt hoạt động khi thỏa ước lao động tập thể có nhiều doanh nghiệp tham gia được ký kết hoặc theo thỏa thuận của các bên.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D179.K3.b\",\n    \"tieu_de_dieu\": \"Tranh chấp lao động\",\n    \"khoan_cha\": \"Tranh chấp lao động tập thể về lợi ích bao gồm:\",\n    \"chu_don_vi\": \"Khi một bên từ chối thương lượng hoặc không tiến hành thương lượng trong thời hạn theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"conduct_collective_bargaining\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0244\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D80.K2\",\n    \"tieu_de_dieu\": \"Thực hiện thỏa ước lao động tập thể doanh nghiệp trong trường hợp chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp thỏa ước lao động tập thể doanh nghiệp hết hiệu lực do người sử dụng lao động chấm dứt hoạt động thì quyền lợi của người lao động được giải quyết theo quy định của pháp luật.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K7\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_operations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0245\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D93.K1\",\n    \"tieu_de_dieu\": \"Xây dựng thang lương, bảng lương và định mức lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải xây dựng thang lương, bảng lương và định mức lao động làm cơ sở để tuyển dụng, sử dụng lao động, thỏa thuận mức lương theo công việc hoặc chức danh ghi trong hợp đồng lao động và trả lương cho người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D168.K2\",\n    \"tieu_de_dieu\": \"Tham gia bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian người lao động nghỉ việc hưởng chế độ bảo hiểm xã hội thì người sử dụng lao động không phải trả lương cho người lao động, trừ trường hợp hai bên có thỏa thuận khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_wage_to_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0246\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D93.K1\",\n    \"tieu_de_dieu\": \"Xây dựng thang lương, bảng lương và định mức lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải xây dựng thang lương, bảng lương và định mức lao động làm cơ sở để tuyển dụng, sử dụng lao động, thỏa thuận mức lương theo công việc hoặc chức danh ghi trong hợp đồng lao động và trả lương cho người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.a\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Yêu cầu tham gia, không tham gia hoặc ra khỏi tổ chức đại diện người lao động tại cơ sở để được tuyển dụng, giao kết hoặc gia hạn hợp đồng lao động;\"\n   },\n   \"vi_tu_chung\": [\n    \"recruit_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0247\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D93.K3\",\n    \"tieu_de_dieu\": \"Xây dựng thang lương, bảng lương và định mức lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở khi xây dựng thang lương, bảng lương và định mức lao động.\\nThang lương, bảng lương và mức lao động phải được công bố công khai tại nơi làm việc trước khi thực hiện.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D104.K2\",\n    \"tieu_de_dieu\": \"Thưởng\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Quy chế thưởng do người sử dụng lao động quyết định và công bố công khai tại nơi làm việc sau khi tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở.\"\n   },\n   \"vi_tu_chung\": [\n    \"consult_grassroots_employee_representative_org\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0248\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D95.K1\",\n    \"tieu_de_dieu\": \"Trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động trả lương cho người lao động căn cứ vào tiền lương đã thỏa thuận, năng suất lao động và chất lượng thực hiện công việc.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D168.K2\",\n    \"tieu_de_dieu\": \"Tham gia bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian người lao động nghỉ việc hưởng chế độ bảo hiểm xã hội thì người sử dụng lao động không phải trả lương cho người lao động, trừ trường hợp hai bên có thỏa thuận khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_wage_to_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0249\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D97.K3\",\n    \"tieu_de_dieu\": \"Kỳ hạn trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động hưởng lương theo sản phẩm, theo khoán được trả lương theo thỏa thuận của hai bên; nếu công việc phải làm trong nhiều tháng thì hằng tháng được tạm ứng tiền lương theo khối lượng công việc đã làm trong tháng.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D99.K2\",\n    \"tieu_de_dieu\": \"Tiền lương ngừng việc\",\n    \"khoan_cha\": \"Trường hợp phải ngừng việc, người lao động được trả lương như sau:\",\n    \"chu_don_vi\": \"Nếu do lỗi của người lao động thì người đó không được trả lương; những người lao động khác trong cùng đơn vị phải ngừng việc thì được trả lương theo mức do hai bên thỏa thuận nhưng không được thấp hơn mức lương tối thiểu;\"\n   },\n   \"vi_tu_chung\": [\n    \"paid_wage\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_d0dd4723e55bba00f38ea3d3",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0240",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0241",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0242",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0243",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0244",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0245",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0246",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0247",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0248",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0249",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3736,
+  "output_tokens": 1822,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 457
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1577
+   }
+  }
+ }
+}

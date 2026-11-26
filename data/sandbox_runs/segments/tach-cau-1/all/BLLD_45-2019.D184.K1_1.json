@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Hòa giải viên lao động là người do Chủ tịch Ủy ban nhân dân cấp tỉnh bổ nhiệm để hòa giải tranh chấp lao động, tranh chấp về hợp đồng đào tạo nghề; hỗ trợ phát triển quan hệ lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Hòa giải viên lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"là người do Chủ tịch Ủy ban nhân dân cấp tỉnh bổ nhiệm\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hòa giải tranh chấp lao động, tranh chấp về hợp đồng đào tạo nghề\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hỗ trợ phát triển quan hệ lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540221441-b4838cee",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1940
+   },
+   "input_tokens": 2423,
+   "output_tokens": 135,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_3494a7047d9d24b6a771938e"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp doanh nghiệp có nhiều tổ chức đại diện người lao động tại cơ sở đáp ứng quy định tại khoản 1 Điều này thì tổ chức có quyền yêu cầu thương lượng là tổ chức có số thành viên nhiều nhất trong doanh nghiệp.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"doanh nghiệp có nhiều tổ chức đại diện người lao động tại cơ sở đáp ứng quy định tại khoản 1 Điều này\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tổ chức có quyền yêu cầu thương lượng là tổ chức có số thành viên nhiều nhất trong doanh nghiệp\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538878738-7495d4c2",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 908
+   },
+   "input_tokens": 2422,
+   "output_tokens": 86,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_1658f88cb9cfda7032f0ebbc"
+   }
+  }
+ }
+}

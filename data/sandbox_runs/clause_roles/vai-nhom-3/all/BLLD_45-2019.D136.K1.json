@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D136.K1",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D136.K1\",\n \"tieu_de_dieu\": \"Trách nhiệm của người sử dụng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Bảo đảm thực hiện bình đẳng giới và các biện pháp thúc đẩy bình đẳng giới trong tuyển dụng, bố trí, sắp xếp việc làm, đào tạo, thời giờ làm việc, thời giờ nghỉ ngơi, tiền lương và các chế độ khác.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Bảo đảm thực hiện bình đẳng giới và các biện pháp thúc đẩy bình đẳng giới trong tuyển dụng, bố trí, sắp xếp việc làm, đào tạo, thời giờ làm việc, thời giờ nghỉ ngơi, tiền lương và các chế độ khác\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D136.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Bảo đảm thực hiện bình đẳng giới và các biện pháp thúc đẩy bình đẳng giới trong tuyển dụng, bố trí, sắp xếp việc làm, đào tạo, thời giờ làm việc, thời giờ nghỉ ngơi, tiền lương và các chế độ khác\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"tuyển dụng\",\n    \"bố trí\",\n    \"sắp xếp việc làm\",\n    \"đào tạo\",\n    \"thời giờ làm việc\",\n    \"thời giờ nghỉ ngơi\",\n    \"tiền lương\",\n    \"các chế độ khác\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "MPwGa5yBFJCYvr0P4-q4-Ag",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3983
+   },
+   "input_tokens": 4114,
+   "output_tokens": 996,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_367fa5f4768125c7201596b1"
+   }
+  }
+ }
+}

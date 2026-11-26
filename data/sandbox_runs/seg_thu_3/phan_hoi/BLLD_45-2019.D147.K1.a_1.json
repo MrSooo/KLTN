@@ -1,0 +1,30 @@
+{
+ "cau": "Mang, vác, nâng các vật nặng vượt quá thể trạng của người chưa thành niên;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Mang\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"vác\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"nâng\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"các vật nặng vượt quá thể trạng của người chưa thành niên\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-Q0cDa6aGIpuy2roP-P7T0QU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 202
+   },
+   "input_tokens": 919,
+   "output_tokens": 305,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f1458593c39ef2ee1f1ad1de"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trọng tài viên lao động làm việc theo chế độ chuyên trách hoặc kiêm nhiệm.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Trọng tài viên lao động làm việc theo chế độ chuyên trách hoặc kiêm nhiệm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540212756-62fc1219",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 952
+   },
+   "input_tokens": 2391,
+   "output_tokens": 42,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_fce276a09dcf79d19b7b610a"
+   }
+  }
+ }
+}

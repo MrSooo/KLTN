@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Các tổ chức đại diện người lao động quy định tại khoản 1 và khoản 2 Điều này bình đẳng về quyền và nghĩa vụ trong việc đại diện bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động trong quan hệ lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Các tổ chức đại diện người lao động quy định tại khoản 1 và khoản 2 Điều này bình đẳng về quyền và nghĩa vụ trong việc đại diện bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động trong quan hệ lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539909762-ed7b3dfc",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 987
+   },
+   "input_tokens": 2426,
+   "output_tokens": 77,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_c230e92a1c611ced4956ba38"
+   }
+  }
+ }
+}

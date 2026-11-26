@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thông báo cho bên thuê lại lao động biết sơ yếu lý lịch của người lao động, yêu cầu của người lao động;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thông báo cho bên thuê lại lao động biết sơ yếu lý lịch của người lao động, yêu cầu của người lao động\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538687905-df9c1716",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1120
+   },
+   "input_tokens": 2398,
+   "output_tokens": 45,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_ccc679fd6f66da8e14f2f852"
+   }
+  }
+ }
+}

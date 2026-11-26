@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thời hạn của giấy phép lao động tối đa là 02 năm\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"gia hạn\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"chỉ được gia hạn một lần với thời hạn tối đa là 02 năm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539834881-2c2d2a75",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 703
+   },
+   "input_tokens": 2409,
+   "output_tokens": 87,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_6f4c99954b44a0fa01b52345"
+   }
+  }
+ }
+}

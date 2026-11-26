@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động làm việc không trọn thời gian được hưởng lương; bình đẳng trong thực hiện quyền và nghĩa vụ với người lao động làm việc trọn thời gian; bình đẳng về cơ hội, không bị phân biệt đối xử, bảo đảm an toàn, vệ sinh lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\",\"m5\",\"m6\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"làm việc không trọn thời gian\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"được hưởng lương\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"bình đẳng trong thực hiện quyền và nghĩa vụ với người lao động làm việc trọn thời gian\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"bình đẳng về cơ hội\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"không bị phân biệt đối xử\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"bảo đảm an toàn, vệ sinh lao động\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538246920-0a93d3e4",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4365
+   },
+   "input_tokens": 2434,
+   "output_tokens": 197,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_27f87c9e209a0ed8edcd7a51"
+   }
+  }
+ }
+}

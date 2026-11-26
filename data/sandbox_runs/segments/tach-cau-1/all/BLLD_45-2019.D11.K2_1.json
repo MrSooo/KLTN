@@ -1,0 +1,27 @@
+{
+ "cau_gui": "Người lao động không phải trả chi phí cho việc tuyển dụng lao động.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động không phải trả chi phí cho việc tuyển dụng lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-7rYFa-rNGcGy2roPwNDGsQE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 2250,
+   "output_tokens": 40,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_b8fe132dca117b245a9256d9"
+   }
+  }
+ }
+}

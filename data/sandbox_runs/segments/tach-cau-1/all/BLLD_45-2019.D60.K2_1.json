@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Hằng năm, người sử dụng lao động thông báo kết quả đào tạo, bồi dưỡng, nâng cao trình độ, kỹ năng nghề cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Hằng năm, người sử dụng lao động thông báo kết quả đào tạo, bồi dưỡng, nâng cao trình độ, kỹ năng nghề cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538715306-b383273c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 909
+   },
+   "input_tokens": 2419,
+   "output_tokens": 70,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_63317927215b9e70bb87077f"
+   }
+  }
+ }
+}

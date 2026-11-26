@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Điều lệ tổ chức của người lao động tại doanh nghiệp phải có các nội dung chủ yếu sau đây\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539951540-56fe0533",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 407
+   },
+   "input_tokens": 2395,
+   "output_tokens": 46,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_3e433bc905e1b2551dd12f0a"
+   }
+  }
+ }
+}

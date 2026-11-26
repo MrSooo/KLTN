@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D64.K2.b",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D64.K2.b\",\n \"tieu_de_dieu\": \"Nội dung đối thoại tại nơi làm việc\",\n \"khoan_cha\": \"Ngoài nội dung quy định tại khoản 1 Điều này, các bên lựa chọn một hoặc một số nội dung sau đây để tiến hành đối thoại:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Việc thực hiện hợp đồng lao động, thỏa ước lao động tập thể, nội quy lao động, quy chế và cam kết, thỏa thuận khác tại nơi làm việc;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Việc thực hiện hợp đồng lao động, thỏa ước lao động tập thể, nội quy lao động, quy chế và cam kết, thỏa thuận khác tại nơi làm việc\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D64.K2.b\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Việc thực hiện hợp đồng lao động, thỏa ước lao động tập thể, nội quy lao động, quy chế và cam kết, thỏa thuận khác tại nơi làm việc\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795543780891-a41c653d",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 7860
+   },
+   "input_tokens": 3707,
+   "output_tokens": 167,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_496846aaf2b22b0f3f47d767"
+   }
+  }
+ }
+}

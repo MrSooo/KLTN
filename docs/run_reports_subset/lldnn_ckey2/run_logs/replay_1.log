@@ -1,0 +1,25 @@
+kho con lldnn: C:\Users\TusPC\Documents\kltn\data\processed_subset\lldnn\raw
+BLLD_45-2019     16 Điều (52-58, 150-157, 220), 232/2686 dòng
+ND_145-2020      29 Điều (1-2, 12-36, 114-115), 470/2184 dòng
+ND_152-2020      cả văn bản, 30 Điều
+ND_70-2023       cả văn bản, 3 Điều
+ND_219-2025      cả văn bản, 36 Điều
+NQ_66-16-2026    cả văn bản, 19 Điều
+VBHN_125-2025    16 Điều (52-58, 150-157, 220), 275/2723 dòng
+[ 1/18] 1.1 tách cấu trúc văn bản                         OK  (0.3s)
+[ 2/18] 1.2 cạnh cấu trúc và dẫn chiếu                    OK  (0.2s)
+[ 3/18] 1.4 phân loại Điều                                OK  (0.1s)
+[ 4/18] 1.5 ngoại lệ tường minh                           OK  (0.2s)
+[ 5/18] 1.5 ngoại lệ chung                                OK  (0.1s)
+[ 6/18] 1.6 gạch cụm (giai đoạn A)                        
+      -> OK  (0.2s)
+[ 7/18] 1.6 đặt tên vị từ (giai đoạn B)                   OK  (0.2s)
+[ 8/18] 1.6B vị từ, bản viết lại (A41)                    LỖI
+
+1.6B names-2.1: BLLD_45-2019 (kho con lldnn)
+dòng 1.6A dùng: 220 (mệnh đề 114, con trỏ 3, chủ thể 103); bỏ vì lỗi cổng 1.6A: 2
+chữ (gộp cấp 1): 127; lượt kế hoạch: 5
+chữ có tên: 0; reuse do LLM chọn: 0 (0.0%); vị từ: 0 (concept 0, input 0); chữ bị loại: 0
+vị từ dùng ở từ 2 Điều: 0; cặp khác Điều chung vị từ concept (chưa lọc như 1.7): 0
+CHƯA ĐỦ: lượt 1 thiếu bản ghi đã lưu hoặc bản ghi sai hình; các lượt sau chưa chạy
+thoát 1: src/predicates.py --llm replay

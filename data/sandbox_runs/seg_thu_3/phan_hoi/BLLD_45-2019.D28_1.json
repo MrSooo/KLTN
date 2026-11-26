@@ -1,0 +1,30 @@
+{
+ "cau": "Công việc theo hợp đồng lao động phải do người lao động đã giao kết hợp đồng thực hiện.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Công việc theo hợp đồng lao động phải do người lao động đã giao kết hợp đồng thực hiện\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-USgDa6fWN4yB2roPhN2D8Ag",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2283
+   },
+   "input_tokens": 920,
+   "output_tokens": 180,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_4d962dc43f7fdda2e5f4b944"
+   }
+  }
+ }
+}

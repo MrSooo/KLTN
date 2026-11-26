@@ -1,0 +1,235 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D47.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả trợ cấp mất việc làm",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "bo_ngu": [
+      {
+       "original_text": "cho người lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động trả trợ cấp mất việc làm cho người lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đã làm việc thường xuyên từ đủ 12 tháng trở lên",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "bo_ngu": [
+      {
+       "original_text": "cho mình",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người lao động đã làm việc thường xuyên cho mình từ đủ 12 tháng trở lên"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị mất việc làm",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "mà bị mất việc làm theo quy định tại khoản 11 Điều 34 của Bộ luật này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "trich": [
+      "theo quy định tại khoản 11 Điều 34 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D34.K11"
+     ],
+     "gan_vao": 2,
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "mỗi năm làm việc trả 01 tháng tiền lương nhưng ít nhất bằng 02 tháng tiền lương",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động trả trợ cấp mất việc làm cho người lao động",
+      "cứ mỗi năm làm việc trả 01 tháng tiền lương nhưng ít nhất bằng 02 tháng tiền lương"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Mức trả tách khỏi nghĩa vụ trả để kiểm riêng cách tính và mức sàn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D47.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là tổng thời gian người lao động đã làm việc thực tế",
+     "chu_the": {
+      "chu": "Thời gian làm việc để tính trợ cấp mất việc làm",
+      "loai": "D",
+      "nguon": "chinh"
+     },
+     "bo_ngu": [
+      {
+       "original_text": "cho người sử dụng lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Thời gian làm việc để tính trợ cấp mất việc làm là tổng thời gian người lao động đã làm việc thực tế cho người sử dụng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trừ đi thời gian người lao động đã tham gia bảo hiểm thất nghiệp",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trừ đi thời gian người lao động đã tham gia bảo hiểm thất nghiệp"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "trich": [
+      "theo quy định của pháp luật về bảo hiểm thất nghiệp"
+     ],
+     "ly_do_llm": {
+      "ma": "dan_chieu_mo",
+      "giai_thich": "Dẫn chiếu mở tới pháp luật về bảo hiểm thất nghiệp, không có đích cụ thể."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trừ đi thời gian làm việc đã được người sử dụng lao động chi trả trợ cấp thôi việc, trợ cấp mất việc làm",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trừ đi thời gian người lao động đã tham gia bảo hiểm thất nghiệp theo quy định của pháp luật về bảo hiểm thất nghiệp và thời gian làm việc đã được người sử dụng lao động chi trả trợ cấp thôi việc, trợ cấp mất việc làm"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai khoản thời gian bị trừ là hai sự kiện kiểm riêng được; chữ 'trừ đi' dùng chung lấy từ mệnh đề trước."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D47.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là tiền lương bình quân của 06 tháng liền kề trước khi người lao động mất việc làm",
+     "chu_the": {
+      "chu": "Tiền lương để tính trợ cấp mất việc làm",
+      "loai": "A",
+      "nguon": "chinh"
+     },
+     "bo_ngu": [
+      {
+       "original_text": "theo hợp đồng lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Tiền lương để tính trợ cấp mất việc làm là tiền lương bình quân của 06 tháng liền kề theo hợp đồng lao động trước khi người lao động mất việc làm"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D47.K4",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quy định chi tiết Điều này",
+     "chu_the": {
+      "chu": "Chính phủ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Chính phủ quy định chi tiết Điều này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "trich": [
+      "Điều này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D47"
+     ],
+     "gan_vao": 0,
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

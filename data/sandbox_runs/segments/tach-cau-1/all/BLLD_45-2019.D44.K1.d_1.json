@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Quyền và nghĩa vụ của người sử dụng lao động, người lao động và các bên liên quan trong việc thực hiện phương án sử dụng lao động;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Quyền và nghĩa vụ của người sử dụng lao động, người lao động và các bên liên quan trong việc thực hiện phương án sử dụng lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538551936-e90e6528",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 662
+   },
+   "input_tokens": 2405,
+   "output_tokens": 56,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_6b43c3ad401ce22d2a66520b"
+   }
+  }
+ }
+}

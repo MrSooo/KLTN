@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động chỉ được tuyển dụng và sử dụng người từ đủ 13 tuổi đến chưa đủ 15 tuổi vào làm các công việc nhẹ theo quy định tại khoản 3 Điều 143 của Bộ luật này.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động chỉ được\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tuyển dụng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"sử dụng\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"người từ đủ 13 tuổi đến chưa đủ 15 tuổi vào làm các công việc nhẹ theo quy định tại khoản 3 Điều 143 của Bộ luật này\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539638906-376f8e33",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1586
+   },
+   "input_tokens": 2419,
+   "output_tokens": 142,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_ddf9394487e0980e08466f5f"
+   }
+  }
+ }
+}

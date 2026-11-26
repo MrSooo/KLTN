@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thời gian thử việc do hai bên thỏa thuận căn cứ vào tính chất và mức độ phức tạp của công việc nhưng chỉ được thử việc một lần đối với một công việc và bảo đảm điều kiện sau đây:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thời gian thử việc\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"do hai bên thỏa thuận căn cứ vào tính chất và mức độ phức tạp của công việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"chỉ được thử việc một lần đối với một công việc\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"bảo đảm điều kiện sau đây\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538106820-5fd6659c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 829
+   },
+   "input_tokens": 2419,
+   "output_tokens": 130,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_fc595fd9bd1ff9f51b767e82"
+   }
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "cau": "Tiếp tục thỏa thuận để giải quyết nội dung tranh chấp lao động tập thể hoặc cùng đề nghị hòa giải viên lao động, Hội đồng trọng tài lao động tiến hành hòa giải, giải quyết tranh chấp lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"Tiếp tục thỏa thuận\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"để giải quyết nội dung tranh chấp lao động tập thể\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"cùng đề nghị hòa giải viên lao động, Hội đồng trọng tài lao động tiến hành hòa giải\"\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"giải quyết tranh chấp lao động\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-WVIDa4K4G7jd9tMP8vKUgQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 944,
+   "output_tokens": 198,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_0de017a2375c7e1656eb5300"
+   }
+  }
+ }
+}

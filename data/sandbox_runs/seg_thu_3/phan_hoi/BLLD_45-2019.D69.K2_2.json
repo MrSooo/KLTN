@@ -1,0 +1,27 @@
+{
+ "cau": "Trường hợp bên người lao động có nhiều tổ chức đại diện tham gia thương lượng tập thể theo quy định tại khoản 2 Điều 68 của Bộ luật này thì tổ chức đại diện có quyền yêu cầu thương lượng quyết định số lượng đại diện của mỗi tổ chức tham gia thương lượng.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Trường hợp\",\n      \"ap_cho\": [\"m1\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"bên người lao động có nhiều tổ chức đại diện tham gia thương lượng tập thể theo quy định tại khoản 2 Điều 68 của Bộ luật này\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"tổ chức đại diện có quyền yêu cầu thương lượng quyết định số lượng đại diện của mỗi tổ chức tham gia thương lượng\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-uTMDa9XfF5620-kPi73SwQw",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 960,
+   "output_tokens": 190,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_40367097e758533c2ffb4fac"
+   }
+  }
+ }
+}

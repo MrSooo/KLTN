@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D124.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D124.K1\",\n \"tieu_de_dieu\": \"Hình thức xử lý kỷ luật lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khiển trách.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Khiển trách\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D124.K1\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"Khiển trách\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795545440766-1368e55e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1417
+   },
+   "input_tokens": 3610,
+   "output_tokens": 67,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_1e0d865d0b30a1d4c80ebc45"
+   }
+  }
+ }
+}

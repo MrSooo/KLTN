@@ -1,0 +1,30 @@
+{
+ "cau": "Tối thiểu 05 thành viên do cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh đề cử, trong đó có Chủ tịch Hội đồng là đại diện lãnh đạo và thư ký Hội đồng là công chức của cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Tối thiểu 05 thành viên do cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh đề cử\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"trong đó có\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"Chủ tịch Hội đồng là đại diện lãnh đạo\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"thư ký Hội đồng là công chức\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"của cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\",\"ap_cho\":[\"m2\",\"m3\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-S08Da8WUB_eK2roPue2wiAo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5202
+   },
+   "input_tokens": 962,
+   "output_tokens": 704,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_e1ec442165a1fee2cca405dd"
+   }
+  }
+ }
+}

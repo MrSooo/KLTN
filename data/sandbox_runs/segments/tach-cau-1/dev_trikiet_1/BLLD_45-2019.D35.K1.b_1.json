@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Ít nhất 30 ngày nếu làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Ít nhất 30 ngày\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795537563844-acb080d1",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 774
+   },
+   "input_tokens": 2403,
+   "output_tokens": 69,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_cabddcbdce542c1c4c2d2738"
+   }
+  }
+ }
+}

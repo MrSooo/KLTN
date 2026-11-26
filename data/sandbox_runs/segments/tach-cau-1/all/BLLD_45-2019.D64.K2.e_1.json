@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Nội dung khác mà một hoặc các bên quan tâm.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Nội dung khác mà một hoặc các bên quan tâm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538797904-68646c6e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 569
+   },
+   "input_tokens": 2385,
+   "output_tokens": 36,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_7df99eee52b7d31dfc6d7281"
+   }
+  }
+ }
+}

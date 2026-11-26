@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D148.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D148.K2\",\n \"tieu_de_dieu\": \"Người lao động cao tuổi\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động cao tuổi có quyền thỏa thuận với người sử dụng lao động về việc rút ngắn thời giờ làm việc hằng ngày hoặc áp dụng chế độ làm việc không trọn thời gian.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Người lao động cao tuổi có quyền thỏa thuận với người sử dụng lao động về việc rút ngắn thời giờ làm việc hằng ngày hoặc áp dụng chế độ làm việc không trọn thời gian\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D148.K2\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"thỏa thuận với người sử dụng lao động về việc rút ngắn thời giờ làm việc hằng ngày hoặc áp dụng chế độ làm việc không trọn thời gian\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người lao động cao tuổi\",\"loai\":\"W\"},\"doi_so\":[{\"loai\":\"E\"}],\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795546140190-8d1620a9",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4286
+   },
+   "input_tokens": 3682,
+   "output_tokens": 125,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_2dcc70de875771f1a5a1ea2f"
+   }
+  }
+ }
+}

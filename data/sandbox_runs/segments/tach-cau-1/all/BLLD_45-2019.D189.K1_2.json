@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khi yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp, các bên không được đồng thời yêu cầu Tòa án giải quyết, ⟦DC1⟧.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"các bên không được đồng thời yêu cầu Tòa án giải quyết\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540233045-0132edee",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 975
+   },
+   "input_tokens": 2412,
+   "output_tokens": 68,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_cf1a2e90597e14e35980344a"
+   }
+  }
+ }
+}

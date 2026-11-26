@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D136.K4",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D136.K4\",\n \"tieu_de_dieu\": \"Trách nhiệm của người sử dụng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Giúp đỡ, hỗ trợ xây dựng nhà trẻ, lớp mẫu giáo hoặc một phần chi phí gửi trẻ, mẫu giáo cho người lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Giúp đỡ\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"hỗ trợ\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"xây dựng nhà trẻ, lớp mẫu giáo hoặc một phần chi phí gửi trẻ, mẫu giáo cho người lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D136.K4\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Giúp đỡ\",\n    \"xây dựng nhà trẻ, lớp mẫu giáo hoặc một phần chi phí gửi trẻ, mẫu giáo\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"liet_ke\": [\n    \"xây dựng nhà trẻ, lớp mẫu giáo\",\n    \"một phần chi phí gửi trẻ, mẫu giáo\"\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"hỗ trợ\",\n    \"xây dựng nhà trẻ, lớp mẫu giáo hoặc một phần chi phí gửi trẻ, mẫu giáo\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"liet_ke\": [\n    \"xây dựng nhà trẻ, lớp mẫu giáo\",\n    \"một phần chi phí gửi trẻ, mẫu giáo\"\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "MfwGa5XwIpHM2roPwITxwAg",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 1982,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1229
+   },
+   "input_tokens": 2191,
+   "output_tokens": 1681,
+   "prompt_tokens_details": {
+    "cached_tokens": 1982
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_39a8527b3c12a0b5852109d5"
+   }
+  }
+ }
+}

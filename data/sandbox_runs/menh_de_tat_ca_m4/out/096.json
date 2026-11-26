@@ -1,0 +1,234 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D100.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "sử dụng người cai thầu hoặc người có vai trò trung gian tương tự",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nơi nào sử dụng người cai thầu hoặc người có vai trò trung gian tương tự thì"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có danh sách và địa chỉ của những người này kèm theo danh sách những người lao động làm việc với họ",
+     "chu_the": {
+      "chu": "người sử dụng lao động là chủ chính",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì người sử dụng lao động là chủ chính phải",
+      "có danh sách và địa chỉ của những người này kèm theo danh sách những người lao động làm việc với họ"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai nghĩa vụ độc lập của chủ chính: lập danh sách và bảo đảm tuân thủ."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bảo đảm việc họ tuân thủ quy định của pháp luật",
+     "chu_the": {
+      "chu": "người sử dụng lao động là chủ chính",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "trả lương",
+      "an toàn",
+      "vệ sinh lao động"
+     ],
+     "trich": [
+      "người sử dụng lao động là chủ chính phải",
+      "bảo đảm việc họ tuân thủ quy định của pháp luật về trả lương, an toàn, vệ sinh lao động"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D100.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "không trả lương",
+     "chu_the": {
+      "chu": "người cai thầu hoặc người có vai trò trung gian tương tự",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Trường hợp người cai thầu hoặc người có vai trò trung gian tương tự không trả lương"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trả lương không đầy đủ và không bảo đảm các quyền lợi khác cho người lao động",
+     "chu_the": {
+      "chu": "người cai thầu hoặc người có vai trò trung gian tương tự",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Trường hợp người cai thầu hoặc người có vai trò trung gian tương tự",
+      "trả lương không đầy đủ và không bảo đảm các quyền lợi khác cho người lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Hai điều kiện nối bằng 'và' thuộc cùng một nhánh 'hoặc', tách sẽ đổi nghĩa."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chịu trách nhiệm trả lương",
+     "chu_the": {
+      "chu": "người sử dụng lao động là chủ chính",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì người sử dụng lao động là chủ chính phải chịu trách nhiệm trả lương"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bảo đảm các quyền lợi cho người lao động",
+     "chu_the": {
+      "chu": "người sử dụng lao động là chủ chính",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người sử dụng lao động là chủ chính phải",
+      "bảo đảm các quyền lợi cho người lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong trường hợp này",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trong trường hợp này"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "yêu cầu người cai thầu hoặc người có vai trò trung gian tương tự đền bù",
+     "chu_the": {
+      "chu": "người sử dụng lao động là chủ chính",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người sử dụng lao động là chủ chính có quyền yêu cầu người cai thầu hoặc người có vai trò trung gian tương tự đền bù"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "yêu cầu cơ quan nhà nước có thẩm quyền giải quyết tranh chấp",
+     "chu_the": {
+      "chu": "người sử dụng lao động là chủ chính",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "hoặc yêu cầu",
+      "cơ quan nhà nước có thẩm quyền giải quyết tranh chấp"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai quyền lựa chọn khác nhau, kiểm được riêng."
+     }
+    },
+    {
+     "loai": "bo_qua",
+     "trich": [
+      "theo quy định của pháp luật"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "dan_chieu_mo",
+      "giai_thich": "Dẫn chiếu chung tới pháp luật, không có đích cụ thể."
+     }
+    }
+   ]
+  }
+ ]
+}

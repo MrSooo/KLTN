@@ -1,0 +1,30 @@
+{
+ "cau": "Kiến nghị và giải quyết kiến nghị của thành viên trong nội bộ tổ chức.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Kiến nghị\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"giải quyết kiến nghị\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"của thành viên trong nội bộ tổ chức\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-Mk0Da5eVHbS11e8Prcm9mAo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1567
+   },
+   "input_tokens": 917,
+   "output_tokens": 1651,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ddedc9e69e54912ff0efa590"
+   }
+  }
+ }
+}

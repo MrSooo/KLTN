@@ -1,0 +1,30 @@
+{
+ "cau": "Ngược đãi, quấy rối tình dục, cưỡng bức lao động, dùng vũ lực đối với lao động là người giúp việc gia đình.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Ngược đãi\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"quấy rối tình dục\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"cưỡng bức lao động\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"dùng vũ lực\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"đối với lao động là người giúp việc gia đình\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-QksDa4PfGPq31e8PquCPqQk",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 71
+   },
+   "input_tokens": 930,
+   "output_tokens": 205,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_bcd588b06a1df2ced0047c37"
+   }
+  }
+ }
+}

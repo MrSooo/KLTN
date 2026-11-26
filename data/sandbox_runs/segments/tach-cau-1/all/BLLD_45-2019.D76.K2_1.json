@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Đối với thỏa ước lao động tập thể ngành, đối tượng lấy ý kiến bao gồm toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động tại các doanh nghiệp tham gia thương lượng.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Đối với thỏa ước lao động tập thể ngành, đối tượng lấy ý kiến bao gồm toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động tại các doanh nghiệp tham gia thương lượng\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538939369-33cd3e90",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 991
+   },
+   "input_tokens": 2419,
+   "output_tokens": 70,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_70b69ced69be966b8b5e5549"
+   }
+  }
+ }
+}

@@ -1,0 +1,18 @@
+﻿python : [LLM sandbox_api · api · lô 016] gọi deepseek-v4.1-flash (lượt api hôm nay: 383/3000) ...
+At line:1 char:506
++ ... ey3\u1_6a"; python -X utf8 -I src/sandbox_api.py $d --lam-lai 016,027 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([LLM sandbox_ap...: 383/3000) ...:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[LLM sandbox_api · api · lô 027] gọi deepseek-v4.1-flash (lượt api hôm nay: 383/3000) ...
+[LLM sandbox_api · api · lô 052] gọi deepseek-v4.1-flash (lượt api hôm nay: 383/3000) ...
+      ... [LLM sandbox_api · api · lô 016] vẫn đang chờ phản hồi (30s)
+      ... [LLM sandbox_api · api · lô 027] vẫn đang chờ phản hồi (30s)
+      ... [LLM sandbox_api · api · lô 052] vẫn đang chờ phản hồi (30s)
+[LLM sandbox_api · api · lô 027] xong sau 48s (token vào 81, ra 13013)
+[LLM sandbox_api · api · lô 052] xong sau 51s (token vào 94, ra 17035)
+      ... [LLM sandbox_api · api · lô 016] vẫn đang chờ phản hồi (60s)
+C:\Users\TusPC\Documents\kltn_hop_cat_ckey\ckey3\u1_6a: 3 lô cần làm, model deepseek-v4.1-flash, song song 4
+xong 2/3 lô; lỗi 1
+  lô 016 LỖI: mô hình dừng với stop_reason max_tokens

@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D93.K3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D93.K3\",\n \"tieu_de_dieu\": \"Xây dựng thang lương, bảng lương và định mức lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động phải tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở khi xây dựng thang lương, bảng lương và định mức lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người sử dụng lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"xây dựng thang lương, bảng lương và định mức lao động\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Thang lương, bảng lương và mức lao động phải được công bố công khai tại nơi làm việc trước khi thực hiện.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Thang lương, bảng lương và mức lao động\",\n     \"ap_cho\": [\n      \"s2.m1\",\n      \"s2.m2\"\n     ]\n    },\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải được công bố công khai tại nơi làm việc\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thực hiện\",\n     \"noi_truoc\": [\n      \"trước khi\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D93.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"xây dựng thang lương, bảng lương và định mức lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"thang lương\",\n    \"bảng lương\",\n    \"định mức lao động\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"đối với nơi có tổ chức đại diện người lao động tại cơ sở\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"doan\": [\n    \"thực hiện\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Thang lương, bảng lương và mức lao động\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"tại nơi làm việc\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Thang lương, bảng lương và mức lao động\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"công bố công khai\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Thang lương, bảng lương và mức lao động\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "9voGa6WIN8e31e8PkfuIoA8",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 2082,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2364
+   },
+   "input_tokens": 2381,
+   "output_tokens": 3194,
+   "prompt_tokens_details": {
+    "cached_tokens": 2082
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_5bf6012c0d90c902dcaf892f"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Quy trình tiến hành thương lượng tập thể ngành, thương lượng tập thể có nhiều doanh nghiệp tham gia do các bên thỏa thuận quyết định, bao gồm cả việc thỏa thuận tiến hành thương lượng tập thể thông qua Hội đồng thương lượng tập thể quy định tại Điều 73 của Bộ luật này.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Quy trình tiến hành thương lượng tập thể ngành, thương lượng tập thể có nhiều doanh nghiệp tham gia\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"do các bên thỏa thuận quyết định\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bao gồm cả việc thỏa thuận tiến hành thương lượng tập thể thông qua Hội đồng thương lượng tập thể quy định tại Điều 73 của Bộ luật này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538907657-b529a045",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 533
+   },
+   "input_tokens": 2435,
+   "output_tokens": 127,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_031a0e1bab5021e2afec7564"
+   }
+  }
+ }
+}

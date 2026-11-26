@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động không phải là cá nhân chấm dứt hoạt động;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người sử dụng lao động không phải là cá nhân chấm dứt hoạt động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538587865-694045b7",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 680
+   },
+   "input_tokens": 2392,
+   "output_tokens": 43,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_158ea56b3e0d5ae89aeabb55"
+   }
+  }
+ }
+}

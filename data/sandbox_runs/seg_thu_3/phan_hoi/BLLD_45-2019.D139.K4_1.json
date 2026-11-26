@@ -1,0 +1,30 @@
+{
+ "cau": "Trước khi hết thời gian nghỉ thai sản theo quy định tại khoản 1 Điều này, lao động nữ có thể trở lại làm việc khi đã nghỉ ít nhất được 04 tháng nhưng người lao động phải báo trước, được người sử dụng lao động đồng ý và có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc đi làm sớm không có hại cho sức khỏe của người lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trước khi hết thời gian nghỉ thai sản theo quy định tại khoản 1 Điều này\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\",\"m5\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"lao động nữ có thể trở lại làm việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"đã nghỉ ít nhất được 04 tháng\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"người lao động\",\"ap_cho\":[\"m3\",\"m4\",\"m5\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"phải báo trước\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"được người sử dụng lao động đồng ý\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc đi làm sớm không có hại cho sức khỏe của người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-9UUDa_7rHaSV1e8P7IyVoQg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4401
+   },
+   "input_tokens": 984,
+   "output_tokens": 952,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_3857bc920c7765b7bbcbc51b"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Thời giờ làm việc bình thường không quá 08 giờ trong 01 ngày và không quá 48 giờ trong 01 tuần.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thời giờ làm việc bình thường\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"không quá 08 giờ trong 01 ngày\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không quá 48 giờ trong 01 tuần\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-bj0Da_m0D6TC0-kP-eTo0QM",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 975
+   },
+   "input_tokens": 930,
+   "output_tokens": 1070,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_14618de8a1a7877bb4860884"
+   }
+  }
+ }
+}

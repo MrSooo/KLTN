@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D28",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D28\",\n \"tieu_de_dieu\": \"Thực hiện công việc theo hợp đồng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Công việc theo hợp đồng lao động phải do người lao động đã giao kết hợp đồng thực hiện.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Công việc theo hợp đồng lao động phải do người lao động đã giao kết hợp đồng thực hiện\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Địa điểm làm việc được thực hiện theo hợp đồng lao động, trừ trường hợp hai bên có thỏa thuận khác.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Địa điểm làm việc được thực hiện theo hợp đồng lao động\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"hai bên có thỏa thuận khác\",\n     \"noi_truoc\": [\n      \"trừ trường hợp\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D28\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"Công việc theo hợp đồng lao động\",\"thực hiện\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"người lao động đã giao kết hợp đồng\",\"loai\":\"W\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s2.m1\",\"doan\":[\"Địa điểm làm việc\",\"được thực hiện\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q2\"},{\"nguon\":\"s2.m1\",\"doan\":[\"theo hợp đồng lao động\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q2\"},{\"nguon\":\"s2.m2\",\"doan\":[\"có thỏa thuận khác\"],\"vai\":\"ngoai_le\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"hai bên\",\"loai\":[\"W\",\"E\"]},\"quy_tac\":\"q2\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795542101256-57171760",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6782
+   },
+   "input_tokens": 3780,
+   "output_tokens": 262,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_eafc7b1e3eb55bb8951b826a"
+   }
+  }
+ }
+}

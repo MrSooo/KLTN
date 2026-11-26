@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp có hiệu lực áp dụng đối với toàn bộ người sử dụng lao động và người lao động của các doanh nghiệp tham gia thỏa ước lao động tập thể.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp có hiệu lực áp dụng đối với toàn bộ người sử dụng lao động và người lao động của các doanh nghiệp tham gia thỏa ước lao động tập thể\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538967303-575c2464",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 504
+   },
+   "input_tokens": 2428,
+   "output_tokens": 79,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_0eef84e89f71eb4d995a76ac"
+   }
+  }
+ }
+}

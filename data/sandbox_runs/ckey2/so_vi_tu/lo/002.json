@@ -1,0 +1,792 @@
+{
+"chu": [
+{
+"chu_id": "C0132",
+"chu": "là doanh nghiệp cho thuê lại lao động",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D12",
+"vai": "ket_luan",
+"tieu_de_dieu": "Doanh nghiệp cho thuê lại lao động",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp cho thuê lại lao động là doanh nghiệp được thành lập theo quy định của Luật Doanh nghiệp, được cấp giấy phép hoạt động cho thuê lại lao động, có tuyển dụng, giao kết hợp đồng lao động với người lao động, sau đó chuyển người lao động sang làm việc và chịu sự điều hành của người sử dụng lao động khác mà vẫn duy trì quan hệ lao động với doanh nghiệp đã giao kết hợp đồng lao động (sau đây gọi là doanh nghiệp cho thuê lại)."
+}
+],
+"ung_vien": [
+{
+"ten": "transfer_worker_to_other_employer_control",
+"params": [],
+"vi_du": [
+"chuyển người lao động sang làm việc và chịu sự điều hành của người sử dụng lao động khác",
+"sau đó chuyển sang làm việc và chịu sự điều hành của bên thuê lại lao động"
+]
+},
+{
+"ten": "maintain_labor_relation_with_signing_enterprise",
+"params": [],
+"vi_du": [
+"duy trì quan hệ lao động với doanh nghiệp đã giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "recruit_and_sign_labor_contract_with_worker",
+"params": [],
+"vi_du": [
+"tuyển dụng, giao kết hợp đồng lao động với người lao động",
+"được doanh nghiệp cho thuê lại tuyển dụng và giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "grant_labor_subleasing_license",
+"params": [],
+"vi_du": [
+"được cấp giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "established_under_enterprise_law",
+"params": [],
+"vi_du": [
+"được thành lập theo quy định của Luật Doanh nghiệp"
+]
+},
+{
+"ten": "foreign_notice_to_stop_sending_foreign_workers",
+"params": [],
+"vi_du": [
+"có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam"
+]
+},
+{
+"ten": "vietnamese_citizen_working_for_foreign_employer",
+"params": [],
+"vi_du": [
+"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "vietnam_or_foreign_org_employing_foreign_workers",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài"
+]
+},
+{
+"ten": "contract_as_basis_for_labor_permit",
+"params": [],
+"vi_du": [
+"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động"
+]
+},
+{
+"ten": "labor_leasing_client",
+"params": [],
+"vi_du": [
+"Bên thuê lại lao động",
+"là bên thuê lại lao động"
+]
+},
+{
+"ten": "labor_subleasing_activity",
+"params": [],
+"vi_du": [
+"là việc cho thuê lại lao động",
+"Hoạt động cho thuê lại lao động"
+]
+}
+],
+"loi_lan_truoc": "new \"labor_subleasing_enterprise\": tên này đã có trong sổ"
+},
+{
+"chu_id": "C0140",
+"chu": "là người lao động thuê lại",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D14",
+"vai": "ket_luan",
+"tieu_de_dieu": "Người lao động thuê lại",
+"khoan_cha": "",
+"chu_don_vi": "Người lao động thuê lại là người lao động có năng lực hành vi dân sự đầy đủ, được doanh nghiệp cho thuê lại tuyển dụng và giao kết hợp đồng lao động, sau đó chuyển sang làm việc và chịu sự điều hành của bên thuê lại lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "full_civil_act_capacity_requirement",
+"params": [],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ"
+]
+},
+{
+"ten": "transfer_worker_to_other_employer_control",
+"params": [],
+"vi_du": [
+"chuyển người lao động sang làm việc và chịu sự điều hành của người sử dụng lao động khác",
+"sau đó chuyển sang làm việc và chịu sự điều hành của bên thuê lại lao động"
+]
+},
+{
+"ten": "recruit_and_sign_labor_contract_with_worker",
+"params": [],
+"vi_du": [
+"tuyển dụng, giao kết hợp đồng lao động với người lao động",
+"được doanh nghiệp cho thuê lại tuyển dụng và giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "foreign_notice_to_stop_sending_foreign_workers",
+"params": [],
+"vi_du": [
+"có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam"
+]
+},
+{
+"ten": "vietnamese_citizen_working_for_foreign_employer",
+"params": [],
+"vi_du": [
+"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "vietnam_or_foreign_org_employing_foreign_workers",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài"
+]
+},
+{
+"ten": "contract_as_basis_for_labor_permit",
+"params": [],
+"vi_du": [
+"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động"
+]
+},
+{
+"ten": "labor_leasing_client",
+"params": [],
+"vi_du": [
+"Bên thuê lại lao động",
+"là bên thuê lại lao động"
+]
+},
+{
+"ten": "labor_subleasing_activity",
+"params": [],
+"vi_du": [
+"là việc cho thuê lại lao động",
+"Hoạt động cho thuê lại lao động"
+]
+}
+],
+"loi_lan_truoc": "new \"leased_worker\": tên này đã có trong sổ"
+},
+{
+"chu_id": "C0142",
+"chu": "thực hiện ký quỹ",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D15.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Ký quỹ và sử dụng tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp thực hiện ký quỹ theo mức quy định tại khoản 2 Điều 21 Nghị định này tại ngân hàng thương mại của Việt Nam hoặc chi nhánh ngân hàng nước ngoài thành lập và hoạt động hợp pháp tại Việt Nam (sau đây gọi là ngân hàng nhận ký quỹ)."
+}
+],
+"ung_vien": [
+{
+"ten": "replace_employee_during_strike_or_dispute",
+"params": [
+"E"
+],
+"vi_du": [
+"thay thế người lao động đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động"
+]
+}
+],
+"loi_lan_truoc": "new \"make_security_deposit\": tên này đã có trong sổ"
+},
+{
+"chu_id": "C0146",
+"chu": "doanh nghiệp cho thuê lại",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 48,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D15.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Ký quỹ và sử dụng tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Tiền ký quỹ được sử dụng vào mục đích thanh toán tiền lương, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, bảo hiểm tai nạn lao động, bệnh nghề nghiệp và các chế độ khác đối với người lao động thuê lại theo thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể, nội quy, quy chế của doanh nghiệp cho thuê lại hoặc bồi thường cho người lao động thuê lại trong trường hợp doanh nghiệp cho thuê lại vi phạm hợp đồng lao động với người lao động thuê lại hoặc gây thiệt hại cho người lao động thuê lại do không bảo đảm về quyền và lợi ích hợp pháp của người lao động thuê lại."
+},
+{
+"don_vi": "ND_145-2020.D16.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Nộp tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp cho thuê lại thực hiện nộp tiền ký quỹ theo quy định của ngân hàng nhận ký quỹ và tuân thủ quy định của pháp luật. Doanh nghiệp cho thuê lại được hưởng lãi suất từ tiền ký quỹ theo thỏa thuận với ngân hàng nhận ký quỹ và phù hợp quy định của pháp luật."
+}
+],
+"ung_vien": [
+{
+"ten": "enterprise_as_legal_entity",
+"params": [],
+"vi_du": [
+"Doanh nghiệp"
+]
+},
+{
+"ten": "security_deposit",
+"params": [],
+"vi_du": [
+"Tiền ký quỹ"
+]
+}
+],
+"loi_lan_truoc": "reuse \"labor_subleasing_enterprise\": tên này không nằm trong danh sách ứng viên đã đưa và không phải tên new đã được nhận cho chữ đứng trước trong cùng lượt"
+},
+{
+"chu_id": "C0148",
+"chu": "nộp tiền ký quỹ",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D16.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nộp tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp cho thuê lại thực hiện nộp tiền ký quỹ theo quy định của ngân hàng nhận ký quỹ và tuân thủ quy định của pháp luật. Doanh nghiệp cho thuê lại được hưởng lãi suất từ tiền ký quỹ theo thỏa thuận với ngân hàng nhận ký quỹ và phù hợp quy định của pháp luật."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0149",
+"chu": "tuân thủ quy định của pháp luật",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D16.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nộp tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp cho thuê lại thực hiện nộp tiền ký quỹ theo quy định của ngân hàng nhận ký quỹ và tuân thủ quy định của pháp luật. Doanh nghiệp cho thuê lại được hưởng lãi suất từ tiền ký quỹ theo thỏa thuận với ngân hàng nhận ký quỹ và phù hợp quy định của pháp luật."
+}
+],
+"ung_vien": [
+{
+"ten": "detail_recruitment_and_management_rules",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "prescribe",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định"
+]
+}
+]
+},
+{
+"chu_id": "C0150",
+"chu": "hưởng lãi suất từ tiền ký quỹ",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D16.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nộp tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp cho thuê lại thực hiện nộp tiền ký quỹ theo quy định của ngân hàng nhận ký quỹ và tuân thủ quy định của pháp luật. Doanh nghiệp cho thuê lại được hưởng lãi suất từ tiền ký quỹ theo thỏa thuận với ngân hàng nhận ký quỹ và phù hợp quy định của pháp luật."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0151",
+"chu": "thỏa thuận với ngân hàng nhận ký quỹ",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D16.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nộp tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp cho thuê lại thực hiện nộp tiền ký quỹ theo quy định của ngân hàng nhận ký quỹ và tuân thủ quy định của pháp luật. Doanh nghiệp cho thuê lại được hưởng lãi suất từ tiền ký quỹ theo thỏa thuận với ngân hàng nhận ký quỹ và phù hợp quy định của pháp luật."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0152",
+"chu": "phù hợp quy định của pháp luật",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D16.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nộp tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp cho thuê lại thực hiện nộp tiền ký quỹ theo quy định của ngân hàng nhận ký quỹ và tuân thủ quy định của pháp luật. Doanh nghiệp cho thuê lại được hưởng lãi suất từ tiền ký quỹ theo thỏa thuận với ngân hàng nhận ký quỹ và phù hợp quy định của pháp luật."
+}
+],
+"ung_vien": [
+{
+"ten": "established_under_enterprise_law",
+"params": [],
+"vi_du": [
+"được thành lập theo quy định của Luật Doanh nghiệp"
+]
+}
+]
+},
+{
+"chu_id": "C0153",
+"chu": "Ngân hàng nhận ký quỹ",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 15,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D16.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Nộp tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ có trách nhiệm cấp giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động theo Mẫu số 01/PLIII Phụ lục III ban hành kèm theo Nghị định này sau khi doanh nghiệp cho thuê lại hoàn thành thủ tục ký quỹ. Trường hợp thay đổi một trong các thông tin trên giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động, gồm: tên doanh nghiệp; địa chỉ trụ sở chính; số tài khoản ký quỹ thì doanh nghiệp cho thuê lại gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin tới ngân hàng nhận ký quỹ để thay đổi giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động."
+},
+{
+"don_vi": "ND_145-2020.D17.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Quản lý tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ có trách nhiệm phong tỏa toàn bộ số tiền ký quỹ của doanh nghiệp cho thuê lại, quản lý tiền ký quỹ theo quy định của pháp luật về ký quỹ."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0154",
+"chu": "cấp giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D16.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nộp tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ có trách nhiệm cấp giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động theo Mẫu số 01/PLIII Phụ lục III ban hành kèm theo Nghị định này sau khi doanh nghiệp cho thuê lại hoàn thành thủ tục ký quỹ. Trường hợp thay đổi một trong các thông tin trên giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động, gồm: tên doanh nghiệp; địa chỉ trụ sở chính; số tài khoản ký quỹ thì doanh nghiệp cho thuê lại gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin tới ngân hàng nhận ký quỹ để thay đổi giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "cease_operations",
+"params": [
+"E"
+],
+"vi_du": [
+"chấm dứt hoạt động"
+]
+},
+{
+"ten": "head_of_rep_office_or_chief_of_foreign_org_or_ngo",
+"params": [
+"W"
+],
+"vi_du": [
+"là Trưởng văn phòng đại diện, dự án hoặc chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài"
+]
+},
+{
+"ten": "use_leased_worker_from_unlicensed_enterprise",
+"params": [
+"E"
+],
+"vi_du": [
+"sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "receive_labor_subleasing_license",
+"params": [
+"E"
+],
+"vi_du": [
+"được cấp Giấy phép hoạt động cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0155",
+"chu": "hoàn thành thủ tục ký quỹ",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D16.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nộp tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ có trách nhiệm cấp giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động theo Mẫu số 01/PLIII Phụ lục III ban hành kèm theo Nghị định này sau khi doanh nghiệp cho thuê lại hoàn thành thủ tục ký quỹ. Trường hợp thay đổi một trong các thông tin trên giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động, gồm: tên doanh nghiệp; địa chỉ trụ sở chính; số tài khoản ký quỹ thì doanh nghiệp cho thuê lại gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin tới ngân hàng nhận ký quỹ để thay đổi giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0156",
+"chu": "thay đổi một trong các thông tin trên giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D16.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nộp tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ có trách nhiệm cấp giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động theo Mẫu số 01/PLIII Phụ lục III ban hành kèm theo Nghị định này sau khi doanh nghiệp cho thuê lại hoàn thành thủ tục ký quỹ. Trường hợp thay đổi một trong các thông tin trên giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động, gồm: tên doanh nghiệp; địa chỉ trụ sở chính; số tài khoản ký quỹ thì doanh nghiệp cho thuê lại gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin tới ngân hàng nhận ký quỹ để thay đổi giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "foreign_notice_to_stop_sending_foreign_workers",
+"params": [],
+"vi_du": [
+"có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam"
+]
+},
+{
+"ten": "vietnamese_citizen_working_for_foreign_employer",
+"params": [],
+"vi_du": [
+"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "labor_subleasing_activity",
+"params": [],
+"vi_du": [
+"là việc cho thuê lại lao động",
+"Hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "contract_as_basis_for_labor_permit",
+"params": [],
+"vi_du": [
+"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động"
+]
+},
+{
+"ten": "grant_labor_subleasing_license",
+"params": [],
+"vi_du": [
+"được cấp giấy phép hoạt động cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0157",
+"chu": "gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D16.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nộp tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ có trách nhiệm cấp giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động theo Mẫu số 01/PLIII Phụ lục III ban hành kèm theo Nghị định này sau khi doanh nghiệp cho thuê lại hoàn thành thủ tục ký quỹ. Trường hợp thay đổi một trong các thông tin trên giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động, gồm: tên doanh nghiệp; địa chỉ trụ sở chính; số tài khoản ký quỹ thì doanh nghiệp cho thuê lại gửi văn bản đề nghị và các tài liệu chứng minh việc thay đổi thông tin tới ngân hàng nhận ký quỹ để thay đổi giấy chứng nhận tiền ký quỹ hoạt động cho thuê lại lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "obtain_written_approval_from_authority",
+"params": [
+"E"
+],
+"vi_du": [
+"được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền"
+]
+},
+{
+"ten": "detail_recruitment_and_management_rules",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "replace_dismissed_employee",
+"params": [
+"E"
+],
+"vi_du": [
+"thay thế người lao động bị cho thôi việc"
+]
+},
+{
+"ten": "replace_employee",
+"params": [
+"E"
+],
+"vi_du": [
+"thay thế người lao động"
+]
+},
+{
+"ten": "replace_employee_during_strike_or_dispute",
+"params": [
+"E"
+],
+"vi_du": [
+"thay thế người lao động đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0158",
+"chu": "phong tỏa toàn bộ số tiền ký quỹ của doanh nghiệp cho thuê lại",
+"params": [
+"?",
+"A",
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D17.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quản lý tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ có trách nhiệm phong tỏa toàn bộ số tiền ký quỹ của doanh nghiệp cho thuê lại, quản lý tiền ký quỹ theo quy định của pháp luật về ký quỹ."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0159",
+"chu": "quản lý tiền ký quỹ",
+"params": [
+"?",
+"A"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D17.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quản lý tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ có trách nhiệm phong tỏa toàn bộ số tiền ký quỹ của doanh nghiệp cho thuê lại, quản lý tiền ký quỹ theo quy định của pháp luật về ký quỹ."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0160",
+"chu": "cho doanh nghiệp cho thuê lại rút tiền ký quỹ",
+"params": [
+"?",
+"?",
+"A"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 2,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D17.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quản lý tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ thực hiện cho doanh nghiệp cho thuê lại rút tiền ký quỹ, trích tiền ký quỹ và yêu cầu doanh nghiệp cho thuê lại nộp bổ sung tiền ký quỹ theo đúng quy định tại Điều 18, Điều 19 và Điều 20 Nghị định này."
+},
+{
+"don_vi": "ND_145-2020.D17.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quản lý tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ không được cho doanh nghiệp cho thuê lại rút tiền ký quỹ khi chưa có ý kiến đồng ý bằng văn bản của Chủ tịch Ủy ban nhân dân tỉnh, thành phố trực thuộc Trung ương (sau đây gọi là Chủ tịch Ủy ban nhân dân cấp tỉnh)."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0161",
+"chu": "trích tiền ký quỹ",
+"params": [
+"?",
+"A"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D17.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quản lý tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ thực hiện cho doanh nghiệp cho thuê lại rút tiền ký quỹ, trích tiền ký quỹ và yêu cầu doanh nghiệp cho thuê lại nộp bổ sung tiền ký quỹ theo đúng quy định tại Điều 18, Điều 19 và Điều 20 Nghị định này."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0162",
+"chu": "yêu cầu doanh nghiệp cho thuê lại nộp bổ sung tiền ký quỹ",
+"params": [
+"?",
+"?",
+"A"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D17.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Quản lý tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ thực hiện cho doanh nghiệp cho thuê lại rút tiền ký quỹ, trích tiền ký quỹ và yêu cầu doanh nghiệp cho thuê lại nộp bổ sung tiền ký quỹ theo đúng quy định tại Điều 18, Điều 19 và Điều 20 Nghị định này."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0163",
+"chu": "có ý kiến đồng ý bằng văn bản của Chủ tịch Ủy ban nhân dân tỉnh, thành phố trực thuộc Trung ương",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "ND_145-2020.D17.K3",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Quản lý tiền ký quỹ",
+"khoan_cha": "",
+"chu_don_vi": "Ngân hàng nhận ký quỹ không được cho doanh nghiệp cho thuê lại rút tiền ký quỹ khi chưa có ý kiến đồng ý bằng văn bản của Chủ tịch Ủy ban nhân dân tỉnh, thành phố trực thuộc Trung ương (sau đây gọi là Chủ tịch Ủy ban nhân dân cấp tỉnh)."
+}
+],
+"ung_vien": [
+{
+"ten": "foreign_notice_to_stop_sending_foreign_workers",
+"params": [],
+"vi_du": [
+"có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam"
+]
+},
+{
+"ten": "full_civil_act_capacity_requirement",
+"params": [],
+"vi_du": [
+"có năng lực hành vi dân sự đầy đủ"
+]
+},
+{
+"ten": "vietnamese_citizen_working_for_foreign_employer",
+"params": [],
+"vi_du": [
+"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "established_under_enterprise_law",
+"params": [],
+"vi_du": [
+"được thành lập theo quy định của Luật Doanh nghiệp"
+]
+}
+]
+}
+]
+}

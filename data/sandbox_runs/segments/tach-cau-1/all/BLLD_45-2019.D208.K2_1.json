@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Dùng bạo lực; hủy hoại máy, thiết bị, tài sản của người sử dụng lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Dùng bạo lực\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hủy hoại máy, thiết bị, tài sản của người sử dụng lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540439772-77464a7e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 294
+   },
+   "input_tokens": 2397,
+   "output_tokens": 62,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_426b4aa871b341393c800951"
+   }
+  }
+ }
+}

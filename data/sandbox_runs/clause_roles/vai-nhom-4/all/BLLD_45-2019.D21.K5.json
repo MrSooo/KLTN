@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D21.K5",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D21.K5\",\n \"tieu_de_dieu\": \"1:Nội 2:dung 3:hợp 4:đồng 5:lao 6:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1, 2 và 3 Điều này\",\n   \"dich\": \"BLLD_45-2019.D21.K1\"\n  },\n  {\n   \"cum\": \"khoản 1, 2 và 3 Điều này\",\n   \"dich\": \"BLLD_45-2019.D21.K2\"\n  },\n  {\n   \"cum\": \"khoản 1, 2 và 3 Điều này\",\n   \"dich\": \"BLLD_45-2019.D21.K3\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Bộ trưởng Bộ Lao động - Thương binh và Xã hội quy định chi tiết các khoản 1, 2 và 3 Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Bộ 2:trưởng 3:Bộ 4:Lao 5:động - 6:Thương 7:binh 8:và 9:Xã 10:hội 11:quy 12:định 13:chi 14:tiết 15:các 16:khoản 17:1, 18:2 19:và 20:3 21:Điều 22:này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D21.K5\",\n \"bo_qua\": \"dan_chieu_mo\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-0cf6b5f1dee04b1abfa7d48b329b12c2",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 844
+   },
+   "input_tokens": 5935,
+   "output_tokens": 910,
+   "x_ckey": {
+    "cost": 10.99,
+    "cost_is_estimate": false,
+    "request_id": "req_99691169a220e4c4cbba6a0b"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D182.K2.a",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D182.K2.a\",\n \"tieu_de_dieu\": \"Quyền và nghĩa vụ của hai bên trong giải quyết tranh chấp lao động\",\n \"khoan_cha\": \"Trong giải quyết tranh chấp lao động, các bên có nghĩa vụ sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Cung cấp đầy đủ, kịp thời tài liệu, chứng cứ để chứng minh cho yêu cầu của mình;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Cung cấp đầy đủ, kịp thời tài liệu, chứng cứ\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"chứng minh cho yêu cầu của mình\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D182.K2.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Cung cấp đầy đủ, kịp thời tài liệu, chứng cứ\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"liet_ke\": [\n    \"tài liệu\",\n    \"chứng cứ\"\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"chứng minh cho yêu cầu của mình\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "k_0Ga4jQCPy20-kPuPiCyAc",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1092
+   },
+   "input_tokens": 4135,
+   "output_tokens": 1428,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_7ce59a680806a443d692f73d"
+   }
+  }
+ }
+}

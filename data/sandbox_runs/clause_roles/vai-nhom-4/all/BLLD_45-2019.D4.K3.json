@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D4.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D4.K3\",\n \"tieu_de_dieu\": \"1:Chính 2:sách 3:của 4:Nhà 5:nước 6:về 7:lao 8:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tạo điều kiện thuận lợi đối với hoạt động tạo việc làm, tự tạo việc làm, dạy nghề và học nghề để có việc làm; hoạt động sản xuất, kinh doanh thu hút nhiều lao động; áp dụng một số quy định của Bộ luật này đối với người làm việc không có quan hệ lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Tạo 2:điều 3:kiện 4:thuận 5:lợi 6:đối 7:với 8:hoạt 9:động 10:tạo 11:việc 12:làm, 13:tự 14:tạo 15:việc 16:làm, 17:dạy 18:nghề 19:và 20:học 21:nghề 22:để 23:có 24:việc 25:làm; 26:hoạt 27:động 28:sản 29:xuất, 30:kinh 31:doanh 32:thu 33:hút 34:nhiều 35:lao 36:động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:áp 2:dụng 3:một 4:số 5:quy 6:định 7:của 8:Bộ 9:luật 10:này 11:đối 12:với 13:người 14:làm 15:việc 16:không 17:có 18:quan 19:hệ 20:lao 21:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D4.K3\",\n \"bo_qua\": \"khong_quy_pham\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-65c82d6967ba4f0dacacd3c695369e85",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 405
+   },
+   "input_tokens": 6067,
+   "output_tokens": 457,
+   "x_ckey": {
+    "cost": 10.74,
+    "cost_is_estimate": false,
+    "request_id": "req_40472ff30581307ff301d0ae"
+   }
+  }
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D12.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D12.K3\",\n \"tieu_de_dieu\": \"1:Trách 2:nhiệm 3:quản 4:lý 5:lao 6:động 7:của 8:người 9:sử 10:dụng 11:lao 12:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều này\",\n   \"dich\": \"BLLD_45-2019.D12\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định chi tiết Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Chính 2:phủ 3:quy 4:định 5:chi 6:tiết 7:Điều 8:này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D12.K3\",\n \"bo_qua\": \"dan_chieu_mo\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-269a33ea5bfd42ffbb229eb1fe8eb91c",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 3664,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1097
+   },
+   "input_tokens": 2096,
+   "output_tokens": 1163,
+   "prompt_tokens_details": {
+    "cached_tokens": 3664
+   },
+   "x_ckey": {
+    "cost": 11.11,
+    "cost_is_estimate": false,
+    "request_id": "req_e4b8a71f91d47402c1bf1f79"
+   }
+  }
+ }
+}

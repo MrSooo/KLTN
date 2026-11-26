@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D178.K4",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D178.K4\",\n \"tieu_de_dieu\": \"Quyền và nghĩa vụ của tổ chức đại diện người lao động tại cơ sở trong quan hệ lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Đại diện cho người lao động trong quá trình giải quyết khiếu nại, tranh chấp lao động cá nhân khi được người lao động ủy quyền.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Đại diện cho người lao động trong quá trình giải quyết khiếu nại, tranh chấp lao động cá nhân\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được người lao động ủy quyền\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D178.K4\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"Đại diện cho người lao động\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"tổ chức đại diện người lao động tại cơ sở\",\"loai\":\"W\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\",\"chua_ro\":[{\"thanh_phan\":\"phuong_thuc\",\"nguyen_nhan\":\"phuong_thuc\",\"cau_hoi\":\"Tiêu đề điều gồm cả 'Quyền và nghĩa vụ', điều văn không nêu rõ đây là quyền hay nghĩa vụ.\"}]},{\"nguon\":\"s1.m1\",\"doan\":[\"trong quá trình giải quyết khiếu nại, tranh chấp lao động cá nhân\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"tổ chức đại diện người lao động tại cơ sở\",\"loai\":\"W\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"doan\":[\"được người lao động ủy quyền\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"tổ chức đại diện người lao động tại cơ sở\",\"loai\":\"W\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795547021897-452881f8",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6249
+   },
+   "input_tokens": 3723,
+   "output_tokens": 332,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_c7f84ca2080e0541dcbd9bd2"
+   }
+  }
+ }
+}

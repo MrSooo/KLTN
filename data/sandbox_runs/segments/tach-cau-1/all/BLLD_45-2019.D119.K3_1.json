@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được hồ sơ đăng ký nội quy lao động, nếu nội dung nội quy lao động có quy định trái với pháp luật thì cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh thông báo, hướng dẫn người sử dụng lao động sửa đổi, bổ sung và đăng ký lại.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được hồ sơ đăng ký nội quy lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"nội dung nội quy lao động có quy định trái với pháp luật\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thông báo\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hướng dẫn người sử dụng lao động sửa đổi, bổ sung và đăng ký lại\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539430253-492bc646",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 7860
+   },
+   "input_tokens": 2446,
+   "output_tokens": 184,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_005eb345a618f402d25a335d"
+   }
+  }
+ }
+}

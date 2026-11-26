@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Công việc theo hợp đồng lao động phải do người lao động đã giao kết hợp đồng thực hiện.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Công việc theo hợp đồng lao động phải do người lao động đã giao kết hợp đồng thực hiện\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538129293-3b8d77a0",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 379
+   },
+   "input_tokens": 2394,
+   "output_tokens": 41,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_9cd0063e08f9c0e4303243fa"
+   }
+  }
+ }
+}
