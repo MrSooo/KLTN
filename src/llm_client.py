@@ -47,7 +47,7 @@ RETRY_CODES = (429, 500, 503)
 RETRY_CODES_ANTHROPIC = (429, 500, 503, 529)  # 529 = Anthropic quá tải
 # máy chủ trung gian: 503 và 524 "upstream gateway unavailable" là lỗi tạm đã gặp khi thử (19/11); 520-524 là mã quá thời gian của lớp Cloudflare đứng trước
 RETRY_CODES_CKEY = (429, 500, 502, 503, 504, 520, 521, 522, 523, 524)
-CKEY_TIMEOUT = 300  # giây cho MỘT lời gọi: trang model ghi thời gian phản hồi P95 khoảng 105 giây
+CKEY_TIMEOUT = 900  # giây cho MỘT lời gọi: trang model ghi P95 khoảng 105 giây; [27/11 02:55] 300 -> 900: lượt 002 của 1.6B (30 chữ, có lược đồ) quá 300 giây hai lần liền trên phamhuyhoang28072005/gemini-3.8-flash
 THINKING_MODES = ("between_tools", "disabled")  # cách TẮT suy nghĩ phụ thuộc model: Sonnet 5.5 chỉ nhận between_tools, Haiku 5.5 không nhận between_tools (chỉ disabled)
 ATTEMPTS = 3
 # [27/11, user: "đừng spam lỗi tránh nó block mình"] nhánh ckey không thử lại lỗi HTTP/mạng: một lần, lỗi thì ném ngay cho bộ chạy dừng
