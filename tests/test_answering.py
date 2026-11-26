@@ -93,6 +93,13 @@ def test_answering_isolated_rule_gives_no_answer():
     assert out["ket_qua"] == "khong_tra_loi" and out["ly_do"].startswith("co_lap")
 
 
+def test_answering_vocabulary_drops_heads_only_in_isolated_rules():
+    # D27.K1 (A62): `terminate` chỉ có ở quy tắc cô lập thân rỗng thì không đưa cho LLM chọn làm φ; đầu có cả quy tắc sống thì giữ
+    rs = kb() + [rule("r7", D + "D27.K1", "terminate", [], isolated=True)]
+    heads = answering.live_heads(rs)
+    assert "terminate" not in heads and "eligible_for_license" in heads and "must_holds_work_permit" in heads
+
+
 def test_answering_contradictory_facts_and_out_of_scope():
     out = classify("must_holds_work_permit", facts("holds_foreign_nationality", "-holds_foreign_nationality"))
     assert out["ket_qua"] == "loi"

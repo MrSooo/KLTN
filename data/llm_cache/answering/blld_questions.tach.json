@@ -2,16 +2,21 @@
  "prompt_version": "hoi-dap-2",
  "model": "daongocson12022004/gemini-3.8-flash-high",
  "effort": "khong_co",
- "tu_vung": "0f1b1044ea64fed0",
+ "tu_vung": "778d5992211b3c4e",
  "answers": {
   "B01": {
    "cau_hoi": "Công ty đã ra quyết định kỷ luật sa thải anh C vì anh trộm cắp tài sản tại nơi làm việc; quyết định này đúng căn cứ và đúng trình tự, thủ tục theo pháp luật. Hợp đồng lao động của anh C có chấm dứt không?",
-   "phi": "terminate",
+   "phi": "terminate_employment_contract",
    "su_kien": [
     {
-     "vi_tu": "dismissed_as_disciplinary_measure",
+     "vi_tu": "employer",
      "phu_dinh": false,
-     "trich": "kỷ luật sa thải"
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "dismiss_employee",
+     "phu_dinh": false,
+     "trich": "sa thải"
     },
     {
      "vi_tu": "commit_theft",
@@ -27,7 +32,7 @@
   },
   "B03": {
    "cau_hoi": "Người lao động đang bị khởi tố, chưa có bản án của Tòa án; đây là tình tiết duy nhất liên quan đến việc chấm dứt hợp đồng lao động của người này. Hợp đồng lao động của người này có chấm dứt không?",
-   "phi": "terminate",
+   "phi": "terminate_employment_contract",
    "su_kien": [
     {
      "vi_tu": "employee",
@@ -43,8 +48,13 @@
   },
   "B04": {
    "cau_hoi": "Ông X trực tiếp thuê chị A làm việc theo hợp đồng lao động. Nay ông X qua đời. Hợp đồng lao động giữa hai người có chấm dứt không?",
-   "phi": "terminate",
+   "phi": "terminate_employment_contract",
    "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Ông X"
+    },
     {
      "vi_tu": "individual_employer",
      "phu_dinh": false,
@@ -98,11 +108,6 @@
      "trich": "Người sử dụng lao động"
     },
     {
-     "vi_tu": "employee",
-     "phu_dinh": false,
-     "trich": "Người lao động"
-    },
-    {
      "vi_tu": "work_under_indefinite_term_contract",
      "phu_dinh": false,
      "trich": "làm việc theo hợp đồng không xác định thời hạn"
@@ -146,12 +151,7 @@
     {
      "vi_tu": "reside",
      "phu_dinh": false,
-     "trich": "định cư"
-    },
-    {
-     "vi_tu": "in_vietnam",
-     "phu_dinh": false,
-     "trich": "ở Hà Nội"
+     "trich": "đã định cư ở Hà Nội"
     }
    ]
   },
@@ -172,12 +172,12 @@
     {
      "vi_tu": "foreign_lawyer_licensed_to_practice_in_vietnam",
      "phu_dinh": false,
-     "trich": "là luật sư đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư"
+     "trich": "là luật sư đã được cấp Giấy phép hành nghề luật sư tại Việt Nam"
     },
     {
-     "vi_tu": "work_in_vietnam",
+     "vi_tu": "under_law_on_lawyers",
      "phu_dinh": false,
-     "trich": "đang làm cho một công ty luật ở TP.HCM"
+     "trich": "theo quy định của Luật Luật sư"
     }
    ]
   },
@@ -207,14 +207,14 @@
    "phi": "terminate_employment_contract",
    "su_kien": [
     {
-     "vi_tu": "work_permit",
-     "phu_dinh": false,
-     "trich": "Giấy phép lao động"
-    },
-    {
      "vi_tu": "foreign_worker",
      "phu_dinh": false,
      "trich": "người lao động nước ngoài"
+    },
+    {
+     "vi_tu": "work_permit",
+     "phu_dinh": false,
+     "trich": "Giấy phép lao động"
     },
     {
      "vi_tu": "revoked",
@@ -251,7 +251,7 @@
   },
   "B12": {
    "cau_hoi": "Một công nhân vận hành sai quy trình khiến dây chuyền phải dừng hoạt động, và công nhân này được xác định là người có lỗi gây ra việc ngừng việc. Người gây ra lỗi có được hưởng lương trong thời gian ngừng việc không?",
-   "phi": "be_paid_wage",
+   "phi": "may_pay_work_suspension_wage",
    "su_kien": [
     {
      "vi_tu": "employee",
@@ -259,14 +259,14 @@
      "trich": "công nhân"
     },
     {
-     "vi_tu": "employee_at_fault",
-     "phu_dinh": false,
-     "trich": "người có lỗi"
-    },
-    {
      "vi_tu": "at_fault",
      "phu_dinh": false,
      "trich": "lỗi"
+    },
+    {
+     "vi_tu": "employee_at_fault",
+     "phu_dinh": false,
+     "trich": "người có lỗi"
     },
     {
      "vi_tu": "stop_work",
@@ -278,12 +278,59 @@
   "B13": {
    "cau_hoi": "Công ty đơn phương chấm dứt hợp đồng lao động không xác định thời hạn với chị H vì chị thường xuyên không hoàn thành công việc theo quy chế đánh giá của công ty; quy chế này được ban hành sau khi đã tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở. Công ty có phải báo trước cho chị không?",
    "phi": null,
-   "su_kien": []
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "employer_unilaterally_terminates_contract",
+     "phu_dinh": false,
+     "trich": "đơn phương chấm dứt hợp đồng lao động"
+    },
+    {
+     "vi_tu": "for_indefinite_term_employment_contract",
+     "phu_dinh": false,
+     "trich": "hợp đồng lao động không xác định thời hạn"
+    },
+    {
+     "vi_tu": "regularly_complete_contractual_work",
+     "phu_dinh": true,
+     "trich": "thường xuyên không hoàn thành công việc"
+    },
+    {
+     "vi_tu": "consult_grassroots_employee_representative_org",
+     "phu_dinh": false,
+     "trich": "tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở"
+    }
+   ]
   },
   "B14": {
    "cau_hoi": "Một công ty ở Bình Dương tuyển một kỹ sư quốc tịch Nhật Bản làm trưởng phòng kỹ thuật theo hợp đồng 2 năm. Kỹ sư này không góp vốn vào công ty, không phải luật sư, không kết hôn với người Việt Nam và không thuộc trường hợp nào được miễn giấy phép lao động. Kỹ sư này có phải có giấy phép lao động không?",
    "phi": null,
-   "su_kien": []
+   "su_kien": [
+    {
+     "vi_tu": "have_foreign_nationality",
+     "phu_dinh": false,
+     "trich": "quốc tịch Nhật Bản"
+    },
+    {
+     "vi_tu": "llc_owner_or_contributing_member_per_govt",
+     "phu_dinh": true,
+     "trich": "không góp vốn vào công ty"
+    },
+    {
+     "vi_tu": "foreign_lawyer_licensed_to_practice_in_vietnam",
+     "phu_dinh": true,
+     "trich": "không phải luật sư"
+    },
+    {
+     "vi_tu": "married_to_vietnamese_citizen",
+     "phu_dinh": true,
+     "trich": "không kết hôn với người Việt Nam"
+    }
+   ]
   },
   "B15": {
    "cau_hoi": "Một xưởng may muốn nhận em E, 14 tuổi, vào làm công việc nhẹ trong dịp hè. Xưởng có phải ký hợp đồng lao động bằng văn bản với em E và người đại diện theo pháp luật của em không?",
@@ -316,6 +363,11 @@
      "trich": "Người sử dụng lao động"
     },
     {
+     "vi_tu": "is_enterprise",
+     "phu_dinh": false,
+     "trich": "Doanh nghiệp"
+    },
+    {
      "vi_tu": "enterprise_merger",
      "phu_dinh": false,
      "trich": "sáp nhập"
@@ -332,40 +384,40 @@
    "phi": "may_employer_unilaterally_terminates_contract",
    "su_kien": [
     {
-     "vi_tu": "employer",
-     "phu_dinh": false,
-     "trich": "Chủ nhà hàng"
-    },
-    {
-     "vi_tu": "due_to_force_majeure_or_unforeseeable_events",
+     "vi_tu": "dangerous_epidemic",
      "phu_dinh": false,
      "trich": "Dịch bệnh nguy hiểm"
     },
     {
      "vi_tu": "take_all_remedial_measures",
      "phu_dinh": false,
-     "trich": "áp dụng mọi biện pháp khắc phục có thể"
+     "trich": "đã áp dụng mọi biện pháp khắc phục"
     },
     {
      "vi_tu": "reduce_workplaces",
      "phu_dinh": false,
      "trich": "giảm chỗ làm việc"
+    },
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Chủ nhà hàng"
     }
    ]
   },
   "B18": {
    "cau_hoi": "Bên thuê lại lao động muốn dùng lao động thuê lại để thay thế những người lao động vừa bị cho thôi việc vì lý do kinh tế. Bên thuê lại có được sử dụng lao động thuê lại trong trường hợp này không?",
-   "phi": "may_use_subleased_labor",
+   "phi": "forbidden_use_subleased_labor",
    "su_kien": [
-    {
-     "vi_tu": "subleasing_client",
-     "phu_dinh": false,
-     "trich": "Bên thuê lại lao động"
-    },
     {
      "vi_tu": "replace_employee_dismissed_for_economic_reasons",
      "phu_dinh": false,
      "trich": "thay thế những người lao động vừa bị cho thôi việc vì lý do kinh tế"
+    },
+    {
+     "vi_tu": "subleasing_client",
+     "phu_dinh": false,
+     "trich": "Bên thuê lại lao động"
     }
    ]
   },
@@ -374,24 +426,24 @@
    "phi": "may_use_subleased_labor",
    "su_kien": [
     {
-     "vi_tu": "subleasing_client",
-     "phu_dinh": false,
-     "trich": "Bên thuê lại lao động"
-    },
-    {
      "vi_tu": "replace_employee",
      "phu_dinh": false,
-     "trich": "thay thế"
+     "trich": "thay thế một người lao động"
     },
     {
      "vi_tu": "on_maternity_leave",
      "phu_dinh": false,
-     "trich": "đang nghỉ thai sản"
+     "trich": "nghỉ thai sản"
     },
     {
      "vi_tu": "sublease_term_maximum_12_months",
      "phu_dinh": false,
      "trich": "thời hạn thuê lại không quá 12 tháng"
+    },
+    {
+     "vi_tu": "subleasing_client",
+     "phu_dinh": false,
+     "trich": "Bên thuê lại lao động"
     }
    ]
   },
@@ -400,14 +452,19 @@
    "phi": "may_suspension_wage_agreed_not_below_minimum_wage",
    "su_kien": [
     {
-     "vi_tu": "economic_reasons",
+     "vi_tu": "economic_crisis",
      "phu_dinh": false,
-     "trich": "khủng hoảng kinh tế"
+     "trich": "khủng hoảng"
+    },
+    {
+     "vi_tu": "stop_work",
+     "phu_dinh": false,
+     "trich": "ngừng việc"
     },
     {
      "vi_tu": "work_suspension_up_to_14_working_days",
      "phu_dinh": false,
-     "trich": "ngừng việc 10 ngày làm việc"
+     "trich": "10 ngày làm việc"
     }
    ]
   },
@@ -416,21 +473,6 @@
    "phi": "may_unilaterally_terminate_contract_without_notice",
    "su_kien": [
     {
-     "vi_tu": "employee",
-     "phu_dinh": false,
-     "trich": "người lao động"
-    },
-    {
-     "vi_tu": "employer",
-     "phu_dinh": false,
-     "trich": "công ty"
-    },
-    {
-     "vi_tu": "face_unexpected_difficulties_or_business_needs",
-     "phu_dinh": false,
-     "trich": "sự cố mất điện đột xuất"
-    },
-    {
      "vi_tu": "temporarily_reassign_to_other_work",
      "phu_dinh": false,
      "trich": "tạm chuyển anh K sang làm công việc khác"
@@ -438,10 +480,10 @@
     {
      "vi_tu": "exceed_60_cumulative_working_days_in_one_year",
      "phu_dinh": true,
-     "trich": "trong 20 ngày làm việc; trong năm anh chưa bị chuyển việc lần nào khác"
+     "trich": "20 ngày làm việc; trong năm anh chưa bị chuyển việc lần nào khác"
     },
     {
-     "vi_tu": "notify_employee_at_least_3_working_days_in_advance",
+     "vi_tu": "advance_notice_at_least_3_working_days",
      "phu_dinh": false,
      "trich": "báo trước cho anh 3 ngày làm việc"
     },
@@ -459,6 +501,11 @@
      "vi_tu": "assigned_to_agreed_job",
      "phu_dinh": true,
      "trich": "không được bố trí đúng công việc theo hợp đồng"
+    },
+    {
+     "vi_tu": "employee",
+     "phu_dinh": false,
+     "trich": "Anh K"
     }
    ]
   },
@@ -475,6 +522,11 @@
      "vi_tu": "have_justified_reason",
      "phu_dinh": true,
      "trich": "không có lý do chính đáng"
+    },
+    {
+     "vi_tu": "have_justified_reason_for_5_consecutive_days",
+     "phu_dinh": true,
+     "trich": "4 ngày làm việc liên tục mà không xin phép và không có lý do chính đáng"
     }
    ]
   },
@@ -483,14 +535,14 @@
    "phi": null,
    "su_kien": [
     {
-     "vi_tu": "work_suspension_over_14_working_days",
-     "phu_dinh": false,
-     "trich": "ngừng việc 20 ngày làm việc"
-    },
-    {
      "vi_tu": "utility_incident_not_due_to_employer_fault",
      "phu_dinh": false,
      "trich": "sự cố mất điện không do lỗi của công ty"
+    },
+    {
+     "vi_tu": "work_suspension_over_14_working_days",
+     "phu_dinh": false,
+     "trich": "ngừng việc 20 ngày làm việc"
     }
    ]
   },
@@ -530,6 +582,11 @@
      "trich": "việc làm của nhiều người lao động bị ảnh hưởng"
     },
     {
+     "vi_tu": "lay_off_employee",
+     "phu_dinh": false,
+     "trich": "cho anh B thôi việc"
+    },
+    {
      "vi_tu": "worked_regularly_for_at_least_12_months",
      "phu_dinh": false,
      "trich": "đã làm việc thường xuyên cho công ty 3 năm"
@@ -562,14 +619,19 @@
      "trich": "hết hạn"
     },
     {
-     "vi_tu": "grassroots_rep_org_leadership_member",
+     "vi_tu": "leadership_board_member",
      "phu_dinh": false,
-     "trich": "thành viên ban lãnh đạo công đoàn cơ sở (tổ chức đại diện người lao động tại cơ sở)"
+     "trich": "thành viên ban lãnh đạo"
     },
     {
-     "vi_tu": "term_of_office",
+     "vi_tu": "grassroots_trade_union",
      "phu_dinh": false,
-     "trich": "nhiệm kỳ"
+     "trich": "công đoàn cơ sở"
+    },
+    {
+     "vi_tu": "grassroots_employee_representative_organization",
+     "phu_dinh": false,
+     "trich": "tổ chức đại diện người lao động tại cơ sở"
     }
    ]
   },
@@ -624,19 +686,14 @@
      "trich": "Công đoàn cơ sở"
     },
     {
-     "vi_tu": "strike",
+     "vi_tu": "organize_and_lead_strike",
      "phu_dinh": false,
-     "trich": "đình công"
+     "trich": "tổ chức và lãnh đạo một cuộc đình công"
     },
     {
      "vi_tu": "labor_dispute",
      "phu_dinh": false,
      "trich": "tranh chấp lao động"
-    },
-    {
-     "vi_tu": "employee",
-     "phu_dinh": false,
-     "trich": "người lao động"
     },
     {
      "vi_tu": "labor_arbitration_council",
@@ -670,9 +727,9 @@
      "trich": "trở lại làm việc"
     },
     {
-     "vi_tu": "temporarily_close_workplace",
+     "vi_tu": "workplace",
      "phu_dinh": false,
-     "trich": "đóng cửa tạm thời nơi làm việc"
+     "trich": "nơi làm việc"
     }
    ]
   },
@@ -686,12 +743,12 @@
      "trich": "Cửa hàng"
     },
     {
-     "vi_tu": "aged_15_to_under_18",
+     "vi_tu": "under_18_years_old",
      "phu_dinh": false,
      "trich": "16 tuổi"
     },
     {
-     "vi_tu": "under_18_years_old",
+     "vi_tu": "aged_15_to_under_18",
      "phu_dinh": false,
      "trich": "16 tuổi"
     }
@@ -699,22 +756,17 @@
   },
   "B34": {
    "cau_hoi": "Anh N làm việc theo hợp đồng lao động; Tòa án đã ra quyết định có hiệu lực pháp luật tuyên bố anh mất tích. Hợp đồng lao động của anh N có chấm dứt không?",
-   "phi": "terminate",
+   "phi": null,
    "su_kien": [
     {
      "vi_tu": "under_employment_contract",
      "phu_dinh": false,
-     "trich": "theo hợp đồng lao động"
-    },
-    {
-     "vi_tu": "under_effective_court_judgment_or_decision",
-     "phu_dinh": false,
-     "trich": "quyết định có hiệu lực pháp luật"
+     "trich": "làm việc theo hợp đồng lao động"
     },
     {
      "vi_tu": "declared_missing_by_court",
      "phu_dinh": false,
-     "trich": "tuyên bố anh mất tích"
+     "trich": "Tòa án đã ra quyết định có hiệu lực pháp luật tuyên bố anh mất tích"
     }
    ]
   },
@@ -735,7 +787,7 @@
     {
      "vi_tu": "work_consistent_with_work_permit",
      "phu_dinh": true,
-     "trich": "được cấp giấy phép lao động với vị trí chuyên gia phân tích dữ liệu, nhưng thực tế công ty giao chị làm giám đốc bán hàng"
+     "trich": "thực tế công ty giao chị làm giám đốc bán hàng"
     }
    ]
   },
@@ -744,9 +796,9 @@
    "phi": "illegal_strike",
    "su_kien": [
     {
-     "vi_tu": "strike",
+     "vi_tu": "temporary_voluntary_organized_work_stoppage",
      "phu_dinh": false,
-     "trich": "đình công"
+     "trich": "ngừng việc tập thể"
     },
     {
      "vi_tu": "organize_and_lead_strike",
@@ -763,11 +815,6 @@
      "vi_tu": "work_permit",
      "phu_dinh": false,
      "trich": "Giấy phép lao động"
-    },
-    {
-     "vi_tu": "contract_expires",
-     "phu_dinh": false,
-     "trich": "thời hạn đến ngày 31/3/2024; tại ngày 01/06/2024"
     },
     {
      "vi_tu": "extend_work_permit",

@@ -104,6 +104,13 @@ def gloss(atom, surface):
     return surface
 
 
+def live_heads(all_rules):
+    """Đầu đưa cho LLM chọn làm φ: bỏ đầu chỉ có ở quy tắc cô lập (A62, user duyệt 26/11). Chọn đầu đó thì chỉ ra khong_tra_loi, và
+    đầu cô lập thường là tên ngắn, chung chung (D27.K1 `terminate` thân rỗng) nên kéo bước dịch khỏi đầu đúng (`terminate_employment_contract`).
+    Quy tắc cô lập vẫn ở Π_τ để _classify báo co_lap khi φ hay một ngoại lệ của nó trỏ tới."""
+    return sorted({r["head"]["atom"] for r in all_rules if not r.get("isolated")})
+
+
 def vocabulary(all_rules):
     """-> (từ vựng gửi LLM, tập tên vị từ, tập đầu). Đầu là atom dương của quy tắc (đầu mô tả có cực phủ định vẫn hỏi bằng atom dương)."""
     ledger = {}
@@ -113,7 +120,7 @@ def vocabulary(all_rules):
     for doc in rule_docs():
         for p in parse.read_jsonl(corpus.out_dir("predicates") / f"predicates_ledger_{doc}.jsonl"):
             ledger.setdefault(p["predicate"], p["surface"][0] if p["surface"] else p["predicate"])
-    heads = sorted({r["head"]["atom"] for r in all_rules})
+    heads = live_heads(all_rules)
     pred_of_head = {r["head"]["atom"]: r["head"]["pred"] for r in all_rules}
     subj = collections.defaultdict(set)  # đầu -> vị từ chủ thể (literal canh `chu_the` của các quy tắc kết luận đầu đó)
     for r in all_rules:

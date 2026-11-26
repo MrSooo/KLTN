@@ -73,3 +73,38 @@ Phần lớn câu sai còn lại của `tach` không do quy tắc thiếu mà do
 - Bộ 34 câu chưa đóng băng và do agent soạn nhắm vào lỗi nền của `tach`; điểm không phải kết quả chốt.
 - Sửa bước 4-5 đem lại cấu trúc tốt hơn (ghép 14%→9%, nối 80→90, phép thử cặp 44/103→83/120) nhưng không đem lại điểm hỏi đáp. Đừng đọc số cấu trúc như bằng chứng KB trả lời tốt hơn.
 Bộ test đầy đủ sau bước 5 (26/11): `run_all --viewer --tests` --llm off rồi --llm replay đều 20/20 bước, 18 bộ test OK.
+
+## 8. Trả lời câu hỏi của user sáng 26/11
+
+**Vì sao điều kiện bị loại, LLM chế chữ à?** Phần lớn không chế nghĩa, mà chép sai khuôn "nguyên văn". Cả BLLĐ có 40 khoản có dòng bị cổng loại (82 lỗi dòng):
+- 31 lỗi "bỏ chữ": các mẩu `doan` nhảy cóc qua chữ ở giữa. Ví dụ D35.K2.c bỏ mất "người sử dụng lao động ngược đãi, đánh đập ...": mất nội dung thật.
+- 19 lỗi chép chữ dẫn chiếu vào `doan`, dù lời nhắc cấm.
+- 12 lỗi "không nằm trọn" một đoạn. Ví dụ D27.K1: "thử việc không đạt yêu cầu" bị viết thành MỘT mẩu "thử việc đạt yêu cầu" (bỏ "không", đặt `phu_dinh`). Nghĩa đúng, nhưng lời nhắc đòi tách hai mẩu ["thử việc", "đạt yêu cầu"]; lời nhắc không có ví dụ nào cho ca phủ định ở giữa.
+- 9 trích không nguyên văn, 5 chủ thể không nguyên văn, vài lỗi khuôn khác.
+Cổng làm đúng việc của nó. Lỗi của phía mình: dòng điều kiện bị loại thì quy tắc vẫn được dựng với ít điều kiện hơn (nới quy tắc), chờ user chọn hướng (mục 7).
+
+**Bỏ đầu quy tắc cô lập (user đồng ý 26/11): đã làm.** `answering.live_heads`: đầu chỉ có ở quy tắc cô lập không đưa cho bước dịch chọn làm φ; quy tắc cô lập vẫn ở Π_τ để báo `co_lap`. Có test (`test_answering_vocabulary_drops_heads_only_in_isolated_rules`). Lời nhắc 1.9 không đổi chữ; từ vựng đổi nên mã băm từ vựng đổi, cache cũ tự hết hiệu lực. Đã dịch lại 34 câu cho CẢ `tach` (172 đầu bị bỏ) và DeepSeek `ckey` (49 đầu) để so cùng luật; kết quả ở mục 9.
+
+**Sửa lời nhắc (đuôi thời gian D137.K2): CHƯA làm, có lý do.** Đổi chữ lời nhắc lượt 2 là phải nâng `PROMPT_VERSION`, chạy lại dev/test gold (lần dùng thứ BA của bộ test), chạy lại lượt 2 cả 881 khoản, rồi 1.6B lại 112 lượt (vài giờ). Nếu sửa chữ mà chưa chạy lại thì 2.6 từ chối cache (lệch phiên bản) và `run_all --llm replay` gãy. Đề xuất: gộp lần sửa lời nhắc này với "gửi lỗi cổng cho LLM sửa" (dưới) vào MỘT lần chạy lại, thay vì chạy lại hai lần. Chữ sửa đề xuất cho luật 1: "Mốc hay khoảng kết thúc của chính kết luận ("cho đến khi ...", "cho đến hết ...", "kể từ ...") giữ trong doan; chỉ bổ ngữ thời gian giới hạn khi nào quy định áp dụng mới là dieu_kien", cộng một ví dụ phủ định giữa câu cho `doan` hai mẩu.
+
+**Vì sao dừng ở đây; đã dựng hết KB chưa?** Gói A62 là 5 bước user duyệt; bước cuối là đo, và đã đo xong. Việc tiếp theo đều cần user quyết (mục 7), theo luật "không tự thêm việc ngoài plan". KB `tach` đã dựng hết cho BLLĐ (1.1 đến 1.9, cả 2.x với tri thức BLLĐ). CHƯA có tri thức của các nghị định, thông tư (1.6A/1.6B chưa chạy cho chúng); câu hỏi cần nghị định chưa trả lời được.
+
+**Kết quả càng ngày càng tệ?** Không hẳn: `tach` gốc 7/34 → bước 1-3 12/34 → bước 5 10/34. Bước 5 tụt so với bước 1-3 vì một lỗi cụ thể (D27.K1, 4 câu), không phải đi xuống đều. Nhưng đúng là vẫn dưới DeepSeek (13/34), và đó mới là thước đo user đặt.
+
+**Có cần kỹ thuật LLM nào thay vì lời nhắc chay?** Có, và nên làm. Xếp theo lợi trên số đo hiện có (đều giữ luật "máy kiểm, không LLM kiểm LLM"; đều là [THÊM], chưa có trong plan):
+1. **Gửi lỗi cổng cho LLM sửa (sửa theo phản hồi của máy kiểm):** khoản bị cổng loại dòng thì gửi lại cho LLM kèm câu lỗi nguyên văn của cổng, tối đa 1-2 lần; vẫn qua cổng như cũ. Đánh vào 40 khoản / 82 lỗi, tức đúng loại lỗi làm hỏng D27.K1. Rẻ: chỉ gọi lại cho khoản lỗi.
+2. **Thu hẹp từ vựng cho bước dịch 1.9 bằng máy (truy hồi):** hiện mỗi lô gửi cả 1.451 kết luận + 2.349 vị từ (khoảng 210 nghìn token vào mỗi lô), LLM chọn nhầm tên gần nghĩa (`due_to_fault` / `at_fault`). Máy lọc ứng viên theo chữ Việt trùng với câu hỏi (thư viện chuẩn, không cần embedding), chỉ gửi vài chục tên. Đây là chỗ nghẽn lớn nhất của câu sai còn lại. Lời nhắc 1.9 phải đổi (nâng `hoi-dap-3`).
+3. **Dịch nhiều lần rồi máy bỏ phiếu (self-consistency) ở 1.9:** dịch mỗi câu 3-5 lần, máy chọn φ và dữ kiện xuất hiện nhiều nhất. Giảm dao động ±2 câu hiện chưa đo được; tốn gấp 3-5 lần nhưng 34 câu rẻ.
+Đề xuất làm theo thứ tự 2 → 1 (+ sửa lời nhắc D137) → 3. Không đề xuất fine-tune: không đủ dữ liệu gold.
+
+## 9. Sau khi bỏ đầu quy tắc cô lập (dịch lại 34 câu, 26/11)
+
+| KB | đúng | đúng chặt | (trước khi bỏ) |
+|---|---|---|---|
+| DeepSeek `ckey` | 12 | 12 | 13 / 13 |
+| `tach` bước 5 | 10 | 10 | 10 / 9 |
+
+- Bước dịch giờ chọn đúng φ `terminate_employment_contract` cho 4 câu D34 (B03 lên ĐÚNG). B01, B04 vẫn sai vì dữ kiện đặt tên khác với điều kiện trong quy tắc (`dismiss_employee` thay vì tên D34.K8; `individual_employer_dies` có mà vẫn `chua_du_can_cu`, chưa đọc kỹ); B34 lần này trả φ=None. Tức là lỗi chuyển từ "chọn nhầm φ" sang "đặt tên dữ kiện lệch": đúng chỗ nghẽn ở mục 8, đề xuất 2.
+- DeepSeek tụt 13 → 12 với cùng KB, chỉ khác từ vựng và lần dịch: dao động của bước dịch cỡ ±1-2 câu là có thật. Khoảng cách `tach` 10 / DeepSeek 12 vì thế chưa đủ để nói bên nào hơn trên hỏi đáp; trên cấu trúc thì `tach` hơn rõ.
+- Báo cáo đầy đủ: `answering_blld_questions_tach_buoc5_tuvung2.txt`, `answering_blld_questions_ckey_tuvung2.txt`; bản DeepSeek cũ giữ ở `answering_blld_questions_ckey_tuvung_cu.txt`.
+- Bộ test đầy đủ CHƯA chạy lại sau thay đổi `live_heads` (chỉ chạy `tests/test_answering.py`: 10/10 qua), vì user cần tắt máy. Phiên sau chạy `python -I src/run_all.py --viewer --tests` với `--llm off` rồi `--llm replay`.
