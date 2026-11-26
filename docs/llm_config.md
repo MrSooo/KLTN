@@ -66,6 +66,7 @@ tach2.hop_cat.effort = khong_co
 tach2.menh_de.prompt_version = vai-nhom-4
 tach2.ten.prompt_version = names-2.3
 tach2.ten.gop_chu = 1
+tach2.ten.luot_chu_toi_da = 15
 tach2.hoi_dap.prompt_version = hoi-dap-3
 tach2.hoi_dap.model = phamhuyhoang28072005/gemini-3.8-flash-high
 temperature        = (không đặt: dùng mặc định của server)

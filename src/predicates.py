@@ -52,6 +52,11 @@ if PROMPT_VERSION not in ("names-2.1", "names-2.2", "names-2.3"):
 # Điều khác ("sa thải" / "bị xử lý kỷ luật sa thải") thường không lọt 20 ứng viên, LLM đặt tên mới. Embedding chỉ gợi ý; LLM quyết reuse,
 # cổng như cũ. Lời nhắc không đổi chữ (đổi phiên bản vì danh sách ứng viên đổi).
 SEMANTIC = PROMPT_VERSION == "names-2.3"
+# [A63, advisor 27/11] số chữ mới tối đa mỗi lượt, theo lần chạy (khoá `ten.luot_chu_toi_da`; mặc định giữ cn.ROUND_SIZE nên kế hoạch lượt và
+# cache của các lần chạy khác không đổi). Vì sao: trên tuyến dịch của tach2, lượt 30 chữ ra tới khoảng 20 nghìn token, quá mốc cổng ckey cắt
+# khoảng 9 phút (504); tổng token ra theo tổng số chữ nên lượt nhỏ hơn không làm tổng thời gian dài hơn. Đọc ở `prepare`, dùng chung cho
+# --xuat, tiep.py và replay, để kế hoạch lượt lúc nhập khớp lúc dựng.
+LUOT_CHU = int(llm_client.load_config().get("ten.luot_chu_toi_da", cn.ROUND_SIZE))
 EMBED_MODEL, EMBED_DIM = "text-embedding-3-small", 256
 EMBED_PATH = corpus.ROOT / "data" / "llm_cache" / "embeddings" / f"{EMBED_MODEL}-{EMBED_DIM}.json.gz"
 SEM_TOP = 30  # láng giềng nghĩa giữ cho mỗi chữ (mọi chữ, lọc "đã có tên" lúc dựng lượt)
@@ -504,7 +509,7 @@ def prepare(doc_id=None):
     nb = cn.Neighbors(words, cn.link_map(list(ctxs), edges))
     if SEMANTIC:
         nb.sem = semantic_neighbors(words)
-    return Run(words, nb, ctxs, cn.make_rounds(words)), rows, dropped
+    return Run(words, nb, ctxs, cn.make_rounds(words, LUOT_CHU)), rows, dropped
 
 
 # ---- thư mục làm việc ngoài repo (như names-1, A36) ----
