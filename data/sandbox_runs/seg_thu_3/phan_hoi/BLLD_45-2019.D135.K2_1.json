@@ -1,0 +1,27 @@
+{
+ "cau": "Khuyến khích người sử dụng lao động tạo điều kiện để lao động nữ, lao động nam có việc làm thường xuyên, áp dụng rộng rãi chế độ làm việc theo thời gian biểu linh hoạt, làm việc không trọn thời gian, giao việc làm tại nhà.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"Khuyến khích người sử dụng lao động tạo điều kiện\"\n    },\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"để lao động nữ, lao động nam\",\n      \"ap_cho\": [\"m2\", \"m3\", \"m4\", \"m5\"]\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"có việc làm thường xuyên\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"áp dụng rộng rãi chế độ làm việc theo thời gian biểu linh hoạt\"\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"làm việc không trọn thời gian\"\n    },\n    {\n      \"id\": \"m5\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"giao việc làm tại nhà\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-EkQDa-urKM_Y9tMP_IyMgQ8",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 955,
+   "output_tokens": 298,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_6128ff196ae2bc7aa237bb00"
+   }
+  }
+ }
+}

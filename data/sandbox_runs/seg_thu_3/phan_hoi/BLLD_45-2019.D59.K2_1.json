@@ -1,0 +1,30 @@
+{
+ "cau": "Nhà nước có chính sách khuyến khích người sử dụng lao động có đủ điều kiện đào tạo nghề nghiệp và phát triển kỹ năng nghề cho người lao động đang làm việc cho mình và người lao động khác trong xã hội thông qua hoạt động sau đây:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Nhà nước có chính sách khuyến khích người sử dụng lao động có đủ điều kiện\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"đào tạo nghề nghiệp\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phát triển kỹ năng nghề\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"cho người lao động đang làm việc cho mình và người lao động khác trong xã hội thông qua hoạt động sau đây\",\"ap_cho\":[\"m1\",\"m2\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-fzADa9_8IOupvr0P-ZvviA0",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3106
+   },
+   "input_tokens": 952,
+   "output_tokens": 572,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f6347fb08ce03a82f2710d10"
+   }
+  }
+ }
+}

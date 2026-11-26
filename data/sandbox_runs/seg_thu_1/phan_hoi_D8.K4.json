@@ -1,0 +1,26 @@
+{
+ "content": [
+  {
+   "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Lợi dụng danh nghĩa dạy nghề, tập nghề để\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\",\"m5\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"trục lợi\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bóc lột sức lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"lôi kéo\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"dụ dỗ\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"ép buộc\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"người học nghề, người tập nghề vào hoạt động trái pháp luật\",\"ap_cho\":[\"m3\",\"m4\",\"m5\"]}]}\n```",
+   "type": "text"
+  }
+ ],
+ "id": "chatcmpl-ChkDa7iSCPqv2roPzc_vsAc",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "role": "assistant",
+ "stop_reason": "end_turn",
+ "stop_sequence": null,
+ "type": "message",
+ "usage": {
+  "completion_tokens_details": {
+   "reasoning_tokens": 767
+  },
+  "input_tokens": 886,
+  "output_tokens": 963,
+  "x_ckey": {
+   "cost": 6.5,
+   "cost_is_estimate": false,
+   "request_id": "req_15e85847f59c71544e74335c"
+  }
+ }
+}

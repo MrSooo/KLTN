@@ -1,0 +1,27 @@
+{
+ "cau": "Khi đề cử trọng tài viên lao động theo quy định tại khoản 2 Điều này, cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh, công đoàn cấp tỉnh, tổ chức đại diện của người sử dụng lao động có thể cử người của cơ quan, tổ chức mình hoặc cử người khác đáp ứng đầy đủ các tiêu chuẩn đối với trọng tài viên lao động theo quy định;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"đề cử trọng tài viên lao động theo quy định tại khoản 2 Điều này\"\n    },\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh, công đoàn cấp tỉnh, tổ chức đại diện của người sử dụng lao động có thể\",\n      \"ap_cho\": [\"m2\", \"m3\"]\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"cử người của cơ quan, tổ chức mình\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"cử người khác đáp ứng đầy đủ các tiêu chuẩn đối với trọng tài viên lao động theo quy định\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-ek8Da9ukCeuw2roPzqyXiQQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 981,
+   "output_tokens": 249,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_98ad948e6d7f839ac6e9103d"
+   }
+  }
+ }
+}

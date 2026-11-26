@@ -1,0 +1,30 @@
+{
+ "cau": "Ít nhất 03 ngày làm việc đối với hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng và đối với trường hợp quy định tại điểm b khoản 1 Điều này;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Ít nhất 03 ngày làm việc\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"đối với hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"đối với trường hợp quy định tại điểm b khoản 1 Điều này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-lysDa_DIG5q12roPwdGlkQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 477
+   },
+   "input_tokens": 943,
+   "output_tokens": 587,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_9e9fcaf6ec436e01a8f8732d"
+   }
+  }
+ }
+}

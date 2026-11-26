@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D12.K3",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D12.K3\",\n \"tieu_de_dieu\": \"Trách nhiệm quản lý lao động của người sử dụng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều này\",\n   \"dich\": \"BLLD_45-2019.D12\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định chi tiết Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chính phủ quy định chi tiết Điều này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"unit_id\":\"BLLD_45-2019.D12.K3\",\"bo_qua\":\"dan_chieu_mo\",\"dong\":[]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795541603558-398a8ff1",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1716
+   },
+   "input_tokens": 3653,
+   "output_tokens": 33,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_d116047febb318f7fca9acab"
+   }
+  }
+ }
+}

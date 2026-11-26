@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Chấp hành kỷ luật lao động, nội quy lao động; tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Chấp hành kỷ luật lao động, nội quy lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538699325-ab9d7d74",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 618
+   },
+   "input_tokens": 2409,
+   "output_tokens": 74,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_6f09ef02c494d6b3ac4a62ee"
+   }
+  }
+ }
+}

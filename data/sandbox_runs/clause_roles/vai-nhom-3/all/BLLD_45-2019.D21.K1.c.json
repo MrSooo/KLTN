@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D21.K1.c",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D21.K1.c\",\n \"tieu_de_dieu\": \"Nội dung hợp đồng lao động\",\n \"khoan_cha\": \"Hợp đồng lao động phải có những nội dung chủ yếu sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Công việc và địa điểm làm việc;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Công việc và địa điểm làm việc\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D21.K1.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Công việc và địa điểm làm việc\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Hợp đồng lao động\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"Công việc\",\n    \"địa điểm làm việc\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "7_gGa6jJILzr2roP2Pr8mAI",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 897
+   },
+   "input_tokens": 4042,
+   "output_tokens": 1088,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_fcc5b949171dd24323546775"
+   }
+  }
+ }
+}

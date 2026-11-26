@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Chia\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tách\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hợp nhất\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"sáp nhập\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"bán\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"cho thuê\"},{\"id\":\"m7\",\"loai\":\"menh_de\",\"chu\":\"chuyển đổi loại hình doanh nghiệp\"},{\"id\":\"m8\",\"loai\":\"menh_de\",\"chu\":\"chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538636287-18571a95",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1939
+   },
+   "input_tokens": 2418,
+   "output_tokens": 173,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_deec95408e5d899e24e35b86"
+   }
+  }
+ }
+}

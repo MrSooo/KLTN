@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Xử lý theo thẩm quyền và kiến nghị cơ quan có thẩm quyền xử lý vi phạm pháp luật về lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Xử lý theo thẩm quyền\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"kiến nghị cơ quan có thẩm quyền xử lý vi phạm pháp luật về lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540504464-261cc7cc",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1007
+   },
+   "input_tokens": 2399,
+   "output_tokens": 65,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_88b2e9ed07969dadbbbb9842"
+   }
+  }
+ }
+}

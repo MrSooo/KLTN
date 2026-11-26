@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D49.K1.c",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D49.K1.c\",\n \"tieu_de_dieu\": \"Hợp đồng lao động vô hiệu\",\n \"khoan_cha\": \"Hợp đồng lao động vô hiệu toàn bộ trong trường hợp sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Công việc đã giao kết trong hợp đồng lao động là công việc mà pháp luật cấm.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Công việc đã giao kết trong hợp đồng lao động là công việc mà pháp luật cấm\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D49.K1.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"là công việc mà pháp luật cấm\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Công việc đã giao kết trong hợp đồng lao động\",\n    \"loai\": \"J\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "_PkGa6HyN7LzrfcPsbnUqQ0",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 858
+   },
+   "input_tokens": 4064,
+   "output_tokens": 1029,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_c2616dd3280c72e72babfff9"
+   }
+  }
+ }
+}

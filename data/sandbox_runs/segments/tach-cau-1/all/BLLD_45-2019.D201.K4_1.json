@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thời gian, địa điểm và cách thức tiến hành lấy ý kiến về đình công do tổ chức đại diện người lao động quyết định và phải thông báo cho người sử dụng lao động biết trước ít nhất 01 ngày.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thời gian, địa điểm và cách thức tiến hành lấy ý kiến về đình công\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"do tổ chức đại diện người lao động quyết định\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải thông báo cho người sử dụng lao động biết trước ít nhất 01 ngày\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540319076-3127268a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 913
+   },
+   "input_tokens": 2418,
+   "output_tokens": 111,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_bd91e3c17757159c92330652"
+   }
+  }
+ }
+}

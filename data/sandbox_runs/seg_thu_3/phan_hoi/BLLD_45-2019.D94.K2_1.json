@@ -1,0 +1,30 @@
+{
+ "cau": "Người sử dụng lao động không được hạn chế hoặc can thiệp vào quyền tự quyết chi tiêu lương của người lao động; không được ép buộc người lao động chi tiêu lương vào việc mua hàng hóa, sử dụng dịch vụ của người sử dụng lao động hoặc của đơn vị khác mà người sử dụng lao động chỉ định.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Người sử dụng lao động\",\n      \"ap_cho\": [\"m1\", \"m2\", \"m3\", \"m4\"]\n    },\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"không được\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"hạn chế\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"can thiệp vào\"\n    },\n    {\n      \"id\": \"c3\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"quyền tự quyết chi tiêu lương của người lao động\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"c4\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"không được ép buộc người lao động chi tiêu lương vào việc\",\n      \"ap_cho\": [\"m3\", \"m4\"]\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"mua hàng hóa\"\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"sử dụng dịch vụ\"\n    },\n    {\n      \"id\": \"c5\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"của người sử dụng lao động hoặc của đơn vị khác mà người sử dụng lao động chỉ định\",\n      \"ap_cho\": [\"m3\", \"m4\"]\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-azoDa9O4K4P81e8P8o_pqQo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2122
+   },
+   "input_tokens": 965,
+   "output_tokens": 2590,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_81e57ab120e52fc532522e5a"
+   }
+  }
+ }
+}

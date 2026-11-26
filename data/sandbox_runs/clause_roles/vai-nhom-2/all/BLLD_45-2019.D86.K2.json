@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D86.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D86.K2\",\n \"tieu_de_dieu\": \"Thỏa ước lao động tập thể vô hiệu\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D86.K2\",\"cac_muc_con\":\"hoac\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"vô hiệu toàn bộ\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Thỏa ước lao động tập thể\",\"loai\":\"C\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795544214078-8813699e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1118
+   },
+   "input_tokens": 3642,
+   "output_tokens": 96,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_0c4393f135dff73ca2d9f946"
+   }
+  }
+ }
+}

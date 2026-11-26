@@ -1,0 +1,22 @@
+python : [LLM sandbox_api · api · lô 001] gọi deepseek-v4.1-flash (lượt api hôm nay: 130/3000) ...
+At line:1 char:519
++ ... = Get-Date; python -X utf8 -I src/sandbox_api.py $d *> "C:\Users\TusP ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([LLM sandbox_ap...: 130/3000) ...:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[LLM sandbox_api · api · lô 002] gọi deepseek-v4.1-flash (lượt api hôm nay: 130/3000) ...
+[LLM sandbox_api · api · lô 003] gọi deepseek-v4.1-flash (lượt api hôm nay: 130/3000) ...
+      ... [LLM sandbox_api · api · lô 001] vẫn đang chờ phản hồi (30s)
+      ... [LLM sandbox_api · api · lô 003] vẫn đang chờ phản hồi (30s)
+      ... [LLM sandbox_api · api · lô 002] vẫn đang chờ phản hồi (30s)
+      ... [LLM sandbox_api · api · lô 001] vẫn đang chờ phản hồi (60s)
+[LLM sandbox_api · api · lô 003] xong sau 60s (token vào 63, ra 2080)
+      ... [LLM sandbox_api · api · lô 002] vẫn đang chờ phản hồi (60s)
+      ... [LLM sandbox_api · api · lô 001] vẫn đang chờ phản hồi (90s)
+      ... [LLM sandbox_api · api · lô 002] vẫn đang chờ phản hồi (90s)
+[LLM sandbox_api · api · lô 001] xong sau 96s (token vào 34, ra 2836)
+      ... [LLM sandbox_api · api · lô 002] vẫn đang chờ phản hồi (120s)
+[LLM sandbox_api · api · lô 002] xong sau 139s (token vào 104, ra 2504)
+C:\Users\TusPC\Documents\kltn_hop_cat_ckey\lldnn_u19: 3 lô cần làm, model deepseek-v4.1-flash, song song 4
+xong 3/3 lô; lỗi 0

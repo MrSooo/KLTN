@@ -1,0 +1,74 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T08:37:39+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0130\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D42.K3\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp thay đổi cơ cấu, công nghệ mà ảnh hưởng đến việc làm của nhiều người lao động thì người sử dụng lao động phải xây dựng và thực hiện phương án sử dụng lao động theo quy định tại Điều 44 của Bộ luật này; trường hợp có chỗ làm việc mới thì ưu tiên đào tạo lại người lao động để tiếp tục sử dụng.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D44.K2\",\n    \"tieu_de_dieu\": \"Phương án sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi xây dựng phương án sử dụng lao động, người sử dụng lao động phải trao đổi ý kiến với tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở. Phương án sử dụng lao động phải được thông báo công khai cho người lao động biết trong thời hạn 15 ngày kể từ ngày được thông qua.\"\n   },\n   \"vi_tu_chung\": [\n    \"develop_labor_utilization_plan\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0131\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D42.K3\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp thay đổi cơ cấu, công nghệ mà ảnh hưởng đến việc làm của nhiều người lao động thì người sử dụng lao động phải xây dựng và thực hiện phương án sử dụng lao động theo quy định tại Điều 44 của Bộ luật này; trường hợp có chỗ làm việc mới thì ưu tiên đào tạo lại người lao động để tiếp tục sử dụng.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D48.K1.b\",\n    \"tieu_de_dieu\": \"Trách nhiệm khi chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"Trong thời hạn 14 ngày làm việc kể từ ngày chấm dứt hợp đồng lao động, hai bên có trách nhiệm thanh toán đầy đủ các khoản tiền có liên quan đến quyền lợi của mỗi bên, trừ trường hợp sau đây có thể kéo dài nhưng không được quá 30 ngày:\",\n    \"chu_don_vi\": \"Người sử dụng lao động thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế;\"\n   },\n   \"vi_tu_chung\": [\n    \"organizational_or_technological_change\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0132\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D42.K4\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong trường hợp vì lý do kinh tế mà nhiều người lao động có nguy cơ mất việc làm, phải thôi việc thì người sử dụng lao động phải xây dựng và thực hiện phương án sử dụng lao động theo quy định tại Điều 44 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D44.K2\",\n    \"tieu_de_dieu\": \"Phương án sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi xây dựng phương án sử dụng lao động, người sử dụng lao động phải trao đổi ý kiến với tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở. Phương án sử dụng lao động phải được thông báo công khai cho người lao động biết trong thời hạn 15 ngày kể từ ngày được thông qua.\"\n   },\n   \"vi_tu_chung\": [\n    \"develop_labor_utilization_plan\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0133\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D42.K4\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong trường hợp vì lý do kinh tế mà nhiều người lao động có nguy cơ mất việc làm, phải thôi việc thì người sử dụng lao động phải xây dựng và thực hiện phương án sử dụng lao động theo quy định tại Điều 44 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D48.K1.b\",\n    \"tieu_de_dieu\": \"Trách nhiệm khi chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"Trong thời hạn 14 ngày làm việc kể từ ngày chấm dứt hợp đồng lao động, hai bên có trách nhiệm thanh toán đầy đủ các khoản tiền có liên quan đến quyền lợi của mỗi bên, trừ trường hợp sau đây có thể kéo dài nhưng không được quá 30 ngày:\",\n    \"chu_don_vi\": \"Người sử dụng lao động thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế;\"\n   },\n   \"vi_tu_chung\": [\n    \"for_economic_reasons\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0134\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D42.K5\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong trường hợp người sử dụng lao động không thể giải quyết được việc làm mà phải cho người lao động thôi việc thì phải trả trợ cấp mất việc làm theo quy định tại Điều 47 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D42.K6\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Việc cho thôi việc đối với người lao động theo quy định tại Điều này chỉ được tiến hành sau khi đã trao đổi ý kiến với tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở mà người lao động là thành viên và thông báo trước 30 ngày cho Ủy ban nhân dân cấp tỉnh và cho người lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"lay_off_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0135\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D42.K5\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong trường hợp người sử dụng lao động không thể giải quyết được việc làm mà phải cho người lao động thôi việc thì phải trả trợ cấp mất việc làm theo quy định tại Điều 47 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D47.K1\",\n    \"tieu_de_dieu\": \"Trợ cấp mất việc làm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động trả trợ cấp mất việc làm cho người lao động đã làm việc thường xuyên cho mình từ đủ 12 tháng trở lên mà bị mất việc làm theo quy định tại khoản 11 Điều 34 của Bộ luật này, cứ mỗi năm làm việc trả 01 tháng tiền lương nhưng ít nhất bằng 02 tháng tiền lương.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_job_loss_allowance\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0136\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D42.K6\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động trong trường hợp thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Việc cho thôi việc đối với người lao động theo quy định tại Điều này chỉ được tiến hành sau khi đã trao đổi ý kiến với tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở mà người lao động là thành viên và thông báo trước 30 ngày cho Ủy ban nhân dân cấp tỉnh và cho người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D44.K2\",\n    \"tieu_de_dieu\": \"Phương án sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi xây dựng phương án sử dụng lao động, người sử dụng lao động phải trao đổi ý kiến với tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở. Phương án sử dụng lao động phải được thông báo công khai cho người lao động biết trong thời hạn 15 ngày kể từ ngày được thông qua.\"\n   },\n   \"vi_tu_chung\": [\n    \"consult_grassroots_employee_rep_org\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0137\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D43.K1\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động khi chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong trường hợp chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã mà ảnh hưởng đến việc làm của nhiều người lao động thì người sử dụng lao động phải xây dựng phương án sử dụng lao động theo quy định tại Điều 44 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D44.K2\",\n    \"tieu_de_dieu\": \"Phương án sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi xây dựng phương án sử dụng lao động, người sử dụng lao động phải trao đổi ý kiến với tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở. Phương án sử dụng lao động phải được thông báo công khai cho người lao động biết trong thời hạn 15 ngày kể từ ngày được thông qua.\"\n   },\n   \"vi_tu_chung\": [\n    \"develop_labor_utilization_plan\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0138\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D45.K1\",\n    \"tieu_de_dieu\": \"Thông báo chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải thông báo bằng văn bản cho người lao động về việc chấm dứt hợp đồng lao động khi hợp đồng lao động chấm dứt theo quy định của Bộ luật này, trừ trường hợp quy định tại các khoản 4, 5, 6, 7 và 8 Điều 34 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D46.K1\",\n    \"tieu_de_dieu\": \"Trợ cấp thôi việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hợp đồng lao động chấm dứt theo quy định tại các khoản 1, 2, 3, 4, 6, 7, 9 và 10 Điều 34 của Bộ luật này thì người sử dụng lao động có trách nhiệm trả trợ cấp thôi việc cho người lao động đã làm việc thường xuyên cho mình từ đủ 12 tháng trở lên, mỗi năm làm việc được trợ cấp một nửa tháng tiền lương, trừ trường hợp đủ điều kiện hưởng lương hưu theo quy định của pháp luật về bảo hiểm xã hội và trường hợp quy định tại điểm e khoản 1 Điều 36 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"labor_contract_terminates\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0139\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D45.K1\",\n    \"tieu_de_dieu\": \"Thông báo chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải thông báo bằng văn bản cho người lao động về việc chấm dứt hợp đồng lao động khi hợp đồng lao động chấm dứt theo quy định của Bộ luật này, trừ trường hợp quy định tại các khoản 4, 5, 6, 7 và 8 Điều 34 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D57.K4\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thỏa thuận với người lao động thuê lại và doanh nghiệp cho thuê lại lao động để tuyển dụng chính thức người lao động thuê lại làm việc cho mình trong trường hợp hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động chưa chấm dứt.\"\n   },\n   \"vi_tu_chung\": [\n    \"labor_contract_terminates\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_fcd2a58d7073a3bf11d8abc0",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0130",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0131",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0132",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0133",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0134",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0135",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0136",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0137",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0138",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0139",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4199,
+  "output_tokens": 1276,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 951
+   }
+  }
+ }
+}

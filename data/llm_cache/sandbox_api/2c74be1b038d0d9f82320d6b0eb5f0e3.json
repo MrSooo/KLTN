@@ -1,0 +1,74 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T09:22:43+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0270\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K1\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động thì được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động như sau:\",\n    \"cac_muc_con\": [\n     \"12 ngày làm việc đối với người làm công việc trong điều kiện bình thường;\",\n     \"14 ngày làm việc đối với người lao động chưa thành niên, lao động là người khuyết tật, người làm nghề, công việc nặng nhọc, độc hại, nguy hiểm;\",\n     \"16 ngày làm việc đối với người làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K5\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm mà chưa đến kỳ trả lương, người lao động được tạm ứng tiền lương theo quy định tại khoản 3 Điều 101 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0271\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K1\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động thì được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động như sau:\",\n    \"cac_muc_con\": [\n     \"12 ngày làm việc đối với người làm công việc trong điều kiện bình thường;\",\n     \"14 ngày làm việc đối với người lao động chưa thành niên, lao động là người khuyết tật, người làm nghề, công việc nặng nhọc, độc hại, nguy hiểm;\",\n     \"16 ngày làm việc đối với người làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K6\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm, nếu người lao động đi bằng các phương tiện đường bộ, đường sắt, đường thủy mà số ngày đi đường cả đi và về trên 02 ngày thì từ ngày thứ 03 trở đi được tính thêm thời gian đi đường ngoài ngày nghỉ hằng năm và chỉ được tính cho 01 lần nghỉ trong năm.\"\n   },\n   \"vi_tu_chung\": [\n    \"annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0272\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K1.b\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động thì được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động như sau:\",\n    \"chu_don_vi\": \"14 ngày làm việc đối với người lao động chưa thành niên, lao động là người khuyết tật, người làm nghề, công việc nặng nhọc, độc hại, nguy hiểm;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D143.K1\",\n    \"tieu_de_dieu\": \"Lao động chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động chưa thành niên là người lao động chưa đủ 18 tuổi.\"\n   },\n   \"vi_tu_chung\": [\n    \"is_minor_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0273\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K3\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp do thôi việc, bị mất việc làm mà chưa nghỉ hằng năm hoặc chưa nghỉ hết số ngày nghỉ hằng năm thì được người sử dụng lao động thanh toán tiền lương cho những ngày chưa nghỉ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K5\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm mà chưa đến kỳ trả lương, người lao động được tạm ứng tiền lương theo quy định tại khoản 3 Điều 101 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0274\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K3\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp do thôi việc, bị mất việc làm mà chưa nghỉ hằng năm hoặc chưa nghỉ hết số ngày nghỉ hằng năm thì được người sử dụng lao động thanh toán tiền lương cho những ngày chưa nghỉ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K6\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm, nếu người lao động đi bằng các phương tiện đường bộ, đường sắt, đường thủy mà số ngày đi đường cả đi và về trên 02 ngày thì từ ngày thứ 03 trở đi được tính thêm thời gian đi đường ngoài ngày nghỉ hằng năm và chỉ được tính cho 01 lần nghỉ trong năm.\"\n   },\n   \"vi_tu_chung\": [\n    \"annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0275\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K4\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động có trách nhiệm quy định lịch nghỉ hằng năm sau khi tham khảo ý kiến của người lao động và phải thông báo trước cho người lao động biết. Người lao động có thể thỏa thuận với người sử dụng lao động để nghỉ hằng năm thành nhiều lần hoặc nghỉ gộp tối đa 03 năm một lần.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D139.K3\",\n    \"tieu_de_dieu\": \"Nghỉ thai sản\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hết thời gian nghỉ thai sản theo quy định tại khoản 1 Điều này, nếu có nhu cầu, lao động nữ có thể nghỉ thêm một thời gian không hưởng lương sau khi thỏa thuận với người sử dụng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"agree_with_employer\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0276\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K5\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm mà chưa đến kỳ trả lương, người lao động được tạm ứng tiền lương theo quy định tại khoản 3 Điều 101 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K6\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm, nếu người lao động đi bằng các phương tiện đường bộ, đường sắt, đường thủy mà số ngày đi đường cả đi và về trên 02 ngày thì từ ngày thứ 03 trở đi được tính thêm thời gian đi đường ngoài ngày nghỉ hằng năm và chỉ được tính cho 01 lần nghỉ trong năm.\"\n   },\n   \"vi_tu_chung\": [\n    \"annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0277\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D115.K1\",\n    \"tieu_de_dieu\": \"Nghỉ việc riêng, nghỉ không hưởng lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động được nghỉ việc riêng mà vẫn hưởng nguyên lương và phải thông báo với người sử dụng lao động trong trường hợp sau đây:\",\n    \"cac_muc_con\": [\n     \"Kết hôn: nghỉ 03 ngày;\",\n     \"Con đẻ, con nuôi kết hôn: nghỉ 01 ngày;\",\n     \"Cha đẻ, mẹ đẻ, cha nuôi, mẹ nuôi; cha đẻ, mẹ đẻ, cha nuôi, mẹ nuôi của vợ hoặc chồng; vợ hoặc chồng; con đẻ, con nuôi chết: nghỉ 03 ngày.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D137.K2\",\n    \"tieu_de_dieu\": \"Bảo vệ thai sản\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động nữ làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm hoặc làm nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con khi mang thai và có thông báo cho người sử dụng lao động biết thì được người sử dụng lao động chuyển sang làm công việc nhẹ hơn, an toàn hơn hoặc giảm bớt 01 giờ làm việc hằng ngày mà không bị cắt giảm tiền lương và quyền, lợi ích cho đến hết thời gian nuôi con dưới 12 tháng tuổi.\"\n   },\n   \"vi_tu_chung\": [\n    \"notify_employer\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0278\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D115.K2\",\n    \"tieu_de_dieu\": \"Nghỉ việc riêng, nghỉ không hưởng lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động được nghỉ không hưởng lương 01 ngày và phải thông báo với người sử dụng lao động khi ông nội, bà nội, ông ngoại, bà ngoại, anh, chị, em ruột chết; cha hoặc mẹ kết hôn; anh, chị, em ruột kết hôn.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D137.K2\",\n    \"tieu_de_dieu\": \"Bảo vệ thai sản\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động nữ làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm hoặc làm nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con khi mang thai và có thông báo cho người sử dụng lao động biết thì được người sử dụng lao động chuyển sang làm công việc nhẹ hơn, an toàn hơn hoặc giảm bớt 01 giờ làm việc hằng ngày mà không bị cắt giảm tiền lương và quyền, lợi ích cho đến hết thời gian nuôi con dưới 12 tháng tuổi.\"\n   },\n   \"vi_tu_chung\": [\n    \"notify_employer\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0279\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D115.K3\",\n    \"tieu_de_dieu\": \"Nghỉ việc riêng, nghỉ không hưởng lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Ngoài quy định tại khoản 1 và khoản 2 Điều này, người lao động có thể thỏa thuận với người sử dụng lao động để nghỉ không hưởng lương.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D139.K3\",\n    \"tieu_de_dieu\": \"Nghỉ thai sản\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hết thời gian nghỉ thai sản theo quy định tại khoản 1 Điều này, nếu có nhu cầu, lao động nữ có thể nghỉ thêm một thời gian không hưởng lương sau khi thỏa thuận với người sử dụng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"agree_with_employer\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_5144929c92080009db041dbc",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0270",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0271",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0272",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0273",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0274",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0275",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0276",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0277",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0278",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0279",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3894,
+  "output_tokens": 1058,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 733
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Được sử dụng thời gian làm việc theo quy định tại khoản 2 và khoản 3 Điều này để thực hiện công việc của tổ chức đại diện người lao động tại cơ sở mà vẫn được người sử dụng lao động trả lương;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Được sử dụng thời gian làm việc theo quy định tại khoản 2 và khoản 3 Điều này\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thực hiện công việc của tổ chức đại diện người lao động tại cơ sở\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"vẫn được người sử dụng lao động trả lương\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540038604-b4b20f9f",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 680
+   },
+   "input_tokens": 2422,
+   "output_tokens": 103,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_1984f638d058510139d1e121"
+   }
+  }
+ }
+}

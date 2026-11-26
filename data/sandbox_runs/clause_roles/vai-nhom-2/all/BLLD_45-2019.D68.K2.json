@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D68.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D68.K2\",\n \"tieu_de_dieu\": \"Quyền thương lượng tập thể của tổ chức đại diện người lao động tại cơ sở trong doanh nghiệp\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D68.K1\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp doanh nghiệp có nhiều tổ chức đại diện người lao động tại cơ sở đáp ứng quy định tại khoản 1 Điều này thì tổ chức có quyền yêu cầu thương lượng là tổ chức có số thành viên nhiều nhất trong doanh nghiệp.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"doanh nghiệp có nhiều tổ chức đại diện người lao động tại cơ sở đáp ứng quy định tại khoản 1 Điều này\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tổ chức có quyền yêu cầu thương lượng là tổ chức có số thành viên nhiều nhất trong doanh nghiệp\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Các tổ chức đại diện người lao động tại cơ sở khác có thể tham gia thương lượng tập thể khi được tổ chức đại diện người lao động có quyền yêu cầu thương lượng tập thể đồng ý.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Các tổ chức đại diện người lao động tại cơ sở khác\",\n     \"ap_cho\": [\n      \"s2.m1\",\n      \"s2.m2\"\n     ]\n    },\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"có thể tham gia thương lượng tập thể\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"được tổ chức đại diện người lao động có quyền yêu cầu thương lượng tập thể đồng ý\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D68.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"có nhiều tổ chức đại diện người lao động tại cơ sở đáp ứng quy định tại khoản 1 Điều này\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"doanh nghiệp\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"là tổ chức có số thành viên nhiều nhất trong doanh nghiệp\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"tổ chức có quyền yêu cầu thương lượng\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"tham gia thương lượng tập thể\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Các tổ chức đại diện người lao động tại cơ sở khác\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"doan\": [\n    \"được tổ chức đại diện người lao động có quyền yêu cầu thương lượng tập thể đồng ý\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Các tổ chức đại diện người lao động tại cơ sở khác\",\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "93IGa-7oJ8Sq1e8Pwd-7yAI",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1645
+   },
+   "input_tokens": 4228,
+   "output_tokens": 2221,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_69141db0670eac2384ee9da8"
+   }
+  }
+ }
+}

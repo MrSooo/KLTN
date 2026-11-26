@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trong thời hạn 30 ngày kể từ ngày được thành lập, căn cứ vào quy định của pháp luật về lao động, thỏa ước lao động tập thể, nội quy lao động đã được đăng ký và các quy chế, thỏa thuận hợp pháp khác, Ban trọng tài phải ra quyết định về việc giải quyết tranh chấp và gửi cho các bên tranh chấp.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trong thời hạn 30 ngày kể từ ngày được thành lập, căn cứ vào quy định của pháp luật về lao động, thỏa ước lao động tập thể, nội quy lao động đã được đăng ký và các quy chế, thỏa thuận hợp pháp khác\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"Ban trọng tài phải\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"ra quyết định về việc giải quyết tranh chấp\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"gửi cho các bên tranh chấp\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540281988-70f364aa",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4549
+   },
+   "input_tokens": 2450,
+   "output_tokens": 169,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_66e5f1233aedb4b7c0c97cae"
+   }
+  }
+ }
+}

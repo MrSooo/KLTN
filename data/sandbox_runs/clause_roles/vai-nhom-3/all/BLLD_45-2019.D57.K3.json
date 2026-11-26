@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D57.K3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D57.K3\",\n \"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thỏa thuận với người lao động thuê lại về làm việc vào ban đêm, làm thêm giờ theo quy định của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Thỏa thuận với người lao động thuê lại về làm việc vào ban đêm, làm thêm giờ theo quy định của Bộ luật này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D57.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Thỏa thuận\",\n    \"về làm việc vào ban đêm, làm thêm giờ\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Bên thuê lại lao động\",\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"làm việc vào ban đêm\",\n    \"làm thêm giờ\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"theo quy định của Bộ luật này\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Bên thuê lại lao động\",\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "L_oGa_vNM_6x2roP0qr_UA",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1893
+   },
+   "input_tokens": 4067,
+   "output_tokens": 2246,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_d1a2718f43268e93afc8c5d5"
+   }
+  }
+ }
+}

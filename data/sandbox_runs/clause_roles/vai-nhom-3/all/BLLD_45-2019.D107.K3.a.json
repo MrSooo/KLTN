@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D107.K3.a",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D107.K3.a\",\n \"tieu_de_dieu\": \"Làm thêm giờ\",\n \"khoan_cha\": \"Người sử dụng lao động được sử dụng người lao động làm thêm không quá 300 giờ trong 01 năm trong một số ngành, nghề, công việc hoặc trường hợp sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Sản xuất, gia công xuất khẩu sản phẩm hàng dệt, may, da, giày, điện, điện tử, chế biến nông, lâm, diêm nghiệp, thủy sản;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Sản xuất\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"gia công xuất khẩu\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"sản phẩm hàng dệt, may, da, giày, điện, điện tử\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"chế biến nông, lâm, diêm nghiệp, thủy sản\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D107.K3.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Sản xuất\",\n    \"sản phẩm hàng dệt, may, da, giày, điện, điện tử\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\",\n   \"liet_ke\": [\n    \"dệt\",\n    \"may\",\n    \"da\",\n    \"giày\",\n    \"điện\",\n    \"điện tử\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"gia công xuất khẩu\",\n    \"sản phẩm hàng dệt, may, da, giày, điện, điện tử\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\",\n   \"liet_ke\": [\n    \"dệt\",\n    \"may\",\n    \"da\",\n    \"giày\",\n    \"điện\",\n    \"điện tử\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"chế biến nông, lâm, diêm nghiệp, thủy sản\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\",\n   \"liet_ke\": [\n    \"nông\",\n    \"lâm\",\n    \"diêm nghiệp\",\n    \"thủy sản\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "V_sGa4GSNfi-1e8P28rC-QI",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1963
+   },
+   "input_tokens": 4264,
+   "output_tokens": 2486,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_76eef17738c283aa32e86830"
+   }
+  }
+ }
+}

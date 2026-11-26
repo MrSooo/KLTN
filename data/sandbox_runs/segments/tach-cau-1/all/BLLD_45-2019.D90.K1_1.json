@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Tiền lương là số tiền mà người sử dụng lao động trả cho người lao động theo thỏa thuận để thực hiện công việc, bao gồm mức lương theo công việc hoặc chức danh, phụ cấp lương và các khoản bổ sung khác.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Tiền lương\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"là số tiền mà người sử dụng lao động trả cho người lao động theo thỏa thuận để thực hiện công việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bao gồm mức lương theo công việc hoặc chức danh, phụ cấp lương và các khoản bổ sung khác\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539034289-df6f7067",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1282
+   },
+   "input_tokens": 2424,
+   "output_tokens": 117,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_9f71456f7dfd48893e710626"
+   }
+  }
+ }
+}

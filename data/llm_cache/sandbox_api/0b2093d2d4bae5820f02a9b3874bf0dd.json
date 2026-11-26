@@ -1,0 +1,74 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T09:22:03+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0040\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D6.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người sử dụng lao động\",\n    \"khoan_cha\": \"Người sử dụng lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Tuyển dụng, bố trí, quản lý, điều hành, giám sát lao động; khen thưởng và xử lý vi phạm kỷ luật lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D93.K1\",\n    \"tieu_de_dieu\": \"Xây dựng thang lương, bảng lương và định mức lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải xây dựng thang lương, bảng lương và định mức lao động làm cơ sở để tuyển dụng, sử dụng lao động, thỏa thuận mức lương theo công việc hoặc chức danh ghi trong hợp đồng lao động và trả lương cho người lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"recruit_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0041\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D8.K2\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Ngược đãi người lao động, cưỡng bức lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D35.K2.c\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người lao động\",\n    \"khoan_cha\": \"Người lao động có quyền đơn phương chấm dứt hợp đồng lao động không cần báo trước trong trường hợp sau đây:\",\n    \"chu_don_vi\": \"Bị người sử dụng lao động ngược đãi, đánh đập hoặc có lời nói, hành vi nhục mạ, hành vi làm ảnh hưởng đến sức khỏe, nhân phẩm, danh dự; bị cưỡng bức lao động;\"\n   },\n   \"vi_tu_chung\": [\n    \"mistreat_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0042\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D8.K2\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Ngược đãi người lao động, cưỡng bức lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D164.K4\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của lao động là người giúp việc gia đình\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tố cáo với cơ quan có thẩm quyền nếu người sử dụng lao động có hành vi ngược đãi, quấy rối tình dục, cưỡng bức lao động hoặc có hành vi khác vi phạm pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"mistreat_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0043\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D11.K1\",\n    \"tieu_de_dieu\": \"Tuyển dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động có quyền trực tiếp hoặc thông qua tổ chức dịch vụ việc làm, doanh nghiệp hoạt động cho thuê lại lao động để tuyển dụng lao động theo nhu cầu của người sử dụng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D93.K1\",\n    \"tieu_de_dieu\": \"Xây dựng thang lương, bảng lương và định mức lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải xây dựng thang lương, bảng lương và định mức lao động làm cơ sở để tuyển dụng, sử dụng lao động, thỏa thuận mức lương theo công việc hoặc chức danh ghi trong hợp đồng lao động và trả lương cho người lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"recruit_employee\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0044\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D13.K2\",\n    \"tieu_de_dieu\": \"Hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi nhận người lao động vào làm việc thì người sử dụng lao động phải giao kết hợp đồng lao động với người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D18.K2\",\n    \"tieu_de_dieu\": \"Thẩm quyền giao kết hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Đối với công việc theo mùa vụ, công việc nhất định có thời hạn dưới 12 tháng thì nhóm người lao động từ đủ 18 tuổi trở lên có thể ủy quyền cho một người lao động trong nhóm để giao kết hợp đồng lao động; trong trường hợp này, hợp đồng lao động phải được giao kết bằng văn bản và có hiệu lực như giao kết với từng người lao động.\\nHợp đồng lao động do người được ủy quyền ký kết phải kèm theo danh sách ghi rõ họ tên, ngày tháng năm sinh, giới tính, nơi cư trú và chữ ký của từng người lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"conclude_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0045\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D13.K2\",\n    \"tieu_de_dieu\": \"Hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi nhận người lao động vào làm việc thì người sử dụng lao động phải giao kết hợp đồng lao động với người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D18.K4.d\",\n    \"tieu_de_dieu\": \"Thẩm quyền giao kết hợp đồng lao động\",\n    \"khoan_cha\": \"Người giao kết hợp đồng lao động bên phía người lao động là người thuộc một trong các trường hợp sau đây:\",\n    \"chu_don_vi\": \"Người lao động được những người lao động trong nhóm ủy quyền hợp pháp giao kết hợp đồng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"conclude_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0046\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D13.K2\",\n    \"tieu_de_dieu\": \"Hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi nhận người lao động vào làm việc thì người sử dụng lao động phải giao kết hợp đồng lao động với người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D32.K2\",\n    \"tieu_de_dieu\": \"Làm việc không trọn thời gian\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động thỏa thuận với người sử dụng lao động làm việc không trọn thời gian khi giao kết hợp đồng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"conclude_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0047\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D13.K2\",\n    \"tieu_de_dieu\": \"Hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi nhận người lao động vào làm việc thì người sử dụng lao động phải giao kết hợp đồng lao động với người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D36.K1.g\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n    \"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n    \"chu_don_vi\": \"Người lao động cung cấp không trung thực thông tin theo quy định tại khoản 2 Điều 16 của Bộ luật này khi giao kết hợp đồng lao động làm ảnh hưởng đến việc tuyển dụng người lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"conclude_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0048\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D13.K2\",\n    \"tieu_de_dieu\": \"Hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi nhận người lao động vào làm việc thì người sử dụng lao động phải giao kết hợp đồng lao động với người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.a\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Yêu cầu tham gia, không tham gia hoặc ra khỏi tổ chức đại diện người lao động tại cơ sở để được tuyển dụng, giao kết hoặc gia hạn hợp đồng lao động;\"\n   },\n   \"vi_tu_chung\": [\n    \"conclude_labor_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0049\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D14.K1\",\n    \"tieu_de_dieu\": \"Hình thức hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hợp đồng lao động phải được giao kết bằng văn bản và được làm thành 02 bản, người lao động giữ 01 bản, người sử dụng lao động giữ 01 bản, trừ trường hợp quy định tại khoản 2 Điều này.\\nHợp đồng lao động được giao kết thông qua phương tiện điện tử dưới hình thức thông điệp dữ liệu theo quy định của pháp luật về giao dịch điện tử có giá trị như hợp đồng lao động bằng văn bản.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D55.K1\",\n    \"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động phải ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản.\"\n   },\n   \"vi_tu_chung\": [\n    \"made_in_two_copies\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_c862c182fd042d210eb8f7a1",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0040",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0041",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0042",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0043",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0044",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0045",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0046",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0047",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0048",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0049",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3568,
+  "output_tokens": 919,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 594
+   }
+  }
+ }
+}

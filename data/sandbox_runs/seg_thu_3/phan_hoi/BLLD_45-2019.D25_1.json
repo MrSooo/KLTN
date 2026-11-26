@@ -1,0 +1,30 @@
+{
+ "cau": "Thời gian thử việc do hai bên thỏa thuận căn cứ vào tính chất và mức độ phức tạp của công việc nhưng chỉ được thử việc một lần đối với một công việc và bảo đảm điều kiện sau đây:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thời gian thử việc\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"do hai bên thỏa thuận căn cứ vào tính chất và mức độ phức tạp của công việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"chỉ được thử việc một lần đối với một công việc\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"bảo đảm điều kiện sau đây\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-ISgDa7PJHbeMvr0PqPOOsQY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 922
+   },
+   "input_tokens": 942,
+   "output_tokens": 1049,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_4dccdad6ff99b81595d284b4"
+   }
+  }
+ }
+}

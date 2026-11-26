@@ -1,0 +1,30 @@
+{
+ "cau": "Người sử dụng lao động trả trợ cấp mất việc làm cho người lao động đã làm việc thường xuyên cho mình từ đủ 12 tháng trở lên mà bị mất việc làm theo quy định tại khoản 11 Điều 34 của Bộ luật này, cứ mỗi năm làm việc trả 01 tháng tiền lương nhưng ít nhất bằng 02 tháng tiền lương.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người sử dụng lao động trả trợ cấp mất việc làm cho người lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"đã làm việc thường xuyên cho mình từ đủ 12 tháng trở lên\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"bị mất việc làm theo quy định tại khoản 11 Điều 34 của Bộ luật này\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"cứ mỗi năm làm việc trả 01 tháng tiền lương\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"ít nhất bằng 02 tháng tiền lương\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-Di4Da6b1A5uy2roP-P7T0QU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3086
+   },
+   "input_tokens": 975,
+   "output_tokens": 628,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_9c20ce978723b7e19af73b7a"
+   }
+  }
+ }
+}

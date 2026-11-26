@@ -1,0 +1,30 @@
+{
+ "cau": "Thời điểm bắt đầu đình công, địa điểm đình công;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thời điểm bắt đầu đình công, địa điểm đình công\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-N1IDa6TLNNqZvr0PxKCYIA",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 468
+   },
+   "input_tokens": 912,
+   "output_tokens": 505,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_677590f505880bfcf128c1ff"
+   }
+  }
+ }
+}

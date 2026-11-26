@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Người lao động từ đủ 18 tuổi trở lên;",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động từ đủ 18 tuổi trở lên\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-R7cFa_zMOp601e8Pr5LhgAM",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 146
+   },
+   "input_tokens": 2247,
+   "output_tokens": 183,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_2c7baceb30471f63fb238801"
+   }
+  }
+ }
+}

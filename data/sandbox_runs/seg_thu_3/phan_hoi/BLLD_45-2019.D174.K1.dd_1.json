@@ -1,0 +1,30 @@
+{
+ "cau": "Nguyên tắc tổ chức, hoạt động;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Nguyên tắc\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tổ chức\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hoạt động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-JU0Da-OxBYOL2roPl6WNgAE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1410
+   },
+   "input_tokens": 909,
+   "output_tokens": 1486,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_07afaa758d4ba9d4c7f6ff76"
+   }
+  }
+ }
+}

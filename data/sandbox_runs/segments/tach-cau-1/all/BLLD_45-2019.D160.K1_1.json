@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Sử dụng người lao động là người khuyết tật nhẹ suy giảm khả năng lao động từ 51% trở lên, khuyết tật nặng hoặc khuyết tật đặc biệt nặng làm thêm giờ, làm việc vào ban đêm, trừ trường hợp người lao động là người khuyết tật đồng ý.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Sử dụng người lao động là người khuyết tật nhẹ suy giảm khả năng lao động từ 51% trở lên, khuyết tật nặng hoặc khuyết tật đặc biệt nặng\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"làm thêm giờ\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"làm việc vào ban đêm\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"người lao động là người khuyết tật đồng ý\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539865392-f6eb852e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1667
+   },
+   "input_tokens": 2445,
+   "output_tokens": 150,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_b2df3670b2679057c78e77ac"
+   }
+  }
+ }
+}

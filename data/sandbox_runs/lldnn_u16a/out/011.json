@@ -1,0 +1,490 @@
+{
+ "units": [
+  {
+   "unit_id": "ND_145-2020.D19.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hết 60 ngày kể từ ngày đến hạn",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Khi hết 60 ngày kể từ ngày đến hạn"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thanh toán các chế độ, quyền lợi cho người lao động thuê lại",
+     "chu_the": {
+      "chu": "doanh nghiệp",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "mà doanh nghiệp chưa thanh toán các chế độ, quyền lợi cho người lao động thuê lại"
+     ]
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "ND_145-2020.D15.K2"
+     ],
+     "gan_vao": 1,
+     "trich": [
+      "tại khoản 2 Điều 15 Nghị định này"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác",
+     "chu_the": {
+      "chu": "Sở Lao động - Thương binh và Xã hội",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "sau khi trao đổi với cơ quan bảo hiểm xã hội và các cơ quan tổ chức liên quan khác"
+     ],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm hoàn cảnh 'sau khi ...' tách thành điều kiện riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại",
+     "chu_the": {
+      "chu": "Sở Lao động - Thương binh và Xã hội",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      },
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "thì Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu doanh nghiệp cho thuê lại thanh toán các chế độ, quyền lợi cho người lao động thuê lại"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "sau 10 ngày kể từ ngày có văn bản yêu cầu",
+     "chu_the": {
+      "chu": "Sở Lao động - Thương binh và Xã hội",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q2",
+     "trich": [
+      "Sau 10 ngày kể từ ngày Sở Lao động - Thương binh và Xã hội có văn bản yêu cầu"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thực hiện thanh toán",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "quy_tac": "q2",
+     "trich": [
+      "mà doanh nghiệp cho thuê lại không thực hiện thanh toán"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "quy_tac": "q2",
+     "trich": [
+      "mà doanh nghiệp cho thuê lại không thực hiện thanh toán, không có văn bản đề nghị rút tiền ký quỹ để thanh toán chế độ cho người lao động"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại",
+     "chu_the": {
+      "chu": "Sở Lao động - Thương binh và Xã hội",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      },
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "quy_tac": "q2",
+     "trich": [
+      "thì Sở Lao động - Thương binh và Xã hội trình Chủ tịch Ủy ban nhân dân cấp tỉnh trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán các chế độ, quyền lợi cho người lao động thuê lại"
+     ]
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "danh_sach",
+     "trich": [
+      "theo trình tự, thủ tục như sau:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách trình tự, thủ tục."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_145-2020.D19.K1.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "yêu cầu doanh nghiệp cho thuê lại báo cáo",
+     "chu_the": {
+      "chu": "Sở Lao động - Thương binh và Xã hội",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      },
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "số lượng, danh sách người lao động cho thuê lại",
+      "số tiền chưa thanh toán, bồi thường các chế độ, quyền lợi của từng người lao động thuê lại"
+     ],
+     "quy_tac": "q1",
+     "trich": [
+      "Sở Lao động - Thương binh và Xã hội yêu cầu doanh nghiệp cho thuê lại báo cáo"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong thời hạn 05 ngày làm việc kể từ ngày nhận được yêu cầu của Sở Lao động - Thương binh và Xã hội",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q2",
+     "trich": [
+      "Trong thời hạn 05 ngày làm việc kể từ ngày nhận được yêu cầu của Sở Lao động - Thương binh và Xã hội"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "hoàn thành việc báo cáo",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "quy_tac": "q2",
+     "trich": [
+      "doanh nghiệp cho thuê lại phải hoàn thành việc báo cáo"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong thời hạn 03 ngày làm việc kể từ ngày nhận được báo cáo của doanh nghiệp cho thuê lại",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q3",
+     "trich": [
+      "Trong thời hạn 03 ngày làm việc kể từ ngày nhận được báo cáo của doanh nghiệp cho thuê lại"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tổng hợp, trình Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định việc trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán chế độ cho người lao động",
+     "chu_the": {
+      "chu": "Sở Lao động - Thương binh và Xã hội",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      },
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "quy_tac": "q3",
+     "trich": [
+      "Sở Lao động - Thương binh và Xã hội tổng hợp, trình Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định việc trích tiền ký quỹ của doanh nghiệp cho thuê lại để thanh toán chế độ cho người lao động"
+     ],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "'tổng hợp, trình' là một thao tác chuyển hồ sơ liền mạch."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_145-2020.D19.K1.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong thời hạn 05 ngày làm việc kể từ ngày nhận được đề nghị của Sở Lao động - Thương binh và Xã hội",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Trong thời hạn 05 ngày làm việc kể từ ngày nhận được đề nghị của Sở Lao động - Thương binh và Xã hội"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quyết định trích tiền ký quỹ của doanh nghiệp cho thuê lại",
+     "chu_the": {
+      "chu": "Chủ tịch Ủy ban nhân dân cấp tỉnh",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định trích tiền ký quỹ của doanh nghiệp cho thuê lại"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "theo Mẫu số 03/PLIII Phụ lục III ban hành kèm theo Nghị định này",
+     "chu_the": {
+      "chu": "Quyết định trích tiền ký quỹ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Quyết định trích tiền ký quỹ theo Mẫu số 03/PLIII Phụ lục III ban hành kèm theo Nghị định này"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_145-2020.D19.K1.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong thời hạn 07 ngày làm việc kể từ ngày nhận được quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Trong thời hạn 07 ngày làm việc kể từ ngày nhận được quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện trích tiền ký quỹ của doanh nghiệp cho thuê lại",
+     "chu_the": {
+      "chu": "ngân hàng nhận ký quỹ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "ngân hàng nhận ký quỹ thực hiện trích tiền ký quỹ của doanh nghiệp cho thuê lại"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trực tiếp chi trả cho người lao động thuê lại",
+     "chu_the": {
+      "chu": "ngân hàng nhận ký quỹ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "bo_ngu": [
+      {
+       "original_text": "theo danh sách kèm theo quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh",
+       "scope": "this_clause"
+      },
+      {
+       "original_text": "sau khi trừ chi phí dịch vụ ngân hàng",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "và trực tiếp chi trả cho người lao động thuê lại theo danh sách kèm theo quyết định của Chủ tịch Ủy ban nhân dân cấp tỉnh, sau khi trừ chi phí dịch vụ ngân hàng"
+     ],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Trích tiền và chi trả là hai hành vi kiểm được riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được thanh toán theo thứ tự ưu tiên",
+     "chu_the": {
+      "chu": "Tiền ký quỹ của doanh nghiệp cho thuê",
+      "loai": "A",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "tiền lương",
+      "bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp",
+      "bảo hiểm tai nạn lao động, bệnh nghề nghiệp và các chế độ khác đối với người lao động thuê lại theo thỏa thuận trong hợp đồng lao động, thỏa ước lao động tập thể, nội quy, quy chế của doanh nghiệp cho thuê lại"
+     ],
+     "quy_tac": "q2",
+     "trich": [
+      "Tiền ký quỹ của doanh nghiệp cho thuê được thanh toán theo thứ tự ưu tiên"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "ND_145-2020.D19.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giám sát việc thực hiện thanh toán, bồi thường cho người lao động thuê lại",
+     "chu_the": {
+      "chu": "Sở Lao động - Thương binh và Xã hội",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      },
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Sở Lao động - Thương binh và Xã hội có trách nhiệm giám sát việc thực hiện thanh toán, bồi thường cho người lao động thuê lại"
+     ]
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "targets": [
+      "ND_145-2020.D19.K1"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "theo quy định tại khoản 1 Điều này"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "báo cáo kết quả thực hiện về Ủy ban nhân dân cấp tỉnh",
+     "chu_the": {
+      "chu": "Sở Lao động - Thương binh và Xã hội",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Sở Lao động - Thương binh và Xã hội có trách nhiệm",
+      "báo cáo kết quả thực hiện về Ủy ban nhân dân cấp tỉnh"
+     ],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Giám sát và báo cáo là hai nghĩa vụ riêng, chủ thể chép từ đầu câu."
+     }
+    }
+   ]
+  }
+ ]
+}

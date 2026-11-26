@@ -1,0 +1,30 @@
+{
+ "cau": "Người sử dụng lao động có trách nhiệm quan tâm chăm sóc sức khỏe của người lao động cao tuổi tại nơi làm việc.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Người sử dụng lao động có trách nhiệm\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"quan tâm\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"chăm sóc\"\n    },\n    {\n      \"id\": \"c2\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"sức khỏe của người lao động cao tuổi tại nơi làm việc\",\n      \"ap_cho\": [\"m1\", \"m2\"]\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-AkgDa8-VCfXcvr0PruK52Qs",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 248
+   },
+   "input_tokens": 925,
+   "output_tokens": 456,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_9e2595bdec3b8df18ccd8289"
+   }
+  }
+ }
+}

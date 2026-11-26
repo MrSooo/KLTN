@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khiển trách.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Khiển trách\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539405986-a1bbfe68",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 95
+   },
+   "input_tokens": 2378,
+   "output_tokens": 29,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_7053186fdeac08daa5b20348"
+   }
+  }
+ }
+}

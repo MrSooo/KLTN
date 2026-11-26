@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D55.K2.d",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D55.K2.d\",\n \"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n \"khoan_cha\": \"Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D55.K2.d\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Hợp đồng cho thuê lại lao động\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795543333632-7b193300",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3434
+   },
+   "input_tokens": 3648,
+   "output_tokens": 142,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_cda0835246e48a6759361e66"
+   }
+  }
+ }
+}

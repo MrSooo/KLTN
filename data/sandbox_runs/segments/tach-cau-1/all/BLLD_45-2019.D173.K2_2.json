@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thành viên ban lãnh đạo là người lao động Việt Nam đang làm việc tại doanh nghiệp; không đang trong thời gian bị truy cứu trách nhiệm hình sự, chấp hành hình phạt hoặc chưa được xóa án tích do phạm các tội xâm phạm an ninh quốc gia, các tội xâm phạm quyền tự do của con người, quyền tự do, dân chủ của công dân, các tội xâm phạm sở hữu theo quy định của Bộ luật Hình sự.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thành viên ban lãnh đạo\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"là người lao động Việt Nam đang làm việc tại doanh nghiệp\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"không đang trong thời gian\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bị truy cứu trách nhiệm hình sự\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"chấp hành hình phạt\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"chưa được xóa án tích do phạm các tội xâm phạm an ninh quốc gia, các tội xâm phạm quyền tự do của con người, quyền tự do, dân chủ của công dân, các tội xâm phạm sở hữu theo quy định của Bộ luật Hình sự\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539966442-1a307a14",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3681
+   },
+   "input_tokens": 2474,
+   "output_tokens": 231,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_64b48f60bf4b8d2c02e600d9"
+   }
+  }
+ }
+}

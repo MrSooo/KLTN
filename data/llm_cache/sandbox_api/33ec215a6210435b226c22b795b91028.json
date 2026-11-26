@@ -1,0 +1,161 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T19:12:16+00:00",
+ "system": "Bạn đặt TÊN VỊ TỪ cho các mệnh đề lấy từ văn bản pháp luật lao động Việt Nam. Mỗi mệnh đề là lõi của một điều đúng/sai được (động từ hoặc tính chất cộng tân ngữ chính); chủ thể, chữ chỉ phương thức (phải, được, cấm), chữ phủ định và bổ ngữ đã được bỏ ra và ghi riêng. Hai mệnh đề nêu CÙNG MỘT sự kiện pháp lý phải mang cùng một tên, kể cả khi viết khác chữ; hai mệnh đề nêu sự kiện khác nhau phải mang tên khác.\n\nĐẦU VÀO là danh sách \"chu\". Mỗi mục có:\n- chu_id: mã của chữ. chu: chữ của mệnh đề, nguyên văn.\n- params: loại các tham số theo THỨ TỰ: vị trí đầu là chủ thể (nếu mệnh đề có chủ thể), các vị trí sau là đối số. W người lao động, E người sử dụng lao động, C hợp đồng, J nghề hoặc công việc, G vùng, D ngày hoặc mốc thời gian, A số tiền hoặc số lượng, ? chưa rõ loại. Rỗng nếu mệnh đề không có chủ thể hay đối số.\n- vai: các vai mệnh đề từng đóng (ket_luan: hệ quả; dieu_kien: khi nào áp dụng; ngoai_le: trừ khi nào). so_lan: số lần chữ này xuất hiện.\n- ngu_canh: tối đa hai nơi chữ xuất hiện đầu tiên, mỗi nơi có tieu_de_dieu, khoan_cha, chu_don_vi và vai của mệnh đề ở đó. Chỉ dùng để hiểu nghĩa của chữ; đừng đặt tên theo cả đoạn.\n- ung_vien: các tên đã có, cùng SỐ tham số và loại tương thích (? khớp mọi loại); mỗi ứng viên kèm params và vài chữ đã dùng tên đó (vi_du).\n- loi_lan_truoc: chỉ có khi chữ được hỏi lại; là lý do lần trả lời trước không được nhận. Hãy sửa đúng lỗi đó.\n\nCHỮ CÓ VAI chu_the: chữ là cụm danh từ chỉ một NHÓM chủ thể (\"Người lao động nước ngoài làm việc tại Việt Nam\", \"Doanh nghiệp cho thuê lại lao động\"). Tên đặt cho tính chất \"thuộc nhóm đó\" (ví dụ foreign_worker_in_vietnam). Mệnh đề \"là <nhóm đó>\" và chữ chủ thể chỉ cùng nhóm đó là cùng một sự kiện: phải reuse. Nhóm rộng hơn hoặc hẹp hơn (\"người lao động\" so với \"người lao động nước ngoài\") là tên khác.\n\nNHIỆM VỤ: với MỖI chữ trong danh sách, trả về đúng MỘT mục gồm chu_id, kieu và ten.\n- kieu \"reuse\": ten là một tên nằm trong ung_vien của chính chữ đó, HOẶC một tên mà bạn đã đặt (kieu \"new\") cho một chữ đứng TRƯỚC chữ này trong danh sách (theo thứ tự các mục của \"chu\"; không được trỏ tới chữ đứng sau) và có params tương thích với chữ này.\n- kieu \"new\": ten là một tên mới.\n\nKHI NÀO ĐƯỢC \"reuse\": khi chữ nêu CÙNG MỘT sự kiện pháp lý với chữ đã dùng tên đó: cùng hành vi hoặc tình trạng, cùng đối tượng, cùng phạm vi. Khác cách viết, khác thứ tự từ, dùng từ đồng nghĩa, viết tắt hay viết đầy đủ mà vẫn là một sự kiện thì PHẢI reuse. Gần nghĩa, rộng hơn, hẹp hơn hoặc ngược nghĩa thì KHÔNG phải cùng sự kiện: đặt tên mới. Chỉ chung vài từ hoặc cùng chủ đề là chưa đủ. Không chắc thì đặt tên mới.\n\nCÁCH ĐẶT TÊN MỚI:\n- Tiếng Anh, snake_case: chỉ gồm chữ thường a-z, chữ số và dấu gạch dưới; bắt đầu bằng chữ cái; dài 3 đến 50 ký tự.\n- Tên nêu sự kiện, không nêu ai làm: không ghi chủ thể, không ghi params vào tên (params đã được ghi riêng). Riêng chữ vai chu_the thì tên chính là nhóm chủ thể.\n- Không ghi phương thức vào tên (không must_, may_, allowed_, prohibited_): phương thức được ghi riêng.\n- Dạng khẳng định: không mở đầu bằng not_, no_, non_ và không đặt tên là not hay non. Chữ có ý phủ định trong nghĩa thì chọn một từ khẳng định có nghĩa tương đương.\n- Tên mới không được trùng với bất kỳ tên nào đã có, kể cả tên không nằm trong ung_vien của chữ đó; trùng thì chữ bị hỏi lại sau. Hãy đặt tên đủ cụ thể để ít trùng.\n\nVÍ DỤ (chữ bịa để minh hoạ). Giả sử năm chữ sau đứng theo đúng thứ tự trong danh sách và chưa có ứng viên nào:\n  1. \"cấp thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> new issue_factory_access_card  (tên mới)\n  2. \"phát thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> reuse issue_factory_access_card  (cùng một sự kiện với chữ 1, chỉ khác chữ; dùng lại tên do chính bạn đặt cho chữ 1 (đứng trước, tham số tương thích))\n  3. \"thu hồi thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> new revoke_factory_access_card  (việc ngược lại, không phải cùng sự kiện: tên mới)\n  4. \"cấp thẻ ra vào khu xưởng có thời hạn dưới 30 ngày\" params [\"E\", \"W\"] -> new issue_short_term_factory_access_card  (hẹp hơn chữ 1: tên mới)\n  5. \"có thẻ ra vào khu xưởng\" params [\"W\"] -> new holds_factory_access_card  (nêu tình trạng có thẻ, không phải việc cấp thẻ: tên mới)\n\nĐẦU RA: chỉ JSON đúng lược đồ đã cho, không thêm chữ nào khác. Mọi chữ trong danh sách đều phải có đúng một mục; chu_id chép nguyên văn; không thêm mục cho chữ ngoài danh sách.\n\n\nLược đồ đầu ra (JSON Schema, nội dung file schema.json):\n{\n \"type\": \"object\",\n \"additionalProperties\": false,\n \"required\": [\n  \"chu\"\n ],\n \"properties\": {\n  \"chu\": {\n   \"type\": \"array\",\n   \"items\": {\n    \"type\": \"object\",\n    \"additionalProperties\": false,\n    \"required\": [\n     \"chu_id\",\n     \"kieu\",\n     \"ten\"\n    ],\n    \"properties\": {\n     \"chu_id\": {\n      \"type\": \"string\"\n     },\n     \"kieu\": {\n      \"type\": \"string\",\n      \"enum\": [\n       \"reuse\",\n       \"new\"\n      ]\n     },\n     \"ten\": {\n      \"type\": \"string\"\n     }\n    }\n   }\n  }\n }\n}\n",
+ "user": "{\n\"chu\": [\n{\n\"chu_id\": \"C0055\",\n\"chu\": \"thực hiện công việc\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Thực hiện công việc theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0056\",\n\"chu\": \"chấp hành kỷ luật lao động, nội quy lao động\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Chấp hành kỷ luật lao động, nội quy lao động; tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động;\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"prescribe\",\n\"params\": [\n\"?\"\n],\n\"vi_du\": [\n\"quy định\"\n]\n},\n{\n\"ten\": \"violate_labor_discipline\",\n\"params\": [\n\"W\"\n],\n\"vi_du\": [\n\"vi phạm kỷ luật lao động\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0057\",\n\"chu\": \"tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Chấp hành kỷ luật lao động, nội quy lao động; tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động;\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"transfer_to_work_and_under_management\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vi_du\": [\n\"được chuyển sang làm việc và chịu sự điều hành\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0058\",\n\"chu\": \"trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K3\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Được trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0059\",\n\"chu\": \"khiếu nại với doanh nghiệp cho thuê lại lao động\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K4\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Khiếu nại với doanh nghiệp cho thuê lại lao động trong trường hợp bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0060\",\n\"chu\": \"bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K4\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Khiếu nại với doanh nghiệp cho thuê lại lao động trong trường hợp bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0061\",\n\"chu\": \"thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K5\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động để giao kết hợp đồng lao động với bên thuê lại lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0062\",\n\"chu\": \"Người lao động Việt Nam đi làm việc ở nước ngoài\",\n\"params\": [],\n\"vai\": [\n\"chu_the\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D150.K1\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Nhà nước khuyến khích doanh nghiệp, cơ quan, tổ chức, cá nhân tìm kiếm và mở rộng thị trường lao động để đưa người lao động Việt Nam đi làm việc ở nước ngoài.\\nNgười lao động Việt Nam đi làm việc ở nước ngoài phải tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"government\",\n\"params\": [],\n\"vi_du\": [\n\"Chính phủ\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0063\",\n\"chu\": \"tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D150.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Nhà nước khuyến khích doanh nghiệp, cơ quan, tổ chức, cá nhân tìm kiếm và mở rộng thị trường lao động để đưa người lao động Việt Nam đi làm việc ở nước ngoài.\\nNgười lao động Việt Nam đi làm việc ở nước ngoài phải tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"prescribe\",\n\"params\": [\n\"?\"\n],\n\"vi_du\": [\n\"quy định\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0064\",\n\"chu\": \"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam\",\n\"params\": [],\n\"vai\": [\n\"chu_the\"\n],\n\"so_lan\": 2,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D150.K2\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam phải tuân theo pháp luật Việt Nam và được pháp luật bảo vệ.\"\n},\n{\n\"don_vi\": \"BLLD_45-2019.D150.K2\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam phải tuân theo pháp luật Việt Nam và được pháp luật bảo vệ.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"government\",\n\"params\": [],\n\"vi_du\": [\n\"Chính phủ\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0065\",\n\"chu\": \"tuân theo pháp luật Việt Nam\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D150.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam phải tuân theo pháp luật Việt Nam và được pháp luật bảo vệ.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0066\",\n\"chu\": \"được pháp luật bảo vệ\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D150.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam phải tuân theo pháp luật Việt Nam và được pháp luật bảo vệ.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0067\",\n\"chu\": \"quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"params\": [\n\"?\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D150.K3\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chính phủ quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"prescribe\",\n\"params\": [\n\"?\"\n],\n\"vi_du\": [\n\"quy định\"\n]\n},\n{\n\"ten\": \"periodically_report_to_provincial_labor_authority\",\n\"params\": [\n\"E\"\n],\n\"vi_du\": [\n\"định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\"\n]\n},\n{\n\"ten\": \"apply_to_certain_jobs\",\n\"params\": [\n\"J\"\n],\n\"vi_du\": [\n\"áp dụng đối với một số công việc nhất định\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0068\",\n\"chu\": \"Người lao động nước ngoài làm việc tại Việt Nam\",\n\"params\": [],\n\"vai\": [\n\"chu_the\"\n],\n\"so_lan\": 24,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K1\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\"\n},\n{\n\"don_vi\": \"BLLD_45-2019.D151.K1.a\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n\"chu_don_vi\": \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0069\",\n\"chu\": \"là người có quốc tịch nước ngoài\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0070\",\n\"chu\": \"đủ 18 tuổi trở lên\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K1.a\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n\"chu_don_vi\": \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0071\",\n\"chu\": \"có năng lực hành vi dân sự đầy đủ\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K1.a\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n\"chu_don_vi\": \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"violate_labor_discipline\",\n\"params\": [\n\"W\"\n],\n\"vi_du\": [\n\"vi phạm kỷ luật lao động\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0072\",\n\"chu\": \"có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K1.b\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n\"chu_don_vi\": \"Có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc; có đủ sức khỏe theo quy định của Bộ trưởng Bộ Y tế;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0073\",\n\"chu\": \"có đủ sức khỏe\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K1.b\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n\"chu_don_vi\": \"Có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc; có đủ sức khỏe theo quy định của Bộ trưởng Bộ Y tế;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0074\",\n\"chu\": \"là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K1.c\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n\"chu_don_vi\": \"Không phải là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0075\",\n\"chu\": \"có giấy phép lao động\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K1.d\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n\"chu_don_vi\": \"Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp, trừ trường hợp quy định tại Điều 154 của Bộ luật này.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0076\",\n\"chu\": \"Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam\",\n\"params\": [],\n\"vai\": [\n\"chu_the\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K2\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam không được vượt quá thời hạn của Giấy phép lao động. Khi sử dụng người lao động nước ngoài làm việc tại Việt Nam, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0077\",\n\"chu\": \"vượt quá thời hạn của Giấy phép lao động\",\n\"params\": [\n\"?\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam không được vượt quá thời hạn của Giấy phép lao động. Khi sử dụng người lao động nước ngoài làm việc tại Việt Nam, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0078\",\n\"chu\": \"sử dụng người lao động nước ngoài làm việc tại Việt Nam\",\n\"params\": [],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K2\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam không được vượt quá thời hạn của Giấy phép lao động. Khi sử dụng người lao động nước ngoài làm việc tại Việt Nam, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0079\",\n\"chu\": \"hai bên\",\n\"params\": [],\n\"vai\": [\n\"chu_the\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K2\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam không được vượt quá thời hạn của Giấy phép lao động. Khi sử dụng người lao động nước ngoài làm việc tại Việt Nam, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0080\",\n\"chu\": \"thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn\",\n\"params\": [\n\"?\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam không được vượt quá thời hạn của Giấy phép lao động. Khi sử dụng người lao động nước ngoài làm việc tại Việt Nam, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"fall_short_of_agreed_requirements\",\n\"params\": [\n\"W\"\n],\n\"vi_du\": [\n\"không đáp ứng yêu cầu như đã thỏa thuận\"\n]\n},\n{\n\"ten\": \"sign_labor_leasing_contract\",\n\"params\": [\n\"?\"\n],\n\"vi_du\": [\n\"ký kết hợp đồng cho thuê lại lao động\"\n]\n},\n{\n\"ten\": \"prescribe\",\n\"params\": [\n\"?\"\n],\n\"vi_du\": [\n\"quy định\"\n]\n},\n{\n\"ten\": \"apply_to_certain_jobs\",\n\"params\": [\n\"J\"\n],\n\"vi_du\": [\n\"áp dụng đối với một số công việc nhất định\"\n]\n},\n{\n\"ten\": \"periodically_report_to_provincial_labor_authority\",\n\"params\": [\n\"E\"\n],\n\"vi_du\": [\n\"định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0081\",\n\"chu\": \"tuân theo pháp luật lao động Việt Nam\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K3\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam phải tuân theo pháp luật lao động Việt Nam và được pháp luật Việt Nam bảo vệ, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0082\",\n\"chu\": \"được pháp luật Việt Nam bảo vệ\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D151.K3\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam phải tuân theo pháp luật lao động Việt Nam và được pháp luật Việt Nam bảo vệ, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác.\"\n}\n],\n\"ung_vien\": []\n}\n]\n}",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_6c4f84b6528c3a0e38d11f59",
+ "output": {
+  "chu": [
+   {
+    "chu_id": "C0055",
+    "kieu": "new",
+    "ten": "perform_work"
+   },
+   {
+    "chu_id": "C0056",
+    "kieu": "new",
+    "ten": "comply_with_labor_discipline_and_work_rules"
+   },
+   {
+    "chu_id": "C0057",
+    "kieu": "new",
+    "ten": "obey_lawful_management_and_supervision"
+   },
+   {
+    "chu_id": "C0058",
+    "kieu": "new",
+    "ten": "receive_comparable_wage_for_equivalent_work"
+   },
+   {
+    "chu_id": "C0059",
+    "kieu": "new",
+    "ten": "complain_to_leasing_enterprise"
+   },
+   {
+    "chu_id": "C0060",
+    "kieu": "new",
+    "ten": "breach_agreement_in_labor_leasing_contract"
+   },
+   {
+    "chu_id": "C0061",
+    "kieu": "new",
+    "ten": "agree_to_terminate_labor_contract"
+   },
+   {
+    "chu_id": "C0062",
+    "kieu": "new",
+    "ten": "vietnamese_worker_working_abroad"
+   },
+   {
+    "chu_id": "C0063",
+    "kieu": "new",
+    "ten": "comply_with_vietnam_and_host_country_law"
+   },
+   {
+    "chu_id": "C0064",
+    "kieu": "new",
+    "ten": "vietnamese_citizen_working_for_foreign_employer"
+   },
+   {
+    "chu_id": "C0065",
+    "kieu": "new",
+    "ten": "comply_with_vietnam_law"
+   },
+   {
+    "chu_id": "C0066",
+    "kieu": "new",
+    "ten": "be_protected_by_vietnam_law"
+   },
+   {
+    "chu_id": "C0067",
+    "kieu": "new",
+    "ten": "detail_recruitment_and_management_rules"
+   },
+   {
+    "chu_id": "C0068",
+    "kieu": "new",
+    "ten": "foreign_worker_working_in_vietnam"
+   },
+   {
+    "chu_id": "C0069",
+    "kieu": "new",
+    "ten": "have_foreign_nationality"
+   },
+   {
+    "chu_id": "C0070",
+    "kieu": "new",
+    "ten": "be_at_least_18_years_old"
+   },
+   {
+    "chu_id": "C0071",
+    "kieu": "new",
+    "ten": "have_full_civil_act_capacity"
+   },
+   {
+    "chu_id": "C0072",
+    "kieu": "new",
+    "ten": "have_professional_qualifications_and_experience"
+   },
+   {
+    "chu_id": "C0073",
+    "kieu": "new",
+    "ten": "have_sufficient_health"
+   },
+   {
+    "chu_id": "C0074",
+    "kieu": "new",
+    "ten": "have_criminal_record_or_pending_prosecution"
+   },
+   {
+    "chu_id": "C0075",
+    "kieu": "new",
+    "ten": "have_work_permit"
+   },
+   {
+    "chu_id": "C0076",
+    "kieu": "new",
+    "ten": "labor_contract_term_for_foreign_worker"
+   },
+   {
+    "chu_id": "C0077",
+    "kieu": "new",
+    "ten": "exceed_work_permit_term"
+   },
+   {
+    "chu_id": "C0078",
+    "kieu": "new",
+    "ten": "employ_foreign_worker_in_vietnam"
+   },
+   {
+    "chu_id": "C0079",
+    "kieu": "new",
+    "ten": "both_parties"
+   },
+   {
+    "chu_id": "C0080",
+    "kieu": "new",
+    "ten": "agree_multiple_fixed_term_labor_contracts"
+   },
+   {
+    "chu_id": "C0081",
+    "kieu": "new",
+    "ten": "comply_with_vietnam_labor_law"
+   },
+   {
+    "chu_id": "C0082",
+    "kieu": "reuse",
+    "ten": "be_protected_by_vietnam_law"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 23,
+  "output_tokens": 2536,
+  "cost_vnd": 16.67
+ },
+ "boc_rao": false
+}

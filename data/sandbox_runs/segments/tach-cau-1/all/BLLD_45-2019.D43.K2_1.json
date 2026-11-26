@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động hiện tại và người sử dụng lao động kế tiếp có trách nhiệm thực hiện phương án sử dụng lao động đã được thông qua.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người sử dụng lao động hiện tại và người sử dụng lao động kế tiếp có trách nhiệm thực hiện phương án sử dụng lao động đã được thông qua\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538537270-c91f420c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 602
+   },
+   "input_tokens": 2405,
+   "output_tokens": 56,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_e32f082ce1e07010a8f6a11c"
+   }
+  }
+ }
+}

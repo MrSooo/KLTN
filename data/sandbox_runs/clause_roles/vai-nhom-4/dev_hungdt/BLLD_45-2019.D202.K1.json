@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D202.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "hungdt/om-gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D202.K1\",\n \"tieu_de_dieu\": \"1:Quyết 2:định 3:đình 4:công 5:và 6:thông 7:báo 8:thời 9:điểm 10:bắt 11:đầu 12:đình 13:công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 2 Điều 201 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D201.K2\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Khi có trên 50% số người được lấy ý kiến đồng ý với nội dung lấy ý kiến đình công theo quy định tại khoản 2 Điều 201 của Bộ luật này thì tổ chức đại diện người lao động ra quyết định đình công bằng văn bản.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:trên 3:50% 4:số 5:người 6:được 7:lấy 8:ý 9:kiến 10:đồng 11:ý 12:với 13:nội 14:dung 15:lấy 16:ý 17:kiến 18:đình 19:công 20:theo 21:quy 22:định 23:tại 24:khoản 25:2 26:Điều 27:201 28:của 29:Bộ 30:luật 31:này\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tổ 2:chức 3:đại 4:diện 5:người 6:lao 7:động 8:ra 9:quyết 10:định 11:đình 12:công 13:bằng 14:văn 15:bản\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D202.K1\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D201.K2\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-19\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:8-15\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m2:1-7\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-2PAHa9WQE7HYjNAPkaCJmAY",
+  "model": "hungdt/om-gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1646
+   },
+   "input_tokens": 6108,
+   "output_tokens": 1974,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_97db81771d56d25f25be2321"
+   }
+  }
+ }
+}

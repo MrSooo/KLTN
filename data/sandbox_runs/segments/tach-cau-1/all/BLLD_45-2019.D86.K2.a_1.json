@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539020686-e069e25a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 163
+   },
+   "input_tokens": 2391,
+   "output_tokens": 38,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_ff13727c2b3347385adc50aa"
+   }
+  }
+ }
+}

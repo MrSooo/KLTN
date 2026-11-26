@@ -1,0 +1,30 @@
+{
+ "cau": "Chỉ những doanh nghiệp có trên 50% số người được lấy ý kiến biểu quyết tán thành mới tham gia ký kết thỏa ước lao động tập thể có nhiều doanh nghiệp.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Chỉ những doanh nghiệp\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"có trên 50% số người được lấy ý kiến biểu quyết tán thành\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"mới tham gia ký kết thỏa ước lao động tập thể có nhiều doanh nghiệp\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-fjUDa-HLMae20-kP1dCxmAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 17248
+   },
+   "input_tokens": 937,
+   "output_tokens": 412,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_6bac7ac058fbe9680397616a"
+   }
+  }
+ }
+}

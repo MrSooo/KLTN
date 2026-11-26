@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động phải bảo đảm về điều kiện lao động, công cụ lao động, an toàn, vệ sinh lao động và tổ chức khám sức khỏe định kỳ phù hợp với người lao động là người khuyết tật.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"phải bảo đảm về điều kiện lao động, công cụ lao động, an toàn, vệ sinh lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tổ chức khám sức khỏe định kỳ phù hợp với người lao động là người khuyết tật\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539855568-538c34c7",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1238
+   },
+   "input_tokens": 2422,
+   "output_tokens": 116,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_9fe43eabe5f0f7ed65f7e6db"
+   }
+  }
+ }
+}

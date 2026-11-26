@@ -1,0 +1,27 @@
+{
+ "cau_gui": "Việc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương thì không bị xem là phân biệt đối xử.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Việc\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"phân biệt xuất phát từ yêu cầu đặc thù của công việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"loại trừ xuất phát từ yêu cầu đặc thù của công việc\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"ưu tiên xuất phát từ yêu cầu đặc thù của công việc\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"các hành vi\",\"ap_cho\":[\"m4\",\"m5\"]},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"duy trì việc làm cho người lao động dễ bị tổn thương\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"bảo vệ việc làm cho người lao động dễ bị tổn thương\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"không bị xem là phân biệt đối xử\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-ArYFa7qOJ8Hv2roPjM7HyQo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 2285,
+   "output_tokens": 239,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_42b1f11e48c43db72bce6a32"
+   }
+  }
+ }
+}

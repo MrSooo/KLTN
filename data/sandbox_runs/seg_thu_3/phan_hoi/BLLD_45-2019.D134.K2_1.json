@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động có trách nhiệm chấp hành quy định, nội quy, quy trình, yêu cầu về an toàn, vệ sinh lao động; tuân thủ pháp luật và nắm vững kiến thức, kỹ năng về các biện pháp bảo đảm an toàn, vệ sinh lao động tại nơi làm việc.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Người lao động có trách nhiệm\",\n      \"ap_cho\": [\"m1\", \"m2\", \"m3\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"chấp hành quy định, nội quy, quy trình, yêu cầu về an toàn, vệ sinh lao động\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"tuân thủ pháp luật\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"nắm vững kiến thức, kỹ năng về các biện pháp bảo đảm an toàn, vệ sinh lao động tại nơi làm việc\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-dEQDa_G3N9WN1e8PppGXoQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 477
+   },
+   "input_tokens": 959,
+   "output_tokens": 707,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_42ab14cfe62559c5cccebfbf"
+   }
+  }
+ }
+}

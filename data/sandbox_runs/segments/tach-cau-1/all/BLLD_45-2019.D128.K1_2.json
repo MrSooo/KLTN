@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Việc tạm đình chỉ công việc của người lao động chỉ được thực hiện sau khi tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở mà người lao động đang bị xem xét tạm đình chỉ công việc là thành viên.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Việc tạm đình chỉ công việc của người lao động chỉ được thực hiện\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở mà người lao động đang bị xem xét tạm đình chỉ công việc là thành viên\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539453921-2acafd8a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1629
+   },
+   "input_tokens": 2424,
+   "output_tokens": 88,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_d7b60ca619f28ed398afdeed"
+   }
+  }
+ }
+}

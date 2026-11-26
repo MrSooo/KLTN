@@ -1,0 +1,30 @@
+{
+ "cau": "Hưởng lương phù hợp với trình độ, kỹ năng nghề trên cơ sở thỏa thuận với người sử dụng lao động; được bảo hộ lao động, làm việc trong điều kiện bảo đảm về an toàn, vệ sinh lao động; nghỉ theo chế độ, nghỉ hằng năm có hưởng lương và được hưởng phúc lợi tập thể;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Hưởng lương phù hợp với trình độ, kỹ năng nghề trên cơ sở thỏa thuận với người sử dụng lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"được bảo hộ lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"làm việc trong điều kiện bảo đảm về an toàn, vệ sinh lao động\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"nghỉ theo chế độ\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"nghỉ hằng năm có hưởng lương\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"được hưởng phúc lợi tập thể\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-TFcDa5ijPNWx2roPgJCx0AM",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 835
+   },
+   "input_tokens": 966,
+   "output_tokens": 1008,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_309a40e414041a02a740585e"
+   }
+  }
+ }
+}

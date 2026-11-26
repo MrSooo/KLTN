@@ -1,0 +1,30 @@
+{
+ "cau": "Yêu cầu Tòa án tuyên bố cuộc đình công là bất hợp pháp.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Yêu cầu Tòa án tuyên bố cuộc đình công là bất hợp pháp\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-h1IDa4-UFOe-vr0P7f3b2QU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 534
+   },
+   "input_tokens": 916,
+   "output_tokens": 575,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_895316a3f9b5c02b78d1cb2a"
+   }
+  }
+ }
+}

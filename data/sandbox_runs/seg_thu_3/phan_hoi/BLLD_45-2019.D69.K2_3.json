@@ -1,0 +1,30 @@
+{
+ "cau": "Trường hợp bên người lao động có nhiều tổ chức đại diện tham gia thương lượng tập thể theo quy định tại khoản 3 Điều 68 của Bộ luật này thì số lượng đại diện của mỗi tổ chức do các tổ chức đó thỏa thuận.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Trường hợp bên người lao động có nhiều tổ chức đại diện tham gia thương lượng tập thể theo quy định tại khoản 3 Điều 68 của Bộ luật này\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"số lượng đại diện của mỗi tổ chức do các tổ chức đó thỏa thuận\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-uzMDa97CIfuv2roPv5rX2QQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2764
+   },
+   "input_tokens": 951,
+   "output_tokens": 360,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_7275bec4976af439e799a5fb"
+   }
+  }
+ }
+}

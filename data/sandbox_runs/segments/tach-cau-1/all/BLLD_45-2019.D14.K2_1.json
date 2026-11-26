@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, ⟦DC1⟧.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-F7cFa661JZax2roP1Z-m2AY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 691
+   },
+   "input_tokens": 2267,
+   "output_tokens": 742,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_07ac5a45d187f7eac2f18d3b"
+   }
+  }
+ }
+}

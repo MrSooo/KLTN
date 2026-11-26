@@ -1,0 +1,30 @@
+{
+ "cau": "Tự nguyện, bình đẳng, thiện chí, hợp tác và trung thực.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\"id\": \"m1\", \"loai\": \"menh_de\", \"chu\": \"Tự nguyện\"},\n    {\"id\": \"m2\", \"loai\": \"menh_de\", \"chu\": \"bình đẳng\"},\n    {\"id\": \"m3\", \"loai\": \"menh_de\", \"chu\": \"thiện chí\"},\n    {\"id\": \"m4\", \"loai\": \"menh_de\", \"chu\": \"hợp tác\"},\n    {\"id\": \"m5\", \"loai\": \"menh_de\", \"chu\": \"trung thực\"}\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-5SQDa9SJMP2X9tMPzMTngAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 285
+   },
+   "input_tokens": 916,
+   "output_tokens": 438,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_8644343c2d2ee736765397f4"
+   }
+  }
+ }
+}

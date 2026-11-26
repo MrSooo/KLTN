@@ -1,0 +1,27 @@
+{
+ "cau_gui": "Rút quyết định đình công nếu chưa đình công hoặc chấm dứt đình công nếu đang đình công;",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Rút quyết định đình công\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"chưa đình công\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"chấm dứt đình công\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"đang đình công\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-k7MFa8nLLp7G0-kPh8HQsQE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 2256,
+   "output_tokens": 94,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_3b4cc9013548c3baed3163df"
+   }
+  }
+ }
+}

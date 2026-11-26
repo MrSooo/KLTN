@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D217.K3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D217.K3\",\n \"tieu_de_dieu\": \"Xử lý vi phạm\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người lợi dụng đình công gây mất trật tự, an toàn công cộng, làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động; người có hành vi cản trở thực hiện quyền đình công, kích động, lôi kéo, ép buộc người lao động đình công; người có hành vi trù dập, trả thù người tham gia đình công, người lãnh đạo cuộc đình công thì tùy theo mức độ vi phạm mà bị xử phạt vi phạm hành chính hoặc truy cứu trách nhiệm hình sự, nếu gây thiệt hại thì phải bồi thường theo quy định của pháp luật.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Người lợi dụng đình công gây mất trật tự, an toàn công cộng, làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động; người có hành vi cản trở thực hiện quyền đình công, kích động, lôi kéo, ép buộc người lao động đình công; người có hành vi trù dập, trả thù người tham gia đình công, người lãnh đạo cuộc đình công thì tùy theo mức độ vi phạm mà bị xử phạt vi phạm hành chính hoặc truy cứu trách nhiệm hình sự, nếu gây thiệt hại thì phải bồi thường theo quy định của pháp luật\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D217.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"lợi dụng đình công gây mất trật tự, an toàn công cộng, làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\",\n   \"liet_ke\": [\n    \"gây mất trật tự, an toàn công cộng\",\n    \"làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"có hành vi cản trở thực hiện quyền đình công, kích động, lôi kéo, ép buộc người lao động đình công\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"có hành vi trù dập, trả thù người tham gia đình công, người lãnh đạo cuộc đình công\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"tùy theo mức độ vi phạm\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"bị xử phạt vi phạm hành chính hoặc truy cứu trách nhiệm hình sự\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"xử phạt vi phạm hành chính\",\n    \"truy cứu trách nhiệm hình sự\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"lợi dụng đình công gây mất trật tự, an toàn công cộng, làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\",\n   \"nhom_hoac\": \"h1\",\n   \"liet_ke\": [\n    \"gây mất trật tự, an toàn công cộng\",\n    \"làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"có hành vi cản trở thực hiện quyền đình công, kích động, lôi kéo, ép buộc người lao động đình công\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"có hành vi trù dập, trả thù người tham gia đình công, người lãnh đạo cuộc đình công\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"gây thiệt hại\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"bồi thường\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"theo quy định của pháp luật\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Người\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "Pf4Ga63wIfOZvr0PvMX1-AY",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4301
+   },
+   "input_tokens": 4256,
+   "output_tokens": 5949,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_cfc1e7d4dd38cc2a9fe8e473"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Đối với tranh chấp quy định tại điểm b và điểm c khoản 2 Điều 179 của Bộ luật này mà xác định có hành vi vi phạm pháp luật thì Ban trọng tài lao động không ra quyết định giải quyết mà lập biên bản và chuyển hồ sơ, tài liệu đến cơ quan có thẩm quyền xem xét, xử lý theo quy định của pháp luật.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"Đối với tranh chấp quy định tại điểm b và điểm c khoản 2 Điều 179 của Bộ luật này mà xác định có hành vi vi phạm pháp luật\"\n    },\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Ban trọng tài lao động\",\n      \"ap_cho\": [\"m2\", \"m3\", \"m4\"]\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"không ra quyết định giải quyết\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"lập biên bản\"\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"chuyển hồ sơ, tài liệu đến cơ quan có thẩm quyền xem xét, xử lý theo quy định của pháp luật\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795537750804-a9501288",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2799
+   },
+   "input_tokens": 2450,
+   "output_tokens": 250,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_9fe5a5186fda961e3db0286e"
+   }
+  }
+ }
+}

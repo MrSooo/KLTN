@@ -1,0 +1,30 @@
+{
+ "cau": "Vào Việt Nam với thời hạn dưới 03 tháng để thực hiện chào bán dịch vụ.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Vào Việt Nam với thời hạn dưới 03 tháng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"để thực hiện chào bán dịch vụ\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-okkDa5LgL6Lr1e8PyMzi4Qs",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 575
+   },
+   "input_tokens": 920,
+   "output_tokens": 637,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d46dc7f5cbd6b4e1679f4f12"
+   }
+  }
+ }
+}

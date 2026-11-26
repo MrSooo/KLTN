@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trọng tài viên lao động là người hiểu biết pháp luật, có kinh nghiệm trong lĩnh vực quan hệ lao động, có uy tín và công tâm;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"Trọng tài viên lao động\",\n      \"ap_cho\": [\"m1\", \"m2\", \"m3\", \"m4\"]\n    },\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"là người hiểu biết pháp luật\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"có kinh nghiệm trong lĩnh vực quan hệ lao động\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"có uy tín\"\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"công tâm\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540216987-19526784",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1986
+   },
+   "input_tokens": 2404,
+   "output_tokens": 208,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_5d7ff5bfa3626fc2e8342bbf"
+   }
+  }
+ }
+}

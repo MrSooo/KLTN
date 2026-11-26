@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Nhà nước có chính sách khuyến khích người sử dụng lao động có đủ điều kiện đào tạo nghề nghiệp và phát triển kỹ năng nghề cho người lao động đang làm việc cho mình và người lao động khác trong xã hội thông qua hoạt động sau đây:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Nhà nước có chính sách khuyến khích người sử dụng lao động có đủ điều kiện đào tạo nghề nghiệp và phát triển kỹ năng nghề cho người lao động đang làm việc cho mình và người lao động khác trong xã hội thông qua hoạt động sau đây\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538714743-dd4ebf2e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1433
+   },
+   "input_tokens": 2426,
+   "output_tokens": 77,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_fddb17f44868b411e74bbe5e"
+   }
+  }
+ }
+}

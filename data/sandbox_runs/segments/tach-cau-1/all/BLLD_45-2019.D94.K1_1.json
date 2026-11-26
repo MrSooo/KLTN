@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động phải trả lương trực tiếp, đầy đủ, đúng hạn cho người lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người sử dụng lao động phải trả lương trực tiếp, đầy đủ, đúng hạn cho người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539052209-bcdcde37",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 631
+   },
+   "input_tokens": 2396,
+   "output_tokens": 47,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_e7d838e3d12d72d6813857fe"
+   }
+  }
+ }
+}

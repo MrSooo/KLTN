@@ -1,0 +1,130 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D143.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "chưa đủ 18 tuổi",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người lao động chưa đủ 18 tuổi"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là lao động chưa thành niên",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Lao động chưa thành niên là"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D143.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "làm công việc hoặc làm việc ở nơi làm việc",
+     "chu_the": {
+      "chu": "Người từ đủ 15 tuổi đến chưa đủ 18 tuổi",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người từ đủ 15 tuổi đến chưa đủ 18 tuổi không được làm công việc hoặc làm việc ở nơi làm việc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "targets": [
+      "BLLD_45-2019.D147"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "quy định tại Điều 147 của Bộ luật này"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D143.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "làm công việc nhẹ",
+     "chu_the": {
+      "chu": "Người từ đủ 13 tuổi đến chưa đủ 15 tuổi",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo danh mục do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Người từ đủ 13 tuổi đến chưa đủ 15 tuổi chỉ được làm công việc nhẹ",
+      "theo danh mục do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D143.K4",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "làm các công việc",
+     "chu_the": {
+      "chu": "Người chưa đủ 13 tuổi",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người chưa đủ 13 tuổi chỉ được làm các công việc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "targets": [
+      "BLLD_45-2019.D145.K3"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "theo quy định tại khoản 3 Điều 145 của Bộ luật này"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Thay đổi sản phẩm hoặc cơ cấu sản phẩm.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thay đổi sản phẩm hoặc cơ cấu sản phẩm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-cywDa7uIFemZ0-kP4Py4kAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 699
+   },
+   "input_tokens": 910,
+   "output_tokens": 734,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_1241fcf58dcd49eae5a3e5ac"
+   }
+  }
+ }
+}

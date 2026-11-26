@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Ít nhất 45 ngày đối với hợp đồng lao động không xác định thời hạn;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Ít nhất 45 ngày đối với hợp đồng lao động không xác định thời hạn\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538408487-510aac20",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 302
+   },
+   "input_tokens": 2391,
+   "output_tokens": 42,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_e1a1b407fa6dde0c6d2bd298"
+   }
+  }
+ }
+}

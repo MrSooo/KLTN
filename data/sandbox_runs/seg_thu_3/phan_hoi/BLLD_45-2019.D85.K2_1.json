@@ -1,0 +1,30 @@
+{
+ "cau": "Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp được rút khỏi thỏa ước lao động tập thể khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp có khó khăn đặc biệt trong hoạt động sản xuất, kinh doanh.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp được rút khỏi thỏa ước lao động tập thể\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"trừ trường hợp có khó khăn đặc biệt trong hoạt động sản xuất, kinh doanh\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-5J4Da9ShEoSfrfcPio_4oAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1689
+   },
+   "input_tokens": 981,
+   "output_tokens": 1826,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d87651a3abb11e94cfd7ac4b"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D61.K3",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": true,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D61.K3\",\n \"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động tuyển người vào học nghề, tập nghề để làm việc cho mình thì không phải đăng ký hoạt động giáo dục nghề nghiệp; không được thu học phí; phải ký hợp đồng đào tạo theo quy định của Luật Giáo dục nghề nghiệp.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Người sử dụng lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m3\",\n      \"s1.m4\",\n      \"s1.m5\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tuyển người vào học nghề, tập nghề\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"làm việc cho mình\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"không phải đăng ký hoạt động giáo dục nghề nghiệp\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"không được thu học phí\"\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"phải ký hợp đồng đào tạo theo quy định của Luật Giáo dục nghề nghiệp\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D61.K3\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"tuyển người vào học nghề, tập nghề\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"W\"}],\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"doan\":[\"làm việc cho mình\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m3\",\"doan\":[\"đăng ký hoạt động giáo dục nghề nghiệp\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"phu_dinh\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m4\",\"doan\":[\"thu học phí\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"cam\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m5\",\"doan\":[\"ký hợp đồng đào tạo theo quy định của Luật Giáo dục nghề nghiệp\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"phai\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"doi_so\":[{\"loai\":\"C\"}],\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795552723964-37d37040",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6728
+   },
+   "input_tokens": 3936,
+   "output_tokens": 371,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_3eb720cfa3addbfd34fb2e06"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khi tranh chấp lao động đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết trong thời hạn theo quy định của Bộ luật này thì không bên nào được hành động đơn phương chống lại bên kia.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tranh chấp lao động đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết trong thời hạn theo quy định của Bộ luật này\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không bên nào được hành động đơn phương chống lại bên kia\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795537730544-c6e73050",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 702
+   },
+   "input_tokens": 2420,
+   "output_tokens": 85,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_81f53e72cd99347adcff2d18"
+   }
+  }
+ }
+}

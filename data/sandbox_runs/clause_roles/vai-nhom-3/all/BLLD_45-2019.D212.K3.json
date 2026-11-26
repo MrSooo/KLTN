@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D212.K3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D212.K3\",\n \"tieu_de_dieu\": \"Nội dung quản lý nhà nước về lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tổ chức và tiến hành nghiên cứu khoa học về lao động; thống kê, thông tin về lao động và thị trường lao động, về mức sống, tiền lương và thu nhập của người lao động; quản lý lao động về số lượng, chất lượng và biến động lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Tổ chức\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tiến hành\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"nghiên cứu khoa học về lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thống kê\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thông tin\"\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"về lao động và thị trường lao động, về mức sống, tiền lương và thu nhập của người lao động\",\n     \"ap_cho\": [\n      \"s1.m3\",\n      \"s1.m4\"\n     ]\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"quản lý lao động về số lượng, chất lượng và biến động lao động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D212.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Tổ chức\",\n    \"nghiên cứu khoa học về lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"tiến hành\",\n    \"nghiên cứu khoa học về lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"thống kê\",\n    \"về lao động và thị trường lao động, về mức sống, tiền lương và thu nhập của người lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"lao động\",\n    \"thị trường lao động\",\n    \"mức sống\",\n    \"tiền lương\",\n    \"thu nhập của người lao động\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"doan\": [\n    \"thông tin\",\n    \"về lao động và thị trường lao động, về mức sống, tiền lương và thu nhập của người lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"lao động\",\n    \"thị trường lao động\",\n    \"mức sống\",\n    \"tiền lương\",\n    \"thu nhập của người lao động\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m5\",\n   \"doan\": [\n    \"quản lý lao động về số lượng, chất lượng và biến động lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"số lượng\",\n    \"chất lượng\",\n    \"biến động lao động\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "JP4Ga4DtLtGz1e8P4uKtyAk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1730
+   },
+   "input_tokens": 4427,
+   "output_tokens": 2430,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_137a449bda036e4b865f01a3"
+   }
+  }
+ }
+}

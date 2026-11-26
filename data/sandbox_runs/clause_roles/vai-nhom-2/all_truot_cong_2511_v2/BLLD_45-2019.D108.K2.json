@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D108.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D108.K2\",\n \"tieu_de_dieu\": \"Làm thêm giờ trong trường hợp đặc biệt\",\n \"khoan_cha\": \"Người sử dụng lao động có quyền yêu cầu người lao động làm thêm giờ vào bất kỳ ngày nào mà không bị giới hạn về số giờ làm thêm theo quy định tại Điều 107 của Bộ luật này và người lao động không được từ chối trong trường hợp sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thực hiện các công việc nhằm bảo vệ tính mạng con người, tài sản của cơ quan, tổ chức, cá nhân trong phòng ngừa, khắc phục hậu quả thiên tai, hỏa hoạn, dịch bệnh nguy hiểm và thảm họa, trừ trường hợp có nguy cơ ảnh hưởng đến tính mạng, sức khỏe của người lao động theo quy định của pháp luật về an toàn, vệ sinh lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Thực hiện các công việc\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"bảo vệ tính mạng con người, tài sản của cơ quan, tổ chức, cá nhân trong phòng ngừa, khắc phục hậu quả thiên tai, hỏa hoạn, dịch bệnh nguy hiểm và thảm họa\",\n     \"noi_truoc\": [\n      \"nhằm\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"có nguy cơ ảnh hưởng đến tính mạng, sức khỏe của người lao động theo quy định của pháp luật về an toàn, vệ sinh lao động\",\n     \"noi_truoc\": [\n      \"trừ trường hợp\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D108.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Thực hiện các công việc\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"bảo vệ tính mạng con người, tài sản của cơ quan, tổ chức, cá nhân trong phòng ngừa, khắc phục hậu quả thiên tai, hỏa hoạn, dịch bệnh nguy hiểm và thảm họa\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"thiên tai\",\n    \"hỏa hoạn\",\n    \"dịch bệnh nguy hiểm\",\n    \"thảm họa\"\n   ]\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"có nguy cơ ảnh hưởng đến tính mạng, sức khỏe của người lao động theo quy định của pháp luật về an toàn, vệ sinh lao động\"\n   ],\n   \"vai\": \"ngoai_le\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"chua_ro\": [\n  {\n   \"thanh_phan\": \"chu_the\",\n   \"nguyen_nhan\": \"chu_the\",\n   \"cau_hoi\": \"Chủ thể của hành vi 'Thực hiện các công việc' kế thừa từ khoản cha là 'Người sử dụng lao động' hay 'người lao động' hay để trống?\"\n  },\n  {\n   \"thanh_phan\": \"s1.m2\",\n   \"nguyen_nhan\": \"tach_hay_giu_chung\",\n   \"cau_hoi\": \"Cụm 'trong phòng ngừa, khắc phục hậu quả...' có tách thành dòng dieu_kien riêng hay giữ chung trong doan của s1.m2?\"\n  },\n  {\n   \"thanh_phan\": \"s1.m3\",\n   \"nguyen_nhan\": \"tach_hay_giu_chung\",\n   \"cau_hoi\": \"Cụm căn cứ 'theo quy định của pháp luật về an toàn, vệ sinh lao động' có tách thành dòng dieu_kien riêng hay giữ chung trong dòng ngoại lệ s1.m3?\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "6XEGa93jK-eu2roPoLvBmQM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 29215
+   },
+   "input_tokens": 4075,
+   "output_tokens": 2464,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_2906bef0e98709403358ed82"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D135.K4",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D135.K4\",\n \"tieu_de_dieu\": \"Chính sách của Nhà nước\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Có chính sách giảm thuế đối với người sử dụng lao động có sử dụng nhiều lao động nữ theo quy định của pháp luật về thuế.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Có chính sách giảm thuế đối với người sử dụng lao động có sử dụng nhiều lao động nữ theo quy định của pháp luật về thuế\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D135.K4\",\n  \"bo_qua\": \"khong_quy_pham\",\n  \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795545693851-7e72b382",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 863
+   },
+   "input_tokens": 3656,
+   "output_tokens": 43,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_cc6b508cffee1605583001c2"
+   }
+  }
+ }
+}

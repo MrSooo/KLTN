@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Độ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Độ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trường hợp quy định tại Mục 1 Chương XI của Bộ luật này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-3rUFa6KwHaD11e8PwonhoAg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 829
+   },
+   "input_tokens": 2269,
+   "output_tokens": 903,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_8861983b4d9865eb339ed139"
+   }
+  }
+ }
+}

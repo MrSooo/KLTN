@@ -1,0 +1,66 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D28",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện công việc theo hợp đồng lao động",
+     "chu_the": {
+      "chu": "người lao động đã giao kết hợp đồng",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Công việc theo hợp đồng lao động phải do người lao động đã giao kết hợp đồng thực hiện"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Câu bị động 'phải do ... thực hiện' đưa về lõi chủ động, chủ thể là người lao động đã giao kết."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện địa điểm làm việc theo hợp đồng lao động",
+     "chu_the": {
+      "chu": "Địa điểm làm việc",
+      "loai": "J",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Địa điểm làm việc được thực hiện theo hợp đồng lao động"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "'được thực hiện' là bị động mô tả, giữ một mệnh đề."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "trich": [
+      "trừ trường hợp hai bên có thỏa thuận khác"
+     ],
+     "targets": [],
+     "gan_vao": 1,
+     "quy_tac": "q2",
+     "chua_ro": [
+      {
+       "thanh_phan": "trừ trường hợp hai bên có thỏa thuận khác",
+       "nguyen_nhan": "khac",
+       "cau_hoi": "Ngoại lệ không có mục dan_chieu tương ứng; có cần gắn target nào không?"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

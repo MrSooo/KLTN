@@ -1,0 +1,30 @@
+{
+ "cau": "Ngoài thời gian nghỉ quy định tại khoản 1 Điều này, người sử dụng lao động bố trí cho người lao động các đợt nghỉ giải lao và ghi vào nội quy lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Ngoài thời gian nghỉ quy định tại khoản 1 Điều này, người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"bố trí cho người lao động các đợt nghỉ giải lao\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"ghi vào nội quy lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1j4Da_jzJJuw0-kPqK6b6QM",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 624
+   },
+   "input_tokens": 939,
+   "output_tokens": 729,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_02106d6dda1003e7622ce13b"
+   }
+  }
+ }
+}

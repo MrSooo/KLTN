@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D212.K2",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D212.K2\",\n \"tieu_de_dieu\": \"Nội dung quản lý nhà nước về lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Theo dõi, thống kê, cung cấp thông tin về cung cầu và biến động cung, cầu lao động; quyết định chính sách tiền lương đối với người lao động; quyết định chính sách, quy hoạch, kế hoạch về nguồn nhân lực, phân bố và sử dụng lao động toàn xã hội, giáo dục nghề nghiệp, phát triển kỹ năng nghề; xây dựng khung trình độ kỹ năng nghề quốc gia, khung trình độ quốc gia Việt Nam đối với các trình độ thuộc giáo dục nghề nghiệp.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Theo dõi\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thống kê\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"cung cấp\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"thông tin về cung cầu và biến động cung, cầu lao động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"quyết định chính sách tiền lương đối với người lao động\"\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"quyết định chính sách, quy hoạch, kế hoạch về nguồn nhân lực, phân bố và sử dụng lao động toàn xã hội, giáo dục nghề nghiệp, phát triển kỹ năng nghề\"\n    },\n    {\n     \"id\": \"s1.m6\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"xây dựng khung trình độ kỹ năng nghề quốc gia, khung trình độ quốc gia Việt Nam đối với các trình độ thuộc giáo dục nghề nghiệp\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Quy định danh mục nghề chỉ được sử dụng lao động đã qua đào tạo giáo dục nghề nghiệp hoặc có chứng chỉ kỹ năng nghề quốc gia.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Quy định danh mục nghề chỉ được sử dụng lao động đã qua đào tạo giáo dục nghề nghiệp hoặc có chứng chỉ kỹ năng nghề quốc gia\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D212.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Theo dõi\",\n    \"thông tin về cung cầu và biến động cung, cầu lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"thống kê\",\n    \"thông tin về cung cầu và biến động cung, cầu lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"cung cấp\",\n    \"thông tin về cung cầu và biến động cung, cầu lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"doan\": [\n    \"quyết định chính sách tiền lương đối với người lao động\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m5\",\n   \"doan\": [\n    \"quyết định chính sách, quy hoạch, kế hoạch về nguồn nhân lực, phân bố và sử dụng lao động toàn xã hội, giáo dục nghề nghiệp, phát triển kỹ năng nghề\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m6\",\n   \"doan\": [\n    \"xây dựng khung trình độ kỹ năng nghề quốc gia, khung trình độ quốc gia Việt Nam đối với các trình độ thuộc giáo dục nghề nghiệp\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"khung trình độ kỹ năng nghề quốc gia\",\n    \"khung trình độ quốc gia Việt Nam đối với các trình độ thuộc giáo dục nghề nghiệp\"\n   ]\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"Quy định danh mục nghề chỉ được sử dụng lao động đã qua đào tạo giáo dục nghề nghiệp hoặc có chứng chỉ kỹ năng nghề quốc gia\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "JP4Ga6mcG_OZvr0PvMX1-AY",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1716
+   },
+   "input_tokens": 4591,
+   "output_tokens": 2553,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_2fbdd0844e4250622fb5d2b9"
+   }
+  }
+ }
+}

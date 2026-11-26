@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khi một người lao động đồng thời có nhiều hành vi vi phạm kỷ luật lao động thì chỉ áp dụng hình thức kỷ luật cao nhất tương ứng với hành vi vi phạm nặng nhất.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"một người lao động đồng thời có nhiều hành vi vi phạm kỷ luật lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"chỉ áp dụng hình thức kỷ luật cao nhất tương ứng với hành vi vi phạm nặng nhất\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795537668359-92ba17fa",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 656
+   },
+   "input_tokens": 2414,
+   "output_tokens": 79,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_13d79c65112dc2a1e7441404"
+   }
+  }
+ }
+}

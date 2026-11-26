@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thời giờ làm việc của người chưa đủ 15 tuổi không được quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần; không được làm thêm giờ, làm việc vào ban đêm.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thời giờ làm việc của người chưa đủ 15 tuổi\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"không được quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"không được\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"làm thêm giờ\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"làm việc vào ban đêm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539646091-db1364c1",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3193
+   },
+   "input_tokens": 2417,
+   "output_tokens": 157,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_7227e518ccc210a5913b3b90"
+   }
+  }
+ }
+}

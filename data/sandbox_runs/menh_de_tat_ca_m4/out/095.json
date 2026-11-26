@@ -1,0 +1,258 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D99",
+   "dong": [
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "danh_sach",
+     "trich": [
+      "Trường hợp phải ngừng việc, người lao động được trả lương như sau:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn danh sách các trường hợp trả lương ngừng việc."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D99.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "do lỗi của người sử dụng lao động",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nếu do lỗi của người sử dụng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả đủ tiền lương theo hợp đồng lao động",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trường hợp phải ngừng việc, người lao động được trả lương",
+      "người lao động được trả đủ tiền lương theo hợp đồng lao động"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D99.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "do lỗi của người lao động",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nếu do lỗi của người lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả lương",
+     "chu_the": {
+      "chu": "người đó",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "phu_dinh",
+     "trich": [
+      "người đó không được trả lương"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "phải ngừng việc",
+     "chu_the": {
+      "chu": "những người lao động khác trong cùng đơn vị",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "những người lao động khác trong cùng đơn vị phải ngừng việc"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hoàn cảnh áp dụng riêng cho nhóm lao động khác."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả lương theo mức do hai bên thỏa thuận nhưng không được thấp hơn mức lương tối thiểu",
+     "chu_the": {
+      "chu": "những người lao động khác trong cùng đơn vị",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì được trả lương theo mức do hai bên thỏa thuận nhưng không được thấp hơn mức lương tối thiểu"
+     ],
+     "quy_tac": "q2"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D99.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vì sự cố về điện, nước mà không do lỗi của người sử dụng lao động",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Nếu vì sự cố về điện, nước mà không do lỗi của người sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa, di dời địa điểm hoạt động theo yêu cầu của cơ quan nhà nước có thẩm quyền",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "hoặc do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa, di dời địa điểm hoạt động theo yêu cầu của cơ quan nhà nước có thẩm quyền"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vì lý do kinh tế",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "hoặc vì lý do kinh tế"
+     ],
+     "quy_tac": "q1",
+     "nhom_hoac": "h1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thỏa thuận về tiền lương ngừng việc",
+     "chu_the": {
+      "chu": "hai bên",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì hai bên thỏa thuận về tiền lương ngừng việc"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D99.K3.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "ngừng việc từ 14 ngày làm việc trở xuống",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trường hợp ngừng việc từ 14 ngày làm việc trở xuống"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thỏa thuận tiền lương ngừng việc không thấp hơn mức lương tối thiểu",
+     "chu_the": {
+      "chu": "hai bên",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì hai bên thỏa thuận về tiền lương ngừng việc",
+      "tiền lương ngừng việc được thỏa thuận không thấp hơn mức lương tối thiểu"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D99.K3.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "phải ngừng việc trên 14 ngày làm việc",
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trường hợp phải ngừng việc trên 14 ngày làm việc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thỏa thuận tiền lương ngừng việc nhưng phải bảo đảm tiền lương ngừng việc trong 14 ngày đầu tiên không thấp hơn mức lương tối thiểu",
+     "chu_the": {
+      "chu": "hai bên",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì tiền lương ngừng việc do hai bên thỏa thuận nhưng phải bảo đảm tiền lương ngừng việc trong 14 ngày đầu tiên không thấp hơn mức lương tối thiểu"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

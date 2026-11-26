@@ -1,0 +1,30 @@
+{
+ "cau": "Người sử dụng lao động không được gây khó khăn, cản trở hoặc can thiệp vào quá trình tổ chức đại diện người lao động tiến hành lấy ý kiến về đình công.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động không được\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"gây khó khăn\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"cản trở\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"can thiệp\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"vào quá trình tổ chức đại diện người lao động tiến hành lấy ý kiến về đình công\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-IFIDa-etEt2H2roPj7bO2Ac",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1370
+   },
+   "input_tokens": 937,
+   "output_tokens": 1520,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_09ac5ab98cf630f2c4fa15dd"
+   }
+  }
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D78.K3",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D78.K3\",\n \"tieu_de_dieu\": \"Hiệu lực và thời hạn của thỏa ước lao động tập thể\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thỏa ước lao động tập thể có thời hạn từ 01 năm đến 03 năm.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Thỏa ước lao động tập thể có thời hạn từ 01 năm đến 03 năm\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Thời hạn cụ thể do các bên thỏa thuận và ghi trong thỏa ước lao động tập thể.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"Thời hạn cụ thể do các bên\",\n     \"ap_cho\": [\n      \"s2.m1\",\n      \"s2.m2\"\n     ]\n    },\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thỏa thuận\"\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"ghi trong thỏa ước lao động tập thể\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Các bên có quyền thỏa thuận thời hạn khác nhau đối với các nội dung của thỏa ước lao động tập thể.\",\n   \"doan\": [\n    {\n     \"id\": \"s3.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Các bên có quyền thỏa thuận thời hạn khác nhau đối với các nội dung của thỏa ước lao động tập thể\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D78.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"có thời hạn từ 01 năm đến 03 năm\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Thỏa ước lao động tập thể\",\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"Thời hạn cụ thể\",\n    \"thỏa thuận\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"doan\": [\n    \"Thời hạn cụ thể\",\n    \"ghi trong thỏa ước lao động tập thể\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s3.m1\",\n   \"doan\": [\n    \"thỏa thuận thời hạn khác nhau đối với các nội dung của thỏa ước lao động tập thể\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Các bên\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "s_oGa9u5Ob-30-kPxai_mAM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 2030,
+   "completion_tokens_details": {
+    "reasoning_tokens": 3275
+   },
+   "input_tokens": 2346,
+   "output_tokens": 3822,
+   "prompt_tokens_details": {
+    "cached_tokens": 2030
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_9f97aa2b5623de1e900d6112"
+   }
+  }
+ }
+}

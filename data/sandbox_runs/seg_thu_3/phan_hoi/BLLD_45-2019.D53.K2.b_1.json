@@ -1,0 +1,30 @@
+{
+ "cau": "Thay thế người lao động trong thời gian nghỉ thai sản, bị tai nạn lao động, bệnh nghề nghiệp hoặc phải thực hiện các nghĩa vụ công dân;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thay thế người lao động trong thời gian\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"nghỉ thai sản\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bị tai nạn lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"bệnh nghề nghiệp\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"phải thực hiện các nghĩa vụ công dân\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-TC8Da6udNKON1e8PmIm4uQo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 31000
+   },
+   "input_tokens": 931,
+   "output_tokens": 548,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_514e36cf72f9ed4233e95cb0"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trong thời gian thử việc, mỗi bên có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết mà không cần báo trước và không phải bồi thường.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trong thời gian thử việc\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"mỗi bên\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không cần báo trước\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"không phải bồi thường\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795537791514-31cb1971",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4698
+   },
+   "input_tokens": 2410,
+   "output_tokens": 148,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_673b12109834d6a21a805be2"
+   }
+  }
+ }
+}

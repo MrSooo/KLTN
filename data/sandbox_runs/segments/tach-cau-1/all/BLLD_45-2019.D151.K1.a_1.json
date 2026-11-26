@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Đủ 18 tuổi trở lên\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có năng lực hành vi dân sự đầy đủ\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539687852-174c47c7",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 284
+   },
+   "input_tokens": 2391,
+   "output_tokens": 57,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_29ad3430d1427075457edfbc"
+   }
+  }
+ }
+}

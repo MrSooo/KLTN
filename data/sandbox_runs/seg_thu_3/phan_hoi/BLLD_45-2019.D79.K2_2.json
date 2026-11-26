@@ -1,0 +1,27 @@
+{
+ "cau": "Quy định của người sử dụng lao động chưa phù hợp với thỏa ước lao động tập thể thì phải được sửa đổi cho phù hợp; trong thời gian chưa sửa đổi thì thực hiện theo nội dung tương ứng của thỏa ước lao động tập thể.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\"id\": \"m1\", \"loai\": \"menh_de\", \"chu\": \"Quy định của người sử dụng lao động chưa phù hợp với thỏa ước lao động tập thể\"},\n    {\"id\": \"m2\", \"loai\": \"menh_de\", \"chu\": \"phải được sửa đổi cho phù hợp\"},\n    {\"id\": \"m3\", \"loai\": \"menh_de\", \"chu\": \"trong thời gian chưa sửa đổi\"},\n    {\"id\": \"m4\", \"loai\": \"menh_de\", \"chu\": \"thực hiện theo nội dung tương ứng của thỏa ước lao động tập thể\"}\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-YzcDa60V-6320w_EuoqABw",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 950,
+   "output_tokens": 162,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_6e57817ac6fd78e9a02fc14e"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Đồng ý hay không đồng ý đình công;",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Đồng ý\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không đồng ý\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"đình công\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-xLIFa9WgMNGN1e8P3_LJyQ8",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 392
+   },
+   "input_tokens": 2245,
+   "output_tokens": 468,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ad614ddde19f63fc53ff4d70"
+   }
+  }
+ }
+}

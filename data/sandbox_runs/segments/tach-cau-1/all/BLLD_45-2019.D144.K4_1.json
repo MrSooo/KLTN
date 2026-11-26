@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động phải tạo cơ hội để lao động chưa thành niên được học văn hóa, giáo dục nghề nghiệp, đào tạo, bồi dưỡng, nâng cao trình độ kỹ năng nghề.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"Người sử dụng lao động phải tạo cơ hội\"\n    },\n    {\n      \"id\": \"c1\",\n      \"loai\": \"dung_chung\",\n      \"chu\": \"lao động chưa thành niên được\",\n      \"ap_cho\": [\"m2\", \"m3\", \"m4\", \"m5\", \"m6\"]\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"học văn hóa\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"giáo dục nghề nghiệp\"\n    },\n    {\n      \"id\": \"m4\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"đào tạo\"\n    },\n    {\n      \"id\": \"m5\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"bồi dưỡng\"\n    },\n    {\n      \"id\": \"m6\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"nâng cao trình độ kỹ năng nghề\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539628639-6efee146",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2727
+   },
+   "input_tokens": 2415,
+   "output_tokens": 279,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_0b9147c4705f00944a063433"
+   }
+  }
+ }
+}

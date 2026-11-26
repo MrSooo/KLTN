@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Cơ cấu tổ chức, nhiệm kỳ, người đại diện của tổ chức;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Cơ cấu tổ chức, nhiệm kỳ, người đại diện của tổ chức\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539994454-7af1f51c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 404
+   },
+   "input_tokens": 2389,
+   "output_tokens": 36,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a0ef218c948f192cf4df7764"
+   }
+  }
+ }
+}

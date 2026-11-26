@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Tiếp tục thỏa thuận để giải quyết nội dung tranh chấp lao động tập thể hoặc cùng đề nghị hòa giải viên lao động, Hội đồng trọng tài lao động tiến hành hòa giải, giải quyết tranh chấp lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Tiếp tục thỏa thuận\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"giải quyết nội dung tranh chấp lao động tập thể\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"cùng đề nghị hòa giải viên lao động, Hội đồng trọng tài lao động tiến hành hòa giải, giải quyết tranh chấp lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540344454-d3c4cce9",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1731
+   },
+   "input_tokens": 2420,
+   "output_tokens": 101,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_63e672c666205f030969b8fb"
+   }
+  }
+ }
+}

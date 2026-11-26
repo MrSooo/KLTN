@@ -1,0 +1,30 @@
+{
+ "cau": "Phải thỏa thuận bằng văn bản với ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở khi đơn phương chấm dứt hợp đồng lao động, chuyển làm công việc khác, kỷ luật sa thải đối với người lao động là thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Phải thỏa thuận bằng văn bản với ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"đơn phương chấm dứt hợp đồng lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"chuyển làm công việc khác\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"kỷ luật sa thải\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"đối với người lao động là thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở\",\"ap_cho\":[\"m2\",\"m3\",\"m4\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-xk0Da5yEMtWx2roPgJCx0AM",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 720
+   },
+   "input_tokens": 966,
+   "output_tokens": 889,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_e00206bedc65fcc722f0c348"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Việc xử lý kỷ luật lao động được quy định như sau:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Việc xử lý kỷ luật lao động được quy định như sau\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl--EADa4P1D9XN2roPjvmiqAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 351
+   },
+   "input_tokens": 914,
+   "output_tokens": 390,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_0fac64bb66cde470c31731f0"
+   }
+  }
+ }
+}

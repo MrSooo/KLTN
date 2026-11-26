@@ -1,0 +1,30 @@
+{
+ "cau": "Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Các bên thương lượng\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"lựa chọn một hoặc một số nội dung sau\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"để tiến hành thương lượng tập thể\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-BTMDa9OEMNS50-kP2qCpqA4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 23093
+   },
+   "input_tokens": 921,
+   "output_tokens": 356,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d8914cba03cb059e06358853"
+   }
+  }
+ }
+}

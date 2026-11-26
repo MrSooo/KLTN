@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đồ thị Bộ luật Lao động theo ngày</title>
+<style>
+:root{--bg:#f6f7f9;--panel:#fff;--ink:#1b2430;--muted:#5d6b7c;--line:#d5dbe3;--accent:#1f5fbf;
+--doc:#1f3a63;--dieu:#8fa3b8;--sub:#c3ceda;--pl:#a58cc8;--cond:#e8a24a;--ext:#9aa4b0;
+--e-refers:#2a6fdb;--e-exc:#d9730d;--e-link:#2b8a5b;--e-amend:#1b2430;--e-misc:#8a94a3;--e-struct:#c9d1db}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151c;--panel:#18202a;--ink:#e6ebf2;--muted:#93a1b3;--line:#2c3744;--accent:#6aa5ff;
+--doc:#7fa6e0;--dieu:#5f7b99;--sub:#3d5068;--pl:#8d77b3;--cond:#d19037;--ext:#76808d;
+--e-refers:#6aa5ff;--e-exc:#f0913a;--e-link:#4cc58a;--e-amend:#e6ebf2;--e-misc:#8794a6;--e-struct:#2f3b49}}
+:root[data-theme="dark"]{--bg:#10151c;--panel:#18202a;--ink:#e6ebf2;--muted:#93a1b3;--line:#2c3744;--accent:#6aa5ff;
+--doc:#7fa6e0;--dieu:#5f7b99;--sub:#3d5068;--pl:#8d77b3;--cond:#d19037;--ext:#76808d;
+--e-refers:#6aa5ff;--e-exc:#f0913a;--e-link:#4cc58a;--e-amend:#e6ebf2;--e-misc:#8794a6;--e-struct:#2f3b49}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:flex;flex-direction:column}
+header{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--line)}
+header h1{font-size:15px;margin:0 8px 0 0}
+label{color:var(--muted);font-size:13px}
+input[type=date],input[type=search],select,button{background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:4px 8px;font:inherit}
+button{cursor:pointer}button:hover{border-color:var(--accent)}
+#main{flex:1;display:flex;min-height:0}
+#cy{flex:1;min-width:0;position:relative}
+#side{width:340px;max-width:42vw;background:var(--panel);border-left:1px solid var(--line);overflow:auto;padding:10px 12px}
+#side h2{font-size:14px;margin:12px 0 4px}#side h2:first-child{margin-top:0}
+.k{color:var(--muted)}.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;border:1px solid var(--line);border-radius:12px;padding:1px 8px}
+.sw{width:18px;height:0;border-top:3px solid}.dash{border-top-style:dashed}.dot{border-top-style:dotted}
+#status{position:absolute;left:10px;bottom:8px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:3px 9px;font-size:12px;color:var(--muted);z-index:2}
+ul.edges{list-style:none;margin:4px 0;padding:0;font-size:12.5px}ul.edges li{padding:3px 0;border-bottom:1px solid var(--line);cursor:pointer}
+ul.edges li:hover{background:var(--bg)}.ev{color:var(--muted);display:block}
+table{border-collapse:collapse;font-size:12.5px;width:100%}td,th{border-bottom:1px solid var(--line);padding:2px 4px;text-align:left}
+details{margin:2px 0}summary{cursor:pointer;color:var(--muted)}
+#docs{max-height:200px;overflow:auto;font-size:12.5px}
+@media (max-width:700px){#main{flex-direction:column}#side{width:auto;max-width:none;height:40%;border-left:0;border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Đồ thị Bộ luật Lao động theo ngày hiệu lực</h1>
+  <label>Ngày <input type="date" id="date"></label>
+  <button id="prev" title="mốc có thay đổi trước đó">◀</button><button id="next" title="mốc có thay đổi kế tiếp">▶</button>
+  <label><input type="checkbox" id="inactive"> hiện cả đơn vị không còn hiệu lực (mờ)</label>
+  <label><input type="checkbox" id="struct" checked> cạnh cấu trúc</label>
+  <input type="search" id="q" placeholder="tìm mã hoặc chữ, Enter">
+  <button id="relayout">Xếp lại</button>
+  <button id="theme">Sáng/Tối</button>
+</header>
+<div id="main">
+  <div id="cy"><div id="status">đang dựng…</div></div>
+  <aside id="side">
+    <h2>Loại cạnh</h2><div id="preds" class="row"></div>
+    <h2>Văn bản</h2><div class="row"><button id="allDocs">chọn hết</button><button id="noDocs">bỏ hết</button></div><div id="docs"></div>
+    <h2>Nút đang chọn</h2><div id="info"><span class="k">Bấm một nút. Điều và phụ lục: bấm đúp để mở/thu Khoản, Điểm, dòng.</span></div>
+  </aside>
+</div>
+<script>/*CYTOSCAPE*/</script>
+<script>
+const DATA = /*DATA*/;
+(function(){
+"use strict";
+const NODES = new Map(DATA.nodes.map(n=>[n.id,n]));
+const EDGES = DATA.edges;
+const CHILDREN = new Map();
+for(const n of DATA.nodes){ if(n.parent){ if(!CHILDREN.has(n.parent)) CHILDREN.set(n.parent,[]); CHILDREN.get(n.parent).push(n.id);} }
+const BASE_SHOWN = new Set(["document","dieu","pl","dieu_kien","external"]);   // luôn là nút cấp trên cùng
+const SUB = new Set(["khoan","diem","pl_muc","pl_row"]);                       // chỉ hiện khi cha được mở
+const PRED = {
+  refers_to:{c:"--e-refers",label:"dẫn chiếu",d:""}, exception_of:{c:"--e-exc",label:"ngoại lệ",d:""},
+  details:{c:"--e-link",label:"quy định chi tiết",d:"dash"}, based_on:{c:"--e-link",label:"căn cứ",d:"dot"},
+  amends:{c:"--e-amend",label:"sửa đổi",d:""}, replaces:{c:"--e-amend",label:"thay thế",d:""}, repeals:{c:"--e-amend",label:"bãi bỏ",d:""},
+  expires_by_topic:{c:"--e-amend",label:"hết hiệu lực theo chủ đề",d:"dash"}, overrides:{c:"--e-misc",label:"áp dụng thay",d:"dash"},
+  supplements_list:{c:"--e-misc",label:"bổ sung danh mục",d:"dot"}, pending_on:{c:"--e-misc",label:"chờ sự kiện",d:"dot"},
+  triggers:{c:"--e-misc",label:"kích hoạt",d:"dot"}, ends_when_replaced:{c:"--e-misc",label:"tự hết khi có văn bản thay",d:"dot"},
+  consolidates:{c:"--e-misc",label:"hợp nhất",d:"dot"},
+  parent_changed:{c:"--e-misc",label:"đích được hướng dẫn bị đổi",d:"dot"}, corrects:{c:"--e-misc",label:"đính chính",d:"dot"},
+  suspends:{c:"--e-misc",label:"tạm ngưng",d:"dash"}, renumbered_to:{c:"--e-misc",label:"đánh số lại",d:"dot"}, possible_replacement:{c:"--e-misc",label:"có thể thay thế",d:"dot"}};
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const state = {date:DATA.asOf, expanded:new Set(), docsOn:new Set(DATA.docs.map(d=>d.id)), predsOn:new Set(["refers_to","exception_of","details","based_on","amends","replaces","repeals","expires_by_topic","overrides"]), inactive:false, struct:true, selected:null};
+const $ = id => document.getElementById(id);
+
+function active(n, date){
+  if(!n.intervals.length) return true;
+  return n.intervals.some(iv=>iv[2]==="normal" && (iv[0]===null || iv[0]<=date) && (iv[1]===null || date<iv[1]));
+}
+function statusAt(n, date){
+  if(!n.intervals.length) return "";
+  const iv = n.intervals.find(iv=>(iv[0]===null||iv[0]<=date)&&(iv[1]===null||date<iv[1])) || n.intervals.find(iv=>iv[2]==="pending_event");
+  if(!iv) return n.intervals[0][0] && n.intervals[0][0]>date ? "chưa có hiệu lực" : "đã hết hiệu lực";
+  return iv[2]==="pending_event" ? "chờ sự kiện" : iv[2]==="suspended" ? "tạm ngưng" : "đang có hiệu lực (phiên bản "+iv[3]+")";
+}
+function shown(n){   // nút có được vẽ (trước khi xét ngày)?
+  if(!state.docsOn.has(n.doc) && n.type!=="external") return false;
+  if(BASE_SHOWN.has(n.type)) return true;
+  if(SUB.has(n.type)){ const p = NODES.get(n.parent); return !!p && state.expanded.has(p.id) && shown(p); }
+  return false;
+}
+function displayOf(id){   // nút hiển thị đại diện cho id: tổ tiên (hoặc chính nó) gần nhất đang hiện
+  let n = NODES.get(id);
+  while(n){ if(visible(n)) return n.id; n = NODES.get(n.parent); }
+  return null;
+}
+function visible(n){ return shown(n) && (state.inactive || active(n,state.date) || n.intervals.some(iv=>iv[2]==="pending_event")); }
+
+let cy;
+function build(keepPos){
+  const pos = {}; if(keepPos&&cy) cy.nodes().forEach(x=>{pos[x.id()]=x.position();});
+  const els = [], seen = new Set();
+  const docIdx = new Map(DATA.docs.map((d,i)=>[d.id,i]));
+  const R = 900, N = DATA.docs.length;
+  const counter = new Map();
+  function place(n){
+    if(pos[n.id]) return pos[n.id];
+    const di = docIdx.get(n.doc); const a = 2*Math.PI*(di||0)/N;
+    const cx = R*Math.cos(a), cy0 = R*Math.sin(a);
+    if(n.type==="document") return {x:cx,y:cy0};
+    const k = (counter.get(n.doc)||0)+1; counter.set(n.doc,k);
+    const rr = 50+14*Math.sqrt(k), t = k*2.399963;
+    const base = n.parent && pos[n.parent] ? pos[n.parent] : {x:cx,y:cy0};
+    return {x:base.x+rr*Math.cos(t)*(SUB.has(n.type)?0.4:1), y:base.y+rr*Math.sin(t)*(SUB.has(n.type)?0.4:1)};
+  }
+  for(const n of DATA.nodes){
+    if(!visible(n)) continue;
+    seen.add(n.id);
+    const st = n.intervals.length ? (active(n,state.date)?"on":(n.intervals.some(iv=>iv[2]==="pending_event")?"pending":"off")) : "on";
+    els.push({group:"nodes", data:{id:n.id, label:n.label, type:n.type, st, big:n.type==="document"?1:0, exp:state.expanded.has(n.id)?1:0, hasKids:CHILDREN.has(n.id)&&(n.type==="dieu"||n.type==="pl"||n.type==="pl_muc")?1:0}, position:place(n)});
+  }
+  if(state.struct){
+    for(const n of DATA.nodes){
+      if(!seen.has(n.id)) continue;
+      const up = displayOfParent(n);
+      if(up && seen.has(up)) els.push({group:"edges", data:{id:"st:"+n.id, source:up, target:n.id, p:"struct"}});
+    }
+  }
+  const agg = new Map();
+  for(const e of EDGES){
+    if(!state.predsOn.has(e.p)) continue;
+    if(e.effective && e.effective>state.date && e.source==="versions") continue;
+    const s = displayOf(e.s), o = displayOf(e.o);
+    if(!s || !o || s===o || !seen.has(s) || !seen.has(o)) continue;
+    const key = s+"|"+e.p+"|"+o; let a = agg.get(key);
+    if(!a){ a={id:"e:"+agg.size, source:s, target:o, p:e.p, cnt:0, ev:[]}; agg.set(key,a); }
+    a.cnt++; if(a.ev.length<3) a.ev.push(e.evidence);
+  }
+  for(const a of agg.values()) els.push({group:"edges", data:{id:a.id, source:a.source, target:a.target, p:a.p, cnt:a.cnt, ev:a.ev.join(" | ")}});
+  if(cy) cy.destroy();
+  cy = cytoscape({container:$("cy"), elements:els, layout:{name:"preset"}, minZoom:0.05, maxZoom:4, wheelSensitivity:0.3, style:styleSheet()});
+  cy.on("tap","node",ev=>select(ev.target.id()));
+  cy.on("dbltap","node",ev=>toggle(ev.target.id()));
+  cy.on("tap","edge",ev=>edgeInfo(ev.target));
+  $("status").textContent = cy.nodes().length+" nút, "+cy.edges().filter(e=>e.data("p")!=="struct").length+" cạnh ngữ nghĩa · ngày "+state.date;
+  return keepPos;
+}
+function displayOfParent(n){ let p = NODES.get(n.parent); while(p){ if(visible(p)) return p.id; p = NODES.get(p.parent);} return null; }
+
+function styleSheet(){
+  const st = [
+    {selector:"node", style:{label:"data(label)", "font-size":9, color:css("--ink"), "text-valign":"center", "text-halign":"center", width:16, height:16,
+      "background-color":css("--dieu"), "border-width":1, "border-color":css("--line"), "text-wrap":"none", "text-outline-width":2, "text-outline-color":css("--bg")}},
+    {selector:'node[type="document"]', style:{width:44, height:44, "background-color":css("--doc"), "font-size":10, "font-weight":700, color:"#fff", "text-outline-width":0, "text-wrap":"wrap", "text-max-width":60}},
+    {selector:'node[type="dieu"]', style:{width:20, height:20}},
+    {selector:'node[type="khoan"],node[type="diem"],node[type="pl_muc"],node[type="pl_row"]', style:{width:11, height:11, "background-color":css("--sub"), "font-size":8}},
+    {selector:'node[type="pl"]', style:{shape:"round-rectangle", width:26, height:20, "background-color":css("--pl")}},
+    {selector:'node[type="dieu_kien"]', style:{shape:"diamond", width:18, height:18, "background-color":css("--cond")}},
+    {selector:'node[type="external"]', style:{shape:"round-tag", width:22, height:16, "background-color":css("--ext")}},
+    {selector:"node[hasKids=1]", style:{"border-width":2, "border-color":css("--accent")}},
+    {selector:"node[exp=1]", style:{"border-style":"double", "border-width":4}},
+    {selector:'node[st="off"]', style:{opacity:0.35, "border-style":"dashed"}},
+    {selector:'node[st="pending"]', style:{opacity:0.7, "border-style":"dotted", "border-width":2}},
+    {selector:"node:selected", style:{"border-width":4, "border-color":css("--e-exc")}},
+    {selector:"edge", style:{width:1.4, "curve-style":"bezier", opacity:0.8, "target-arrow-shape":"triangle", "arrow-scale":0.7}},
+    {selector:'edge[p="struct"]', style:{width:0.6, "line-color":css("--e-struct"), "target-arrow-shape":"none", opacity:0.9}},
+    {selector:"edge[cnt>1]", style:{width:"mapData(cnt,1,12,1.6,5)"}}];
+  for(const [p,d] of Object.entries(PRED)){
+    st.push({selector:'edge[p="'+p+'"]', style:{"line-color":css(d.c), "target-arrow-color":css(d.c), "line-style":d.d||"solid"}});
+  }
+  return st;
+}
+function toggle(id){
+  const n = NODES.get(id); if(!n || !CHILDREN.has(id)) return;
+  if(state.expanded.has(id)){ state.expanded.delete(id); (function drop(x){ for(const c of CHILDREN.get(x)||[]){ state.expanded.delete(c); drop(c);} })(id); }
+  else state.expanded.add(id);
+  rebuild(true);
+}
+function layout(){
+  const status = $("status"); status.textContent = "đang xếp bố cục…";
+  setTimeout(()=>{
+    const l = cy.layout({name:"cose", animate:false, randomize:false, fit:true, padding:30, numIter:350, idealEdgeLength:()=>70, nodeRepulsion:()=>9000, edgeElasticity:()=>80, gravity:0.4, nestingFactor:1});
+    l.run(); status.textContent = cy.nodes().length+" nút, "+cy.edges().filter(e=>e.data("p")!=="struct").length+" cạnh ngữ nghĩa · ngày "+state.date;
+  }, 30);
+}
+function rebuild(keep){ build(keep); layout(); if(state.selected && cy.getElementById(state.selected).length) cy.getElementById(state.selected).select(); }
+function esc(s){ return String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+function select(id){
+  state.selected = id; const n = NODES.get(id); if(!n) return;
+  const ivs = n.intervals.map(iv=>"<tr><td>v"+iv[3]+"</td><td>"+(iv[0]||"?")+"</td><td>"+(iv[1]||"…")+"</td><td>"+iv[2]+"</td></tr>").join("");
+  const out = EDGES.filter(e=>e.s===id), inn = EDGES.filter(e=>e.o===id);
+  const li = (e,dir)=>'<li data-id="'+esc(dir?e.o:e.s)+'"><b>'+esc((PRED[e.p]||{label:e.p}).label)+'</b> '+(dir?"→":"←")+' '+esc(dir?e.o:e.s)+'<span class="ev">'+esc(e.evidence)+'</span></li>';
+  $("info").innerHTML = '<div><b>'+esc(n.id)+'</b></div><div class="k">'+esc(n.type)+(n.label_class?" · nhãn "+esc(n.label_class):"")+' · '+esc(statusAt(n,state.date))+'</div>'
+    +(n.heading?'<div><b>'+esc(n.heading)+'</b></div>':'')+(n.text?'<div>'+esc(n.text)+'</div>':'')
+    +(n.flags.length?'<div class="k">cờ: '+esc(n.flags.join(", "))+'</div>':'')
+    +(ivs?'<details open><summary>Phiên bản và khoảng hiệu lực</summary><table><tr><th></th><th>từ</th><th>đến (trước)</th><th>trạng thái</th></tr>'+ivs+'</table></details>':'')
+    +'<details open><summary>Cạnh đi ra ('+out.length+')</summary><ul class="edges">'+out.slice(0,60).map(e=>li(e,1)).join("")+'</ul></details>'
+    +'<details><summary>Cạnh đi vào ('+inn.length+')</summary><ul class="edges">'+inn.slice(0,60).map(e=>li(e,0)).join("")+'</ul></details>';
+  $("info").querySelectorAll("li").forEach(x=>x.addEventListener("click",()=>reveal(x.dataset.id)));
+}
+function edgeInfo(e){ $("info").innerHTML = '<div><b>'+esc((PRED[e.data("p")]||{label:e.data("p")}).label)+'</b> ('+(e.data("cnt")||1)+' cạnh)</div><div>'+esc(e.source().id())+' → '+esc(e.target().id())+'</div><div class="ev">'+esc(e.data("ev")||"")+'</div>'; }
+function reveal(id){   // mở các tổ tiên để nút hiện ra rồi chọn
+  const n = NODES.get(id); if(!n) return;
+  let p = NODES.get(n.parent); const chain = [];
+  while(p){ chain.push(p.id); p = NODES.get(p.parent); }
+  if(!state.docsOn.has(n.doc)){ state.docsOn.add(n.doc); renderDocs(); }
+  for(const c of chain){ if(CHILDREN.has(c) && NODES.get(c).type!=="document" && NODES.get(c).type!=="chuong" && NODES.get(c).type!=="muc") state.expanded.add(c); }
+  rebuild(true);
+  const t = cy.getElementById(displayOf(id)||""); if(t.length){ cy.elements().unselect(); t.select(); cy.animate({center:{eles:t}, zoom:1.6}, {duration:250}); select(t.id()); }
+}
+function renderDocs(){
+  $("docs").innerHTML = DATA.docs.map(d=>'<label style="display:block;color:var(--ink)"><input type="checkbox" data-d="'+esc(d.id)+'" '+(state.docsOn.has(d.id)?"checked":"")+'> '+esc(d.id)+' <span class="k">'+esc(d.title)+'</span></label>').join("");
+  $("docs").querySelectorAll("input").forEach(i=>i.addEventListener("change",()=>{ i.checked?state.docsOn.add(i.dataset.d):state.docsOn.delete(i.dataset.d); rebuild(true); }));
+}
+function renderPreds(){
+  $("preds").innerHTML = Object.entries(PRED).map(([p,d])=>'<label class="chip"><input type="checkbox" data-p="'+p+'" '+(state.predsOn.has(p)?"checked":"")+'><span class="sw '+(d.d||"")+'" style="border-color:var('+d.c+')"></span>'+d.label+'</label>').join("");
+  $("preds").querySelectorAll("input").forEach(i=>i.addEventListener("change",()=>{ i.checked?state.predsOn.add(i.dataset.p):state.predsOn.delete(i.dataset.p); rebuild(true); }));
+}
+function jump(dir){
+  const ds = DATA.dates, cur = state.date; let t = null;
+  if(dir>0) t = ds.find(d=>d>cur); else for(let i=ds.length-1;i>=0;i--) if(ds[i]<cur){ t = ds[i]; break; }
+  if(t){ state.date = t; $("date").value = t; rebuild(true); }
+}
+$("date").value = state.date; $("date").addEventListener("change",e=>{ if(e.target.value){ state.date = e.target.value; rebuild(true);} });
+$("prev").onclick=()=>jump(-1); $("next").onclick=()=>jump(1);
+$("inactive").onchange=e=>{ state.inactive = e.target.checked; rebuild(true); };
+$("struct").onchange=e=>{ state.struct = e.target.checked; rebuild(true); };
+$("relayout").onclick=()=>rebuild(false);
+$("allDocs").onclick=()=>{ DATA.docs.forEach(d=>state.docsOn.add(d.id)); renderDocs(); rebuild(true); };
+$("noDocs").onclick=()=>{ state.docsOn.clear(); renderDocs(); rebuild(true); };
+$("theme").onclick=()=>{ const r=document.documentElement; r.dataset.theme = (r.dataset.theme==="dark"|| (!r.dataset.theme && matchMedia("(prefers-color-scheme:dark)").matches)) ? "light":"dark"; rebuild(true); };
+$("q").addEventListener("keydown",e=>{
+  if(e.key!=="Enter") return;
+  const q = e.target.value.trim().toLowerCase(); if(!q) return;
+  const hit = DATA.nodes.find(n=>n.id.toLowerCase()===q) || DATA.nodes.find(n=>n.id.toLowerCase().includes(q)) || DATA.nodes.find(n=>(n.heading+" "+n.text).toLowerCase().includes(q));
+  if(hit) reveal(hit.id); else $("status").textContent = "không thấy: "+q;
+});
+// Trạng thái mở sẵn qua phần # của URL: #date=2023-09-17&doc=ND_152-2020&open=ND_152-2020.D7&inactive=1&probe=1
+const H = new URLSearchParams(location.hash.slice(1));
+if(H.get("date")){ state.date = H.get("date"); $("date").value = state.date; }
+if(H.get("inactive")==="1"){ state.inactive = true; $("inactive").checked = true; }
+if(H.get("doc")){ state.docsOn = new Set(H.get("doc").split(",")); }
+for(const id of (H.get("open")||"").split(",").filter(Boolean)){ let n = NODES.get(id); while(n){ if(CHILDREN.has(n.id) && !["document","chuong","muc"].includes(n.type)) state.expanded.add(n.id); n = NODES.get(n.parent); } }
+renderPreds(); renderDocs(); rebuild(false);
+if(H.get("probe")){ const pre = document.createElement("pre"); pre.id = "probe"; pre.textContent = cy.nodes().map(x=>x.id()).join("\n"); document.body.appendChild(pre); }
+window.__A8_READY__ = true;
+document.title = "Đồ thị Bộ luật Lao động theo ngày [sẵn sàng: "+DATA.nodes.length+" nút]";
+})();
+</script>
+</body>
+</html>

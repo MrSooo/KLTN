@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D6.K1.c",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D6.K1.c\",\n \"tieu_de_dieu\": \"1:Quyền 2:và 3:nghĩa 4:vụ 5:của 6:người 7:sử 8:dụng 9:lao 10:động\",\n \"khoan_cha\": \"1:Người 2:sử 3:dụng 4:lao 5:động 6:có 7:các 8:quyền 9:sau 10:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Yêu cầu tổ chức đại diện người lao động thương lượng với mục đích ký kết thỏa ước lao động tập thể; tham gia giải quyết tranh chấp lao động, đình công; đối thoại, trao đổi với tổ chức đại diện người lao động về các vấn đề trong quan hệ lao động, cải thiện đời sống vật chất và tinh thần của người lao động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Yêu 2:cầu 3:tổ 4:chức 5:đại 6:diện 7:người 8:lao 9:động 10:thương 11:lượng 12:với 13:mục 14:đích 15:ký 16:kết 17:thỏa 18:ước 19:lao 20:động 21:tập 22:thể\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tham 2:gia 3:giải 4:quyết 5:tranh 6:chấp 7:lao 8:động, 9:đình 10:công\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:đối 2:thoại\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:trao 2:đổi\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:với 2:tổ 3:chức 4:đại 5:diện 6:người 7:lao 8:động 9:về 10:các 11:vấn 12:đề 13:trong 14:quan 15:hệ 16:lao 17:động, 18:cải 19:thiện 20:đời 21:sống 22:vật 23:chất 24:và 25:tinh 26:thần 27:của 28:người 29:lao 30:động\",\n     \"ap_cho\": [\n      \"s1.m3\",\n      \"s1.m4\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D6.K1.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-22\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-4\"\n   ],\n   \"liet_ke\": [\n    [\n     \"s1.m2:5-8\"\n    ],\n    [\n     \"s1.m2:9-10\"\n    ]\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:1-2\",\n    \"s1.c1:1-30\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"loi\": [\n    \"s1.m4:1-2\",\n    \"s1.c1:1-30\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-dd4c380f3a8943e6948364a1bdb1458e",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2012
+   },
+   "input_tokens": 6312,
+   "output_tokens": 2657,
+   "x_ckey": {
+    "cost": 14.4,
+    "cost_is_estimate": false,
+    "request_id": "req_8a1815ff8d2a9c10dac016aa"
+   }
+  }
+ }
+}

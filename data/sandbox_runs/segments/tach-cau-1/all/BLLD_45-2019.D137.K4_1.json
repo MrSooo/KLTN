@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Lao động nữ trong thời gian hành kinh được nghỉ mỗi ngày 30 phút, trong thời gian nuôi con dưới 12 tháng tuổi được nghỉ mỗi ngày 60 phút trong thời gian làm việc.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Lao động nữ\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"trong thời gian hành kinh được nghỉ mỗi ngày 30 phút\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trong thời gian nuôi con dưới 12 tháng tuổi được nghỉ mỗi ngày 60 phút trong thời gian làm việc\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539546943-466be0f1",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1004
+   },
+   "input_tokens": 2414,
+   "output_tokens": 108,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_34301775adc0560d3bded2b5"
+   }
+  }
+ }
+}

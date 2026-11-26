@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Hòa giải không thành hoặc hết thời hạn hòa giải quy định tại khoản 2 Điều 188 của Bộ luật này mà hòa giải viên lao động không tiến hành hòa giải;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Hòa giải không thành\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hết thời hạn hòa giải quy định tại khoản 2 Điều 188 của Bộ luật này\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hòa giải viên lao động không tiến hành hòa giải\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540300638-54d3aae5",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 754
+   },
+   "input_tokens": 2409,
+   "output_tokens": 90,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a8d934d07cfc7ab907cbf44b"
+   }
+  }
+ }
+}

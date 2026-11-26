@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Mang thai từ tháng thứ 07 hoặc từ tháng thứ 06 nếu làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Mang thai\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"từ tháng thứ 07\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"từ tháng thứ 06\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539532370-eba74948",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2111
+   },
+   "input_tokens": 2407,
+   "output_tokens": 116,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_3388249a273a6874ca326be1"
+   }
+  }
+ }
+}

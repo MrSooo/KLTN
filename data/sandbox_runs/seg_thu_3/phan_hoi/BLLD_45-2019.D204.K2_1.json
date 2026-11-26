@@ -1,0 +1,30 @@
+{
+ "cau": "Không do tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Không do tổ chức đại diện người lao động có quyền\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tổ chức\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"lãnh đạo\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"đình công\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-k1IDa4GqF_rCvr0Pkt31gAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2133
+   },
+   "input_tokens": 919,
+   "output_tokens": 460,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d5e797e990e157da5889438e"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp doanh nghiệp có nhiều tổ chức đại diện người lao động tại cơ sở mà không có tổ chức nào đáp ứng quy định tại khoản 1 Điều này thì các tổ chức có quyền tự nguyện kết hợp với nhau để yêu cầu thương lượng tập thể nhưng tổng số thành viên của các tổ chức này phải đạt tỷ lệ tối thiểu theo quy định tại khoản 1 Điều này.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"doanh nghiệp có nhiều tổ chức đại diện người lao động tại cơ sở\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không có tổ chức nào đáp ứng quy định tại khoản 1 Điều này\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"các tổ chức\",\"ap_cho\":[\"m3\",\"m4\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"có quyền tự nguyện kết hợp với nhau\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"yêu cầu thương lượng tập thể\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"tổng số thành viên của các tổ chức này phải đạt tỷ lệ tối thiểu theo quy định tại khoản 1 Điều này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538897684-36759659",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2637
+   },
+   "input_tokens": 2453,
+   "output_tokens": 190,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_286fb6b9bbeb9cf44511cf46"
+   }
+  }
+ }
+}

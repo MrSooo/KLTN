@@ -1,0 +1,30 @@
+{
+ "cau": "Khi hợp đồng lao động bị tuyên bố vô hiệu từng phần thì xử lý như sau:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"hợp đồng lao động bị tuyên bố vô hiệu từng phần\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"xử lý như sau\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-FC8Da_-7DJuy2roP-P7T0QU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 762
+   },
+   "input_tokens": 918,
+   "output_tokens": 821,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_1bea7e46cc129d1098aec69e"
+   }
+  }
+ }
+}

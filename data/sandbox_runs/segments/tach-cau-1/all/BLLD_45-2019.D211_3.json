@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Đối với các nội dung tranh chấp lao động thì tùy từng loại tranh chấp, hướng dẫn, hỗ trợ các bên tiến hành các thủ tục giải quyết tranh chấp lao động theo quy định của Bộ luật này.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Đối với các nội dung tranh chấp lao động thì tùy từng loại tranh chấp\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"hướng dẫn\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hỗ trợ\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"các bên tiến hành các thủ tục giải quyết tranh chấp lao động theo quy định của Bộ luật này\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540491228-5878ea8d",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4889
+   },
+   "input_tokens": 2420,
+   "output_tokens": 141,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_1ee1007c4077ecb41d289e6a"
+   }
+  }
+ }
+}

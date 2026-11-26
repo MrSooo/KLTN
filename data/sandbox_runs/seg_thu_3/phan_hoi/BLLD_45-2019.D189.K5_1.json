@@ -1,0 +1,30 @@
+{
+ "cau": "Trường hợp một trong các bên không thi hành quyết định giải quyết tranh chấp của Ban trọng tài lao động thì các bên có quyền yêu cầu Tòa án giải quyết.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Trường hợp một trong các bên không thi hành quyết định giải quyết tranh chấp của Ban trọng tài lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"các bên có quyền yêu cầu Tòa án giải quyết\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-x08Da96bHI3u2roP9pCJuQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6060
+   },
+   "input_tokens": 935,
+   "output_tokens": 300,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_702daefad88c9eee8450437c"
+   }
+  }
+ }
+}

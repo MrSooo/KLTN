@@ -1,0 +1,27 @@
+{
+ "cau": "Người sử dụng lao động phải bảo đảm trả lương bình đẳng, không phân biệt giới tính đối với người lao động làm công việc có giá trị như nhau.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động phải bảo đảm\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"trả lương bình đẳng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không phân biệt giới tính\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"đối với người lao động làm công việc có giá trị như nhau\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-vzkDa9nfB-m02roP99S90QE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 932,
+   "output_tokens": 124,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_9ae7c00563dc8db3c02523c9"
+   }
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "cau": "Thanh tra lao động có quyền thanh tra, điều tra nơi thuộc đối tượng, phạm vi thanh tra được giao theo quyết định thanh tra.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thanh tra lao động có quyền\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thanh tra\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"điều tra\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"nơi thuộc đối tượng, phạm vi thanh tra được giao theo quyết định thanh tra\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1FQDa8ibG9WN1e8PppGXoQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 929,
+   "output_tokens": 122,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_759a4e7c4920bcf048768a81"
+   }
+  }
+ }
+}

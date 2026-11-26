@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D2.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D2.K2\",\n \"tieu_de_dieu\": \"1:Đối 2:tượng 3:áp 4:dụng\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Người 2:sử 3:dụng 4:lao 5:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D2.K2\",\n \"bo_qua\": \"khong_quy_pham\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-688aebc5c62149b98ff98050316335fe",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2622
+   },
+   "input_tokens": 5656,
+   "output_tokens": 160,
+   "x_ckey": {
+    "cost": 10.08,
+    "cost_is_estimate": false,
+    "request_id": "req_28c29e2969f42e61a11d18ff"
+   }
+  }
+ }
+}

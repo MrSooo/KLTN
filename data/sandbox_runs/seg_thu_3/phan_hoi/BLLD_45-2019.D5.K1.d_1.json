@@ -1,0 +1,30 @@
+{
+ "cau": "Từ chối làm việc nếu có nguy cơ rõ ràng đe dọa trực tiếp đến tính mạng, sức khỏe trong quá trình thực hiện công việc;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Từ chối làm việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có nguy cơ rõ ràng đe dọa trực tiếp đến tính mạng, sức khỏe trong quá trình thực hiện công việc\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-0CEDa8m2DcCw2roPk76t6Q4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 680
+   },
+   "input_tokens": 931,
+   "output_tokens": 751,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_e9475d1c23524aa99a4f5bb7"
+   }
+  }
+ }
+}

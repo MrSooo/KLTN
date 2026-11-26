@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D201.K3",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D201.K3\",\n \"tieu_de_dieu\": \"Lấy ý kiến về đình công\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Việc lấy ý kiến được thực hiện trực tiếp bằng hình thức lấy phiếu hoặc chữ ký hoặc hình thức khác.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Việc lấy ý kiến được thực hiện trực tiếp bằng hình thức lấy phiếu hoặc chữ ký hoặc hình thức khác\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D201.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Việc lấy ý kiến\",\n    \"thực hiện trực tiếp bằng hình thức\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"liet_ke\": [\n    \"lấy phiếu\",\n    \"chữ ký\",\n    \"hình thức khác\"\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795547646770-413841d7",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4473
+   },
+   "input_tokens": 3645,
+   "output_tokens": 140,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_8b2b7f33bb0e1458b563c1f3"
+   }
+  }
+ }
+}

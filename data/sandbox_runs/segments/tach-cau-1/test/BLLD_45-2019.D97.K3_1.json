@@ -1,0 +1,27 @@
+{
+ "cau_gui": "Người lao động hưởng lương theo sản phẩm, theo khoán được trả lương theo thỏa thuận của hai bên; nếu công việc phải làm trong nhiều tháng thì hằng tháng được tạm ứng tiền lương theo khối lượng công việc đã làm trong tháng.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động hưởng lương theo sản phẩm, theo khoán\",\"ap_cho\":[\"m1\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"được trả lương theo thỏa thuận của hai bên\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"công việc phải làm trong nhiều tháng\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hằng tháng được tạm ứng tiền lương theo khối lượng công việc đã làm trong tháng\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-s7MFa6LkBvegvr0P4pz2-Qc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 2284,
+   "output_tokens": 130,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d1dd1cd06c001ca8cb4a96ca"
+   }
+  }
+ }
+}

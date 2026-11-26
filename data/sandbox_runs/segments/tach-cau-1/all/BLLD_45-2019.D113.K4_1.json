@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động có trách nhiệm quy định lịch nghỉ hằng năm sau khi tham khảo ý kiến của người lao động và phải thông báo trước cho người lao động biết.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"có trách nhiệm quy định lịch nghỉ hằng năm\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tham khảo ý kiến của người lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"phải thông báo trước cho người lao động biết\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539302864-84d52276",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 250
+   },
+   "input_tokens": 2410,
+   "output_tokens": 116,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_8fba80cfef9ec7a0a91ebadd"
+   }
+  }
+ }
+}

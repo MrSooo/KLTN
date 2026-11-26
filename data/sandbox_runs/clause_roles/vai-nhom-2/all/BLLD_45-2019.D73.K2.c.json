@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D73.K2.c",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D73.K2.c\",\n \"tieu_de_dieu\": \"Thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể\",\n \"khoan_cha\": \"Khi nhận được yêu cầu của các bên thương lượng tập thể có nhiều doanh nghiệp tham gia, Ủy ban nhân dân cấp tỉnh quyết định thành lập Hội đồng thương lượng tập thể để tổ chức việc thương lượng tập thể. Thành phần Hội đồng thương lượng tập thể bao gồm:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Đại diện Ủy ban nhân dân cấp tỉnh.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Đại diện Ủy ban nhân dân cấp tỉnh\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D73.K2.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Đại diện Ủy ban nhân dân cấp tỉnh\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Thành phần Hội đồng thương lượng tập thể\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795543973584-1a8809c4",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2059
+   },
+   "input_tokens": 3692,
+   "output_tokens": 138,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_102bd940775b3990e64ff39c"
+   }
+  }
+ }
+}

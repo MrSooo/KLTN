@@ -1,0 +1,82 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D21.K1",
+   "dong": [
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "danh_sach",
+     "trich": [
+      "Hợp đồng lao động phải có những nội dung chủ yếu sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn danh sách nội dung chủ yếu của hợp đồng lao động, các mục con là nội dung phải có."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D21.K1.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có tên, địa chỉ của người sử dụng lao động và họ tên, chức danh của người giao kết hợp đồng lao động bên phía người sử dụng lao động",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Hợp đồng lao động phải có những nội dung chủ yếu",
+      "Tên, địa chỉ của người sử dụng lao động và họ tên, chức danh của người giao kết hợp đồng lao động bên phía người sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể hợp đồng và phương thức phải từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D21.K1.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có họ tên, ngày tháng năm sinh, giới tính, nơi cư trú, số thẻ Căn cước công dân, Chứng minh nhân dân hoặc hộ chiếu của người giao kết hợp đồng lao động bên phía người lao động",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Hợp đồng lao động phải có những nội dung chủ yếu",
+      "Họ tên, ngày tháng năm sinh, giới tính, nơi cư trú, số thẻ Căn cước công dân, Chứng minh nhân dân hoặc hộ chiếu của người giao kết hợp đồng lao động bên phía người lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Một nội dung duy nhất về thông tin nhân thân của người giao kết bên phía người lao động nên giữ chung, kế thừa chủ thể và phương thức từ câu dẫn."
+     }
+    }
+   ]
+  }
+ ]
+}

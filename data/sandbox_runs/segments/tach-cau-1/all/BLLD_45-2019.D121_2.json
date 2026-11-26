@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp người sử dụng lao động sử dụng dưới 10 người lao động ban hành nội quy lao động bằng văn bản thì hiệu lực do người sử dụng lao động quyết định trong nội quy lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sử dụng dưới 10 người lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"ban hành nội quy lao động bằng văn bản\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hiệu lực do người sử dụng lao động quyết định trong nội quy lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539387574-f7087978",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1935
+   },
+   "input_tokens": 2415,
+   "output_tokens": 122,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_b83cf9d07298dad1a50b2cd9"
+   }
+  }
+ }
+}

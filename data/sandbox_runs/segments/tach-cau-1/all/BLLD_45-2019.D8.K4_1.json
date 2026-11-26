@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Lợi dụng danh nghĩa dạy nghề, tập nghề để trục lợi, bóc lột sức lao động hoặc lôi kéo, dụ dỗ, ép buộc người học nghề, người tập nghề vào hoạt động trái pháp luật.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Lợi dụng danh nghĩa dạy nghề, tập nghề\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trục lợi\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"bóc lột sức lao động\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"lôi kéo\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"dụ dỗ\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"ép buộc\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"người học nghề, người tập nghề vào hoạt động trái pháp luật\",\"ap_cho\":[\"m4\",\"m5\",\"m6\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-vrYFa52PAY2B2roPrs2W-AI",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 996
+   },
+   "input_tokens": 2281,
+   "output_tokens": 1173,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_7338ce325d7c516c99a95c7b"
+   }
+  }
+ }
+}

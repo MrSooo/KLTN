@@ -1,0 +1,240 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D64.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tiến hành đối thoại nội dung bắt buộc",
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội dung đối thoại bắt buộc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "trich": [
+      "theo quy định tại điểm c khoản 2 Điều 63 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D63.K2.c"
+     ],
+     "gan_vao": 0,
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2",
+   "dong": [
+    {
+     "loai": "con_tro",
+     "trich": [
+      "Ngoài nội dung quy định tại khoản 1 Điều này,"
+     ],
+     "targets": [
+      "BLLD_45-2019.D64.K1"
+     ],
+     "gan_vao": null
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "hoac",
+     "trich": [
+      "các bên lựa chọn một hoặc một số nội dung sau đây để tiến hành đối thoại:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn các nội dung đối thoại tùy chọn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đối thoại về tình hình sản xuất, kinh doanh của người sử dụng lao động",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên lựa chọn",
+      "để tiến hành đối thoại",
+      "Tình hình sản xuất, kinh doanh của người sử dụng lao động"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đối thoại về việc thực hiện hợp đồng lao động, thỏa ước lao động tập thể, nội quy lao động, quy chế và cam kết, thỏa thuận khác tại nơi làm việc",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên lựa chọn",
+      "để tiến hành đối thoại",
+      "Việc thực hiện hợp đồng lao động, thỏa ước lao động tập thể, nội quy lao động, quy chế và cam kết, thỏa thuận khác tại nơi làm việc"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đối thoại về điều kiện làm việc",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên lựa chọn",
+      "để tiến hành đối thoại",
+      "Điều kiện làm việc"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.d",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đối thoại về yêu cầu của người lao động, tổ chức đại diện người lao động đối với người sử dụng lao động",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên lựa chọn",
+      "để tiến hành đối thoại",
+      "Yêu cầu của người lao động, tổ chức đại diện người lao động đối với người sử dụng lao động"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.dd",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đối thoại về yêu cầu của người sử dụng lao động đối với người lao động, tổ chức đại diện người lao động",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      },
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên lựa chọn",
+      "để tiến hành đối thoại",
+      "Yêu cầu của người sử dụng lao động đối với người lao động, tổ chức đại diện người lao động"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.e",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đối thoại về nội dung khác mà một hoặc các bên quan tâm",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên lựa chọn",
+      "để tiến hành đối thoại",
+      "Nội dung khác mà một hoặc các bên quan tâm"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

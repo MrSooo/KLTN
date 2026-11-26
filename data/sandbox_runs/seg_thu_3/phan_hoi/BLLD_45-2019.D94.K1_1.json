@@ -1,0 +1,30 @@
+{
+ "cau": "Người sử dụng lao động phải trả lương trực tiếp, đầy đủ, đúng hạn cho người lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người sử dụng lao động phải trả lương trực tiếp, đầy đủ, đúng hạn cho người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-LDoDa9KuNMns2roP4IjmmAk",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 620
+   },
+   "input_tokens": 921,
+   "output_tokens": 666,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_6b8e890843fc9c2bf1060641"
+   }
+  }
+ }
+}

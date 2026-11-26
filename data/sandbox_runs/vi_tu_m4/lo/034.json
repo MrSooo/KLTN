@@ -1,0 +1,3118 @@
+{
+"chu": [
+{
+"chu_id": "C0739",
+"chu": "thỏa ước lao động tập thể doanh nghiệp hết hiệu lực do người sử dụng lao động chấm dứt hoạt động",
+"params": [
+"C",
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D80.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thực hiện thỏa ước lao động tập thể doanh nghiệp trong trường hợp chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Trường hợp thỏa ước lao động tập thể doanh nghiệp hết hiệu lực do người sử dụng lao động chấm dứt hoạt động thì quyền lợi của người lao động được giải quyết theo quy định của pháp luật."
+}
+],
+"ung_vien": [],
+"loi_lan_truoc": "new \"enterprise_cba_termination_due_to_employer_cessation\": tên phải khớp ^[a-z][a-z0-9_]{2,49}$ (chữ thường không dấu, số, gạch dưới; 3 đến 50 ký tự)"
+},
+{
+"chu_id": "C0763",
+"chu": "một thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 2,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D84.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Mở rộng phạm vi áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Khi một thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp có phạm vi áp dụng chiếm trên 75% người lao động hoặc trên 75% doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao thì người sử dụng lao động hoặc tổ chức đại diện của người lao động tại đó đề nghị cơ quan nhà nước có thẩm quyền quyết định mở rộng phạm vi áp dụng một phần hoặc toàn bộ thỏa ước đó đối với các doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao."
+},
+{
+"don_vi": "BLLD_45-2019.D84.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Mở rộng phạm vi áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Khi một thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp có phạm vi áp dụng chiếm trên 75% người lao động hoặc trên 75% doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao thì người sử dụng lao động hoặc tổ chức đại diện của người lao động tại đó đề nghị cơ quan nhà nước có thẩm quyền quyết định mở rộng phạm vi áp dụng một phần hoặc toàn bộ thỏa ước đó đối với các doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao."
+}
+],
+"ung_vien": [
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"doanh nghiệp",
+"những doanh nghiệp"
+]
+},
+{
+"ten": "sector_or_multi_enterprise_cba",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"Thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "enterprise_multi_enterprise_and_sector_cba",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể doanh nghiệp, thỏa ước lao động tập thể có nhiều doanh nghiệp, thỏa ước lao động tập thể ngành"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_parties",
+"params": [],
+"vi_du": [
+"các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "enterprise_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể doanh nghiệp"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining",
+"params": [],
+"vi_du": [
+"thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "employer_and_employee_org_in_agreement_enterprises",
+"params": [],
+"vi_du": [
+"từng người sử dụng lao động và từng tổ chức đại diện người lao động tại các doanh nghiệp tham gia thỏa ước"
+]
+},
+{
+"ten": "corporate_restructuring_or_asset_transfer",
+"params": [],
+"vi_du": [
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã",
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp"
+]
+},
+{
+"ten": "labor_leasing_enterprise_and_lessee",
+"params": [],
+"vi_du": [
+"Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động"
+]
+},
+{
+"ten": "labor_leasing_enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "force_majeure_or_state_ordered_reduction",
+"params": [],
+"vi_du": [
+"do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa hoặc di dời, thu hẹp sản xuất, kinh doanh theo yêu cầu của cơ quan nhà nước có thẩm quyền"
+]
+},
+{
+"ten": "leased_worker_labor_contract",
+"params": [],
+"vi_du": [
+"hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "special_industry_occupation_or_work",
+"params": [],
+"vi_du": [
+"một số ngành, nghề, công việc đặc thù"
+]
+},
+{
+"ten": "enterprise_employees",
+"params": [],
+"vi_du": [
+"người lao động của doanh nghiệp"
+]
+}
+]
+},
+{
+"chu_id": "C0764",
+"chu": "có phạm vi áp dụng chiếm trên 75% người lao động",
+"params": [
+"C",
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D84.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Mở rộng phạm vi áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Khi một thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp có phạm vi áp dụng chiếm trên 75% người lao động hoặc trên 75% doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao thì người sử dụng lao động hoặc tổ chức đại diện của người lao động tại đó đề nghị cơ quan nhà nước có thẩm quyền quyết định mở rộng phạm vi áp dụng một phần hoặc toàn bộ thỏa ước đó đối với các doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao."
+}
+],
+"ung_vien": [
+{
+"ten": "differentiate_due_to_job_or_vulnerable_protection",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương"
+]
+},
+{
+"ten": "be_established_voluntarily",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"được thành lập trên cơ sở tự nguyện"
+]
+}
+]
+},
+{
+"chu_id": "C0765",
+"chu": "chiếm trên 75% doanh nghiệp cùng ngành, nghề, lĩnh vực",
+"params": [
+"C",
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D84.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Mở rộng phạm vi áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Khi một thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp có phạm vi áp dụng chiếm trên 75% người lao động hoặc trên 75% doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao thì người sử dụng lao động hoặc tổ chức đại diện của người lao động tại đó đề nghị cơ quan nhà nước có thẩm quyền quyết định mở rộng phạm vi áp dụng một phần hoặc toàn bộ thỏa ước đó đối với các doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0766",
+"chu": "người sử dụng lao động hoặc tổ chức đại diện của người lao động tại đó",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D84.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Mở rộng phạm vi áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Khi một thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp có phạm vi áp dụng chiếm trên 75% người lao động hoặc trên 75% doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao thì người sử dụng lao động hoặc tổ chức đại diện của người lao động tại đó đề nghị cơ quan nhà nước có thẩm quyền quyết định mở rộng phạm vi áp dụng một phần hoặc toàn bộ thỏa ước đó đối với các doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao."
+}
+],
+"ung_vien": [
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"doanh nghiệp",
+"những doanh nghiệp"
+]
+},
+{
+"ten": "other_grassroots_employee_representative_orgs",
+"params": [],
+"vi_du": [
+"Các tổ chức đại diện người lao động tại cơ sở khác"
+]
+},
+{
+"ten": "have_grassroots_employee_representative_org",
+"params": [],
+"vi_du": [
+"có tổ chức đại diện người lao động tại cơ sở"
+]
+},
+{
+"ten": "person_under_15_and_legal_representative",
+"params": [],
+"vi_du": [
+"Người chưa đủ 15 tuổi và người đại diện theo pháp luật của người đó"
+]
+},
+{
+"ten": "employer_employee_or_employee_rep_org",
+"params": [],
+"vi_du": [
+"người sử dụng lao động và người lao động hoặc tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "legal_representative_of_that_person",
+"params": [],
+"vi_du": [
+"người đại diện theo pháp luật của người đó"
+]
+},
+{
+"ten": "grassroots_employee_representative_organization",
+"params": [],
+"vi_du": [
+"Tổ chức đại diện người lao động tại cơ sở",
+"các tổ chức",
+"các tổ chức đó"
+]
+},
+{
+"ten": "employer_and_employee_org_in_agreement_enterprises",
+"params": [],
+"vi_du": [
+"từng người sử dụng lao động và từng tổ chức đại diện người lao động tại các doanh nghiệp tham gia thỏa ước"
+]
+},
+{
+"ten": "employers_workers_and_representative_organizations",
+"params": [],
+"vi_du": [
+"Người sử dụng lao động, tổ chức đại diện người sử dụng lao động và người lao động, tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "successor_employer_and_employee_representative_org",
+"params": [],
+"vi_du": [
+"người sử dụng lao động kế tiếp và tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "representative_of_entity_without_legal_status",
+"params": [],
+"vi_du": [
+"Người đại diện của hộ gia đình, tổ hợp tác, tổ chức khác không có tư cách pháp nhân"
+]
+},
+{
+"ten": "legal_representative_of_enterprise",
+"params": [],
+"vi_du": [
+"Người đại diện theo pháp luật của doanh nghiệp"
+]
+},
+{
+"ten": "employer_representative_organization",
+"params": [],
+"vi_du": [
+"Tổ chức đại diện người sử dụng lao động",
+"Phòng Thương mại và Công nghiệp Việt Nam, Liên minh Hợp tác xã Việt Nam và các tổ chức đại diện của người sử dụng lao động khác"
+]
+},
+{
+"ten": "representative_count_per_party_in_council",
+"params": [],
+"vi_du": [
+"Số lượng đại diện mỗi bên thương lượng tham gia Hội đồng"
+]
+}
+]
+},
+{
+"chu_id": "C0767",
+"chu": "đề nghị cơ quan nhà nước có thẩm quyền quyết định mở rộng phạm vi áp dụng một phần hoặc toàn bộ thỏa ước đó",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D84.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Mở rộng phạm vi áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Khi một thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp có phạm vi áp dụng chiếm trên 75% người lao động hoặc trên 75% doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao thì người sử dụng lao động hoặc tổ chức đại diện của người lao động tại đó đề nghị cơ quan nhà nước có thẩm quyền quyết định mở rộng phạm vi áp dụng một phần hoặc toàn bộ thỏa ước đó đối với các doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao."
+}
+],
+"ung_vien": [
+{
+"ten": "allege_incomplete_performance_or_violation_of_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "apply_to_all_parties_in_participating_enterprises",
+"params": [
+"C"
+],
+"vi_du": [
+"có hiệu lực áp dụng đối với toàn bộ người sử dụng lao động và người lao động của các doanh nghiệp tham gia thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "implement_state_policy_or_international_commitment",
+"params": [
+"?"
+],
+"vi_du": [
+"thực hiện chính sách, pháp luật của Nhà nước khi cơ cấu lại nền kinh tế hoặc thực hiện cam kết quốc tế"
+]
+},
+{
+"ten": "authorized_for_state_capital_representation",
+"params": [
+"W"
+],
+"vi_du": [
+"được ủy quyền để thực hiện quyền, trách nhiệm của đại diện chủ sở hữu nhà nước đối với phần vốn nhà nước tại doanh nghiệp"
+]
+},
+{
+"ten": "include_all_employees_or_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ người lao động tại các doanh nghiệp tham gia thương lượng hoặc toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "serve_reform_rehab_or_education_commitment",
+"params": [
+"W"
+],
+"vi_du": [
+"chấp hành quyết định áp dụng biện pháp đưa vào trường giáo dưỡng, cơ sở cai nghiện bắt buộc hoặc cơ sở giáo dục bắt buộc"
+]
+},
+{
+"ten": "apply_to_employer_and_all_enterprise_employees",
+"params": [
+"C"
+],
+"vi_du": [
+"có hiệu lực áp dụng đối với người sử dụng lao động và toàn bộ người lao động của doanh nghiệp"
+]
+},
+{
+"ten": "unwanted_sexual_conduct_at_workplace",
+"params": [
+"?"
+],
+"vi_du": [
+"là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận"
+]
+},
+{
+"ten": "select_other_content_of_interest_to_parties",
+"params": [
+"?"
+],
+"vi_du": [
+"lựa chọn nội dung khác mà một hoặc các bên quan tâm"
+]
+},
+{
+"ten": "covered_by_sector_multi_cba_pending_enterprise_cba",
+"params": [
+"E"
+],
+"vi_du": [
+"thuộc đối tượng áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp nhưng chưa có thỏa ước lao động tập thể doanh nghiệp"
+]
+},
+{
+"ten": "include_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "breach_agreements_in_labor_leasing_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động"
+]
+},
+{
+"ten": "employer_court_declared_incapacity_missing_or_dead",
+"params": [
+"E"
+],
+"vi_du": [
+"bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết"
+]
+},
+{
+"ten": "court_declared_civil_incapacity_missing_or_dead",
+"params": [
+"W"
+],
+"vi_du": [
+"bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết"
+]
+},
+{
+"ten": "wholly_invalid",
+"params": [
+"C"
+],
+"vi_du": [
+"vô hiệu toàn bộ",
+"bị tuyên bố vô hiệu toàn bộ"
+]
+},
+{
+"ten": "request_from_one_or_more_parties",
+"params": [
+"E"
+],
+"vi_du": [
+"có yêu cầu của một hoặc các bên"
+]
+},
+{
+"ten": "enterprise_manager_job_per_law",
+"params": [
+"J"
+],
+"vi_du": [
+"của người quản lý doanh nghiệp theo quy định của Luật Doanh nghiệp, Luật Quản lý, sử dụng vốn nhà nước đầu tư vào sản xuất, kinh doanh tại doanh nghiệp"
+]
+},
+{
+"ten": "conclude_labor_contract_with_proper_authority",
+"params": [
+"?"
+],
+"vi_du": [
+"giao kết hợp đồng lao động đúng thẩm quyền"
+]
+},
+{
+"ten": "settle_by_applicable_collective_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"giải quyết theo thỏa ước lao động tập thể đang áp dụng"
+]
+},
+{
+"ten": "reward_and_handle_discipline_violations",
+"params": [
+"E"
+],
+"vi_du": [
+"khen thưởng và xử lý vi phạm kỷ luật lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0768",
+"chu": "các doanh nghiệp",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D84.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Mở rộng phạm vi áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Khi một thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp có phạm vi áp dụng chiếm trên 75% người lao động hoặc trên 75% doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao thì người sử dụng lao động hoặc tổ chức đại diện của người lao động tại đó đề nghị cơ quan nhà nước có thẩm quyền quyết định mở rộng phạm vi áp dụng một phần hoặc toàn bộ thỏa ước đó đối với các doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao."
+}
+],
+"ung_vien": [
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"doanh nghiệp",
+"những doanh nghiệp"
+]
+},
+{
+"ten": "corporate_restructuring_or_asset_transfer",
+"params": [],
+"vi_du": [
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã",
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_parties",
+"params": [],
+"vi_du": [
+"các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "labor_leasing_enterprise_and_lessee",
+"params": [],
+"vi_du": [
+"Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động"
+]
+},
+{
+"ten": "labor_leasing_enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "leased_worker_labor_contract",
+"params": [],
+"vi_du": [
+"hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "enterprise_employees",
+"params": [],
+"vi_du": [
+"người lao động của doanh nghiệp"
+]
+},
+{
+"ten": "legal_representative_of_enterprise",
+"params": [],
+"vi_du": [
+"Người đại diện theo pháp luật của doanh nghiệp"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "enterprise_multi_enterprise_and_sector_cba",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể doanh nghiệp, thỏa ước lao động tập thể có nhiều doanh nghiệp, thỏa ước lao động tập thể ngành"
+]
+},
+{
+"ten": "enterprise_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể doanh nghiệp"
+]
+},
+{
+"ten": "sector_or_multi_enterprise_cba",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"Thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining",
+"params": [],
+"vi_du": [
+"thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "performed_by_licensed_labor_leasing_enterprise",
+"params": [],
+"vi_du": [
+"thực hiện bởi các doanh nghiệp có Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "employer_and_employee_org_in_agreement_enterprises",
+"params": [],
+"vi_du": [
+"từng người sử dụng lao động và từng tổ chức đại diện người lao động tại các doanh nghiệp tham gia thỏa ước"
+]
+}
+]
+},
+{
+"chu_id": "C0769",
+"chu": "cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D84.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Mở rộng phạm vi áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Khi một thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp có phạm vi áp dụng chiếm trên 75% người lao động hoặc trên 75% doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao thì người sử dụng lao động hoặc tổ chức đại diện của người lao động tại đó đề nghị cơ quan nhà nước có thẩm quyền quyết định mở rộng phạm vi áp dụng một phần hoặc toàn bộ thỏa ước đó đối với các doanh nghiệp cùng ngành, nghề, lĩnh vực trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao."
+}
+],
+"ung_vien": [
+{
+"ten": "conditional_business_sector",
+"params": [
+"?"
+],
+"vi_du": [
+"là ngành, nghề kinh doanh có điều kiện"
+]
+},
+{
+"ten": "change_production_process_technology_equipment",
+"params": [
+"?"
+],
+"vi_du": [
+"thay đổi quy trình, công nghệ, máy móc, thiết bị sản xuất, kinh doanh"
+]
+},
+{
+"ten": "obey_labor_employment_and_social_insurance_law",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện quy định của pháp luật về lao động, việc làm, giáo dục nghề nghiệp, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp và an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "economic_crisis_or_recession",
+"params": [
+"?"
+],
+"vi_du": [
+"khủng hoảng hoặc suy thoái kinh tế"
+]
+},
+{
+"ten": "be_economic_reason",
+"params": [
+"?"
+],
+"vi_du": [
+"là vì lý do kinh tế"
+]
+},
+{
+"ten": "cooperate_with_vocational_training_institution",
+"params": [
+"E"
+],
+"vi_du": [
+"phối hợp với cơ sở giáo dục nghề nghiệp đào tạo các trình độ"
+]
+},
+{
+"ten": "specify_production_or_business_demand_cases",
+"params": [
+"E"
+],
+"vi_du": [
+"quy định cụ thể những trường hợp do nhu cầu sản xuất, kinh doanh"
+]
+},
+{
+"ten": "agree_collective_bargaining_procedure",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận quyết định quy trình tiến hành thương lượng tập thể ngành, thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "covered_by_sector_multi_cba_pending_enterprise_cba",
+"params": [
+"E"
+],
+"vi_du": [
+"thuộc đối tượng áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp nhưng chưa có thỏa ước lao động tập thể doanh nghiệp"
+]
+},
+{
+"ten": "establish_join_operate_employer_professional_orgs",
+"params": [
+"E"
+],
+"vi_du": [
+"thành lập, gia nhập, hoạt động trong tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác"
+]
+},
+{
+"ten": "implement_state_policy_or_international_commitment",
+"params": [
+"?"
+],
+"vi_du": [
+"thực hiện chính sách, pháp luật của Nhà nước khi cơ cấu lại nền kinh tế hoặc thực hiện cam kết quốc tế"
+]
+}
+]
+},
+{
+"chu_id": "C0770",
+"chu": "quy định chi tiết khoản 1 Điều này",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D84.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Mở rộng phạm vi áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Chính phủ quy định chi tiết khoản 1 Điều này; quy định trình tự, thủ tục và thẩm quyền quyết định mở rộng phạm vi áp dụng thỏa ước lao động tập thể quy định tại khoản 1 Điều này."
+}
+],
+"ung_vien": [
+{
+"ten": "specified_case_arises_under_labor_code",
+"params": [
+"E"
+],
+"vi_du": [
+"có vụ việc quy định tại điểm a khoản 1 Điều 36, các điều 42, 44, 93, 104, 118 và khoản 1 Điều 128 của Bộ luật này"
+]
+},
+{
+"ten": "include_probation_time_and_required_contents",
+"params": [
+"C"
+],
+"vi_du": [
+"gồm thời gian thử việc và nội dung quy định tại các điểm a, b, c, đ, g và h khoản 1 Điều 21 của Bộ luật này"
+]
+},
+{
+"ten": "specify_amend_supplement_contract_clauses",
+"params": [
+"C"
+],
+"vi_du": [
+"quy định chi tiết, sửa đổi, bổ sung một số điều, khoản của hợp đồng lao động"
+]
+},
+{
+"ten": "annex_clauses_cause_different_interpretation",
+"params": [
+"C"
+],
+"vi_du": [
+"quy định chi tiết một số điều, khoản của hợp đồng lao động mà dẫn đến cách hiểu khác với hợp đồng lao động"
+]
+},
+{
+"ten": "provide_detailed_regulation",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết",
+"quy định chi tiết Điều này"
+]
+},
+{
+"ten": "include_valid_documented_expenses",
+"params": [
+"A"
+],
+"vi_du": [
+"bao gồm các khoản chi có chứng từ hợp lệ"
+]
+},
+{
+"ten": "amend_and_supplement_labor_contract_clauses",
+"params": [
+"C"
+],
+"vi_du": [
+"sửa đổi, bổ sung một số điều, khoản của hợp đồng lao động"
+]
+},
+{
+"ten": "labor_protection_and_safe_working_conditions",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo hộ lao động, làm việc trong điều kiện bảo đảm về an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "ensure_required_conditions",
+"params": [
+"?"
+],
+"vi_du": [
+"bảo đảm điều kiện"
+]
+},
+{
+"ten": "terminate_labor_contract",
+"params": [
+"C"
+],
+"vi_du": [
+"chấm dứt hợp đồng lao động",
+"chấm dứt theo quy định của Bộ luật này",
+"hợp đồng lao động chấm dứt"
+]
+},
+{
+"ten": "include_travel_and_living_expenses",
+"params": [
+"A"
+],
+"vi_du": [
+"còn bao gồm chi phí đi lại, chi phí sinh hoạt"
+]
+},
+{
+"ten": "include_training_cost_and_reimbursement",
+"params": [
+"C"
+],
+"vi_du": [
+"có chi phí đào tạo và trách nhiệm hoàn trả chi phí đào tạo"
+]
+},
+{
+"ten": "include_wage_and_payment_details",
+"params": [
+"C"
+],
+"vi_du": [
+"có mức lương theo công việc hoặc chức danh, hình thức trả lương, thời hạn trả lương, phụ cấp lương và các khoản bổ sung khác"
+]
+},
+{
+"ten": "coordinate_council_and_support_bargaining",
+"params": [
+"?"
+],
+"vi_du": [
+"có trách nhiệm điều phối hoạt động của Hội đồng thương lượng tập thể, hỗ trợ cho việc thương lượng tập thể của các bên"
+]
+},
+{
+"ten": "conditional_business_sector",
+"params": [
+"?"
+],
+"vi_du": [
+"là ngành, nghề kinh doanh có điều kiện"
+]
+},
+{
+"ten": "select_employee_org_operation_content",
+"params": [
+"?"
+],
+"vi_du": [
+"lựa chọn nội dung điều kiện, phương tiện hoạt động của tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "regulate_labor_leasing_license_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "settle_all_amounts_related_to_rights",
+"params": [
+"?"
+],
+"vi_du": [
+"thanh toán đầy đủ các khoản tiền có liên quan đến quyền lợi của mỗi bên"
+]
+},
+{
+"ten": "include_working_rest_and_osh_conditions",
+"params": [
+"C"
+],
+"vi_du": [
+"thời giờ làm việc, thời giờ nghỉ ngơi, điều kiện an toàn, vệ sinh lao động tại nơi làm việc"
+]
+},
+{
+"ten": "perform_contract_under_disaster_fire_weather",
+"params": [
+"C"
+],
+"vi_du": [
+"thực hiện hợp đồng chịu ảnh hưởng của thiên tai, hỏa hoạn, thời tiết"
+]
+}
+]
+},
+{
+"chu_id": "C0771",
+"chu": "quy định trình tự, thủ tục và thẩm quyền quyết định mở rộng phạm vi áp dụng thỏa ước lao động tập thể",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D84.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Mở rộng phạm vi áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Chính phủ quy định chi tiết khoản 1 Điều này; quy định trình tự, thủ tục và thẩm quyền quyết định mở rộng phạm vi áp dụng thỏa ước lao động tập thể quy định tại khoản 1 Điều này."
+}
+],
+"ung_vien": [
+{
+"ten": "regulate_labor_leasing_license_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "allege_incomplete_performance_or_violation_of_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "breach_agreements_in_labor_leasing_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động"
+]
+},
+{
+"ten": "apply_to_all_parties_in_participating_enterprises",
+"params": [
+"C"
+],
+"vi_du": [
+"có hiệu lực áp dụng đối với toàn bộ người sử dụng lao động và người lao động của các doanh nghiệp tham gia thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "conclude_labor_contract_with_proper_authority",
+"params": [
+"?"
+],
+"vi_du": [
+"giao kết hợp đồng lao động đúng thẩm quyền"
+]
+},
+{
+"ten": "settle_by_applicable_collective_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"giải quyết theo thỏa ước lao động tập thể đang áp dụng"
+]
+},
+{
+"ten": "reward_and_handle_discipline_violations",
+"params": [
+"E"
+],
+"vi_du": [
+"khen thưởng và xử lý vi phạm kỷ luật lao động"
+]
+},
+{
+"ten": "covered_by_sector_multi_cba_pending_enterprise_cba",
+"params": [
+"E"
+],
+"vi_du": [
+"thuộc đối tượng áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp nhưng chưa có thỏa ước lao động tập thể doanh nghiệp"
+]
+},
+{
+"ten": "bargain_on_enterprise_cba_continuation_or_new_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"thương lượng để xem xét lựa chọn việc tiếp tục thực hiện, sửa đổi, bổ sung thỏa ước lao động tập thể doanh nghiệp cũ hoặc thương lượng để ký kết thỏa ước lao động tập thể mới"
+]
+},
+{
+"ten": "conduct_labor_dispute_resolution_procedure",
+"params": [
+"?"
+],
+"vi_du": [
+"tiến hành thủ tục giải quyết tranh chấp lao động"
+]
+},
+{
+"ten": "freely_choose_job_workplace_occupation_training",
+"params": [
+"W"
+],
+"vi_du": [
+"tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp"
+]
+},
+{
+"ten": "unauthorized_absence_5_consecutive_workdays",
+"params": [
+"W"
+],
+"vi_du": [
+"tự ý bỏ việc mà không có lý do chính đáng từ 05 ngày làm việc liên tục trở lên"
+]
+},
+{
+"ten": "violate_labor_discipline",
+"params": [
+"W"
+],
+"vi_du": [
+"vi phạm kỷ luật lao động"
+]
+},
+{
+"ten": "violate_labor_contract_conclusion_principles",
+"params": [
+"?"
+],
+"vi_du": [
+"vi phạm nguyên tắc giao kết hợp đồng lao động"
+]
+},
+{
+"ten": "violate_law",
+"params": [
+"C"
+],
+"vi_du": [
+"vi phạm pháp luật",
+"trái với quy định của pháp luật"
+]
+},
+{
+"ten": "continue_cba_for_90_days_after_expiry",
+"params": [
+"?"
+],
+"vi_du": [
+"được tiếp tục thực hiện trong thời hạn không quá 90 ngày kể từ ngày thỏa ước lao động tập thể hết hạn"
+]
+},
+{
+"ten": "ensure_matching_worker_qualifications",
+"params": [
+"E"
+],
+"vi_du": [
+"bảo đảm đưa người lao động có trình độ phù hợp với những yêu cầu của bên thuê lại lao động và nội dung của hợp đồng lao động đã ký với người lao động"
+]
+},
+{
+"ten": "notice_of_legal_representative_absence",
+"params": [
+"E"
+],
+"vi_du": [
+"bị ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật"
+]
+},
+{
+"ten": "employer_court_declared_incapacity_missing_or_dead",
+"params": [
+"E"
+],
+"vi_du": [
+"bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết"
+]
+},
+{
+"ten": "court_declared_civil_incapacity_missing_or_dead",
+"params": [
+"W"
+],
+"vi_du": [
+"bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết"
+]
+}
+]
+},
+{
+"chu_id": "C0772",
+"chu": "gia nhập thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D85.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Gia nhập và rút khỏi thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp có thể gia nhập thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp quy định tại khoản 1 Điều 84 của Bộ luật này."
+}
+],
+"ung_vien": [
+{
+"ten": "provide_detailed_regulation",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết",
+"quy định chi tiết Điều này"
+]
+},
+{
+"ten": "participate_in_signing_multi_enterprise_cba",
+"params": [
+"E"
+],
+"vi_du": [
+"tham gia ký kết thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "agree_collective_bargaining_procedure",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận quyết định quy trình tiến hành thương lượng tập thể ngành, thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "covered_by_sector_multi_cba_pending_enterprise_cba",
+"params": [
+"E"
+],
+"vi_du": [
+"thuộc đối tượng áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp nhưng chưa có thỏa ước lao động tập thể doanh nghiệp"
+]
+},
+{
+"ten": "receive_multi_enterprise_bargaining_request",
+"params": [
+"?"
+],
+"vi_du": [
+"nhận được yêu cầu của các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "multi_enterprise_cba_through_bargaining_council",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa ước lao động tập thể có nhiều doanh nghiệp được tiến hành thông qua Hội đồng thương lượng tập thể"
+]
+},
+{
+"ten": "establish_join_operate_employer_professional_orgs",
+"params": [
+"E"
+],
+"vi_du": [
+"thành lập, gia nhập, hoạt động trong tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác"
+]
+},
+{
+"ten": "bargain_on_enterprise_cba_continuation_or_new_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"thương lượng để xem xét lựa chọn việc tiếp tục thực hiện, sửa đổi, bổ sung thỏa ước lao động tập thể doanh nghiệp cũ hoặc thương lượng để ký kết thỏa ước lao động tập thể mới"
+]
+},
+{
+"ten": "include_grassroots_union_and_employee_organization",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "conditional_business_sector",
+"params": [
+"?"
+],
+"vi_du": [
+"là ngành, nghề kinh doanh có điều kiện"
+]
+}
+]
+},
+{
+"chu_id": "C0773",
+"chu": "người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 2,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D85.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Gia nhập và rút khỏi thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp có thể gia nhập thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp quy định tại khoản 1 Điều 84 của Bộ luật này."
+},
+{
+"don_vi": "BLLD_45-2019.D85.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Gia nhập và rút khỏi thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp được rút khỏi thỏa ước lao động tập thể khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp có khó khăn đặc biệt trong hoạt động sản xuất, kinh doanh."
+}
+],
+"ung_vien": [
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"doanh nghiệp",
+"những doanh nghiệp"
+]
+},
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "employer_and_employee_org_in_agreement_enterprises",
+"params": [],
+"vi_du": [
+"từng người sử dụng lao động và từng tổ chức đại diện người lao động tại các doanh nghiệp tham gia thỏa ước"
+]
+},
+{
+"ten": "legal_representative_of_enterprise",
+"params": [],
+"vi_du": [
+"Người đại diện theo pháp luật của doanh nghiệp"
+]
+},
+{
+"ten": "other_grassroots_employee_representative_orgs",
+"params": [],
+"vi_du": [
+"Các tổ chức đại diện người lao động tại cơ sở khác"
+]
+},
+{
+"ten": "have_grassroots_employee_representative_org",
+"params": [],
+"vi_du": [
+"có tổ chức đại diện người lao động tại cơ sở"
+]
+},
+{
+"ten": "employer_representative_organization",
+"params": [],
+"vi_du": [
+"Tổ chức đại diện người sử dụng lao động",
+"Phòng Thương mại và Công nghiệp Việt Nam, Liên minh Hợp tác xã Việt Nam và các tổ chức đại diện của người sử dụng lao động khác"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "enterprise_multi_enterprise_and_sector_cba",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể doanh nghiệp, thỏa ước lao động tập thể có nhiều doanh nghiệp, thỏa ước lao động tập thể ngành"
+]
+},
+{
+"ten": "enterprise_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể doanh nghiệp"
+]
+},
+{
+"ten": "sector_or_multi_enterprise_cba",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"Thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "grassroots_employee_representative_organization",
+"params": [],
+"vi_du": [
+"Tổ chức đại diện người lao động tại cơ sở",
+"các tổ chức",
+"các tổ chức đó"
+]
+}
+]
+},
+{
+"chu_id": "C0774",
+"chu": "có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước",
+"params": [
+"?"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 2,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D85.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Gia nhập và rút khỏi thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp có thể gia nhập thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp quy định tại khoản 1 Điều 84 của Bộ luật này."
+},
+{
+"don_vi": "BLLD_45-2019.D85.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Gia nhập và rút khỏi thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp được rút khỏi thỏa ước lao động tập thể khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp có khó khăn đặc biệt trong hoạt động sản xuất, kinh doanh."
+}
+],
+"ung_vien": [
+{
+"ten": "provide_detailed_regulation",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết",
+"quy định chi tiết Điều này"
+]
+},
+{
+"ten": "include_all_employees_or_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ người lao động tại các doanh nghiệp tham gia thương lượng hoặc toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "consult_grassroots_employee_rep_org",
+"params": [
+"E"
+],
+"vi_du": [
+"trao đổi ý kiến với tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở mà người lao động là thành viên",
+"trao đổi ý kiến với tổ chức đại diện người lao động tại cơ sở"
+]
+},
+{
+"ten": "authorized_for_state_capital_representation",
+"params": [
+"W"
+],
+"vi_du": [
+"được ủy quyền để thực hiện quyền, trách nhiệm của đại diện chủ sở hữu nhà nước đối với phần vốn nhà nước tại doanh nghiệp"
+]
+},
+{
+"ten": "include_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "establish_join_and_operate_in_worker_organizations",
+"params": [
+"W"
+],
+"vi_du": [
+"thành lập, gia nhập, hoạt động trong tổ chức đại diện người lao động, tổ chức nghề nghiệp và tổ chức khác"
+]
+},
+{
+"ten": "establish_join_operate_employer_professional_orgs",
+"params": [
+"E"
+],
+"vi_du": [
+"thành lập, gia nhập, hoạt động trong tổ chức đại diện người sử dụng lao động, tổ chức nghề nghiệp và tổ chức khác"
+]
+},
+{
+"ten": "reach_minimum_member_ratio",
+"params": [
+"W"
+],
+"vi_du": [
+"đạt tỷ lệ thành viên tối thiểu trên tổng số người lao động trong doanh nghiệp",
+"đạt tỷ lệ tối thiểu"
+]
+},
+{
+"ten": "include_grassroots_union_and_employee_organization",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "apply_to_all_parties_in_participating_enterprises",
+"params": [
+"C"
+],
+"vi_du": [
+"có hiệu lực áp dụng đối với toàn bộ người sử dụng lao động và người lao động của các doanh nghiệp tham gia thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "multiple_employee_orgs_without_qualifying_org",
+"params": [
+"E"
+],
+"vi_du": [
+"có nhiều tổ chức đại diện người lao động tại cơ sở mà không có tổ chức nào"
+]
+},
+{
+"ten": "have_multiple_grassroots_employee_orgs",
+"params": [
+"E"
+],
+"vi_du": [
+"có nhiều tổ chức đại diện người lao động tại cơ sở"
+]
+},
+{
+"ten": "have_written_consent_of_legal_representative",
+"params": [
+"W"
+],
+"vi_du": [
+"có sự đồng ý bằng văn bản của người đại diện theo pháp luật của người đó"
+]
+},
+{
+"ten": "majority_of_enterprise_employees_approve",
+"params": [
+"W"
+],
+"vi_du": [
+"có trên 50% người lao động của doanh nghiệp biểu quyết tán thành"
+]
+},
+{
+"ten": "enterprise_manager_job_per_law",
+"params": [
+"J"
+],
+"vi_du": [
+"của người quản lý doanh nghiệp theo quy định của Luật Doanh nghiệp, Luật Quản lý, sử dụng vốn nhà nước đầu tư vào sản xuất, kinh doanh tại doanh nghiệp"
+]
+},
+{
+"ten": "be_grassroots_employee_representative_org",
+"params": [
+"?"
+],
+"vi_du": [
+"là tổ chức đại diện người lao động tại cơ sở"
+]
+},
+{
+"ten": "participate_in_signing_multi_enterprise_cba",
+"params": [
+"E"
+],
+"vi_du": [
+"tham gia ký kết thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "agree_to_terminate_and_sign_with_lessee",
+"params": [
+"W"
+],
+"vi_du": [
+"thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động để giao kết hợp đồng lao động với bên thuê lại lao động"
+]
+},
+{
+"ten": "agree_collective_bargaining_procedure",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận quyết định quy trình tiến hành thương lượng tập thể ngành, thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+}
+]
+},
+{
+"chu_id": "C0775",
+"chu": "Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D85.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Gia nhập và rút khỏi thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp được rút khỏi thỏa ước lao động tập thể khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp có khó khăn đặc biệt trong hoạt động sản xuất, kinh doanh."
+}
+],
+"ung_vien": [
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"doanh nghiệp",
+"những doanh nghiệp"
+]
+},
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "enterprise_multi_enterprise_and_sector_cba",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể doanh nghiệp, thỏa ước lao động tập thể có nhiều doanh nghiệp, thỏa ước lao động tập thể ngành"
+]
+},
+{
+"ten": "sector_or_multi_enterprise_cba",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"Thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_parties",
+"params": [],
+"vi_du": [
+"các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "enterprise_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể doanh nghiệp"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining",
+"params": [],
+"vi_du": [
+"thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "employer_and_employee_org_in_agreement_enterprises",
+"params": [],
+"vi_du": [
+"từng người sử dụng lao động và từng tổ chức đại diện người lao động tại các doanh nghiệp tham gia thỏa ước"
+]
+},
+{
+"ten": "corporate_restructuring_or_asset_transfer",
+"params": [],
+"vi_du": [
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã",
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp"
+]
+},
+{
+"ten": "labor_leasing_enterprise_and_lessee",
+"params": [],
+"vi_du": [
+"Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động"
+]
+},
+{
+"ten": "labor_leasing_enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "leased_worker_labor_contract",
+"params": [],
+"vi_du": [
+"hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0776",
+"chu": "được rút khỏi thỏa ước lao động tập thể",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D85.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Gia nhập và rút khỏi thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp được rút khỏi thỏa ước lao động tập thể khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp có khó khăn đặc biệt trong hoạt động sản xuất, kinh doanh."
+}
+],
+"ung_vien": [
+{
+"ten": "provide_detailed_regulation",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết",
+"quy định chi tiết Điều này"
+]
+},
+{
+"ten": "allege_incomplete_performance_or_violation_of_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "settle_by_applicable_collective_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"giải quyết theo thỏa ước lao động tập thể đang áp dụng"
+]
+},
+{
+"ten": "send_one_copy_of_cba",
+"params": [
+"E"
+],
+"vi_du": [
+"gửi 01 bản thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "conclude_new_collective_bargaining_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"ký kết thỏa ước lao động tập thể mới"
+]
+},
+{
+"ten": "conform_with_collective_agreement",
+"params": [
+"E"
+],
+"vi_du": [
+"phù hợp với thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "participate_in_signing_multi_enterprise_cba",
+"params": [
+"E"
+],
+"vi_du": [
+"tham gia ký kết thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "agree_to_extend_cba_term",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận kéo dài thời hạn của thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "agree_different_terms_for_cba_contents",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận thời hạn khác nhau đối với các nội dung của thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "multi_enterprise_cba_through_bargaining_council",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa ước lao động tập thể có nhiều doanh nghiệp được tiến hành thông qua Hội đồng thương lượng tập thể"
+]
+},
+{
+"ten": "covered_by_sector_multi_cba_pending_enterprise_cba",
+"params": [
+"E"
+],
+"vi_du": [
+"thuộc đối tượng áp dụng của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp nhưng chưa có thỏa ước lao động tập thể doanh nghiệp"
+]
+},
+{
+"ten": "bargain_to_extend_cba_term",
+"params": [
+"?"
+],
+"vi_du": [
+"thương lượng để kéo dài thời hạn của thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "bargain_on_enterprise_cba_continuation_or_new_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"thương lượng để xem xét lựa chọn việc tiếp tục thực hiện, sửa đổi, bổ sung thỏa ước lao động tập thể doanh nghiệp cũ hoặc thương lượng để ký kết thỏa ước lao động tập thể mới"
+]
+},
+{
+"ten": "honor_labor_contract_and_collective_agreement",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện hợp đồng lao động, thỏa ước lao động tập thể và thỏa thuận hợp pháp khác"
+]
+},
+{
+"ten": "perform_according_to_collective_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"thực hiện theo thỏa ước lao động tập thể"
+]
+}
+]
+},
+{
+"chu_id": "C0777",
+"chu": "có khó khăn đặc biệt trong hoạt động sản xuất, kinh doanh",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D85.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Gia nhập và rút khỏi thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp thành viên của thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp được rút khỏi thỏa ước lao động tập thể khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp có khó khăn đặc biệt trong hoạt động sản xuất, kinh doanh."
+}
+],
+"ung_vien": [
+{
+"ten": "enterprise",
+"params": [],
+"vi_du": [
+"doanh nghiệp",
+"những doanh nghiệp"
+]
+},
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "production_or_business_demand",
+"params": [],
+"vi_du": [
+"do nhu cầu sản xuất, kinh doanh"
+]
+},
+{
+"ten": "force_majeure_or_state_ordered_reduction",
+"params": [],
+"vi_du": [
+"do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa hoặc di dời, thu hẹp sản xuất, kinh doanh theo yêu cầu của cơ quan nhà nước có thẩm quyền"
+]
+},
+{
+"ten": "unexpected_hardship_or_safety_incident",
+"params": [],
+"vi_du": [
+"gặp khó khăn đột xuất do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, áp dụng biện pháp ngăn ngừa, khắc phục tai nạn lao động, bệnh nghề nghiệp, sự cố điện, nước"
+]
+},
+{
+"ten": "corporate_restructuring_or_asset_transfer",
+"params": [],
+"vi_du": [
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã",
+"chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp"
+]
+},
+{
+"ten": "performed_by_licensed_labor_leasing_enterprise",
+"params": [],
+"vi_du": [
+"thực hiện bởi các doanh nghiệp có Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_parties",
+"params": [],
+"vi_du": [
+"các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "labor_leasing_enterprise_and_lessee",
+"params": [],
+"vi_du": [
+"Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động"
+]
+},
+{
+"ten": "labor_leasing_enterprise",
+"params": [],
+"vi_du": [
+"Doanh nghiệp cho thuê lại lao động"
+]
+},
+{
+"ten": "labor_leasing_activity",
+"params": [],
+"vi_du": [
+"Hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "leased_worker_labor_contract",
+"params": [],
+"vi_du": [
+"hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0778",
+"chu": "một hoặc một số nội dung trong thỏa ước lao động tập thể",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D86.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Thỏa ước lao động tập thể vô hiệu",
+"khoan_cha": "",
+"chu_don_vi": "Thỏa ước lao động tập thể vô hiệu từng phần khi một hoặc một số nội dung trong thỏa ước lao động tập thể vi phạm pháp luật."
+}
+],
+"ung_vien": [
+{
+"ten": "collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"Thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "content_shows_paid_work_wages_and_supervision",
+"params": [],
+"vi_du": [
+"có nội dung thể hiện về việc làm có trả công, tiền lương và sự quản lý, điều hành, giám sát của một bên"
+]
+},
+{
+"ten": "content_of_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"Nội dung thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "perform_according_to_corresponding_cba_content",
+"params": [],
+"vi_du": [
+"thực hiện theo nội dung tương ứng của thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "state_amended_clauses_and_effective_date",
+"params": [],
+"vi_du": [
+"ghi rõ nội dung điều, khoản sửa đổi, bổ sung và thời điểm có hiệu lực"
+]
+},
+{
+"ten": "special_industry_occupation_or_work",
+"params": [],
+"vi_du": [
+"một số ngành, nghề, công việc đặc thù"
+]
+},
+{
+"ten": "main_contents_of_probation_contract",
+"params": [],
+"vi_du": [
+"Nội dung chủ yếu của hợp đồng thử việc"
+]
+},
+{
+"ten": "content_of_that_part",
+"params": [],
+"vi_du": [
+"nội dung của phần đó"
+]
+},
+{
+"ten": "probation_fails_requirements",
+"params": [],
+"vi_du": [
+"thử việc không đạt yêu cầu",
+"thỏa thuận nội dung thử việc ghi trong hợp đồng lao động mà thử việc không đạt yêu cầu"
+]
+},
+{
+"ten": "sector_or_multi_enterprise_cba",
+"params": [],
+"vi_du": [
+"thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp",
+"Thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+}
+]
+},
+{
+"chu_id": "C0779",
+"chu": "vi phạm pháp luật",
+"params": [
+"?"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 2,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D86.K1",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thỏa ước lao động tập thể vô hiệu",
+"khoan_cha": "",
+"chu_don_vi": "Thỏa ước lao động tập thể vô hiệu từng phần khi một hoặc một số nội dung trong thỏa ước lao động tập thể vi phạm pháp luật."
+},
+{
+"don_vi": "BLLD_45-2019.D86.K2.a",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thỏa ước lao động tập thể vô hiệu",
+"khoan_cha": "Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây:",
+"chu_don_vi": "Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật;"
+}
+],
+"ung_vien": [
+{
+"ten": "wholly_invalid",
+"params": [
+"C"
+],
+"vi_du": [
+"vô hiệu toàn bộ",
+"bị tuyên bố vô hiệu toàn bộ"
+]
+},
+{
+"ten": "partially_invalid",
+"params": [
+"C"
+],
+"vi_du": [
+"vô hiệu từng phần",
+"bị tuyên bố vô hiệu từng phần"
+]
+},
+{
+"ten": "violate_law",
+"params": [
+"C"
+],
+"vi_du": [
+"vi phạm pháp luật",
+"trái với quy định của pháp luật"
+]
+},
+{
+"ten": "reward_and_handle_discipline_violations",
+"params": [
+"E"
+],
+"vi_du": [
+"khen thưởng và xử lý vi phạm kỷ luật lao động"
+]
+},
+{
+"ten": "abuse_employment_service_for_illegal_act",
+"params": [
+"W"
+],
+"vi_du": [
+"lợi dụng dịch vụ việc làm, hoạt động đưa người lao động đi làm việc ở nước ngoài theo hợp đồng để thực hiện hành vi trái pháp luật"
+]
+},
+{
+"ten": "violate_labor_discipline",
+"params": [
+"W"
+],
+"vi_du": [
+"vi phạm kỷ luật lao động"
+]
+},
+{
+"ten": "breach_agreements_in_labor_leasing_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động"
+]
+},
+{
+"ten": "notice_of_legal_representative_absence",
+"params": [
+"E"
+],
+"vi_du": [
+"bị ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật"
+]
+},
+{
+"ten": "allege_incomplete_performance_or_violation_of_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "have_written_consent_of_legal_representative",
+"params": [
+"W"
+],
+"vi_du": [
+"có sự đồng ý bằng văn bản của người đại diện theo pháp luật của người đó"
+]
+},
+{
+"ten": "supervise_labor_law_enforcement",
+"params": [
+"?"
+],
+"vi_du": [
+"giám sát việc thi hành quy định của pháp luật về lao động"
+]
+},
+{
+"ten": "agreement_or_other_legal_provision",
+"params": [
+"?"
+],
+"vi_du": [
+"hai bên có thỏa thuận hoặc pháp luật có quy định khác"
+]
+},
+{
+"ten": "job_prohibited_by_law",
+"params": [
+"J"
+],
+"vi_du": [
+"là công việc mà pháp luật cấm"
+]
+},
+{
+"ten": "entice_or_coerce_into_illegal_activity",
+"params": [
+"W"
+],
+"vi_du": [
+"lợi dụng danh nghĩa dạy nghề, tập nghề để lôi kéo, dụ dỗ, ép buộc người học nghề, người tập nghề vào hoạt động trái pháp luật"
+]
+},
+{
+"ten": "settle_employee_benefits_according_to_law",
+"params": [
+"W"
+],
+"vi_du": [
+"quyền lợi của người lao động được giải quyết theo quy định của pháp luật"
+]
+},
+{
+"ten": "illegal_use_of_minor_labor",
+"params": [
+"W"
+],
+"vi_du": [
+"sử dụng lao động chưa thành niên trái pháp luật"
+]
+},
+{
+"ten": "implement_state_policy_or_international_commitment",
+"params": [
+"?"
+],
+"vi_du": [
+"thực hiện chính sách, pháp luật của Nhà nước khi cơ cấu lại nền kinh tế hoặc thực hiện cam kết quốc tế"
+]
+},
+{
+"ten": "obey_labor_employment_and_social_insurance_law",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện quy định của pháp luật về lao động, việc làm, giáo dục nghề nghiệp, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp và an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "follow_labor_employment_insurance_and_safety_law",
+"params": [
+"W"
+],
+"vi_du": [
+"thực hiện quy định của pháp luật về lao động, việc làm, giáo dục nghề nghiệp, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp và an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "violate_labor_contract_conclusion_principles",
+"params": [
+"?"
+],
+"vi_du": [
+"vi phạm nguyên tắc giao kết hợp đồng lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0780",
+"chu": "Toàn bộ nội dung thỏa ước lao động tập thể",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D86.K2.a",
+"vai": "chu_the",
+"tieu_de_dieu": "Thỏa ước lao động tập thể vô hiệu",
+"khoan_cha": "Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây:",
+"chu_don_vi": "Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật;"
+}
+],
+"ung_vien": [
+{
+"ten": "collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"Thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "entire_content_of_labor_contract",
+"params": [],
+"vi_du": [
+"Toàn bộ nội dung của hợp đồng lao động"
+]
+},
+{
+"ten": "content_of_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"Nội dung thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "perform_according_to_corresponding_cba_content",
+"params": [],
+"vi_du": [
+"thực hiện theo nội dung tương ứng của thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "content_shows_paid_work_wages_and_supervision",
+"params": [],
+"vi_du": [
+"có nội dung thể hiện về việc làm có trả công, tiền lương và sự quản lý, điều hành, giám sát của một bên"
+]
+},
+{
+"ten": "state_amended_clauses_and_effective_date",
+"params": [],
+"vi_du": [
+"ghi rõ nội dung điều, khoản sửa đổi, bổ sung và thời điểm có hiệu lực"
+]
+},
+{
+"ten": "main_contents_of_probation_contract",
+"params": [],
+"vi_du": [
+"Nội dung chủ yếu của hợp đồng thử việc"
+]
+},
+{
+"ten": "content_of_that_part",
+"params": [],
+"vi_du": [
+"nội dung của phần đó"
+]
+},
+{
+"ten": "probation_fails_requirements",
+"params": [],
+"vi_du": [
+"thử việc không đạt yêu cầu",
+"thỏa thuận nội dung thử việc ghi trong hợp đồng lao động mà thử việc không đạt yêu cầu"
+]
+}
+]
+},
+{
+"chu_id": "C0781",
+"chu": "Người ký kết",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D86.K2.b",
+"vai": "chu_the",
+"tieu_de_dieu": "Thỏa ước lao động tập thể vô hiệu",
+"khoan_cha": "Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây:",
+"chu_don_vi": "Người ký kết không đúng thẩm quyền;"
+}
+],
+"ung_vien": [
+{
+"ten": "collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"Thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "labor_contract_signed_by_authorized_person",
+"params": [],
+"vi_du": [
+"Hợp đồng lao động do người được ủy quyền ký kết"
+]
+},
+{
+"ten": "apply_like_collective_bargaining_and_signing",
+"params": [],
+"vi_du": [
+"thực hiện như việc thương lượng, ký kết thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "within_10_days_from_cba_signing",
+"params": [],
+"vi_du": [
+"Trong thời hạn 10 ngày kể từ ngày thỏa ước lao động tập thể được ký kết"
+]
+},
+{
+"ten": "prior_to_signing_collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"trước khi ký kết"
+]
+},
+{
+"ten": "job_agreed_in_labor_contract",
+"params": [],
+"vi_du": [
+"Công việc đã giao kết trong hợp đồng lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0782",
+"chu": "đúng thẩm quyền",
+"params": [
+"?"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D86.K2.b",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thỏa ước lao động tập thể vô hiệu",
+"khoan_cha": "Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây:",
+"chu_don_vi": "Người ký kết không đúng thẩm quyền;"
+}
+],
+"ung_vien": [
+{
+"ten": "wholly_invalid",
+"params": [
+"C"
+],
+"vi_du": [
+"vô hiệu toàn bộ",
+"bị tuyên bố vô hiệu toàn bộ"
+]
+},
+{
+"ten": "partially_invalid",
+"params": [
+"C"
+],
+"vi_du": [
+"vô hiệu từng phần",
+"bị tuyên bố vô hiệu từng phần"
+]
+},
+{
+"ten": "conclude_labor_contract_with_proper_authority",
+"params": [
+"?"
+],
+"vi_du": [
+"giao kết hợp đồng lao động đúng thẩm quyền"
+]
+},
+{
+"ten": "notice_of_legal_representative_absence",
+"params": [
+"E"
+],
+"vi_du": [
+"bị ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật"
+]
+},
+{
+"ten": "other_rights_under_law",
+"params": [
+"E"
+],
+"vi_du": [
+"các quyền khác"
+]
+},
+{
+"ten": "have_additional_rights_and_obligations",
+"params": [
+"E"
+],
+"vi_du": [
+"có các quyền và nghĩa vụ"
+]
+},
+{
+"ten": "have_supplementary_rights_and_obligations",
+"params": [
+"W"
+],
+"vi_du": [
+"có các quyền và nghĩa vụ"
+]
+},
+{
+"ten": "regulate_bargaining_right_dispute_resolution",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định việc giải quyết tranh chấp giữa các bên liên quan đến quyền thương lượng tập thể"
+]
+},
+{
+"ten": "settle_employee_benefits_according_to_law",
+"params": [
+"W"
+],
+"vi_du": [
+"quyền lợi của người lao động được giải quyết theo quy định của pháp luật"
+]
+},
+{
+"ten": "settle_all_amounts_related_to_rights",
+"params": [
+"?"
+],
+"vi_du": [
+"thanh toán đầy đủ các khoản tiền có liên quan đến quyền lợi của mỗi bên"
+]
+},
+{
+"ten": "perform_rights_obligations_and_benefits",
+"params": [
+"?"
+],
+"vi_du": [
+"thực hiện quyền, nghĩa vụ và lợi ích của hai bên"
+]
+},
+{
+"ten": "late_wage_payment",
+"params": [
+"W"
+],
+"vi_du": [
+"trả lương không đúng thời hạn"
+]
+},
+{
+"ten": "request_proper_cba_implementation",
+"params": [
+"?"
+],
+"vi_du": [
+"yêu cầu thi hành đúng thỏa ước lao động tập thể"
+]
+}
+]
+},
+{
+"chu_id": "C0783",
+"chu": "tuân thủ đúng quy trình thương lượng, ký kết thỏa ước lao động tập thể",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D86.K2.c",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thỏa ước lao động tập thể vô hiệu",
+"khoan_cha": "Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây:",
+"chu_don_vi": "Không tuân thủ đúng quy trình thương lượng, ký kết thỏa ước lao động tập thể."
+}
+],
+"ung_vien": [
+{
+"ten": "collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"Thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "apply_like_collective_bargaining_and_signing",
+"params": [],
+"vi_du": [
+"thực hiện như việc thương lượng, ký kết thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "within_10_days_from_cba_signing",
+"params": [],
+"vi_du": [
+"Trong thời hạn 10 ngày kể từ ngày thỏa ước lao động tập thể được ký kết"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_parties",
+"params": [],
+"vi_du": [
+"các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "collective_bargaining_parties",
+"params": [],
+"vi_du": [
+"Các bên thương lượng"
+]
+},
+{
+"ten": "collective_bargaining_council",
+"params": [],
+"vi_du": [
+"Hội đồng thương lượng tập thể"
+]
+},
+{
+"ten": "labor_contract_signed_by_authorized_person",
+"params": [],
+"vi_du": [
+"Hợp đồng lao động do người được ủy quyền ký kết"
+]
+},
+{
+"ten": "collective_bargaining",
+"params": [],
+"vi_du": [
+"là thương lượng tập thể",
+"Thương lượng tập thể"
+]
+},
+{
+"ten": "each_party",
+"params": [],
+"vi_du": [
+"mỗi bên",
+"bên",
+"bên đó"
+]
+}
+]
+},
+{
+"chu_id": "C0784",
+"chu": "bị tuyên bố vô hiệu",
+"params": [
+"?"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D88",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Xử lý thỏa ước lao động tập thể vô hiệu",
+"khoan_cha": "",
+"chu_don_vi": "Khi thỏa ước lao động tập thể bị tuyên bố vô hiệu thì quyền, nghĩa vụ và lợi ích của các bên ghi trong thỏa ước lao động tập thể tương ứng với toàn bộ hoặc phần bị tuyên bố vô hiệu được giải quyết theo quy định của pháp luật và các thỏa thuận hợp pháp trong hợp đồng lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "wholly_invalid",
+"params": [
+"C"
+],
+"vi_du": [
+"vô hiệu toàn bộ",
+"bị tuyên bố vô hiệu toàn bộ"
+]
+},
+{
+"ten": "partially_invalid",
+"params": [
+"C"
+],
+"vi_du": [
+"vô hiệu từng phần",
+"bị tuyên bố vô hiệu từng phần"
+]
+},
+{
+"ten": "amend_invalid_part_of_labor_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"sửa đổi, bổ sung phần của hợp đồng lao động bị tuyên bố vô hiệu"
+]
+},
+{
+"ten": "employer_court_declared_incapacity_missing_or_dead",
+"params": [
+"E"
+],
+"vi_du": [
+"bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết"
+]
+},
+{
+"ten": "court_declared_civil_incapacity_missing_or_dead",
+"params": [
+"W"
+],
+"vi_du": [
+"bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết"
+]
+},
+{
+"ten": "jointly_declare_collective_bargaining_disagreement",
+"params": [
+"?"
+],
+"vi_du": [
+"cùng xác định và tuyên bố về việc thương lượng tập thể không đạt được thỏa thuận"
+]
+},
+{
+"ten": "breach_agreements_in_labor_leasing_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động"
+]
+},
+{
+"ten": "be_forced_labor",
+"params": [
+"?"
+],
+"vi_du": [
+"là cưỡng bức lao động",
+"bị cưỡng bức lao động"
+]
+},
+{
+"ten": "court_ordered_contractual_job_restriction",
+"params": [
+"W"
+],
+"vi_du": [
+"bị cấm làm công việc ghi trong hợp đồng lao động"
+]
+},
+{
+"ten": "be_convicted",
+"params": [
+"W"
+],
+"vi_du": [
+"bị kết án"
+]
+},
+{
+"ten": "be_laid_off",
+"params": [
+"W"
+],
+"vi_du": [
+"bị thôi việc",
+"bị mất việc làm"
+]
+},
+{
+"ten": "suffer_discrimination_forced_labor_and_harassment",
+"params": [
+"W"
+],
+"vi_du": [
+"bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc"
+]
+},
+{
+"ten": "be_workplace_sexual_harassment",
+"params": [
+"?"
+],
+"vi_du": [
+"là quấy rối tình dục tại nơi làm việc",
+"bị quấy rối tình dục"
+]
+},
+{
+"ten": "notice_of_legal_representative_absence",
+"params": [
+"E"
+],
+"vi_du": [
+"bị ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật"
+]
+},
+{
+"ten": "be_deported",
+"params": [
+"W"
+],
+"vi_du": [
+"bị trục xuất"
+]
+},
+{
+"ten": "temporarily_detained_or_remanded",
+"params": [
+"W"
+],
+"vi_du": [
+"bị tạm giữ, tạm giam"
+]
+},
+{
+"ten": "dismissal_as_discipline",
+"params": [
+"W"
+],
+"vi_du": [
+"bị xử lý kỷ luật sa thải"
+]
+},
+{
+"ten": "take_effect_from_signing_date",
+"params": [
+"C"
+],
+"vi_du": [
+"có hiệu lực kể từ ngày ký kết"
+]
+},
+{
+"ten": "have_effect_like_labor_contract",
+"params": [
+"C"
+],
+"vi_du": [
+"có hiệu lực như hợp đồng lao động"
+]
+},
+{
+"ten": "take_effect",
+"params": [
+"C"
+],
+"vi_du": [
+"có hiệu lực"
+]
+}
+]
+},
+{
+"chu_id": "C0785",
+"chu": "được giải quyết theo quy định của pháp luật và các thỏa thuận hợp pháp trong hợp đồng lao động",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D88",
+"vai": "ket_luan",
+"tieu_de_dieu": "Xử lý thỏa ước lao động tập thể vô hiệu",
+"khoan_cha": "",
+"chu_don_vi": "Khi thỏa ước lao động tập thể bị tuyên bố vô hiệu thì quyền, nghĩa vụ và lợi ích của các bên ghi trong thỏa ước lao động tập thể tương ứng với toàn bộ hoặc phần bị tuyên bố vô hiệu được giải quyết theo quy định của pháp luật và các thỏa thuận hợp pháp trong hợp đồng lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "collective_bargaining_agreement",
+"params": [],
+"vi_du": [
+"Thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "unlawful_unilateral_termination_of_labor_contract",
+"params": [],
+"vi_du": [
+"là đơn phương chấm dứt hợp đồng lao động trái pháp luật",
+"chấm dứt hợp đồng lao động không đúng quy định"
+]
+},
+{
+"ten": "person_under_15_and_legal_representative",
+"params": [],
+"vi_du": [
+"Người chưa đủ 15 tuổi và người đại diện theo pháp luật của người đó"
+]
+},
+{
+"ten": "legal_representative_of_enterprise",
+"params": [],
+"vi_du": [
+"Người đại diện theo pháp luật của doanh nghiệp"
+]
+},
+{
+"ten": "legal_representative_of_that_person",
+"params": [],
+"vi_du": [
+"người đại diện theo pháp luật của người đó"
+]
+},
+{
+"ten": "head_of_organization_with_legal_personality",
+"params": [],
+"vi_du": [
+"Người đứng đầu cơ quan, tổ chức có tư cách pháp nhân theo quy định của pháp luật"
+]
+},
+{
+"ten": "law_provides_otherwise",
+"params": [],
+"vi_du": [
+"pháp luật có quy định khác"
+]
+},
+{
+"ten": "legal_change_outdates_cba",
+"params": [],
+"vi_du": [
+"quy định của pháp luật thay đổi dẫn đến thỏa ước lao động tập thể không còn phù hợp với quy định của pháp luật"
+]
+},
+{
+"ten": "return_worker_for_labor_discipline_violation",
+"params": [],
+"vi_du": [
+"bên thuê lại lao động trả lại người lao động do vi phạm kỷ luật lao động"
+]
+},
+{
+"ten": "labor_code",
+"params": [],
+"vi_du": [
+"Bộ luật Lao động"
+]
+},
+{
+"ten": "agree_otherwise",
+"params": [],
+"vi_du": [
+"có thỏa thuận khác"
+]
+}
+]
+},
+{
+"chu_id": "C0786",
+"chu": "phía người sử dụng lao động",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D89",
+"vai": "chu_the",
+"tieu_de_dieu": "Chi phí thương lượng, ký kết thỏa ước lao động tập thể",
+"khoan_cha": "",
+"chu_don_vi": "Mọi chi phí cho việc thương lượng, ký kết, sửa đổi, bổ sung, gửi và công bố thỏa ước lao động tập thể do phía người sử dụng lao động chi trả."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0787",
+"chu": "chi trả chi phí",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D89",
+"vai": "ket_luan",
+"tieu_de_dieu": "Chi phí thương lượng, ký kết thỏa ước lao động tập thể",
+"khoan_cha": "",
+"chu_don_vi": "Mọi chi phí cho việc thương lượng, ký kết, sửa đổi, bổ sung, gửi và công bố thỏa ước lao động tập thể do phía người sử dụng lao động chi trả."
+}
+],
+"ung_vien": [
+{
+"ten": "pay_copying_and_sending_document_costs",
+"params": [
+"E"
+],
+"vi_du": [
+"trả chi phí sao, gửi tài liệu"
+]
+},
+{
+"ten": "provide_detailed_regulation",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định chi tiết",
+"quy định chi tiết Điều này"
+]
+},
+{
+"ten": "collect_tuition_fee",
+"params": [
+"E"
+],
+"vi_du": [
+"thu học phí"
+]
+},
+{
+"ten": "pay_job_loss_allowance",
+"params": [
+"E"
+],
+"vi_du": [
+"trả trợ cấp mất việc làm"
+]
+}
+]
+}
+]
+}

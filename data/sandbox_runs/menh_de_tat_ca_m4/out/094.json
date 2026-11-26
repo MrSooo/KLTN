@@ -1,0 +1,355 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D98.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm thêm giờ",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động làm thêm giờ"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hoàn cảnh làm thêm giờ tách thành điều kiện của quy tắc trả lương."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả lương",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "tính theo đơn giá tiền lương hoặc tiền lương thực trả theo công việc đang làm",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Người lao động làm thêm giờ được trả lương tính theo đơn giá tiền lương hoặc tiền lương thực trả theo công việc đang làm"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm căn cứ tính lương là bổ ngữ của hành vi trả lương."
+     }
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "danh_sach",
+     "trich": [
+      "như sau:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách mức tiền lương làm thêm giờ."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D98.K1.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vào ngày thường",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động làm thêm giờ được trả lương",
+      "Vào ngày thường"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả lương ít nhất bằng 150%",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động làm thêm giờ được trả lương",
+      "Vào ngày thường, ít nhất bằng 150%"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể, phương thức và động từ trả lương từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D98.K1.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vào ngày nghỉ hằng tuần",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động làm thêm giờ được trả lương",
+      "Vào ngày nghỉ hằng tuần"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả lương ít nhất bằng 200%",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động làm thêm giờ được trả lương",
+      "Vào ngày nghỉ hằng tuần, ít nhất bằng 200%"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể, phương thức và động từ trả lương từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D98.K1.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vào ngày nghỉ lễ, tết, ngày nghỉ có hưởng lương",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động làm thêm giờ được trả lương",
+      "Vào ngày nghỉ lễ, tết, ngày nghỉ có hưởng lương"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả lương ít nhất bằng 300%",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "chưa kể tiền lương ngày lễ, tết, ngày nghỉ có hưởng lương",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Người lao động làm thêm giờ được trả lương",
+      "ít nhất bằng 300% chưa kể tiền lương ngày lễ, tết, ngày nghỉ có hưởng lương"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Phần loại trừ khỏi mức 300% là bổ ngữ của kết luận."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hưởng lương ngày",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đối với người lao động hưởng lương ngày"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D98.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm việc vào ban đêm",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động làm việc vào ban đêm"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả thêm ít nhất bằng 30% tiền lương",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "tính theo đơn giá tiền lương hoặc tiền lương thực trả theo công việc của ngày làm việc bình thường",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Người lao động làm việc vào ban đêm thì được trả thêm ít nhất bằng 30% tiền lương tính theo đơn giá tiền lương hoặc tiền lương thực trả theo công việc của ngày làm việc bình thường"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm căn cứ tính lương là bổ ngữ của hành vi trả thêm."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D98.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm thêm giờ vào ban đêm",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động làm thêm giờ vào ban đêm"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả thêm 20% tiền lương",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "tính theo đơn giá tiền lương hoặc tiền lương theo công việc làm vào ban ngày của ngày làm việc bình thường hoặc của ngày nghỉ hằng tuần hoặc của ngày nghỉ lễ, tết",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "người lao động còn được trả thêm 20% tiền lương tính theo đơn giá tiền lương hoặc tiền lương theo công việc làm vào ban ngày của ngày làm việc bình thường hoặc của ngày nghỉ hằng tuần hoặc của ngày nghỉ lễ, tết"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "trich": [
+      "theo quy định tại khoản 1 và khoản 2 Điều này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D98.K1",
+      "BLLD_45-2019.D98.K2"
+     ],
+     "gan_vao": 1
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D98.K4",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quy định chi tiết Điều này",
+     "chu_the": {
+      "chu": "Chính phủ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Chính phủ quy định chi tiết Điều này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "trich": [
+      "Điều này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D98"
+     ],
+     "gan_vao": 0,
+     "ly_do_llm": {
+      "ma": "chua_ro",
+      "giai_thich": "Dẫn chiếu là tân ngữ của hành vi quy định chi tiết, vẫn ghi nhận đích giải được."
+     }
+    }
+   ]
+  }
+ ]
+}

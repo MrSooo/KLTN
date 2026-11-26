@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D78.K2",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D78.K2\",\n \"tieu_de_dieu\": \"Hiệu lực và thời hạn của thỏa ước lao động tập thể\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thỏa ước lao động tập thể doanh nghiệp có hiệu lực áp dụng đối với người sử dụng lao động và toàn bộ người lao động của doanh nghiệp.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Thỏa ước lao động tập thể doanh nghiệp có hiệu lực áp dụng đối với người sử dụng lao động và toàn bộ người lao động của doanh nghiệp\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp có hiệu lực áp dụng đối với toàn bộ người sử dụng lao động và người lao động của các doanh nghiệp tham gia thỏa ước lao động tập thể.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp có hiệu lực áp dụng đối với toàn bộ người sử dụng lao động và người lao động của các doanh nghiệp tham gia thỏa ước lao động tập thể\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D78.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"có hiệu lực áp dụng đối với người sử dụng lao động và toàn bộ người lao động của doanh nghiệp\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Thỏa ước lao động tập thể doanh nghiệp\",\n    \"loai\": \"C\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"E\"\n    },\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    \"người sử dụng lao động\",\n    \"toàn bộ người lao động của doanh nghiệp\"\n   ]\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"doan\": [\n    \"có hiệu lực áp dụng đối với toàn bộ người sử dụng lao động và người lao động của các doanh nghiệp tham gia thỏa ước lao động tập thể\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Thỏa ước lao động tập thể ngành và thỏa ước lao động tập thể có nhiều doanh nghiệp\",\n    \"loai\": \"C\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"E\"\n    },\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q2\",\n   \"liet_ke\": [\n    \"toàn bộ người sử dụng lao động\",\n    \"người lao động của các doanh nghiệp tham gia thỏa ước lao động tập thể\"\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "tPoGa6rNE6ON1e8PxvuCoAc",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3634
+   },
+   "input_tokens": 4235,
+   "output_tokens": 4133,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_70621f02fcb1c220760801cd"
+   }
+  }
+ }
+}

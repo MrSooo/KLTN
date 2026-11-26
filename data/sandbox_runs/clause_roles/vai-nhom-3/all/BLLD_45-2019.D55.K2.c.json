@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D55.K2.c",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D55.K2.c\",\n \"tieu_de_dieu\": \"Hợp đồng cho thuê lại lao động\",\n \"khoan_cha\": \"Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thời giờ làm việc, thời giờ nghỉ ngơi, điều kiện an toàn, vệ sinh lao động tại nơi làm việc;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Thời giờ làm việc, thời giờ nghỉ ngơi, điều kiện an toàn, vệ sinh lao động tại nơi làm việc\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D55.K2.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Thời giờ làm việc, thời giờ nghỉ ngơi, điều kiện an toàn, vệ sinh lao động tại nơi làm việc\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Hợp đồng cho thuê lại lao động\",\n    \"loai\": \"C\"\n   },\n   \"liet_ke\": [\n    \"Thời giờ làm việc\",\n    \"thời giờ nghỉ ngơi\",\n    \"điều kiện an toàn, vệ sinh lao động tại nơi làm việc\"\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "IvoGa6WlDZHM2roPmoTxwAg",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 1839,
+   "completion_tokens_details": {
+    "reasoning_tokens": 701
+   },
+   "input_tokens": 2240,
+   "output_tokens": 933,
+   "prompt_tokens_details": {
+    "cached_tokens": 1839
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_e677449fe88864cbb5e53392"
+   }
+  }
+ }
+}

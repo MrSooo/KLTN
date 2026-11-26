@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người lao động Việt Nam đi làm việc ở nước ngoài phải tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động Việt Nam\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"đi làm việc ở nước ngoài\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539680480-801c02b1",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 722
+   },
+   "input_tokens": 2431,
+   "output_tokens": 138,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_1faf631bddaed02e053ecfea"
+   }
+  }
+ }
+}

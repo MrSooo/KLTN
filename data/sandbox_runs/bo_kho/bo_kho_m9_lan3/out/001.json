@@ -1,0 +1,823 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D3",
+   "dong": [
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "danh_sach",
+     "trich": [
+      "Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn vào danh sách định nghĩa từ ngữ."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D3.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là người lao động",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm việc cho người sử dụng lao động",
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "làm việc cho người sử dụng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được trả lương",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "được trả lương"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "chịu sự quản lý, điều hành, giám sát của người sử dụng lao động",
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "chịu sự quản lý, điều hành, giám sát của người sử dụng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "theo thỏa thuận",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "theo thỏa thuận"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm căn cứ của việc làm, tách thành điều kiện riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đủ 15 tuổi",
+     "chu_the": {
+      "chu": "Độ tuổi lao động tối thiểu của người lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Độ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "targets": [],
+     "gan_vao": 5,
+     "chua_ro": [
+      {
+       "thanh_phan": "targets",
+       "nguyen_nhan": "khac",
+       "cau_hoi": "Dẫn chiếu tới Mục 1 Chương XI của Bộ luật này nhưng dan_chieu rỗng, không có mã đích."
+      }
+     ],
+     "trich": [
+      "trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D3.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là người sử dụng lao động",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động là doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình, cá nhân"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình, cá nhân",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "là doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình, cá nhân"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Danh sách loại chủ thể cấu thành định nghĩa, giữ chung một điều kiện."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có thuê mướn, sử dụng người lao động làm việc cho mình",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "có thuê mướn, sử dụng người lao động làm việc cho mình"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "theo thỏa thuận",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "theo thỏa thuận"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm căn cứ, tách thành điều kiện riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "người sử dụng lao động là cá nhân",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trường hợp người sử dụng lao động là cá nhân thì phải có năng lực hành vi dân sự đầy đủ"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có năng lực hành vi dân sự đầy đủ",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trường hợp người sử dụng lao động là cá nhân thì phải có năng lực hành vi dân sự đầy đủ"
+     ],
+     "quy_tac": "q2"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D3.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là tổ chức đại diện người lao động tại cơ sở",
+     "chu_the": {
+      "chu": "Tổ chức đại diện người lao động tại cơ sở",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Tổ chức đại diện người lao động tại cơ sở là tổ chức được thành lập trên cơ sở tự nguyện của người lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được thành lập trên cơ sở tự nguyện của người lao động",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "được thành lập trên cơ sở tự nguyện của người lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "tại một đơn vị sử dụng lao động",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "tại một đơn vị sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm nơi chốn, tách thành điều kiện riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "nhằm mục đích bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "nhằm mục đích bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong quan hệ lao động",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trong quan hệ lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm phạm vi quan hệ, tách thành điều kiện riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thông qua thương lượng tập thể hoặc các hình thức khác",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thông qua thương lượng tập thể hoặc các hình thức khác"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "trich": [
+      "theo quy định của pháp luật về lao động"
+     ],
+     "ly_do_llm": {
+      "ma": "dan_chieu_mo",
+      "giai_thich": "Dẫn chiếu chung tới pháp luật về lao động, không có đích cụ thể."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp",
+     "chu_the": {
+      "chu": "Tổ chức đại diện người lao động tại cơ sở",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Tổ chức đại diện người lao động tại cơ sở bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp"
+     ],
+     "quy_tac": "q2"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D3.K4",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được thành lập hợp pháp",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "được thành lập hợp pháp"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động",
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "đại diện và bảo vệ quyền, lợi ích hợp pháp của người sử dụng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong quan hệ lao động",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trong quan hệ lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm phạm vi quan hệ, tách thành điều kiện riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là tổ chức đại diện người sử dụng lao động",
+     "chu_the": {
+      "chu": "Tổ chức đại diện người sử dụng lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Tổ chức đại diện người sử dụng lao động là tổ chức được thành lập hợp pháp"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D3.K5",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là quan hệ lao động",
+     "chu_the": {
+      "chu": "Quan hệ lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Quan hệ lao động là quan hệ xã hội phát sinh trong việc thuê mướn, sử dụng lao động, trả lương"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "quan hệ xã hội phát sinh trong việc thuê mướn, sử dụng lao động, trả lương",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "quan hệ xã hội phát sinh trong việc thuê mướn, sử dụng lao động, trả lương"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "giữa người lao động, người sử dụng lao động, các tổ chức đại diện của các bên, cơ quan nhà nước có thẩm quyền",
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "giữa người lao động, người sử dụng lao động, các tổ chức đại diện của các bên, cơ quan nhà nước có thẩm quyền"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Cụm xác định các bên của quan hệ, giữ chung một điều kiện."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bao gồm quan hệ lao động cá nhân và quan hệ lao động tập thể",
+     "chu_the": {
+      "chu": "Quan hệ lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Quan hệ lao động bao gồm quan hệ lao động cá nhân và quan hệ lao động tập thể"
+     ],
+     "quy_tac": "q2"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D3.K6",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là người làm việc không có quan hệ lao động",
+     "chu_the": {
+      "chu": "Người làm việc không có quan hệ lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người làm việc không có quan hệ lao động là người làm việc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm việc trên cơ sở thuê mướn bằng hợp đồng lao động",
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Phủ định gắn với cụm căn cứ làm nên chính dấu hiệu định nghĩa."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D3.K7",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là cưỡng bức lao động",
+     "chu_the": {
+      "chu": "Cưỡng bức lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Cưỡng bức lao động là việc dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Các phương thức thay thế của cùng một hành vi, giữ chung."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "ép buộc người lao động phải làm việc trái ý muốn của họ",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "để ép buộc người lao động phải làm việc trái ý muốn của họ"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D3.K8",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là phân biệt đối xử trong lao động",
+     "chu_the": {
+      "chu": "Phân biệt đối xử trong lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Phân biệt đối xử trong lao động là hành vi phân biệt, loại trừ hoặc ưu tiên"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hành vi phân biệt, loại trừ hoặc ưu tiên",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "hành vi phân biệt, loại trừ hoặc ưu tiên"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trên cơ sở tình trạng nhiễm HIV",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "hoặc trên cơ sở tình trạng nhiễm HIV"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "nhom_hoac": "h1",
+     "trich": [
+      "hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có tác động làm ảnh hưởng đến bình đẳng về cơ hội việc làm hoặc nghề nghiệp",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "có tác động làm ảnh hưởng đến bình đẳng về cơ hội việc làm hoặc nghề nghiệp"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Việc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Một trong hai trường hợp loại trừ, tách thành quy tắc riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bị xem là phân biệt đối xử",
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "thì không bị xem là phân biệt đối xử"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương"
+     ],
+     "quy_tac": "q3",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Trường hợp loại trừ thứ hai, tách thành quy tắc riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bị xem là phân biệt đối xử",
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "thì không bị xem là phân biệt đối xử"
+     ],
+     "quy_tac": "q3"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D3.K9",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là quấy rối tình dục tại nơi làm việc",
+     "chu_the": {
+      "chu": "Quấy rối tình dục tại nơi làm việc",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Quấy rối tình dục tại nơi làm việc là hành vi có tính chất tình dục"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hành vi có tính chất tình dục của bất kỳ người nào đối với người khác",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "hành vi có tính chất tình dục của bất kỳ người nào đối với người khác"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "tại nơi làm việc",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "tại nơi làm việc"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm nơi chốn, tách thành điều kiện riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được người đó mong muốn hoặc chấp nhận",
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "mà không được người đó mong muốn hoặc chấp nhận"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là nơi làm việc",
+     "chu_the": {
+      "chu": "Nơi làm việc",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nơi làm việc là bất kỳ nơi nào"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bất kỳ nơi nào mà người lao động thực tế làm việc",
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "bất kỳ nơi nào mà người lao động thực tế làm việc"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "theo thỏa thuận hoặc phân công của người sử dụng lao động",
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "theo thỏa thuận hoặc phân công của người sử dụng lao động"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm căn cứ, tách thành điều kiện riêng."
+     }
+    }
+   ]
+  }
+ ]
+}

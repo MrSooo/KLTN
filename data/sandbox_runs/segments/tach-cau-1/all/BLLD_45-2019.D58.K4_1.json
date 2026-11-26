@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khiếu nại với doanh nghiệp cho thuê lại lao động trong trường hợp bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Khiếu nại với doanh nghiệp cho thuê lại lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538708516-09551082",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 789
+   },
+   "input_tokens": 2410,
+   "output_tokens": 74,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_fadbc97ef6f15759e6c1b930"
+   }
+  }
+ }
+}

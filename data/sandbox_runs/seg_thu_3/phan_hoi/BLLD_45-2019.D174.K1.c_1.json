@@ -1,0 +1,30 @@
+{
+ "cau": "Điều kiện, thủ tục gia nhập và ra khỏi tổ chức của người lao động tại doanh nghiệp.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Điều kiện, thủ tục\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"gia nhập\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"ra khỏi\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"tổ chức của người lao động tại doanh nghiệp\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-8kwDa8DGA5bO1e8P17TQ8Ao",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 468
+   },
+   "input_tokens": 920,
+   "output_tokens": 579,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_3fd6c6c994f3e44e6ac77144"
+   }
+  }
+ }
+}

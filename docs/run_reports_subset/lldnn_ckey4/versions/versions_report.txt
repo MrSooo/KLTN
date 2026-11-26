@@ -1,0 +1,29 @@
+2.3-2.4 báo cáo
+ngày as_of: 2026-04-15  đơn vị: 1147  phiên bản: 1277  cạnh cập nhật: 65 {'replaces': 27, 'amends': 24, 'repeals': 5, 'expires_by_topic': 1, 'consolidates': 1, 'ends_when_replaced': 1, 'overrides': 6}  quan hệ chờ đích: 17
+sự kiện theo thứ tự nạp:
+  2021-01-01  BLLD_45-2019           mới    96  chạm   0  đóng     0  cờ {}
+  2021-02-01  ND_145-2020            mới   202  chạm   0  đóng     0  cờ {'pending_target_doc': 13}
+  2021-02-15  ND_152-2020            mới   265  chạm   0  đóng     0  cờ {'pending_target_doc': 1}
+  2023-09-18  ND_70-2023             mới    64  chạm  35  đóng     5  cờ {'form_directive_target_not_in_kb': 9, 'pending_target_doc': 2}
+  2025-08-07  ND_219-2025            mới   254  chạm  95  đóng   135  cờ {'pending_unit_repeal': 1}
+  2026-01-01  VBHN_125-2025          mới     1  chạm   0  đóng     0  cờ {'consolidation_giong_sau_chuan_hoa': 90, 'consolidation_unit_moi': 1, 'consolidation_khac_khong_chu_thich': 1}
+  2026-04-15  NQ_66-16-2026          mới   265  chạm   0  đóng     0  cờ {'has_term': 1, 'ends_when_replaced': 1}
+unknown_directive: 0
+chỉ thị đọc được nhưng đích / cụm không khớp: 1
+  ND_70-2023 ND_70-2023.D1.K14.c: bãi bỏ mã không có hoặc đã đóng: ND_152-2020.D30.K6a.a
+mốc cổng dev:
+  bỏ qua (ngoài kho con): ND_28: mọi đơn vị effective_to = 2022-01-17
+  bỏ qua (ngoài kho con): ND_12: mọi đơn vị effective_to = 2026-09-10
+  đạt: BLLĐ Điều 154 có khoản 8a từ 2026-01-01
+  đạt: các đơn vị khác của BLLĐ không đổi phiên bản
+  bỏ qua (ngoài kho con): BLLĐ Điều 185 khoản 4 bị cờ consolidation_discrepancy
+  bỏ qua (ngoài kho con): ND_283 Điều 66 khoản 2, 3: các đơn vị đích ở trạng thái pending_event
+  đạt: NQ_66-16: khoảng hiệu lực 2026-04-15 đến 2027-03-01 (hết ngày 28/02/2027)
+  đạt: NQ_66-16: có cạnh overrides trong khoảng đó
+  đạt: ND_152-2020.D7.K6 có version 2 từ 2023-09-18
+  đạt: ND_152-2020.D7.K14 có version 2 từ 2023-09-18
+  đạt: ND_152.D8.K2 đổi cụm 'khoản 4, 6 và 8 Điều 154' từ 2023-09-18
+  đạt: ND_152 Điều 7 khoản 8 (lao động nước ngoài) đóng từ 2025-08-07
+  đạt: ND_152 phần người Việt Nam làm cho tổ chức nước ngoài (Điều 22-28) vẫn hiệu lực
+  bỏ qua (ngoài kho con): TT_11 có dòng danh mục mới từ 2024-02-15, dòng cũ không đổi phiên bản (0 dòng mới)
+  đạt: không còn unknown_directive (0 còn lại)

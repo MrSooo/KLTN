@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D4.K7",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D4.K7\",\n \"tieu_de_dieu\": \"1:Chính 2:sách 3:của 4:Nhà 5:nước 6:về 7:lao 8:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Bảo đảm bình đẳng giới; quy định chế độ lao động và chính sách xã hội nhằm bảo vệ lao động nữ, lao động là người khuyết tật, người lao động cao tuổi, lao động chưa thành niên.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Bảo 2:đảm 3:bình 4:đẳng 5:giới\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:quy 2:định 3:chế 4:độ 5:lao 6:động 7:và 8:chính 9:sách 10:xã 11:hội\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:bảo 2:vệ 3:lao 4:động 5:nữ, 6:lao 7:động 8:là 9:người 10:khuyết 11:tật, 12:người 13:lao 14:động 15:cao 16:tuổi, 17:lao 18:động 19:chưa 20:thành 21:niên\",\n     \"noi_truoc\": [\n      \"nhằm\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D4.K7\",\n \"bo_qua\": \"khong_quy_pham\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-e0ad5d234ab54d8f961947ba9d819def",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 345
+   },
+   "input_tokens": 5981,
+   "output_tokens": 397,
+   "x_ckey": {
+    "cost": 10.6,
+    "cost_is_estimate": false,
+    "request_id": "req_601025476d6caa8b6cd33716"
+   }
+  }
+ }
+}

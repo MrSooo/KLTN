@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động có hành vi trộm cắp, tham ô, đánh bạc, cố ý gây thương tích, sử dụng ma túy tại nơi làm việc;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động có hành vi\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\",\"m5\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"trộm cắp\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tham ô\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"đánh bạc\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"cố ý gây thương tích\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"sử dụng ma túy\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"tại nơi làm việc\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\",\"m5\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1kEDa6WkBtWx2roPgJCx0AM",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 617
+   },
+   "input_tokens": 933,
+   "output_tokens": 807,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ac363898a00f0f25e1a6fc1a"
+   }
+  }
+ }
+}

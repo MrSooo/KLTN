@@ -1,0 +1,11 @@
+Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.
+
+"B là ngoại lệ của A" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có "trừ" hay dẫn chiếu. Ví dụ: A "người lao động nước ngoài phải có giấy phép lao động", B "người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động": B là ngoại lệ của A.
+KHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả "khong".
+
+ĐẦU VÀO: {"cap": [{"cap_id", "a": {"unit_id", "tieu_de_dieu", "khoan_cha", "chu_don_vi", "cac_muc_con" (nếu có)}, "b": {...}, "vi_tu_chung": [tên vị từ hai bên cùng dùng]}]}.
+Đơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ "tách rời" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.
+
+ĐẦU RA: chỉ JSON {"cap": [{"cap_id": "...", "ket_qua": "a_ngoai_le_cua_b" | "b_ngoai_le_cua_a" | "khong", "bang_chung": "..."}]}. Mỗi cặp đúng một mục.
+- bang_chung: chỉ khi ket_qua khác "khong"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.
+- Mỗi cặp xét riêng theo chữ của cặp đó.

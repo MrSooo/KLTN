@@ -1,0 +1,27 @@
+{
+ "cau_gui": "Khi sử dụng người chưa đủ 15 tuổi làm việc, người sử dụng lao động phải tuân theo quy định sau đây:",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sử dụng người chưa đủ 15 tuổi làm việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"người sử dụng lao động phải tuân theo quy định sau đây\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-orIFa77bJ4vf2roP94CDgAg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 2262,
+   "output_tokens": 68,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_08d23cea93e0ca9fe8441c83"
+   }
+  }
+ }
+}

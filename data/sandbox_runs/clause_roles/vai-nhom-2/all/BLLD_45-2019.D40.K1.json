@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D40.K1",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D40.K1\",\n \"tieu_de_dieu\": \"Nghĩa vụ của người lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Không được trợ cấp thôi việc.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Không được trợ cấp thôi việc\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D40.K1\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"trợ cấp thôi việc\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"khong\",\"cuc\":\"phu_dinh\",\"chu_the\":{\"chu\":\"người lao động\",\"loai\":\"W\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795542758316-cca4ca06",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1402
+   },
+   "input_tokens": 3628,
+   "output_tokens": 84,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_8a32afd9b11d0fd1c574b808"
+   }
+  }
+ }
+}

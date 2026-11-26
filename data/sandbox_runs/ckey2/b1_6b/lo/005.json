@@ -1,0 +1,557 @@
+{
+"chu": [
+{
+"chu_id": "C0110",
+"chu": "Thời hạn của giấy phép lao động",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D155",
+"vai": "chu_the",
+"tieu_de_dieu": "Thời hạn của giấy phép lao động",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0111",
+"chu": "tối đa là 02 năm",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D155",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thời hạn của giấy phép lao động",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm."
+}
+],
+"ung_vien": [
+{
+"ten": "labor_subleasing_term_max_12_months",
+"params": [
+"W"
+],
+"vi_du": [
+"thời hạn cho thuê lại lao động đối với người lao động tối đa là 12 tháng"
+]
+},
+{
+"ten": "make_contract_in_two_copies_each_keeps_one",
+"params": [
+"C"
+],
+"vi_du": [
+"làm thành 02 bản, mỗi bên giữ 01 bản"
+]
+}
+]
+},
+{
+"chu_id": "C0112",
+"chu": "gia hạn",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D155",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Thời hạn của giấy phép lao động",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0113",
+"chu": "giấy phép lao động",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 3,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D155",
+"vai": "chu_the",
+"tieu_de_dieu": "Thời hạn của giấy phép lao động",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm."
+},
+{
+"don_vi": "BLLD_45-2019.D156.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Các trường hợp giấy phép lao động hết hiệu lực",
+"khoan_cha": "",
+"chu_don_vi": "Giấy phép lao động hết thời hạn."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0114",
+"chu": "gia hạn một lần với thời hạn tối đa là 02 năm",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D155",
+"vai": "ket_luan",
+"tieu_de_dieu": "Thời hạn của giấy phép lao động",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm."
+}
+],
+"ung_vien": [
+{
+"ten": "labor_subleasing_term_max_12_months",
+"params": [
+"W"
+],
+"vi_du": [
+"thời hạn cho thuê lại lao động đối với người lao động tối đa là 12 tháng"
+]
+},
+{
+"ten": "make_contract_in_two_copies_each_keeps_one",
+"params": [
+"C"
+],
+"vi_du": [
+"làm thành 02 bản, mỗi bên giữ 01 bản"
+]
+},
+{
+"ten": "agree_multiple_fixed_term_labor_contracts",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn"
+]
+},
+{
+"ten": "enter_vietnam_short_term_for_technical_incident",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được"
+]
+},
+{
+"ten": "apply_to_certain_jobs",
+"params": [
+"J"
+],
+"vi_du": [
+"áp dụng đối với một số công việc nhất định"
+]
+},
+{
+"ten": "meet_temporary_sudden_labor_demand_increase",
+"params": [
+"E"
+],
+"vi_du": [
+"đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0115",
+"chu": "hết thời hạn",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D156.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Các trường hợp giấy phép lao động hết hiệu lực",
+"khoan_cha": "",
+"chu_don_vi": "Giấy phép lao động hết thời hạn."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0116",
+"chu": "chấm dứt hợp đồng lao động",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D156.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Các trường hợp giấy phép lao động hết hiệu lực",
+"khoan_cha": "",
+"chu_don_vi": "Chấm dứt hợp đồng lao động."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0117",
+"chu": "Nội dung của hợp đồng lao động",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D156.K3",
+"vai": "chu_the",
+"tieu_de_dieu": "Các trường hợp giấy phép lao động hết hiệu lực",
+"khoan_cha": "",
+"chu_don_vi": "Nội dung của hợp đồng lao động không đúng với nội dung của giấy phép lao động đã được cấp."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0118",
+"chu": "không đúng với nội dung của giấy phép lao động đã được cấp",
+"params": [
+"C"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D156.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Các trường hợp giấy phép lao động hết hiệu lực",
+"khoan_cha": "",
+"chu_don_vi": "Nội dung của hợp đồng lao động không đúng với nội dung của giấy phép lao động đã được cấp."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0119",
+"chu": "làm việc không đúng với nội dung trong giấy phép lao động đã được cấp",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D156.K4",
+"vai": "ket_luan",
+"tieu_de_dieu": "Các trường hợp giấy phép lao động hết hiệu lực",
+"khoan_cha": "",
+"chu_don_vi": "Làm việc không đúng với nội dung trong giấy phép lao động đã được cấp."
+}
+],
+"ung_vien": [
+{
+"ten": "vietnamese_citizen_working_for_foreign_employer",
+"params": [],
+"vi_du": [
+"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam"
+]
+}
+]
+},
+{
+"chu_id": "C0120",
+"chu": "Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D156.K5",
+"vai": "chu_the",
+"tieu_de_dieu": "Các trường hợp giấy phép lao động hết hiệu lực",
+"khoan_cha": "",
+"chu_don_vi": "Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt."
+}
+],
+"ung_vien": [
+{
+"ten": "vietnamese_citizen_working_for_foreign_employer",
+"params": [],
+"vi_du": [
+"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "request_by_competent_authority",
+"params": [],
+"vi_du": [
+"có yêu cầu của cơ quan nhà nước có thẩm quyền"
+]
+},
+{
+"ten": "enterprises_agencies_orgs_individuals_contractors",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu"
+]
+},
+{
+"ten": "enterprises_agencies_orgs_individuals",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, cơ quan, tổ chức, cá nhân"
+]
+}
+]
+},
+{
+"chu_id": "C0121",
+"chu": "hết thời hạn hoặc chấm dứt",
+"params": [
+"C"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D156.K5",
+"vai": "ket_luan",
+"tieu_de_dieu": "Các trường hợp giấy phép lao động hết hiệu lực",
+"khoan_cha": "",
+"chu_don_vi": "Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt."
+}
+],
+"ung_vien": [
+{
+"ten": "leased_worker_employment_contract_remains_valid",
+"params": [
+"C"
+],
+"vi_du": [
+"hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động chưa chấm dứt"
+]
+}
+]
+},
+{
+"chu_id": "C0122",
+"chu": "có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D156.K6",
+"vai": "ket_luan",
+"tieu_de_dieu": "Các trường hợp giấy phép lao động hết hiệu lực",
+"khoan_cha": "",
+"chu_don_vi": "Có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam."
+}
+],
+"ung_vien": []
+},
+{
+"chu_id": "C0123",
+"chu": "Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D156.K7",
+"vai": "chu_the",
+"tieu_de_dieu": "Các trường hợp giấy phép lao động hết hiệu lực",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động."
+}
+],
+"ung_vien": [
+{
+"ten": "vietnamese_citizen_working_for_foreign_employer",
+"params": [],
+"vi_du": [
+"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam"
+]
+},
+{
+"ten": "enterprises_agencies_orgs_individuals_contractors",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu"
+]
+},
+{
+"ten": "enterprises_agencies_orgs_individuals",
+"params": [],
+"vi_du": [
+"Doanh nghiệp, cơ quan, tổ chức, cá nhân"
+]
+},
+{
+"ten": "labor_contract_term_for_foreign_worker",
+"params": [],
+"vi_du": [
+"Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam"
+]
+}
+]
+},
+{
+"chu_id": "C0124",
+"chu": "chấm dứt hoạt động",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D156.K7",
+"vai": "ket_luan",
+"tieu_de_dieu": "Các trường hợp giấy phép lao động hết hiệu lực",
+"khoan_cha": "",
+"chu_don_vi": "Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động."
+}
+],
+"ung_vien": [
+{
+"ten": "use_leased_worker_from_unlicensed_enterprise",
+"params": [
+"E"
+],
+"vi_du": [
+"sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "receive_labor_subleasing_license",
+"params": [
+"E"
+],
+"vi_du": [
+"được cấp Giấy phép hoạt động cho thuê lại lao động"
+]
+}
+]
+},
+{
+"chu_id": "C0125",
+"chu": "bị thu hồi",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D156.K8",
+"vai": "ket_luan",
+"tieu_de_dieu": "Các trường hợp giấy phép lao động hết hiệu lực",
+"khoan_cha": "",
+"chu_don_vi": "Giấy phép lao động bị thu hồi."
+}
+],
+"ung_vien": [
+{
+"ten": "be_sanctioned",
+"params": [
+"E"
+],
+"vi_du": [
+"bị xử lý"
+]
+},
+{
+"ten": "have_criminal_record_or_pending_prosecution",
+"params": [
+"W"
+],
+"vi_du": [
+"là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự"
+]
+},
+{
+"ten": "replace_dismissed_employee",
+"params": [
+"E"
+],
+"vi_du": [
+"thay thế người lao động bị cho thôi việc"
+]
+}
+]
+},
+{
+"chu_id": "C0126",
+"chu": "làm việc tại Việt Nam",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D157",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Cấp, cấp lại, gia hạn, thu hồi giấy phép lao động, giấy xác nhận không thuộc diện cấp giấy phép lao động",
+"khoan_cha": "",
+"chu_don_vi": "Chính phủ quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động đối với người lao động nước ngoài làm việc tại Việt Nam."
+}
+],
+"ung_vien": [
+{
+"ten": "prescribe",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định"
+]
+}
+]
+}
+]
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Quan hệ lao động là quan hệ xã hội phát sinh trong việc thuê mướn, sử dụng lao động, trả lương giữa người lao động, người sử dụng lao động, các tổ chức đại diện của các bên, cơ quan nhà nước có thẩm quyền.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Quan hệ lao động là quan hệ xã hội phát sinh trong việc\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thuê mướn\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"sử dụng\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"trả lương\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"giữa người lao động, người sử dụng lao động, các tổ chức đại diện của các bên, cơ quan nhà nước có thẩm quyền\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-KiADa4iML83A0-kPg5zAiAs",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1394
+   },
+   "input_tokens": 953,
+   "output_tokens": 1588,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_01d2f282afd313aebffdd71a"
+   }
+  }
+ }
+}

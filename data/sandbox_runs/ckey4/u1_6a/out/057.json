@@ -1,0 +1,57 @@
+{
+ "units": [
+  {
+   "unit_id": "ND_219-2025.D10",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "không quá 02 năm",
+     "chu_the": {
+      "chu": "Thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động",
+      "loai": "?",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động",
+      "nhưng không quá 02 năm"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Mức trần thời hạn là kết luận riêng, tách khỏi căn cứ xác định thời hạn."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "theo thời hạn của một trong các trường hợp",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "theo thời hạn của một trong các trường hợp"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm giới hạn hoàn cảnh xác định thời hạn là điều kiện riêng."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "trich": [
+      "quy định tại Điều 21 Nghị định này"
+     ],
+     "targets": [
+      "ND_219-2025.D21"
+     ],
+     "gan_vao": 1,
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

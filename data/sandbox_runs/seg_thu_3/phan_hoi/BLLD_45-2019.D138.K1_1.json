@@ -1,0 +1,30 @@
+{
+ "cau": "Lao động nữ mang thai nếu có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi thì có quyền đơn phương chấm dứt hợp đồng lao động hoặc tạm hoãn thực hiện hợp đồng lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Lao động nữ mang thai\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"có quyền\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"đơn phương chấm dứt hợp đồng lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"tạm hoãn thực hiện hợp đồng lao động\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-DUUDa9eANKbD0-kP9ujeyAY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 14056
+   },
+   "input_tokens": 957,
+   "output_tokens": 676,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d26afa9f399e3b71db502f1e"
+   }
+  }
+ }
+}

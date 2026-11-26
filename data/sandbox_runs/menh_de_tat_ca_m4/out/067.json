@@ -1,0 +1,228 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D68.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "yêu cầu thương lượng tập thể",
+     "chu_the": {
+      "chu": "Tổ chức đại diện người lao động tại cơ sở",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Tổ chức đại diện người lao động tại cơ sở có quyền yêu cầu thương lượng tập thể"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đạt tỷ lệ thành viên tối thiểu trên tổng số người lao động trong doanh nghiệp",
+     "chu_the": {
+      "chu": "Tổ chức đại diện người lao động tại cơ sở",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Tổ chức đại diện người lao động tại cơ sở có quyền yêu cầu thương lượng tập thể khi đạt tỷ lệ thành viên tối thiểu trên tổng số người lao động trong doanh nghiệp"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "trich": [
+      "theo quy định của Chính phủ"
+     ],
+     "ly_do_llm": {
+      "ma": "dan_chieu_mo",
+      "giai_thich": "Dẫn chiếu tới quy định của Chính phủ, chưa giải được thành đích cụ thể."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D68.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có nhiều tổ chức đại diện người lao động tại cơ sở",
+     "chu_the": {
+      "chu": "doanh nghiệp",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trường hợp doanh nghiệp có nhiều tổ chức đại diện người lao động tại cơ sở đáp ứng quy định tại khoản 1 Điều này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D68.K1"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "đáp ứng quy định tại khoản 1 Điều này"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là tổ chức có số thành viên nhiều nhất",
+     "chu_the": {
+      "chu": "tổ chức có quyền yêu cầu thương lượng",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "bo_ngu": [
+      {
+       "original_text": "trong doanh nghiệp",
+       "scope": "this_clause"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì tổ chức có quyền yêu cầu thương lượng là tổ chức có số thành viên nhiều nhất trong doanh nghiệp"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tham gia thương lượng tập thể",
+     "chu_the": {
+      "chu": "Các tổ chức đại diện người lao động tại cơ sở khác",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Các tổ chức đại diện người lao động tại cơ sở khác có thể tham gia thương lượng tập thể"
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được tổ chức đại diện người lao động có quyền yêu cầu thương lượng tập thể đồng ý",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "khi được tổ chức đại diện người lao động có quyền yêu cầu thương lượng tập thể đồng ý"
+     ],
+     "quy_tac": "q2"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D68.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có nhiều tổ chức đại diện người lao động tại cơ sở mà không có tổ chức nào",
+     "chu_the": {
+      "chu": "doanh nghiệp",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trường hợp doanh nghiệp có nhiều tổ chức đại diện người lao động tại cơ sở mà không có tổ chức nào đáp ứng quy định tại khoản 1 Điều này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D68.K1"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "đáp ứng quy định tại khoản 1 Điều này"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tự nguyện kết hợp với nhau để yêu cầu thương lượng tập thể",
+     "chu_the": {
+      "chu": "các tổ chức",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì các tổ chức có quyền tự nguyện kết hợp với nhau để yêu cầu thương lượng tập thể"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đạt tỷ lệ tối thiểu",
+     "chu_the": {
+      "chu": "tổng số thành viên của các tổ chức này",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "nhưng tổng số thành viên của các tổ chức này phải đạt tỷ lệ tối thiểu"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "targets": [
+      "BLLD_45-2019.D68.K1"
+     ],
+     "gan_vao": 3,
+     "trich": [
+      "theo quy định tại khoản 1 Điều này"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D68.K4",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quy định việc giải quyết tranh chấp giữa các bên liên quan đến quyền thương lượng tập thể",
+     "chu_the": {
+      "chu": "Chính phủ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Chính phủ quy định việc giải quyết tranh chấp giữa các bên liên quan đến quyền thương lượng tập thể"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

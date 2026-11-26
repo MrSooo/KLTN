@@ -1,0 +1,30 @@
+{
+ "cau": "Người sử dụng lao động phải xây dựng thang lương, bảng lương và định mức lao động làm cơ sở để tuyển dụng, sử dụng lao động, thỏa thuận mức lương theo công việc hoặc chức danh ghi trong hợp đồng lao động và trả lương cho người lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người sử dụng lao động phải xây dựng thang lương, bảng lương và định mức lao động\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"làm cơ sở để\",\"ap_cho\":[\"m2\",\"m3\",\"m4\",\"m5\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tuyển dụng\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"sử dụng\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"lao động\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"thỏa thuận mức lương theo công việc hoặc chức danh ghi trong hợp đồng lao động\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"trả lương cho người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-CToDa_ehJfuv2roPv5rX2QQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 12625
+   },
+   "input_tokens": 954,
+   "output_tokens": 832,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_eb3382e5be879542d868252c"
+   }
+  }
+ }
+}

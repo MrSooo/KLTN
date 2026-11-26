@@ -1,0 +1,135 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "dungcsnd113/gemini-flash-3.8",
+ "created": "2026-11-22T15:41:37+00:00",
+ "system": "Mỗi mục là MỘT dòng đã tách từ một đơn vị Bộ luật Lao động mà lõi (doan) quá dài. Viết lại dòng đó thành các dòng ngắn hơn, cùng khuôn dòng: doan, vai, phuong_thuc, cuc, quy_tac, nhom_hoac, chu_the, doi_so, liet_ke, chua_ro.\n\nChỉ làm một trong ba cách:\n1. dieu_kien chứa danh sách trường hợp hay đối tượng: mỗi mục một dòng dieu_kien cùng quy_tac; chữ dùng chung (ví dụ \"dựa trên\") là đoạn đầu doan của mỗi dòng. Các mục nối bằng \"hoặc\" hay dấu phẩy thay thế nhau thì cùng một nhom_hoac (của dòng cũ nếu có, không thì mã mới); nối bằng \"và\" (phải đủ hết) thì không nhom_hoac.\n2. ket_luan chứa danh sách tân ngữ: giữ động từ trong doan, đưa các mục vào liet_ke.\n3. Hai thuộc tính của CÙNG một đối tượng (\"hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng\"): hai dòng dieu_kien cùng quy_tac.\nCụm mô tả một đối tượng KHÁC (ví dụ \"do cơ quan đại diện ngoại giao đề nghị thành lập\" mô tả cơ sở giáo dục, không phải người lao động) giữ nguyên trong dòng. Không làm được thì trả lại đúng dòng cũ.\n\ndoan chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha hoặc chu_don_vi đã cho; mọi chữ của doan cũ phải còn trong doan hoặc liet_ke của các dòng mới. Giữ vai, phuong_thuc, cuc, chu_the, quy_tac của dòng cũ.\n\nĐầu ra JSON thuần: {\"thay\": [{\"id\": \"...\", \"dong\": [...]}]}, mỗi id của đầu vào đúng một mục.\n",
+ "user": "{\n \"dong_dai\": [\n  {\n   \"id\": \"ND_219-2025.D7.K11#4\",\n   \"tieu_de_dieu\": \"Người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Tình nguyện viên làm việc tại Việt Nam theo hình thức tự nguyện và không hưởng lương để thực hiện điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên và có xác nhận của cơ quan đại diện ngoại giao nước ngoài hoặc tổ chức quốc tế tại Việt Nam.\",\n   \"dong\": {\n    \"doan\": [\n     \"để thực hiện điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"chu_the\": {\n     \"chu\": \"Tình nguyện viên\",\n     \"loai\": \"W\"\n    },\n    \"quy_tac\": \"q1\"\n   }\n  },\n  {\n   \"id\": \"ND_219-2025.D7.K12#2\",\n   \"tieu_de_dieu\": \"Người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Vào Việt Nam thực hiện thỏa thuận quốc tế mà cơ quan, tổ chức ở Trung ương, cấp tỉnh ký kết theo quy định của pháp luật.\",\n   \"dong\": {\n    \"doan\": [\n     \"thực hiện thỏa thuận quốc tế mà cơ quan, tổ chức ở Trung ương, cấp tỉnh ký kết theo quy định của pháp luật\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"chu_the\": {\n     \"chu\": \"Người lao động nước ngoài\",\n     \"loai\": \"W\"\n    },\n    \"quy_tac\": \"q1\"\n   }\n  },\n  {\n   \"id\": \"ND_219-2025.D7.K13.b#3\",\n   \"tieu_de_dieu\": \"Người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật thuộc một trong các trường hợp sau:\",\n   \"chu_don_vi\": \"Di chuyển trong nội bộ doanh nghiệp: Di chuyển có thời hạn trong nội bộ doanh nghiệp nước ngoài đã thành lập hiện diện thương mại trên lãnh thổ Việt Nam thuộc phạm vi 11 ngành dịch vụ theo biểu cam kết dịch vụ của Việt Nam với tổ chức thương mại thế giới và đã được doanh nghiệp nước ngoài tuyển dụng trước đó ít nhất 12 tháng liên tục. Hiện diện thương mại bao gồm tổ chức kinh tế có vốn đầu tư nước ngoài; văn phòng đại diện, chi nhánh của thương nhân nước ngoài tại Việt Nam; văn phòng điều hành của nhà đầu tư nước ngoài trong hợp đồng hợp tác kinh doanh.\",\n   \"dong\": {\n    \"doan\": [\n     \"thuộc phạm vi 11 ngành dịch vụ theo biểu cam kết dịch vụ của Việt Nam với tổ chức thương mại thế giới\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"chu_the\": {\n     \"chu\": \"Người lao động nước ngoài\",\n     \"loai\": \"W\"\n    },\n    \"quy_tac\": \"q1\"\n   }\n  },\n  {\n   \"id\": \"ND_219-2025.D7.K13.b#4\",\n   \"tieu_de_dieu\": \"Người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật thuộc một trong các trường hợp sau:\",\n   \"chu_don_vi\": \"Di chuyển trong nội bộ doanh nghiệp: Di chuyển có thời hạn trong nội bộ doanh nghiệp nước ngoài đã thành lập hiện diện thương mại trên lãnh thổ Việt Nam thuộc phạm vi 11 ngành dịch vụ theo biểu cam kết dịch vụ của Việt Nam với tổ chức thương mại thế giới và đã được doanh nghiệp nước ngoài tuyển dụng trước đó ít nhất 12 tháng liên tục. Hiện diện thương mại bao gồm tổ chức kinh tế có vốn đầu tư nước ngoài; văn phòng đại diện, chi nhánh của thương nhân nước ngoài tại Việt Nam; văn phòng điều hành của nhà đầu tư nước ngoài trong hợp đồng hợp tác kinh doanh.\",\n   \"dong\": {\n    \"doan\": [\n     \"đã được doanh nghiệp nước ngoài tuyển dụng trước đó ít nhất 12 tháng liên tục\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"chu_the\": {\n     \"chu\": \"Người lao động nước ngoài\",\n     \"loai\": \"W\"\n    },\n    \"quy_tac\": \"q1\"\n   }\n  },\n  {\n   \"id\": \"ND_219-2025.D7.K13.b#7\",\n   \"tieu_de_dieu\": \"Người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Người lao động nước ngoài là nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật thuộc một trong các trường hợp sau:\",\n   \"chu_don_vi\": \"Di chuyển trong nội bộ doanh nghiệp: Di chuyển có thời hạn trong nội bộ doanh nghiệp nước ngoài đã thành lập hiện diện thương mại trên lãnh thổ Việt Nam thuộc phạm vi 11 ngành dịch vụ theo biểu cam kết dịch vụ của Việt Nam với tổ chức thương mại thế giới và đã được doanh nghiệp nước ngoài tuyển dụng trước đó ít nhất 12 tháng liên tục. Hiện diện thương mại bao gồm tổ chức kinh tế có vốn đầu tư nước ngoài; văn phòng đại diện, chi nhánh của thương nhân nước ngoài tại Việt Nam; văn phòng điều hành của nhà đầu tư nước ngoài trong hợp đồng hợp tác kinh doanh.\",\n   \"dong\": {\n    \"doan\": [\n     \"văn phòng điều hành của nhà đầu tư nước ngoài trong hợp đồng hợp tác kinh doanh\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"nhom_hoac\": \"h1\",\n    \"quy_tac\": \"q2\"\n   }\n  },\n  {\n   \"id\": \"ND_219-2025.D7.K14.b#5\",\n   \"tieu_de_dieu\": \"Người lao động nước ngoài không thuộc diện cấp giấy phép lao động\",\n   \"khoan_cha\": \"Được Bộ Giáo dục và Đào tạo xác nhận vào Việt Nam để thực hiện các công việc sau:\",\n   \"chu_don_vi\": \"Làm nhà quản lý, giám đốc điều hành, hiệu trưởng, phó hiệu trưởng cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài hoặc tổ chức liên chính phủ đề nghị thành lập tại Việt Nam.\",\n   \"dong\": {\n    \"doan\": [\n     \"cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài hoặc tổ chức liên chính phủ đề nghị thành lập tại Việt Nam\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"chu_the\": {\n     \"chu\": \"Người lao động nước ngoài\",\n     \"loai\": \"W\"\n    },\n    \"quy_tac\": \"q1\"\n   }\n  }\n ]\n}\n",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "request_id": "req_5dca1555de42686491ea019f",
+ "output": {
+  "thay": [
+   {
+    "id": "ND_219-2025.D7.K11#4",
+    "dong": [
+     {
+      "doan": [
+       "để thực hiện điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Tình nguyện viên",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "id": "ND_219-2025.D7.K12#2",
+    "dong": [
+     {
+      "doan": [
+       "thực hiện thỏa thuận quốc tế mà cơ quan, tổ chức ở Trung ương, cấp tỉnh ký kết theo quy định của pháp luật"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "id": "ND_219-2025.D7.K13.b#3",
+    "dong": [
+     {
+      "doan": [
+       "thuộc phạm vi 11 ngành dịch vụ theo biểu cam kết dịch vụ của Việt Nam với tổ chức thương mại thế giới"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "id": "ND_219-2025.D7.K13.b#4",
+    "dong": [
+     {
+      "doan": [
+       "đã được doanh nghiệp nước ngoài tuyển dụng trước đó ít nhất 12 tháng liên tục"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "id": "ND_219-2025.D7.K13.b#7",
+    "dong": [
+     {
+      "doan": [
+       "văn phòng điều hành của nhà đầu tư nước ngoài trong hợp đồng hợp tác kinh doanh"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "nhom_hoac": "h1",
+      "quy_tac": "q2"
+     }
+    ]
+   },
+   {
+    "id": "ND_219-2025.D7.K14.b#5",
+    "dong": [
+     {
+      "doan": [
+       "cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài hoặc tổ chức liên chính phủ đề nghị thành lập tại Việt Nam"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "chu_the": {
+       "chu": "Người lao động nước ngoài",
+       "loai": "W"
+      },
+      "quy_tac": "q1"
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2295,
+  "output_tokens": 994,
+  "cost_vnd": 6.5
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 2275
+   }
+  ],
+  "usage_khac": {}
+ }
+}

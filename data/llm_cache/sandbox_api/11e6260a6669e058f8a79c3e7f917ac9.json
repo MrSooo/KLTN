@@ -1,0 +1,71 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T20:35:09+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0040\",\n   \"a\": {\n    \"unit_id\": \"ND_219-2025.D10\",\n    \"tieu_de_dieu\": \"Thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động theo thời hạn của một trong các trường hợp quy định tại Điều 21 Nghị định này nhưng không quá 02 năm.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D21.K1\",\n    \"tieu_de_dieu\": \"Thời hạn của giấy phép lao động, giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời hạn của giấy phép lao động, giấy xác nhận không thuộc diện cấp giấy phép lao động được cấp theo thời hạn của một trong các trường hợp sau đây nhưng không quá 02 năm:\",\n    \"cac_muc_con\": [\n     \"Thời hạn của hợp đồng lao động dự kiến sẽ ký kết;\",\n     \"Thời hạn trong văn bản của bên nước ngoài cử người lao động nước ngoài sang làm việc tại Việt Nam;\",\n     \"Thời hạn hợp đồng hoặc thỏa thuận ký kết giữa đối tác Việt Nam và nước ngoài, giữa các đối tác Việt Nam;\",\n     \"Thời hạn hợp đồng hoặc thỏa thuận cung cấp dịch vụ ký kết giữa đối tác Việt Nam và nước ngoài;\",\n     \"Thời hạn trong văn bản của nhà cung cấp dịch vụ cử người lao động nước ngoài vào Việt Nam để đàm phán cung cấp dịch vụ;\",\n     \"Thời hạn đã được xác định trong giấy phép kinh doanh, thành lập, hoạt động của cơ quan, tổ chức, doanh nghiệp;\",\n     \"Thời hạn trong văn bản của nhà cung cấp dịch vụ cử người lao động nước ngoài vào Việt Nam để thành lập hiện diện thương mại của nhà cung cấp dịch vụ đó;\",\n     \"Thời hạn trong văn bản chứng minh người lao động nước ngoài được tham gia vào hoạt động của một doanh nghiệp nước ngoài đã thành lập hiện diện thương mại tại Việt Nam;\",\n     \"Thời hạn trong văn bản của bên nước ngoài cử người lao động nước ngoài theo thỏa thuận hoặc điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên;\",\n     \"Thời hạn trong văn bản của bên nước ngoài cử người lao động nước ngoài theo thỏa thuận quốc tế mà cơ quan, tổ chức ở Trung ương, cấp tỉnh ký kết.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"maximum_duration_two_years\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0041\",\n   \"a\": {\n    \"unit_id\": \"ND_219-2025.D10\",\n    \"tieu_de_dieu\": \"Thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời hạn giấy xác nhận không thuộc diện cấp giấy phép lao động theo thời hạn của một trong các trường hợp quy định tại Điều 21 Nghị định này nhưng không quá 02 năm.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D21.K2\",\n    \"tieu_de_dieu\": \"Thời hạn của giấy phép lao động, giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời hạn của giấy xác nhận không thuộc diện cấp giấy phép lao động đối với trường hợp quy định tại khoản 14, 15 Điều 7 Nghị định này là thời hạn do các bộ, cơ quan ngang bộ hoặc Ủy ban nhân dân cấp tỉnh xác nhận, nhưng tối đa không quá 02 năm.\"\n   },\n   \"vi_tu_chung\": [\n    \"maximum_duration_two_years\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0042\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K1\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K8a\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Nhân lực công nghiệp công nghệ số chất lượng cao theo quy định của pháp luật về công nghiệp công nghệ số.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_work_permit_issuance\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0043\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K2\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Là Chủ tịch Hội đồng quản trị hoặc thành viên Hội đồng quản trị của công ty cổ phần có giá trị góp vốn theo quy định của Chính phủ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K8a\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Nhân lực công nghiệp công nghệ số chất lượng cao theo quy định của pháp luật về công nghiệp công nghệ số.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_work_permit_issuance\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0044\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K3\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Là Trưởng văn phòng đại diện, dự án hoặc chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài tại Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K8a\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Nhân lực công nghiệp công nghệ số chất lượng cao theo quy định của pháp luật về công nghiệp công nghệ số.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_work_permit_issuance\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0045\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K4\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Vào Việt Nam với thời hạn dưới 03 tháng để thực hiện chào bán dịch vụ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K8a\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Nhân lực công nghiệp công nghệ số chất lượng cao theo quy định của pháp luật về công nghiệp công nghệ số.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_work_permit_issuance\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0046\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K5\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K8a\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Nhân lực công nghiệp công nghệ số chất lượng cao theo quy định của pháp luật về công nghiệp công nghệ số.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_work_permit_issuance\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0047\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K6\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Là luật sư nước ngoài đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K8a\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Nhân lực công nghiệp công nghệ số chất lượng cao theo quy định của pháp luật về công nghiệp công nghệ số.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_work_permit_issuance\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0048\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K7\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp theo quy định của điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K8a\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Nhân lực công nghiệp công nghệ số chất lượng cao theo quy định của pháp luật về công nghiệp công nghệ số.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_work_permit_issuance\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0049\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K8\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người nước ngoài kết hôn với người Việt Nam và sinh sống trên lãnh thổ Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D154.K8a\",\n    \"tieu_de_dieu\": \"Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Nhân lực công nghiệp công nghệ số chất lượng cao theo quy định của pháp luật về công nghiệp công nghệ số.\"\n   },\n   \"vi_tu_chung\": [\n    \"subject_to_work_permit_issuance\"\n   ]\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_96c186638bccb78c774ed93f",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0040",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0041",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Thời hạn của giấy xác nhận không thuộc diện cấp giấy phép lao động đối với trường hợp quy định tại khoản 14, 15 Điều 7 Nghị định này là thời hạn do các bộ, cơ quan ngang bộ hoặc Ủy ban nhân dân cấp tỉnh xác nhận, nhưng tối đa không quá 02 năm."
+   },
+   {
+    "cap_id": "P0042",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0043",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0044",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0045",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0046",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0047",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0048",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0049",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 43,
+  "output_tokens": 434,
+  "cost_vnd": 4.39
+ },
+ "boc_rao": true
+}

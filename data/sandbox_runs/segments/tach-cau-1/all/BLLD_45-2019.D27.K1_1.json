@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khi kết thúc thời gian thử việc, người sử dụng lao động phải thông báo kết quả thử việc cho người lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"kết thúc thời gian thử việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"người sử dụng lao động phải thông báo kết quả thử việc cho người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538121925-6f676267",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 659
+   },
+   "input_tokens": 2399,
+   "output_tokens": 64,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a4bb2821bffcce56ab241759"
+   }
+  }
+ }
+}

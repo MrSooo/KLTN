@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D14.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D14.K1\",\n \"tieu_de_dieu\": \"1:Hình 2:thức 3:hợp 4:đồng 5:lao 6:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 2 Điều này\",\n   \"dich\": \"BLLD_45-2019.D14.K2\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Hợp đồng lao động phải được giao kết bằng văn bản và được làm thành 02 bản, người lao động giữ 01 bản, người sử dụng lao động giữ 01 bản, trừ trường hợp quy định tại khoản 2 Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Hợp 2:đồng 3:lao 4:động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:phải 2:được 3:giao 4:kết 5:bằng 6:văn 7:bản\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:được 2:làm 3:thành 4:02 5:bản\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:người 2:lao 3:động 4:giữ 5:01 6:bản\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:người 2:sử 3:dụng 4:lao 5:động 6:giữ 7:01 8:bản\"\n    },\n    {\n     \"id\": \"s1.d1\",\n     \"loai\": \"dan_chieu\",\n     \"chu\": \"1:trừ 2:trường 3:hợp 4:quy 5:định 6:tại 7:khoản 8:2 9:Điều 10:này\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Hợp đồng lao động được giao kết thông qua phương tiện điện tử dưới hình thức thông điệp dữ liệu theo quy định của pháp luật về giao dịch điện tử có giá trị như hợp đồng lao động bằng văn bản.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Hợp 2:đồng 3:lao 4:động 5:được 6:giao 7:kết 8:thông 9:qua 10:phương 11:tiện 12:điện 13:tử 14:dưới 15:hình 16:thức 17:thông 18:điệp 19:dữ 20:liệu 21:theo 22:quy 23:định 24:của 25:pháp 26:luật 27:về 28:giao 29:dịch 30:điện 31:tử 32:có 33:giá 34:trị 35:như 36:hợp 37:đồng 38:lao 39:động 40:bằng 41:văn 42:bản\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D14.K1\",\n \"ngoai_le\": [\n  \"BLLD_45-2019.D14.K2\"\n ],\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:2-7\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-4\"\n    ],\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-5\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-4\"\n    ],\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:4-6\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m3:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"loi\": [\n    \"s1.m4:6-8\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m4:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:5-31\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.m1:1-4\"\n    ],\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:32-42\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.m1:1-4\"\n    ],\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-e7def5a9ba9645bbbf249adea30d129f",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3941
+   },
+   "input_tokens": 6498,
+   "output_tokens": 4839,
+   "x_ckey": {
+    "cost": 18.2,
+    "cost_is_estimate": false,
+    "request_id": "req_e5e9cff85b193472ee893582"
+   }
+  }
+ }
+}

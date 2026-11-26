@@ -1,0 +1,30 @@
+{
+ "cau": "Thủ tướng Chính phủ thành lập Hội đồng tiền lương quốc gia bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thủ tướng Chính phủ thành lập\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Hội đồng tiền lương quốc gia\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-8zkDa_LwKO6j9tMPra6FuQg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1380
+   },
+   "input_tokens": 961,
+   "output_tokens": 1508,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_fb5bea3d1084b7ea964649bc"
+   }
+  }
+ }
+}

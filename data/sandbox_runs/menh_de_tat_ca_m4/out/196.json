@@ -1,0 +1,100 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D209.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đình công",
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "ở nơi sử dụng lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "Không được đình công ở nơi sử dụng lao động"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm nơi chốn gắn với hành vi đình công, giữ làm bổ ngữ."
+     },
+     "chua_ro": [
+      {
+       "thanh_phan": "chủ thể",
+       "nguyen_nhan": "chu_the",
+       "cau_hoi": "Ai bị cấm đình công (người lao động, tập thể lao động) — điều luật không nêu chủ thể."
+      }
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đe dọa đến",
+     "chu_the": {
+      "chu": "việc đình công",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "quốc phòng",
+      "an ninh",
+      "trật tự công cộng",
+      "sức khỏe của con người"
+     ],
+     "trich": [
+      "việc đình công có thể đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hoàn cảnh áp dụng (đe dọa các lợi ích) tách thành điều kiện của quy tắc cấm."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D209.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quy định danh mục nơi sử dụng lao động không được đình công và việc giải quyết tranh chấp lao động tại nơi sử dụng lao động không được đình công",
+     "chu_the": {
+      "chu": "Chính phủ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Chính phủ quy định danh mục nơi sử dụng lao động không được đình công và việc giải quyết tranh chấp lao động tại nơi sử dụng lao động không được đình công"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Một nghĩa vụ của Chính phủ với hai nội dung phải quy định; các cụm 'không được đình công' là một phần tên gọi danh mục, không phải phương thức của dòng."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "targets": [
+      "BLLD_45-2019.D209.K1"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "quy định tại khoản 1 Điều này"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

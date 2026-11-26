@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Theo dõi, thống kê, cung cấp thông tin về cung cầu và biến động cung, cầu lao động; quyết định chính sách tiền lương đối với người lao động; quyết định chính sách, quy hoạch, kế hoạch về nguồn nhân lực, phân bố và sử dụng lao động toàn xã hội, giáo dục nghề nghiệp, phát triển kỹ năng nghề; xây dựng khung trình độ kỹ năng nghề quốc gia, khung trình độ quốc gia Việt Nam đối với các trình độ thuộc giáo dục nghề nghiệp.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Theo dõi\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thống kê\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"cung cấp\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"thông tin về cung cầu và biến động cung, cầu lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"quyết định chính sách tiền lương đối với người lao động\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"quyết định chính sách, quy hoạch, kế hoạch về nguồn nhân lực, phân bố và sử dụng lao động toàn xã hội, giáo dục nghề nghiệp, phát triển kỹ năng nghề\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"xây dựng khung trình độ kỹ năng nghề quốc gia, khung trình độ quốc gia Việt Nam đối với các trình độ thuộc giáo dục nghề nghiệp\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540481699-51ebf06c",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2836
+   },
+   "input_tokens": 2477,
+   "output_tokens": 236,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_83e14f1cf6e012650b49624f"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D20.K2.b",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D20.K2.b\",\n \"tieu_de_dieu\": \"1:Loại 2:hợp 3:đồng 4:lao 5:động\",\n \"khoan_cha\": \"1:Khi 2:hợp 3:đồng 4:lao 5:động 6:quy 7:định 8:tại 9:điểm 10:b 11:khoản 12:1 13:Điều 14:này 15:hết 16:hạn 17:mà 18:người 19:lao 20:động 21:vẫn 22:tiếp 23:tục 24:làm 25:việc 26:thì 27:thực 28:hiện 29:như 30:sau:\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"điểm b khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D20.K1.b\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Nếu hết thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn mà hai bên không ký kết hợp đồng lao động mới thì hợp đồng đã giao kết theo quy định tại điểm b khoản 1 Điều này trở thành hợp đồng lao động không xác định thời hạn;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:hết 2:thời 3:hạn 4:30 5:ngày 6:kể 7:từ 8:ngày 9:hợp 10:đồng 11:lao 12:động 13:hết 14:hạn\",\n     \"noi_truoc\": [\n      \"nếu\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:hai 2:bên 3:không 4:ký 5:kết 6:hợp 7:đồng 8:lao 9:động 10:mới\",\n     \"noi_truoc\": [\n      \"mà\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:hợp 2:đồng 3:đã 4:giao 5:kết 6:theo 7:quy 8:định 9:tại 10:điểm 11:b 12:khoản 13:1 14:Điều 15:này 16:trở 17:thành 18:hợp 19:đồng 20:lao 21:động 22:không 23:xác 24:định 25:thời 26:hạn\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D20.K2.b\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D20.K1.b\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-14\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:4-10\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m2:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:16-26\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m3:1-5\"\n    ],\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-20ca11904470492a806f981bfa80f558",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3377
+   },
+   "input_tokens": 6289,
+   "output_tokens": 1536,
+   "x_ckey": {
+    "cost": 12.56,
+    "cost_is_estimate": false,
+    "request_id": "req_275525c8555c872fa7bad2aa"
+   }
+  }
+ }
+}

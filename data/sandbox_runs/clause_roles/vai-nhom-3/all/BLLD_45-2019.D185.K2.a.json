@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D185.K2.a",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D185.K2.a\",\n \"tieu_de_dieu\": \"Hội đồng trọng tài lao động\",\n \"khoan_cha\": \"Số lượng trọng tài viên lao động của Hội đồng trọng tài lao động do Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định, ít nhất là 15 người, bao gồm số lượng ngang nhau do các bên đề cử, cụ thể như sau:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tối thiểu 05 thành viên do cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh đề cử, trong đó có Chủ tịch Hội đồng là đại diện lãnh đạo và thư ký Hội đồng là công chức của cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Tối thiểu 05 thành viên do cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh đề cử\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"trong đó có\",\n     \"ap_cho\": [\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Chủ tịch Hội đồng là đại diện lãnh đạo\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thư ký Hội đồng là công chức của cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D185.K2.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Tối thiểu 05 thành viên\",\n    \"đề cử\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"doan\": [\n    \"là đại diện lãnh đạo\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"Chủ tịch Hội đồng\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"doan\": [\n    \"là công chức của cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"thư ký Hội đồng\",\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "n_0Ga_acF7O_1e8P0__SoA8",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1448
+   },
+   "input_tokens": 4343,
+   "output_tokens": 1879,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_761ff5edc519dbd08953a5e2"
+   }
+  }
+ }
+}

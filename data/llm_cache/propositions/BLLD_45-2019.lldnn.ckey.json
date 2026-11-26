@@ -1,0 +1,4644 @@
+{
+ "prompt_version": "menh-de-4",
+ "model": "deepseek-v4.1-flash",
+ "effort": "khong_co",
+ "units": {
+  "BLLD_45-2019.D52.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      },
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Cho thuê lại lao động là việc người lao động giao kết hợp đồng lao động với một người sử dụng lao động là doanh nghiệp cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "sau đó",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "sau đó người lao động được chuyển sang làm việc và chịu sự điều hành của người sử dụng lao động khác"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      },
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "mà vẫn",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "mà vẫn duy trì quan hệ lao động với người sử dụng lao động đã giao kết hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là cho thuê lại lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Cho thuê lại lao động là việc"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Định nghĩa tách các dấu hiệu thành điều kiện và kết luận 'là X'."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 21 âm tiết"
+    ],
+    [
+     1,
+     "menh_de dài 17 âm tiết"
+    ],
+    [
+     2,
+     "menh_de dài 19 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D52.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là ngành, nghề kinh doanh có điều kiện",
+     "chu_the": {
+      "chu": "Hoạt động cho thuê lại lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hoạt động cho thuê lại lao động là ngành, nghề kinh doanh có điều kiện"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện bởi các doanh nghiệp có Giấy phép hoạt động cho thuê lại lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "chỉ",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chỉ được thực hiện bởi các doanh nghiệp có Giấy phép hoạt động cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Bị động phủ định giới hạn chủ thể thực hiện; tách khỏi điều kiện áp dụng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "áp dụng đối với một số công việc nhất định",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "và áp dụng đối với một số công việc nhất định"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Phạm vi áp dụng kiểm được riêng."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     1,
+     "menh_de dài 16 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D53.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thời hạn cho thuê lại lao động tối đa là 12 tháng",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Thời hạn cho thuê lại lao động đối với người lao động tối đa là 12 tháng."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đối với người lao động",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "đối với người lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm 'đối với ...' giới hạn đối tượng áp dụng nên tách thành điều kiện."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D53.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng lao động thuê lại",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Bên thuê lại lao động được sử dụng lao động thuê lại"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "hoac",
+     "chua_ro": [],
+     "trich": [
+      "trong trường hợp sau đây:"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách trường hợp được phép."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D53.K2.a": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "trong khoảng thời gian nhất định",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Bên thuê lại lao động",
+      "Đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động trong khoảng thời gian nhất định"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 16 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D53.K2.b": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thay thế người lao động",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "trong thời gian nghỉ thai sản, bị tai nạn lao động, bệnh nghề nghiệp hoặc phải thực hiện các nghĩa vụ công dân",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Bên thuê lại lao động",
+      "Thay thế người lao động trong thời gian nghỉ thai sản, bị tai nạn lao động, bệnh nghề nghiệp hoặc phải thực hiện các nghĩa vụ công dân"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D53.K2.c": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Bên thuê lại lao động",
+      "Có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D53.K3": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng lao động thuê lại",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Bên thuê lại lao động không được sử dụng lao động thuê lại"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "hoac",
+     "chua_ro": [],
+     "trich": [
+      "trong trường hợp sau đây:"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách trường hợp bị cấm."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D53.K3.a": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thay thế người lao động",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Bên thuê lại lao động",
+      "Để thay thế người lao động đang trong thời gian thực hiện quyền đình công, giải quyết tranh chấp lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D53.K3.b": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "với doanh nghiệp cho thuê lại lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Bên thuê lại lao động",
+      "Không có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach_hay_giu_chung",
+      "giai_thich": "'Không' thuộc nội dung điều kiện nên đưa vào cực phủ định, menh_de giữ dạng khẳng định."
+     }
+    }
+   ],
+   "loi": [
+    [
+     0,
+     "ly_do_llm sai khuôn {'ma': 'tach_hay_giu_chung', 'giai_thich': \"'Không' thuộc nội dung điều kiện nên đưa vào cực phủ định, menh_de giữ dạng khẳng định.\"}"
+    ]
+   ],
+   "co": [
+    [
+     0,
+     "menh_de dài 23 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D53.K3.c": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thay thế người lao động",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "bị cho thôi việc do thay đổi cơ cấu, công nghệ, vì lý do kinh tế hoặc chia, tách, hợp nhất, sáp nhập",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Bên thuê lại lao động",
+      "Thay thế người lao động bị cho thôi việc do thay đổi cơ cấu, công nghệ, vì lý do kinh tế hoặc chia, tách, hợp nhất, sáp nhập."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D53.K4": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chuyển người lao động thuê lại cho người sử dụng lao động khác",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Bên thuê lại lao động",
+      "không được",
+      "chuyển người lao động thuê lại cho người sử dụng lao động khác"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động",
+     "chu_the": {
+      "chu": "Bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "không được",
+      "sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai hành vi bị cấm độc lập sau dấu chấm phẩy, mỗi hành vi kiểm được riêng."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     1,
+     "menh_de dài 24 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D54.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "ký quỹ",
+     "chu_the": {
+      "chu": "Doanh nghiệp cho thuê lại lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Doanh nghiệp cho thuê lại lao động phải ký quỹ"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Ký quỹ và được cấp giấy phép là hai việc kiểm được riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được cấp Giấy phép hoạt động cho thuê lại lao động",
+     "chu_the": {
+      "chu": "Doanh nghiệp cho thuê lại lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "và được cấp Giấy phép hoạt động cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D54.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quy định việc ký quỹ",
+     "chu_the": {
+      "chu": "Chính phủ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Chính phủ quy định việc ký quỹ"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Quy định ký quỹ và quy định cấp phép là hai nhóm nội dung riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động",
+     "chu_the": {
+      "chu": "Chính phủ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Chính phủ quy định việc ký quỹ, điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quy định danh mục công việc được thực hiện cho thuê lại lao động",
+     "chu_the": {
+      "chu": "Chính phủ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "và danh mục công việc được thực hiện cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [
+    [
+     2,
+     "âm tiết không có trong trich: ['quy', 'định']"
+    ]
+   ],
+   "co": [
+    [
+     1,
+     "menh_de dài 24 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D55.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản",
+     "chu_the": {
+      "chu": "Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động",
+      "loai": [
+       "E",
+       "E"
+      ],
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Doanh nghiệp cho thuê lại lao động và bên thuê lại lao động phải ký kết hợp đồng cho thuê lại lao động bằng văn bản và được làm thành 02 bản, mỗi bên giữ 01 bản."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 23 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D55.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "gồm các nội dung chủ yếu",
+     "chu_the": {
+      "chu": "Hợp đồng cho thuê lại lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Câu dẫn danh sách nội dung chủ yếu của hợp đồng; các mục là tân ngữ độc lập."
+     }
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "danh_sach",
+     "chua_ro": [],
+     "trich": [
+      "sau đây:"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách nội dung chủ yếu."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D55.K2.a": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "địa điểm làm việc, vị trí việc làm cần sử dụng lao động thuê lại, nội dung cụ thể của công việc, yêu cầu cụ thể đối với người lao động thuê lại",
+     "chu_the": {
+      "chu": "Hợp đồng cho thuê lại lao động",
+      "loai": "C",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu",
+      "Địa điểm làm việc, vị trí việc làm cần sử dụng lao động thuê lại, nội dung cụ thể của công việc, yêu cầu cụ thể đối với người lao động thuê lại;"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Các cụm là tân ngữ của cùng 'gồm' nên giữ chung một mệnh đề."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 33 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D55.K2.b": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thời hạn thuê lại lao động; thời gian bắt đầu làm việc của người lao động thuê lại",
+     "chu_the": {
+      "chu": "Hợp đồng cho thuê lại lao động",
+      "loai": "C",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu",
+      "Thời hạn thuê lại lao động; thời gian bắt đầu làm việc của người lao động thuê lại;"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Hai cụm cùng là tân ngữ của 'gồm'."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 18 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D55.K2.c": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thời giờ làm việc, thời giờ nghỉ ngơi, điều kiện an toàn, vệ sinh lao động tại nơi làm việc",
+     "chu_the": {
+      "chu": "Hợp đồng cho thuê lại lao động",
+      "loai": "C",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu",
+      "Thời giờ làm việc, thời giờ nghỉ ngơi, điều kiện an toàn, vệ sinh lao động tại nơi làm việc;"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Các cụm là tân ngữ của cùng 'gồm'; 'tại nơi làm việc' là bổ ngữ nằm trong tân ngữ."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 20 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D55.K2.d": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp",
+     "chu_the": {
+      "chu": "Hợp đồng cho thuê lại lao động",
+      "loai": "C",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu",
+      "Trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp;"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D55.K2.dd": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "nghĩa vụ của mỗi bên đối với người lao động",
+     "chu_the": {
+      "chu": "Hợp đồng cho thuê lại lao động",
+      "loai": "C",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng cho thuê lại lao động gồm các nội dung chủ yếu",
+      "Nghĩa vụ của mỗi bên đối với người lao động."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D55.K3": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có thỏa thuận về quyền, lợi ích của người lao động thấp hơn so với hợp đồng lao động mà doanh nghiệp cho thuê lại lao động đã ký với người lao động",
+     "chu_the": {
+      "chu": "Hợp đồng cho thuê lại lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng cho thuê lại lao động không được có những thỏa thuận về quyền, lợi ích của người lao động thấp hơn so với hợp đồng lao động mà doanh nghiệp cho thuê lại lao động đã ký với người lao động."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 33 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D56": {
+   "dong": [
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D6"
+     ],
+     "quy_tac": null,
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm 'Ngoài ... quy định tại Điều 6' là dẫn chiếu ngoại lệ, tách riêng khỏi câu dẫn danh sách."
+     }
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "danh_sach",
+     "chua_ro": [],
+     "trich": [
+      "doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn danh sách quyền và nghĩa vụ."
+     }
+    }
+   ],
+   "loi": [
+    [
+     0,
+     "target không có trong dẫn chiếu 1.2: BLLD_45-2019.D6"
+    ]
+   ],
+   "co": []
+  },
+  "BLLD_45-2019.D56.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bảo đảm đưa người lao động có trình độ phù hợp với những yêu cầu của bên thuê lại lao động và nội dung của hợp đồng lao động đã ký với người lao động",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ",
+      "Bảo đảm đưa người lao động có trình độ phù hợp với những yêu cầu của bên thuê lại lao động và nội dung của hợp đồng lao động đã ký với người lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 35 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D56.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thông báo cho người lao động biết nội dung của hợp đồng cho thuê lại lao động",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ",
+      "Thông báo cho người lao động biết nội dung của hợp đồng cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 17 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D56.K3": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thông báo cho bên thuê lại lao động biết sơ yếu lý lịch của người lao động, yêu cầu của người lao động",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ",
+      "Thông báo cho bên thuê lại lao động biết sơ yếu lý lịch của người lao động, yêu cầu của người lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 23 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D56.K4": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bảo đảm trả lương cho người lao động thuê lại không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ",
+      "Bảo đảm trả lương cho người lao động thuê lại không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Mức so sánh tiền lương làm nên chính hành vi bảo đảm, giữ trong menh_de."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 41 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D56.K5": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lập hồ sơ ghi rõ số lao động đã cho thuê lại, bên thuê lại lao động và định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ",
+      "Lập hồ sơ ghi rõ số lao động đã cho thuê lại, bên thuê lại lao động và định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 36 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D56.K6": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ",
+      "Xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bên thuê lại lao động trả lại người lao động do vi phạm kỷ luật lao động",
+     "chu_the": {
+      "chu": "doanh nghiệp cho thuê lại lao động",
+      "loai": "E",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ",
+      "khi bên thuê lại lao động trả lại người lao động do vi phạm kỷ luật lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm 'khi ... trả lại' là hoàn cảnh áp dụng, tách thành điều kiện."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 17 âm tiết"
+    ],
+    [
+     1,
+     "menh_de dài 17 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D57.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thông báo, hướng dẫn người lao động thuê lại biết nội quy lao động và các quy chế khác của mình",
+     "chu_the": {
+      "chu": "bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Quyền và nghĩa vụ của bên thuê lại lao động",
+      "Thông báo, hướng dẫn cho người lao động thuê lại biết nội quy lao động và các quy chế khác của mình."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 21 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D57.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "phân biệt đối xử về điều kiện lao động đối với người lao động thuê lại so với người lao động của mình",
+     "chu_the": {
+      "chu": "bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Quyền và nghĩa vụ của bên thuê lại lao động",
+      "Không được phân biệt đối xử về điều kiện lao động đối với người lao động thuê lại so với người lao động của mình."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 23 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D57.K3": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thỏa thuận về làm việc vào ban đêm, làm thêm giờ",
+     "chu_the": {
+      "chu": "bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Quyền và nghĩa vụ của bên thuê lại lao động",
+      "Thỏa thuận với người lao động thuê lại về làm việc vào ban đêm, làm thêm giờ"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "theo quy định của Bộ luật này"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "dan_chieu_mo",
+      "giai_thich": "Dẫn chiếu chung đến Bộ luật này, không phải mệnh đề độc lập."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D57.K4": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thỏa thuận để tuyển dụng chính thức người lao động thuê lại làm việc cho mình",
+     "chu_the": {
+      "chu": "bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Quyền và nghĩa vụ của bên thuê lại lao động",
+      "Thỏa thuận với người lao động thuê lại và doanh nghiệp cho thuê lại lao động để tuyển dụng chính thức người lao động thuê lại làm việc cho mình"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động chưa chấm dứt"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 16 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D57.K5": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả lại người lao động thuê lại",
+     "chu_the": {
+      "chu": "bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "cho doanh nghiệp cho thuê lại lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Quyền và nghĩa vụ của bên thuê lại lao động",
+      "Trả lại người lao động thuê lại",
+      "cho doanh nghiệp cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Tách hành vi trả lại khỏi hai căn cứ loại trừ thay thế."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đáp ứng yêu cầu như đã thỏa thuận",
+     "chu_the": {
+      "chu": "người lao động thuê lại",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": "h1",
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "không đáp ứng yêu cầu như đã thỏa thuận"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vi phạm kỷ luật lao động",
+     "chu_the": {
+      "chu": "người lao động thuê lại",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": "h1",
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "vi phạm kỷ luật lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D57.K6": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cung cấp chứng cứ về hành vi vi phạm kỷ luật lao động của người lao động thuê lại",
+     "chu_the": {
+      "chu": "bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "cho doanh nghiệp cho thuê lại lao động",
+       "scope": "this_clause"
+      },
+      {
+       "original_text": "để xem xét xử lý kỷ luật lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Quyền và nghĩa vụ của bên thuê lại lao động",
+      "Cung cấp cho doanh nghiệp cho thuê lại lao động chứng cứ về hành vi vi phạm kỷ luật lao động của người lao động thuê lại",
+      "để xem xét xử lý kỷ luật lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 19 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D58": {
+   "dong": [
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "danh_sach",
+     "chua_ro": [],
+     "trich": [
+      "Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn vào danh sách quyền và nghĩa vụ; phần dẫn chiếu Điều 5 không có mã đích trong dan_chieu."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D58.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện công việc",
+     "chu_the": {
+      "chu": "người lao động thuê lại",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động thuê lại có các quyền và nghĩa vụ",
+      "Thực hiện công việc theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm căn cứ 'theo hợp đồng lao động đã ký...' bỏ đi vẫn cùng hành vi thực hiện công việc."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D58.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấp hành kỷ luật lao động, nội quy lao động",
+     "chu_the": {
+      "chu": "người lao động thuê lại",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động thuê lại có các quyền và nghĩa vụ",
+      "Chấp hành kỷ luật lao động, nội quy lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai nghĩa vụ độc lập, vi phạm mỗi phần có ý nghĩa pháp lý riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tuân theo sự quản lý, điều hành, giám sát hợp pháp",
+     "chu_the": {
+      "chu": "người lao động thuê lại",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "của bên thuê lại lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động thuê lại có các quyền và nghĩa vụ",
+      "tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Nghĩa vụ thứ hai tách khỏi nghĩa vụ chấp hành kỷ luật."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D58.K3": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau",
+     "chu_the": {
+      "chu": "người lao động thuê lại",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động thuê lại có các quyền và nghĩa vụ",
+      "Được trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Mức so sánh tiền lương làm nên chính nội dung quyền nên giữ trong menh_de."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 33 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D58.K4": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "khiếu nại với doanh nghiệp cho thuê lại lao động",
+     "chu_the": {
+      "chu": "người lao động thuê lại",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động thuê lại có các quyền và nghĩa vụ",
+      "Khiếu nại với doanh nghiệp cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động",
+     "chu_the": {
+      "chu": "bên thuê lại lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "trong trường hợp bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm 'trong trường hợp...' là điều kiện áp dụng, tách thành dòng riêng cùng quy tắc."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D58.K5": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động",
+     "chu_the": {
+      "chu": "người lao động thuê lại",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "để giao kết hợp đồng lao động với bên thuê lại lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động thuê lại có các quyền và nghĩa vụ",
+      "Thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm mục đích 'để giao kết hợp đồng lao động...' là bổ ngữ, bỏ đi vẫn cùng hành vi thỏa thuận chấm dứt."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 16 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D150.K1": {
+   "dong": [
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Nhà nước khuyến khích doanh nghiệp, cơ quan, tổ chức, cá nhân tìm kiếm và mở rộng thị trường lao động để đưa người lao động Việt Nam đi làm việc ở nước ngoài."
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "khong_quy_pham",
+      "giai_thich": "Câu chính sách khuyến khích của Nhà nước, không có hành vi kiểm được."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại",
+     "chu_the": {
+      "chu": "Người lao động Việt Nam đi làm việc ở nước ngoài",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động Việt Nam đi làm việc ở nước ngoài phải tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [
+      {
+       "thanh_phan": "điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên",
+       "nguyen_nhan": "khac",
+       "cau_hoi": "Không có điều ước cụ thể trong danh_chieu nên không xác định được mã đích."
+      }
+     ],
+     "trich": [
+      "trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D150.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tuân theo pháp luật Việt Nam",
+     "chu_the": {
+      "chu": "Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam phải tuân theo pháp luật Việt Nam"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "pháp luật bảo vệ",
+     "chu_the": {
+      "chu": "Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam",
+      "được pháp luật bảo vệ"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai vị ngữ độc lập: nghĩa vụ tuân theo pháp luật và quyền được pháp luật bảo vệ."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D150.K3": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam",
+     "chu_the": {
+      "chu": "Chính phủ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Chính phủ quy định chi tiết việc tuyển dụng, quản lý lao động Việt Nam làm việc cho các tổ chức, cá nhân nước ngoài tại Việt Nam."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 26 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D151.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là người có quốc tịch nước ngoài",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Định nghĩa khái niệm và điều kiện chung của cùng một chủ thể; phần liệt kê điều kiện tách ở câu dẫn."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đáp ứng các điều kiện",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "phải đáp ứng các điều kiện sau đây:"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "va",
+     "chua_ro": [],
+     "trich": [
+      "sau đây:"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách điều kiện phải đáp ứng đủ."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D151.K1.a": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đủ 18 tuổi trở lên",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "Đủ 18 tuổi trở lên"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có năng lực hành vi dân sự đầy đủ",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "có năng lực hành vi dân sự đầy đủ"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D151.K1.b": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "Có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có đủ sức khỏe",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo quy định của Bộ trưởng Bộ Y tế",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "có đủ sức khỏe theo quy định của Bộ trưởng Bộ Y tế"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D151.K1.c": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là người đang trong thời gian chấp hành hình phạt",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "Không phải là người đang trong thời gian chấp hành hình phạt"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Ba trạng thái loại trừ nối bằng 'hoặc' cùng một yêu cầu về lý lịch; giữ chung làm điều kiện."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là người chưa được xóa án tích",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "chưa được xóa án tích"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là người đang trong thời gian bị truy cứu trách nhiệm hình sự",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [
+    [
+     1,
+     "âm tiết không có trong trich: ['là']"
+    ],
+    [
+     2,
+     "âm tiết không có trong trich: ['là']"
+    ]
+   ],
+   "co": []
+  },
+  "BLLD_45-2019.D151.K1.d": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "do cơ quan nhà nước có thẩm quyền của Việt Nam cấp",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "trừ trường hợp quy định tại Điều 154 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D154"
+     ],
+     "quy_tac": "q1",
+     "gan_vao": 0,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D151.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "không được vượt quá thời hạn của Giấy phép lao động",
+     "chu_the": {
+      "chu": "Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam không được vượt quá thời hạn của Giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Một giới hạn về thời hạn hợp đồng; không tách thành nhiều mệnh đề."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn",
+     "chu_the": {
+      "chu": "hai bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "Khi sử dụng người lao động nước ngoài làm việc tại Việt Nam",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Khi sử dụng người lao động nước ngoài làm việc tại Việt Nam, hai bên có thể thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de còn chữ phương thức/phủ định"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D151.K3": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tuân theo pháp luật lao động Việt Nam",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam phải tuân theo pháp luật lao động Việt Nam"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được pháp luật Việt Nam bảo vệ",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "được pháp luật Việt Nam bảo vệ"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Nghĩa vụ tuân theo và quyền được bảo vệ là hai mệnh đề kiểm được độc lập."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [
+      {
+       "thanh_phan": "targets",
+       "nguyen_nhan": "khac",
+       "cau_hoi": "Điều ước quốc tế không có mã đích cụ thể nên không giải được dẫn chiếu."
+      }
+     ],
+     "trich": [
+      "trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D152.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tuyển dụng người lao động nước ngoài vào làm vị trí công việc",
+     "chu_the": {
+      "chu": "Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu chỉ được tuyển dụng người lao động nước ngoài vào làm vị trí công việc quản lý, điều hành, chuyên gia và lao động kỹ thuật"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [
+      "quản lý",
+      "điều hành",
+      "chuyên gia",
+      "lao động kỹ thuật"
+     ],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Danh sách loại vị trí công việc là tân ngữ của cùng động từ, đưa vào liet_ke."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "người lao động Việt Nam chưa đáp ứng được",
+     "chu_the": {
+      "chu": "người lao động Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo nhu cầu sản xuất, kinh doanh",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "mà người lao động Việt Nam chưa đáp ứng được theo nhu cầu sản xuất, kinh doanh"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D152.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "tuyển dụng người lao động nước ngoài vào làm việc tại Việt Nam",
+     "chu_the": {
+      "chu": "Doanh nghiệp, cơ quan, tổ chức, cá nhân",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Doanh nghiệp, cơ quan, tổ chức, cá nhân trước khi tuyển dụng người lao động nước ngoài vào làm việc tại Việt Nam"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giải trình nhu cầu sử dụng lao động",
+     "chu_the": {
+      "chu": "Doanh nghiệp, cơ quan, tổ chức, cá nhân",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Doanh nghiệp, cơ quan, tổ chức, cá nhân",
+      "phải giải trình nhu cầu sử dụng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền",
+     "chu_the": {
+      "chu": "Doanh nghiệp, cơ quan, tổ chức, cá nhân",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Doanh nghiệp, cơ quan, tổ chức, cá nhân",
+      "và được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     2,
+     "menh_de dài 15 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D152.K3": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "tuyển và sử dụng lao động nước ngoài làm việc tại Việt Nam",
+     "chu_the": {
+      "chu": "Nhà thầu",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Nhà thầu trước khi tuyển và sử dụng lao động nước ngoài làm việc tại Việt Nam"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "kê khai cụ thể các vị trí công việc, trình độ chuyên môn, kỹ thuật, kinh nghiệm làm việc, thời gian làm việc cần sử dụng lao động nước ngoài",
+     "chu_the": {
+      "chu": "Nhà thầu",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "J"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "để thực hiện gói thầu",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Nhà thầu",
+      "phải kê khai cụ thể các vị trí công việc, trình độ chuyên môn, kỹ thuật, kinh nghiệm làm việc, thời gian làm việc cần sử dụng lao động nước ngoài để thực hiện gói thầu"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền",
+     "chu_the": {
+      "chu": "Nhà thầu",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Nhà thầu",
+      "và được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     1,
+     "menh_de dài 30 âm tiết"
+    ],
+    [
+     2,
+     "menh_de dài 15 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D153.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "xuất trình giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài phải xuất trình giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có yêu cầu của cơ quan nhà nước có thẩm quyền",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "khi có yêu cầu của cơ quan nhà nước có thẩm quyền"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D153.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "không có giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bị buộc xuất cảnh hoặc trục xuất",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động sẽ bị buộc xuất cảnh hoặc trục xuất"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "theo quy định của pháp luật về nhập cảnh, xuất cảnh, quá cảnh, cư trú của người nước ngoài tại Việt Nam."
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "dan_chieu_ngoai",
+      "giai_thich": "Dẫn chiếu tới pháp luật khác về nhập cảnh, xuất cảnh, quá cảnh, cư trú."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de còn chữ phương thức/phủ định"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D153.K3": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "sử dụng người lao động nước ngoài làm việc cho mình",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người sử dụng lao động sử dụng người lao động nước ngoài làm việc cho mình"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "không có giấy phép lao động",
+     "chu_the": {
+      "chu": "người lao động nước ngoài",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động nước ngoài làm việc cho mình mà không có giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bị xử lý",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người sử dụng lao động sử dụng người lao động nước ngoài làm việc cho mình mà không có giấy phép lao động thì bị xử lý"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "theo quy định của pháp luật."
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "dan_chieu_mo",
+      "giai_thich": "Dẫn chiếu chung tới quy định của pháp luật."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     1,
+     "menh_de còn chữ phương thức/phủ định"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D154.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động",
+      "Là chủ sở hữu hoặc thành viên góp vốn của công ty trách nhiệm hữu hạn có giá trị góp vốn theo quy định của Chính phủ."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 27 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D154.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là Chủ tịch Hội đồng quản trị hoặc thành viên Hội đồng quản trị của công ty cổ phần có giá trị góp vốn theo quy định của Chính phủ",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động",
+      "Là Chủ tịch Hội đồng quản trị hoặc thành viên Hội đồng quản trị của công ty cổ phần có giá trị góp vốn theo quy định của Chính phủ."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 30 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D154.K3": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là Trưởng văn phòng đại diện, dự án hoặc chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "tại Việt Nam",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động",
+      "Là Trưởng văn phòng đại diện, dự án hoặc chịu trách nhiệm chính về hoạt động của tổ chức quốc tế, tổ chức phi chính phủ nước ngoài tại Việt Nam."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 28 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D154.K4": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vào Việt Nam với thời hạn dưới 03 tháng để thực hiện chào bán dịch vụ",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động",
+      "Vào Việt Nam với thời hạn dưới 03 tháng để thực hiện chào bán dịch vụ."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 16 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D154.K5": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động",
+      "Vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 59 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D154.K6": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là luật sư nước ngoài đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động",
+      "Là luật sư nước ngoài đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 24 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D154.K7": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "theo quy định của điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động",
+      "Trường hợp theo quy định của điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 21 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D154.K8": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "kết hôn với người Việt Nam và sinh sống",
+     "chu_the": {
+      "chu": "Người nước ngoài",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "trên lãnh thổ Việt Nam",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người nước ngoài kết hôn với người Việt Nam và sinh sống trên lãnh thổ Việt Nam."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Kết hôn và sinh sống là một yêu cầu tập thể để được miễn giấy phép lao động."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D154.K9": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trường hợp khác theo quy định của Chính phủ",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động",
+      "Trường hợp khác theo quy định của Chính phủ."
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D155": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tối đa là 02 năm",
+     "chu_the": {
+      "chu": "Thời hạn của giấy phép lao động",
+      "loai": "D",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Thời hạn của giấy phép lao động tối đa là 02 năm"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "gia hạn",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "trường hợp gia hạn"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chỉ gia hạn một lần",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "chỉ được gia hạn một lần"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tối đa là 02 năm",
+     "chu_the": {
+      "chu": "thời hạn",
+      "loai": "D",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "với thời hạn tối đa là 02 năm"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D156.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "hết hiệu lực",
+     "chu_the": {
+      "chu": "giấy phép lao động",
+      "loai": "?",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Các trường hợp giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hết thời hạn",
+     "chu_the": {
+      "chu": "Giấy phép lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Giấy phép lao động hết thời hạn"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D156.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "hết hiệu lực",
+     "chu_the": {
+      "chu": "giấy phép lao động",
+      "loai": "?",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Các trường hợp giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "chấm dứt hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Chấm dứt hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D156.K3": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "hết hiệu lực",
+     "chu_the": {
+      "chu": "giấy phép lao động",
+      "loai": "?",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Các trường hợp giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đúng với nội dung của giấy phép lao động đã được cấp",
+     "chu_the": {
+      "chu": "Nội dung của hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Nội dung của hợp đồng lao động không đúng với nội dung của giấy phép lao động đã được cấp"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Phủ định đưa vào cuc, menh_de giữ phần khẳng định 'đúng với ...'."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D156.K4": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "hết hiệu lực",
+     "chu_the": {
+      "chu": "giấy phép lao động",
+      "loai": "?",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Các trường hợp giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm việc đúng với nội dung trong giấy phép lao động đã được cấp",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Làm việc không đúng với nội dung trong giấy phép lao động đã được cấp"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D156.K5": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "hết hiệu lực",
+     "chu_the": {
+      "chu": "giấy phép lao động",
+      "loai": "?",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Các trường hợp giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hết thời hạn hoặc chấm dứt",
+     "chu_the": {
+      "chu": "Hợp đồng",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "trong các lĩnh vực là cơ sở phát sinh giấy phép lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": "h1",
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm 'trong các lĩnh vực ...' là bổ ngữ hạn định hợp đồng, không phải hành vi."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D156.K6": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "hết hiệu lực",
+     "chu_the": {
+      "chu": "giấy phép lao động",
+      "loai": "?",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Các trường hợp giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "làm việc tại Việt Nam",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     1,
+     "menh_de dài 17 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D156.K7": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "hết hiệu lực",
+     "chu_the": {
+      "chu": "giấy phép lao động",
+      "loai": "?",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Các trường hợp giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "chấm dứt hoạt động",
+     "chu_the": {
+      "chu": "Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D156.K8": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "hết hiệu lực",
+     "chu_the": {
+      "chu": "giấy phép lao động",
+      "loai": "?",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Các trường hợp giấy phép lao động hết hiệu lực"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị thu hồi",
+     "chu_the": {
+      "chu": "Giấy phép lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Giấy phép lao động bị thu hồi"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D157": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động",
+     "chu_the": {
+      "chu": "Chính phủ",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Chính phủ quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Một nghĩa vụ quy định duy nhất; các mục điều kiện, trình tự, thủ tục gắn chặt với đối tượng giấy phép nên giữ chung."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm việc",
+     "chu_the": {
+      "chu": "người lao động nước ngoài",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "tại Việt Nam",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "đối với người lao động nước ngoài làm việc tại Việt Nam"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "liet_ke": [],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm 'đối với ...' giới hạn phạm vi đối tượng áp dụng nên tách thành dòng điều kiện."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 31 âm tiết"
+    ]
+   ]
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "cau": "Trường hợp thương lượng tập thể ngành thì đại diện thương lượng là tổ chức công đoàn ngành và tổ chức đại diện người sử dụng lao động cấp ngành quyết định.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trường hợp thương lượng tập thể ngành\",\"ap_cho\":[\"m1\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"đại diện thương lượng là tổ chức công đoàn ngành và tổ chức đại diện người sử dụng lao động cấp ngành quyết định\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-KDQDa5uYC67v2roP1LLAsQ8",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 934,
+   "output_tokens": 81,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_f746093262f3030129c0feb7"
+   }
+  }
+ }
+}

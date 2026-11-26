@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D172.K3",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D172.K3\",\n \"tieu_de_dieu\": \"Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp tổ chức của người lao động tại doanh nghiệp gia nhập Công đoàn Việt Nam thì thực hiện theo quy định của Luật Công đoàn.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"tổ chức của người lao động tại doanh nghiệp gia nhập Công đoàn Việt Nam\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thực hiện theo quy định của Luật Công đoàn\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D172.K3\",\n \"bo_qua\": \"dan_chieu_ngoai\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795546786108-36579327",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 7863
+   },
+   "input_tokens": 3724,
+   "output_tokens": 40,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_120aeff5d19941e6fe458c7e"
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539027240-99b72605",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1100
+   },
+   "input_tokens": 2394,
+   "output_tokens": 45,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_019a01e5d7ce62dec91b2995"
+   }
+  }
+ }
+}

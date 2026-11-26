@@ -1,0 +1,305 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D201.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trước khi tiến hành đình công",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trước khi tiến hành đình công"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "tổ chức và lãnh đạo đình công",
+     "chu_the": {
+      "chu": "tổ chức đại diện người lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm năng lực chủ thể là điều kiện xác định tổ chức có nghĩa vụ lấy ý kiến."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "lấy ý kiến của toàn thể người lao động hoặc thành viên ban lãnh đạo của các tổ chức đại diện người lao động tham gia thương lượng",
+     "chu_the": {
+      "chu": "tổ chức đại diện người lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "tổ chức đại diện người lao động",
+      "có trách nhiệm lấy ý kiến của toàn thể người lao động hoặc thành viên ban lãnh đạo của các tổ chức đại diện người lao động tham gia thương lượng"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D198"
+     ],
+     "gan_vao": 1,
+     "trich": [
+      "quy định tại Điều 198 của Bộ luật này"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D201.K2",
+   "dong": [
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "danh_sach",
+     "trich": [
+      "Nội dung lấy ý kiến bao gồm:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn vào danh sách nội dung lấy ý kiến."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D201.K2.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bao gồm đồng ý hay không đồng ý đình công",
+     "chu_the": {
+      "chu": "Nội dung lấy ý kiến",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội dung lấy ý kiến bao gồm:",
+      "Đồng ý hay không đồng ý đình công;"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể từ câu dẫn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D201.K2.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bao gồm phương án của tổ chức đại diện người lao động về nội dung",
+     "chu_the": {
+      "chu": "Nội dung lấy ý kiến",
+      "loai": "?",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội dung lấy ý kiến bao gồm:",
+      "Phương án của tổ chức đại diện người lao động về nội dung quy định tại các điểm b, c và d khoản 2 Điều 202 của Bộ luật này."
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục con kế thừa chủ thể từ câu dẫn; phần dẫn chiếu tách thành dòng con_tro."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "targets": [
+      "BLLD_45-2019.D202.K2.b",
+      "BLLD_45-2019.D202.K2.c",
+      "BLLD_45-2019.D202.K2.d"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "quy định tại các điểm b, c và d khoản 2 Điều 202 của Bộ luật này"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D201.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thực hiện trực tiếp bằng hình thức",
+     "chu_the": {
+      "chu": "Việc lấy ý kiến",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "lấy phiếu",
+      "chữ ký",
+      "hình thức khác"
+     ],
+     "trich": [
+      "Việc lấy ý kiến được thực hiện trực tiếp bằng hình thức lấy phiếu hoặc chữ ký hoặc hình thức khác."
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D201.K4",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "quyết định",
+     "chu_the": {
+      "chu": "tổ chức đại diện người lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "Thời gian",
+      "địa điểm",
+      "cách thức tiến hành lấy ý kiến về đình công"
+     ],
+     "trich": [
+      "Thời gian, địa điểm và cách thức tiến hành lấy ý kiến về đình công do tổ chức đại diện người lao động quyết định"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thông báo trước ít nhất 01 ngày",
+     "chu_the": {
+      "chu": "tổ chức đại diện người lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "do tổ chức đại diện người lao động quyết định và phải thông báo cho người sử dụng lao động biết trước ít nhất 01 ngày"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "làm ảnh hưởng đến hoạt động sản xuất, kinh doanh bình thường",
+     "chu_the": {
+      "chu": "Việc lấy ý kiến",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Việc lấy ý kiến không được làm ảnh hưởng đến hoạt động sản xuất, kinh doanh bình thường của người sử dụng lao động."
+     ],
+     "quy_tac": "q2"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "gây khó khăn",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động không được",
+      "gây khó khăn"
+     ],
+     "quy_tac": "q3",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Mỗi hành vi bị cấm có ý nghĩa vi phạm riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "cản trở",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động không được",
+      "cản trở"
+     ],
+     "quy_tac": "q3"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "can thiệp vào quá trình tổ chức đại diện người lao động tiến hành lấy ý kiến về đình công",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động không được",
+      "can thiệp vào quá trình tổ chức đại diện người lao động tiến hành lấy ý kiến về đình công"
+     ],
+     "quy_tac": "q3"
+    }
+   ]
+  }
+ ]
+}

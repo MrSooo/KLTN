@@ -1,0 +1,30 @@
+{
+ "cau": "Khi sử dụng lao động chưa thành niên, người sử dụng lao động phải có sự đồng ý của cha, mẹ hoặc người giám hộ; lập sổ theo dõi riêng, ghi đầy đủ họ tên, ngày tháng năm sinh, công việc đang làm, kết quả những lần kiểm tra sức khỏe định kỳ và xuất trình khi cơ quan nhà nước có thẩm quyền yêu cầu.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sử dụng lao động chưa thành niên\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"người sử dụng lao động phải\",\"ap_cho\":[\"m2\",\"m3\",\"m4\",\"m5\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có sự đồng ý của cha, mẹ hoặc người giám hộ\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"lập sổ theo dõi riêng\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"ghi đầy đủ họ tên, ngày tháng năm sinh, công việc đang làm, kết quả những lần kiểm tra sức khỏe định kỳ\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"xuất trình\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"cơ quan nhà nước có thẩm quyền yêu cầu\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-uUYDa-T6B-6v2roPrvSn6Qc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1237
+   },
+   "input_tokens": 974,
+   "output_tokens": 1446,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_a71df203410ac73182701e4d"
+   }
+  }
+ }
+}

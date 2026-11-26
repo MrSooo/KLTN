@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Hết thời hạn học nghề, tập nghề, hai bên phải ký kết hợp đồng lao động khi đủ các điều kiện theo quy định của Bộ luật này.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Hết thời hạn học nghề, tập nghề\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"hai bên\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải ký kết hợp đồng lao động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"đủ các điều kiện theo quy định của Bộ luật này\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538763950-1a8846bb",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4720
+   },
+   "input_tokens": 2405,
+   "output_tokens": 113,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_504d310f5900f5d21f6ba04d"
+   }
+  }
+ }
+}

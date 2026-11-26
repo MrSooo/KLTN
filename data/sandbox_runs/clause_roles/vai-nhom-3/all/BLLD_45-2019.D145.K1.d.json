@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D145.K1.d",
+ "phien_ban": "vai-nhom-3",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D145.K1.d\",\n \"tieu_de_dieu\": \"Sử dụng người chưa đủ 15 tuổi làm việc\",\n \"khoan_cha\": \"Khi sử dụng người chưa đủ 15 tuổi làm việc, người sử dụng lao động phải tuân theo quy định sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Bảo đảm điều kiện làm việc, an toàn, vệ sinh lao động phù hợp với lứa tuổi.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Bảo đảm điều kiện làm việc, an toàn, vệ sinh lao động phù hợp với lứa tuổi\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D145.K1.d\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"doan\": [\n    \"Bảo đảm điều kiện làm việc, an toàn, vệ sinh lao động phù hợp với lứa tuổi\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"chu\": \"người sử dụng lao động\",\n    \"loai\": \"E\"\n   },\n   \"liet_ke\": [\n    \"điều kiện làm việc\",\n    \"an toàn, vệ sinh lao động\"\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "Y_wGa6bMDPa_vr0P2I_W6Qw",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1797
+   },
+   "input_tokens": 4088,
+   "output_tokens": 692,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_a1b1b0dcca05b243237aeee6"
+   }
+  }
+ }
+}

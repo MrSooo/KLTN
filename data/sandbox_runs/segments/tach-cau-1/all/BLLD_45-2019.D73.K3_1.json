@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Hội đồng thương lượng tập thể tiến hành thương lượng theo yêu cầu của các bên và tự chấm dứt hoạt động khi thỏa ước lao động tập thể có nhiều doanh nghiệp tham gia được ký kết hoặc theo thỏa thuận của các bên.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Hội đồng thương lượng tập thể\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"tiến hành thương lượng theo yêu cầu của các bên\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tự chấm dứt hoạt động\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"thỏa ước lao động tập thể có nhiều doanh nghiệp tham gia được ký kết\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"theo thỏa thuận của các bên\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538928039-c253893b",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1240
+   },
+   "input_tokens": 2426,
+   "output_tokens": 149,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_39d39d7aef50a8543354b81b"
+   }
+  }
+ }
+}

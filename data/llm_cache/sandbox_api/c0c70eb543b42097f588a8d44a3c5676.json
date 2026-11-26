@@ -1,0 +1,74 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T09:22:49+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0310\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K5\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D193.K5\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài lao động không ra quyết định giải quyết tranh chấp thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"time_limit_expires\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0311\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D170.K2\",\n    \"tieu_de_dieu\": \"Quyền thành lập, gia nhập và tham gia hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động trong doanh nghiệp có quyền thành lập, gia nhập và tham gia hoạt động của tổ chức của người lao động tại doanh nghiệp theo quy định tại các điều 172, 173 và 174 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D177.K1\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động đối với tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Không được cản trở, gây khó khăn khi người lao động tiến hành các hoạt động hợp pháp nhằm thành lập, gia nhập và tham gia các hoạt động của tổ chức đại diện người lao động tại cơ sở.\"\n   },\n   \"vi_tu_chung\": [\n    \"establish_employee_representative_org\",\n    \"join_employee_representative_org\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0312\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D171.K1\",\n    \"tieu_de_dieu\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam được thành lập ở các cơ quan, tổ chức, đơn vị, doanh nghiệp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K2\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.\"\n   },\n   \"vi_tu_chung\": [\n    \"established\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0313\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D171.K1\",\n    \"tieu_de_dieu\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam được thành lập ở các cơ quan, tổ chức, đơn vị, doanh nghiệp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K4\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài lao động không ra quyết định giải quyết tranh chấp thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"established\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0314\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D171.K1\",\n    \"tieu_de_dieu\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam được thành lập ở các cơ quan, tổ chức, đơn vị, doanh nghiệp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D193.K2\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.\"\n   },\n   \"vi_tu_chung\": [\n    \"established\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0315\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D171.K1\",\n    \"tieu_de_dieu\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam được thành lập ở các cơ quan, tổ chức, đơn vị, doanh nghiệp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D193.K5\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài lao động không ra quyết định giải quyết tranh chấp thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"established\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0316\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D171.K1\",\n    \"tieu_de_dieu\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam được thành lập ở các cơ quan, tổ chức, đơn vị, doanh nghiệp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D197.K2\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về lợi ích của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.\"\n   },\n   \"vi_tu_chung\": [\n    \"established\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0317\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D171.K1\",\n    \"tieu_de_dieu\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam được thành lập ở các cơ quan, tổ chức, đơn vị, doanh nghiệp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D197.K4\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về lợi ích của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi các bên lựa chọn giải quyết tranh chấp thông qua Hội đồng trọng tài lao động theo quy định tại Điều này thì tổ chức đại diện người lao động không được tiến hành đình công trong thời gian Hội đồng trọng tài lao động đang tiến hành giải quyết tranh chấp.\\nKhi hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài không ra quyết định giải quyết tranh chấp hoặc người sử dụng lao động là bên tranh chấp không thực hiện quyết định giải quyết tranh chấp của Ban trọng tài lao động thì tổ chức đại diện người lao động là bên tranh chấp có quyền tiến hành thủ tục quy định tại các điều 200, 201 và 202 của Bộ luật này để đình công.\"\n   },\n   \"vi_tu_chung\": [\n    \"established\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0318\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D171.K1\",\n    \"tieu_de_dieu\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Công đoàn cơ sở thuộc hệ thống tổ chức Công đoàn Việt Nam được thành lập ở các cơ quan, tổ chức, đơn vị, doanh nghiệp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D199.K2\",\n    \"tieu_de_dieu\": \"Trường hợp người lao động có quyền đình công\",\n    \"khoan_cha\": \"Tổ chức đại diện người lao động là bên tranh chấp lao động tập thể về lợi ích có quyền tiến hành thủ tục quy định tại các điều 200, 201 và 202 của Bộ luật này để đình công trong trường hợp sau đây:\",\n    \"chu_don_vi\": \"Ban trọng tài lao động không được thành lập hoặc thành lập nhưng không ra quyết định giải quyết tranh chấp hoặc người sử dụng lao động là bên tranh chấp không thực hiện quyết định giải quyết tranh chấp của Ban trọng tài lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"established\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0319\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D172.K1\",\n    \"tieu_de_dieu\": \"Thành lập, gia nhập tổ chức của người lao động tại doanh nghiệp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tổ chức của người lao động tại doanh nghiệp được thành lập và hoạt động hợp pháp sau khi cơ quan nhà nước có thẩm quyền cấp đăng ký.\\nTổ chức của người lao động tại doanh nghiệp tổ chức và hoạt động phải bảo đảm nguyên tắc tuân thủ Hiến pháp, pháp luật và điều lệ; tự nguyện, tự quản, dân chủ, minh bạch.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K2\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.\"\n   },\n   \"vi_tu_chung\": [\n    \"established\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_7928ba6c9cc438c617f7998b",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0310",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0311",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0312",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0313",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0314",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0315",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0316",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0317",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0318",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0319",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3713,
+  "output_tokens": 869,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 544
+   }
+  }
+ }
+}

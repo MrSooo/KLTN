@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Người sử dụng lao động không được gây khó khăn, cản trở hoặc can thiệp vào quá trình tổ chức đại diện người lao động lấy ý kiến biểu quyết về dự thảo thỏa ước.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động không được\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"gây khó khăn\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"cản trở\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"can thiệp vào quá trình tổ chức đại diện người lao động lấy ý kiến biểu quyết về dự thảo thỏa ước\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538951359-75822aa8",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1203
+   },
+   "input_tokens": 2416,
+   "output_tokens": 126,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_751cd85c91a0543a18d0aa87"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Người sử dụng lao động sử dụng dưới 10 người lao động thực hiện quy định của Bộ luật này nhưng được miễn, giảm một số thủ tục theo quy định của Chính phủ.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\",\"m4\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sử dụng dưới 10 người lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thực hiện quy định của Bộ luật này\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"được\",\"ap_cho\":[\"m3\",\"m4\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"miễn\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"giảm\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"một số thủ tục theo quy định của Chính phủ\",\"ap_cho\":[\"m3\",\"m4\"]}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-0rIFa7TMMYLv2roPgLCdyQ4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 7470
+   },
+   "input_tokens": 2273,
+   "output_tokens": 776,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_001688cb26c7a92dd88cdb97"
+   }
+  }
+ }
+}

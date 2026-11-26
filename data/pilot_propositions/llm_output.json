@@ -1,0 +1,3143 @@
+{
+ "prompt_version": "menh-de-1",
+ "model": "claude-sonnet-5-5",
+ "effort": "xhigh",
+ "units": {
+  "BLLD_45-2019.D3.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm việc cho người sử dụng lao động",
+     "chu_the": {
+      "chu": "người",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo thỏa thuận",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "là người làm việc cho người sử dụng lao động theo thỏa thuận"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm \"theo thỏa thuận\" đứng ngay sau mục đầu và trước dấu phẩy ngăn mục sau, nên chỉ gắn cho mục làm việc, không rải sang các mục khác."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được trả lương",
+     "chu_the": {
+      "chu": "người",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "là người",
+      "được trả lương"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "chịu sự quản lý, điều hành, giám sát của người sử dụng lao động",
+     "chu_the": {
+      "chu": "người",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "là người",
+      "chịu sự quản lý, điều hành, giám sát của người sử dụng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Quản lý, điều hành, giám sát cùng mô tả một quan hệ phụ thuộc vào người sử dụng lao động nên giữ chung một dấu hiệu."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là người lao động",
+     "chu_the": null,
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động là người"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đủ 15 tuổi",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động là đủ 15 tuổi"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là độ tuổi lao động tối thiểu của người lao động",
+     "chu_the": null,
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Độ tuổi lao động tối thiểu của người lao động là"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "con_tro",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [
+      {
+       "thanh_phan": "Mục 1 Chương XI của Bộ luật này",
+       "nguyen_nhan": "khac",
+       "cau_hoi": "dan_chieu của đơn vị rỗng nên chưa có mã đích; mã đích của Mục 1 Chương XI là gì?"
+      }
+     ],
+     "trich": [
+      "trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "chua_ro",
+      "giai_thich": "Ngoại lệ dẫn tới Mục 1 Chương XI nhưng dan_chieu rỗng nên không giải được đích; ngoại lệ chặn cả quy tắc về độ tuổi."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D4.K1": {
+   "dong": [
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Bảo đảm quyền và lợi ích hợp pháp, chính đáng của người lao động, người làm việc không có quan hệ lao động"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "khong_quy_pham",
+      "giai_thich": "Câu chính sách của Nhà nước về việc bảo đảm quyền và lợi ích, không có chủ thể nghĩa vụ hay hành vi cụ thể kiểm được đúng/sai."
+     }
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "khuyến khích những thỏa thuận bảo đảm cho người lao động có điều kiện thuận lợi hơn so với quy định của pháp luật về lao động"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "khong_quy_pham",
+      "giai_thich": "Câu định hướng khuyến khích của Nhà nước, không đặt nghĩa vụ hay hành vi cụ thể nào kiểm được đúng/sai."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D5.K1": {
+   "dong": [
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "danh_sach",
+     "chua_ro": [],
+     "trich": [
+      "Người lao động có các quyền sau đây"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn vào danh sách các quyền của người lao động; các mục con là quyền được liệt kê, không phải điều kiện."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D5.K1.a": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "làm việc",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động có các quyền",
+      "Làm việc"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Mục chỉ có chữ 'Làm việc', chủ thể và phương thức 'có quyền' kế thừa từ câu dẫn."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tự do lựa chọn việc làm",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "J"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động có các quyền",
+      "tự do lựa chọn việc làm"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Tự do chọn việc làm kiểm được độc lập với tự do chọn nơi làm việc, nghề nghiệp, học nghề; vi phạm từng quyền có ý nghĩa pháp lý riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tự do lựa chọn nơi làm việc",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "?"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động có các quyền",
+      "tự do lựa chọn",
+      "nơi làm việc"
+     ],
+     "targets": [],
+     "quy_tac": "q3",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Chữ 'tự do lựa chọn' đứng đầu chuỗi nên hiểu cho từng mục; tự do chọn nơi làm việc là một quyền riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tự do lựa chọn nghề nghiệp",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "?"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động có các quyền",
+      "tự do lựa chọn",
+      "nghề nghiệp"
+     ],
+     "targets": [],
+     "quy_tac": "q4",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Chữ 'tự do lựa chọn' đứng đầu chuỗi nên hiểu cho từng mục; tự do chọn nghề nghiệp là một quyền riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tự do lựa chọn học nghề",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "?"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động có các quyền",
+      "tự do lựa chọn",
+      "học nghề"
+     ],
+     "targets": [],
+     "quy_tac": "q5",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Chữ 'tự do lựa chọn' đứng đầu chuỗi nên hiểu cho từng mục; tự do học nghề là một quyền riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tự do lựa chọn nâng cao trình độ nghề nghiệp",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "?"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động có các quyền",
+      "tự do lựa chọn",
+      "nâng cao trình độ nghề nghiệp"
+     ],
+     "targets": [],
+     "quy_tac": "q6",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Chữ 'tự do lựa chọn' đứng đầu chuỗi nên hiểu cho từng mục; tự do nâng cao trình độ nghề nghiệp là một quyền riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bị phân biệt đối xử",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động có các quyền",
+      "không bị phân biệt đối xử"
+     ],
+     "targets": [],
+     "quy_tac": "q7",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Chữ 'không bị' đứng đầu chuỗi nên hiểu cho từng mục; quyền không bị phân biệt đối xử kiểm được độc lập, là bị động phủ định nên cuc phu_dinh chứ không phải cấm."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bị cưỡng bức lao động",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động có các quyền",
+      "không bị",
+      "cưỡng bức lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q8",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Chữ 'không bị' đứng đầu chuỗi nên hiểu cho từng mục; quyền không bị cưỡng bức lao động kiểm được độc lập."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bị quấy rối tình dục",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "phu_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "tại nơi làm việc",
+       "scope": "unknown"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [
+      {
+       "thanh_phan": "tại nơi làm việc",
+       "nguyen_nhan": "pham_vi_bo_ngu",
+       "cau_hoi": "Cụm 'tại nơi làm việc' chỉ bổ nghĩa cho 'quấy rối tình dục' hay áp dụng cho cả nhóm 'phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục'?"
+      }
+     ],
+     "trich": [
+      "Người lao động có các quyền",
+      "không bị",
+      "quấy rối tình dục tại nơi làm việc"
+     ],
+     "targets": [],
+     "quy_tac": "q9",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm 'tại nơi làm việc' đứng cuối chuỗi, chữ không cho căn cứ để biết chỉ mục cuối hay cả nhóm nên để scope unknown và không rải sang hai mục trước."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D9.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "tạo ra thu nhập",
+     "chu_the": {
+      "chu": "hoạt động lao động",
+      "loai": "J",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "A"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "hoạt động lao động tạo ra thu nhập"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Việc tạo ra thu nhập và việc pháp luật không cấm là hai dấu hiệu kiểm được độc lập của định nghĩa nên tách riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "pháp luật cấm",
+     "chu_the": {
+      "chu": "hoạt động lao động",
+      "loai": "J",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "hoạt động lao động tạo ra thu nhập mà pháp luật không cấm"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Mệnh đề quan hệ \"mà pháp luật không cấm\" có vị ngữ riêng, bổ nghĩa cho hoạt động lao động, nên tách thành điều kiện độc lập."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là việc làm",
+     "chu_the": null,
+     "doi_so": [
+      {
+       "loai": "J"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Việc làm là hoạt động lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     1,
+     "menh_de còn chữ phương thức/phủ định"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D9.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tham gia giải quyết việc làm",
+     "chu_the": {
+      "chu": "Nhà nước, người sử dụng lao động và xã hội",
+      "loai": [
+       "?",
+       "E"
+      ],
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "J"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Nhà nước, người sử dụng lao động và xã hội có trách nhiệm",
+      "tham gia giải quyết việc làm"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Nhà nước, người sử dụng lao động và xã hội cùng chung một trách nhiệm tập thể nên giữ chung trong một mệnh đề."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bảo đảm cho mọi người có khả năng lao động đều có cơ hội có việc làm",
+     "chu_the": {
+      "chu": "Nhà nước, người sử dụng lao động và xã hội",
+      "loai": [
+       "?",
+       "E"
+      ],
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      },
+      {
+       "loai": "J"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Nhà nước, người sử dụng lao động và xã hội có trách nhiệm",
+      "bảo đảm cho mọi người có khả năng lao động đều có cơ hội có việc làm"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Trách nhiệm bảo đảm cơ hội có việc làm kiểm được độc lập với trách nhiệm tham gia giải quyết việc làm, nên tách thành quy tắc riêng."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D10.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tự do lựa chọn việc làm",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [
+      {
+       "loai": "J"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Quyền làm việc của người lao động",
+      "Được tự do lựa chọn việc làm"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Tự do lựa chọn việc làm là một quyền riêng, vi phạm quyền này có ý nghĩa pháp lý độc lập với quyền chọn người sử dụng lao động và nơi làm việc."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tự do làm việc cho bất kỳ người sử dụng lao động nào",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Quyền làm việc của người lao động",
+      "Được tự do lựa chọn việc làm, làm việc cho bất kỳ người sử dụng lao động nào"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Tự do làm việc cho bất kỳ người sử dụng lao động nào là quyền riêng, kế thừa từ \"Được tự do\" đứng đầu chuỗi."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tự do làm việc ở bất kỳ nơi nào",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "tieu_de"
+     },
+     "doi_so": [
+      {
+       "loai": "G"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "mà pháp luật không cấm",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Quyền làm việc của người lao động",
+      "Được tự do lựa chọn việc làm, làm việc cho bất kỳ người sử dụng lao động nào",
+      "ở bất kỳ nơi nào mà pháp luật không cấm"
+     ],
+     "targets": [],
+     "quy_tac": "q3",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm \"mà pháp luật không cấm\" là mệnh đề quan hệ gắn trực tiếp với \"nơi nào\" nên chỉ gắn vào mục cuối, không rải sang hai mục trước."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D14.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được giao kết bằng văn bản",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng lao động phải được giao kết bằng văn bản"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Giao kết bằng văn bản và làm thành 02 bản là hai yêu cầu kiểm độc lập, vi phạm mỗi yêu cầu có ý nghĩa pháp lý riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được làm thành 02 bản",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng lao động phải được giao kết bằng văn bản và được làm thành 02 bản"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Làm thành 02 bản là yêu cầu riêng, kế thừa chữ phải và chủ thể hợp đồng từ vế đầu, tách khỏi yêu cầu bằng văn bản."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giữ 01 bản",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng lao động phải được giao kết bằng văn bản và được làm thành 02 bản",
+      "người lao động giữ 01 bản"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Người lao động giữ 01 bản kế thừa phương thức phải của vế đầu câu; tách riêng vì chủ thể khác với người sử dụng lao động."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giữ 01 bản",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng lao động phải được giao kết bằng văn bản và được làm thành 02 bản",
+      "người sử dụng lao động giữ 01 bản"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Người sử dụng lao động giữ 01 bản kế thừa phương thức phải của vế đầu câu; tách riêng vì chủ thể khác với người lao động."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "trừ trường hợp quy định tại khoản 2 Điều này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D14.K2"
+     ],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Ngoại lệ đứng cuối chuỗi các yêu cầu và loại trừ cả quy tắc (bằng văn bản, 02 bản, mỗi bên giữ 01 bản) nên gan_vao là null."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được giao kết thông qua phương tiện điện tử dưới hình thức thông điệp dữ liệu",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo quy định của pháp luật về giao dịch điện tử",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng lao động được giao kết thông qua phương tiện điện tử dưới hình thức thông điệp dữ liệu",
+      "theo quy định của pháp luật về giao dịch điện tử"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Phương tiện điện tử và hình thức thông điệp dữ liệu cùng mô tả một cách giao kết điện tử, chỉ có nghĩa khi xét cùng nhau."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có giá trị như hợp đồng lao động bằng văn bản",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng lao động",
+      "có giá trị như hợp đồng lao động bằng văn bản"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "theo quy định của pháp luật về giao dịch điện tử"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "dan_chieu_mo",
+      "giai_thich": "Dẫn tới pháp luật về giao dịch điện tử nói chung, không có điều khoản đích cụ thể."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D14.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "giao kết hợp đồng lao động bằng lời nói",
+     "chu_the": {
+      "chu": "Hai bên",
+      "loai": [
+       "E",
+       "W"
+      ],
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hai bên có thể giao kết hợp đồng lao động bằng lời nói"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có thời hạn dưới 01 tháng",
+     "chu_the": {
+      "chu": "hợp đồng",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "?"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "đối với hợp đồng có thời hạn dưới 01 tháng"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "con_tro",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "trừ trường hợp quy định tại khoản 2 Điều 18, điểm a khoản 1 Điều 145 và khoản 1 Điều 162 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D18.K2",
+      "BLLD_45-2019.D145.K1.a",
+      "BLLD_45-2019.D162.K1"
+     ],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D15.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tự do giao kết hợp đồng lao động",
+     "chu_the": null,
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Tự do giao kết hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trái pháp luật",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "?"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "giao kết hợp đồng lao động",
+      "không được trái pháp luật"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Trái pháp luật, trái thỏa ước lao động tập thể và trái đạo đức xã hội là ba giới hạn độc lập, vi phạm mỗi giới hạn có ý nghĩa pháp lý riêng; \"không được trái\" đứng đầu chuỗi nên áp cho từng mục."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trái thỏa ước lao động tập thể",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "?"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "giao kết hợp đồng lao động",
+      "không được trái",
+      "thỏa ước lao động tập thể"
+     ],
+     "targets": [],
+     "quy_tac": "q3",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Trái pháp luật, trái thỏa ước lao động tập thể và trái đạo đức xã hội là ba giới hạn độc lập, vi phạm mỗi giới hạn có ý nghĩa pháp lý riêng; \"không được trái\" đứng đầu chuỗi nên áp cho từng mục."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trái đạo đức xã hội",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "?"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "giao kết hợp đồng lao động",
+      "không được trái",
+      "đạo đức xã hội"
+     ],
+     "targets": [],
+     "quy_tac": "q4",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Trái pháp luật, trái thỏa ước lao động tập thể và trái đạo đức xã hội là ba giới hạn độc lập, vi phạm mỗi giới hạn có ý nghĩa pháp lý riêng; \"không được trái\" đứng đầu chuỗi nên áp cho từng mục."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D21.K1": {
+   "dong": [
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "danh_sach",
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng lao động phải có những nội dung chủ yếu sau đây"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn chỉ dẫn vào danh sách các nội dung chủ yếu của hợp đồng lao động; danh sách là tân ngữ nên các mục con kế thừa chủ thể và phương thức của câu dẫn."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D21.K1.a": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có tên, địa chỉ của người sử dụng lao động",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng lao động phải có những nội dung chủ yếu",
+      "Tên, địa chỉ của người sử dụng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Thông tin về người sử dụng lao động tách khỏi thông tin về người giao kết bên phía người sử dụng lao động vì là hai đối tượng khác nhau, thiếu mỗi nội dung có ý nghĩa pháp lý riêng; tên và địa chỉ cùng xác định người sử dụng lao động nên giữ chung."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có họ tên, chức danh của người giao kết hợp đồng lao động bên phía người sử dụng lao động",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng lao động phải có những nội dung chủ yếu",
+      "họ tên, chức danh của người giao kết hợp đồng lao động bên phía người sử dụng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Thông tin về người giao kết bên phía người sử dụng lao động là nội dung riêng, tách khỏi thông tin về chính người sử dụng lao động."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D21.K1.b": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có họ tên, ngày tháng năm sinh, giới tính, nơi cư trú, số thẻ Căn cước công dân, Chứng minh nhân dân hoặc hộ chiếu của người giao kết hợp đồng lao động bên phía người lao động",
+     "chu_the": {
+      "chu": "Hợp đồng lao động",
+      "loai": "C",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Hợp đồng lao động phải có những nội dung chủ yếu",
+      "Họ tên, ngày tháng năm sinh, giới tính, nơi cư trú, số thẻ Căn cước công dân, Chứng minh nhân dân hoặc hộ chiếu của người giao kết hợp đồng lao động bên phía người lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Các thông tin cùng nhận dạng một người giao kết bên phía người lao động nên giữ chung một yêu cầu; 'hoặc' chỉ là lựa chọn giữa các loại giấy tờ định danh."
+     }
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     0,
+     "menh_de dài 38 âm tiết"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D24.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thỏa thuận nội dung thử việc ghi trong hợp đồng lao động",
+     "chu_the": {
+      "chu": "Người sử dụng lao động và người lao động",
+      "loai": [
+       "E",
+       "W"
+      ],
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người sử dụng lao động và người lao động có thể",
+      "thỏa thuận nội dung thử việc ghi trong hợp đồng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai cách thỏa thuận về thử việc nối bằng \"hoặc\" là hai quyền độc lập, mỗi cách kiểm được đúng/sai riêng nên tách thành hai mệnh đề."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thỏa thuận về thử việc",
+     "chu_the": {
+      "chu": "Người sử dụng lao động và người lao động",
+      "loai": [
+       "E",
+       "W"
+      ],
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "bằng việc giao kết hợp đồng thử việc",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người sử dụng lao động và người lao động có thể",
+      "thỏa thuận về thử việc bằng việc giao kết hợp đồng thử việc"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm \"bằng việc giao kết hợp đồng thử việc\" là cách thức chỉ gắn với vế thứ hai, vì vế đầu đã quy định cách thức là ghi trong hợp đồng lao động."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D24.K3": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thử việc đối với người lao động",
+     "chu_the": null,
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong_ap_dung",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Không áp dụng thử việc đối với người lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Văn bản tuyên bố chế định thử việc không áp dụng cho một nhóm người lao động, nên nhóm đó được tách thành điều kiện riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "giao kết hợp đồng lao động có thời hạn dưới 01 tháng",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động giao kết hợp đồng lao động có thời hạn dưới 01 tháng"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Việc giao kết hợp đồng và thời hạn dưới 01 tháng chỉ có nghĩa khi xét cùng nhau, nên giữ chung một điều kiện."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D35.K2": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đơn phương chấm dứt hợp đồng lao động",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "không cần báo trước",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động có quyền đơn phương chấm dứt hợp đồng lao động không cần báo trước"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "hoac",
+     "chua_ro": [],
+     "trich": [
+      "trong trường hợp sau đây"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Danh sách theo sau là điều kiện của quyền đơn phương chấm dứt không cần báo trước, chỉ cần một trường hợp là đủ."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D35.K2.a": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được bố trí theo đúng công việc",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "J"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": "h1",
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động",
+      "Không được bố trí theo đúng công việc"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Công việc và địa điểm làm việc là hai nội dung riêng, mỗi nội dung không được bố trí đúng đều có ý nghĩa pháp lý riêng; 'Không được bố trí theo đúng' đứng đầu chuỗi nên áp cho từng mục."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được bố trí theo đúng địa điểm làm việc",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "?"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": "h1",
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động",
+      "Không được bố trí theo đúng công việc, địa điểm làm việc"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Tách khỏi 'công việc' vì địa điểm làm việc là nội dung độc lập, kế thừa 'Không được bố trí theo đúng' từ đầu chuỗi."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được bảo đảm điều kiện làm việc",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "?"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo thỏa thuận",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": "h1",
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động",
+      "không được bảo đảm điều kiện làm việc theo thỏa thuận"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "'theo thỏa thuận' đứng sau vế riêng 'không được bảo đảm điều kiện làm việc' nên chỉ gắn vào mục cuối, không rải sang công việc và địa điểm làm việc."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "trừ trường hợp quy định tại Điều 29 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D29"
+     ],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D35.K2.b": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được trả đủ lương",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "A"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": "h1",
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động",
+      "Không được trả đủ lương"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Không được trả đủ lương và trả lương không đúng thời hạn là hai điều kiện độc lập nối bằng 'hoặc'; 'không được' ở đây là bị động, không phải cấm."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trả lương đúng thời hạn",
+     "chu_the": null,
+     "doi_so": [
+      {
+       "loai": "A"
+      },
+      {
+       "loai": "D"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": "h1",
+     "cac_muc_con": null,
+     "chua_ro": [
+      {
+       "thanh_phan": "chủ thể của vế 'trả lương không đúng thời hạn'",
+       "nguyen_nhan": "chu_the",
+       "cau_hoi": "Ai là bên trả lương ở vế này? Chữ không nêu chủ thể (vế trước là bị động của người lao động); có hiểu là người sử dụng lao động không?"
+      }
+     ],
+     "trich": [
+      "trả lương không đúng thời hạn"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "chua_ro",
+      "giai_thich": "Vế 'trả lương không đúng thời hạn' là chủ động nhưng chữ không nêu bên trả lương nên không tự gán chủ thể."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "trừ trường hợp quy định tại khoản 4 Điều 97 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D97.K4"
+     ],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D108": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "yêu cầu người lao động làm thêm giờ",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "vào bất kỳ ngày nào",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người sử dụng lao động có quyền yêu cầu người lao động làm thêm giờ vào bất kỳ ngày nào"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bị giới hạn về số giờ làm thêm",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "duoc",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người sử dụng lao động có quyền",
+      "không bị giới hạn về số giờ làm thêm"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Quyền yêu cầu làm thêm giờ vào bất kỳ ngày nào và quyền không bị giới hạn số giờ làm thêm là hai nội dung kiểm được độc lập, vi phạm mỗi nội dung có ý nghĩa pháp lý riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "từ chối làm thêm giờ",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động không được từ chối",
+      "làm thêm giờ"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Tân ngữ của 'từ chối' bị lược, lấy từ vế trước là làm thêm giờ theo yêu cầu của người sử dụng lao động."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "theo quy định tại Điều 107 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D107"
+     ],
+     "quy_tac": "q1",
+     "gan_vao": 1,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "hoac",
+     "chua_ro": [],
+     "trich": [
+      "trong trường hợp sau đây"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách trường hợp là điều kiện (một trong các trường hợp là đủ) cho cả quyền yêu cầu làm thêm giờ lẫn nghĩa vụ không được từ chối ở câu dẫn."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D108.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thực hiện lệnh động viên, huy động bảo đảm nhiệm vụ quốc phòng, an ninh",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Thực hiện lệnh động viên, huy động bảo đảm nhiệm vụ quốc phòng, an ninh"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Lệnh động viên và huy động cùng chung mục đích bảo đảm nhiệm vụ quốc phòng, an ninh nên là một trường hợp."
+     }
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "theo quy định của pháp luật"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "dan_chieu_mo",
+      "giai_thich": "Dẫn chiếu chung tới pháp luật, không có điều khoản đích cụ thể."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D113.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm việc đủ 12 tháng cho một người sử dụng lao động",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "danh_sach",
+     "chua_ro": [],
+     "trich": [
+      "được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động như sau:"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần câu dẫn vào danh sách số ngày nghỉ hằng năm; các mục con là nội dung của quyền nghỉ, không phải điều kiện."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D113.K1.a": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm công việc trong điều kiện bình thường",
+     "chu_the": {
+      "chu": "người",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "J"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "đối với người làm công việc trong điều kiện bình thường"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "nghỉ hằng năm 12 ngày làm việc, hưởng nguyên lương theo hợp đồng lao động",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "D"
+      },
+      {
+       "loai": "A"
+      },
+      {
+       "loai": "C"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động",
+      "được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động",
+      "12 ngày làm việc"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Kế thừa chủ thể, phương thức được và vị ngữ nghỉ hằng năm, hưởng nguyên lương của câu dẫn; mục con chỉ nêu số ngày."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D129.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm hư hỏng dụng cụ, thiết bị",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "?"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": "h1",
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động làm hư hỏng dụng cụ, thiết bị"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Dụng cụ và thiết bị cùng là đối tượng của một hành vi làm hư hỏng nên giữ chung."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có hành vi khác gây thiệt hại tài sản của người sử dụng lao động",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": "h1",
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động",
+      "có hành vi khác gây thiệt hại tài sản của người sử dụng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Làm hư hỏng dụng cụ, thiết bị và hành vi khác gây thiệt hại tài sản là hai tình huống độc lập nối bằng hoặc, mỗi tình huống đủ dẫn đến bồi thường."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bồi thường",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo quy định của pháp luật hoặc nội quy lao động của người sử dụng lao động",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động",
+      "phải bồi thường theo quy định của pháp luật hoặc nội quy lao động của người sử dụng lao động"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm căn cứ theo pháp luật hoặc nội quy đứng cuối câu và chỉ bổ nghĩa cho nghĩa vụ bồi thường duy nhất."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "gây thiệt hại không nghiêm trọng do sơ suất",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động gây thiệt hại không nghiêm trọng do sơ suất"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Tính chất thiệt hại do sơ suất và ngưỡng giá trị là hai điều kiện kiểm được độc lập, phải đủ cả hai."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "không quá 10 tháng lương tối thiểu vùng",
+     "chu_the": {
+      "chu": "giá trị",
+      "loai": "A",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "A"
+      },
+      {
+       "loai": "G"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "do Chính phủ công bố",
+       "scope": "this_clause"
+      },
+      {
+       "original_text": "được áp dụng tại nơi người lao động làm việc",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "với giá trị không quá 10 tháng lương tối thiểu vùng do Chính phủ công bố được áp dụng tại nơi người lao động làm việc"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Các cụm về nơi áp dụng và cơ quan công bố đứng cuối điều kiện, chỉ bổ nghĩa cho lương tối thiểu vùng của điều kiện giá trị."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bồi thường nhiều nhất là 03 tháng tiền lương",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "A"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động phải bồi thường nhiều nhất là 03 tháng tiền lương"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Mức bồi thường tối đa và việc khấu trừ lương hằng tháng là hai việc kiểm được độc lập, vi phạm mỗi việc có ý nghĩa pháp lý riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bị khấu trừ hằng tháng vào lương",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "A"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo quy định tại khoản 3 Điều 102 của Bộ luật này",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động",
+      "bị khấu trừ hằng tháng vào lương theo quy định tại khoản 3 Điều 102 của Bộ luật này"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm theo khoản 3 Điều 102 đứng cuối chỉ bổ nghĩa cho việc khấu trừ, và bị khấu trừ là bị động nên phương thức là khong."
+     }
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "theo quy định của pháp luật"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "dan_chieu_mo",
+      "giai_thich": "Dẫn chiếu chung tới quy định của pháp luật, không có đích cụ thể."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "theo quy định tại khoản 3 Điều 102 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D102.K3"
+     ],
+     "quy_tac": null,
+     "gan_vao": 6,
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": [
+    [
+     4,
+     "menh_de còn chữ phương thức/phủ định"
+    ]
+   ]
+  },
+  "BLLD_45-2019.D137.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng người lao động làm việc ban đêm",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Làm việc ban đêm, làm thêm giờ và đi công tác xa là ba hành vi kiểm được độc lập, vi phạm từng hành vi có ý nghĩa pháp lý riêng, và chữ không được đứng đầu chuỗi áp cho từng mục."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng người lao động làm thêm giờ",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người sử dụng lao động không được sử dụng người lao động",
+      "làm thêm giờ"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Làm việc ban đêm, làm thêm giờ và đi công tác xa là ba hành vi kiểm được độc lập, vi phạm từng hành vi có ý nghĩa pháp lý riêng, và chữ không được đứng đầu chuỗi áp cho từng mục."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "sử dụng người lao động đi công tác xa",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người sử dụng lao động không được sử dụng người lao động",
+      "đi công tác xa"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Làm việc ban đêm, làm thêm giờ và đi công tác xa là ba hành vi kiểm được độc lập, vi phạm từng hành vi có ý nghĩa pháp lý riêng, và chữ không được đứng đầu chuỗi áp cho từng mục."
+     }
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "hoac",
+     "chua_ro": [],
+     "trich": [
+      "trong trường hợp sau đây"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách điều kiện, mỗi trường hợp liệt kê là một điều kiện và chỉ cần một trường hợp là đủ."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D137.K1.a": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "mang thai từ tháng thứ 07",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động",
+      "Mang thai từ tháng thứ 07"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "ke_thua",
+      "giai_thich": "Chủ thể mang thai được kế thừa từ người lao động ở câu dẫn."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "mang thai từ tháng thứ 06",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động",
+      "Mang thai",
+      "từ tháng thứ 06"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Giữa hai vế hoặc, vế sau có thêm điều kiện nơi làm việc nên tách thành quy tắc q2 riêng, gồm mang thai từ tháng thứ 06 và làm việc ở các vùng nêu."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "G"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người lao động",
+      "làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Các vùng liệt kê là những nơi làm việc thay thế nhau của cùng một điều kiện, làm việc ở nơi nào cũng có cùng hệ quả pháp lý."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D146.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thời giờ làm việc quá 04 giờ trong 01 ngày",
+     "chu_the": {
+      "chu": "người chưa đủ 15 tuổi",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Thời giờ làm việc của người chưa đủ 15 tuổi không được quá 04 giờ trong 01 ngày"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Giới hạn 04 giờ mỗi ngày và giới hạn 20 giờ mỗi tuần kiểm được độc lập, vượt từng giới hạn là một vi phạm riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thời giờ làm việc quá 20 giờ trong 01 tuần",
+     "chu_the": {
+      "chu": "người chưa đủ 15 tuổi",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Thời giờ làm việc của người chưa đủ 15 tuổi không được quá",
+      "20 giờ trong 01 tuần"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Giới hạn 20 giờ mỗi tuần tách khỏi giới hạn 04 giờ mỗi ngày vì có thể vi phạm một mà không vi phạm kia."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "làm thêm giờ",
+     "chu_the": {
+      "chu": "người chưa đủ 15 tuổi",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người chưa đủ 15 tuổi",
+      "không được làm thêm giờ"
+     ],
+     "targets": [],
+     "quy_tac": "q3",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Làm thêm giờ và làm việc ban đêm là hai hành vi cấm độc lập; chủ thể được lấy từ vế trước dấu chấm phẩy."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "làm việc",
+     "chu_the": {
+      "chu": "người chưa đủ 15 tuổi",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "vào ban đêm",
+       "scope": "this_clause"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "người chưa đủ 15 tuổi",
+      "không được làm thêm giờ, làm việc vào ban đêm"
+     ],
+     "targets": [],
+     "quy_tac": "q4",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm \"vào ban đêm\" đứng sau mục cuối chỉ gắn với \"làm việc\", không rải sang \"làm thêm giờ\"; chữ \"không được\" đứng đầu chuỗi được hiểu cho từng mục."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D151.K1": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "có quốc tịch nước ngoài",
+     "chu_the": {
+      "chu": "người",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "doi_so": [],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "là người có quốc tịch nước ngoài"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là người lao động nước ngoài làm việc tại Việt Nam",
+     "chu_the": null,
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam là người"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "bo_qua",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": "va",
+     "chua_ro": [],
+     "trich": [
+      "phải đáp ứng các điều kiện sau đây"
+     ],
+     "targets": [],
+     "quy_tac": null,
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn chỉ vào danh sách các điều kiện người lao động nước ngoài phải đáp ứng đủ hết; các mục con kế thừa chủ thể và phương thức phải."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D151.K1.a": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đủ 18 tuổi trở lên",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "phải đáp ứng các điều kiện",
+      "Đủ 18 tuổi trở lên"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Đủ tuổi và có năng lực hành vi dân sự đầy đủ kiểm được đúng/sai độc lập, thiếu mỗi điều kiện có ý nghĩa pháp lý riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có năng lực hành vi dân sự đầy đủ",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "phải đáp ứng các điều kiện",
+      "có năng lực hành vi dân sự đầy đủ"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Đủ tuổi và có năng lực hành vi dân sự đầy đủ kiểm được đúng/sai độc lập, thiếu mỗi điều kiện có ý nghĩa pháp lý riêng."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D151.K1.c": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là người đang trong thời gian chấp hành hình phạt",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "phải đáp ứng các điều kiện",
+      "Không phải là người đang trong thời gian chấp hành hình phạt"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Chữ 'Không phải' đứng đầu chuỗi áp cho từng mục; mỗi trạng thái kiểm được độc lập và có ý nghĩa pháp lý riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là người chưa được xóa án tích",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "phu_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "phải đáp ứng các điều kiện",
+      "Không phải là người",
+      "chưa được xóa án tích"
+     ],
+     "targets": [],
+     "quy_tac": "q2",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Chữ 'Không phải' đứng đầu chuỗi áp cho từng mục; mỗi trạng thái kiểm được độc lập và có ý nghĩa pháp lý riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là người đang trong thời gian bị truy cứu trách nhiệm hình sự",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [],
+     "phuong_thuc": "phai",
+     "cuc": "phu_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam",
+       "scope": "unknown"
+      }
+     ],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [
+      {
+       "thanh_phan": "theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam",
+       "nguyen_nhan": "pham_vi_bo_ngu",
+       "cau_hoi": "Cụm 'theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam' chỉ bổ nghĩa cho 'bị truy cứu trách nhiệm hình sự' hay áp dụng cho cả ba trường hợp (chấp hành hình phạt, chưa được xóa án tích, bị truy cứu trách nhiệm hình sự)?"
+      }
+     ],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "phải đáp ứng các điều kiện",
+      "Không phải là người",
+      "đang trong thời gian bị truy cứu trách nhiệm hình sự",
+      "theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam"
+     ],
+     "targets": [],
+     "quy_tac": "q3",
+     "gan_vao": null,
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm bổ ngữ đứng cuối chuỗi ba mục, chữ không cho căn cứ để biết chỉ áp mục cuối hay cả nhóm nên để unknown và không tự rải."
+     }
+    }
+   ],
+   "loi": [],
+   "co": []
+  },
+  "BLLD_45-2019.D151.K1.d": {
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp",
+     "chu_the": {
+      "chu": "Người lao động nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "?"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "Người lao động nước ngoài làm việc tại Việt Nam",
+      "phải đáp ứng các điều kiện",
+      "Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp"
+     ],
+     "targets": [],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    },
+    {
+     "loai": "con_tro",
+     "vai": "",
+     "menh_de": "",
+     "chu_the": null,
+     "doi_so": [],
+     "phuong_thuc": "",
+     "cuc": "",
+     "bo_ngu": [],
+     "nhom_hoac": null,
+     "cac_muc_con": null,
+     "chua_ro": [],
+     "trich": [
+      "trừ trường hợp quy định tại Điều 154 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D154"
+     ],
+     "quy_tac": "q1",
+     "gan_vao": null,
+     "ly_do_llm": null
+    }
+   ],
+   "loi": [],
+   "co": []
+  }
+ }
+}

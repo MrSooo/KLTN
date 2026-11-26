@@ -1,0 +1,154 @@
+{
+ "task": "predicates",
+ "prompt_version": "names-2",
+ "role": "ten",
+ "requested_model": "claude-sonnet-5-5",
+ "created": "2026-11-18T15:59:50+00:00",
+ "system": "Bạn đặt TÊN VỊ TỪ cho các mệnh đề lấy từ văn bản pháp luật lao động Việt Nam. Mỗi mệnh đề là lõi của một điều đúng/sai được (động từ hoặc tính chất cộng tân ngữ chính); chủ thể, chữ chỉ phương thức (phải, được, cấm), chữ phủ định và bổ ngữ đã được bỏ ra và ghi riêng. Hai mệnh đề nêu CÙNG MỘT sự kiện pháp lý phải mang cùng một tên, kể cả khi viết khác chữ; hai mệnh đề nêu sự kiện khác nhau phải mang tên khác.\n\nĐẦU VÀO là danh sách \"chu\". Mỗi mục có:\n- chu_id: mã của chữ. chu: chữ của mệnh đề, nguyên văn.\n- params: loại các tham số theo THỨ TỰ: vị trí đầu là chủ thể (nếu mệnh đề có chủ thể), các vị trí sau là đối số. W người lao động, E người sử dụng lao động, C hợp đồng, J nghề hoặc công việc, G vùng, D ngày hoặc mốc thời gian, A số tiền hoặc số lượng, ? chưa rõ loại. Rỗng nếu mệnh đề không có chủ thể hay đối số.\n- vai: các vai mệnh đề từng đóng (ket_luan: hệ quả; dieu_kien: khi nào áp dụng; ngoai_le: trừ khi nào). so_lan: số lần chữ này xuất hiện.\n- ngu_canh: tối đa hai nơi chữ xuất hiện đầu tiên, mỗi nơi có tieu_de_dieu, khoan_cha, chu_don_vi và vai của mệnh đề ở đó. Chỉ dùng để hiểu nghĩa của chữ; đừng đặt tên theo cả đoạn.\n- ung_vien: các tên đã có, cùng SỐ tham số và loại tương thích (? khớp mọi loại); mỗi ứng viên kèm params và vài chữ đã dùng tên đó (vi_du).\n- loi_lan_truoc: chỉ có khi chữ được hỏi lại; là lý do lần trả lời trước không được nhận. Hãy sửa đúng lỗi đó.\n\nNHIỆM VỤ: với MỖI chữ trong danh sách, trả về đúng MỘT mục gồm chu_id, kieu và ten.\n- kieu \"reuse\": ten là một tên nằm trong ung_vien của chính chữ đó, HOẶC một tên mà bạn đã đặt (kieu \"new\") cho một chữ đứng TRƯỚC chữ này trong danh sách (theo thứ tự các mục của \"chu\"; không được trỏ tới chữ đứng sau) và có params tương thích với chữ này.\n- kieu \"new\": ten là một tên mới.\n\nKHI NÀO ĐƯỢC \"reuse\": khi chữ nêu CÙNG MỘT sự kiện pháp lý với chữ đã dùng tên đó: cùng hành vi hoặc tình trạng, cùng đối tượng, cùng phạm vi. Khác cách viết, khác thứ tự từ, dùng từ đồng nghĩa, viết tắt hay viết đầy đủ mà vẫn là một sự kiện thì PHẢI reuse. Gần nghĩa, rộng hơn, hẹp hơn hoặc ngược nghĩa thì KHÔNG phải cùng sự kiện: đặt tên mới. Chỉ chung vài từ hoặc cùng chủ đề là chưa đủ. Không chắc thì đặt tên mới.\n\nCÁCH ĐẶT TÊN MỚI:\n- Tiếng Anh, snake_case: chỉ gồm chữ thường a-z, chữ số và dấu gạch dưới; bắt đầu bằng chữ cái; dài 3 đến 50 ký tự.\n- Tên nêu sự kiện, không nêu ai làm: không ghi chủ thể, không ghi params vào tên (params đã được ghi riêng).\n- Không ghi phương thức vào tên (không must_, may_, allowed_, prohibited_): phương thức được ghi riêng.\n- Dạng khẳng định: không mở đầu bằng not_, no_, non_ và không đặt tên là not hay non. Chữ có ý phủ định trong nghĩa thì chọn một từ khẳng định có nghĩa tương đương.\n- Tên mới không được trùng với bất kỳ tên nào đã có, kể cả tên không nằm trong ung_vien của chữ đó; trùng thì chữ bị hỏi lại sau. Hãy đặt tên đủ cụ thể để ít trùng.\n\nVÍ DỤ (chữ bịa để minh hoạ). Giả sử năm chữ sau đứng theo đúng thứ tự trong danh sách và chưa có ứng viên nào:\n  1. \"cấp thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> new issue_factory_access_card  (tên mới)\n  2. \"phát thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> reuse issue_factory_access_card  (cùng một sự kiện với chữ 1, chỉ khác chữ; dùng lại tên do chính bạn đặt cho chữ 1 (đứng trước, tham số tương thích))\n  3. \"thu hồi thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> new revoke_factory_access_card  (việc ngược lại, không phải cùng sự kiện: tên mới)\n  4. \"cấp thẻ ra vào khu xưởng có thời hạn dưới 30 ngày\" params [\"E\", \"W\"] -> new issue_short_term_factory_access_card  (hẹp hơn chữ 1: tên mới)\n  5. \"có thẻ ra vào khu xưởng\" params [\"W\"] -> new holds_factory_access_card  (nêu tình trạng có thẻ, không phải việc cấp thẻ: tên mới)\n\nĐẦU RA: chỉ JSON đúng lược đồ đã cho, không thêm chữ nào khác. Mọi chữ trong danh sách đều phải có đúng một mục; chu_id chép nguyên văn; không thêm mục cho chữ ngoài danh sách.",
+ "user": "{\n\"chu\": [\n{\n\"chu_id\": \"C0028\",\n\"chu\": \"đưa người lao động có trình độ phù hợp với những yêu cầu của bên thuê lại lao động và nội dung của hợp đồng lao động đã ký với người lao động\",\n\"params\": [\n\"E\",\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D56.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Bảo đảm đưa người lao động có trình độ phù hợp với những yêu cầu của bên thuê lại lao động và nội dung của hợp đồng lao động đã ký với người lao động;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0029\",\n\"chu\": \"thông báo nội dung của hợp đồng cho thuê lại lao động\",\n\"params\": [\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D56.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Thông báo cho người lao động biết nội dung của hợp đồng cho thuê lại lao động;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0030\",\n\"chu\": \"thông báo sơ yếu lý lịch của người lao động, yêu cầu của người lao động\",\n\"params\": [\n\"E\",\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D56.K3\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Thông báo cho bên thuê lại lao động biết sơ yếu lý lịch của người lao động, yêu cầu của người lao động;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0031\",\n\"chu\": \"trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau\",\n\"params\": [\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D56.K4\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Bảo đảm trả lương cho người lao động thuê lại không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0032\",\n\"chu\": \"lập hồ sơ ghi rõ số lao động đã cho thuê lại, bên thuê lại lao động\",\n\"params\": [\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D56.K5\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Lập hồ sơ ghi rõ số lao động đã cho thuê lại, bên thuê lại lao động và định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh;\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"contract_made_in_two_copies\",\n\"params\": [\n\"E\"\n],\n\"vi_du\": [\n\"được làm thành 02 bản, mỗi bên giữ 01 bản\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0033\",\n\"chu\": \"định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\",\n\"params\": [\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D56.K5\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Lập hồ sơ ghi rõ số lao động đã cho thuê lại, bên thuê lại lao động và định kỳ báo cáo cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh;\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"has_demand_for_highly_skilled_labor\",\n\"params\": [\n\"E\"\n],\n\"vi_du\": [\n\"có nhu cầu sử dụng lao động trình độ chuyên môn, kỹ thuật cao\"\n]\n},\n{\n\"ten\": \"meet_temporary_sudden_labor_demand_surge\",\n\"params\": [\n\"E\"\n],\n\"vi_du\": [\n\"đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động trong khoảng thời gian nhất định\"\n]\n},\n{\n\"ten\": \"has_specific_accident_compensation_agreement\",\n\"params\": [\n\"E\"\n],\n\"vi_du\": [\n\"có thỏa thuận cụ thể về trách nhiệm bồi thường tai nạn lao động, bệnh nghề nghiệp của người lao động thuê lại với doanh nghiệp cho thuê lại lao động\"\n]\n},\n{\n\"ten\": \"be_granted_labor_leasing_license\",\n\"params\": [\n\"E\"\n],\n\"vi_du\": [\n\"được cấp Giấy phép hoạt động cho thuê lại lao động\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0034\",\n\"chu\": \"xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động\",\n\"params\": [\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D56.K6\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động khi bên thuê lại lao động trả lại người lao động do vi phạm kỷ luật lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0035\",\n\"chu\": \"trả lại người lao động do vi phạm kỷ luật lao động\",\n\"params\": [\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D56.K6\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của doanh nghiệp cho thuê lại lao động\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ quy định tại Điều 6 của Bộ luật này, doanh nghiệp cho thuê lại lao động có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động khi bên thuê lại lao động trả lại người lao động do vi phạm kỷ luật lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0036\",\n\"chu\": \"thông báo, hướng dẫn nội quy lao động và các quy chế khác\",\n\"params\": [\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D57.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thông báo, hướng dẫn cho người lao động thuê lại biết nội quy lao động và các quy chế khác của mình.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0037\",\n\"chu\": \"phân biệt đối xử về điều kiện lao động đối với người lao động thuê lại so với người lao động của mình\",\n\"params\": [\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D57.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Không được phân biệt đối xử về điều kiện lao động đối với người lao động thuê lại so với người lao động của mình.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0038\",\n\"chu\": \"thỏa thuận về làm việc vào ban đêm, làm thêm giờ\",\n\"params\": [\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D57.K3\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thỏa thuận với người lao động thuê lại về làm việc vào ban đêm, làm thêm giờ theo quy định của Bộ luật này.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0039\",\n\"chu\": \"thỏa thuận để tuyển dụng chính thức người lao động thuê lại làm việc cho mình\",\n\"params\": [\n\"E\",\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D57.K4\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thỏa thuận với người lao động thuê lại và doanh nghiệp cho thuê lại lao động để tuyển dụng chính thức người lao động thuê lại làm việc cho mình trong trường hợp hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động chưa chấm dứt.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0040\",\n\"chu\": \"chấm dứt\",\n\"params\": [\n\"C\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 2,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D57.K4\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thỏa thuận với người lao động thuê lại và doanh nghiệp cho thuê lại lao động để tuyển dụng chính thức người lao động thuê lại làm việc cho mình trong trường hợp hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động chưa chấm dứt.\"\n},\n{\n\"don_vi\": \"BLLD_45-2019.D156.K5\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0041\",\n\"chu\": \"trả lại người lao động thuê lại cho doanh nghiệp cho thuê lại lao động\",\n\"params\": [\n\"E\",\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D57.K5\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Trả lại người lao động thuê lại không đáp ứng yêu cầu như đã thỏa thuận hoặc vi phạm kỷ luật lao động cho doanh nghiệp cho thuê lại lao động.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"use_leased_worker_from_unlicensed_enterprise\",\n\"params\": [\n\"E\",\n\"W\",\n\"E\"\n],\n\"vi_du\": [\n\"sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0042\",\n\"chu\": \"đáp ứng yêu cầu như đã thỏa thuận\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D57.K5\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Trả lại người lao động thuê lại không đáp ứng yêu cầu như đã thỏa thuận hoặc vi phạm kỷ luật lao động cho doanh nghiệp cho thuê lại lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0043\",\n\"chu\": \"vi phạm kỷ luật lao động\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D57.K5\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Trả lại người lao động thuê lại không đáp ứng yêu cầu như đã thỏa thuận hoặc vi phạm kỷ luật lao động cho doanh nghiệp cho thuê lại lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0044\",\n\"chu\": \"cung cấp chứng cứ về hành vi vi phạm kỷ luật lao động của người lao động thuê lại\",\n\"params\": [\n\"E\",\n\"E\",\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D57.K6\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Cung cấp cho doanh nghiệp cho thuê lại lao động chứng cứ về hành vi vi phạm kỷ luật lao động của người lao động thuê lại để xem xét xử lý kỷ luật lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0045\",\n\"chu\": \"thực hiện công việc\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Thực hiện công việc theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động;\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"performed_by_licensed_leasing_enterprises\",\n\"params\": [\n\"?\"\n],\n\"vi_du\": [\n\"được thực hiện bởi các doanh nghiệp có Giấy phép hoạt động cho thuê lại lao động\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0046\",\n\"chu\": \"chấp hành kỷ luật lao động, nội quy lao động\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Chấp hành kỷ luật lao động, nội quy lao động; tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0047\",\n\"chu\": \"tuân theo sự điều hành hợp pháp của bên thuê lại lao động\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Chấp hành kỷ luật lao động, nội quy lao động; tuân theo sự quản lý, điều hành, giám sát hợp pháp của bên thuê lại lao động;\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"be_under_direction_of_other_employer\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vi_du\": [\n\"chịu sự điều hành của người sử dụng lao động khác\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0048\",\n\"chu\": \"được trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K3\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Được trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0049\",\n\"chu\": \"khiếu nại với doanh nghiệp cho thuê lại lao động\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K4\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Khiếu nại với doanh nghiệp cho thuê lại lao động trong trường hợp bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động;\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"conclude_contract_with_leasing_enterprise\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vi_du\": [\n\"giao kết hợp đồng lao động với doanh nghiệp cho thuê lại lao động\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0050\",\n\"chu\": \"bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K4\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Khiếu nại với doanh nghiệp cho thuê lại lao động trong trường hợp bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động;\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0051\",\n\"chu\": \"thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D58.K5\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n\"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n\"chu_don_vi\": \"Thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động để giao kết hợp đồng lao động với bên thuê lại lao động.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"conclude_contract_with_leasing_enterprise\",\n\"params\": [\n\"W\",\n\"E\"\n],\n\"vi_du\": [\n\"giao kết hợp đồng lao động với doanh nghiệp cho thuê lại lao động\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0052\",\n\"chu\": \"tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D150.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Nhà nước khuyến khích doanh nghiệp, cơ quan, tổ chức, cá nhân tìm kiếm và mở rộng thị trường lao động để đưa người lao động Việt Nam đi làm việc ở nước ngoài.\\nNgười lao động Việt Nam đi làm việc ở nước ngoài phải tuân theo quy định của pháp luật Việt Nam, pháp luật nước sở tại, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0053\",\n\"chu\": \"tuân theo pháp luật Việt Nam\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D150.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam phải tuân theo pháp luật Việt Nam và được pháp luật bảo vệ.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0054\",\n\"chu\": \"được pháp luật bảo vệ\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D150.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Người lao động Việt Nam đi làm việc ở nước ngoài, lao động cho các tổ chức, cá nhân nước ngoài tại Việt Nam\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam phải tuân theo pháp luật Việt Nam và được pháp luật bảo vệ.\"\n}\n],\n\"ung_vien\": []\n}\n]\n}",
+ "output": {
+  "chu": [
+   {
+    "chu_id": "C0028",
+    "kieu": "new",
+    "ten": "provide_worker_meeting_hirer_requirements"
+   },
+   {
+    "chu_id": "C0029",
+    "kieu": "new",
+    "ten": "notify_worker_of_leasing_contract_content"
+   },
+   {
+    "chu_id": "C0030",
+    "kieu": "new",
+    "ten": "notify_hirer_of_worker_profile_and_requirements"
+   },
+   {
+    "chu_id": "C0031",
+    "kieu": "new",
+    "ten": "pay_leased_worker_at_least_hirer_comparable_wage"
+   },
+   {
+    "chu_id": "C0032",
+    "kieu": "new",
+    "ten": "compile_leasing_records_of_workers_and_hirers"
+   },
+   {
+    "chu_id": "C0033",
+    "kieu": "new",
+    "ten": "report_periodically_to_provincial_labor_agency"
+   },
+   {
+    "chu_id": "C0034",
+    "kieu": "new",
+    "ten": "impose_discipline_on_violating_worker"
+   },
+   {
+    "chu_id": "C0035",
+    "kieu": "new",
+    "ten": "return_worker_for_discipline_violation"
+   },
+   {
+    "chu_id": "C0036",
+    "kieu": "new",
+    "ten": "notify_and_instruct_work_rules"
+   },
+   {
+    "chu_id": "C0037",
+    "kieu": "new",
+    "ten": "discriminate_working_conditions_of_leased_worker"
+   },
+   {
+    "chu_id": "C0038",
+    "kieu": "new",
+    "ten": "agree_night_work_and_overtime"
+   },
+   {
+    "chu_id": "C0039",
+    "kieu": "new",
+    "ten": "agree_to_formally_recruit_leased_worker"
+   },
+   {
+    "chu_id": "C0040",
+    "kieu": "new",
+    "ten": "contract_terminated"
+   },
+   {
+    "chu_id": "C0041",
+    "kieu": "new",
+    "ten": "return_leased_worker_to_leasing_enterprise"
+   },
+   {
+    "chu_id": "C0042",
+    "kieu": "new",
+    "ten": "meet_agreed_requirements"
+   },
+   {
+    "chu_id": "C0043",
+    "kieu": "new",
+    "ten": "violate_labor_discipline"
+   },
+   {
+    "chu_id": "C0044",
+    "kieu": "new",
+    "ten": "provide_evidence_of_labor_discipline_violation"
+   },
+   {
+    "chu_id": "C0045",
+    "kieu": "new",
+    "ten": "perform_work_under_labor_contract"
+   },
+   {
+    "chu_id": "C0046",
+    "kieu": "new",
+    "ten": "comply_with_labor_discipline_and_rules"
+   },
+   {
+    "chu_id": "C0047",
+    "kieu": "new",
+    "ten": "follow_lawful_direction_of_hirer"
+   },
+   {
+    "chu_id": "C0048",
+    "kieu": "new",
+    "ten": "receive_wage_at_least_hirer_comparable_wage"
+   },
+   {
+    "chu_id": "C0049",
+    "kieu": "new",
+    "ten": "file_complaint_with_leasing_enterprise"
+   },
+   {
+    "chu_id": "C0050",
+    "kieu": "new",
+    "ten": "leasing_contract_terms_breached"
+   },
+   {
+    "chu_id": "C0051",
+    "kieu": "new",
+    "ten": "agree_to_end_contract_with_leasing_firm"
+   },
+   {
+    "chu_id": "C0052",
+    "kieu": "new",
+    "ten": "comply_with_vietnamese_and_host_country_law"
+   },
+   {
+    "chu_id": "C0053",
+    "kieu": "new",
+    "ten": "comply_with_vietnamese_law"
+   },
+   {
+    "chu_id": "C0054",
+    "kieu": "new",
+    "ten": "protected_by_law"
+   }
+  ]
+ },
+ "model": "claude-sonnet-5-5",
+ "request_id": null,
+ "usage": null,
+ "produced_by": "claude_code_sandbox",
+ "producer_model_reported": "claude-sonnet-5-5",
+ "effort_reported": "high"
+}

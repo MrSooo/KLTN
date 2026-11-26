@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Cưỡng bức lao động là việc dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác để ép buộc người lao động phải làm việc trái ý muốn của họ.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Cưỡng bức lao động là việc dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"ép buộc người lao động phải làm việc trái ý muốn của họ\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl--LUFa_D2NPvA1e8PtazTuAY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2364
+   },
+   "input_tokens": 2274,
+   "output_tokens": 328,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_1ab109cb2a738140a93dc35d"
+   }
+  }
+ }
+}

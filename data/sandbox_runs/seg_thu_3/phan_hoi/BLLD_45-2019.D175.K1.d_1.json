@@ -1,0 +1,30 @@
+{
+ "cau": "Cản trở, gây khó khăn liên quan đến công việc nhằm làm suy yếu hoạt động của tổ chức đại diện người lao động tại cơ sở.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Cản trở\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"gây khó khăn\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"liên quan đến công việc\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"nhằm làm suy yếu hoạt động của tổ chức đại diện người lao động tại cơ sở\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-hU0Da7etEJ_l1e8P9Mi92As",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1124
+   },
+   "input_tokens": 930,
+   "output_tokens": 1238,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_fb8b0b366aa8569f90ec09c4"
+   }
+  }
+ }
+}

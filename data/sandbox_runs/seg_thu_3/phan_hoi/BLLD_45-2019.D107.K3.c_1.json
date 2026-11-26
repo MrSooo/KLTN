@@ -1,0 +1,30 @@
+{
+ "cau": "Trường hợp giải quyết công việc đòi hỏi lao động có trình độ chuyên môn, kỹ thuật cao mà thị trường lao động không cung ứng đầy đủ, kịp thời;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trường hợp\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"giải quyết công việc đòi hỏi lao động có trình độ chuyên môn, kỹ thuật cao\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thị trường lao động không cung ứng đầy đủ, kịp thời\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-PT4Da7SIGNmP2roP39CGoQ4",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 529
+   },
+   "input_tokens": 934,
+   "output_tokens": 630,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_cfba14873d9965eeaeeeda62"
+   }
+  }
+ }
+}

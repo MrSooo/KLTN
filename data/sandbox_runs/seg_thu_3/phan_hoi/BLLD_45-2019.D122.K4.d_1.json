@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động nữ mang thai; người lao động nghỉ thai sản, nuôi con dưới 12 tháng tuổi.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động nữ mang thai\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"người lao động\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"nghỉ thai sản\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"nuôi con dưới 12 tháng tuổi\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-aUEDa4qhM9Pr2roPudOduQc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1048
+   },
+   "input_tokens": 923,
+   "output_tokens": 1155,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_6394228b868d25cd4ef873aa"
+   }
+  }
+ }
+}

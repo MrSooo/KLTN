@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D18.K3.d",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D18.K3.d\",\n \"tieu_de_dieu\": \"1:Thẩm 2:quyền 3:giao 4:kết 5:hợp 6:đồng 7:lao 8:động\",\n \"khoan_cha\": \"1:Người 2:giao 3:kết 4:hợp 5:đồng 6:lao 7:động 8:bên 9:phía 10:người 11:sử 12:dụng 13:lao 14:động 15:là 16:người 17:thuộc 18:một 19:trong 20:các 21:trường 22:hợp 23:sau 24:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Cá nhân trực tiếp sử dụng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Cá 2:nhân 3:trực 4:tiếp 5:sử 6:dụng 7:lao 8:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D18.K3.d\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:3-8\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-2\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-2674cf088b544e5b8619881dbc35b711",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2556
+   },
+   "input_tokens": 5828,
+   "output_tokens": 568,
+   "x_ckey": {
+    "cost": 10.36,
+    "cost_is_estimate": false,
+    "request_id": "req_7b6ca897cb4704fb16c4080d"
+   }
+  }
+ }
+}

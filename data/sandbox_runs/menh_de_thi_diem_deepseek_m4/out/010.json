@@ -1,0 +1,144 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D35.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đơn phương chấm dứt hợp đồng lao động không cần báo trước",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động có quyền đơn phương chấm dứt hợp đồng lao động không cần báo trước"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "hoac",
+     "trich": [
+      "trong trường hợp sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách trường hợp."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D35.K2.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "không được bố trí theo đúng công việc, địa điểm làm việc",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Người lao động",
+      "Không được bố trí theo đúng công việc, địa điểm làm việc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "không được bảo đảm điều kiện làm việc theo thỏa thuận",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Người lao động",
+      "không được bảo đảm điều kiện làm việc theo thỏa thuận"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai việc bị vi phạm độc lập, mỗi việc kiểm được riêng."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "trich": [
+      "trừ trường hợp quy định tại Điều 29 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D29"
+     ],
+     "gan_vao": null
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D35.K2.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "không được trả đủ lương",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "Người lao động",
+      "Không được trả đủ lương"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trả lương không đúng thời hạn",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người lao động",
+      "trả lương không đúng thời hạn"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai vi phạm độc lập về tiền lương."
+     }
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "trich": [
+      "trừ trường hợp quy định tại khoản 4 Điều 97 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D97.K4"
+     ],
+     "gan_vao": null
+    }
+   ]
+  }
+ ]
+}

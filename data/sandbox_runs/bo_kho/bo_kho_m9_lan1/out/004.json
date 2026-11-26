@@ -1,0 +1,803 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D34.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hết hạn",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Hết hạn hợp đồng lao động"
+     ]
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "targets": [
+      "BLLD_45-2019.D177.K4"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "trừ trường hợp quy định tại khoản 4 Điều 177 của Bộ luật này"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D34.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hoàn thành công việc",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Đã hoàn thành công việc"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "theo hợp đồng lao động",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "theo hợp đồng lao động"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D34.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thỏa thuận chấm dứt hợp đồng lao động",
+     "chu_the": {
+      "chu": "Hai bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Hai bên thỏa thuận chấm dứt hợp đồng lao động"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D34.K4",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị kết án phạt tù",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Người lao động bị kết án phạt tù"
+     ],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Ba nhánh loại trừ nhau (kết án tù/tử hình/bị cấm làm công việc) tách thành q1-q3."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "được hưởng án treo",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Người lao động bị kết án phạt tù nhưng không được hưởng án treo"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thuộc trường hợp được trả tự do",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Người lao động bị kết án phạt tù nhưng không được hưởng án treo hoặc không thuộc trường hợp được trả tự do"
+     ]
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [],
+     "gan_vao": 2,
+     "trich": [
+      "theo quy định tại khoản 5 Điều 328 của Bộ luật Tố tụng hình sự"
+     ],
+     "chua_ro": [
+      {
+       "thanh_phan": "dẫn chiếu khoản 5 Điều 328 Bộ luật Tố tụng hình sự",
+       "nguyen_nhan": "khac",
+       "cau_hoi": "Không có mục dich tương ứng trong danh_chieu; giữ nguyên làm dẫn chiếu chưa giải."
+      }
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị kết án tử hình",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q2",
+     "trich": [
+      "bị kết án",
+      "tử hình"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị cấm làm công việc ghi trong hợp đồng lao động",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q3",
+     "trich": [
+      "hoặc bị cấm làm công việc ghi trong hợp đồng lao động"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "theo bản án, quyết định của Tòa án đã có hiệu lực pháp luật",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q3",
+     "trich": [
+      "theo bản án, quyết định của Tòa án đã có hiệu lực pháp luật"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D34.K5",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị trục xuất",
+     "chu_the": {
+      "chu": "Người lao động là người nước ngoài làm việc tại Việt Nam",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Người lao động là người nước ngoài làm việc tại Việt Nam bị trục xuất"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "theo bản án, quyết định của Tòa án đã có hiệu lực pháp luật, quyết định của cơ quan nhà nước có thẩm quyền",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "theo bản án, quyết định của Tòa án đã có hiệu lực pháp luật, quyết định của cơ quan nhà nước có thẩm quyền"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D34.K6",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "chết",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Người lao động chết"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị Tòa án tuyên bố",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "nhom_hoac": "h1",
+     "liet_ke": [
+      "mất năng lực hành vi dân sự",
+      "mất tích",
+      "đã chết"
+     ],
+     "trich": [
+      "Người lao động chết; bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D34.K7",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "chết",
+     "chu_the": {
+      "chu": "Người sử dụng lao động là cá nhân",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Người sử dụng lao động là cá nhân chết"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị Tòa án tuyên bố",
+     "chu_the": {
+      "chu": "Người sử dụng lao động là cá nhân",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "nhom_hoac": "h1",
+     "liet_ke": [
+      "mất năng lực hành vi dân sự",
+      "mất tích",
+      "đã chết"
+     ],
+     "trich": [
+      "Người sử dụng lao động là cá nhân chết; bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là cá nhân",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "quy_tac": "q2",
+     "trich": [
+      "Người sử dụng lao động không phải là cá nhân"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "chấm dứt hoạt động",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q2",
+     "nhom_hoac": "h1",
+     "trich": [
+      "Người sử dụng lao động không phải là cá nhân chấm dứt hoạt động"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q2",
+     "nhom_hoac": "h1",
+     "trich": [
+      "hoặc bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D34.K8",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bị xử lý kỷ luật sa thải",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Người lao động bị xử lý kỷ luật sa thải"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D34.K9",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đơn phương chấm dứt hợp đồng lao động",
+     "chu_the": {
+      "chu": "Người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Người lao động đơn phương chấm dứt hợp đồng lao động"
+     ]
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D35"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "theo quy định tại Điều 35 của Bộ luật này"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D34.K10",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đơn phương chấm dứt hợp đồng lao động",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Người sử dụng lao động đơn phương chấm dứt hợp đồng lao động"
+     ]
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D36"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "theo quy định tại Điều 36 của Bộ luật này"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D34.K11",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "cho người lao động thôi việc",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Người sử dụng lao động cho người lao động thôi việc"
+     ]
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D42",
+      "BLLD_45-2019.D43"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "theo quy định tại Điều 42 và Điều 43 của Bộ luật này"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D34.K12",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hết hiệu lực",
+     "chu_the": {
+      "chu": "Giấy phép lao động",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Giấy phép lao động hết hiệu lực"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "là người nước ngoài làm việc tại Việt Nam",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "đối với người lao động là người nước ngoài làm việc tại Việt Nam"
+     ]
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D156"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "theo quy định tại Điều 156 của Bộ luật này"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D34.K13",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "thỏa thuận nội dung thử việc ghi trong hợp đồng lao động",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Trường hợp thỏa thuận nội dung thử việc ghi trong hợp đồng lao động"
+     ],
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai nhánh 'hoặc' tách thành q1 (thỏa thuận + không đạt yêu cầu) và q2 (hủy bỏ thỏa thuận thử việc)."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đạt yêu cầu",
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "mà thử việc không đạt yêu cầu"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hủy bỏ thỏa thuận thử việc",
+     "chu_the": {
+      "chu": "một bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q2",
+     "trich": [
+      "hoặc một bên hủy bỏ thỏa thuận thử việc"
+     ]
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "chấm dứt",
+     "chu_the": {
+      "chu": "hợp đồng lao động",
+      "loai": "C",
+      "nguon": "tieu_de"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "quy_tac": "q1",
+     "trich": [
+      "Các trường hợp chấm dứt hợp đồng lao động"
+     ]
+    }
+   ]
+  }
+ ]
+}

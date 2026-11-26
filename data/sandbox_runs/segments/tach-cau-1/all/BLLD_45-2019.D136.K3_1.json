@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Bảo đảm có đủ buồng tắm và buồng vệ sinh phù hợp tại nơi làm việc.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Bảo đảm có đủ buồng tắm và buồng vệ sinh phù hợp tại nơi làm việc\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539513344-62d887ce",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 507
+   },
+   "input_tokens": 2394,
+   "output_tokens": 45,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_db39fcace4205ecb24af981d"
+   }
+  }
+ }
+}

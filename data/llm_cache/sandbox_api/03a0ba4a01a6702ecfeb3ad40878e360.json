@@ -1,0 +1,74 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T08:38:03+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0250\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D182.K2.b\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của hai bên trong giải quyết tranh chấp lao động\",\n    \"khoan_cha\": \"Trong giải quyết tranh chấp lao động, các bên có nghĩa vụ sau đây:\",\n    \"chu_don_vi\": \"Chấp hành thỏa thuận đã đạt được, quyết định của Ban trọng tài lao động, bản án, quyết định của Tòa án đã có hiệu lực pháp luật.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K5\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp một trong các bên không thi hành quyết định giải quyết tranh chấp của Ban trọng tài lao động thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"comply_with_labor_arbitration_tribunal_decision\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0251\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D182.K2.b\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của hai bên trong giải quyết tranh chấp lao động\",\n    \"khoan_cha\": \"Trong giải quyết tranh chấp lao động, các bên có nghĩa vụ sau đây:\",\n    \"chu_don_vi\": \"Chấp hành thỏa thuận đã đạt được, quyết định của Ban trọng tài lao động, bản án, quyết định của Tòa án đã có hiệu lực pháp luật.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D193.K6\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp một trong các bên không thi hành quyết định giải quyết tranh chấp của Ban trọng tài lao động thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"comply_with_labor_arbitration_tribunal_decision\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0252\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K1\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trên cơ sở đồng thuận, các bên tranh chấp có quyền yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp trong trường hợp quy định tại khoản 7 Điều 188 của Bộ luật này. Khi yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp, các bên không được đồng thời yêu cầu Tòa án giải quyết, trừ trường hợp quy định tại khoản 4 Điều này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D193.K1\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trên cơ sở đồng thuận, các bên tranh chấp có quyền yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp trong trường hợp hòa giải không thành hoặc hết thời hạn hòa giải quy định tại khoản 2 Điều 188 của Bộ luật này mà hòa giải viên lao động không tiến hành hòa giải hoặc một trong các bên không thực hiện thỏa thuận trong biên bản hòa giải thành.\"\n   },\n   \"vi_tu_chung\": [\n    \"request_labor_arbitration_council_settle\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0253\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K1\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trên cơ sở đồng thuận, các bên tranh chấp có quyền yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp trong trường hợp quy định tại khoản 7 Điều 188 của Bộ luật này. Khi yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp, các bên không được đồng thời yêu cầu Tòa án giải quyết, trừ trường hợp quy định tại khoản 4 Điều này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D197.K1\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về lợi ích của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trên cơ sở đồng thuận, các bên tranh chấp có quyền yêu cầu Hội đồng trọng tài lao động giải quyết tranh chấp trong trường hợp hòa giải không thành hoặc hết thời hạn hòa giải quy định tại khoản 2 Điều 188 của Bộ luật này mà hòa giải viên lao động không tiến hành hòa giải hoặc một trong các bên không thực hiện thỏa thuận trong biên bản hòa giải thành.\"\n   },\n   \"vi_tu_chung\": [\n    \"request_labor_arbitration_council_settle\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0254\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K2\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K4\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài lao động không ra quyết định giải quyết tranh chấp thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"established\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0255\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K2\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D193.K5\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài lao động không ra quyết định giải quyết tranh chấp thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"established\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0256\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K2\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D197.K4\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về lợi ích của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi các bên lựa chọn giải quyết tranh chấp thông qua Hội đồng trọng tài lao động theo quy định tại Điều này thì tổ chức đại diện người lao động không được tiến hành đình công trong thời gian Hội đồng trọng tài lao động đang tiến hành giải quyết tranh chấp.\\nKhi hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài không ra quyết định giải quyết tranh chấp hoặc người sử dụng lao động là bên tranh chấp không thực hiện quyết định giải quyết tranh chấp của Ban trọng tài lao động thì tổ chức đại diện người lao động là bên tranh chấp có quyền tiến hành thủ tục quy định tại các điều 200, 201 và 202 của Bộ luật này để đình công.\"\n   },\n   \"vi_tu_chung\": [\n    \"established\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0257\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K2\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D199.K2\",\n    \"tieu_de_dieu\": \"Trường hợp người lao động có quyền đình công\",\n    \"khoan_cha\": \"Tổ chức đại diện người lao động là bên tranh chấp lao động tập thể về lợi ích có quyền tiến hành thủ tục quy định tại các điều 200, 201 và 202 của Bộ luật này để đình công trong trường hợp sau đây:\",\n    \"chu_don_vi\": \"Ban trọng tài lao động không được thành lập hoặc thành lập nhưng không ra quyết định giải quyết tranh chấp hoặc người sử dụng lao động là bên tranh chấp không thực hiện quyết định giải quyết tranh chấp của Ban trọng tài lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"established\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0258\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K3\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 30 ngày kể từ ngày Ban trọng tài lao động được thành lập, Ban trọng tài lao động phải ra quyết định về việc giải quyết tranh chấp và gửi cho các bên tranh chấp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K4\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp hết thời hạn quy định tại khoản 2 Điều này mà Ban trọng tài lao động không được thành lập hoặc hết thời hạn quy định tại khoản 3 Điều này mà Ban trọng tài lao động không ra quyết định giải quyết tranh chấp thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"issue_dispute_settlement_decision\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0259\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K3\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 30 ngày kể từ ngày Ban trọng tài lao động được thành lập, Ban trọng tài lao động phải ra quyết định về việc giải quyết tranh chấp và gửi cho các bên tranh chấp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D193.K3\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 30 ngày kể từ ngày được thành lập, căn cứ vào quy định của pháp luật về lao động, thỏa ước lao động tập thể, nội quy lao động đã được đăng ký và các quy chế, thỏa thuận hợp pháp khác, Ban trọng tài phải ra quyết định về việc giải quyết tranh chấp và gửi cho các bên tranh chấp.\\nĐối với tranh chấp quy định tại điểm b và điểm c khoản 2 Điều 179 của Bộ luật này mà xác định có hành vi vi phạm pháp luật thì Ban trọng tài lao động không ra quyết định giải quyết mà lập biên bản và chuyển hồ sơ, tài liệu đến cơ quan có thẩm quyền xem xét, xử lý theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"issue_dispute_settlement_decision\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_2472ced9e7408418bd4ee696",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0250",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0251",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0252",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0253",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0254",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0255",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0256",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0257",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0258",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0259",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4088,
+  "output_tokens": 965,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 640
+   }
+  }
+ }
+}

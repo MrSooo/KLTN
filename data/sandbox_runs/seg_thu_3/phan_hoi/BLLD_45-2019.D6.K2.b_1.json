@@ -1,0 +1,30 @@
+{
+ "cau": "Thiết lập cơ chế và thực hiện đối thoại, trao đổi với người lao động và tổ chức đại diện người lao động; thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thiết lập cơ chế\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"thực hiện\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"đối thoại, trao đổi với người lao động và tổ chức đại diện người lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"thực hiện quy chế dân chủ ở cơ sở tại nơi làm việc\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-ZiIDa4zMJ9CW9tMP07yosAg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 180
+   },
+   "input_tokens": 940,
+   "output_tokens": 303,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_43495cde4cc39ac5be1ad595"
+   }
+  }
+ }
+}

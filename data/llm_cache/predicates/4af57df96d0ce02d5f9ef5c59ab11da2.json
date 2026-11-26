@@ -1,0 +1,104 @@
+{
+ "task": "predicates",
+ "prompt_version": "names-2.1",
+ "role": "ten",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T19:14:10+00:00",
+ "system": "Bạn đặt TÊN VỊ TỪ cho các mệnh đề lấy từ văn bản pháp luật lao động Việt Nam. Mỗi mệnh đề là lõi của một điều đúng/sai được (động từ hoặc tính chất cộng tân ngữ chính); chủ thể, chữ chỉ phương thức (phải, được, cấm), chữ phủ định và bổ ngữ đã được bỏ ra và ghi riêng. Hai mệnh đề nêu CÙNG MỘT sự kiện pháp lý phải mang cùng một tên, kể cả khi viết khác chữ; hai mệnh đề nêu sự kiện khác nhau phải mang tên khác.\n\nĐẦU VÀO là danh sách \"chu\". Mỗi mục có:\n- chu_id: mã của chữ. chu: chữ của mệnh đề, nguyên văn.\n- params: loại các tham số theo THỨ TỰ: vị trí đầu là chủ thể (nếu mệnh đề có chủ thể), các vị trí sau là đối số. W người lao động, E người sử dụng lao động, C hợp đồng, J nghề hoặc công việc, G vùng, D ngày hoặc mốc thời gian, A số tiền hoặc số lượng, ? chưa rõ loại. Rỗng nếu mệnh đề không có chủ thể hay đối số.\n- vai: các vai mệnh đề từng đóng (ket_luan: hệ quả; dieu_kien: khi nào áp dụng; ngoai_le: trừ khi nào). so_lan: số lần chữ này xuất hiện.\n- ngu_canh: tối đa hai nơi chữ xuất hiện đầu tiên, mỗi nơi có tieu_de_dieu, khoan_cha, chu_don_vi và vai của mệnh đề ở đó. Chỉ dùng để hiểu nghĩa của chữ; đừng đặt tên theo cả đoạn.\n- ung_vien: các tên đã có, cùng SỐ tham số và loại tương thích (? khớp mọi loại); mỗi ứng viên kèm params và vài chữ đã dùng tên đó (vi_du).\n- loi_lan_truoc: chỉ có khi chữ được hỏi lại; là lý do lần trả lời trước không được nhận. Hãy sửa đúng lỗi đó.\n\nCHỮ CÓ VAI chu_the: chữ là cụm danh từ chỉ một NHÓM chủ thể (\"Người lao động nước ngoài làm việc tại Việt Nam\", \"Doanh nghiệp cho thuê lại lao động\"). Tên đặt cho tính chất \"thuộc nhóm đó\" (ví dụ foreign_worker_in_vietnam). Mệnh đề \"là <nhóm đó>\" và chữ chủ thể chỉ cùng nhóm đó là cùng một sự kiện: phải reuse. Nhóm rộng hơn hoặc hẹp hơn (\"người lao động\" so với \"người lao động nước ngoài\") là tên khác.\n\nNHIỆM VỤ: với MỖI chữ trong danh sách, trả về đúng MỘT mục gồm chu_id, kieu và ten.\n- kieu \"reuse\": ten là một tên nằm trong ung_vien của chính chữ đó, HOẶC một tên mà bạn đã đặt (kieu \"new\") cho một chữ đứng TRƯỚC chữ này trong danh sách (theo thứ tự các mục của \"chu\"; không được trỏ tới chữ đứng sau) và có params tương thích với chữ này.\n- kieu \"new\": ten là một tên mới.\n\nKHI NÀO ĐƯỢC \"reuse\": khi chữ nêu CÙNG MỘT sự kiện pháp lý với chữ đã dùng tên đó: cùng hành vi hoặc tình trạng, cùng đối tượng, cùng phạm vi. Khác cách viết, khác thứ tự từ, dùng từ đồng nghĩa, viết tắt hay viết đầy đủ mà vẫn là một sự kiện thì PHẢI reuse. Gần nghĩa, rộng hơn, hẹp hơn hoặc ngược nghĩa thì KHÔNG phải cùng sự kiện: đặt tên mới. Chỉ chung vài từ hoặc cùng chủ đề là chưa đủ. Không chắc thì đặt tên mới.\n\nCÁCH ĐẶT TÊN MỚI:\n- Tiếng Anh, snake_case: chỉ gồm chữ thường a-z, chữ số và dấu gạch dưới; bắt đầu bằng chữ cái; dài 3 đến 50 ký tự.\n- Tên nêu sự kiện, không nêu ai làm: không ghi chủ thể, không ghi params vào tên (params đã được ghi riêng). Riêng chữ vai chu_the thì tên chính là nhóm chủ thể.\n- Không ghi phương thức vào tên (không must_, may_, allowed_, prohibited_): phương thức được ghi riêng.\n- Dạng khẳng định: không mở đầu bằng not_, no_, non_ và không đặt tên là not hay non. Chữ có ý phủ định trong nghĩa thì chọn một từ khẳng định có nghĩa tương đương.\n- Tên mới không được trùng với bất kỳ tên nào đã có, kể cả tên không nằm trong ung_vien của chữ đó; trùng thì chữ bị hỏi lại sau. Hãy đặt tên đủ cụ thể để ít trùng.\n\nVÍ DỤ (chữ bịa để minh hoạ). Giả sử năm chữ sau đứng theo đúng thứ tự trong danh sách và chưa có ứng viên nào:\n  1. \"cấp thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> new issue_factory_access_card  (tên mới)\n  2. \"phát thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> reuse issue_factory_access_card  (cùng một sự kiện với chữ 1, chỉ khác chữ; dùng lại tên do chính bạn đặt cho chữ 1 (đứng trước, tham số tương thích))\n  3. \"thu hồi thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> new revoke_factory_access_card  (việc ngược lại, không phải cùng sự kiện: tên mới)\n  4. \"cấp thẻ ra vào khu xưởng có thời hạn dưới 30 ngày\" params [\"E\", \"W\"] -> new issue_short_term_factory_access_card  (hẹp hơn chữ 1: tên mới)\n  5. \"có thẻ ra vào khu xưởng\" params [\"W\"] -> new holds_factory_access_card  (nêu tình trạng có thẻ, không phải việc cấp thẻ: tên mới)\n\nĐẦU RA: chỉ JSON đúng lược đồ đã cho, không thêm chữ nào khác. Mọi chữ trong danh sách đều phải có đúng một mục; chu_id chép nguyên văn; không thêm mục cho chữ ngoài danh sách.",
+ "user": "{\n\"chu\": [\n{\n\"chu_id\": \"C0110\",\n\"chu\": \"Thời hạn của giấy phép lao động\",\n\"params\": [],\n\"vai\": [\n\"chu_the\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D155\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Thời hạn của giấy phép lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0111\",\n\"chu\": \"tối đa là 02 năm\",\n\"params\": [\n\"?\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D155\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Thời hạn của giấy phép lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"labor_subleasing_term_max_12_months\",\n\"params\": [\n\"W\"\n],\n\"vi_du\": [\n\"thời hạn cho thuê lại lao động đối với người lao động tối đa là 12 tháng\"\n]\n},\n{\n\"ten\": \"make_contract_in_two_copies_each_keeps_one\",\n\"params\": [\n\"C\"\n],\n\"vi_du\": [\n\"làm thành 02 bản, mỗi bên giữ 01 bản\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0112\",\n\"chu\": \"gia hạn\",\n\"params\": [],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D155\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Thời hạn của giấy phép lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0113\",\n\"chu\": \"giấy phép lao động\",\n\"params\": [],\n\"vai\": [\n\"chu_the\"\n],\n\"so_lan\": 3,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D155\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Thời hạn của giấy phép lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm.\"\n},\n{\n\"don_vi\": \"BLLD_45-2019.D156.K1\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Giấy phép lao động hết thời hạn.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0114\",\n\"chu\": \"gia hạn một lần với thời hạn tối đa là 02 năm\",\n\"params\": [\n\"?\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D155\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Thời hạn của giấy phép lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Thời hạn của giấy phép lao động tối đa là 02 năm, trường hợp gia hạn thì chỉ được gia hạn một lần với thời hạn tối đa là 02 năm.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"labor_subleasing_term_max_12_months\",\n\"params\": [\n\"W\"\n],\n\"vi_du\": [\n\"thời hạn cho thuê lại lao động đối với người lao động tối đa là 12 tháng\"\n]\n},\n{\n\"ten\": \"make_contract_in_two_copies_each_keeps_one\",\n\"params\": [\n\"C\"\n],\n\"vi_du\": [\n\"làm thành 02 bản, mỗi bên giữ 01 bản\"\n]\n},\n{\n\"ten\": \"agree_multiple_fixed_term_labor_contracts\",\n\"params\": [\n\"?\"\n],\n\"vi_du\": [\n\"thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn\"\n]\n},\n{\n\"ten\": \"enter_vietnam_short_term_for_technical_incident\",\n\"params\": [\n\"W\"\n],\n\"vi_du\": [\n\"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được\"\n]\n},\n{\n\"ten\": \"apply_to_certain_jobs\",\n\"params\": [\n\"J\"\n],\n\"vi_du\": [\n\"áp dụng đối với một số công việc nhất định\"\n]\n},\n{\n\"ten\": \"meet_temporary_sudden_labor_demand_increase\",\n\"params\": [\n\"E\"\n],\n\"vi_du\": [\n\"đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0115\",\n\"chu\": \"hết thời hạn\",\n\"params\": [\n\"?\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D156.K1\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Giấy phép lao động hết thời hạn.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0116\",\n\"chu\": \"chấm dứt hợp đồng lao động\",\n\"params\": [],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D156.K2\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chấm dứt hợp đồng lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0117\",\n\"chu\": \"Nội dung của hợp đồng lao động\",\n\"params\": [],\n\"vai\": [\n\"chu_the\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D156.K3\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Nội dung của hợp đồng lao động không đúng với nội dung của giấy phép lao động đã được cấp.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0118\",\n\"chu\": \"không đúng với nội dung của giấy phép lao động đã được cấp\",\n\"params\": [\n\"C\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D156.K3\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Nội dung của hợp đồng lao động không đúng với nội dung của giấy phép lao động đã được cấp.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0119\",\n\"chu\": \"làm việc không đúng với nội dung trong giấy phép lao động đã được cấp\",\n\"params\": [],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D156.K4\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Làm việc không đúng với nội dung trong giấy phép lao động đã được cấp.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"vietnamese_citizen_working_for_foreign_employer\",\n\"params\": [],\n\"vi_du\": [\n\"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0120\",\n\"chu\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động\",\n\"params\": [],\n\"vai\": [\n\"chu_the\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D156.K5\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"vietnamese_citizen_working_for_foreign_employer\",\n\"params\": [],\n\"vi_du\": [\n\"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam\"\n]\n},\n{\n\"ten\": \"request_by_competent_authority\",\n\"params\": [],\n\"vi_du\": [\n\"có yêu cầu của cơ quan nhà nước có thẩm quyền\"\n]\n},\n{\n\"ten\": \"enterprises_agencies_orgs_individuals_contractors\",\n\"params\": [],\n\"vi_du\": [\n\"Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu\"\n]\n},\n{\n\"ten\": \"enterprises_agencies_orgs_individuals\",\n\"params\": [],\n\"vi_du\": [\n\"Doanh nghiệp, cơ quan, tổ chức, cá nhân\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0121\",\n\"chu\": \"hết thời hạn hoặc chấm dứt\",\n\"params\": [\n\"C\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D156.K5\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"leased_worker_employment_contract_remains_valid\",\n\"params\": [\n\"C\"\n],\n\"vi_du\": [\n\"hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động chưa chấm dứt\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0122\",\n\"chu\": \"có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam\",\n\"params\": [],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D156.K6\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0123\",\n\"chu\": \"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài\",\n\"params\": [],\n\"vai\": [\n\"chu_the\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D156.K7\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"vietnamese_citizen_working_for_foreign_employer\",\n\"params\": [],\n\"vi_du\": [\n\"Công dân Việt Nam làm việc cho các tổ chức nước ngoài tại Việt Nam, trong khu công nghiệp, khu kinh tế, khu chế xuất, khu công nghệ cao hoặc làm việc cho cá nhân là công dân nước ngoài tại Việt Nam\"\n]\n},\n{\n\"ten\": \"enterprises_agencies_orgs_individuals_contractors\",\n\"params\": [],\n\"vi_du\": [\n\"Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu\"\n]\n},\n{\n\"ten\": \"enterprises_agencies_orgs_individuals\",\n\"params\": [],\n\"vi_du\": [\n\"Doanh nghiệp, cơ quan, tổ chức, cá nhân\"\n]\n},\n{\n\"ten\": \"labor_contract_term_for_foreign_worker\",\n\"params\": [],\n\"vi_du\": [\n\"Thời hạn của hợp đồng lao động đối với người lao động nước ngoài làm việc tại Việt Nam\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0124\",\n\"chu\": \"chấm dứt hoạt động\",\n\"params\": [\n\"E\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D156.K7\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"use_leased_worker_from_unlicensed_enterprise\",\n\"params\": [\n\"E\"\n],\n\"vi_du\": [\n\"sử dụng người lao động thuê lại được cung cấp bởi doanh nghiệp không có Giấy phép hoạt động cho thuê lại lao động\"\n]\n},\n{\n\"ten\": \"receive_labor_subleasing_license\",\n\"params\": [\n\"E\"\n],\n\"vi_du\": [\n\"được cấp Giấy phép hoạt động cho thuê lại lao động\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0125\",\n\"chu\": \"bị thu hồi\",\n\"params\": [\n\"?\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D156.K8\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Giấy phép lao động bị thu hồi.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"be_sanctioned\",\n\"params\": [\n\"E\"\n],\n\"vi_du\": [\n\"bị xử lý\"\n]\n},\n{\n\"ten\": \"have_criminal_record_or_pending_prosecution\",\n\"params\": [\n\"W\"\n],\n\"vi_du\": [\n\"là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự\"\n]\n},\n{\n\"ten\": \"replace_dismissed_employee\",\n\"params\": [\n\"E\"\n],\n\"vi_du\": [\n\"thay thế người lao động bị cho thôi việc\"\n]\n}\n]\n},\n{\n\"chu_id\": \"C0126\",\n\"chu\": \"làm việc tại Việt Nam\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D157\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Cấp, cấp lại, gia hạn, thu hồi giấy phép lao động, giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Chính phủ quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động đối với người lao động nước ngoài làm việc tại Việt Nam.\"\n}\n],\n\"ung_vien\": [\n{\n\"ten\": \"prescribe\",\n\"params\": [\n\"?\"\n],\n\"vi_du\": [\n\"quy định\"\n]\n}\n]\n}\n]\n}",
+ "output": {
+  "chu": [
+   {
+    "chu_id": "C0110",
+    "kieu": "new",
+    "ten": "labor_permit_term"
+   },
+   {
+    "chu_id": "C0111",
+    "kieu": "new",
+    "ten": "labor_permit_max_term_two_years"
+   },
+   {
+    "chu_id": "C0112",
+    "kieu": "new",
+    "ten": "renew_labor_permit"
+   },
+   {
+    "chu_id": "C0113",
+    "kieu": "new",
+    "ten": "labor_permit"
+   },
+   {
+    "chu_id": "C0114",
+    "kieu": "new",
+    "ten": "renew_labor_permit_once_max_two_years"
+   },
+   {
+    "chu_id": "C0115",
+    "kieu": "new",
+    "ten": "labor_permit_term_expiry"
+   },
+   {
+    "chu_id": "C0116",
+    "kieu": "new",
+    "ten": "terminate_labor_contract"
+   },
+   {
+    "chu_id": "C0117",
+    "kieu": "new",
+    "ten": "labor_contract_contents"
+   },
+   {
+    "chu_id": "C0118",
+    "kieu": "new",
+    "ten": "contract_content_differs_from_granted_permit"
+   },
+   {
+    "chu_id": "C0119",
+    "kieu": "new",
+    "ten": "work_differs_from_granted_permit_content"
+   },
+   {
+    "chu_id": "C0120",
+    "kieu": "new",
+    "ten": "contract_as_basis_for_labor_permit"
+   },
+   {
+    "chu_id": "C0121",
+    "kieu": "new",
+    "ten": "contract_expires_or_terminates"
+   },
+   {
+    "chu_id": "C0122",
+    "kieu": "new",
+    "ten": "foreign_notice_to_stop_sending_foreign_workers"
+   },
+   {
+    "chu_id": "C0123",
+    "kieu": "new",
+    "ten": "vietnam_or_foreign_org_employing_foreign_workers"
+   },
+   {
+    "chu_id": "C0124",
+    "kieu": "new",
+    "ten": "cease_operations"
+   },
+   {
+    "chu_id": "C0125",
+    "kieu": "new",
+    "ten": "labor_permit_revocation"
+   },
+   {
+    "chu_id": "C0126",
+    "kieu": "new",
+    "ten": "work_in_vietnam"
+   }
+  ]
+ },
+ "model": "deepseek-v4.1-flash",
+ "request_id": null,
+ "usage": null,
+ "produced_by": "claude_code_sandbox",
+ "producer_model_reported": "deepseek-v4.1-flash",
+ "effort_reported": "khong_co"
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Đủ tuổi nghỉ hưu theo quy định tại Điều 169 của Bộ luật này, trừ trường hợp các bên có thỏa thuận khác;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Đủ tuổi nghỉ hưu theo quy định tại Điều 169 của Bộ luật này\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"trừ trường hợp các bên có thỏa thuận khác\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-dioDa7mUMdXN2roPjvmiqAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1279
+   },
+   "input_tokens": 930,
+   "output_tokens": 1350,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_eab3b2a5a91d2233ce77618e"
+   }
+  }
+ }
+}

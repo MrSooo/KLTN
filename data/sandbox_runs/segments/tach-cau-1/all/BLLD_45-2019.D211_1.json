@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trong thời hạn 12 giờ kể từ khi nhận được thông báo về cuộc đình công không tuân theo quy định tại các điều 200, 201 và 202 của Bộ luật này, Chủ tịch Ủy ban nhân dân cấp huyện chủ trì, chỉ đạo cơ quan chuyên môn về lao động phối hợp với công đoàn cùng cấp, cơ quan, tổ chức có liên quan trực tiếp gặp gỡ người sử dụng lao động và đại diện ban lãnh đạo tổ chức đại diện người lao động tại cơ sở để nghe ý kiến, hỗ trợ các bên tìm biện pháp giải quyết, đưa hoạt động sản xuất, kinh doanh trở lại bình thường.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trong thời hạn 12 giờ kể từ khi nhận được thông báo về cuộc đình công không tuân theo quy định tại các điều 200, 201 và 202 của Bộ luật này\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"Chủ tịch Ủy ban nhân dân cấp huyện\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"chủ trì\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"chỉ đạo cơ quan chuyên môn về lao động phối hợp với công đoàn cùng cấp, cơ quan, tổ chức có liên quan trực tiếp gặp gỡ người sử dụng lao động và đại diện ban lãnh đạo tổ chức đại diện người lao động tại cơ sở\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"nghe ý kiến\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"hỗ trợ các bên tìm biện pháp giải quyết\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"đưa hoạt động sản xuất, kinh doanh trở lại bình thường\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540496763-8b8fa6e7",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5742
+   },
+   "input_tokens": 2507,
+   "output_tokens": 273,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_96d83bc94223f4b6e657a4df"
+   }
+  }
+ }
+}

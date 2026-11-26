@@ -1,0 +1,30 @@
+{
+ "cau": "Trước khi ban hành nội quy lao động hoặc sửa đổi, bổ sung nội quy lao động, người sử dụng lao động phải tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trước khi\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"ban hành nội quy lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"sửa đổi\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"bổ sung\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"nội quy lao động\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"người sử dụng lao động phải tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-w0ADa7eQOsHv2roP3erj6QU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 23062
+   },
+   "input_tokens": 955,
+   "output_tokens": 716,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_964ac474f18ff712f4afb6a5"
+   }
+  }
+ }
+}

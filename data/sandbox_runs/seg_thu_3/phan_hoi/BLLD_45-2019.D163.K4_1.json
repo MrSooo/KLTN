@@ -1,0 +1,30 @@
+{
+ "cau": "Bố trí chỗ ăn, ở hợp vệ sinh cho người giúp việc gia đình nếu có thỏa thuận.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Bố trí chỗ ăn, ở hợp vệ sinh cho người giúp việc gia đình\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"có thỏa thuận\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-FEsDa5vkJcHv2roP3erj6QU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 479
+   },
+   "input_tokens": 921,
+   "output_tokens": 540,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_8684378080e110c52858fbdf"
+   }
+  }
+ }
+}

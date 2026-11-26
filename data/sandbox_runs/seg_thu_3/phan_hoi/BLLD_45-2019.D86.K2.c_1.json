@@ -1,0 +1,27 @@
+{
+ "cau": "Không tuân thủ đúng quy trình thương lượng, ký kết thỏa ước lao động tập thể.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Không tuân thủ đúng quy trình\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"thương lượng\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"ký kết\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"thỏa ước lao động tập thể\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-hp8Da8vkJ8zM0-kPqo6x4QI",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 919,
+   "output_tokens": 111,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_b5eefc6dd9f68a7b5ce9e972"
+   }
+  }
+ }
+}

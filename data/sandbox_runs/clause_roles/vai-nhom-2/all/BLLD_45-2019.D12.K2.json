@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D12.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": true,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D12.K2\",\n \"tieu_de_dieu\": \"Trách nhiệm quản lý lao động của người sử dụng lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khai trình việc sử dụng lao động trong thời hạn 30 ngày kể từ ngày bắt đầu hoạt động, định kỳ báo cáo tình hình thay đổi về lao động trong quá trình hoạt động với cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh và thông báo cho cơ quan bảo hiểm xã hội.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Khai trình việc sử dụng lao động trong thời hạn 30 ngày kể từ ngày bắt đầu hoạt động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"định kỳ báo cáo tình hình thay đổi về lao động trong quá trình hoạt động với cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thông báo cho cơ quan bảo hiểm xã hội\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D12.K2\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"doan\": [\"Khai trình việc sử dụng lao động\"],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"phai\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"người sử dụng lao động\",\n        \"loai\": \"E\"\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m1\",\n      \"doan\": [\"trong thời hạn 30 ngày kể từ ngày bắt đầu hoạt động\"],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"người sử dụng lao động\",\n        \"loai\": \"E\"\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m2\",\n      \"doan\": [\n        \"định kỳ báo cáo tình hình thay đổi về lao động\",\n        \"với cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"phai\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"người sử dụng lao động\",\n        \"loai\": \"E\"\n      },\n      \"quy_tac\": \"q2\"\n    },\n    {\n      \"nguon\": \"s1.m2\",\n      \"doan\": [\"trong quá trình hoạt động\"],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"người sử dụng lao động\",\n        \"loai\": \"E\"\n      },\n      \"quy_tac\": \"q2\"\n    },\n    {\n      \"nguon\": \"s1.m3\",\n      \"doan\": [\"thông báo cho cơ quan bảo hiểm xã hội\"],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"phai\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"người sử dụng lao động\",\n        \"loai\": \"E\"\n      },\n      \"quy_tac\": \"q2\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795541684128-839ab037",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2713
+   },
+   "input_tokens": 3811,
+   "output_tokens": 568,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_599d423579d47de4645dbf1b"
+   }
+  }
+ }
+}

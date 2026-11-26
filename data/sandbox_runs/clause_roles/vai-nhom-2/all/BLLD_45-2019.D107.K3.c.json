@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D107.K3.c",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D107.K3.c\",\n \"tieu_de_dieu\": \"Làm thêm giờ\",\n \"khoan_cha\": \"Người sử dụng lao động được sử dụng người lao động làm thêm không quá 300 giờ trong 01 năm trong một số ngành, nghề, công việc hoặc trường hợp sau đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp giải quyết công việc đòi hỏi lao động có trình độ chuyên môn, kỹ thuật cao mà thị trường lao động không cung ứng đầy đủ, kịp thời;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"giải quyết công việc đòi hỏi lao động có trình độ chuyên môn, kỹ thuật cao\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"thị trường lao động không cung ứng đầy đủ, kịp thời\",\n     \"noi_truoc\": [\n      \"mà\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D107.K3.c\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"giải quyết công việc đòi hỏi lao động có trình độ chuyên môn, kỹ thuật cao\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Người sử dụng lao động\",\"loai\":\"E\"},\"quy_tac\":\"q1\"},{\"nguon\":\"s1.m2\",\"doan\":[\"cung ứng đầy đủ, kịp thời\"],\"vai\":\"dieu_kien\",\"phuong_thuc\":\"khong\",\"cuc\":\"phu_dinh\",\"chu_the\":{\"chu\":\"thị trường lao động\",\"loai\":\"?\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795544863792-4e29517f",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3413
+   },
+   "input_tokens": 3768,
+   "output_tokens": 173,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_50553b2658c58ce16bebe0ab"
+   }
+  }
+ }
+}

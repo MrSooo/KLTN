@@ -1,0 +1,3046 @@
+{
+"chu": [
+{
+"chu_id": "C1341",
+"chu": "người khuyết tật",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D160.K2",
+"vai": "chu_the",
+"tieu_de_dieu": "Các hành vi bị nghiêm cấm khi sử dụng lao động là người khuyết tật",
+"khoan_cha": "",
+"chu_don_vi": "Sử dụng người lao động là người khuyết tật làm công việc nặng nhọc, độc hại, nguy hiểm theo danh mục do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành mà không có sự đồng ý của người khuyết tật sau khi đã được người sử dụng lao động cung cấp đầy đủ thông tin về công việc đó."
+}
+],
+"ung_vien": [
+{
+"ten": "disabled_employee",
+"params": [],
+"vi_du": [
+"người lao động là người khuyết tật"
+]
+},
+{
+"ten": "employee",
+"params": [],
+"vi_du": [
+"Người lao động",
+"người đó",
+"một người lao động"
+]
+},
+{
+"ten": "minor_disabled_or_heavy_hazardous_worker",
+"params": [],
+"vi_du": [
+"người lao động chưa thành niên, lao động là người khuyết tật, người làm nghề, công việc nặng nhọc, độc hại, nguy hiểm"
+]
+}
+],
+"loi_lan_truoc": "reuse \"disabled_person\": tên này do chữ khác đặt trong lượt nhưng params khác chữ này"
+},
+{
+"chu_id": "C1343",
+"chu": "Lao động là người giúp việc gia đình",
+"params": [],
+"vai": [
+"chu_the",
+"dieu_kien"
+],
+"so_lan": 6,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D161.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Lao động là người giúp việc gia đình là người lao động làm thường xuyên các công việc trong gia đình của một hoặc nhiều hộ gia đình.\nCác công việc trong gia đình bao gồm công việc nội trợ, quản gia, chăm sóc trẻ em, chăm sóc người bệnh, chăm sóc người già, lái xe, làm vườn và các công việc khác cho hộ gia đình nhưng không liên quan đến hoạt động thương mại."
+},
+{
+"don_vi": "BLLD_45-2019.D164.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Nghĩa vụ của lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Thực hiện đầy đủ thỏa thuận đã giao kết trong hợp đồng lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "representative_of_entity_without_legal_status",
+"params": [],
+"vi_du": [
+"Người đại diện của hộ gia đình, tổ hợp tác, tổ chức khác không có tư cách pháp nhân"
+]
+},
+{
+"ten": "extend_work_permit_once",
+"params": [],
+"vi_du": [
+"chỉ gia hạn một lần"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_parties",
+"params": [],
+"vi_du": [
+"các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "extend_work_permit",
+"params": [],
+"vi_du": [
+"gia hạn"
+]
+},
+{
+"ten": "end_of_temporary_suspension_period",
+"params": [],
+"vi_du": [
+"hết thời hạn tạm đình chỉ công việc"
+]
+},
+{
+"ten": "national_wage_council",
+"params": [],
+"vi_du": [
+"Hội đồng tiền lương quốc gia",
+"là Hội đồng tiền lương quốc gia"
+]
+},
+{
+"ten": "disciplined_suspended_or_compensating_worker",
+"params": [],
+"vi_du": [
+"Người bị xử lý kỷ luật lao động, bị tạm đình chỉ công việc hoặc phải bồi thường theo chế độ trách nhiệm vật chất"
+]
+},
+{
+"ten": "employer_participating_in_agreement",
+"params": [],
+"vi_du": [
+"người sử dụng lao động tham gia thỏa ước"
+]
+},
+{
+"ten": "representative_count_per_party_in_council",
+"params": [],
+"vi_du": [
+"Số lượng đại diện mỗi bên thương lượng tham gia Hội đồng"
+]
+}
+]
+},
+{
+"chu_id": "C1344",
+"chu": "là người lao động làm thường xuyên các công việc trong gia đình của một hoặc nhiều hộ gia đình",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D161.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Lao động là người giúp việc gia đình là người lao động làm thường xuyên các công việc trong gia đình của một hoặc nhiều hộ gia đình.\nCác công việc trong gia đình bao gồm công việc nội trợ, quản gia, chăm sóc trẻ em, chăm sóc người bệnh, chăm sóc người già, lái xe, làm vườn và các công việc khác cho hộ gia đình nhưng không liên quan đến hoạt động thương mại."
+}
+],
+"ung_vien": [
+{
+"ten": "compensate_damage_partially_or_fully",
+"params": [
+"W"
+],
+"vi_du": [
+"bồi thường thiệt hại một phần hoặc toàn bộ"
+]
+},
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "include_national_wage_council_members",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập"
+]
+},
+{
+"ten": "include_all_employees_or_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ người lao động tại các doanh nghiệp tham gia thương lượng hoặc toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "ensure_minimum_living_standard",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm mức sống tối thiểu của người lao động và gia đình họ"
+]
+},
+{
+"ten": "compensate_at_most_three_months_wage",
+"params": [
+"W"
+],
+"vi_du": [
+"bồi thường nhiều nhất là 03 tháng tiền lương"
+]
+},
+{
+"ten": "have_multiple_representative_orgs_in_bargaining",
+"params": [
+"W"
+],
+"vi_du": [
+"có nhiều tổ chức đại diện tham gia thương lượng tập thể"
+]
+},
+{
+"ten": "select_other_content_of_interest_to_parties",
+"params": [
+"?"
+],
+"vi_du": [
+"lựa chọn nội dung khác mà một hoặc các bên quan tâm"
+]
+},
+{
+"ten": "mental_illness_or_loss_of_awareness_or_control",
+"params": [
+"W"
+],
+"vi_du": [
+"mắc bệnh tâm thần hoặc một bệnh khác làm mất khả năng nhận thức hoặc khả năng điều khiển hành vi của mình"
+]
+},
+{
+"ten": "receive_multi_enterprise_bargaining_request",
+"params": [
+"?"
+],
+"vi_du": [
+"nhận được yêu cầu của các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "employ_untrained_or_uncertified_labor",
+"params": [
+"W"
+],
+"vi_du": [
+"sử dụng lao động chưa qua đào tạo hoặc chưa có chứng chỉ kỹ năng nghề quốc gia"
+]
+},
+{
+"ten": "agree_collective_bargaining_procedure",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận quyết định quy trình tiến hành thương lượng tập thể ngành, thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "regularly_fail_to_perform_contract_work",
+"params": [
+"W"
+],
+"vi_du": [
+"thường xuyên không hoàn thành công việc theo hợp đồng lao động"
+]
+},
+{
+"ten": "pay_wage_monthly_or_semi_monthly",
+"params": [
+"W"
+],
+"vi_du": [
+"trả lương một tháng một lần hoặc nửa tháng một lần"
+]
+},
+{
+"ten": "directly_work_or_participate_in_labor",
+"params": [
+"W"
+],
+"vi_du": [
+"trực tiếp hoặc tham gia lao động"
+]
+},
+{
+"ten": "enter_vietnam_short_term_for_technical_incident",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được"
+]
+},
+{
+"ten": "regular_work_for_at_least_12_months",
+"params": [
+"W"
+],
+"vi_du": [
+"đã làm việc thường xuyên từ đủ 12 tháng trở lên",
+"làm việc đủ 12 tháng cho một người sử dụng lao động"
+]
+},
+{
+"ten": "request_cba_scope_extension_decision",
+"params": [
+"?"
+],
+"vi_du": [
+"đề nghị cơ quan nhà nước có thẩm quyền quyết định mở rộng phạm vi áp dụng một phần hoặc toàn bộ thỏa ước đó"
+]
+}
+]
+},
+{
+"chu_id": "C1345",
+"chu": "Các công việc trong gia đình",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D161.K1",
+"vai": "chu_the",
+"tieu_de_dieu": "Lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Lao động là người giúp việc gia đình là người lao động làm thường xuyên các công việc trong gia đình của một hoặc nhiều hộ gia đình.\nCác công việc trong gia đình bao gồm công việc nội trợ, quản gia, chăm sóc trẻ em, chăm sóc người bệnh, chăm sóc người già, lái xe, làm vườn và các công việc khác cho hộ gia đình nhưng không liên quan đến hoạt động thương mại."
+}
+],
+"ung_vien": [
+{
+"ten": "government",
+"params": [],
+"vi_du": [
+"Chính phủ"
+]
+},
+{
+"ten": "representative_of_entity_without_legal_status",
+"params": [],
+"vi_du": [
+"Người đại diện của hộ gia đình, tổ hợp tác, tổ chức khác không có tư cách pháp nhân"
+]
+},
+{
+"ten": "extend_work_permit_once",
+"params": [],
+"vi_du": [
+"chỉ gia hạn một lần"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_parties",
+"params": [],
+"vi_du": [
+"các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "extend_work_permit",
+"params": [],
+"vi_du": [
+"gia hạn"
+]
+},
+{
+"ten": "end_of_temporary_suspension_period",
+"params": [],
+"vi_du": [
+"hết thời hạn tạm đình chỉ công việc"
+]
+},
+{
+"ten": "national_wage_council",
+"params": [],
+"vi_du": [
+"Hội đồng tiền lương quốc gia",
+"là Hội đồng tiền lương quốc gia"
+]
+},
+{
+"ten": "disciplined_suspended_or_compensating_worker",
+"params": [],
+"vi_du": [
+"Người bị xử lý kỷ luật lao động, bị tạm đình chỉ công việc hoặc phải bồi thường theo chế độ trách nhiệm vật chất"
+]
+},
+{
+"ten": "employer_participating_in_agreement",
+"params": [],
+"vi_du": [
+"người sử dụng lao động tham gia thỏa ước"
+]
+},
+{
+"ten": "representative_count_per_party_in_council",
+"params": [],
+"vi_du": [
+"Số lượng đại diện mỗi bên thương lượng tham gia Hội đồng"
+]
+}
+]
+},
+{
+"chu_id": "C1346",
+"chu": "bao gồm",
+"params": [
+"J"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D161.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Lao động là người giúp việc gia đình là người lao động làm thường xuyên các công việc trong gia đình của một hoặc nhiều hộ gia đình.\nCác công việc trong gia đình bao gồm công việc nội trợ, quản gia, chăm sóc trẻ em, chăm sóc người bệnh, chăm sóc người già, lái xe, làm vườn và các công việc khác cho hộ gia đình nhưng không liên quan đến hoạt động thương mại."
+}
+],
+"ung_vien": [
+{
+"ten": "include_national_wage_council_members",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập"
+]
+},
+{
+"ten": "include_grassroots_union_and_employee_organization",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm công đoàn cơ sở và tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "include_individual_and_collective_labor_relations",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm quan hệ lao động cá nhân và quan hệ lao động tập thể"
+]
+}
+]
+},
+{
+"chu_id": "C1347",
+"chu": "quy định về lao động là người giúp việc gia đình",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D161.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Chính phủ quy định về lao động là người giúp việc gia đình."
+}
+],
+"ung_vien": [
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "decide_national_occupational_safety_program",
+"params": [
+"?"
+],
+"vi_du": [
+"quyết định Chương trình quốc gia về an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "join_resolve_labor_dispute_and_strike",
+"params": [
+"E"
+],
+"vi_du": [
+"tham gia giải quyết tranh chấp lao động, đình công"
+]
+},
+{
+"ten": "meet_temporary_sudden_increase_in_labor_demand",
+"params": [
+"E"
+],
+"vi_du": [
+"đáp ứng tạm thời sự gia tăng đột ngột về nhu cầu sử dụng lao động"
+]
+},
+{
+"ten": "include_national_wage_council_members",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập"
+]
+},
+{
+"ten": "notify_amendment_three_working_days_ahead",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cho bên kia biết trước ít nhất 03 ngày làm việc về nội dung cần sửa đổi, bổ sung"
+]
+},
+{
+"ten": "notice_of_legal_representative_absence",
+"params": [
+"E"
+],
+"vi_du": [
+"bị ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật",
+"bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật"
+]
+},
+{
+"ten": "obtain_provincial_labor_authority_consent",
+"params": [
+"E"
+],
+"vi_du": [
+"có sự đồng ý của cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh"
+]
+},
+{
+"ten": "jointly_declare_collective_bargaining_disagreement",
+"params": [
+"?"
+],
+"vi_du": [
+"cùng xác định và tuyên bố về việc thương lượng tập thể không đạt được thỏa thuận"
+]
+},
+{
+"ten": "join_sector_or_multi_enterprise_cba",
+"params": [
+"E"
+],
+"vi_du": [
+"gia nhập thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp"
+]
+},
+{
+"ten": "supervise_labor_law_enforcement",
+"params": [
+"?"
+],
+"vi_du": [
+"giám sát việc thi hành quy định của pháp luật về lao động"
+]
+}
+]
+},
+{
+"chu_id": "C1348",
+"chu": "thỏa thuận thời hạn của hợp đồng lao động",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D162.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Hợp đồng lao động đối với lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của hợp đồng lao động đối với lao động là người giúp việc gia đình do hai bên thỏa thuận. Một bên có quyền đơn phương chấm dứt hợp đồng lao động bất kỳ khi nào nhưng phải báo trước ít nhất 15 ngày."
+}
+],
+"ung_vien": [
+{
+"ten": "agree_to_conclude_multiple_fixed_term_contracts",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn"
+]
+},
+{
+"ten": "agree_to_extend_cba_term",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận kéo dài thời hạn của thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "agree_specific_term",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận thời hạn cụ thể"
+]
+},
+{
+"ten": "agree_different_terms_for_cba_contents",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận thời hạn khác nhau đối với các nội dung của thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "ensure_limit_of_exposure_to_hazardous_factors",
+"params": [
+"E"
+],
+"vi_du": [
+"bảo đảm giới hạn thời gian làm việc tiếp xúc với yếu tố nguy hiểm, yếu tố có hại"
+]
+},
+{
+"ten": "breach_agreements_in_labor_leasing_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động"
+]
+},
+{
+"ten": "repeat_violation_while_discipline_unexpired",
+"params": [
+"W"
+],
+"vi_du": [
+"bị xử lý kỷ luật kéo dài thời hạn nâng lương hoặc cách chức mà tái phạm trong thời gian chưa xóa kỷ luật"
+]
+},
+{
+"ten": "delay_salary_increase_discipline_after_6_months",
+"params": [
+"W"
+],
+"vi_du": [
+"bị xử lý kỷ luật kéo dài thời hạn nâng lương sau 06 tháng"
+]
+},
+{
+"ten": "delay_salary_increase_discipline",
+"params": [
+"W"
+],
+"vi_du": [
+"bị xử lý kỷ luật kéo dài thời hạn nâng lương"
+]
+},
+{
+"ten": "serve_half_of_discipline_term",
+"params": [
+"W"
+],
+"vi_du": [
+"chấp hành được một nửa thời hạn"
+]
+},
+{
+"ten": "include_wage_and_payment_details",
+"params": [
+"C"
+],
+"vi_du": [
+"có mức lương theo công việc hoặc chức danh, hình thức trả lương, thời hạn trả lương, phụ cấp lương và các khoản bổ sung khác"
+]
+},
+{
+"ten": "all_employers_and_employee_orgs_consent",
+"params": [
+"?"
+],
+"vi_du": [
+"có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước"
+]
+},
+{
+"ten": "different_agreement_exists",
+"params": [
+"?"
+],
+"vi_du": [
+"có thỏa thuận khác"
+]
+},
+{
+"ten": "include_post_training_work_commitment_period",
+"params": [
+"C"
+],
+"vi_du": [
+"có thời hạn cam kết phải làm việc sau khi được đào tạo"
+]
+},
+{
+"ten": "include_contract_term",
+"params": [
+"C"
+],
+"vi_du": [
+"có thời hạn của hợp đồng lao động"
+]
+},
+{
+"ten": "have_term_from_one_to_three_years",
+"params": [
+"C"
+],
+"vi_du": [
+"có thời hạn từ 01 năm đến 03 năm"
+]
+},
+{
+"ten": "seasonal_or_fixed_term_work_under_12_months",
+"params": [
+"J"
+],
+"vi_du": [
+"công việc theo mùa vụ, công việc nhất định có thời hạn dưới 12 tháng"
+]
+},
+{
+"ten": "jointly_declare_collective_bargaining_disagreement",
+"params": [
+"?"
+],
+"vi_du": [
+"cùng xác định và tuyên bố về việc thương lượng tập thể không đạt được thỏa thuận"
+]
+},
+{
+"ten": "parties_reach_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"hai bên có thỏa thuận",
+"hai bên thỏa thuận",
+"hai bên thỏa thuận được"
+]
+},
+{
+"ten": "conclude_labor_contract_under_one_month",
+"params": [
+"W"
+],
+"vi_du": [
+"giao kết hợp đồng lao động có thời hạn dưới 01 tháng"
+]
+}
+]
+},
+{
+"chu_id": "C1349",
+"chu": "là người giúp việc gia đình",
+"params": [
+"W"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D162.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Hợp đồng lao động đối với lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của hợp đồng lao động đối với lao động là người giúp việc gia đình do hai bên thỏa thuận. Một bên có quyền đơn phương chấm dứt hợp đồng lao động bất kỳ khi nào nhưng phải báo trước ít nhất 15 ngày."
+}
+],
+"ung_vien": [
+{
+"ten": "ensure_minimum_living_standard",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm mức sống tối thiểu của người lao động và gia đình họ"
+]
+},
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "include_national_wage_council_members",
+"params": [
+"?"
+],
+"vi_du": [
+"bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập"
+]
+},
+{
+"ten": "include_all_employees_or_all_employee_org_leaders",
+"params": [
+"W"
+],
+"vi_du": [
+"bao gồm toàn bộ người lao động tại các doanh nghiệp tham gia thương lượng hoặc toàn bộ thành viên ban lãnh đạo của các tổ chức đại diện người lao động"
+]
+},
+{
+"ten": "have_multiple_representative_orgs_in_bargaining",
+"params": [
+"W"
+],
+"vi_du": [
+"có nhiều tổ chức đại diện tham gia thương lượng tập thể"
+]
+},
+{
+"ten": "have_participation_of_legal_representative",
+"params": [
+"W"
+],
+"vi_du": [
+"có sự tham gia của người đại diện theo pháp luật"
+]
+},
+{
+"ten": "invite_superior_org_appoint_bargaining_delegate",
+"params": [
+"?"
+],
+"vi_du": [
+"mời tổ chức đại diện cấp trên của mình cử người tham gia là đại diện thương lượng"
+]
+},
+{
+"ten": "receive_multi_enterprise_bargaining_request",
+"params": [
+"?"
+],
+"vi_du": [
+"nhận được yêu cầu của các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "regulate_labor_leasing_license_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "regulate_work_permit_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "decide_national_occupational_safety_program",
+"params": [
+"?"
+],
+"vi_du": [
+"quyết định Chương trình quốc gia về an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "decide_representative_count_per_bargaining_org",
+"params": [
+"?"
+],
+"vi_du": [
+"quyết định số lượng đại diện của mỗi tổ chức tham gia thương lượng"
+]
+},
+{
+"ten": "decide_bargaining_participant_composition",
+"params": [
+"?"
+],
+"vi_du": [
+"quyết định thành phần tham gia thương lượng tập thể"
+]
+},
+{
+"ten": "employ_untrained_or_uncertified_labor",
+"params": [
+"W"
+],
+"vi_du": [
+"sử dụng lao động chưa qua đào tạo hoặc chưa có chứng chỉ kỹ năng nghề quốc gia"
+]
+},
+{
+"ten": "join_social_health_unemployment_insurance",
+"params": [
+"W"
+],
+"vi_du": [
+"tham gia bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp"
+]
+}
+]
+},
+{
+"chu_id": "C1350",
+"chu": "đơn phương chấm dứt hợp đồng lao động",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D162.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Hợp đồng lao động đối với lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của hợp đồng lao động đối với lao động là người giúp việc gia đình do hai bên thỏa thuận. Một bên có quyền đơn phương chấm dứt hợp đồng lao động bất kỳ khi nào nhưng phải báo trước ít nhất 15 ngày."
+}
+],
+"ung_vien": [
+{
+"ten": "cancel_unilateral_termination_before_notice_expiry",
+"params": [
+"?"
+],
+"vi_du": [
+"hủy bỏ việc đơn phương chấm dứt hợp đồng lao động trước khi hết thời hạn báo trước"
+]
+},
+{
+"ten": "unlawful_unilateral_termination",
+"params": [
+"W"
+],
+"vi_du": [
+"đơn phương chấm dứt hợp đồng lao động trái pháp luật"
+]
+},
+{
+"ten": "employer_unilateral_termination",
+"params": [
+"E"
+],
+"vi_du": [
+"đơn phương chấm dứt hợp đồng lao động"
+]
+},
+{
+"ten": "unilaterally_terminate_labor_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"đơn phương chấm dứt hợp đồng lao động"
+]
+},
+{
+"ten": "terminate_operation",
+"params": [
+"E"
+],
+"vi_du": [
+"chấm dứt hoạt động",
+"tự chấm dứt hoạt động"
+]
+},
+{
+"ten": "terminate_labor_contract",
+"params": [
+"C"
+],
+"vi_du": [
+"chấm dứt hợp đồng lao động",
+"chấm dứt theo quy định của Bộ luật này",
+"hợp đồng lao động chấm dứt"
+]
+},
+{
+"ten": "terminate_concluded_labor_or_probation_contract",
+"params": [
+"E"
+],
+"vi_du": [
+"chấm dứt hợp đồng lao động đã giao kết hoặc hợp đồng thử việc"
+]
+},
+{
+"ten": "contract_expiry_or_termination",
+"params": [
+"C"
+],
+"vi_du": [
+"hết thời hạn hoặc chấm dứt"
+]
+},
+{
+"ten": "open_ended_contract_term_and_expiration",
+"params": [
+"?"
+],
+"vi_du": [
+"không xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng"
+]
+},
+{
+"ten": "agree_to_terminate_and_sign_with_lessee",
+"params": [
+"W"
+],
+"vi_du": [
+"thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động để giao kết hợp đồng lao động với bên thuê lại lao động"
+]
+},
+{
+"ten": "mutual_agreement_to_terminate_labor_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận chấm dứt hợp đồng lao động"
+]
+},
+{
+"ten": "calculate_from_cessation_notice_time",
+"params": [
+"D"
+],
+"vi_du": [
+"tính từ thời điểm có thông báo chấm dứt hoạt động"
+]
+},
+{
+"ten": "specified_contract_term_and_expiration",
+"params": [
+"?"
+],
+"vi_du": [
+"xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng"
+]
+},
+{
+"ten": "include_measures_and_financial_resources",
+"params": [
+"?"
+],
+"vi_du": [
+"có biện pháp và nguồn tài chính bảo đảm thực hiện phương án"
+]
+},
+{
+"ten": "have_establishments_in_multiple_locations",
+"params": [
+"E"
+],
+"vi_du": [
+"có các chi nhánh, đơn vị, cơ sở sản xuất, kinh doanh đặt ở nhiều địa bàn khác nhau"
+]
+},
+{
+"ten": "select_labor_dispute_resolution_content",
+"params": [
+"?"
+],
+"vi_du": [
+"lựa chọn nội dung cơ chế, phương thức phòng ngừa, giải quyết tranh chấp lao động"
+]
+},
+{
+"ten": "select_employee_org_operation_content",
+"params": [
+"?"
+],
+"vi_du": [
+"lựa chọn nội dung điều kiện, phương tiện hoạt động của tổ chức đại diện người lao động"
+]
+}
+]
+},
+{
+"chu_id": "C1351",
+"chu": "báo trước ít nhất 15 ngày",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D162.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Hợp đồng lao động đối với lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Thời hạn của hợp đồng lao động đối với lao động là người giúp việc gia đình do hai bên thỏa thuận. Một bên có quyền đơn phương chấm dứt hợp đồng lao động bất kỳ khi nào nhưng phải báo trước ít nhất 15 ngày."
+}
+],
+"ung_vien": [
+{
+"ten": "notify_amendment_three_working_days_ahead",
+"params": [
+"?"
+],
+"vi_du": [
+"báo cho bên kia biết trước ít nhất 03 ngày làm việc về nội dung cần sửa đổi, bổ sung"
+]
+},
+{
+"ten": "rest_at_least_12_hours_before_shift_change",
+"params": [
+"W"
+],
+"vi_du": [
+"nghỉ ít nhất 12 giờ trước khi chuyển sang ca làm việc khác"
+]
+},
+{
+"ten": "advance_at_least_leave_day_wage",
+"params": [
+"W"
+],
+"vi_du": [
+"tạm ứng một khoản tiền ít nhất bằng tiền lương của những ngày nghỉ"
+]
+},
+{
+"ten": "provide_advance_notice",
+"params": [
+"?"
+],
+"vi_du": [
+"báo trước",
+"báo trước"
+]
+},
+{
+"ten": "take_effect_after_15_days",
+"params": [
+"?"
+],
+"vi_du": [
+"có hiệu lực sau 15 ngày"
+]
+},
+{
+"ten": "cancel_unilateral_termination_before_notice_expiry",
+"params": [
+"?"
+],
+"vi_du": [
+"hủy bỏ việc đơn phương chấm dứt hợp đồng lao động trước khi hết thời hạn báo trước"
+]
+},
+{
+"ten": "maternity_leave_at_least_four_months",
+"params": [
+"W"
+],
+"vi_du": [
+"nghỉ ít nhất 04 tháng"
+]
+},
+{
+"ten": "exceed_temporary_suspension_duration_limit",
+"params": [
+"D"
+],
+"vi_du": [
+"quá 15 ngày",
+"quá 90 ngày"
+]
+},
+{
+"ten": "new_job_wage_minimum_ratio_to_old_wage",
+"params": [
+"A"
+],
+"vi_du": [
+"tiền lương theo công việc mới ít nhất bằng 85% tiền lương của công việc cũ"
+]
+},
+{
+"ten": "pay_aggregated_wages_once_within_15_days",
+"params": [
+"W"
+],
+"vi_du": [
+"trả gộp một lần, không quá 15 ngày"
+]
+},
+{
+"ten": "pay_wages_late_from_15_days",
+"params": [
+"E"
+],
+"vi_du": [
+"trả lương chậm từ 15 ngày trở lên"
+]
+},
+{
+"ten": "pay_wage_at_least_150_percent",
+"params": [
+"W"
+],
+"vi_du": [
+"trả lương ít nhất bằng 150%"
+]
+},
+{
+"ten": "pay_wage_at_least_200_percent",
+"params": [
+"W"
+],
+"vi_du": [
+"trả lương ít nhất bằng 200%"
+]
+},
+{
+"ten": "pay_wage_at_least_300_percent",
+"params": [
+"W"
+],
+"vi_du": [
+"trả lương ít nhất bằng 300%"
+]
+},
+{
+"ten": "pay_extra_at_least_30_percent_wage",
+"params": [
+"W"
+],
+"vi_du": [
+"trả thêm ít nhất bằng 30% tiền lương"
+]
+},
+{
+"ten": "calculate_from_notice_issuance_date",
+"params": [
+"D"
+],
+"vi_du": [
+"tính từ ngày ra thông báo"
+]
+},
+{
+"ten": "minimum_two_months_contract_wage",
+"params": [
+"A"
+],
+"vi_du": [
+"ít nhất bằng 02 tháng tiền lương theo hợp đồng lao động"
+]
+},
+{
+"ten": "weekly_rest_at_least_24_consecutive_hours",
+"params": [
+"W"
+],
+"vi_du": [
+"được nghỉ ít nhất 24 giờ liên tục"
+]
+}
+]
+},
+{
+"chu_id": "C1352",
+"chu": "thỏa thuận",
+"params": [
+"?"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D162.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Hợp đồng lao động đối với lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Hai bên thỏa thuận trong hợp đồng lao động về hình thức trả lương, kỳ hạn trả lương, thời giờ làm việc hằng ngày, chỗ ở."
+}
+],
+"ung_vien": [
+{
+"ten": "breach_agreements_in_labor_leasing_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"bị bên thuê lại lao động vi phạm các thỏa thuận trong hợp đồng cho thuê lại lao động"
+]
+},
+{
+"ten": "all_employers_and_employee_orgs_consent",
+"params": [
+"?"
+],
+"vi_du": [
+"có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước"
+]
+},
+{
+"ten": "different_agreement_exists",
+"params": [
+"?"
+],
+"vi_du": [
+"có thỏa thuận khác"
+]
+},
+{
+"ten": "jointly_declare_collective_bargaining_disagreement",
+"params": [
+"?"
+],
+"vi_du": [
+"cùng xác định và tuyên bố về việc thương lượng tập thể không đạt được thỏa thuận"
+]
+},
+{
+"ten": "parties_reach_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"hai bên có thỏa thuận",
+"hai bên thỏa thuận",
+"hai bên thỏa thuận được"
+]
+},
+{
+"ten": "agreement_or_other_legal_provision",
+"params": [
+"?"
+],
+"vi_du": [
+"hai bên có thỏa thuận hoặc pháp luật có quy định khác"
+]
+},
+{
+"ten": "disagreement_on_labor_contract_amendment",
+"params": [
+"?"
+],
+"vi_du": [
+"hai bên không thỏa thuận được việc sửa đổi, bổ sung nội dung hợp đồng lao động"
+]
+},
+{
+"ten": "outside_concluded_labor_contract_terms",
+"params": [
+"W"
+],
+"vi_du": [
+"không thỏa thuận trong hợp đồng lao động đã giao kết"
+]
+},
+{
+"ten": "be_agreement_between_worker_and_employer",
+"params": [
+"C"
+],
+"vi_du": [
+"là sự thỏa thuận giữa người lao động và người sử dụng lao động"
+]
+},
+{
+"ten": "be_collective_agreement",
+"params": [
+"C"
+],
+"vi_du": [
+"là thỏa thuận"
+]
+},
+{
+"ten": "cancel_probation_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"một bên hủy bỏ thỏa thuận thử việc"
+]
+},
+{
+"ten": "agree_in_writing_with_employee",
+"params": [
+"E"
+],
+"vi_du": [
+"thỏa thuận bằng văn bản với người lao động"
+]
+},
+{
+"ten": "agree_to_add_resolution_method_content",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận bổ sung nội dung về phương thức giải quyết"
+]
+},
+{
+"ten": "agree_to_terminate_and_sign_with_lessee",
+"params": [
+"W"
+],
+"vi_du": [
+"thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động để giao kết hợp đồng lao động với bên thuê lại lao động"
+]
+},
+{
+"ten": "mutual_agreement_to_terminate_labor_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận chấm dứt hợp đồng lao động"
+]
+},
+{
+"ten": "agree_to_conclude_multiple_fixed_term_contracts",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn"
+]
+},
+{
+"ten": "agree_to_extend_cba_term",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận kéo dài thời hạn của thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "agree_effective_date",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận ngày có hiệu lực"
+]
+},
+{
+"ten": "agree_probation_content_in_labor_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận nội dung thử việc ghi trong hợp đồng lao động"
+]
+},
+{
+"ten": "agree_collective_bargaining_procedure",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận quyết định quy trình tiến hành thương lượng tập thể ngành, thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+}
+]
+},
+{
+"chu_id": "C1353",
+"chu": "thực hiện đầy đủ thỏa thuận đã giao kết trong hợp đồng lao động",
+"params": [
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D163.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi sử dụng lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Thực hiện đầy đủ thỏa thuận đã giao kết trong hợp đồng lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "continue_performing_concluded_labor_contract",
+"params": [
+"E"
+],
+"vi_du": [
+"tiếp tục thực hiện hợp đồng lao động đã giao kết",
+"tiếp tục thực hiện hợp đồng lao động đã giao kết"
+]
+},
+{
+"ten": "allege_incomplete_performance_or_violation_of_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "implement_measures_to_ensure_occupational_safety",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện đầy đủ các giải pháp nhằm bảo đảm an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "fully_perform_effective_collective_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"thực hiện đầy đủ thỏa ước lao động tập thể đang có hiệu lực"
+]
+},
+{
+"ten": "terminate_concluded_labor_or_probation_contract",
+"params": [
+"E"
+],
+"vi_du": [
+"chấm dứt hợp đồng lao động đã giao kết hoặc hợp đồng thử việc"
+]
+},
+{
+"ten": "cancel_probation_or_concluded_labor_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết"
+]
+},
+{
+"ten": "agree_to_conclude_multiple_fixed_term_contracts",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn"
+]
+},
+{
+"ten": "fallback_agreement_on_suspension_duration",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận về thời gian tạm hoãn thực hiện hợp đồng lao động"
+]
+},
+{
+"ten": "agree_probation_by_concluding_probation_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận về thử việc bằng việc giao kết hợp đồng thử việc"
+]
+},
+{
+"ten": "bargain_on_enterprise_cba_continuation_or_new_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"thương lượng để xem xét lựa chọn việc tiếp tục thực hiện, sửa đổi, bổ sung thỏa ước lao động tập thể doanh nghiệp cũ hoặc thương lượng để ký kết thỏa ước lao động tập thể mới"
+]
+},
+{
+"ten": "implement_state_policy_or_international_commitment",
+"params": [
+"?"
+],
+"vi_du": [
+"thực hiện chính sách, pháp luật của Nhà nước khi cơ cấu lại nền kinh tế hoặc thực hiện cam kết quốc tế"
+]
+},
+{
+"ten": "honor_labor_contract_and_collective_agreement",
+"params": [
+"E"
+],
+"vi_du": [
+"thực hiện hợp đồng lao động, thỏa ước lao động tập thể và thỏa thuận hợp pháp khác"
+]
+},
+{
+"ten": "implement_approved_labor_use_plan",
+"params": [
+"?"
+],
+"vi_du": [
+"thực hiện phương án sử dụng lao động đã được thông qua"
+]
+},
+{
+"ten": "ensure_gender_equality_and_promote_measures",
+"params": [
+"E"
+],
+"vi_du": [
+"bảo đảm thực hiện bình đẳng giới và các biện pháp thúc đẩy bình đẳng giới"
+]
+},
+{
+"ten": "notice_of_legal_representative_absence",
+"params": [
+"E"
+],
+"vi_du": [
+"bị ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật",
+"bị cơ quan chuyên môn về đăng ký kinh doanh thuộc Ủy ban nhân dân cấp tỉnh ra thông báo không có người đại diện theo pháp luật, người được ủy quyền thực hiện quyền và nghĩa vụ của người đại diện theo pháp luật"
+]
+},
+{
+"ten": "include_measures_and_financial_resources",
+"params": [
+"?"
+],
+"vi_du": [
+"có biện pháp và nguồn tài chính bảo đảm thực hiện phương án"
+]
+}
+]
+},
+{
+"chu_id": "C1354",
+"chu": "trả cho người giúp việc gia đình khoản tiền bảo hiểm xã hội, bảo hiểm y tế",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D163.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi sử dụng lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Trả cho người giúp việc gia đình khoản tiền bảo hiểm xã hội, bảo hiểm y tế theo quy định của pháp luật để người lao động chủ động tham gia bảo hiểm xã hội, bảo hiểm y tế."
+}
+],
+"ung_vien": [
+{
+"ten": "pay_wages_and_insurance_contributions",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp"
+]
+},
+{
+"ten": "confirm_insurance_period_and_return_documents",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"hoàn thành thủ tục xác nhận thời gian đóng bảo hiểm xã hội, bảo hiểm thất nghiệp và trả lại cùng với bản chính giấy tờ khác"
+]
+},
+{
+"ten": "ensure_equal_pay_for_leased_workers",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bảo đảm trả lương cho người lao động thuê lại không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau"
+]
+},
+{
+"ten": "pay_account_and_transfer_fees",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"trả các loại phí liên quan đến việc mở tài khoản và chuyển tiền lương"
+]
+},
+{
+"ten": "compensate_interest_on_late_wage",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"đền bù một khoản tiền ít nhất bằng số tiền lãi của số tiền trả chậm"
+]
+},
+{
+"ten": "ensure_gender_equal_pay",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bảo đảm trả lương bình đẳng, không phân biệt giới tính"
+]
+},
+{
+"ten": "job_loss_allowance_per_year_min_two_months",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"mỗi năm làm việc trả 01 tháng tiền lương nhưng ít nhất bằng 02 tháng tiền lương"
+]
+}
+]
+},
+{
+"chu_id": "C1355",
+"chu": "để người lao động chủ động tham gia bảo hiểm xã hội, bảo hiểm y tế",
+"params": [],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D163.K2",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi sử dụng lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Trả cho người giúp việc gia đình khoản tiền bảo hiểm xã hội, bảo hiểm y tế theo quy định của pháp luật để người lao động chủ động tham gia bảo hiểm xã hội, bảo hiểm y tế."
+}
+],
+"ung_vien": [
+{
+"ten": "employer",
+"params": [],
+"vi_du": [
+"Người sử dụng lao động"
+]
+},
+{
+"ten": "employee_entitlements_under_cba_or_contract",
+"params": [],
+"vi_du": [
+"Tiền lương, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp, trợ cấp thôi việc và các quyền lợi khác của người lao động theo thỏa ước lao động tập thể, hợp đồng lao động"
+]
+},
+{
+"ten": "deduct_unemployment_insurance_time",
+"params": [],
+"vi_du": [
+"trừ đi thời gian người lao động đã tham gia bảo hiểm thất nghiệp"
+]
+},
+{
+"ten": "representative_count_per_party_in_council",
+"params": [],
+"vi_du": [
+"Số lượng đại diện mỗi bên thương lượng tham gia Hội đồng"
+]
+},
+{
+"ten": "minister_of_labor_invalids_and_social_affairs",
+"params": [],
+"vi_du": [
+"Bộ trưởng Bộ Lao động - Thương binh và Xã hội"
+]
+},
+{
+"ten": "collective_bargaining_council_chair",
+"params": [],
+"vi_du": [
+"Chủ tịch Hội đồng"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_parties",
+"params": [],
+"vi_du": [
+"các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "national_wage_council",
+"params": [],
+"vi_du": [
+"Hội đồng tiền lương quốc gia",
+"là Hội đồng tiền lương quốc gia"
+]
+},
+{
+"ten": "employer_participating_in_agreement",
+"params": [],
+"vi_du": [
+"người sử dụng lao động tham gia thỏa ước"
+]
+},
+{
+"ten": "state_employer_and_society",
+"params": [],
+"vi_du": [
+"Nhà nước, người sử dụng lao động và xã hội"
+]
+}
+]
+},
+{
+"chu_id": "C1356",
+"chu": "tôn trọng danh dự, nhân phẩm của người giúp việc gia đình",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D163.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi sử dụng lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Tôn trọng danh dự, nhân phẩm của người giúp việc gia đình."
+}
+],
+"ung_vien": [
+{
+"ten": "respect_employee_dignity_and_personhood",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"tôn trọng danh dự, nhân phẩm của người lao động"
+]
+},
+{
+"ten": "insult_or_harm_health_dignity_and_honor",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"có lời nói, hành vi nhục mạ, hành vi làm ảnh hưởng đến sức khỏe, nhân phẩm, danh dự"
+]
+},
+{
+"ten": "interfere_in_employee_org_consultation_process",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"can thiệp vào quá trình tổ chức đại diện người lao động lấy ý kiến biểu quyết về dự thảo thỏa ước"
+]
+},
+{
+"ten": "maintain_contractor_and_worker_lists",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"có danh sách và địa chỉ của những người này kèm theo danh sách những người lao động làm việc với họ"
+]
+},
+{
+"ten": "include_quantity_and_list_of_retiring_employees",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"có số lượng và danh sách người lao động nghỉ hưu"
+]
+},
+{
+"ten": "include_quantity_and_list_of_employees",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"có số lượng và danh sách người lao động"
+]
+}
+]
+},
+{
+"chu_id": "C1357",
+"chu": "bố trí chỗ ăn, ở hợp vệ sinh cho người giúp việc gia đình",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D163.K4",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi sử dụng lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Bố trí chỗ ăn, ở hợp vệ sinh cho người giúp việc gia đình nếu có thỏa thuận."
+}
+],
+"ung_vien": [
+{
+"ten": "ensure_occupational_safety_and_hygiene_conditions",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bảo đảm điều kiện an toàn, vệ sinh lao động"
+]
+},
+{
+"ten": "ensure_age_appropriate_safe_working_conditions",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bảo đảm điều kiện làm việc, an toàn, vệ sinh lao động phù hợp với lứa tuổi"
+]
+},
+{
+"ten": "assign_work_suitable_to_health_and_gender",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bố trí công việc phù hợp với sức khỏe, giới tính của người lao động"
+]
+},
+{
+"ten": "arrange_working_hours_compatible_with_study",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bố trí giờ làm việc không ảnh hưởng đến thời gian học tập của người chưa đủ 15 tuổi"
+]
+},
+{
+"ten": "assign_alternative_job_equal_or_higher_wage",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bố trí việc làm khác cho họ với mức lương không thấp hơn mức lương trước khi nghỉ thai sản"
+]
+},
+{
+"ten": "protect_legitimate_rights_and_interests",
+"params": [
+"?",
+"W"
+],
+"vi_du": [
+"bảo vệ quyền và lợi ích hợp pháp, chính đáng",
+"bảo vệ quyền và lợi ích hợp pháp, chính đáng của người lao động"
+]
+}
+]
+},
+{
+"chu_id": "C1358",
+"chu": "có thỏa thuận",
+"params": [],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D163.K4",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi sử dụng lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Bố trí chỗ ăn, ở hợp vệ sinh cho người giúp việc gia đình nếu có thỏa thuận."
+}
+],
+"ung_vien": [
+{
+"ten": "employer",
+"params": [],
+"vi_du": [
+"Người sử dụng lao động"
+]
+},
+{
+"ten": "agree_otherwise",
+"params": [],
+"vi_du": [
+"có thỏa thuận khác"
+]
+},
+{
+"ten": "agree_under_different_name",
+"params": [],
+"vi_du": [
+"hai bên thỏa thuận bằng tên gọi khác"
+]
+},
+{
+"ten": "probation_fails_requirements",
+"params": [],
+"vi_du": [
+"thử việc không đạt yêu cầu",
+"thỏa thuận nội dung thử việc ghi trong hợp đồng lao động mà thử việc không đạt yêu cầu"
+]
+}
+]
+},
+{
+"chu_id": "C1359",
+"chu": "tạo cơ hội cho người giúp việc gia đình được tham gia học văn hóa, giáo dục nghề nghiệp",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D163.K5",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi sử dụng lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Tạo cơ hội cho người giúp việc gia đình được tham gia học văn hóa, giáo dục nghề nghiệp."
+}
+],
+"ung_vien": [
+{
+"ten": "establish_vocational_training_center",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"thành lập cơ sở giáo dục nghề nghiệp hoặc mở lớp đào tạo nghề tại nơi làm việc"
+]
+},
+{
+"ten": "develop_and_recognize_national_occupational_skills",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"tham gia phát triển tiêu chuẩn kỹ năng nghề quốc gia, đánh giá, công nhận kỹ năng nghề cho người lao động"
+]
+},
+{
+"ten": "recruit_for_vocational_training",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"tuyển người vào để đào tạo nghề nghiệp"
+]
+},
+{
+"ten": "create_opportunity_for_education_and_training",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"tạo cơ hội"
+]
+},
+{
+"ten": "train_retrain_and_upgrade_employee_job_skills",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"đào tạo, đào tạo lại, bồi dưỡng nâng cao trình độ, kỹ năng nghề nhằm duy trì, chuyển đổi nghề nghiệp, việc làm cho người lao động"
+]
+}
+]
+},
+{
+"chu_id": "C1360",
+"chu": "trả tiền tàu xe đi đường",
+"params": [
+"E",
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D163.K6",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi sử dụng lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Trả tiền tàu xe đi đường khi người giúp việc gia đình thôi việc về nơi cư trú, trừ trường hợp người giúp việc gia đình chấm dứt hợp đồng lao động trước thời hạn."
+}
+],
+"ung_vien": [
+{
+"ten": "ensure_equal_pay_for_leased_workers",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bảo đảm trả lương cho người lao động thuê lại không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau"
+]
+},
+{
+"ten": "job_loss_allowance_per_year_min_two_months",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"mỗi năm làm việc trả 01 tháng tiền lương nhưng ít nhất bằng 02 tháng tiền lương"
+]
+},
+{
+"ten": "pay_account_and_transfer_fees",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"trả các loại phí liên quan đến việc mở tài khoản và chuyển tiền lương"
+]
+},
+{
+"ten": "pay_wages_and_insurance_contributions",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"trả tiền lương, đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp"
+]
+},
+{
+"ten": "compensate_interest_on_late_wage",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"đền bù một khoản tiền ít nhất bằng số tiền lãi của số tiền trả chậm"
+]
+},
+{
+"ten": "ensure_gender_equal_pay",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"bảo đảm trả lương bình đẳng, không phân biệt giới tính"
+]
+},
+{
+"ten": "provide_salary_advance",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"cho người lao động tạm ứng tiền lương"
+]
+},
+{
+"ten": "be_responsible_for_paying_wages",
+"params": [
+"E",
+"W"
+],
+"vi_du": [
+"chịu trách nhiệm trả lương"
+]
+}
+]
+},
+{
+"chu_id": "C1361",
+"chu": "người giúp việc gia đình",
+"params": [],
+"vai": [
+"chu_the"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D163.K6",
+"vai": "chu_the",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi sử dụng lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Trả tiền tàu xe đi đường khi người giúp việc gia đình thôi việc về nơi cư trú, trừ trường hợp người giúp việc gia đình chấm dứt hợp đồng lao động trước thời hạn."
+}
+],
+"ung_vien": [
+{
+"ten": "employer",
+"params": [],
+"vi_du": [
+"Người sử dụng lao động"
+]
+},
+{
+"ten": "representative_of_entity_without_legal_status",
+"params": [],
+"vi_du": [
+"Người đại diện của hộ gia đình, tổ hợp tác, tổ chức khác không có tư cách pháp nhân"
+]
+},
+{
+"ten": "extend_work_permit_once",
+"params": [],
+"vi_du": [
+"chỉ gia hạn một lần"
+]
+},
+{
+"ten": "multi_enterprise_collective_bargaining_parties",
+"params": [],
+"vi_du": [
+"các bên thương lượng tập thể có nhiều doanh nghiệp tham gia"
+]
+},
+{
+"ten": "extend_work_permit",
+"params": [],
+"vi_du": [
+"gia hạn"
+]
+},
+{
+"ten": "end_of_temporary_suspension_period",
+"params": [],
+"vi_du": [
+"hết thời hạn tạm đình chỉ công việc"
+]
+},
+{
+"ten": "national_wage_council",
+"params": [],
+"vi_du": [
+"Hội đồng tiền lương quốc gia",
+"là Hội đồng tiền lương quốc gia"
+]
+},
+{
+"ten": "disciplined_suspended_or_compensating_worker",
+"params": [],
+"vi_du": [
+"Người bị xử lý kỷ luật lao động, bị tạm đình chỉ công việc hoặc phải bồi thường theo chế độ trách nhiệm vật chất"
+]
+},
+{
+"ten": "employer_participating_in_agreement",
+"params": [],
+"vi_du": [
+"người sử dụng lao động tham gia thỏa ước"
+]
+},
+{
+"ten": "representative_count_per_party_in_council",
+"params": [],
+"vi_du": [
+"Số lượng đại diện mỗi bên thương lượng tham gia Hội đồng"
+]
+}
+]
+},
+{
+"chu_id": "C1362",
+"chu": "người giúp việc gia đình chấm dứt hợp đồng lao động trước thời hạn",
+"params": [
+"W"
+],
+"vai": [
+"ngoai_le"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D163.K6",
+"vai": "ngoai_le",
+"tieu_de_dieu": "Nghĩa vụ của người sử dụng lao động khi sử dụng lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Trả tiền tàu xe đi đường khi người giúp việc gia đình thôi việc về nơi cư trú, trừ trường hợp người giúp việc gia đình chấm dứt hợp đồng lao động trước thời hạn."
+}
+],
+"ung_vien": [
+{
+"ten": "cancel_unilateral_termination_before_notice_expiry",
+"params": [
+"?"
+],
+"vi_du": [
+"hủy bỏ việc đơn phương chấm dứt hợp đồng lao động trước khi hết thời hạn báo trước"
+]
+},
+{
+"ten": "open_ended_contract_term_and_expiration",
+"params": [
+"?"
+],
+"vi_du": [
+"không xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng"
+]
+},
+{
+"ten": "specified_contract_term_and_expiration",
+"params": [
+"?"
+],
+"vi_du": [
+"xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng"
+]
+},
+{
+"ten": "ensure_minimum_living_standard",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm mức sống tối thiểu của người lao động và gia đình họ"
+]
+},
+{
+"ten": "discriminate_or_prefer_on_protected_ground",
+"params": [
+"?"
+],
+"vi_du": [
+"phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp"
+]
+},
+{
+"ten": "regulate_labor_leasing_license_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi Giấy phép hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "regulate_work_permit_procedures",
+"params": [
+"?"
+],
+"vi_du": [
+"quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động"
+]
+},
+{
+"ten": "agree_to_terminate_and_sign_with_lessee",
+"params": [
+"W"
+],
+"vi_du": [
+"thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động để giao kết hợp đồng lao động với bên thuê lại lao động"
+]
+},
+{
+"ten": "mutual_agreement_to_terminate_labor_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận chấm dứt hợp đồng lao động"
+]
+},
+{
+"ten": "advance_half_wage_before_suspension",
+"params": [
+"W"
+],
+"vi_du": [
+"tạm ứng 50% tiền lương trước khi bị đình chỉ công việc"
+]
+},
+{
+"ten": "enter_vietnam_short_term_for_technical_incident",
+"params": [
+"W"
+],
+"vi_du": [
+"vào Việt Nam với thời hạn dưới 03 tháng để xử lý sự cố, tình huống kỹ thuật, công nghệ phức tạp nảy sinh làm ảnh hưởng hoặc có nguy cơ ảnh hưởng tới sản xuất, kinh doanh mà các chuyên gia Việt Nam và các chuyên gia nước ngoài hiện đang ở Việt Nam không xử lý được"
+]
+},
+{
+"ten": "unlawful_unilateral_termination",
+"params": [
+"W"
+],
+"vi_du": [
+"đơn phương chấm dứt hợp đồng lao động trái pháp luật"
+]
+}
+]
+},
+{
+"chu_id": "C1363",
+"chu": "thực hiện đầy đủ thỏa thuận đã giao kết",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D164.K1",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Thực hiện đầy đủ thỏa thuận đã giao kết trong hợp đồng lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "pay_compensation",
+"params": [
+"?"
+],
+"vi_du": [
+"bồi thường",
+"bồi thường"
+]
+},
+{
+"ten": "ensure_full_performance_of_agreed_contents",
+"params": [
+"W"
+],
+"vi_du": [
+"bảo đảm thực hiện đầy đủ các nội dung đã giao kết"
+]
+},
+{
+"ten": "allege_incomplete_performance_or_violation_of_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "outside_concluded_labor_contract_terms",
+"params": [
+"W"
+],
+"vi_du": [
+"không thỏa thuận trong hợp đồng lao động đã giao kết"
+]
+},
+{
+"ten": "fully_perform_effective_collective_agreement",
+"params": [
+"?"
+],
+"vi_du": [
+"thực hiện đầy đủ thỏa ước lao động tập thể đang có hiệu lực"
+]
+},
+{
+"ten": "cancel_probation_or_concluded_labor_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết"
+]
+},
+{
+"ten": "agree_to_terminate_and_sign_with_lessee",
+"params": [
+"W"
+],
+"vi_du": [
+"thỏa thuận chấm dứt hợp đồng lao động với doanh nghiệp cho thuê lại lao động để giao kết hợp đồng lao động với bên thuê lại lao động"
+]
+},
+{
+"ten": "agree_to_conclude_multiple_fixed_term_contracts",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận giao kết nhiều lần hợp đồng lao động xác định thời hạn"
+]
+},
+{
+"ten": "fallback_agreement_on_suspension_duration",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận về thời gian tạm hoãn thực hiện hợp đồng lao động"
+]
+},
+{
+"ten": "agree_probation_by_concluding_probation_contract",
+"params": [
+"?"
+],
+"vi_du": [
+"thỏa thuận về thử việc bằng việc giao kết hợp đồng thử việc"
+]
+},
+{
+"ten": "bargain_on_enterprise_cba_continuation_or_new_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"thương lượng để xem xét lựa chọn việc tiếp tục thực hiện, sửa đổi, bổ sung thỏa ước lao động tập thể doanh nghiệp cũ hoặc thương lượng để ký kết thỏa ước lao động tập thể mới"
+]
+},
+{
+"ten": "implement_state_policy_or_international_commitment",
+"params": [
+"?"
+],
+"vi_du": [
+"thực hiện chính sách, pháp luật của Nhà nước khi cơ cấu lại nền kinh tế hoặc thực hiện cam kết quốc tế"
+]
+},
+{
+"ten": "perform_work_under_leasing_contract",
+"params": [
+"W"
+],
+"vi_du": [
+"thực hiện công việc theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động"
+]
+},
+{
+"ten": "perform_labor_contract_and_collective_agreement",
+"params": [
+"W"
+],
+"vi_du": [
+"thực hiện hợp đồng lao động, thỏa ước lao động tập thể và thỏa thuận hợp pháp khác"
+]
+},
+{
+"ten": "implement_approved_labor_use_plan",
+"params": [
+"?"
+],
+"vi_du": [
+"thực hiện phương án sử dụng lao động đã được thông qua"
+]
+},
+{
+"ten": "receive_agreed_wage_rights_and_benefits",
+"params": [
+"W"
+],
+"vi_du": [
+"được hưởng lương và quyền, lợi ích đã giao kết trong hợp đồng lao động"
+]
+},
+{
+"ten": "include_measures_and_financial_resources",
+"params": [
+"?"
+],
+"vi_du": [
+"có biện pháp và nguồn tài chính bảo đảm thực hiện phương án"
+]
+}
+]
+},
+{
+"chu_id": "C1364",
+"chu": "làm hỏng, mất tài sản của người sử dụng lao động",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D164.K2",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Phải bồi thường theo thỏa thuận hoặc theo quy định của pháp luật nếu làm hỏng, mất tài sản của người sử dụng lao động."
+}
+],
+"ung_vien": [
+{
+"ten": "pay_compensation",
+"params": [
+"?"
+],
+"vi_du": [
+"bồi thường",
+"bồi thường"
+]
+},
+{
+"ten": "violation_related_to_finance_assets_or_secrets",
+"params": [
+"?"
+],
+"vi_du": [
+"hành vi vi phạm liên quan trực tiếp đến tài chính, tài sản, tiết lộ bí mật công nghệ, bí mật kinh doanh của người sử dụng lao động"
+]
+},
+{
+"ten": "consist_of_money_property_or_other_forms",
+"params": [
+"?"
+],
+"vi_du": [
+"là số tiền hoặc tài sản hoặc bằng các hình thức khác"
+]
+},
+{
+"ten": "issue_reproduction_harmful_occupation_list",
+"params": [
+"?"
+],
+"vi_du": [
+"ban hành danh mục nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con"
+]
+},
+{
+"ten": "employer_court_declared_incapacity_missing_or_dead",
+"params": [
+"E"
+],
+"vi_du": [
+"bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết"
+]
+},
+{
+"ten": "include_measures_and_financial_resources",
+"params": [
+"?"
+],
+"vi_du": [
+"có biện pháp và nguồn tài chính bảo đảm thực hiện phương án"
+]
+},
+{
+"ten": "have_establishments_in_multiple_locations",
+"params": [
+"E"
+],
+"vi_du": [
+"có các chi nhánh, đơn vị, cơ sở sản xuất, kinh doanh đặt ở nhiều địa bàn khác nhau"
+]
+}
+]
+},
+{
+"chu_id": "C1365",
+"chu": "thông báo kịp thời",
+"params": [
+"W",
+"E"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D164.K3",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Thông báo kịp thời với người sử dụng lao động về khả năng, nguy cơ gây tai nạn, đe dọa an toàn, sức khỏe, tính mạng, tài sản của gia đình người sử dụng lao động và bản thân."
+}
+],
+"ung_vien": [
+{
+"ten": "notify_employer",
+"params": [
+"W",
+"E"
+],
+"vi_du": [
+"thông báo với người sử dụng lao động",
+"thông báo cho người sử dụng lao động biết",
+"thông báo cho người sử dụng lao động"
+]
+},
+{
+"ten": "give_advance_notice_before_termination",
+"params": [
+"W",
+"E"
+],
+"vi_du": [
+"báo trước"
+]
+},
+{
+"ten": "provide_3_working_days_advance_notice",
+"params": [
+"W",
+"E"
+],
+"vi_du": [
+"báo trước ít nhất 03 ngày làm việc"
+]
+},
+{
+"ten": "provide_30_day_advance_notice",
+"params": [
+"W",
+"E"
+],
+"vi_du": [
+"báo trước ít nhất 30 ngày"
+]
+},
+{
+"ten": "provide_45_day_advance_notice",
+"params": [
+"W",
+"E"
+],
+"vi_du": [
+"báo trước ít nhất 45 ngày"
+]
+},
+{
+"ten": "compensate_half_month_wage_and_notice_shortfall",
+"params": [
+"W",
+"E"
+],
+"vi_du": [
+"bồi thường cho người sử dụng lao động nửa tháng tiền lương theo hợp đồng lao động và một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước"
+]
+},
+{
+"ten": "disclose_truthful_information",
+"params": [
+"W",
+"E"
+],
+"vi_du": [
+"cung cấp thông tin trung thực"
+]
+}
+]
+},
+{
+"chu_id": "C1366",
+"chu": "tố cáo",
+"params": [
+"W"
+],
+"vai": [
+"ket_luan"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D164.K4",
+"vai": "ket_luan",
+"tieu_de_dieu": "Nghĩa vụ của lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Tố cáo với cơ quan có thẩm quyền nếu người sử dụng lao động có hành vi ngược đãi, quấy rối tình dục, cưỡng bức lao động hoặc có hành vi khác vi phạm pháp luật."
+}
+],
+"ung_vien": [
+{
+"ten": "pay_compensation",
+"params": [
+"?"
+],
+"vi_du": [
+"bồi thường",
+"bồi thường"
+]
+},
+{
+"ten": "deceive_by_false_promise_or_advertising",
+"params": [
+"W"
+],
+"vi_du": [
+"lôi kéo, dụ dỗ, hứa hẹn, quảng cáo gian dối hoặc thủ đoạn khác để lừa gạt người lao động"
+]
+},
+{
+"ten": "recruit_for_trafficking_or_exploitation",
+"params": [
+"W"
+],
+"vi_du": [
+"lôi kéo, dụ dỗ, hứa hẹn, quảng cáo gian dối hoặc thủ đoạn khác để tuyển dụng người lao động với mục đích mua bán người, bóc lột, cưỡng bức lao động"
+]
+}
+]
+},
+{
+"chu_id": "C1367",
+"chu": "có hành vi ngược đãi, quấy rối tình dục, cưỡng bức lao động hoặc có hành vi khác vi phạm pháp luật",
+"params": [
+"E"
+],
+"vai": [
+"dieu_kien"
+],
+"so_lan": 1,
+"ngu_canh": [
+{
+"don_vi": "BLLD_45-2019.D164.K4",
+"vai": "dieu_kien",
+"tieu_de_dieu": "Nghĩa vụ của lao động là người giúp việc gia đình",
+"khoan_cha": "",
+"chu_don_vi": "Tố cáo với cơ quan có thẩm quyền nếu người sử dụng lao động có hành vi ngược đãi, quấy rối tình dục, cưỡng bức lao động hoặc có hành vi khác vi phạm pháp luật."
+}
+],
+"ung_vien": [
+{
+"ten": "pay_compensation",
+"params": [
+"?"
+],
+"vi_du": [
+"bồi thường",
+"bồi thường"
+]
+},
+{
+"ten": "unwanted_sexual_conduct_at_workplace",
+"params": [
+"?"
+],
+"vi_du": [
+"là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận"
+]
+},
+{
+"ten": "workplace_sexual_harassment_handling_procedure",
+"params": [
+"?"
+],
+"vi_du": [
+"trình tự, thủ tục xử lý hành vi quấy rối tình dục tại nơi làm việc"
+]
+},
+{
+"ten": "prevent_and_combat_workplace_sexual_harassment",
+"params": [
+"E"
+],
+"vi_du": [
+"xây dựng và thực hiện các giải pháp phòng, chống quấy rối tình dục tại nơi làm việc"
+]
+},
+{
+"ten": "be_workplace_sexual_harassment",
+"params": [
+"?"
+],
+"vi_du": [
+"là quấy rối tình dục tại nơi làm việc",
+"bị quấy rối tình dục",
+"quấy rối tình dục"
+]
+},
+{
+"ten": "agreement_or_other_legal_provision",
+"params": [
+"?"
+],
+"vi_du": [
+"hai bên có thỏa thuận hoặc pháp luật có quy định khác"
+]
+},
+{
+"ten": "repeat_violation_before_discipline_erasure",
+"params": [
+"?"
+],
+"vi_du": [
+"là trường hợp người lao động lặp lại hành vi vi phạm đã bị xử lý kỷ luật mà chưa được xóa kỷ luật"
+]
+},
+{
+"ten": "select_workplace_violence_harassment_content",
+"params": [
+"?"
+],
+"vi_du": [
+"lựa chọn nội dung phòng, chống bạo lực và quấy rối tình dục tại nơi làm việc"
+]
+},
+{
+"ten": "workplace_sexual_harassment_prevention_content",
+"params": [
+"?"
+],
+"vi_du": [
+"Phòng, chống quấy rối tình dục tại nơi làm việc"
+]
+},
+{
+"ten": "employer_court_declared_incapacity_missing_or_dead",
+"params": [
+"E"
+],
+"vi_du": [
+"bị Tòa án tuyên bố mất năng lực hành vi dân sự, mất tích hoặc đã chết"
+]
+},
+{
+"ten": "allege_incomplete_performance_or_violation_of_cba",
+"params": [
+"?"
+],
+"vi_du": [
+"cho rằng bên kia thực hiện không đầy đủ hoặc vi phạm thỏa ước lao động tập thể"
+]
+},
+{
+"ten": "supervise_labor_law_enforcement",
+"params": [
+"?"
+],
+"vi_du": [
+"giám sát việc thi hành quy định của pháp luật về lao động"
+]
+},
+{
+"ten": "violation_related_to_finance_assets_or_secrets",
+"params": [
+"?"
+],
+"vi_du": [
+"hành vi vi phạm liên quan trực tiếp đến tài chính, tài sản, tiết lộ bí mật công nghệ, bí mật kinh doanh của người sử dụng lao động"
+]
+},
+{
+"ten": "reward_and_handle_discipline_violations",
+"params": [
+"E"
+],
+"vi_du": [
+"khen thưởng và xử lý vi phạm kỷ luật lao động"
+]
+}
+]
+}
+]
+}

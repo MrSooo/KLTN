@@ -1,0 +1,30 @@
+{
+ "cau": "Thỏa ước lao động tập thể sau khi có hiệu lực phải được các bên tôn trọng thực hiện.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Thỏa ước lao động tập thể\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sau khi có hiệu lực\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"phải được các bên\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tôn trọng\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"thực hiện\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl--TYDa6PxKfut9tMPxLqKgAc",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5194
+   },
+   "input_tokens": 921,
+   "output_tokens": 548,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_99641286542f13ee9f83c014"
+   }
+  }
+ }
+}

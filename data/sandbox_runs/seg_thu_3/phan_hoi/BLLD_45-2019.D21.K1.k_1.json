@@ -1,0 +1,30 @@
+{
+ "cau": "Đào tạo, bồi dưỡng, nâng cao trình độ, kỹ năng nghề.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Đào tạo\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bồi dưỡng\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"nâng cao\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"trình độ, kỹ năng nghề\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-iScDa6unPMDN2roP5tKFqQQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 434
+   },
+   "input_tokens": 917,
+   "output_tokens": 536,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_4fdf2ee20b8b98d0e97a2b90"
+   }
+  }
+ }
+}

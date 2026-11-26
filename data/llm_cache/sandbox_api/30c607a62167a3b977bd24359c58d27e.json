@@ -1,0 +1,45 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T21:56:20+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0050\",\n   \"a\": {\n    \"unit_id\": \"ND_145-2020.D32.K1\",\n    \"tieu_de_dieu\": \"Trách nhiệm của ngân hàng nhận ký quỹ\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thực hiện đúng các quy định về mở tài khoản ký quỹ, nộp tiền ký quỹ, sử dụng tài khoản ký quỹ của doanh nghiệp cho thuê lại và các quy định liên quan đến tài khoản này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D32.K5\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài trong quá trình làm việc ở Việt Nam không thực hiện đúng quy định của pháp luật Việt Nam mà bị khởi tố, truy cứu trách nhiệm hình sự.\"\n   },\n   \"vi_tu_chung\": [\n    \"comply_with_relevant_regulations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0051\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D26.K1\",\n    \"tieu_de_dieu\": \"Trách nhiệm của tổ chức, cá nhân nước ngoài tại Việt Nam khi sử dụng người lao động Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thực hiện đúng quy định của Bộ luật Lao động và các quy định hiện hành.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K3\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài trong quá trình làm việc ở Việt Nam không thực hiện đúng quy định của pháp luật Việt Nam mà bị khởi tố, truy cứu trách nhiệm hình sự.\"\n   },\n   \"vi_tu_chung\": [\n    \"comply_with_relevant_regulations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0052\",\n   \"a\": {\n    \"unit_id\": \"ND_152-2020.D26.K1\",\n    \"tieu_de_dieu\": \"Trách nhiệm của tổ chức, cá nhân nước ngoài tại Việt Nam khi sử dụng người lao động Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thực hiện đúng quy định của Bộ luật Lao động và các quy định hiện hành.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D32.K5\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài trong quá trình làm việc ở Việt Nam không thực hiện đúng quy định của pháp luật Việt Nam mà bị khởi tố, truy cứu trách nhiệm hình sự.\"\n   },\n   \"vi_tu_chung\": [\n    \"comply_with_relevant_regulations\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0053\",\n   \"a\": {\n    \"unit_id\": \"ND_219-2025.D11.K2\",\n    \"tieu_de_dieu\": \"Trường hợp cấp lại giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thay đổi một trong các nội dung sau: họ và tên, quốc tịch, số hộ chiếu, địa điểm làm việc, đổi tên người sử dụng lao động mà không thay đổi mã số định danh của người sử dụng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D23.K2\",\n    \"tieu_de_dieu\": \"Các trường hợp cấp lại giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thay đổi một trong các nội dung ghi trong giấy phép lao động còn thời hạn: họ và tên; quốc tịch; số hộ chiếu; đổi tên người sử dụng lao động mà không thay đổi mã số định danh của người sử dụng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"change_work_permit_holder_information\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0054\",\n   \"a\": {\n    \"unit_id\": \"ND_219-2025.D17\",\n    \"tieu_de_dieu\": \"Thời hạn của giấy xác nhận không thuộc diện cấp giấy phép lao động được gia hạn\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời hạn của giấy xác nhận không thuộc diện cấp giấy phép lao động được gia hạn theo thời hạn của một trong các trường hợp quy định tại Điều 21 Nghị định này nhưng chỉ được gia hạn một lần với thời hạn tối đa là 02 năm.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D29\",\n    \"tieu_de_dieu\": \"Thời hạn của giấy phép lao động được gia hạn\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời hạn của giấy phép lao động được gia hạn theo thời hạn của một trong các trường hợp quy định tại Điều 21 Nghị định này nhưng chỉ được gia hạn một lần với thời hạn tối đa là 02 năm.\"\n   },\n   \"vi_tu_chung\": [\n    \"extend_work_permit_according_to_case_duration\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0055\",\n   \"a\": {\n    \"unit_id\": \"ND_219-2025.D30.K3\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài trong quá trình làm việc ở Việt Nam không thực hiện đúng quy định của pháp luật Việt Nam mà bị khởi tố, truy cứu trách nhiệm hình sự.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D32.K5\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài trong quá trình làm việc ở Việt Nam không thực hiện đúng quy định của pháp luật Việt Nam mà bị khởi tố, truy cứu trách nhiệm hình sự.\"\n   },\n   \"vi_tu_chung\": [\n    \"comply_with_relevant_regulations\"\n   ]\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_69119c2e1d4f980374176caa",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0050",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0051",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0052",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0053",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0054",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0055",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 68,
+  "output_tokens": 356,
+  "cost_vnd": 3.71
+ },
+ "boc_rao": false
+}

@@ -1,0 +1,246 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "dungcsnd113/gemini-flash-3.8",
+ "created": "2026-11-22T15:45:50+00:00",
+ "system": "Mỗi mục là MỘT dòng đã tách từ một đơn vị Bộ luật Lao động mà lõi (doan) quá dài. Viết lại dòng đó thành các dòng ngắn hơn, cùng khuôn dòng: doan, vai, phuong_thuc, cuc, quy_tac, nhom_hoac, chu_the, doi_so, liet_ke, chua_ro.\n\nChỉ làm một trong ba cách:\n1. dieu_kien chứa danh sách trường hợp hay đối tượng: mỗi mục một dòng dieu_kien cùng quy_tac; chữ dùng chung (ví dụ \"dựa trên\") là đoạn đầu doan của mỗi dòng. Các mục nối bằng \"hoặc\" hay dấu phẩy thay thế nhau thì cùng một nhom_hoac (của dòng cũ nếu có, không thì mã mới); nối bằng \"và\" (phải đủ hết) thì không nhom_hoac.\n2. ket_luan chứa danh sách tân ngữ: giữ động từ trong doan, đưa các mục vào liet_ke.\n3. Hai thuộc tính của CÙNG một đối tượng (\"hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng\"): hai dòng dieu_kien cùng quy_tac.\nCụm mô tả một đối tượng KHÁC (ví dụ \"do cơ quan đại diện ngoại giao đề nghị thành lập\" mô tả cơ sở giáo dục, không phải người lao động) giữ nguyên trong dòng. Không làm được thì trả lại đúng dòng cũ.\n\ndoan chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha hoặc chu_don_vi đã cho; mọi chữ của doan cũ phải còn trong doan hoặc liet_ke của các dòng mới. Giữ vai, phuong_thuc, cuc, chu_the, quy_tac của dòng cũ.\n\nĐầu ra JSON thuần: {\"thay\": [{\"id\": \"...\", \"dong\": [...]}]}, mỗi id của đầu vào đúng một mục.\n",
+ "user": "{\n \"dong_dai\": [\n  {\n   \"id\": \"BLLD_45-2019.D3.K8#4\",\n   \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n   \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"chu_don_vi\": \"Phân biệt đối xử trong lao động là hành vi phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp có tác động làm ảnh hưởng đến bình đẳng về cơ hội việc làm hoặc nghề nghiệp.\\nViệc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương thì không bị xem là phân biệt đối xử.\",\n   \"dong\": {\n    \"doan\": [\n     \"phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q2\",\n    \"nhom_hoac\": \"h1\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D3.K9#4\",\n   \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n   \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n   \"chu_don_vi\": \"Quấy rối tình dục tại nơi làm việc là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận. Nơi làm việc là bất kỳ nơi nào mà người lao động thực tế làm việc theo thỏa thuận hoặc phân công của người sử dụng lao động.\",\n   \"dong\": {\n    \"doan\": [\n     \"người lao động thực tế làm việc theo thỏa thuận hoặc phân công của người sử dụng lao động\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"chu_the\": {\n     \"chu\": \"người lao động\",\n     \"loai\": \"W\"\n    },\n    \"doi_so\": [\n     {\n      \"loai\": \"E\"\n     }\n    ],\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q2\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D8.K6#9\",\n   \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n   \"khoan_cha\": \"\",\n   \"chu_don_vi\": \"Lôi kéo, dụ dỗ, hứa hẹn, quảng cáo gian dối hoặc thủ đoạn khác để lừa gạt người lao động hoặc để tuyển dụng người lao động với mục đích mua bán người, bóc lột, cưỡng bức lao động hoặc lợi dụng dịch vụ việc làm, hoạt động đưa người lao động đi làm việc ở nước ngoài theo hợp đồng để thực hiện hành vi trái pháp luật.\",\n   \"dong\": {\n    \"doan\": [\n     \"lợi dụng\",\n     \"hoạt động đưa người lao động đi làm việc ở nước ngoài theo hợp đồng để thực hiện hành vi trái pháp luật\"\n    ],\n    \"vai\": \"ket_luan\",\n    \"doi_so\": [\n     {\n      \"loai\": \"W\"\n     }\n    ],\n    \"phuong_thuc\": \"cam\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q10\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D36.K1.a#1\",\n   \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n   \"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n   \"chu_don_vi\": \"Người lao động thường xuyên không hoàn thành công việc theo hợp đồng lao động được xác định theo tiêu chí đánh giá mức độ hoàn thành công việc trong quy chế của người sử dụng lao động. Quy chế đánh giá mức độ hoàn thành công việc do người sử dụng lao động ban hành nhưng phải tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở;\",\n   \"dong\": {\n    \"doan\": [\n     \"được xác định theo tiêu chí đánh giá mức độ hoàn thành công việc trong quy chế của người sử dụng lao động\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D36.K1.b#2\",\n   \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n   \"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n   \"chu_don_vi\": \"Người lao động bị ốm đau, tai nạn đã điều trị 12 tháng liên tục đối với người làm việc theo hợp đồng lao động không xác định thời hạn hoặc đã điều trị 06 tháng liên tục đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng hoặc quá nửa thời hạn hợp đồng lao động đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng mà khả năng lao động chưa hồi phục.\",\n   \"dong\": {\n    \"doan\": [\n     \"đối với người làm việc theo hợp đồng lao động không xác định thời hạn\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\",\n    \"nhom_hoac\": \"h1\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D36.K1.b#4\",\n   \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n   \"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n   \"chu_don_vi\": \"Người lao động bị ốm đau, tai nạn đã điều trị 12 tháng liên tục đối với người làm việc theo hợp đồng lao động không xác định thời hạn hoặc đã điều trị 06 tháng liên tục đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng hoặc quá nửa thời hạn hợp đồng lao động đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng mà khả năng lao động chưa hồi phục.\",\n   \"dong\": {\n    \"doan\": [\n     \"đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\",\n    \"nhom_hoac\": \"h2\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D36.K1.b#6\",\n   \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n   \"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n   \"chu_don_vi\": \"Người lao động bị ốm đau, tai nạn đã điều trị 12 tháng liên tục đối với người làm việc theo hợp đồng lao động không xác định thời hạn hoặc đã điều trị 06 tháng liên tục đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng hoặc quá nửa thời hạn hợp đồng lao động đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng mà khả năng lao động chưa hồi phục.\",\n   \"dong\": {\n    \"doan\": [\n     \"đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\",\n    \"nhom_hoac\": \"h3\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D36.K1.c#0\",\n   \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n   \"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n   \"chu_don_vi\": \"Do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa hoặc di dời, thu hẹp sản xuất, kinh doanh theo yêu cầu của cơ quan nhà nước có thẩm quyền mà người sử dụng lao động đã tìm mọi biện pháp khắc phục nhưng vẫn buộc phải giảm chỗ làm việc;\",\n   \"dong\": {\n    \"doan\": [\n     \"Do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\",\n    \"nhom_hoac\": \"h1\",\n    \"liet_ke\": [\n     \"thiên tai\",\n     \"hỏa hoạn\",\n     \"dịch bệnh nguy hiểm\",\n     \"địch họa\"\n    ]\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D36.K1.c#1\",\n   \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n   \"khoan_cha\": \"Người sử dụng lao động có quyền đơn phương chấm dứt hợp đồng lao động trong trường hợp sau đây:\\nKhi sức khỏe của người lao động bình phục thì người sử dụng lao động xem xét để tiếp tục giao kết hợp đồng lao động với người lao động;\",\n   \"chu_don_vi\": \"Do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa hoặc di dời, thu hẹp sản xuất, kinh doanh theo yêu cầu của cơ quan nhà nước có thẩm quyền mà người sử dụng lao động đã tìm mọi biện pháp khắc phục nhưng vẫn buộc phải giảm chỗ làm việc;\",\n   \"dong\": {\n    \"doan\": [\n     \"di dời, thu hẹp sản xuất, kinh doanh theo yêu cầu của cơ quan nhà nước có thẩm quyền\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\",\n    \"nhom_hoac\": \"h2\"\n   }\n  },\n  {\n   \"id\": \"BLLD_45-2019.D36.K2.b#1\",\n   \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n   \"khoan_cha\": \"Khi đơn phương chấm dứt hợp đồng lao động trong trường hợp quy định tại các điểm a, b, c, đ và g khoản 1 Điều này, người sử dụng lao động phải báo trước cho người lao động như sau:\",\n   \"chu_don_vi\": \"Ít nhất 30 ngày đối với hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng;\",\n   \"dong\": {\n    \"doan\": [\n     \"đối với hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng\"\n    ],\n    \"vai\": \"dieu_kien\",\n    \"phuong_thuc\": \"khong\",\n    \"cuc\": \"khang_dinh\",\n    \"quy_tac\": \"q1\",\n    \"chu_the\": {\n     \"chu\": \"hợp đồng lao động\",\n     \"loai\": \"C\"\n    }\n   }\n  }\n ]\n}\n",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "request_id": "req_5fe2d41d758c41793eacc30e",
+ "output": {
+  "thay": [
+   {
+    "id": "BLLD_45-2019.D3.K8#4",
+    "dong": [
+     {
+      "doan": [
+       "phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2",
+      "nhom_hoac": "h1"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D3.K9#4",
+    "dong": [
+     {
+      "doan": [
+       "người lao động thực tế làm việc theo thỏa thuận hoặc phân công của người sử dụng lao động"
+      ],
+      "vai": "dieu_kien",
+      "chu_the": {
+       "chu": "người lao động",
+       "loai": "W"
+      },
+      "doi_so": [
+       {
+        "loai": "E"
+       }
+      ],
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q2"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D8.K6#9",
+    "dong": [
+     {
+      "doan": [
+       "lợi dụng",
+       "hoạt động đưa người lao động đi làm việc ở nước ngoài theo hợp đồng để thực hiện hành vi trái pháp luật"
+      ],
+      "vai": "ket_luan",
+      "doi_so": [
+       {
+        "loai": "W"
+       }
+      ],
+      "phuong_thuc": "cam",
+      "cuc": "khang_dinh",
+      "quy_tac": "q10"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D36.K1.a#1",
+    "dong": [
+     {
+      "doan": [
+       "được xác định theo tiêu chí đánh giá mức độ hoàn thành công việc trong quy chế của người sử dụng lao động"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D36.K1.b#2",
+    "dong": [
+     {
+      "doan": [
+       "đối với người làm việc theo hợp đồng lao động không xác định thời hạn"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D36.K1.b#4",
+    "dong": [
+     {
+      "doan": [
+       "đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h2"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D36.K1.b#6",
+    "dong": [
+     {
+      "doan": [
+       "đối với người làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h3"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D36.K1.c#0",
+    "dong": [
+     {
+      "doan": [
+       "Do",
+       "thiên tai"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "Do",
+       "hỏa hoạn"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "Do",
+       "dịch bệnh nguy hiểm"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     },
+     {
+      "doan": [
+       "Do",
+       "địch họa"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h1"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D36.K1.c#1",
+    "dong": [
+     {
+      "doan": [
+       "di dời, thu hẹp sản xuất, kinh doanh theo yêu cầu của cơ quan nhà nước có thẩm quyền"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "nhom_hoac": "h2"
+     }
+    ]
+   },
+   {
+    "id": "BLLD_45-2019.D36.K2.b#1",
+    "dong": [
+     {
+      "doan": [
+       "đối với hợp đồng lao động xác định thời hạn"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "chu_the": {
+       "chu": "hợp đồng lao động",
+       "loai": "C"
+      }
+     },
+     {
+      "doan": [
+       "có thời hạn từ 12 tháng đến 36 tháng"
+      ],
+      "vai": "dieu_kien",
+      "phuong_thuc": "khong",
+      "cuc": "khang_dinh",
+      "quy_tac": "q1",
+      "chu_the": {
+       "chu": "hợp đồng lao động",
+       "loai": "C"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3742,
+  "output_tokens": 6384,
+  "cost_vnd": 6.5
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 4151
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 35605
+   }
+  }
+ }
+}

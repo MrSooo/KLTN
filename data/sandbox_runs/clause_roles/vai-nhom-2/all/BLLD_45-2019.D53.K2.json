@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D53.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D53.K2\",\n \"tieu_de_dieu\": \"Nguyên tắc hoạt động cho thuê lại lao động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Bên thuê lại lao động được sử dụng lao động thuê lại trong trường hợp sau đây\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"unit_id\":\"BLLD_45-2019.D53.K2\",\"cac_muc_con\":\"hoac\",\"dong\":[{\"nguon\":\"s1.m1\",\"doan\":[\"sử dụng lao động thuê lại\"],\"vai\":\"ket_luan\",\"phuong_thuc\":\"duoc\",\"cuc\":\"khang_dinh\",\"chu_the\":{\"chu\":\"Bên thuê lại lao động\",\"loai\":\"E\"},\"quy_tac\":\"q1\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795543228893-616e0cdb",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 465
+   },
+   "input_tokens": 3639,
+   "output_tokens": 96,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_4bab1d6a4cce3832ccda9002"
+   }
+  }
+ }
+}

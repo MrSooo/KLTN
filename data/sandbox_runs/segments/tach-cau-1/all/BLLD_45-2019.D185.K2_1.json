@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Số lượng trọng tài viên lao động của Hội đồng trọng tài lao động do Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định, ít nhất là 15 người, bao gồm số lượng ngang nhau do các bên đề cử, cụ thể như sau:",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Số lượng trọng tài viên lao động của Hội đồng trọng tài lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"do Chủ tịch Ủy ban nhân dân cấp tỉnh quyết định\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"ít nhất là 15 người\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"bao gồm số lượng ngang nhau do các bên đề cử, cụ thể như sau\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540196511-17039e77",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 352
+   },
+   "input_tokens": 2428,
+   "output_tokens": 137,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_c36d28841557e6a2dc574aa8"
+   }
+  }
+ }
+}

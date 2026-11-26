@@ -1,0 +1,314 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D64.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "đối thoại nội dung bắt buộc",
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nội dung đối thoại bắt buộc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "trich": [
+      "theo quy định tại điểm c khoản 2 Điều 63 của Bộ luật này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D63.K2.c"
+     ],
+     "gan_vao": 0
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2",
+   "dong": [
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "trich": [
+      "Ngoài nội dung quy định tại khoản 1 Điều này"
+     ],
+     "targets": [
+      "BLLD_45-2019.D64.K1"
+     ]
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "danh_sach",
+     "trich": [
+      "các bên lựa chọn một hoặc một số nội dung sau đây để tiến hành đối thoại:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn vào danh sách các nội dung đối thoại lựa chọn."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tiến hành đối thoại tình hình sản xuất, kinh doanh của người sử dụng lao động",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên",
+      "tiến hành đối thoại",
+      "Tình hình sản xuất, kinh doanh của người sử dụng lao động"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tiến hành đối thoại việc thực hiện",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "hợp đồng lao động",
+      "thỏa ước lao động tập thể",
+      "nội quy lao động",
+      "quy chế",
+      "cam kết, thỏa thuận khác"
+     ],
+     "trich": [
+      "các bên",
+      "tiến hành đối thoại",
+      "Việc thực hiện",
+      "hợp đồng lao động",
+      "thỏa ước lao động tập thể",
+      "nội quy lao động",
+      "quy chế",
+      "cam kết, thỏa thuận khác"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Danh sách văn bản và thỏa thuận được đưa vào liet_ke."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "tại nơi làm việc",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên",
+      "tại nơi làm việc"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tiến hành đối thoại điều kiện làm việc",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên",
+      "tiến hành đối thoại",
+      "Điều kiện làm việc"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.d",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tiến hành đối thoại yêu cầu của người lao động, tổ chức đại diện người lao động",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên",
+      "tiến hành đối thoại",
+      "Yêu cầu của người lao động, tổ chức đại diện người lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đối với người sử dụng lao động",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên",
+      "đối với người sử dụng lao động"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.dd",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tiến hành đối thoại yêu cầu của người sử dụng lao động",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "E"
+      }
+     ],
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên",
+      "tiến hành đối thoại",
+      "Yêu cầu của người sử dụng lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "đối với người lao động, tổ chức đại diện người lao động",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên",
+      "đối với người lao động, tổ chức đại diện người lao động"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D64.K2.e",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tiến hành đối thoại nội dung khác mà một hoặc các bên quan tâm",
+     "chu_the": {
+      "chu": "các bên",
+      "loai": [
+       "W",
+       "E"
+      ],
+      "nguon": "cau_dan"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "các bên",
+      "tiến hành đối thoại",
+      "Nội dung khác mà một hoặc các bên quan tâm"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  }
+ ]
+}

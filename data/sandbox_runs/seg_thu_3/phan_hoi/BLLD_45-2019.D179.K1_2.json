@@ -1,0 +1,30 @@
+{
+ "cau": "Các loại tranh chấp lao động bao gồm:",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Các loại tranh chấp lao động bao gồm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-NU4Da4fbMbqlvr0P0pnfuA0",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 63
+   },
+   "input_tokens": 909,
+   "output_tokens": 97,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_ac6efa1fcc681de8f385fa3d"
+   }
+  }
+ }
+}

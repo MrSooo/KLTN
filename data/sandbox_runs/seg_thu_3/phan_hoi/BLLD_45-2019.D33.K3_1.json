@@ -1,0 +1,30 @@
+{
+ "cau": "Trường hợp hai bên không thỏa thuận được việc sửa đổi, bổ sung nội dung hợp đồng lao động thì tiếp tục thực hiện hợp đồng lao động đã giao kết.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trường hợp hai bên không thỏa thuận được việc\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"sửa đổi\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"bổ sung\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"nội dung hợp đồng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"tiếp tục thực hiện hợp đồng lao động đã giao kết\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-7igDa8S4Ht6M1e8PkceR-Qw",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 622
+   },
+   "input_tokens": 934,
+   "output_tokens": 765,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_7beb27417fc02338bdc47bd8"
+   }
+  }
+ }
+}

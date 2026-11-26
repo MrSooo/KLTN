@@ -1,0 +1,30 @@
+{
+ "cau": "Quy chế đánh giá mức độ hoàn thành công việc do người sử dụng lao động ban hành nhưng phải tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Quy chế đánh giá mức độ hoàn thành công việc\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"do người sử dụng lao động ban hành\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-zSoDa-H7JNLg1e8P25a32Ag",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3638
+   },
+   "input_tokens": 950,
+   "output_tokens": 448,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_2ee20bac351b13a2a3771863"
+   }
+  }
+ }
+}

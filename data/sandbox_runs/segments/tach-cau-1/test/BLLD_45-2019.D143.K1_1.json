@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Lao động chưa thành niên là người lao động chưa đủ 18 tuổi.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Lao động chưa thành niên là người lao động chưa đủ 18 tuổi\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-gbMFa6afEvfD0-kPgP7bgQI",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 206
+   },
+   "input_tokens": 2252,
+   "output_tokens": 248,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_e52ef2539d8fe4c5e74fa9db"
+   }
+  }
+ }
+}

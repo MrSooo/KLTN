@@ -1,0 +1,30 @@
+{
+ "cau": "Chính phủ quy định chi tiết việc hoãn, ngừng đình công và giải quyết quyền lợi của người lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Chính phủ quy định chi tiết việc\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"hoãn\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"ngừng\"},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"đình công\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"giải quyết quyền lợi của người lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-mVMDa-HwEN2n2roPs4jKsAQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1521
+   },
+   "input_tokens": 924,
+   "output_tokens": 1656,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_883a39d33566e56ac6fff367"
+   }
+  }
+ }
+}

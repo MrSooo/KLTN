@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Trong thời gian học nghề, tập nghề, nếu người học nghề, người tập nghề trực tiếp hoặc tham gia lao động thì được người sử dụng lao động trả lương theo mức do hai bên thỏa thuận.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trong thời gian học nghề, tập nghề\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"người học nghề, người tập nghề\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"trực tiếp hoặc tham gia lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"được người sử dụng lao động trả lương theo mức do hai bên thỏa thuận\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-pLMFa-b1LpK7vr0Pk-7kuAg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3015
+   },
+   "input_tokens": 2276,
+   "output_tokens": 544,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_665ee828a4d80b9f9167936a"
+   }
+  }
+ }
+}

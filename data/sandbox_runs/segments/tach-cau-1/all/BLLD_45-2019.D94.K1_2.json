@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trường hợp người lao động không thể nhận lương trực tiếp thì người sử dụng lao động có thể trả lương cho người được người lao động ủy quyền hợp pháp.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"người lao động không thể nhận lương trực tiếp\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"người sử dụng lao động có thể trả lương cho người được người lao động ủy quyền hợp pháp\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539056243-1619693e",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 669
+   },
+   "input_tokens": 2409,
+   "output_tokens": 73,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a31cd1e4dc283f3a5817c9ff"
+   }
+  }
+ }
+}

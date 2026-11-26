@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Trong thời hạn 15 ngày kể từ ngày hết thời hạn tạm hoãn thực hiện hợp đồng lao động, người lao động phải có mặt tại nơi làm việc và người sử dụng lao động phải nhận người lao động trở lại làm công việc theo hợp đồng lao động đã giao kết nếu hợp đồng lao động còn thời hạn, trừ trường hợp hai bên có thỏa thuận hoặc pháp luật có quy định khác.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trong thời hạn 15 ngày kể từ ngày hết thời hạn tạm hoãn thực hiện hợp đồng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"người lao động phải có mặt tại nơi làm việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"người sử dụng lao động phải nhận người lao động trở lại làm công việc theo hợp đồng lao động đã giao kết\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"hợp đồng lao động còn thời hạn\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"hai bên có thỏa thuận\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"pháp luật có quy định khác\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538210126-dd1188d7",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1710
+   },
+   "input_tokens": 2457,
+   "output_tokens": 186,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_d0fde86e929dbb1877d3c80d"
+   }
+  }
+ }
+}

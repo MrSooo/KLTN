@@ -1,0 +1,30 @@
+{
+ "cau_gui": "Phải bồi thường theo thỏa thuận hoặc theo quy định của pháp luật nếu làm hỏng, mất tài sản của người sử dụng lao động.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Phải bồi thường theo thỏa thuận hoặc theo quy định của pháp luật\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"làm hỏng\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"mất\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"tài sản của người sử dụng lao động\",\"ap_cho\":[\"m2\",\"m3\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-qLIFa7LyOerA1e8PseTP-AM",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 987
+   },
+   "input_tokens": 2265,
+   "output_tokens": 1100,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_8d0112ace956bd233e276b8c"
+   }
+  }
+ }
+}

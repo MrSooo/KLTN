@@ -1,0 +1,30 @@
+{
+ "cau": "Sản xuất, kinh doanh cồn, rượu, bia, thuốc lá, chất tác động đến tinh thần hoặc chất gây nghiện khác;",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Sản xuất\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"kinh doanh\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"cồn, rượu, bia, thuốc lá, chất tác động đến tinh thần hoặc chất gây nghiện khác\",\"ap_cho\":[\"m1\",\"m2\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-TEcDa8ekOem02roP99S90QE",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 555
+   },
+   "input_tokens": 929,
+   "output_tokens": 650,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_94fb56a3b03d6d04d2d1d91d"
+   }
+  }
+ }
+}

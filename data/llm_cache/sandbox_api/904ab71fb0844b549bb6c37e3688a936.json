@@ -1,0 +1,59 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-25T05:37:30+00:00",
+ "system": "Bạn đặt TÊN VỊ TỪ cho các mệnh đề lấy từ văn bản pháp luật lao động Việt Nam. Mỗi mệnh đề là lõi của một điều đúng/sai được (động từ hoặc tính chất cộng tân ngữ chính); chủ thể, chữ chỉ phương thức (phải, được, cấm), chữ phủ định và bổ ngữ đã được bỏ ra và ghi riêng. Hai mệnh đề nêu CÙNG MỘT sự kiện pháp lý phải mang cùng một tên, kể cả khi viết khác chữ; hai mệnh đề nêu sự kiện khác nhau phải mang tên khác.\n\nĐẦU VÀO là danh sách \"chu\". Mỗi mục có:\n- chu_id: mã của chữ. chu: chữ của mệnh đề, nguyên văn.\n- params: loại các tham số theo THỨ TỰ: vị trí đầu là chủ thể (nếu mệnh đề có chủ thể), các vị trí sau là đối số. W người lao động, E người sử dụng lao động, C hợp đồng, J nghề hoặc công việc, G vùng, D ngày hoặc mốc thời gian, A số tiền hoặc số lượng, ? chưa rõ loại. Rỗng nếu mệnh đề không có chủ thể hay đối số.\n- vai: các vai mệnh đề từng đóng (ket_luan: hệ quả; dieu_kien: khi nào áp dụng; ngoai_le: trừ khi nào). so_lan: số lần chữ này xuất hiện.\n- ngu_canh: tối đa hai nơi chữ xuất hiện đầu tiên, mỗi nơi có tieu_de_dieu, khoan_cha, chu_don_vi và vai của mệnh đề ở đó. Chỉ dùng để hiểu nghĩa của chữ; đừng đặt tên theo cả đoạn.\n- ung_vien: các tên đã có mà params tương thích (một bên có thể thiếu chủ thể hay một vài đối số; ? khớp mọi loại); mỗi ứng viên kèm params và vài chữ đã dùng tên đó (vi_du).\n- loi_lan_truoc: chỉ có khi chữ được hỏi lại; là lý do lần trả lời trước không được nhận. Hãy sửa đúng lỗi đó.\n\nCHỮ CÓ VAI chu_the: chữ là cụm danh từ chỉ một NHÓM chủ thể (\"Người lao động nước ngoài làm việc tại Việt Nam\", \"Doanh nghiệp cho thuê lại lao động\"). Tên đặt cho tính chất \"thuộc nhóm đó\" (ví dụ foreign_worker_in_vietnam). Mệnh đề \"là <nhóm đó>\" và chữ chủ thể chỉ cùng nhóm đó là cùng một sự kiện: phải reuse. Nhóm rộng hơn hoặc hẹp hơn (\"người lao động\" so với \"người lao động nước ngoài\") là tên khác.\n\nNHIỆM VỤ: với MỖI chữ trong danh sách, trả về đúng MỘT mục gồm chu_id, kieu và ten.\n- kieu \"reuse\": ten là một tên nằm trong ung_vien của chính chữ đó, HOẶC một tên mà bạn đã đặt (kieu \"new\") cho một chữ đứng TRƯỚC chữ này trong danh sách (theo thứ tự các mục của \"chu\"; không được trỏ tới chữ đứng sau) và có params tương thích với chữ này.\n- kieu \"new\": ten là một tên mới.\n\nKHI NÀO ĐƯỢC \"reuse\": khi chữ nêu CÙNG MỘT sự kiện pháp lý với chữ đã dùng tên đó: cùng hành vi hoặc tình trạng, cùng đối tượng, cùng phạm vi. Khác cách viết, khác thứ tự từ, dùng từ đồng nghĩa, viết tắt hay viết đầy đủ mà vẫn là một sự kiện thì PHẢI reuse. Chữ không nêu chủ thể hay đối số mà chữ kia có nêu (params ngắn hơn) KHÔNG vì thế mà là sự kiện khác. Gần nghĩa, rộng hơn, hẹp hơn hoặc ngược nghĩa thì KHÔNG phải cùng sự kiện: đặt tên mới. Chỉ chung vài từ hoặc cùng chủ đề là chưa đủ. Không chắc thì đặt tên mới.\n\nCÁCH ĐẶT TÊN MỚI:\n- Tiếng Anh, snake_case: chỉ gồm chữ thường a-z, chữ số và dấu gạch dưới; bắt đầu bằng chữ cái; dài 3 đến 50 ký tự.\n- Tên nêu sự kiện, không nêu ai làm: không ghi chủ thể, không ghi params vào tên (params đã được ghi riêng). Riêng chữ vai chu_the thì tên chính là nhóm chủ thể.\n- Không ghi phương thức vào tên (không must_, may_, allowed_, prohibited_): phương thức được ghi riêng.\n- Dạng khẳng định: không mở đầu bằng not_, no_, non_ và không đặt tên là not hay non. Chữ có ý phủ định trong nghĩa thì chọn một từ khẳng định có nghĩa tương đương.\n- Tên mới không được trùng với bất kỳ tên nào đã có, kể cả tên không nằm trong ung_vien của chữ đó; trùng thì chữ bị hỏi lại sau. Hãy đặt tên đủ cụ thể để ít trùng.\n\nVÍ DỤ (chữ bịa để minh hoạ). Giả sử năm chữ sau đứng theo đúng thứ tự trong danh sách và chưa có ứng viên nào:\n  1. \"cấp thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> new issue_factory_access_card  (tên mới)\n  2. \"phát thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> reuse issue_factory_access_card  (cùng một sự kiện với chữ 1, chỉ khác chữ; dùng lại tên do chính bạn đặt cho chữ 1 (đứng trước, tham số tương thích))\n  3. \"thu hồi thẻ ra vào khu xưởng\" params [\"E\", \"W\"] -> new revoke_factory_access_card  (việc ngược lại, không phải cùng sự kiện: tên mới)\n  4. \"cấp thẻ ra vào khu xưởng có thời hạn dưới 30 ngày\" params [\"E\", \"W\"] -> new issue_short_term_factory_access_card  (hẹp hơn chữ 1: tên mới)\n  5. \"có thẻ ra vào khu xưởng\" params [\"W\"] -> new holds_factory_access_card  (nêu tình trạng có thẻ, không phải việc cấp thẻ: tên mới)\n\nĐẦU RA: chỉ JSON đúng lược đồ đã cho, không thêm chữ nào khác. Mọi chữ trong danh sách đều phải có đúng một mục; chu_id chép nguyên văn; không thêm mục cho chữ ngoài danh sách.\n\n\nLược đồ đầu ra (JSON Schema, nội dung file schema.json):\n{\n \"type\": \"object\",\n \"additionalProperties\": false,\n \"required\": [\n  \"chu\"\n ],\n \"properties\": {\n  \"chu\": {\n   \"type\": \"array\",\n   \"items\": {\n    \"type\": \"object\",\n    \"additionalProperties\": false,\n    \"required\": [\n     \"chu_id\",\n     \"kieu\",\n     \"ten\"\n    ],\n    \"properties\": {\n     \"chu_id\": {\n      \"type\": \"string\"\n     },\n     \"kieu\": {\n      \"type\": \"string\",\n      \"enum\": [\n       \"reuse\",\n       \"new\"\n      ]\n     },\n     \"ten\": {\n      \"type\": \"string\"\n     }\n    }\n   }\n  }\n }\n}\n",
+ "user": "{\n\"chu\": [\n{\n\"chu_id\": \"C0000\",\n\"chu\": \"Người lao động nước ngoài\",\n\"params\": [],\n\"vai\": [\n\"chu_the\"\n],\n\"so_lan\": 22,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D2.K3\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Đối tượng áp dụng\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam.\"\n},\n{\n\"don_vi\": \"BLLD_45-2019.D2.K3\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Đối tượng áp dụng\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0001\",\n\"chu\": \"làm việc\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"dieu_kien\",\n\"ket_luan\"\n],\n\"so_lan\": 7,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D2.K3\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Đối tượng áp dụng\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam.\"\n},\n{\n\"don_vi\": \"BLLD_45-2019.D3.K6\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Giải thích từ ngữ\",\n\"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n\"chu_don_vi\": \"Người làm việc không có quan hệ lao động là người làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0002\",\n\"chu\": \"tại Việt Nam\",\n\"params\": [\n\"W\"\n],\n\"vai\": [\n\"dieu_kien\"\n],\n\"so_lan\": 2,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D2.K3\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Đối tượng áp dụng\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam.\"\n},\n{\n\"don_vi\": \"BLLD_45-2019.D153.K2\",\n\"vai\": \"dieu_kien\",\n\"tieu_de_dieu\": \"Trách nhiệm của người sử dụng lao động và người lao động nước ngoài\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động sẽ bị buộc xuất cảnh hoặc trục xuất theo quy định của pháp luật về nhập cảnh, xuất cảnh, quá cảnh, cư trú của người nước ngoài tại Việt Nam.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0003\",\n\"chu\": \"Cơ quan, tổ chức, cá nhân khác\",\n\"params\": [],\n\"vai\": [\n\"chu_the\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D2.K4\",\n\"vai\": \"chu_the\",\n\"tieu_de_dieu\": \"Đối tượng áp dụng\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Cơ quan, tổ chức, cá nhân khác có liên quan trực tiếp đến quan hệ lao động.\"\n}\n],\n\"ung_vien\": []\n},\n{\n\"chu_id\": \"C0004\",\n\"chu\": \"có liên quan trực tiếp đến quan hệ lao động\",\n\"params\": [\n\"?\"\n],\n\"vai\": [\n\"ket_luan\"\n],\n\"so_lan\": 1,\n\"ngu_canh\": [\n{\n\"don_vi\": \"BLLD_45-2019.D2.K4\",\n\"vai\": \"ket_luan\",\n\"tieu_de_dieu\": \"Đối tượng áp dụng\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Cơ quan, tổ chức, cá nhân khác có liên quan trực tiếp đến quan hệ lao động.\"\n}\n],\n\"ung_vien\": []\n}\n]\n}",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_014f6bc5ae1da695f984cd8e",
+ "output": {
+  "chu": [
+   {
+    "chu_id": "C0000",
+    "kieu": "new",
+    "ten": "foreign_worker"
+   },
+   {
+    "chu_id": "C0001",
+    "kieu": "new",
+    "ten": "work"
+   },
+   {
+    "chu_id": "C0002",
+    "kieu": "new",
+    "ten": "in_vietnam"
+   },
+   {
+    "chu_id": "C0003",
+    "kieu": "new",
+    "ten": "other_agency_organization_individual"
+   },
+   {
+    "chu_id": "C0004",
+    "kieu": "new",
+    "ten": "directly_related_to_labor_relations"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2777,
+  "output_tokens": 993,
+  "cost_vnd": 13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 436
+   }
+  ],
+  "usage_khac": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 774
+   }
+  }
+ }
+}

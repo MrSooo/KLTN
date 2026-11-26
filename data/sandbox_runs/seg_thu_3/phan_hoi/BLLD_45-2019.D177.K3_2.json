@@ -1,0 +1,27 @@
+{
+ "cau": "Trường hợp không thỏa thuận được, hai bên phải báo cáo với cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trường hợp\",\"ap_cho\":[\"m1\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"không thỏa thuận được\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"hai bên phải báo cáo với cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-2k0Da-1dvd7aug_Y3e35Aw",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 929,
+   "output_tokens": 91,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_e6ec9b8cb4e3e287e3a5d558"
+   }
+  }
+ }
+}

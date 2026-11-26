@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khi đề cử trọng tài viên lao động theo quy định tại khoản 2 Điều này, cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh, công đoàn cấp tỉnh, tổ chức đại diện của người sử dụng lao động có thể cử người của cơ quan, tổ chức mình hoặc cử người khác đáp ứng đầy đủ các tiêu chuẩn đối với trọng tài viên lao động theo quy định;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"đề cử trọng tài viên lao động theo quy định tại khoản 2 Điều này\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh, công đoàn cấp tỉnh, tổ chức đại diện của người sử dụng lao động có thể\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"cử người của cơ quan, tổ chức mình\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"cử người khác đáp ứng đầy đủ các tiêu chuẩn đối với trọng tài viên lao động theo quy định\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540211382-e526bb56",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1285
+   },
+   "input_tokens": 2460,
+   "output_tokens": 166,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_3bdeaadfef365385d216930d"
+   }
+  }
+ }
+}

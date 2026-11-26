@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Bảo đảm số giờ làm thêm của người lao động không quá 200 giờ trong 01 năm, ⟦DC1⟧.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Bảo đảm số giờ làm thêm của người lao động không quá 200 giờ trong 01 năm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539230247-5f0a161a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 432
+   },
+   "input_tokens": 2403,
+   "output_tokens": 45,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a1a6bff178d27ffdb5e63d21"
+   }
+  }
+ }
+}

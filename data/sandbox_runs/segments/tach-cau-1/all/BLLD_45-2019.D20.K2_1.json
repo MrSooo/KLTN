@@ -1,0 +1,27 @@
+{
+ "cau_gui": "Khi hợp đồng lao động quy định tại điểm b khoản 1 Điều này hết hạn mà người lao động vẫn tiếp tục làm việc thì thực hiện như sau:",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"hợp đồng lao động quy định tại điểm b khoản 1 Điều này hết hạn\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"người lao động vẫn tiếp tục làm việc\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"thực hiện như sau\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-a7cFa7u-ENeY0-kP-q-8sQo",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 2267,
+   "output_tokens": 89,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_15afb3712429dfc9ed769802"
+   }
+  }
+ }
+}

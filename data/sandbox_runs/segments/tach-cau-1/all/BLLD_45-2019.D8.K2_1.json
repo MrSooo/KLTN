@@ -1,0 +1,27 @@
+{
+ "cau_gui": "Ngược đãi người lao động, cưỡng bức lao động.",
+ "phien_ban": "tach-cau-1",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Ngược đãi người lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"cưỡng bức lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-t7YFa9_iO9XA1e8P1t28gAg",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 2248,
+   "output_tokens": 54,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_edd2da02d8005ec1601d03e5"
+   }
+  }
+ }
+}

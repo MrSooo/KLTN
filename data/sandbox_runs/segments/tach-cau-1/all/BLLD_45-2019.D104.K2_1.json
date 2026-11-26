@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Quy chế thưởng do người sử dụng lao động quyết định và công bố công khai tại nơi làm việc sau khi tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Quy chế thưởng do người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"quyết định\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"công bố công khai tại nơi làm việc\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539189715-1171dbd8",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4961
+   },
+   "input_tokens": 2426,
+   "output_tokens": 134,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_5d5331b83c5fcaea9d55ae36"
+   }
+  }
+ }
+}

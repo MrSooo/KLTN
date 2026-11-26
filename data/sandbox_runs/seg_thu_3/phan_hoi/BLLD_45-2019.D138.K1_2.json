@@ -1,0 +1,27 @@
+{
+ "cau": "Trường hợp đơn phương chấm dứt hợp đồng lao động hoặc tạm hoãn thực hiện hợp đồng lao động thì phải thông báo cho người sử dụng lao động kèm theo xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\"id\": \"c1\", \"loai\": \"dung_chung\", \"chu\": \"Trường hợp\", \"ap_cho\": [\"m1\", \"m2\"]},\n    {\"id\": \"m1\", \"loai\": \"menh_de\", \"chu\": \"đơn phương chấm dứt hợp đồng lao động\"},\n    {\"id\": \"m2\", \"loai\": \"menh_de\", \"chu\": \"tạm hoãn thực hiện hợp đồng lao động\"},\n    {\"id\": \"m3\", \"loai\": \"menh_de\", \"chu\": \"phải thông báo cho người sử dụng lao động kèm theo xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi\"}\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-L0UDa5LFNZnY1e8PjsStgAs",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "input_tokens": 961,
+   "output_tokens": 187,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_e96983858f1f9812fea79cda"
+   }
+  }
+ }
+}

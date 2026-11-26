@@ -1,0 +1,30 @@
+{
+ "cau": "Công việc đã giao kết trong hợp đồng lao động là công việc mà pháp luật cấm.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Công việc đã giao kết trong hợp đồng lao động là công việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"pháp luật cấm\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-Dy8Da-HeCpSB2roP9KmsqAQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1424
+   },
+   "input_tokens": 919,
+   "output_tokens": 1484,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_1e346c69e11bd58969f93257"
+   }
+  }
+ }
+}

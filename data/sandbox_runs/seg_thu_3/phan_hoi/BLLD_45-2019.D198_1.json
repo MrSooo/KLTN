@@ -1,0 +1,30 @@
+{
+ "cau": "Đình công là sự ngừng việc tạm thời, tự nguyện và có tổ chức của người lao động nhằm đạt được yêu cầu trong quá trình giải quyết tranh chấp lao động và do tổ chức đại diện người lao động có quyền thương lượng tập thể là một bên tranh chấp lao động tập thể tổ chức và lãnh đạo.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Đình công là sự ngừng việc tạm thời, tự nguyện và có tổ chức của người lao động\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"nhằm đạt được yêu cầu trong quá trình giải quyết tranh chấp lao động\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"do tổ chức đại diện người lao động có quyền thương lượng tập thể là một bên tranh chấp lao động tập thể\",\"ap_cho\":[\"m3\",\"m4\"]},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"tổ chức\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"lãnh đạo\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-hlEDa57mJMDN2roP5tKFqQQ",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1219
+   },
+   "input_tokens": 964,
+   "output_tokens": 1383,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_807e82b7deba9ced61bec047"
+   }
+  }
+ }
+}

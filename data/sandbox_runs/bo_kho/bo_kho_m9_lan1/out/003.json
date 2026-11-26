@@ -1,0 +1,376 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D20.K1",
+   "dong": [
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "danh_sach",
+     "trich": [
+      "Hợp đồng lao động phải được giao kết theo một trong các loại sau đây:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Câu dẫn vào danh sách các loại hợp đồng lao động; nội dung từng loại nằm ở các mục con."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D20.K1.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là hợp đồng",
+     "chu_the": {
+      "chu": "Hợp đồng lao động không xác định thời hạn",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Hợp đồng lao động không xác định thời hạn là hợp đồng"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hai bên không xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng",
+     "chu_the": {
+      "chu": "hai bên",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "mà trong đó hai bên không xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D20.K1.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là hợp đồng",
+     "chu_the": {
+      "chu": "Hợp đồng lao động xác định thời hạn",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Hợp đồng lao động xác định thời hạn là hợp đồng"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hai bên xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng",
+     "chu_the": {
+      "chu": "hai bên",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "mà trong đó hai bên xác định thời hạn, thời điểm chấm dứt hiệu lực của hợp đồng"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong thời gian không quá 36 tháng kể từ thời điểm có hiệu lực của hợp đồng",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trong thời gian không quá 36 tháng kể từ thời điểm có hiệu lực của hợp đồng"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm giới hạn thời hạn là bổ ngữ của định nghĩa nên tách thành dòng điều kiện."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D20.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hợp đồng lao động hết hạn",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Khi hợp đồng lao động quy định tại điểm b khoản 1 Điều này hết hạn"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "dieu_kien",
+     "targets": [
+      "BLLD_45-2019.D20.K1.b"
+     ],
+     "gan_vao": 0,
+     "trich": [
+      "điểm b khoản 1 Điều này"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "người lao động vẫn tiếp tục làm việc",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "mà người lao động vẫn tiếp tục làm việc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "bo_qua",
+     "cac_muc_con": "danh_sach",
+     "trich": [
+      "thì thực hiện như sau:"
+     ],
+     "ly_do_llm": {
+      "ma": "cau_dan",
+      "giai_thich": "Phần dẫn vào danh sách cách xử lý; các mục con là quy tắc độc lập."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D20.K2.a",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "ký kết hợp đồng lao động mới",
+     "chu_the": {
+      "chu": "hai bên",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "hai bên phải ký kết hợp đồng lao động mới"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trong thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "được thực hiện theo hợp đồng đã giao kết",
+     "chu_the": {
+      "chu": "quyền, nghĩa vụ và lợi ích của hai bên",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "quyền, nghĩa vụ và lợi ích của hai bên được thực hiện theo hợp đồng đã giao kết"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "'theo hợp đồng đã giao kết' làm nên chính nội dung thực hiện nên giữ trong menh_de."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trong thời gian chưa ký kết hợp đồng lao động mới",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "trong thời gian chưa ký kết hợp đồng lao động mới"
+     ],
+     "quy_tac": "q2"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D20.K2.b",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hết thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Nếu hết thời hạn 30 ngày kể từ ngày hợp đồng lao động hết hạn"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hai bên không ký kết hợp đồng lao động mới",
+     "chu_the": {
+      "chu": "hai bên",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "phu_dinh",
+     "trich": [
+      "mà hai bên không ký kết hợp đồng lao động mới"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "trở thành hợp đồng lao động không xác định thời hạn",
+     "chu_the": {
+      "chu": "hợp đồng đã giao kết",
+      "loai": "C",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "thì hợp đồng đã giao kết theo quy định tại điểm b khoản 1 Điều này trở thành hợp đồng lao động không xác định thời hạn"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ket_luan",
+     "targets": [
+      "BLLD_45-2019.D20.K1.b"
+     ],
+     "gan_vao": 2,
+     "trich": [
+      "điểm b khoản 1 Điều này"
+     ],
+     "quy_tac": "q1"
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D20.K2.c",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "hai bên ký kết hợp đồng lao động mới là hợp đồng lao động xác định thời hạn",
+     "chu_the": {
+      "chu": "hai bên",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trường hợp hai bên ký kết hợp đồng lao động mới là hợp đồng lao động xác định thời hạn"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "ký thêm 01 lần",
+     "chu_the": {
+      "chu": "hai bên",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "duoc",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trường hợp hai bên ký kết hợp đồng lao động mới là hợp đồng lao động xác định thời hạn",
+      "cũng chỉ được ký thêm 01 lần"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "người lao động vẫn tiếp tục làm việc",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "sau đó nếu người lao động vẫn tiếp tục làm việc"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "ký kết hợp đồng lao động không xác định thời hạn",
+     "chu_the": {
+      "chu": "hai bên",
+      "loai": "?",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Trường hợp hai bên",
+      "thì phải ký kết hợp đồng lao động không xác định thời hạn"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "con_tro",
+     "vai": "ngoai_le",
+     "targets": [
+      "BLLD_45-2019.D149.K1",
+      "BLLD_45-2019.D151.K2",
+      "BLLD_45-2019.D177.K4"
+     ],
+     "gan_vao": null,
+     "trich": [
+      "trừ hợp đồng lao động đối với người được thuê làm giám đốc trong doanh nghiệp có vốn nhà nước và trường hợp quy định tại khoản 1 Điều 149, khoản 2 Điều 151 và khoản 4 Điều 177 của Bộ luật này"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm 'trừ' vừa nêu ngoại lệ theo đối tượng (giám đốc) vừa dẫn chiếu ba điều, chặn cả quy tắc nên gom một dòng ngoại lệ."
+     }
+    }
+   ]
+  }
+ ]
+}

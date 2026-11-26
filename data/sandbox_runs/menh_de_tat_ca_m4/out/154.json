@@ -1,0 +1,131 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D159.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bảo đảm",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "điều kiện lao động",
+      "công cụ lao động",
+      "an toàn, vệ sinh lao động"
+     ],
+     "bo_ngu": [
+      {
+       "original_text": "phù hợp với người lao động là người khuyết tật",
+       "scope": "group"
+      }
+     ],
+     "trich": [
+      "Người sử dụng lao động phải bảo đảm về điều kiện lao động, công cụ lao động, an toàn, vệ sinh lao động",
+      "phù hợp với người lao động là người khuyết tật"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Hai nghĩa vụ khác nhau (bảo đảm điều kiện lao động và tổ chức khám sức khỏe) kiểm được riêng."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tổ chức khám sức khỏe định kỳ",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "phù hợp với người lao động là người khuyết tật",
+       "scope": "group"
+      }
+     ],
+     "trich": [
+      "Người sử dụng lao động phải",
+      "tổ chức khám sức khỏe định kỳ",
+      "phù hợp với người lao động là người khuyết tật"
+     ],
+     "quy_tac": "q2",
+     "ly_do_llm": {
+      "ma": "gan_bo_ngu",
+      "giai_thich": "Cụm 'phù hợp với người lao động là người khuyết tật' bổ nghĩa cho cả hai nghĩa vụ nên scope group."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D159.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "tham khảo ý kiến của người lao động là người khuyết tật",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động phải tham khảo ý kiến của người lao động là người khuyết tật"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "quyết định những vấn đề liên quan đến quyền và lợi ích của họ",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động",
+      "khi quyết định những vấn đề liên quan đến quyền và lợi ích của họ"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm 'khi ...' giới hạn hoàn cảnh áp dụng nên tách thành dòng điều kiện."
+     }
+    }
+   ]
+  }
+ ]
+}

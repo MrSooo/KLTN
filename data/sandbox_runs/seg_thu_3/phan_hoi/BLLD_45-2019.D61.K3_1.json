@@ -1,0 +1,30 @@
+{
+ "cau": "Người sử dụng lao động tuyển người vào học nghề, tập nghề để làm việc cho mình thì không phải đăng ký hoạt động giáo dục nghề nghiệp; không được thu học phí; phải ký hợp đồng đào tạo theo quy định của Luật Giáo dục nghề nghiệp.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người sử dụng lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m4\",\"m5\",\"m6\"]},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"tuyển người vào\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"học nghề\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tập nghề\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"để làm việc cho mình\"},{\"id\":\"m4\",\"loai\":\"menh_de\",\"chu\":\"không phải đăng ký hoạt động giáo dục nghề nghiệp\"},{\"id\":\"m5\",\"loai\":\"menh_de\",\"chu\":\"không được thu học phí\"},{\"id\":\"m6\",\"loai\":\"menh_de\",\"chu\":\"phải ký hợp đồng đào tạo theo quy định của Luật Giáo dục nghề nghiệp\"}]}",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-FzEDa9mSIYyB2roPhN2D8Ag",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 25806
+   },
+   "input_tokens": 952,
+   "output_tokens": 868,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_02ee868fb9232a08f0f19bca"
+   }
+  }
+ }
+}

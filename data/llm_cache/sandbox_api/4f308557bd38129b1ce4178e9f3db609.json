@@ -1,0 +1,71 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "deepseek-v4.1-flash",
+ "created": "2026-11-19T21:56:08+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0040\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K1\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết thời hạn.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K1\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0041\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K2\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chấm dứt hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K1\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0042\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K3\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Nội dung của hợp đồng lao động không đúng với nội dung của giấy phép lao động đã được cấp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K1\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0043\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K4\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Làm việc không đúng với nội dung trong giấy phép lao động đã được cấp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K1\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0044\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K5\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K1\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0045\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K6\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Có văn bản thông báo của phía nước ngoài thôi cử lao động là người nước ngoài làm việc tại Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K1\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0046\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K7\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Doanh nghiệp, tổ chức, đối tác phía Việt Nam hoặc tổ chức nước ngoài tại Việt Nam sử dụng lao động là người nước ngoài chấm dứt hoạt động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K1\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0047\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K8\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động bị thu hồi.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K1\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực theo quy định tại các khoản 2, 3, 4, 5, 6 và 7 Điều 156 của Bộ luật Lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"cease_to_have_effect\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0048\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D157\",\n    \"tieu_de_dieu\": \"Cấp, cấp lại, gia hạn, thu hồi giấy phép lao động, giấy xác nhận không thuộc diện cấp giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chính phủ quy định điều kiện, trình tự, thủ tục cấp, cấp lại, gia hạn, thu hồi giấy phép lao động và giấy xác nhận không thuộc diện cấp giấy phép lao động đối với người lao động nước ngoài làm việc tại Việt Nam.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D2.K1\",\n    \"tieu_de_dieu\": \"Đối tượng áp dụng\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam (sau đây viết tắt là người lao động nước ngoài) là công dân nước ngoài vào làm việc tại các vị trí công việc quy định tại Điều 3 Nghị định này, theo một trong các hình thức sau đây:\",\n    \"cac_muc_con\": [\n     \"Thực hiện hợp đồng lao động;\",\n     \"Di chuyển trong nội bộ doanh nghiệp;\",\n     \"Thực hiện các loại hợp đồng hoặc thỏa thuận về kinh tế, xã hội;\",\n     \"Nhà cung cấp dịch vụ theo hợp đồng;\",\n     \"Chào bán dịch vụ;\",\n     \"Tình nguyện viên;\",\n     \"Người chịu trách nhiệm thành lập hiện diện thương mại;\",\n     \"Được điều chuyển từ cơ quan, tổ chức, doanh nghiệp ở nước ngoài sang Việt Nam làm việc trừ trường hợp di chuyển trong nội bộ doanh nghiệp;\",\n     \"Tham gia thực hiện các gói thầu, dự án tại Việt Nam;\",\n     \"Thân nhân thành viên cơ quan đại diện nước ngoài tại Việt Nam được phép làm việc tại Việt Nam theo quy định tại điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên;\",\n     \"Chủ tịch Hội đồng quản trị, thành viên Hội đồng quản trị của công ty cổ phần, chủ sở hữu, thành viên của công ty trách nhiệm hữu hạn có giá trị góp vốn dưới 3 tỷ đồng;\",\n     \"Thực hiện hợp đồng lao động với cơ quan đại diện ngoại giao nước ngoài, tổ chức nước ngoài tại Việt Nam.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"foreign_worker_working_in_vietnam\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0049\",\n   \"a\": {\n    \"unit_id\": \"ND_145-2020.D32.K1\",\n    \"tieu_de_dieu\": \"Trách nhiệm của ngân hàng nhận ký quỹ\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thực hiện đúng các quy định về mở tài khoản ký quỹ, nộp tiền ký quỹ, sử dụng tài khoản ký quỹ của doanh nghiệp cho thuê lại và các quy định liên quan đến tài khoản này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"ND_219-2025.D30.K3\",\n    \"tieu_de_dieu\": \"Trường hợp bị thu hồi giấy phép lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài trong quá trình làm việc ở Việt Nam không thực hiện đúng quy định của pháp luật Việt Nam mà bị khởi tố, truy cứu trách nhiệm hình sự.\"\n   },\n   \"vi_tu_chung\": [\n    \"comply_with_relevant_regulations\"\n   ]\n  }\n ]\n}\n",
+ "model": "deepseek-v4.1-flash",
+ "request_id": "req_65b6e6696f41eee365488ab8",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0040",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0041",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0042",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0043",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0044",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0045",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0046",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0047",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0048",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   },
+   {
+    "cap_id": "P0049",
+    "ket_qua": "khong",
+    "bang_chung": ""
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 45,
+  "output_tokens": 260,
+  "cost_vnd": 3.4
+ },
+ "boc_rao": true
+}

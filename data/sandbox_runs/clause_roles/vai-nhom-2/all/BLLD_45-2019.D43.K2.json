@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D43.K2",
+ "phien_ban": "vai-nhom-2",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D43.K2\",\n \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động khi chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động hiện tại và người sử dụng lao động kế tiếp có trách nhiệm thực hiện phương án sử dụng lao động đã được thông qua.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"Người sử dụng lao động hiện tại và người sử dụng lao động kế tiếp có trách nhiệm thực hiện phương án sử dụng lao động đã được thông qua\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D43.K2\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"doan\": [\"thực hiện phương án sử dụng lao động đã được thông qua\"],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"phai\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"chu\": \"Người sử dụng lao động hiện tại và người sử dụng lao động kế tiếp\",\n        \"loai\": \"E\"\n      },\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795542922463-298b600a",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 666
+   },
+   "input_tokens": 3709,
+   "output_tokens": 146,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_55e63da61e188fd8794fdede"
+   }
+  }
+ }
+}

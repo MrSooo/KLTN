@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Không được bố trí theo đúng công việc, địa điểm làm việc hoặc không được bảo đảm điều kiện làm việc theo thỏa thuận, ⟦DC1⟧;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Không được bố trí theo đúng công việc, địa điểm làm việc\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"không được bảo đảm điều kiện làm việc theo thỏa thuận\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795538325049-13479e30",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 683
+   },
+   "input_tokens": 2409,
+   "output_tokens": 66,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_a0f0c0ca67b64c17918acb6d"
+   }
+  }
+ }
+}

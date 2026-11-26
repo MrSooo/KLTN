@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Nơi nào sử dụng người cai thầu hoặc người có vai trò trung gian tương tự thì người sử dụng lao động là chủ chính phải có danh sách và địa chỉ của những người này kèm theo danh sách những người lao động làm việc với họ và phải bảo đảm việc họ tuân thủ quy định của pháp luật về trả lương, an toàn, vệ sinh lao động.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Nơi nào sử dụng người cai thầu hoặc người có vai trò trung gian tương tự\"},{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"người sử dụng lao động là chủ chính\",\"ap_cho\":[\"m2\",\"m3\"]},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"phải có danh sách và địa chỉ của những người này kèm theo danh sách những người lao động làm việc với họ\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"phải bảo đảm việc họ tuân thủ quy định của pháp luật về trả lương, an toàn, vệ sinh lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795539125226-63b70228",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1692
+   },
+   "input_tokens": 2451,
+   "output_tokens": 160,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_0d10761b3218783d2ee89c06"
+   }
+  }
+ }
+}

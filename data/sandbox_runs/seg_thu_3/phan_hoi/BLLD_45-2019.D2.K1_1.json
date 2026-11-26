@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động, người học nghề, người tập nghề và người làm việc không có quan hệ lao động.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Người lao động, người học nghề, người tập nghề và người làm việc không có quan hệ lao động\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-9R0Da_ntEYP81e8Pzs2JuAY",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 811
+   },
+   "input_tokens": 922,
+   "output_tokens": 858,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_d81b564acef234f89455e573"
+   }
+  }
+ }
+}

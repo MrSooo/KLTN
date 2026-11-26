@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Thời điểm bắt đầu đình công, địa điểm đình công;",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"Thời điểm bắt đầu đình công, địa điểm đình công\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540326392-b6f240d9",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 406
+   },
+   "input_tokens": 2386,
+   "output_tokens": 37,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_0f9ed0776ac289deb8552d26"
+   }
+  }
+ }
+}

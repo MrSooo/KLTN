@@ -1,0 +1,31 @@
+{
+ "cau_gui": "Khi thanh tra đột xuất theo quyết định của người có thẩm quyền trong trường hợp khẩn cấp có nguy cơ đe dọa an toàn, tính mạng, sức khỏe, danh dự, nhân phẩm của người lao động tại nơi làm việc thì không cần báo trước.",
+ "phien_ban": "tach-cau-1",
+ "model": "trikiet2045/gemini-3.8-flash-high",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n  \"doan\": [\n    {\n      \"id\": \"m1\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"thanh tra đột xuất theo quyết định của người có thẩm quyền\"\n    },\n    {\n      \"id\": \"m2\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"khẩn cấp có nguy cơ đe dọa an toàn, tính mạng, sức khỏe, danh dự, nhân phẩm của người lao động tại nơi làm việc\"\n    },\n    {\n      \"id\": \"m3\",\n      \"loai\": \"menh_de\",\n      \"chu\": \"không cần báo trước\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1795540519351-f9af8517",
+  "model": "trikiet2045/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1961
+   },
+   "input_tokens": 2431,
+   "output_tokens": 151,
+   "x_ckey": {
+    "cost": 10.4,
+    "cost_is_estimate": false,
+    "request_id": "req_c5a2b04929f04ea44ed9bf1e"
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "cau": "Trong trường hợp này, người sử dụng lao động là chủ chính có quyền yêu cầu người cai thầu hoặc người có vai trò trung gian tương tự đền bù hoặc yêu cầu cơ quan nhà nước có thẩm quyền giải quyết tranh chấp theo quy định của pháp luật.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Trong trường hợp này, người sử dụng lao động là chủ chính có quyền\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"yêu cầu người cai thầu hoặc người có vai trò trung gian tương tự đền bù\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"yêu cầu cơ quan nhà nước có thẩm quyền giải quyết tranh chấp theo quy định của pháp luật\"}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-hjwDa9KmFMHv2roP3erj6QU",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 627
+   },
+   "input_tokens": 954,
+   "output_tokens": 748,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_9dd33dea7ab120d7997502b4"
+   }
+  }
+ }
+}

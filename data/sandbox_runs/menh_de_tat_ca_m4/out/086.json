@@ -1,0 +1,151 @@
+{
+ "units": [
+  {
+   "unit_id": "BLLD_45-2019.D90.K1",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "là tiền lương",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Tiền lương là số tiền"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Định nghĩa khái niệm: kết luận 'là tiền lương' ứng với các dấu hiệu phía sau."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "trả cho người lao động",
+     "chu_the": {
+      "chu": "người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "bo_ngu": [
+      {
+       "original_text": "theo thỏa thuận",
+       "scope": "this_clause"
+      },
+      {
+       "original_text": "để thực hiện công việc",
+       "scope": "this_clause"
+      }
+     ],
+     "trich": [
+      "số tiền mà người sử dụng lao động trả cho người lao động"
+     ],
+     "quy_tac": "q1"
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "bao gồm mức lương, phụ cấp lương và các khoản bổ sung khác",
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "liet_ke": [
+      "mức lương theo công việc hoặc chức danh",
+      "phụ cấp lương",
+      "các khoản bổ sung khác"
+     ],
+     "trich": [
+      "bao gồm mức lương theo công việc hoặc chức danh, phụ cấp lương và các khoản bổ sung khác"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "Các thành phần của tiền lương gom vào liet_ke của cùng một vị ngữ 'bao gồm'."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D90.K2",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "thấp hơn mức lương tối thiểu",
+     "chu_the": {
+      "chu": "Mức lương theo công việc hoặc chức danh",
+      "loai": "A",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "cam",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Mức lương theo công việc hoặc chức danh không được",
+      "thấp hơn mức lương tối thiểu"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "'không được + tính từ so sánh' là cấm, tách chữ phương thức khỏi lõi mệnh đề."
+     }
+    }
+   ]
+  },
+  {
+   "unit_id": "BLLD_45-2019.D90.K3",
+   "dong": [
+    {
+     "loai": "menh_de",
+     "vai": "ket_luan",
+     "menh_de": "bảo đảm trả lương bình đẳng, không phân biệt giới tính",
+     "chu_the": {
+      "chu": "Người sử dụng lao động",
+      "loai": "E",
+      "nguon": "chinh"
+     },
+     "doi_so": [
+      {
+       "loai": "W"
+      }
+     ],
+     "phuong_thuc": "phai",
+     "cuc": "khang_dinh",
+     "trich": [
+      "Người sử dụng lao động phải bảo đảm trả lương bình đẳng, không phân biệt giới tính"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "giu_chung",
+      "giai_thich": "'bình đẳng' và 'không phân biệt giới tính' là một yêu cầu trả lương duy nhất."
+     }
+    },
+    {
+     "loai": "menh_de",
+     "vai": "dieu_kien",
+     "menh_de": "làm công việc có giá trị như nhau",
+     "chu_the": {
+      "chu": "người lao động",
+      "loai": "W",
+      "nguon": "chinh"
+     },
+     "phuong_thuc": "khong",
+     "cuc": "khang_dinh",
+     "trich": [
+      "người lao động làm công việc có giá trị như nhau"
+     ],
+     "quy_tac": "q1",
+     "ly_do_llm": {
+      "ma": "tach",
+      "giai_thich": "Cụm 'đối với ...' giới hạn đối tượng so sánh nên là dòng điều kiện riêng."
+     }
+    }
+   ]
+  }
+ ]
+}

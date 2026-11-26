@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D27.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D27.K2\",\n \"tieu_de_dieu\": \"1:Kết 2:thúc 3:thời 4:gian 5:thử 6:việc\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trong thời gian thử việc, mỗi bên có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết mà không cần báo trước và không phải bồi thường.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Trong 2:thời 3:gian 4:thử 5:việc\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:mỗi 2:bên\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:quyền 3:hủy 4:bỏ 5:hợp 6:đồng 7:thử 8:việc 9:hoặc 10:hợp 11:đồng 12:lao 13:động 14:đã 15:giao 16:kết\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:không 2:cần 3:báo 4:trước\",\n     \"noi_truoc\": [\n      \"mà\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:không 2:phải 3:bồi 4:thường\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D27.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.c1:1-5\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c2:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:3-4\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c2:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"liet_ke\": [\n    [\n     \"s1.m1:5-8\"\n    ],\n    [\n     \"s1.m1:10-16\"\n    ]\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:3-4\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c2:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:3-4\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c2:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-c301146d8366484f88c825e1ce388b09",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 3443,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2364
+   },
+   "input_tokens": 2637,
+   "output_tokens": 3040,
+   "prompt_tokens_details": {
+    "cached_tokens": 3443
+   },
+   "x_ckey": {
+    "cost": 14.64,
+    "cost_is_estimate": false,
+    "request_id": "req_9792f129c3b7b0e0b1ba8c95"
+   }
+  }
+ }
+}

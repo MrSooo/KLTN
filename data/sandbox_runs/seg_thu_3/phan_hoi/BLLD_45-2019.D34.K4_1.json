@@ -1,0 +1,30 @@
+{
+ "cau": "Người lao động bị kết án phạt tù nhưng không được hưởng án treo hoặc không thuộc trường hợp được trả tự do theo quy định tại khoản 5 Điều 328 của Bộ luật Tố tụng hình sự, tử hình hoặc bị cấm làm công việc ghi trong hợp đồng lao động theo bản án, quyết định của Tòa án đã có hiệu lực pháp luật.",
+ "phien_ban": "seg-thu-3",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\"doan\":[{\"id\":\"c1\",\"loai\":\"dung_chung\",\"chu\":\"Người lao động\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]},{\"id\":\"c2\",\"loai\":\"dung_chung\",\"chu\":\"bị kết án\",\"ap_cho\":[\"m1\",\"m2\"]},{\"id\":\"m1\",\"loai\":\"menh_de\",\"chu\":\"phạt tù nhưng không được hưởng án treo hoặc không thuộc trường hợp được trả tự do theo quy định tại khoản 5 Điều 328 của Bộ luật Tố tụng hình sự\"},{\"id\":\"m2\",\"loai\":\"menh_de\",\"chu\":\"tử hình\"},{\"id\":\"m3\",\"loai\":\"menh_de\",\"chu\":\"bị cấm làm công việc ghi trong hợp đồng lao động\"},{\"id\":\"c3\",\"loai\":\"dung_chung\",\"chu\":\"theo bản án, quyết định của Tòa án đã có hiệu lực pháp luật\",\"ap_cho\":[\"m1\",\"m2\",\"m3\"]}]}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-EikDa4PuNcnI1e8PhezL-Qk",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 9518
+   },
+   "input_tokens": 977,
+   "output_tokens": 884,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_77d3272023a30e4701a166e9"
+   }
+  }
+ }
+}
