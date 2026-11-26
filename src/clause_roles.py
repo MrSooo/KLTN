@@ -746,6 +746,8 @@ def goi(bo, thu_muc=None):
     print(f"tuyến dùng cho đợt này: {models}", flush=True)
     (RUN_DIR / PROMPT_VERSION / "system.txt").write_text(SYSTEM, encoding="utf-8")
     hong = [0]
+    # [27/11, advisor] khoản mà tuyến lỗi lặp lại (như D101.K1: 500 ở cả ba tuyến) thì bỏ qua để không chặn cả lượt; `nhap` ghi nó là thiếu
+    bo_qua = {x.strip() for x in os.environ.get("KLTN_BO_QUA", "").split(",") if x.strip()}
 
     def one(item):
         u, _ctx, msg, _segmap = item  # noqa: F841 (_ctx, _segmap dùng ở lần sửa)
@@ -754,6 +756,8 @@ def goi(bo, thu_muc=None):
             return u, "co_san"
         if hong[0] >= DUNG_SAU_LOI:
             return u, "bỏ qua: máy chủ đang lỗi"
+        if u in bo_qua:
+            return u, "bỏ qua: lỗi tuyến lặp lại ở khoản này (KLTN_BO_QUA)"
         time.sleep(GIAN_CACH)
         text = user_text(msg)
         data, model, st, tat = _goi_mot(text, models, key, base)

@@ -1,6 +1,13 @@
 # Trạng thái dự án
 
-Cập nhật lần cuối: 26/11/2026. Nhánh làm việc: `v3_refactor`.
+Cập nhật lần cuối: 27/11/2026. Nhánh làm việc: `v3_refactor`.
+
+## 0. Đang chạy (A63, đêm 27/11): KB `tach2`
+Gói A63 (user duyệt 26/11, chi tiết `docs/decisions.md` A63): lượt 2 của 1.6A-v2 `vai-nhom-4` (LLM ghi khoảng âm tiết, máy lấy chữ), 1.8 bỏ cả quy tắc có dòng lỗi, 1.6B `names-2.3` (láng giềng embedding), 1.9 `hoi-dap-3`; bộ 34 câu `blld_questions.json` đóng băng; luật giữ: `tach2` đúng nhiều câu hơn `ckey` cùng mã và cùng model dịch, 8 câu đối chứng không tụt.
+- Sửa thêm 27/11 (user duyệt): cổng lượt 2 bắt khoảng hụt một âm tiết (`hut_cuoi`); 1.8 dòng bị bác mang chủ thể của quy tắc bị chặn; nhánh ckey không gọi dồn (không thử lại lỗi HTTP, dừng ở lỗi tuyến đầu tiên, nghỉ 5 giây mỗi lượt).
+- Tuyến LLM: `martha02091945` (117 khoản đầu), `daongocson12022004` (đến D149.K3, rồi 404), `dungcsnd113/gemini-flash-3.8` với khoá mới (phần còn lại và mọi bước sau, cả dịch 1.9 cho 3 KB). Lỗi 500 của ckey là "upstream AI gateway temporarily unavailable" (tạm thời).
+- Chạy qua đêm bằng script ngoài repo: lượt 2 (nghỉ 60 giây khi lỗi tuyến; khoản lỗi 3 lần thì bỏ qua; hạn 04:30), rồi tự chạy bước 2→8: nhập 1.6A, 1.6B, 1.7, dựng KB `tach2` (dựng lại `tach`, `ckey` bằng mã hiện tại), dịch 34 câu 3 KB × 3 lần, chấm, bộ test; commit và push sau mỗi bước. Nhật ký, xem lại 1.6A, điểm 34 câu: `docs/run_reports_tach2/a63/`.
+- Bộ test đầy đủ 27/11: 17/18; `test_qa_server_offline_on_subset_dev_question` lỗi có từ trước (cache dev tập con hết hiệu lực sau A62 `live_heads`), user chọn để sau.
 
 ## 1. Tóm tắt
 Giai đoạn 1 (dựng KB gốc từ BLLĐ): các bước 1.1 đến 1.5 đã xong; 1.6B đến 1.9 đã có mã và chạy thông trên tập con `lldnn` (A41: `python -I src/run_all.py --tap-con lldnn --llm replay`); cả kho còn chờ chạy 1.6A đủ 204 lô. Giai đoạn 2 (cập nhật khi có văn bản mới): bước 2.2 đến 2.4 đã có mã cho kho hiện tại; 2.5 đến 2.7 có mã và chạy thông trên tập con với tri thức BLLĐ (A42), tri thức của nghị định chờ phiên LLM; 2.1 chưa làm. Thiết kế từng bước: `docs/design/pipeline_design.md`. Kế hoạch tiếp theo: `docs/roadmap.md`.
