@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D21.K1.k",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D21.K1.k\",\n \"tieu_de_dieu\": \"1:Nội 2:dung 3:hợp 4:đồng 5:lao 6:động\",\n \"khoan_cha\": \"1:Hợp 2:đồng 3:lao 4:động 5:phải 6:có 7:những 8:nội 9:dung 10:chủ 11:yếu 12:sau 13:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Đào tạo, bồi dưỡng, nâng cao trình độ, kỹ năng nghề.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Đào 2:tạo\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:bồi 2:dưỡng\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:nâng 2:cao\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:trình 2:độ, 3:kỹ 4:năng 5:nghề\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D21.K1.k\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-2\",\n    \"s1.c1:1-5\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-4\"\n    ],\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-2\",\n    \"s1.c1:1-5\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-4\"\n    ],\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:1-2\",\n    \"s1.c1:1-5\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-4\"\n    ],\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-bb11996699a242d6aecf506dc6c79dec",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1920
+   },
+   "input_tokens": 5923,
+   "output_tokens": 2408,
+   "x_ckey": {
+    "cost": 13.38,
+    "cost_is_estimate": false,
+    "request_id": "req_6fcef487a433951790428710"
+   }
+  }
+ }
+}

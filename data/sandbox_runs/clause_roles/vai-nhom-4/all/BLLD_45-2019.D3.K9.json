@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D3.K9",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D3.K9\",\n \"tieu_de_dieu\": \"1:Giải 2:thích 3:từ 4:ngữ\",\n \"khoan_cha\": \"1:Trong 2:Bộ 3:luật 4:này, 5:các 6:từ 7:ngữ 8:dưới 9:đây 10:được 11:hiểu 12:như 13:sau:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Quấy rối tình dục tại nơi làm việc là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Quấy 2:rối 3:tình 4:dục 5:tại 6:nơi 7:làm 8:việc 9:là 10:hành 11:vi 12:có 13:tính 14:chất 15:tình 16:dục 17:của 18:bất 19:kỳ 20:người 21:nào 22:đối 23:với 24:người 25:khác 26:tại 27:nơi 28:làm 29:việc 30:mà 31:không 32:được 33:người 34:đó 35:mong 36:muốn 37:hoặc 38:chấp 39:nhận\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Nơi làm việc là bất kỳ nơi nào mà người lao động thực tế làm việc theo thỏa thuận hoặc phân công của người sử dụng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Nơi 2:làm 3:việc 4:là 5:bất 6:kỳ 7:nơi 8:nào 9:mà 10:người 11:lao 12:động 13:thực 14:tế 15:làm 16:việc 17:theo 18:thỏa 19:thuận 20:hoặc 21:phân 22:công 23:của 24:người 25:sử 26:dụng 27:lao 28:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D3.K9\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:10-25\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:26-29\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:32-39\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:9\",\n    \"s1.m1:1-8\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:5-8\",\n    \"s2.m1:13-16\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.m1:10-12\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:17-28\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.m1:10-12\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:4\",\n    \"s2.m1:1-3\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-864ec48c61434df991f6e55aa65ddc28",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6412
+   },
+   "input_tokens": 6197,
+   "output_tokens": 2704,
+   "x_ckey": {
+    "cost": 14.29,
+    "cost_is_estimate": false,
+    "request_id": "req_8699c223e90059ac15cf4851"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D27.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D27.K1\",\n \"tieu_de_dieu\": \"1:Kết 2:thúc 3:thời 4:gian 5:thử 6:việc\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khi kết thúc thời gian thử việc, người sử dụng lao động phải thông báo kết quả thử việc cho người lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:kết 2:thúc 3:thời 4:gian 5:thử 6:việc\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:người 2:sử 3:dụng 4:lao 5:động 6:phải 7:thông 8:báo 9:kết 10:quả 11:thử 12:việc 13:cho 14:người 15:lao 16:động\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Trường hợp thử việc đạt yêu cầu thì người sử dụng lao động tiếp tục thực hiện hợp đồng lao động đã giao kết đối với trường hợp thỏa thuận thử việc trong hợp đồng lao động hoặc phải giao kết hợp đồng lao động đối với trường hợp giao kết hợp đồng thử việc.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:thử 2:việc 3:đạt 4:yêu 5:cầu\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s2.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:người 2:sử 3:dụng 4:lao 5:động\",\n     \"ap_cho\": [\n      \"s2.m2\",\n      \"s2.m3\"\n     ],\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tiếp 2:tục 3:thực 4:hiện 5:hợp 6:đồng 7:lao 8:động 9:đã 10:giao 11:kết 12:đối 13:với 14:trường 15:hợp 16:thỏa 17:thuận 18:thử 19:việc 20:trong 21:hợp 22:đồng 23:lao 24:động\"\n    },\n    {\n     \"id\": \"s2.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:phải 2:giao 3:kết 4:hợp 5:đồng 6:lao 7:động 8:đối 9:với 10:trường 11:hợp 12:giao 13:kết 14:hợp 15:đồng 16:thử 17:việc\",\n     \"noi_truoc\": [\n      \"hoặc\"\n     ]\n    }\n   ]\n  },\n  {\n   \"chu\": \"Trường hợp thử việc không đạt yêu cầu thì chấm dứt hợp đồng lao động đã giao kết hoặc hợp đồng thử việc.\",\n   \"doan\": [\n    {\n     \"id\": \"s3.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:thử 2:việc 3:không 4:đạt 5:yêu 6:cầu\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s3.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:chấm 2:dứt 3:hợp 4:đồng 5:lao 6:động 7:đã 8:giao 9:kết 10:hoặc 11:hợp 12:đồng 13:thử 14:việc\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D27.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-6\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:7-12\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m2:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:1-5\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"loi\": [\n    \"s2.m2:12-24\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"loi\": [\n    \"s2.m2:1-11\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.c1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:1-5\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q3\"\n  },\n  {\n   \"nguon\": \"s2.m3\",\n   \"loi\": [\n    \"s2.m3:8-17\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q3\"\n  },\n  {\n   \"nguon\": \"s2.m3\",\n   \"loi\": [\n    \"s2.m3:2-7\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.c1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q3\"\n  },\n  {\n   \"nguon\": \"s3.m1\",\n   \"loi\": [\n    \"s3.m1:1-2\",\n    \"s3.m1:4-6\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"quy_tac\": \"q4\"\n  },\n  {\n   \"nguon\": \"s3.m2\",\n   \"loi\": [\n    \"s3.m2:1-2\"\n   ],\n   \"liet_ke\": [\n    [\n     \"s3.m2:3-9\"\n    ],\n    [\n     \"s3.m2:11-14\"\n    ]\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q4\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-3ea739dfe95849598dfafb5980b86754",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3496
+   },
+   "input_tokens": 6668,
+   "output_tokens": 4681,
+   "x_ckey": {
+    "cost": 18.22,
+    "cost_is_estimate": false,
+    "request_id": "req_e9c5628d90b967745506a5e3"
+   }
+  }
+ }
+}

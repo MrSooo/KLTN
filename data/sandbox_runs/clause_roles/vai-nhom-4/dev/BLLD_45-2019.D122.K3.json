@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D122.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D122.K3\",\n \"tieu_de_dieu\": \"1:Nguyên 2:tắc, 3:trình 4:tự, 5:thủ 6:tục 7:xử 8:lý 9:kỷ 10:luật 11:lao 12:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khi một người lao động đồng thời có nhiều hành vi vi phạm kỷ luật lao động thì chỉ áp dụng hình thức kỷ luật cao nhất tương ứng với hành vi vi phạm nặng nhất.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:một 2:người 3:lao 4:động 5:đồng 6:thời 7:có 8:nhiều 9:hành 10:vi 11:vi 12:phạm 13:kỷ 14:luật 15:lao 16:động\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:chỉ 2:áp 3:dụng 4:hình 5:thức 6:kỷ 7:luật 8:cao 9:nhất 10:tương 11:ứng 12:với 13:hành 14:vi 15:vi 16:phạm 17:nặng 18:nhất\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D122.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:5-16\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-4\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-18\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "Rs4Ha5H2DPy52roPuKeN4Qc",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 932
+   },
+   "input_tokens": 5960,
+   "output_tokens": 1203,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_520586ec02189deac8bf0925"
+   }
+  }
+ }
+}

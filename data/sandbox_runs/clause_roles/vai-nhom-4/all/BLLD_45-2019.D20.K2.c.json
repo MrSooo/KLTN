@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D20.K2.c",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D20.K2.c\",\n \"tieu_de_dieu\": \"1:Loại 2:hợp 3:đồng 4:lao 5:động\",\n \"khoan_cha\": \"1:Khi 2:hợp 3:đồng 4:lao 5:động 6:quy 7:định 8:tại 9:điểm 10:b 11:khoản 12:1 13:Điều 14:này 15:hết 16:hạn 17:mà 18:người 19:lao 20:động 21:vẫn 22:tiếp 23:tục 24:làm 25:việc 26:thì 27:thực 28:hiện 29:như 30:sau:\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 Điều 149\",\n   \"dich\": \"BLLD_45-2019.D149.K1\"\n  },\n  {\n   \"cum\": \"khoản 2 Điều 151\",\n   \"dich\": \"BLLD_45-2019.D151.K2\"\n  },\n  {\n   \"cum\": \"khoản 4 Điều 177 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D177.K4\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp hai bên ký kết hợp đồng lao động mới là hợp đồng lao động xác định thời hạn thì cũng chỉ được ký thêm 01 lần, sau đó nếu người lao động vẫn tiếp tục làm việc thì phải ký kết hợp đồng lao động không xác định thời hạn, trừ hợp đồng lao động đối với người được thuê làm giám đốc trong doanh nghiệp có vốn nhà nước và trường hợp quy định tại khoản 1 Điều 149, khoản 2 Điều 151 và khoản 4 Điều 177 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:hai 2:bên\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m4\"\n     ],\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:ký 2:kết 3:hợp 4:đồng 5:lao 6:động 7:mới 8:là 9:hợp 10:đồng 11:lao 12:động 13:xác 14:định 15:thời 16:hạn\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:cũng 2:chỉ 3:được 4:ký 5:thêm 6:01 7:lần\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:người 2:lao 3:động 4:vẫn 5:tiếp 6:tục 7:làm 8:việc\",\n     \"noi_truoc\": [\n      \"sau đó\",\n      \"nếu\"\n     ]\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:phải 2:ký 3:kết 4:hợp 5:đồng 6:lao 7:động 8:không 9:xác 10:định 11:thời 12:hạn\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:hợp 2:đồng 3:lao 4:động 5:đối 6:với 7:người 8:được 9:thuê 10:làm 11:giám 12:đốc 13:trong 14:doanh 15:nghiệp 16:có 17:vốn 18:nhà 19:nước 20:và 21:trường 22:hợp 23:quy 24:định 25:tại 26:khoản 27:1 28:Điều 29:149, 30:khoản 31:2 32:Điều 33:151 34:và 35:khoản 36:4 37:Điều 38:177 39:của 40:Bộ 41:luật 42:này\",\n     \"noi_truoc\": [\n      \"trừ\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D20.K2.c\",\n \"ngoai_le\": [\n  \"BLLD_45-2019.D149.K1\",\n  \"BLLD_45-2019.D151.K2\",\n  \"BLLD_45-2019.D177.K4\"\n ],\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-16\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:2\",\n    \"s1.m2:4-7\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m5\",\n   \"loi\": [\n    \"s1.m5:1-19\"\n   ],\n   \"vai\": \"ngoai_le\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-16\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:4-8\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m3:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"loi\": [\n    \"s1.m4:2-12\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s1.m5\",\n   \"loi\": [\n    \"s1.m5:1-19\"\n   ],\n   \"vai\": \"ngoai_le\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-253be05441c24b4fb8902e535e233591",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 6169
+   },
+   "input_tokens": 6840,
+   "output_tokens": 7223,
+   "x_ckey": {
+    "cost": 22.58,
+    "cost_is_estimate": false,
+    "request_id": "req_f96caffec582c0952aebc63b"
+   }
+  }
+ }
+}

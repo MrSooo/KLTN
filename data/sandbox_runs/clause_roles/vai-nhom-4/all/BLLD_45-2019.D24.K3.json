@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D24.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D24.K3\",\n \"tieu_de_dieu\": \"1:Thử 2:việc\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Không áp dụng thử việc đối với người lao động giao kết hợp đồng lao động có thời hạn dưới 01 tháng.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Không 2:áp 3:dụng 4:thử 5:việc 6:đối 7:với 8:người 9:lao 10:động 11:giao 12:kết 13:hợp 14:đồng 15:lao 16:động 17:có 18:thời 19:hạn 20:dưới 21:01 22:tháng\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D24.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:4-5\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong_ap_dung\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:6-22\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-5b13b00e63b7404493b1f841dd48e9da",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4613
+   },
+   "input_tokens": 5763,
+   "output_tokens": 736,
+   "x_ckey": {
+    "cost": 10.43,
+    "cost_is_estimate": false,
+    "request_id": "req_7b556ca0e280be5f3bf65466"
+   }
+  }
+ }
+}

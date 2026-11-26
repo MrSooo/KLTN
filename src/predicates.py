@@ -20,7 +20,11 @@ KHÔNG có live: phần LLM chạy bằng phiên Claude Code (A36), như `names-
 import argparse
 import collections
 import datetime
+import gzip
 import json
+import math
+import operator
+import unicodedata
 import sys
 from pathlib import Path
 
@@ -41,8 +45,17 @@ TASK, ROLE = "predicates", "ten"
 #     tham số không giúp gì cho 1.8 mà chặn cùng sự kiện viết có/không có chủ thể (31/48 nhóm cùng mặt chữ khác tên ở `tach` names-2.1).
 PROMPT_VERSION = llm_client.load_config().get("ten.prompt_version", "names-2.1")
 LOOSE = PROMPT_VERSION != "names-2.1"
-if PROMPT_VERSION not in ("names-2.1", "names-2.2"):
-    raise SystemExit(f"ten.prompt_version = {PROMPT_VERSION!r}, chỉ nhận names-2.1, names-2.2")
+if PROMPT_VERSION not in ("names-2.1", "names-2.2", "names-2.3"):
+    raise SystemExit(f"ten.prompt_version = {PROMPT_VERSION!r}, chỉ nhận names-2.1, names-2.2, names-2.3")
+# [A63] names-2.3 = names-2.2 cộng ứng viên theo NGHĨA: chữ đã có tên gần nhất theo embedding (ckey `text-embedding-3-small`, 256 chiều)
+# đứng đầu danh sách ứng viên, trước hàng xóm theo Điều/dẫn chiếu/chữ chung. Vì sao: hàng xóm cũ xếp chữ cùng Điều trước, nên chữ cùng nghĩa ở
+# Điều khác ("sa thải" / "bị xử lý kỷ luật sa thải") thường không lọt 20 ứng viên, LLM đặt tên mới. Embedding chỉ gợi ý; LLM quyết reuse,
+# cổng như cũ. Lời nhắc không đổi chữ (đổi phiên bản vì danh sách ứng viên đổi).
+SEMANTIC = PROMPT_VERSION == "names-2.3"
+EMBED_MODEL, EMBED_DIM = "text-embedding-3-small", 256
+EMBED_PATH = corpus.ROOT / "data" / "llm_cache" / "embeddings" / f"{EMBED_MODEL}-{EMBED_DIM}.json.gz"
+SEM_TOP = 30  # láng giềng nghĩa giữ cho mỗi chữ (mọi chữ, lọc "đã có tên" lúc dựng lượt)
+SEM_CAP = 10  # tối đa ngần này TÊN đến từ láng giềng nghĩa, phần còn lại của CANDIDATE_CAP là hàng xóm cũ
 EFFORT = P.sandbox_model()[1]  # A39: effort high, tuần tự; khoá hop_cat.effort (A46). Model của 1.6B là ten.model (nằm trong khoá cache)
 SUBAGENT_MODEL = P.ALIAS.get(llm_client.load_config()[f"{ROLE}.model"], llm_client.load_config()[f"{ROLE}.model"])
 CANDIDATE_CAP = 20                          # A39: 12 lên 20 (phỏng đoán: mệnh đề ngắn hơn cụm nên 12 dễ cắt mất ứng viên đúng; chưa đo)
@@ -94,6 +107,19 @@ def strip_copula(span):
     return span
 
 
+def bad_rows(dong, loi):
+    """[A63, user chốt 26/11: "dòng điều kiện lỗi thì bỏ cả quy tắc"] Chỉ số các dòng 1.6A KHÔNG dùng. Trước đây chỉ bỏ đúng dòng lỗi, nên
+    quy tắc của nhóm vẫn dựng với ít điều kiện hơn văn bản (nới quy tắc). Nay: dòng lỗi thuộc quy_tac nào thì bỏ mọi dòng của quy_tac đó;
+    dòng lỗi không có quy_tac, hay lỗi cấp đơn vị (chỉ số None, ví dụ thiếu ngoại lệ), thì bỏ cả đơn vị. Thà không trả lời còn hơn sai."""
+    bad = {i for i, _ in loi}
+    if None in bad:
+        return set(range(len(dong)))
+    qs = {dong[i].get("quy_tac") for i in bad if isinstance(i, int) and i < len(dong)}
+    if None in qs:
+        return set(range(len(dong)))
+    return bad | {i for i, d in enumerate(dong) if d.get("quy_tac") in qs}
+
+
 def load_rows(ctxs):
     """Dòng của 1.6A, theo thứ tự đơn vị của ngữ cảnh 1.6A. -> (rows, số dòng bỏ vì lỗi cổng 1.6A).
     Mỗi dòng: unit, loai, span (menh_de hoặc trích của con_tro), params (chữ ký), role (vai), targets (chỉ con_tro), mode (phuong_thuc), cuc, quy_tac,
@@ -108,8 +134,9 @@ def load_rows(ctxs):
         raise SystemExit(f"1.6A chưa đủ: thiếu {len(missing)} đơn vị (ví dụ {missing[:3]}); nhập đủ rồi chạy lại")
     rows, dropped = [], 0
     for uid in ctxs:
-        bad = {i for i, _ in units[uid]["loi"]}
-        for i, d in enumerate(units[uid]["dong"]):
+        dong = units[uid]["dong"]
+        bad = {i for i, _ in units[uid]["loi"]}  # chỉ dòng lỗi không được đặt tên; bỏ cả quy tắc làm ở 1.8 (bad_rows, A63) để cache 1.6B không đổi
+        for i, d in enumerate(dong):
             if i in bad:
                 dropped += 1
                 continue
@@ -187,8 +214,19 @@ class Book(cn.Book):
 
 
 def candidates(words, nb, book, i):
-    """Như `concepts_names.candidates`, lọc bằng `compatible` và trần CANDIDATE_CAP."""
+    """Như `concepts_names.candidates`, lọc bằng `compatible` và trần CANDIDATE_CAP. [A63] names-2.3: tối đa SEM_CAP tên từ láng giềng nghĩa
+    đứng trước."""
     pool = [j for j, _ in nb.ranked(i) if j in book.name_of][:cn.NEIGHBOR_CAP]
+    sem = getattr(nb, "sem", None)
+    if sem is not None:
+        first, names = [], set()
+        for j in sem[i]:
+            if j in book.name_of and book.name_of[j] not in names and compatible(book.name_params[book.name_of[j]], words[i]["params"]):
+                names.add(book.name_of[j])
+                first.append(j)
+                if len(names) == SEM_CAP:
+                    break
+        pool = first + [j for j in pool if j not in first]
     out, seen = [], set()
     for j in pool:
         name = book.name_of[j]
@@ -392,6 +430,66 @@ def run_rounds(client, run, merge=True):
         run.apply(rec["output"])
 
 
+# ---- [A63] embedding cho ứng viên theo nghĩa ----
+
+def _embed_key(text):
+    return unicodedata.normalize("NFC", text or "").strip().lower()
+
+
+def load_embeddings():
+    if not EMBED_PATH.exists():
+        return {}
+    with gzip.open(EMBED_PATH, "rt", encoding="utf-8") as f:
+        return json.load(f)["vec"]
+
+
+def fetch_embeddings(texts):
+    """Gọi ckey cho các chữ chưa có vector, ghi thêm vào cache (đọc lại là ra y hệt, replay không gọi mạng). -> số chữ đã gọi."""
+    import os
+    import urllib.request
+    vec = load_embeddings()
+    need = sorted({_embed_key(t) for t in texts} - set(vec))
+    if not need:
+        return 0
+    key = os.environ.get("CKEY_API_KEY")
+    if not key:
+        raise SystemExit("chưa có CKEY_API_KEY trong biến môi trường")
+    base = llm_client.load_config()["api.base_url"].rstrip("/")
+    cost = 0.0
+    for k in range(0, len(need), 500):
+        body = json.dumps({"model": EMBED_MODEL, "input": need[k:k + 500], "dimensions": EMBED_DIM}).encode("utf-8")
+        req = urllib.request.Request(base + "/v1/embeddings", body, {"Authorization": f"Bearer {key}", "Content-Type": "application/json",
+                                                                    "User-Agent": llm_client.USER_AGENT})
+        with urllib.request.urlopen(req, timeout=300) as r:
+            d = json.loads(r.read().decode("utf-8"))
+        for x in d["data"]:
+            vec[need[k + x["index"]]] = [round(v, 5) for v in x["embedding"]]
+        cost += ((d.get("usage") or {}).get("x_ckey") or {}).get("cost") or 0
+    EMBED_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with gzip.open(EMBED_PATH, "wt", encoding="utf-8") as f:
+        json.dump({"model": EMBED_MODEL, "dimensions": EMBED_DIM, "vec": dict(sorted(vec.items()))}, f, ensure_ascii=False, separators=(",", ":"))
+    print(f"embedding: gọi {len(need)} chữ, {cost:.1f} VND; cache {len(vec)} chữ ({EMBED_PATH})")
+    return len(need)
+
+
+def semantic_neighbors(words):
+    """{i: [j]} SEM_TOP chữ gần nhất theo cosine (mọi chữ khác, xếp giảm dần, hoà theo key). Thiếu vector thì dừng: chạy --nhung trước."""
+    vec = load_embeddings()
+    missing = [w["surface"] for w in words if _embed_key(w["surface"]) not in vec]
+    if missing:
+        raise SystemExit(f"names-2.3: {len(missing)} chữ chưa có embedding (ví dụ {missing[:3]}); chạy `predicates.py --nhung` (gọi ckey) trước")
+    unit = []
+    for w in words:
+        v = vec[_embed_key(w["surface"])]
+        n = math.sqrt(sum(x * x for x in v)) or 1.0
+        unit.append([x / n for x in v])
+    out = {}
+    for i, a in enumerate(unit):
+        sims = sorted(((-sum(map(operator.mul, a, b)), words[j]["key"], j) for j, b in enumerate(unit) if j != i))
+        out[i] = [j for _s, _k, j in sims[:SEM_TOP]]
+    return out
+
+
 # ---- dựng Run ----
 
 def prepare(doc_id=None):
@@ -404,6 +502,8 @@ def prepare(doc_id=None):
     _doc, _units, _labels, nodes, refs = cc.load_inputs(doc_id)
     edges = cn.collect_edges(refs, cn.load_exception_rows(doc_id), nodes)
     nb = cn.Neighbors(words, cn.link_map(list(ctxs), edges))
+    if SEMANTIC:
+        nb.sem = semantic_neighbors(words)
     return Run(words, nb, ctxs, cn.make_rounds(words)), rows, dropped
 
 
@@ -607,8 +707,15 @@ def main(argv=None):
     g = ap.add_mutually_exclusive_group()
     g.add_argument("--xuat", metavar="THU_MUC")
     g.add_argument("--nhap", metavar="THU_MUC")
+    g.add_argument("--nhung", action="store_true", help="[A63] gọi ckey lấy embedding cho mọi chữ của 1.6A (names-2.3), ghi cache")
     ap.add_argument("--de", action="store_true")
     args = ap.parse_args(argv)
+    if args.nhung:
+        ctxs = P.contexts(args.doc)
+        rows, _dropped = load_rows(ctxs)
+        words = build_words(rows, {u: k for k, u in enumerate(ctxs)})
+        fetch_embeddings([w["surface"] for w in words])
+        return
     if args.xuat:
         print(xuat(args.xuat, args.doc))
         return

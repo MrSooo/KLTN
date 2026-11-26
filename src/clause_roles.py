@@ -22,13 +22,15 @@ import propositions  # noqa: E402
 import segments  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-PROMPT_VERSION = "vai-nhom-3"  # 3 (A62): liet_ke từ 2 mục, kể cả danh sách danh từ; người nhận là danh từ gọi NLĐ/NSDLĐ (cả loại cụ thể) vào doi_so, đuôi thời gian của kết luận giữ; dan_chieu_dieu_kien. 2: đoạn không phải câu dẫn luôn có dòng (D145.K1, D51.K1)  # phải bắt đầu bằng propositions.V2_PREFIX để cổng coi là khuôn gọn
+PROMPT_VERSION = "vai-nhom-4"  # 4 (A63): LLM chỉ ghi khoảng âm tiết đánh số sẵn (loi, chu_the.khoang, liet_ke), không chép chữ; máy lấy chữ; luật đuôi thời gian D137.K2; một lần gửi lỗi máy kiểm cho LLM sửa (SUA_4). 3 (A62): liet_ke từ 2 mục, kể cả danh sách danh từ; người nhận là danh từ gọi NLĐ/NSDLĐ (cả loại cụ thể) vào doi_so, đuôi thời gian của kết luận giữ; dan_chieu_dieu_kien. 2: đoạn không phải câu dẫn luôn có dòng (D145.K1, D51.K1)  # phải bắt đầu bằng propositions.V2_PREFIX để cổng coi là khuôn gọn
 RUN_DIR = ROOT / "data/sandbox_runs/clause_roles"
+NUMBERED = PROMPT_VERSION == "vai-nhom-4"  # [A63] khuôn khoảng âm tiết
 GOLD = {"dev": ROOT / "data/eval_dev/clause_roles_gold_dev.json", "test": ROOT / "data/eval_dev/clause_roles_gold_test.json"}
 MODEL_DU_PHONG_2 = "daongocson12022004/gemini-3.8-flash-high"  # [THÊM 25/11, A61] tuyến không có trần ~8k (đo lượt 008 của 1.6B: 9.486 token nghĩ ngầm vẫn trọn)
+MODEL_DU_PHONG_3 = "martha02091945/gemini-3.8-flash"  # [A63, user chỉ định 26/11 tối] daongocson12022004 bị gỡ (404), hungdt cũng 404; vân tay token khớp đúng tuyến Gemini cũ (6/6 lượt, kể cả phần cache)
 MODELS = (segments.MODEL, segments.MODEL_DU_PHONG, MODEL_DU_PHONG_2)  # chốt trước khi đo (mục 10): tuyến chính, 404 thì dự phòng; [A61] cụt hay 403 thì sang tuyến sau
 MAX_TOKENS = 32000  # api.max_output_tokens; tuyến dự phòng suy nghĩ ngầm dài (cụt 2/40 câu đơn ở 16.000, A60)
-LUONG = 16  # 8 lúc đo; 16 khi chạy cả bộ (mỗi lời gọi ~1 phút, máy chủ cho 60 lượt/phút); không ảnh hưởng đầu ra
+LUONG = 4  # 8 lúc đo; 16 khi chạy cả bộ; [A63] 4 từ 26/11 tối: tuyến martha02091945 trả 429 khi 16 luồng; không ảnh hưởng đầu ra
 LEAD = re.compile(r"(sau đây|như sau|gồm|bao gồm)\s*:?\s*$")
 # Ngưỡng (mục 10.5, chốt trước khi gọi).
 NGUONG = {"qua_may": 0.95, "f1_dong": 0.80, "vai": 0.90, "phuong_thuc": 0.85, "cuc": 0.95, "cau_truc": 0.70}
@@ -66,17 +68,198 @@ def unit_input(uid, ctx, preps, doan_by_sid):
             hong += 1
             segs = [{"id": "m1", "loai": "menh_de", "chu": p["cau"].strip().rstrip(".;:").strip(), "khe_truoc": []}]
         doan = []
+        refs = [r["cum"] for r in ctx["refs"]]
         for s in segs:
             d = {"id": f"s{i}.{s['id']}", "loai": s["loai"], "chu": s["chu"]}
             if s.get("ap_cho"):
                 d["ap_cho"] = [f"s{i}.{x}" for x in s["ap_cho"]]
             if s.get("khe_truoc"):
                 d["noi_truoc"] = s["khe_truoc"]
-            doan.append(d)
             segmap[d["id"]] = d
+            doan.append({**d, "chu": danh_so(d["chu"], refs)} if NUMBERED else d)  # [A63] LLM thấy chữ đánh số; segmap giữ chữ gốc
         cau.append({"chu": p["cau"], "doan": doan})
-    msg = {"unit_id": uid, "tieu_de_dieu": ctx["heading"], "khoan_cha": ctx["chapeau"], "dan_chieu": ctx["refs"], "cau": cau}
+    if NUMBERED:
+        msg = {"unit_id": uid, "tieu_de_dieu": danh_so(ctx["heading"] or ""), "khoan_cha": danh_so(ctx["chapeau"] or ""), "dan_chieu": ctx["refs"], "cau": cau}
+    else:
+        msg = {"unit_id": uid, "tieu_de_dieu": ctx["heading"], "khoan_cha": ctx["chapeau"], "dan_chieu": ctx["refs"], "cau": cau}
     return msg, segmap, hong
+
+
+# ---- [A63] vai-nhom-4: LLM chỉ ghi KHOẢNG ÂM TIẾT (theo số máy in sẵn cạnh từng âm tiết) và nhãn, không chép chữ. Máy lấy chữ từ input
+# theo khoảng rồi dựng lại khuôn gọn vai-nhom-3 (doan, chu_the.chu, liet_ke là chữ nguyên văn), nên mọi bước sau giữ nguyên. Máy không tự
+# xoá chữ nào: LLM quyết "không" trong "không xác định thời hạn" là phần của lõi, "được" trong "được giải quyết" là bị động.
+# Vì sao không cắt khúc theo chữ cố định (bản thử đầu, 26/11): khúc không đủ nhỏ, "chấm dứt hợp đồng lao động đã giao kết" (D27.K1) là một
+# khúc nên không tách được động từ khỏi mục liệt kê.
+_TOK = re.compile(r"\w+|[^\w\s]")
+SPAN = re.compile(r"^(?P<d>[^:\s]+):(?P<a>\d+)(?:-(?P<b>\d+))?$")
+# Chữ không mang nội dung (dùng cho cờ "âm tiết nội dung không dòng nào dùng"): chữ phương thức, phủ định, chữ nối, giới từ bổ ngữ.
+NON_CONTENT = {"có", "trách", "nhiệm", "nghĩa", "vụ", "quyền", "thể", "không", "được", "phải", "cần", "cấm", "nghiêm", "chưa", "và", "hoặc",
+               "hay", "nhưng", "thì", "mà", "là", "trong", "thời", "hạn", "gian", "khoảng", "quá", "trình", "trường", "hợp", "đối", "với",
+               "kể", "từ", "cho", "đến", "khi", "trước", "sau", "nếu", "do", "vì", "để", "nhằm", "tại", "ở", "theo", "trừ", "các", "của",
+               "những", "này", "đó", "sau", "đây", "như", "quy", "định", "về"}
+
+
+def am_tiet(text, refs=()):
+    """-> [(âm tiết, đầu, cuối, thuộc cụm dẫn chiếu?)] theo thứ tự, chỉ token chữ/số (dấu câu không đánh số). Chữ của khoảng a-b là
+    text[đầu của a : cuối của b] (giữ dấu câu ở giữa)."""
+    text = _nfc(text)
+    dc = []
+    for cum in refs:
+        c = _nfc(cum)
+        k = text.find(c) if c else -1
+        while k >= 0:
+            dc.append((k, k + len(c)))
+            k = text.find(c, k + 1)
+    return [(m.group(0), m.start(), m.end(), any(x <= m.start() and m.end() <= y for x, y in dc)) for m in re.finditer(r"\w+", text)]
+
+
+def danh_so(text, refs=()):
+    """Chữ đánh số gửi LLM: "1:Người 2:lao 3:động ..." (dấu câu giữ nguyên chỗ, không số)."""
+    text = _nfc(text)
+    out, pos = [], 0
+    for n, (_w, a, b, _dc) in enumerate(am_tiet(text, refs), 1):
+        out.append(text[pos:a] + f"{n}:" + text[a:b])
+        pos = b
+    return "".join(out) + text[pos:]
+
+
+def tu_map(ctx, segmap):
+    """{id đoạn | 'kc' | 'td': (chữ, [âm tiết])} cho mọi đoạn, câu dẫn (kc) và tiêu đề (td)."""
+    refs = [r["cum"] for r in ctx["refs"]]
+    out = {k: (_nfc(s["chu"]), am_tiet(s["chu"], refs)) for k, s in segmap.items()}
+    out["kc"] = (_nfc(ctx.get("chapeau") or ""), am_tiet(ctx.get("chapeau") or "", refs))
+    out["td"] = (_nfc(ctx.get("heading") or ""), am_tiet(ctx.get("heading") or "", refs))
+    return out
+
+
+def doc_khoang(x, tm):
+    """'s1.m2:3-7' -> (id đoạn, a, b) hoặc thông điệp lỗi (chuỗi)."""
+    m = SPAN.match(x) if isinstance(x, str) else None
+    if not m:
+        return f"khoảng {x!r} sai dạng (cần 'id_đoạn:a-b' hay 'id_đoạn:a')"
+    d, a = m["d"], int(m["a"])
+    b = int(m["b"]) if m["b"] else a
+    if d not in tm:
+        return f"khoảng {x!r}: không có đoạn {d!r}"
+    if not 1 <= a <= b <= len(tm[d][1]):
+        return f"khoảng {x!r}: đoạn {d} chỉ có âm tiết 1-{len(tm[d][1])} (và a <= b)"
+    return d, a, b
+
+
+def chu_khoang(d, a, b, tm):
+    text, ws = tm[d]
+    return text[ws[a - 1][1]:ws[b - 1][2]]
+
+
+ROW_KEYS_4 = {"nguon", "loi", "vai", "phuong_thuc", "cuc", "chu_the", "doi_so", "quy_tac", "nhom_hoac", "liet_ke", "chua_ro"}
+
+
+def tu_khuc(out, segmap, tm):
+    """Đầu ra vai-nhom-4 (khoảng âm tiết) -> (khuôn gọn vai-nhom-3 với chữ do máy lấy, lỗi cấu trúc [(chỉ số dòng hay None, thông điệp)]).
+    Trường sai thì để rỗng cho cổng cũ cũng báo; không đoán chữ."""
+    if not isinstance(out, dict):
+        return out, []
+    err, dong, gaps = [], [], []
+    for i, r in enumerate(out.get("dong") if isinstance(out.get("dong"), list) else []):
+        if not isinstance(r, dict):
+            dong.append(r)
+            continue
+        ng = r.get("nguon")
+        allowed = {ng} | {s["id"] for s in segmap.values() if s["loai"] == "dung_chung" and ng in s.get("ap_cho", [])}
+        row = {k: v for k, v in r.items() if k not in ("loi", "chu_the", "liet_ke")}
+        la = sorted(set(r) - ROW_KEYS_4)
+        if la:  # nêu đúng tên trường lạ (cổng cũ chỉ báo "khoa_thua", lần sửa không biết sửa gì)
+            err.append((i, f"dòng có trường lạ {la}; chỉ được dùng {sorted(ROW_KEYS_4)}"))
+
+        def pieces(xs, what, nguon_only=True):
+            if not isinstance(xs, list) or not xs:
+                err.append((i, f"{what}: phải là danh sách khoảng, không rỗng"))
+                return None
+            got = []
+            for x in xs:
+                k = doc_khoang(x, tm)
+                if isinstance(k, str):
+                    err.append((i, f"{what}: {k}"))
+                    return None
+                d, a, b = k
+                if nguon_only and d not in allowed:
+                    err.append((i, f"{what}: khoảng {x} không thuộc đoạn {ng} hay một dung_chung áp cho nó"))
+                    return None
+                if nguon_only and any(w[3] for w in tm[d][1][a - 1:b]):
+                    err.append((i, f"{what}: khoảng {x} chứa chữ dẫn chiếu (máy tự dựng dòng cho dẫn chiếu)"))
+                    return None
+                got.append(chu_khoang(d, a, b, tm))
+            return got
+        row["doan"] = pieces(r.get("loi"), "loi") or []
+        if row["doan"]:
+            gaps.append((i, r, [doc_khoang(x, tm) for x in r["loi"]]))
+        if "chu_the" in r:
+            ct = r["chu_the"]
+            p = pieces(ct.get("khoang"), "chu_the.khoang", nguon_only=False) if isinstance(ct, dict) else None
+            row["chu_the"] = {**{k: v for k, v in ct.items() if k != "khoang"}, "chu": " ".join(p) if p else None} if isinstance(ct, dict) else ct
+        if "liet_ke" in r:
+            lk = r["liet_ke"]
+            if not isinstance(lk, list):
+                err.append((i, "liet_ke: phải là danh sách mục, mỗi mục là danh sách khoảng"))
+                row["liet_ke"] = []
+            else:
+                items = [pieces(x, "liet_ke") for x in lk]
+                row["liet_ke"] = [" ".join(x) for x in items] if all(items) else []
+        dong.append(row)
+    # [A63] chữ bị bỏ giữa hai khoảng liên tiếp của cùng đoạn: như propositions._gap_lost nhưng theo đúng vị trí âm tiết
+    for i, r, ks in gaps:
+        other = set()
+        for j, o in enumerate(dong):
+            if j != i and isinstance(o, dict):
+                other |= set(propositions.syllables(" ".join(x for x in (o.get("doan") or []) + (o.get("liet_ke") or []) if isinstance(x, str))))
+                other |= set(propositions.syllables((o.get("chu_the") or {}).get("chu") or "" if isinstance(o.get("chu_the"), dict) else ""))
+        for (d1, _a1, b1), (d2, a2, _b2) in zip(ks, ks[1:]):
+            if d1 != d2 or a2 <= b1 + 1:
+                continue
+            gap = " ".join(w[0] for w in tm[d1][1][b1:a2 - 1]).lower()
+            if propositions._GAP_LOSS.search(gap) and propositions._gap_lost(gap, r, other):
+                err.append((i, f"lõi bỏ chữ {gap[:40]!r} giữa {d1}:{b1} và {d2}:{a2}"))
+    return {**out, "dong": dong}, err
+
+
+def tu_khong_dung(out, segmap, tm):
+    """Cờ (A63): âm tiết nội dung của đoạn menh_de hay dung_chung (không phải câu dẫn) mà không khoảng nào của đơn vị phủ: có thể mất chữ."""
+    used = set()
+
+    def add(x):
+        k = doc_khoang(x, tm)
+        if not isinstance(k, str):
+            used.update((k[0], n) for n in range(k[1], k[2] + 1))
+    for r in (out or {}).get("dong") or [] if isinstance(out, dict) else []:
+        if isinstance(r, dict):
+            for x in r.get("loi") or []:
+                add(x)
+            if isinstance(r.get("chu_the"), dict):
+                for x in r["chu_the"].get("khoang") or []:
+                    add(x)
+            for it in r.get("liet_ke") or []:
+                for x in it if isinstance(it, list) else []:
+                    add(x)
+    miss = []
+    for k, s in segmap.items():
+        if s["loai"] not in ("menh_de", "dung_chung") or LEAD.search(s["chu"]):
+            continue
+        ws = [n for n, w in enumerate(tm[k][1], 1) if not w[3] and w[0].lower() not in NON_CONTENT and not w[0].isdigit() and (k, n) not in used]
+        if ws:
+            miss.append((None, f"âm tiết nội dung không khoảng nào phủ: {k} " + " ".join(f"{n}:{tm[k][1][n - 1][0]}" for n in ws[:8])))
+    return miss
+
+
+def check_v(ctx, segmap, out):
+    """Đường kiểm của phiên bản đang dùng. vai-nhom-4: đổi khoảng thành chữ (lỗi cấu trúc) rồi kiểm như vai-nhom-3; cờ phủ âm tiết.
+    -> (dòng khuôn cũ, lỗi, cờ, nguon, khuôn gọn đã đổi)."""
+    if not NUMBERED or not isinstance(out, dict) or not any(isinstance(r, dict) and ("loi" in r) for r in out.get("dong") or []):
+        rows, err, flag, nguon = check(ctx, segmap, out)  # vai-nhom-3, gold (khuôn chữ) hay đầu ra không có dòng
+        return rows, err, flag, nguon, out
+    tm = tu_map(ctx, segmap)
+    compact, e0 = tu_khuc(out, segmap, tm)
+    rows, err, flag, nguon = check(ctx, segmap, compact)
+    return rows, e0 + err, flag + tu_khong_dung(out, segmap, tm), nguon, compact
 
 
 # ---- Máy kiểm lượt 2 (mục 10.4), cộng vào cổng cũ.
@@ -326,7 +509,7 @@ def trai_liet_ke(uid, rows, src="", so_dieu_co=None):
 
 
 # ---- Lời nhắc. Sửa chữ thì PHẢI nâng PROMPT_VERSION. Ví dụ chỉ lấy từ Điều không có trong hai gold (mục 10.5): D113, D53, D176, D18, D80.
-SYSTEM = """Bạn nhận MỘT đơn vị của Bộ luật Lao động (khoản, điểm hoặc Điều) mà các câu đã được tách sẵn thành đoạn. Hãy ghi các dòng mệnh đề: mỗi dòng là một điều kiện, một ngoại lệ hoặc một kết luận, kèm phương thức, cực, chủ thể, và gom thành quy tắc.
+SYSTEM_3 = """Bạn nhận MỘT đơn vị của Bộ luật Lao động (khoản, điểm hoặc Điều) mà các câu đã được tách sẵn thành đoạn. Hãy ghi các dòng mệnh đề: mỗi dòng là một điều kiện, một ngoại lệ hoặc một kết luận, kèm phương thức, cực, chủ thể, và gom thành quy tắc.
 
 ## Đầu vào
 - tieu_de_dieu, khoan_cha (câu dẫn của khoản hoặc Điều cha), dan_chieu (dẫn chiếu đã giải: cum, dich).
@@ -374,7 +557,63 @@ Mục con của nó, khoan_cha "Bên thuê lại lao động được sử dụn
 {"unit_id":"BLLD_45-2019.D18.K1","ngoai_le":["BLLD_45-2019.D18.K2"],"dong":[{"nguon":"s1.m1","doan":["trực tiếp giao kết hợp đồng lao động"],"vai":"ket_luan","phuong_thuc":"khong","cuc":"khang_dinh","chu_the":{"chu":"Người lao động","loai":"W"},"doi_so":[{"loai":"C"}],"quy_tac":"q1"}]}
 5. [Trường hợp] s1.m1 "thỏa ước lao động tập thể doanh nghiệp hết hiệu lực do người sử dụng lao động chấm dứt hoạt động" · [thì] s1.m2 "quyền lợi của người lao động được giải quyết theo quy định của pháp luật".
 {"unit_id":"BLLD_45-2019.D80.K2","dong":[{"nguon":"s1.m1","doan":["thỏa ước lao động tập thể doanh nghiệp hết hiệu lực"],"vai":"dieu_kien","phuong_thuc":"khong","cuc":"khang_dinh","quy_tac":"q1"},{"nguon":"s1.m1","doan":["chấm dứt hoạt động"],"vai":"dieu_kien","phuong_thuc":"khong","cuc":"khang_dinh","chu_the":{"chu":"người sử dụng lao động","loai":"E"},"quy_tac":"q1"},{"nguon":"s1.m2","doan":["quyền lợi","được giải quyết"],"vai":"ket_luan","phuong_thuc":"khong","cuc":"khang_dinh","chu_the":{"chu":"người lao động","loai":"W"},"quy_tac":"q1"},{"nguon":"s1.m2","doan":["theo quy định của pháp luật"],"vai":"dieu_kien","phuong_thuc":"khong","cuc":"khang_dinh","chu_the":{"chu":"người lao động","loai":"W"},"quy_tac":"q1"}]}"""
-EXAMPLE_UNITS = ("D113.K4", "D53.K2", "D53.K2.a", "D176.K1", "D18.K1", "D80.K2")
+EXAMPLE_UNITS = ("D113.K4", "D53.K2", "D53.K2.a", "D176.K1", "D18.K1", "D80.K2") + (("D140",) if PROMPT_VERSION == "vai-nhom-4" else ())  # vai-nhom-4 thêm D140 (không có trong hai gold)
+SYSTEM_4 = """Bạn nhận MỘT đơn vị của Bộ luật Lao động (khoản, điểm hoặc Điều) mà các câu đã được tách sẵn thành đoạn; mỗi âm tiết đã được máy đánh số trong đoạn của nó ("1:Người 2:lao 3:động"). Hãy ghi các dòng mệnh đề: mỗi dòng là một điều kiện, một ngoại lệ hoặc một kết luận, kèm phương thức, cực, chủ thể, và gom thành quy tắc.
+
+KHÔNG chép chữ. Mọi chỗ cần chữ, ghi KHOẢNG âm tiết theo số in sẵn: "id_đoạn:a-b" (âm tiết a đến b của đoạn đó), một âm tiết thì "id_đoạn:a". Máy tự lấy chữ từ khoảng. Câu dẫn của khoản cha là đoạn "kc", tiêu đề Điều là đoạn "td".
+
+## Đầu vào
+- tieu_de_dieu (đoạn td), khoan_cha (câu dẫn của khoản hoặc Điều cha, đoạn kc), dan_chieu (dẫn chiếu đã giải: cum, dich).
+- cau: các câu, mỗi câu có doan đã tách: "menh_de" (một việc), "dung_chung" (phần nhiều mệnh đề dùng chung; ap_cho là các mệnh đề nó áp cho), "dan_chieu" (khối "trừ trường hợp quy định tại ..."). noi_truoc là chữ nối đứng ngay trước đoạn (nếu, khi, thì, trừ, để, và, hoặc ...).
+
+## Mỗi dòng
+- nguon: id của MỘT đoạn menh_de (ví dụ "s1.m2"). Mỗi đoạn menh_de có ít nhất một dòng. Riêng đoạn câu dẫn ("... sau đây", "như sau") mà danh sách mục con là tân ngữ (cac_muc_con là danh_sach) thì không có dòng; các đoạn KHÁC của câu đó (ví dụ vế "khi ..." đứng trước câu dẫn) vẫn phải có dòng.
+- loi: danh sách khoảng; chữ của các khoảng nối lại theo thứ tự là lõi: động từ (hoặc tính chất) + tân ngữ chính. MỖI KHOẢNG nằm trong đoạn nguon, hoặc trong một đoạn dung_chung có ap_cho chứa nguon khi chữ đó là phần của việc (tân ngữ, bổ ngữ làm nên việc). Không đưa vào lõi: chủ thể, chữ phương thức (phải, được, có quyền, có thể, có trách nhiệm, cấm, không được), chữ phủ định của cả mệnh đề (ghi ở cuc), chữ dẫn chiếu. Chữ bỏ ra nằm giữa lõi thì tách lõi thành hai khoảng. "không", "được" làm nên nghĩa của chính cụm ("hợp đồng lao động không xác định thời hạn", "mức lương không thấp hơn", "được giải quyết" bị động) thì để trong lõi.
+- vai: ket_luan | dieu_kien | ngoai_le. Theo chữ nối trước đoạn: "nếu", "khi", "trong khi", "sau khi", "trước khi", "trường hợp", "trong trường hợp", "Do" đầu câu: dieu_kien; "trừ", "trừ trường hợp": ngoai_le; vế trước "thì" là điều kiện, vế sau là kết luận; "để", "nhằm": ket_luan cùng quy_tac với việc nó nói mục đích. Không có chữ nối thì theo nghĩa: câu quy định là ket_luan; mục con của câu dẫn "trong trường hợp sau đây" là dieu_kien.
+- phuong_thuc: duoc (được, có quyền, có thể) | phai (phải, có nghĩa vụ, có trách nhiệm) | cam (cấm, không được làm) | khong_ap_dung (một quy định không áp cho một nhóm trường hợp) | khong (không có chữ phương thức: mô tả, định nghĩa). Dòng dieu_kien và ngoai_le luôn là khong. Dòng ket_luan chỉ ghi khác khong khi chữ phương thức có trong câu, khoan_cha hoặc tieu_de_dieu ("Nghĩa vụ", "Trách nhiệm" ở tiêu đề là phai; "Quyền" là duoc).
+- cuc: khang_dinh | phu_dinh (chỉ phủ định lõi). "Không phải / không cần + động từ" (không có nghĩa vụ): duoc + phu_dinh. "Không được + động từ": cam; nếu bị động (không được người khác làm cho) thì khong + phu_dinh. "Không phải là + danh từ": khong + phu_dinh. Chữ "không", "chưa" phủ định cả mệnh đề nằm giữa lõi ("việc làm cũ không còn") thì cuc phu_dinh và lõi là hai khoảng hai bên chữ đó.
+- chu_the: {"khoang": [khoảng của cụm chủ thể, trong đoạn, dung_chung, kc hoặc td], "loai": mã}; không có thì bỏ. Mã: W người lao động, E người sử dụng lao động, C hợp đồng, J công việc, G vùng, D ngày, A số tiền, ? chưa biết (danh sách mã khi chủ thể chung). Người chỉ chịu tác động là doi_so: [{"loai": mã}].
+- quy_tac: "q1", "q2"... Các kết luận có ĐÚNG cùng tập điều kiện và ngoại lệ (kể cả không có điều kiện nào) chung một quy_tac, cùng các dòng điều kiện, ngoại lệ đó. Tập điều kiện khác thì quy tắc khác; một điều kiện dùng cho nhiều quy tắc thì lặp dòng đó (cùng nguon) trong mỗi quy tắc.
+- nhom_hoac: "h1"... cho các điều kiện nối "hoặc"/"hay" trong một quy tắc; nối "và" thì bỏ.
+- liet_ke: danh sách mục (từ 2 mục, kể cả danh sách danh từ) là tân ngữ, phạm vi hay trường hợp của cùng một động từ; mỗi mục là một danh sách khoảng (thường một khoảng). Khi có liet_ke, loi chỉ là phần chung đứng trước danh sách (thường là động từ, ví dụ "chấm dứt"), không gồm các mục. Không ghi cho cụm gọi tên MỘT khái niệm ("quyền và lợi ích hợp pháp").
+- chua_ro: [{"thanh_phan", "nguyen_nhan": pham_vi_bo_ngu | tach_hay_giu_chung | phuong_thuc | chu_the | khac, "cau_hoi"}] khi không xác định được. Không đoán.
+Trường rỗng thì bỏ.
+
+## Luật
+1. Bổ ngữ của ĐỘNG TỪ là một dòng dieu_kien riêng, cùng nguon, chu_the và quy_tac với dòng nó bổ nghĩa: nơi chốn ("tại ...", "ở ..."), căn cứ ("theo ..."), thời gian ("trong thời hạn ...", "trong thời gian ...", "trong quá trình ..."), và "đối với X" khi X giới hạn phạm vi áp dụng quy định. Mốc hay khoảng kết thúc của chính kết luận ("kể từ ...", "cho đến ...") giữ trong lõi; chỉ bổ ngữ thời gian giới hạn khi nào quy định áp dụng mới là dieu_kien. Cụm nằm trong một danh từ ("<danh từ> theo quy định của <cơ quan>" chỉ rõ danh từ nào) giữ trong lõi. "Đối với X" chỉ người hay vật chịu tác động của hành vi giữ trong lõi. Cụm làm nên chính việc (mức tiền, số ngày, thời điểm, hình thức của việc) giữ trong lõi. Người nhận hay chịu hành vi đứng sau "cho", "với", "đối với" mà chỉ là danh từ gọi người lao động hay người sử dụng lao động, kể cả loại cụ thể (lao động nữ, người giúp việc gia đình) hay đại từ chỉ họ ("họ"), thì ghi vào doi_so, không đưa vào lõi; người có kèm mô tả thì giữ. Dòng có nhom_hoac thì không tách bổ ngữ ra (tách ra là thành điều kiện chung của cả nhóm). Bổ ngữ nằm trong một đoạn dung_chung thì mỗi quy_tac một dòng, nguon là mệnh đề ĐẦU TIÊN trong ap_cho của đoạn đó thuộc quy tắc ấy.
+2. Một đoạn có hai sự kiện (ví dụ một vế "do ..." nêu nguyên nhân) thì hai dòng cùng nguon.
+3. Câu dẫn: danh sách là TÂN NGỮ ("có các quyền sau đây") thì cac_muc_con là danh_sach và câu dẫn không có dòng; mục con là ket_luan (lõi là chữ của mục), kế thừa chủ thể và phương thức từ khoan_cha. Danh sách là ĐIỀU KIỆN ("trong trường hợp sau đây") thì cac_muc_con là va (phải đủ hết) hoặc hoac (một mục là đủ), câu dẫn ra một ket_luan; mục con là dieu_kien.
+4. Định nghĩa "X là Y": các dấu hiệu của Y là dieu_kien; thêm một ket_luan có loi [khoảng của "là", khoảng của X]. Câu nêu giá trị, mức là một ket_luan.
+5. Chủ thể hay phương thức bị lược thì lấy từ khoan_cha (kc) hoặc tieu_de_dieu (td); chu_the.khoang trỏ đúng cụm ở đó.
+
+## Trường của đơn vị
+- ngoai_le: danh sách dich (lấy từ dan_chieu) của dẫn chiếu là ngoại lệ. Mọi dẫn chiếu nằm trong đoạn dan_chieu PHẢI có ở đây. Máy tự dựng dòng cho mọi dẫn chiếu; không đưa chữ dẫn chiếu vào lõi.
+- dan_chieu_dieu_kien: [{"dich", "quy_tac"}] cho dẫn chiếu nêu trường hợp, đối tượng hay điều kiện mà một quy tắc đòi ("khi hợp đồng chấm dứt theo quy định tại khoản 1 Điều X", "người quy định tại khoản 2 Điều này"); quy_tac là quy tắc đòi nó. Dẫn chiếu chỉ cách làm hay mức ("trả lương theo quy định tại Điều X") và dẫn chiếu là ngoại lệ thì không ghi. Đơn vị có dẫn chiếu thì luôn ghi trường này (rỗng nếu không có cái nào).
+- cac_muc_con: va | hoac | danh_sach, chỉ cho câu dẫn vào các mục con.
+- bo_qua: khong_quy_pham (câu chính sách, không có hành vi kiểm được) | dan_chieu_mo | dan_chieu_ngoai (chỉ dẫn sang quy định khác); khi đó dong có thể rỗng.
+
+## Đầu ra
+JSON thuần, không chữ giải thích: {"unit_id": "...", "dong": [...], cộng ngoai_le, dan_chieu_dieu_kien, cac_muc_con, bo_qua khi có}.
+
+## Ví dụ (đầu vào rút gọn: chỉ ghi đoạn, đã đánh số)
+1. tieu_de_dieu "Nghỉ hằng năm". s1.c1 dung_chung "1:Người 2:sử 3:dụng 4:lao 5:động" (ap_cho s1.m1, s1.m2, s1.m3) · s1.m1 "1:có 2:trách 3:nhiệm 4:quy 5:định 6:lịch 7:nghỉ 8:hằng 9:năm" · [sau khi] s1.m2 "1:tham 2:khảo 3:ý 4:kiến 5:của 6:người 7:lao 8:động" · [và] s1.m3 "1:phải 2:thông 3:báo 4:trước 5:cho 6:người 7:lao 8:động 9:biết". s2.c1 dung_chung "1:Người 2:lao 3:động" (ap_cho s2.m1, s2.m2, s2.m3) · s2.m1 "1:có 2:thể 3:thỏa 4:thuận 5:với 6:người 7:sử 8:dụng 9:lao 10:động" · [để] s2.m2 "1:nghỉ 2:hằng 3:năm 4:thành 5:nhiều 6:lần" · [hoặc] s2.m3 "1:nghỉ 2:gộp 3:tối 4:đa 5:03 6:năm 7:một 8:lần".
+{"unit_id":"BLLD_45-2019.D113.K4","dong":[{"nguon":"s1.m1","loi":["s1.m1:4-9"],"vai":"ket_luan","phuong_thuc":"phai","cuc":"khang_dinh","chu_the":{"khoang":["s1.c1:1-5"],"loai":"E"},"quy_tac":"q1"},{"nguon":"s1.m2","loi":["s1.m2:1-8"],"vai":"dieu_kien","phuong_thuc":"khong","cuc":"khang_dinh","chu_the":{"khoang":["s1.c1:1-5"],"loai":"E"},"doi_so":[{"loai":"W"}],"quy_tac":"q1"},{"nguon":"s1.m3","loi":["s1.m3:2-9"],"vai":"ket_luan","phuong_thuc":"phai","cuc":"khang_dinh","chu_the":{"khoang":["s1.c1:1-5"],"loai":"E"},"doi_so":[{"loai":"W"}],"quy_tac":"q2"},{"nguon":"s2.m1","loi":["s2.m1:3-10"],"vai":"ket_luan","phuong_thuc":"duoc","cuc":"khang_dinh","chu_the":{"khoang":["s2.c1:1-3"],"loai":"W"},"doi_so":[{"loai":"E"}],"quy_tac":"q2"},{"nguon":"s2.m2","loi":["s2.m2:1-6"],"vai":"ket_luan","phuong_thuc":"duoc","cuc":"khang_dinh","chu_the":{"khoang":["s2.c1:1-3"],"loai":"W"},"quy_tac":"q2"},{"nguon":"s2.m3","loi":["s2.m3:1-8"],"vai":"ket_luan","phuong_thuc":"duoc","cuc":"khang_dinh","chu_the":{"khoang":["s2.c1:1-3"],"loai":"W"},"quy_tac":"q2"}]}
+2. Câu dẫn, danh sách là điều kiện. s1.m1 "1:Bên 2:thuê 3:lại 4:lao 5:động 6:được 7:sử 8:dụng 9:lao 10:động 11:thuê 12:lại 13:trong 14:trường 15:hợp 16:sau 17:đây".
+{"unit_id":"BLLD_45-2019.D53.K2","cac_muc_con":"hoac","dong":[{"nguon":"s1.m1","loi":["s1.m1:7-12"],"vai":"ket_luan","phuong_thuc":"duoc","cuc":"khang_dinh","chu_the":{"khoang":["s1.m1:1-5"],"loai":"E"},"quy_tac":"q1"}]}
+Mục con của nó, kc "1:Bên 2:thuê 3:lại 4:lao 5:động 6:được 7:sử 8:dụng 9:lao 10:động 11:thuê 12:lại 13:trong 14:trường 15:hợp 16:sau 17:đây:". s1.m1 "1:Đáp 2:ứng 3:tạm 4:thời 5:sự 6:gia 7:tăng 8:đột 9:ngột 10:về 11:nhu 12:cầu 13:sử 14:dụng 15:lao 16:động 17:trong 18:khoảng 19:thời 20:gian 21:nhất 22:định".
+{"unit_id":"BLLD_45-2019.D53.K2.a","dong":[{"nguon":"s1.m1","loi":["s1.m1:1-16"],"vai":"dieu_kien","phuong_thuc":"khong","cuc":"khang_dinh","chu_the":{"khoang":["kc:1-5"],"loai":"E"},"quy_tac":"q1"},{"nguon":"s1.m1","loi":["s1.m1:17-22"],"vai":"dieu_kien","phuong_thuc":"khong","cuc":"khang_dinh","chu_the":{"khoang":["kc:1-5"],"loai":"E"},"quy_tac":"q1"}]}
+3. Câu dẫn, danh sách là tân ngữ. s1.m1 "1:Thành 2:viên 3:ban 4:lãnh 5:đạo 6:của 7:tổ 8:chức 9:đại 10:diện 11:người 12:lao 13:động 14:tại 15:cơ 16:sở 17:có 18:quyền 19:sau 20:đây".
+{"unit_id":"BLLD_45-2019.D176.K1","cac_muc_con":"danh_sach","dong":[]}
+4. dan_chieu [{"cum":"khoản 2 Điều này","dich":"BLLD_45-2019.D18.K2"}]. s1.m1 "1:Người 2:lao 3:động 4:trực 5:tiếp 6:giao 7:kết 8:hợp 9:đồng 10:lao 11:động" · s1.d1 dan_chieu "1:trừ 2:trường 3:hợp 4:quy 5:định 6:tại 7:khoản 8:2 9:Điều 10:này".
+{"unit_id":"BLLD_45-2019.D18.K1","ngoai_le":["BLLD_45-2019.D18.K2"],"dong":[{"nguon":"s1.m1","loi":["s1.m1:4-11"],"vai":"ket_luan","phuong_thuc":"khong","cuc":"khang_dinh","chu_the":{"khoang":["s1.m1:1-3"],"loai":"W"},"doi_so":[{"loai":"C"}],"quy_tac":"q1"}]}
+5. [trường hợp] s1.m1 "1:thỏa 2:ước 3:lao 4:động 5:tập 6:thể 7:doanh 8:nghiệp 9:hết 10:hiệu 11:lực 12:do 13:người 14:sử 15:dụng 16:lao 17:động 18:chấm 19:dứt 20:hoạt 21:động" · [thì] s1.m2 "1:quyền 2:lợi 3:của 4:người 5:lao 6:động 7:được 8:giải 9:quyết 10:theo 11:quy 12:định 13:của 14:pháp 15:luật".
+{"unit_id":"BLLD_45-2019.D80.K2","dong":[{"nguon":"s1.m1","loi":["s1.m1:1-11"],"vai":"dieu_kien","phuong_thuc":"khong","cuc":"khang_dinh","quy_tac":"q1"},{"nguon":"s1.m1","loi":["s1.m1:18-21"],"vai":"dieu_kien","phuong_thuc":"khong","cuc":"khang_dinh","chu_the":{"khoang":["s1.m1:13-17"],"loai":"E"},"quy_tac":"q1"},{"nguon":"s1.m2","loi":["s1.m2:1-2","s1.m2:7-9"],"vai":"ket_luan","phuong_thuc":"khong","cuc":"khang_dinh","chu_the":{"khoang":["s1.m2:4-6"],"loai":"W"},"quy_tac":"q1"},{"nguon":"s1.m2","loi":["s1.m2:10-15"],"vai":"dieu_kien","phuong_thuc":"khong","cuc":"khang_dinh","chu_the":{"khoang":["s1.m2:4-6"],"loai":"W"},"quy_tac":"q1"}]}
+6. Phủ định giữa câu; chữ "không" thuộc lõi (chỉ ghi dòng của s1.m5, s1.m6). [trường hợp] s1.m5 "1:việc 2:làm 3:cũ 4:không 5:còn" · [thì] s1.m6 "1:người 2:sử 3:dụng 4:lao 5:động 6:phải 7:bố 8:trí 9:việc 10:làm 11:khác 12:cho 13:họ 14:với 15:mức 16:lương 17:không 18:thấp 19:hơn 20:mức 21:lương 22:trước 23:khi 24:nghỉ 25:thai 26:sản".
+{"unit_id":"BLLD_45-2019.D140","dong":[{"nguon":"s1.m5","loi":["s1.m5:1-3","s1.m5:5"],"vai":"dieu_kien","phuong_thuc":"khong","cuc":"phu_dinh","quy_tac":"q2"},{"nguon":"s1.m6","loi":["s1.m6:7-11","s1.m6:14-26"],"vai":"ket_luan","phuong_thuc":"phai","cuc":"khang_dinh","chu_the":{"khoang":["s1.m6:1-5"],"loai":"E"},"doi_so":[{"loai":"W"}],"quy_tac":"q2"}]}"""
+SUA_4 = """Máy kiểm báo các lỗi sau ở đầu ra trên:
+{LOI}
+Sửa đúng các lỗi đó (khoảng ghi theo số âm tiết in sẵn trong đoạn) và trả lại TOÀN BỘ JSON của đơn vị, cùng khuôn, không chữ giải thích."""
+SYSTEM = SYSTEM_4 if NUMBERED else SYSTEM_3
 
 
 def user_text(msg):
@@ -382,7 +621,7 @@ def user_text(msg):
 
 
 # ---- Gọi API: mỗi đơn vị một lời gọi (mục 10), như segments.goi (tuyến chính, 404 thì dự phòng; lỗi mạng hay cụt gọi lại sau).
-def _goi_mot(text, models, key, base):
+def _goi_mot(text, models, key, base, messages=None):
     """-> (phản hồi, tuyến, trạng thái, đã tắt nghĩ ngầm). Tuyến dự phòng có trần thật khoảng 8.192 token ra gồm cả nghĩ ngầm, bất kể
     max_tokens (đo 25/11: D137.K2 dừng `max_tokens` ở 7.672 + 442 token với max_tokens 64.000); ngân sách `thinking` và
     `reasoning_effort` không có tác dụng, `thinking: disabled` thường thì trả lời trọn nhưng không chắc (D176.K1.a: vẫn 7.862 token nghĩ
@@ -394,10 +633,11 @@ def _goi_mot(text, models, key, base):
     for model in models:
         tat = False
         for lan in range(1, 4):
-            body = json.dumps({"model": model, "max_tokens": MAX_TOKENS, "system": SYSTEM, "messages": [{"role": "user", "content": text}],
+            body = json.dumps({"model": model, "max_tokens": MAX_TOKENS, "system": SYSTEM, "messages": messages or [{"role": "user", "content": text}],
                                **({"thinking": {"type": "disabled"}} if tat else {})}, ensure_ascii=False).encode("utf-8")
             req = urllib.request.Request(base + "/v1/messages", data=body, method="POST", headers={
-                "Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01"})
+                "Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01",
+        "User-Agent": __import__("llm_client").USER_AGENT})
             try:
                 with urllib.request.urlopen(req, timeout=600) as r:
                     data = json.loads(r.read().decode("utf-8"))
@@ -422,14 +662,15 @@ def dot_models(key, base):
     import urllib.request
     body = json.dumps({"model": segments.MODEL, "max_tokens": 64, "messages": [{"role": "user", "content": "ok"}]}).encode("utf-8")
     req = urllib.request.Request(base + "/v1/messages", data=body, method="POST", headers={
-        "Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01"})
+        "Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01",
+        "User-Agent": __import__("llm_client").USER_AGENT})
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
             ok = json.loads(r.read().decode("utf-8")).get("stop_reason") is not None
     except Exception as e:  # 403, 404, mạng: coi như tuyến chính không dùng được trong đợt này
         print(f"tuyến chính {segments.MODEL} không dùng được: {str(e)[:100]}", flush=True)
         ok = False
-    return (segments.MODEL, MODEL_DU_PHONG_2) if ok else (MODEL_DU_PHONG_2,)
+    return (segments.MODEL, MODEL_DU_PHONG_3) if ok else (MODEL_DU_PHONG_3,)  # [A63] MODEL_DU_PHONG_2 đã bị gỡ
 
 
 def inputs(bo):
@@ -470,7 +711,7 @@ def goi(bo, thu_muc=None):
     hong = [0]
 
     def one(item):
-        u, _ctx, msg, _segmap = item
+        u, _ctx, msg, _segmap = item  # noqa: F841 (_ctx, _segmap dùng ở lần sửa)
         path = out_dir / (u + ".json")
         if path.exists():
             return u, "co_san"
@@ -479,15 +720,47 @@ def goi(bo, thu_muc=None):
         text = user_text(msg)
         data, model, st, tat = _goi_mot(text, models, key, base)
         hong[0] = hong[0] + 1 if st.startswith("lỗi") else 0
+        rec = {"unit_id": u, "phien_ban": PROMPT_VERSION, "model": model, "thinking_tat": tat, "gui": text, "phan_hoi": data}
+        if data is not None and NUMBERED:
+            # [A63] một lần sửa theo phản hồi của máy kiểm: lỗi và cờ phủ âm tiết gửi lại nguyên văn; giữ bản có ít lỗi hơn (hoà thì bản sửa)
+            reply = _text(data)
+            out1 = _parse(reply)
+            _r, e1, f1, _n, _c = check_v(_ctx, _segmap, out1 if out1 is not None else {"dong": []})
+            # cờ phủ âm tiết KHÔNG gửi lại: gold user duyệt cũng để ngoài âm tiết ở 13/56 đơn vị (người nhận ghi vào doi_so), đo 26/11
+            if out1 is None or e1:
+                loi = "\n".join(f"- {m}" for m in (["đầu ra không phải JSON"] if out1 is None else [m for _i, m in e1]))[:6000]
+                sua = SUA_4.replace("{LOI}", loi)
+                d2, m2, st2, tat2 = _goi_mot(text, (model,) + tuple(x for x in models if x != model), key, base,
+                                             messages=[{"role": "user", "content": text}, {"role": "assistant", "content": reply or "{}"},
+                                                       {"role": "user", "content": sua}])
+                if d2 is not None:
+                    out2 = _parse(_text(d2))
+                    e2 = check_v(_ctx, _segmap, out2)[1] if out2 is not None else ["x"] * 10**6
+                    rec.update(phan_hoi_1=data, sua=sua, model_1=model)
+                    if len(e2) <= (len(e1) if out1 is not None else 10**6):
+                        rec.update(phan_hoi=d2, model=m2, thinking_tat=tat2)
+                    else:
+                        rec["giu_ban_1"] = True
+                    st = f"{st}; sửa: {st2}, lỗi {len(e1) if out1 is not None else 'json'} -> {len(e2) if out2 is not None else 'json'}"
         if data is not None:
-            path.write_text(json.dumps({"unit_id": u, "phien_ban": PROMPT_VERSION, "model": model, "thinking_tat": tat, "gui": text, "phan_hoi": data},
-                                       ensure_ascii=False, indent=1), encoding="utf-8")
+            path.write_text(json.dumps(rec, ensure_ascii=False, indent=1), encoding="utf-8")
         return u, f"{st} ({model})"
 
     with ThreadPoolExecutor(LUONG) as ex:
         for u, st in ex.map(one, inputs(bo)):
             if st != "co_san":
                 print(u, st, flush=True)
+
+
+def _text(data):
+    return "".join(b.get("text", "") for b in (data or {}).get("content", []) if b.get("type") == "text")
+
+
+def _parse(text):
+    try:
+        return segments.parse_reply(text)
+    except ValueError:
+        return None
 
 
 def read_reply(path, text_sent=None):
@@ -615,8 +888,9 @@ def cham(bo, thu_muc=None):
             continue
         out, data, model = read_reply(path, user_text(msg))
         vnd += ((data.get("usage") or {}).get("x_ckey") or {}).get("cost") or 0
-        _rows, err, _flag, _ng = check(ctx, segmap, out)
+        _rows, err, _flag, _ng, conv = check_v(ctx, segmap, out)
         qua += not err
+        out = conv  # [A63] chấm trên khuôn chữ máy dựng từ khoảng
         s = score_unit(gold[u], out)
         cau_truc += s["cau_truc"]
         for k in tong:
@@ -685,7 +959,7 @@ def nhap():
             dem["khong_json"] += out is None
         else:
             dem["thieu"] += 1
-        rows, err, flag, nguon = check(ctxs[u], segmap, out if out is not None else {"dong": []})
+        rows, err, flag, nguon, _conv = check_v(ctxs[u], segmap, out if out is not None else {"dong": []})
         if out is None:
             err = [(None, "không có đầu ra lượt 2")] + err
         flag = flag + ([(None, f"luot1_hong: {hong} câu lượt 1 hỏng, cả câu là một đoạn")] if hong else [])

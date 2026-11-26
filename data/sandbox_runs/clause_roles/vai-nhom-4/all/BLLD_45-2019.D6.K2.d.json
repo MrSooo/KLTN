@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D6.K2.d",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D6.K2.d\",\n \"tieu_de_dieu\": \"1:Quyền 2:và 3:nghĩa 4:vụ 5:của 6:người 7:sử 8:dụng 9:lao 10:động\",\n \"khoan_cha\": \"1:Người 2:sử 3:dụng 4:lao 5:động 6:có 7:các 8:nghĩa 9:vụ 10:sau 11:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thực hiện quy định của pháp luật về lao động, việc làm, giáo dục nghề nghiệp, bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp và an toàn, vệ sinh lao động; xây dựng và thực hiện các giải pháp phòng, chống quấy rối tình dục tại nơi làm việc;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Thực 2:hiện 3:quy 4:định 5:của 6:pháp 7:luật 8:về 9:lao 10:động, 11:việc 12:làm, 13:giáo 14:dục 15:nghề 16:nghiệp, 17:bảo 18:hiểm 19:xã 20:hội, 21:bảo 22:hiểm 23:y 24:tế, 25:bảo 26:hiểm 27:thất 28:nghiệp 29:và 30:an 31:toàn, 32:vệ 33:sinh 34:lao 35:động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:xây 2:dựng\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:thực 2:hiện\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:các 2:giải 3:pháp 4:phòng, 5:chống 6:quấy 7:rối 8:tình 9:dục 10:tại 11:nơi 12:làm 13:việc\",\n     \"ap_cho\": [\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D6.K2.d\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-8\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"liet_ke\": [\n    [\n     \"s1.m1:9-10\"\n    ],\n    [\n     \"s1.m1:11-12\"\n    ],\n    [\n     \"s1.m1:13-16\"\n    ],\n    [\n     \"s1.m1:17-20\"\n    ],\n    [\n     \"s1.m1:21-24\"\n    ],\n    [\n     \"s1.m1:25-28\"\n    ],\n    [\n     \"s1.m1:30-35\"\n    ]\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-2\",\n    \"s1.c1:1-13\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:1-2\",\n    \"s1.c1:1-13\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-4e6373fea9324deb87163ddb33b646fb",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2029
+   },
+   "input_tokens": 6226,
+   "output_tokens": 2649,
+   "x_ckey": {
+    "cost": 14.25,
+    "cost_is_estimate": false,
+    "request_id": "req_3141f5965e14a7bd7db1ecfd"
+   }
+  }
+ }
+}

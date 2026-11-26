@@ -27,23 +27,38 @@ import collections
 import datetime
 import hashlib
 import json
+import math
 import os
+import re
 import subprocess
 import sys
 import tempfile
+import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import corpus  # noqa: E402
 import implicit_exceptions  # noqa: E402  (dùng lại HUONG_DAN của hộp cát)
 import parse  # noqa: E402
+import llm_client  # noqa: E402
 import propositions  # noqa: E402
 import rules  # noqa: E402
 import textutil  # noqa: E402
 import versions  # noqa: E402
 
-PROMPT_VERSION = "hoi-dap-2"  # 2 (A44): ket_luan kèm vị từ chủ thể (canh của quy tắc); hoi-dap-1 không cho LLM biết φ cần chủ thể nào
+# 3 (A63): mỗi câu hỏi có từ vựng RIÊNG do máy lọc (TOP_K kết luận gần chữ câu hỏi nhất + vị từ trong thân các quy tắc kết luận chúng + TOP_K
+# vị từ gần chữ câu hỏi nhất), thay cho cả từ vựng (đo offline bao_cao_a62.md mục 10: tên đúng lọt 29/30 câu). Chọn bằng khoá cấu hình
+# `hoi_dap.prompt_version` của lần chạy (mặc định 2: lần chạy mặc định và cache cũ không đổi).
+# 2 (A44): ket_luan kèm vị từ chủ thể (canh của quy tắc); hoi-dap-1 không cho LLM biết φ cần chủ thể nào
+PROMPT_VERSION = llm_client.load_config().get("hoi_dap.prompt_version", "hoi-dap-2")
+if PROMPT_VERSION not in ("hoi-dap-2", "hoi-dap-3"):
+    raise SystemExit(f"hoi_dap.prompt_version = {PROMPT_VERSION!r}, chỉ nhận hoi-dap-2, hoi-dap-3")
+V3 = PROMPT_VERSION == "hoi-dap-3"
+TOP_K = 50  # [A63] chốt trước khi chạy, theo phép đo offline (mục 10: @50 lọt 29/30, @20 22/30)
+LAN = int(os.environ.get("KLTN_LAN", "1") or 1)  # [A63] lần dịch thứ mấy (đo nhiễu, 3 lần mỗi KB); lần 1 giữ tên cache cũ của hoi-dap-3
 MODEL, EFFORT, ALIAS = implicit_exceptions.MODEL, implicit_exceptions.EFFORT, implicit_exceptions.ALIAS  # cùng hộp cát với 1.7 (khoá hop_cat.*, A46)
+# [A63] model dịch câu hỏi cố định cho mọi KB đem so (khoá hoi_dap.model): so KB thì bước dịch phải cùng model, không theo model dựng KB
+MODEL = llm_client.load_config().get("hoi_dap.model", MODEL)
 LOT_SIZE = 5
 DIR_NAME = "answering"
 CACHE_DIR = corpus.ROOT / "data" / "llm_cache" / DIR_NAME
@@ -67,6 +82,14 @@ Với mỗi câu hỏi:
   - Ngưỡng số: chỉ ghi dữ kiện so ngưỡng khi "nghia" của vị từ nêu ngưỡng và con số trong câu hỏi đủ để quyết; "trich" phải chứa con số đó.
 
 ĐẦU RA: chỉ JSON {"cau_hoi": [{"id": "...", "phi": "..." | null, "su_kien": [...]}]}. Mỗi câu hỏi đúng một mục. Mỗi câu hỏi xét riêng."""
+
+
+SYSTEM_2 = SYSTEM
+SYSTEM_3 = SYSTEM.replace(
+    """ĐẦU VÀO: {"tu_vung": {"ket_luan": [{"ten", "nghia"}], "vi_tu": [{"ten", "nghia"}]}, "cau_hoi": [{"id", "cau_hoi"}]}.""",
+    """ĐẦU VÀO: {"cau_hoi": [{"id", "cau_hoi", "tu_vung": {"ket_luan": [{"ten", "nghia"}], "vi_tu": [{"ten", "nghia"}]}}]}. Mỗi câu hỏi có tu_vung RIÊNG (danh sách rút gọn theo câu hỏi); với câu nào chỉ dùng tên trong tu_vung của chính câu đó.""")
+assert SYSTEM_3 != SYSTEM_2
+SYSTEM = SYSTEM_3 if V3 else SYSTEM_2
 
 
 # ---- từ vựng, quy tắc, phiên bản ----
@@ -140,6 +163,49 @@ def vocabulary(all_rules):
 
 def vocab_hash(vocab):
     return hashlib.sha256(json.dumps(vocab, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()[:16]
+
+
+_MODE_PREFIX = re.compile(r"^(phải không|phải|được|cấm|không thuộc diện): ")
+
+
+def _terms(s):
+    s = unicodedata.normalize("NFC", s or "").casefold()
+    for a, b in textutil.TONE:
+        s = s.replace(a, b)
+    sy = re.findall(r"[^\W\d_]+", s)
+    return set(sy) | {f"{a} {b}" for a, b in zip(sy, sy[1:])}
+
+
+def _ranker(entries):
+    """[(ten, nghia)] -> hàm(chữ câu hỏi) -> [ten] xếp theo tổng idf các thuật ngữ (âm tiết đơn, cặp âm tiết) chung; hoà theo tên.
+    Giống hệt cách A của utils/llm_runs/measure_vocab_filter.py (chốt trước khi đo, A63)."""
+    docs = [(t, _terms(_MODE_PREFIX.sub("", n))) for t, n in entries]
+    df = collections.Counter(x for _t, ts in docs for x in ts)
+    idf = {x: math.log(len(docs) / c) for x, c in df.items()}
+    return lambda q: [t for _s, t in sorted((-sum(idf[x] for x in ts & _terms(q)), t) for t, ts in docs)]
+
+
+class QuestionVocab:
+    """[A63] Từ vựng riêng của từng câu hỏi (cách B, bao_cao_a62.md mục 10)."""
+
+    def __init__(self, vocab, all_rules):
+        self.vocab = vocab
+        self.kl = {e["ten"]: e for e in vocab["ket_luan"]}
+        self.vt = {e["ten"]: e for e in vocab["vi_tu"]}
+        self.rank_h = _ranker([(e["ten"], e["nghia"]) for e in vocab["ket_luan"]])
+        self.rank_p = _ranker([(e["ten"], e["nghia"]) for e in vocab["vi_tu"]])
+        self.body = collections.defaultdict(set)
+        for r in all_rules:
+            if not r.get("isolated"):
+                self.body[r["head"]["atom"]].update(l["atom"] for l in r["body"] if l["atom"] in self.vt)
+
+    def of(self, q):
+        heads = self.rank_h(q)[:TOP_K]
+        preds = set(self.rank_p(q)[:TOP_K])
+        for h in heads:
+            preds |= self.body[h]
+            preds.update(x["ten"] for x in self.kl[h].get("chu_the") or [] if x["ten"] in self.vt)
+        return {"ket_luan": [self.kl[h] for h in sorted(heads)], "vi_tu": [self.vt[p] for p in sorted(preds)]}
 
 
 def source_texts():
@@ -297,12 +363,24 @@ def load_questions(path):
 
 def cache_path(path):
     stem = Path(path).stem + ("." + "_".join(CAU_HOI_ID) if CAU_HOI_ID else "")
+    if V3:  # [A63] cache riêng: không ghi đè cache hoi-dap-2; lần dịch 2, 3 mỗi lần một file
+        return CACHE_DIR / (corpus.cache_name(stem)[:-len(".json")] + ".hd3" + (f".lan{LAN}" if LAN > 1 else "") + ".json")
     return CACHE_DIR / corpus.cache_name(stem)
 
 
-def lots(qs, vocab):
+def lots(qs, vocab, qv=None):
+    if V3:
+        return [{"cau_hoi": [{"id": q["id"], "cau_hoi": q["cau_hoi"], "tu_vung": qv.of(q["cau_hoi"])} for q in qs[k:k + LOT_SIZE]]}
+                for k in range(0, len(qs), LOT_SIZE)]
     return [{"tu_vung": vocab, "cau_hoi": [{"id": q["id"], "cau_hoi": q["cau_hoi"]} for q in qs[k:k + LOT_SIZE]]}
             for k in range(0, len(qs), LOT_SIZE)]
+
+
+def vocab_key(vocab, qv=None, qs=None):
+    """Mã băm từ vựng ghi trong cache: hoi-dap-3 băm từ vựng riêng của mọi câu (đổi KB hay đổi câu hỏi là đổi mã)."""
+    if V3:
+        return vocab_hash({q["id"]: qv.of(q["cau_hoi"]) for q in qs})
+    return vocab_hash(vocab)
 
 
 def gate(item, q, preds, heads):
@@ -327,8 +405,10 @@ def xuat(thu_muc, qpath):
     d = Path(thu_muc)
     if d.exists() and any(d.iterdir()):
         raise SystemExit(f"{d} đã có nội dung, không ghi đè")
-    vocab, _, _ = vocabulary(load_rules())
-    ls = lots(load_questions(qpath), vocab)
+    all_rules = load_rules()
+    vocab, _, _ = vocabulary(all_rules)
+    qv, qs = QuestionVocab(vocab, all_rules), load_questions(qpath)
+    ls = lots(qs, vocab, qv)
     (d / "lo").mkdir(parents=True, exist_ok=True)
     (d / "out").mkdir()
     (d / "system.txt").write_text(SYSTEM + "\n", encoding="utf-8", newline="\n")
@@ -337,7 +417,7 @@ def xuat(thu_muc, qpath):
     (d / "HUONG_DAN.md").write_text(implicit_exceptions.HUONG_DAN.replace("@N@", f"{len(ls):03d}").replace("@MODEL@", MODEL)
                                     .replace("@ALIAS@", ALIAS).replace("@EFFORT@", EFFORT), encoding="utf-8", newline="\n")
     cfg = {"model": MODEL, "effort": EFFORT, "prompt_version": PROMPT_VERSION, "tap_con": corpus.SUBSET, "cau_hoi": Path(qpath).name,
-           "tu_vung": vocab_hash(vocab)}
+           "tu_vung": vocab_key(vocab, qv, qs)}
     (d / "cau_hinh.json").write_text(json.dumps(cfg) + "\n", encoding="utf-8")
     return f"đã dựng {d}: {len(ls)} lô, {sum(len(x['cau_hoi']) for x in ls)} câu hỏi; từ vựng {len(vocab['ket_luan'])} kết luận, {len(vocab['vi_tu'])} vị từ"
 
@@ -345,17 +425,18 @@ def xuat(thu_muc, qpath):
 def nhap(thu_muc, qpath):
     d = Path(thu_muc)
     cfg = json.loads((d / "cau_hinh.json").read_text(encoding="utf-8"))
-    vocab, _, _ = vocabulary(load_rules())
-    if (cfg.get("tap_con") != corpus.SUBSET or cfg.get("prompt_version") != PROMPT_VERSION or cfg.get("tu_vung") != vocab_hash(vocab)
+    all_rules = load_rules()
+    vocab, _, _ = vocabulary(all_rules)
+    qv, qs = QuestionVocab(vocab, all_rules), load_questions(qpath)
+    if (cfg.get("tap_con") != corpus.SUBSET or cfg.get("prompt_version") != PROMPT_VERSION or cfg.get("tu_vung") != vocab_key(vocab, qv, qs)
             or (d / "system.txt").read_text(encoding="utf-8") != SYSTEM + "\n"):
         raise SystemExit("hộp cát dựng với tập con, lời nhắc hoặc từ vựng khác hiện tại: không nhập")
     if not (d / "nhat_ky.tsv").exists():
         raise SystemExit(f"{d} chưa có nhat_ky.tsv: phiên chưa chạy xong, không nhập")
     log = {int(p[0]): p[1].strip() for p in (x.split("\t") for x in (d / "nhat_ky.tsv").read_text(encoding="utf-8").splitlines())
            if len(p) >= 2 and p[0].strip().isdigit()}
-    qs = load_questions(qpath)
     answers, bad = {}, []
-    for n, lot in enumerate(lots(qs, vocab), 1):
+    for n, lot in enumerate(lots(qs, vocab, qv), 1):
         if (d / "lo" / f"{n:03d}.json").read_text(encoding="utf-8") != implicit_exceptions.lot_text(lot):
             bad.append((n, "lo/ khác đầu vào hiện tại"))
             continue
@@ -376,7 +457,7 @@ def nhap(thu_muc, qpath):
         answers.update({i: {"cau_hoi": want[i]["cau_hoi"], "phi": it.get("phi"), "su_kien": it.get("su_kien")} for i, it in items.items()})
     out = cache_path(qpath)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps({"prompt_version": PROMPT_VERSION, "model": MODEL, "effort": EFFORT, "tu_vung": vocab_hash(vocab),
+    out.write_text(json.dumps({"prompt_version": PROMPT_VERSION, "model": MODEL, "effort": EFFORT, "tu_vung": vocab_key(vocab, qv, qs),
                                "answers": answers}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
     print(f"ghi {out}: {len(answers)} câu có trả lời")
     for n, why in bad:
@@ -388,10 +469,11 @@ def nhap(thu_muc, qpath):
 def run(qpath):
     all_rules = load_rules()
     vocab, preds, heads = vocabulary(all_rules)
+    qv = QuestionVocab(vocab, all_rules) if V3 else None
     p = cache_path(qpath)
     cache = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {"answers": {}}
     warns = []
-    if p.exists() and (cache.get("prompt_version") != PROMPT_VERSION or cache.get("tu_vung") != vocab_hash(vocab)):
+    if p.exists() and (cache.get("prompt_version") != PROMPT_VERSION or cache.get("tu_vung") != vocab_key(vocab, qv, load_questions(qpath))):
         warns.append("CẢNH BÁO: cache của lời nhắc hoặc từ vựng khác (đổi 1.6B/1.8?): mọi câu coi như chưa có trả lời, cần chạy lại phiên")
         cache = {"answers": {}}
     ver_rows = versions.load_versions(corpus.out_dir("versions") / "versions.jsonl")
@@ -411,7 +493,11 @@ def run(qpath):
             row.update(ket_qua="chua_hoi", ly_do="chưa có trả lời LLM cho đúng chữ câu hỏi này")
             results.append(row)
             continue
-        err = gate(item, q, preds, heads)
+        if V3:  # [A63] cổng theo từ vựng riêng của câu: tên ngoài danh sách đã gửi là lỗi
+            v = qv.of(q["cau_hoi"])
+            err = gate(item, q, {e["ten"] for e in v["vi_tu"]}, {e["ten"] for e in v["ket_luan"]})
+        else:
+            err = gate(item, q, preds, heads)
         row.update(phi=item["phi"], su_kien=item["su_kien"])
         if err:
             row.update(ket_qua="loi", ly_do=f"cổng: {err}")
@@ -429,8 +515,10 @@ def run(qpath):
     d = corpus.out_dir(DIR_NAME)
     d.mkdir(parents=True, exist_ok=True)
     stem = Path(qpath).stem + ("." + "_".join(CAU_HOI_ID) if CAU_HOI_ID else "")  # [A61] bộ lọc câu: file riêng
+    if V3:  # [A63] báo cáo riêng cho hoi-dap-3 và từng lần dịch
+        stem += ".hd3" + (f".lan{LAN}" if LAN > 1 else "")
     parse.write_jsonl(d / f"answering_results_{stem}.jsonl", results)
-    lines = [f"1.9 hỏi đáp: {Path(qpath).name}" + (f" (kho con {corpus.SUBSET})" if corpus.SUBSET else ""),
+    lines = [f"1.9 hỏi đáp: {Path(qpath).name}" + (f" (kho con {corpus.SUBSET})" if corpus.SUBSET else "") + f"; lời nhắc {PROMPT_VERSION}" + (f", lần {LAN}" if V3 else ""),
              f"văn bản có quy tắc: {sorted(rule_doc_ids)}; câu hỏi: {len(results)}; từ vựng: {len(vocab['ket_luan'])} kết luận, {len(vocab['vi_tu'])} vị từ",
              "Không in tỉ lệ đúng chung: câu gắn 'cần 2.6' có căn cứ chuẩn ở văn bản chưa có quy tắc nên chưa thể đúng ở giai đoạn này."] + warns
     for r in results:

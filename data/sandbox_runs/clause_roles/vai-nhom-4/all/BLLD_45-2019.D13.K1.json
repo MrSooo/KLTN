@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D13.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D13.K1\",\n \"tieu_de_dieu\": \"1:Hợp 2:đồng 3:lao 4:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Hợp đồng lao động là sự thỏa thuận giữa người lao động và người sử dụng lao động về việc làm có trả công, tiền lương, điều kiện lao động, quyền và nghĩa vụ của mỗi bên trong quan hệ lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Hợp 2:đồng 3:lao 4:động 5:là 6:sự 7:thỏa 8:thuận 9:giữa 10:người 11:lao 12:động 13:và 14:người 15:sử 16:dụng 17:lao 18:động 19:về 20:việc 21:làm 22:có 23:trả 24:công, 25:tiền 26:lương, 27:điều 28:kiện 29:lao 30:động, 31:quyền 32:và 33:nghĩa 34:vụ 35:của 36:mỗi 37:bên 38:trong 39:quan 40:hệ 41:lao 42:động\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Trường hợp hai bên thỏa thuận bằng tên gọi khác nhưng có nội dung thể hiện về việc làm có trả công, tiền lương và sự quản lý, điều hành, giám sát của một bên thì được coi là hợp đồng lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:hai 2:bên 3:thỏa 4:thuận 5:bằng 6:tên 7:gọi 8:khác\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:nội 3:dung 4:thể 5:hiện 6:về 7:việc 8:làm 9:có 10:trả 11:công, 12:tiền 13:lương 14:và 15:sự 16:quản 17:lý, 18:điều 19:hành, 20:giám 21:sát 22:của 23:một 24:bên\",\n     \"noi_truoc\": [\n      \"nhưng\"\n     ]\n    },\n    {\n     \"id\": \"s2.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:được 2:coi 3:là 4:hợp 5:đồng 6:lao 7:động\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D13.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:6-42\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:5\",\n    \"s1.m1:1-4\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:3-8\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.m1:1-2\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"loi\": [\n    \"s2.m2:1-24\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m3\",\n   \"loi\": [\n    \"s2.m3:1-7\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-bab22920131147749c683dc1fabbefe7",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2022
+   },
+   "input_tokens": 6353,
+   "output_tokens": 2577,
+   "x_ckey": {
+    "cost": 14.34,
+    "cost_is_estimate": false,
+    "request_id": "req_36260e0bd689d5ed43dd3e58"
+   }
+  }
+ }
+}

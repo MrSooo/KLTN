@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D186",
+ "phien_ban": "vai-nhom-4",
+ "model": "hungdt/om-gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D186\",\n \"tieu_de_dieu\": \"1:Cấm 2:hành 3:động 4:đơn 5:phương 6:trong 7:khi 8:tranh 9:chấp 10:lao 11:động 12:đang 13:được 14:giải 15:quyết\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khi tranh chấp lao động đang được cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết trong thời hạn theo quy định của Bộ luật này thì không bên nào được hành động đơn phương chống lại bên kia.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tranh 2:chấp 3:lao 4:động 5:đang 6:được 7:cơ 8:quan, 9:tổ 10:chức, 11:cá 12:nhân 13:có 14:thẩm 15:quyền 16:giải 17:quyết 18:trong 19:thời 20:hạn 21:theo 22:quy 23:định 24:của 25:Bộ 26:luật 27:này\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:không 2:bên 3:nào 4:được 5:hành 6:động 7:đơn 8:phương 9:chống 10:lại 11:bên 12:kia\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D186\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-17\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:18-27\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:5-12\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m2:2-3\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1fAHa-ycDLj2z7sPr8Cw6Ak",
+  "model": "hungdt/om-gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2483
+   },
+   "input_tokens": 6013,
+   "output_tokens": 2842,
+   "x_ckey": {
+    "cost": 13.64,
+    "cost_is_estimate": false,
+    "request_id": "req_416cf8af3f0d55f108acc016"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D44.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D44.K1\",\n \"tieu_de_dieu\": \"1:Phương 2:án 3:sử 4:dụng 5:lao 6:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Phương án sử dụng lao động phải có những nội dung chủ yếu sau đây:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Phương 2:án 3:sử 4:dụng 5:lao 6:động 7:phải 8:có 9:những 10:nội 11:dung 12:chủ 13:yếu 14:sau 15:đây\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D44.K1\",\n \"cac_muc_con\": \"danh_sach\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "ZM4Ha56sK_i-1e8Pr8WqmAM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 463
+   },
+   "input_tokens": 5729,
+   "output_tokens": 517,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_4e27cd1be0a1d83456ec2e50"
+   }
+  }
+ }
+}

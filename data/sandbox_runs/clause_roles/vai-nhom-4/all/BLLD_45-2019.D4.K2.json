@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D4.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D4.K2\",\n \"tieu_de_dieu\": \"1:Chính 2:sách 3:của 4:Nhà 5:nước 6:về 7:lao 8:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Bảo đảm quyền và lợi ích hợp pháp của người sử dụng lao động, quản lý lao động đúng pháp luật, dân chủ, công bằng, văn minh và nâng cao trách nhiệm xã hội.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Bảo 2:đảm 3:quyền 4:và 5:lợi 6:ích 7:hợp 8:pháp 9:của 10:người 11:sử 12:dụng 13:lao 14:động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:quản 2:lý 3:lao 4:động 5:đúng 6:pháp 7:luật, 8:dân 9:chủ, 10:công 11:bằng, 12:văn 13:minh\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:nâng 2:cao 3:trách 4:nhiệm 5:xã 6:hội\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D4.K2\",\n \"bo_qua\": \"khong_quy_pham\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-500ea9abb3e042d0be152f238a447a8d",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 330
+   },
+   "input_tokens": 5952,
+   "output_tokens": 381,
+   "x_ckey": {
+    "cost": 10.56,
+    "cost_is_estimate": false,
+    "request_id": "req_1a5ddb4cb066d8450999cf8c"
+   }
+  }
+ }
+}

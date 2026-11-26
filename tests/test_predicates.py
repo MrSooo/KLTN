@@ -115,4 +115,13 @@ def test_run_rounds_merge_flag():
         P.GOP_CHU = old
 
 
+
+def test_bad_rows_drops_whole_rule_group_a63():
+    dong = [{"quy_tac": "q1"}, {"quy_tac": "q1"}, {"quy_tac": "q2"}, {"quy_tac": None}]
+    assert P.bad_rows(dong, []) == set()
+    assert P.bad_rows(dong, [[1, "x"]]) == {0, 1}  # dòng lỗi của q1: bỏ cả q1, giữ q2
+    assert P.bad_rows(dong, [[3, "x"]]) == {0, 1, 2, 3}  # dòng lỗi không có quy_tac: bỏ cả đơn vị
+    assert P.bad_rows(dong, [[None, "thiếu ngoại lệ"]]) == {0, 1, 2, 3}  # lỗi cấp đơn vị: bỏ cả đơn vị
+
+
 _harness.run(globals())

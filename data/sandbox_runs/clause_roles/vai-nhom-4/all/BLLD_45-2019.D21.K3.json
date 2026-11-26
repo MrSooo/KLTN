@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D21.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "martha02091945/gemini-3.8-flash",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D21.K3\",\n \"tieu_de_dieu\": \"1:Nội 2:dung 3:hợp 4:đồng 5:lao 6:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Đối với người lao động làm việc trong lĩnh vực nông nghiệp, lâm nghiệp, ngư nghiệp, diêm nghiệp thì tùy theo loại công việc mà hai bên có thể giảm một số nội dung chủ yếu của hợp đồng lao động và thỏa thuận bổ sung nội dung về phương thức giải quyết trong trường hợp thực hiện hợp đồng chịu ảnh hưởng của thiên tai, hỏa hoạn, thời tiết.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Đối 2:với 3:người 4:lao 5:động 6:làm 7:việc 8:trong 9:lĩnh 10:vực 11:nông 12:nghiệp, 13:lâm 14:nghiệp, 15:ngư 16:nghiệp, 17:diêm 18:nghiệp\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:tùy 2:theo 3:loại 4:công 5:việc\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ],\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    },\n    {\n     \"id\": \"s1.c3\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:hai 2:bên 3:có 4:thể\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ],\n     \"noi_truoc\": [\n      \"mà\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:giảm 2:một 3:số 4:nội 5:dung 6:chủ 7:yếu 8:của 9:hợp 10:đồng 11:lao 12:động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:thỏa 2:thuận 3:bổ 4:sung 5:nội 6:dung 7:về 8:phương 9:thức 10:giải 11:quyết 12:trong 13:trường 14:hợp 15:thực 16:hiện 17:hợp 18:đồng 19:chịu 20:ảnh 21:hưởng 22:của 23:thiên 24:tai, 25:hỏa 26:hoạn, 27:thời 28:tiết\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D21.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.c1:1-18\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.c2:1-5\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-12\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c3:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-28\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c3:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-54a22ca332f84bec964c6e05373cd260",
+  "model": "martha02091945/gemini-3.8-flash",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1727
+   },
+   "input_tokens": 6358,
+   "output_tokens": 2247,
+   "x_ckey": {
+    "cost": 13.82,
+    "cost_is_estimate": false,
+    "request_id": "req_cb7c214d1a32b9bc9e022451"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D152.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D152.K1\",\n \"tieu_de_dieu\": \"1:Điều 2:kiện 3:tuyển 4:dụng, 5:sử 6:dụng 7:người 8:lao 9:động 10:nước 11:ngoài 12:làm 13:việc 14:tại 15:Việt 16:Nam\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Doanh nghiệp, cơ quan, tổ chức, cá nhân, nhà thầu chỉ được tuyển dụng người lao động nước ngoài vào làm vị trí công việc quản lý, điều hành, chuyên gia và lao động kỹ thuật mà người lao động Việt Nam chưa đáp ứng được theo nhu cầu sản xuất, kinh doanh.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Doanh 2:nghiệp, 3:cơ 4:quan, 5:tổ 6:chức, 7:cá 8:nhân, 9:nhà 10:thầu 11:chỉ 12:được 13:tuyển 14:dụng 15:người 16:lao 17:động 18:nước 19:ngoài 20:vào 21:làm 22:vị 23:trí 24:công 25:việc 26:quản 27:lý, 28:điều 29:hành, 30:chuyên 31:gia 32:và 33:lao 34:động 35:kỹ 36:thuật 37:mà 38:người 39:lao 40:động 41:Việt 42:Nam 43:chưa 44:đáp 45:ứng 46:được 47:theo 48:nhu 49:cầu 50:sản 51:xuất, 52:kinh 53:doanh\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D152.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:13-25\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-10\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"liet_ke\": [\n    [\n     \"s1.m1:26-27\"\n    ],\n    [\n     \"s1.m1:28-29\"\n    ],\n    [\n     \"s1.m1:30-31\"\n    ],\n    [\n     \"s1.m1:33-36\"\n    ]\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:44-46\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:38-42\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:47-53\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:38-42\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "RM4Ha5HVIOOx2roPlo6wkQY",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3907
+   },
+   "input_tokens": 6071,
+   "output_tokens": 1736,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_bad7201c9bd9cd24849e0643"
+   }
+  }
+ }
+}

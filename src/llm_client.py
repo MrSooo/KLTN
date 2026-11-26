@@ -36,6 +36,9 @@ CACHE_DIR = ROOT / "data" / "llm_cache"
 USAGE_PATH = CACHE_DIR / "_usage.json"
 ROLES = ("chinh", "kiem")  # model chính và model kiểm độc lập của 2.2 (llm_config.md). links.py lặp qua ROLES để hai model kiểm chéo nhau: KHÔNG thêm vai vào đây
 EXTRA_ROLES = ("trich",)  # vai trích xuất ngữ nghĩa cho 1.6 trở đi (Claude, A34). Nằm ngoài ROLES có chủ đích: vai này không tham gia kiểm chéo 2.2
+# [A63, user 26/11] Không gửi User-Agent mặc định của Python ("Python-urllib/x"): một số tuyến ckey trả 403 hay khoá tài khoản theo nó.
+# Mọi lời gọi HTTP của dự án dùng giá trị này (tên chung, không mang tên dự án hay người dùng).
+USER_AGENT = "llm-client/1.0"
 PROVIDERS = {"gemini": "GEMINI_API_KEY", "anthropic": "ANTHROPIC_API_KEY", "ckey": "CKEY_API_KEY"}  # nhà cung cấp -> biến môi trường giữ khoá
 # Vai của bộ chạy hộp cát qua API (A46). KHÔNG nằm trong EXTRA_ROLES: `run_all --llm live` đòi khoá của mọi vai trong ROLES + EXTRA_ROLES,
 # mà vai này không thuộc bước nào của run_all (nó chỉ lấp thư mục làm việc, kết quả vào cache qua lệnh `nhap` của từng bước).
@@ -380,7 +383,8 @@ class Client:
         body = json.dumps({"model": model, "max_tokens": max_tokens, "system": system, "messages": [{"role": "user", "content": user}]},
                           ensure_ascii=False).encode("utf-8")
         req = urllib.request.Request(self.cfg[f"{API_ROLE}.base_url"].rstrip("/") + "/v1/messages", data=body, method="POST",
-                                     headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01"})
+                                     headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01",
+                                              "User-Agent": USER_AGENT})
         for attempt in range(1, ATTEMPTS + 1):
             why = None
             try:

@@ -481,7 +481,8 @@ def goi(bo, models=(MODEL,), thu_muc=None):
                                    "messages": [{"role": "user", "content": "Câu: \"" + c["cau_gui"] + "\""}],
                                    **({"thinking": {"type": "disabled"}} if tat else {})}, ensure_ascii=False).encode("utf-8")
                 req = urllib.request.Request(base + "/v1/messages", data=body, method="POST", headers={
-                    "Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01"})
+                    "Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01",
+        "User-Agent": __import__("llm_client").USER_AGENT})
                 try:
                     with urllib.request.urlopen(req, timeout=300) as r:
                         data = json.loads(r.read().decode("utf-8"))

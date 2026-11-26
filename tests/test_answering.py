@@ -132,4 +132,23 @@ def test_answering_gate_checks_quote_and_names():
     assert answering.gate({"phi": "foreign", "su_kien": [{"vi_tu": "foreign", "phu_dinh": False, "trich": "Người nước ngoài"}]}, q, {"foreign"}, {"foreign"})
 
 
+
+def test_question_vocab_top_k_plus_rule_bodies_a63():
+    """[A63] Từ vựng riêng của câu: kết luận gần chữ câu hỏi nhất + vị từ thân của quy tắc kết luận chúng."""
+    rs = kb()
+    vocab = {"ket_luan": [{"ten": "must_holds_work_permit", "nghia": "phải: có giấy phép lao động"},
+                          {"ten": "eligible_for_license", "nghia": "đủ điều kiện cấp giấy phép cho thuê lại"}],
+             "vi_tu": [{"ten": "foreign_worker", "nghia": "người lao động nước ngoài"}, {"ten": "leasing_enterprise", "nghia": "doanh nghiệp cho thuê lại"},
+                       {"ten": "deposit_enough", "nghia": "ký quỹ đủ"}, {"ten": "special_case", "nghia": "trường hợp đặc biệt"}]}
+    old = answering.TOP_K
+    answering.TOP_K = 1
+    try:
+        v = answering.QuestionVocab(vocab, rs).of("Người nước ngoài có phải có giấy phép lao động không?")
+    finally:
+        answering.TOP_K = old
+    assert [e["ten"] for e in v["ket_luan"]] == ["must_holds_work_permit"]
+    names = {e["ten"] for e in v["vi_tu"]}
+    assert "foreign_worker" in names and "deposit_enough" not in names
+
+
 _harness.run(globals())

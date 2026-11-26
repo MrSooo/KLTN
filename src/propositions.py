@@ -613,7 +613,7 @@ def _gap_lost(gap, row, other_words):
     return any(w not in other_words for w in rest)
 
 
-def compact_checks(ctx, unit, rows):
+def compact_checks(ctx, unit, rows, version=None):
     """Phần kiểm riêng của khuôn gọn, cộng vào cổng cũ. Lỗi: đoạn chứa chữ dẫn chiếu (dẫn chiếu thuộc dòng con_tro); bo_qua ngoài tập đóng;
     đơn vị không có dòng; giữa hai đoạn liên tiếp cùng nguồn có chữ "không/chưa/hoặc" bị bỏ mà phần bỏ MẤT (_gap_lost). Bỏ "không" mà cuc
     phu_dinh, hay bỏ một vế đã thành dòng riêng là đúng (đọc lần 1 của menh-de-12: 3/4 ca "không" và 18/34 ca "hoặc" thuộc loại này).
@@ -632,8 +632,8 @@ def compact_checks(ctx, unit, rows):
             for ref in ctx["refs"]:
                 if isinstance(x, str) and ref["cum"] in x:
                     err.append((i, f"doan chứa chữ dẫn chiếu {ref['cum']!r}"))
-        if doan[:1] == ["là"]:
-            continue
+        if doan[:1] == ["là"] or (version or "") == "vai-nhom-4":
+            continue  # [A63] vai-nhom-4: chữ bỏ giữa các khoảng được kiểm theo VỊ TRÍ âm tiết ở clause_roles.tu_khuc (dò chữ ở đây bắt nhầm chỗ)
         other = set()
         for j, o in enumerate(dong):
             if j != i and isinstance(o, dict):
@@ -731,7 +731,7 @@ def check_unit(ctx, out_unit, version=None):
         return rows, err, flag
     unit = out_unit if isinstance(out_unit, dict) else {"dong": out_unit}
     rows = normalize(expand_unit(ctx, unit))
-    e2, f2 = compact_checks(ctx, unit, rows)
+    e2, f2 = compact_checks(ctx, unit, rows, version)
     err, flag = gate_unit(ctx, rows, version=version) if rows else ([], [])
     return rows, err + e2, flag + f2
 

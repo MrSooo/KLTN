@@ -277,9 +277,22 @@ def compile_units(a, pred_of, subj_of, order, kinds=None, texts=None):
     """-> (quy tắc [{id, unit, head, body, how}], ghi chú). texts ({đơn vị: chữ}) có thì biên dịch con trỏ điều kiện (A62)."""
     rules, notes = [], []
     per_unit = {}
+    tainted = set()  # [A63] đơn vị có nhóm quy tắc bị bỏ
     for uid in sorted(a, key=order.get):
         groups, n = unit_groups(uid, a[uid]["dong"], pred_of, subj_of, kinds or {})
         notes += n
+        # [A63, user chốt 26/11] Nhóm quy_tac có dòng lỗi cổng 1.6A (Pd.bad_rows: lỗi cấp đơn vị thì cả đơn vị) hay dòng chưa có tên vị từ:
+        # bỏ CẢ nhóm. Trước đây chỉ dòng đó vắng mặt, quy tắc dựng với ít điều kiện hơn văn bản (nới quy tắc).
+        dong = a[uid]["dong"]
+        bad = Pd.bad_rows(dong, a[uid].get("loi") or [])
+        bad |= {i for i, d in enumerate(dong) if d.get("loai") == "menh_de" and d.get("quy_tac") and not pred_of.get((uid, i), (None,))[0]}
+        drop = {dong[i].get("quy_tac") for i in bad if i < len(dong)}
+        for q in sorted(q for q in groups if q in drop):
+            notes.append(f"{uid} {q}: có dòng lỗi cổng hay chưa có tên vị từ, bỏ cả nhóm (A63)")
+            del groups[q]
+            tainted.add(uid)
+        if bad and len(bad) == len(dong) and dong:
+            tainted.add(uid)
         per_unit[uid] = groups
     pointer_defs = []
     if texts is not None:
@@ -301,6 +314,9 @@ def compile_units(a, pred_of, subj_of, order, kinds=None, texts=None):
     def add(uid, head, body, how, sources):
         # sources: mọi đơn vị góp chữ cho quy tắc (đơn vị kết luận và đơn vị điều kiện); 1.9 chỉ dùng quy tắc khi mọi đơn vị này còn hiệu lực
         # tại τ với đúng chữ 1.6A đã đọc.
+        if any(u in tainted for u in sources if u != uid):  # [A63] đơn vị góp điều kiện (câu dẫn, mục con) đã mất nhóm: quy tắc sẽ thiếu điều kiện
+            notes.append(f"{uid}: quy tắc {head['atom']} có đơn vị góp chữ đã bỏ nhóm ({[u for u in sources if u in tainted and u != uid]}), bỏ (A63)")
+            return
         lits = list(body)
         if head.get("subject") and head["subject"] != head["pred"]:
             lits = [{"atom": head["subject"], "pred": head["subject"], "naf": False, "role": "chu_the"}] + lits

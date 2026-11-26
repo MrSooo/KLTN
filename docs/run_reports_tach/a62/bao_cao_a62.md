@@ -108,3 +108,26 @@ Cổng làm đúng việc của nó. Lỗi của phía mình: dòng điều ki�
 - DeepSeek tụt 13 → 12 với cùng KB, chỉ khác từ vựng và lần dịch: dao động của bước dịch cỡ ±1-2 câu là có thật. Khoảng cách `tach` 10 / DeepSeek 12 vì thế chưa đủ để nói bên nào hơn trên hỏi đáp; trên cấu trúc thì `tach` hơn rõ.
 - Báo cáo đầy đủ: `answering_blld_questions_tach_buoc5_tuvung2.txt`, `answering_blld_questions_ckey_tuvung2.txt`; bản DeepSeek cũ giữ ở `answering_blld_questions_ckey_tuvung_cu.txt`.
 - Bộ test đầy đủ CHƯA chạy lại sau thay đổi `live_heads` (chỉ chạy `tests/test_answering.py`: 10/10 qua), vì user cần tắt máy. Phiên sau chạy `python -I src/run_all.py --viewer --tests` với `--llm off` rồi `--llm replay`.
+
+## 10. Đo offline hướng 2: lọc từ vựng 1.9 bằng máy (26/11 sáng)
+
+Không gọi LLM, không đổi lời nhắc. Script `utils/llm_runs/measure_vocab_filter.py` (chạy `KLTN_LLM_RUN=<tach|ckey> python -X utf8 -I utils/llm_runs/measure_vocab_filter.py`). Câu hỏi đo: nếu máy lọc từ vựng theo câu hỏi, tên ĐÚNG có còn trong danh sách ngắn không. Đây chỉ là điều kiện CẦN: LLM vẫn phải chọn đúng trong danh sách.
+
+- Trước khi đo: `data/processed_tach` trên máy Mac còn từ 25/11 chiều (thư mục không commit). Đã dựng lại `tach` và `ckey` từ cache (`run_all --llm-run <tên> --llm replay --viewer`, `KLTN_CAU_HOI=blld_questions`); `tach` ra lại đúng 10/34 (báo cáo 1.9 giống hệt bản đã commit). Bộ test đầy đủ (`--llm off` rồi `--llm replay`, `--viewer --tests`): 20/20 bước, 18 bộ test OK.
+- **`ckey` KHÔNG ra lại 12/34.** Dựng lại `ckey` bằng mã hiện tại cho 1.352 quy tắc (báo cáo đã commit: 1.142; quan hệ chặn 187 → 243), từ vựng 917 kết luận (trước 854). Mã băm từ vựng đổi nên cache dịch 34 câu của `ckey` hết hiệu lực: cả 34 câu ra `chua_hoi`. Tức là số 12/34 ở mục 9 đo trên KB `ckey` dựng bằng mã cũ, trước các sửa 1.8 của A62 (con trỏ `applies_`, đẩy điều kiện câu dẫn...); hai KB ở mục 9 không cùng mã 1.8. User cho giữ báo cáo `ckey` mới (`rules`, `update`, `answering`). So `ckey` với `tach` trên 1.9 cùng mã phải dịch lại 34 câu cho `ckey` (tốn tiền).
+- Gold do máy suy từ `can_cu`: 30 câu có đáp án `ket_luan_duoc`/`bi_bac`; quy tắc gold = quy tắc sống có `source_units` dưới `can_cu`; dữ kiện cần = literal thân không naf, không là đầu quy tắc. "Lọt @K": có ít nhất một quy tắc gold có đầu trong top-K kết luận và mọi dữ kiện cần trong danh sách vị từ.
+- Cách A (chốt trước khi xem kết quả): xếp hạng theo âm tiết đơn + cặp âm tiết trùng với câu hỏi, trọng số idf; kết luận và vị từ xếp riêng. Cách B (đặt ra SAU khi thấy A): vị từ = top-K theo chữ ∪ atom thân của các quy tắc có đầu trong top-K kết luận.
+
+| KB | cách | @20 | @50 | @100 | cỡ danh sách vị từ ở @50 |
+|---|---|---|---|---|---|
+| `tach` (1.279 kết luận, 2.349 vị từ) | A | 8/30 | 17/30 | 20/30 | 50 |
+| `tach` | B | 22/30 | **29/30** | 29/30 | ~135 (trung bình) |
+| `ckey` dựng lại (917 kết luận, 1.586 vị từ) | A | 2/30 | 10/30 | 14/30 | 50 |
+| `ckey` dựng lại | B | 22/30 | 28/30 | 28/30 | ~117 |
+
+- Cách A làm hỏng câu đang đúng: ở @50, B11, B19, B26 (`tach` đang đúng) mất tên cần dùng. Không dùng A.
+- Cách B @50 chỉ trượt B12 (đầu gold hạng 336; quy tắc gold đòi vị từ hỏng `that_person`).
+- Tên LLM đã chọn sai (cache): B01 tên đúng `dismissed_as_disciplinary_measure` hạng 11, tên chọn nhầm `dismiss_employee` hạng 162 (theo chữ, lọc giữ tên đúng, bỏ tên nhầm; chưa kiểm B có kéo tên nhầm lại qua thân quy tắc không). B04 (`cease_operations` 105), B15 (`employ_person_under_15_years_old` 604): chỉ B giữ được.
+- Lọc không chữa được mọi câu: 6 câu sai (B05, B06, B13, B16, B22, B29) có tên đúng đã trong top 20 theo cách A; lỗi ở cách hiểu câu, không ở độ dài từ vựng.
+- Giới hạn: không xét chuỗi quy tắc; bộ 34 câu chưa đóng băng; B được thiết kế sau khi thấy A. Bảng từng câu: chạy lại script (không lưu trong repo).
+- Đề xuất: cách B, K = 50, lời nhắc mới `hoi-dap-3` (từ vựng theo từng câu), dịch lại 34 câu trên `tach` (và `ckey` để so cùng luật). Tốn tiền: chờ user duyệt và báo giá trước.

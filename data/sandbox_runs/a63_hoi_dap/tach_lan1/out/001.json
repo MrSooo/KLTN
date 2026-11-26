@@ -1,0 +1,99 @@
+{
+ "cau_hoi": [
+  {
+   "id": "B01",
+   "phi": "terminate_employment_contract",
+   "su_kien": [
+    {
+     "vi_tu": "dismissed_as_disciplinary_measure",
+     "phu_dinh": false,
+     "trich": "kỷ luật sa thải"
+    },
+    {
+     "vi_tu": "commit_theft",
+     "phu_dinh": false,
+     "trich": "trộm cắp"
+    },
+    {
+     "vi_tu": "at_the_workplace",
+     "phu_dinh": false,
+     "trich": "tại nơi làm việc"
+    }
+   ]
+  },
+  {
+   "id": "B03",
+   "phi": "terminate_employment_contract",
+   "su_kien": [
+    {
+     "vi_tu": "under_effective_court_judgment_or_decision",
+     "phu_dinh": true,
+     "trich": "chưa có bản án của Tòa án"
+    }
+   ]
+  },
+  {
+   "id": "B04",
+   "phi": "terminate_employment_contract",
+   "su_kien": [
+    {
+     "vi_tu": "individual_employer_dies",
+     "phu_dinh": false,
+     "trich": "qua đời"
+    }
+   ]
+  },
+  {
+   "id": "B05",
+   "phi": "may_employer_unilaterally_terminates_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "công ty"
+    },
+    {
+     "vi_tu": "regularly_complete_contractual_work",
+     "phu_dinh": true,
+     "trich": "thường xuyên không hoàn thành công việc"
+    },
+    {
+     "vi_tu": "on_annual_personal_or_other_agreed_leave",
+     "phu_dinh": false,
+     "trich": "đang nghỉ phép hằng năm"
+    }
+   ]
+  },
+  {
+   "id": "B06",
+   "phi": "may_employer_unilaterally_terminates_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Người sử dụng lao động"
+    },
+    {
+     "vi_tu": "work_under_indefinite_term_contract",
+     "phu_dinh": false,
+     "trich": "làm việc theo hợp đồng không xác định thời hạn"
+    },
+    {
+     "vi_tu": "suffer_illness",
+     "phu_dinh": false,
+     "trich": "ốm"
+    },
+    {
+     "vi_tu": "treated_for_12_consecutive_months_indefinite_term",
+     "phu_dinh": false,
+     "trich": "đã điều trị 12 tháng liên tục"
+    },
+    {
+     "vi_tu": "working_capacity_recovers",
+     "phu_dinh": true,
+     "trich": "khả năng lao động chưa hồi phục"
+    }
+   ]
+  }
+ ]
+}

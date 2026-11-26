@@ -43,6 +43,11 @@ VI_DU_LUOT1 = {
     "D80.K2": [[m("m1", "thỏa ước lao động tập thể doanh nghiệp hết hiệu lực do người sử dụng lao động chấm dứt hoạt động"),
                 m("m2", "quyền lợi của người lao động được giải quyết theo quy định của pháp luật")]],
 }
+if clause_roles.NUMBERED:  # [A63] ví dụ 6 của vai-nhom-4 (chỉ ghi dòng của s1.m5, s1.m6)
+    VI_DU_LUOT1["D140"] = [[c("c1", "Lao động", ["m1", "m2", "m3", "m4"]), m("m1", "được bảo đảm việc làm cũ"), m("m2", "trở lại làm việc"),
+                            m("m3", "nghỉ hết thời gian theo quy định tại các khoản 1, 3 và 5 Điều 139 của Bộ luật này"),
+                            m("m4", "không bị cắt giảm tiền lương và quyền, lợi ích so với trước khi nghỉ thai sản"), m("m5", "việc làm cũ không còn"),
+                            m("m6", "người sử dụng lao động phải bố trí việc làm khác cho họ với mức lương không thấp hơn mức lương trước khi nghỉ thai sản")]]
 
 
 def build(short, luot1):
@@ -66,7 +71,9 @@ def test_clause_roles_vi_du_loi_nhac_qua_may_kiem():
     assert sorted(out) == sorted(B + u for u in VI_DU_LUOT1)
     for short, luot1 in VI_DU_LUOT1.items():
         ctx, segmap = build(short, luot1)
-        _rows, err, _flag, _ng = clause_roles.check(ctx, segmap, out[B + short])
+        _rows, err, _flag, _ng, _conv = clause_roles.check_v(ctx, segmap, out[B + short])
+        if short == "D140":  # ví dụ rút gọn: chỉ được thiếu dòng của các đoạn không ghi
+            err = [e for e in err if not re.search(r"đoạn s1\.m[1-4] không có dòng", e[1])]
         assert err == [], (short, err)
 
 
@@ -101,7 +108,7 @@ def test_clause_roles_gold_qua_may_kiem():
         gold = {u["unit_id"]: u["dau_ra"] for u in json.loads(path.read_text(encoding="utf-8"))["don_vi"]}
         assert len(gold) == {"dev": 36, "test": 20}[bo]
         for u, ctx, _msg, segmap in clause_roles.inputs(bo):
-            _rows, err, _flag, _ng = clause_roles.check(ctx, segmap, gold[u])
+            _rows, err, _flag, _ng, _conv = clause_roles.check_v(ctx, segmap, gold[u])
             assert err == [], (u, err)
 
 
@@ -111,16 +118,21 @@ def test_clause_roles_may_kiem_bat_loi():
     row = tot["dong"][0]
 
     def loi(out):
-        return [msg for _i, msg in clause_roles.check(ctx, segmap, out)[1]]
+        return [msg for _i, msg in clause_roles.check_v(ctx, segmap, out)[1]]
     assert any("không phải id đoạn menh_de" in x for x in loi({**tot, "dong": [{**row, "nguon": "s1.m9"}]}))
-    assert any("không nằm trọn" in x for x in loi({**tot, "dong": [{**row, "doan": ["khoản 2 Điều này"]}, row]}))
+    if clause_roles.NUMBERED:  # [A63] khoảng ngoài đoạn nguon, khoảng chứa chữ dẫn chiếu, khoảng vượt số âm tiết, chữ "không" bị bỏ
+        assert any("không thuộc đoạn" in x for x in loi({**tot, "dong": [{**row, "loi": ["s1.d1:7-10"]}, row]}))
+        assert any("chỉ có âm tiết" in x for x in loi({**tot, "dong": [{**row, "loi": ["s1.m1:4-40"]}]}))
+        assert any("sai dạng" in x for x in loi({**tot, "dong": [{**row, "loi": ["trực tiếp giao kết"]}]}))
+    else:
+        assert any("không nằm trọn" in x for x in loi({**tot, "dong": [{**row, "doan": ["khoản 2 Điều này"]}, row]}))
     assert any("không có dòng" in x for x in loi({**tot, "dong": []}))
     assert any("doi_so sai khuôn" in x for x in loi({**tot, "dong": [{**row, "doi_so": [{"loai": ["W", "E"]}]}]}))
     assert any("vắng ở ngoai_le" in x for x in loi({k: v for k, v in tot.items() if k != "ngoai_le"}))
     # Câu dẫn chỉ được miễn dòng khi danh sách là tân ngữ (danh_sach); va/hoac thì câu dẫn vẫn ra một ket_luan.
     ctx2, segmap2 = build("D176.K1", VI_DU_LUOT1["D176.K1"])
-    assert clause_roles.check(ctx2, segmap2, {"unit_id": B + "D176.K1", "cac_muc_con": "danh_sach", "dong": []})[1] == []
-    assert clause_roles.check(ctx2, segmap2, {"unit_id": B + "D176.K1", "cac_muc_con": "hoac", "dong": []})[1]
+    assert clause_roles.check_v(ctx2, segmap2, {"unit_id": B + "D176.K1", "cac_muc_con": "danh_sach", "dong": []})[1] == []
+    assert clause_roles.check_v(ctx2, segmap2, {"unit_id": B + "D176.K1", "cac_muc_con": "hoac", "dong": []})[1]
 
 
 def test_clause_roles_cau_luot1_hong_thanh_mot_doan():
@@ -252,6 +264,51 @@ def test_ket_luan_tu_tieu_de():
     assert out[0]["vai"] == "ket_luan" and len(out) == 1
     out, _ = clause_roles.them_ket_luan_tieu_de(ctx, [mk("ket_luan", "phải trả", "phai"), mk("dieu_kien", "khi y")])
     assert len(out) == 2  # nhóm đã có kết luận có phương thức: không thêm
+
+
+
+def test_clause_roles_khoang_am_tiet_khu_hoi():
+    """[A63] Đổi mẩu chữ của gold thành khoảng âm tiết rồi để máy dựng lại: phải ra đúng chữ gold và qua cổng như gold."""
+    if not clause_roles.NUMBERED:
+        return
+    for bo in clause_roles.GOLD:
+        gold = {u["unit_id"]: u["dau_ra"] for u in json.loads(clause_roles.GOLD[bo].read_text(encoding="utf-8"))["don_vi"]}
+        for u, ctx, _msg, segmap in clause_roles.inputs(bo):
+            tm = clause_roles.tu_map(ctx, segmap)
+
+            def span(piece, sids):
+                for d in sids:
+                    text, ws = tm[d]
+                    k = text.lower().find(clause_roles._nfc(piece).lower())
+                    if k >= 0:
+                        a = next(n for n, w in enumerate(ws, 1) if w[1] >= k)
+                        return f"{d}:{a}-{max(n for n, w in enumerate(ws, 1) if w[2] <= k + len(piece))}"
+                raise AssertionError((u, piece))
+            dong = []
+            for r in gold[u].get("dong") or []:
+                allowed = [r["nguon"]] + [s["id"] for s in segmap.values() if s["loai"] == "dung_chung" and r["nguon"] in s.get("ap_cho", [])]
+                x = {k: v for k, v in r.items() if k not in ("doan", "chu_the", "liet_ke")}
+                x["loi"] = [span(p, allowed) for p in r["doan"]]
+                if "chu_the" in r:
+                    x["chu_the"] = {"khoang": [span(r["chu_the"]["chu"], allowed + [k for k in tm if k not in allowed])], "loai": r["chu_the"]["loai"]}
+                if "liet_ke" in r:
+                    x["liet_ke"] = [[span(p, allowed)] for p in r["liet_ke"]]
+                dong.append(x)
+            _rows, err, _f, _n, conv = clause_roles.check_v(ctx, segmap, {**gold[u], "dong": dong})
+            assert err == [], (u, err)
+            for g, c2 in zip(gold[u].get("dong") or [], conv["dong"]):
+                assert [x.lower() for x in g["doan"]] == [x.lower() for x in c2["doan"]], (u, g["doan"], c2["doan"])
+
+
+def test_clause_roles_khoang_bo_khong_giua_loi():
+    """[A63] Bỏ chữ "không" giữa hai khoảng mà cuc khang_dinh là lỗi (theo vị trí âm tiết); cuc phu_dinh thì đúng."""
+    if not clause_roles.NUMBERED:
+        return
+    ctx, segmap = build("D140", VI_DU_LUOT1["D140"])
+    row = {"nguon": "s1.m5", "loi": ["s1.m5:1-3", "s1.m5:5"], "vai": "dieu_kien", "phuong_thuc": "khong", "quy_tac": "q1"}
+    tm = clause_roles.tu_map(ctx, segmap)
+    assert not clause_roles.tu_khuc({"dong": [{**row, "cuc": "phu_dinh"}]}, segmap, tm)[1]
+    assert any("bỏ chữ" in m for _i, m in clause_roles.tu_khuc({"dong": [{**row, "cuc": "khang_dinh"}]}, segmap, tm)[1])
 
 
 if __name__ == "__main__":
