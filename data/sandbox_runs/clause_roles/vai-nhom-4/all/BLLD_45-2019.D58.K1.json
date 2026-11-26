@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D58.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D58.K1\",\n \"tieu_de_dieu\": \"1:Quyền 2:và 3:nghĩa 4:vụ 5:của 6:người 7:lao 8:động 9:thuê 10:lại\",\n \"khoan_cha\": \"1:Ngoài 2:các 3:quyền 4:và 5:nghĩa 6:vụ 7:theo 8:quy 9:định 10:tại 11:Điều 12:5 13:của 14:Bộ 15:luật 16:này, 17:người 18:lao 19:động 20:thuê 21:lại 22:có 23:các 24:quyền 25:và 26:nghĩa 27:vụ 28:sau 29:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thực hiện công việc theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Thực 2:hiện 3:công 4:việc 5:theo 6:hợp 7:đồng 8:lao 9:động 10:đã 11:ký 12:với 13:doanh 14:nghiệp 15:hoạt 16:động 17:cho 18:thuê 19:lại 20:lao 21:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D58.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-4\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:17-21\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:5-21\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:17-21\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "OzYIa8PeEMSx1e8P0qjeuQI",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1843
+   },
+   "input_tokens": 5953,
+   "output_tokens": 2151,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_da893cb0d8d2c82ef78aa8ee"
+   }
+  }
+ }
+}

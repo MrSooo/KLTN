@@ -311,5 +311,21 @@ def test_clause_roles_khoang_bo_khong_giua_loi():
     assert any("bỏ chữ" in m for _i, m in clause_roles.tu_khuc({"dong": [{**row, "cuc": "khang_dinh"}]}, segmap, tm)[1])
 
 
+def test_hut_mot_am_tiet_la_loi():
+    """[27/11] Khoảng hụt một âm tiết ("bị cưỡng bức lao", D35.K2.c; "người sử dụng lao" giữa đoạn, D29.K1) là lỗi;
+    người nhận để ngoài cả cụm và khung "là việc" (gold D52.K1) thì không."""
+    ctx = {"refs": [], "chapeau": "", "heading": ""}
+    segmap = {"s1.m1": {"loai": "menh_de", "chu": "bị cưỡng bức lao động"},
+              "s1.m2": {"loai": "menh_de", "chu": "Người sử dụng lao động quy định cụ thể"},
+              "s1.m3": {"loai": "menh_de", "chu": "Cho thuê lại là việc giao kết hợp đồng"},
+              "s1.m4": {"loai": "menh_de", "chu": "trả lương cho người lao động"}}
+    tm = clause_roles.tu_map(ctx, segmap)
+    hut = lambda *xs: clause_roles.hut_cuoi({"dong": [{"loi": list(xs)}]}, segmap, tm)  # noqa: E731
+    assert hut("s1.m1:1-4") and not hut("s1.m1:1-5")
+    assert hut("s1.m2:1-4", "s1.m2:6-9") and not hut("s1.m2:1-5", "s1.m2:6-9")
+    assert not hut("s1.m3:1-4", "s1.m3:6-9")
+    assert not hut("s1.m4:1-3")
+
+
 if __name__ == "__main__":
     _harness.run(globals())

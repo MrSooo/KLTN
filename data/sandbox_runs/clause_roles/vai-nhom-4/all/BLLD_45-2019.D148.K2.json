@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D148.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D148.K2\",\n \"tieu_de_dieu\": \"1:Người 2:lao 3:động 4:cao 5:tuổi\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động cao tuổi có quyền thỏa thuận với người sử dụng lao động về việc rút ngắn thời giờ làm việc hằng ngày hoặc áp dụng chế độ làm việc không trọn thời gian.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Người 2:lao 3:động 4:cao 5:tuổi 6:có 7:quyền 8:thỏa 9:thuận 10:với 11:người 12:sử 13:dụng 14:lao 15:động 16:về 17:việc 18:rút 19:ngắn 20:thời 21:giờ 22:làm 23:việc 24:hằng 25:ngày 26:hoặc 27:áp 28:dụng 29:chế 30:độ 31:làm 32:việc 33:không 34:trọn 35:thời 36:gian\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D148.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:8-9\",\n    \"s1.m1:16-17\"\n   ],\n   \"liet_ke\": [\n    [\n     \"s1.m1:18-25\"\n    ],\n    [\n     \"s1.m1:27-36\"\n    ]\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-5\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"E\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "Kk0Ia9X5IeCx2roPh6fmUA",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1218
+   },
+   "input_tokens": 5871,
+   "output_tokens": 1489,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_77bef441fd24a7950556cc3b"
+   }
+  }
+ }
+}

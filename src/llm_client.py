@@ -50,6 +50,8 @@ RETRY_CODES_CKEY = (429, 500, 502, 503, 504, 520, 521, 522, 523, 524)
 CKEY_TIMEOUT = 300  # giây cho MỘT lời gọi: trang model ghi thời gian phản hồi P95 khoảng 105 giây
 THINKING_MODES = ("between_tools", "disabled")  # cách TẮT suy nghĩ phụ thuộc model: Sonnet 5.5 chỉ nhận between_tools, Haiku 5.5 không nhận between_tools (chỉ disabled)
 ATTEMPTS = 3
+# [27/11, user: "đừng spam lỗi tránh nó block mình"] nhánh ckey không thử lại lỗi HTTP/mạng: một lần, lỗi thì ném ngay cho bộ chạy dừng
+CKEY_ATTEMPTS = 1
 WAIT_SECONDS = 20
 ANTHROPIC_TIMEOUT = 180  # giây cho MỘT lời gọi; mặc định của gói là 10 phút, quá dài cho lô chỉ vài nghìn token
 
@@ -96,6 +98,11 @@ class LLMError(Exception):
 class InvalidOutput(ValueError):
     """Phản hồi của model không qua kiểm hợp lệ của bước gọi. Đã chuyển sang <cache>/<tác vụ>/_rejected/ (kèm lý do) và ĐÃ tính lượt (vì API đã tốn);
     không nằm trong cache chính nên chạy lại sẽ gọi lại. Là ValueError để bước gọi bắt chung với lỗi kiểm của chính nó."""
+
+
+class OutputRejected(LLMError):
+    """[27/11] Máy chủ trả lời được nhưng đầu ra hỏng (cụt vì max_tokens, không phải JSON). Tách khỏi lỗi HTTP/mạng để bộ chạy hộp cát
+    không coi lỗi của MODEL là tuyến đang hỏng (luật dừng ở lỗi đầu tiên chỉ áp cho lỗi tuyến)."""
 
 
 class LLMUnavailable(LLMError):
@@ -385,7 +392,7 @@ class Client:
         req = urllib.request.Request(self.cfg[f"{API_ROLE}.base_url"].rstrip("/") + "/v1/messages", data=body, method="POST",
                                      headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01",
                                               "User-Agent": USER_AGENT})
-        for attempt in range(1, ATTEMPTS + 1):
+        for attempt in range(1, CKEY_ATTEMPTS + 1):
             why = None
             try:
                 with self._urlopen(req, timeout=CKEY_TIMEOUT) as r:
@@ -398,22 +405,22 @@ class Client:
                 why = f"lỗi {e.code}: {detail}"
             except (urllib.error.URLError, socket.timeout, TimeoutError, OSError) as e:  # [A54] OSError: lỗi socket khác ConnectionError (gặp 21/11: Errno 49)
                 why = f"lỗi kết nối: {e}"
-            if attempt == ATTEMPTS:
-                raise LLMError(f"API {why} (đã thử {ATTEMPTS} lần)")
+            if attempt == CKEY_ATTEMPTS:
+                raise LLMError(f"API {why} (đã thử {CKEY_ATTEMPTS} lần)")
             if self.log:
-                self.log(f"      ! API {why[:120]} (lần {attempt}/{ATTEMPTS}), chờ {WAIT_SECONDS * attempt}s rồi thử lại")
+                self.log(f"      ! API {why[:120]} (lần {attempt}/{CKEY_ATTEMPTS}), chờ {WAIT_SECONDS * attempt}s rồi thử lại")
             self.sleep(WAIT_SECONDS * attempt)
         self.calls += 1
         usage = data.get("usage") or {}
         blocks = response_blocks(data)
         if data.get("stop_reason") != "end_turn":
             # Lượt cụt không vào cache, nên tóm tắt khối phải nằm trong thông báo lỗi thì log mới giữ được (chẩn đoán token ẩn, 22/11)
-            raise LLMError(f"mô hình dừng với stop_reason {data.get('stop_reason')} (token ra {usage.get('output_tokens')}, khối {blocks})")
+            raise OutputRejected(f"mô hình dừng với stop_reason {data.get('stop_reason')} (token ra {usage.get('output_tokens')}, khối {blocks})")
         text, fenced = strip_fence("".join(b.get("text", "") for b in data.get("content") or [] if b.get("type") == "text"))
         try:
             output = json.loads(text)
         except (ValueError, TypeError) as e:
-            raise LLMError(f"đầu ra của mô hình không phải JSON ({e})")
+            raise OutputRejected(f"đầu ra của mô hình không phải JSON ({e})")
         extra = usage.get("x_ckey") or {}
         return {"model": data.get("model") or model, "request_id": extra.get("request_id") or data.get("id"), "output": output,
                 "usage": {"input_tokens": usage.get("input_tokens"), "output_tokens": usage.get("output_tokens"), "cost_vnd": extra.get("cost")},

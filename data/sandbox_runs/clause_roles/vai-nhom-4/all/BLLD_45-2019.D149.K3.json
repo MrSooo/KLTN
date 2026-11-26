@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D149.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D149.K3\",\n \"tieu_de_dieu\": \"1:Sử 2:dụng 3:người 4:lao 5:động 6:cao 7:tuổi\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Không được sử dụng người lao động cao tuổi làm nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm có ảnh hưởng xấu tới sức khỏe người lao động cao tuổi, trừ trường hợp bảo đảm các điều kiện làm việc an toàn.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Không 2:được 3:sử 4:dụng 5:người 6:lao 7:động 8:cao 9:tuổi 10:làm 11:nghề, 12:công 13:việc 14:nặng 15:nhọc, 16:độc 17:hại, 18:nguy 19:hiểm 20:hoặc 21:đặc 22:biệt 23:nặng 24:nhọc, 25:độc 26:hại, 27:nguy 28:hiểm 29:có 30:ảnh 31:hưởng 32:xấu 33:tới 34:sức 35:khỏe 36:người 37:lao 38:động 39:cao 40:tuổi\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:bảo 2:đảm 3:các 4:điều 5:kiện 6:làm 7:việc 8:an 9:toàn\",\n     \"noi_truoc\": [\n      \"trừ trường hợp\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D149.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:3-40\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-9\"\n   ],\n   \"vai\": \"ngoai_le\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "RE0Ia8inDKOy2roPvM6RiQE",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2679
+   },
+   "input_tokens": 6036,
+   "output_tokens": 796,
+   "x_ckey": {
+    "cost": 40.15,
+    "cost_is_estimate": true,
+    "request_id": "req_b3bf899acb62eaf98a8d67c3"
+   }
+  }
+ }
+}

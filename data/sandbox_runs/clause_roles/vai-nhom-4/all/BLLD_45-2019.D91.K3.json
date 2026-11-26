@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D91.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D91.K3\",\n \"tieu_de_dieu\": \"1:Mức 2:lương 3:tối 4:thiểu\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Mức lương tối thiểu được điều chỉnh dựa trên mức sống tối thiểu của người lao động và gia đình họ; tương quan giữa mức lương tối thiểu và mức lương trên thị trường; chỉ số giá tiêu dùng, tốc độ tăng trưởng kinh tế; quan hệ cung, cầu lao động; việc làm và thất nghiệp; năng suất lao động; khả năng chi trả của doanh nghiệp.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Mức 2:lương 3:tối 4:thiểu 5:được 6:điều 7:chỉnh 8:dựa 9:trên 10:mức 11:sống 12:tối 13:thiểu 14:của 15:người 16:lao 17:động 18:và 19:gia 20:đình 21:họ; 22:tương 23:quan 24:giữa 25:mức 26:lương 27:tối 28:thiểu 29:và 30:mức 31:lương 32:trên 33:thị 34:trường; 35:chỉ 36:số 37:giá 38:tiêu 39:dùng, 40:tốc 41:độ 42:tăng 43:trưởng 44:kinh 45:tế; 46:quan 47:hệ 48:cung, 49:cầu 50:lao 51:động; 52:việc 53:làm 54:và 55:thất 56:nghiệp; 57:năng 58:suất 59:lao 60:động; 61:khả 62:năng 63:chi 64:trả 65:của 66:doanh 67:nghiệp\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D91.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:5-7\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-4\"\n    ],\n    \"loai\": \"A\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:8-9\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-4\"\n    ],\n    \"loai\": \"A\"\n   },\n   \"liet_ke\": [\n    [\n     \"s1.m1:10-21\"\n    ],\n    [\n     \"s1.m1:22-34\"\n    ],\n    [\n     \"s1.m1:35-39\"\n    ],\n    [\n     \"s1.m1:40-45\"\n    ],\n    [\n     \"s1.m1:46-51\"\n    ],\n    [\n     \"s1.m1:52-56\"\n    ],\n    [\n     \"s1.m1:57-60\"\n    ],\n    [\n     \"s1.m1:61-67\"\n    ]\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "8TwIa_qoMuOv2roPq4vNqQw",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2707
+   },
+   "input_tokens": 6101,
+   "output_tokens": 3197,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_5e8a2841251f0b58dc0bf480"
+   }
+  }
+ }
+}

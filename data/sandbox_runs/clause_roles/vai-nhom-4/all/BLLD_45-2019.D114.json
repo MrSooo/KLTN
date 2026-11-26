@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D114",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D114\",\n \"tieu_de_dieu\": \"1:Ngày 2:nghỉ 3:hằng 4:năm 5:tăng 6:thêm 7:theo 8:thâm 9:niên 10:làm 11:việc\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 Điều 113 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D113.K1\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Cứ đủ 05 năm làm việc cho một người sử dụng lao động thì số ngày nghỉ hằng năm của người lao động theo quy định tại khoản 1 Điều 113 của Bộ luật này được tăng thêm tương ứng 01 ngày.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Cứ 2:đủ 3:05 4:năm 5:làm 6:việc 7:cho 8:một 9:người 10:sử 11:dụng 12:lao 13:động\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:số 2:ngày 3:nghỉ 4:hằng 5:năm 6:của 7:người 8:lao 9:động 10:theo 11:quy 12:định 13:tại 14:khoản 15:1 16:Điều 17:113 18:của 19:Bộ 20:luật 21:này 22:được 23:tăng 24:thêm 25:tương 26:ứng 27:01 28:ngày\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D114\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D113.K1\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-13\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m2:7-9\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-5\",\n    \"s1.m2:23-28\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m2:7-9\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "CUQIa9b2DN7v2roP37O84QM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 8044
+   },
+   "input_tokens": 6044,
+   "output_tokens": 1224,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_a5d14d1c28d50d2d8bc14c60"
+   }
+  }
+ }
+}

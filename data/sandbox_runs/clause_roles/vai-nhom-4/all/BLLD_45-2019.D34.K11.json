@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D34.K11",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D34.K11\",\n \"tieu_de_dieu\": \"1:Các 2:trường 3:hợp 4:chấm 5:dứt 6:hợp 7:đồng 8:lao 9:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều 42 và Điều 43 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D42\"\n  },\n  {\n   \"cum\": \"Điều 42 và Điều 43 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D43\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động cho người lao động thôi việc theo quy định tại Điều 42 và Điều 43 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Người 2:sử 3:dụng 4:lao 5:động 6:cho 7:người 8:lao 9:động 10:thôi 11:việc 12:theo 13:quy 14:định 15:tại 16:Điều 17:42 18:và 19:Điều 20:43 21:của 22:Bộ 23:luật 24:này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D34.K11\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D42\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"dich\": \"BLLD_45-2019.D43\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:6\",\n    \"s1.m1:10-11\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "cisIa7jgPLez2roP_r6i2QI",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5321
+   },
+   "input_tokens": 5909,
+   "output_tokens": 968,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_5ab6f31d43ed7ccef7a2ced6"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D21.K1.g",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D21.K1.g\",\n \"tieu_de_dieu\": \"1:Nội 2:dung 3:hợp 4:đồng 5:lao 6:động\",\n \"khoan_cha\": \"1:Hợp 2:đồng 3:lao 4:động 5:phải 6:có 7:những 8:nội 9:dung 10:chủ 11:yếu 12:sau 13:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thời giờ làm việc, thời giờ nghỉ ngơi;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Thời 2:giờ 3:làm 4:việc, 5:thời 6:giờ 7:nghỉ 8:ngơi\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D21.K1.g\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-8\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-4\"\n    ],\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "GSkIa5uuA7ni2roP8rKDyQY",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1037
+   },
+   "input_tokens": 5754,
+   "output_tokens": 1211,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_0ab1b4ee39f5cabc2eaa0536"
+   }
+  }
+ }
+}

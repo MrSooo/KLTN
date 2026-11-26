@@ -27,10 +27,13 @@ RUN_DIR = ROOT / "data/sandbox_runs/clause_roles"
 NUMBERED = PROMPT_VERSION == "vai-nhom-4"  # [A63] khuôn khoảng âm tiết
 GOLD = {"dev": ROOT / "data/eval_dev/clause_roles_gold_dev.json", "test": ROOT / "data/eval_dev/clause_roles_gold_test.json"}
 MODEL_DU_PHONG_2 = "daongocson12022004/gemini-3.8-flash-high"  # [THÊM 25/11, A61] tuyến không có trần ~8k (đo lượt 008 của 1.6B: 9.486 token nghĩ ngầm vẫn trọn)
-MODEL_DU_PHONG_3 = "martha02091945/gemini-3.8-flash"  # [A63, user chỉ định 26/11 tối] daongocson12022004 bị gỡ (404), hungdt cũng 404; vân tay token khớp đúng tuyến Gemini cũ (6/6 lượt, kể cả phần cache)
+MODEL_DU_PHONG_3 = segments.MODEL  # [A63] 26/11 tối: martha02091945 (117 khoản đầu); 26/11 khuya-27/11: daongocson12022004 (đến D149.K3); 27/11 user: dungcsnd113 với khoá mới (daongocson 404)
 MODELS = (segments.MODEL, segments.MODEL_DU_PHONG, MODEL_DU_PHONG_2)  # chốt trước khi đo (mục 10): tuyến chính, 404 thì dự phòng; [A61] cụt hay 403 thì sang tuyến sau
 MAX_TOKENS = 32000  # api.max_output_tokens; tuyến dự phòng suy nghĩ ngầm dài (cụt 2/40 câu đơn ở 16.000, A60)
-LUONG = 4  # 8 lúc đo; 16 khi chạy cả bộ; [A63] 4 từ 26/11 tối: tuyến martha02091945 trả 429 khi 16 luồng; không ảnh hưởng đầu ra
+LUONG = 2  # 8 lúc đo; 16 khi chạy cả bộ; [A63] 4 từ 26/11 tối (martha 429 ở 16 luồng); 2 từ 26/11 khuya; 1 rồi 2 ngày 27/11 (user: giãn cách, đừng spam lỗi; rồi "2 luồng" để kịp sáng); không ảnh hưởng đầu ra
+GIAN_CACH = 5  # [27/11, user] giây nghỉ trước mỗi khoản gọi mới; [THÊM] số 5 do agent chọn
+# [27/11, user: "đừng spam lỗi tránh nó block mình"] lỗi HTTP hay mạng thì không gọi lại, và cả đợt dừng ở khoản lỗi đầu tiên (trước: 3 lần mỗi khoản, dừng sau 6 khoản lỗi liền)
+DUNG_SAU_LOI = 1
 LEAD = re.compile(r"(sau đây|như sau|gồm|bao gồm)\s*:?\s*$")
 # Ngưỡng (mục 10.5, chốt trước khi gọi).
 NGUONG = {"qua_may": 0.95, "f1_dong": 0.80, "vai": 0.90, "phuong_thuc": 0.85, "cuc": 0.95, "cau_truc": 0.70}
@@ -250,6 +253,40 @@ def tu_khong_dung(out, segmap, tm):
     return miss
 
 
+def hut_cuoi(out, segmap, tm):
+    """Lỗi (user chốt 27/11): khoảng dừng ngay trước âm tiết nội dung CUỐI của đoạn và không khoảng nào khác phủ âm tiết đó.
+    Vì sao là lỗi chứ không chỉ cờ như `tu_khong_dung`: LLM ghi hụt một số ("s1.m4:1-4" cho đoạn 5 âm tiết) làm chữ máy lấy ra
+    thành "hợp đồng lao", "người sử dụng lao" (D22.K2, D29.K1, D35.K2.c; 4/177 khoản đầu), kể cả ở chủ thể, mà vẫn qua cổng.
+    Người nhận để ngoài khoảng (gold cũng thế) không bị bắt vì cả cụm nằm ngoài, âm tiết liền trước cũng không được phủ."""
+    used = set()
+    for r in (out or {}).get("dong") or [] if isinstance(out, dict) else []:
+        if not isinstance(r, dict):
+            continue
+        xs = list(r.get("loi") or [])
+        if isinstance(r.get("chu_the"), dict):
+            xs += r["chu_the"].get("khoang") or []
+        for it in r.get("liet_ke") or []:
+            xs += it if isinstance(it, list) else []
+        for x in xs:
+            k = doc_khoang(x, tm)
+            if not isinstance(k, str):
+                used.update((k[0], n) for n in range(k[1], k[2] + 1))
+    err = []
+    for k, s in segmap.items():
+        if s["loai"] not in ("menh_de", "dung_chung") or LEAD.search(s["chu"]) or k not in tm:
+            continue
+        ws = tm[k][1]
+        for n in range(2, len(ws) + 1):
+            w = ws[n - 1]
+            if w[3] or w[0].lower() in NON_CONTENT or w[0].isdigit() or (k, n) in used or (k, n - 1) not in used:
+                continue
+            if w[0].lower() == "việc" and ws[n - 2][0].lower() == "là":  # khung định nghĩa "X là việc Y": gold D52.K1 (user duyệt) cũng bỏ "việc"
+                continue
+            if n == len(ws) or (k, n + 1) in used:  # đúng MỘT âm tiết lẻ bị bỏ, ở cuối đoạn hay kẹp giữa hai khoảng
+                err.append((None, f"khoảng dừng ở {k}:{n - 1}, bỏ một âm tiết {n}:{w[0]} (hụt một số?)"))
+    return err
+
+
 def check_v(ctx, segmap, out):
     """Đường kiểm của phiên bản đang dùng. vai-nhom-4: đổi khoảng thành chữ (lỗi cấu trúc) rồi kiểm như vai-nhom-3; cờ phủ âm tiết.
     -> (dòng khuôn cũ, lỗi, cờ, nguon, khuôn gọn đã đổi)."""
@@ -259,7 +296,7 @@ def check_v(ctx, segmap, out):
     tm = tu_map(ctx, segmap)
     compact, e0 = tu_khuc(out, segmap, tm)
     rows, err, flag, nguon = check(ctx, segmap, compact)
-    return rows, e0 + err, flag + tu_khong_dung(out, segmap, tm), nguon, compact
+    return rows, e0 + err + hut_cuoi(out, segmap, tm), flag + tu_khong_dung(out, segmap, tm), nguon, compact
 
 
 # ---- Máy kiểm lượt 2 (mục 10.4), cộng vào cổng cũ.
@@ -648,11 +685,9 @@ def _goi_mot(text, models, key, base, messages=None):
                     err = f"{model}: cụt {data.get('stop_reason')} (cả khi tắt nghĩ ngầm)"
                     break  # [A61] cụt cả khi tắt nghĩ ngầm: sang tuyến sau (trước đây trả về ngay, đơn vị thiếu đầu ra)
                 return data, model, "ok", tat
-            except Exception as e:  # 404 (tuyến không có), 403 (tài khoản không được gọi, A61): sang tuyến sau ngay; lỗi khác: chờ rồi thử lại
+            except Exception as e:  # [27/11] mọi lỗi HTTP hay mạng: không thử lại cùng tuyến (tránh bị khoá vì gọi dồn), sang tuyến sau nếu có
                 err = f"{model}: {str(e)[:100]}"
-                if getattr(e, "code", None) in (403, 404):
-                    break
-                time.sleep(10 * lan)
+                break
     return None, None, (err.split(": ", 1)[1] if ": cụt " in err else f"lỗi {err}"), False
 
 
@@ -670,7 +705,8 @@ def dot_models(key, base):
     except Exception as e:  # 403, 404, mạng: coi như tuyến chính không dùng được trong đợt này
         print(f"tuyến chính {segments.MODEL} không dùng được: {str(e)[:100]}", flush=True)
         ok = False
-    return (segments.MODEL, MODEL_DU_PHONG_3) if ok else (MODEL_DU_PHONG_3,)  # [A63] MODEL_DU_PHONG_2 đã bị gỡ
+    # [A63] MODEL_DU_PHONG_2 đã bị gỡ; [27/11] bỏ trùng khi tuyến dự phòng chính là tuyến chính (không gọi một tuyến hai lần cho một khoản)
+    return tuple(dict.fromkeys((segments.MODEL, MODEL_DU_PHONG_3))) if ok else (MODEL_DU_PHONG_3,)
 
 
 def inputs(bo):
@@ -697,6 +733,7 @@ def inputs(bo):
 
 def goi(bo, thu_muc=None):
     import os
+    import time
     from concurrent.futures import ThreadPoolExecutor
     import llm_client
     base = llm_client.load_config()["api.base_url"].rstrip("/")
@@ -715,8 +752,9 @@ def goi(bo, thu_muc=None):
         path = out_dir / (u + ".json")
         if path.exists():
             return u, "co_san"
-        if hong[0] >= segments.STOP_AFTER_FAILS:
+        if hong[0] >= DUNG_SAU_LOI:
             return u, "bỏ qua: máy chủ đang lỗi"
+        time.sleep(GIAN_CACH)
         text = user_text(msg)
         data, model, st, tat = _goi_mot(text, models, key, base)
         hong[0] = hong[0] + 1 if st.startswith("lỗi") else 0

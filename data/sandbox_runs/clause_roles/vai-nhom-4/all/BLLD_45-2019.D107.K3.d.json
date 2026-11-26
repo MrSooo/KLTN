@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D107.K3.d",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D107.K3.d\",\n \"tieu_de_dieu\": \"1:Làm 2:thêm 3:giờ\",\n \"khoan_cha\": \"1:Người 2:sử 3:dụng 4:lao 5:động 6:được 7:sử 8:dụng 9:người 10:lao 11:động 12:làm 13:thêm 14:không 15:quá 16:300 17:giờ 18:trong 19:01 20:năm 21:trong 22:một 23:số 24:ngành, 25:nghề, 26:công 27:việc 28:hoặc 29:trường 30:hợp 31:sau 32:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp phải giải quyết công việc cấp bách, không thể trì hoãn do tính chất thời vụ, thời điểm của nguyên liệu, sản phẩm hoặc để giải quyết công việc phát sinh do yếu tố khách quan không dự liệu trước, do hậu quả thời tiết, thiên tai, hỏa hoạn, địch họa, thiếu điện, thiếu nguyên liệu, sự cố kỹ thuật của dây chuyền sản xuất;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:phải 2:giải 3:quyết 4:công 5:việc 6:cấp 7:bách, 8:không 9:thể 10:trì 11:hoãn 12:do 13:tính 14:chất 15:thời 16:vụ, 17:thời 18:điểm 19:của 20:nguyên 21:liệu, 22:sản 23:phẩm\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:giải 2:quyết 3:công 4:việc 5:phát 6:sinh 7:do 8:yếu 9:tố 10:khách 11:quan 12:không 13:dự 14:liệu 15:trước, 16:do 17:hậu 18:quả 19:thời 20:tiết, 21:thiên 22:tai, 23:hỏa 24:hoạn, 25:địch 26:họa, 27:thiếu 28:điện, 29:thiếu 30:nguyên 31:liệu, 32:sự 33:cố 34:kỹ 35:thuật 36:của 37:dây 38:chuyền 39:sản 40:xuất\",\n     \"noi_truoc\": [\n      \"hoặc\",\n      \"để\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D107.K3.d\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:2-23\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-40\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "QUEIa5maKfaz2roPl8CFkQY",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2852
+   },
+   "input_tokens": 6329,
+   "output_tokens": 1092,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_e168f21812f2fa360d6c785e"
+   }
+  }
+ }
+}

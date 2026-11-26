@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D51.K1.b",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D51.K1.b\",\n \"tieu_de_dieu\": \"1:Xử 2:lý 3:hợp 4:đồng 5:lao 6:động 7:vô 8:hiệu\",\n \"khoan_cha\": \"1:Khi 2:hợp 3:đồng 4:lao 5:động 6:bị 7:tuyên 8:bố 9:vô 10:hiệu 11:từng 12:phần 13:thì 14:xử 15:lý 16:như 17:sau:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Hai bên tiến hành sửa đổi, bổ sung phần của hợp đồng lao động bị tuyên bố vô hiệu để phù hợp với thỏa ước lao động tập thể hoặc pháp luật về lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Hai 2:bên 3:tiến 4:hành\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:sửa 2:đổi\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:bổ 2:sung\"\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:phần 2:của 3:hợp 4:đồng 5:lao 6:động 7:bị 8:tuyên 9:bố 10:vô 11:hiệu\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:phù 2:hợp 3:với 4:thỏa 5:ước 6:lao 7:động 8:tập 9:thể 10:hoặc 11:pháp 12:luật 13:về 14:lao 15:động\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D51.K1.b\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.c1:3-4\",\n    \"s1.m1:1-2\",\n    \"s1.c2:1-11\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.c1:3-4\",\n    \"s1.m2:1-2\",\n    \"s1.c2:1-11\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-2\"\n    ],\n    \"loai\": [\n     \"W\",\n     \"E\"\n    ]\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:1-3\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c2:1-11\"\n    ],\n    \"loai\": \"C\"\n   },\n   \"liet_ke\": [\n    [\n     \"s1.m3:4-9\"\n    ],\n    [\n     \"s1.m3:11-15\"\n    ]\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "iDQIa5vNKJO11e8P5f2_2As",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4607
+   },
+   "input_tokens": 6178,
+   "output_tokens": 1852,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_6b4606799dcc8e11fce83e59"
+   }
+  }
+ }
+}

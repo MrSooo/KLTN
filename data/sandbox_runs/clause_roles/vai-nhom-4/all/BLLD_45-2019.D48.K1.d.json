@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D48.K1.d",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D48.K1.d\",\n \"tieu_de_dieu\": \"1:Trách 2:nhiệm 3:khi 4:chấm 5:dứt 6:hợp 7:đồng 8:lao 9:động\",\n \"khoan_cha\": \"1:Trong 2:thời 3:hạn 4:14 5:ngày 6:làm 7:việc 8:kể 9:từ 10:ngày 11:chấm 12:dứt 13:hợp 14:đồng 15:lao 16:động, 17:hai 18:bên 19:có 20:trách 21:nhiệm 22:thanh 23:toán 24:đầy 25:đủ 26:các 27:khoản 28:tiền 29:có 30:liên 31:quan 32:đến 33:quyền 34:lợi 35:của 36:mỗi 37:bên, 38:trừ 39:trường 40:hợp 41:sau 42:đây 43:có 44:thể 45:kéo 46:dài 47:nhưng 48:không 49:được 50:quá 51:30 52:ngày:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Do thiên tai, hỏa hoạn, địch họa hoặc dịch bệnh nguy hiểm.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:thiên 2:tai, 3:hỏa 4:hoạn, 5:địch 6:họa 7:hoặc 8:dịch 9:bệnh 10:nguy 11:hiểm\",\n     \"noi_truoc\": [\n      \"do\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D48.K1.d\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-2\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:3-4\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:5-6\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:8-11\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "xTMIa_riA_T81e8PnPmQWA",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2379
+   },
+   "input_tokens": 6041,
+   "output_tokens": 2843,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_944f697407b7c05206b0e120"
+   }
+  }
+ }
+}

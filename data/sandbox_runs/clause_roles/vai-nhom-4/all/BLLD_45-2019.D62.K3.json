@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D62.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D62.K3\",\n \"tieu_de_dieu\": \"1:Hợp 2:đồng 3:đào 4:tạo 5:nghề 6:giữa 7:người 8:sử 9:dụng 10:lao 11:động, 12:người 13:lao 14:động 15:và 16:chi 17:phí 18:đào 19:tạo 20:nghề\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chi phí đào tạo bao gồm các khoản chi có chứng từ hợp lệ về chi phí trả cho người dạy, tài liệu học tập, trường, lớp, máy, thiết bị, vật liệu thực hành, các chi phí khác hỗ trợ cho người học và tiền lương, tiền đóng bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp cho người học trong thời gian đi học.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Chi 2:phí 3:đào 4:tạo 5:bao 6:gồm 7:các 8:khoản 9:chi 10:có 11:chứng 12:từ 13:hợp 14:lệ 15:về 16:chi 17:phí 18:trả 19:cho 20:người 21:dạy, 22:tài 23:liệu 24:học 25:tập, 26:trường, 27:lớp, 28:máy, 29:thiết 30:bị, 31:vật 32:liệu 33:thực 34:hành, 35:các 36:chi 37:phí 38:khác 39:hỗ 40:trợ 41:cho 42:người 43:học 44:và 45:tiền 46:lương, 47:tiền 48:đóng 49:bảo 50:hiểm 51:xã 52:hội, 53:bảo 54:hiểm 55:y 56:tế, 57:bảo 58:hiểm 59:thất 60:nghiệp 61:cho 62:người 63:học 64:trong 65:thời 66:gian 67:đi 68:học\"\n    }\n   ]\n  },\n  {\n   \"chu\": \"Trường hợp người lao động được gửi đi đào tạo ở nước ngoài thì chi phí đào tạo còn bao gồm chi phí đi lại, chi phí sinh hoạt trong thời gian đào tạo.\",\n   \"doan\": [\n    {\n     \"id\": \"s2.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:người 2:lao 3:động 4:được 5:gửi 6:đi 7:đào 8:tạo 9:ở 10:nước 11:ngoài\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s2.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:chi 2:phí 3:đào 4:tạo 5:còn 6:bao 7:gồm 8:chi 9:phí 10:đi 11:lại, 12:chi 13:phí 14:sinh 15:hoạt 16:trong 17:thời 18:gian 19:đào 20:tạo\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D62.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:5-15\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-4\"\n    ],\n    \"loai\": \"A\"\n   },\n   \"liet_ke\": [\n    [\n     \"s1.m1:16-21\"\n    ],\n    [\n     \"s1.m1:22-25\"\n    ],\n    [\n     \"s1.m1:26-27\"\n    ],\n    [\n     \"s1.m1:28-30\"\n    ],\n    [\n     \"s1.m1:31-34\"\n    ],\n    [\n     \"s1.m1:35-43\"\n    ],\n    [\n     \"s1.m1:45-68\"\n    ]\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s2.m1\",\n   \"loi\": [\n    \"s2.m1:4-11\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.m1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  },\n  {\n   \"nguon\": \"s2.m2\",\n   \"loi\": [\n    \"s2.m2:5-7\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s2.m2:1-4\"\n    ],\n    \"loai\": \"A\"\n   },\n   \"liet_ke\": [\n    [\n     \"s2.m2:8-11\"\n    ],\n    [\n     \"s2.m2:12-20\"\n    ]\n   ],\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "azcIa8uHFr6N1e8PgfyKqQ8",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2543
+   },
+   "input_tokens": 6516,
+   "output_tokens": 3201,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_a7430c6ede5168e2fa69fd36"
+   }
+  }
+ }
+}

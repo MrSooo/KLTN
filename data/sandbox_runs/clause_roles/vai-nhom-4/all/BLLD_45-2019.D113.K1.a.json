@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D113.K1.a",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D113.K1.a\",\n \"tieu_de_dieu\": \"1:Nghỉ 2:hằng 3:năm\",\n \"khoan_cha\": \"1:Người 2:lao 3:động 4:làm 5:việc 6:đủ 7:12 8:tháng 9:cho 10:một 11:người 12:sử 13:dụng 14:lao 15:động 16:thì 17:được 18:nghỉ 19:hằng 20:năm, 21:hưởng 22:nguyên 23:lương 24:theo 25:hợp 26:đồng 27:lao 28:động 29:như 30:sau:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"12 ngày làm việc đối với người làm công việc trong điều kiện bình thường;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:12 2:ngày 3:làm 4:việc 5:đối 6:với 7:người 8:làm 9:công 10:việc 11:trong 12:điều 13:kiện 14:bình 15:thường\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D113.K1.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-4\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:5-15\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "O0MIa9LDC_z81e8PyZ3ewA8",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2087
+   },
+   "input_tokens": 5891,
+   "output_tokens": 2394,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_8d0c851a78c0fa157580d1d9"
+   }
+  }
+ }
+}

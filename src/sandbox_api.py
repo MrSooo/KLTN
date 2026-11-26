@@ -38,7 +38,8 @@ TASK = "sandbox_api"  # thư mục cache data/llm_cache/sandbox_api/: phản h�
 PROMPT_TAG = "hop_cat"  # khoá cache đã chứa nguyên chữ system và lời user, nên một nhãn chung cho mọi bước là đủ phân biệt
 # Lược đồ gửi kèm ngay sau chữ system.txt (A46): thiếu nó thì model không biết khuôn ngoài (lượt 1.6B đầu tiên ra danh sách trần, 19/11).
 SCHEMA_NOTE = "\n\nLược đồ đầu ra (JSON Schema, nội dung file schema.json):\n"
-STOP_AFTER_FAILS = 3  # lô độc lập: lỗi API liền nhau ngần này lần thì coi như máy chủ đang hỏng, dừng thay vì đốt cả danh sách
+STOP_AFTER_FAILS = 1  # lô độc lập: lỗi TUYẾN (HTTP/mạng) liền nhau ngần này lần thì dừng; [27/11, user: đừng spam lỗi] 3 -> 1
+GIAN_CACH = 5  # [27/11, user: giãn cách] giây nghỉ trước mỗi lượt gọi; [THÊM] số 5 do agent chọn, như clause_roles.GIAN_CACH
 
 
 def is_object(output):
@@ -77,7 +78,16 @@ class Runner:
 
     def ask(self, n):
         """Một lượt cho lô n. -> bản ghi của llm_client (đầu ra ở 'output'). Ném LLMError / InvalidOutput như llm_client."""
-        return self.client.ask(TASK, self.tag, self.system, self.user(n), None, role=llm_client.API_ROLE, validate=is_object, label=f"lô {n:03d}")
+        self.client.sleep(GIAN_CACH)  # sleep của client: test truyền hàm không chờ
+        if getattr(self, "dung", False):  # [27/11] luồng đã nhận lô trước khi lệnh huỷ tới: không gọi thêm sau lỗi tuyến
+            raise llm_client.LLMError("bộ chạy đã dừng vì lỗi tuyến ở lô khác; lô này chưa gọi")
+        try:
+            return self.client.ask(TASK, self.tag, self.system, self.user(n), None, role=llm_client.API_ROLE, validate=is_object, label=f"lô {n:03d}")
+        except (llm_client.OutputRejected, llm_client.InvalidOutput):
+            raise
+        except llm_client.LLMError:
+            self.dung = True  # đặt ngay trong luồng gặp lỗi (trước khi luồng chính kịp huỷ), STOP_AFTER_FAILS = 1
+            raise
 
     def write(self, n, output):
         """Ghi out/NNN.json rồi dòng nhật ký (đúng thứ tự đó: nhật ký có dòng thì out đã có)."""
@@ -119,7 +129,10 @@ class Runner:
                     for f in futures:
                         f.cancel()
                     break
-                except (llm_client.LLMError, llm_client.InvalidOutput) as e:
+                except (llm_client.OutputRejected, llm_client.InvalidOutput) as e:  # [27/11] lỗi của đầu ra, không phải tuyến: ghi lại, làm tiếp
+                    failed.append((n, str(e)[:200]))
+                    continue
+                except llm_client.LLMError as e:
                     failed.append((n, str(e)[:200]))
                     streak += 1
                     if streak >= STOP_AFTER_FAILS:
@@ -158,7 +171,15 @@ class Runner:
             n = int(m[2])
             try:
                 rec = self.ask(n)
-            except (llm_client.LLMError, llm_client.InvalidOutput) as e:
+            except (llm_client.OutputRejected, llm_client.InvalidOutput) as e:
+                # [27/11, THÊM] hộp cát tuần tự không bỏ qua được một lượt: đầu ra hỏng thì hỏi lại ĐÚNG MỘT lần, hỏng nữa mới dừng
+                print(f"  lượt {n:03d} đầu ra hỏng ({str(e)[:200]}); hỏi lại một lần")
+                try:
+                    rec = self.ask(n)
+                except (llm_client.LLMError, llm_client.InvalidOutput) as e2:
+                    print(f"DỪNG: lượt {n:03d} lỗi lần hai: {str(e2)[:300]}; chạy lại lệnh để làm tiếp từ lượt này")
+                    return 1
+            except llm_client.LLMError as e:
                 print(f"DỪNG: lượt {n:03d} lỗi API: {str(e)[:300]}; chạy lại lệnh để làm tiếp từ lượt này")
                 return 1
             self.write(n, rec["output"])

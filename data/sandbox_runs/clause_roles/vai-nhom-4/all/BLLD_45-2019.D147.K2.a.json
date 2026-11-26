@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D147.K2.a",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D147.K2.a\",\n \"tieu_de_dieu\": \"1:Công 2:việc 3:và 4:nơi 5:làm 6:việc 7:cấm 8:sử 9:dụng 10:người 11:lao 12:động 13:từ 14:đủ 15:15 16:tuổi 17:đến 18:chưa 19:đủ 20:18 21:tuổi\",\n \"khoan_cha\": \"1:Cấm 2:sử 3:dụng 4:người 5:lao 6:động 7:từ 8:đủ 9:15 10:tuổi 11:đến 12:chưa 13:đủ 14:18 15:tuổi 16:làm 17:việc 18:ở 19:các 20:nơi 21:sau 22:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Dưới nước, dưới lòng đất, trong hang động, trong đường hầm;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Dưới 2:nước, 3:dưới 4:lòng 5:đất, 6:trong 7:hang 8:động, 9:trong 10:đường 11:hầm\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D147.K2.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-11\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "j0wIa93SOOCx2roPh6fmUA",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 14051
+   },
+   "input_tokens": 5921,
+   "output_tokens": 496,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_16906a36efc3aa9dea0fbe22"
+   }
+  }
+ }
+}

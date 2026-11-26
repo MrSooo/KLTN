@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D152.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D152.K2\",\n \"tieu_de_dieu\": \"1:Điều 2:kiện 3:tuyển 4:dụng, 5:sử 6:dụng 7:người 8:lao 9:động 10:nước 11:ngoài 12:làm 13:việc 14:tại 15:Việt 16:Nam\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Doanh nghiệp, cơ quan, tổ chức, cá nhân trước khi tuyển dụng người lao động nước ngoài vào làm việc tại Việt Nam phải giải trình nhu cầu sử dụng lao động và được sự chấp thuận bằng văn bản của cơ quan nhà nước có thẩm quyền.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Doanh 2:nghiệp, 3:cơ 4:quan, 5:tổ 6:chức, 7:cá 8:nhân\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tuyển 2:dụng 3:người 4:lao 5:động 6:nước 7:ngoài 8:vào 9:làm 10:việc 11:tại 12:Việt 13:Nam\",\n     \"noi_truoc\": [\n      \"trước khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:phải 2:giải 3:trình 4:nhu 5:cầu 6:sử 7:dụng 8:lao 9:động\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:được 2:sự 3:chấp 4:thuận 5:bằng 6:văn 7:bản 8:của 9:cơ 10:quan 11:nhà 12:nước 13:có 14:thẩm 15:quyền\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "thinking": "Examining the provided Unit ID and article title reveals an abnormal numbering pattern embedded directly within the text strings. Treating the indexed numerical tokens as literal string segments requires normalization before extracting structural hierarchies or drafting provisions.\n\nSegmenting the legal text reveals a primary condition regarding foreign worker recruitment that governs multiple subsequent obligations. Grouping these dependent clauses under a shared regulatory rule requires mapping the direct object structures to the correct employer entities.\n\nParsing consecutive clauses reveals shared dependency on the primary obligation rule. Evaluating whether the coordinating conjunction extends the modal requirement to the subsequent dependent clause requires analyzing whether the modal marker governs the passive authorization phrase.\n\nInitial classification categorizes the modal marker \"được\" within the passive authorization phrase. Re-evaluating syntactic scope indicates the preceding modal \"phải\" distributes across the coordinate structure, governing both the explanation obligation and the subsequent approval requirement. Checking whether the modal property belongs to the primary governing term or the embedded nominalized clause changes the expected deontic classification.\n\nTesting whether the modal term \"được\" functions independently or forms the passive core alongside the approval action. Determining that \"phải\" governs the entire coordinate structure makes \"được sự chấp thuận\" the complete predicate core, integrating the subsequent agency modifiers as structural attributes rather than independent clauses.\n\nEvaluating spatial modifiers reveals potential boundaries within the recursive complement structure. Initial assessment treats the locative phrase as part of the primary action, but structural rules require isolating adverbial boundaries when modifying embedded nominalizations.\n\nLocative phrase \"tại Việt Nam\" initially appears as an adjunct to the primary action, but structural analysis links it directly to the nested employment clause modifying the foreign worker object. This confines the core scope of the recruitment condition exclusively to the embedded nominalization.\n\nAnalyzing the modal marker \"được\" within the coordinate predicate structure. The initial instinct isolates it as a modal authorization term, but closer inspection reveals it functions as an essential passive component of the approval requirement rather than a standalone deontic operator.\n\nSyntactic comparison with parallel clauses confirms \"được sự chấp thuận\" forms a complete passive predicate core. Distributing the modal \"phải\" across the coordinate conjunction maintains the governing obligation throughout the entire structure.\n\n",
+    "type": "thinking"
+   },
+   {
+    "text": "```json\n{\n  \"unit_id\": \"BLLD_45-2019.D152.K2\",\n  \"dong\": [\n    {\n      \"nguon\": \"s1.m1\",\n      \"loi\": [\n        \"s1.m1:1-13\"\n      ],\n      \"vai\": \"dieu_kien\",\n      \"phuong_thuc\": \"khong\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"khoang\": [\n          \"s1.c1:1-8\"\n        ],\n        \"loai\": \"E\"\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m2\",\n      \"loi\": [\n        \"s1.m2:2-9\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"phai\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"khoang\": [\n          \"s1.c1:1-8\"\n        ],\n        \"loai\": \"E\"\n      },\n      \"quy_tac\": \"q1\"\n    },\n    {\n      \"nguon\": \"s1.m3\",\n      \"loi\": [\n        \"s1.m3:1-15\"\n      ],\n      \"vai\": \"ket_luan\",\n      \"phuong_thuc\": \"phai\",\n      \"cuc\": \"khang_dinh\",\n      \"chu_the\": {\n        \"khoang\": [\n          \"s1.c1:1-8\"\n        ],\n        \"loai\": \"E\"\n      },\n      \"quy_tac\": \"q1\"\n    }\n  ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "chatcmpl-1fd2718f44894b529e01dbe8b677d",
+  "model": "dungcsnd113/gemini-flash-3.8",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "type": "message",
+  "usage": {
+   "input_tokens": 6179,
+   "output_tokens": 5228,
+   "x_ckey": {
+    "cost": 6.5,
+    "cost_is_estimate": false,
+    "request_id": "req_3ca4c0bb6d57cd226e7e94b5"
+   }
+  }
+ }
+}

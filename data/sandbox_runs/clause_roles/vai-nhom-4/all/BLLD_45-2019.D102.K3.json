@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D102.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D102.K3\",\n \"tieu_de_dieu\": \"1:Khấu 2:trừ 3:tiền 4:lương\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Mức khấu trừ tiền lương hằng tháng không được quá 30% tiền lương thực trả hằng tháng của người lao động sau khi trích nộp các khoản bảo hiểm xã hội bắt buộc, bảo hiểm y tế, bảo hiểm thất nghiệp, thuế thu nhập cá nhân.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Mức 2:khấu 3:trừ 4:tiền 5:lương 6:hằng 7:tháng 8:không 9:được 10:quá 11:30% 12:tiền 13:lương 14:thực 15:trả 16:hằng 17:tháng 18:của 19:người 20:lao 21:động 22:sau 23:khi 24:trích 25:nộp 26:các 27:khoản 28:bảo 29:hiểm 30:xã 31:hội 32:bắt 33:buộc, 34:bảo 35:hiểm 36:y 37:tế, 38:bảo 39:hiểm 40:thất 41:nghiệp, 42:thuế 43:thu 44:nhập 45:cá 46:nhân\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D102.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:10-46\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-7\"\n    ],\n    \"loai\": \"A\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "JUAIa_qvAY791e8P4Z32iQc",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4060
+   },
+   "input_tokens": 5955,
+   "output_tokens": 556,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_2a73ef2f895fc714d3bb6ef0"
+   }
+  }
+ }
+}

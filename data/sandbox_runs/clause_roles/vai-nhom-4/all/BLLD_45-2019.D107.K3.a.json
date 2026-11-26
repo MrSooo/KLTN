@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D107.K3.a",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D107.K3.a\",\n \"tieu_de_dieu\": \"1:Làm 2:thêm 3:giờ\",\n \"khoan_cha\": \"1:Người 2:sử 3:dụng 4:lao 5:động 6:được 7:sử 8:dụng 9:người 10:lao 11:động 12:làm 13:thêm 14:không 15:quá 16:300 17:giờ 18:trong 19:01 20:năm 21:trong 22:một 23:số 24:ngành, 25:nghề, 26:công 27:việc 28:hoặc 29:trường 30:hợp 31:sau 32:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Sản xuất, gia công xuất khẩu sản phẩm hàng dệt, may, da, giày, điện, điện tử, chế biến nông, lâm, diêm nghiệp, thủy sản;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Sản 2:xuất\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:gia 2:công 3:xuất 4:khẩu\"\n    },\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:sản 2:phẩm 3:hàng 4:dệt, 5:may, 6:da, 7:giày, 8:điện, 9:điện 10:tử\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:chế 2:biến 3:nông, 4:lâm, 5:diêm 6:nghiệp, 7:thủy 8:sản\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D107.K3.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-2\",\n    \"s1.c1:1-10\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-4\",\n    \"s1.c1:1-10\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:1-8\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"nhom_hoac\": \"h1\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "HEEIa4W6NNyz2roPt8TMqAM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 4027,
+   "completion_tokens_details": {
+    "reasoning_tokens": 4207
+   },
+   "input_tokens": 2079,
+   "output_tokens": 1668,
+   "prompt_tokens_details": {
+    "cached_tokens": 4027
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_47e5ebf9ad9a8f1e93367067"
+   }
+  }
+ }
+}

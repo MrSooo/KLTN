@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D112.K1.b",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D112.K1.b\",\n \"tieu_de_dieu\": \"1:Nghỉ 2:lễ, 3:tết\",\n \"khoan_cha\": \"1:Người 2:lao 3:động 4:được 5:nghỉ 6:làm 7:việc, 8:hưởng 9:nguyên 10:lương 11:trong 12:những 13:ngày 14:lễ, 15:tết 16:sau 17:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tết Âm lịch: 05 ngày;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Tết 2:Âm 3:lịch: 4:05 5:ngày\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D112.K1.b\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-5\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "cUIIa92TO4_Z9tMPxcK0gA0",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1048
+   },
+   "input_tokens": 5757,
+   "output_tokens": 1222,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_a9c57e05d33d8c601c4d1f3f"
+   }
+  }
+ }
+}

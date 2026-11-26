@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D40.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D40.K2\",\n \"tieu_de_dieu\": \"1:Nghĩa 2:vụ 3:của 4:người 5:lao 6:động 7:khi 8:đơn 9:phương 10:chấm 11:dứt 12:hợp 13:đồng 14:lao 15:động 16:trái 17:pháp 18:luật\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Phải bồi thường cho người sử dụng lao động nửa tháng tiền lương theo hợp đồng lao động và một khoản tiền tương ứng với tiền lương theo hợp đồng lao động trong những ngày không báo trước.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Phải 2:bồi 3:thường 4:cho 5:người 6:sử 7:dụng 8:lao 9:động 10:nửa 11:tháng 12:tiền 13:lương 14:theo 15:hợp 16:đồng 17:lao 18:động 19:và 20:một 21:khoản 22:tiền 23:tương 24:ứng 25:với 26:tiền 27:lương 28:theo 29:hợp 30:đồng 31:lao 32:động 33:trong 34:những 35:ngày 36:không 37:báo 38:trước\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D40.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:2-3\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:4-6\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"E\"\n    }\n   ],\n   \"liet_ke\": [\n    [\n     \"s1.m1:10-18\"\n    ],\n    [\n     \"s1.m1:20-38\"\n    ]\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "ny8Ia6TMNtO5vr0Pptrd6QQ",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1370
+   },
+   "input_tokens": 5957,
+   "output_tokens": 1621,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_6819ef32e39b0d663c59c443"
+   }
+  }
+ }
+}

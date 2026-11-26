@@ -1,0 +1,65 @@
+{
+ "unit_id": "BLLD_45-2019.D57.K6",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D57.K6\",\n \"tieu_de_dieu\": \"1:Quyền 2:và 3:nghĩa 4:vụ 5:của 6:bên 7:thuê 8:lại 9:lao 10:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Cung cấp cho doanh nghiệp cho thuê lại lao động chứng cứ về hành vi vi phạm kỷ luật lao động của người lao động thuê lại để xem xét xử lý kỷ luật lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Cung 2:cấp 3:cho 4:doanh 5:nghiệp 6:cho 7:thuê 8:lại 9:lao 10:động 11:chứng 12:cứ 13:về 14:hành 15:vi 16:vi 17:phạm 18:kỷ 19:luật 20:lao 21:động 22:của 23:người 24:lao 25:động 26:thuê 27:lại\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:xem 2:xét 3:xử 4:lý 5:kỷ 6:luật 7:lao 8:động\",\n     \"noi_truoc\": [\n      \"để\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D57.K6\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-2\",\n    \"s1.m1:11-27\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:6-10\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"E\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-8\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:4-10\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "TDYIa7LFIJTb9tMP_-visA8",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 5950,
+   "completion_tokens_details": {
+    "reasoning_tokens": 572
+   },
+   "input_tokens": 4252,
+   "output_tokens": 922,
+   "prompt_tokens_details": {
+    "cached_tokens": 5950
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_b7faea3b2aef0933e87948e1"
+   }
+  }
+ },
+ "phan_hoi_1": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D57.K6\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-2\",\n    \"s1.m1:11-27\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:6-10\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"E\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-8\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:4-10\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"chua_ro\": [\n  {\n   \"thanh_phan\": \"phuong_thuc\",\n   \"nguyen_nhan\": \"phuong_thuc\",\n   \"cau_hoi\": \"Tiêu đề điều có cả 'Quyền và nghĩa vụ', s1.m1 không chứa từ phương thức trực tiếp nên xác định là 'phai' theo tính chất nghĩa vụ hay 'khong'?\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "JzYIa5aNJNjI0-kP7rzVqAM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3737
+   },
+   "input_tokens": 5942,
+   "output_tokens": 1476,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_09326c042870ad327c1ad508"
+   }
+  }
+ },
+ "sua": "Máy kiểm báo các lỗi sau ở đầu ra trên:\n- trường thiếu [] / thừa ['khoa_don_vi_thua']\nSửa đúng các lỗi đó (khoảng ghi theo số âm tiết in sẵn trong đoạn) và trả lại TOÀN BỘ JSON của đơn vị, cùng khuôn, không chữ giải thích.",
+ "model_1": "daongocson12022004/gemini-3.8-flash-high"
+}

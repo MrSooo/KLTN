@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D43.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D43.K3\",\n \"tieu_de_dieu\": \"1:Nghĩa 2:vụ 3:của 4:người 5:sử 6:dụng 7:lao 8:động 9:khi 10:chia, 11:tách, 12:hợp 13:nhất, 14:sáp 15:nhập; 16:bán, 17:cho 18:thuê, 19:chuyển 20:đổi 21:loại 22:hình 23:doanh 24:nghiệp; 25:chuyển 26:nhượng 27:quyền 28:sở 29:hữu, 30:quyền 31:sử 32:dụng 33:tài 34:sản 35:của 36:doanh 37:nghiệp, 38:hợp 39:tác 40:xã\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều 47 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D47\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động bị thôi việc thì được nhận trợ cấp mất việc làm theo quy định tại Điều 47 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Người 2:lao 3:động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:bị 2:thôi 3:việc\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:được 2:nhận 3:trợ 4:cấp 5:mất 6:việc 7:làm 8:theo 9:quy 10:định 11:tại 12:Điều 13:47 14:của 15:Bộ 16:luật 17:này\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D43.K3\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-3\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:2-7\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "DzIIa8_WKsi-vr0P_pWhGA",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 3863,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2220
+   },
+   "input_tokens": 2297,
+   "output_tokens": 2544,
+   "prompt_tokens_details": {
+    "cached_tokens": 3863
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_0ce6877f83f8811cd3abb9a0"
+   }
+  }
+ }
+}

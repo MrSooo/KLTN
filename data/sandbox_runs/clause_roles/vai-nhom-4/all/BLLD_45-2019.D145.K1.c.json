@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D145.K1.c",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D145.K1.c\",\n \"tieu_de_dieu\": \"1:Sử 2:dụng 3:người 4:chưa 5:đủ 6:15 7:tuổi 8:làm 9:việc\",\n \"khoan_cha\": \"1:Khi 2:sử 3:dụng 4:người 5:chưa 6:đủ 7:15 8:tuổi 9:làm 10:việc, 11:người 12:sử 13:dụng 14:lao 15:động 16:phải 17:tuân 18:theo 19:quy 20:định 21:sau 22:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Phải có giấy khám sức khỏe của cơ sở khám bệnh, chữa bệnh có thẩm quyền xác nhận sức khỏe của người chưa đủ 15 tuổi phù hợp với công việc và tổ chức kiểm tra sức khỏe định kỳ ít nhất một lần trong 06 tháng;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Phải\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:giấy 3:khám 4:sức 5:khỏe 6:của 7:cơ 8:sở 9:khám 10:bệnh, 11:chữa 12:bệnh 13:có 14:thẩm 15:quyền 16:xác 17:nhận 18:sức 19:khỏe 20:của 21:người 22:chưa 23:đủ 24:15 25:tuổi 26:phù 27:hợp 28:với 29:công 30:việc\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tổ 2:chức 3:kiểm 4:tra 5:sức 6:khỏe 7:định 8:kỳ 9:ít 10:nhất 11:một 12:lần 13:trong 14:06 15:tháng\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D145.K1.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-30\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:11-15\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-15\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:11-15\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "YEsIa8mvPIH81e8P693_uAM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2241
+   },
+   "input_tokens": 6200,
+   "output_tokens": 988,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_b63b22226a52d77dc6ae89f5"
+   }
+  }
+ }
+}

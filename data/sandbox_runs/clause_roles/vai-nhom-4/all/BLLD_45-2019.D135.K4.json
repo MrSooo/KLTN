@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D135.K4",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D135.K4\",\n \"tieu_de_dieu\": \"1:Chính 2:sách 3:của 4:Nhà 5:nước\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Có chính sách giảm thuế đối với người sử dụng lao động có sử dụng nhiều lao động nữ theo quy định của pháp luật về thuế.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Có 2:chính 3:sách 4:giảm 5:thuế 6:đối 7:với 8:người 9:sử 10:dụng 11:lao 12:động 13:có 14:sử 15:dụng 16:nhiều 17:lao 18:động 19:nữ 20:theo 21:quy 22:định 23:của 24:pháp 25:luật 26:về 27:thuế\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D135.K4\",\n \"bo_qua\": \"khong_quy_pham\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "50gIa5TOJbGi9tMPruPXkAk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 532
+   },
+   "input_tokens": 5813,
+   "output_tokens": 586,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_625f8d94ac34a10a5c47e8e7"
+   }
+  }
+ }
+}

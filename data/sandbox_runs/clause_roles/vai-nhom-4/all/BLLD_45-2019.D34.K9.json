@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D34.K9",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D34.K9\",\n \"tieu_de_dieu\": \"1:Các 2:trường 3:hợp 4:chấm 5:dứt 6:hợp 7:đồng 8:lao 9:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều 35 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D35\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động đơn phương chấm dứt hợp đồng lao động theo quy định tại Điều 35 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Người 2:lao 3:động 4:đơn 5:phương 6:chấm 7:dứt 8:hợp 9:đồng 10:lao 11:động 12:theo 13:quy 14:định 15:tại 16:Điều 17:35 18:của 19:Bộ 20:luật 21:này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D34.K9\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D35\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:4-11\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"C\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "SisIa6yaDcPd2roP47CSgQE",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1447
+   },
+   "input_tokens": 5834,
+   "output_tokens": 1705,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_3389323c84d94e7140c478fe"
+   }
+  }
+ }
+}

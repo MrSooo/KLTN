@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D36.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D36.K3\",\n \"tieu_de_dieu\": \"1:Quyền 2:đơn 3:phương 4:chấm 5:dứt 6:hợp 7:đồng 8:lao 9:động 10:của 11:người 12:sử 13:dụng 14:lao 15:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"điểm d và điểm e khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D36.K1.d\"\n  },\n  {\n   \"cum\": \"điểm d và điểm e khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D36.K1.e\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Khi đơn phương chấm dứt hợp đồng lao động quy định tại điểm d và điểm e khoản 1 Điều này thì người sử dụng lao động không phải báo trước cho người lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:đơn 2:phương 3:chấm 4:dứt 5:hợp 6:đồng 7:lao 8:động 9:quy 10:định 11:tại 12:điểm 13:d 14:và 15:điểm 16:e 17:khoản 18:1 19:Điều 20:này\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:người 2:sử 3:dụng 4:lao 5:động 6:không 7:phải 8:báo 9:trước 10:cho 11:người 12:lao 13:động\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D36.K3\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D36.K1.d\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"dich\": \"BLLD_45-2019.D36.K1.e\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-8\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m2:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"C\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:8-9\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m2:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "By8Ia_voB_az2roPl8CFkQY",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 4033,
+   "completion_tokens_details": {
+    "reasoning_tokens": 969
+   },
+   "input_tokens": 2043,
+   "output_tokens": 1437,
+   "prompt_tokens_details": {
+    "cached_tokens": 4033
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_482f74b21277938089fddeb9"
+   }
+  }
+ }
+}

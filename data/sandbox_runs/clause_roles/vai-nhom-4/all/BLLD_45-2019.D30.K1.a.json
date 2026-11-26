@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D30.K1.a",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D30.K1.a\",\n \"tieu_de_dieu\": \"1:Tạm 2:hoãn 3:thực 4:hiện 5:hợp 6:đồng 7:lao 8:động\",\n \"khoan_cha\": \"1:Các 2:trường 3:hợp 4:tạm 5:hoãn 6:thực 7:hiện 8:hợp 9:đồng 10:lao 11:động 12:bao 13:gồm:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động thực hiện nghĩa vụ quân sự, nghĩa vụ tham gia Dân quân tự vệ;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Người 2:lao 3:động 4:thực 5:hiện 6:nghĩa 7:vụ 8:quân 9:sự, 10:nghĩa 11:vụ 12:tham 13:gia 14:Dân 15:quân 16:tự 17:vệ\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D30.K1.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:4-5\"\n   ],\n   \"liet_ke\": [\n    [\n     \"s1.m1:6-9\"\n    ],\n    [\n     \"s1.m1:10-17\"\n    ]\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "fikIa86qBo791e8P2p_2iQc",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1191
+   },
+   "input_tokens": 5829,
+   "output_tokens": 1420,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_df1b2e01ff01bcefae06e5b4"
+   }
+  }
+ }
+}

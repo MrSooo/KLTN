@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D98.K1.c",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D98.K1.c\",\n \"tieu_de_dieu\": \"1:Tiền 2:lương 3:làm 4:thêm 5:giờ, 6:làm 7:việc 8:vào 9:ban 10:đêm\",\n \"khoan_cha\": \"1:Người 2:lao 3:động 4:làm 5:thêm 6:giờ 7:được 8:trả 9:lương 10:tính 11:theo 12:đơn 13:giá 14:tiền 15:lương 16:hoặc 17:tiền 18:lương 19:thực 20:trả 21:theo 22:công 23:việc 24:đang 25:làm 26:như 27:sau:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Vào ngày nghỉ lễ, tết, ngày nghỉ có hưởng lương, ít nhất bằng 300% chưa kể tiền lương ngày lễ, tết, ngày nghỉ có hưởng lương đối với người lao động hưởng lương ngày.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Vào 2:ngày 3:nghỉ 4:lễ, 5:tết, 6:ngày 7:nghỉ 8:có 9:hưởng 10:lương, 11:ít 12:nhất 13:bằng 14:300% 15:chưa 16:kể 17:tiền 18:lương 19:ngày 20:lễ, 21:tết, 22:ngày 23:nghỉ 24:có 25:hưởng 26:lương 27:đối 28:với 29:người 30:lao 31:động 32:hưởng 33:lương 34:ngày\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D98.K1.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-10\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:11-34\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "VT4Ia7nwFLzU9tMPkMqUsQM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3034
+   },
+   "input_tokens": 6053,
+   "output_tokens": 992,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_02a7684287aee34509e84c6a"
+   }
+  }
+ }
+}

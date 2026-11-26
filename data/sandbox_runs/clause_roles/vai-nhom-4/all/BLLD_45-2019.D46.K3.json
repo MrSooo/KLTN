@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D46.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D46.K3\",\n \"tieu_de_dieu\": \"1:Trợ 2:cấp 3:thôi 4:việc\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Tiền lương để tính trợ cấp thôi việc là tiền lương bình quân của 06 tháng liền kề theo hợp đồng lao động trước khi người lao động thôi việc.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Tiền 2:lương 3:để 4:tính 5:trợ 6:cấp 7:thôi 8:việc 9:là 10:tiền 11:lương 12:bình 13:quân 14:của 15:06 16:tháng 17:liền 18:kề 19:theo 20:hợp 21:đồng 22:lao 23:động 24:trước 25:khi 26:người 27:lao 28:động 29:thôi 30:việc\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D46.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:9-30\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-8\"\n    ],\n    \"loai\": \"A\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "_jIIa76aLYGH2roPycWTyQM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1790
+   },
+   "input_tokens": 5832,
+   "output_tokens": 1967,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_3021334c4e86a371f624c56d"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D130.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D130.K2\",\n \"tieu_de_dieu\": \"1:Xử 2:lý 3:bồi 4:thường 5:thiệt 6:hại\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định trình tự, thủ tục, thời hiệu xử lý việc bồi thường thiệt hại.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Chính 2:phủ 3:quy 4:định 5:trình 6:tự, 7:thủ 8:tục, 9:thời 10:hiệu 11:xử 12:lý 13:việc 14:bồi 15:thường 16:thiệt 17:hại\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D130.K2\",\n \"bo_qua\": \"dan_chieu_mo\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "QEgIa8_KK8-w2roPmdjJ2Qo",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2036
+   },
+   "input_tokens": 5756,
+   "output_tokens": 156,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_fd790392a7e6933f0973288a"
+   }
+  }
+ }
+}

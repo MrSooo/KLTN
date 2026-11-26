@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D115.K1.c",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D115.K1.c\",\n \"tieu_de_dieu\": \"1:Nghỉ 2:việc 3:riêng, 4:nghỉ 5:không 6:hưởng 7:lương\",\n \"khoan_cha\": \"1:Người 2:lao 3:động 4:được 5:nghỉ 6:việc 7:riêng 8:mà 9:vẫn 10:hưởng 11:nguyên 12:lương 13:và 14:phải 15:thông 16:báo 17:với 18:người 19:sử 20:dụng 21:lao 22:động 23:trong 24:trường 25:hợp 26:sau 27:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Cha đẻ, mẹ đẻ, cha nuôi, mẹ nuôi; cha đẻ, mẹ đẻ, cha nuôi, mẹ nuôi của vợ hoặc chồng; vợ hoặc chồng; con đẻ, con nuôi chết: nghỉ 03 ngày.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Cha 2:đẻ, 3:mẹ 4:đẻ, 5:cha 6:nuôi, 7:mẹ 8:nuôi; 9:cha 10:đẻ, 11:mẹ 12:đẻ, 13:cha 14:nuôi, 15:mẹ 16:nuôi 17:của 18:vợ 19:hoặc 20:chồng; 21:vợ 22:hoặc 23:chồng; 24:con 25:đẻ, 26:con 27:nuôi 28:chết\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:nghỉ 2:03 3:ngày\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D115.K1.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-28\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-3\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "aUQIa8D7M8-M1e8Pxp_zsQ8",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3696
+   },
+   "input_tokens": 6062,
+   "output_tokens": 860,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_15090d80d340632ab2dbb20b"
+   }
+  }
+ }
+}

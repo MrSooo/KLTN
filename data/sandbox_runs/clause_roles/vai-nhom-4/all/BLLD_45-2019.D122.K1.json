@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D122.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D122.K1\",\n \"tieu_de_dieu\": \"1:Nguyên 2:tắc, 3:trình 4:tự, 5:thủ 6:tục 7:xử 8:lý 9:kỷ 10:luật 11:lao 12:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Việc xử lý kỷ luật lao động được quy định như sau:\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Việc 2:xử 3:lý 4:kỷ 5:luật 6:lao 7:động 8:được 9:quy 10:định 11:như 12:sau\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D122.K1\",\n \"cac_muc_con\": \"danh_sach\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "rkUIa_7pEZjA0-kP0PiMWA",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 443
+   },
+   "input_tokens": 5750,
+   "output_tokens": 498,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_57480f8a7457a689395e8e3b"
+   }
+  }
+ }
+}

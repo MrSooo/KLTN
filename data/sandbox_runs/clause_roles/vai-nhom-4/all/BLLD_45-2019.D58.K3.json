@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D58.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D58.K3\",\n \"tieu_de_dieu\": \"1:Quyền 2:và 3:nghĩa 4:vụ 5:của 6:người 7:lao 8:động 9:thuê 10:lại\",\n \"khoan_cha\": \"1:Ngoài 2:các 3:quyền 4:và 5:nghĩa 6:vụ 7:theo 8:quy 9:định 10:tại 11:Điều 12:5 13:của 14:Bộ 15:luật 16:này, 17:người 18:lao 19:động 20:thuê 21:lại 22:có 23:các 24:quyền 25:và 26:nghĩa 27:vụ 28:sau 29:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Được trả lương không thấp hơn tiền lương của người lao động của bên thuê lại lao động có cùng trình độ, làm cùng công việc hoặc công việc có giá trị như nhau;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Được 2:trả 3:lương 4:không 5:thấp 6:hơn 7:tiền 8:lương 9:của 10:người 11:lao 12:động 13:của 14:bên 15:thuê 16:lại 17:lao 18:động 19:có 20:cùng 21:trình 22:độ, 23:làm 24:cùng 25:công 26:việc 27:hoặc 28:công 29:việc 30:có 31:giá 32:trị 33:như 34:nhau\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D58.K3\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:2-34\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:17-21\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "VzYIa8yfH4791e8PxNvx8QM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 942
+   },
+   "input_tokens": 6046,
+   "output_tokens": 1130,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_8286c9582ac650ff5194251a"
+   }
+  }
+ }
+}

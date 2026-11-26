@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D123.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D123.K3\",\n \"tieu_de_dieu\": \"1:Thời 2:hiệu 3:xử 4:lý 5:kỷ 6:luật 7:lao 8:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 và khoản 2 Điều này\",\n   \"dich\": \"BLLD_45-2019.D123.K1\"\n  },\n  {\n   \"cum\": \"khoản 1 và khoản 2 Điều này\",\n   \"dich\": \"BLLD_45-2019.D123.K2\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Người sử dụng lao động phải ban hành quyết định xử lý kỷ luật lao động trong thời hạn quy định tại khoản 1 và khoản 2 Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Người 2:sử 3:dụng 4:lao 5:động 6:phải 7:ban 8:hành 9:quyết 10:định 11:xử 12:lý 13:kỷ 14:luật 15:lao 16:động 17:trong 18:thời 19:hạn 20:quy 21:định 22:tại 23:khoản 24:1 25:và 26:khoản 27:2 28:Điều 29:này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D123.K3\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:7-16\",\n    \"s1.m1:17-19\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "h0YIa6icM4-N1e8P367wqAo",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3119
+   },
+   "input_tokens": 5940,
+   "output_tokens": 644,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_f4a6dd1755791ff396160c47"
+   }
+  }
+ }
+}

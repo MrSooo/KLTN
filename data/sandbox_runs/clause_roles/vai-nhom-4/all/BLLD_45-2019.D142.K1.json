@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D142.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D142.K1\",\n \"tieu_de_dieu\": \"1:Nghề, 2:công 3:việc 4:có 5:ảnh 6:hưởng 7:xấu 8:tới 9:chức 10:năng 11:sinh 12:sản 13:và 14:nuôi 15:con\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành danh mục nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Bộ 2:trưởng 3:Bộ 4:Lao 5:động - 6:Thương 7:binh 8:và 9:Xã 10:hội 11:ban 12:hành 13:danh 14:mục 15:nghề, 16:công 17:việc 18:có 19:ảnh 20:hưởng 21:xấu 22:tới 23:chức 24:năng 25:sinh 26:sản 27:và 28:nuôi 29:con\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D142.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:11-29\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-10\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "qkoIa4bnNpG31e8PtJ2a2QQ",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 589
+   },
+   "input_tokens": 5880,
+   "output_tokens": 767,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_8b98ebd670f229070d9c18da"
+   }
+  }
+ }
+}

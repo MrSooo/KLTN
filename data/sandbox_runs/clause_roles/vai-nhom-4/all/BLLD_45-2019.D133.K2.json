@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D133.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D133.K2\",\n \"tieu_de_dieu\": \"1:Chương 2:trình 3:an 4:toàn, 5:vệ 6:sinh 7:lao 8:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Ủy ban nhân dân cấp tỉnh trình Hội đồng nhân dân cùng cấp quyết định Chương trình an toàn, vệ sinh lao động của địa phương và đưa vào kế hoạch phát triển kinh tế - xã hội.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Ủy 2:ban 3:nhân 4:dân 5:cấp 6:tỉnh\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:trình 2:Hội 3:đồng 4:nhân 5:dân 6:cùng 7:cấp 8:quyết 9:định 10:Chương 11:trình 12:an 13:toàn, 14:vệ 15:sinh 16:lao 17:động 18:của 19:địa 20:phương\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:đưa 2:vào 3:kế 4:hoạch 5:phát 6:triển 7:kinh 8:tế - 9:xã 10:hội\",\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D133.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-20\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-6\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-10\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-6\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "fEgIa863OeSl0-kP_uis8Q8",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1137
+   },
+   "input_tokens": 5997,
+   "output_tokens": 1447,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_2caf7a8058c7f3eb05c6b6fa"
+   }
+  }
+ }
+}

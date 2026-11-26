@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D122.K4.a",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D122.K4.a\",\n \"tieu_de_dieu\": \"1:Nguyên 2:tắc, 3:trình 4:tự, 5:thủ 6:tục 7:xử 8:lý 9:kỷ 10:luật 11:lao 12:động\",\n \"khoan_cha\": \"1:Không 2:được 3:xử 4:lý 5:kỷ 6:luật 7:lao 8:động 9:đối 10:với 11:người 12:lao 13:động 14:đang 15:trong 16:thời 17:gian 18:sau 19:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Nghỉ ốm đau, điều dưỡng; nghỉ việc được sự đồng ý của người sử dụng lao động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Nghỉ 2:ốm 3:đau, 4:điều 5:dưỡng\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:nghỉ 2:việc 3:được 4:sự 5:đồng 6:ý 7:của 8:người 9:sử 10:dụng 11:lao 12:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D122.K4.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1\"\n   ],\n   \"liet_ke\": [\n    [\n     \"s1.m1:2-3\"\n    ],\n    [\n     \"s1.m1:4-5\"\n    ]\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:11-13\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-12\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:11-13\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q2\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "CkYIa8mVNvDt2roPtvuAmQI",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 3829,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1958
+   },
+   "input_tokens": 2099,
+   "output_tokens": 2316,
+   "prompt_tokens_details": {
+    "cached_tokens": 3829
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_f76736f0da31d80c5389c312"
+   }
+  }
+ }
+}

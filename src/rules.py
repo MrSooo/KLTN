@@ -518,7 +518,10 @@ def program_text(rules, iso=(), llm_edges=True):
         hs = active_blockers(r, llm_edges)
         extra += [f"blocked({r['id']}, X) :- {h}(X)." for h in hs]
         if hs:
-            extra.append(f"{'' if r['head']['neg'] else '-'}{r['head']['atom']}(X) :- blocked({r['id']}, X).")
+            # [27/11, user duyệt] dòng bị bác mang chủ thể của quy tắc bị chặn: một đầu dùng chung cho nhiều chủ thể (NLĐ ở D35, NSDLĐ ở D36)
+            # thì ngoại lệ của quy định về NLĐ chỉ bác kết luận cho NLĐ, không bác luôn bên NSDLĐ (A62, phép thử cặp `must_notify...`)
+            ct = next((b["atom"] for b in r["body"] if b.get("role") == "chu_the" and not b.get("naf") and not b.get("neg")), None)
+            extra.append(f"{'' if r['head']['neg'] else '-'}{r['head']['atom']}(X) :- {f'{ct}(X), ' if ct else ''}blocked({r['id']}, X).")
     lines += [""] + extra
     return "\n".join(lines) + "\n"
 

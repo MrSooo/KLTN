@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D35.K2.dd",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D35.K2.dd\",\n \"tieu_de_dieu\": \"1:Quyền 2:đơn 3:phương 4:chấm 5:dứt 6:hợp 7:đồng 8:lao 9:động 10:của 11:người 12:lao 13:động\",\n \"khoan_cha\": \"1:Người 2:lao 3:động 4:có 5:quyền 6:đơn 7:phương 8:chấm 9:dứt 10:hợp 11:đồng 12:lao 13:động 14:không 15:cần 16:báo 17:trước 18:trong 19:trường 20:hợp 21:sau 22:đây:\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 Điều 138 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D138.K1\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Lao động nữ mang thai phải nghỉ việc theo quy định tại khoản 1 Điều 138 của Bộ luật này;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Lao 2:động 3:nữ\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:mang 2:thai\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:phải 2:nghỉ 3:việc 4:theo 5:quy 6:định 7:tại 8:khoản 9:1 10:Điều 11:138 12:của 13:Bộ 14:luật 15:này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D35.K2.dd\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D138.K1\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-2\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:2-3\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "3SwIa7nbIrPdvr0P55a1yA0",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4201
+   },
+   "input_tokens": 6078,
+   "output_tokens": 1196,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_ab989c4eb55c95a153ba9707"
+   }
+  }
+ }
+}

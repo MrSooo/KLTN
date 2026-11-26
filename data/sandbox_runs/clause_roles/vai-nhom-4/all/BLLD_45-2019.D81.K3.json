@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D81.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D81.K3\",\n \"tieu_de_dieu\": \"1:Quan 2:hệ 3:giữa 4:thỏa 5:ước 6:lao 7:động 8:tập 9:thể 10:doanh 11:nghiệp, 12:thỏa 13:ước 14:lao 15:động 16:tập 17:thể 18:ngành 19:và 20:thỏa 21:ước 22:lao 23:động 24:tập 25:thể 26:có 27:nhiều 28:doanh 29:nghiệp\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Khuyến khích doanh nghiệp chưa tham gia thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp thực hiện nội dung có lợi hơn cho người lao động của thỏa ước lao động tập thể ngành hoặc thỏa ước lao động tập thể có nhiều doanh nghiệp.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Khuyến 2:khích 3:doanh 4:nghiệp 5:chưa 6:tham 7:gia 8:thỏa 9:ước 10:lao 11:động 12:tập 13:thể 14:ngành 15:hoặc 16:thỏa 17:ước 18:lao 19:động 20:tập 21:thể 22:có 23:nhiều 24:doanh 25:nghiệp 26:thực 27:hiện 28:nội 29:dung 30:có 31:lợi 32:hơn 33:cho 34:người 35:lao 36:động 37:của 38:thỏa 39:ước 40:lao 41:động 42:tập 43:thể 44:ngành 45:hoặc 46:thỏa 47:ước 48:lao 49:động 50:tập 51:thể 52:có 53:nhiều 54:doanh 55:nghiệp\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D81.K3\",\n \"bo_qua\": \"khong_quy_pham\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "0DsIa_6DJq2D2roPobDToAs",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 280
+   },
+   "input_tokens": 6145,
+   "output_tokens": 333,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_f1761dbcac3764efbc2d8611"
+   }
+  }
+ }
+}

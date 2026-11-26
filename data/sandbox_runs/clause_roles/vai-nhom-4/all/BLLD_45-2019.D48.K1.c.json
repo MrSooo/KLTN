@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D48.K1.c",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D48.K1.c\",\n \"tieu_de_dieu\": \"1:Trách 2:nhiệm 3:khi 4:chấm 5:dứt 6:hợp 7:đồng 8:lao 9:động\",\n \"khoan_cha\": \"1:Trong 2:thời 3:hạn 4:14 5:ngày 6:làm 7:việc 8:kể 9:từ 10:ngày 11:chấm 12:dứt 13:hợp 14:đồng 15:lao 16:động, 17:hai 18:bên 19:có 20:trách 21:nhiệm 22:thanh 23:toán 24:đầy 25:đủ 26:các 27:khoản 28:tiền 29:có 30:liên 31:quan 32:đến 33:quyền 34:lợi 35:của 36:mỗi 37:bên, 38:trừ 39:trường 40:hợp 41:sau 42:đây 43:có 44:thể 45:kéo 46:dài 47:nhưng 48:không 49:được 50:quá 51:30 52:ngày:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Chia\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:tách\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:hợp 2:nhất\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:sáp 2:nhập\"\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:bán\"\n    },\n    {\n     \"id\": \"s1.m6\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:cho 2:thuê\"\n    },\n    {\n     \"id\": \"s1.m7\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:chuyển 2:đổi 3:loại 4:hình 5:doanh 6:nghiệp\"\n    },\n    {\n     \"id\": \"s1.m8\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:chuyển 2:nhượng 3:quyền 4:sở 5:hữu, 6:quyền 7:sử 8:dụng 9:tài 10:sản 11:của 12:doanh 13:nghiệp, 14:hợp 15:tác 16:xã\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D48.K1.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:1-2\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m4\",\n   \"loi\": [\n    \"s1.m4:1-2\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m5\",\n   \"loi\": [\n    \"s1.m5:1\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m6\",\n   \"loi\": [\n    \"s1.m6:1-2\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m7\",\n   \"loi\": [\n    \"s1.m7:1-6\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  },\n  {\n   \"nguon\": \"s1.m8\",\n   \"loi\": [\n    \"s1.m8:1-16\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"nhom_hoac\": \"h1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "pDMIa_jIL97v2roP37O84QM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2873
+   },
+   "input_tokens": 6409,
+   "output_tokens": 3751,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_26c74b63b86f83aca31066dd"
+   }
+  }
+ }
+}

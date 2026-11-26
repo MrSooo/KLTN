@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D67.K6",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D67.K6\",\n \"tieu_de_dieu\": \"1:Nội 2:dung 3:thương 4:lượng 5:tập 6:thể\",\n \"khoan_cha\": \"1:Các 2:bên 3:thương 4:lượng 5:lựa 6:chọn 7:một 8:hoặc 9:một 10:số 11:nội 12:dung 13:sau 14:để 15:tiến 16:hành 17:thương 18:lượng 19:tập 20:thể:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Cơ chế, phương thức phòng ngừa, giải quyết tranh chấp lao động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Cơ 2:chế, 3:phương 4:thức 5:phòng 6:ngừa, 7:giải 8:quyết 9:tranh 10:chấp 11:lao 12:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D67.K6\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-12\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-4\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "qjgIa6axGaf91e8P5MbQmQk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1243
+   },
+   "input_tokens": 5824,
+   "output_tokens": 1414,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_3337396d4046c4f0b9dc7521"
+   }
+  }
+ }
+}

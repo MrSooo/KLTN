@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D107.K3.c",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D107.K3.c\",\n \"tieu_de_dieu\": \"1:Làm 2:thêm 3:giờ\",\n \"khoan_cha\": \"1:Người 2:sử 3:dụng 4:lao 5:động 6:được 7:sử 8:dụng 9:người 10:lao 11:động 12:làm 13:thêm 14:không 15:quá 16:300 17:giờ 18:trong 19:01 20:năm 21:trong 22:một 23:số 24:ngành, 25:nghề, 26:công 27:việc 28:hoặc 29:trường 30:hợp 31:sau 32:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp giải quyết công việc đòi hỏi lao động có trình độ chuyên môn, kỹ thuật cao mà thị trường lao động không cung ứng đầy đủ, kịp thời;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:giải 2:quyết 3:công 4:việc 5:đòi 6:hỏi 7:lao 8:động 9:có 10:trình 11:độ 12:chuyên 13:môn, 14:kỹ 15:thuật 16:cao\",\n     \"noi_truoc\": [\n      \"trường hợp\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:thị 2:trường 3:lao 4:động 5:không 6:cung 7:ứng 8:đầy 9:đủ, 10:kịp 11:thời\",\n     \"noi_truoc\": [\n      \"mà\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D107.K3.c\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-16\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:6-11\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m2:1-4\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "NkEIa8_FA9mz2roPicrP-AY",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 893
+   },
+   "input_tokens": 6053,
+   "output_tokens": 1203,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_f4a4501a6d9f7a67672f7517"
+   }
+  }
+ }
+}

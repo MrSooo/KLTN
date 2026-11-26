@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D73.K2.a",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D73.K2.a\",\n \"tieu_de_dieu\": \"1:Thương 2:lượng 3:tập 4:thể 5:có 6:nhiều 7:doanh 8:nghiệp 9:tham 10:gia 11:thông 12:qua 13:Hội 14:đồng 15:thương 16:lượng 17:tập 18:thể\",\n \"khoan_cha\": \"1:Khi 2:nhận 3:được 4:yêu 5:cầu 6:của 7:các 8:bên 9:thương 10:lượng 11:tập 12:thể 13:có 14:nhiều 15:doanh 16:nghiệp 17:tham 18:gia, 19:Ủy 20:ban 21:nhân 22:dân 23:cấp 24:tỉnh 25:quyết 26:định 27:thành 28:lập 29:Hội 30:đồng 31:thương 32:lượng 33:tập 34:thể 35:để 36:tổ 37:chức 38:việc 39:thương 40:lượng 41:tập 42:thể. 43:Thành 44:phần 45:Hội 46:đồng 47:thương 48:lượng 49:tập 50:thể 51:bao 52:gồm:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Chủ tịch Hội đồng do các bên quyết định và có trách nhiệm điều phối hoạt động của Hội đồng thương lượng tập thể, hỗ trợ cho việc thương lượng tập thể của các bên;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Chủ 2:tịch 3:Hội 4:đồng\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:do 2:các 3:bên 4:quyết 5:định\"\n    },\n    {\n     \"id\": \"s1.c2\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:có 2:trách 3:nhiệm\",\n     \"ap_cho\": [\n      \"s1.m2\",\n      \"s1.m3\"\n     ],\n     \"noi_truoc\": [\n      \"và\"\n     ]\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:điều 2:phối 3:hoạt 4:động 5:của 6:Hội 7:đồng 8:thương 9:lượng 10:tập 11:thể\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:hỗ 2:trợ 3:cho 4:việc 5:thương 6:lượng 7:tập 8:thể 9:của 10:các 11:bên\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D73.K2.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:4-5\",\n    \"s1.c1:1-4\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:2-3\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-11\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-4\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:1-11\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-4\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "-DkIa7j8F8Pd2roP47CSgQE",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 5821
+   },
+   "input_tokens": 6437,
+   "output_tokens": 1492,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_d68b201dce378fedf1b0e769"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D85.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D85.K1\",\n \"tieu_de_dieu\": \"1:Gia 2:nhập 3:và 4:rút 5:khỏi 6:thỏa 7:ước 8:lao 9:động 10:tập 11:thể 12:ngành 13:hoặc 14:thỏa 15:ước 16:lao 17:động 18:tập 19:thể 20:có 21:nhiều 22:doanh 23:nghiệp\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 Điều 84 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D84.K1\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Doanh nghiệp có thể gia nhập thỏa ước lao động tập thể ngành, thỏa ước lao động tập thể có nhiều doanh nghiệp khi có sự đồng thuận của tất cả người sử dụng lao động và tổ chức đại diện người lao động tại doanh nghiệp là thành viên của thỏa ước, trừ trường hợp quy định tại khoản 1 Điều 84 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Doanh 2:nghiệp 3:có 4:thể 5:gia 6:nhập 7:thỏa 8:ước 9:lao 10:động 11:tập 12:thể 13:ngành, 14:thỏa 15:ước 16:lao 17:động 18:tập 19:thể 20:có 21:nhiều 22:doanh 23:nghiệp\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:có 2:sự 3:đồng 4:thuận 5:của 6:tất 7:cả 8:người 9:sử 10:dụng 11:lao 12:động 13:và 14:tổ 15:chức 16:đại 17:diện 18:người 19:lao 20:động 21:tại 22:doanh 23:nghiệp 24:là 25:thành 26:viên 27:của 28:thỏa 29:ước\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.d1\",\n     \"loai\": \"dan_chieu\",\n     \"chu\": \"1:trừ 2:trường 3:hợp 4:quy 5:định 6:tại 7:khoản 8:1 9:Điều 10:84 11:của 12:Bộ 13:luật 14:này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D85.K1\",\n \"ngoai_le\": [\n  \"BLLD_45-2019.D84.K1\"\n ],\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:5-6\"\n   ],\n   \"liet_ke\": [\n    [\n     \"s1.m1:7-13\"\n    ],\n    [\n     \"s1.m1:14-23\"\n    ]\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-2\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-29\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "ODwIa_SdH6Oy2roPvM6RiQE",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1194
+   },
+   "input_tokens": 6313,
+   "output_tokens": 1560,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_0f9a94f6a17141767325ff9e"
+   }
+  }
+ }
+}

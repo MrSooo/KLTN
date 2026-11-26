@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D107.K3.dd",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D107.K3.dd\",\n \"tieu_de_dieu\": \"1:Làm 2:thêm 3:giờ\",\n \"khoan_cha\": \"1:Người 2:sử 3:dụng 4:lao 5:động 6:được 7:sử 8:dụng 9:người 10:lao 11:động 12:làm 13:thêm 14:không 15:quá 16:300 17:giờ 18:trong 19:01 20:năm 21:trong 22:một 23:số 24:ngành, 25:nghề, 26:công 27:việc 28:hoặc 29:trường 30:hợp 31:sau 32:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trường hợp khác do Chính phủ quy định.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Trường 2:hợp 3:khác 4:do 5:Chính 6:phủ 7:quy 8:định\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D107.K3.dd\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-8\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "QkEIa5W6ObOz2roPkPy7yQ0",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1385
+   },
+   "input_tokens": 5853,
+   "output_tokens": 1521,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_6e444e6d90b0e3bb090a2f76"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D46.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D46.K2\",\n \"tieu_de_dieu\": \"1:Trợ 2:cấp 3:thôi 4:việc\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thời gian làm việc để tính trợ cấp thôi việc là tổng thời gian người lao động đã làm việc thực tế cho người sử dụng lao động trừ đi thời gian người lao động đã tham gia bảo hiểm thất nghiệp theo quy định của pháp luật về bảo hiểm thất nghiệp và thời gian làm việc đã được người sử dụng lao động chi trả trợ cấp thôi việc, trợ cấp mất việc làm.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Thời 2:gian 3:làm 4:việc 5:để 6:tính 7:trợ 8:cấp 9:thôi 10:việc 11:là 12:tổng 13:thời 14:gian 15:người 16:lao 17:động 18:đã 19:làm 20:việc 21:thực 22:tế 23:cho 24:người 25:sử 26:dụng 27:lao 28:động 29:trừ 30:đi 31:thời 32:gian 33:người 34:lao 35:động 36:đã 37:tham 38:gia 39:bảo 40:hiểm 41:thất 42:nghiệp 43:theo 44:quy 45:định 46:của 47:pháp 48:luật 49:về 50:bảo 51:hiểm 52:thất 53:nghiệp 54:và 55:thời 56:gian 57:làm 58:việc 59:đã 60:được 61:người 62:sử 63:dụng 64:lao 65:động 66:chi 67:trả 68:trợ 69:cấp 70:thôi 71:việc, 72:trợ 73:cấp 74:mất 75:việc 76:làm\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D46.K2\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-76\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "3TIIa9-sMdbA0-kPlPuVsAs",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4643
+   },
+   "input_tokens": 6143,
+   "output_tokens": 416,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_45528554b73adc7559eb6e5a"
+   }
+  }
+ }
+}

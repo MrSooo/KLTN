@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D66",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D66\",\n \"tieu_de_dieu\": \"1:Nguyên 2:tắc 3:thương 4:lượng 5:tập 6:thể\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thương lượng tập thể được tiến hành theo nguyên tắc tự nguyện, hợp tác, thiện chí, bình đẳng, công khai và minh bạch.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Thương 2:lượng 3:tập 4:thể 5:được 6:tiến 7:hành 8:theo 9:nguyên 10:tắc 11:tự 12:nguyện, 13:hợp 14:tác, 15:thiện 16:chí, 17:bình 18:đẳng, 19:công 20:khai 21:và 22:minh 23:bạch\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D66\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:5-7\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-4\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:8-10\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-4\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"liet_ke\": [\n    [\n     \"s1.m1:11-12\"\n    ],\n    [\n     \"s1.m1:13-14\"\n    ],\n    [\n     \"s1.m1:15-16\"\n    ],\n    [\n     \"s1.m1:17-18\"\n    ],\n    [\n     \"s1.m1:19-20\"\n    ],\n    [\n     \"s1.m1:22-23\"\n    ]\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "VTgIa9nbFp-31e8P7KDX8QI",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2316
+   },
+   "input_tokens": 5796,
+   "output_tokens": 2758,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_ddb532f7348f64a2221f7026"
+   }
+  }
+ }
+}

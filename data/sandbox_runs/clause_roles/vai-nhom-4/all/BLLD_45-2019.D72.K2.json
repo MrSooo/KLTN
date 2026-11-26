@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D72.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D72.K2\",\n \"tieu_de_dieu\": \"1:Thương 2:lượng 3:tập 4:thể 5:ngành, 6:thương 7:lượng 8:tập 9:thể 10:có 11:nhiều 12:doanh 13:nghiệp 14:tham 15:gia\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều 73 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D73\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Quy trình tiến hành thương lượng tập thể ngành, thương lượng tập thể có nhiều doanh nghiệp tham gia do các bên thỏa thuận quyết định, bao gồm cả việc thỏa thuận tiến hành thương lượng tập thể thông qua Hội đồng thương lượng tập thể quy định tại Điều 73 của Bộ luật này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Quy 2:trình 3:tiến 4:hành 5:thương 6:lượng 7:tập 8:thể 9:ngành, 10:thương 11:lượng 12:tập 13:thể 14:có 15:nhiều 16:doanh 17:nghiệp 18:tham 19:gia\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:do 2:các 3:bên 4:thỏa 5:thuận 6:quyết 7:định\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:bao 2:gồm 3:cả 4:việc 5:thỏa 6:thuận 7:tiến 8:hành 9:thương 10:lượng 11:tập 12:thể 13:thông 14:qua 15:Hội 16:đồng 17:thương 18:lượng 19:tập 20:thể 21:quy 22:định 23:tại 24:Điều 25:73 26:của 27:Bộ 28:luật 29:này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D72.K2\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D73\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:4-7\",\n    \"s1.c1:1-19\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:2-3\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-20\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "vzkIa42BE5n-1e8PoYL4oAw",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1989
+   },
+   "input_tokens": 6194,
+   "output_tokens": 2325,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_ad7e702299a00bb0ed201810"
+   }
+  }
+ }
+}

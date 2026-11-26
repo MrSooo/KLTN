@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D108.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D108.K1\",\n \"tieu_de_dieu\": \"1:Làm 2:thêm 3:giờ 4:trong 5:trường 6:hợp 7:đặc 8:biệt\",\n \"khoan_cha\": \"1:Người 2:sử 3:dụng 4:lao 5:động 6:có 7:quyền 8:yêu 9:cầu 10:người 11:lao 12:động 13:làm 14:thêm 15:giờ 16:vào 17:bất 18:kỳ 19:ngày 20:nào 21:mà 22:không 23:bị 24:giới 25:hạn 26:về 27:số 28:giờ 29:làm 30:thêm 31:theo 32:quy 33:định 34:tại 35:Điều 36:107 37:của 38:Bộ 39:luật 40:này 41:và 42:người 43:lao 44:động 45:không 46:được 47:từ 48:chối 49:trong 50:trường 51:hợp 52:sau 53:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thực hiện lệnh động viên, huy động bảo đảm nhiệm vụ quốc phòng, an ninh theo quy định của pháp luật;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Thực 2:hiện 3:lệnh 4:động 5:viên, 6:huy 7:động 8:bảo 9:đảm 10:nhiệm 11:vụ 12:quốc 13:phòng, 14:an 15:ninh 16:theo 17:quy 18:định 19:của 20:pháp 21:luật\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D108.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-15\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:16-21\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-5\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "Z0EIa9-0Msuy2roPhrGC2As",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4926
+   },
+   "input_tokens": 6083,
+   "output_tokens": 992,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_5aab149656cbf1437df63fda"
+   }
+  }
+ }
+}

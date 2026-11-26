@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D4.K4",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D4.K4\",\n \"tieu_de_dieu\": \"1:Chính 2:sách 3:của 4:Nhà 5:nước 6:về 7:lao 8:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Có chính sách phát triển, phân bố nguồn nhân lực; nâng cao năng suất lao động; đào tạo, bồi dưỡng và nâng cao trình độ, kỹ năng nghề cho người lao động; hỗ trợ duy trì, chuyển đổi nghề nghiệp, việc làm cho người lao động; ưu đãi đối với người lao động có trình độ chuyên môn, kỹ thuật cao đáp ứng yêu cầu của cách mạng công nghiệp, sự nghiệp công nghiệp hóa, hiện đại hóa đất nước.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Có 2:chính 3:sách 4:phát 5:triển, 6:phân 7:bố 8:nguồn 9:nhân 10:lực\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:nâng 2:cao 3:năng 4:suất 5:lao 6:động\"\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:đào 2:tạo, 3:bồi 4:dưỡng 5:và 6:nâng 7:cao 8:trình 9:độ, 10:kỹ 11:năng 12:nghề 13:cho 14:người 15:lao 16:động\"\n    },\n    {\n     \"id\": \"s1.m4\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:hỗ 2:trợ 3:duy 4:trì, 5:chuyển 6:đổi 7:nghề 8:nghiệp, 9:việc 10:làm 11:cho 12:người 13:lao 14:động\"\n    },\n    {\n     \"id\": \"s1.m5\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:ưu 2:đãi 3:đối 4:với 5:người 6:lao 7:động 8:có 9:trình 10:độ 11:chuyên 12:môn, 13:kỹ 14:thuật 15:cao 16:đáp 17:ứng 18:yêu 19:cầu 20:của 21:cách 22:mạng 23:công 24:nghiệp, 25:sự 26:nghiệp 27:công 28:nghiệp 29:hóa, 30:hiện 31:đại 32:hóa 33:đất 34:nước\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D4.K4\",\n \"bo_qua\": \"khong_quy_pham\",\n \"dong\": []\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "LigIa-7nE9bdvr0PwIjAqAk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 325
+   },
+   "input_tokens": 6331,
+   "output_tokens": 376,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_1828d2d083d9d3a5dd651bfc"
+   }
+  }
+ }
+}

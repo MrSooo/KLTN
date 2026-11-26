@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D35.K1.a",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D35.K1.a\",\n \"tieu_de_dieu\": \"1:Quyền 2:đơn 3:phương 4:chấm 5:dứt 6:hợp 7:đồng 8:lao 9:động 10:của 11:người 12:lao 13:động\",\n \"khoan_cha\": \"1:Người 2:lao 3:động 4:có 5:quyền 6:đơn 7:phương 8:chấm 9:dứt 10:hợp 11:đồng 12:lao 13:động 14:nhưng 15:phải 16:báo 17:trước 18:cho 19:người 20:sử 21:dụng 22:lao 23:động 24:như 25:sau:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Ít nhất 45 ngày nếu làm việc theo hợp đồng lao động không xác định thời hạn;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Ít 2:nhất 3:45 4:ngày\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:làm 2:việc 3:theo 4:hợp 5:đồng 6:lao 7:động 8:không 9:xác 10:định 11:thời 12:hạn\",\n     \"noi_truoc\": [\n      \"nếu\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D35.K1.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-4\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"E\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-12\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "CywIa7f9MI-N1e8P367wqAo",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2889
+   },
+   "input_tokens": 5969,
+   "output_tokens": 1072,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_b4cede239b69df0a01b474fd"
+   }
+  }
+ }
+}

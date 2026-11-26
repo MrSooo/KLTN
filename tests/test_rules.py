@@ -54,9 +54,32 @@ def test_rules_subject_guard_and_block_relation():
     assert [lit["atom"] for lit in r["body"]][:1] == ["foreign_worker"]
     assert any(lit["atom"] == "blocked" for lit in r["body"])
     lines = R.program_text(rules).splitlines()
-    assert f"-must_holds_work_permit(X) :- blocked({r['id']}, X)." in lines
+    # dòng bị bác mang chủ thể của quy tắc bị chặn (27/11)
+    assert f"-must_holds_work_permit(X) :- foreign_worker(X), blocked({r['id']}, X)." in lines
     # tắt cạnh 1.7 không ảnh hưởng quan hệ chặn đến từ cạnh 1.5
-    assert f"-must_holds_work_permit(X) :- blocked({r['id']}, X)." in R.program_text(rules, llm_edges=False).splitlines()
+    assert f"-must_holds_work_permit(X) :- foreign_worker(X), blocked({r['id']}, X)." in R.program_text(rules, llm_edges=False).splitlines()
+
+
+def test_rules_bac_chi_trong_chu_the_cua_quy_tac_bi_chan():
+    """[27/11] Cùng đầu cho NLĐ (D35) và NSDLĐ (D36); ngoại lệ chặn quy tắc NLĐ thì chỉ bác đầu cho NLĐ: s(CASP) vẫn suy ra được cho NSDLĐ."""
+    def rule(rid, unit, subj, extra=()):
+        return {"id": rid, "unit": unit, "head": {"atom": "must_notify_45_days", "pred": "must_notify_45_days", "neg": False}, "how": "x",
+                "body": [{"atom": subj, "pred": subj, "naf": False, "role": "chu_the"}, *extra]}
+    blk = {"atom": "blocked", "naf": True, "blocked_by": ["urgent_case"], "sources": {"urgent_case": ["1.5"]}}
+    rs = [rule("r1", D + "D35.K1", "employee", [blk]), rule("r2", D + "D36.K2", "employer"),
+          {"id": "r3", "unit": D + "D35.K2", "head": {"atom": "urgent_case", "pred": "urgent_case", "neg": False}, "how": "x", "body": []}]
+    prog = R.program_text(rs)
+    assert "-must_notify_45_days(X) :- employee(X), blocked(r1, X)." in prog.splitlines()
+    swipl = shutil.which(R.SWIPL) or (R.SWIPL if Path(R.SWIPL + ".exe").exists() else None)
+    if not swipl:
+        print("bỏ qua phần s(CASP): không có swipl")
+        return
+    f = Path(tempfile.mkdtemp()) / "p.pl"
+    # p1 vừa là NSDLĐ vừa có tình huống ngoại lệ của NLĐ: trước khi sửa, -must_notify bác luôn đầu của NSDLĐ
+    f.write_text(prog + "employer(p1).\nurgent_case(p1).\n", encoding="utf-8")
+    goal = f"consult('{f.as_posix()}'), (scasp(must_notify_45_days(p1),[model(_)])->write(yes);write(no)),nl,halt"
+    out = subprocess.run([swipl, "-q", "-g", goal, "-t", "halt(1)"], capture_output=True, text=True, timeout=120).stdout.strip().splitlines()
+    assert out and out[-1] == "yes", out
 
 
 def test_rules_negative_condition_open_world_for_input_closed_for_concept():

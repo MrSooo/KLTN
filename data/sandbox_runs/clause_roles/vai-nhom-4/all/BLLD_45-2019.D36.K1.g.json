@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D36.K1.g",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D36.K1.g\",\n \"tieu_de_dieu\": \"1:Quyền 2:đơn 3:phương 4:chấm 5:dứt 6:hợp 7:đồng 8:lao 9:động 10:của 11:người 12:sử 13:dụng 14:lao 15:động\",\n \"khoan_cha\": \"1:Người 2:sử 3:dụng 4:lao 5:động 6:có 7:quyền 8:đơn 9:phương 10:chấm 11:dứt 12:hợp 13:đồng 14:lao 15:động 16:trong 17:trường 18:hợp 19:sau 20:đây:\\n21:Khi 22:sức 23:khỏe 24:của 25:người 26:lao 27:động 28:bình 29:phục 30:thì 31:người 32:sử 33:dụng 34:lao 35:động 36:xem 37:xét 38:để 39:tiếp 40:tục 41:giao 42:kết 43:hợp 44:đồng 45:lao 46:động 47:với 48:người 49:lao 50:động;\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 2 Điều 16 của Bộ luật này\",\n   \"dich\": \"BLLD_45-2019.D16.K2\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động cung cấp không trung thực thông tin theo quy định tại khoản 2 Điều 16 của Bộ luật này khi giao kết hợp đồng lao động làm ảnh hưởng đến việc tuyển dụng người lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Người 2:lao 3:động\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\",\n      \"s1.m3\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:cung 2:cấp 3:không 4:trung 5:thực 6:thông 7:tin 8:theo 9:quy 10:định 11:tại 12:khoản 13:2 14:Điều 15:16 16:của 17:Bộ 18:luật 19:này\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:giao 2:kết 3:hợp 4:đồng 5:lao 6:động\",\n     \"noi_truoc\": [\n      \"khi\"\n     ]\n    },\n    {\n     \"id\": \"s1.m3\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:làm 2:ảnh 3:hưởng 4:đến 5:việc 6:tuyển 7:dụng 8:người 9:lao 10:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D36.K1.g\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D16.K2\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-7\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-6\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"C\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m3\",\n   \"loi\": [\n    \"s1.m3:1-10\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "wi0Ia5zZHPi-1e8Pr8WqmAM",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2308
+   },
+   "input_tokens": 6427,
+   "output_tokens": 2867,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_8dfa234bbec6454d20c0a0b2"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D112.K1.e",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D112.K1.e\",\n \"tieu_de_dieu\": \"1:Nghỉ 2:lễ, 3:tết\",\n \"khoan_cha\": \"1:Người 2:lao 3:động 4:được 5:nghỉ 6:làm 7:việc, 8:hưởng 9:nguyên 10:lương 11:trong 12:những 13:ngày 14:lễ, 15:tết 16:sau 17:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Ngày Giỗ Tổ Hùng Vương: 01 ngày (ngày 10 tháng 3 âm lịch).\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Ngày 2:Giỗ 3:Tổ 4:Hùng 5:Vương: 6:01 7:ngày (8:ngày 9:10 10:tháng 11:3 12:âm 13:lịch)\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D112.K1.e\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-13\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "r0IIa9DVJajx2roP9LKIwAw",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 867
+   },
+   "input_tokens": 5810,
+   "output_tokens": 1043,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_f673a0e264fd5d1de646fa30"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D127.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D127.K3\",\n \"tieu_de_dieu\": \"1:Các 2:hành 3:vi 4:bị 5:nghiêm 6:cấm 7:khi 8:xử 9:lý 10:kỷ 11:luật 12:lao 13:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Xử lý kỷ luật lao động đối với người lao động có hành vi vi phạm không được quy định trong nội quy lao động hoặc không thỏa thuận trong hợp đồng lao động đã giao kết hoặc pháp luật về lao động không có quy định.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Xử 2:lý 3:kỷ 4:luật 5:lao 6:động 7:đối 8:với 9:người 10:lao 11:động 12:có 13:hành 14:vi 15:vi 16:phạm 17:không 18:được 19:quy 20:định 21:trong 22:nội 23:quy 24:lao 25:động 26:hoặc 27:không 28:thỏa 29:thuận 30:trong 31:hợp 32:đồng 33:lao 34:động 35:đã 36:giao 37:kết 38:hoặc 39:pháp 40:luật 41:về 42:lao 43:động 44:không 45:có 46:quy 47:định\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D127.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-16\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    [\n     \"s1.m1:17-25\"\n    ],\n    [\n     \"s1.m1:27-37\"\n    ],\n    [\n     \"s1.m1:39-47\"\n    ]\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "gUcIa7TnN_uB2roP5by9qQw",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3912
+   },
+   "input_tokens": 5987,
+   "output_tokens": 624,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_0c2ae7dfc3f6e3d375316877"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D77",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D77\",\n \"tieu_de_dieu\": \"1:Gửi 2:thỏa 3:ước 4:lao 5:động 6:tập 7:thể\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Trong thời hạn 10 ngày kể từ ngày thỏa ước lao động tập thể được ký kết, người sử dụng lao động tham gia thỏa ước phải gửi 01 bản thỏa ước lao động tập thể đến cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh nơi đặt trụ sở chính.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Trong 2:thời 3:hạn 4:10 5:ngày 6:kể 7:từ 8:ngày 9:thỏa 10:ước 11:lao 12:động 13:tập 14:thể 15:được 16:ký 17:kết, 18:người 19:sử 20:dụng 21:lao 22:động 23:tham 24:gia 25:thỏa 26:ước 27:phải 28:gửi 29:01 30:bản 31:thỏa 32:ước 33:lao 34:động 35:tập 36:thể 37:đến 38:cơ 39:quan 40:chuyên 41:môn 42:về 43:lao 44:động 45:thuộc 46:Ủy 47:ban 48:nhân 49:dân 50:cấp 51:tỉnh 52:nơi 53:đặt 54:trụ 55:sở 56:chính\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D77\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-17\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:18-26\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:28-56\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:18-26\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "6DoIa8b9LJ-31e8P7KDX8QI",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2101
+   },
+   "input_tokens": 6019,
+   "output_tokens": 2416,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_5a77ae422fbc08d4103ae84b"
+   }
+  }
+ }
+}

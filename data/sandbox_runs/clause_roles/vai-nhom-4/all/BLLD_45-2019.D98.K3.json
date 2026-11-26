@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D98.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D98.K3\",\n \"tieu_de_dieu\": \"1:Tiền 2:lương 3:làm 4:thêm 5:giờ, 6:làm 7:việc 8:vào 9:ban 10:đêm\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 và khoản 2 Điều này\",\n   \"dich\": \"BLLD_45-2019.D98.K1\"\n  },\n  {\n   \"cum\": \"khoản 1 và khoản 2 Điều này\",\n   \"dich\": \"BLLD_45-2019.D98.K2\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động làm thêm giờ vào ban đêm thì ngoài việc trả lương theo quy định tại khoản 1 và khoản 2 Điều này, người lao động còn được trả thêm 20% tiền lương tính theo đơn giá tiền lương hoặc tiền lương theo công việc làm vào ban ngày của ngày làm việc bình thường hoặc của ngày nghỉ hằng tuần hoặc của ngày nghỉ lễ, tết.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Người 2:lao 3:động 4:làm 5:thêm 6:giờ 7:vào 8:ban 9:đêm\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:ngoài 2:việc 3:trả 4:lương 5:theo 6:quy 7:định 8:tại 9:khoản 10:1 11:và 12:khoản 13:2 14:Điều 15:này, 16:người 17:lao 18:động 19:còn 20:được 21:trả 22:thêm 23:20% 24:tiền 25:lương 26:tính 27:theo 28:đơn 29:giá 30:tiền 31:lương 32:hoặc 33:tiền 34:lương 35:theo 36:công 37:việc 38:làm 39:vào 40:ban 41:ngày 42:của 43:ngày 44:làm 45:việc 46:bình 47:thường 48:hoặc 49:của 50:ngày 51:nghỉ 52:hằng 53:tuần 54:hoặc 55:của 56:ngày 57:nghỉ 58:lễ, 59:tết\",\n     \"noi_truoc\": [\n      \"thì\"\n     ]\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D98.K3\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:4-9\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-3\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:21-59\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m2:16-18\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "bj4Ia7GhG8-M1e8Pxp_zsQ8",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 26464
+   },
+   "input_tokens": 6271,
+   "output_tokens": 1052,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_ccc255df962b684c9ad227d8"
+   }
+  }
+ }
+}

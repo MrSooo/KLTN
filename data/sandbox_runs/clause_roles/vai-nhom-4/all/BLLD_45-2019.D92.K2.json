@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D92.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D92.K2\",\n \"tieu_de_dieu\": \"1:Hội 2:đồng 3:tiền 4:lương 5:quốc 6:gia\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thủ tướng Chính phủ thành lập Hội đồng tiền lương quốc gia bao gồm các thành viên là đại diện của Bộ Lao động - Thương binh và Xã hội, Tổng Liên đoàn Lao động Việt Nam, một số tổ chức đại diện người sử dụng lao động ở trung ương và chuyên gia độc lập.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Thủ 2:tướng 3:Chính 4:phủ 5:thành 6:lập 7:Hội 8:đồng 9:tiền 10:lương 11:quốc 12:gia 13:bao 14:gồm 15:các 16:thành 17:viên 18:là 19:đại 20:diện 21:của 22:Bộ 23:Lao 24:động - 25:Thương 26:binh 27:và 28:Xã 29:hội, 30:Tổng 31:Liên 32:đoàn 33:Lao 34:động 35:Việt 36:Nam, 37:một 38:số 39:tổ 40:chức 41:đại 42:diện 43:người 44:sử 45:dụng 46:lao 47:động 48:ở 49:trung 50:ương 51:và 52:chuyên 53:gia 54:độc 55:lập\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D92.K2\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:5-18\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-4\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"liet_ke\": [\n    [\n     \"s1.m1:19-29\"\n    ],\n    [\n     \"s1.m1:30-36\"\n    ],\n    [\n     \"s1.m1:37-50\"\n    ],\n    [\n     \"s1.m1:52-55\"\n    ]\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "GD0Ia6q9Mc_Y9tMPn82cuQk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1539
+   },
+   "input_tokens": 6007,
+   "output_tokens": 1822,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_785452045c586bd8d97037c5"
+   }
+  }
+ }
+}

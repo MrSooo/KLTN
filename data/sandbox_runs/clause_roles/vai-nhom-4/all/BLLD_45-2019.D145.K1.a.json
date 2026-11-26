@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D145.K1.a",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D145.K1.a\",\n \"tieu_de_dieu\": \"1:Sử 2:dụng 3:người 4:chưa 5:đủ 6:15 7:tuổi 8:làm 9:việc\",\n \"khoan_cha\": \"1:Khi 2:sử 3:dụng 4:người 5:chưa 6:đủ 7:15 8:tuổi 9:làm 10:việc, 11:người 12:sử 13:dụng 14:lao 15:động 16:phải 17:tuân 18:theo 19:quy 20:định 21:sau 22:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Phải giao kết hợp đồng lao động bằng văn bản với người chưa đủ 15 tuổi và người đại diện theo pháp luật của người đó;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Phải 2:giao 3:kết 4:hợp 5:đồng 6:lao 7:động 8:bằng 9:văn 10:bản 11:với 12:người 13:chưa 14:đủ 15:15 16:tuổi 17:và 18:người 19:đại 20:diện 21:theo 22:pháp 23:luật 24:của 25:người 26:đó\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D145.K1.a\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:2-26\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:11-15\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "TEsIa4fnHqf91e8PwZDvKQ",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 4574
+   },
+   "input_tokens": 5951,
+   "output_tokens": 632,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_7471e28aa034cdaa06b9ec5d"
+   }
+  }
+ }
+}

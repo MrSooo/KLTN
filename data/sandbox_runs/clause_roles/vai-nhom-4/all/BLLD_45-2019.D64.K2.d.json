@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D64.K2.d",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D64.K2.d\",\n \"tieu_de_dieu\": \"1:Nội 2:dung 3:đối 4:thoại 5:tại 6:nơi 7:làm 8:việc\",\n \"khoan_cha\": \"1:Ngoài 2:nội 3:dung 4:quy 5:định 6:tại 7:khoản 8:1 9:Điều 10:này, 11:các 12:bên 13:lựa 14:chọn 15:một 16:hoặc 17:một 18:số 19:nội 20:dung 21:sau 22:đây 23:để 24:tiến 25:hành 26:đối 27:thoại:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Yêu cầu của người lao động, tổ chức đại diện người lao động đối với người sử dụng lao động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Yêu 2:cầu 3:của 4:người 5:lao 6:động, 7:tổ 8:chức 9:đại 10:diện 11:người 12:lao 13:động 14:đối 15:với 16:người 17:sử 18:dụng 19:lao 20:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D64.K2.d\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-20\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:11-12\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "FjgIa_DyPLn92roP2LeboQE",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2763
+   },
+   "input_tokens": 5928,
+   "output_tokens": 548,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_16389107d1643fd61eb316d9"
+   }
+  }
+ }
+}

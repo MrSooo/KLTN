@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D141",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D141\",\n \"tieu_de_dieu\": \"1:Trợ 2:cấp 3:trong 4:thời 5:gian 6:chăm 7:sóc 8:con 9:ốm 10:đau, 11:thai 12:sản 13:và 14:thực 15:hiện 16:các 17:biện 18:pháp 19:tránh 20:thai\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thời gian nghỉ việc khi chăm sóc con dưới 07 tuổi ốm đau, khám thai, sẩy thai, nạo, hút thai, thai chết lưu, phá thai bệnh lý, thực hiện các biện pháp tránh thai, triệt sản, người lao động được hưởng trợ cấp theo quy định của pháp luật về bảo hiểm xã hội.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Thời 2:gian 3:nghỉ 4:việc 5:khi 6:chăm 7:sóc 8:con 9:dưới 10:07 11:tuổi 12:ốm 13:đau, 14:khám 15:thai, 16:sẩy 17:thai, 18:nạo, 19:hút 20:thai, 21:thai 22:chết 23:lưu, 24:phá 25:thai 26:bệnh 27:lý, 28:thực 29:hiện 30:các 31:biện 32:pháp 33:tránh 34:thai, 35:triệt 36:sản, 37:người 38:lao 39:động 40:được 41:hưởng 42:trợ 43:cấp 44:theo 45:quy 46:định 47:của 48:pháp 49:luật 50:về 51:bảo 52:hiểm 53:xã 54:hội\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D141\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-5\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:37-39\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"liet_ke\": [\n    [\n     \"s1.m1:6-13\"\n    ],\n    [\n     \"s1.m1:14-15\"\n    ],\n    [\n     \"s1.m1:16-17\"\n    ],\n    [\n     \"s1.m1:18-20\"\n    ],\n    [\n     \"s1.m1:21-23\"\n    ],\n    [\n     \"s1.m1:24-27\"\n    ],\n    [\n     \"s1.m1:28-34\"\n    ],\n    [\n     \"s1.m1:35-36\"\n    ]\n   ],\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:41-43\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:37-39\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:44-54\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:37-39\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "h0oIa-y4DICw0-kP7_b2qAk",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 3659
+   },
+   "input_tokens": 6096,
+   "output_tokens": 4291,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_8f41921143c0ebbade74df65"
+   }
+  }
+ }
+}

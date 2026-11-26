@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D84.K2",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D84.K2\",\n \"tieu_de_dieu\": \"1:Mở 2:rộng 3:phạm 4:vi 5:áp 6:dụng 7:của 8:thỏa 9:ước 10:lao 11:động 12:tập 13:thể 14:ngành 15:hoặc 16:thỏa 17:ước 18:lao 19:động 20:tập 21:thể 22:có 23:nhiều 24:doanh 25:nghiệp\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"khoản 1 Điều này\",\n   \"dich\": \"BLLD_45-2019.D84.K1\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Chính phủ quy định chi tiết khoản 1 Điều này; quy định trình tự, thủ tục và thẩm quyền quyết định mở rộng phạm vi áp dụng thỏa ước lao động tập thể quy định tại khoản 1 Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.c1\",\n     \"loai\": \"dung_chung\",\n     \"chu\": \"1:Chính 2:phủ\",\n     \"ap_cho\": [\n      \"s1.m1\",\n      \"s1.m2\"\n     ]\n    },\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:quy 2:định 3:chi 4:tiết 5:khoản 6:1 7:Điều 8:này\"\n    },\n    {\n     \"id\": \"s1.m2\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:quy 2:định 3:trình 4:tự, 5:thủ 6:tục 7:và 8:thẩm 9:quyền 10:quyết 11:định 12:mở 13:rộng 14:phạm 15:vi 16:áp 17:dụng 18:thỏa 19:ước 20:lao 21:động 22:tập 23:thể 24:quy 25:định 26:tại 27:khoản 28:1 29:Điều 30:này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D84.K2\",\n \"dan_chieu_dieu_kien\": [\n  {\n   \"dich\": \"BLLD_45-2019.D84.K1\",\n   \"quy_tac\": \"q1\"\n  }\n ],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-4\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-2\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m2\",\n   \"loi\": [\n    \"s1.m2:1-23\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.c1:1-2\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "MTwIa5e6M4PJrfcP2dKZmQQ",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2148
+   },
+   "input_tokens": 6150,
+   "output_tokens": 2514,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_05fcd7a1fe9b58172535406e"
+   }
+  }
+ }
+}

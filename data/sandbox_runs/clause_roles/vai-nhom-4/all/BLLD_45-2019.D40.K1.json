@@ -1,0 +1,65 @@
+{
+ "unit_id": "BLLD_45-2019.D40.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D40.K1\",\n \"tieu_de_dieu\": \"1:Nghĩa 2:vụ 3:của 4:người 5:lao 6:động 7:khi 8:đơn 9:phương 10:chấm 11:dứt 12:hợp 13:đồng 14:lao 15:động 16:trái 17:pháp 18:luật\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Không được trợ cấp thôi việc.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Không 2:được 3:trợ 4:cấp 5:thôi 6:việc\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D40.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:2-6\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:4-6\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "mS8Ia8L9JtWMvr0P6KSt8QE",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 5745,
+   "completion_tokens_details": {
+    "reasoning_tokens": 127
+   },
+   "input_tokens": 2281,
+   "output_tokens": 299,
+   "prompt_tokens_details": {
+    "cached_tokens": 5745
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_544818cb561a34b3a6ae642a"
+   }
+  }
+ },
+ "phan_hoi_1": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D40.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loai\": [\"s1.m1:2-6\"],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"phu_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"td:4-6\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "gy8Ia5CmEsHv2roP8Kyx6Ag",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 2042
+   },
+   "input_tokens": 5744,
+   "output_tokens": 532,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_e413364d684b6f2f094e52d8"
+   }
+  }
+ },
+ "sua": "Máy kiểm báo các lỗi sau ở đầu ra trên:\n- trường thiếu [] / thừa ['khoa_thua']\n- doan rỗng\nSửa đúng các lỗi đó (khoảng ghi theo số âm tiết in sẵn trong đoạn) và trả lại TOÀN BỘ JSON của đơn vị, cùng khuôn, không chữ giải thích.",
+ "model_1": "daongocson12022004/gemini-3.8-flash-high"
+}

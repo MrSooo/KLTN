@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D53.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D53.K1\",\n \"tieu_de_dieu\": \"1:Nguyên 2:tắc 3:hoạt 4:động 5:cho 6:thuê 7:lại 8:lao 9:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thời hạn cho thuê lại lao động đối với người lao động tối đa là 12 tháng.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Thời 2:hạn 3:cho 4:thuê 5:lại 6:lao 7:động 8:đối 9:với 10:người 11:lao 12:động 13:tối 14:đa 15:là 16:12 17:tháng\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D53.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-7\",\n    \"s1.m1:13-17\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "1TQIa_nDN9qr1e8Pr5ffkQE",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 997
+   },
+   "input_tokens": 5762,
+   "output_tokens": 1171,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_9cce9ac5a2656ddc81d2541d"
+   }
+  }
+ }
+}

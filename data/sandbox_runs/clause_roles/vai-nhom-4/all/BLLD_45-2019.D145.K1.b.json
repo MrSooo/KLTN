@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D145.K1.b",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D145.K1.b\",\n \"tieu_de_dieu\": \"1:Sử 2:dụng 3:người 4:chưa 5:đủ 6:15 7:tuổi 8:làm 9:việc\",\n \"khoan_cha\": \"1:Khi 2:sử 3:dụng 4:người 5:chưa 6:đủ 7:15 8:tuổi 9:làm 10:việc, 11:người 12:sử 13:dụng 14:lao 15:động 16:phải 17:tuân 18:theo 19:quy 20:định 21:sau 22:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Bố trí giờ làm việc không ảnh hưởng đến thời gian học tập của người chưa đủ 15 tuổi;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Bố 2:trí 3:giờ 4:làm 5:việc 6:không 7:ảnh 8:hưởng 9:đến 10:thời 11:gian 12:học 13:tập 14:của 15:người 16:chưa 17:đủ 18:15 19:tuổi\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D145.K1.b\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-19\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:11-15\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"W\"\n    }\n   ],\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "TUsIa9WcJ5G31e8PtJ2a2QQ",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1895
+   },
+   "input_tokens": 5900,
+   "output_tokens": 632,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_56ed5b3d68b23e1790ac271b"
+   }
+  }
+ }
+}

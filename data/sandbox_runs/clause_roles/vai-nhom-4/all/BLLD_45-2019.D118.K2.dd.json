@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D118.K2.dd",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D118.K2.dd\",\n \"tieu_de_dieu\": \"1:Nội 2:quy 3:lao 4:động\",\n \"khoan_cha\": \"1:Nội 2:dung 3:nội 4:quy 5:lao 6:động 7:không 8:được 9:trái 10:với 11:pháp 12:luật 13:về 14:lao 15:động 16:và 17:quy 18:định 19:của 20:pháp 21:luật 22:có 23:liên 24:quan. 25:Nội 26:quy 27:lao 28:động 29:bao 30:gồm 31:những 32:nội 33:dung 34:chủ 35:yếu 36:sau 37:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Việc bảo vệ tài sản và bí mật kinh doanh, bí mật công nghệ, sở hữu trí tuệ của người sử dụng lao động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Việc 2:bảo 3:vệ 4:tài 5:sản 6:và 7:bí 8:mật 9:kinh 10:doanh, 11:bí 12:mật 13:công 14:nghệ, 15:sở 16:hữu 17:trí 18:tuệ 19:của 20:người 21:sử 22:dụng 23:lao 24:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D118.K2.dd\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-24\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:25-28\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "-UQIa5e8JZO11e8P_J-puAI",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1408
+   },
+   "input_tokens": 5998,
+   "output_tokens": 1584,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_1d867ea3d872e5e0c805609a"
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D55.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D55.K3\",\n \"tieu_de_dieu\": \"1:Hợp 2:đồng 3:cho 4:thuê 5:lại 6:lao 7:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Hợp đồng cho thuê lại lao động không được có những thỏa thuận về quyền, lợi ích của người lao động thấp hơn so với hợp đồng lao động mà doanh nghiệp cho thuê lại lao động đã ký với người lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Hợp 2:đồng 3:cho 4:thuê 5:lại 6:lao 7:động 8:không 9:được 10:có 11:những 12:thỏa 13:thuận 14:về 15:quyền, 16:lợi 17:ích 18:của 19:người 20:lao 21:động 22:thấp 23:hơn 24:so 25:với 26:hợp 27:đồng 28:lao 29:động 30:mà 31:doanh 32:nghiệp 33:cho 34:thuê 35:lại 36:lao 37:động 38:đã 39:ký 40:với 41:người 42:lao 43:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D55.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:10-43\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"cam\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:1-7\"\n    ],\n    \"loai\": \"C\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "YjUIa62IOLez2roP_r6i2QI",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 871
+   },
+   "input_tokens": 5929,
+   "output_tokens": 1048,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_5fd6c4b01ac7361af874f987"
+   }
+  }
+ }
+}

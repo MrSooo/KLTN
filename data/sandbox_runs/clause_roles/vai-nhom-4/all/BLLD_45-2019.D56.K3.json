@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D56.K3",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D56.K3\",\n \"tieu_de_dieu\": \"1:Quyền 2:và 3:nghĩa 4:vụ 5:của 6:doanh 7:nghiệp 8:cho 9:thuê 10:lại 11:lao 12:động\",\n \"khoan_cha\": \"1:Ngoài 2:các 3:quyền 4:và 5:nghĩa 6:vụ 7:quy 8:định 9:tại 10:Điều 11:6 12:của 13:Bộ 14:luật 15:này, 16:doanh 17:nghiệp 18:cho 19:thuê 20:lại 21:lao 22:động 23:có 24:các 25:quyền 26:và 27:nghĩa 28:vụ 29:sau 30:đây:\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Thông báo cho bên thuê lại lao động biết sơ yếu lý lịch của người lao động, yêu cầu của người lao động;\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Thông 2:báo 3:cho 4:bên 5:thuê 6:lại 7:lao 8:động 9:biết 10:sơ 11:yếu 12:lý 13:lịch 14:của 15:người 16:lao 17:động, 18:yêu 19:cầu 20:của 21:người 22:lao 23:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D56.K3\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-2\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"phai\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"kc:16-22\"\n    ],\n    \"loai\": \"E\"\n   },\n   \"doi_so\": [\n    {\n     \"loai\": \"E\"\n    }\n   ],\n   \"quy_tac\": \"q1\",\n   \"liet_ke\": [\n    [\n     \"s1.m1:10-17\"\n    ],\n    [\n     \"s1.m1:18-23\"\n    ]\n   ]\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "fzUIa5yBDo-N1e8P367wqAo",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 9931
+   },
+   "input_tokens": 5988,
+   "output_tokens": 780,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_32428dd924baa16efc3f1942"
+   }
+  }
+ }
+}

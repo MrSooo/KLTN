@@ -110,10 +110,16 @@ def test_ckey_records_block_summary_without_hidden_content():
             raise AssertionError("cụt max_tokens phải là lỗi")
 
 
-def test_ckey_retries_503_then_succeeds_and_fails_fast_on_other_errors():
+def test_ckey_does_not_retry_any_error():
+    """[27/11, user: đừng spam lỗi] 503 hay lỗi khác đều ném ngay sau MỘT lời gọi (trước: 503 thử lại 3 lần)."""
     with tempfile.TemporaryDirectory() as t, env_key():
         sent = []
-        assert client(t, [503, reply('{"a": 2}')], sent).ask("t", "v", "s", "u", None, role="api")["output"] == {"a": 2} and len(sent) == 2
+        try:
+            client(t, [503, reply('{"a": 2}')], sent).ask("t", "v", "s", "u", None, role="api")
+        except llm.LLMError as e:
+            assert "503" in str(e) and len(sent) == 1 and not isinstance(e, llm.OutputRejected)
+        else:
+            raise AssertionError("503 phải là lỗi ngay, không thử lại")
     with tempfile.TemporaryDirectory() as t, env_key():
         sent = []
         try:
@@ -124,19 +130,23 @@ def test_ckey_retries_503_then_succeeds_and_fails_fast_on_other_errors():
             raise AssertionError("401 phải là lỗi ngay")
     with tempfile.TemporaryDirectory() as t, env_key():
         try:
-            client(t, [503, 503, 503], []).ask("t", "v", "s", "u", None, role="api")
+            client(t, [503], []).ask("t", "v", "s", "u", None, role="api")
         except llm.LLMError as e:
             assert "503" in str(e) and not (Path(t) / "cache" / "t").exists()  # lỗi không vào cache
         else:
-            raise AssertionError("503 ba lần phải là lỗi")
+            raise AssertionError("503 phải là lỗi")
 
 
-def test_ckey_retries_socket_oserror():
-    """A54: lỗi socket không phải ConnectionError (OSError Errno 49) được thử lại như lỗi kết nối, không văng ra khỏi bộ chạy."""
+def test_ckey_socket_oserror_is_route_error():
+    """A54: lỗi socket không phải ConnectionError (OSError Errno 49) là lỗi kết nối (LLMError), không văng ra khỏi bộ chạy; [27/11] không thử lại."""
     with tempfile.TemporaryDirectory() as t, env_key():
         sent = []
-        rec = client(t, [OSError(49, "Can't assign requested address"), reply('{"ok": 1}')], sent).ask("t", "v1", "S", "U", None, role="api")
-        assert rec["output"] == {"ok": 1} and len(sent) == 2
+        try:
+            client(t, [OSError(49, "Can't assign requested address"), reply('{"ok": 1}')], sent).ask("t", "v1", "S", "U", None, role="api")
+        except llm.LLMError as e:
+            assert "kết nối" in str(e) and len(sent) == 1 and not isinstance(e, llm.OutputRejected)
+        else:
+            raise AssertionError("lỗi socket phải là LLMError")
 
 
 def test_ckey_rejects_cut_output_and_non_json_without_caching():
@@ -247,6 +257,20 @@ def test_runner_repeat_run_sends_same_text_and_keeps_first_record():
         assert json.loads((d / "out" / "001.json").read_text(encoding="utf-8")) == {"lan": 2}
         assert sandbox_api.Runner(d, c, lan=2).ask(1)["output"] == {"lan": 2}  # gọi lại lần 2: đọc cache của lần 2, không gọi máy chủ
         assert sandbox_api.Runner(d, c).ask(1)["output"] == {"lan": 0} and len(sent) == 2
+
+
+def test_runner_bad_output_goes_on_route_error_stops():
+    """[27/11] Lô độc lập: đầu ra hỏng (không phải JSON) ghi lại rồi làm tiếp; lỗi tuyến (500) dừng cả đợt ngay, lô sau không gọi."""
+    with tempfile.TemporaryDirectory() as t, env_key():
+        d = lot_dir(t, n=3)
+        sent = []
+        code = sandbox_api.Runner(d, client(t, [reply("không phải JSON"), reply('{"a": 1}'), 500], sent)).run_lots(workers=1)
+        assert code == 1 and len(sent) == 3 and (d / "out" / "002.json").exists() and not (d / "out" / "001.json").exists()
+    with tempfile.TemporaryDirectory() as t, env_key():
+        d = lot_dir(t, n=3)
+        sent = []
+        code = sandbox_api.Runner(d, client(t, [500, reply('{"a": 1}'), reply('{"a": 1}')], sent)).run_lots(workers=1)
+        assert code == 1 and len(sent) == 1 and not list((d / "out").glob("*.json"))
 
 
 def test_runner_reports_failed_lot_and_writes_nothing_for_it():

@@ -1,0 +1,37 @@
+{
+ "unit_id": "BLLD_45-2019.D119.K5",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D119.K5\",\n \"tieu_de_dieu\": \"1:Đăng 2:ký 3:nội 4:quy 5:lao 6:động\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [\n  {\n   \"cum\": \"Điều này\",\n   \"dich\": \"BLLD_45-2019.D119\"\n  }\n ],\n \"cau\": [\n  {\n   \"chu\": \"Căn cứ điều kiện cụ thể, cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh có thể ủy quyền cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp huyện thực hiện việc đăng ký nội quy lao động theo quy định tại Điều này.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Căn 2:cứ 3:điều 4:kiện 5:cụ 6:thể, 7:cơ 8:quan 9:chuyên 10:môn 11:về 12:lao 13:động 14:thuộc 15:Ủy 16:ban 17:nhân 18:dân 19:cấp 20:tỉnh 21:có 22:thể 23:ủy 24:quyền 25:cho 26:cơ 27:quan 28:chuyên 29:môn 30:về 31:lao 32:động 33:thuộc 34:Ủy 35:ban 36:nhân 37:dân 38:cấp 39:huyện 40:thực 41:hiện 42:việc 43:đăng 44:ký 45:nội 46:quy 47:lao 48:động 49:theo 50:quy 51:định 52:tại 53:Điều 54:này\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D119.K5\",\n \"dan_chieu_dieu_kien\": [],\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:1-6\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:7-20\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:23-48\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"duoc\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:7-20\"\n    ],\n    \"loai\": \"?\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "nUUIa43ZJ_js2roPuZvXqAI",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_read_input_tokens": 3686,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1727
+   },
+   "input_tokens": 2354,
+   "output_tokens": 2052,
+   "prompt_tokens_details": {
+    "cached_tokens": 3686
+   },
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_bdecdea92242fe12c64d1ed9"
+   }
+  }
+ }
+}

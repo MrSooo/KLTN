@@ -1,0 +1,33 @@
+{
+ "unit_id": "BLLD_45-2019.D32.K1",
+ "phien_ban": "vai-nhom-4",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "thinking_tat": false,
+ "gui": "{\n \"unit_id\": \"BLLD_45-2019.D32.K1\",\n \"tieu_de_dieu\": \"1:Làm 2:việc 3:không 4:trọn 5:thời 6:gian\",\n \"khoan_cha\": \"\",\n \"dan_chieu\": [],\n \"cau\": [\n  {\n   \"chu\": \"Người lao động làm việc không trọn thời gian là người lao động có thời gian làm việc ngắn hơn so với thời gian làm việc bình thường theo ngày hoặc theo tuần hoặc theo tháng được quy định trong pháp luật về lao động, thỏa ước lao động tập thể hoặc nội quy lao động.\",\n   \"doan\": [\n    {\n     \"id\": \"s1.m1\",\n     \"loai\": \"menh_de\",\n     \"chu\": \"1:Người 2:lao 3:động 4:làm 5:việc 6:không 7:trọn 8:thời 9:gian 10:là 11:người 12:lao 13:động 14:có 15:thời 16:gian 17:làm 18:việc 19:ngắn 20:hơn 21:so 22:với 23:thời 24:gian 25:làm 26:việc 27:bình 28:thường 29:theo 30:ngày 31:hoặc 32:theo 33:tuần 34:hoặc 35:theo 36:tháng 37:được 38:quy 39:định 40:trong 41:pháp 42:luật 43:về 44:lao 45:động, 46:thỏa 47:ước 48:lao 49:động 50:tập 51:thể 52:hoặc 53:nội 54:quy 55:lao 56:động\"\n    }\n   ]\n  }\n ]\n}",
+ "phan_hoi": {
+  "content": [
+   {
+    "text": "```json\n{\n \"unit_id\": \"BLLD_45-2019.D32.K1\",\n \"dong\": [\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:14-56\"\n   ],\n   \"vai\": \"dieu_kien\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:11-13\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  },\n  {\n   \"nguon\": \"s1.m1\",\n   \"loi\": [\n    \"s1.m1:10\",\n    \"s1.m1:1-9\"\n   ],\n   \"vai\": \"ket_luan\",\n   \"phuong_thuc\": \"khong\",\n   \"cuc\": \"khang_dinh\",\n   \"chu_the\": {\n    \"khoang\": [\n     \"s1.m1:11-13\"\n    ],\n    \"loai\": \"W\"\n   },\n   \"quy_tac\": \"q1\"\n  }\n ]\n}\n```",
+    "type": "text"
+   }
+  ],
+  "id": "UioIa5LrO9Sc0-kPwa7LgAs",
+  "model": "daongocson12022004/gemini-3.8-flash-high",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "completion_tokens_details": {
+    "reasoning_tokens": 1655
+   },
+   "input_tokens": 6008,
+   "output_tokens": 1984,
+   "x_ckey": {
+    "cost": 13,
+    "cost_is_estimate": false,
+    "request_id": "req_382599682a491fa32ef5306a"
+   }
+  }
+ }
+}
