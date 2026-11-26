@@ -1,0 +1,221 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-2",
+ "role": "trich",
+ "requested_model": "claude-opus-5-5",
+ "created": "2026-11-14T07:20:18+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha của điểm, hoặc câu dẫn của Điều đứng trên khoản; rỗng nếu không có) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n   Đơn vị nói luật áp dụng cho ai hoặc điều chỉnh việc gì (phạm vi, đối tượng) thì vẫn gạch từng bên được nêu tên (người hoặc tổ chức) thành cụm chu_the; chủ đề được điều chỉnh không phải một bên thì không gạch thành chu_the.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\n6. Đơn vị là ĐỊNH NGHĨA, tức giải thích một thuật ngữ dạng \"X là Y\" (X là thuật ngữ, Y là phần giải nghĩa): gạch X thành cụm ket_luan (khái niệm được xác lập ở đây), không gạch X thành chu_the; gạch phần giải nghĩa Y thành cụm dieu_kien (điều kiện để X đúng). Phần khác của đơn vị mà có nêu quy tắc thì vẫn gạch như thường.\n   Chữ \"là\" nêu điều kiện, trường hợp hoặc mức giới hạn (\"số người tham gia tối đa là 10 người\", \"Trường hợp ... thì ... là ...\") không phải định nghĩa: gạch theo bốn vai như thường.\n   Câu dẫn của Điều giải thích từ ngữ (\"... được hiểu như sau:\") không có nghĩa riêng nên trả rỗng.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nVí dụ định nghĩa, chu_don_vi = \"Giờ cao điểm là khoảng thời gian từ 17 giờ đến 19 giờ trong ngày.\":\n  ket_luan \"Giờ cao điểm\" (params []); dieu_kien \"khoảng thời gian từ 17 giờ đến 19 giờ trong ngày\" (params [\"D\"]).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D145.K1\",\n\"tieu_de_dieu\": \"Sử dụng người chưa đủ 15 tuổi làm việc\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khi sử dụng người chưa đủ 15 tuổi làm việc, người sử dụng lao động phải tuân theo quy định sau đây:\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D145.K1.a\",\n\"tieu_de_dieu\": \"Sử dụng người chưa đủ 15 tuổi làm việc\",\n\"khoan_cha\": \"Khi sử dụng người chưa đủ 15 tuổi làm việc, người sử dụng lao động phải tuân theo quy định sau đây:\",\n\"chu_don_vi\": \"Phải giao kết hợp đồng lao động bằng văn bản với người chưa đủ 15 tuổi và người đại diện theo pháp luật của người đó;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D145.K1.b\",\n\"tieu_de_dieu\": \"Sử dụng người chưa đủ 15 tuổi làm việc\",\n\"khoan_cha\": \"Khi sử dụng người chưa đủ 15 tuổi làm việc, người sử dụng lao động phải tuân theo quy định sau đây:\",\n\"chu_don_vi\": \"Bố trí giờ làm việc không ảnh hưởng đến thời gian học tập của người chưa đủ 15 tuổi;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D145.K1.c\",\n\"tieu_de_dieu\": \"Sử dụng người chưa đủ 15 tuổi làm việc\",\n\"khoan_cha\": \"Khi sử dụng người chưa đủ 15 tuổi làm việc, người sử dụng lao động phải tuân theo quy định sau đây:\",\n\"chu_don_vi\": \"Phải có giấy khám sức khỏe của cơ sở khám bệnh, chữa bệnh có thẩm quyền xác nhận sức khỏe của người chưa đủ 15 tuổi phù hợp với công việc và tổ chức kiểm tra sức khỏe định kỳ ít nhất một lần trong 06 tháng;\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D145.K1.d\",\n\"tieu_de_dieu\": \"Sử dụng người chưa đủ 15 tuổi làm việc\",\n\"khoan_cha\": \"Khi sử dụng người chưa đủ 15 tuổi làm việc, người sử dụng lao động phải tuân theo quy định sau đây:\",\n\"chu_don_vi\": \"Bảo đảm điều kiện làm việc, an toàn, vệ sinh lao động phù hợp với lứa tuổi.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D145.K2\",\n\"tieu_de_dieu\": \"Sử dụng người chưa đủ 15 tuổi làm việc\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người sử dụng lao động chỉ được tuyển dụng và sử dụng người từ đủ 13 tuổi đến chưa đủ 15 tuổi vào làm các công việc nhẹ theo quy định tại khoản 3 Điều 143 của Bộ luật này.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D145.K3\",\n\"tieu_de_dieu\": \"Sử dụng người chưa đủ 15 tuổi làm việc\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người sử dụng lao động không được tuyển dụng và sử dụng người chưa đủ 13 tuổi làm việc, trừ các công việc nghệ thuật, thể dục, thể thao nhưng không làm tổn hại đến sự phát triển thể lực, trí lực, nhân cách của người chưa đủ 13 tuổi và phải có sự đồng ý của cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D145.K4\",\n\"tieu_de_dieu\": \"Sử dụng người chưa đủ 15 tuổi làm việc\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Bộ trưởng Bộ Lao động - Thương binh và Xã hội quy định chi tiết Điều này.\"\n}\n]\n}",
+ "model": "claude-opus-5-5",
+ "request_id": null,
+ "produced_by": "claude_code_sandbox",
+ "producer_model_reported": "claude-opus-5-5",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D145.K1",
+    "spans": [
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "sử dụng người chưa đủ 15 tuổi làm việc",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "phải tuân theo quy định sau đây",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D145.K1.a",
+    "spans": [
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "sử dụng người chưa đủ 15 tuổi làm việc",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Phải giao kết hợp đồng lao động bằng văn bản với người chưa đủ 15 tuổi và người đại diện theo pháp luật của người đó",
+      "role": "ket_luan",
+      "params": [
+       "C",
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D145.K1.b",
+    "spans": [
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "sử dụng người chưa đủ 15 tuổi làm việc",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Bố trí giờ làm việc không ảnh hưởng đến thời gian học tập của người chưa đủ 15 tuổi",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D145.K1.c",
+    "spans": [
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "sử dụng người chưa đủ 15 tuổi làm việc",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Phải có giấy khám sức khỏe của cơ sở khám bệnh, chữa bệnh có thẩm quyền xác nhận sức khỏe của người chưa đủ 15 tuổi phù hợp với công việc",
+      "role": "ket_luan",
+      "params": [
+       "W",
+       "J"
+      ]
+     },
+     {
+      "span": "tổ chức kiểm tra sức khỏe định kỳ ít nhất một lần trong 06 tháng",
+      "role": "ket_luan",
+      "params": [
+       "D"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D145.K1.d",
+    "spans": [
+     {
+      "span": "người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "sử dụng người chưa đủ 15 tuổi làm việc",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "Bảo đảm điều kiện làm việc, an toàn, vệ sinh lao động phù hợp với lứa tuổi",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D145.K2",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "chỉ được tuyển dụng và sử dụng người từ đủ 13 tuổi đến chưa đủ 15 tuổi",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "các công việc nhẹ theo quy định tại khoản 3 Điều 143 của Bộ luật này",
+      "role": "dieu_kien",
+      "params": [
+       "J"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D145.K3",
+    "spans": [
+     {
+      "span": "Người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "không được tuyển dụng và sử dụng người chưa đủ 13 tuổi làm việc",
+      "role": "ket_luan",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "các công việc nghệ thuật, thể dục, thể thao nhưng không làm tổn hại đến sự phát triển thể lực, trí lực, nhân cách của người chưa đủ 13 tuổi và phải có sự đồng ý của cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh",
+      "role": "ngoai_le",
+      "params": [
+       "J",
+       "W"
+      ]
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D145.K4",
+    "spans": [
+     {
+      "span": "Bộ trưởng Bộ Lao động - Thương binh và Xã hội",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "quy định chi tiết Điều này",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   }
+  ]
+ },
+ "usage": null
+}

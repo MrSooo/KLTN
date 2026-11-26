@@ -1,0 +1,183 @@
+{
+ "ten": "Bộ câu hỏi dev cho tập con lldnn (A41)",
+ "trang_thai": "NHÁP do agent soạn 18/11 từ chữ luật trong kho con; CHỜ chủ đề tài xác nhận đáp án (Q10 đã chốt 18/11; Q06, Q13 chủ đề tài giữ 18/11 dù đáp án chỉ đúng theo kho con). Q02, Q06, Q08, Q12, Q13 viết lại 18/11 cho đứng riêng được (bản đầu dẫn sang câu khác), giữ nguyên ngày và đáp án. Đây là bộ dev để chạy thông 1.9, KHÔNG phải bộ đo (bộ đo phải có phần thu thập thật và nằm ngoài repo).",
+ "nhan_dap_an": {
+  "ket_luan_duoc": "suy ra được φ từ Π_τ",
+  "bi_bac": "suy ra được ¬φ (có quy tắc ngoại lệ hoặc kết luận ngược áp dụng)",
+  "chua_du_can_cu": "không suy ra được φ lẫn ¬φ",
+  "khong_tra_loi": "câu hỏi ngoài phạm vi KB, hoặc câu trả lời phụ thuộc quy tắc bị cô lập (method.md mục hỏi đáp)"
+ },
+ "cau_hoi": [
+  {
+   "id": "Q01",
+   "cau_hoi": "Một chuyên gia người nước ngoài vào Việt Nam làm việc một lần, tổng 45 ngày trong năm. Người này có phải có giấy phép lao động không?",
+   "ngay": "2025-06-01",
+   "phi": "phải có giấy phép lao động",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "BLLD_45-2019.D151.K1.d",
+    "ND_152-2020.D7.K8"
+   ],
+   "giai_thich": "Đ151.K1.d đòi giấy phép trừ trường hợp Đ154; NĐ 152 Đ7.K8 (hiệu lực tới 06/08/2025) chỉ miễn khi dưới 30 ngày và không quá 3 lần/năm: 45 ngày không thoả."
+  },
+  {
+   "id": "Q02",
+   "cau_hoi": "Một chuyên gia người nước ngoài vào Việt Nam làm việc một lần, tổng 45 ngày trong năm. Người này có phải có giấy phép lao động không?",
+   "ngay": "2025-10-01",
+   "phi": "phải có giấy phép lao động",
+   "dap_an": "bi_bac",
+   "can_cu": [
+    "BLLD_45-2019.D151.K1.d",
+    "ND_219-2025.D7.K13.a"
+   ],
+   "giai_thich": "Từ 07/08/2025 NĐ 219 Đ7.K13.a miễn cho nhà quản lý, giám đốc điều hành, chuyên gia, lao động kỹ thuật có tổng thời gian dưới 90 ngày/năm."
+  },
+  {
+   "id": "Q03",
+   "cau_hoi": "Một lao động kỹ thuật người nước ngoài vào Việt Nam làm việc 2 lần trong năm, mỗi lần 10 ngày. Người này có phải có giấy phép lao động không?",
+   "ngay": "2025-06-01",
+   "phi": "phải có giấy phép lao động",
+   "dap_an": "bi_bac",
+   "can_cu": [
+    "BLLD_45-2019.D151.K1.d",
+    "ND_152-2020.D7.K8"
+   ],
+   "giai_thich": "NĐ 152 Đ7.K8: dưới 30 ngày và không quá 3 lần trong 1 năm thì không thuộc diện cấp giấy phép."
+  },
+  {
+   "id": "Q04",
+   "cau_hoi": "Một người nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam, đi làm cho một công ty Việt Nam. Người này có phải có giấy phép lao động không?",
+   "ngay": "2022-03-01",
+   "phi": "phải có giấy phép lao động",
+   "dap_an": "bi_bac",
+   "can_cu": [
+    "BLLD_45-2019.D151.K1.d",
+    "BLLD_45-2019.D154.K8"
+   ],
+   "giai_thich": "Đ154.K8 BLLĐ: người nước ngoài kết hôn với người Việt Nam và sinh sống trên lãnh thổ Việt Nam không thuộc diện cấp giấy phép."
+  },
+  {
+   "id": "Q05",
+   "cau_hoi": "Một người nước ngoài thuộc diện nhân lực công nghiệp công nghệ số chất lượng cao theo pháp luật về công nghiệp công nghệ số, làm việc tại Việt Nam. Người này có phải có giấy phép lao động không?",
+   "ngay": "2026-02-01",
+   "phi": "phải có giấy phép lao động",
+   "dap_an": "bi_bac",
+   "can_cu": [
+    "BLLD_45-2019.D151.K1.d",
+    "BLLD_45-2019.D154.K8a"
+   ],
+   "giai_thich": "Đ154.K8a (thêm qua VBHN_125, hiệu lực 01/01/2026)."
+  },
+  {
+   "id": "Q06",
+   "cau_hoi": "Một người nước ngoài thuộc diện nhân lực công nghiệp công nghệ số chất lượng cao theo pháp luật về công nghiệp công nghệ số, làm việc tại Việt Nam, không thuộc trường hợp miễn nào khác. Người này có phải có giấy phép lao động không?",
+   "ngay": "2025-06-01",
+   "phi": "phải có giấy phép lao động",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "BLLD_45-2019.D151.K1.d"
+   ],
+   "giai_thich": "Trước 01/01/2026 chưa có Đ154.K8a; trong kho con không có quy định miễn nào khác khớp. Lưu ý: đúng theo kho con, chưa xét văn bản ngoài kho."
+  },
+  {
+   "id": "Q07",
+   "cau_hoi": "Một người nước ngoài được Bộ Giáo dục và Đào tạo xác nhận vào Việt Nam làm hiệu trưởng một cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài đề nghị thành lập tại Việt Nam. Người này có phải có giấy phép lao động không?",
+   "ngay": "2024-01-15",
+   "phi": "phải có giấy phép lao động",
+   "dap_an": "bi_bac",
+   "can_cu": [
+    "BLLD_45-2019.D151.K1.d",
+    "ND_152-2020.D7.K14.b"
+   ],
+   "giai_thich": "NĐ 70/2023 sửa NĐ 152 Đ7.K14 từ 18/09/2023, thêm điểm b (nhà quản lý, giám đốc điều hành, hiệu trưởng...)."
+  },
+  {
+   "id": "Q08",
+   "cau_hoi": "Một người nước ngoài được Bộ Giáo dục và Đào tạo xác nhận vào Việt Nam làm hiệu trưởng một cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài đề nghị thành lập tại Việt Nam. Người này có phải có giấy phép lao động không?",
+   "ngay": "2023-06-01",
+   "phi": "phải có giấy phép lao động",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "BLLD_45-2019.D151.K1.d",
+    "ND_152-2020.D7.K14"
+   ],
+   "giai_thich": "Trước 18/09/2023, Đ7.K14 chỉ miễn cho người được xác nhận vào để giảng dạy, nghiên cứu; làm hiệu trưởng không thuộc."
+  },
+  {
+   "id": "Q09",
+   "cau_hoi": "Doanh nghiệp cho thuê lại lao động có phải ký quỹ không?",
+   "ngay": "2022-01-01",
+   "phi": "doanh nghiệp cho thuê lại lao động phải ký quỹ",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "BLLD_45-2019.D54.K1"
+   ],
+   "giai_thich": "Đ54.K1 BLLĐ."
+  },
+  {
+   "id": "Q10",
+   "cau_hoi": "Một doanh nghiệp mới ký quỹ 1 tỷ đồng (các điều kiện khác đều đạt). Doanh nghiệp có đủ điều kiện được cấp giấy phép hoạt động cho thuê lại lao động không?",
+   "ngay": "2022-06-01",
+   "phi": "đủ điều kiện cấp giấy phép cho thuê lại lao động",
+   "dap_an": "bi_bac",
+   "can_cu": [
+    "ND_145-2020.D21.K2"
+   ],
+   "giai_thich": "NĐ 145 Đ21.K2 đòi ký quỹ 2 tỷ đồng. Ghi chú: \"bị bác\" ở đây đến từ điều kiện không thoả (phủ định do thất bại); chủ đề tài chốt 18/11: tính là \"bị bác\" (1.9 phải ra bị bác khi điều kiện bắt buộc của φ có sự kiện trái ngược, không chỉ khi có quy tắc ¬φ)."
+  },
+  {
+   "id": "Q11",
+   "cau_hoi": "Hồ sơ đề nghị cấp giấy phép hoạt động cho thuê lại lao động có bắt buộc kèm bản lý lịch tự thuật của người đại diện theo pháp luật không?",
+   "ngay": "2025-06-01",
+   "phi": "hồ sơ phải có bản lý lịch tự thuật của người đại diện theo pháp luật",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "ND_145-2020.D24.K2"
+   ],
+   "giai_thich": "NĐ 145 Đ24.K2."
+  },
+  {
+   "id": "Q12",
+   "cau_hoi": "Hồ sơ đề nghị cấp giấy phép hoạt động cho thuê lại lao động có bắt buộc kèm bản lý lịch tự thuật của người đại diện theo pháp luật không?",
+   "ngay": "2026-06-01",
+   "phi": "hồ sơ phải có bản lý lịch tự thuật của người đại diện theo pháp luật",
+   "dap_an": "bi_bac",
+   "can_cu": [
+    "NQ_66-16-2026.PLI_7.M1.LB.SI",
+    "ND_145-2020.D24"
+   ],
+   "giai_thich": "Từ 15/04/2026 đến hết 28/02/2027, NQ 66.16 Phụ lục I.7 thay thành phần hồ sơ của NĐ 145 Đ24; danh mục mới không còn bản lý lịch tự thuật."
+  },
+  {
+   "id": "Q13",
+   "cau_hoi": "Hồ sơ đề nghị cấp giấy phép hoạt động cho thuê lại lao động có bắt buộc kèm bản lý lịch tự thuật của người đại diện theo pháp luật không?",
+   "ngay": "2027-04-01",
+   "phi": "hồ sơ phải có bản lý lịch tự thuật của người đại diện theo pháp luật",
+   "dap_an": "ket_luan_duoc",
+   "can_cu": [
+    "ND_145-2020.D24.K2"
+   ],
+   "giai_thich": "NQ 66.16 hết thời hạn áp dụng sau 28/02/2027 (trong kho con không có văn bản thay thế), NĐ 145 Đ24 áp dụng lại. Lưu ý: đúng theo kho con."
+  },
+  {
+   "id": "Q14",
+   "cau_hoi": "Cơ quan giải quyết thủ tục khai thác được đầy đủ, chính xác thông tin Phiếu lý lịch tư pháp của người đại diện trên Cơ sở dữ liệu. Doanh nghiệp có phải nộp Phiếu lý lịch tư pháp trong hồ sơ đề nghị cấp giấy phép cho thuê lại lao động không?",
+   "ngay": "2026-06-01",
+   "phi": "doanh nghiệp phải nộp Phiếu lý lịch tư pháp",
+   "dap_an": "bi_bac",
+   "can_cu": [
+    "NQ_66-16-2026.PLI_7.M1.LB.SI.R3"
+   ],
+   "giai_thich": "NQ 66.16: chỉ phải nộp khi cơ quan không khai thác được đầy đủ, chính xác trên cơ sở dữ liệu."
+  },
+  {
+   "id": "Q15",
+   "cau_hoi": "Người lao động nước ngoài làm việc tại Việt Nam có được hưởng bảo hiểm thất nghiệp không?",
+   "ngay": "2025-06-01",
+   "phi": "được hưởng bảo hiểm thất nghiệp",
+   "dap_an": "khong_tra_loi",
+   "can_cu": [],
+   "giai_thich": "Bảo hiểm thất nghiệp thuộc Luật Việc làm, ngoài kho con."
+  }
+ ]
+}

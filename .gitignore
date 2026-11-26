@@ -4,6 +4,7 @@
 # Python bytecode cache (generated)
 __pycache__/
 *.pyc
+<<<<<<< HEAD
 
 # LaTeX build artifacts
 *.aux
@@ -26,3 +27,17 @@ smoke*_out.txt
 
 # Proposal reference PDF (keep untracked)
 paper/proposal.pdf
+=======
+.venv/
+# Đầu ra do code sinh (~26 MB), dựng lại bằng `python -I src/run_all.py --viewer` (~5 giây, tất định). Báo cáo chữ ở docs/run_reports/ vẫn được theo dõi.
+# KHÔNG ignore data/llm_cache/: phản hồi LLM đã lưu là thứ để tính lại số liệu mà không gọi model.
+/data/processed/
+# Kho con và đầu ra của tập con (A41), dựng lại bằng `python -I src/run_all.py --tap-con <tên>`. Spec ở data/subsets/ vẫn được theo dõi.
+/data/processed_subset/
+# Đầu ra của lần chạy LLM khác (A46, KLTN_LLM_RUN=<tên>), dựng lại bằng `python -I src/run_all.py --llm-run <tên> --llm replay`.
+/data/processed_*/
+
+# Cấu hình cục bộ của từng người
+CLAUDE.local.md
+.vscode/
+>>>>>>> origin/v3_refactor

@@ -1,0 +1,193 @@
+{
+ "prompt_version": "hoi-dap-2",
+ "model": "deepseek-v4.1-flash",
+ "effort": "khong_co",
+ "tu_vung": "e8244909d8b90922",
+ "answers": {
+  "Q01": {
+   "cau_hoi": "Một chuyên gia người nước ngoài vào Việt Nam làm việc một lần, tổng 45 ngày trong năm. Người này có phải có giấy phép lao động không?",
+   "phi": "must_have_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "foreign_worker",
+     "phu_dinh": false,
+     "trich": "Một chuyên gia người nước ngoài"
+    },
+    {
+     "vi_tu": "work_in_vietnam",
+     "phu_dinh": false,
+     "trich": "vào Việt Nam làm việc"
+    }
+   ]
+  },
+  "Q02": {
+   "cau_hoi": "Một chuyên gia người nước ngoài vào Việt Nam làm việc một lần, tổng 45 ngày trong năm. Người này có phải có giấy phép lao động không?",
+   "phi": "must_have_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "foreign_worker",
+     "phu_dinh": false,
+     "trich": "Một chuyên gia người nước ngoài"
+    },
+    {
+     "vi_tu": "work_in_vietnam",
+     "phu_dinh": false,
+     "trich": "vào Việt Nam làm việc"
+    }
+   ]
+  },
+  "Q03": {
+   "cau_hoi": "Một lao động kỹ thuật người nước ngoài vào Việt Nam làm việc 2 lần trong năm, mỗi lần 10 ngày. Người này có phải có giấy phép lao động không?",
+   "phi": "must_have_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "foreign_worker",
+     "phu_dinh": false,
+     "trich": "Một lao động kỹ thuật người nước ngoài"
+    },
+    {
+     "vi_tu": "technical_worker",
+     "phu_dinh": false,
+     "trich": "lao động kỹ thuật người nước ngoài"
+    },
+    {
+     "vi_tu": "work_in_vietnam",
+     "phu_dinh": false,
+     "trich": "vào Việt Nam làm việc"
+    }
+   ]
+  },
+  "Q04": {
+   "cau_hoi": "Một người nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam, đi làm cho một công ty Việt Nam. Người này có phải có giấy phép lao động không?",
+   "phi": "must_have_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "foreign_worker",
+     "phu_dinh": false,
+     "trich": "Một người nước ngoài"
+    },
+    {
+     "vi_tu": "work_in_vietnam",
+     "phu_dinh": false,
+     "trich": "đi làm cho một công ty Việt Nam"
+    }
+   ]
+  },
+  "Q05": {
+   "cau_hoi": "Một người nước ngoài thuộc diện nhân lực công nghiệp công nghệ số chất lượng cao theo pháp luật về công nghiệp công nghệ số, làm việc tại Việt Nam. Người này có phải có giấy phép lao động không?",
+   "phi": "must_have_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "high_quality_digital_technology_human_resources",
+     "phu_dinh": false,
+     "trich": "Một người nước ngoài thuộc diện nhân lực công nghiệp công nghệ số chất lượng cao theo pháp luật về công nghiệp công nghệ số"
+    },
+    {
+     "vi_tu": "work_in_vietnam",
+     "phu_dinh": false,
+     "trich": "làm việc tại Việt Nam"
+    }
+   ]
+  },
+  "Q06": {
+   "cau_hoi": "Một người nước ngoài thuộc diện nhân lực công nghiệp công nghệ số chất lượng cao theo pháp luật về công nghiệp công nghệ số, làm việc tại Việt Nam, không thuộc trường hợp miễn nào khác. Người này có phải có giấy phép lao động không?",
+   "phi": "must_have_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "high_quality_digital_technology_human_resources",
+     "phu_dinh": false,
+     "trich": "nhân lực công nghiệp công nghệ số chất lượng cao"
+    },
+    {
+     "vi_tu": "work_in_vietnam",
+     "phu_dinh": false,
+     "trich": "làm việc tại Việt Nam"
+    }
+   ]
+  },
+  "Q07": {
+   "cau_hoi": "Một người nước ngoài được Bộ Giáo dục và Đào tạo xác nhận vào Việt Nam làm hiệu trưởng một cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài đề nghị thành lập tại Việt Nam. Người này có phải có giấy phép lao động không?",
+   "phi": "must_have_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "education_ministry_confirms_foreign_worker_tasks",
+     "phu_dinh": false,
+     "trich": "được Bộ Giáo dục và Đào tạo xác nhận vào Việt Nam"
+    },
+    {
+     "vi_tu": "manage_foreign_established_school",
+     "phu_dinh": false,
+     "trich": "làm hiệu trưởng một cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài đề nghị thành lập tại Việt Nam"
+    }
+   ]
+  },
+  "Q08": {
+   "cau_hoi": "Một người nước ngoài được Bộ Giáo dục và Đào tạo xác nhận vào Việt Nam làm hiệu trưởng một cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài đề nghị thành lập tại Việt Nam. Người này có phải có giấy phép lao động không?",
+   "phi": "must_have_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "education_ministry_confirms_foreign_worker_tasks",
+     "phu_dinh": false,
+     "trich": "được Bộ Giáo dục và Đào tạo xác nhận vào Việt Nam"
+    },
+    {
+     "vi_tu": "manage_foreign_established_school",
+     "phu_dinh": false,
+     "trich": "làm hiệu trưởng một cơ sở giáo dục do cơ quan đại diện ngoại giao nước ngoài đề nghị thành lập tại Việt Nam"
+    }
+   ]
+  },
+  "Q09": {
+   "cau_hoi": "Doanh nghiệp cho thuê lại lao động có phải ký quỹ không?",
+   "phi": "must_make_security_deposit",
+   "su_kien": [
+    {
+     "vi_tu": "labor_subleasing_enterprise",
+     "phu_dinh": false,
+     "trich": "Doanh nghiệp cho thuê lại lao động"
+    }
+   ]
+  },
+  "Q10": {
+   "cau_hoi": "Một doanh nghiệp mới ký quỹ 1 tỷ đồng (các điều kiện khác đều đạt). Doanh nghiệp có đủ điều kiện được cấp giấy phép hoạt động cho thuê lại lao động không?",
+   "phi": "may_receive_labor_subleasing_license",
+   "su_kien": [
+    {
+     "vi_tu": "enterprise_as_legal_entity",
+     "phu_dinh": false,
+     "trich": "Một doanh nghiệp"
+    },
+    {
+     "vi_tu": "deposit_security_funds",
+     "phu_dinh": false,
+     "trich": "mới ký quỹ 1 tỷ đồng"
+    }
+   ]
+  },
+  "Q11": {
+   "cau_hoi": "Hồ sơ đề nghị cấp giấy phép hoạt động cho thuê lại lao động có bắt buộc kèm bản lý lịch tự thuật của người đại diện theo pháp luật không?",
+   "phi": null,
+   "su_kien": []
+  },
+  "Q12": {
+   "cau_hoi": "Hồ sơ đề nghị cấp giấy phép hoạt động cho thuê lại lao động có bắt buộc kèm bản lý lịch tự thuật của người đại diện theo pháp luật không?",
+   "phi": null,
+   "su_kien": []
+  },
+  "Q13": {
+   "cau_hoi": "Hồ sơ đề nghị cấp giấy phép hoạt động cho thuê lại lao động có bắt buộc kèm bản lý lịch tự thuật của người đại diện theo pháp luật không?",
+   "phi": null,
+   "su_kien": []
+  },
+  "Q14": {
+   "cau_hoi": "Cơ quan giải quyết thủ tục khai thác được đầy đủ, chính xác thông tin Phiếu lý lịch tư pháp của người đại diện trên Cơ sở dữ liệu. Doanh nghiệp có phải nộp Phiếu lý lịch tư pháp trong hồ sơ đề nghị cấp giấy phép cho thuê lại lao động không?",
+   "phi": null,
+   "su_kien": []
+  },
+  "Q15": {
+   "cau_hoi": "Người lao động nước ngoài làm việc tại Việt Nam có được hưởng bảo hiểm thất nghiệp không?",
+   "phi": null,
+   "su_kien": []
+  }
+ }
+}

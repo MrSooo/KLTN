@@ -1,0 +1,62 @@
+{
+ "prompt_version": "hoi-dap-2",
+ "model": "deepseek-v4.1-flash",
+ "effort": "khong_co",
+ "tu_vung": "a2532612f825d818",
+ "answers": {
+  "Q04": {
+   "cau_hoi": "Một người nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam, đi làm cho một công ty Việt Nam. Người này có phải có giấy phép lao động không?",
+   "phi": "not_applicable_grant_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "foreign_worker_in_vietnam",
+     "phu_dinh": false,
+     "trich": "Một người nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam, đi làm cho một công ty Việt Nam"
+    },
+    {
+     "vi_tu": "marry_vietnamese_and_reside_in_vietnam",
+     "phu_dinh": false,
+     "trich": "kết hôn với người Việt Nam và sinh sống tại Việt Nam"
+    }
+   ]
+  },
+  "Q06": {
+   "cau_hoi": "Một người nước ngoài thuộc diện nhân lực công nghiệp công nghệ số chất lượng cao theo pháp luật về công nghiệp công nghệ số, làm việc tại Việt Nam, không thuộc trường hợp miễn nào khác. Người này có phải có giấy phép lao động không?",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "foreign_worker_in_vietnam",
+     "phu_dinh": false,
+     "trich": "Một người nước ngoài thuộc diện nhân lực công nghiệp công nghệ số chất lượng cao theo pháp luật về công nghiệp công nghệ số, làm việc tại Việt Nam, không thuộc trường hợp miễn nào khác"
+    }
+   ]
+  },
+  "Q09": {
+   "cau_hoi": "Doanh nghiệp cho thuê lại lao động có phải ký quỹ không?",
+   "phi": "must_make_deposit",
+   "su_kien": [
+    {
+     "vi_tu": "labor_leasing_enterprise",
+     "phu_dinh": false,
+     "trich": "Doanh nghiệp cho thuê lại lao động"
+    }
+   ]
+  },
+  "Q15": {
+   "cau_hoi": "Người lao động nước ngoài làm việc tại Việt Nam có được hưởng bảo hiểm thất nghiệp không?",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "employee",
+     "phu_dinh": false,
+     "trich": "Người lao động nước ngoài làm việc tại Việt Nam"
+    },
+    {
+     "vi_tu": "foreign_worker_in_vietnam",
+     "phu_dinh": false,
+     "trich": "Người lao động nước ngoài làm việc tại Việt Nam"
+    }
+   ]
+  }
+ }
+}

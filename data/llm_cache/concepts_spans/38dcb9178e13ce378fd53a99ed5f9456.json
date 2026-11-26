@@ -1,0 +1,153 @@
+{
+ "task": "concepts_spans",
+ "prompt_version": "concepts-2",
+ "role": "trich",
+ "requested_model": "claude-opus-5-5",
+ "created": "2026-11-14T07:20:18+00:00",
+ "system": "Bạn đọc từng đơn vị của một văn bản pháp luật lao động Việt Nam (khoản, điểm hoặc Điều có chữ) và gạch ra các CỤM theo bốn vai:\n- chu_the: ai bị quy tắc nói tới (ví dụ \"Hai bên\", \"người lao động\").\n- dieu_kien: khi nào quy tắc áp dụng.\n- ngoai_le: trừ khi nào (chữ sau \"trừ\", \"ngoại trừ\", \"không áp dụng\" ...).\n- ket_luan: hệ quả của quy tắc (được, không được, phải, bị cấm, hưởng ...).\nMỗi đơn vị được cho kèm ngữ cảnh gồm ba phần: chu_don_vi (chữ của chính đơn vị), khoan_cha (chữ khoản cha của điểm, hoặc câu dẫn của Điều đứng trên khoản; rỗng nếu không có) và tieu_de_dieu (tiêu đề Điều).\nCụm có thể lấy từ BẤT KỲ phần nào trong ba phần, vì chủ thể hoặc kết luận nhiều khi nằm ở tiêu đề Điều hay khoản cha chứ không nằm trong chữ của đơn vị.\nQuy tắc bắt buộc:\n1. Mỗi cụm phải là chuỗi chữ LIỀN NHAU chép NGUYÊN VĂN từ một trong ba phần. Không viết lại, không diễn giải, không dịch, không bỏ chữ ở giữa.\n2. Chỉ gạch cụm có nghĩa trong quy tắc của đơn vị đó. Đơn vị không nêu quy tắc nào (ví dụ chỉ nêu tên cơ quan) thì trả mảng spans rỗng.\n   Đơn vị nói luật áp dụng cho ai hoặc điều chỉnh việc gì (phạm vi, đối tượng) thì vẫn gạch từng bên được nêu tên (người hoặc tổ chức) thành cụm chu_the; chủ đề được điều chỉnh không phải một bên thì không gạch thành chu_the.\n3. params: chữ cái của thực thể mà cụm nói tới, chọn trong W (người lao động), E (người sử dụng lao động), C (hợp đồng lao động), J (nghề, công việc), G (vùng),\n   D (ngày, mốc thời gian), A (số tiền, số lượng). Cụm không nói tới thực thể nào thì params rỗng.\n4. Không đặt tên cho cụm và không phân loại gì thêm.\n5. Mỗi đơn vị trong đầu vào có đúng một mục trong kết quả, ghi đúng unit_id.\n6. Đơn vị là ĐỊNH NGHĨA, tức giải thích một thuật ngữ dạng \"X là Y\" (X là thuật ngữ, Y là phần giải nghĩa): gạch X thành cụm ket_luan (khái niệm được xác lập ở đây), không gạch X thành chu_the; gạch phần giải nghĩa Y thành cụm dieu_kien (điều kiện để X đúng). Phần khác của đơn vị mà có nêu quy tắc thì vẫn gạch như thường.\n   Chữ \"là\" nêu điều kiện, trường hợp hoặc mức giới hạn (\"số người tham gia tối đa là 10 người\", \"Trường hợp ... thì ... là ...\") không phải định nghĩa: gạch theo bốn vai như thường.\n   Câu dẫn của Điều giải thích từ ngữ (\"... được hiểu như sau:\") không có nghĩa riêng nên trả rỗng.\nVí dụ cho đơn vị chu_don_vi = \"Hai bên có thể giao kết hợp đồng lao động bằng lời nói đối với hợp đồng có thời hạn dưới 01 tháng, trừ trường hợp quy định tại khoản 2 Điều 18 của Bộ luật này.\":\n  chu_the \"Hai bên\" (params []); ket_luan \"giao kết hợp đồng lao động bằng lời nói\" (params [\"C\"]); dieu_kien \"hợp đồng có thời hạn dưới 01 tháng\" (params [\"C\"]);\n  ngoai_le \"quy định tại khoản 2 Điều 18 của Bộ luật này\" (params []).\nVí dụ định nghĩa, chu_don_vi = \"Giờ cao điểm là khoảng thời gian từ 17 giờ đến 19 giờ trong ngày.\":\n  ket_luan \"Giờ cao điểm\" (params []); dieu_kien \"khoảng thời gian từ 17 giờ đến 19 giờ trong ngày\" (params [\"D\"]).\nTrả về JSON đúng lược đồ.",
+ "user": "{\n\"don_vi\": [\n{\n\"unit_id\": \"BLLD_45-2019.D217.K1\",\n\"tieu_de_dieu\": \"Xử lý vi phạm\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người nào có hành vi vi phạm quy định của Bộ luật này thì tùy theo tính chất, mức độ vi phạm mà bị xử lý kỷ luật, xử phạt vi phạm hành chính hoặc bị truy cứu trách nhiệm hình sự, nếu gây thiệt hại thì phải bồi thường theo quy định của pháp luật.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D217.K2\",\n\"tieu_de_dieu\": \"Xử lý vi phạm\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Khi đã có quyết định của Tòa án về cuộc đình công là bất hợp pháp thì người lao động đang tham gia đình công phải ngừng ngay đình công và trở lại làm việc; nếu người lao động không ngừng đình công, không trở lại làm việc thì tùy theo mức độ vi phạm có thể bị xử lý kỷ luật lao động theo quy định của pháp luật về lao động.\\nTrong trường hợp cuộc đình công là bất hợp pháp mà gây thiệt hại cho người sử dụng lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công phải bồi thường thiệt hại theo quy định của pháp luật.\"\n},\n{\n\"unit_id\": \"BLLD_45-2019.D217.K3\",\n\"tieu_de_dieu\": \"Xử lý vi phạm\",\n\"khoan_cha\": \"\",\n\"chu_don_vi\": \"Người lợi dụng đình công gây mất trật tự, an toàn công cộng, làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động; người có hành vi cản trở thực hiện quyền đình công, kích động, lôi kéo, ép buộc người lao động đình công; người có hành vi trù dập, trả thù người tham gia đình công, người lãnh đạo cuộc đình công thì tùy theo mức độ vi phạm mà bị xử phạt vi phạm hành chính hoặc truy cứu trách nhiệm hình sự, nếu gây thiệt hại thì phải bồi thường theo quy định của pháp luật.\"\n}\n]\n}",
+ "model": "claude-opus-5-5",
+ "request_id": null,
+ "produced_by": "claude_code_sandbox",
+ "producer_model_reported": "claude-opus-5-5",
+ "output": {
+  "units": [
+   {
+    "unit_id": "BLLD_45-2019.D217.K1",
+    "spans": [
+     {
+      "span": "Người nào",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "có hành vi vi phạm quy định của Bộ luật này",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "tùy theo tính chất, mức độ vi phạm",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "bị xử lý kỷ luật, xử phạt vi phạm hành chính hoặc bị truy cứu trách nhiệm hình sự",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "gây thiệt hại",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "phải bồi thường theo quy định của pháp luật",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D217.K2",
+    "spans": [
+     {
+      "span": "đã có quyết định của Tòa án về cuộc đình công là bất hợp pháp",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "người lao động đang tham gia đình công",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "phải ngừng ngay đình công và trở lại làm việc",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "người lao động không ngừng đình công, không trở lại làm việc",
+      "role": "dieu_kien",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "tùy theo mức độ vi phạm",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "có thể bị xử lý kỷ luật lao động theo quy định của pháp luật về lao động",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "cuộc đình công là bất hợp pháp mà gây thiệt hại cho người sử dụng lao động",
+      "role": "dieu_kien",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "tổ chức đại diện người lao động tổ chức và lãnh đạo đình công",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "phải bồi thường thiệt hại theo quy định của pháp luật",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   },
+   {
+    "unit_id": "BLLD_45-2019.D217.K3",
+    "spans": [
+     {
+      "span": "Người lợi dụng đình công gây mất trật tự, an toàn công cộng, làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động",
+      "role": "chu_the",
+      "params": [
+       "E"
+      ]
+     },
+     {
+      "span": "người có hành vi cản trở thực hiện quyền đình công, kích động, lôi kéo, ép buộc người lao động đình công",
+      "role": "chu_the",
+      "params": [
+       "W"
+      ]
+     },
+     {
+      "span": "người có hành vi trù dập, trả thù người tham gia đình công, người lãnh đạo cuộc đình công",
+      "role": "chu_the",
+      "params": []
+     },
+     {
+      "span": "tùy theo mức độ vi phạm",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "bị xử phạt vi phạm hành chính hoặc truy cứu trách nhiệm hình sự",
+      "role": "ket_luan",
+      "params": []
+     },
+     {
+      "span": "gây thiệt hại",
+      "role": "dieu_kien",
+      "params": []
+     },
+     {
+      "span": "phải bồi thường theo quy định của pháp luật",
+      "role": "ket_luan",
+      "params": []
+     }
+    ]
+   }
+  ]
+ },
+ "usage": null
+}
