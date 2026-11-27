@@ -2,12 +2,13 @@
 
 Cập nhật lần cuối: 27/11/2026. Nhánh làm việc: `v3_refactor`.
 
-## 0. Đang chạy (A63, đêm 27/11): KB `tach2`
+## 0. Tạm dừng (A63, đêm 27/11): KB `tach2`
 Gói A63 (user duyệt 26/11, chi tiết `docs/decisions.md` A63): lượt 2 của 1.6A-v2 `vai-nhom-4` (LLM ghi khoảng âm tiết, máy lấy chữ), 1.8 bỏ cả quy tắc có dòng lỗi, 1.6B `names-2.3` (láng giềng embedding), 1.9 `hoi-dap-3`; bộ 34 câu `blld_questions.json` đóng băng; luật giữ: `tach2` đúng nhiều câu hơn `ckey` cùng mã và cùng model dịch, 8 câu đối chứng không tụt.
 - Sửa thêm 27/11 (user duyệt): cổng lượt 2 bắt khoảng hụt một âm tiết (`hut_cuoi`); 1.8 dòng bị bác mang chủ thể của quy tắc bị chặn; nhánh ckey không gọi dồn (không thử lại lỗi HTTP, dừng ở lỗi tuyến đầu tiên, nghỉ 5 giây mỗi lượt).
 - Tuyến LLM: `martha02091945` (117 khoản đầu), `daongocson12022004` (đến D149.K3, rồi 404), `dungcsnd113/gemini-flash-3.8` với khoá mới (phần còn lại và mọi bước sau, cả dịch 1.9 cho 3 KB). Lỗi 500 của ckey là "upstream AI gateway temporarily unavailable" (tạm thời).
 - Chạy qua đêm bằng script ngoài repo: lượt 2 (nghỉ 60 giây khi lỗi tuyến; khoản lỗi 3 lần thì bỏ qua; hạn 04:30), rồi tự chạy bước 2→8: nhập 1.6A, 1.6B, 1.7, dựng KB `tach2` (dựng lại `tach`, `ckey` bằng mã hiện tại), dịch 34 câu 3 KB × 3 lần, chấm, bộ test; commit và push sau mỗi bước. Nhật ký, xem lại 1.6A, điểm 34 câu: `docs/run_reports_tach2/a63/`.
 - Tiến độ 27/11 04:00: lượt 2 xong 881/881 (876 qua cổng, 0,994), đã push. 1.6B: tuyến `dungcsnd113` rồi `daongocson` 404, bản `phamhuyhoang…/gemini-3.8-flash` quá chậm (cổng ckey cắt ở 9 phút); chạy bằng `phamhuyhoang28072005/gemini-3.8-flash-high`, lượt 15 chữ (207 lượt). Ước (đo 04:15: khoảng 3,3 phút mỗi lượt, gần như không đổi theo cỡ lượt): 1.6B xong khoảng 15:30; sau đó 1.7, dựng 3 KB, dịch 1.9 (2 lô song song, mỗi lô 3 phút trở lên), chấm, bộ test: KB `tach2` kèm điểm 34 câu khoảng 18:00. Phụ thuộc độ ổn định của tuyến.
+- **TẠM DỪNG 27/11 07:10 (user bảo, chờ tuyến ổn định lại):** 1.6B có đầu ra 51/207 lượt (hộp cát `kltn_hop_cat/tach2_1_6b`, ngoài repo); lượt 004, 039, 046 từng bị 504 rồi qua khi thử lại. Chưa chạy: `predicates --nhap`, 1.7, dựng 3 KB, dịch 1.9, chấm, bộ test. Làm tiếp: chạy lại script chuỗi từ bước 3; hộp cát tự đi tiếp từ lượt 052.
 - Bộ test đầy đủ 27/11: 17/18; `test_qa_server_offline_on_subset_dev_question` lỗi có từ trước (cache dev tập con hết hiệu lực sau A62 `live_heads`), user chọn để sau.
 
 ## 1. Tóm tắt
