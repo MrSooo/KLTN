@@ -40,6 +40,7 @@ PROMPT_TAG = "hop_cat"  # khoá cache đã chứa nguyên chữ system và lời
 # Lược đồ gửi kèm ngay sau chữ system.txt (A46): thiếu nó thì model không biết khuôn ngoài (lượt 1.6B đầu tiên ra danh sách trần, 19/11).
 SCHEMA_NOTE = "\n\nLược đồ đầu ra (JSON Schema, nội dung file schema.json):\n"
 STOP_AFTER_FAILS = 1  # lô độc lập: lỗi TUYẾN (HTTP/mạng) liền nhau ngần này lần thì dừng; [27/11, user: đừng spam lỗi] 3 -> 1
+THU_LAI_CHINH, NGHI_THU_LAI = 10, 60  # [27/11, user: "500 thì 1p sau thử lại", "thử lại khoảng 10 lần"] tuyến chính lỗi tuyến: nghỉ 60 giây, thử lại tới 10 lần rồi mới sang dự phòng
 QUAY_LAI = 600  # [27/11, user: "thử lại dungcs coi"] giây ở tuyến dự phòng rồi mới thử lại tuyến chính; [THÊM] số 600 do agent chọn
 GIAN_CACH = 5  # [27/11, user: giãn cách] giây nghỉ trước mỗi lượt gọi; [THÊM] số 5 do agent chọn, như clause_roles.GIAN_CACH
 
@@ -95,6 +96,16 @@ class Runner:
         except (llm_client.OutputRejected, llm_client.InvalidOutput):
             raise
         except llm_client.LLMError as e:
+            if self.du_phong and self.model == self.chinh:
+                for k in range(1, THU_LAI_CHINH + 1):
+                    print(f"  lô {n:03d}: {self.model} lỗi tuyến ({str(e)[:120]}); nghỉ {NGHI_THU_LAI} giây, thử lại lần {k}/{THU_LAI_CHINH}", flush=True)
+                    self.client.sleep(NGHI_THU_LAI)
+                    try:
+                        return self._goi(n)
+                    except (llm_client.OutputRejected, llm_client.InvalidOutput):
+                        raise
+                    except llm_client.LLMError as e2:
+                        e = e2
             if not self._sang_du_phong(e):
                 self.dung = True  # đặt ngay trong luồng gặp lỗi (trước khi luồng chính kịp huỷ), STOP_AFTER_FAILS = 1
                 raise

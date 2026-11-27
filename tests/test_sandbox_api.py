@@ -381,14 +381,20 @@ def test_runner_falls_back_once_to_the_spare_route_and_logs_it():
     with tempfile.TemporaryDirectory() as t, env_key():
         d = lot_dir(t, n=2)
         sent = []
-        assert sandbox_api.Runner(d, mk(t, [500, reply('{"a": 1}'), reply('{"a": 2}')], sent)).run_lots(workers=1) == 0
-        assert [b["model"] for _u, _h, b in sent] == ["m-api", "m-du-phong", "m-du-phong"]
+        k = sandbox_api.THU_LAI_CHINH
+        assert sandbox_api.Runner(d, mk(t, [500] * (1 + k) + [reply('{"a": 1}'), reply('{"a": 2}')], sent)).run_lots(workers=1) == 0
+        assert [b["model"] for _u, _h, b in sent] == ["m-api"] * (1 + k) + ["m-du-phong", "m-du-phong"]
         assert sorted((d / "nhat_ky.tsv").read_text(encoding="utf-8").splitlines()) == ["001\tm-du-phong\tkhong_co", "002\tm-du-phong\tkhong_co"]
     with tempfile.TemporaryDirectory() as t, env_key():
         d = lot_dir(t, n=2)
         sent = []
-        assert sandbox_api.Runner(d, mk(t, [500, 500, reply("{}")], sent)).run_lots(workers=1) == 1
-        assert [b["model"] for _u, _h, b in sent] == ["m-api", "m-du-phong"] and not list((d / "out").glob("*.json"))
+        assert sandbox_api.Runner(d, mk(t, [500] * (2 + k) + [reply("{}")], sent)).run_lots(workers=1) == 1
+        assert [b["model"] for _u, _h, b in sent] == ["m-api"] * (1 + k) + ["m-du-phong"] and not list((d / "out").glob("*.json"))
+    with tempfile.TemporaryDirectory() as t, env_key():  # tuyến chính sống lại ở lần thử lại thứ hai: không sang dự phòng
+        d = lot_dir(t, n=1)
+        sent = []
+        assert sandbox_api.Runner(d, mk(t, [500, 500, reply('{"a": 1}')], sent)).run_lots(workers=1) == 0
+        assert [b["model"] for _u, _h, b in sent] == ["m-api"] * 3
     assert llm.models_accepted(cfg, "m-api") == {"m-api", "m-du-phong"} and llm.models_accepted(CFG, "m-api") == {"m-api"}
     # hết QUAY_LAI giây ở tuyến dự phòng thì lô kế gọi lại tuyến chính
     with tempfile.TemporaryDirectory() as t, env_key():
@@ -396,13 +402,13 @@ def test_runner_falls_back_once_to_the_spare_route_and_logs_it():
         sent, now = [], [0.0]
         c = llm.Client("live", cfg, cache_dir=Path(t) / "cache", usage_path=Path(t) / "cache" / "_usage.json", today="2026-11-19",
                        sleep=lambda s: now.__setitem__(0, now[0] + s), clock=lambda: now[0],
-                       urlopen=server([500, reply('{"a": 1}'), reply('{"a": 2}'), reply('{"a": 3}')], sent))
+                       urlopen=server([500] * (1 + sandbox_api.THU_LAI_CHINH) + [reply('{"a": 1}'), reply('{"a": 2}'), reply('{"a": 3}')], sent))
         r = sandbox_api.Runner(d, c)
         r.ask(1)
         r.ask(2)
         now[0] += sandbox_api.QUAY_LAI
         r.ask(3)
-        assert [b["model"] for _u, _h, b in sent] == ["m-api", "m-du-phong", "m-du-phong", "m-api"]
+        assert [b["model"] for _u, _h, b in sent] == ["m-api"] * (1 + sandbox_api.THU_LAI_CHINH) + ["m-du-phong", "m-du-phong", "m-api"]
 
 
 if __name__ == "__main__":
