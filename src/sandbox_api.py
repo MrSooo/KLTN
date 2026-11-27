@@ -79,7 +79,7 @@ class Runner:
         # rồi ở lại tuyến dự phòng QUAY_LAI giây mới thử lại tuyến chính (không gọi dồn tuyến đang lỗi). Khoá cache theo model gọi thật;
         # nhật ký ghi model gọi thật; `nhap` nhận cả hai (llm_client.models_accepted) và ghi cache theo model danh nghĩa.
         self.du_phong = client.cfg.get(f"{llm_client.API_ROLE}.model_du_phong")
-        self.chinh, self._het_du_phong = self.model, None
+        self.chinh, self._het_du_phong, self._da_du_phong = self.model, None, False
         self._khoa = threading.Lock()
 
     def user(self, n):
@@ -96,7 +96,9 @@ class Runner:
         except (llm_client.OutputRejected, llm_client.InvalidOutput):
             raise
         except llm_client.LLMError as e:
-            if self.du_phong and self.model == self.chinh:
+            # thử lại chỉ cho lỗi tạm (không phải 404 "model is not available": tuyến đã gỡ) và chỉ khi chưa từng sang dự phòng
+            # trong tiến trình này; lần quay về sau QUAY_LAI thì thử MỘT lần, lỗi là sang dự phòng ngay (không phí 10 phút mỗi chu kỳ)
+            if self.du_phong and self.model == self.chinh and not self._da_du_phong and "lỗi 404" not in str(e):
                 for k in range(1, THU_LAI_CHINH + 1):
                     print(f"  lô {n:03d}: {self.model} lỗi tuyến ({str(e)[:120]}); nghỉ {NGHI_THU_LAI} giây, thử lại lần {k}/{THU_LAI_CHINH}", flush=True)
                     self.client.sleep(NGHI_THU_LAI)
@@ -127,7 +129,7 @@ class Runner:
                 return False  # không có tuyến dự phòng, hoặc đã ở tuyến dự phòng mà vẫn lỗi
             print(f"  ĐỔI TUYẾN: {self.model} lỗi ({str(e)[:160]}); gọi {self.du_phong} trong {QUAY_LAI} giây rồi thử lại tuyến chính", flush=True)
             self._dat_model(self.du_phong)
-            self._het_du_phong = self.client.clock() + QUAY_LAI
+            self._het_du_phong, self._da_du_phong = self.client.clock() + QUAY_LAI, True
             return True
 
     def _ve_tuyen_chinh(self):

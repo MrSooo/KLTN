@@ -409,6 +409,18 @@ def test_runner_falls_back_once_to_the_spare_route_and_logs_it():
         now[0] += sandbox_api.QUAY_LAI
         r.ask(3)
         assert [b["model"] for _u, _h, b in sent] == ["m-api"] * (1 + sandbox_api.THU_LAI_CHINH) + ["m-du-phong", "m-du-phong", "m-api"]
+    # 404 (tuyến đã gỡ): sang dự phòng ngay, không thử lại; lần quay về sau QUAY_LAI mà lỗi: thử một lần rồi sang dự phòng ngay
+    with tempfile.TemporaryDirectory() as t, env_key():
+        d = lot_dir(t, n=2)
+        sent, now = [], [0.0]
+        c = llm.Client("live", cfg, cache_dir=Path(t) / "cache", usage_path=Path(t) / "cache" / "_usage.json", today="2026-11-19",
+                       sleep=lambda s: now.__setitem__(0, now[0] + s), clock=lambda: now[0],
+                       urlopen=server([404, reply('{"a": 1}'), 500, reply('{"a": 2}')], sent))
+        r = sandbox_api.Runner(d, c)
+        r.ask(1)
+        now[0] += sandbox_api.QUAY_LAI
+        r.ask(2)
+        assert [b["model"] for _u, _h, b in sent] == ["m-api", "m-du-phong", "m-api", "m-du-phong"]
 
 
 if __name__ == "__main__":
