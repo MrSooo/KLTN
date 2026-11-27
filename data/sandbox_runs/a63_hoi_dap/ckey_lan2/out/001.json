@@ -1,0 +1,94 @@
+{
+ "cau_hoi": [
+  {
+   "id": "B01",
+   "phi": "terminate_labor_contract",
+   "su_kien": [
+    {
+     "vi_tu": "dismissal_as_discipline",
+     "phu_dinh": false,
+     "trich": "kỷ luật sa thải"
+    },
+    {
+     "vi_tu": "commit_theft_embezzlement_gambling_injury_drug_use",
+     "phu_dinh": false,
+     "trich": "trộm cắp tài sản tại nơi làm việc"
+    }
+   ]
+  },
+  {
+   "id": "B03",
+   "phi": "terminate_labor_contract",
+   "su_kien": [
+    {
+     "vi_tu": "be_convicted",
+     "phu_dinh": true,
+     "trich": "chưa có bản án của Tòa án"
+    }
+   ]
+  },
+  {
+   "id": "B04",
+   "phi": "terminate_labor_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employer_death",
+     "phu_dinh": false,
+     "trich": "qua đời"
+    }
+   ]
+  },
+  {
+   "id": "B05",
+   "phi": "may_employer_unilateral_termination",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "công ty"
+    },
+    {
+     "vi_tu": "regularly_fail_to_perform_contract_work",
+     "phu_dinh": false,
+     "trich": "thường xuyên không hoàn thành công việc"
+    },
+    {
+     "vi_tu": "determine_by_performance_evaluation_criteria",
+     "phu_dinh": false,
+     "trich": "tiêu chí trong quy chế đánh giá của công ty"
+    },
+    {
+     "vi_tu": "annual_leave",
+     "phu_dinh": false,
+     "trich": "nghỉ phép hằng năm"
+    }
+   ]
+  },
+  {
+   "id": "B06",
+   "phi": "may_employer_unilateral_termination",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Người sử dụng lao động"
+    },
+    {
+     "vi_tu": "work_under_indefinite_term_labor_contract",
+     "phu_dinh": false,
+     "trich": "làm việc theo hợp đồng không xác định thời hạn"
+    },
+    {
+     "vi_tu": "impaired_work_capacity",
+     "phu_dinh": false,
+     "trich": "khả năng lao động chưa hồi phục"
+    },
+    {
+     "vi_tu": "illness_or_occupational_accident_under_treatment",
+     "phu_dinh": false,
+     "trich": "đang điều trị theo chỉ định của cơ sở khám bệnh, chữa bệnh có thẩm quyền"
+    }
+   ]
+  }
+ ]
+}

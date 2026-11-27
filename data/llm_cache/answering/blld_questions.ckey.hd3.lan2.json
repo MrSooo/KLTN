@@ -1,0 +1,570 @@
+{
+ "prompt_version": "hoi-dap-3",
+ "model": "dungcsnd113/gemini-flash-3.8",
+ "effort": "khong_co",
+ "tu_vung": "6ff7fa31216c1381",
+ "answers": {
+  "B01": {
+   "cau_hoi": "Công ty đã ra quyết định kỷ luật sa thải anh C vì anh trộm cắp tài sản tại nơi làm việc; quyết định này đúng căn cứ và đúng trình tự, thủ tục theo pháp luật. Hợp đồng lao động của anh C có chấm dứt không?",
+   "phi": "terminate_labor_contract",
+   "su_kien": [
+    {
+     "vi_tu": "dismissal_as_discipline",
+     "phu_dinh": false,
+     "trich": "kỷ luật sa thải"
+    },
+    {
+     "vi_tu": "commit_theft_embezzlement_gambling_injury_drug_use",
+     "phu_dinh": false,
+     "trich": "trộm cắp tài sản tại nơi làm việc"
+    }
+   ]
+  },
+  "B03": {
+   "cau_hoi": "Người lao động đang bị khởi tố, chưa có bản án của Tòa án; đây là tình tiết duy nhất liên quan đến việc chấm dứt hợp đồng lao động của người này. Hợp đồng lao động của người này có chấm dứt không?",
+   "phi": "terminate_labor_contract",
+   "su_kien": [
+    {
+     "vi_tu": "be_convicted",
+     "phu_dinh": true,
+     "trich": "chưa có bản án của Tòa án"
+    }
+   ]
+  },
+  "B04": {
+   "cau_hoi": "Ông X trực tiếp thuê chị A làm việc theo hợp đồng lao động. Nay ông X qua đời. Hợp đồng lao động giữa hai người có chấm dứt không?",
+   "phi": "terminate_labor_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employer_death",
+     "phu_dinh": false,
+     "trich": "qua đời"
+    }
+   ]
+  },
+  "B05": {
+   "cau_hoi": "Anh G thường xuyên không hoàn thành công việc theo tiêu chí trong quy chế đánh giá của công ty. Đúng lúc anh đang nghỉ phép hằng năm, công ty muốn đơn phương chấm dứt hợp đồng lao động với anh. Công ty có được làm vậy không?",
+   "phi": "may_employer_unilateral_termination",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "công ty"
+    },
+    {
+     "vi_tu": "regularly_fail_to_perform_contract_work",
+     "phu_dinh": false,
+     "trich": "thường xuyên không hoàn thành công việc"
+    },
+    {
+     "vi_tu": "determine_by_performance_evaluation_criteria",
+     "phu_dinh": false,
+     "trich": "tiêu chí trong quy chế đánh giá của công ty"
+    },
+    {
+     "vi_tu": "annual_leave",
+     "phu_dinh": false,
+     "trich": "nghỉ phép hằng năm"
+    }
+   ]
+  },
+  "B06": {
+   "cau_hoi": "Người lao động làm việc theo hợp đồng không xác định thời hạn bị ốm, đã điều trị 12 tháng liên tục mà khả năng lao động chưa hồi phục, và hiện vẫn đang điều trị theo chỉ định của cơ sở khám bệnh, chữa bệnh có thẩm quyền. Người sử dụng lao động có được đơn phương chấm dứt hợp đồng lao động không?",
+   "phi": "may_employer_unilateral_termination",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Người sử dụng lao động"
+    },
+    {
+     "vi_tu": "work_under_indefinite_term_labor_contract",
+     "phu_dinh": false,
+     "trich": "làm việc theo hợp đồng không xác định thời hạn"
+    },
+    {
+     "vi_tu": "impaired_work_capacity",
+     "phu_dinh": false,
+     "trich": "khả năng lao động chưa hồi phục"
+    },
+    {
+     "vi_tu": "illness_or_occupational_accident_under_treatment",
+     "phu_dinh": false,
+     "trich": "đang điều trị theo chỉ định của cơ sở khám bệnh, chữa bệnh có thẩm quyền"
+    }
+   ]
+  },
+  "B07": {
+   "cau_hoi": "Anh John, quốc tịch Anh, lấy vợ người Việt và đã định cư ở Hà Nội; nay anh được một trường tư thục nhận vào dạy tiếng Anh. Anh có thuộc diện phải cấp giấy phép lao động không?",
+   "phi": "not_applicable_grant_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "foreign_worker_in_vietnam",
+     "phu_dinh": false,
+     "trich": "Anh John, quốc tịch Anh"
+    },
+    {
+     "vi_tu": "marry_vietnamese_and_reside_in_vietnam",
+     "phu_dinh": false,
+     "trich": "lấy vợ người Việt và đã định cư ở Hà Nội"
+    }
+   ]
+  },
+  "B08": {
+   "cau_hoi": "Bà Kim, quốc tịch Hàn Quốc, là luật sư đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư và đang làm cho một công ty luật ở TP.HCM. Bà có thuộc diện cấp giấy phép lao động không?",
+   "phi": "not_applicable_grant_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "foreign_worker_in_vietnam",
+     "phu_dinh": false,
+     "trich": "Bà Kim, quốc tịch Hàn Quốc"
+    },
+    {
+     "vi_tu": "foreign_lawyer_with_vietnam_practice_license",
+     "phu_dinh": false,
+     "trich": "là luật sư đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư"
+    }
+   ]
+  },
+  "B09": {
+   "cau_hoi": "Người lao động nước ngoài đã chấm dứt hợp đồng lao động với công ty tại Việt Nam. Giấy phép lao động của người này có hết hiệu lực không?",
+   "phi": "work_permit_ceases_effect",
+   "su_kien": [
+    {
+     "vi_tu": "work_permit",
+     "phu_dinh": false,
+     "trich": "Giấy phép lao động"
+    },
+    {
+     "vi_tu": "terminate_labor_contract",
+     "phu_dinh": false,
+     "trich": "chấm dứt hợp đồng lao động"
+    },
+    {
+     "vi_tu": "foreign_worker_in_vietnam",
+     "phu_dinh": false,
+     "trich": "Người lao động nước ngoài"
+    }
+   ]
+  },
+  "B10": {
+   "cau_hoi": "Giấy phép lao động của một người lao động nước ngoài đã bị thu hồi. Hợp đồng lao động của người này có chấm dứt không?",
+   "phi": "terminate_labor_contract",
+   "su_kien": [
+    {
+     "vi_tu": "work_permit",
+     "phu_dinh": false,
+     "trich": "Giấy phép lao động"
+    },
+    {
+     "vi_tu": "revoke_work_permit",
+     "phu_dinh": false,
+     "trich": "bị thu hồi"
+    },
+    {
+     "vi_tu": "foreign_worker_in_vietnam",
+     "phu_dinh": false,
+     "trich": "người lao động nước ngoài"
+    }
+   ]
+  },
+  "B11": {
+   "cau_hoi": "Một xưởng phải dừng hoạt động vì bộ phận quản lý của công ty không thực hiện đúng việc bảo trì máy móc, tức việc ngừng việc do lỗi của người sử dụng lao động. Người lao động có được nhận đủ lương theo hợp đồng trong thời gian xưởng dừng hoạt động không?",
+   "phi": "may_pay_full_wages_under_labor_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employee",
+     "phu_dinh": false,
+     "trich": "Người lao động"
+    },
+    {
+     "vi_tu": "employer_fault",
+     "phu_dinh": false,
+     "trich": "do lỗi của người sử dụng lao động"
+    }
+   ]
+  },
+  "B17": {
+   "cau_hoi": "Dịch bệnh nguy hiểm bùng phát khiến nhà hàng phải thu hẹp hoạt động. Chủ nhà hàng đã áp dụng mọi biện pháp khắc phục có thể (giảm giờ làm, cho nghỉ luân phiên, chuyển người sang việc khác) nhưng vẫn buộc phải giảm chỗ làm việc. Nhà hàng có được đơn phương chấm dứt hợp đồng lao động với một số nhân viên không?",
+   "phi": "may_employer_unilateral_termination",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Chủ nhà hàng"
+    },
+    {
+     "vi_tu": "force_majeure_or_state_ordered_reduction",
+     "phu_dinh": false,
+     "trich": "Dịch bệnh nguy hiểm"
+    },
+    {
+     "vi_tu": "take_all_remedial_measures",
+     "phu_dinh": false,
+     "trich": "đã áp dụng mọi biện pháp khắc phục có thể"
+    },
+    {
+     "vi_tu": "forced_to_reduce_job_positions",
+     "phu_dinh": false,
+     "trich": "buộc phải giảm chỗ làm việc"
+    }
+   ]
+  },
+  "B18": {
+   "cau_hoi": "Bên thuê lại lao động muốn dùng lao động thuê lại để thay thế những người lao động vừa bị cho thôi việc vì lý do kinh tế. Bên thuê lại có được sử dụng lao động thuê lại trong trường hợp này không?",
+   "phi": "may_use_leased_labor",
+   "su_kien": [
+    {
+     "vi_tu": "labor_lessee",
+     "phu_dinh": false,
+     "trich": "Bên thuê lại lao động"
+    },
+    {
+     "vi_tu": "replace_employee",
+     "phu_dinh": false,
+     "trich": "thay thế những người lao động"
+    },
+    {
+     "vi_tu": "economic_reason",
+     "phu_dinh": false,
+     "trich": "vì lý do kinh tế"
+    }
+   ]
+  },
+  "B19": {
+   "cau_hoi": "Bên thuê lại lao động muốn dùng lao động thuê lại để thay thế một người lao động đang nghỉ thai sản; các điều kiện chung về hoạt động cho thuê lại lao động đều đã được đáp ứng và thời hạn thuê lại không quá 12 tháng. Bên thuê lại có được sử dụng lao động thuê lại không?",
+   "phi": "may_use_leased_labor",
+   "su_kien": [
+    {
+     "vi_tu": "labor_lessee",
+     "phu_dinh": false,
+     "trich": "Bên thuê lại lao động"
+    },
+    {
+     "vi_tu": "replace_employee",
+     "phu_dinh": false,
+     "trich": "thay thế một người lao động"
+    },
+    {
+     "vi_tu": "maternity_leave_or_child_under_12_months",
+     "phu_dinh": false,
+     "trich": "đang nghỉ thai sản"
+    },
+    {
+     "vi_tu": "maximum_labor_leasing_term_12_months",
+     "phu_dinh": false,
+     "trich": "thời hạn thuê lại không quá 12 tháng"
+    }
+   ]
+  },
+  "B20": {
+   "cau_hoi": "Do khủng hoảng kinh tế, công ty phải cho người lao động ngừng việc 10 ngày làm việc. Tiền lương ngừng việc có phải được thỏa thuận không thấp hơn mức lương tối thiểu không?",
+   "phi": "must_agree_stoppage_wage_at_least_minimum",
+   "su_kien": [
+    {
+     "vi_tu": "economic_crisis_or_recession",
+     "phu_dinh": false,
+     "trich": "khủng hoảng kinh tế"
+    },
+    {
+     "vi_tu": "work_stoppage_up_to_14_workdays",
+     "phu_dinh": false,
+     "trich": "ngừng việc 10 ngày làm việc"
+    }
+   ]
+  },
+  "B22": {
+   "cau_hoi": "Do sự cố mất điện đột xuất kéo dài, công ty tạm chuyển anh K sang làm công việc khác trong 20 ngày làm việc; trong năm anh chưa bị chuyển việc lần nào khác. Công ty báo trước cho anh 3 ngày làm việc, thông báo rõ thời hạn làm tạm thời, và công việc mới phù hợp với sức khỏe, giới tính của anh. Anh K có quyền đơn phương chấm dứt hợp đồng lao động không cần báo trước với lý do không được bố trí đúng công việc theo hợp đồng không?",
+   "phi": "may_unilateral_contract_termination_without_notice",
+   "su_kien": [
+    {
+     "vi_tu": "employee",
+     "phu_dinh": false,
+     "trich": "Anh K"
+    },
+    {
+     "vi_tu": "unexpected_hardship_or_safety_incident",
+     "phu_dinh": false,
+     "trich": "sự cố mất điện đột xuất"
+    },
+    {
+     "vi_tu": "temporarily_transfer_to_other_work",
+     "phu_dinh": false,
+     "trich": "tạm chuyển anh K sang làm công việc khác"
+    },
+    {
+     "vi_tu": "transfer_to_other_work_exceeds_annual_limit",
+     "phu_dinh": true,
+     "trich": "trong 20 ngày làm việc; trong năm anh chưa bị chuyển việc lần nào khác"
+    },
+    {
+     "vi_tu": "clearly_notify_temporary_work_duration",
+     "phu_dinh": false,
+     "trich": "thông báo rõ thời hạn làm tạm thời"
+    },
+    {
+     "vi_tu": "assign_work_suitable_to_health_and_gender",
+     "phu_dinh": false,
+     "trich": "công việc mới phù hợp với sức khỏe, giới tính của anh"
+    },
+    {
+     "vi_tu": "assign_to_correct_job_and_workplace",
+     "phu_dinh": true,
+     "trich": "không được bố trí đúng công việc theo hợp đồng"
+    }
+   ]
+  },
+  "B24": {
+   "cau_hoi": "Anh F nghỉ làm 4 ngày làm việc liên tục mà không xin phép và không có lý do chính đáng; ngoài việc này anh không vi phạm gì khác và công ty không có lý do nào khác để chấm dứt hợp đồng. Công ty có được đơn phương chấm dứt hợp đồng lao động với anh F không?",
+   "phi": "may_employer_unilateral_termination",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "unauthorized_absence_5_consecutive_workdays",
+     "phu_dinh": true,
+     "trich": "nghỉ làm 4 ngày làm việc liên tục mà không xin phép và không có lý do chính đáng"
+    },
+    {
+     "vi_tu": "have_valid_reason",
+     "phu_dinh": true,
+     "trich": "không có lý do chính đáng"
+    }
+   ]
+  },
+  "B25": {
+   "cau_hoi": "Công ty phải ngừng việc 20 ngày làm việc vì sự cố mất điện không do lỗi của công ty. Tiền lương ngừng việc của ngày thứ 18 có bắt buộc không thấp hơn mức lương tối thiểu không?",
+   "phi": "must_agree_stoppage_wage_at_least_minimum",
+   "su_kien": [
+    {
+     "vi_tu": "utility_incident_unattributable_to_employer",
+     "phu_dinh": false,
+     "trich": "vì sự cố mất điện không do lỗi của công ty"
+    },
+    {
+     "vi_tu": "work_stoppage_over_14_workdays",
+     "phu_dinh": false,
+     "trich": "phải ngừng việc 20 ngày làm việc"
+    }
+   ]
+  },
+  "B26": {
+   "cau_hoi": "Người lao động bị quấy rối tình dục tại nơi làm việc. Người lao động có quyền đơn phương chấm dứt hợp đồng lao động không cần báo trước không?",
+   "phi": "may_unilateral_contract_termination_without_notice",
+   "su_kien": [
+    {
+     "vi_tu": "employee",
+     "phu_dinh": false,
+     "trich": "Người lao động"
+    },
+    {
+     "vi_tu": "be_workplace_sexual_harassment",
+     "phu_dinh": false,
+     "trich": "bị quấy rối tình dục tại nơi làm việc"
+    }
+   ]
+  },
+  "B27": {
+   "cau_hoi": "Công ty chuyển dây chuyền sản xuất sang dùng máy móc tự động, khiến việc làm của nhiều người lao động bị ảnh hưởng. Công ty không thể bố trí việc làm khác nên phải cho anh B thôi việc. Anh B đã làm việc thường xuyên cho công ty 3 năm. Công ty có phải trả trợ cấp mất việc làm cho anh B không?",
+   "phi": "must_pay_job_loss_allowance",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "change_production_process_technology_equipment",
+     "phu_dinh": false,
+     "trich": "chuyển dây chuyền sản xuất sang dùng máy móc tự động"
+    },
+    {
+     "vi_tu": "affect_employment_of_many_workers",
+     "phu_dinh": false,
+     "trich": "việc làm của nhiều người lao động bị ảnh hưởng"
+    },
+    {
+     "vi_tu": "unable_to_arrange_work_and_lay_off",
+     "phu_dinh": false,
+     "trich": "không thể bố trí việc làm khác nên phải cho anh B thôi việc"
+    },
+    {
+     "vi_tu": "regular_work_for_at_least_12_months",
+     "phu_dinh": false,
+     "trich": "đã làm việc thường xuyên cho công ty 3 năm"
+    }
+   ]
+  },
+  "B28": {
+   "cau_hoi": "Người lao động có thu nhập 20 triệu đồng một tháng thì có phải nộp thuế thu nhập cá nhân không?",
+   "phi": null,
+   "su_kien": []
+  },
+  "B29": {
+   "cau_hoi": "Hợp đồng lao động xác định thời hạn của chị L vừa hết hạn, trong khi chị đang là thành viên ban lãnh đạo công đoàn cơ sở (tổ chức đại diện người lao động tại cơ sở) của công ty và nhiệm kỳ vẫn còn. Hợp đồng lao động của chị có chấm dứt không?",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "fixed_term_labor_contract",
+     "phu_dinh": false,
+     "trich": "Hợp đồng lao động xác định thời hạn"
+    },
+    {
+     "vi_tu": "contract_expiration",
+     "phu_dinh": false,
+     "trich": "hết hạn"
+    },
+    {
+     "vi_tu": "employee_org_board_member_with_expiring_contract",
+     "phu_dinh": false,
+     "trich": "Hợp đồng lao động xác định thời hạn của chị L vừa hết hạn, trong khi chị đang là thành viên ban lãnh đạo công đoàn cơ sở (tổ chức đại diện người lao động tại cơ sở) của công ty và nhiệm kỳ vẫn còn"
+    }
+   ]
+  },
+  "B30": {
+   "cau_hoi": "Anh M tạm hoãn hợp đồng lao động để đi nghĩa vụ quân sự; khi hết thời hạn tạm hoãn, hợp đồng lao động vẫn còn thời hạn. Đã 20 ngày kể từ khi hết thời hạn tạm hoãn mà anh vẫn không đến công ty làm việc, và hai bên không có thỏa thuận nào khác về việc trở lại làm việc. Công ty có được đơn phương chấm dứt hợp đồng lao động với anh M không?",
+   "phi": "may_employer_unilateral_termination",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "suspend_performance_of_labor_contract",
+     "phu_dinh": false,
+     "trich": "tạm hoãn hợp đồng lao động"
+    },
+    {
+     "vi_tu": "perform_military_service_and_militia_duty",
+     "phu_dinh": false,
+     "trich": "đi nghĩa vụ quân sự"
+    },
+    {
+     "vi_tu": "have_remaining_contract_term",
+     "phu_dinh": false,
+     "trich": "hợp đồng lao động vẫn còn thời hạn"
+    },
+    {
+     "vi_tu": "absence_from_workplace_after_deadline",
+     "phu_dinh": false,
+     "trich": "20 ngày kể từ khi hết thời hạn tạm hoãn mà anh vẫn không đến công ty làm việc"
+    },
+    {
+     "vi_tu": "agree_otherwise",
+     "phu_dinh": true,
+     "trich": "không có thỏa thuận nào khác"
+    }
+   ]
+  },
+  "B31": {
+   "cau_hoi": "Công đoàn cơ sở tổ chức và lãnh đạo một cuộc đình công trong khi tranh chấp lao động tập thể giữa người lao động và công ty đang được Hội đồng trọng tài lao động thụ lý giải quyết theo thẩm quyền. Cuộc đình công này có bất hợp pháp không?",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "constitute_labor_strike",
+     "phu_dinh": false,
+     "trich": "đình công"
+    },
+    {
+     "vi_tu": "organize_and_lead_labor_strike",
+     "phu_dinh": false,
+     "trich": "tổ chức và lãnh đạo một cuộc đình công"
+    },
+    {
+     "vi_tu": "collective_labor_dispute_in_competent_resolution",
+     "phu_dinh": false,
+     "trich": "tranh chấp lao động tập thể giữa người lao động và công ty đang được Hội đồng trọng tài lao động thụ lý giải quyết theo thẩm quyền"
+    }
+   ]
+  },
+  "B32": {
+   "cau_hoi": "Cuộc đình công tại nhà máy đã kết thúc, công nhân đều trở lại làm việc. Sau đó, công ty muốn đóng cửa tạm thời nơi làm việc. Công ty có được làm vậy không?",
+   "phi": "may_temporarily_close_workplace",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "công ty"
+    },
+    {
+     "vi_tu": "constitute_labor_strike",
+     "phu_dinh": false,
+     "trich": "đình công"
+    },
+    {
+     "vi_tu": "return_to_workplace",
+     "phu_dinh": false,
+     "trich": "trở lại làm việc"
+    }
+   ]
+  },
+  "B33": {
+   "cau_hoi": "Một cửa hàng nhận em P, 16 tuổi, vào làm nhân viên bán hàng. Cửa hàng có phải lập sổ theo dõi riêng cho em không?",
+   "phi": "must_maintain_separate_monitoring_book",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Cửa hàng"
+    },
+    {
+     "vi_tu": "employ_minor_worker",
+     "phu_dinh": false,
+     "trich": "nhận em P, 16 tuổi, vào làm"
+    }
+   ]
+  },
+  "B34": {
+   "cau_hoi": "Anh N làm việc theo hợp đồng lao động; Tòa án đã ra quyết định có hiệu lực pháp luật tuyên bố anh mất tích. Hợp đồng lao động của anh N có chấm dứt không?",
+   "phi": "terminate_labor_contract",
+   "su_kien": [
+    {
+     "vi_tu": "court_declared_civil_incapacity_missing_or_dead",
+     "phu_dinh": false,
+     "trich": "Tòa án đã ra quyết định có hiệu lực pháp luật tuyên bố anh mất tích"
+    }
+   ]
+  },
+  "B35": {
+   "cau_hoi": "Chị Q, người nước ngoài, được cấp giấy phép lao động với vị trí chuyên gia phân tích dữ liệu, nhưng thực tế công ty giao chị làm giám đốc bán hàng. Giấy phép lao động của chị có hết hiệu lực không?",
+   "phi": "work_permit_ceases_effect",
+   "su_kien": [
+    {
+     "vi_tu": "work_permit",
+     "phu_dinh": false,
+     "trich": "Giấy phép lao động"
+    },
+    {
+     "vi_tu": "work_in_accordance_with_work_permit",
+     "phu_dinh": true,
+     "trich": "được cấp giấy phép lao động với vị trí chuyên gia phân tích dữ liệu, nhưng thực tế công ty giao chị làm giám đốc bán hàng"
+    }
+   ]
+  },
+  "B36": {
+   "cau_hoi": "Một nhóm công nhân tự tổ chức ngừng việc tập thể để đòi tăng lương; cuộc ngừng việc không do công đoàn cơ sở hay tổ chức đại diện người lao động nào tổ chức và lãnh đạo. Cuộc đình công này có bất hợp pháp không?",
+   "phi": null,
+   "su_kien": []
+  },
+  "B37": {
+   "cau_hoi": "Giấy phép lao động của anh R có thời hạn đến ngày 31/3/2024; tại ngày 01/06/2024 anh chưa được cấp gia hạn. Giấy phép lao động của anh R có hết hiệu lực không?",
+   "phi": "work_permit_ceases_effect",
+   "su_kien": [
+    {
+     "vi_tu": "work_permit",
+     "phu_dinh": false,
+     "trich": "Giấy phép lao động"
+    },
+    {
+     "vi_tu": "work_permit_term_expiration",
+     "phu_dinh": false,
+     "trich": "có thời hạn đến ngày 31/3/2024; tại ngày 01/06/2024 anh chưa được cấp gia hạn"
+    }
+   ]
+  }
+ }
+}

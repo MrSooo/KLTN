@@ -1,0 +1,93 @@
+{
+ "cau_hoi": [
+  {
+   "id": "B24",
+   "phi": "may_employer_unilateral_termination",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "unauthorized_absence_5_consecutive_workdays",
+     "phu_dinh": true,
+     "trich": "nghỉ làm 4 ngày làm việc liên tục mà không xin phép và không có lý do chính đáng"
+    },
+    {
+     "vi_tu": "have_valid_reason",
+     "phu_dinh": true,
+     "trich": "không có lý do chính đáng"
+    }
+   ]
+  },
+  {
+   "id": "B25",
+   "phi": "must_agree_stoppage_wage_at_least_minimum",
+   "su_kien": [
+    {
+     "vi_tu": "utility_incident_unattributable_to_employer",
+     "phu_dinh": false,
+     "trich": "vì sự cố mất điện không do lỗi của công ty"
+    },
+    {
+     "vi_tu": "work_stoppage_over_14_workdays",
+     "phu_dinh": false,
+     "trich": "phải ngừng việc 20 ngày làm việc"
+    }
+   ]
+  },
+  {
+   "id": "B26",
+   "phi": "may_unilateral_contract_termination_without_notice",
+   "su_kien": [
+    {
+     "vi_tu": "employee",
+     "phu_dinh": false,
+     "trich": "Người lao động"
+    },
+    {
+     "vi_tu": "be_workplace_sexual_harassment",
+     "phu_dinh": false,
+     "trich": "bị quấy rối tình dục tại nơi làm việc"
+    }
+   ]
+  },
+  {
+   "id": "B27",
+   "phi": "must_pay_job_loss_allowance",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "change_production_process_technology_equipment",
+     "phu_dinh": false,
+     "trich": "chuyển dây chuyền sản xuất sang dùng máy móc tự động"
+    },
+    {
+     "vi_tu": "affect_employment_of_many_workers",
+     "phu_dinh": false,
+     "trich": "việc làm của nhiều người lao động bị ảnh hưởng"
+    },
+    {
+     "vi_tu": "unable_to_arrange_work_and_lay_off",
+     "phu_dinh": false,
+     "trich": "không thể bố trí việc làm khác nên phải cho anh B thôi việc"
+    },
+    {
+     "vi_tu": "regular_work_for_at_least_12_months",
+     "phu_dinh": false,
+     "trich": "đã làm việc thường xuyên cho công ty 3 năm"
+    }
+   ]
+  },
+  {
+   "id": "B28",
+   "phi": null,
+   "su_kien": []
+  }
+ ]
+}
