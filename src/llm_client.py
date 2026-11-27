@@ -47,7 +47,8 @@ RETRY_CODES = (429, 500, 503)
 RETRY_CODES_ANTHROPIC = (429, 500, 503, 529)  # 529 = Anthropic quá tải
 # máy chủ trung gian: 503 và 524 "upstream gateway unavailable" là lỗi tạm đã gặp khi thử (19/11); 520-524 là mã quá thời gian của lớp Cloudflare đứng trước
 RETRY_CODES_CKEY = (429, 500, 502, 503, 504, 520, 521, 522, 523, 524)
-CKEY_TIMEOUT = 900  # [27/11] từ khi gọi bằng stream, đây là thời gian chờ MỖI LẦN ĐỌC (kết nối im ngần này giây thì lỗi), không còn là trần cả lượt. Trước đó: giây cho MỘT lời gọi: trang model ghi P95 khoảng 105 giây; [27/11 02:55] 300 -> 900: lượt 002 của 1.6B (30 chữ, có lược đồ) quá 300 giây hai lần liền trên phamhuyhoang28072005/gemini-3.8-flash
+CKEY_TOTAL = 480  # [27/11, user: "chờ 900s lâu quá"] trần tổng một lượt stream: lượt 072 của 1.6B treo 16 phút với kết nối vẫn mở; lượt lâu nhất đã đo 203 giây. Quá trần là lỗi tuyến
+CKEY_TIMEOUT = 240  # [27/11] từ khi gọi bằng stream, đây là thời gian chờ MỖI LẦN ĐỌC (kết nối im ngần này giây thì lỗi), không còn là trần cả lượt; 900 -> 240 (user). Trước đó: giây cho MỘT lời gọi: trang model ghi P95 khoảng 105 giây; [27/11 02:55] 300 -> 900: lượt 002 của 1.6B (30 chữ, có lược đồ) quá 300 giây hai lần liền trên phamhuyhoang28072005/gemini-3.8-flash
 THINKING_MODES = ("between_tools", "disabled")  # cách TẮT suy nghĩ phụ thuộc model: Sonnet 5.5 chỉ nhận between_tools, Haiku 5.5 không nhận between_tools (chỉ disabled)
 ATTEMPTS = 3
 # [27/11, user: "đừng spam lỗi tránh nó block mình"] nhánh ckey không thử lại lỗi HTTP/mạng: một lần, lỗi thì ném ngay cho bộ chạy dừng
@@ -398,7 +399,8 @@ class Client:
             try:
                 with self._urlopen(req, timeout=CKEY_TIMEOUT) as r:
                     ctype = (getattr(r, "headers", None) or {}).get("Content-Type") or ""
-                    data = read_sse(r) if "text/event-stream" in ctype else json.loads(r.read().decode("utf-8"))
+                    data = (read_sse(r, deadline=time.monotonic() + CKEY_TOTAL) if "text/event-stream" in ctype
+                            else json.loads(r.read().decode("utf-8")))
                 break
             except urllib.error.HTTPError as e:
                 detail = e.read().decode("utf-8", "replace")[:300]
@@ -429,12 +431,14 @@ class Client:
                 "boc_rao": fenced, "khoi_phan_hoi": blocks}
 
 
-def read_sse(lines):
+def read_sse(lines, deadline=None):
     """[27/11] Gom luồng SSE của ckey (giao thức Anthropic Messages, đo 27/11 trên dungcsnd113) thành đúng dict mà phản hồi không stream trả:
     model, id từ message_start; khối thinking/text cộng dần theo index; stop_reason, usage (cả x_ckey: chi phí, request_id) từ message_delta.
     Lỗi giữa luồng đến kèm HTTP 200: sự kiện `error`, hay luồng hết mà không có message_stop, là LLMError (không bao giờ lưu chữ dở vào cache)."""
     data, blocks, done, event = {"content": []}, {}, False, None
     for raw in lines:
+        if deadline is not None and time.monotonic() > deadline:  # kết nối còn mở (máy chủ gửi giữ kết nối) mà lượt quá trần tổng
+            raise LLMError(f"luồng SSE quá trần tổng {CKEY_TOTAL} giây")
         line = (raw.decode("utf-8", "replace") if isinstance(raw, bytes) else raw).rstrip("\r\n")
         if line.startswith("event:"):
             event = line[6:].strip()

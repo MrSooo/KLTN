@@ -111,6 +111,16 @@ def test_ckey_stream_is_assembled_like_a_plain_reply():
         assert [b["type"] for b in rec["khoi_phan_hoi"]["khoi"]] == ["thinking", "text"]
 
 
+def test_ckey_stream_over_total_deadline_is_an_error():
+    """[27/11] Kết nối còn mở mà lượt quá trần tổng: LLMError (lỗi tuyến), không chờ mãi."""
+    try:
+        llm.read_sse(sse(*SSE_OK), deadline=0)
+        raise AssertionError("phải lỗi")
+    except llm.LLMError as e:
+        assert "trần tổng" in str(e)
+    assert llm.read_sse(sse(*SSE_OK))["stop_reason"] == "end_turn"
+
+
 def test_ckey_stream_error_or_cut_is_not_cached():
     """Lỗi giữa luồng đến với HTTP 200: sự kiện error, hay luồng đứt trước message_stop, là LLMError và không vào cache."""
     for events in (SSE_OK[:6] + ({"type": "error", "error": {"type": "overloaded_error", "message": "upstream"}},), SSE_OK[:-1]):
