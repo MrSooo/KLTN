@@ -1,0 +1,113 @@
+{
+ "cau_hoi": [
+  {
+   "id": "B24",
+   "phi": "may_unilaterally_terminate_employment_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "arbitrarily_abandon_work",
+     "phu_dinh": false,
+     "trich": "nghỉ làm 4 ngày làm việc liên tục mà không xin phép"
+    },
+    {
+     "vi_tu": "at_least_5_consecutive_working_days",
+     "phu_dinh": true,
+     "trich": "4 ngày làm việc liên tục"
+    },
+    {
+     "vi_tu": "have_justifiable_reason",
+     "phu_dinh": true,
+     "trich": "không có lý do chính đáng"
+    }
+   ]
+  },
+  {
+   "id": "B25",
+   "phi": "agreed_at_least_minimum_wage",
+   "su_kien": [
+    {
+     "vi_tu": "work_stoppage_wage",
+     "phu_dinh": false,
+     "trich": "Tiền lương ngừng việc"
+    },
+    {
+     "vi_tu": "power_water_incident_without_employer_fault",
+     "phu_dinh": false,
+     "trich": "sự cố mất điện không do lỗi của công ty"
+    },
+    {
+     "vi_tu": "stop_working_over_14_working_days",
+     "phu_dinh": false,
+     "trich": "ngừng việc 20 ngày làm việc"
+    }
+   ]
+  },
+  {
+   "id": "B26",
+   "phi": "may_unilaterally_terminate_without_advance_notice",
+   "su_kien": [
+    {
+     "vi_tu": "employee",
+     "phu_dinh": false,
+     "trich": "Người lao động"
+    },
+    {
+     "vi_tu": "sexual_harassment",
+     "phu_dinh": false,
+     "trich": "quấy rối tình dục"
+    },
+    {
+     "vi_tu": "at_workplace",
+     "phu_dinh": false,
+     "trich": "tại nơi làm việc"
+    }
+   ]
+  },
+  {
+   "id": "B27",
+   "phi": "must_pay_job_loss_allowance",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "change_process_technology_machinery_equipment",
+     "phu_dinh": false,
+     "trich": "chuyển dây chuyền sản xuất sang dùng máy móc tự động"
+    },
+    {
+     "vi_tu": "affect_employment_of_many_employees",
+     "phu_dinh": false,
+     "trich": "việc làm của nhiều người lao động bị ảnh hưởng"
+    },
+    {
+     "vi_tu": "provide_employment",
+     "phu_dinh": true,
+     "trich": "không thể bố trí việc làm khác"
+    },
+    {
+     "vi_tu": "lay_off",
+     "phu_dinh": false,
+     "trich": "cho anh B thôi việc"
+    },
+    {
+     "vi_tu": "work_regularly_for_at_least_12_months",
+     "phu_dinh": false,
+     "trich": "đã làm việc thường xuyên cho công ty 3 năm"
+    }
+   ]
+  },
+  {
+   "id": "B28",
+   "phi": null,
+   "su_kien": []
+  }
+ ]
+}

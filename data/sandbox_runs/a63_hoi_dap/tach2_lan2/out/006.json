@@ -1,0 +1,144 @@
+{
+ "cau_hoi": [
+  {
+   "id": "B29",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "definite_term_employment_contract",
+     "phu_dinh": false,
+     "trich": "Hợp đồng lao động xác định thời hạn"
+    },
+    {
+     "vi_tu": "expire",
+     "phu_dinh": false,
+     "trich": "hết hạn"
+    },
+    {
+     "vi_tu": "grassroots_employee_rep_org_board_member",
+     "phu_dinh": false,
+     "trich": "thành viên ban lãnh đạo công đoàn cơ sở (tổ chức đại diện người lao động tại cơ sở)"
+    }
+   ]
+  },
+  {
+   "id": "B30",
+   "phi": "may_unilaterally_terminate_employment_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "suspend_employment_contract_performance",
+     "phu_dinh": false,
+     "trich": "tạm hoãn hợp đồng lao động"
+    },
+    {
+     "vi_tu": "perform_military_service",
+     "phu_dinh": false,
+     "trich": "nghĩa vụ quân sự"
+    },
+    {
+     "vi_tu": "have_remaining_term",
+     "phu_dinh": false,
+     "trich": "còn thời hạn"
+    },
+    {
+     "vi_tu": "within_15_days_from_contract_suspension_expiry",
+     "phu_dinh": true,
+     "trich": "20 ngày kể từ khi hết thời hạn tạm hoãn"
+    },
+    {
+     "vi_tu": "be_present",
+     "phu_dinh": true,
+     "trich": "không đến công ty làm việc"
+    },
+    {
+     "vi_tu": "have_other_agreement",
+     "phu_dinh": true,
+     "trich": "không có thỏa thuận nào khác"
+    }
+   ]
+  },
+  {
+   "id": "B31",
+   "phi": "illegal_strike",
+   "su_kien": [
+    {
+     "vi_tu": "organize_and_lead_strike",
+     "phu_dinh": false,
+     "trich": "tổ chức và lãnh đạo một cuộc đình công"
+    },
+    {
+     "vi_tu": "strike",
+     "phu_dinh": false,
+     "trich": "đình công"
+    },
+    {
+     "vi_tu": "collective_labor_dispute",
+     "phu_dinh": false,
+     "trich": "tranh chấp lao động tập thể"
+    },
+    {
+     "vi_tu": "labor_arbitration_council",
+     "phu_dinh": false,
+     "trich": "Hội đồng trọng tài lao động"
+    },
+    {
+     "vi_tu": "during_arbitration_council_dispute_settlement",
+     "phu_dinh": false,
+     "trich": "đang được Hội đồng trọng tài lao động thụ lý giải quyết theo thẩm quyền"
+    },
+    {
+     "vi_tu": "collective_labor_dispute_being_settled",
+     "phu_dinh": false,
+     "trich": "tranh chấp lao động tập thể giữa người lao động và công ty đang được Hội đồng trọng tài lao động thụ lý giải quyết theo thẩm quyền"
+    }
+   ]
+  },
+  {
+   "id": "B32",
+   "phi": "may_temporarily_close_workplace",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "công ty"
+    },
+    {
+     "vi_tu": "stop_strike",
+     "phu_dinh": false,
+     "trich": "kết thúc"
+    },
+    {
+     "vi_tu": "return_to_work",
+     "phu_dinh": false,
+     "trich": "trở lại làm việc"
+    }
+   ]
+  },
+  {
+   "id": "B33",
+   "phi": "must_make_separate_tracking_book",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Cửa hàng"
+    },
+    {
+     "vi_tu": "employ_minor_workers",
+     "phu_dinh": false,
+     "trich": "nhận em P, 16 tuổi, vào làm"
+    },
+    {
+     "vi_tu": "accept_to_work",
+     "phu_dinh": false,
+     "trich": "nhận em P, 16 tuổi, vào làm nhân viên bán hàng"
+    }
+   ]
+  }
+ ]
+}
