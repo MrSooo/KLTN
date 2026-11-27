@@ -390,6 +390,19 @@ def test_runner_falls_back_once_to_the_spare_route_and_logs_it():
         assert sandbox_api.Runner(d, mk(t, [500, 500, reply("{}")], sent)).run_lots(workers=1) == 1
         assert [b["model"] for _u, _h, b in sent] == ["m-api", "m-du-phong"] and not list((d / "out").glob("*.json"))
     assert llm.models_accepted(cfg, "m-api") == {"m-api", "m-du-phong"} and llm.models_accepted(CFG, "m-api") == {"m-api"}
+    # hết QUAY_LAI giây ở tuyến dự phòng thì lô kế gọi lại tuyến chính
+    with tempfile.TemporaryDirectory() as t, env_key():
+        d = lot_dir(t, n=3)
+        sent, now = [], [0.0]
+        c = llm.Client("live", cfg, cache_dir=Path(t) / "cache", usage_path=Path(t) / "cache" / "_usage.json", today="2026-11-19",
+                       sleep=lambda s: now.__setitem__(0, now[0] + s), clock=lambda: now[0],
+                       urlopen=server([500, reply('{"a": 1}'), reply('{"a": 2}'), reply('{"a": 3}')], sent))
+        r = sandbox_api.Runner(d, c)
+        r.ask(1)
+        r.ask(2)
+        now[0] += sandbox_api.QUAY_LAI
+        r.ask(3)
+        assert [b["model"] for _u, _h, b in sent] == ["m-api", "m-du-phong", "m-du-phong", "m-api"]
 
 
 if __name__ == "__main__":

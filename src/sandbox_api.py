@@ -40,6 +40,7 @@ PROMPT_TAG = "hop_cat"  # khoá cache đã chứa nguyên chữ system và lời
 # Lược đồ gửi kèm ngay sau chữ system.txt (A46): thiếu nó thì model không biết khuôn ngoài (lượt 1.6B đầu tiên ra danh sách trần, 19/11).
 SCHEMA_NOTE = "\n\nLược đồ đầu ra (JSON Schema, nội dung file schema.json):\n"
 STOP_AFTER_FAILS = 1  # lô độc lập: lỗi TUYẾN (HTTP/mạng) liền nhau ngần này lần thì dừng; [27/11, user: đừng spam lỗi] 3 -> 1
+QUAY_LAI = 600  # [27/11, user: "thử lại dungcs coi"] giây ở tuyến dự phòng rồi mới thử lại tuyến chính; [THÊM] số 600 do agent chọn
 GIAN_CACH = 5  # [27/11, user: giãn cách] giây nghỉ trước mỗi lượt gọi; [THÊM] số 5 do agent chọn, như clause_roles.GIAN_CACH
 
 
@@ -74,9 +75,10 @@ class Runner:
             raise SystemExit(f"hộp cát đòi model {want!r}, vai {llm_client.API_ROLE} gọi {self.model!r}: dựng lại hộp cát với KLTN_LLM_RUN "
                              f"đúng lần chạy (khoá <lần chạy>.hop_cat.model, <lần chạy>.ten.model trong docs/llm_config.md)")
         # 27/11, user: "làm tuyến dự phòng khi dungcs chết": tuyến chính lỗi tuyến thì hỏi lại lô đó MỘT lần bằng `api.model_du_phong`
-        # rồi ở lại tuyến dự phòng tới hết tiến trình (không gọi lại tuyến chính: không gọi dồn). Khoá cache theo model gọi thật;
+        # rồi ở lại tuyến dự phòng QUAY_LAI giây mới thử lại tuyến chính (không gọi dồn tuyến đang lỗi). Khoá cache theo model gọi thật;
         # nhật ký ghi model gọi thật; `nhap` nhận cả hai (llm_client.models_accepted) và ghi cache theo model danh nghĩa.
         self.du_phong = client.cfg.get(f"{llm_client.API_ROLE}.model_du_phong")
+        self.chinh, self._het_du_phong = self.model, None
         self._khoa = threading.Lock()
 
     def user(self, n):
@@ -87,6 +89,7 @@ class Runner:
         self.client.sleep(GIAN_CACH)  # sleep của client: test truyền hàm không chờ
         if getattr(self, "dung", False):  # [27/11] luồng đã nhận lô trước khi lệnh huỷ tới: không gọi thêm sau lỗi tuyến
             raise llm_client.LLMError("bộ chạy đã dừng vì lỗi tuyến ở lô khác; lô này chưa gọi")
+        self._ve_tuyen_chinh()
         try:
             return self._goi(n)
         except (llm_client.OutputRejected, llm_client.InvalidOutput):
@@ -111,10 +114,22 @@ class Runner:
         with self._khoa:
             if not self.du_phong or self.model == self.du_phong:
                 return False  # không có tuyến dự phòng, hoặc đã ở tuyến dự phòng mà vẫn lỗi
-            print(f"  ĐỔI TUYẾN: {self.model} lỗi ({str(e)[:160]}); từ giờ tới hết tiến trình gọi {self.du_phong}", flush=True)
-            self.client.cfg = dict(self.client.cfg, **{f"{llm_client.API_ROLE}.model": self.du_phong})
-            self.model = self.du_phong
+            print(f"  ĐỔI TUYẾN: {self.model} lỗi ({str(e)[:160]}); gọi {self.du_phong} trong {QUAY_LAI} giây rồi thử lại tuyến chính", flush=True)
+            self._dat_model(self.du_phong)
+            self._het_du_phong = self.client.clock() + QUAY_LAI
             return True
+
+    def _ve_tuyen_chinh(self):
+        """Hết QUAY_LAI giây ở tuyến dự phòng thì lượt kế gọi lại tuyến chính (lỗi nữa thì lại sang dự phòng)."""
+        with self._khoa:
+            if self._het_du_phong is not None and self.client.clock() >= self._het_du_phong:
+                print(f"  VỀ TUYẾN CHÍNH: thử lại {self.chinh}", flush=True)
+                self._dat_model(self.chinh)
+                self._het_du_phong = None
+
+    def _dat_model(self, model):
+        self.client.cfg = dict(self.client.cfg, **{f"{llm_client.API_ROLE}.model": model})
+        self.model = model
 
     def write(self, n, output, model=None):
         """Ghi out/NNN.json rồi dòng nhật ký (đúng thứ tự đó: nhật ký có dòng thì out đã có). model: model đã gọi thật cho lô này
