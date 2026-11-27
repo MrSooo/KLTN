@@ -1,0 +1,114 @@
+{
+ "cau_hoi": [
+  {
+   "id": "B29",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "contract_expires",
+     "phu_dinh": false,
+     "trich": "hết hạn"
+    },
+    {
+     "vi_tu": "grassroots_rep_org_leadership_member",
+     "phu_dinh": false,
+     "trich": "thành viên ban lãnh đạo công đoàn cơ sở (tổ chức đại diện người lao động tại cơ sở)"
+    }
+   ]
+  },
+  {
+   "id": "B30",
+   "phi": "may_employer_unilaterally_terminates_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "suspend_labor_contract",
+     "phu_dinh": false,
+     "trich": "tạm hoãn hợp đồng lao động"
+    },
+    {
+     "vi_tu": "perform_military_service",
+     "phu_dinh": false,
+     "trich": "nghĩa vụ quân sự"
+    },
+    {
+     "vi_tu": "labor_contract_unexpired",
+     "phu_dinh": false,
+     "trich": "hợp đồng lao động vẫn còn thời hạn"
+    },
+    {
+     "vi_tu": "within_15_days_from_suspension_expiry",
+     "phu_dinh": true,
+     "trich": "20 ngày kể từ khi hết thời hạn tạm hoãn"
+    },
+    {
+     "vi_tu": "present_at_workplace",
+     "phu_dinh": true,
+     "trich": "không đến công ty làm việc"
+    },
+    {
+     "vi_tu": "have_other_agreement",
+     "phu_dinh": true,
+     "trich": "không có thỏa thuận nào khác"
+    }
+   ]
+  },
+  {
+   "id": "B31",
+   "phi": "illegal_strike",
+   "su_kien": [
+    {
+     "vi_tu": "strike",
+     "phu_dinh": false,
+     "trich": "đình công"
+    },
+    {
+     "vi_tu": "during_labor_arbitration_council_settlement",
+     "phu_dinh": false,
+     "trich": "đang được Hội đồng trọng tài lao động thụ lý giải quyết"
+    }
+   ]
+  },
+  {
+   "id": "B32",
+   "phi": "may_temporarily_close_workplace",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "công ty"
+    },
+    {
+     "vi_tu": "during_strike",
+     "phu_dinh": true,
+     "trich": "Cuộc đình công tại nhà máy đã kết thúc"
+    },
+    {
+     "vi_tu": "return_to_work",
+     "phu_dinh": false,
+     "trich": "trở lại làm việc"
+    }
+   ]
+  },
+  {
+   "id": "B33",
+   "phi": "must_create_separate_tracking_book",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Cửa hàng"
+    },
+    {
+     "vi_tu": "employ_minor_employee",
+     "phu_dinh": false,
+     "trich": "16 tuổi"
+    }
+   ]
+  }
+ ]
+}
