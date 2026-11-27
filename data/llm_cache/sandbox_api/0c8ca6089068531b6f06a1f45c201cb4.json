@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:58:00+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0370\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D64.K2\",\n    \"tieu_de_dieu\": \"Nội dung đối thoại tại nơi làm việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Ngoài nội dung quy định tại khoản 1 Điều này, các bên lựa chọn một hoặc một số nội dung sau đây để tiến hành đối thoại:\",\n    \"cac_muc_con\": [\n     \"Tình hình sản xuất, kinh doanh của người sử dụng lao động;\",\n     \"Việc thực hiện hợp đồng lao động, thỏa ước lao động tập thể, nội quy lao động, quy chế và cam kết, thỏa thuận khác tại nơi làm việc;\",\n     \"Điều kiện làm việc;\",\n     \"Yêu cầu của người lao động, tổ chức đại diện người lao động đối với người sử dụng lao động;\",\n     \"Yêu cầu của người sử dụng lao động đối với người lao động, tổ chức đại diện người lao động;\",\n     \"Nội dung khác mà một hoặc các bên quan tâm.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D178.K2\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của tổ chức đại diện người lao động tại cơ sở trong quan hệ lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Đối thoại tại nơi làm việc theo quy định của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"conduct_dialogue\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0371\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D65\",\n    \"tieu_de_dieu\": \"Thương lượng tập thể\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thương lượng tập thể là việc đàm phán, thỏa thuận giữa một bên là một hoặc nhiều tổ chức đại diện người lao động với một bên là một hoặc nhiều người sử dụng lao động hoặc tổ chức đại diện người sử dụng lao động nhằm xác lập điều kiện lao động, quy định về mối quan hệ giữa các bên và xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D73.K1\",\n    \"tieu_de_dieu\": \"Thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trên cơ sở đồng thuận, các bên thương lượng tập thể có nhiều doanh nghiệp tham gia có thể yêu cầu Ủy ban nhân dân cấp tỉnh nơi đặt trụ sở chính của các doanh nghiệp tham gia thương lượng hoặc nơi do các bên lựa chọn trong trường hợp các doanh nghiệp tham gia thương lượng có trụ sở chính tại nhiều tỉnh, thành phố trực thuộc Trung ương thành lập Hội đồng thương lượng tập thể để tiến hành thương lượng tập thể.\"\n   },\n   \"vi_tu_chung\": [\n    \"collective_bargaining\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0372\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D65\",\n    \"tieu_de_dieu\": \"Thương lượng tập thể\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thương lượng tập thể là việc đàm phán, thỏa thuận giữa một bên là một hoặc nhiều tổ chức đại diện người lao động với một bên là một hoặc nhiều người sử dụng lao động hoặc tổ chức đại diện người sử dụng lao động nhằm xác lập điều kiện lao động, quy định về mối quan hệ giữa các bên và xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D178.K1\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của tổ chức đại diện người lao động tại cơ sở trong quan hệ lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thương lượng tập thể với người sử dụng lao động theo quy định của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"collective_bargaining\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0373\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D67\",\n    \"tieu_de_dieu\": \"Nội dung thương lượng tập thể\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:\",\n    \"cac_muc_con\": [\n     \"Tiền lương, trợ cấp, nâng lương, thưởng, bữa ăn và các chế độ khác;\",\n     \"Mức lao động và thời giờ làm việc, thời giờ nghỉ ngơi, làm thêm giờ, nghỉ giữa ca;\",\n     \"Bảo đảm việc làm đối với người lao động;\",\n     \"Bảo đảm an toàn, vệ sinh lao động; thực hiện nội quy lao động;\",\n     \"Điều kiện, phương tiện hoạt động của tổ chức đại diện người lao động; mối quan hệ giữa người sử dụng lao động và tổ chức đại diện người lao động;\",\n     \"Cơ chế, phương thức phòng ngừa, giải quyết tranh chấp lao động;\",\n     \"Bảo đảm bình đẳng giới, bảo vệ thai sản, nghỉ hằng năm; phòng, chống bạo lực và quấy rối tình dục tại nơi làm việc;\",\n     \"Nội dung khác mà một hoặc các bên quan tâm.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D73.K1\",\n    \"tieu_de_dieu\": \"Thương lượng tập thể có nhiều doanh nghiệp tham gia thông qua Hội đồng thương lượng tập thể\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trên cơ sở đồng thuận, các bên thương lượng tập thể có nhiều doanh nghiệp tham gia có thể yêu cầu Ủy ban nhân dân cấp tỉnh nơi đặt trụ sở chính của các doanh nghiệp tham gia thương lượng hoặc nơi do các bên lựa chọn trong trường hợp các doanh nghiệp tham gia thương lượng có trụ sở chính tại nhiều tỉnh, thành phố trực thuộc Trung ương thành lập Hội đồng thương lượng tập thể để tiến hành thương lượng tập thể.\"\n   },\n   \"vi_tu_chung\": [\n    \"collective_bargaining\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0374\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D67\",\n    \"tieu_de_dieu\": \"Nội dung thương lượng tập thể\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:\",\n    \"cac_muc_con\": [\n     \"Tiền lương, trợ cấp, nâng lương, thưởng, bữa ăn và các chế độ khác;\",\n     \"Mức lao động và thời giờ làm việc, thời giờ nghỉ ngơi, làm thêm giờ, nghỉ giữa ca;\",\n     \"Bảo đảm việc làm đối với người lao động;\",\n     \"Bảo đảm an toàn, vệ sinh lao động; thực hiện nội quy lao động;\",\n     \"Điều kiện, phương tiện hoạt động của tổ chức đại diện người lao động; mối quan hệ giữa người sử dụng lao động và tổ chức đại diện người lao động;\",\n     \"Cơ chế, phương thức phòng ngừa, giải quyết tranh chấp lao động;\",\n     \"Bảo đảm bình đẳng giới, bảo vệ thai sản, nghỉ hằng năm; phòng, chống bạo lực và quấy rối tình dục tại nơi làm việc;\",\n     \"Nội dung khác mà một hoặc các bên quan tâm.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D178.K1\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của tổ chức đại diện người lao động tại cơ sở trong quan hệ lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thương lượng tập thể với người sử dụng lao động theo quy định của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"collective_bargaining\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0375\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D67.K4\",\n    \"tieu_de_dieu\": \"Nội dung thương lượng tập thể\",\n    \"khoan_cha\": \"Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:\",\n    \"chu_don_vi\": \"Bảo đảm an toàn, vệ sinh lao động; thực hiện nội quy lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D134.K1\",\n    \"tieu_de_dieu\": \"Bảo đảm an toàn, vệ sinh lao động tại nơi làm việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động có trách nhiệm thực hiện đầy đủ các giải pháp nhằm bảo đảm an toàn, vệ sinh lao động tại nơi làm việc.\"\n   },\n   \"vi_tu_chung\": [\n    \"ensure_occupational_safety_and_health\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0376\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D67.K4\",\n    \"tieu_de_dieu\": \"Nội dung thương lượng tập thể\",\n    \"khoan_cha\": \"Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:\",\n    \"chu_don_vi\": \"Bảo đảm an toàn, vệ sinh lao động; thực hiện nội quy lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D142.K2\",\n    \"tieu_de_dieu\": \"Nghề, công việc có ảnh hưởng xấu tới chức năng sinh sản và nuôi con\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải cung cấp đầy đủ thông tin về tính chất nguy hiểm, nguy cơ, yêu cầu của công việc để người lao động lựa chọn và phải bảo đảm điều kiện an toàn, vệ sinh lao động cho người lao động theo quy định khi sử dụng họ làm công việc thuộc danh mục quy định tại khoản 1 Điều này.\"\n   },\n   \"vi_tu_chung\": [\n    \"ensure_occupational_safety_and_health\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0377\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D67.K4\",\n    \"tieu_de_dieu\": \"Nội dung thương lượng tập thể\",\n    \"khoan_cha\": \"Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:\",\n    \"chu_don_vi\": \"Bảo đảm an toàn, vệ sinh lao động; thực hiện nội quy lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D159.K1\",\n    \"tieu_de_dieu\": \"Sử dụng lao động là người khuyết tật\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải bảo đảm về điều kiện lao động, công cụ lao động, an toàn, vệ sinh lao động và tổ chức khám sức khỏe định kỳ phù hợp với người lao động là người khuyết tật.\"\n   },\n   \"vi_tu_chung\": [\n    \"ensure_occupational_safety_and_health\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0378\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D67.K7\",\n    \"tieu_de_dieu\": \"Nội dung thương lượng tập thể\",\n    \"khoan_cha\": \"Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:\",\n    \"chu_don_vi\": \"Bảo đảm bình đẳng giới, bảo vệ thai sản, nghỉ hằng năm; phòng, chống bạo lực và quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D101.K3\",\n    \"tieu_de_dieu\": \"Tạm ứng tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm, người lao động được tạm ứng một khoản tiền ít nhất bằng tiền lương của những ngày nghỉ.\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0379\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D67.K7\",\n    \"tieu_de_dieu\": \"Nội dung thương lượng tập thể\",\n    \"khoan_cha\": \"Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:\",\n    \"chu_don_vi\": \"Bảo đảm bình đẳng giới, bảo vệ thai sản, nghỉ hằng năm; phòng, chống bạo lực và quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K1\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động thì được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động như sau:\",\n    \"cac_muc_con\": [\n     \"12 ngày làm việc đối với người làm công việc trong điều kiện bình thường;\",\n     \"14 ngày làm việc đối với người lao động chưa thành niên, lao động là người khuyết tật, người làm nghề, công việc nặng nhọc, độc hại, nguy hiểm;\",\n     \"16 ngày làm việc đối với người làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_e23e5bcd16605d7771ab1264",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0370",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0371",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0372",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0373",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0374",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0375",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0376",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0377",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0378",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0379",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4152,
+  "output_tokens": 959,
+  "cost_vnd": 39.23
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {}
+ }
+}

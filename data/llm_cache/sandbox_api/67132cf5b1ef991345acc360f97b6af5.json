@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:53:03+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0030\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K2\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người sử dụng lao động là doanh nghiệp, cơ quan, tổ chức, hợp tác xã, hộ gia đình, cá nhân có thuê mướn, sử dụng người lao động làm việc cho mình theo thỏa thuận; trường hợp người sử dụng lao động là cá nhân thì phải có năng lực hành vi dân sự đầy đủ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K1.a\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n    \"chu_don_vi\": \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\"\n   },\n   \"vi_tu_chung\": [\n    \"have_full_civil_act_capacity\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0031\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K6\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người làm việc không có quan hệ lao động là người làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0032\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K6\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người làm việc không có quan hệ lao động là người làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K5\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động là người nước ngoài làm việc tại Việt Nam bị trục xuất theo bản án, quyết định của Tòa án đã có hiệu lực pháp luật, quyết định của cơ quan nhà nước có thẩm quyền.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0033\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K6\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người làm việc không có quan hệ lao động là người làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D35.K1.c\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người lao động\",\n    \"khoan_cha\": \"Người lao động có quyền đơn phương chấm dứt hợp đồng lao động nhưng phải báo trước cho người sử dụng lao động như sau:\",\n    \"chu_don_vi\": \"Ít nhất 03 ngày làm việc nếu làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng;\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0034\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K6\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người làm việc không có quan hệ lao động là người làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D112.K2\",\n    \"tieu_de_dieu\": \"Nghỉ lễ, tết\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động là người nước ngoài làm việc tại Việt Nam ngoài các ngày nghỉ theo quy định tại khoản 1 Điều này còn được nghỉ thêm 01 ngày Tết cổ truyền dân tộc và 01 ngày Quốc khánh của nước họ.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0035\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K6\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người làm việc không có quan hệ lao động là người làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D137.K1.a\",\n    \"tieu_de_dieu\": \"Bảo vệ thai sản\",\n    \"khoan_cha\": \"Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa trong trường hợp sau đây:\",\n    \"chu_don_vi\": \"Mang thai từ tháng thứ 07 hoặc từ tháng thứ 06 nếu làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo;\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0036\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K6\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người làm việc không có quan hệ lao động là người làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D149.K2\",\n    \"tieu_de_dieu\": \"Sử dụng người lao động cao tuổi\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi người lao động cao tuổi đang hưởng lương hưu theo quy định của Luật Bảo hiểm xã hội mà làm việc theo hợp đồng lao động mới thì ngoài quyền lợi đang hưởng theo chế độ hưu trí, người lao động cao tuổi được hưởng tiền lương và các quyền lợi khác theo quy định của pháp luật, hợp đồng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0037\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K6\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người làm việc không có quan hệ lao động là người làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K1\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n    \"cac_muc_con\": [\n     \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\",\n     \"Có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc; có đủ sức khỏe theo quy định của Bộ trưởng Bộ Y tế;\",\n     \"Không phải là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam;\",\n     \"Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp, trừ trường hợp quy định tại Điều 154 của Bộ luật này.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0038\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K6\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người làm việc không có quan hệ lao động là người làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K3\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam phải tuân theo pháp luật lao động Việt Nam và được pháp luật Việt Nam bảo vệ, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0039\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K6\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người làm việc không có quan hệ lao động là người làm việc không trên cơ sở thuê mướn bằng hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D153.K2\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người sử dụng lao động và người lao động nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động sẽ bị buộc xuất cảnh hoặc trục xuất theo quy định của pháp luật về nhập cảnh, xuất cảnh, quá cảnh, cư trú của người nước ngoài tại Việt Nam.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_7b167746717c98835530d529",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0030",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0031",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0032",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0033",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0034",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0035",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0036",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0037",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0038",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0039",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3611,
+  "output_tokens": 1018,
+  "cost_vnd": 39
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {}
+ }
+}

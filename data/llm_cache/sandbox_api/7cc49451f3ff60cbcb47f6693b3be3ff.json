@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:53:20+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0050\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D8.K2\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Ngược đãi người lao động, cưỡng bức lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"forced_labor\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0051\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D32.K3\",\n    \"tieu_de_dieu\": \"Làm việc không trọn thời gian\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc không trọn thời gian được hưởng lương; bình đẳng trong thực hiện quyền và nghĩa vụ với người lao động làm việc trọn thời gian; bình đẳng về cơ hội, không bị phân biệt đối xử, bảo đảm an toàn, vệ sinh lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"discrimination_in_employment\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0052\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K5\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động là người nước ngoài làm việc tại Việt Nam bị trục xuất theo bản án, quyết định của Tòa án đã có hiệu lực pháp luật, quyết định của cơ quan nhà nước có thẩm quyền.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0053\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D35.K1.c\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người lao động\",\n    \"khoan_cha\": \"Người lao động có quyền đơn phương chấm dứt hợp đồng lao động nhưng phải báo trước cho người sử dụng lao động như sau:\",\n    \"chu_don_vi\": \"Ít nhất 03 ngày làm việc nếu làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng;\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0054\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D35.K2.c\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người lao động\",\n    \"khoan_cha\": \"Người lao động có quyền đơn phương chấm dứt hợp đồng lao động không cần báo trước trong trường hợp sau đây:\",\n    \"chu_don_vi\": \"Bị người sử dụng lao động ngược đãi, đánh đập hoặc có lời nói, hành vi nhục mạ, hành vi làm ảnh hưởng đến sức khỏe, nhân phẩm, danh dự; bị cưỡng bức lao động;\"\n   },\n   \"vi_tu_chung\": [\n    \"forced_labor\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0055\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D112.K2\",\n    \"tieu_de_dieu\": \"Nghỉ lễ, tết\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động là người nước ngoài làm việc tại Việt Nam ngoài các ngày nghỉ theo quy định tại khoản 1 Điều này còn được nghỉ thêm 01 ngày Tết cổ truyền dân tộc và 01 ngày Quốc khánh của nước họ.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0056\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D137.K1.a\",\n    \"tieu_de_dieu\": \"Bảo vệ thai sản\",\n    \"khoan_cha\": \"Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa trong trường hợp sau đây:\",\n    \"chu_don_vi\": \"Mang thai từ tháng thứ 07 hoặc từ tháng thứ 06 nếu làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo;\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0057\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D149.K2\",\n    \"tieu_de_dieu\": \"Sử dụng người lao động cao tuổi\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi người lao động cao tuổi đang hưởng lương hưu theo quy định của Luật Bảo hiểm xã hội mà làm việc theo hợp đồng lao động mới thì ngoài quyền lợi đang hưởng theo chế độ hưu trí, người lao động cao tuổi được hưởng tiền lương và các quyền lợi khác theo quy định của pháp luật, hợp đồng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0058\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K1\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n    \"cac_muc_con\": [\n     \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\",\n     \"Có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc; có đủ sức khỏe theo quy định của Bộ trưởng Bộ Y tế;\",\n     \"Không phải là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam;\",\n     \"Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp, trừ trường hợp quy định tại Điều 154 của Bộ luật này.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0059\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K3\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam phải tuân theo pháp luật lao động Việt Nam và được pháp luật Việt Nam bảo vệ, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_5e824544971948b94061603c",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0050",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0051",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0052",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0053",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0054",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0055",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0056",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0057",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0058",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0059",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3802,
+  "output_tokens": 1303,
+  "cost_vnd": 39.09
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {}
+ }
+}

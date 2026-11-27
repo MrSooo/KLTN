@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:59:22+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0460\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D122.K5\",\n    \"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Không xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động trong khi mắc bệnh tâm thần hoặc một bệnh khác làm mất khả năng nhận thức hoặc khả năng điều khiển hành vi của mình.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D128.K4\",\n    \"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người lao động không bị xử lý kỷ luật lao động thì được người sử dụng lao động trả đủ tiền lương cho thời gian bị tạm đình chỉ công việc.\"\n   },\n   \"vi_tu_chung\": [\n    \"handle_labor_discipline_violation\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0461\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D122.K5\",\n    \"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Không xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động trong khi mắc bệnh tâm thần hoặc một bệnh khác làm mất khả năng nhận thức hoặc khả năng điều khiển hành vi của mình.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D131\",\n    \"tieu_de_dieu\": \"Khiếu nại về kỷ luật lao động, trách nhiệm vật chất\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người bị xử lý kỷ luật lao động, bị tạm đình chỉ công việc hoặc phải bồi thường theo chế độ trách nhiệm vật chất nếu thấy không thỏa đáng có quyền khiếu nại với người sử dụng lao động, với cơ quan có thẩm quyền theo quy định của pháp luật hoặc yêu cầu giải quyết tranh chấp lao động theo trình tự do pháp luật quy định.\\nChính phủ quy định chi tiết Điều này.\"\n   },\n   \"vi_tu_chung\": [\n    \"handle_labor_discipline_violation\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0462\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D122.K5\",\n    \"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Không xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động trong khi mắc bệnh tâm thần hoặc một bệnh khác làm mất khả năng nhận thức hoặc khả năng điều khiển hành vi của mình.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.b\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Sa thải, kỷ luật, đơn phương chấm dứt hợp đồng lao động, không tiếp tục giao kết hoặc gia hạn hợp đồng lao động, chuyển người lao động làm công việc khác;\"\n   },\n   \"vi_tu_chung\": [\n    \"handle_labor_discipline_violation\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0463\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D122.K5\",\n    \"tieu_de_dieu\": \"Nguyên tắc, trình tự, thủ tục xử lý kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Không xử lý kỷ luật lao động đối với người lao động vi phạm kỷ luật lao động trong khi mắc bệnh tâm thần hoặc một bệnh khác làm mất khả năng nhận thức hoặc khả năng điều khiển hành vi của mình.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K2\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định của Tòa án về cuộc đình công là bất hợp pháp thì người lao động đang tham gia đình công phải ngừng ngay đình công và trở lại làm việc; nếu người lao động không ngừng đình công, không trở lại làm việc thì tùy theo mức độ vi phạm có thể bị xử lý kỷ luật lao động theo quy định của pháp luật về lao động.\\nTrong trường hợp cuộc đình công là bất hợp pháp mà gây thiệt hại cho người sử dụng lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công phải bồi thường thiệt hại theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"handle_labor_discipline_violation\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0464\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D123.K2\",\n    \"tieu_de_dieu\": \"Thời hiệu xử lý kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hết thời gian quy định tại khoản 4 Điều 122 của Bộ luật này, nếu hết thời hiệu hoặc còn thời hiệu nhưng không đủ 60 ngày thì được kéo dài thời hiệu để xử lý kỷ luật lao động nhưng không quá 60 ngày kể từ ngày hết thời gian nêu trên.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D127.K3\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm khi xử lý kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Xử lý kỷ luật lao động đối với người lao động có hành vi vi phạm không được quy định trong nội quy lao động hoặc không thỏa thuận trong hợp đồng lao động đã giao kết hoặc pháp luật về lao động không có quy định.\"\n   },\n   \"vi_tu_chung\": [\n    \"handle_labor_discipline_violation\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0465\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D123.K2\",\n    \"tieu_de_dieu\": \"Thời hiệu xử lý kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hết thời gian quy định tại khoản 4 Điều 122 của Bộ luật này, nếu hết thời hiệu hoặc còn thời hiệu nhưng không đủ 60 ngày thì được kéo dài thời hiệu để xử lý kỷ luật lao động nhưng không quá 60 ngày kể từ ngày hết thời gian nêu trên.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D128.K3\",\n    \"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người lao động bị xử lý kỷ luật lao động, người lao động cũng không phải trả lại số tiền lương đã tạm ứng.\"\n   },\n   \"vi_tu_chung\": [\n    \"handle_labor_discipline_violation\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0466\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D123.K2\",\n    \"tieu_de_dieu\": \"Thời hiệu xử lý kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hết thời gian quy định tại khoản 4 Điều 122 của Bộ luật này, nếu hết thời hiệu hoặc còn thời hiệu nhưng không đủ 60 ngày thì được kéo dài thời hiệu để xử lý kỷ luật lao động nhưng không quá 60 ngày kể từ ngày hết thời gian nêu trên.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D128.K4\",\n    \"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người lao động không bị xử lý kỷ luật lao động thì được người sử dụng lao động trả đủ tiền lương cho thời gian bị tạm đình chỉ công việc.\"\n   },\n   \"vi_tu_chung\": [\n    \"handle_labor_discipline_violation\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0467\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D123.K2\",\n    \"tieu_de_dieu\": \"Thời hiệu xử lý kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hết thời gian quy định tại khoản 4 Điều 122 của Bộ luật này, nếu hết thời hiệu hoặc còn thời hiệu nhưng không đủ 60 ngày thì được kéo dài thời hiệu để xử lý kỷ luật lao động nhưng không quá 60 ngày kể từ ngày hết thời gian nêu trên.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D131\",\n    \"tieu_de_dieu\": \"Khiếu nại về kỷ luật lao động, trách nhiệm vật chất\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người bị xử lý kỷ luật lao động, bị tạm đình chỉ công việc hoặc phải bồi thường theo chế độ trách nhiệm vật chất nếu thấy không thỏa đáng có quyền khiếu nại với người sử dụng lao động, với cơ quan có thẩm quyền theo quy định của pháp luật hoặc yêu cầu giải quyết tranh chấp lao động theo trình tự do pháp luật quy định.\\nChính phủ quy định chi tiết Điều này.\"\n   },\n   \"vi_tu_chung\": [\n    \"handle_labor_discipline_violation\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0468\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D123.K2\",\n    \"tieu_de_dieu\": \"Thời hiệu xử lý kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hết thời gian quy định tại khoản 4 Điều 122 của Bộ luật này, nếu hết thời hiệu hoặc còn thời hiệu nhưng không đủ 60 ngày thì được kéo dài thời hiệu để xử lý kỷ luật lao động nhưng không quá 60 ngày kể từ ngày hết thời gian nêu trên.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.b\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Sa thải, kỷ luật, đơn phương chấm dứt hợp đồng lao động, không tiếp tục giao kết hoặc gia hạn hợp đồng lao động, chuyển người lao động làm công việc khác;\"\n   },\n   \"vi_tu_chung\": [\n    \"handle_labor_discipline_violation\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0469\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D125.K3\",\n    \"tieu_de_dieu\": \"Áp dụng hình thức xử lý kỷ luật sa thải\",\n    \"khoan_cha\": \"Hình thức xử lý kỷ luật sa thải được người sử dụng lao động áp dụng trong trường hợp sau đây:\",\n    \"chu_don_vi\": \"Người lao động bị xử lý kỷ luật kéo dài thời hạn nâng lương hoặc cách chức mà tái phạm trong thời gian chưa xóa kỷ luật. Tái phạm là trường hợp người lao động lặp lại hành vi vi phạm đã bị xử lý kỷ luật mà chưa được xóa kỷ luật theo quy định tại Điều 126 của Bộ luật này;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D126.K1\",\n    \"tieu_de_dieu\": \"Xóa kỷ luật, giảm thời hạn chấp hành kỷ luật lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động bị khiển trách sau 03 tháng hoặc bị xử lý kỷ luật kéo dài thời hạn nâng lương sau 06 tháng hoặc bị xử lý kỷ luật cách chức sau 03 năm kể từ ngày bị xử lý, nếu không tiếp tục vi phạm kỷ luật lao động thì đương nhiên được xóa kỷ luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"have_discipline_expunged\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_07e886ca41742ef5d9dc08e3",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0460",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0461",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0462",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0463",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0464",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0465",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0466",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0467",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0468",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0469",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3945,
+  "output_tokens": 776,
+  "cost_vnd": 39.16
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {}
+ }
+}

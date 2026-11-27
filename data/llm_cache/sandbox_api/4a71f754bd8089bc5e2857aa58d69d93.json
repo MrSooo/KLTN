@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:53:11+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0040\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K7\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Cưỡng bức lao động là việc dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác để ép buộc người lao động phải làm việc trái ý muốn của họ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"vi_tu_chung\": [\n    \"forced_labor\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0041\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K7\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Cưỡng bức lao động là việc dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác để ép buộc người lao động phải làm việc trái ý muốn của họ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D8.K2\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Ngược đãi người lao động, cưỡng bức lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"forced_labor\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0042\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K7\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Cưỡng bức lao động là việc dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác để ép buộc người lao động phải làm việc trái ý muốn của họ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D8.K6\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lôi kéo, dụ dỗ, hứa hẹn, quảng cáo gian dối hoặc thủ đoạn khác để lừa gạt người lao động hoặc để tuyển dụng người lao động với mục đích mua bán người, bóc lột, cưỡng bức lao động hoặc lợi dụng dịch vụ việc làm, hoạt động đưa người lao động đi làm việc ở nước ngoài theo hợp đồng để thực hiện hành vi trái pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"other_tricks\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0043\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K7\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Cưỡng bức lao động là việc dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác để ép buộc người lao động phải làm việc trái ý muốn của họ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D35.K2.c\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người lao động\",\n    \"khoan_cha\": \"Người lao động có quyền đơn phương chấm dứt hợp đồng lao động không cần báo trước trong trường hợp sau đây:\",\n    \"chu_don_vi\": \"Bị người sử dụng lao động ngược đãi, đánh đập hoặc có lời nói, hành vi nhục mạ, hành vi làm ảnh hưởng đến sức khỏe, nhân phẩm, danh dự; bị cưỡng bức lao động;\"\n   },\n   \"vi_tu_chung\": [\n    \"forced_labor\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0044\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K7\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Cưỡng bức lao động là việc dùng vũ lực, đe dọa dùng vũ lực hoặc các thủ đoạn khác để ép buộc người lao động phải làm việc trái ý muốn của họ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D165.K1\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Ngược đãi, quấy rối tình dục, cưỡng bức lao động, dùng vũ lực đối với lao động là người giúp việc gia đình.\"\n   },\n   \"vi_tu_chung\": [\n    \"forced_labor\",\n    \"use_force\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0045\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K8\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Phân biệt đối xử trong lao động là hành vi phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp có tác động làm ảnh hưởng đến bình đẳng về cơ hội việc làm hoặc nghề nghiệp.\\nViệc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương thì không bị xem là phân biệt đối xử.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"vi_tu_chung\": [\n    \"discrimination_in_employment\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0046\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K8\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Phân biệt đối xử trong lao động là hành vi phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp có tác động làm ảnh hưởng đến bình đẳng về cơ hội việc làm hoặc nghề nghiệp.\\nViệc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương thì không bị xem là phân biệt đối xử.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D8.K1\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Phân biệt đối xử trong lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"discrimination_in_employment\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0047\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K8\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Phân biệt đối xử trong lao động là hành vi phân biệt, loại trừ hoặc ưu tiên dựa trên chủng tộc, màu da, nguồn gốc quốc gia hoặc nguồn gốc xã hội, dân tộc, giới tính, độ tuổi, tình trạng thai sản, tình trạng hôn nhân, tôn giáo, tín ngưỡng, chính kiến, khuyết tật, trách nhiệm gia đình hoặc trên cơ sở tình trạng nhiễm HIV hoặc vì lý do thành lập, gia nhập và hoạt động công đoàn, tổ chức của người lao động tại doanh nghiệp có tác động làm ảnh hưởng đến bình đẳng về cơ hội việc làm hoặc nghề nghiệp.\\nViệc phân biệt, loại trừ hoặc ưu tiên xuất phát từ yêu cầu đặc thù của công việc và các hành vi duy trì, bảo vệ việc làm cho người lao động dễ bị tổn thương thì không bị xem là phân biệt đối xử.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D32.K3\",\n    \"tieu_de_dieu\": \"Làm việc không trọn thời gian\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc không trọn thời gian được hưởng lương; bình đẳng trong thực hiện quyền và nghĩa vụ với người lao động làm việc trọn thời gian; bình đẳng về cơ hội, không bị phân biệt đối xử, bảo đảm an toàn, vệ sinh lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"discrimination_in_employment\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0048\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K9\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Quấy rối tình dục tại nơi làm việc là hành vi có tính chất tình dục của bất kỳ người nào đối với người khác tại nơi làm việc mà không được người đó mong muốn hoặc chấp nhận. Nơi làm việc là bất kỳ nơi nào mà người lao động thực tế làm việc theo thỏa thuận hoặc phân công của người sử dụng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"vi_tu_chung\": [\n    \"sexual_harassment_at_workplace\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0049\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D8.K1\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trong lĩnh vực lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Phân biệt đối xử trong lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"discrimination_in_employment\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_4c492b6f279e42831eca6e14",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0040",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0041",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0042",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0043",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0044",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0045",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0046",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0047",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0048",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0049",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3952,
+  "output_tokens": 1109,
+  "cost_vnd": 39.2
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 457
+   }
+  ],
+  "usage_khac": {}
+ }
+}

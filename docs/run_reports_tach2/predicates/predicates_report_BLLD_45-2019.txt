@@ -1,6 +1,43 @@
 1.6B names-2.3: BLLD_45-2019
 dòng 1.6A dùng: 4850 (mệnh đề 2598, con trỏ 217, chủ thể 2035); bỏ vì lỗi cổng 1.6A: 8
 chữ (gộp cấp 1): 2441; lượt kế hoạch: 207
-chữ có tên: 0; reuse do LLM chọn: 0 (0.0%); vị từ: 0 (concept 0, input 0); chữ bị loại: 0
-vị từ dùng ở từ 2 Điều: 0; cặp khác Điều chung vị từ concept (chưa lọc như 1.7): 0
-CHƯA ĐỦ: lượt 1 thiếu bản ghi đã lưu hoặc bản ghi sai hình; các lượt sau chưa chạy
+chữ có tên: 2439; reuse do LLM chọn: 292 (12.0%); vị từ: 2111 (concept 1209, input 902); chữ bị loại: 2
+vị từ dùng ở từ 2 Điều: 269; cặp khác Điều chung vị từ concept (chưa lọc như 1.7): 28521
+máy gộp tên cùng mặt chữ (>= 3 tiếng): 37 nhóm, bớt 37 tên
+  under_agreement <- as_agreed
+  have_full_civil_act_capacity <- possess_full_civil_act_capacity
+  at_workplace <- at_the_workplace
+  establish_occupational_organization <- establish_professional_organization
+  establish_other_organization_under_law <- establish_other_organization_prescribed_by_law
+  join_occupational_organization <- join_professional_organization
+  join_other_organization_under_law <- join_other_organization_prescribed_by_law
+  operate_in_occupational_organization <- operate_in_professional_organization
+  operate_in_other_organization_under_law <- operate_in_other_organization_prescribed_by_law
+  unilaterally_terminate_employment_contract <- unilaterally_terminate
+  other_rights_under_law <- have_other_rights_prescribed_by_law
+  implement_employment_contract <- implement_labor_contract
+  implement_collective_labor_agreement <- implement_collective_bargaining_agreement
+  implement_other_lawful_agreements <- implement_other_legal_agreements
+  implement_labor_law <- implement_law_on_labor
+  implement_employment_law <- implement_law_on_employment
+  implement_vocational_education_law <- implement_law_on_vocational_education
+  implement_social_insurance_law <- implement_law_on_social_insurance
+  implement_health_insurance_law <- implement_law_on_health_insurance
+  implement_unemployment_insurance_law <- implement_law_on_unemployment_insurance
+  implement_law_on_occupational_safety_and_health <- implement_occupational_safety_and_health_law
+  through_employment_service_organization <- via_employment_service_organization
+  conclude_employment_contract <- enter_into_employment_contract
+  retain_one_copy <- keep_one_copy
+  within_15_days_from_contract_suspension_expiry <- within_15_days_of_contract_suspension_expiry
+  ensure_occupational_safety_and_health <- guaranteed_occupational_safety_and_health
+  court_declared_loss_of_civil_act_capacity <- declared_loss_of_civil_act_capacity_by_court
+  court_declared_missing <- declared_missing_by_court
+  court_declared_dead <- declared_dead_by_court
+  at_least_45_days <- notify_at_least_45_days_in_advance
+  at_least_30_days <- notify_at_least_30_days_in_advance
+  notify_at_least_3_working_days_in_advance <- at_least_3_working_days
+  as_prescribed_by_government <- under_government_regulations
+  continue_entering_into_employment_contract <- continue_concluding_employment_contract
+  time_limit_expires <- expire
+  have_work_permit <- possess_work_permit
+  fully_implement_contractual_agreements <- fully_perform_employment_contract_agreements

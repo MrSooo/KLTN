@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T10:00:18+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0530\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D176.K1.c\",\n    \"tieu_de_dieu\": \"Quyền của thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở có quyền sau đây:\",\n    \"chu_don_vi\": \"Được sử dụng thời gian làm việc theo quy định tại khoản 2 và khoản 3 Điều này để thực hiện công việc của tổ chức đại diện người lao động tại cơ sở mà vẫn được người sử dụng lao động trả lương;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D207.K2\",\n    \"tieu_de_dieu\": \"Tiền lương và các quyền lợi hợp pháp khác của người lao động trong thời gian đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động tham gia đình công không được trả lương và các quyền lợi khác theo quy định của pháp luật, trừ trường hợp các bên có thỏa thuận khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0531\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D177.K3\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động đối với tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Phải thỏa thuận bằng văn bản với ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở khi đơn phương chấm dứt hợp đồng lao động, chuyển làm công việc khác, kỷ luật sa thải đối với người lao động là thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở. Trường hợp không thỏa thuận được, hai bên phải báo cáo với cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh. Sau 30 ngày kể từ ngày báo cho cơ quan chuyên môn về lao động thuộc Ủy ban nhân dân cấp tỉnh biết, người sử dụng lao động mới có quyền quyết định. Trường hợp không nhất trí với quyết định của người sử dụng lao động thì người lao động, ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở có quyền yêu cầu giải quyết tranh chấp lao động theo trình tự, thủ tục do pháp luật quy định.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D185.K4\",\n    \"tieu_de_dieu\": \"Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi có yêu cầu giải quyết tranh chấp lao động theo quy định tại các điều 189, 193 và 197 của Bộ luật này, Hội đồng trọng tài lao động quyết định thành lập Ban trọng tài lao động để giải quyết tranh chấp như sau:\",\n    \"cac_muc_con\": [\n     \"Đại diện mỗi bên tranh chấp chọn 01 trọng tài viên trong số danh sách trọng tài viên lao động;\",\n     \"Trọng tài viên lao động do các bên lựa chọn theo quy định tại điểm a khoản này thống nhất lựa chọn 01 trọng tài viên lao động khác làm Trưởng Ban trọng tài lao động;\",\n     \"Trường hợp các bên tranh chấp cùng lựa chọn một trọng tài viên để giải quyết tranh chấp lao động thì Ban trọng tài lao động chỉ gồm 01 trọng tài viên lao động đã được lựa chọn.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"request_labor_dispute_settlement\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0532\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D178.K5\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của tổ chức đại diện người lao động tại cơ sở trong quan hệ lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tổ chức và lãnh đạo đình công theo quy định của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D198\",\n    \"tieu_de_dieu\": \"Đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Đình công là sự ngừng việc tạm thời, tự nguyện và có tổ chức của người lao động nhằm đạt được yêu cầu trong quá trình giải quyết tranh chấp lao động và do tổ chức đại diện người lao động có quyền thương lượng tập thể là một bên tranh chấp lao động tập thể tổ chức và lãnh đạo.\"\n   },\n   \"vi_tu_chung\": [\n    \"lead_strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0533\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D178.K5\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của tổ chức đại diện người lao động tại cơ sở trong quan hệ lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tổ chức và lãnh đạo đình công theo quy định của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D202.K4\",\n    \"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Đến thời điểm bắt đầu đình công, nếu người sử dụng lao động vẫn không chấp nhận giải quyết yêu cầu của người lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công.\"\n   },\n   \"vi_tu_chung\": [\n    \"lead_strike\",\n    \"organize_strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0534\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D178.K5\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của tổ chức đại diện người lao động tại cơ sở trong quan hệ lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tổ chức và lãnh đạo đình công theo quy định của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D205.K1\",\n    \"tieu_de_dieu\": \"Thông báo quyết định đóng cửa tạm thời nơi làm việc\",\n    \"khoan_cha\": \"Ít nhất 03 ngày làm việc trước ngày đóng cửa tạm thời nơi làm việc, người sử dụng lao động phải niêm yết công khai quyết định đóng cửa tạm thời nơi làm việc tại nơi làm việc và thông báo cho các cơ quan, tổ chức sau đây:\",\n    \"chu_don_vi\": \"Tổ chức đại diện người lao động đang tổ chức và lãnh đạo đình công;\"\n   },\n   \"vi_tu_chung\": [\n    \"lead_strike\",\n    \"organize_strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0535\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D180.K5\",\n    \"tieu_de_dieu\": \"Nguyên tắc giải quyết tranh chấp lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Việc giải quyết tranh chấp lao động do cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết tranh chấp lao động tiến hành sau khi có yêu cầu của bên tranh chấp hoặc theo đề nghị của cơ quan, tổ chức, cá nhân có thẩm quyền và được các bên tranh chấp đồng ý.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K2\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.\"\n   },\n   \"vi_tu_chung\": [\n    \"settle_labor_dispute\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0536\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D180.K5\",\n    \"tieu_de_dieu\": \"Nguyên tắc giải quyết tranh chấp lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Việc giải quyết tranh chấp lao động do cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết tranh chấp lao động tiến hành sau khi có yêu cầu của bên tranh chấp hoặc theo đề nghị của cơ quan, tổ chức, cá nhân có thẩm quyền và được các bên tranh chấp đồng ý.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D193.K2\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.\"\n   },\n   \"vi_tu_chung\": [\n    \"settle_labor_dispute\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0537\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D180.K5\",\n    \"tieu_de_dieu\": \"Nguyên tắc giải quyết tranh chấp lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Việc giải quyết tranh chấp lao động do cơ quan, tổ chức, cá nhân có thẩm quyền giải quyết tranh chấp lao động tiến hành sau khi có yêu cầu của bên tranh chấp hoặc theo đề nghị của cơ quan, tổ chức, cá nhân có thẩm quyền và được các bên tranh chấp đồng ý.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D197.K2\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về lợi ích của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời hạn 07 ngày làm việc kể từ ngày nhận được yêu cầu giải quyết tranh chấp theo quy định tại khoản 1 Điều này, Ban trọng tài lao động phải được thành lập để giải quyết tranh chấp.\"\n   },\n   \"vi_tu_chung\": [\n    \"settle_labor_dispute\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0538\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D182.K2.b\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của hai bên trong giải quyết tranh chấp lao động\",\n    \"khoan_cha\": \"Trong giải quyết tranh chấp lao động, các bên có nghĩa vụ sau đây:\",\n    \"chu_don_vi\": \"Chấp hành thỏa thuận đã đạt được, quyết định của Ban trọng tài lao động, bản án, quyết định của Tòa án đã có hiệu lực pháp luật.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D189.K5\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động cá nhân của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp một trong các bên không thi hành quyết định giải quyết tranh chấp của Ban trọng tài lao động thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"abide_by_labor_arbitration_council_decision\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0539\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D182.K2.b\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của hai bên trong giải quyết tranh chấp lao động\",\n    \"khoan_cha\": \"Trong giải quyết tranh chấp lao động, các bên có nghĩa vụ sau đây:\",\n    \"chu_don_vi\": \"Chấp hành thỏa thuận đã đạt được, quyết định của Ban trọng tài lao động, bản án, quyết định của Tòa án đã có hiệu lực pháp luật.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D193.K6\",\n    \"tieu_de_dieu\": \"Giải quyết tranh chấp lao động tập thể về quyền của Hội đồng trọng tài lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp một trong các bên không thi hành quyết định giải quyết tranh chấp của Ban trọng tài lao động thì các bên có quyền yêu cầu Tòa án giải quyết.\"\n   },\n   \"vi_tu_chung\": [\n    \"abide_by_labor_arbitration_council_decision\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_b94f531473a557adda01ac55",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0530",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0531",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0532",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0533",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0534",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0535",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0536",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0537",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0538",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0539",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3912,
+  "output_tokens": 1532,
+  "cost_vnd": 39.13
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {}
+ }
+}

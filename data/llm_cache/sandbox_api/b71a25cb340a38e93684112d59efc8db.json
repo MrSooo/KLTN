@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:58:35+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0410\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D98.K2\",\n    \"tieu_de_dieu\": \"Tiền lương làm thêm giờ, làm việc vào ban đêm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc vào ban đêm thì được trả thêm ít nhất bằng 30% tiền lương tính theo đơn giá tiền lương hoặc tiền lương thực trả theo công việc của ngày làm việc bình thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D146.K2\",\n    \"tieu_de_dieu\": \"Thời giờ làm việc của người chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời giờ làm việc của người từ đủ 15 tuổi đến chưa đủ 18 tuổi không được quá 08 giờ trong 01 ngày và 40 giờ trong 01 tuần. Người từ đủ 15 tuổi đến chưa đủ 18 tuổi có thể được làm thêm giờ, làm việc vào ban đêm trong một số nghề, công việc theo danh mục do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_at_night\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0411\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D99.K2\",\n    \"tieu_de_dieu\": \"Tiền lương ngừng việc\",\n    \"khoan_cha\": \"Trường hợp phải ngừng việc, người lao động được trả lương như sau:\",\n    \"chu_don_vi\": \"Nếu do lỗi của người lao động thì người đó không được trả lương; những người lao động khác trong cùng đơn vị phải ngừng việc thì được trả lương theo mức do hai bên thỏa thuận nhưng không được thấp hơn mức lương tối thiểu;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D149.K2\",\n    \"tieu_de_dieu\": \"Sử dụng người lao động cao tuổi\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi người lao động cao tuổi đang hưởng lương hưu theo quy định của Luật Bảo hiểm xã hội mà làm việc theo hợp đồng lao động mới thì ngoài quyền lợi đang hưởng theo chế độ hưu trí, người lao động cao tuổi được hưởng tiền lương và các quyền lợi khác theo quy định của pháp luật, hợp đồng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0412\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D99.K2\",\n    \"tieu_de_dieu\": \"Tiền lương ngừng việc\",\n    \"khoan_cha\": \"Trường hợp phải ngừng việc, người lao động được trả lương như sau:\",\n    \"chu_don_vi\": \"Nếu do lỗi của người lao động thì người đó không được trả lương; những người lao động khác trong cùng đơn vị phải ngừng việc thì được trả lương theo mức do hai bên thỏa thuận nhưng không được thấp hơn mức lương tối thiểu;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D176.K1.c\",\n    \"tieu_de_dieu\": \"Quyền của thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở có quyền sau đây:\",\n    \"chu_don_vi\": \"Được sử dụng thời gian làm việc theo quy định tại khoản 2 và khoản 3 Điều này để thực hiện công việc của tổ chức đại diện người lao động tại cơ sở mà vẫn được người sử dụng lao động trả lương;\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0413\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D100.K2\",\n    \"tieu_de_dieu\": \"Trả lương thông qua người cai thầu\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người cai thầu hoặc người có vai trò trung gian tương tự không trả lương hoặc trả lương không đầy đủ và không bảo đảm các quyền lợi khác cho người lao động thì người sử dụng lao động là chủ chính phải chịu trách nhiệm trả lương và bảo đảm các quyền lợi cho người lao động.\\nTrong trường hợp này, người sử dụng lao động là chủ chính có quyền yêu cầu người cai thầu hoặc người có vai trò trung gian tương tự đền bù hoặc yêu cầu cơ quan nhà nước có thẩm quyền giải quyết tranh chấp theo quy định của pháp luật.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D168.K2\",\n    \"tieu_de_dieu\": \"Tham gia bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian người lao động nghỉ việc hưởng chế độ bảo hiểm xã hội thì người sử dụng lao động không phải trả lương cho người lao động, trừ trường hợp hai bên có thỏa thuận khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0414\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D101.K1\",\n    \"tieu_de_dieu\": \"Tạm ứng tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động được tạm ứng tiền lương theo điều kiện do hai bên thỏa thuận và không bị tính lãi.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D101.K2\",\n    \"tieu_de_dieu\": \"Tạm ứng tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải cho người lao động tạm ứng tiền lương tương ứng với số ngày người lao động tạm thời nghỉ việc để thực hiện nghĩa vụ công dân từ 01 tuần trở lên nhưng tối đa không quá 01 tháng tiền lương theo hợp đồng lao động và người lao động phải hoàn trả số tiền đã tạm ứng.\\nNgười lao động nhập ngũ theo quy định của Luật Nghĩa vụ quân sự thì không được tạm ứng tiền lương.\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage_advance\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0415\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D101.K2\",\n    \"tieu_de_dieu\": \"Tạm ứng tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải cho người lao động tạm ứng tiền lương tương ứng với số ngày người lao động tạm thời nghỉ việc để thực hiện nghĩa vụ công dân từ 01 tuần trở lên nhưng tối đa không quá 01 tháng tiền lương theo hợp đồng lao động và người lao động phải hoàn trả số tiền đã tạm ứng.\\nNgười lao động nhập ngũ theo quy định của Luật Nghĩa vụ quân sự thì không được tạm ứng tiền lương.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K5\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm mà chưa đến kỳ trả lương, người lao động được tạm ứng tiền lương theo quy định tại khoản 3 Điều 101 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage_advance\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0416\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D101.K2\",\n    \"tieu_de_dieu\": \"Tạm ứng tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải cho người lao động tạm ứng tiền lương tương ứng với số ngày người lao động tạm thời nghỉ việc để thực hiện nghĩa vụ công dân từ 01 tuần trở lên nhưng tối đa không quá 01 tháng tiền lương theo hợp đồng lao động và người lao động phải hoàn trả số tiền đã tạm ứng.\\nNgười lao động nhập ngũ theo quy định của Luật Nghĩa vụ quân sự thì không được tạm ứng tiền lương.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D128.K3\",\n    \"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người lao động bị xử lý kỷ luật lao động, người lao động cũng không phải trả lại số tiền lương đã tạm ứng.\"\n   },\n   \"vi_tu_chung\": [\n    \"refund_advanced_amount\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0417\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D101.K3\",\n    \"tieu_de_dieu\": \"Tạm ứng tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm, người lao động được tạm ứng một khoản tiền ít nhất bằng tiền lương của những ngày nghỉ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K1\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động thì được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động như sau:\",\n    \"cac_muc_con\": [\n     \"12 ngày làm việc đối với người làm công việc trong điều kiện bình thường;\",\n     \"14 ngày làm việc đối với người lao động chưa thành niên, lao động là người khuyết tật, người làm nghề, công việc nặng nhọc, độc hại, nguy hiểm;\",\n     \"16 ngày làm việc đối với người làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0418\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D101.K3\",\n    \"tieu_de_dieu\": \"Tạm ứng tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm, người lao động được tạm ứng một khoản tiền ít nhất bằng tiền lương của những ngày nghỉ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K3\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp do thôi việc, bị mất việc làm mà chưa nghỉ hằng năm hoặc chưa nghỉ hết số ngày nghỉ hằng năm thì được người sử dụng lao động thanh toán tiền lương cho những ngày chưa nghỉ.\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0419\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D101.K3\",\n    \"tieu_de_dieu\": \"Tạm ứng tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm, người lao động được tạm ứng một khoản tiền ít nhất bằng tiền lương của những ngày nghỉ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K5\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm mà chưa đến kỳ trả lương, người lao động được tạm ứng tiền lương theo quy định tại khoản 3 Điều 101 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_017f7c25687812245c074b6e",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0410",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0411",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0412",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0413",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0414",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0415",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0416",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0417",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0418",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0419",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3748,
+  "output_tokens": 1187,
+  "cost_vnd": 39.07
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {}
+ }
+}

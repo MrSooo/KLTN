@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:58:34+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0400\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D95.K1\",\n    \"tieu_de_dieu\": \"Trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động trả lương cho người lao động căn cứ vào tiền lương đã thỏa thuận, năng suất lao động và chất lượng thực hiện công việc.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D100.K2\",\n    \"tieu_de_dieu\": \"Trả lương thông qua người cai thầu\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người cai thầu hoặc người có vai trò trung gian tương tự không trả lương hoặc trả lương không đầy đủ và không bảo đảm các quyền lợi khác cho người lao động thì người sử dụng lao động là chủ chính phải chịu trách nhiệm trả lương và bảo đảm các quyền lợi cho người lao động.\\nTrong trường hợp này, người sử dụng lao động là chủ chính có quyền yêu cầu người cai thầu hoặc người có vai trò trung gian tương tự đền bù hoặc yêu cầu cơ quan nhà nước có thẩm quyền giải quyết tranh chấp theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0401\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D95.K1\",\n    \"tieu_de_dieu\": \"Trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động trả lương cho người lao động căn cứ vào tiền lương đã thỏa thuận, năng suất lao động và chất lượng thực hiện công việc.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D168.K2\",\n    \"tieu_de_dieu\": \"Tham gia bảo hiểm xã hội, bảo hiểm y tế, bảo hiểm thất nghiệp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian người lao động nghỉ việc hưởng chế độ bảo hiểm xã hội thì người sử dụng lao động không phải trả lương cho người lao động, trừ trường hợp hai bên có thỏa thuận khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"pay_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0402\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D97.K2\",\n    \"tieu_de_dieu\": \"Kỳ hạn trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động hưởng lương theo tháng được trả một tháng một lần hoặc nửa tháng một lần. Thời điểm trả lương do hai bên thỏa thuận và phải được ấn định vào một thời điểm có tính chu kỳ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D99.K2\",\n    \"tieu_de_dieu\": \"Tiền lương ngừng việc\",\n    \"khoan_cha\": \"Trường hợp phải ngừng việc, người lao động được trả lương như sau:\",\n    \"chu_don_vi\": \"Nếu do lỗi của người lao động thì người đó không được trả lương; những người lao động khác trong cùng đơn vị phải ngừng việc thì được trả lương theo mức do hai bên thỏa thuận nhưng không được thấp hơn mức lương tối thiểu;\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0403\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D97.K2\",\n    \"tieu_de_dieu\": \"Kỳ hạn trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động hưởng lương theo tháng được trả một tháng một lần hoặc nửa tháng một lần. Thời điểm trả lương do hai bên thỏa thuận và phải được ấn định vào một thời điểm có tính chu kỳ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D207.K2\",\n    \"tieu_de_dieu\": \"Tiền lương và các quyền lợi hợp pháp khác của người lao động trong thời gian đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động tham gia đình công không được trả lương và các quyền lợi khác theo quy định của pháp luật, trừ trường hợp các bên có thỏa thuận khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0404\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D97.K3\",\n    \"tieu_de_dieu\": \"Kỳ hạn trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động hưởng lương theo sản phẩm, theo khoán được trả lương theo thỏa thuận của hai bên; nếu công việc phải làm trong nhiều tháng thì hằng tháng được tạm ứng tiền lương theo khối lượng công việc đã làm trong tháng.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D99.K2\",\n    \"tieu_de_dieu\": \"Tiền lương ngừng việc\",\n    \"khoan_cha\": \"Trường hợp phải ngừng việc, người lao động được trả lương như sau:\",\n    \"chu_don_vi\": \"Nếu do lỗi của người lao động thì người đó không được trả lương; những người lao động khác trong cùng đơn vị phải ngừng việc thì được trả lương theo mức do hai bên thỏa thuận nhưng không được thấp hơn mức lương tối thiểu;\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0405\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D97.K3\",\n    \"tieu_de_dieu\": \"Kỳ hạn trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động hưởng lương theo sản phẩm, theo khoán được trả lương theo thỏa thuận của hai bên; nếu công việc phải làm trong nhiều tháng thì hằng tháng được tạm ứng tiền lương theo khối lượng công việc đã làm trong tháng.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D207.K2\",\n    \"tieu_de_dieu\": \"Tiền lương và các quyền lợi hợp pháp khác của người lao động trong thời gian đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động tham gia đình công không được trả lương và các quyền lợi khác theo quy định của pháp luật, trừ trường hợp các bên có thỏa thuận khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0406\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D98.K1\",\n    \"tieu_de_dieu\": \"Tiền lương làm thêm giờ, làm việc vào ban đêm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm thêm giờ được trả lương tính theo đơn giá tiền lương hoặc tiền lương thực trả theo công việc đang làm như sau:\",\n    \"cac_muc_con\": [\n     \"Vào ngày thường, ít nhất bằng 150%;\",\n     \"Vào ngày nghỉ hằng tuần, ít nhất bằng 200%;\",\n     \"Vào ngày nghỉ lễ, tết, ngày nghỉ có hưởng lương, ít nhất bằng 300% chưa kể tiền lương ngày lễ, tết, ngày nghỉ có hưởng lương đối với người lao động hưởng lương ngày.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D146.K1\",\n    \"tieu_de_dieu\": \"Thời giờ làm việc của người chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời giờ làm việc của người chưa đủ 15 tuổi không được quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần; không được làm thêm giờ, làm việc vào ban đêm.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_overtime\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0407\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D98.K1\",\n    \"tieu_de_dieu\": \"Tiền lương làm thêm giờ, làm việc vào ban đêm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm thêm giờ được trả lương tính theo đơn giá tiền lương hoặc tiền lương thực trả theo công việc đang làm như sau:\",\n    \"cac_muc_con\": [\n     \"Vào ngày thường, ít nhất bằng 150%;\",\n     \"Vào ngày nghỉ hằng tuần, ít nhất bằng 200%;\",\n     \"Vào ngày nghỉ lễ, tết, ngày nghỉ có hưởng lương, ít nhất bằng 300% chưa kể tiền lương ngày lễ, tết, ngày nghỉ có hưởng lương đối với người lao động hưởng lương ngày.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D146.K2\",\n    \"tieu_de_dieu\": \"Thời giờ làm việc của người chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời giờ làm việc của người từ đủ 15 tuổi đến chưa đủ 18 tuổi không được quá 08 giờ trong 01 ngày và 40 giờ trong 01 tuần. Người từ đủ 15 tuổi đến chưa đủ 18 tuổi có thể được làm thêm giờ, làm việc vào ban đêm trong một số nghề, công việc theo danh mục do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_overtime\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0408\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D98.K2\",\n    \"tieu_de_dieu\": \"Tiền lương làm thêm giờ, làm việc vào ban đêm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc vào ban đêm thì được trả thêm ít nhất bằng 30% tiền lương tính theo đơn giá tiền lương hoặc tiền lương thực trả theo công việc của ngày làm việc bình thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D109.K1\",\n    \"tieu_de_dieu\": \"Nghỉ trong giờ làm việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc theo thời giờ làm việc quy định tại Điều 105 của Bộ luật này từ 06 giờ trở lên trong một ngày thì được nghỉ giữa giờ ít nhất 30 phút liên tục, làm việc ban đêm thì được nghỉ giữa giờ ít nhất 45 phút liên tục.\\nTrường hợp người lao động làm việc theo ca liên tục từ 06 giờ trở lên thì thời gian nghỉ giữa giờ được tính vào giờ làm việc.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_at_night\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0409\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D98.K2\",\n    \"tieu_de_dieu\": \"Tiền lương làm thêm giờ, làm việc vào ban đêm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc vào ban đêm thì được trả thêm ít nhất bằng 30% tiền lương tính theo đơn giá tiền lương hoặc tiền lương thực trả theo công việc của ngày làm việc bình thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D146.K1\",\n    \"tieu_de_dieu\": \"Thời giờ làm việc của người chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời giờ làm việc của người chưa đủ 15 tuổi không được quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần; không được làm thêm giờ, làm việc vào ban đêm.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_at_night\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_b629d66dbb4e3f12d0076250",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0400",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0401",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0402",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0403",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0404",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0405",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0406",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0407",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0408",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0409",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3757,
+  "output_tokens": 1999,
+  "cost_vnd": 39.07
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {}
+ }
+}

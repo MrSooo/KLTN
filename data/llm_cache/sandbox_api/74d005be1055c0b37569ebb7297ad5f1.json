@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:59:52+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0500\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D139.K4\",\n    \"tieu_de_dieu\": \"Nghỉ thai sản\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi hết thời gian nghỉ thai sản theo quy định tại khoản 1 Điều này, lao động nữ có thể trở lại làm việc khi đã nghỉ ít nhất được 04 tháng nhưng người lao động phải báo trước, được người sử dụng lao động đồng ý và có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc đi làm sớm không có hại cho sức khỏe của người lao động. Trong trường hợp này, ngoài tiền lương của những ngày làm việc do người sử dụng lao động trả, lao động nữ vẫn tiếp tục được hưởng trợ cấp thai sản theo quy định của pháp luật về bảo hiểm xã hội.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K2\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định của Tòa án về cuộc đình công là bất hợp pháp thì người lao động đang tham gia đình công phải ngừng ngay đình công và trở lại làm việc; nếu người lao động không ngừng đình công, không trở lại làm việc thì tùy theo mức độ vi phạm có thể bị xử lý kỷ luật lao động theo quy định của pháp luật về lao động.\\nTrong trường hợp cuộc đình công là bất hợp pháp mà gây thiệt hại cho người sử dụng lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công phải bồi thường thiệt hại theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"return_to_work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0501\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D140\",\n    \"tieu_de_dieu\": \"Bảo đảm việc làm cho lao động nghỉ thai sản\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động được bảo đảm việc làm cũ khi trở lại làm việc sau khi nghỉ hết thời gian theo quy định tại các khoản 1, 3 và 5 Điều 139 của Bộ luật này mà không bị cắt giảm tiền lương và quyền, lợi ích so với trước khi nghỉ thai sản; trường hợp việc làm cũ không còn thì người sử dụng lao động phải bố trí việc làm khác cho họ với mức lương không thấp hơn mức lương trước khi nghỉ thai sản.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K2\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định của Tòa án về cuộc đình công là bất hợp pháp thì người lao động đang tham gia đình công phải ngừng ngay đình công và trở lại làm việc; nếu người lao động không ngừng đình công, không trở lại làm việc thì tùy theo mức độ vi phạm có thể bị xử lý kỷ luật lao động theo quy định của pháp luật về lao động.\\nTrong trường hợp cuộc đình công là bất hợp pháp mà gây thiệt hại cho người sử dụng lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công phải bồi thường thiệt hại theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"return_to_work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0502\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D143.K1\",\n    \"tieu_de_dieu\": \"Lao động chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động chưa thành niên là người lao động chưa đủ 18 tuổi.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K1.a\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n    \"chu_don_vi\": \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\"\n   },\n   \"vi_tu_chung\": [\n    \"aged_18_or_older\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0503\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D143.K2\",\n    \"tieu_de_dieu\": \"Lao động chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người từ đủ 15 tuổi đến chưa đủ 18 tuổi không được làm công việc hoặc làm việc ở nơi làm việc quy định tại Điều 147 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D143.K4\",\n    \"tieu_de_dieu\": \"Lao động chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người chưa đủ 13 tuổi chỉ được làm các công việc theo quy định tại khoản 3 Điều 145 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"perform_work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0504\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D146.K1\",\n    \"tieu_de_dieu\": \"Thời giờ làm việc của người chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời giờ làm việc của người chưa đủ 15 tuổi không được quá 04 giờ trong 01 ngày và 20 giờ trong 01 tuần; không được làm thêm giờ, làm việc vào ban đêm.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D146.K2\",\n    \"tieu_de_dieu\": \"Thời giờ làm việc của người chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thời giờ làm việc của người từ đủ 15 tuổi đến chưa đủ 18 tuổi không được quá 08 giờ trong 01 ngày và 40 giờ trong 01 tuần. Người từ đủ 15 tuổi đến chưa đủ 18 tuổi có thể được làm thêm giờ, làm việc vào ban đêm trong một số nghề, công việc theo danh mục do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành.\"\n   },\n   \"vi_tu_chung\": [\n    \"work_at_night\",\n    \"work_overtime\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0505\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D149.K2\",\n    \"tieu_de_dieu\": \"Sử dụng người lao động cao tuổi\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi người lao động cao tuổi đang hưởng lương hưu theo quy định của Luật Bảo hiểm xã hội mà làm việc theo hợp đồng lao động mới thì ngoài quyền lợi đang hưởng theo chế độ hưu trí, người lao động cao tuổi được hưởng tiền lương và các quyền lợi khác theo quy định của pháp luật, hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K1\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n    \"cac_muc_con\": [\n     \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\",\n     \"Có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc; có đủ sức khỏe theo quy định của Bộ trưởng Bộ Y tế;\",\n     \"Không phải là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam;\",\n     \"Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp, trừ trường hợp quy định tại Điều 154 của Bộ luật này.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0506\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D149.K2\",\n    \"tieu_de_dieu\": \"Sử dụng người lao động cao tuổi\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi người lao động cao tuổi đang hưởng lương hưu theo quy định của Luật Bảo hiểm xã hội mà làm việc theo hợp đồng lao động mới thì ngoài quyền lợi đang hưởng theo chế độ hưu trí, người lao động cao tuổi được hưởng tiền lương và các quyền lợi khác theo quy định của pháp luật, hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K3\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam phải tuân theo pháp luật lao động Việt Nam và được pháp luật Việt Nam bảo vệ, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0507\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D149.K2\",\n    \"tieu_de_dieu\": \"Sử dụng người lao động cao tuổi\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi người lao động cao tuổi đang hưởng lương hưu theo quy định của Luật Bảo hiểm xã hội mà làm việc theo hợp đồng lao động mới thì ngoài quyền lợi đang hưởng theo chế độ hưu trí, người lao động cao tuổi được hưởng tiền lương và các quyền lợi khác theo quy định của pháp luật, hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D153.K2\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người sử dụng lao động và người lao động nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động sẽ bị buộc xuất cảnh hoặc trục xuất theo quy định của pháp luật về nhập cảnh, xuất cảnh, quá cảnh, cư trú của người nước ngoài tại Việt Nam.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0508\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D149.K2\",\n    \"tieu_de_dieu\": \"Sử dụng người lao động cao tuổi\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi người lao động cao tuổi đang hưởng lương hưu theo quy định của Luật Bảo hiểm xã hội mà làm việc theo hợp đồng lao động mới thì ngoài quyền lợi đang hưởng theo chế độ hưu trí, người lao động cao tuổi được hưởng tiền lương và các quyền lợi khác theo quy định của pháp luật, hợp đồng lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D207.K2\",\n    \"tieu_de_dieu\": \"Tiền lương và các quyền lợi hợp pháp khác của người lao động trong thời gian đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động tham gia đình công không được trả lương và các quyền lợi khác theo quy định của pháp luật, trừ trường hợp các bên có thỏa thuận khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0509\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K1\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n    \"cac_muc_con\": [\n     \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\",\n     \"Có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc; có đủ sức khỏe theo quy định của Bộ trưởng Bộ Y tế;\",\n     \"Không phải là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam;\",\n     \"Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp, trừ trường hợp quy định tại Điều 154 của Bộ luật này.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K3\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam phải tuân theo pháp luật lao động Việt Nam và được pháp luật Việt Nam bảo vệ, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_bba5f0f692cc6c5c1c5c7f8d",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0500",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0501",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0502",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0503",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0504",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0505",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0506",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0507",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0508",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0509",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4135,
+  "output_tokens": 856,
+  "cost_vnd": 39.23
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {}
+ }
+}

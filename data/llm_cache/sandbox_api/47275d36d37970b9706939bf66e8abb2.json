@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:53:27+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0060\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D153.K2\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người sử dụng lao động và người lao động nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động sẽ bị buộc xuất cảnh hoặc trục xuất theo quy định của pháp luật về nhập cảnh, xuất cảnh, quá cảnh, cư trú của người nước ngoài tại Việt Nam.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0061\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.a\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Làm việc; tự do lựa chọn việc làm, nơi làm việc, nghề nghiệp, học nghề, nâng cao trình độ nghề nghiệp; không bị phân biệt đối xử, cưỡng bức lao động, quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D165.K1\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Ngược đãi, quấy rối tình dục, cưỡng bức lao động, dùng vũ lực đối với lao động là người giúp việc gia đình.\"\n   },\n   \"vi_tu_chung\": [\n    \"forced_labor\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0062\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.b\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Hưởng lương phù hợp với trình độ, kỹ năng nghề trên cơ sở thỏa thuận với người sử dụng lao động; được bảo hộ lao động, làm việc trong điều kiện bảo đảm về an toàn, vệ sinh lao động; nghỉ theo chế độ, nghỉ hằng năm có hưởng lương và được hưởng phúc lợi tập thể;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D37.K2\",\n    \"tieu_de_dieu\": \"Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động đang nghỉ hằng năm, nghỉ việc riêng và trường hợp nghỉ khác được người sử dụng lao động đồng ý.\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0063\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.b\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Hưởng lương phù hợp với trình độ, kỹ năng nghề trên cơ sở thỏa thuận với người sử dụng lao động; được bảo hộ lao động, làm việc trong điều kiện bảo đảm về an toàn, vệ sinh lao động; nghỉ theo chế độ, nghỉ hằng năm có hưởng lương và được hưởng phúc lợi tập thể;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D67.K7\",\n    \"tieu_de_dieu\": \"Nội dung thương lượng tập thể\",\n    \"khoan_cha\": \"Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:\",\n    \"chu_don_vi\": \"Bảo đảm bình đẳng giới, bảo vệ thai sản, nghỉ hằng năm; phòng, chống bạo lực và quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0064\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.b\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Hưởng lương phù hợp với trình độ, kỹ năng nghề trên cơ sở thỏa thuận với người sử dụng lao động; được bảo hộ lao động, làm việc trong điều kiện bảo đảm về an toàn, vệ sinh lao động; nghỉ theo chế độ, nghỉ hằng năm có hưởng lương và được hưởng phúc lợi tập thể;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D101.K3\",\n    \"tieu_de_dieu\": \"Tạm ứng tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm, người lao động được tạm ứng một khoản tiền ít nhất bằng tiền lương của những ngày nghỉ.\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0065\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.b\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Hưởng lương phù hợp với trình độ, kỹ năng nghề trên cơ sở thỏa thuận với người sử dụng lao động; được bảo hộ lao động, làm việc trong điều kiện bảo đảm về an toàn, vệ sinh lao động; nghỉ theo chế độ, nghỉ hằng năm có hưởng lương và được hưởng phúc lợi tập thể;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K3\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp do thôi việc, bị mất việc làm mà chưa nghỉ hằng năm hoặc chưa nghỉ hết số ngày nghỉ hằng năm thì được người sử dụng lao động thanh toán tiền lương cho những ngày chưa nghỉ.\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0066\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.b\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Hưởng lương phù hợp với trình độ, kỹ năng nghề trên cơ sở thỏa thuận với người sử dụng lao động; được bảo hộ lao động, làm việc trong điều kiện bảo đảm về an toàn, vệ sinh lao động; nghỉ theo chế độ, nghỉ hằng năm có hưởng lương và được hưởng phúc lợi tập thể;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K5\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm mà chưa đến kỳ trả lương, người lao động được tạm ứng tiền lương theo quy định tại khoản 3 Điều 101 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0067\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.b\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Hưởng lương phù hợp với trình độ, kỹ năng nghề trên cơ sở thỏa thuận với người sử dụng lao động; được bảo hộ lao động, làm việc trong điều kiện bảo đảm về an toàn, vệ sinh lao động; nghỉ theo chế độ, nghỉ hằng năm có hưởng lương và được hưởng phúc lợi tập thể;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K6\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm, nếu người lao động đi bằng các phương tiện đường bộ, đường sắt, đường thủy mà số ngày đi đường cả đi và về trên 02 ngày thì từ ngày thứ 03 trở đi được tính thêm thời gian đi đường ngoài ngày nghỉ hằng năm và chỉ được tính cho 01 lần nghỉ trong năm.\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0068\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.c\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Thành lập, gia nhập, hoạt động trong tổ chức đại diện người lao động, tổ chức nghề nghiệp và tổ chức khác theo quy định của pháp luật; yêu cầu và tham gia đối thoại, thực hiện quy chế dân chủ, thương lượng tập thể với người sử dụng lao động và được tham vấn tại nơi làm việc để bảo vệ quyền và lợi ích hợp pháp, chính đáng của mình; tham gia quản lý theo nội quy của người sử dụng lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D65\",\n    \"tieu_de_dieu\": \"Thương lượng tập thể\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thương lượng tập thể là việc đàm phán, thỏa thuận giữa một bên là một hoặc nhiều tổ chức đại diện người lao động với một bên là một hoặc nhiều người sử dụng lao động hoặc tổ chức đại diện người sử dụng lao động nhằm xác lập điều kiện lao động, quy định về mối quan hệ giữa các bên và xây dựng quan hệ lao động tiến bộ, hài hòa và ổn định.\"\n   },\n   \"vi_tu_chung\": [\n    \"collective_bargaining\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0069\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D5.K1.c\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động\",\n    \"khoan_cha\": \"Người lao động có các quyền sau đây:\",\n    \"chu_don_vi\": \"Thành lập, gia nhập, hoạt động trong tổ chức đại diện người lao động, tổ chức nghề nghiệp và tổ chức khác theo quy định của pháp luật; yêu cầu và tham gia đối thoại, thực hiện quy chế dân chủ, thương lượng tập thể với người sử dụng lao động và được tham vấn tại nơi làm việc để bảo vệ quyền và lợi ích hợp pháp, chính đáng của mình; tham gia quản lý theo nội quy của người sử dụng lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D67\",\n    \"tieu_de_dieu\": \"Nội dung thương lượng tập thể\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:\",\n    \"cac_muc_con\": [\n     \"Tiền lương, trợ cấp, nâng lương, thưởng, bữa ăn và các chế độ khác;\",\n     \"Mức lao động và thời giờ làm việc, thời giờ nghỉ ngơi, làm thêm giờ, nghỉ giữa ca;\",\n     \"Bảo đảm việc làm đối với người lao động;\",\n     \"Bảo đảm an toàn, vệ sinh lao động; thực hiện nội quy lao động;\",\n     \"Điều kiện, phương tiện hoạt động của tổ chức đại diện người lao động; mối quan hệ giữa người sử dụng lao động và tổ chức đại diện người lao động;\",\n     \"Cơ chế, phương thức phòng ngừa, giải quyết tranh chấp lao động;\",\n     \"Bảo đảm bình đẳng giới, bảo vệ thai sản, nghỉ hằng năm; phòng, chống bạo lực và quấy rối tình dục tại nơi làm việc;\",\n     \"Nội dung khác mà một hoặc các bên quan tâm.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"collective_bargaining\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_2bc42a758bf4d946d26ac41b",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0060",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0061",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0062",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0063",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0064",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0065",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0066",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0067",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0068",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0069",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3986,
+  "output_tokens": 935,
+  "cost_vnd": 39.17
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {}
+ }
+}

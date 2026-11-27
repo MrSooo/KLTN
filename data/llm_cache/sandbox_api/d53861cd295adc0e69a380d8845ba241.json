@@ -1,0 +1,71 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:54:44+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0150\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D27.K1\",\n    \"tieu_de_dieu\": \"Kết thúc thời gian thử việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi kết thúc thời gian thử việc, người sử dụng lao động phải thông báo kết quả thử việc cho người lao động.\\nTrường hợp thử việc đạt yêu cầu thì người sử dụng lao động tiếp tục thực hiện hợp đồng lao động đã giao kết đối với trường hợp thỏa thuận thử việc trong hợp đồng lao động hoặc phải giao kết hợp đồng lao động đối với trường hợp giao kết hợp đồng thử việc.\\nTrường hợp thử việc không đạt yêu cầu thì chấm dứt hợp đồng lao động đã giao kết hoặc hợp đồng thử việc.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.a\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Yêu cầu tham gia, không tham gia hoặc ra khỏi tổ chức đại diện người lao động tại cơ sở để được tuyển dụng, giao kết hoặc gia hạn hợp đồng lao động;\"\n   },\n   \"vi_tu_chung\": [\n    \"conclude_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0151\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D27.K2\",\n    \"tieu_de_dieu\": \"Kết thúc thời gian thử việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian thử việc, mỗi bên có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết mà không cần báo trước và không phải bồi thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D35.K1\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động có quyền đơn phương chấm dứt hợp đồng lao động nhưng phải báo trước cho người sử dụng lao động như sau:\",\n    \"cac_muc_con\": [\n     \"Ít nhất 45 ngày nếu làm việc theo hợp đồng lao động không xác định thời hạn;\",\n     \"Ít nhất 30 ngày nếu làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng;\",\n     \"Ít nhất 03 ngày làm việc nếu làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng;\",\n     \"Đối với một số ngành, nghề, công việc đặc thù thì thời hạn báo trước được thực hiện theo quy định của Chính phủ.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"give_advance_notice\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0152\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D27.K2\",\n    \"tieu_de_dieu\": \"Kết thúc thời gian thử việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian thử việc, mỗi bên có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết mà không cần báo trước và không phải bồi thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D102.K1\",\n    \"tieu_de_dieu\": \"Khấu trừ tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động chỉ được khấu trừ tiền lương của người lao động để bồi thường thiệt hại do làm hư hỏng dụng cụ, thiết bị, tài sản của người sử dụng lao động theo quy định tại Điều 129 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0153\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D27.K2\",\n    \"tieu_de_dieu\": \"Kết thúc thời gian thử việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian thử việc, mỗi bên có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết mà không cần báo trước và không phải bồi thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D129.K1\",\n    \"tieu_de_dieu\": \"Bồi thường thiệt hại\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm hư hỏng dụng cụ, thiết bị hoặc có hành vi khác gây thiệt hại tài sản của người sử dụng lao động thì phải bồi thường theo quy định của pháp luật hoặc nội quy lao động của người sử dụng lao động.\\nTrường hợp người lao động gây thiệt hại không nghiêm trọng do sơ suất với giá trị không quá 10 tháng lương tối thiểu vùng do Chính phủ công bố được áp dụng tại nơi người lao động làm việc thì người lao động phải bồi thường nhiều nhất là 03 tháng tiền lương và bị khấu trừ hằng tháng vào lương theo quy định tại khoản 3 Điều 102 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0154\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D27.K2\",\n    \"tieu_de_dieu\": \"Kết thúc thời gian thử việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian thử việc, mỗi bên có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết mà không cần báo trước và không phải bồi thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D129.K2\",\n    \"tieu_de_dieu\": \"Bồi thường thiệt hại\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm mất dụng cụ, thiết bị, tài sản của người sử dụng lao động hoặc tài sản khác do người sử dụng lao động giao hoặc tiêu hao vật tư quá định mức cho phép thì phải bồi thường thiệt hại một phần hoặc toàn bộ theo thời giá thị trường hoặc nội quy lao động; trường hợp có hợp đồng trách nhiệm thì phải bồi thường theo hợp đồng trách nhiệm; trường hợp do thiên tai, hỏa hoạn, địch họa, dịch bệnh nguy hiểm, thảm họa, sự kiện xảy ra khách quan không thể lường trước được và không thể khắc phục được mặc dù đã áp dụng mọi biện pháp cần thiết và khả năng cho phép thì không phải bồi thường.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0155\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D27.K2\",\n    \"tieu_de_dieu\": \"Kết thúc thời gian thử việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian thử việc, mỗi bên có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết mà không cần báo trước và không phải bồi thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D139.K4\",\n    \"tieu_de_dieu\": \"Nghỉ thai sản\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi hết thời gian nghỉ thai sản theo quy định tại khoản 1 Điều này, lao động nữ có thể trở lại làm việc khi đã nghỉ ít nhất được 04 tháng nhưng người lao động phải báo trước, được người sử dụng lao động đồng ý và có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc đi làm sớm không có hại cho sức khỏe của người lao động. Trong trường hợp này, ngoài tiền lương của những ngày làm việc do người sử dụng lao động trả, lao động nữ vẫn tiếp tục được hưởng trợ cấp thai sản theo quy định của pháp luật về bảo hiểm xã hội.\"\n   },\n   \"vi_tu_chung\": [\n    \"give_advance_notice\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0156\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D27.K2\",\n    \"tieu_de_dieu\": \"Kết thúc thời gian thử việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian thử việc, mỗi bên có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết mà không cần báo trước và không phải bồi thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D164.K2\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của lao động là người giúp việc gia đình\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Phải bồi thường theo thỏa thuận hoặc theo quy định của pháp luật nếu làm hỏng, mất tài sản của người sử dụng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0157\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D27.K2\",\n    \"tieu_de_dieu\": \"Kết thúc thời gian thử việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian thử việc, mỗi bên có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết mà không cần báo trước và không phải bồi thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K1\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người nào có hành vi vi phạm quy định của Bộ luật này thì tùy theo tính chất, mức độ vi phạm mà bị xử lý kỷ luật, xử phạt vi phạm hành chính hoặc bị truy cứu trách nhiệm hình sự, nếu gây thiệt hại thì phải bồi thường theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0158\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D27.K2\",\n    \"tieu_de_dieu\": \"Kết thúc thời gian thử việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian thử việc, mỗi bên có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết mà không cần báo trước và không phải bồi thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K2\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định của Tòa án về cuộc đình công là bất hợp pháp thì người lao động đang tham gia đình công phải ngừng ngay đình công và trở lại làm việc; nếu người lao động không ngừng đình công, không trở lại làm việc thì tùy theo mức độ vi phạm có thể bị xử lý kỷ luật lao động theo quy định của pháp luật về lao động.\\nTrong trường hợp cuộc đình công là bất hợp pháp mà gây thiệt hại cho người sử dụng lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công phải bồi thường thiệt hại theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0159\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D27.K2\",\n    \"tieu_de_dieu\": \"Kết thúc thời gian thử việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trong thời gian thử việc, mỗi bên có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết mà không cần báo trước và không phải bồi thường.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K3\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lợi dụng đình công gây mất trật tự, an toàn công cộng, làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động; người có hành vi cản trở thực hiện quyền đình công, kích động, lôi kéo, ép buộc người lao động đình công; người có hành vi trù dập, trả thù người tham gia đình công, người lãnh đạo cuộc đình công thì tùy theo mức độ vi phạm mà bị xử phạt vi phạm hành chính hoặc truy cứu trách nhiệm hình sự, nếu gây thiệt hại thì phải bồi thường theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_68611da12bd8f54d433e7136",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0150",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0151",
+    "ket_qua": "a_ngoai_le_cua_b",
+    "bang_chung": "Trong thời gian thử việc, mỗi bên có quyền hủy bỏ hợp đồng thử việc hoặc hợp đồng lao động đã giao kết mà không cần báo trước và không phải bồi thường."
+   },
+   {
+    "cap_id": "P0152",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0153",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0154",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0155",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0156",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0157",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0158",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0159",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4002,
+  "output_tokens": 1123,
+  "cost_vnd": 39.18
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 740
+   }
+  ],
+  "usage_khac": {}
+ }
+}

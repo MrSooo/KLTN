@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:56:13+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0250\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K11\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động cho người lao động thôi việc theo quy định tại Điều 42 và Điều 43 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D43.K3\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động khi chia, tách, hợp nhất, sáp nhập; bán, cho thuê, chuyển đổi loại hình doanh nghiệp; chuyển nhượng quyền sở hữu, quyền sử dụng tài sản của doanh nghiệp, hợp tác xã\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động bị thôi việc thì được nhận trợ cấp mất việc làm theo quy định tại Điều 47 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"lay_off\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0251\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K11\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động cho người lao động thôi việc theo quy định tại Điều 42 và Điều 43 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K2\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chấm dứt hợp đồng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0252\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K11\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động cho người lao động thôi việc theo quy định tại Điều 42 và Điều 43 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D208.K4\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trước, trong và sau khi đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chấm dứt hợp đồng lao động hoặc xử lý kỷ luật lao động đối với người lao động, người lãnh đạo đình công hoặc điều động người lao động, người lãnh đạo đình công sang làm công việc khác, đi làm việc ở nơi khác vì lý do chuẩn bị đình công hoặc tham gia đình công.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0253\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K12\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực đối với người lao động là người nước ngoài làm việc tại Việt Nam theo quy định tại Điều 156 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D41.K2\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người lao động không muốn tiếp tục làm việc thì ngoài khoản tiền phải trả quy định tại khoản 1 Điều này người sử dụng lao động phải trả trợ cấp thôi việc theo quy định tại Điều 46 của Bộ luật này để chấm dứt hợp đồng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0254\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K12\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực đối với người lao động là người nước ngoài làm việc tại Việt Nam theo quy định tại Điều 156 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K2\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chấm dứt hợp đồng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0255\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K12\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Giấy phép lao động hết hiệu lực đối với người lao động là người nước ngoài làm việc tại Việt Nam theo quy định tại Điều 156 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D208.K4\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trước, trong và sau khi đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chấm dứt hợp đồng lao động hoặc xử lý kỷ luật lao động đối với người lao động, người lãnh đạo đình công hoặc điều động người lao động, người lãnh đạo đình công sang làm công việc khác, đi làm việc ở nơi khác vì lý do chuẩn bị đình công hoặc tham gia đình công.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0256\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K13\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp thỏa thuận nội dung thử việc ghi trong hợp đồng lao động mà thử việc không đạt yêu cầu hoặc một bên hủy bỏ thỏa thuận thử việc.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D41.K2\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của người sử dụng lao động khi đơn phương chấm dứt hợp đồng lao động trái pháp luật\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp người lao động không muốn tiếp tục làm việc thì ngoài khoản tiền phải trả quy định tại khoản 1 Điều này người sử dụng lao động phải trả trợ cấp thôi việc theo quy định tại Điều 46 của Bộ luật này để chấm dứt hợp đồng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0257\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K13\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp thỏa thuận nội dung thử việc ghi trong hợp đồng lao động mà thử việc không đạt yêu cầu hoặc một bên hủy bỏ thỏa thuận thử việc.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K2\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chấm dứt hợp đồng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0258\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D34.K13\",\n    \"tieu_de_dieu\": \"Các trường hợp chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp thỏa thuận nội dung thử việc ghi trong hợp đồng lao động mà thử việc không đạt yêu cầu hoặc một bên hủy bỏ thỏa thuận thử việc.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D208.K4\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm trước, trong và sau khi đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Chấm dứt hợp đồng lao động hoặc xử lý kỷ luật lao động đối với người lao động, người lãnh đạo đình công hoặc điều động người lao động, người lãnh đạo đình công sang làm công việc khác, đi làm việc ở nơi khác vì lý do chuẩn bị đình công hoặc tham gia đình công.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0259\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D35.K1\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động có quyền đơn phương chấm dứt hợp đồng lao động nhưng phải báo trước cho người sử dụng lao động như sau:\",\n    \"cac_muc_con\": [\n     \"Ít nhất 45 ngày nếu làm việc theo hợp đồng lao động không xác định thời hạn;\",\n     \"Ít nhất 30 ngày nếu làm việc theo hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng;\",\n     \"Ít nhất 03 ngày làm việc nếu làm việc theo hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng;\",\n     \"Đối với một số ngành, nghề, công việc đặc thù thì thời hạn báo trước được thực hiện theo quy định của Chính phủ.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D36.K2\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đơn phương chấm dứt hợp đồng lao động trong trường hợp quy định tại các điểm a, b, c, đ và g khoản 1 Điều này, người sử dụng lao động phải báo trước cho người lao động như sau:\",\n    \"cac_muc_con\": [\n     \"Ít nhất 45 ngày đối với hợp đồng lao động không xác định thời hạn;\",\n     \"Ít nhất 30 ngày đối với hợp đồng lao động xác định thời hạn có thời hạn từ 12 tháng đến 36 tháng;\",\n     \"Ít nhất 03 ngày làm việc đối với hợp đồng lao động xác định thời hạn có thời hạn dưới 12 tháng và đối với trường hợp quy định tại điểm b khoản 1 Điều này;\",\n     \"Đối với một số ngành, nghề, công việc đặc thù thì thời hạn báo trước được thực hiện theo quy định của Chính phủ.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"unilaterally_terminate_employment_contract\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_0f4ee464a6108258a443f307",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0250",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0251",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0252",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0253",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0254",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0255",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0256",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0257",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0258",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0259",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3683,
+  "output_tokens": 1356,
+  "cost_vnd": 39
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {}
+ }
+}

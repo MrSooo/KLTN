@@ -1,0 +1,71 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:52:54+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0020\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K1\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\\nĐộ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D97.K3\",\n    \"tieu_de_dieu\": \"Kỳ hạn trả lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động hưởng lương theo sản phẩm, theo khoán được trả lương theo thỏa thuận của hai bên; nếu công việc phải làm trong nhiều tháng thì hằng tháng được tạm ứng tiền lương theo khối lượng công việc đã làm trong tháng.\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0021\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K1\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\\nĐộ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D99.K2\",\n    \"tieu_de_dieu\": \"Tiền lương ngừng việc\",\n    \"khoan_cha\": \"Trường hợp phải ngừng việc, người lao động được trả lương như sau:\",\n    \"chu_don_vi\": \"Nếu do lỗi của người lao động thì người đó không được trả lương; những người lao động khác trong cùng đơn vị phải ngừng việc thì được trả lương theo mức do hai bên thỏa thuận nhưng không được thấp hơn mức lương tối thiểu;\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0022\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K1\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\\nĐộ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D112.K2\",\n    \"tieu_de_dieu\": \"Nghỉ lễ, tết\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động là người nước ngoài làm việc tại Việt Nam ngoài các ngày nghỉ theo quy định tại khoản 1 Điều này còn được nghỉ thêm 01 ngày Tết cổ truyền dân tộc và 01 ngày Quốc khánh của nước họ.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0023\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K1\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\\nĐộ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D137.K1.a\",\n    \"tieu_de_dieu\": \"Bảo vệ thai sản\",\n    \"khoan_cha\": \"Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa trong trường hợp sau đây:\",\n    \"chu_don_vi\": \"Mang thai từ tháng thứ 07 hoặc từ tháng thứ 06 nếu làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo;\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0024\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K1\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\\nĐộ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D149.K2\",\n    \"tieu_de_dieu\": \"Sử dụng người lao động cao tuổi\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi người lao động cao tuổi đang hưởng lương hưu theo quy định của Luật Bảo hiểm xã hội mà làm việc theo hợp đồng lao động mới thì ngoài quyền lợi đang hưởng theo chế độ hưu trí, người lao động cao tuổi được hưởng tiền lương và các quyền lợi khác theo quy định của pháp luật, hợp đồng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\",\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0025\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K1\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\\nĐộ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K1\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n    \"cac_muc_con\": [\n     \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\",\n     \"Có trình độ chuyên môn, kỹ thuật, tay nghề, kinh nghiệm làm việc; có đủ sức khỏe theo quy định của Bộ trưởng Bộ Y tế;\",\n     \"Không phải là người đang trong thời gian chấp hành hình phạt hoặc chưa được xóa án tích hoặc đang trong thời gian bị truy cứu trách nhiệm hình sự theo quy định của pháp luật nước ngoài hoặc pháp luật Việt Nam;\",\n     \"Có giấy phép lao động do cơ quan nhà nước có thẩm quyền của Việt Nam cấp, trừ trường hợp quy định tại Điều 154 của Bộ luật này.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0026\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K1\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\\nĐộ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K3\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam phải tuân theo pháp luật lao động Việt Nam và được pháp luật Việt Nam bảo vệ, trừ trường hợp điều ước quốc tế mà nước Cộng hòa xã hội chủ nghĩa Việt Nam là thành viên có quy định khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0027\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K1\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\\nĐộ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D153.K2\",\n    \"tieu_de_dieu\": \"Trách nhiệm của người sử dụng lao động và người lao động nước ngoài\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nước ngoài làm việc tại Việt Nam không có giấy phép lao động sẽ bị buộc xuất cảnh hoặc trục xuất theo quy định của pháp luật về nhập cảnh, xuất cảnh, quá cảnh, cư trú của người nước ngoài tại Việt Nam.\"\n   },\n   \"vi_tu_chung\": [\n    \"work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0028\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K1\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\\nĐộ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D176.K1.c\",\n    \"tieu_de_dieu\": \"Quyền của thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở có quyền sau đây:\",\n    \"chu_don_vi\": \"Được sử dụng thời gian làm việc theo quy định tại khoản 2 và khoản 3 Điều này để thực hiện công việc của tổ chức đại diện người lao động tại cơ sở mà vẫn được người sử dụng lao động trả lương;\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0029\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D3.K1\",\n    \"tieu_de_dieu\": \"Giải thích từ ngữ\",\n    \"khoan_cha\": \"Trong Bộ luật này, các từ ngữ dưới đây được hiểu như sau:\",\n    \"chu_don_vi\": \"Người lao động là người làm việc cho người sử dụng lao động theo thỏa thuận, được trả lương và chịu sự quản lý, điều hành, giám sát của người sử dụng lao động.\\nĐộ tuổi lao động tối thiểu của người lao động là đủ 15 tuổi, trừ trường hợp quy định tại Mục 1 Chương XI của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D207.K2\",\n    \"tieu_de_dieu\": \"Tiền lương và các quyền lợi hợp pháp khác của người lao động trong thời gian đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động tham gia đình công không được trả lương và các quyền lợi khác theo quy định của pháp luật, trừ trường hợp các bên có thỏa thuận khác.\"\n   },\n   \"vi_tu_chung\": [\n    \"receive_wage\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_e584d2870b95ca1841519a02",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0020",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0021",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0022",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0023",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0024",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0025",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;"
+   },
+   {
+    "cap_id": "P0026",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0027",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0028",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0029",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4049,
+  "output_tokens": 1228,
+  "cost_vnd": 39.24
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 645
+   }
+  ],
+  "usage_khac": {}
+ }
+}

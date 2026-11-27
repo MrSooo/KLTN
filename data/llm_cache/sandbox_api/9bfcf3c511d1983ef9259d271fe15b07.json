@@ -1,0 +1,58 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T10:01:35+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0610\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D202.K4\",\n    \"tieu_de_dieu\": \"Quyết định đình công và thông báo thời điểm bắt đầu đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Đến thời điểm bắt đầu đình công, nếu người sử dụng lao động vẫn không chấp nhận giải quyết yêu cầu của người lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D205.K1\",\n    \"tieu_de_dieu\": \"Thông báo quyết định đóng cửa tạm thời nơi làm việc\",\n    \"khoan_cha\": \"Ít nhất 03 ngày làm việc trước ngày đóng cửa tạm thời nơi làm việc, người sử dụng lao động phải niêm yết công khai quyết định đóng cửa tạm thời nơi làm việc tại nơi làm việc và thông báo cho các cơ quan, tổ chức sau đây:\",\n    \"chu_don_vi\": \"Tổ chức đại diện người lao động đang tổ chức và lãnh đạo đình công;\"\n   },\n   \"vi_tu_chung\": [\n    \"lead_strike\",\n    \"organize_strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0611\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D203.K2.a\",\n    \"tieu_de_dieu\": \"Quyền của các bên trước và trong quá trình đình công\",\n    \"khoan_cha\": \"Tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công theo quy định tại Điều 198 của Bộ luật này có quyền sau đây:\",\n    \"chu_don_vi\": \"Rút quyết định đình công nếu chưa đình công hoặc chấm dứt đình công nếu đang đình công;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D204.K5\",\n    \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tiến hành đình công trong trường hợp không được đình công quy định tại Điều 209 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0612\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D203.K2.a\",\n    \"tieu_de_dieu\": \"Quyền của các bên trước và trong quá trình đình công\",\n    \"khoan_cha\": \"Tổ chức đại diện người lao động có quyền tổ chức và lãnh đạo đình công theo quy định tại Điều 198 của Bộ luật này có quyền sau đây:\",\n    \"chu_don_vi\": \"Rút quyết định đình công nếu chưa đình công hoặc chấm dứt đình công nếu đang đình công;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D209.K1\",\n    \"tieu_de_dieu\": \"Nơi sử dụng lao động không được đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Không được đình công ở nơi sử dụng lao động mà việc đình công có thể đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người.\"\n   },\n   \"vi_tu_chung\": [\n    \"strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0613\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D203.K3.b\",\n    \"tieu_de_dieu\": \"Quyền của các bên trước và trong quá trình đình công\",\n    \"khoan_cha\": \"Người sử dụng lao động có quyền sau đây:\",\n    \"chu_don_vi\": \"Đóng cửa tạm thời nơi làm việc trong thời gian đình công do không đủ điều kiện để duy trì hoạt động bình thường hoặc để bảo vệ tài sản;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D206.K1\",\n    \"tieu_de_dieu\": \"Trường hợp cấm đóng cửa tạm thời nơi làm việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước 12 giờ so với thời điểm bắt đầu đình công ghi trong quyết định đình công.\"\n   },\n   \"vi_tu_chung\": [\n    \"temporarily_close_workplace\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0614\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D203.K3.b\",\n    \"tieu_de_dieu\": \"Quyền của các bên trước và trong quá trình đình công\",\n    \"khoan_cha\": \"Người sử dụng lao động có quyền sau đây:\",\n    \"chu_don_vi\": \"Đóng cửa tạm thời nơi làm việc trong thời gian đình công do không đủ điều kiện để duy trì hoạt động bình thường hoặc để bảo vệ tài sản;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D206.K2\",\n    \"tieu_de_dieu\": \"Trường hợp cấm đóng cửa tạm thời nơi làm việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Sau khi người lao động ngừng đình công.\"\n   },\n   \"vi_tu_chung\": [\n    \"temporarily_close_workplace\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0615\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D204.K5\",\n    \"tieu_de_dieu\": \"Trường hợp đình công bất hợp pháp\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tiến hành đình công trong trường hợp không được đình công quy định tại Điều 209 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D209.K1\",\n    \"tieu_de_dieu\": \"Nơi sử dụng lao động không được đình công\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Không được đình công ở nơi sử dụng lao động mà việc đình công có thể đe dọa đến quốc phòng, an ninh, trật tự công cộng, sức khỏe của con người.\"\n   },\n   \"vi_tu_chung\": [\n    \"strike\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0616\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D206.K2\",\n    \"tieu_de_dieu\": \"Trường hợp cấm đóng cửa tạm thời nơi làm việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Sau khi người lao động ngừng đình công.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K2\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định của Tòa án về cuộc đình công là bất hợp pháp thì người lao động đang tham gia đình công phải ngừng ngay đình công và trở lại làm việc; nếu người lao động không ngừng đình công, không trở lại làm việc thì tùy theo mức độ vi phạm có thể bị xử lý kỷ luật lao động theo quy định của pháp luật về lao động.\\nTrong trường hợp cuộc đình công là bất hợp pháp mà gây thiệt hại cho người sử dụng lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công phải bồi thường thiệt hại theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"stop_strike\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_e7e52b5779674a902aec1f02",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0610",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0611",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0612",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0613",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0614",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0615",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0616",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2601,
+  "output_tokens": 2236,
+  "cost_vnd": 38.54
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 398
+   }
+  ],
+  "usage_khac": {}
+ }
+}

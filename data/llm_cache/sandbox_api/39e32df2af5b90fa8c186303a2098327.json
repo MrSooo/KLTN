@@ -1,0 +1,71 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:58:53+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0420\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D101.K3\",\n    \"tieu_de_dieu\": \"Tạm ứng tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm, người lao động được tạm ứng một khoản tiền ít nhất bằng tiền lương của những ngày nghỉ.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K6\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm, nếu người lao động đi bằng các phương tiện đường bộ, đường sắt, đường thủy mà số ngày đi đường cả đi và về trên 02 ngày thì từ ngày thứ 03 trở đi được tính thêm thời gian đi đường ngoài ngày nghỉ hằng năm và chỉ được tính cho 01 lần nghỉ trong năm.\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0421\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D102.K1\",\n    \"tieu_de_dieu\": \"Khấu trừ tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động chỉ được khấu trừ tiền lương của người lao động để bồi thường thiệt hại do làm hư hỏng dụng cụ, thiết bị, tài sản của người sử dụng lao động theo quy định tại Điều 129 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D129.K1\",\n    \"tieu_de_dieu\": \"Bồi thường thiệt hại\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm hư hỏng dụng cụ, thiết bị hoặc có hành vi khác gây thiệt hại tài sản của người sử dụng lao động thì phải bồi thường theo quy định của pháp luật hoặc nội quy lao động của người sử dụng lao động.\\nTrường hợp người lao động gây thiệt hại không nghiêm trọng do sơ suất với giá trị không quá 10 tháng lương tối thiểu vùng do Chính phủ công bố được áp dụng tại nơi người lao động làm việc thì người lao động phải bồi thường nhiều nhất là 03 tháng tiền lương và bị khấu trừ hằng tháng vào lương theo quy định tại khoản 3 Điều 102 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0422\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D102.K1\",\n    \"tieu_de_dieu\": \"Khấu trừ tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động chỉ được khấu trừ tiền lương của người lao động để bồi thường thiệt hại do làm hư hỏng dụng cụ, thiết bị, tài sản của người sử dụng lao động theo quy định tại Điều 129 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D129.K2\",\n    \"tieu_de_dieu\": \"Bồi thường thiệt hại\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm mất dụng cụ, thiết bị, tài sản của người sử dụng lao động hoặc tài sản khác do người sử dụng lao động giao hoặc tiêu hao vật tư quá định mức cho phép thì phải bồi thường thiệt hại một phần hoặc toàn bộ theo thời giá thị trường hoặc nội quy lao động; trường hợp có hợp đồng trách nhiệm thì phải bồi thường theo hợp đồng trách nhiệm; trường hợp do thiên tai, hỏa hoạn, địch họa, dịch bệnh nguy hiểm, thảm họa, sự kiện xảy ra khách quan không thể lường trước được và không thể khắc phục được mặc dù đã áp dụng mọi biện pháp cần thiết và khả năng cho phép thì không phải bồi thường.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0423\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D102.K1\",\n    \"tieu_de_dieu\": \"Khấu trừ tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động chỉ được khấu trừ tiền lương của người lao động để bồi thường thiệt hại do làm hư hỏng dụng cụ, thiết bị, tài sản của người sử dụng lao động theo quy định tại Điều 129 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D164.K2\",\n    \"tieu_de_dieu\": \"Nghĩa vụ của lao động là người giúp việc gia đình\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Phải bồi thường theo thỏa thuận hoặc theo quy định của pháp luật nếu làm hỏng, mất tài sản của người sử dụng lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0424\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D102.K1\",\n    \"tieu_de_dieu\": \"Khấu trừ tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động chỉ được khấu trừ tiền lương của người lao động để bồi thường thiệt hại do làm hư hỏng dụng cụ, thiết bị, tài sản của người sử dụng lao động theo quy định tại Điều 129 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K1\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người nào có hành vi vi phạm quy định của Bộ luật này thì tùy theo tính chất, mức độ vi phạm mà bị xử lý kỷ luật, xử phạt vi phạm hành chính hoặc bị truy cứu trách nhiệm hình sự, nếu gây thiệt hại thì phải bồi thường theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0425\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D102.K1\",\n    \"tieu_de_dieu\": \"Khấu trừ tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động chỉ được khấu trừ tiền lương của người lao động để bồi thường thiệt hại do làm hư hỏng dụng cụ, thiết bị, tài sản của người sử dụng lao động theo quy định tại Điều 129 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K2\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đã có quyết định của Tòa án về cuộc đình công là bất hợp pháp thì người lao động đang tham gia đình công phải ngừng ngay đình công và trở lại làm việc; nếu người lao động không ngừng đình công, không trở lại làm việc thì tùy theo mức độ vi phạm có thể bị xử lý kỷ luật lao động theo quy định của pháp luật về lao động.\\nTrong trường hợp cuộc đình công là bất hợp pháp mà gây thiệt hại cho người sử dụng lao động thì tổ chức đại diện người lao động tổ chức và lãnh đạo đình công phải bồi thường thiệt hại theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0426\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D102.K1\",\n    \"tieu_de_dieu\": \"Khấu trừ tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động chỉ được khấu trừ tiền lương của người lao động để bồi thường thiệt hại do làm hư hỏng dụng cụ, thiết bị, tài sản của người sử dụng lao động theo quy định tại Điều 129 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D217.K3\",\n    \"tieu_de_dieu\": \"Xử lý vi phạm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lợi dụng đình công gây mất trật tự, an toàn công cộng, làm tổn hại máy, thiết bị, tài sản của người sử dụng lao động; người có hành vi cản trở thực hiện quyền đình công, kích động, lôi kéo, ép buộc người lao động đình công; người có hành vi trù dập, trả thù người tham gia đình công, người lãnh đạo cuộc đình công thì tùy theo mức độ vi phạm mà bị xử phạt vi phạm hành chính hoặc truy cứu trách nhiệm hình sự, nếu gây thiệt hại thì phải bồi thường theo quy định của pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"compensate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0427\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D104.K2\",\n    \"tieu_de_dieu\": \"Thưởng\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Quy chế thưởng do người sử dụng lao động quyết định và công bố công khai tại nơi làm việc sau khi tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D118.K3\",\n    \"tieu_de_dieu\": \"Nội quy lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trước khi ban hành nội quy lao động hoặc sửa đổi, bổ sung nội quy lao động, người sử dụng lao động phải tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở.\"\n   },\n   \"vi_tu_chung\": [\n    \"consult_grassroots_employee_representative_org\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0428\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D104.K2\",\n    \"tieu_de_dieu\": \"Thưởng\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Quy chế thưởng do người sử dụng lao động quyết định và công bố công khai tại nơi làm việc sau khi tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở đối với nơi có tổ chức đại diện người lao động tại cơ sở.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D128.K1\",\n    \"tieu_de_dieu\": \"Tạm đình chỉ công việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động có quyền tạm đình chỉ công việc của người lao động khi vụ việc vi phạm có những tình tiết phức tạp nếu xét thấy để người lao động tiếp tục làm việc sẽ gây khó khăn cho việc xác minh. Việc tạm đình chỉ công việc của người lao động chỉ được thực hiện sau khi tham khảo ý kiến của tổ chức đại diện người lao động tại cơ sở mà người lao động đang bị xem xét tạm đình chỉ công việc là thành viên.\"\n   },\n   \"vi_tu_chung\": [\n    \"consult_grassroots_employee_representative_org\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0429\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D107.K2\",\n    \"tieu_de_dieu\": \"Làm thêm giờ\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động được sử dụng người lao động làm thêm giờ khi đáp ứng đầy đủ các yêu cầu sau đây:\",\n    \"cac_muc_con\": [\n     \"Phải được sự đồng ý của người lao động;\",\n     \"Bảo đảm số giờ làm thêm của người lao động không quá 50% số giờ làm việc bình thường trong 01 ngày; trường hợp áp dụng quy định thời giờ làm việc bình thường theo tuần thì tổng số giờ làm việc bình thường và số giờ làm thêm không quá 12 giờ trong 01 ngày; không quá 40 giờ trong 01 tháng;\",\n     \"Bảo đảm số giờ làm thêm của người lao động không quá 200 giờ trong 01 năm, trừ trường hợp quy định tại khoản 3 Điều này.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D137.K1\",\n    \"tieu_de_dieu\": \"Bảo vệ thai sản\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa trong trường hợp sau đây:\",\n    \"cac_muc_con\": [\n     \"Mang thai từ tháng thứ 07 hoặc từ tháng thứ 06 nếu làm việc ở vùng cao, vùng sâu, vùng xa, biên giới, hải đảo;\",\n     \"Đang nuôi con dưới 12 tháng tuổi, trừ trường hợp được người lao động đồng ý.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"employ_workers_for_overtime\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_2e08898ac542f1a2ee88e523",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0420",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0421",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0422",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0423",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0424",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0425",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0426",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0427",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0428",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0429",
+    "ket_qua": "b_ngoai_le_cua_a",
+    "bang_chung": "Người sử dụng lao động không được sử dụng người lao động làm việc ban đêm, làm thêm giờ và đi công tác xa trong trường hợp sau đây:"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4061,
+  "output_tokens": 1364,
+  "cost_vnd": 39.21
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 720
+   }
+  ],
+  "usage_khac": {}
+ }
+}

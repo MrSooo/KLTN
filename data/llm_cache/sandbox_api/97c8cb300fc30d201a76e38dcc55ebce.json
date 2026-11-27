@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:57:01+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0300\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D36.K3\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đơn phương chấm dứt hợp đồng lao động quy định tại điểm d và điểm e khoản 1 Điều này thì người sử dụng lao động không phải báo trước cho người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D37.K2\",\n    \"tieu_de_dieu\": \"Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động đang nghỉ hằng năm, nghỉ việc riêng và trường hợp nghỉ khác được người sử dụng lao động đồng ý.\"\n   },\n   \"vi_tu_chung\": [\n    \"unilaterally_terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0301\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D36.K3\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đơn phương chấm dứt hợp đồng lao động quy định tại điểm d và điểm e khoản 1 Điều này thì người sử dụng lao động không phải báo trước cho người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D37.K3\",\n    \"tieu_de_dieu\": \"Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động nữ mang thai; người lao động đang nghỉ thai sản hoặc nuôi con dưới 12 tháng tuổi.\"\n   },\n   \"vi_tu_chung\": [\n    \"unilaterally_terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0302\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D36.K3\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đơn phương chấm dứt hợp đồng lao động quy định tại điểm d và điểm e khoản 1 Điều này thì người sử dụng lao động không phải báo trước cho người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D138.K1\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt, tạm hoãn hợp đồng lao động của lao động nữ mang thai\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động nữ mang thai nếu có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi thì có quyền đơn phương chấm dứt hợp đồng lao động hoặc tạm hoãn thực hiện hợp đồng lao động.\\nTrường hợp đơn phương chấm dứt hợp đồng lao động hoặc tạm hoãn thực hiện hợp đồng lao động thì phải thông báo cho người sử dụng lao động kèm theo xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi.\"\n   },\n   \"vi_tu_chung\": [\n    \"unilaterally_terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0303\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D36.K3\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt hợp đồng lao động của người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi đơn phương chấm dứt hợp đồng lao động quy định tại điểm d và điểm e khoản 1 Điều này thì người sử dụng lao động không phải báo trước cho người lao động.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.b\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Sa thải, kỷ luật, đơn phương chấm dứt hợp đồng lao động, không tiếp tục giao kết hoặc gia hạn hợp đồng lao động, chuyển người lao động làm công việc khác;\"\n   },\n   \"vi_tu_chung\": [\n    \"unilaterally_terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0304\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D37.K1\",\n    \"tieu_de_dieu\": \"Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động ốm đau hoặc bị tai nạn, bệnh nghề nghiệp đang điều trị, điều dưỡng theo chỉ định của cơ sở khám bệnh, chữa bệnh có thẩm quyền, trừ trường hợp quy định tại điểm b khoản 1 Điều 36 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D138.K1\",\n    \"tieu_de_dieu\": \"Quyền đơn phương chấm dứt, tạm hoãn hợp đồng lao động của lao động nữ mang thai\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động nữ mang thai nếu có xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi thì có quyền đơn phương chấm dứt hợp đồng lao động hoặc tạm hoãn thực hiện hợp đồng lao động.\\nTrường hợp đơn phương chấm dứt hợp đồng lao động hoặc tạm hoãn thực hiện hợp đồng lao động thì phải thông báo cho người sử dụng lao động kèm theo xác nhận của cơ sở khám bệnh, chữa bệnh có thẩm quyền về việc tiếp tục làm việc sẽ ảnh hưởng xấu tới thai nhi.\"\n   },\n   \"vi_tu_chung\": [\n    \"unilaterally_terminate_employment_contract\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0305\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D37.K2\",\n    \"tieu_de_dieu\": \"Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động đang nghỉ hằng năm, nghỉ việc riêng và trường hợp nghỉ khác được người sử dụng lao động đồng ý.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D67.K7\",\n    \"tieu_de_dieu\": \"Nội dung thương lượng tập thể\",\n    \"khoan_cha\": \"Các bên thương lượng lựa chọn một hoặc một số nội dung sau để tiến hành thương lượng tập thể:\",\n    \"chu_don_vi\": \"Bảo đảm bình đẳng giới, bảo vệ thai sản, nghỉ hằng năm; phòng, chống bạo lực và quấy rối tình dục tại nơi làm việc;\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0306\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D37.K2\",\n    \"tieu_de_dieu\": \"Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động đang nghỉ hằng năm, nghỉ việc riêng và trường hợp nghỉ khác được người sử dụng lao động đồng ý.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D101.K3\",\n    \"tieu_de_dieu\": \"Tạm ứng tiền lương\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm, người lao động được tạm ứng một khoản tiền ít nhất bằng tiền lương của những ngày nghỉ.\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0307\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D37.K2\",\n    \"tieu_de_dieu\": \"Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động đang nghỉ hằng năm, nghỉ việc riêng và trường hợp nghỉ khác được người sử dụng lao động đồng ý.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K1\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động làm việc đủ 12 tháng cho một người sử dụng lao động thì được nghỉ hằng năm, hưởng nguyên lương theo hợp đồng lao động như sau:\",\n    \"cac_muc_con\": [\n     \"12 ngày làm việc đối với người làm công việc trong điều kiện bình thường;\",\n     \"14 ngày làm việc đối với người lao động chưa thành niên, lao động là người khuyết tật, người làm nghề, công việc nặng nhọc, độc hại, nguy hiểm;\",\n     \"16 ngày làm việc đối với người làm nghề, công việc đặc biệt nặng nhọc, độc hại, nguy hiểm.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0308\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D37.K2\",\n    \"tieu_de_dieu\": \"Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động đang nghỉ hằng năm, nghỉ việc riêng và trường hợp nghỉ khác được người sử dụng lao động đồng ý.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K3\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Trường hợp do thôi việc, bị mất việc làm mà chưa nghỉ hằng năm hoặc chưa nghỉ hết số ngày nghỉ hằng năm thì được người sử dụng lao động thanh toán tiền lương cho những ngày chưa nghỉ.\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0309\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D37.K2\",\n    \"tieu_de_dieu\": \"Trường hợp người sử dụng lao động không được thực hiện quyền đơn phương chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người lao động đang nghỉ hằng năm, nghỉ việc riêng và trường hợp nghỉ khác được người sử dụng lao động đồng ý.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D113.K5\",\n    \"tieu_de_dieu\": \"Nghỉ hằng năm\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi nghỉ hằng năm mà chưa đến kỳ trả lương, người lao động được tạm ứng tiền lương theo quy định tại khoản 3 Điều 101 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"take_paid_annual_leave\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_2f0b7b59dc0004ae25365e93",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0300",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0301",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0302",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0303",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0304",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0305",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0306",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0307",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0308",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0309",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3764,
+  "output_tokens": 1154,
+  "cost_vnd": 39.07
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {}
+ }
+}

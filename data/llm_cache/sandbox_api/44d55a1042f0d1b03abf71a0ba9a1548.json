@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:57:45+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0360\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D58.K1\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n    \"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n    \"chu_don_vi\": \"Thực hiện công việc theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D143.K2\",\n    \"tieu_de_dieu\": \"Lao động chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người từ đủ 15 tuổi đến chưa đủ 18 tuổi không được làm công việc hoặc làm việc ở nơi làm việc quy định tại Điều 147 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"perform_work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0361\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D58.K1\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của người lao động thuê lại\",\n    \"khoan_cha\": \"Ngoài các quyền và nghĩa vụ theo quy định tại Điều 5 của Bộ luật này, người lao động thuê lại có các quyền và nghĩa vụ sau đây:\",\n    \"chu_don_vi\": \"Thực hiện công việc theo hợp đồng lao động đã ký với doanh nghiệp hoạt động cho thuê lại lao động;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D143.K4\",\n    \"tieu_de_dieu\": \"Lao động chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người chưa đủ 13 tuổi chỉ được làm các công việc theo quy định tại khoản 3 Điều 145 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"perform_work\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0362\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D61.K1\",\n    \"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Học nghề để làm việc cho người sử dụng lao động là việc người sử dụng lao động tuyển người vào để đào tạo nghề nghiệp tại nơi làm việc. Thời gian học nghề theo chương trình đào tạo của từng trình độ theo quy định của Luật Giáo dục nghề nghiệp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D61.K2\",\n    \"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tập nghề để làm việc cho người sử dụng lao động là việc người sử dụng lao động tuyển người vào để hướng dẫn thực hành công việc, tập làm nghề theo vị trí việc làm tại nơi làm việc. Thời hạn tập nghề không quá 03 tháng.\"\n   },\n   \"vi_tu_chung\": [\n    \"recruit\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0363\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D61.K1\",\n    \"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Học nghề để làm việc cho người sử dụng lao động là việc người sử dụng lao động tuyển người vào để đào tạo nghề nghiệp tại nơi làm việc. Thời gian học nghề theo chương trình đào tạo của từng trình độ theo quy định của Luật Giáo dục nghề nghiệp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D93.K1\",\n    \"tieu_de_dieu\": \"Xây dựng thang lương, bảng lương và định mức lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải xây dựng thang lương, bảng lương và định mức lao động làm cơ sở để tuyển dụng, sử dụng lao động, thỏa thuận mức lương theo công việc hoặc chức danh ghi trong hợp đồng lao động và trả lương cho người lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"recruit\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0364\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D61.K1\",\n    \"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Học nghề để làm việc cho người sử dụng lao động là việc người sử dụng lao động tuyển người vào để đào tạo nghề nghiệp tại nơi làm việc. Thời gian học nghề theo chương trình đào tạo của từng trình độ theo quy định của Luật Giáo dục nghề nghiệp.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.a\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Yêu cầu tham gia, không tham gia hoặc ra khỏi tổ chức đại diện người lao động tại cơ sở để được tuyển dụng, giao kết hoặc gia hạn hợp đồng lao động;\"\n   },\n   \"vi_tu_chung\": [\n    \"recruit\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0365\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D61.K2\",\n    \"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tập nghề để làm việc cho người sử dụng lao động là việc người sử dụng lao động tuyển người vào để hướng dẫn thực hành công việc, tập làm nghề theo vị trí việc làm tại nơi làm việc. Thời hạn tập nghề không quá 03 tháng.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D93.K1\",\n    \"tieu_de_dieu\": \"Xây dựng thang lương, bảng lương và định mức lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải xây dựng thang lương, bảng lương và định mức lao động làm cơ sở để tuyển dụng, sử dụng lao động, thỏa thuận mức lương theo công việc hoặc chức danh ghi trong hợp đồng lao động và trả lương cho người lao động.\"\n   },\n   \"vi_tu_chung\": [\n    \"recruit\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0366\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D61.K2\",\n    \"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Tập nghề để làm việc cho người sử dụng lao động là việc người sử dụng lao động tuyển người vào để hướng dẫn thực hành công việc, tập làm nghề theo vị trí việc làm tại nơi làm việc. Thời hạn tập nghề không quá 03 tháng.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.a\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Yêu cầu tham gia, không tham gia hoặc ra khỏi tổ chức đại diện người lao động tại cơ sở để được tuyển dụng, giao kết hoặc gia hạn hợp đồng lao động;\"\n   },\n   \"vi_tu_chung\": [\n    \"recruit\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0367\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D61.K4\",\n    \"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người học nghề, người tập nghề phải đủ 14 tuổi trở lên và phải có đủ sức khỏe phù hợp với yêu cầu học nghề, tập nghề. Người học nghề, người tập nghề thuộc danh mục nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành phải từ đủ 18 tuổi trở lên, trừ lĩnh vực nghệ thuật, thể dục, thể thao.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D143.K1\",\n    \"tieu_de_dieu\": \"Lao động chưa thành niên\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Lao động chưa thành niên là người lao động chưa đủ 18 tuổi.\"\n   },\n   \"vi_tu_chung\": [\n    \"aged_18_or_older\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0368\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D61.K4\",\n    \"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người học nghề, người tập nghề phải đủ 14 tuổi trở lên và phải có đủ sức khỏe phù hợp với yêu cầu học nghề, tập nghề. Người học nghề, người tập nghề thuộc danh mục nghề, công việc nặng nhọc, độc hại, nguy hiểm hoặc đặc biệt nặng nhọc, độc hại, nguy hiểm do Bộ trưởng Bộ Lao động - Thương binh và Xã hội ban hành phải từ đủ 18 tuổi trở lên, trừ lĩnh vực nghệ thuật, thể dục, thể thao.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D151.K1.a\",\n    \"tieu_de_dieu\": \"Điều kiện người lao động nước ngoài làm việc tại Việt Nam\",\n    \"khoan_cha\": \"Người lao động nước ngoài làm việc tại Việt Nam là người có quốc tịch nước ngoài và phải đáp ứng các điều kiện sau đây:\",\n    \"chu_don_vi\": \"Đủ 18 tuổi trở lên và có năng lực hành vi dân sự đầy đủ;\"\n   },\n   \"vi_tu_chung\": [\n    \"aged_18_or_older\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0369\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D61.K6\",\n    \"tieu_de_dieu\": \"Học nghề, tập nghề để làm việc cho người sử dụng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hết thời hạn học nghề, tập nghề, hai bên phải ký kết hợp đồng lao động khi đủ các điều kiện theo quy định của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D175.K1.a\",\n    \"tieu_de_dieu\": \"Các hành vi bị nghiêm cấm đối với người sử dụng lao động liên quan đến thành lập, gia nhập và hoạt động của tổ chức đại diện người lao động tại cơ sở\",\n    \"khoan_cha\": \"Phân biệt đối xử đối với người lao động, thành viên ban lãnh đạo của tổ chức đại diện người lao động tại cơ sở vì lý do thành lập, gia nhập hoặc hoạt động tổ chức đại diện người lao động, bao gồm:\",\n    \"chu_don_vi\": \"Yêu cầu tham gia, không tham gia hoặc ra khỏi tổ chức đại diện người lao động tại cơ sở để được tuyển dụng, giao kết hoặc gia hạn hợp đồng lao động;\"\n   },\n   \"vi_tu_chung\": [\n    \"conclude_employment_contract\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_e2117fe8c62be34a9833cb17",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0360",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0361",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0362",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0363",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0364",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0365",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0366",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0367",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0368",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0369",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 3856,
+  "output_tokens": 569,
+  "cost_vnd": 39.1
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 431
+   }
+  ],
+  "usage_khac": {}
+ }
+}

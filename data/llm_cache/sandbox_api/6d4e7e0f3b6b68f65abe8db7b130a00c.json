@@ -1,0 +1,70 @@
+{
+ "task": "sandbox_api",
+ "prompt_version": "hop_cat",
+ "role": "api",
+ "requested_model": "daongocson12022004/gemini-3.8-flash-high",
+ "created": "2026-11-27T09:57:33+00:00",
+ "system": "Bạn xét các CẶP đơn vị của văn bản pháp luật lao động Việt Nam. Với mỗi cặp (A, B), quyết định một đơn vị có phải là NGOẠI LỆ của đơn vị kia không.\n\n\"B là ngoại lệ của A\" khi B nêu một trường hợp cụ thể hơn mà trong trường hợp đó quy định của A KHÔNG áp dụng, hoặc áp dụng khác đi (kết luận khác, miễn, loại trừ), dù chữ không có \"trừ\" hay dẫn chiếu. Ví dụ: A \"người lao động nước ngoài phải có giấy phép lao động\", B \"người lao động nước ngoài kết hôn với người Việt Nam và sinh sống tại Việt Nam không thuộc diện cấp giấy phép lao động\": B là ngoại lệ của A.\nKHÔNG phải ngoại lệ: hai quy định bổ sung cho nhau (cùng áp dụng được), một quy định chi tiết hoá quy định kia, hai quy định chỉ cùng chủ đề, hai mục cùng một danh sách. Không chắc thì trả \"khong\".\n\nĐẦU VÀO: {\"cap\": [{\"cap_id\", \"a\": {\"unit_id\", \"tieu_de_dieu\", \"khoan_cha\", \"chu_don_vi\", \"cac_muc_con\" (nếu có)}, \"b\": {...}, \"vi_tu_chung\": [tên vị từ hai bên cùng dùng]}]}.\nĐơn vị có cac_muc_con: chu_don_vi là câu dẫn, các trường hợp nằm trong cac_muc_con (chữ của các điểm, theo thứ tự); xét đơn vị cùng cả danh sách. Hai danh sách chỉ \"tách rời\" khi không trường hợp nào của bên này có thể xảy ra cùng lúc với một trường hợp của bên kia; nếu có thể xảy ra cùng lúc mà hai bên kết luận trái nhau, xét theo chữ luật bên nào phải được áp dụng trong tình huống đó.\n\nĐẦU RA: chỉ JSON {\"cap\": [{\"cap_id\": \"...\", \"ket_qua\": \"a_ngoai_le_cua_b\" | \"b_ngoai_le_cua_a\" | \"khong\", \"bang_chung\": \"...\"}]}. Mỗi cặp đúng một mục.\n- bang_chung: chỉ khi ket_qua khác \"khong\"; là MỘT chuỗi chép NGUYÊN VĂN, liền, từ tieu_de_dieu, khoan_cha, chu_don_vi hoặc một mục của cac_muc_con của đơn vị LÀ NGOẠI LỆ, nêu trường hợp làm quy định kia không áp dụng.\n- Mỗi cặp xét riêng theo chữ của cặp đó.\n",
+ "user": "{\n \"cap\": [\n  {\n   \"cap_id\": \"P0340\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D45.K1\",\n    \"tieu_de_dieu\": \"Thông báo chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải thông báo bằng văn bản cho người lao động về việc chấm dứt hợp đồng lao động khi hợp đồng lao động chấm dứt theo quy định của Bộ luật này, trừ trường hợp quy định tại các khoản 4, 5, 6, 7 và 8 Điều 34 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D46.K1\",\n    \"tieu_de_dieu\": \"Trợ cấp thôi việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hợp đồng lao động chấm dứt theo quy định tại các khoản 1, 2, 3, 4, 6, 7, 9 và 10 Điều 34 của Bộ luật này thì người sử dụng lao động có trách nhiệm trả trợ cấp thôi việc cho người lao động đã làm việc thường xuyên cho mình từ đủ 12 tháng trở lên, mỗi năm làm việc được trợ cấp một nửa tháng tiền lương, trừ trường hợp đủ điều kiện hưởng lương hưu theo quy định của pháp luật về bảo hiểm xã hội và trường hợp quy định tại điểm e khoản 1 Điều 36 của Bộ luật này.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0341\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D45.K1\",\n    \"tieu_de_dieu\": \"Thông báo chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải thông báo bằng văn bản cho người lao động về việc chấm dứt hợp đồng lao động khi hợp đồng lao động chấm dứt theo quy định của Bộ luật này, trừ trường hợp quy định tại các khoản 4, 5, 6, 7 và 8 Điều 34 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D57.K4\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thỏa thuận với người lao động thuê lại và doanh nghiệp cho thuê lại lao động để tuyển dụng chính thức người lao động thuê lại làm việc cho mình trong trường hợp hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động chưa chấm dứt.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0342\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D45.K1\",\n    \"tieu_de_dieu\": \"Thông báo chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Người sử dụng lao động phải thông báo bằng văn bản cho người lao động về việc chấm dứt hợp đồng lao động khi hợp đồng lao động chấm dứt theo quy định của Bộ luật này, trừ trường hợp quy định tại các khoản 4, 5, 6, 7 và 8 Điều 34 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K5\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0343\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D46.K1\",\n    \"tieu_de_dieu\": \"Trợ cấp thôi việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hợp đồng lao động chấm dứt theo quy định tại các khoản 1, 2, 3, 4, 6, 7, 9 và 10 Điều 34 của Bộ luật này thì người sử dụng lao động có trách nhiệm trả trợ cấp thôi việc cho người lao động đã làm việc thường xuyên cho mình từ đủ 12 tháng trở lên, mỗi năm làm việc được trợ cấp một nửa tháng tiền lương, trừ trường hợp đủ điều kiện hưởng lương hưu theo quy định của pháp luật về bảo hiểm xã hội và trường hợp quy định tại điểm e khoản 1 Điều 36 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D57.K4\",\n    \"tieu_de_dieu\": \"Quyền và nghĩa vụ của bên thuê lại lao động\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thỏa thuận với người lao động thuê lại và doanh nghiệp cho thuê lại lao động để tuyển dụng chính thức người lao động thuê lại làm việc cho mình trong trường hợp hợp đồng lao động của người lao động thuê lại với doanh nghiệp cho thuê lại lao động chưa chấm dứt.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0344\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D46.K1\",\n    \"tieu_de_dieu\": \"Trợ cấp thôi việc\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hợp đồng lao động chấm dứt theo quy định tại các khoản 1, 2, 3, 4, 6, 7, 9 và 10 Điều 34 của Bộ luật này thì người sử dụng lao động có trách nhiệm trả trợ cấp thôi việc cho người lao động đã làm việc thường xuyên cho mình từ đủ 12 tháng trở lên, mỗi năm làm việc được trợ cấp một nửa tháng tiền lương, trừ trường hợp đủ điều kiện hưởng lương hưu theo quy định của pháp luật về bảo hiểm xã hội và trường hợp quy định tại điểm e khoản 1 Điều 36 của Bộ luật này.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D156.K5\",\n    \"tieu_de_dieu\": \"Các trường hợp giấy phép lao động hết hiệu lực\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hợp đồng trong các lĩnh vực là cơ sở phát sinh giấy phép lao động hết thời hạn hoặc chấm dứt.\"\n   },\n   \"vi_tu_chung\": [\n    \"terminate\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0345\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D48.K1.b\",\n    \"tieu_de_dieu\": \"Trách nhiệm khi chấm dứt hợp đồng lao động\",\n    \"khoan_cha\": \"Trong thời hạn 14 ngày làm việc kể từ ngày chấm dứt hợp đồng lao động, hai bên có trách nhiệm thanh toán đầy đủ các khoản tiền có liên quan đến quyền lợi của mỗi bên, trừ trường hợp sau đây có thể kéo dài nhưng không được quá 30 ngày:\",\n    \"chu_don_vi\": \"Người sử dụng lao động thay đổi cơ cấu, công nghệ hoặc vì lý do kinh tế;\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D99.K3\",\n    \"tieu_de_dieu\": \"Tiền lương ngừng việc\",\n    \"khoan_cha\": \"Trường hợp phải ngừng việc, người lao động được trả lương như sau:\",\n    \"chu_don_vi\": \"Nếu vì sự cố về điện, nước mà không do lỗi của người sử dụng lao động hoặc do thiên tai, hỏa hoạn, dịch bệnh nguy hiểm, địch họa, di dời địa điểm hoạt động theo yêu cầu của cơ quan nhà nước có thẩm quyền hoặc vì lý do kinh tế thì hai bên thỏa thuận về tiền lương ngừng việc như sau:\",\n    \"cac_muc_con\": [\n     \"Trường hợp ngừng việc từ 14 ngày làm việc trở xuống thì tiền lương ngừng việc được thỏa thuận không thấp hơn mức lương tối thiểu;\",\n     \"Trường hợp phải ngừng việc trên 14 ngày làm việc thì tiền lương ngừng việc do hai bên thỏa thuận nhưng phải bảo đảm tiền lương ngừng việc trong 14 ngày đầu tiên không thấp hơn mức lương tối thiểu.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"economic_reasons\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0346\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D49.K1\",\n    \"tieu_de_dieu\": \"Hợp đồng lao động vô hiệu\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hợp đồng lao động vô hiệu toàn bộ trong trường hợp sau đây:\",\n    \"cac_muc_con\": [\n     \"Toàn bộ nội dung của hợp đồng lao động vi phạm pháp luật;\",\n     \"Người giao kết hợp đồng lao động không đúng thẩm quyền hoặc vi phạm nguyên tắc giao kết hợp đồng lao động quy định tại khoản 1 Điều 15 của Bộ luật này;\",\n     \"Công việc đã giao kết trong hợp đồng lao động là công việc mà pháp luật cấm.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D51.K2\",\n    \"tieu_de_dieu\": \"Xử lý hợp đồng lao động vô hiệu\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hợp đồng lao động bị tuyên bố vô hiệu toàn bộ thì quyền, nghĩa vụ và lợi ích của người lao động được giải quyết theo quy định của pháp luật; trường hợp do ký sai thẩm quyền thì hai bên ký lại.\"\n   },\n   \"vi_tu_chung\": [\n    \"wholly_invalid\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0347\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D49.K2\",\n    \"tieu_de_dieu\": \"Hợp đồng lao động vô hiệu\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Hợp đồng lao động vô hiệu từng phần khi nội dung của phần đó vi phạm pháp luật nhưng không ảnh hưởng đến các phần còn lại của hợp đồng.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D51.K1\",\n    \"tieu_de_dieu\": \"Xử lý hợp đồng lao động vô hiệu\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hợp đồng lao động bị tuyên bố vô hiệu từng phần thì xử lý như sau:\",\n    \"cac_muc_con\": [\n     \"Quyền, nghĩa vụ và lợi ích của hai bên được giải quyết theo thỏa ước lao động tập thể đang áp dụng; trường hợp không có thỏa ước lao động tập thể thì thực hiện theo quy định của pháp luật;\",\n     \"Hai bên tiến hành sửa đổi, bổ sung phần của hợp đồng lao động bị tuyên bố vô hiệu để phù hợp với thỏa ước lao động tập thể hoặc pháp luật về lao động.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"partially_invalid\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0348\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D51.K1\",\n    \"tieu_de_dieu\": \"Xử lý hợp đồng lao động vô hiệu\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hợp đồng lao động bị tuyên bố vô hiệu từng phần thì xử lý như sau:\",\n    \"cac_muc_con\": [\n     \"Quyền, nghĩa vụ và lợi ích của hai bên được giải quyết theo thỏa ước lao động tập thể đang áp dụng; trường hợp không có thỏa ước lao động tập thể thì thực hiện theo quy định của pháp luật;\",\n     \"Hai bên tiến hành sửa đổi, bổ sung phần của hợp đồng lao động bị tuyên bố vô hiệu để phù hợp với thỏa ước lao động tập thể hoặc pháp luật về lao động.\"\n    ]\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D86.K1\",\n    \"tieu_de_dieu\": \"Thỏa ước lao động tập thể vô hiệu\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thỏa ước lao động tập thể vô hiệu từng phần khi một hoặc một số nội dung trong thỏa ước lao động tập thể vi phạm pháp luật.\"\n   },\n   \"vi_tu_chung\": [\n    \"partially_invalid\"\n   ]\n  },\n  {\n   \"cap_id\": \"P0349\",\n   \"a\": {\n    \"unit_id\": \"BLLD_45-2019.D51.K2\",\n    \"tieu_de_dieu\": \"Xử lý hợp đồng lao động vô hiệu\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Khi hợp đồng lao động bị tuyên bố vô hiệu toàn bộ thì quyền, nghĩa vụ và lợi ích của người lao động được giải quyết theo quy định của pháp luật; trường hợp do ký sai thẩm quyền thì hai bên ký lại.\"\n   },\n   \"b\": {\n    \"unit_id\": \"BLLD_45-2019.D86.K2\",\n    \"tieu_de_dieu\": \"Thỏa ước lao động tập thể vô hiệu\",\n    \"khoan_cha\": \"\",\n    \"chu_don_vi\": \"Thỏa ước lao động tập thể vô hiệu toàn bộ thuộc một trong các trường hợp sau đây:\",\n    \"cac_muc_con\": [\n     \"Toàn bộ nội dung thỏa ước lao động tập thể vi phạm pháp luật;\",\n     \"Người ký kết không đúng thẩm quyền;\",\n     \"Không tuân thủ đúng quy trình thương lượng, ký kết thỏa ước lao động tập thể.\"\n    ]\n   },\n   \"vi_tu_chung\": [\n    \"wholly_invalid\"\n   ]\n  }\n ]\n}\n",
+ "model": "daongocson12022004/gemini-3.8-flash-high",
+ "request_id": "req_901acff3fce3eb576a73656d",
+ "output": {
+  "cap": [
+   {
+    "cap_id": "P0340",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0341",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0342",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0343",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0344",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0345",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0346",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0347",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0348",
+    "ket_qua": "khong"
+   },
+   {
+    "cap_id": "P0349",
+    "ket_qua": "khong"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 4136,
+  "output_tokens": 1167,
+  "cost_vnd": 39.25
+ },
+ "boc_rao": true,
+ "khoi_phan_hoi": {
+  "khoi": [
+   {
+    "type": "text",
+    "ky_tu": 557
+   }
+  ],
+  "usage_khac": {}
+ }
+}
