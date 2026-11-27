@@ -1,0 +1,124 @@
+{
+ "cau_hoi": [
+  {
+   "id": "B29",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "is_definite_term_employment_contract",
+     "phu_dinh": false,
+     "trich": "Hợp đồng lao động xác định thời hạn"
+    },
+    {
+     "vi_tu": "contract_expires",
+     "phu_dinh": false,
+     "trich": "hết hạn"
+    },
+    {
+     "vi_tu": "grassroots_rep_org_leadership_member",
+     "phu_dinh": false,
+     "trich": "thành viên ban lãnh đạo công đoàn cơ sở (tổ chức đại diện người lao động tại cơ sở)"
+    }
+   ]
+  },
+  {
+   "id": "B30",
+   "phi": "may_employer_unilaterally_terminates_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "suspend_labor_contract",
+     "phu_dinh": false,
+     "trich": "tạm hoãn hợp đồng lao động"
+    },
+    {
+     "vi_tu": "perform_military_service",
+     "phu_dinh": false,
+     "trich": "nghĩa vụ quân sự"
+    },
+    {
+     "vi_tu": "labor_contract_unexpired",
+     "phu_dinh": false,
+     "trich": "hợp đồng lao động vẫn còn thời hạn"
+    },
+    {
+     "vi_tu": "within_15_days_from_suspension_expiry",
+     "phu_dinh": true,
+     "trich": "Đã 20 ngày kể từ khi hết thời hạn tạm hoãn"
+    },
+    {
+     "vi_tu": "present_at_workplace",
+     "phu_dinh": true,
+     "trich": "không đến công ty làm việc"
+    },
+    {
+     "vi_tu": "have_other_agreement",
+     "phu_dinh": true,
+     "trich": "không có thỏa thuận nào khác"
+    }
+   ]
+  },
+  {
+   "id": "B31",
+   "phi": "illegal_strike",
+   "su_kien": [
+    {
+     "vi_tu": "organize_and_lead_strike",
+     "phu_dinh": false,
+     "trich": "tổ chức và lãnh đạo một cuộc đình công"
+    },
+    {
+     "vi_tu": "collective_dispute_being_settled_by_authority",
+     "phu_dinh": false,
+     "trich": "tranh chấp lao động tập thể giữa người lao động và công ty đang được Hội đồng trọng tài lao động thụ lý giải quyết theo thẩm quyền"
+    },
+    {
+     "vi_tu": "during_labor_arbitration_council_settlement",
+     "phu_dinh": false,
+     "trich": "trong khi tranh chấp lao động tập thể giữa người lao động và công ty đang được Hội đồng trọng tài lao động thụ lý giải quyết theo thẩm quyền"
+    }
+   ]
+  },
+  {
+   "id": "B32",
+   "phi": "may_temporarily_close_workplace",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "công ty"
+    },
+    {
+     "vi_tu": "stop_strike",
+     "phu_dinh": false,
+     "trich": "Cuộc đình công tại nhà máy đã kết thúc"
+    },
+    {
+     "vi_tu": "return_to_work",
+     "phu_dinh": false,
+     "trich": "trở lại làm việc"
+    }
+   ]
+  },
+  {
+   "id": "B33",
+   "phi": "must_create_separate_tracking_book",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Cửa hàng"
+    },
+    {
+     "vi_tu": "under_18_years_old",
+     "phu_dinh": false,
+     "trich": "16 tuổi"
+    }
+   ]
+  }
+ ]
+}

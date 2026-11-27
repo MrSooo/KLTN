@@ -74,3 +74,13 @@ ghi C:\Users\TusPC\Documents\kltn\data\llm_cache\answering\blld_questions.tach.h
 B37 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
     φ=work_permit_becomes_invalid; quy tắc trong Π_τ: 2139; dữ kiện: time_limit_expired, -extend_work_permit
     căn cứ: ['BLLD_45-2019.D156.K1', 'BLLD_45-2019.D156.K5']; căn cứ chuẩn: ['BLLD_45-2019.D156.K1']
+--- tach lần 2
+--- data/sandbox_runs/a63_hoi_dap/tach_lan2: dừng không do tuyến hay còn lô lỗi đầu ra (mã 1):
+  lô 002 LỖI: mô hình dừng với stop_reason max_tokens (token ra 38084, khối {'khoi': [{'type': 'thinking', 'ky_tu': 32285}, {'type': 'text', 'ky_tu': 77}], 'usage_khac': {}})
+  lô 005 LỖI: mô hình dừng với stop_reason max_tokens (token ra 38618, khối {'khoi': [{'type': 'thinking', 'ky_tu': 30270}, {'type': 'text', 'ky_tu': 734}], 'usage_khac': {}})
+ghi C:\Users\TusPC\Documents\kltn\data\llm_cache\answering\blld_questions.tach.hd3.lan2.json: 24 câu có trả lời
+  lô 002 KHÔNG nhận: chưa có out hoặc nhat_ky báo None
+  lô 005 KHÔNG nhận: chưa có out hoặc nhat_ky báo None
+B37 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=work_permit_becomes_invalid; quy tắc trong Π_τ: 2139; dữ kiện: time_limit_expired, -extend_work_permit
+    căn cứ: ['BLLD_45-2019.D156.K1', 'BLLD_45-2019.D156.K5']; căn cứ chuẩn: ['BLLD_45-2019.D156.K1']

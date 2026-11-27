@@ -1,0 +1,68 @@
+{
+ "cau_hoi": [
+  {
+   "id": "B34",
+   "phi": "terminate_employment_contract",
+   "su_kien": [
+    {
+     "vi_tu": "under_employment_contract",
+     "phu_dinh": false,
+     "trich": "theo hợp đồng lao động"
+    },
+    {
+     "vi_tu": "declared_missing_by_court",
+     "phu_dinh": false,
+     "trich": "Tòa án đã ra quyết định có hiệu lực pháp luật tuyên bố anh mất tích"
+    }
+   ]
+  },
+  {
+   "id": "B35",
+   "phi": "work_permit_becomes_invalid",
+   "su_kien": [
+    {
+     "vi_tu": "issued_work_permit",
+     "phu_dinh": false,
+     "trich": "được cấp giấy phép lao động"
+    },
+    {
+     "vi_tu": "work_consistent_with_work_permit",
+     "phu_dinh": true,
+     "trich": "được cấp giấy phép lao động với vị trí chuyên gia phân tích dữ liệu, nhưng thực tế công ty giao chị làm giám đốc bán hàng"
+    }
+   ]
+  },
+  {
+   "id": "B36",
+   "phi": "illegal_strike",
+   "su_kien": [
+    {
+     "vi_tu": "rep_org_entitled_to_organize_and_lead_strike",
+     "phu_dinh": true,
+     "trich": "không do công đoàn cơ sở hay tổ chức đại diện người lao động nào tổ chức và lãnh đạo"
+    },
+    {
+     "vi_tu": "rep_org_organizing_and_leading_strike",
+     "phu_dinh": true,
+     "trich": "không do công đoàn cơ sở hay tổ chức đại diện người lao động nào tổ chức và lãnh đạo"
+    }
+   ]
+  },
+  {
+   "id": "B37",
+   "phi": "work_permit_becomes_invalid",
+   "su_kien": [
+    {
+     "vi_tu": "time_limit_expired",
+     "phu_dinh": false,
+     "trich": "thời hạn đến ngày 31/3/2024; tại ngày 01/06/2024"
+    },
+    {
+     "vi_tu": "extend_work_permit",
+     "phu_dinh": true,
+     "trich": "chưa được cấp gia hạn"
+    }
+   ]
+  }
+ ]
+}
