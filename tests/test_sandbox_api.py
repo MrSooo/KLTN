@@ -74,8 +74,55 @@ def test_ckey_sends_anthropic_messages_and_records_cost():
         rec = client(t, [reply('{"x": 1}')], sent).ask("t", "v", "chữ system", "lời user", None, role="api")
         url, headers, body = sent[0]
         assert url == "https://may-chu.gia/v1/messages" and headers["Authorization"] == "Bearer khoa-gia" and headers["Anthropic-version"] == "2023-06-01"
-        assert body == {"model": "m-api", "max_tokens": 50, "system": "chữ system", "messages": [{"role": "user", "content": "lời user"}]}
+        assert body == {"model": "m-api", "max_tokens": 50, "system": "chữ system", "messages": [{"role": "user", "content": "lời user"}],
+                        "stream": True}
         assert rec["output"] == {"x": 1} and rec["request_id"] == "req_1" and rec["usage"]["cost_vnd"] == 6.5 and rec["boc_rao"] is False
+
+
+class FakeStream(FakeResponse):
+    headers = {"Content-Type": "text/event-stream"}
+
+
+def sse(*events):
+    return FakeStream("".join(f"event: {e['type']}\ndata: {json.dumps(e, ensure_ascii=False)}\n\n" for e in events).encode("utf-8"))
+
+
+SSE_OK = ({"type": "message_start", "message": {"id": "chatcmpl-9", "model": "m-api", "content": [], "role": "assistant"}},
+          {"type": "content_block_start", "index": 0, "content_block": {"type": "thinking", "thinking": ""}},
+          {"type": "content_block_delta", "index": 0, "delta": {"type": "thinking_delta", "thinking": "nghĩ"}},
+          {"type": "content_block_stop", "index": 0},
+          {"type": "content_block_start", "index": 1, "content_block": {"type": "text", "text": ""}},
+          {"type": "content_block_delta", "index": 1, "delta": {"type": "text_delta", "text": '{"x": '}},
+          {"type": "content_block_delta", "index": 1, "delta": {"type": "text_delta", "text": "2}"}},
+          {"type": "content_block_stop", "index": 1},
+          {"type": "message_delta", "delta": {"stop_reason": "end_turn"},
+           "usage": {"input_tokens": 9, "output_tokens": 33, "x_ckey": {"cost": 6.5, "request_id": "req_9"}}},
+          {"type": "message_stop"})
+
+
+def test_ckey_stream_is_assembled_like_a_plain_reply():
+    """[27/11] Luồng SSE gom thành đúng dict của phản hồi không stream; khối thinking vẫn được đếm trong khoi_phan_hoi."""
+    with tempfile.TemporaryDirectory() as t, env_key():
+        c = llm.Client("live", CFG, cache_dir=Path(t) / "cache", usage_path=Path(t) / "cache" / "_usage.json", today="2026-11-19",
+                       sleep=lambda s: None, urlopen=lambda req, timeout=None: sse(*SSE_OK))
+        rec = c.ask("t", "v", "s", "u", None, role="api")
+        assert rec["output"] == {"x": 2} and rec["request_id"] == "req_9" and rec["usage"]["cost_vnd"] == 6.5
+        assert rec["usage"]["input_tokens"] == 9 and rec["usage"]["output_tokens"] == 33
+        assert [b["type"] for b in rec["khoi_phan_hoi"]["khoi"]] == ["thinking", "text"]
+
+
+def test_ckey_stream_error_or_cut_is_not_cached():
+    """Lỗi giữa luồng đến với HTTP 200: sự kiện error, hay luồng đứt trước message_stop, là LLMError và không vào cache."""
+    for events in (SSE_OK[:6] + ({"type": "error", "error": {"type": "overloaded_error", "message": "upstream"}},), SSE_OK[:-1]):
+        with tempfile.TemporaryDirectory() as t, env_key():
+            c = llm.Client("live", CFG, cache_dir=Path(t) / "cache", usage_path=Path(t) / "cache" / "_usage.json", today="2026-11-19",
+                           sleep=lambda s: None, urlopen=lambda req, timeout=None, ev=events: sse(*ev))
+            try:
+                c.ask("t", "v", "s", "u", None, role="api")
+                raise AssertionError("phải lỗi")
+            except llm.LLMError:
+                pass
+            assert not list((Path(t) / "cache").rglob("*.json")) or all(p.name == "_usage.json" for p in (Path(t) / "cache").rglob("*.json"))
 
 
 def test_ckey_strips_a_whole_fence_only():

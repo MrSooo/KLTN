@@ -47,7 +47,7 @@ RETRY_CODES = (429, 500, 503)
 RETRY_CODES_ANTHROPIC = (429, 500, 503, 529)  # 529 = Anthropic quá tải
 # máy chủ trung gian: 503 và 524 "upstream gateway unavailable" là lỗi tạm đã gặp khi thử (19/11); 520-524 là mã quá thời gian của lớp Cloudflare đứng trước
 RETRY_CODES_CKEY = (429, 500, 502, 503, 504, 520, 521, 522, 523, 524)
-CKEY_TIMEOUT = 900  # giây cho MỘT lời gọi: trang model ghi P95 khoảng 105 giây; [27/11 02:55] 300 -> 900: lượt 002 của 1.6B (30 chữ, có lược đồ) quá 300 giây hai lần liền trên phamhuyhoang28072005/gemini-3.8-flash
+CKEY_TIMEOUT = 900  # [27/11] từ khi gọi bằng stream, đây là thời gian chờ MỖI LẦN ĐỌC (kết nối im ngần này giây thì lỗi), không còn là trần cả lượt. Trước đó: giây cho MỘT lời gọi: trang model ghi P95 khoảng 105 giây; [27/11 02:55] 300 -> 900: lượt 002 của 1.6B (30 chữ, có lược đồ) quá 300 giây hai lần liền trên phamhuyhoang28072005/gemini-3.8-flash
 THINKING_MODES = ("between_tools", "disabled")  # cách TẮT suy nghĩ phụ thuộc model: Sonnet 5.5 chỉ nhận between_tools, Haiku 5.5 không nhận between_tools (chỉ disabled)
 ATTEMPTS = 3
 # [27/11, user: "đừng spam lỗi tránh nó block mình"] nhánh ckey không thử lại lỗi HTTP/mạng: một lần, lỗi thì ném ngay cho bộ chạy dừng
@@ -387,8 +387,9 @@ class Client:
         key = os.environ.get(PROVIDERS["ckey"])
         if not key:
             raise LLMUnavailable("chưa có khoá ckey; đặt biến môi trường CKEY_API_KEY bằng `setx` ở terminal riêng rồi mở terminal mới")
-        body = json.dumps({"model": model, "max_tokens": max_tokens, "system": system, "messages": [{"role": "user", "content": user}]},
-                          ensure_ascii=False).encode("utf-8")
+        # [27/11, user] stream (SSE): chữ về dần nên cổng ckey không thấy kết nối im suốt lượt dài; cách truyền không vào khoá cache
+        body = json.dumps({"model": model, "max_tokens": max_tokens, "system": system, "messages": [{"role": "user", "content": user}],
+                           "stream": True}, ensure_ascii=False).encode("utf-8")
         req = urllib.request.Request(self.cfg[f"{API_ROLE}.base_url"].rstrip("/") + "/v1/messages", data=body, method="POST",
                                      headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json", "anthropic-version": "2023-06-01",
                                               "User-Agent": USER_AGENT})
@@ -396,7 +397,8 @@ class Client:
             why = None
             try:
                 with self._urlopen(req, timeout=CKEY_TIMEOUT) as r:
-                    data = json.loads(r.read().decode("utf-8"))
+                    ctype = (getattr(r, "headers", None) or {}).get("Content-Type") or ""
+                    data = read_sse(r) if "text/event-stream" in ctype else json.loads(r.read().decode("utf-8"))
                 break
             except urllib.error.HTTPError as e:
                 detail = e.read().decode("utf-8", "replace")[:300]
@@ -425,6 +427,47 @@ class Client:
         return {"model": data.get("model") or model, "request_id": extra.get("request_id") or data.get("id"), "output": output,
                 "usage": {"input_tokens": usage.get("input_tokens"), "output_tokens": usage.get("output_tokens"), "cost_vnd": extra.get("cost")},
                 "boc_rao": fenced, "khoi_phan_hoi": blocks}
+
+
+def read_sse(lines):
+    """[27/11] Gom luồng SSE của ckey (giao thức Anthropic Messages, đo 27/11 trên dungcsnd113) thành đúng dict mà phản hồi không stream trả:
+    model, id từ message_start; khối thinking/text cộng dần theo index; stop_reason, usage (cả x_ckey: chi phí, request_id) từ message_delta.
+    Lỗi giữa luồng đến kèm HTTP 200: sự kiện `error`, hay luồng hết mà không có message_stop, là LLMError (không bao giờ lưu chữ dở vào cache)."""
+    data, blocks, done, event = {"content": []}, {}, False, None
+    for raw in lines:
+        line = (raw.decode("utf-8", "replace") if isinstance(raw, bytes) else raw).rstrip("\r\n")
+        if line.startswith("event:"):
+            event = line[6:].strip()
+            continue
+        if not line.startswith("data:"):
+            continue
+        try:
+            ev = json.loads(line[5:].strip())
+        except ValueError:
+            raise LLMError(f"luồng SSE có dòng data không phải JSON: {line[:200]}")
+        kind = ev.get("type") or event
+        if kind == "error":
+            raise LLMError(f"luồng SSE báo lỗi: {json.dumps(ev.get('error', ev), ensure_ascii=False)[:300]}")
+        if kind == "message_start":
+            msg = ev.get("message") or {}
+            data.update({k: msg[k] for k in ("model", "id") if k in msg})
+            data["usage"] = dict(msg.get("usage") or {})
+        elif kind == "content_block_start":
+            blocks[ev.get("index", len(blocks))] = dict(ev.get("content_block") or {})
+        elif kind == "content_block_delta":
+            b, d = blocks.setdefault(ev.get("index", 0), {"type": "text", "text": ""}), ev.get("delta") or {}
+            for field in ("text", "thinking", "signature", "partial_json"):
+                if isinstance(d.get(field), str):
+                    b[field] = b.get(field, "") + d[field]
+        elif kind == "message_delta":
+            data.update({k: v for k, v in (ev.get("delta") or {}).items() if k in ("stop_reason", "stop_sequence")})
+            data["usage"] = {**data.get("usage", {}), **(ev.get("usage") or {})}
+        elif kind == "message_stop":
+            done = True
+    if not done:
+        raise LLMError("luồng SSE đứt trước message_stop")
+    data["content"] = [blocks[i] for i in sorted(blocks)]
+    return data
 
 
 def response_blocks(data):

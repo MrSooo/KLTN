@@ -24,6 +24,7 @@ import gzip
 import json
 import math
 import operator
+import os
 import unicodedata
 import sys
 from pathlib import Path
@@ -477,12 +478,35 @@ def fetch_embeddings(texts):
     return len(need)
 
 
+SEM_MEMO_DIR = corpus.ROOT / "data" / "processed" / "_memo"  # đã gitignore (đầu ra dựng lại được)
+
+
 def semantic_neighbors(words):
-    """{i: [j]} SEM_TOP chữ gần nhất theo cosine (mọi chữ khác, xếp giảm dần, hoà theo key). Thiếu vector thì dừng: chạy --nhung trước."""
+    """{i: [j]} SEM_TOP chữ gần nhất theo cosine (mọi chữ khác, xếp giảm dần, hoà theo key). Thiếu vector thì dừng: chạy --nhung trước.
+    [27/11] Phép tính mất khoảng 32 giây (Python thuần, 2.441 chữ) mà tiep.py gọi hai lần mỗi lượt 1.6B; kết quả chỉ phụ thuộc
+    (key, chữ, vector từng chữ, SEM_TOP) nên được lưu ở SEM_MEMO_DIR, khoá bằng sha256 của đúng các đầu vào đó; hụt thì tính như cũ."""
+    import hashlib
     vec = load_embeddings()
     missing = [w["surface"] for w in words if _embed_key(w["surface"]) not in vec]
     if missing:
         raise SystemExit(f"names-2.3: {len(missing)} chữ chưa có embedding (ví dụ {missing[:3]}); chạy `predicates.py --nhung` (gọi ckey) trước")
+    sig = hashlib.sha256(json.dumps([SEM_TOP, [[w["key"], w["surface"], vec[_embed_key(w["surface"])]] for w in words]],
+                                    ensure_ascii=False, separators=(",", ":")).encode("utf-8")).hexdigest()
+    memo = SEM_MEMO_DIR / f"sem_neighbors_{sig[:32]}.json"
+    if memo.exists():
+        try:
+            return {int(i): js for i, js in json.loads(memo.read_text(encoding="utf-8")).items()}
+        except (ValueError, OSError):
+            pass  # file hỏng (ví dụ ghi dở): tính lại
+    out = _semantic_neighbors(words, vec)
+    SEM_MEMO_DIR.mkdir(parents=True, exist_ok=True)
+    tmp = memo.with_suffix(f".{os.getpid()}.tmp")
+    tmp.write_text(json.dumps(out, separators=(",", ":")), encoding="utf-8")
+    tmp.replace(memo)  # ghi nguyên tử: tiến trình khác đọc cùng lúc không thấy file dở
+    return out
+
+
+def _semantic_neighbors(words, vec):
     unit = []
     for w in words:
         v = vec[_embed_key(w["surface"])]
