@@ -47,3 +47,12 @@ XONG: 18/18 bước, 339s
 [17/18] checks: kiểm tra độc lập                          OK  (0.6s)
 [18/18] graph: đồ thị gộp                                 OK  (0.3s)
 XONG: 18/18 bước, 316s
+##### 17:18 6. 1.9 dịch 34 câu: 3 KB x 3 lần, cùng model dịch (gọi dưới KLTN_LLM_RUN=tach2: tach2.api.model = hoi_dap.model)
+--- tach2 lần 1
+--- data/sandbox_runs/a63_hoi_dap/tach2_lan1: dừng không do tuyến hay còn lô lỗi đầu ra (mã 1):
+  lô 002 LỖI: mô hình dừng với stop_reason max_tokens (token ra 38498, khối {'khoi': [{'type': 'thinking', 'ky_tu': 33745}, {'type': 'text', 'ky_tu': 77}], 'usage_khac': {}})
+ghi C:\Users\TusPC\Documents\kltn\data\llm_cache\answering\blld_questions.tach2.hd3.json: 29 câu có trả lời
+  lô 002 KHÔNG nhận: chưa có out hoặc nhat_ky báo None
+B37 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=work_permit_ceases_to_be_effective; quy tắc trong Π_τ: 2016; dữ kiện: work_permit_term_expires
+    căn cứ: ['BLLD_45-2019.D156.K1']; căn cứ chuẩn: ['BLLD_45-2019.D156.K1']

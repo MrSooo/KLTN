@@ -1,0 +1,114 @@
+{
+ "cau_hoi": [
+  {
+   "id": "B01",
+   "phi": "terminate_employment_contract",
+   "su_kien": [
+    {
+     "vi_tu": "commit_theft",
+     "phu_dinh": false,
+     "trich": "trộm cắp"
+    },
+    {
+     "vi_tu": "at_workplace",
+     "phu_dinh": false,
+     "trich": "tại nơi làm việc"
+    },
+    {
+     "vi_tu": "disciplined_by_dismissal",
+     "phu_dinh": false,
+     "trich": "kỷ luật sa thải"
+    },
+    {
+     "vi_tu": "under_legally_prescribed_procedures",
+     "phu_dinh": false,
+     "trich": "trình tự, thủ tục theo pháp luật"
+    }
+   ]
+  },
+  {
+   "id": "B03",
+   "phi": "terminate_employment_contract",
+   "su_kien": [
+    {
+     "vi_tu": "under_effective_court_judgment_or_decision",
+     "phu_dinh": true,
+     "trich": "chưa có bản án của Tòa án"
+    }
+   ]
+  },
+  {
+   "id": "B04",
+   "phi": "terminate_employment_contract",
+   "su_kien": [
+    {
+     "vi_tu": "pass_away",
+     "phu_dinh": false,
+     "trich": "qua đời"
+    }
+   ]
+  },
+  {
+   "id": "B05",
+   "phi": "may_unilaterally_terminate_employment_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "công ty"
+    },
+    {
+     "vi_tu": "regularly_complete_work_under_contract",
+     "phu_dinh": true,
+     "trich": "thường xuyên không hoàn thành công việc"
+    },
+    {
+     "vi_tu": "under_employers_work_evaluation_criteria",
+     "phu_dinh": false,
+     "trich": "theo tiêu chí trong quy chế đánh giá của công ty"
+    },
+    {
+     "vi_tu": "take_paid_annual_leave",
+     "phu_dinh": false,
+     "trich": "nghỉ phép hằng năm"
+    }
+   ]
+  },
+  {
+   "id": "B06",
+   "phi": "may_unilaterally_terminate_employment_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Người sử dụng lao động"
+    },
+    {
+     "vi_tu": "work_under_indefinite_term_employment_contract",
+     "phu_dinh": false,
+     "trich": "làm việc theo hợp đồng không xác định thời hạn"
+    },
+    {
+     "vi_tu": "suffer_illness",
+     "phu_dinh": false,
+     "trich": "bị ốm"
+    },
+    {
+     "vi_tu": "treated_12_months_under_indefinite_contract",
+     "phu_dinh": false,
+     "trich": "đã điều trị 12 tháng liên tục"
+    },
+    {
+     "vi_tu": "working_capacity_recovers",
+     "phu_dinh": true,
+     "trich": "khả năng lao động chưa hồi phục"
+    },
+    {
+     "vi_tu": "treated_for_accident_or_occupational_disease",
+     "phu_dinh": false,
+     "trich": "đang điều trị theo chỉ định của cơ sở khám bệnh, chữa bệnh có thẩm quyền"
+    }
+   ]
+  }
+ ]
+}
