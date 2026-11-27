@@ -184,6 +184,111 @@
     }
    ]
   },
+  "B12": {
+   "cau_hoi": "Một công nhân vận hành sai quy trình khiến dây chuyền phải dừng hoạt động, và công nhân này được xác định là người có lỗi gây ra việc ngừng việc. Người gây ra lỗi có được hưởng lương trong thời gian ngừng việc không?",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "work_stoppage",
+     "phu_dinh": false,
+     "trich": "ngừng việc"
+    }
+   ]
+  },
+  "B13": {
+   "cau_hoi": "Công ty đơn phương chấm dứt hợp đồng lao động không xác định thời hạn với chị H vì chị thường xuyên không hoàn thành công việc theo quy chế đánh giá của công ty; quy chế này được ban hành sau khi đã tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở. Công ty có phải báo trước cho chị không?",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "employer_unilateral_termination",
+     "phu_dinh": false,
+     "trich": "đơn phương chấm dứt hợp đồng lao động"
+    },
+    {
+     "vi_tu": "indefinite_term_labor_contract",
+     "phu_dinh": false,
+     "trich": "hợp đồng lao động không xác định thời hạn"
+    },
+    {
+     "vi_tu": "consult_employee_representative_org",
+     "phu_dinh": false,
+     "trich": "tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở"
+    }
+   ]
+  },
+  "B14": {
+   "cau_hoi": "Một công ty ở Bình Dương tuyển một kỹ sư quốc tịch Nhật Bản làm trưởng phòng kỹ thuật theo hợp đồng 2 năm. Kỹ sư này không góp vốn vào công ty, không phải luật sư, không kết hôn với người Việt Nam và không thuộc trường hợp nào được miễn giấy phép lao động. Kỹ sư này có phải có giấy phép lao động không?",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "labor_contract",
+     "phu_dinh": false,
+     "trich": "hợp đồng"
+    },
+    {
+     "vi_tu": "owner_or_capital_contributor_of_llc",
+     "phu_dinh": true,
+     "trich": "không góp vốn vào công ty"
+    },
+    {
+     "vi_tu": "foreign_lawyer_with_vietnam_practice_license",
+     "phu_dinh": true,
+     "trich": "không phải luật sư"
+    },
+    {
+     "vi_tu": "marry_vietnamese_and_reside_in_vietnam",
+     "phu_dinh": true,
+     "trich": "không kết hôn với người Việt Nam"
+    }
+   ]
+  },
+  "B15": {
+   "cau_hoi": "Một xưởng may muốn nhận em E, 14 tuổi, vào làm công việc nhẹ trong dịp hè. Xưởng có phải ký hợp đồng lao động bằng văn bản với em E và người đại diện theo pháp luật của em không?",
+   "phi": "must_enter_into_written_labor_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Xưởng"
+    },
+    {
+     "vi_tu": "be_under_15_years_old",
+     "phu_dinh": false,
+     "trich": "14 tuổi"
+    },
+    {
+     "vi_tu": "worker_aged_13_to_under_15",
+     "phu_dinh": false,
+     "trich": "14 tuổi"
+    },
+    {
+     "vi_tu": "perform_light_work",
+     "phu_dinh": false,
+     "trich": "làm công việc nhẹ"
+    }
+   ]
+  },
+  "B16": {
+   "cau_hoi": "Doanh nghiệp sáp nhập với doanh nghiệp khác, và việc sáp nhập ảnh hưởng đến việc làm của nhiều người lao động. Người sử dụng lao động có phải xây dựng phương án sử dụng lao động không?",
+   "phi": "must_build_labor_use_plan",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Người sử dụng lao động"
+    },
+    {
+     "vi_tu": "corporate_restructuring_or_asset_transfer",
+     "phu_dinh": false,
+     "trich": "sáp nhập"
+    },
+    {
+     "vi_tu": "affect_employment_of_many_workers",
+     "phu_dinh": false,
+     "trich": "ảnh hưởng đến việc làm của nhiều người lao động"
+    }
+   ]
+  },
   "B17": {
    "cau_hoi": "Dịch bệnh nguy hiểm bùng phát khiến nhà hàng phải thu hẹp hoạt động. Chủ nhà hàng đã áp dụng mọi biện pháp khắc phục có thể (giảm giờ làm, cho nghỉ luân phiên, chuyển người sang việc khác) nhưng vẫn buộc phải giảm chỗ làm việc. Nhà hàng có được đơn phương chấm dứt hợp đồng lao động với một số nhân viên không?",
    "phi": "may_employer_unilateral_termination",

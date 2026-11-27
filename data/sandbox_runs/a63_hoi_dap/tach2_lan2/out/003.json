@@ -1,0 +1,104 @@
+{
+ "cau_hoi": [
+  {
+   "id": "B12",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "employee",
+     "phu_dinh": false,
+     "trich": "công nhân"
+    },
+    {
+     "vi_tu": "determined",
+     "phu_dinh": false,
+     "trich": "được xác định"
+    },
+    {
+     "vi_tu": "stop_working",
+     "phu_dinh": false,
+     "trich": "ngừng việc"
+    }
+   ]
+  },
+  {
+   "id": "B13",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "indefinite_term_contract",
+     "phu_dinh": false,
+     "trich": "hợp đồng lao động không xác định thời hạn"
+    },
+    {
+     "vi_tu": "regularly_complete_work_under_contract",
+     "phu_dinh": true,
+     "trich": "thường xuyên không hoàn thành công việc"
+    },
+    {
+     "vi_tu": "consult_grassroots_employee_representative_org",
+     "phu_dinh": false,
+     "trich": "tham khảo ý kiến tổ chức đại diện người lao động tại cơ sở"
+    }
+   ]
+  },
+  {
+   "id": "B14",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "owner_or_member_of_llc_with_prescribed_capital",
+     "phu_dinh": true,
+     "trich": "không góp vốn vào công ty"
+    },
+    {
+     "vi_tu": "foreign_lawyer_licensed_to_practice_in_vietnam",
+     "phu_dinh": true,
+     "trich": "không phải luật sư"
+    },
+    {
+     "vi_tu": "marry_vietnamese_citizen",
+     "phu_dinh": true,
+     "trich": "không kết hôn với người Việt Nam"
+    }
+   ]
+  },
+  {
+   "id": "B15",
+   "phi": "must_enter_written_contract_with_minor_and_legal_rep",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "xưởng may"
+    },
+    {
+     "vi_tu": "aged_under_15",
+     "phu_dinh": false,
+     "trich": "14 tuổi"
+    },
+    {
+     "vi_tu": "aged_between_13_and_under_15",
+     "phu_dinh": false,
+     "trich": "14 tuổi"
+    }
+   ]
+  },
+  {
+   "id": "B16",
+   "phi": "must_develop_labor_utilization_plan",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Người sử dụng lao động"
+    },
+    {
+     "vi_tu": "affect_employment_of_many_employees",
+     "phu_dinh": false,
+     "trich": "ảnh hưởng đến việc làm của nhiều người lao động"
+    }
+   ]
+  }
+ ]
+}

@@ -2,7 +2,14 @@
 
 Cập nhật lần cuối: 27/11/2026. Nhánh làm việc: `v3_refactor`.
 
-## 0. Tạm dừng (A63, đêm 27/11): KB `tach2`
+## 0. A63 xong (27/11 20:10): KB `tach2` đã dựng và chấm; luật giữ CHƯA đạt
+- **Điểm 34 câu (sau khi hỏi lại một lần lô 1.9 hỏng, cùng luật cho 3 KB; `docs/run_reports_tach2/a63/diem_34_cau_sau_hoi_lai.txt`):** `tach2` 13/17/14 (TB 14,7; chặt 13/17/14); `tach` (mã hiện tại) 13/13/13 (TB 13,0); `ckey` 15/18/13 (TB 15,3; chặt 14/17/13). Đối chứng (8 câu): `tach2` 4/5/3, `tach` 4/4/4, `ckey` 5/7/2. **Luật giữ (`tach2` hơn `ckey`) KHÔNG đạt** (14,7 < 15,3) dù `ckey` còn thiếu 2 lô (lần 1 lô 002 = B07-B11, lần 3 lô 005; hỏi lại vẫn cụt), tức `ckey` bị tính sai 10 lượt câu mà vẫn cao hơn. `tach2` hơn `tach` 1,7 câu; đối chứng không tụt so với `tach`.
+- Tuyến: 1.6B 193 lượt `dungcsnd113`, 15 lượt `daongocson` (dự phòng); 1.7 62/62 lô `daongocson` (`dungcsnd113` 404 lúc đó); 1.9 cả 9 hộp cát `dungcsnd113` (cùng một model dịch cho 3 KB). 1.6B 2.439/2.441 chữ có tên; 1.7 617 cặp (vượt ngân sách 400, chỉ cảnh báo).
+- 1.9: 9 lô cụt max_tokens (model nghĩ lặp 38-45 nghìn token), lô 002 (B07-B11, câu dài về người nước ngoài, giấy phép lao động) cụt ở cả 3 KB; hỏi lại một lần: 7/9 qua, 2 lô `ckey` vẫn cụt. `ckey` lần 1 trong chuỗi in 0/34 vì `answering.py` lỗi không rõ (chạy lại tay thì được, không tái hiện).
+- Bộ test đầy đủ (off, replay): 17/18; lỗi duy nhất `test_qa_server_offline_on_subset_dev_question` có từ trước (user chọn để sau).
+- Việc tiếp (chờ user): đếm chỗ đứt nối trong KB `tach2` (tên lệch hay đích không có quy tắc) để xét bước "đề xuất nối"; xem các câu `tach2` sai mà `ckey` đúng (B11, B15, B18, B22, B24, B30) để biết lỗi nằm ở bước nào.
+
+## 0b. Nhật ký chạy A63 (đêm 27/11)
 Gói A63 (user duyệt 26/11, chi tiết `docs/decisions.md` A63): lượt 2 của 1.6A-v2 `vai-nhom-4` (LLM ghi khoảng âm tiết, máy lấy chữ), 1.8 bỏ cả quy tắc có dòng lỗi, 1.6B `names-2.3` (láng giềng embedding), 1.9 `hoi-dap-3`; bộ 34 câu `blld_questions.json` đóng băng; luật giữ: `tach2` đúng nhiều câu hơn `ckey` cùng mã và cùng model dịch, 8 câu đối chứng không tụt.
 - Sửa thêm 27/11 (user duyệt): cổng lượt 2 bắt khoảng hụt một âm tiết (`hut_cuoi`); 1.8 dòng bị bác mang chủ thể của quy tắc bị chặn; nhánh ckey không gọi dồn (không thử lại lỗi HTTP, dừng ở lỗi tuyến đầu tiên, nghỉ 5 giây mỗi lượt).
 - Tuyến LLM: `martha02091945` (117 khoản đầu), `daongocson12022004` (đến D149.K3, rồi 404), `dungcsnd113/gemini-flash-3.8` với khoá mới (phần còn lại và mọi bước sau, cả dịch 1.9 cho 3 KB). Lỗi 500 của ckey là "upstream AI gateway temporarily unavailable" (tạm thời).

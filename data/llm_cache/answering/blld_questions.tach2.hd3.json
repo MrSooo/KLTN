@@ -114,6 +114,101 @@
     }
    ]
   },
+  "B07": {
+   "cau_hoi": "Anh John, quốc tịch Anh, lấy vợ người Việt và đã định cư ở Hà Nội; nay anh được một trường tư thục nhận vào dạy tiếng Anh. Anh có thuộc diện phải cấp giấy phép lao động không?",
+   "phi": "not_applicable_issue_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "foreign_worker_in_vietnam",
+     "phu_dinh": false,
+     "trich": "Anh John"
+    },
+    {
+     "vi_tu": "have_foreign_nationality",
+     "phu_dinh": false,
+     "trich": "quốc tịch Anh"
+    },
+    {
+     "vi_tu": "marry_vietnamese_citizen",
+     "phu_dinh": false,
+     "trich": "lấy vợ người Việt"
+    },
+    {
+     "vi_tu": "reside",
+     "phu_dinh": false,
+     "trich": "đã định cư ở Hà Nội"
+    }
+   ]
+  },
+  "B08": {
+   "cau_hoi": "Bà Kim, quốc tịch Hàn Quốc, là luật sư đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư và đang làm cho một công ty luật ở TP.HCM. Bà có thuộc diện cấp giấy phép lao động không?",
+   "phi": "not_applicable_issue_work_permit",
+   "su_kien": [
+    {
+     "vi_tu": "foreign_worker_in_vietnam",
+     "phu_dinh": false,
+     "trich": "Bà Kim"
+    },
+    {
+     "vi_tu": "foreign_lawyer_licensed_to_practice_in_vietnam",
+     "phu_dinh": false,
+     "trich": "là luật sư đã được cấp Giấy phép hành nghề luật sư tại Việt Nam theo quy định của Luật Luật sư"
+    }
+   ]
+  },
+  "B09": {
+   "cau_hoi": "Người lao động nước ngoài đã chấm dứt hợp đồng lao động với công ty tại Việt Nam. Giấy phép lao động của người này có hết hiệu lực không?",
+   "phi": "work_permit_ceases_to_be_effective",
+   "su_kien": [
+    {
+     "vi_tu": "foreign_worker",
+     "phu_dinh": false,
+     "trich": "Người lao động nước ngoài"
+    },
+    {
+     "vi_tu": "terminate_employment_contract",
+     "phu_dinh": false,
+     "trich": "chấm dứt hợp đồng lao động"
+    },
+    {
+     "vi_tu": "in_vietnam",
+     "phu_dinh": false,
+     "trich": "tại Việt Nam"
+    }
+   ]
+  },
+  "B10": {
+   "cau_hoi": "Giấy phép lao động của một người lao động nước ngoài đã bị thu hồi. Hợp đồng lao động của người này có chấm dứt không?",
+   "phi": "terminate_employment_contract",
+   "su_kien": [
+    {
+     "vi_tu": "foreign_worker",
+     "phu_dinh": false,
+     "trich": "người lao động nước ngoài"
+    },
+    {
+     "vi_tu": "revoke_work_permit",
+     "phu_dinh": false,
+     "trich": "bị thu hồi"
+    }
+   ]
+  },
+  "B11": {
+   "cau_hoi": "Một xưởng phải dừng hoạt động vì bộ phận quản lý của công ty không thực hiện đúng việc bảo trì máy móc, tức việc ngừng việc do lỗi của người sử dụng lao động. Người lao động có được nhận đủ lương theo hợp đồng trong thời gian xưởng dừng hoạt động không?",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "người sử dụng lao động"
+    },
+    {
+     "vi_tu": "employee",
+     "phu_dinh": false,
+     "trich": "Người lao động"
+    }
+   ]
+  },
   "B12": {
    "cau_hoi": "Một công nhân vận hành sai quy trình khiến dây chuyền phải dừng hoạt động, và công nhân này được xác định là người có lỗi gây ra việc ngừng việc. Người gây ra lỗi có được hưởng lương trong thời gian ngừng việc không?",
    "phi": null,

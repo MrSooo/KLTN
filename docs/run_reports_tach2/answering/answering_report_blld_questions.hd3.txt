@@ -16,20 +16,21 @@ B05 2024-06-01 chuẩn=bi_bac ra=bi_bac [ĐÚNG] không cạnh 1.7=chua_du_can_c
 B06 2024-06-01 chuẩn=ket_luan_duoc ra=bi_bac [sai] không cạnh 1.7=ket_luan_duoc
     φ=may_unilaterally_terminate_employment_contract; quy tắc trong Π_τ: 2016; dữ kiện: employer, work_under_indefinite_term_employment_contract, suffer_illness, treated_12_months_under_indefinite_contract, -working_capacity_recovers, treated_for_accident_or_occupational_disease
     căn cứ: ['BLLD_45-2019.D34.K1', 'BLLD_45-2019.D36.K1', 'BLLD_45-2019.D36.K1.a', 'BLLD_45-2019.D36.K1.b', 'BLLD_45-2019.D36.K1.c', 'BLLD_45-2019.D36.K1.d', 'BLLD_45-2019.D36.K1.dd', 'BLLD_45-2019.D36.K1.e', 'BLLD_45-2019.D36.K1.g', 'BLLD_45-2019.D36.K2', 'BLLD_45-2019.D36.K2.a', 'BLLD_45-2019.D36.K2.b', 'BLLD_45-2019.D36.K2.c', 'BLLD_45-2019.D36.K2.d', 'BLLD_45-2019.D36.K3', 'BLLD_45-2019.D37.K1', 'BLLD_45-2019.D175.K1.b', 'BLLD_45-2019.D177.K4']; căn cứ chuẩn: ['BLLD_45-2019.D36.K1.b', 'BLLD_45-2019.D37.K1']
-B07 2024-06-01 chuẩn=bi_bac ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B07 2024-06-01 chuẩn=bi_bac ra=chua_du_can_cu [sai]
+    φ=not_applicable_issue_work_permit; quy tắc trong Π_τ: 2016; dữ kiện: foreign_worker_in_vietnam, have_foreign_nationality, marry_vietnamese_citizen, reside
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D154.K8']
-B08 2024-06-01 chuẩn=bi_bac ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D154.K6']
-B09 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D156.K2']
-B10 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B08 2024-06-01 chuẩn=bi_bac ra=ket_luan_duoc [sai]
+    φ=not_applicable_issue_work_permit; quy tắc trong Π_τ: 2016; dữ kiện: foreign_worker_in_vietnam, foreign_lawyer_licensed_to_practice_in_vietnam
+    căn cứ: ['BLLD_45-2019.D154.K6']; căn cứ chuẩn: ['BLLD_45-2019.D154.K6']
+B09 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=work_permit_ceases_to_be_effective; quy tắc trong Π_τ: 2016; dữ kiện: foreign_worker, terminate_employment_contract, in_vietnam
+    căn cứ: ['BLLD_45-2019.D45.K1', 'BLLD_45-2019.D156.K2']; căn cứ chuẩn: ['BLLD_45-2019.D156.K2']
+B10 2024-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
+    φ=terminate_employment_contract; quy tắc trong Π_τ: 2016; dữ kiện: foreign_worker, revoke_work_permit
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D156.K8', 'BLLD_45-2019.D34.K12']
-B11 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B11 2024-06-01 chuẩn=ket_luan_duoc ra=khong_tra_loi [sai]
+    φ=None; quy tắc trong Π_τ: 2016; dữ kiện: employer, employee
+    lý do: ngoai_pham_vi
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D99.K1']
 B12 2024-06-01 chuẩn=bi_bac ra=khong_tra_loi [sai]
     φ=None; quy tắc trong Π_τ: 2016; dữ kiện: 

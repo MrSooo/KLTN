@@ -16,20 +16,21 @@ B05 2024-06-01 chuẩn=bi_bac ra=chua_du_can_cu [sai]
 B06 2024-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
     φ=may_employer_unilaterally_terminates_contract; quy tắc trong Π_τ: 2139; dữ kiện: employer, work_under_indefinite_term_contract, suffer_illness, treated_for_12_consecutive_months_indefinite_term, -working_capacity_recovers, treating_occupational_accident_or_disease
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D36.K1.b', 'BLLD_45-2019.D37.K1']
-B07 2024-06-01 chuẩn=bi_bac ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B07 2024-06-01 chuẩn=bi_bac ra=chua_du_can_cu [sai]
+    φ=not_applicable_issued_work_permit; quy tắc trong Π_τ: 2139; dữ kiện: foreign_worker_working_in_vietnam, married_to_vietnamese_citizen, reside
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D154.K8']
-B08 2024-06-01 chuẩn=bi_bac ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D154.K6']
-B09 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D156.K2']
-B10 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B08 2024-06-01 chuẩn=bi_bac ra=ket_luan_duoc [sai]
+    φ=not_applicable_issued_work_permit; quy tắc trong Π_τ: 2139; dữ kiện: foreign_worker_working_in_vietnam, foreign_lawyer_licensed_to_practice_in_vietnam, under_law_on_lawyers
+    căn cứ: ['BLLD_45-2019.D154.K6']; căn cứ chuẩn: ['BLLD_45-2019.D154.K6']
+B09 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=work_permit_becomes_invalid; quy tắc trong Π_τ: 2139; dữ kiện: foreign_worker, terminate_employment_contract
+    căn cứ: ['BLLD_45-2019.D45.K1', 'BLLD_45-2019.D156.K2', 'BLLD_45-2019.D156.K5']; căn cứ chuẩn: ['BLLD_45-2019.D156.K2']
+B10 2024-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
+    φ=terminate_employment_contract; quy tắc trong Π_τ: 2139; dữ kiện: work_permit, foreign_worker, revoked
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D156.K8', 'BLLD_45-2019.D34.K12']
-B11 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B11 2024-06-01 chuẩn=ket_luan_duoc ra=loi [sai]
+    φ=may_paid_full_contractual_wage; quy tắc trong Π_τ: -; dữ kiện: employee, stop_work, due_to_employer_fault
+    lý do: cổng: dữ kiện sai hình hoặc vị từ lạ: {'vi_tu': 'due_to_employer_fault', 'phu_dinh': False, 'trich': 'do lỗi của người sử dụng lao động'}
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D99.K1']
 B12 2024-06-01 chuẩn=bi_bac ra=khong_tra_loi [sai]
     φ=None; quy tắc trong Π_τ: 2139; dữ kiện: stop_work
@@ -65,20 +66,22 @@ B22 2024-06-01 chuẩn=bi_bac ra=loi [sai]
     φ=may_unilaterally_terminate_contract_without_notice; quy tắc trong Π_τ: -; dữ kiện: employee, -assigned_to_agreed_job, notify_employee_at_least_3_working_days_in_advance, clearly_notify_temporary_reassignment_term, assign_work_suitable_for_health_and_gender
     lý do: cổng: dữ kiện sai hình hoặc vị từ lạ: {'vi_tu': 'notify_employee_at_least_3_working_days_in_advance', 'phu_dinh': False, 'trich': 'báo trước cho anh 3 ngày làm việc'}
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D35.K2.a', 'BLLD_45-2019.D29.K1', 'BLLD_45-2019.D29.K2']
-B24 2024-06-01 chuẩn=chua_du_can_cu ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B24 2024-06-01 chuẩn=chua_du_can_cu ra=chua_du_can_cu [ĐÚNG]
+    φ=may_employer_unilaterally_terminates_contract; quy tắc trong Π_τ: 2139; dữ kiện: employer, -have_justified_reason
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D36.K1.e']
-B25 2024-06-01 chuẩn=chua_du_can_cu ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B25 2024-06-01 chuẩn=chua_du_can_cu ra=khong_tra_loi [sai]
+    φ=None; quy tắc trong Π_τ: 2139; dữ kiện: employer, utility_incident_not_due_to_employer_fault, work_suspension_over_14_working_days
+    lý do: ngoai_pham_vi
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D99.K3.b']
-B26 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D35.K2.d']
-B27 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai] (cần 2.6)
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B26 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=may_unilaterally_terminate_contract_without_notice; quy tắc trong Π_τ: 2139; dữ kiện: employee, sexually_harassed, at_the_workplace
+    căn cứ: ['BLLD_45-2019.D35.K1.a', 'BLLD_45-2019.D35.K1.b', 'BLLD_45-2019.D35.K1.c', 'BLLD_45-2019.D35.K1.d', 'BLLD_45-2019.D37.K1', 'BLLD_45-2019.D5.K1.dd', 'BLLD_45-2019.D35.K1', 'BLLD_45-2019.D35.K2', 'BLLD_45-2019.D35.K2.d']; căn cứ chuẩn: ['BLLD_45-2019.D35.K2.d']
+B27 2024-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai] (cần 2.6)
+    φ=must_pay_job_loss_allowance; quy tắc trong Π_τ: 2139; dữ kiện: employer, affect_employment_of_many_employees, lay_off_employee, worked_regularly_for_at_least_12_months
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D42.K1.b', 'BLLD_45-2019.D42.K5', 'BLLD_45-2019.D47.K1', 'BLLD_45-2019.D34.K11']
-B28 2024-06-01 chuẩn=khong_tra_loi ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B28 2024-06-01 chuẩn=khong_tra_loi ra=khong_tra_loi [ĐÚNG]
+    φ=None; quy tắc trong Π_τ: 2139; dữ kiện: employee
+    lý do: ngoai_pham_vi
 B29 2024-06-01 chuẩn=bi_bac ra=khong_tra_loi [sai]
     φ=None; quy tắc trong Π_τ: 2139; dữ kiện: is_definite_term_employment_contract, contract_expires, grassroots_rep_org_leadership_member
     lý do: ngoai_pham_vi

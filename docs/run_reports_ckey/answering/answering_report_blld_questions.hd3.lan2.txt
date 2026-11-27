@@ -31,21 +31,24 @@ B10 2024-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
 B11 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
     φ=may_pay_full_wages_under_labor_contract; quy tắc trong Π_τ: 1247; dữ kiện: employee, employer_fault
     căn cứ: ['BLLD_45-2019.D99.K1']; căn cứ chuẩn: ['BLLD_45-2019.D99.K1']
-B12 2024-06-01 chuẩn=bi_bac ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B12 2024-06-01 chuẩn=bi_bac ra=khong_tra_loi [sai]
+    φ=None; quy tắc trong Π_τ: 1247; dữ kiện: work_stoppage
+    lý do: ngoai_pham_vi
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D99.K2']
-B13 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai] (cần 2.6)
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B13 2024-06-01 chuẩn=ket_luan_duoc ra=khong_tra_loi [sai] (cần 2.6)
+    φ=None; quy tắc trong Π_τ: 1247; dữ kiện: employer_unilateral_termination, indefinite_term_labor_contract, consult_employee_representative_org
+    lý do: ngoai_pham_vi
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D36.K1.a', 'BLLD_45-2019.D36.K2', 'BLLD_45-2019.D36.K2.a']
-B14 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B14 2024-06-01 chuẩn=ket_luan_duoc ra=khong_tra_loi [sai]
+    φ=None; quy tắc trong Π_τ: 1247; dữ kiện: labor_contract, -owner_or_capital_contributor_of_llc, -foreign_lawyer_with_vietnam_practice_license, -marry_vietnamese_and_reside_in_vietnam
+    lý do: ngoai_pham_vi
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'BLLD_45-2019.D154']
-B15 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D145.K1.a']
-B16 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D43.K1']
+B15 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=must_enter_into_written_labor_contract; quy tắc trong Π_τ: 1247; dữ kiện: employer, be_under_15_years_old, worker_aged_13_to_under_15, perform_light_work
+    căn cứ: ['BLLD_45-2019.D162.K1']; căn cứ chuẩn: ['BLLD_45-2019.D145.K1.a']
+B16 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=must_build_labor_use_plan; quy tắc trong Π_τ: 1247; dữ kiện: employer, corporate_restructuring_or_asset_transfer, affect_employment_of_many_workers
+    căn cứ: ['BLLD_45-2019.D43.K1']; căn cứ chuẩn: ['BLLD_45-2019.D43.K1']
 B17 2024-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
     φ=may_employer_unilateral_termination; quy tắc trong Π_τ: 1247; dữ kiện: employer, force_majeure_or_state_ordered_reduction, take_all_remedial_measures, forced_to_reduce_job_positions
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D36.K1.c']

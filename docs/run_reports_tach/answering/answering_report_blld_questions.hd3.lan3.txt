@@ -16,20 +16,21 @@ B05 2024-06-01 chuẩn=bi_bac ra=chua_du_can_cu [sai]
 B06 2024-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
     φ=may_employer_unilaterally_terminates_contract; quy tắc trong Π_τ: 2139; dữ kiện: employer, work_under_indefinite_term_contract, suffer_illness, treated_for_12_consecutive_months_indefinite_term, -working_capacity_recovers, treating_occupational_accident_or_disease
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D36.K1.b', 'BLLD_45-2019.D37.K1']
-B07 2024-06-01 chuẩn=bi_bac ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D154.K8']
-B08 2024-06-01 chuẩn=bi_bac ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D154.K6']
-B09 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
-    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D156.K2']
-B10 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B07 2024-06-01 chuẩn=bi_bac ra=ket_luan_duoc [sai]
+    φ=not_applicable_issued_work_permit; quy tắc trong Π_τ: 2139; dữ kiện: foreign_worker_working_in_vietnam, married_to_vietnamese_citizen, reside, in_vietnam
+    căn cứ: ['BLLD_45-2019.D154.K8']; căn cứ chuẩn: ['BLLD_45-2019.D154.K8']
+B08 2024-06-01 chuẩn=bi_bac ra=ket_luan_duoc [sai]
+    φ=not_applicable_issued_work_permit; quy tắc trong Π_τ: 2139; dữ kiện: foreign_worker_working_in_vietnam, foreign_lawyer_licensed_to_practice_in_vietnam, under_law_on_lawyers
+    căn cứ: ['BLLD_45-2019.D154.K6']; căn cứ chuẩn: ['BLLD_45-2019.D154.K6']
+B09 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=work_permit_becomes_invalid; quy tắc trong Π_τ: 2139; dữ kiện: foreign_worker, terminate_employment_contract, in_vietnam
+    căn cứ: ['BLLD_45-2019.D45.K1', 'BLLD_45-2019.D156.K2', 'BLLD_45-2019.D156.K5']; căn cứ chuẩn: ['BLLD_45-2019.D156.K2']
+B10 2024-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
+    φ=terminate_employment_contract; quy tắc trong Π_τ: 2139; dữ kiện: foreign_worker, work_permit, revoked
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D156.K8', 'BLLD_45-2019.D34.K12']
-B11 2024-06-01 chuẩn=ket_luan_duoc ra=chua_hoi [sai]
-    lý do: chưa có trả lời LLM cho đúng chữ câu hỏi này
+B11 2024-06-01 chuẩn=ket_luan_duoc ra=loi [sai]
+    φ=may_paid_full_contractual_wage; quy tắc trong Π_τ: -; dữ kiện: employee, stop_work_due_to_employer_fault
+    lý do: cổng: dữ kiện sai hình hoặc vị từ lạ: {'vi_tu': 'stop_work_due_to_employer_fault', 'phu_dinh': False, 'trich': 'ngừng việc do lỗi của người sử dụng lao động'}
     căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D99.K1']
 B12 2024-06-01 chuẩn=bi_bac ra=khong_tra_loi [sai]
     φ=None; quy tắc trong Π_τ: 2139; dữ kiện: determined, stop_work

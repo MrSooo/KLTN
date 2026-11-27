@@ -133,3 +133,30 @@ test lỗi: ['test_qa_server.py']
 LỖI   test_qa_server_offline_on_subset_dev_question
 tổng test lỗi: 1
 test lỗi: ['test_qa_server.py']
+XONG CHUỖI 19:29
+##### 19:29 hỏi lại một lần các lô 1.9 hỏng
+--- tach2 lần 1: hỏi lại 002.json 
+xong 1/1 lô; lỗi 0
+ghi C:\Users\TusPC\Documents\kltn\data\llm_cache\answering\blld_questions.tach2.hd3.json: 34 câu có trả lời
+--- tach2 lần 2: hỏi lại 003.json 
+xong 1/1 lô; lỗi 0
+ghi C:\Users\TusPC\Documents\kltn\data\llm_cache\answering\blld_questions.tach2.hd3.lan2.json: 34 câu có trả lời
+--- tach lần 2: hỏi lại 002.json 005.json 
+xong 2/2 lô; lỗi 0
+ghi C:\Users\TusPC\Documents\kltn\data\llm_cache\answering\blld_questions.tach.hd3.lan2.json: 34 câu có trả lời
+--- tach lần 3: hỏi lại 002.json 
+xong 1/1 lô; lỗi 0
+ghi C:\Users\TusPC\Documents\kltn\data\llm_cache\answering\blld_questions.tach.hd3.lan3.json: 34 câu có trả lời
+--- ckey lần 1: hỏi lại 002.json 
+xong 0/1 lô; lỗi 1
+  lô 002 LỖI: mô hình dừng với stop_reason max_tokens (token ra 40250, khối {'khoi': [{'type': 'thinking', 'ky_tu': 37851}, {'type': 'text', 'ky_tu': 77}], 'usage_khac': {}})
+ghi C:\Users\TusPC\Documents\kltn\data\llm_cache\answering\blld_questions.ckey.hd3.json: 29 câu có trả lời
+  lô 002 KHÔNG nhận: chưa có out hoặc nhat_ky báo None
+--- ckey lần 2: hỏi lại 003.json 
+xong 1/1 lô; lỗi 0
+ghi C:\Users\TusPC\Documents\kltn\data\llm_cache\answering\blld_questions.ckey.hd3.lan2.json: 34 câu có trả lời
+--- ckey lần 3: hỏi lại 005.json 
+xong 0/1 lô; lỗi 1
+  lô 005 LỖI: mô hình dừng với stop_reason max_tokens (token ra 40052, khối {'khoi': [{'type': 'thinking', 'ky_tu': 36409}, {'type': 'text', 'ky_tu': 77}], 'usage_khac': {}})
+ghi C:\Users\TusPC\Documents\kltn\data\llm_cache\answering\blld_questions.ckey.hd3.lan3.json: 29 câu có trả lời
+  lô 005 KHÔNG nhận: chưa có out hoặc nhat_ky báo None
