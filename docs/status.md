@@ -7,7 +7,7 @@ Cập nhật lần cuối: 27/11/2026. Nhánh làm việc: `v3_refactor`.
 - Tuyến: 1.6B 193 lượt `dungcsnd113`, 15 lượt `daongocson` (dự phòng); 1.7 62/62 lô `daongocson` (`dungcsnd113` 404 lúc đó); 1.9 cả 9 hộp cát `dungcsnd113` (cùng một model dịch cho 3 KB). 1.6B 2.439/2.441 chữ có tên; 1.7 617 cặp (vượt ngân sách 400, chỉ cảnh báo).
 - 1.9: 9 lô cụt max_tokens (model nghĩ lặp 38-45 nghìn token), lô 002 (B07-B11, câu dài về người nước ngoài, giấy phép lao động) cụt ở cả 3 KB; hỏi lại một lần: 7/9 qua, 2 lô `ckey` vẫn cụt. `ckey` lần 1 trong chuỗi in 0/34 vì `answering.py` lỗi không rõ (chạy lại tay thì được, không tái hiện).
 - Bộ test đầy đủ (off, replay): 17/18; lỗi duy nhất `test_qa_server_offline_on_subset_dev_question` có từ trước (user chọn để sau).
-- Việc tiếp (chờ user): đếm chỗ đứt nối trong KB `tach2` (tên lệch hay đích không có quy tắc) để xét bước "đề xuất nối"; xem các câu `tach2` sai mà `ckey` đúng (B11, B15, B18, B22, B24, B30) để biết lỗi nằm ở bước nào.
+- Việc tiếp (chờ user): đếm chỗ đứt nối trong KB `tach2` (tên lệch hay đích không có quy tắc) để xét bước "đề xuất nối"; xem các câu `tach2` sai cả 3 lần mà `ckey` đúng (B11, B18, B22, B24, B30; ngược lại B19: `tach2` đúng 3/3, `ckey` 0/3) để biết lỗi nằm ở bước nào. Bộ test đầy đủ chạy 19:27, TRƯỚC lượt hỏi lại 1.9 (lượt đó chỉ đổi cache và báo cáo, không đổi mã).
 
 ## 0b. Nhật ký chạy A63 (đêm 27/11)
 Gói A63 (user duyệt 26/11, chi tiết `docs/decisions.md` A63): lượt 2 của 1.6A-v2 `vai-nhom-4` (LLM ghi khoảng âm tiết, máy lấy chữ), 1.8 bỏ cả quy tắc có dòng lỗi, 1.6B `names-2.3` (láng giềng embedding), 1.9 `hoi-dap-3`; bộ 34 câu `blld_questions.json` đóng băng; luật giữ: `tach2` đúng nhiều câu hơn `ckey` cùng mã và cùng model dịch, 8 câu đối chứng không tụt.
