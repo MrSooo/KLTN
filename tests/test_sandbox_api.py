@@ -421,6 +421,12 @@ def test_runner_falls_back_once_to_the_spare_route_and_logs_it():
         now[0] += sandbox_api.QUAY_LAI
         r.ask(2)
         assert [b["model"] for _u, _h, b in sent] == ["m-api", "m-du-phong", "m-api", "m-du-phong"]
+    # song song: luồng thứ hai cũng lỗi ở tuyến chính sau khi luồng thứ nhất đã chuyển -> vẫn được hỏi lại bằng dự phòng (không dừng cả đợt)
+    with tempfile.TemporaryDirectory() as t, env_key():
+        r = sandbox_api.Runner(lot_dir(t, n=1), mk(t, [], []))
+        e = llm.LLMError("API trả lỗi 404: gỡ")
+        assert r._sang_du_phong(e, "m-api") and r.model == "m-du-phong"
+        assert r._sang_du_phong(e, "m-api") and not r._sang_du_phong(e, "m-du-phong")
 
 
 if __name__ == "__main__":

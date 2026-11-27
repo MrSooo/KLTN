@@ -91,6 +91,7 @@ class Runner:
         if getattr(self, "dung", False):  # [27/11] luồng đã nhận lô trước khi lệnh huỷ tới: không gọi thêm sau lỗi tuyến
             raise llm_client.LLMError("bộ chạy đã dừng vì lỗi tuyến ở lô khác; lô này chưa gọi")
         self._ve_tuyen_chinh()
+        goi_bang = self.model  # tuyến lời gọi này dùng (luồng khác có thể đổi tuyến trong lúc chờ: xét lỗi theo tuyến đã gọi)
         try:
             return self._goi(n)
         except (llm_client.OutputRejected, llm_client.InvalidOutput):
@@ -98,9 +99,9 @@ class Runner:
         except llm_client.LLMError as e:
             # thử lại chỉ cho lỗi tạm (không phải 404 "model is not available": tuyến đã gỡ) và chỉ khi chưa từng sang dự phòng
             # trong tiến trình này; lần quay về sau QUAY_LAI thì thử MỘT lần, lỗi là sang dự phòng ngay (không phí 10 phút mỗi chu kỳ)
-            if self.du_phong and self.model == self.chinh and not self._da_du_phong and "lỗi 404" not in str(e):
+            if self.du_phong and goi_bang == self.chinh and not self._da_du_phong and "lỗi 404" not in str(e):
                 for k in range(1, THU_LAI_CHINH + 1):
-                    print(f"  lô {n:03d}: {self.model} lỗi tuyến ({str(e)[:120]}); nghỉ {NGHI_THU_LAI} giây, thử lại lần {k}/{THU_LAI_CHINH}", flush=True)
+                    print(f"  lô {n:03d}: {goi_bang} lỗi tuyến ({str(e)[:120]}); nghỉ {NGHI_THU_LAI} giây, thử lại lần {k}/{THU_LAI_CHINH}", flush=True)
                     self.client.sleep(NGHI_THU_LAI)
                     try:
                         return self._goi(n)
@@ -108,7 +109,7 @@ class Runner:
                         raise
                     except llm_client.LLMError as e2:
                         e = e2
-            if not self._sang_du_phong(e):
+            if not self._sang_du_phong(e, goi_bang):
                 self.dung = True  # đặt ngay trong luồng gặp lỗi (trước khi luồng chính kịp huỷ), STOP_AFTER_FAILS = 1
                 raise
         try:
@@ -122,11 +123,14 @@ class Runner:
     def _goi(self, n):
         return self.client.ask(TASK, self.tag, self.system, self.user(n), None, role=llm_client.API_ROLE, validate=is_object, label=f"lô {n:03d}")
 
-    def _sang_du_phong(self, e):
-        """Lỗi tuyến trên tuyến chính: chuyển cả bộ chạy sang tuyến dự phòng (một lần). -> True nếu được hỏi lại bằng tuyến dự phòng."""
+    def _sang_du_phong(self, e, goi_bang):
+        """Lời gọi bằng `goi_bang` lỗi tuyến: nếu đó là tuyến chính thì chuyển cả bộ chạy sang tuyến dự phòng (luồng khác chuyển rồi thì
+        thôi). -> True nếu lô này được hỏi lại bằng tuyến dự phòng."""
         with self._khoa:
-            if not self.du_phong or self.model == self.du_phong:
-                return False  # không có tuyến dự phòng, hoặc đã ở tuyến dự phòng mà vẫn lỗi
+            if not self.du_phong or goi_bang == self.du_phong:
+                return False  # không có tuyến dự phòng, hoặc chính tuyến dự phòng lỗi
+            if self.model == self.du_phong:
+                return True  # luồng khác đã chuyển trong lúc lô này chờ
             print(f"  ĐỔI TUYẾN: {self.model} lỗi ({str(e)[:160]}); gọi {self.du_phong} trong {QUAY_LAI} giây rồi thử lại tuyến chính", flush=True)
             self._dat_model(self.du_phong)
             self._het_du_phong, self._da_du_phong = self.client.clock() + QUAY_LAI, True
