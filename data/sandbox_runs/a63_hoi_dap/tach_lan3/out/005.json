@@ -1,0 +1,114 @@
+{
+ "cau_hoi": [
+  {
+   "id": "B24",
+   "phi": "may_employer_unilaterally_terminates_contract",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "have_justified_reason",
+     "phu_dinh": true,
+     "trich": "không có lý do chính đáng"
+    },
+    {
+     "vi_tu": "have_justified_reason_for_5_consecutive_days",
+     "phu_dinh": true,
+     "trich": "4 ngày làm việc liên tục mà không xin phép và không có lý do chính đáng"
+    }
+   ]
+  },
+  {
+   "id": "B25",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "stop_work",
+     "phu_dinh": false,
+     "trich": "ngừng việc"
+    },
+    {
+     "vi_tu": "work_suspension_over_14_working_days",
+     "phu_dinh": false,
+     "trich": "ngừng việc 20 ngày làm việc"
+    },
+    {
+     "vi_tu": "work_suspension_up_to_14_working_days",
+     "phu_dinh": true,
+     "trich": "ngừng việc 20 ngày làm việc"
+    },
+    {
+     "vi_tu": "utility_incident_not_due_to_employer_fault",
+     "phu_dinh": false,
+     "trich": "sự cố mất điện không do lỗi của công ty"
+    }
+   ]
+  },
+  {
+   "id": "B26",
+   "phi": "may_unilaterally_terminate_contract_without_notice",
+   "su_kien": [
+    {
+     "vi_tu": "employee",
+     "phu_dinh": false,
+     "trich": "Người lao động"
+    },
+    {
+     "vi_tu": "sexually_harassed",
+     "phu_dinh": false,
+     "trich": "bị quấy rối tình dục"
+    },
+    {
+     "vi_tu": "at_the_workplace",
+     "phu_dinh": false,
+     "trich": "tại nơi làm việc"
+    }
+   ]
+  },
+  {
+   "id": "B27",
+   "phi": "must_pay_job_loss_allowance",
+   "su_kien": [
+    {
+     "vi_tu": "employer",
+     "phu_dinh": false,
+     "trich": "Công ty"
+    },
+    {
+     "vi_tu": "affect_employment_of_many_employees",
+     "phu_dinh": false,
+     "trich": "việc làm của nhiều người lao động bị ảnh hưởng"
+    },
+    {
+     "vi_tu": "lay_off_employee",
+     "phu_dinh": false,
+     "trich": "cho anh B thôi việc"
+    },
+    {
+     "vi_tu": "worked_regularly_for_at_least_12_months",
+     "phu_dinh": false,
+     "trich": "đã làm việc thường xuyên cho công ty 3 năm"
+    }
+   ]
+  },
+  {
+   "id": "B28",
+   "phi": null,
+   "su_kien": [
+    {
+     "vi_tu": "employee",
+     "phu_dinh": false,
+     "trich": "Người lao động"
+    }
+   ]
+  }
+ ]
+}
