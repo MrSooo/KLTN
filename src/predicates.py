@@ -562,7 +562,7 @@ def fold_dir(d, run, model):
         if n not in log:
             return done, {"kind": "thieu_nhat_ky", "n": n}
         m, eff = log[n]
-        if m != model or eff != EFFORT:
+        if m not in llm_client.models_accepted(llm_client.load_config(), model) or eff != EFFORT:  # 27/11: tuyến dự phòng cũng nhận
             return done, {"kind": "model", "n": n, "msg": f"nhat_ky ghi model {m!r} effort {eff!r}, cần {model!r} effort {EFFORT!r}"}
         try:
             output = json.loads(outp.read_text(encoding="utf-8"))

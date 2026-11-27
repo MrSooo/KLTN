@@ -370,5 +370,27 @@ def test_runner_sends_schema_file_after_system_text():
         assert sent[0][2]["system"] == "LỜI NHẮC\n" + sandbox_api.SCHEMA_NOTE + '{"type": "object"}\n'
 
 
+def test_runner_falls_back_once_to_the_spare_route_and_logs_it():
+    """27/11: tuyến chính lỗi tuyến -> hỏi lại lô đó đúng một lần bằng api.model_du_phong, ở lại tuyến đó; nhật ký ghi model gọi thật.
+    Tuyến dự phòng cũng lỗi thì dừng như cũ (không gọi lại tuyến chính). Không có khoá dự phòng thì như trước (test_runner_bad_output...)."""
+    cfg = dict(CFG, **{"api.model_du_phong": "m-du-phong"})
+
+    def mk(t, answers, sent):
+        return llm.Client("live", cfg, cache_dir=Path(t) / "cache", usage_path=Path(t) / "cache" / "_usage.json", today="2026-11-19",
+                          sleep=lambda s: None, urlopen=server(answers, sent))
+    with tempfile.TemporaryDirectory() as t, env_key():
+        d = lot_dir(t, n=2)
+        sent = []
+        assert sandbox_api.Runner(d, mk(t, [500, reply('{"a": 1}'), reply('{"a": 2}')], sent)).run_lots(workers=1) == 0
+        assert [b["model"] for _u, _h, b in sent] == ["m-api", "m-du-phong", "m-du-phong"]
+        assert sorted((d / "nhat_ky.tsv").read_text(encoding="utf-8").splitlines()) == ["001\tm-du-phong\tkhong_co", "002\tm-du-phong\tkhong_co"]
+    with tempfile.TemporaryDirectory() as t, env_key():
+        d = lot_dir(t, n=2)
+        sent = []
+        assert sandbox_api.Runner(d, mk(t, [500, 500, reply("{}")], sent)).run_lots(workers=1) == 1
+        assert [b["model"] for _u, _h, b in sent] == ["m-api", "m-du-phong"] and not list((d / "out").glob("*.json"))
+    assert llm.models_accepted(cfg, "m-api") == {"m-api", "m-du-phong"} and llm.models_accepted(CFG, "m-api") == {"m-api"}
+
+
 if __name__ == "__main__":
     _harness.run(globals())

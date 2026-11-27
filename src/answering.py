@@ -441,7 +441,7 @@ def nhap(thu_muc, qpath):
             bad.append((n, "lo/ khác đầu vào hiện tại"))
             continue
         f = d / "out" / f"{n:03d}.json"
-        if not f.exists() or log.get(n) != MODEL:
+        if not f.exists() or log.get(n) not in llm_client.models_accepted(llm_client.load_config(), MODEL):  # 27/11: tuyến dự phòng cũng nhận
             bad.append((n, f"chưa có out hoặc nhat_ky báo {log.get(n)!r}"))
             continue
         try:

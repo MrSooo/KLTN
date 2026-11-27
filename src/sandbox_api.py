@@ -29,6 +29,7 @@ import json
 import re
 import subprocess
 import sys
+import threading
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # -I không tự thêm thư mục script
@@ -72,6 +73,11 @@ class Runner:
         if want != self.model:  # gọi model này mà hộp cát đòi model khác thì `nhap` sẽ từ chối mọi lô: dừng trước khi tốn tiền
             raise SystemExit(f"hộp cát đòi model {want!r}, vai {llm_client.API_ROLE} gọi {self.model!r}: dựng lại hộp cát với KLTN_LLM_RUN "
                              f"đúng lần chạy (khoá <lần chạy>.hop_cat.model, <lần chạy>.ten.model trong docs/llm_config.md)")
+        # 27/11, user: "làm tuyến dự phòng khi dungcs chết": tuyến chính lỗi tuyến thì hỏi lại lô đó MỘT lần bằng `api.model_du_phong`
+        # rồi ở lại tuyến dự phòng tới hết tiến trình (không gọi lại tuyến chính: không gọi dồn). Khoá cache theo model gọi thật;
+        # nhật ký ghi model gọi thật; `nhap` nhận cả hai (llm_client.models_accepted) và ghi cache theo model danh nghĩa.
+        self.du_phong = client.cfg.get(f"{llm_client.API_ROLE}.model_du_phong")
+        self._khoa = threading.Lock()
 
     def user(self, n):
         return (self.d / "lo" / f"{n:03d}.json").read_text(encoding="utf-8")
@@ -82,19 +88,41 @@ class Runner:
         if getattr(self, "dung", False):  # [27/11] luồng đã nhận lô trước khi lệnh huỷ tới: không gọi thêm sau lỗi tuyến
             raise llm_client.LLMError("bộ chạy đã dừng vì lỗi tuyến ở lô khác; lô này chưa gọi")
         try:
-            return self.client.ask(TASK, self.tag, self.system, self.user(n), None, role=llm_client.API_ROLE, validate=is_object, label=f"lô {n:03d}")
+            return self._goi(n)
+        except (llm_client.OutputRejected, llm_client.InvalidOutput):
+            raise
+        except llm_client.LLMError as e:
+            if not self._sang_du_phong(e):
+                self.dung = True  # đặt ngay trong luồng gặp lỗi (trước khi luồng chính kịp huỷ), STOP_AFTER_FAILS = 1
+                raise
+        try:
+            return self._goi(n)  # đúng một lần trên tuyến dự phòng
         except (llm_client.OutputRejected, llm_client.InvalidOutput):
             raise
         except llm_client.LLMError:
-            self.dung = True  # đặt ngay trong luồng gặp lỗi (trước khi luồng chính kịp huỷ), STOP_AFTER_FAILS = 1
+            self.dung = True
             raise
 
-    def write(self, n, output):
-        """Ghi out/NNN.json rồi dòng nhật ký (đúng thứ tự đó: nhật ký có dòng thì out đã có)."""
+    def _goi(self, n):
+        return self.client.ask(TASK, self.tag, self.system, self.user(n), None, role=llm_client.API_ROLE, validate=is_object, label=f"lô {n:03d}")
+
+    def _sang_du_phong(self, e):
+        """Lỗi tuyến trên tuyến chính: chuyển cả bộ chạy sang tuyến dự phòng (một lần). -> True nếu được hỏi lại bằng tuyến dự phòng."""
+        with self._khoa:
+            if not self.du_phong or self.model == self.du_phong:
+                return False  # không có tuyến dự phòng, hoặc đã ở tuyến dự phòng mà vẫn lỗi
+            print(f"  ĐỔI TUYẾN: {self.model} lỗi ({str(e)[:160]}); từ giờ tới hết tiến trình gọi {self.du_phong}", flush=True)
+            self.client.cfg = dict(self.client.cfg, **{f"{llm_client.API_ROLE}.model": self.du_phong})
+            self.model = self.du_phong
+            return True
+
+    def write(self, n, output, model=None):
+        """Ghi out/NNN.json rồi dòng nhật ký (đúng thứ tự đó: nhật ký có dòng thì out đã có). model: model đã gọi thật cho lô này
+        (`requested_model` trong bản ghi của llm_client); thiếu thì lấy model hiện tại của bộ chạy."""
         (self.d / "out").mkdir(exist_ok=True)
         (self.d / "out" / f"{n:03d}.json").write_text(json.dumps(output, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
         with (self.d / "nhat_ky.tsv").open("a", encoding="utf-8", newline="\n") as f:
-            f.write(f"{n:03d}\t{self.model}\t{self.effort}\n")
+            f.write(f"{n:03d}\t{model or self.model}\t{self.effort}\n")
 
     def redo(self, n):
         """Chuẩn bị làm lại lô n: cất out/NNN.json sang out_sai/NNN_<k>.json (không xoá, để còn xem) và quên bản ghi cache. Dòng nhật ký cũ
@@ -142,7 +170,7 @@ class Runner:
                         break
                     continue
                 streak = 0
-                self.write(n, rec["output"])
+                self.write(n, rec["output"], rec.get("requested_model"))
                 done += 1
                 if rec.get("boc_rao"):
                     print(f"  lô {n:03d}: đã bóc rào ``` quanh JSON (A46)")
@@ -182,7 +210,7 @@ class Runner:
             except llm_client.LLMError as e:
                 print(f"DỪNG: lượt {n:03d} lỗi API: {str(e)[:300]}; chạy lại lệnh để làm tiếp từ lượt này")
                 return 1
-            self.write(n, rec["output"])
+            self.write(n, rec["output"], rec.get("requested_model"))
             made += 1
             line = self.tiep("ghi", f"{n:03d}")
             print(line)

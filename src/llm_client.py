@@ -150,6 +150,14 @@ def provider_of(cfg, role):
     return cfg.get(f"{role}.provider", "gemini")
 
 
+def models_accepted(cfg, nominal):
+    """Các ID model mà nhật ký hộp cát được phép ghi cho một bước có model danh nghĩa `nominal` (khoá cache vẫn theo `nominal`):
+    chính nó, cộng tuyến dự phòng `api.model_du_phong` nếu lần chạy có khoá đó (27/11, user: dùng tuyến dự phòng khi tuyến chính chết).
+    Lượt nào chạy bằng tuyến nào thì nhật ký ghi đúng tuyến đó, nên vẫn đếm được."""
+    du_phong = cfg.get(f"{API_ROLE}.model_du_phong")
+    return {nominal} | ({du_phong} if du_phong else set())
+
+
 def cache_key(model, task, prompt_version, payload, system="", schema=None):
     """Khoá cache = sha256 của (model, tác vụ, phiên bản prompt, đầu vào, chữ system, lược đồ): sửa prompt hay lược đồ mà quên đổi
     phiên bản vẫn không dùng nhầm phản hồi cũ."""
