@@ -1,0 +1,112 @@
+1.9 hỏi đáp: blld_questions.json; lời nhắc hoi-dap-3, lần 3
+văn bản có quy tắc: ['BLLD_45-2019']; câu hỏi: 34; từ vựng: 1215 kết luận, 2111 vị từ
+Không in tỉ lệ đúng chung: câu gắn 'cần 2.6' có căn cứ chuẩn ở văn bản chưa có quy tắc nên chưa thể đúng ở giai đoạn này.
+B01 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=terminate_employment_contract; quy tắc trong Π_τ: 2016; dữ kiện: disciplined_by_dismissal, commit_theft, at_workplace
+    căn cứ: ['BLLD_45-2019.D45.K1', 'BLLD_45-2019.D34.K8']; căn cứ chuẩn: ['BLLD_45-2019.D34.K8']
+B03 2024-06-01 chuẩn=chua_du_can_cu ra=chua_du_can_cu [ĐÚNG]
+    φ=terminate_employment_contract; quy tắc trong Π_τ: 2016; dữ kiện: -under_effective_court_judgment_or_decision
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D34.K4']
+B04 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=terminate_employment_contract; quy tắc trong Π_τ: 2016; dữ kiện: pass_away
+    căn cứ: ['BLLD_45-2019.D45.K1', 'BLLD_45-2019.D34.K7']; căn cứ chuẩn: ['BLLD_45-2019.D34.K7']
+B05 2024-06-01 chuẩn=bi_bac ra=bi_bac [ĐÚNG] không cạnh 1.7=chua_du_can_cu
+    φ=may_unilaterally_terminate_employment_contract; quy tắc trong Π_τ: 2016; dữ kiện: employer, -regularly_complete_work_under_contract, under_employers_work_evaluation_criteria, take_paid_annual_leave
+    căn cứ: ['BLLD_45-2019.D34.K1', 'BLLD_45-2019.D36.K1', 'BLLD_45-2019.D36.K1.a', 'BLLD_45-2019.D36.K1.b', 'BLLD_45-2019.D36.K1.c', 'BLLD_45-2019.D36.K1.d', 'BLLD_45-2019.D36.K1.dd', 'BLLD_45-2019.D36.K1.e', 'BLLD_45-2019.D36.K1.g', 'BLLD_45-2019.D36.K2', 'BLLD_45-2019.D36.K2.a', 'BLLD_45-2019.D36.K2.b', 'BLLD_45-2019.D36.K2.c', 'BLLD_45-2019.D36.K2.d', 'BLLD_45-2019.D36.K3', 'BLLD_45-2019.D37.K2', 'BLLD_45-2019.D175.K1.b', 'BLLD_45-2019.D177.K4']; căn cứ chuẩn: ['BLLD_45-2019.D36.K1.a', 'BLLD_45-2019.D37.K2']
+B06 2024-06-01 chuẩn=ket_luan_duoc ra=bi_bac [sai] không cạnh 1.7=ket_luan_duoc
+    φ=may_unilaterally_terminate_employment_contract; quy tắc trong Π_τ: 2016; dữ kiện: employer, work_under_indefinite_term_employment_contract, suffer_illness, treated_12_months_under_indefinite_contract, -working_capacity_recovers
+    căn cứ: ['BLLD_45-2019.D34.K1', 'BLLD_45-2019.D36.K1', 'BLLD_45-2019.D36.K1.a', 'BLLD_45-2019.D36.K1.b', 'BLLD_45-2019.D36.K1.c', 'BLLD_45-2019.D36.K1.d', 'BLLD_45-2019.D36.K1.dd', 'BLLD_45-2019.D36.K1.e', 'BLLD_45-2019.D36.K1.g', 'BLLD_45-2019.D36.K2', 'BLLD_45-2019.D36.K2.a', 'BLLD_45-2019.D36.K2.b', 'BLLD_45-2019.D36.K2.c', 'BLLD_45-2019.D36.K2.d', 'BLLD_45-2019.D36.K3', 'BLLD_45-2019.D37.K1', 'BLLD_45-2019.D175.K1.b', 'BLLD_45-2019.D177.K4']; căn cứ chuẩn: ['BLLD_45-2019.D36.K1.b', 'BLLD_45-2019.D37.K1']
+B07 2024-06-01 chuẩn=bi_bac ra=chua_du_can_cu [sai]
+    φ=not_applicable_issue_work_permit; quy tắc trong Π_τ: 2016; dữ kiện: foreign_worker_in_vietnam, marry_vietnamese_citizen, reside
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D154.K8']
+B08 2024-06-01 chuẩn=bi_bac ra=ket_luan_duoc [sai]
+    φ=not_applicable_issue_work_permit; quy tắc trong Π_τ: 2016; dữ kiện: foreign_worker_in_vietnam, foreign_lawyer_licensed_to_practice_in_vietnam
+    căn cứ: ['BLLD_45-2019.D154.K6']; căn cứ chuẩn: ['BLLD_45-2019.D154.K6']
+B09 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=work_permit_ceases_to_be_effective; quy tắc trong Π_τ: 2016; dữ kiện: foreign_worker, terminate_employment_contract, in_vietnam
+    căn cứ: ['BLLD_45-2019.D45.K1', 'BLLD_45-2019.D156.K2']; căn cứ chuẩn: ['BLLD_45-2019.D156.K2']
+B10 2024-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
+    φ=terminate_employment_contract; quy tắc trong Π_τ: 2016; dữ kiện: foreign_worker, revoke_work_permit
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D156.K8', 'BLLD_45-2019.D34.K12']
+B11 2024-06-01 chuẩn=ket_luan_duoc ra=loi [sai]
+    φ=None; quy tắc trong Π_τ: -; dữ kiện: due_to_employers_fault
+    lý do: cổng: dữ kiện sai hình hoặc vị từ lạ: {'vi_tu': 'due_to_employers_fault', 'phu_dinh': False, 'trich': 'do lỗi của người sử dụng lao động'}
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D99.K1']
+B12 2024-06-01 chuẩn=bi_bac ra=khong_tra_loi [sai]
+    φ=None; quy tắc trong Π_τ: 2016; dữ kiện: stop_working, determined
+    lý do: ngoai_pham_vi
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D99.K2']
+B13 2024-06-01 chuẩn=ket_luan_duoc ra=khong_tra_loi [sai]
+    φ=None; quy tắc trong Π_τ: 2016; dữ kiện: consult_grassroots_employee_representative_org, -regularly_complete_work_under_contract
+    lý do: ngoai_pham_vi
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D36.K1.a', 'BLLD_45-2019.D36.K2', 'BLLD_45-2019.D36.K2.a']
+B14 2024-06-01 chuẩn=ket_luan_duoc ra=khong_tra_loi [sai]
+    φ=None; quy tắc trong Π_τ: 2016; dữ kiện: -owner_or_member_of_llc_with_prescribed_capital, -foreign_lawyer_licensed_to_practice_in_vietnam, -marry_vietnamese_citizen
+    lý do: ngoai_pham_vi
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D151.K1.d', 'BLLD_45-2019.D154']
+B15 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=must_enter_written_contract_with_minor_and_legal_rep; quy tắc trong Π_τ: 2016; dữ kiện: employer, employ_person_under_15
+    căn cứ: ['BLLD_45-2019.D145.K1', 'BLLD_45-2019.D145.K1.a']; căn cứ chuẩn: ['BLLD_45-2019.D145.K1.a']
+B16 2024-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
+    φ=must_develop_labor_utilization_plan; quy tắc trong Π_τ: 2016; dữ kiện: employer, affect_employment_of_many_employees
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D43.K1']
+B17 2024-06-01 chuẩn=ket_luan_duoc ra=bi_bac [sai] không cạnh 1.7=ket_luan_duoc
+    φ=may_unilaterally_terminate_employment_contract; quy tắc trong Π_τ: 2016; dữ kiện: employer, dangerous_epidemic, take_all_remedial_measures, forced_to_reduce_jobs
+    căn cứ: ['BLLD_45-2019.D34.K1', 'BLLD_45-2019.D36.K1', 'BLLD_45-2019.D36.K1.a', 'BLLD_45-2019.D36.K1.b', 'BLLD_45-2019.D36.K1.c', 'BLLD_45-2019.D36.K1.d', 'BLLD_45-2019.D36.K1.dd', 'BLLD_45-2019.D36.K1.e', 'BLLD_45-2019.D36.K1.g', 'BLLD_45-2019.D36.K2', 'BLLD_45-2019.D36.K2.a', 'BLLD_45-2019.D36.K2.b', 'BLLD_45-2019.D36.K2.c', 'BLLD_45-2019.D36.K2.d', 'BLLD_45-2019.D36.K3', 'BLLD_45-2019.D175.K1.b', 'BLLD_45-2019.D177.K4']; căn cứ chuẩn: ['BLLD_45-2019.D36.K1.c']
+B18 2024-06-01 chuẩn=bi_bac ra=chua_du_can_cu [sai]
+    φ=may_use_subleased_labor; quy tắc trong Π_τ: 2016; dữ kiện: subleasing_hiring_party, replace_workers_laid_off_due_to_restructuring
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D53.K3.c']
+B19 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=may_use_subleased_labor; quy tắc trong Π_τ: 2016; dữ kiện: subleasing_hiring_party, replace_during_maternity_leave, labor_sublease_term_up_to_12_months
+    căn cứ: ['BLLD_45-2019.D53.K2', 'BLLD_45-2019.D53.K2.b']; căn cứ chuẩn: ['BLLD_45-2019.D53.K2.b', 'BLLD_45-2019.D53.K3.c', 'BLLD_45-2019.D53.K1']
+B20 2024-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
+    φ=agreed_at_least_minimum_wage; quy tắc trong Π_τ: 2016; dữ kiện: work_stoppage_wage, economic_crisis, stop_working_up_to_14_working_days
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D42.K2.a', 'BLLD_45-2019.D99.K3', 'BLLD_45-2019.D99.K3.a']
+B22 2024-06-01 chuẩn=bi_bac ra=ket_luan_duoc [sai]
+    φ=may_unilaterally_terminate_without_advance_notice; quy tắc trong Π_τ: 2016; dữ kiện: employee, -assigned_to_agreed_job_and_workplace, assign_work_suitable_to_health_and_gender, clearly_notify_temporary_period
+    căn cứ: ['BLLD_45-2019.D37.K1', 'BLLD_45-2019.D46.K1', 'BLLD_45-2019.D5.K1.dd', 'BLLD_45-2019.D35.K1', 'BLLD_45-2019.D35.K2', 'BLLD_45-2019.D35.K2.a', 'BLLD_45-2019.D35.K1.a', 'BLLD_45-2019.D35.K1.b', 'BLLD_45-2019.D35.K1.c', 'BLLD_45-2019.D35.K1.d', 'BLLD_45-2019.D35.K2.b', 'BLLD_45-2019.D35.K2.c', 'BLLD_45-2019.D35.K2.d', 'BLLD_45-2019.D35.K2.dd', 'BLLD_45-2019.D35.K2.e', 'BLLD_45-2019.D35.K2.g']; căn cứ chuẩn: ['BLLD_45-2019.D35.K2.a', 'BLLD_45-2019.D29.K1', 'BLLD_45-2019.D29.K2']
+B24 2024-06-01 chuẩn=chua_du_can_cu ra=bi_bac [sai] không cạnh 1.7=chua_du_can_cu
+    φ=may_unilaterally_terminate_employment_contract; quy tắc trong Π_τ: 2016; dữ kiện: employer, arbitrarily_abandon_work, -at_least_5_consecutive_working_days, -have_justifiable_reason
+    căn cứ: ['BLLD_45-2019.D34.K1', 'BLLD_45-2019.D36.K1', 'BLLD_45-2019.D36.K1.a', 'BLLD_45-2019.D36.K1.b', 'BLLD_45-2019.D36.K1.c', 'BLLD_45-2019.D36.K1.d', 'BLLD_45-2019.D36.K1.dd', 'BLLD_45-2019.D36.K1.e', 'BLLD_45-2019.D36.K1.g', 'BLLD_45-2019.D36.K2', 'BLLD_45-2019.D36.K2.a', 'BLLD_45-2019.D36.K2.b', 'BLLD_45-2019.D36.K2.c', 'BLLD_45-2019.D36.K2.d', 'BLLD_45-2019.D36.K3', 'BLLD_45-2019.D175.K1.b', 'BLLD_45-2019.D177.K4']; căn cứ chuẩn: ['BLLD_45-2019.D36.K1.e']
+B25 2024-06-01 chuẩn=chua_du_can_cu ra=bi_bac [sai]
+    φ=agreed_at_least_minimum_wage; quy tắc trong Π_τ: 2016; dữ kiện: work_stoppage_wage, power_water_incident_without_employer_fault, stop_working_over_14_working_days, -stop_working_up_to_14_working_days
+    lý do: dieu_kien_bi_bac
+    căn cứ: ['BLLD_45-2019.D99', 'BLLD_45-2019.D99.K3.a']; căn cứ chuẩn: ['BLLD_45-2019.D99.K3.b']
+B26 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=may_unilaterally_terminate_without_advance_notice; quy tắc trong Π_τ: 2016; dữ kiện: employee, sexual_harassment, at_workplace
+    căn cứ: ['BLLD_45-2019.D37.K1', 'BLLD_45-2019.D46.K1', 'BLLD_45-2019.D5.K1.dd', 'BLLD_45-2019.D35.K1', 'BLLD_45-2019.D35.K2', 'BLLD_45-2019.D35.K2.d']; căn cứ chuẩn: ['BLLD_45-2019.D35.K2.d']
+B27 2024-06-01 chuẩn=ket_luan_duoc ra=chua_du_can_cu [sai]
+    φ=must_pay_job_loss_allowance; quy tắc trong Π_τ: 2016; dữ kiện: employer, change_process_technology_machinery_equipment, affect_employment_of_many_employees, lay_off, work_regularly_for_at_least_12_months
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D42.K1.b', 'BLLD_45-2019.D42.K5', 'BLLD_45-2019.D47.K1', 'BLLD_45-2019.D34.K11']
+B28 2024-06-01 chuẩn=khong_tra_loi ra=khong_tra_loi [ĐÚNG]
+    φ=None; quy tắc trong Π_τ: 2016; dữ kiện: employee
+    lý do: ngoai_pham_vi
+B29 2024-06-01 chuẩn=bi_bac ra=khong_tra_loi [sai]
+    φ=None; quy tắc trong Π_τ: 2016; dữ kiện: definite_term_employment_contract, expire, grassroots_employee_rep_org_board_member
+    lý do: ngoai_pham_vi
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D34.K1', 'BLLD_45-2019.D177.K4', 'BLLD_45-2019.D3.K3']
+B30 2024-06-01 chuẩn=ket_luan_duoc ra=bi_bac [sai] không cạnh 1.7=chua_du_can_cu
+    φ=may_unilaterally_terminate_employment_contract; quy tắc trong Π_τ: 2016; dữ kiện: employer, suspend_employment_contract_performance, perform_military_service, have_remaining_term, -within_15_days_from_contract_suspension_expiry, -have_other_agreement
+    căn cứ: ['BLLD_45-2019.D34.K1', 'BLLD_45-2019.D36.K1', 'BLLD_45-2019.D36.K1.a', 'BLLD_45-2019.D36.K1.b', 'BLLD_45-2019.D36.K1.c', 'BLLD_45-2019.D36.K1.d', 'BLLD_45-2019.D36.K1.dd', 'BLLD_45-2019.D36.K1.e', 'BLLD_45-2019.D36.K1.g', 'BLLD_45-2019.D36.K2', 'BLLD_45-2019.D36.K2.a', 'BLLD_45-2019.D36.K2.b', 'BLLD_45-2019.D36.K2.c', 'BLLD_45-2019.D36.K2.d', 'BLLD_45-2019.D36.K3', 'BLLD_45-2019.D175.K1.b', 'BLLD_45-2019.D177.K4']; căn cứ chuẩn: ['BLLD_45-2019.D31', 'BLLD_45-2019.D36.K1.d', 'BLLD_45-2019.D30.K1.a']
+B31 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=illegal_strike; quy tắc trong Π_τ: 2016; dữ kiện: strike, collective_labor_dispute_being_settled
+    căn cứ: ['BLLD_45-2019.D204.K4']; căn cứ chuẩn: ['BLLD_45-2019.D204.K4']
+B32 2024-06-01 chuẩn=bi_bac ra=ket_luan_duoc [sai]
+    φ=may_temporarily_close_workplace; quy tắc trong Π_τ: 2016; dữ kiện: employer, return_to_work
+    căn cứ: ['BLLD_45-2019.D34.K1', 'BLLD_45-2019.D36.K1', 'BLLD_45-2019.D36.K1.a', 'BLLD_45-2019.D36.K1.b', 'BLLD_45-2019.D36.K1.c', 'BLLD_45-2019.D36.K1.d', 'BLLD_45-2019.D36.K1.dd', 'BLLD_45-2019.D36.K1.e', 'BLLD_45-2019.D36.K1.g', 'BLLD_45-2019.D36.K2', 'BLLD_45-2019.D36.K2.a', 'BLLD_45-2019.D36.K2.b', 'BLLD_45-2019.D36.K2.c', 'BLLD_45-2019.D36.K2.d', 'BLLD_45-2019.D36.K3', 'BLLD_45-2019.D6.K1.d', 'BLLD_45-2019.D175.K1.b', 'BLLD_45-2019.D177.K4']; căn cứ chuẩn: ['BLLD_45-2019.D206.K2']
+B33 2024-06-01 chuẩn=ket_luan_duoc ra=loi [sai]
+    φ=must_make_separate_tracking_book; quy tắc trong Π_τ: -; dữ kiện: employer, aged_between_15_and_under_18
+    lý do: cổng: dữ kiện sai hình hoặc vị từ lạ: {'vi_tu': 'aged_between_15_and_under_18', 'phu_dinh': False, 'trich': '16 tuổi'}
+    căn cứ: []; căn cứ chuẩn: ['BLLD_45-2019.D143.K1', 'BLLD_45-2019.D144.K3']
+B34 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=terminate_employment_contract; quy tắc trong Π_τ: 2016; dữ kiện: court_declared_missing
+    căn cứ: ['BLLD_45-2019.D45.K1', 'BLLD_45-2019.D34.K6', 'BLLD_45-2019.D34.K7']; căn cứ chuẩn: ['BLLD_45-2019.D34.K6']
+B35 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=work_permit_ceases_to_be_effective; quy tắc trong Π_τ: 2016; dữ kiện: issue_work_permit, -work_according_to_work_permit_contents
+    căn cứ: ['BLLD_45-2019.D156.K4']; căn cứ chuẩn: ['BLLD_45-2019.D156.K4']
+B36 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=illegal_strike; quy tắc trong Π_τ: 2016; dữ kiện: -organize_and_lead_strike
+    căn cứ: ['BLLD_45-2019.D204.K2']; căn cứ chuẩn: ['BLLD_45-2019.D204.K2']
+B37 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=work_permit_ceases_to_be_effective; quy tắc trong Π_τ: 2016; dữ kiện: work_permit_term_expires, -extend_work_permit
+    căn cứ: ['BLLD_45-2019.D156.K1']; căn cứ chuẩn: ['BLLD_45-2019.D156.K1']
