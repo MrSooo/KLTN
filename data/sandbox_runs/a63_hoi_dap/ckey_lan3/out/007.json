@@ -1,0 +1,52 @@
+{
+ "cau_hoi": [
+  {
+   "id": "B34",
+   "phi": "terminate_labor_contract",
+   "su_kien": [
+    {
+     "vi_tu": "court_declared_civil_incapacity_missing_or_dead",
+     "phu_dinh": false,
+     "trich": "Tòa án đã ra quyết định có hiệu lực pháp luật tuyên bố anh mất tích"
+    }
+   ]
+  },
+  {
+   "id": "B35",
+   "phi": "work_permit_ceases_effect",
+   "su_kien": [
+    {
+     "vi_tu": "work_permit",
+     "phu_dinh": false,
+     "trich": "Giấy phép lao động"
+    },
+    {
+     "vi_tu": "work_in_accordance_with_work_permit",
+     "phu_dinh": true,
+     "trich": "được cấp giấy phép lao động với vị trí chuyên gia phân tích dữ liệu, nhưng thực tế công ty giao chị làm giám đốc bán hàng"
+    }
+   ]
+  },
+  {
+   "id": "B36",
+   "phi": null,
+   "su_kien": []
+  },
+  {
+   "id": "B37",
+   "phi": "work_permit_ceases_effect",
+   "su_kien": [
+    {
+     "vi_tu": "work_permit",
+     "phu_dinh": false,
+     "trich": "Giấy phép lao động"
+    },
+    {
+     "vi_tu": "work_permit_term_expiration",
+     "phu_dinh": false,
+     "trich": "có thời hạn đến ngày 31/3/2024; tại ngày 01/06/2024 anh chưa được cấp gia hạn"
+    }
+   ]
+  }
+ ]
+}

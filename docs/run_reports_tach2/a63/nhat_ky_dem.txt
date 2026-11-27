@@ -106,3 +106,11 @@ ghi C:\Users\TusPC\Documents\kltn\data\llm_cache\answering\blld_questions.ckey.h
 B37 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
     φ=work_permit_ceases_effect; quy tắc trong Π_τ: 1247; dữ kiện: work_permit, work_permit_term_expiration
     căn cứ: ['BLLD_45-2019.D156.K1']; căn cứ chuẩn: ['BLLD_45-2019.D156.K1']
+--- ckey lần 3
+--- data/sandbox_runs/a63_hoi_dap/ckey_lan3: dừng không do tuyến hay còn lô lỗi đầu ra (mã 1):
+  lô 005 LỖI: mô hình dừng với stop_reason max_tokens (token ra 41135, khối {'khoi': [{'type': 'thinking', 'ky_tu': 40209}, {'type': 'text', 'ky_tu': 77}], 'usage_khac': {}})
+ghi C:\Users\TusPC\Documents\kltn\data\llm_cache\answering\blld_questions.ckey.hd3.lan3.json: 29 câu có trả lời
+  lô 005 KHÔNG nhận: chưa có out hoặc nhat_ky báo None
+B37 2024-06-01 chuẩn=ket_luan_duoc ra=ket_luan_duoc [ĐÚNG]
+    φ=work_permit_ceases_effect; quy tắc trong Π_τ: 1247; dữ kiện: work_permit, work_permit_term_expiration
+    căn cứ: ['BLLD_45-2019.D156.K1']; căn cứ chuẩn: ['BLLD_45-2019.D156.K1']
